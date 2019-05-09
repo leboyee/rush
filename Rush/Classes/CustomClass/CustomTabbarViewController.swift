@@ -37,22 +37,27 @@ extension CustomTabbarViewController {
         tabBar.barTintColor = globalAppBgColor
         tabBar.tintColor = tabbarItemTintColor
         
+        // First tab
         let fStory = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = fStory.instantiateInitialViewController()
         firstNavigationController = UINavigationController(rootViewController: homeViewController!)
         
+        // Second tab
         let sStory = UIStoryboard(name: "Explore", bundle: nil)
         let exploreViewController = sStory.instantiateInitialViewController()
         secondNavigationController = UINavigationController(rootViewController: exploreViewController!)
         
+        // Third tab
         let tStory = UIStoryboard(name: "Chats", bundle: nil)
         let forumViewController = tStory.instantiateInitialViewController()
         thirdNavigationController = UINavigationController(rootViewController: forumViewController!)
         
+        // Fourth tab
         let chatStory = UIStoryboard(name: "Forum", bundle: nil)
         let chatsViewController = chatStory.instantiateInitialViewController()
         fourthNavigationViewController = UINavigationController(rootViewController: chatsViewController!)
         
+        // Fifth tab
         let profileStory = UIStoryboard(name: "Profile", bundle: nil)
         let profileViewController = profileStory.instantiateInitialViewController()
         fifthNavigationController = UINavigationController(rootViewController: profileViewController!)
@@ -60,6 +65,11 @@ extension CustomTabbarViewController {
         self.delegate = self
         setupIcons()
     }
+    
+    /*
+        Tab bar item select & unselect set images
+        & add custom image for profile tab
+    */
     
     func setupIcons() {
         
@@ -81,6 +91,10 @@ extension CustomTabbarViewController {
         fifthNavigationController.tabBarItem = customTabBarItem
     }
     
+    
+    /*
+        Set all view controller to tabbar controllers
+    */
     func setupTabbar() {
         
         viewControllers = [firstNavigationController, secondNavigationController, thirdNavigationController, fourthNavigationViewController, fifthNavigationController]
@@ -104,7 +118,7 @@ extension CustomTabbarViewController {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
-
+        
     }
 }
 

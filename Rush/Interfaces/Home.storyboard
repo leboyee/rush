@@ -15,15 +15,31 @@
             <objects>
                 <viewController title="Home" id="Qed-en-kd7" customClass="HomeViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q5v-Dn-T2i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-Rz-gyU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kDz-Rz-gyU" firstAttribute="trailing" secondItem="R1i-kN-scE" secondAttribute="trailing" id="QkU-8c-Huz"/>
+                            <constraint firstItem="kDz-Rz-gyU" firstAttribute="top" secondItem="R1i-kN-scE" secondAttribute="top" id="ZrU-WW-cxs"/>
+                            <constraint firstAttribute="bottom" secondItem="kDz-Rz-gyU" secondAttribute="bottom" id="suM-bn-lJW"/>
+                            <constraint firstItem="kDz-Rz-gyU" firstAttribute="leading" secondItem="R1i-kN-scE" secondAttribute="leading" id="svq-Wn-vX7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R1i-kN-scE"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="kDz-Rz-gyU" id="WKU-6W-Png"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-94" y="121"/>
+            <point key="canvasLocation" x="-94.20289855072464" y="120.53571428571428"/>
         </scene>
     </scenes>
 </document>
