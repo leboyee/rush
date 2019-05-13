@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         
-        
         return true
     }
 
