@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="48" id="j9y-4X-ZZ9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="border.cornerRadius">
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
@@ -148,11 +148,16 @@
                             <constraint firstAttribute="bottom" secondItem="GKq-3t-Cv7" secondAttribute="bottom" constant="22" id="pVh-ib-xSn"/>
                             <constraint firstItem="GKq-3t-Cv7" firstAttribute="leading" secondItem="Jj3-gv-xPP" secondAttribute="leading" constant="16" id="zsa-sz-IFt"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXN-Up-cpP">
                         <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AvI-z2-JuO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-event-bg" translatesAutoresizingMaskIntoConstraints="NO" id="AvI-z2-JuO">
                                 <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-bottom" translatesAutoresizingMaskIntoConstraints="NO" id="aAp-K2-EIZ">
@@ -192,9 +197,15 @@
                             <constraint firstItem="AvI-z2-JuO" firstAttribute="top" secondItem="PXN-Up-cpP" secondAttribute="top" id="cCw-Vm-SEJ"/>
                             <constraint firstAttribute="bottom" secondItem="AvI-z2-JuO" secondAttribute="bottom" id="j0F-99-x4O"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Jj3-gv-xPP" secondAttribute="bottom" id="4FX-e3-7ZZ"/>
                 <constraint firstItem="Jj3-gv-xPP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ABO-Oe-CMa"/>
@@ -208,6 +219,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="257" height="161"/>
             <connections>
+                <outlet property="categoryView" destination="PXN-Up-cpP" id="2bt-Ue-EtU"/>
                 <outlet property="classCountLabel" destination="499-DH-tru" id="1aU-Sr-MFL"/>
                 <outlet property="classImageView" destination="AvI-z2-JuO" id="7Ub-uw-44q"/>
                 <outlet property="classNameLabel" destination="Xew-ey-dVm" id="RRX-gX-TUo"/>
@@ -215,10 +227,12 @@
                 <outlet property="dateNumericLabel" destination="syb-bb-xJt" id="euJ-15-oIo"/>
                 <outlet property="eventImageView" destination="fFR-34-lPB" id="S4c-MA-WA2"/>
                 <outlet property="eventNameLabel" destination="n5o-sI-q0f" id="diE-6S-QP6"/>
+                <outlet property="eventView" destination="Jj3-gv-xPP" id="t2a-x4-Tpq"/>
                 <outlet property="joinButton" destination="mTJ-Vb-agq" id="ldj-5K-b9t"/>
+                <outlet property="leadingConstraintOfDateView" destination="zsa-sz-IFt" id="iMl-fx-uPj"/>
                 <outlet property="privacyImageView" destination="nnq-Sa-kzM" id="VRa-tW-V9l"/>
                 <outlet property="timeLabel" destination="v8m-YS-Lbf" id="kIE-2J-JfH"/>
-                <outlet property="widthConstraintOfDateView" destination="Hz7-An-dev" id="EAP-Up-DWs"/>
+                <outlet property="widthConstraintOfDateView" destination="SWM-lw-bdj" id="AY4-HA-Tnz"/>
             </connections>
             <point key="canvasLocation" x="113.768115942029" y="90.066964285714278"/>
         </collectionViewCell>
@@ -229,5 +243,6 @@
         <image name="hover-bottom" width="224" height="64"/>
         <image name="img-event" width="48" height="48"/>
         <image name="privacy-lock" width="28" height="28"/>
+        <image name="test-event-bg" width="224" height="157"/>
     </resources>
 </document>

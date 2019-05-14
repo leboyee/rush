@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    func setupCollection() {
+    func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Cell.event, bundle: nil), forCellWithReuseIdentifier: Cell.event)
@@ -42,6 +42,6 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
+        return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 8)
     }
 }

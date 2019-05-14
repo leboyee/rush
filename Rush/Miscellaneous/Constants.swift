@@ -20,12 +20,14 @@ var isProductionBuild: Bool = true
 var isNetworkAvailable : Bool = true
 
 struct Cell {
-    static let event      = "EventCell"
-    
+    static let event                = "EventCell"
+    static let tutorialPopUp        = "TutorialPopUpCell"
+    static let eventType            = "EventTypeCell"
 }
 
 struct ReusableView {
     static let seeAllFooter   = "SeeAllFooter"
+    static let textHeader     = "TextHeader"
     
 }
 

@@ -13,12 +13,16 @@ class EventCell: UICollectionViewCell {
     
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var privacyImageView: UIImageView!
-    @IBOutlet weak var widthConstraintOfDateView: UIView!
+    @IBOutlet weak var widthConstraintOfDateView: NSLayoutConstraint!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateNumericLabel: UILabel!
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventView: UIView!
+    @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var leadingConstraintOfDateView: NSLayoutConstraint!
+    
     
     @IBOutlet weak var classImageView: UIImageView!
     @IBOutlet weak var classNameLabel: UILabel!
@@ -30,4 +34,34 @@ class EventCell: UICollectionViewCell {
         // Initialization code
     }
 
+}
+
+extension EventCell {
+    func setup(isHideDateView: Bool) {
+        if isHideDateView {
+            widthConstraintOfDateView.constant = 0
+            leadingConstraintOfDateView.constant = 0
+        } else {
+            widthConstraintOfDateView.constant = 48
+            leadingConstraintOfDateView.constant = 16
+        }
+    }
+    
+    func setup(isShowCategotyView: Bool) {
+        if isShowCategotyView {
+            eventView.isHidden = true
+            categoryView.isHidden = false
+        } else {
+            eventView.isHidden = false
+            categoryView.isHidden = true
+        }
+    }
+    
+    func setup(isHidePrivacyView: Bool) {
+        if isHidePrivacyView {
+            privacyImageView.isHidden = true
+        } else {
+            privacyImageView.isHidden = false
+        }
+    }
 }

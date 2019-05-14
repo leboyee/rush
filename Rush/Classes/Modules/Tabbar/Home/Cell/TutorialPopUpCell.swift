@@ -14,7 +14,7 @@ class TutorialPopUpCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     
-    var okButtonClickEvent: (() -> Void)?
+    var okButtonClickEvent: ((_ title: String) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +45,6 @@ extension TutorialPopUpCell {
 
 extension TutorialPopUpCell {
     @IBAction func okButtonAction() {
-        okButtonClickEvent?()
+        okButtonClickEvent?(okButton.titleLabel?.text ?? "")
     }
 }

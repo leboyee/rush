@@ -13,6 +13,7 @@ class EventTypeCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var cellSelected: ((_ type : EventType,_ id: Int,_ index: Int) -> Void)?
+    var type : EventType = .upcoming
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,9 @@ class EventTypeCell: UITableViewCell {
     }
     
     func setup(_ type : EventType, _ photos: [Image]?) {
-        
+        self.type = type
+        setupCollectionView()
     }
+    
     
 }

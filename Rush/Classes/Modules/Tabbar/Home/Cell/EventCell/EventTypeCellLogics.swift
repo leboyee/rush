@@ -11,11 +11,18 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        return 2
+        return 10
     }
     
     func fillCell(_ cell: EventCell,_ indexPath: IndexPath) {
-        
+        if type == .upcoming {
+            
+        } else if type == .clubs {
+            cell.setup(isHideDateView: true)
+            cell.setup(isHidePrivacyView: true)
+        } else if type == .classes {
+            cell.setup(isShowCategotyView: true)
+        }
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {
@@ -23,7 +30,7 @@ extension EventTypeCell {
     }
     
     func cellSize() -> CGSize {
-        return CGSize.zero
+        return CGSize(width: 224, height: 157)
     }
     
 }
