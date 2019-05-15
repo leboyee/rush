@@ -23,6 +23,7 @@ struct Cell {
     static let event                = "EventCell"
     static let tutorialPopUp        = "TutorialPopUpCell"
     static let eventType            = "EventTypeCell"
+    static let eventByDate          = "EventByDateCell"
 }
 
 struct ReusableView {
@@ -70,6 +71,7 @@ public struct UserDefaultKey {
 enum EventType {
     case upcoming
     case clubs
+    case clubsJoined
     case classes
     
 }

@@ -48,14 +48,14 @@ extension CustomTabbarViewController {
         secondNavigationController = UINavigationController(rootViewController: exploreViewController!)
         
         // Third tab
-        let tStory = UIStoryboard(name: "Chats", bundle: nil)
-        let forumViewController = tStory.instantiateInitialViewController()
-        thirdNavigationController = UINavigationController(rootViewController: forumViewController!)
+        let chatStory = UIStoryboard(name: "Chats", bundle: nil)
+        let chatsViewController = chatStory.instantiateInitialViewController()
+        thirdNavigationController = UINavigationController(rootViewController: chatsViewController!)
         
         // Fourth tab
-        let chatStory = UIStoryboard(name: "Forum", bundle: nil)
-        let chatsViewController = chatStory.instantiateInitialViewController()
-        fourthNavigationViewController = UINavigationController(rootViewController: chatsViewController!)
+        let tStory = UIStoryboard(name: "Forum", bundle: nil)
+        let forumViewController = tStory.instantiateInitialViewController()
+        fourthNavigationViewController = UINavigationController(rootViewController: forumViewController!)
         
         // Fifth tab
         let profileStory = UIStoryboard(name: "Profile", bundle: nil)
@@ -73,19 +73,18 @@ extension CustomTabbarViewController {
     
     func setupIcons() {
         
-        firstNavigationController.tabBarItem.image = UIImage(named: "home_tab_inactive")
+        firstNavigationController.tabBarItem.image = getImage("home_tab_inactive")
         firstNavigationController.tabBarItem.selectedImage =
-            UIImage(named: "home_tab_active")
+            getImage("home_tab_active")
         
-        secondNavigationController.tabBarItem.image = UIImage(named: "explore_tab_inactive")
-        secondNavigationController.tabBarItem.selectedImage = UIImage(named: "explore_tab_active")
+        secondNavigationController.tabBarItem.image = getImage("explore_tab_inactive")
+        secondNavigationController.tabBarItem.selectedImage = getImage( "explore_tab_active")
         
-        thirdNavigationController.tabBarItem.image = UIImage(named: "forum_tab_inactive")
-        thirdNavigationController.tabBarItem.selectedImage = UIImage(named: "forum_tab_active")
+        thirdNavigationController.tabBarItem.image = getImage("chat_tab_inactive")
+        thirdNavigationController.tabBarItem.selectedImage = getImage( "chat_tab_active")
         
-        fourthNavigationViewController.tabBarItem.image = UIImage(named: "chat_tab_inactive")
-        fourthNavigationViewController.tabBarItem.selectedImage = UIImage(named: "chat_tab_active")
-        
+        fourthNavigationViewController.tabBarItem.image = getImage("forum_tab_inactive")
+        fourthNavigationViewController.tabBarItem.selectedImage = getImage("forum_tab_active")
         
         let customTabBarItem:UITabBarItem = UITabBarItem(title: nil, image: UIImage(named: "profile_tab_inactive")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(named: "profile_tab_active")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         fifthNavigationController.tabBarItem = customTabBarItem
@@ -110,6 +109,10 @@ extension CustomTabbarViewController {
             tabBarItem.title = ""
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
+    }
+    
+    func getImage(_ img: String) -> UIImage? {
+        return UIImage(named: img)?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
     }
 }
 

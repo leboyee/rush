@@ -15,14 +15,7 @@ extension EventTypeCell {
     }
     
     func fillCell(_ cell: EventCell,_ indexPath: IndexPath) {
-        if type == .upcoming {
-            
-        } else if type == .clubs {
-            cell.setup(isHideDateView: true)
-            cell.setup(isHidePrivacyView: true)
-        } else if type == .classes {
-            cell.setup(isShowCategotyView: true)
-        }
+        cell.setup(type: type)
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {

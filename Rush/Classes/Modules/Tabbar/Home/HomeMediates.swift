@@ -17,6 +17,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.tutorialPopUp, bundle: nil), forCellReuseIdentifier: Cell.tutorialPopUp)
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
+        tableView.register(UINib(nibName: Cell.eventByDate, bundle: nil), forCellReuseIdentifier: Cell.eventByDate)
+        
         tableView.reloadData()
     }
     
@@ -26,7 +28,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cellCount(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,9 +38,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             fillTutorialCell(cell)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
-            fillEventTypeCell(cell, indexPath)
-            return cell
+            if isShowJoinEvents && indexPath.section == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
+                fillEventByDateCell(cell, indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+                fillEventTypeCell(cell, indexPath)
+                return cell
+            }
         }
     }
     

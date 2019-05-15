@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var isShowTutorial = true
+    var isShowJoinEvents = true
     
     override func viewDidLoad() {
         super.viewDidLoad()

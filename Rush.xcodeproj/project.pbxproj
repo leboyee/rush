@@ -21,6 +21,8 @@
 		0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992539022845CF100914E7B /* CustomTabbarViewController.swift */; };
 		0992539C22846A1D00914E7B /* HomeMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992539B22846A1D00914E7B /* HomeMediates.swift */; };
 		0992539E22846A3400914E7B /* HomeLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992539D22846A3400914E7B /* HomeLogics.swift */; };
+		79240152228C2DA600E3E154 /* EventByDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79240150228C2DA600E3E154 /* EventByDateCell.swift */; };
+		79240153228C2DA600E3E154 /* EventByDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79240151228C2DA600E3E154 /* EventByDateCell.xib */; };
 		794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A3228960C7009AB12C /* SF-Pro-Display-Bold.otf */; };
 		794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A4228960C7009AB12C /* SF-Pro-Display-Light.otf */; };
 		794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A5228960C7009AB12C /* SF-Pro-Display-Medium.otf */; };
@@ -74,6 +76,8 @@
 		0992539D22846A3400914E7B /* HomeLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLogics.swift; sourceTree = "<group>"; };
 		0EE7287A622997DCD3DD21DD /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
 		2F279CD9FF2B71F89B2A1FD9 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
+		79240150228C2DA600E3E154 /* EventByDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventByDateCell.swift; sourceTree = "<group>"; };
+		79240151228C2DA600E3E154 /* EventByDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventByDateCell.xib; sourceTree = "<group>"; };
 		794183A3228960C7009AB12C /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		794183A4228960C7009AB12C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		794183A5228960C7009AB12C /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				794183B92289783D009AB12C /* TutorialPopUpCell.xib */,
 				7983D22F2289879C00DE054E /* EventCell.swift */,
 				7983D2302289879C00DE054E /* EventCell.xib */,
+				79240150228C2DA600E3E154 /* EventByDateCell.swift */,
+				79240151228C2DA600E3E154 /* EventByDateCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				7983D225228980AF00DE054E /* EventTypeCell.xib in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				794183B1228960C7009AB12C /* SF-Pro-Text-Bold.otf in Resources */,
+				79240153228C2DA600E3E154 /* EventByDateCell.xib in Resources */,
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
@@ -538,6 +545,7 @@
 				7983D22A228980C100DE054E /* EventTypeCellLogics.swift in Sources */,
 				7983D21D22897D5100DE054E /* TextHeader.swift in Sources */,
 				C05FC16B22805F9D00721F3F /* ViewController.swift in Sources */,
+				79240152228C2DA600E3E154 /* EventByDateCell.swift in Sources */,
 				7983D2312289879C00DE054E /* EventCell.swift in Sources */,
 				7983D22E228982DC00DE054E /* Keys.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,

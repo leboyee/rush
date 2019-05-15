@@ -21,8 +21,18 @@ extension HomeViewController {
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return isShowTutorial ? UITableView.automaticDimension : CGFloat.leastNormalMagnitude
+        } else if indexPath.section == 1 && isShowJoinEvents {
+            return UITableView.automaticDimension
         } else {
             return 157
+        }
+    }
+    
+    func cellCount(_ section: Int) -> Int {
+        if isShowJoinEvents && section == 1 {
+            return 4
+        } else {
+            return 1
         }
     }
     
@@ -50,10 +60,14 @@ extension HomeViewController {
         if indexPath.section == 1 {
             cell.setup(.upcoming, nil)
         } else if indexPath.section == 2 {
-            cell.setup(.clubs, nil)
+            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil)
         } else {
             cell.setup(.classes, nil)
         }
+    }
+    
+    func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
+        
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {

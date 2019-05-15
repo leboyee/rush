@@ -37,6 +37,22 @@ class EventCell: UICollectionViewCell {
 }
 
 extension EventCell {
+    
+    func setup(type: EventType) {
+        
+        if type == .upcoming {
+            
+        } else if type == .clubs {
+            setup(isHideDateView: true)
+            setup(isHidePrivacyView: true)
+            setup(isShowCategotyView: false)
+        } else if type == .clubsJoined {
+            setup(isShowCategotyView: false)
+        } else if type == .classes {
+            setup(isShowCategotyView: true)
+        }
+    }
+    
     func setup(isHideDateView: Bool) {
         if isHideDateView {
             widthConstraintOfDateView.constant = 0
