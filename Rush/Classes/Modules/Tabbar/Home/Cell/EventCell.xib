@@ -57,6 +57,77 @@
                                 </constraints>
                                 <state key="normal" image="button-join"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k5-OT-7GQ">
+                                <rect key="frame" x="163.5" y="26" width="77.5" height="22"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="83h-El-BXM">
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="SMj-kR-fR9"/>
+                                            <constraint firstAttribute="width" constant="22" id="zqW-8G-Zyz"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="noL-pe-h6i">
+                                        <rect key="frame" x="17" y="0.0" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="YZF-u7-OK3"/>
+                                            <constraint firstAttribute="width" constant="22" id="qgE-QV-E3Y"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-cd-dfT">
+                                        <rect key="frame" x="34" y="0.0" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="3qH-PU-5rP"/>
+                                            <constraint firstAttribute="width" constant="22" id="YWP-KW-ROg"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t66-9a-Tub">
+                                        <rect key="frame" x="61" y="0.0" width="16.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="83h-El-BXM" secondAttribute="bottom" id="7u5-Tn-Fwi"/>
+                                    <constraint firstItem="Lpc-cd-dfT" firstAttribute="centerY" secondItem="noL-pe-h6i" secondAttribute="centerY" id="9Ua-J7-1fd"/>
+                                    <constraint firstItem="t66-9a-Tub" firstAttribute="leading" secondItem="Lpc-cd-dfT" secondAttribute="trailing" constant="5" id="EQ5-t8-UjZ"/>
+                                    <constraint firstItem="noL-pe-h6i" firstAttribute="leading" secondItem="83h-El-BXM" secondAttribute="trailing" constant="-5" id="IzQ-Eh-phw"/>
+                                    <constraint firstItem="noL-pe-h6i" firstAttribute="centerY" secondItem="83h-El-BXM" secondAttribute="centerY" id="NMX-n4-OfT"/>
+                                    <constraint firstAttribute="bottom" secondItem="t66-9a-Tub" secondAttribute="bottom" id="PmC-yZ-Ji9"/>
+                                    <constraint firstAttribute="height" constant="22" id="dos-pO-2Ex"/>
+                                    <constraint firstItem="83h-El-BXM" firstAttribute="top" secondItem="8k5-OT-7GQ" secondAttribute="top" id="ei1-J5-5dD"/>
+                                    <constraint firstItem="t66-9a-Tub" firstAttribute="top" secondItem="8k5-OT-7GQ" secondAttribute="top" id="nfT-uc-1EC"/>
+                                    <constraint firstItem="83h-El-BXM" firstAttribute="leading" secondItem="8k5-OT-7GQ" secondAttribute="leading" id="qWH-OR-qGX"/>
+                                    <constraint firstAttribute="trailing" secondItem="t66-9a-Tub" secondAttribute="trailing" id="qYK-RQ-YfJ"/>
+                                    <constraint firstItem="Lpc-cd-dfT" firstAttribute="leading" secondItem="noL-pe-h6i" secondAttribute="trailing" constant="-5" id="tde-qa-ajz"/>
+                                </constraints>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash-seperator" translatesAutoresizingMaskIntoConstraints="NO" id="6lL-II-m2I">
                                 <rect key="frame" x="0.0" y="74" width="257" height="1"/>
                                 <constraints>
@@ -137,6 +208,7 @@
                             <constraint firstAttribute="trailing" secondItem="mTJ-Vb-agq" secondAttribute="trailing" constant="16" id="BGO-un-mxV"/>
                             <constraint firstItem="6lL-II-m2I" firstAttribute="top" secondItem="nnq-Sa-kzM" secondAttribute="bottom" constant="12" id="BOW-TQ-OJq"/>
                             <constraint firstItem="fFR-34-lPB" firstAttribute="leading" secondItem="Jj3-gv-xPP" secondAttribute="leading" constant="16" id="D8G-CY-mfw"/>
+                            <constraint firstAttribute="trailing" secondItem="8k5-OT-7GQ" secondAttribute="trailing" constant="16" id="ENt-oS-sd7"/>
                             <constraint firstItem="nnq-Sa-kzM" firstAttribute="bottom" secondItem="fFR-34-lPB" secondAttribute="bottom" constant="2" id="GAE-Hx-1fV"/>
                             <constraint firstItem="mTJ-Vb-agq" firstAttribute="top" secondItem="Jj3-gv-xPP" secondAttribute="top" constant="20" id="KAd-tB-Mws"/>
                             <constraint firstItem="nnq-Sa-kzM" firstAttribute="trailing" secondItem="fFR-34-lPB" secondAttribute="trailing" constant="10" id="Lu8-T5-8Ac"/>
@@ -145,6 +217,7 @@
                             <constraint firstAttribute="trailing" secondItem="GKq-3t-Cv7" secondAttribute="trailing" constant="16" id="UqZ-jc-z2u"/>
                             <constraint firstAttribute="trailing" secondItem="6lL-II-m2I" secondAttribute="trailing" id="ZxY-dn-qxk"/>
                             <constraint firstItem="fFR-34-lPB" firstAttribute="top" secondItem="Jj3-gv-xPP" secondAttribute="top" constant="12" id="a5p-W7-JCA"/>
+                            <constraint firstItem="8k5-OT-7GQ" firstAttribute="top" secondItem="Jj3-gv-xPP" secondAttribute="top" constant="26" id="gRV-bR-X3I"/>
                             <constraint firstAttribute="bottom" secondItem="GKq-3t-Cv7" secondAttribute="bottom" constant="22" id="pVh-ib-xSn"/>
                             <constraint firstItem="GKq-3t-Cv7" firstAttribute="leading" secondItem="Jj3-gv-xPP" secondAttribute="leading" constant="16" id="zsa-sz-IFt"/>
                         </constraints>
@@ -228,10 +301,15 @@
                 <outlet property="eventImageView" destination="fFR-34-lPB" id="S4c-MA-WA2"/>
                 <outlet property="eventNameLabel" destination="n5o-sI-q0f" id="diE-6S-QP6"/>
                 <outlet property="eventView" destination="Jj3-gv-xPP" id="t2a-x4-Tpq"/>
+                <outlet property="firstUserImageView" destination="Lpc-cd-dfT" id="eZY-ym-d4I"/>
                 <outlet property="joinButton" destination="mTJ-Vb-agq" id="ldj-5K-b9t"/>
                 <outlet property="leadingConstraintOfDateView" destination="zsa-sz-IFt" id="iMl-fx-uPj"/>
                 <outlet property="privacyImageView" destination="nnq-Sa-kzM" id="VRa-tW-V9l"/>
+                <outlet property="secondUserImageView" destination="noL-pe-h6i" id="Zpc-FA-99F"/>
+                <outlet property="thirdUserImageView" destination="83h-El-BXM" id="acW-gZ-Z8l"/>
                 <outlet property="timeLabel" destination="v8m-YS-Lbf" id="kIE-2J-JfH"/>
+                <outlet property="userCountLabel" destination="t66-9a-Tub" id="kz1-je-J8a"/>
+                <outlet property="userView" destination="8k5-OT-7GQ" id="7fE-bY-eha"/>
                 <outlet property="widthConstraintOfDateView" destination="SWM-lw-bdj" id="AY4-HA-Tnz"/>
             </connections>
             <point key="canvasLocation" x="113.768115942029" y="90.066964285714278"/>
@@ -243,6 +321,7 @@
         <image name="hover-bottom" width="224" height="64"/>
         <image name="img-event" width="48" height="48"/>
         <image name="privacy-lock" width="28" height="28"/>
+        <image name="profile_tab_inactive" width="23" height="23"/>
         <image name="test-event-bg" width="224" height="157"/>
     </resources>
 </document>

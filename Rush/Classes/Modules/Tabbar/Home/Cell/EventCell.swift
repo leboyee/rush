@@ -23,17 +23,30 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var leadingConstraintOfDateView: NSLayoutConstraint!
     
+    @IBOutlet weak var userView: UIView!
     
     @IBOutlet weak var classImageView: UIImageView!
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var classCountLabel: UILabel!
+    
+    @IBOutlet weak var thirdUserImageView: UIImageView!
+    @IBOutlet weak var secondUserImageView: UIImageView!
+    @IBOutlet weak var firstUserImageView: UIImageView!
+    @IBOutlet weak var userCountLabel: UILabel!
+    
 
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupUI()
     }
 
+    func setupUI() {
+        firstUserImageView.layer.borderColor = UIColor.white.cgColor
+        secondUserImageView.layer.borderColor = UIColor.white.cgColor
+        thirdUserImageView.layer.borderColor = UIColor.white.cgColor
+    }
 }
 
 extension EventCell {
@@ -42,12 +55,14 @@ extension EventCell {
         
         if type == .upcoming {
             
-        } else if type == .clubs {
+        } else if type == .clubs || type == .clubsJoined {
             setup(isHideDateView: true)
             setup(isHidePrivacyView: true)
             setup(isShowCategotyView: false)
-        } else if type == .clubsJoined {
-            setup(isShowCategotyView: false)
+            if type == .clubsJoined {
+                joinButton.isHidden = true
+                userView.isHidden = false
+            }
         } else if type == .classes {
             setup(isShowCategotyView: true)
         }
@@ -78,6 +93,28 @@ extension EventCell {
             privacyImageView.isHidden = true
         } else {
             privacyImageView.isHidden = false
+        }
+    }
+    
+    func setup(user: [String]) {
+        
+        userCountLabel.isHidden = true
+        firstUserImageView.isHidden = false
+        secondUserImageView.isHidden = false
+        thirdUserImageView.isHidden = false
+        
+        if user.count == 0 {
+            userView.isHidden = true
+        } else if user.count == 1 {
+            secondUserImageView.isHidden = true
+            thirdUserImageView.isHidden = true
+        } else if user.count == 2 {
+            thirdUserImageView.isHidden = true
+        }
+        
+        if user.count > 3 {
+            userCountLabel.isHidden = false
+            userCountLabel.text = "\(user.count)+"
         }
     }
 }
