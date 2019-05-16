@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8HU-Ky-faU" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="832"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-Rz-gyU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -25,7 +33,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8HU-Ky-faU" secondAttribute="bottom" constant="-24" id="6Wn-eZ-1k6"/>
+                            <constraint firstItem="8HU-Ky-faU" firstAttribute="leading" secondItem="R1i-kN-scE" secondAttribute="leading" id="71C-3i-twb"/>
                             <constraint firstItem="kDz-Rz-gyU" firstAttribute="trailing" secondItem="R1i-kN-scE" secondAttribute="trailing" id="QkU-8c-Huz"/>
+                            <constraint firstItem="8HU-Ky-faU" firstAttribute="trailing" secondItem="R1i-kN-scE" secondAttribute="trailing" id="TTN-lJ-fsT"/>
+                            <constraint firstItem="8HU-Ky-faU" firstAttribute="top" secondItem="R1i-kN-scE" secondAttribute="top" id="Vih-nC-kBE"/>
                             <constraint firstItem="kDz-Rz-gyU" firstAttribute="top" secondItem="R1i-kN-scE" secondAttribute="top" id="ZrU-WW-cxs"/>
                             <constraint firstAttribute="bottom" secondItem="kDz-Rz-gyU" secondAttribute="bottom" id="suM-bn-lJW"/>
                             <constraint firstItem="kDz-Rz-gyU" firstAttribute="leading" secondItem="R1i-kN-scE" secondAttribute="leading" id="svq-Wn-vX7"/>

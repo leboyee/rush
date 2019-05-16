@@ -10,33 +10,14 @@ import UIKit
 
 class CustomViewController: UIViewController {
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupUI()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCustomUI()
     }
-    
 }
 
 extension CustomViewController {
-    func setupUI() {
-        
-        view.backgroundColor = UIColor.bgBlack
-        
-        let bgView = UIView()
-        
-        bgView.translatesAutoresizingMaskIntoConstraints = false
-        bgView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        bgView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        bgView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        bgView.topAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        bgView.backgroundColor = UIColor.white
-        bgView.layer.cornerRadius = 24.0
-        bgView.clipsToBounds = true
-        view.addSubview(bgView)
+    func setupCustomUI() {
+        view.backgroundColor = isDarkModeOn ? UIColor.black : UIColor.black
     }
 }

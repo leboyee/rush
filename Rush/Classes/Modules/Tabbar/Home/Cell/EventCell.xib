@@ -27,7 +27,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jj3-gv-xPP">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jj3-gv-xPP" customClass="CustomBlackBackgroundView" customModule="Rush" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="fFR-34-lPB">
@@ -112,7 +112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="83h-El-BXM" secondAttribute="bottom" id="7u5-Tn-Fwi"/>
                                     <constraint firstItem="Lpc-cd-dfT" firstAttribute="centerY" secondItem="noL-pe-h6i" secondAttribute="centerY" id="9Ua-J7-1fd"/>
@@ -149,7 +149,7 @@
                                                 <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syb-bb-xJt">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syb-bb-xJt" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24" width="48" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="5AK-5E-kZP"/>
@@ -159,7 +159,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="syb-bb-xJt" firstAttribute="leading" secondItem="Hz7-An-dev" secondAttribute="leading" id="IwD-gb-9wi"/>
                                             <constraint firstAttribute="width" constant="48" id="SWM-lw-bdj"/>
@@ -179,7 +179,7 @@
                                         <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VR Meetup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5o-sI-q0f">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VR Meetup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5o-sI-q0f" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="64" y="0.0" width="161" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="VDS-he-f1X"/>
@@ -189,7 +189,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="v8m-YS-Lbf" firstAttribute="leading" secondItem="Hz7-An-dev" secondAttribute="trailing" constant="16" id="BTs-xy-tRd"/>
                                     <constraint firstAttribute="trailing" secondItem="n5o-sI-q0f" secondAttribute="trailing" id="Dbc-yK-Ofq"/>

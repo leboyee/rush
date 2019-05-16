@@ -14,7 +14,8 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 //MARK: - Production Build
 var isProductionBuild: Bool = true
 
-//MARK: - Hours
+//MARK: - App color mode
+var isDarkModeOn: Bool = false
 
 //MARK: Reachability
 var isNetworkAvailable : Bool = true

@@ -17,6 +17,7 @@ class TextHeader: UITableViewHeaderFooterView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        detailButton.setImage(UIImage(named: isDarkModeOn ? "white-arrow" : "red-arrow"), for: .normal)
     }
     
     override func prepareForReuse() {

@@ -49,6 +49,10 @@
 		7995715722895C2F00EF7C3D /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715522895C2F00EF7C3D /* ColorExtension.swift */; };
 		7995715822895C2F00EF7C3D /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715622895C2F00EF7C3D /* FontExtension.swift */; };
 		7995715A22895DE500EF7C3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715922895DE500EF7C3D /* Constants.swift */; };
+		79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCA228D953A00DDA285 /* CustomBackgoundImageView.swift */; };
+		79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */; };
+		79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */; };
+		79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */; };
 		9930BB0DAE1051FDD286D46D /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3627F78ECD3E2425AB6C34C /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16B22805F9D00721F3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC16122805F9C00721F3F /* ViewController.swift */; };
@@ -104,6 +108,10 @@
 		7995715522895C2F00EF7C3D /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		7995715622895C2F00EF7C3D /* FontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7995715922895DE500EF7C3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79CF8FCA228D953A00DDA285 /* CustomBackgoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgoundImageView.swift; sourceTree = "<group>"; };
+		79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBrownLabel.swift; sourceTree = "<group>"; };
+		79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackLabel.swift; sourceTree = "<group>"; };
+		79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackBackgroundView.swift; sourceTree = "<group>"; };
 		BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +198,10 @@
 			children = (
 				0992539022845CF100914E7B /* CustomTabbarViewController.swift */,
 				7995715222895A8600EF7C3D /* CustomViewController.swift */,
+				79CF8FCA228D953A00DDA285 /* CustomBackgoundImageView.swift */,
+				79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */,
+				79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */,
+				79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -210,6 +222,13 @@
 				BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		79240158228C59D900E3E154 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		794183A2228960C7009AB12C /* Fonts */ = {
@@ -299,6 +318,7 @@
 				C05FC15E22805F9C00721F3F /* Classes */,
 				C05FC16622805F9D00721F3F /* Interfaces */,
 				C05FC16322805F9D00721F3F /* Resources */,
+				79240158228C59D900E3E154 /* Managers */,
 				C05FC15822805F3E00721F3F /* Info.plist */,
 			);
 			path = Rush;
@@ -555,12 +575,16 @@
 				7995715722895C2F00EF7C3D /* ColorExtension.swift in Sources */,
 				7983D22C228982B500DE054E /* Image.swift in Sources */,
 				7983D224228980AF00DE054E /* EventTypeCell.swift in Sources */,
+				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
 				0992539E22846A3400914E7B /* HomeLogics.swift in Sources */,
 				7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */,
+				79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				0918E779228436B60098AF35 /* HomeViewController.swift in Sources */,
 				0918E773228436990098AF35 /* ChatsViewController.swift in Sources */,
+				79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */,
+				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
 				0992539C22846A1D00914E7B /* HomeMediates.swift in Sources */,
 				0918E775228436A40098AF35 /* ExploreViewController.swift in Sources */,
 				794183BA2289783D009AB12C /* TutorialPopUpCell.swift in Sources */,
