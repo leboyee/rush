@@ -76,12 +76,15 @@ extension SelectEventTypeViewController {
     }
     
     @IBAction func publicButtonAction() {
+        Utils.notReadyAlert()
     }
     
     @IBAction func closedButtonAction() {
+        Utils.notReadyAlert()
     }
     
     @IBAction func inviteButtonAction() {
+        Utils.notReadyAlert()
     }
     
 }

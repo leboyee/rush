@@ -64,8 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.shadowImage = UIImage()
         
         //Back Button
-//        navigationBarAppearance.backIndicatorImage = #imageLiteral(resourceName: "back-White.pdf")
-//        navigationBarAppearance.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-White.pdf")
+        navigationBarAppearance.backIndicatorImage = #imageLiteral(resourceName: "back-arrow")
+        navigationBarAppearance.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-arrow")
         
     }
     
