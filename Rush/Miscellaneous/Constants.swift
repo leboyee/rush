@@ -39,8 +39,8 @@ struct ViewControllerId {
 
 /* Create the struct for Section wise */
 struct Segues {
-    static let seeAll                             = "SeeAllSegue"
-    
+    static let selectEventTypeSegue             = "SelectEventTypeSegue"
+
 }
 
 struct StoryBoard {

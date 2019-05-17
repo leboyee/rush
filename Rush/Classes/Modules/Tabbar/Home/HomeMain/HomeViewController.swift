@@ -28,14 +28,31 @@ class HomeViewController: CustomViewController {
     
     func setupUI() {
         setupTableView()
+        
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
+        navigationItem.rightBarButtonItem = rightBarButton
+        
     }
 }
 
-// MARK: - Navigation
-
+// MARK: - Actions
 extension HomeViewController {
-    /*
+    @objc func createButtonAction() {
+        performSegue(withIdentifier: Segues.selectEventTypeSegue, sender: nil)
+    }
+}
+
+
+// MARK: - Navigation
+extension HomeViewController {
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.selectEventTypeSegue {
+            if let vc = segue.destination as? SelectEventTypeViewController {
+                vc.type = .eventCategory
+            }
+        }
      }
-     */
+    
 }

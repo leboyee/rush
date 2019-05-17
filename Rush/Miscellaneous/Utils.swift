@@ -64,7 +64,7 @@ extension Utils {
             
             for button in buttons {
                 let action = UIAlertAction(title: button, style: .default) { (action) in
-                    if let index = buttons.index(of: action.title!) {
+                    if let index = buttons.firstIndex(of: action.title!) {
                         DispatchQueue.main.async {
                             handler(index)
                         }
