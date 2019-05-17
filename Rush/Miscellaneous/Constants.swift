@@ -69,10 +69,16 @@ public struct UserDefaultKey {
     static let searchFilter = "searchFilterData"
 }
 
-enum EventType {
+enum EventCategoryType {
     case upcoming
     case clubs
     case clubsJoined
     case classes
     
+}
+
+enum EventType {
+    case publik
+    case closed
+    case inviteOnly
 }

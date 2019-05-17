@@ -51,7 +51,7 @@ class EventCell: UICollectionViewCell {
 
 extension EventCell {
     
-    func setup(type: EventType) {
+    func setup(type: EventCategoryType) {
         
         if type == .upcoming {
             
