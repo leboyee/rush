@@ -59,6 +59,7 @@
                     <connections>
                         <outlet property="tableView" destination="kDz-Rz-gyU" id="WKU-6W-Png"/>
                         <segue destination="qj4-LD-huY" kind="presentation" identifier="SelectEventTypeSegue" animates="NO" modalPresentationStyle="overFullScreen" id="C9I-aA-3Rl"/>
+                        <segue destination="bdt-BK-bqh" kind="presentation" identifier="createClubSegue" modalPresentationStyle="overFullScreen" id="bhx-N6-4zZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -463,8 +464,100 @@
             </objects>
             <point key="canvasLocation" x="-94" y="871"/>
         </scene>
+        <!--Create Club View Controller-->
+        <scene sceneID="b4r-Ci-TL8">
+            <objects>
+                <viewController id="bdt-BK-bqh" customClass="CreateClubViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S43-Rz-Fuc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQv-e3-UvP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="429"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtT-Bo-Uqx">
+                                        <rect key="frame" x="320" y="53" width="78" height="36"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <state key="normal" title="Save" backgroundImage="button-black-bg">
+                                            <color key="titleColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-pv-Guo">
+                                        <rect key="frame" x="107.5" y="160" width="199" height="88"/>
+                                        <state key="normal" image="add-cover-photo"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-jF-cmE">
+                                        <rect key="frame" x="16" y="53" width="78" height="36"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <state key="normal" title="Cancel" backgroundImage="button-black-bg">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonAction" destination="bdt-BK-bqh" eventType="touchUpInside" id="COf-8D-JtE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="H8D-pv-Guo" firstAttribute="top" secondItem="iQv-e3-UvP" secondAttribute="top" constant="160" id="2Je-0y-zeh"/>
+                                    <constraint firstItem="wtT-Bo-Uqx" firstAttribute="centerY" secondItem="Spt-jF-cmE" secondAttribute="centerY" id="8vi-uJ-jfP"/>
+                                    <constraint firstItem="Spt-jF-cmE" firstAttribute="top" secondItem="iQv-e3-UvP" secondAttribute="top" constant="53" id="Gr7-lA-ucW"/>
+                                    <constraint firstItem="H8D-pv-Guo" firstAttribute="centerX" secondItem="iQv-e3-UvP" secondAttribute="centerX" id="JzC-uF-RgF"/>
+                                    <constraint firstAttribute="trailing" secondItem="wtT-Bo-Uqx" secondAttribute="trailing" constant="16" id="RNW-ff-jZ1"/>
+                                    <constraint firstItem="Spt-jF-cmE" firstAttribute="leading" secondItem="iQv-e3-UvP" secondAttribute="leading" constant="16" id="nzW-lW-NtI"/>
+                                    <constraint firstAttribute="height" constant="429" id="ubF-uk-eqS"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-f4-JBH">
+                                <rect key="frame" x="0.0" y="101" width="414" height="795"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-Tg-SvU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="795"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="XKO-Tg-SvU" firstAttribute="top" secondItem="o1j-f4-JBH" secondAttribute="top" id="MAN-zD-anS"/>
+                                    <constraint firstItem="XKO-Tg-SvU" firstAttribute="width" secondItem="o1j-f4-JBH" secondAttribute="width" id="ah2-xB-GrA"/>
+                                    <constraint firstAttribute="bottom" secondItem="XKO-Tg-SvU" secondAttribute="bottom" id="ap7-iN-bS8"/>
+                                    <constraint firstItem="XKO-Tg-SvU" firstAttribute="leading" secondItem="o1j-f4-JBH" secondAttribute="leading" id="bje-V0-PEx"/>
+                                    <constraint firstItem="XKO-Tg-SvU" firstAttribute="height" secondItem="o1j-f4-JBH" secondAttribute="height" id="fb2-Jj-VCW"/>
+                                    <constraint firstAttribute="trailing" secondItem="XKO-Tg-SvU" secondAttribute="trailing" id="ing-l3-9i5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o1j-f4-JBH" firstAttribute="leading" secondItem="vrW-hN-dy5" secondAttribute="leading" id="JZe-U3-8bl"/>
+                            <constraint firstItem="vrW-hN-dy5" firstAttribute="trailing" secondItem="o1j-f4-JBH" secondAttribute="trailing" id="M7m-kM-zvO"/>
+                            <constraint firstAttribute="bottom" secondItem="o1j-f4-JBH" secondAttribute="bottom" id="WEk-R6-dxF"/>
+                            <constraint firstItem="iQv-e3-UvP" firstAttribute="top" secondItem="S43-Rz-Fuc" secondAttribute="top" id="XBB-tg-8pt"/>
+                            <constraint firstItem="o1j-f4-JBH" firstAttribute="top" secondItem="S43-Rz-Fuc" secondAttribute="top" constant="101" id="idH-w7-t6e"/>
+                            <constraint firstItem="iQv-e3-UvP" firstAttribute="leading" secondItem="vrW-hN-dy5" secondAttribute="leading" id="mm6-ug-pIg"/>
+                            <constraint firstItem="iQv-e3-UvP" firstAttribute="trailing" secondItem="vrW-hN-dy5" secondAttribute="trailing" id="wOO-uZ-ngA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vrW-hN-dy5"/>
+                    </view>
+                    <connections>
+                        <outlet property="heightConstraintOfImageView" destination="ubF-uk-eqS" id="Dp3-xT-ay1"/>
+                        <outlet property="scrollView" destination="o1j-f4-JBH" id="TVU-53-fuG"/>
+                        <outlet property="tableView" destination="XKO-Tg-SvU" id="Xjn-Xo-cNA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbw-4h-B29" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="650.72463768115949" y="870.53571428571422"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="add-cover-photo" width="199" height="88"/>
+        <image name="button-black-bg" width="78" height="36"/>
         <image name="club-gray" width="24" height="24"/>
         <image name="event-gray" width="24" height="24"/>
         <image name="invite-blue" width="24" height="24"/>

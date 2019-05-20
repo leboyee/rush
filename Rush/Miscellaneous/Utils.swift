@@ -168,6 +168,12 @@ extension Utils {
         return false
     }
     
+    class var navigationHeigh: CGFloat {
+        let statusBar = UIApplication.shared.statusBarFrame.size.height
+        let navBar = CGFloat(44)
+        return (navBar + statusBar)
+    }
+    
     class func roundCorners(view: UIView,corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()

@@ -38,7 +38,7 @@ class HomeViewController: CustomViewController {
 // MARK: - Actions
 extension HomeViewController {
     @objc func createButtonAction() {
-        performSegue(withIdentifier: Segues.selectEventTypeSegue, sender: nil)
+        performSegue(withIdentifier: Segues.createClub/*Segues.selectEventType*/, sender: nil)
     }
 }
 
@@ -48,7 +48,7 @@ extension HomeViewController {
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == Segues.selectEventTypeSegue {
+        if segue.identifier == Segues.selectEventType {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .eventCategory
             }

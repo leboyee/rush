@@ -25,6 +25,7 @@ struct Cell {
     static let tutorialPopUp        = "TutorialPopUpCell"
     static let eventType            = "EventTypeCell"
     static let eventByDate          = "EventByDateCell"
+    static let textIcon             = "TextIconCell"
 }
 
 struct ReusableView {
@@ -39,8 +40,8 @@ struct ViewControllerId {
 
 /* Create the struct for Section wise */
 struct Segues {
-    static let selectEventTypeSegue             = "SelectEventTypeSegue"
-
+    static let selectEventType             = "SelectEventTypeSegue"
+    static let createClub                  = "createClubSegue"
 }
 
 struct StoryBoard {
