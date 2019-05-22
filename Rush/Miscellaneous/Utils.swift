@@ -64,7 +64,7 @@ extension Utils {
             
             for button in buttons {
                 let action = UIAlertAction(title: button, style: .default) { (action) in
-                    if let index = buttons.index(of: action.title!) {
+                    if let index = buttons.firstIndex(of: action.title!) {
                         DispatchQueue.main.async {
                             handler(index)
                         }
@@ -166,6 +166,12 @@ extension Utils {
             return UIApplication.shared.delegate?.window??.safeAreaInsets != .zero
         }
         return false
+    }
+    
+    class var navigationHeigh: CGFloat {
+        let statusBar = UIApplication.shared.statusBarFrame.size.height
+        let navBar = CGFloat(44)
+        return (navBar + statusBar)
     }
     
     class func roundCorners(view: UIView,corners: UIRectCorner, radius: CGFloat) {

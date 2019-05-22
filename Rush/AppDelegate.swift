@@ -17,9 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        setupAppearance()
+        
         //Add Third Party SDK
         addThirdPartySDK()
-        
         
         return true
     }
@@ -46,6 +47,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func setupAppearance() {
+        setupTopBar()
+    }
+    
+    func setupTopBar() {
+        
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        let pargraphStyle = NSMutableParagraphStyle()
+        pargraphStyle.alignment = .center
+//        navigationBarAppearance.tintColor = UIColor.clear
+        navigationBarAppearance.barTintColor = UIColor.black
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
+        navigationBarAppearance.isTranslucent = false
+        navigationBarAppearance.shadowImage = UIImage()
+        
+        //Back Button
+        navigationBarAppearance.backIndicatorImage = #imageLiteral(resourceName: "back-arrow")
+        navigationBarAppearance.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-arrow")
+        
+    }
+    
 }
 

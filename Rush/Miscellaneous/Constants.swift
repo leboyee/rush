@@ -16,14 +16,28 @@ var isProductionBuild: Bool = true
 
 
 
+//MARK: - App color mode
+var isDarkModeOn: Bool = false
+
+
 //MARK: Reachability
 var isNetworkAvailable : Bool = true
 
 struct Cell {
+
     static let onBoardingCollectionViewCell         = "OnBoardingCollectionViewCell"
+    static let event                = "EventCell"
+    static let tutorialPopUp        = "TutorialPopUpCell"
+    static let eventType            = "EventTypeCell"
+    static let eventByDate          = "EventByDateCell"
+    static let textIcon             = "TextIconCell"
 }
 
 struct ReusableView {
+
+    static let seeAllFooter   = "SeeAllFooter"
+    static let textHeader     = "TextHeader"
+
 }
 
 struct ViewControllerId {
@@ -32,6 +46,10 @@ struct ViewControllerId {
 
 /* Create the struct for Section wise */
 struct Segues {
+
+    static let selectEventType             = "SelectEventTypeSegue"
+    static let createClub                  = "createClubSegue"
+
 }
 
 struct StoryBoard {
@@ -49,20 +67,37 @@ public struct Text {
     static let thirdOnboardDescription          = "Your Social & Academic Life"
     static let forthOnboardTitle                = "Filter Your Social Media"
     static let forthOnboardDescription          = "To See Content You Want To See"
+    static let searchPlaceholder  = "Name, zip, city, state"
 
     
 }
 
 public struct Message {
+    static let tryAgainErrorMessage            = "Try again, please."
 
 }
 
 public struct Icons {
+    static let searchWhite    = "search-white"
+
 }
 
 public struct UserDefaultKey {
+    static let searchFilter = "searchFilterData"
+
+}
+
+enum EventCategoryType {
+    case upcoming
+    case clubs
+    case clubsJoined
+    case classes
     
 }
 
-
+enum EventType {
+    case publik
+    case closed
+    case inviteOnly
+}
 
