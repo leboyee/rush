@@ -14,13 +14,18 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 //MARK: - Production Build
 var isProductionBuild: Bool = true
 
+
+
 //MARK: - App color mode
 var isDarkModeOn: Bool = false
+
 
 //MARK: Reachability
 var isNetworkAvailable : Bool = true
 
 struct Cell {
+
+    static let onBoardingCollectionViewCell         = "OnBoardingCollectionViewCell"
     static let event                = "EventCell"
     static let tutorialPopUp        = "TutorialPopUpCell"
     static let eventType            = "EventTypeCell"
@@ -29,9 +34,10 @@ struct Cell {
 }
 
 struct ReusableView {
+
     static let seeAllFooter   = "SeeAllFooter"
     static let textHeader     = "TextHeader"
-    
+
 }
 
 struct ViewControllerId {
@@ -40,8 +46,10 @@ struct ViewControllerId {
 
 /* Create the struct for Section wise */
 struct Segues {
+
     static let selectEventType             = "SelectEventTypeSegue"
     static let createClub                  = "createClubSegue"
+
 }
 
 struct StoryBoard {
@@ -51,23 +59,32 @@ struct StoryBoard {
 }
 
 public struct Text {
+    static let firstOnboardTitle                = "Get Involved"
+    static let firstOnboardDescription          = "In Events, Clubs, & Classes"
+    static let secondOnboardTitle               = "Connect"
+    static let secondOnboardDescription         = "Through Shared Interests"
+    static let thirdOnboardTitle                = "Manage & Organize"
+    static let thirdOnboardDescription          = "Your Social & Academic Life"
+    static let forthOnboardTitle                = "Filter Your Social Media"
+    static let forthOnboardDescription          = "To See Content You Want To See"
     static let searchPlaceholder  = "Name, zip, city, state"
-    
 
+    
 }
 
 public struct Message {
     static let tryAgainErrorMessage            = "Try again, please."
-    
+
 }
 
 public struct Icons {
     static let searchWhite    = "search-white"
-    
+
 }
 
 public struct UserDefaultKey {
     static let searchFilter = "searchFilterData"
+
 }
 
 enum EventCategoryType {
@@ -83,3 +100,4 @@ enum EventType {
     case closed
     case inviteOnly
 }
+
