@@ -11,7 +11,7 @@ import UIKit
 class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var pageControl: CustomImagePageControl!
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var loginButton: UIButton!
 
@@ -52,6 +52,26 @@ class OnboardingViewController: UIViewController {
         setupMediator()
     }
 
-   
+}
 
+// MARK: - Actions
+extension OnboardingViewController {
+    @objc func createButtonAction() {
+        performSegue(withIdentifier: Segues.createClub/*Segues.selectEventType*/, sender: nil)
+    }
+}
+
+
+// MARK: - Navigation
+extension OnboardingViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.selectEventType {
+            if let vc = segue.destination as? SelectEventTypeViewController {
+                vc.type = .eventCategory
+            }
+        }
+    }
+    
 }

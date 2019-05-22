@@ -50,8 +50,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adz-WM-jbJ">
                                 <rect key="frame" x="0.0" y="609" width="375" height="203"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yue-Mp-Qfw">
-                                        <rect key="frame" x="168" y="15" width="39" height="37"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="Yue-Mp-Qfw" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="160" y="15" width="55" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="xIm-WO-Jte"/>
                                         </constraints>
@@ -105,6 +105,7 @@
                         <outlet property="collectionView" destination="AI4-kR-RtD" id="oaG-ed-Mat"/>
                         <outlet property="createAccount" destination="WYG-To-SAD" id="cDt-7Z-7Zv"/>
                         <outlet property="createButtonHeightConstratit" destination="XyC-ex-Mfw" id="Pse-kK-jkp"/>
+                        <outlet property="pageControl" destination="Yue-Mp-Qfw" id="cmW-eU-KvI"/>
                         <outlet property="pageControllerTopConstraint" destination="Bfb-fC-oSU" id="uyx-5a-VTV"/>
                     </connections>
                 </viewController>

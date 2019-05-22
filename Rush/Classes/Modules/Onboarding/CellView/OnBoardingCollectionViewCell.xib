@@ -27,21 +27,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone6-img" translatesAutoresizingMaskIntoConstraints="NO" id="T1V-Aw-4cV" customClass="CustomOnboardImageView" customModule="Rush" customModuleProvider="target">
+                    <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone8_illustration-#1" translatesAutoresizingMaskIntoConstraints="NO" id="T1V-Aw-4cV" customClass="CustomOnboardImageView" customModule="Rush" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Get Involved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="5yz-uG-dei" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                        <rect key="frame" x="108" y="386.5" width="159" height="34"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="34" id="YFc-Vd-Vnv"/>
-                        </constraints>
+                        <rect key="frame" x="108" y="418.5" width="159" height="34"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="In Events, Clubs, &amp; Classes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-8A-JLd" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                        <rect key="frame" x="16" y="424.5" width="343" height="20"/>
+                        <rect key="frame" x="16" y="456.5" width="343" height="20"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -53,7 +50,7 @@
                 <constraint firstAttribute="bottom" secondItem="T1V-Aw-4cV" secondAttribute="bottom" id="0cV-5M-Ro4"/>
                 <constraint firstItem="BLM-8A-JLd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="52c-xa-raT"/>
                 <constraint firstItem="BLM-8A-JLd" firstAttribute="top" secondItem="5yz-uG-dei" secondAttribute="bottom" constant="4" id="7Kr-vb-UnH"/>
-                <constraint firstAttribute="bottom" secondItem="BLM-8A-JLd" secondAttribute="bottom" multiplier="1.5" id="9xS-8c-ACO"/>
+                <constraint firstAttribute="bottom" secondItem="BLM-8A-JLd" secondAttribute="bottom" multiplier="1.4" id="9xS-8c-ACO"/>
                 <constraint firstItem="5yz-uG-dei" firstAttribute="centerX" secondItem="T1V-Aw-4cV" secondAttribute="centerX" id="DF6-Q9-T1Y"/>
                 <constraint firstItem="T1V-Aw-4cV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QSm-7A-Rhr"/>
                 <constraint firstAttribute="trailing" secondItem="T1V-Aw-4cV" secondAttribute="trailing" id="XzY-2e-pjr"/>
@@ -67,11 +64,12 @@
                 <outlet property="detailsLable" destination="BLM-8A-JLd" id="fsQ-2x-czH"/>
                 <outlet property="onboardImageView" destination="T1V-Aw-4cV" id="sRT-oR-JyO"/>
                 <outlet property="titleLabel" destination="5yz-uG-dei" id="bCj-8f-Qaq"/>
+                <outlet property="topDetailLableContraint" destination="9xS-8c-ACO" id="NjJ-cA-p9h"/>
             </connections>
             <point key="canvasLocation" x="616.79999999999995" y="-165.51724137931035"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="iphone6-img" width="375" height="667"/>
+        <image name="iPhone8_illustration-#1" width="375" height="667"/>
     </resources>
 </document>

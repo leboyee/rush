@@ -98,5 +98,10 @@ extension UIColor {
     class var brown24: UIColor {
         return UIColor(red: 0.56, green: 0.24, blue: 0.33, alpha: 1)
     }
+    
+    class var pageControllerDot: UIColor {
+        return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.24)
+    }
+
 
 }

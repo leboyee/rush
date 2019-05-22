@@ -11,8 +11,11 @@ import UIKit
 extension OnboardingViewController {
     
     
-    
     func fillCell(cell: OnBoardingCollectionViewCell, indexPath: IndexPath) {
         cell.setup(index: indexPath.row)
+    }
+    
+    func pageIndex(index: Int) {
+        self.pageControl.currentPage = index
     }
 }

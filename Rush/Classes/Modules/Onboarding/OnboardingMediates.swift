@@ -41,7 +41,8 @@ extension OnboardingViewController : UICollectionViewDelegate, UICollectionViewD
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPage = scrollView.contentOffset.x / (collectionView?.frame.size.width)!
-       // pageIndex?(Int(currentPage))
+        self.pageIndex(index: Int(currentPage))
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

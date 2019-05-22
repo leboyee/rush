@@ -25,11 +25,13 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
                 titleLabel.font = UIFont.DisplaySemibold(sz: 18)
             detailsLable.font = UIFont.Regular(sz: 12)
+        topDetailLableContraint.constant = 45
 
         
         } else if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_6_6s_7_8.rawValue  {
             titleLabel.font = UIFont.DisplaySemibold(sz: 23)
           detailsLable.font = UIFont.Regular(sz: 15)
+        topDetailLableContraint.constant = 10
         
         } else if UIDevice.current.screenType.rawValue ==  UIDevice.ScreenType.iPhones_6Plus_6sPlus_7Plus_8Plus.rawValue  {
         
@@ -49,24 +51,28 @@ extension OnBoardingCollectionViewCell {
         case 0:
             titleLabel.text = Text.firstOnboardTitle
             detailsLable.text = Text.firstOnboardDescription
-            onboardImageView.image =  #imageLiteral(resourceName: "iphone6-img")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#1") : #imageLiteral(resourceName: "iPhone8_illustration-#1")
+
             break
         case 1:
             titleLabel.text = Text.secondOnboardTitle
             detailsLable.text = Text.secondOnboardDescription
-            onboardImageView.image =  #imageLiteral(resourceName: "Onboarding2")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#2") : #imageLiteral(resourceName: "iPhone8_illustration-#2")
+
 
             break
         case 2:
             titleLabel.text = Text.thirdOnboardTitle
             detailsLable.text = Text.thirdOnboardDescription
-            onboardImageView.image =  #imageLiteral(resourceName: "Onboarding3")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#3") : #imageLiteral(resourceName: "iPhone8_illustration-#3")
+
 
             break
         case 3:
             titleLabel.text = Text.forthOnboardTitle
             detailsLable.text = Text.forthOnboardDescription
-            onboardImageView.image =  #imageLiteral(resourceName: "Onboarding4")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#4") : #imageLiteral(resourceName: "iPhone8_illustration-#4")
+
             break
         default:
             break

@@ -49,6 +49,7 @@ struct Segues {
 
     static let selectEventType             = "SelectEventTypeSegue"
     static let createClub                  = "createClubSegue"
+    static let enterEmail                  = "EnterEmailViewSegue"
 
 }
 
