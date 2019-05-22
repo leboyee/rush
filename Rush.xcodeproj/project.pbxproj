@@ -39,6 +39,15 @@
 		1A82DA1622867FFD00DB59F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82DA1522867FFD00DB59F7 /* Constants.swift */; };
 		1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7A2289519400C4550C /* CustomLabel.swift */; };
 		1AA97B7D2289520900C4550C /* CustomOnboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */; };
+		1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7F228979D100C4550C /* DeviceExtension.swift */; };
+		1AA97B8A228979D100C4550C /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B80228979D100C4550C /* FontExtension.swift */; };
+		1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B81228979D100C4550C /* TapGestureExtension.swift */; };
+		1AA97B8D228979D100C4550C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B83228979D100C4550C /* Notifications.swift */; };
+		1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B84228979D100C4550C /* ColorExtension.swift */; };
+		1AA97B8F228979D100C4550C /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B85228979D100C4550C /* ImageViewExtension.swift */; };
+		1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B86228979D100C4550C /* ImageResizerExtension.swift */; };
+		1AA97B91228979D100C4550C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B87228979D100C4550C /* StringExtension.swift */; };
+		1AA97B92228979D100C4550C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B88228979D100C4550C /* DateExtension.swift */; };
 		9930BB0DAE1051FDD286D46D /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3627F78ECD3E2425AB6C34C /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16B22805F9D00721F3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC16122805F9C00721F3F /* ViewController.swift */; };
@@ -83,6 +92,15 @@
 		1A82DA1522867FFD00DB59F7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1AA97B7A2289519400C4550C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardImageView.swift; sourceTree = "<group>"; };
+		1AA97B7F228979D100C4550C /* DeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
+		1AA97B80228979D100C4550C /* FontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		1AA97B81228979D100C4550C /* TapGestureExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapGestureExtension.swift; sourceTree = "<group>"; };
+		1AA97B83228979D100C4550C /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		1AA97B84228979D100C4550C /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		1AA97B85228979D100C4550C /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		1AA97B86228979D100C4550C /* ImageResizerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizerExtension.swift; sourceTree = "<group>"; };
+		1AA97B87228979D100C4550C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		1AA97B88228979D100C4550C /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		2F279CD9FF2B71F89B2A1FD9 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
 		BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +228,22 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		1AA97B7E228979D100C4550C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1AA97B7F228979D100C4550C /* DeviceExtension.swift */,
+				1AA97B80228979D100C4550C /* FontExtension.swift */,
+				1AA97B81228979D100C4550C /* TapGestureExtension.swift */,
+				1AA97B83228979D100C4550C /* Notifications.swift */,
+				1AA97B84228979D100C4550C /* ColorExtension.swift */,
+				1AA97B85228979D100C4550C /* ImageViewExtension.swift */,
+				1AA97B86228979D100C4550C /* ImageResizerExtension.swift */,
+				1AA97B87228979D100C4550C /* StringExtension.swift */,
+				1AA97B88228979D100C4550C /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		531998D1E6069E5BB9B10557 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +297,7 @@
 		C05FC15E22805F9C00721F3F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1AA97B7E228979D100C4550C /* Extension */,
 				0992538F22845CD000914E7B /* CustomClass */,
 				C05FC15F22805F9C00721F3F /* Models */,
 				C05FC16022805F9C00721F3F /* Modules */,
@@ -478,15 +513,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AA97B8D228979D100C4550C /* Notifications.swift in Sources */,
 				1A3F55E82285C38800D42154 /* OnboardingLogics.swift in Sources */,
+				1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */,
 				1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */,
 				1A82DA1622867FFD00DB59F7 /* Constants.swift in Sources */,
+				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				1A3F55E42285C35800D42154 /* OnboardingViewController.swift in Sources */,
+				1AA97B8F228979D100C4550C /* ImageViewExtension.swift in Sources */,
+				1AA97B91228979D100C4550C /* StringExtension.swift in Sources */,
 				C05FC16B22805F9D00721F3F /* ViewController.swift in Sources */,
 				1A3F55EC2285C42600D42154 /* OnBoardingCollectionViewCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
+				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
+				1AA97B92228979D100C4550C /* DateExtension.swift in Sources */,
+				1AA97B8A228979D100C4550C /* FontExtension.swift in Sources */,
+				1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */,
 				C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */,
 				0992539E22846A3400914E7B /* HomeLogics.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,

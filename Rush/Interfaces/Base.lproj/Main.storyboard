@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Onboarding View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -23,7 +28,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AI4-kR-RtD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="821"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ZpA-Uc-ciT">
                                     <size key="itemSize" width="50" height="50"/>
@@ -42,25 +47,74 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adz-WM-jbJ">
+                                <rect key="frame" x="0.0" y="609" width="375" height="203"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yue-Mp-Qfw">
+                                        <rect key="frame" x="168" y="15" width="39" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="xIm-WO-Jte"/>
+                                        </constraints>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYG-To-SAD">
+                                        <rect key="frame" x="24" y="62.333333333333371" width="327" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="XyC-ex-Mfw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Create account" backgroundImage="onboard-bg-button-main"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVU-1T-UG0">
+                                        <rect key="frame" x="164.66666666666666" y="133.33333333333337" width="46" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="NuY-VZ-vz9"/>
+                                            <constraint firstAttribute="height" constant="33" id="jTB-Xl-JXa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WYG-To-SAD" secondAttribute="trailing" constant="24" id="69H-ot-Jgz"/>
+                                    <constraint firstItem="Yue-Mp-Qfw" firstAttribute="top" secondItem="adz-WM-jbJ" secondAttribute="top" constant="15" id="Bfb-fC-oSU"/>
+                                    <constraint firstItem="QVU-1T-UG0" firstAttribute="centerX" secondItem="adz-WM-jbJ" secondAttribute="centerX" id="Tfi-dS-0wu"/>
+                                    <constraint firstItem="Yue-Mp-Qfw" firstAttribute="centerX" secondItem="adz-WM-jbJ" secondAttribute="centerX" id="TpI-KF-B8s"/>
+                                    <constraint firstItem="WYG-To-SAD" firstAttribute="top" secondItem="Yue-Mp-Qfw" secondAttribute="bottom" multiplier="1.2" id="c06-pn-xbI"/>
+                                    <constraint firstItem="QVU-1T-UG0" firstAttribute="top" secondItem="WYG-To-SAD" secondAttribute="bottom" multiplier="1.2" constant="1" id="pO9-0f-gXe"/>
+                                    <constraint firstItem="WYG-To-SAD" firstAttribute="leading" secondItem="adz-WM-jbJ" secondAttribute="leading" constant="24" id="xsy-vQ-OKA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AI4-kR-RtD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8gO-kp-G1e"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AI4-kR-RtD" secondAttribute="bottom" constant="140" id="9oo-YN-4Do"/>
+                            <constraint firstItem="adz-WM-jbJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="B3d-CJ-EHW"/>
+                            <constraint firstAttribute="bottom" secondItem="adz-WM-jbJ" secondAttribute="bottom" id="Fra-NF-3qS"/>
                             <constraint firstItem="AI4-kR-RtD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Iag-gE-n0F"/>
+                            <constraint firstItem="adz-WM-jbJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TdS-8r-IIo"/>
                             <constraint firstItem="AI4-kR-RtD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZNs-7E-hY3"/>
+                            <constraint firstItem="adz-WM-jbJ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="p8M-gY-tYM"/>
+                            <constraint firstItem="adz-WM-jbJ" firstAttribute="top" secondItem="AI4-kR-RtD" secondAttribute="bottom" constant="-212" id="vFO-bw-f5H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="AI4-kR-RtD" id="oaG-ed-Mat"/>
+                        <outlet property="createAccount" destination="WYG-To-SAD" id="cDt-7Z-7Zv"/>
+                        <outlet property="createButtonHeightConstratit" destination="XyC-ex-Mfw" id="Pse-kK-jkp"/>
+                        <outlet property="pageControllerTopConstraint" destination="Bfb-fC-oSU" id="uyx-5a-VTV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="20.689655172413794"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg-onboarding" width="375" height="812"/>
+        <image name="onboard-bg-button-main" width="327" height="48"/>
     </resources>
 </document>

@@ -15,6 +15,9 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var loginButton: UIButton!
 
+    @IBOutlet weak var createButtonHeightConstratit: NSLayoutConstraint!
+    @IBOutlet weak var pageControllerTopConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +26,15 @@ class OnboardingViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+            createButtonHeightConstratit.constant =  35
+            pageControllerTopConstraint.constant = 0
+        }
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_6_6s_7_8.rawValue  {
+            createButtonHeightConstratit.constant =  40
+            pageControllerTopConstraint.constant = 10
+        }
+
         self.collectionView.layoutIfNeeded()
     }
     
