@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-Q2-Vol">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,6 +15,22 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ffm-1Z-Qfv">
+            <objects>
+                <navigationController id="CzO-Q2-Vol" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3b2-9W-XA1">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="SKZ-eg-sbD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4aa-j2-EGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1418" y="113"/>
+        </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -63,6 +79,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <state key="normal" title="Create account" backgroundImage="onboard-bg-button-main"/>
+                                        <connections>
+                                            <action selector="createButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="9nG-sC-uJy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVU-1T-UG0">
                                         <rect key="frame" x="164.66666666666666" y="133.33333333333337" width="46" height="33"/>
@@ -101,17 +120,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yvr-V8-UeK"/>
                     <connections>
                         <outlet property="collectionView" destination="AI4-kR-RtD" id="oaG-ed-Mat"/>
                         <outlet property="createAccount" destination="WYG-To-SAD" id="cDt-7Z-7Zv"/>
                         <outlet property="createButtonHeightConstratit" destination="XyC-ex-Mfw" id="Pse-kK-jkp"/>
                         <outlet property="pageControl" destination="Yue-Mp-Qfw" id="cmW-eU-KvI"/>
                         <outlet property="pageControllerTopConstraint" destination="Bfb-fC-oSU" id="uyx-5a-VTV"/>
+                        <segue destination="Mo9-Bt-yAq" kind="show" identifier="EnterEmailViewSegue" animates="NO" id="1lw-rR-Vcp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.600000000000001" y="20.689655172413794"/>
+            <point key="canvasLocation" x="-618" y="112"/>
+        </scene>
+        <!--Authorize-->
+        <scene sceneID="Lb7-Fs-JtX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorize" id="Mo9-Bt-yAq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fq4-yT-dwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="112"/>
         </scene>
     </scenes>
     <resources>

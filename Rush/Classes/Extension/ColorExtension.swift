@@ -102,6 +102,19 @@ extension UIColor {
     class var pageControllerDot: UIColor {
         return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.24)
     }
+    
+    class var buttonDisableBgColor: UIColor {
+        return UIColor(red: 0.89, green: 0.89, blue: 0.91, alpha: 1.0)
+    }
+    
+    class var buttonDisableTextColor: UIColor {
+        return UIColor(red: 0.74, green: 0.74, blue: 0.75, alpha: 1)
+    }
+    
+    class var lightGrayColor: UIColor {
+        return UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)
+    }
+
 
 
 }

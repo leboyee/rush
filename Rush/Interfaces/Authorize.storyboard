@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0cf-VN-0pj">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,21 +9,224 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Enter Email View Conteroller-->
         <scene sceneID="2si-PH-Q3C">
             <objects>
                 <viewController id="0cf-VN-0pj" customClass="EnterEmailViewConteroller" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N7F-dm-J8r">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xuz-Zd-wsZ" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="101" width="414" height="817"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STX-WL-DGK">
+                                <rect key="frame" x="0.0" y="101" width="414" height="91"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter school email to create account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIv-3b-k6E" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="16" width="382" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="h8X-3G-n8V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@university" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kha-UD-gSG" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="40" width="223" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="Y3f-s2-yUM"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDI-c9-4ix">
+                                        <rect key="frame" x="22" y="90" width="392" height="1"/>
+                                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="2Yo-Bs-4ZQ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="GeB-40-vqw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9j8-bh-cy4" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="243" y="44.5" width="56" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="cDM-ed-v4J"/>
+                                            <constraint firstAttribute="height" constant="34" id="dMs-An-U3Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9j8-bh-cy4" firstAttribute="centerY" secondItem="kha-UD-gSG" secondAttribute="centerY" id="1ZQ-XQ-q2N"/>
+                                    <constraint firstItem="GDI-c9-4ix" firstAttribute="top" secondItem="kha-UD-gSG" secondAttribute="bottom" constant="7" id="8Fu-WK-UgW"/>
+                                    <constraint firstItem="kha-UD-gSG" firstAttribute="top" secondItem="bIv-3b-k6E" secondAttribute="bottom" constant="8" id="Ab5-HT-PAJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="GDI-c9-4ix" secondAttribute="trailing" id="Ehu-kM-2O8"/>
+                                    <constraint firstAttribute="trailing" secondItem="GDI-c9-4ix" secondAttribute="trailing" id="RyH-6h-ZmO"/>
+                                    <constraint firstItem="kha-UD-gSG" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="24" id="UGd-YH-umm"/>
+                                    <constraint firstAttribute="height" constant="91" id="YmF-7d-Igf"/>
+                                    <constraint firstItem="GDI-c9-4ix" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="22" id="lGh-kN-AaQ"/>
+                                    <constraint firstItem="GDI-c9-4ix" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="22" id="rMC-pu-emM"/>
+                                    <constraint firstItem="bIv-3b-k6E" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="24" id="swz-p8-pho"/>
+                                    <constraint firstItem="9j8-bh-cy4" firstAttribute="leading" secondItem="kha-UD-gSG" secondAttribute="trailing" constant="-4" id="v3e-g1-oQj"/>
+                                    <constraint firstItem="bIv-3b-k6E" firstAttribute="top" secondItem="STX-WL-DGK" secondAttribute="top" constant="16" id="yom-Vg-DzW"/>
+                                    <constraint firstAttribute="trailing" secondItem="bIv-3b-k6E" secondAttribute="trailing" constant="8" id="zoD-Do-4bh"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdo-rS-fYF">
+                                <rect key="frame" x="0.0" y="756" width="414" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRm-C8-0Xj" customClass="CustomEmailAttributedLabel" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="75" width="372" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="BUv-aS-iP7"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="By entering your email, you accept our ">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="13" name="SFProText-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="terms and conditions">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.5607843137254902" green="0.23921568627450979" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="13" name="SFProText-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" and  ">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="13" name="SFProText-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="data policy.">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.5607843137254902" green="0.23921568627450979" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name="SFProText-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yr-8j-xb7">
+                                        <rect key="frame" x="0.0" y="64" width="414" height="1"/>
+                                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="gq9-Jl-jpJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMr-zS-6jK" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="4" width="366" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="g17-SN-ZEf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonAction" destination="0cf-VN-0pj" eventType="touchUpInside" id="I07-sD-P5y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6yr-8j-xb7" secondAttribute="trailing" id="2MD-Dh-tfM"/>
+                                    <constraint firstAttribute="trailing" secondItem="SMr-zS-6jK" secondAttribute="trailing" constant="24" id="5Cm-FK-7KM"/>
+                                    <constraint firstAttribute="height" constant="110" id="7Qq-Wr-kjP"/>
+                                    <constraint firstAttribute="trailing" secondItem="aRm-C8-0Xj" secondAttribute="trailing" constant="21" id="IdI-9M-uUG"/>
+                                    <constraint firstItem="aRm-C8-0Xj" firstAttribute="top" secondItem="6yr-8j-xb7" secondAttribute="bottom" constant="10" id="bCh-Td-wNI"/>
+                                    <constraint firstItem="6yr-8j-xb7" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" id="fpg-6X-KUV"/>
+                                    <constraint firstItem="aRm-C8-0Xj" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" constant="21" id="hWY-a0-fVz"/>
+                                    <constraint firstItem="6yr-8j-xb7" firstAttribute="top" secondItem="SMr-zS-6jK" secondAttribute="bottom" constant="12" id="mmm-Xb-w5g"/>
+                                    <constraint firstItem="SMr-zS-6jK" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" constant="24" id="svF-yg-H89"/>
+                                    <constraint firstAttribute="bottom" secondItem="aRm-C8-0Xj" secondAttribute="bottom" constant="1" id="xiX-Ez-5rm"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect email. You maybe forgot about “@” or entered wrong email." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejt-fl-mbn" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="63" y="207" width="331" height="31.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZL-Rs-Qko" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="20" y="205.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1DQ-A1-7J7"/>
+                                    <constraint firstAttribute="width" constant="35" id="wiH-4F-yix"/>
+                                </constraints>
+                                <state key="normal" image="deleteError"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="STX-WL-DGK" firstAttribute="trailing" secondItem="Xuz-Zd-wsZ" secondAttribute="trailing" id="4n0-qQ-zzb"/>
+                            <constraint firstItem="STX-WL-DGK" firstAttribute="top" secondItem="Xuz-Zd-wsZ" secondAttribute="top" id="4pv-sT-e8O"/>
+                            <constraint firstItem="bZL-Rs-Qko" firstAttribute="centerY" secondItem="ejt-fl-mbn" secondAttribute="centerY" id="FO0-He-xHk"/>
+                            <constraint firstItem="Xuz-Zd-wsZ" firstAttribute="leading" secondItem="5fZ-Jz-bWz" secondAttribute="leading" id="JZH-vj-v9b"/>
+                            <constraint firstItem="ejt-fl-mbn" firstAttribute="leading" secondItem="bZL-Rs-Qko" secondAttribute="trailing" constant="8" id="LQL-zn-brS"/>
+                            <constraint firstItem="zdo-rS-fYF" firstAttribute="leading" secondItem="5fZ-Jz-bWz" secondAttribute="leading" id="UcC-7O-qoe"/>
+                            <constraint firstItem="Xuz-Zd-wsZ" firstAttribute="top" secondItem="5fZ-Jz-bWz" secondAttribute="top" constant="13" id="VEY-hV-akz"/>
+                            <constraint firstAttribute="bottom" secondItem="Xuz-Zd-wsZ" secondAttribute="bottom" constant="-22" id="Xtn-63-xO5"/>
+                            <constraint firstItem="bZL-Rs-Qko" firstAttribute="leading" secondItem="5fZ-Jz-bWz" secondAttribute="leading" constant="20" id="ZEb-h1-a8s"/>
+                            <constraint firstItem="STX-WL-DGK" firstAttribute="leading" secondItem="Xuz-Zd-wsZ" secondAttribute="leading" id="btf-Kd-aSG"/>
+                            <constraint firstItem="ejt-fl-mbn" firstAttribute="top" secondItem="STX-WL-DGK" secondAttribute="bottom" constant="15" id="czE-yN-Q4L"/>
+                            <constraint firstItem="5fZ-Jz-bWz" firstAttribute="trailing" secondItem="ejt-fl-mbn" secondAttribute="trailing" constant="20" id="hUy-uV-RfK"/>
+                            <constraint firstItem="Xuz-Zd-wsZ" firstAttribute="trailing" secondItem="5fZ-Jz-bWz" secondAttribute="trailing" id="mdG-gL-HkP"/>
+                            <constraint firstAttribute="bottom" secondItem="zdo-rS-fYF" secondAttribute="bottom" constant="30" id="ogJ-wG-j9r"/>
+                            <constraint firstItem="zdo-rS-fYF" firstAttribute="trailing" secondItem="5fZ-Jz-bWz" secondAttribute="trailing" id="zp0-1C-Q1N"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5fZ-Jz-bWz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dsT-I9-ydK"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="bottomViewConstraint" destination="ogJ-wG-j9r" id="YI7-mA-V5x"/>
+                        <outlet property="emailErroLabel" destination="ejt-fl-mbn" id="gfw-d6-AYg"/>
+                        <outlet property="emailTextField" destination="kha-UD-gSG" id="ySE-EI-slF"/>
+                        <outlet property="errorButton" destination="bZL-Rs-Qko" id="5Rj-gH-Saq"/>
+                        <outlet property="nextButton" destination="SMr-zS-6jK" id="NwZ-h9-6dc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSs-Wp-Su4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="535" y="-219"/>
+            <point key="canvasLocation" x="-1039.1304347826087" y="-214.28571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="deleteError" width="20" height="20"/>
+    </resources>
 </document>

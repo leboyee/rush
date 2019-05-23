@@ -17,5 +17,9 @@ class CustomLabel: UILabel {
         // Drawing code
     }
     */
+    
+    func emailErrorSetColor() {
+        self.textColor = UIColor.lightGrayColor
+    }
 
 }

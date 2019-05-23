@@ -19,3 +19,4 @@ extension OnboardingViewController {
         self.pageControl.currentPage = index
     }
 }
+

@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupAppearance() {
         setupTopBar()
+        setupBarButton()
     }
     
     func setupTopBar() {
@@ -57,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearance = UINavigationBar.appearance()
         let pargraphStyle = NSMutableParagraphStyle()
         pargraphStyle.alignment = .center
-//        navigationBarAppearance.tintColor = UIColor.clear
+       navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor.black
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
         navigationBarAppearance.isTranslucent = false
@@ -69,5 +70,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func setupBarButton() {
+        let barButtonItemAppearance = UIBarButtonItem.appearance()
+        if #available(iOS 11, *) {
+            barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+            barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
+            barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1 * screenWidth, vertical: 0), for: .default)
+            
+        } else {
+            barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80), for: .default)
+            
+        }
+    }
+
 }
 

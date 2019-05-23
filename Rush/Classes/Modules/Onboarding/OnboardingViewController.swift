@@ -56,8 +56,8 @@ class OnboardingViewController: UIViewController {
 
 // MARK: - Actions
 extension OnboardingViewController {
-    @objc func createButtonAction() {
-        performSegue(withIdentifier: Segues.createClub/*Segues.selectEventType*/, sender: nil)
+    @IBAction func createButtonAction() {
+        performSegue(withIdentifier: Segues.enterEmail, sender: nil)
     }
 }
 
