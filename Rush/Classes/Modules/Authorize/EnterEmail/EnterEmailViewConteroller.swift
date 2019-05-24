@@ -105,6 +105,7 @@ extension EnterEmailViewConteroller {
         if emailText.isValidEmailAddress {
             emailErroLabel.isHidden = true
             errorButton.isHidden = true
+            self.view.endEditing(true)
             self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
         }
         else {

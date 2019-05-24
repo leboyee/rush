@@ -13,7 +13,6 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     
     func setupMediator() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
     }
