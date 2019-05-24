@@ -18,12 +18,12 @@ class CustomView: UIView {
     }
     */
     
-    func passwordDotColorView(index: passwordFormate) {
+    func setPasswordDotColorView(index: passwordFormate) {
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
         switch index {
         case .none :
-            self.backgroundColor = UIColor.lightGray13
+            self.backgroundColor = UIColor.buttonDisableBgColor
         break
         case .correct :
             self.backgroundColor = UIColor.green24

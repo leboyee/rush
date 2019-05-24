@@ -29,6 +29,20 @@ extension String
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }
     
+    var isCapitalLater: Bool {
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let capitalresult = texttest.evaluate(with: self)
+        return capitalresult
+    }
+    
+    var isNumberLater: Bool {
+        let numberRegEx  = ".*[0-9]+.*"
+        let texttest = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let numberresult = texttest.evaluate(with: self)
+        return numberresult
+    }
+        
     var isValidPhoneNumber: Bool {
         let pattern = "^\\(*\\+*[1-9]{0,3}\\)*-*[1-9]{0,3}[-. /]*\\(*[2-9]\\d{2}\\)*[-. /]*\\d{3}[-. /]*\\d{4} *e*x*t*\\.* *\\d{0,4}$"
         do {

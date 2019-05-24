@@ -67,9 +67,9 @@ class EnterPasswordViewConteroller: CustomViewController {
         
         // Set Custom part of Class
         nextButton.setNextButton(isEnable: false)
-        capitalLetterDotView.passwordDotColorView(index: .none)
-        numberDotView.passwordDotColorView(index: .none)
-        symbolDotView.passwordDotColorView(index: .none)
+        capitalLetterDotView.setPasswordDotColorView(index: .none)
+        numberDotView.setPasswordDotColorView(index: .none)
+        symbolDotView.setPasswordDotColorView(index: .none)
         capitalLetterLabel.passwordFormateLabels()
         numberLabel.passwordFormateLabels()
         symbolLabel.passwordFormateLabels()
@@ -107,5 +107,5 @@ extension EnterPasswordViewConteroller {
             passwordShowHideLabel.text = Text.hide
             passwordShowButton.isSelected = true
         }
-    }    
+    }
 }
