@@ -49,7 +49,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@university" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kha-UD-gSG" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@university" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kha-UD-gSG" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="40" width="368" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="Y3f-s2-yUM"/>
