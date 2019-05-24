@@ -55,11 +55,13 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         if textField.text?.count == 1 {
             textField.placeholder = ""
             textField.textAlignment = .right
+            eduLabel.text = " .edu"
             self.view.layoutIfNeeded()
         }
         if textField.text?.count == 0 {
             textField.placeholder = "email@university"
             textField.textAlignment = .left
+            eduLabel.text = ".edu"
             self.view.layoutIfNeeded()
         }
     }

@@ -27,10 +27,12 @@ class CustomButton: UIButton {
         self.layer.cornerRadius = 8.0
         self.clipsToBounds = true        
         if isEnable == true {
+            self.isEnabled = isEnable
             self.backgroundColor =  UIColor.brown24
             self.setTitleColor(UIColor.white, for: .normal)
         }
         else {
+            self.isEnabled = isEnable
             self.backgroundColor =  UIColor.buttonDisableBgColor
             self.setTitleColor(UIColor.buttonDisableTextColor, for: .normal)
         }

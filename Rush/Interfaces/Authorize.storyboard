@@ -69,10 +69,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9j8-bh-cy4" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="243" y="44.5" width="56" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" .edu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9j8-bh-cy4" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="243" y="44.5" width="63" height="34"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="56" id="cDM-ed-v4J"/>
+                                            <constraint firstAttribute="width" constant="63" id="cDM-ed-v4J"/>
                                             <constraint firstAttribute="height" constant="34" id="dMs-An-U3Z"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
@@ -245,6 +245,7 @@
                     <connections>
                         <outlet property="bottomLineLabel" destination="6yr-8j-xb7" id="axx-JB-qPV"/>
                         <outlet property="bottomViewConstraint" destination="ogJ-wG-j9r" id="YI7-mA-V5x"/>
+                        <outlet property="eduLabel" destination="9j8-bh-cy4" id="tJ4-cE-2cs"/>
                         <outlet property="emailErroLabel" destination="ejt-fl-mbn" id="gfw-d6-AYg"/>
                         <outlet property="emailTextField" destination="kha-UD-gSG" id="ySE-EI-slF"/>
                         <outlet property="emailTitleLable" destination="bIv-3b-k6E" id="hXR-ch-H81"/>
@@ -290,8 +291,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create passsword" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7cE-dE-KdU" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="40" width="374" height="43"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create passsword" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="7cE-dE-KdU" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="40" width="330" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="D0N-tK-SAZ"/>
                                         </constraints>
@@ -311,7 +312,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="show" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbV-zM-u2d" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="362" y="53.5" width="34" height="16"/>
+                                        <rect key="frame" x="369" y="53.5" width="34" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="qik-Jc-ehh"/>
                                         </constraints>
@@ -320,7 +321,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhQ-aw-1Pb">
-                                        <rect key="frame" x="348" y="46.5" width="48" height="30"/>
+                                        <rect key="frame" x="356" y="46.5" width="48" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Cat-er-8Ba"/>
@@ -339,19 +340,19 @@
                                 <constraints>
                                     <constraint firstItem="7cE-dE-KdU" firstAttribute="leading" secondItem="bxL-OT-ZMB" secondAttribute="leading" constant="24" id="273-Px-lnZ"/>
                                     <constraint firstItem="JhQ-aw-1Pb" firstAttribute="centerY" secondItem="7cE-dE-KdU" secondAttribute="centerY" id="3Zr-ZE-f7q"/>
+                                    <constraint firstItem="JhQ-aw-1Pb" firstAttribute="leading" secondItem="7cE-dE-KdU" secondAttribute="trailing" constant="2" id="4tz-p2-ies"/>
                                     <constraint firstAttribute="trailing" secondItem="04j-px-Ybb" secondAttribute="trailing" constant="8" id="CP4-ID-3ja"/>
-                                    <constraint firstAttribute="trailing" secondItem="7cE-dE-KdU" secondAttribute="trailing" constant="16" id="ELB-aK-ai9"/>
                                     <constraint firstItem="5cQ-no-Ti9" firstAttribute="leading" secondItem="bxL-OT-ZMB" secondAttribute="leading" constant="22" id="HHN-0t-edZ"/>
                                     <constraint firstItem="04j-px-Ybb" firstAttribute="top" secondItem="bxL-OT-ZMB" secondAttribute="top" constant="16" id="I1e-rz-32b"/>
                                     <constraint firstItem="04j-px-Ybb" firstAttribute="leading" secondItem="bxL-OT-ZMB" secondAttribute="leading" constant="24" id="PDs-vK-b24"/>
-                                    <constraint firstAttribute="trailing" secondItem="JhQ-aw-1Pb" secondAttribute="trailing" constant="18" id="U0u-7i-7Iq"/>
+                                    <constraint firstAttribute="trailing" secondItem="JhQ-aw-1Pb" secondAttribute="trailing" constant="10" id="U0u-7i-7Iq"/>
                                     <constraint firstItem="5cQ-no-Ti9" firstAttribute="top" secondItem="7cE-dE-KdU" secondAttribute="bottom" constant="7" id="WPL-Mg-yyR"/>
                                     <constraint firstAttribute="trailing" secondItem="5cQ-no-Ti9" secondAttribute="trailing" id="WdO-PJ-oqw"/>
                                     <constraint firstItem="WbV-zM-u2d" firstAttribute="centerY" secondItem="7cE-dE-KdU" secondAttribute="centerY" id="c4i-ag-08K"/>
                                     <constraint firstItem="7cE-dE-KdU" firstAttribute="top" secondItem="04j-px-Ybb" secondAttribute="bottom" constant="8" id="dBM-wI-8WJ"/>
                                     <constraint firstAttribute="trailing" secondItem="5cQ-no-Ti9" secondAttribute="trailing" id="gr1-Hc-98U"/>
                                     <constraint firstAttribute="height" constant="91" id="jb7-zo-sll"/>
-                                    <constraint firstAttribute="trailing" secondItem="WbV-zM-u2d" secondAttribute="trailing" constant="18" id="qfA-fN-AgE"/>
+                                    <constraint firstAttribute="trailing" secondItem="WbV-zM-u2d" secondAttribute="trailing" constant="11" id="qfA-fN-AgE"/>
                                     <constraint firstItem="5cQ-no-Ti9" firstAttribute="leading" secondItem="bxL-OT-ZMB" secondAttribute="leading" constant="22" id="s3j-NQ-Eye"/>
                                 </constraints>
                             </view>
@@ -444,6 +445,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nextButtonAction" destination="QHJ-za-7QQ" eventType="touchUpInside" id="KzV-U4-HYu"/>
+                                            <segue destination="66r-yS-BoN" kind="show" animates="NO" id="IBn-io-mIb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -494,6 +496,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rt-05-5SU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-356.52173913043481" y="-214.28571428571428"/>
+        </scene>
+        <!--Tabbar-->
+        <scene sceneID="29p-jn-iZS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tabbar" id="66r-yS-BoN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3G-WZ-sz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216" y="-224"/>
         </scene>
     </scenes>
     <resources>

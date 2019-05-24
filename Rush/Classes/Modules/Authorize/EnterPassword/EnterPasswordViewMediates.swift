@@ -60,6 +60,10 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
         if (textField.text?.count ?? 0) >= 8  && textField.text?.isNumberLater == true && textField.text?.isCapitalLater == true {
             nextButton.setNextButton(isEnable: true)
         }
+        else {
+            nextButton.setNextButton(isEnable: false)
+
+        }
     }    
 }
 

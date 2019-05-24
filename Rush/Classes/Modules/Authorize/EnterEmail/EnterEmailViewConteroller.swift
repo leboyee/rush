@@ -20,6 +20,7 @@ class EnterEmailViewConteroller: CustomViewController {
     @IBOutlet weak var bottomLineLabel: CustomLabel!
     @IBOutlet weak var loginLineLable: CustomLabel!
     @IBOutlet weak var termLabel: CustomEmailAttributedLabel!
+    @IBOutlet weak var eduLabel: CustomLabel!
 
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -74,7 +75,8 @@ class EnterEmailViewConteroller: CustomViewController {
         nextButton.setNextButton(isEnable: true)
         emailErroLabel.isHidden = true
         errorButton.isHidden = true
-        
+        eduLabel.text = ".edu"
+
         if loginType == .Register {
             loginWithPhoneNumberButton.isHidden = true
             loginLineLable.isHidden = true
@@ -101,7 +103,8 @@ extension EnterEmailViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
-        let emailText = "\(emailTextField.text ?? "").edu"
+        var emailText = "\(emailTextField.text ?? "").edu"
+        emailText = emailText.trimmingCharacters(in: .whitespacesAndNewlines)
         if emailText.isValidEmailAddress {
             emailErroLabel.isHidden = true
             errorButton.isHidden = true

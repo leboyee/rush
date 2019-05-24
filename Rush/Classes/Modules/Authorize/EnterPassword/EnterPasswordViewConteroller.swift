@@ -51,6 +51,8 @@ class EnterPasswordViewConteroller: CustomViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
+        navigationController?.navigationBar.isHidden = true
+
     }
 
     
@@ -93,7 +95,7 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
-
+    
     }
     
     @IBAction func passwordShowHideButton() {
