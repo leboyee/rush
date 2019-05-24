@@ -50,7 +50,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@university" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kha-UD-gSG" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="40" width="223" height="43"/>
+                                        <rect key="frame" x="24" y="40" width="368" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="Y3f-s2-yUM"/>
                                         </constraints>
@@ -86,13 +86,14 @@
                                     <constraint firstItem="GDI-c9-4ix" firstAttribute="top" secondItem="kha-UD-gSG" secondAttribute="bottom" constant="7" id="8Fu-WK-UgW"/>
                                     <constraint firstItem="kha-UD-gSG" firstAttribute="top" secondItem="bIv-3b-k6E" secondAttribute="bottom" constant="8" id="Ab5-HT-PAJ"/>
                                     <constraint firstAttribute="trailing" secondItem="GDI-c9-4ix" secondAttribute="trailing" id="Ehu-kM-2O8"/>
+                                    <constraint firstItem="9j8-bh-cy4" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="243" id="Er4-Hg-gg2"/>
                                     <constraint firstAttribute="trailing" secondItem="GDI-c9-4ix" secondAttribute="trailing" id="RyH-6h-ZmO"/>
                                     <constraint firstItem="kha-UD-gSG" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="24" id="UGd-YH-umm"/>
                                     <constraint firstAttribute="height" constant="91" id="YmF-7d-Igf"/>
+                                    <constraint firstAttribute="trailing" secondItem="kha-UD-gSG" secondAttribute="trailing" constant="22" id="j9j-IL-mA4"/>
                                     <constraint firstItem="GDI-c9-4ix" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="22" id="lGh-kN-AaQ"/>
                                     <constraint firstItem="GDI-c9-4ix" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="22" id="rMC-pu-emM"/>
                                     <constraint firstItem="bIv-3b-k6E" firstAttribute="leading" secondItem="STX-WL-DGK" secondAttribute="leading" constant="24" id="swz-p8-pho"/>
-                                    <constraint firstItem="9j8-bh-cy4" firstAttribute="leading" secondItem="kha-UD-gSG" secondAttribute="trailing" constant="-4" id="v3e-g1-oQj"/>
                                     <constraint firstItem="bIv-3b-k6E" firstAttribute="top" secondItem="STX-WL-DGK" secondAttribute="top" constant="16" id="yom-Vg-DzW"/>
                                     <constraint firstAttribute="trailing" secondItem="bIv-3b-k6E" secondAttribute="trailing" constant="8" id="zoD-Do-4bh"/>
                                 </constraints>
