@@ -21,5 +21,21 @@ class CustomLabel: UILabel {
     func emailErrorSetColor() {
         self.textColor = UIColor.lightGrayColor
     }
+    
+    func emailScreenTitleLabel() {
+        self.textColor = UIColor.black
+    }
+    
+    func passwordShowHideLabel() {
+        self.textColor = UIColor.buttonDisableTextColor
+    }
+    
+    func passwordFormateLabels() {
+        self.textColor = UIColor.lightGray13
+    }
+
+
+    
+    
 
 }

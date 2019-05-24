@@ -50,6 +50,8 @@ struct Segues {
     static let selectEventType             = "SelectEventTypeSegue"
     static let createClub                  = "createClubSegue"
     static let enterEmail                  = "EnterEmailViewSegue"
+    static let enterPassword                 = "EnterPasswordSegue"
+
 
 }
 
@@ -69,6 +71,12 @@ public struct Text {
     static let forthOnboardTitle                = "Filter Your Social Media"
     static let forthOnboardDescription          = "To See Content You Want To See"
     static let searchPlaceholder  = "Name, zip, city, state"
+    static let emailTitleRegister  = "Enter school email to create account"
+    static let emailTitleLogin  = "Enter school email to login"
+    static let passwordTitleRegister  = "Protect account with password"
+    static let passwordTitleLogin  = "Enter school email to login"
+    static let show  = "show"
+    static let hide  = "hide"
 
     
 }
@@ -100,5 +108,16 @@ enum EventType {
     case publik
     case closed
     case inviteOnly
+}
+
+enum LoginType {
+    case Register
+    case Login    
+}
+
+enum passwordFormate {
+    case none
+    case correct
+    case wrong
 }
 

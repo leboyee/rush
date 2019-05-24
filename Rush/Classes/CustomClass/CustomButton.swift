@@ -13,7 +13,6 @@ class CustomButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupCustomUI()
-        setNextButton(isEnable: false)
     }
     
     override init(frame: CGRect) {
@@ -26,10 +25,7 @@ class CustomButton: UIButton {
 
     func setNextButton(isEnable: Bool) {
         self.layer.cornerRadius = 8.0
-        self.clipsToBounds = true
-        self.backgroundColor =  UIColor.brown24
-        self.setTitleColor(UIColor.white, for: .normal)
-        /*
+        self.clipsToBounds = true        
         if isEnable == true {
             self.backgroundColor =  UIColor.brown24
             self.setTitleColor(UIColor.white, for: .normal)
@@ -37,13 +33,17 @@ class CustomButton: UIButton {
         else {
             self.backgroundColor =  UIColor.buttonDisableBgColor
             self.setTitleColor(UIColor.buttonDisableTextColor, for: .normal)
-        }*/
+        }
     }
     
     func setEmailErrorButton() {
-        self.backgroundColor =  UIColor.clear
-
+        self.setImage(#imageLiteral(resourceName: "delete-gray"), for: .normal)
     }
+    
+    func setLoginWithNumberButton() {
+        self.setTitleColor(UIColor.lightGrayColor, for: .normal)
+    }
+
     
 
     

@@ -12,11 +12,21 @@ import IQKeyboardManagerSwift
 class EnterEmailViewConteroller: CustomViewController {
 
     @IBOutlet weak var emailTextField: CustomTextField!
-    @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButton: CustomButton!
     @IBOutlet weak var emailErroLabel: CustomLabel!
+    @IBOutlet weak var emailTitleLable: CustomLabel!
     @IBOutlet weak var errorButton: CustomButton!
+    @IBOutlet weak var loginWithPhoneNumberButton: CustomButton!
+    @IBOutlet weak var bottomLineLabel: CustomLabel!
+    @IBOutlet weak var loginLineLable: CustomLabel!
+    @IBOutlet weak var termLabel: CustomEmailAttributedLabel!
 
+    @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginNumberButtonConstraint: NSLayoutConstraint!
+
+
+    var loginType: LoginType = .Register
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +60,35 @@ class EnterEmailViewConteroller: CustomViewController {
     }
     
     func setupUI() {
+        // Navigation Bar Button
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         emailTextField.becomeFirstResponder()
+        
+        // Set Custom part of Class
         emailErroLabel.emailErrorSetColor()
         errorButton.setEmailErrorButton()
+        loginWithPhoneNumberButton.setLoginWithNumberButton()
+        emailTitleLable.emailScreenTitleLabel()
+        
+        
         nextButton.setNextButton(isEnable: true)
         emailErroLabel.isHidden = true
         errorButton.isHidden = true
-        //emailTextField.font = UIFont.DisplayBold(sz: 28)
+        
+        if loginType == .Register {
+            loginWithPhoneNumberButton.isHidden = true
+            loginLineLable.isHidden = true
+            emailTitleLable.text = Text.emailTitleRegister
+        }
+        else {
+            termLabel.isHidden = true
+            bottomLineLabel.isHidden = true
+            loginWithPhoneNumberButton.isHidden = false
+            loginLineLable.isHidden = true
+            nextButtonBottomConstraint.constant = 0
+            loginNumberButtonConstraint.constant = 16
+            emailTitleLable.text = Text.emailTitleLogin
+        }
     }
 
 
@@ -74,12 +105,39 @@ extension EnterEmailViewConteroller {
         if emailText.isValidEmailAddress {
             emailErroLabel.isHidden = true
             errorButton.isHidden = true
+            self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
         }
         else {
+            if loginType == .Login {
+                loginNumberButtonConstraint.constant = 76
+                loginLineLable.isHidden = false
+            }
             emailErroLabel.isHidden = false
             errorButton.isHidden = false
         }
     }
     
+    @IBAction func errorButtonAction() {
+        emailErroLabel.isHidden = true
+        errorButton.isHidden = true
+        if loginType == .Login {
+            loginNumberButtonConstraint.constant = 16
+            loginLineLable.isHidden = true
+        }
+    }
+    
+}
 
+// MARK: - Navigation
+extension EnterEmailViewConteroller {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.enterPassword {
+            if let vc = segue.destination as? EnterPasswordViewConteroller {
+                vc.loginType = loginType
+            }
+        }
+    }
+    
 }
