@@ -14,7 +14,12 @@ class CreateClubViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintOfTapToChangeLabel: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var hoverView: UIView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var interestList = [String]()
     var peopleList = [String]()
@@ -35,10 +40,21 @@ class CreateClubViewController: UIViewController {
         
         let total = screenWidth + 15
         
+        topConstraintOfTapToChangeLabel.constant = total - 106
         heightConstraintOfImageView.constant = total
         
         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
         
+        if userImageView.image != nil {
+            addPhotoButton.isHidden = true
+            saveButton.titleLabel?.textColor = UIColor.lightGrayColor
+            saveButton.setBackgroundImage(#imageLiteral(resourceName: "small-white-button-bg"), for: .normal)
+        } else {
+            hoverView.isHidden = true
+            addPhotoButton.isHidden = false
+            saveButton.titleLabel?.textColor = UIColor.bgBlack
+            saveButton.setBackgroundImage(#imageLiteral(resourceName: "button-black-bg"), for: .normal)
+        }
         setupTableView()
     }
 }
