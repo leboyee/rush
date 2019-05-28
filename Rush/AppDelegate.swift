@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         
+        setupStoryboard()
+        
         return true
     }
 
@@ -81,6 +83,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80), for: .default)
             
         }
+    }
+    
+    func setupStoryboard() {
+        
+        let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+        let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+        self.window?.rootViewController = tabbarVC
     }
 
 }

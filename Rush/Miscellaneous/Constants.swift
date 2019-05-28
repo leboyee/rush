@@ -77,8 +77,13 @@ public struct Text {
     static let passwordTitleLogin  = "Enter school email to login"
     static let show  = "show"
     static let hide  = "hide"
-
-    
+    static let addInterest              = "Add interests"
+    static let addAnotherInterest       = "Add another interest"
+    static let invitePeople             = "Invite people"
+    static let inviteOtherPeople        = "Invite other people"
+    static let nameClub                 = "Name club"
+    static let addDesc                  = "Add description"
+    static let createGroupChat          = "Create group chat"
 }
 
 public struct Message {

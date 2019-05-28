@@ -14,6 +14,9 @@ class CreateClubViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
     
+    var interestList = [String]()
+    var peopleList = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

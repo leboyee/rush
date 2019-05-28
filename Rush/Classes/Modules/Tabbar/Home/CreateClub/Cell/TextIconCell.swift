@@ -9,17 +9,25 @@
 import UIKit
 
 class TextIconCell: UITableViewCell {
+    
+    var isNotEdited = false
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var chatSwitch: UISwitch!
+    
+    var textDidChanged: ((_ text : String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
+    var textDidEndEditing: ((_ text : String) -> Void)?
+    var switchValueChanged: ((_ isOn: Bool) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         textField.delegate = self
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,6 +35,7 @@ class TextIconCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
 }
 
@@ -40,8 +49,16 @@ extension TextIconCell {
         clearButton.isHidden = isHideCleareButton
     }
     
-    func setup(title: String) {
+    func setup(placeholder: String,title: String) {
         textField.text = title
+        textField.placeholder = placeholder
+    }
+    
+    func setup(placeholder: String) {
+        
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.Regular(sz: 17.0)]
+        let attstr = NSMutableAttributedString(string: placeholder, attributes: attributes)
+        textField.attributedPlaceholder = attstr
     }
     
     func setup(iconImage: String) {
@@ -54,16 +71,43 @@ extension TextIconCell {
     }
     
     func setup(isUserInterfaceEnable: Bool) {
-        textField.isUserInteractionEnabled = isUserInteractionEnabled
+        isNotEdited = isUserInteractionEnabled
+    }
+    
+    func setup(keyboardReturnKeyType: UIReturnKeyType) {
+        textField.returnKeyType = keyboardReturnKeyType
+    }
+    
+    func setup(isShowSwitch: Bool) {
+        chatSwitch.isHidden = !isShowSwitch
+    }
+    
+    func resetAllField() {
+        setup(isHideCleareButton: true)
+        setup(iconImage: "")
+        setup(isUserInterfaceEnable: false)
+        setup(isHideCleareButton: true)
+        setup(isShowSwitch: false)
     }
     
     @IBAction func clearButtonAction() {
         clearButtonClickEvent?()
     }
     
+    @IBAction func switchValueChanged(_ sender: Any) {
+        
+        if let swich = sender as? UISwitch {
+            switchValueChanged?(swich.isOn)
+        }
+    }
+    
 }
 
 extension TextIconCell: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return isNotEdited ? false : true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let text = textField.text ?? ""
@@ -73,10 +117,17 @@ extension TextIconCell: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        if let text = textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines), !text.isEmpty {
+            textDidEndEditing?(text)
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        textDidChanged?(textField.text ?? "")
     }
 }
