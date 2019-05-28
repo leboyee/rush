@@ -9,8 +9,6 @@
 import UIKit
 
 class TextIconCell: UITableViewCell {
-    
-    var isNotEdited = false
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
@@ -71,7 +69,7 @@ extension TextIconCell {
     }
     
     func setup(isUserInterfaceEnable: Bool) {
-        isNotEdited = isUserInteractionEnabled
+        textField.isUserInteractionEnabled = isUserInteractionEnabled
     }
     
     func setup(keyboardReturnKeyType: UIReturnKeyType) {
@@ -105,15 +103,8 @@ extension TextIconCell {
 
 extension TextIconCell: UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return isNotEdited ? false : true
-    }
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let text = textField.text ?? ""
-        if text == "Name club" {
-            textField.text = ""
-        }
+    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

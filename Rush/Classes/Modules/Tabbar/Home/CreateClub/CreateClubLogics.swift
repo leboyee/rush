@@ -23,9 +23,9 @@ extension CreateClubViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        if section == 1 {
+        if section == 2 {
             return interestList.count + 1
-        } else if section == 2 {
+        } else if section == 3 {
             return peopleList.count + 1
         }
         return 1
@@ -39,6 +39,8 @@ extension CreateClubViewController {
             cell.setup(placeholder: Text.nameClub, title: "")
             cell.setup(isUserInterfaceEnable: true)
         } else if indexPath.section == 1 {
+            cell.setup(placeholder: Text.addDesc, title: "")
+        } else if indexPath.section == 2 {
             if indexPath.row == interestList.count {
                 cell.setup(placeholder: "", title: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
@@ -49,7 +51,7 @@ extension CreateClubViewController {
                 cell.setup(placeholder: "", title: interestList[indexPath.row])
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 3 {
             
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", title: "")
@@ -68,12 +70,12 @@ extension CreateClubViewController {
         
         cell.textDidEndEditing = { [weak self] (text) in
             guard let self_ = self else { return }
-            if indexPath.section == 1 {
+            if indexPath.section == 2 {
                 if !self_.interestList.contains(text) {
                     self_.interestList.append(text)
                     self_.tableView.reloadData()
                 }
-            } else if indexPath.section == 2 {
+            } else if indexPath.section == 3 {
                 if !self_.peopleList.contains(text) {
                     self_.peopleList.append(text)
                     self_.tableView.reloadData()
@@ -84,12 +86,12 @@ extension CreateClubViewController {
         cell.clearButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }
             
-            if indexPath.section == 1 {
+            if indexPath.section == 2 {
                 if let index = self_.interestList.index(of: (self_.interestList[indexPath.row])) {
                     self_.interestList.remove(at: index)
                     self_.tableView.reloadData()
                 }
-            } else if indexPath.section == 2 {
+            } else if indexPath.section == 3 {
                 if let index = self_.peopleList.index(of: (self_.peopleList[indexPath.row])) {
                     self_.peopleList.remove(at: index)
                     self_.tableView.reloadData()
@@ -101,5 +103,9 @@ extension CreateClubViewController {
             guard let _ = self else { return }
             
         }
+    }
+    
+    func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
+        
     }
 }

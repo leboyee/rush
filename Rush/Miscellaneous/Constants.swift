@@ -31,6 +31,7 @@ struct Cell {
     static let eventType            = "EventTypeCell"
     static let eventByDate          = "EventByDateCell"
     static let textIcon             = "TextIconCell"
+    static let textView             = "TextViewCell"
 }
 
 struct ReusableView {

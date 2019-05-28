@@ -88,6 +88,8 @@
 		79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF74232292C68D0012DCB7 /* CreateClubLogics.swift */; };
 		79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF742B2292D2C90012DCB7 /* TextIconCell.swift */; };
 		79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DF742C2292D2C90012DCB7 /* TextIconCell.xib */; };
+		79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F27163229D3A99008C4926 /* TextViewCell.swift */; };
+		79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F27164229D3A99008C4926 /* TextViewCell.xib */; };
 		9930BB0DAE1051FDD286D46D /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3627F78ECD3E2425AB6C34C /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -180,6 +182,8 @@
 		79DF74232292C68D0012DCB7 /* CreateClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateClubLogics.swift; sourceTree = "<group>"; };
 		79DF742B2292D2C90012DCB7 /* TextIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIconCell.swift; sourceTree = "<group>"; };
 		79DF742C2292D2C90012DCB7 /* TextIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextIconCell.xib; sourceTree = "<group>"; };
+		79F27163229D3A99008C4926 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
+		79F27164229D3A99008C4926 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -469,6 +473,8 @@
 		79DF74262292D2500012DCB7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				79F27163229D3A99008C4926 /* TextViewCell.swift */,
+				79F27164229D3A99008C4926 /* TextViewCell.xib */,
 				79DF742B2292D2C90012DCB7 /* TextIconCell.swift */,
 				79DF742C2292D2C90012DCB7 /* TextIconCell.xib */,
 			);
@@ -669,6 +675,7 @@
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
+				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				0918E787228444B90098AF35 /* Profile.storyboard in Resources */,
 				0918E781228444930098AF35 /* Explore.storyboard in Resources */,
 				C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */,
@@ -748,6 +755,7 @@
 				1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
+				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
 				1A3F55E42285C35800D42154 /* OnboardingViewController.swift in Sources */,
 				1AA97B8F228979D100C4550C /* ImageViewExtension.swift in Sources */,
