@@ -89,7 +89,8 @@ public struct Text {
 
 public struct Message {
     static let tryAgainErrorMessage            = "Try again, please."
-
+    static let phPhotoLibraryAuthorizedMesssage  = "Photo library access is required to add photo."
+    static let cameraAuthorizedMesssage = "Camera access is required to capture photo."
 }
 
 public struct Icons {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 extension CreateClubViewController {
     
@@ -108,4 +109,86 @@ extension CreateClubViewController {
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
         
     }
+}
+
+extension CreateClubViewController {
+    // MARK: - Capture Image
+    func openCameraOrLibrary( type : UIImagePickerController.SourceType) {
+        DispatchQueue.main.async {
+            
+            if type == .photoLibrary {
+                let status = PHPhotoLibrary.authorizationStatus()
+                guard status == .authorized else {
+                    self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
+                    return
+                }
+            } else {
+                let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+                guard status == .authorized else {
+                    self.showPermissionAlert(text: Message.cameraAuthorizedMesssage)
+                    return
+                }
+            }
+            
+            if UIImagePickerController.isSourceTypeAvailable(type) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = type;
+                imagePicker.allowsEditing = false;
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func showPermissionAlert(text: String) {
+        Utils.alert(message: text, title : "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
+            if index == 1 {
+                //Open settings
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        })
+    }
+}
+
+extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        autoreleasepool {
+            var captureImage = info[UIImagePickerController.InfoKey.originalImage]
+                as? UIImage
+            if #available(iOS 11, *), captureImage == nil {
+                if PHPhotoLibrary.authorizationStatus() == .authorized {
+                    let asset                    = info[UIImagePickerController.InfoKey.phAsset] as! PHAsset
+                    let manager                  = PHImageManager.default()
+                    let requestOptions           = PHImageRequestOptions()
+                    requestOptions.isSynchronous = true
+                    manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: requestOptions, resultHandler: { (image, info) in
+                        if image != nil
+                        {
+                            captureImage = image
+                        }
+                    })
+                    
+                } else {
+                    //Show Alert for error
+                    showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.userImageView.image = captureImage
+                picker.dismiss(animated: true, completion: nil)
+            }
+            
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        DispatchQueue.main.async {
+            picker.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }

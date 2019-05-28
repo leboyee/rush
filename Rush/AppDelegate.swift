@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         
-//        setupStoryboard()
+        setupStoryboard()
         
         return true
     }

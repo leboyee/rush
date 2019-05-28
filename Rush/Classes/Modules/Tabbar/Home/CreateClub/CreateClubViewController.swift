@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Photos
 
 class CreateClubViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
+    @IBOutlet weak var userImageView: UIImageView!
     
     var interestList = [String]()
     var peopleList = [String]()
@@ -45,6 +47,16 @@ class CreateClubViewController: UIViewController {
 extension CreateClubViewController {
     @IBAction func cancelButtonAction() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addImageButtonAction() {
+        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel : "Cancel", type: .actionSheet) {
+            [weak self] (index) in
+            guard let self_ = self else { return }
+            if index != 2 {
+                self_.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
+            }
+        }
     }
 }
 
