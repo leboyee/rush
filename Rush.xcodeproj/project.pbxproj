@@ -79,6 +79,8 @@
 		794183B4228960C7009AB12C /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */; };
 		794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */; };
 		794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */; };
+		7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */; };
+		7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */; };
 		7983D22C228982B500DE054E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22B228982B500DE054E /* Image.swift */; };
 		7983D22E228982DC00DE054E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22D228982DC00DE054E /* Keys.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
@@ -180,6 +182,8 @@
 		794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserPostCell.swift; sourceTree = "<group>"; };
+		7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateUserPostCell.xib; sourceTree = "<group>"; };
 		7983D22B228982B500DE054E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7983D22D228982DC00DE054E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -409,9 +413,9 @@
 		7903D097228E8CE5004E33B9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				7903D09A228E8CE5004E33B9 /* EventCell */,
 				7903D098228E8CE5004E33B9 /* EventByDateCell.swift */,
 				7903D099228E8CE5004E33B9 /* EventByDateCell.xib */,
-				7903D09A228E8CE5004E33B9 /* EventCell */,
 				7903D09F228E8CE5004E33B9 /* EventCell.swift */,
 				7903D0A0228E8CE5004E33B9 /* EventCell.xib */,
 				7903D0A1228E8CE5004E33B9 /* TutorialPopUpCell.swift */,
@@ -461,6 +465,8 @@
 		79356A46229D761500DA54AF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */,
+				7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */,
 				79173F45229EB39A0003FD9B /* ClubManageCell.swift */,
 				79173F46229EB39A0003FD9B /* ClubManageCell.xib */,
 				79173F39229E6FA10003FD9B /* ClubNameCell.swift */,
@@ -714,6 +720,7 @@
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
+				7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */,
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				0918E787228444B90098AF35 /* Profile.storyboard in Resources */,
 				0918E781228444930098AF35 /* Explore.storyboard in Resources */,
@@ -827,6 +834,7 @@
 				1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */,
 				1AAE42C12296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift in Sources */,
 				1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */,
+				7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */,
 				C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */,
 				7983D22C228982B500DE054E /* Image.swift in Sources */,
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,

@@ -47,6 +47,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKc-IR-v8c">
                         <rect key="frame" x="284" y="29" width="71" height="50"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="71" id="5ja-tc-z0Q"/>
                             <constraint firstAttribute="height" constant="50" id="XXf-nb-3n0"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
@@ -62,18 +63,18 @@
                 <constraints>
                     <constraint firstItem="RbM-GI-Gbv" firstAttribute="bottom" secondItem="1gr-t5-5Yw" secondAttribute="bottom" constant="-8" id="0U9-P1-FYx"/>
                     <constraint firstAttribute="bottom" secondItem="qaY-wX-T0p" secondAttribute="bottom" id="5JF-s2-mtP"/>
+                    <constraint firstItem="5mC-cT-73c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="8XH-2y-qZa"/>
                     <constraint firstItem="5mC-cT-73c" firstAttribute="centerY" secondItem="1gr-t5-5Yw" secondAttribute="centerY" constant="4" id="Bkv-cz-gLN"/>
                     <constraint firstItem="qaY-wX-T0p" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BsQ-tV-95W"/>
                     <constraint firstItem="RbM-GI-Gbv" firstAttribute="trailing" secondItem="1gr-t5-5Yw" secondAttribute="trailing" constant="-71" id="DXe-6X-4gX"/>
                     <constraint firstAttribute="trailing" secondItem="qaY-wX-T0p" secondAttribute="trailing" id="NAX-GC-3bX"/>
-                    <constraint firstItem="rKc-IR-v8c" firstAttribute="trailing" secondItem="1gr-t5-5Yw" secondAttribute="trailing" id="O82-F3-J7h"/>
                     <constraint firstItem="qaY-wX-T0p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OTa-xC-o5y"/>
-                    <constraint firstItem="5mC-cT-73c" firstAttribute="leading" secondItem="1gr-t5-5Yw" secondAttribute="leading" constant="16" id="Or2-w8-ytJ"/>
                     <constraint firstItem="RbM-GI-Gbv" firstAttribute="top" secondItem="1gr-t5-5Yw" secondAttribute="top" constant="16" id="TSi-an-vBj"/>
                     <constraint firstAttribute="trailing" secondItem="1gr-t5-5Yw" secondAttribute="trailing" constant="16" id="Yr9-qV-1Iy"/>
                     <constraint firstAttribute="bottom" secondItem="1gr-t5-5Yw" secondAttribute="bottom" id="dB1-Gg-W4D"/>
                     <constraint firstItem="rKc-IR-v8c" firstAttribute="leading" secondItem="RbM-GI-Gbv" secondAttribute="trailing" id="kTP-nz-XSg"/>
                     <constraint firstItem="RbM-GI-Gbv" firstAttribute="leading" secondItem="5mC-cT-73c" secondAttribute="trailing" constant="7" id="nB2-hh-ZIw"/>
+                    <constraint firstAttribute="trailing" secondItem="rKc-IR-v8c" secondAttribute="trailing" constant="16" id="qXt-Jp-x7Z"/>
                     <constraint firstItem="rKc-IR-v8c" firstAttribute="centerY" secondItem="1gr-t5-5Yw" secondAttribute="centerY" constant="4" id="rQZ-YB-2LQ"/>
                     <constraint firstItem="1gr-t5-5Yw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ucx-St-FZu"/>
                     <constraint firstItem="1gr-t5-5Yw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ykx-Wu-am2"/>
@@ -86,7 +87,7 @@
                 <outlet property="okButton" destination="rKc-IR-v8c" id="6iK-uV-FcV"/>
                 <outlet property="titleLabel" destination="5mC-cT-73c" id="CKo-yC-gQ0"/>
             </connections>
-            <point key="canvasLocation" x="168.84057971014494" y="100.78125"/>
+            <point key="canvasLocation" x="146" y="105"/>
         </tableViewCell>
     </objects>
     <resources>

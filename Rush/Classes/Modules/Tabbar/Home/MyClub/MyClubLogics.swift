@@ -12,7 +12,7 @@ import Photos
 extension MyClubViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return (section == 0 || section == 1) ? CGFloat(CFloat.leastNormalMagnitude) : 60
+        return (section == 0 || section == 1) ? CGFloat(CFloat.leastNormalMagnitude) : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
