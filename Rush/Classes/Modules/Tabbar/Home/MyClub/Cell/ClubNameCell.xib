@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="ClubNameCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1x-y9-pnt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We love VR games" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-xn-wBr">
+                                <rect key="frame" x="24" y="80" width="272" height="21"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="VR games" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS8-tv-SXT">
+                                <rect key="frame" x="24" y="24" width="272" height="41"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="TTD-xn-wBr" secondAttribute="bottom" constant="24" id="Gtv-q5-5IL"/>
+                            <constraint firstItem="TTD-xn-wBr" firstAttribute="leading" secondItem="E1x-y9-pnt" secondAttribute="leading" constant="24" id="OPD-ks-Vsr"/>
+                            <constraint firstAttribute="trailing" secondItem="TTD-xn-wBr" secondAttribute="trailing" constant="24" id="ZV2-bq-db5"/>
+                            <constraint firstAttribute="trailing" secondItem="yS8-tv-SXT" secondAttribute="trailing" constant="24" id="gUR-KL-dee"/>
+                            <constraint firstItem="yS8-tv-SXT" firstAttribute="top" secondItem="E1x-y9-pnt" secondAttribute="top" constant="24" id="h7a-ZC-wTU"/>
+                            <constraint firstItem="yS8-tv-SXT" firstAttribute="leading" secondItem="E1x-y9-pnt" secondAttribute="leading" constant="24" id="iGI-wA-eIc"/>
+                            <constraint firstItem="TTD-xn-wBr" firstAttribute="top" secondItem="yS8-tv-SXT" secondAttribute="bottom" constant="8" id="njT-MF-2wE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="E1x-y9-pnt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YJi-cK-4PW"/>
+                    <constraint firstAttribute="bottom" secondItem="E1x-y9-pnt" secondAttribute="bottom" id="j3Y-Ou-P8B"/>
+                    <constraint firstItem="E1x-y9-pnt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="q71-pR-3oD"/>
+                    <constraint firstAttribute="trailing" secondItem="E1x-y9-pnt" secondAttribute="trailing" id="xF4-Y5-M94"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="60.869565217391312" y="129.91071428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

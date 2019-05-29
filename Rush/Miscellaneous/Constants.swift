@@ -51,8 +51,8 @@ struct Segues {
     static let selectEventType             = "SelectEventTypeSegue"
     static let createClub                  = "createClubSegue"
     static let enterEmail                  = "EnterEmailViewSegue"
-    static let enterPassword                 = "EnterPasswordSegue"
-
+    static let enterPassword               = "EnterPasswordSegue"
+    static let myClub                      = "MyClubSegue"
 
 }
 

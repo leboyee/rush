@@ -21,6 +21,18 @@ class CreateClubViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    var cancelBtn : UIBarButtonItem {
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
+    }
+    
+    var saveBtnActive : UIBarButtonItem {
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
+    }
+    
+    var saveBtnDisActive : UIBarButtonItem {
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
+    }
+    
     var interestList = [String]()
     var peopleList = [String]()
     
@@ -29,6 +41,13 @@ class CreateClubViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setup()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.isTranslucent = false
+        navigationBarAppearance.barTintColor = UIColor.black
     }
     
     //MARk: - Other function
@@ -45,15 +64,20 @@ class CreateClubViewController: UIViewController {
         
         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
         
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.isTranslucent = true
+        navigationBarAppearance.barTintColor = UIColor.clear
+        navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
+        
+        navigationItem.leftBarButtonItem = cancelBtn
+        
         if userImageView.image != nil {
             addPhotoButton.isHidden = true
-            saveButton.titleLabel?.textColor = UIColor.lightGrayColor
-            saveButton.setBackgroundImage(#imageLiteral(resourceName: "small-white-button-bg"), for: .normal)
+            navigationItem.rightBarButtonItem = saveBtnActive
         } else {
             hoverView.isHidden = true
             addPhotoButton.isHidden = false
-            saveButton.titleLabel?.textColor = UIColor.bgBlack
-            saveButton.setBackgroundImage(#imageLiteral(resourceName: "button-black-bg"), for: .normal)
+           navigationItem.rightBarButtonItem = saveBtnDisActive
         }
         setupTableView()
     }
@@ -63,6 +87,10 @@ class CreateClubViewController: UIViewController {
 extension CreateClubViewController {
     @IBAction func cancelButtonAction() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func saveButtonAction() {
+        performSegue(withIdentifier: Segues.myClub, sender: nil)
     }
     
     @IBAction func addImageButtonAction() {
