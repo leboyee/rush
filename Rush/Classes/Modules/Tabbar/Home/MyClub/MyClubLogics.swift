@@ -12,7 +12,7 @@ import Photos
 extension MyClubViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat.leastNormalMagnitude : 50
+        return (section == 0 || section == 1) ? CGFloat(CFloat.leastNormalMagnitude) : 60
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -32,82 +32,18 @@ extension MyClubViewController {
         return 1
     }
     
-    func fillTextIconCell(_ cell: TextIconCell, _ indexPath: IndexPath) {
+    func fillClubNameCell(_ cell: ClubNameCell) {
         
-        cell.resetAllField()
-        if indexPath.section == 0 && indexPath.row == 0 {
-            cell.setup(iconImage: "club-gray-1")
-            cell.setup(placeholder: Text.nameClub, title: "")
-            cell.setup(isUserInterfaceEnable: true)
-        } else if indexPath.section == 1 {
-            cell.setup(placeholder: Text.addDesc, title: "")
-        } else if indexPath.section == 2 {
-            if indexPath.row == interestList.count {
-                cell.setup(placeholder: "", title: "")
-                cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
-                cell.setup(keyboardReturnKeyType: .done)
-                cell.setup(isUserInterfaceEnable: false)
-            } else {
-                cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", title: interestList[indexPath.row])
-            }
-            cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
-        } else if indexPath.section == 3 {
-            
-            if indexPath.row == peopleList.count {
-                cell.setup(placeholder: "", title: "")
-                cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
-                cell.setup(keyboardReturnKeyType: .done)
-                cell.setup(isUserInterfaceEnable: false)
-            } else {
-                cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", title: peopleList[indexPath.row])
-            }
-            cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
-        } else {
-            cell.setup(placeholder: "", title: Text.createGroupChat)
-            cell.setup(isShowSwitch: true)
-        }
-        
-        cell.textDidEndEditing = { [weak self] (text) in
-            guard let self_ = self else { return }
-            if indexPath.section == 2 {
-                if !self_.interestList.contains(text) {
-                    self_.interestList.append(text)
-                    self_.tableView.reloadData()
-                }
-            } else if indexPath.section == 3 {
-                if !self_.peopleList.contains(text) {
-                    self_.peopleList.append(text)
-                    self_.tableView.reloadData()
-                }
-            }
-        }
-        
-        cell.clearButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            
-            if indexPath.section == 2 {
-                if let index = self_.interestList.index(of: (self_.interestList[indexPath.row])) {
-                    self_.interestList.remove(at: index)
-                    self_.tableView.reloadData()
-                }
-            } else if indexPath.section == 3 {
-                if let index = self_.peopleList.index(of: (self_.peopleList[indexPath.row])) {
-                    self_.peopleList.remove(at: index)
-                    self_.tableView.reloadData()
-                }
-            }
-        }
-        
-        cell.switchValueChanged = { [weak self] (isOn) in
-            guard let _ = self else { return }
-            
-        }
     }
     
-    func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
-        
+    func fillTextHeader(_ header: TextHeader, _ section: Int) {
+        if section == 2 {
+            header.setup(title: "Joined")
+        } else if section == 3 {
+            header.setup(title: "Interest tags")
+        } else if section == 4 {
+            header.setup(title: "Posts")
+        }
     }
 }
 

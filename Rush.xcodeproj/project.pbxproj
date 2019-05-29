@@ -64,6 +64,8 @@
 		7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D0A8228E8CE5004E33B9 /* HomeViewController.swift */; };
 		79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F39229E6FA10003FD9B /* ClubNameCell.swift */; };
 		79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79173F3A229E6FA10003FD9B /* ClubNameCell.xib */; };
+		79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F45229EB39A0003FD9B /* ClubManageCell.swift */; };
+		79173F48229EB39A0003FD9B /* ClubManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79173F46229EB39A0003FD9B /* ClubManageCell.xib */; };
 		79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A47229D761500DA54AF /* MyClubLogics.swift */; };
 		79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A48229D761500DA54AF /* MyClubMediates.swift */; };
 		79356A4C229D761600DA54AF /* MyClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A49229D761500DA54AF /* MyClubViewController.swift */; };
@@ -163,6 +165,8 @@
 		7903D0A8228E8CE5004E33B9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		79173F39229E6FA10003FD9B /* ClubNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubNameCell.swift; sourceTree = "<group>"; };
 		79173F3A229E6FA10003FD9B /* ClubNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubNameCell.xib; sourceTree = "<group>"; };
+		79173F45229EB39A0003FD9B /* ClubManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubManageCell.swift; sourceTree = "<group>"; };
+		79173F46229EB39A0003FD9B /* ClubManageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubManageCell.xib; sourceTree = "<group>"; };
 		79356A47229D761500DA54AF /* MyClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubLogics.swift; sourceTree = "<group>"; };
 		79356A48229D761500DA54AF /* MyClubMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubMediates.swift; sourceTree = "<group>"; };
 		79356A49229D761500DA54AF /* MyClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +461,8 @@
 		79356A46229D761500DA54AF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				79173F45229EB39A0003FD9B /* ClubManageCell.swift */,
+				79173F46229EB39A0003FD9B /* ClubManageCell.xib */,
 				79173F39229E6FA10003FD9B /* ClubNameCell.swift */,
 				79173F3A229E6FA10003FD9B /* ClubNameCell.xib */,
 			);
@@ -694,6 +700,7 @@
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
+				79173F48229EB39A0003FD9B /* ClubManageCell.xib in Resources */,
 				794183B4228960C7009AB12C /* SF-Pro-Text-Medium.otf in Resources */,
 				794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
@@ -787,6 +794,7 @@
 				1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */,
 				1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
+				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
