@@ -52,6 +52,7 @@ struct Segues {
     static let createClub                  = "createClubSegue"
     static let enterEmail                  = "EnterEmailViewSegue"
     static let enterPassword                 = "EnterPasswordSegue"
+    static let enterPhoneNo                 = "EnterPhoneSegue"
 
 
 }
@@ -76,8 +77,15 @@ public struct Text {
     static let emailTitleLogin  = "Enter school email to login"
     static let passwordTitleRegister  = "Protect account with password"
     static let passwordTitleLogin  = "Enter school email to login"
+    static let phoneNoTitleRegister  = "Add phone number to higher security"
     static let show  = "show"
     static let hide  = "hide"
+    static let next  = "Next"
+    static let login = "Login"
+    static let receiveCodeButtonTitle = "Recieve confirmation code"
+    
+    
+
     static let addInterest              = "Add interests"
     static let addAnotherInterest       = "Add another interest"
     static let invitePeople             = "Invite people"

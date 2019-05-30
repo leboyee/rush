@@ -36,6 +36,8 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
         return true
     }
     
@@ -48,11 +50,27 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         if range.length > 0  && range.location >= ((textField.text?.count ?? 0) - 4) {
             return false
         }
+        let currentString: NSString = textField.text! as NSString
+        let newString =
+            currentString.replacingCharacters(in: range, with: string) as String
+        var newEmail = newString
+        let edu = ".edu.edu"
+        if let range = newString.range(of: edu) {
+            newEmail.removeSubrange(range)
+            textField.text = "\(newEmail).edu"
+            if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4){
+                textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+            }
+            return false
+        }
+
         return true
         
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
         if textField.text == ".edu" {
             textField.text = ""
             eduLabel.text = ".edu"
@@ -66,7 +84,6 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
                 textField.text = "\(textField.text ?? "").edu"
                 if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4){
                     textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
-                    
                 }
                 self.view.layoutIfNeeded()
             }

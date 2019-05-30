@@ -22,4 +22,8 @@ class CustomBackgoundImageView: UIImageView {
     func setupCustomUI() {
         self.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
     }
+    
+    func setBgForLoginSignup() {
+        self.image = #imageLiteral(resourceName: "bg-white")
+    }
 }

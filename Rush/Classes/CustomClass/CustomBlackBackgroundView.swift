@@ -22,4 +22,5 @@ class CustomBlackBackgroundView: UIView {
     func setupCustomUI() {
         self.backgroundColor = isDarkModeOn ? UIColor.bgBlack : UIColor.white
     }
+    
 }
