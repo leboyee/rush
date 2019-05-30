@@ -36,6 +36,10 @@ class HomeViewController: CustomViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         
     }
+    
+    func openCreateClubViewController() {
+        performSegue(withIdentifier: Segues.createClub, sender: nil)
+    }
 }
 
 // MARK: - Actions
