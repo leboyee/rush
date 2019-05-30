@@ -16,11 +16,14 @@ class EnterPhoneNoViewController: CustomViewController {
     @IBOutlet weak var phoneNoTitleLabel: CustomLabel!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var flagImage: UIImageView!
+    @IBOutlet weak var placeHolderTextField: CustomTextField!
 
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var countryButton: UIButton!
 
     var countryCode: String = "+1"
+    var frontTextFiled: String = "+1"
+
     var loginType: LoginType = .Register
     
     override func viewDidLoad() {
@@ -45,7 +48,6 @@ class EnterPhoneNoViewController: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
-
     
     func setup() {
         setupUI()
@@ -56,38 +58,21 @@ class EnterPhoneNoViewController: CustomViewController {
         // Navigation Bar Button
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         phoneNoTextField.becomeFirstResponder()
-        //phoneNoTextField.text = countryCode
+        setContryCodeWith()
+        phoneNoTextField.text = self.frontTextFiled
         // Set Custom part of Class
         nextButton.setNextButton(isEnable: false)
         self.bgImageView.setBgForLoginSignup()
         
         if loginType == .Register {
-            phoneNoTitleLabel.text = Text.passwordTitleRegister
+            phoneNoTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }
         else {
-            phoneNoTitleLabel.text = Text.passwordTitleLogin
-            nextButton.setTitle(Text.login, for: .normal)
+            phoneNoTitleLabel.text = Text.phoneNoTitleLogin
+            nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }
-        
-        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.DisplayBold(sz: 28)]
-        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.DisplayBold(sz: 28)]
-        
-        let partOne = NSMutableAttributedString(string: "+1-(", attributes: yourAttributes)
-        let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
-        let partThree = NSMutableAttributedString(string: ")", attributes: yourAttributes)
-        let partFour = NSMutableAttributedString(string: "-754-3010", attributes: yourOtherAttributes)
-
-        partOne.append(partTwo)
-        partOne.append(partThree)
-        partOne.append(partFour)
-        
-        if let newPosition = phoneNoTextField.position(from: phoneNoTextField.beginningOfDocument, in: UITextLayoutDirection.right, offset: -4){
-                phoneNoTextField.selectedTextRange = phoneNoTextField.textRange(from: newPosition, to: newPosition)
-                
-        }
-
-        phoneNoTextField.attributedPlaceholder = partOne
+        setPlaceHolder()
         
     }
 

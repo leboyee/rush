@@ -56,7 +56,6 @@ struct Segues {
     static let enterEmail                  = "EnterEmailViewSegue"
     static let enterPassword                 = "EnterPasswordSegue"
     static let enterPhoneNo                 = "EnterPhoneSegue"
-    static let enterPassword               = "EnterPasswordSegue"
     static let myClub                      = "MyClubSegue"
 
 
@@ -83,6 +82,8 @@ public struct Text {
     static let passwordTitleRegister  = "Protect account with password"
     static let passwordTitleLogin  = "Enter school email to login"
     static let phoneNoTitleRegister  = "Add phone number to higher security"
+    static let phoneNoTitleLogin  = "Enter your phone number"
+
     static let show  = "show"
     static let hide  = "hide"
     static let next  = "Next"
