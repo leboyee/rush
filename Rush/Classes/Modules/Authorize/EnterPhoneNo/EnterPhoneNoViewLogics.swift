@@ -10,6 +10,27 @@ import UIKit
 
 extension EnterPhoneNoViewController {
     
+    func setPlaceHolder() {
+
+        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)]
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)]
+        
+        let partOne = NSMutableAttributedString(string: "+1-(", attributes: yourAttributes)
+        let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
+        let partThree = NSMutableAttributedString(string: ")", attributes: yourAttributes)
+        let partFour = NSMutableAttributedString(string: "-754-3010", attributes: yourOtherAttributes)
+        
+        partOne.append(partTwo)
+        partOne.append(partThree)
+        partOne.append(partFour)
+        placeHolderTextField.attributedPlaceholder = partOne
+        
+        phoneNoTextField.font = UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)
+    }
+    
+    func setContryCodeWith() {
+        self.frontTextFiled = "\(self.countryCode)-("
+    }
     
 }
 
@@ -20,9 +41,10 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
     }
     
     func selectedCountryValue(countryName: String, countryCode: String) {
-        self.phoneNoTextField.text = self.phoneNoTextField.text?.replacingOccurrences(of:"\(self.countryCode)", with: "")
+        self.phoneNoTextField.text = self.phoneNoTextField.text?.replacingOccurrences(of:"\(self.frontTextFiled)", with: "")
         self.countryCode =  countryCode
         self.flagImage.image = UIImage(named: "\(countryName.replacingOccurrences(of: " ", with: ""))")
-        self.phoneNoTextField.text = "\(countryCode)\(phoneNoTextField.text ?? "")"
+        setContryCodeWith()
+        self.phoneNoTextField.text = "\(self.frontTextFiled)\(phoneNoTextField.text ?? "")"
     }
 }

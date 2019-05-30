@@ -105,7 +105,6 @@ extension EnterEmailViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
-        return
         var emailText = "\(emailTextField.text ?? "").edu"
         emailText = emailText.trimmingCharacters(in: .whitespacesAndNewlines)
         if emailText.isValidEmailAddress {

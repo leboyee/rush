@@ -420,9 +420,9 @@
 		1A62D22922954142001E5790 /* EnterEmail */ = {
 			isa = PBXGroup;
 			children = (
+				1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */,
 				1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */,
 				1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */,
-				1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */,
 			);
 			path = EnterEmail;
 			sourceTree = "<group>";
