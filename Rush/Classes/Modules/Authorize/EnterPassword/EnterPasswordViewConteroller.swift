@@ -21,6 +21,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var capitalLetterLabel: CustomLabel!
     @IBOutlet weak var numberLabel: CustomLabel!
     @IBOutlet weak var symbolLabel: CustomLabel!
+    @IBOutlet weak var bgImageView: CustomBackgoundImageView!
 
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
 
@@ -75,13 +76,15 @@ class EnterPasswordViewConteroller: CustomViewController {
         capitalLetterLabel.passwordFormateLabels()
         numberLabel.passwordFormateLabels()
         symbolLabel.passwordFormateLabels()
-
+        self.bgImageView.setBgForLoginSignup()
         
         if loginType == .Register {
-            
+            capitalLetterLabel.text = Text.passwordTitleRegister
+            nextButton.setTitle(Text.next, for: .normal)
         }
         else {
-            
+            capitalLetterLabel.text = Text.passwordTitleLogin
+            nextButton.setTitle(Text.login, for: .normal)
         }
     }
 
@@ -95,7 +98,7 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
-    
+        self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
     }
     
     @IBAction func passwordShowHideButton() {

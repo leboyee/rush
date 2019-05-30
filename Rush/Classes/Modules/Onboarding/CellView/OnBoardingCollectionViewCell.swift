@@ -51,27 +51,26 @@ extension OnBoardingCollectionViewCell {
         case 0:
             titleLabel.text = Text.firstOnboardTitle
             detailsLable.text = Text.firstOnboardDescription
-            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#1") : #imageLiteral(resourceName: "iPhone8_illustration-#1")
-
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 2208 ? #imageLiteral(resourceName: "illustration-#1") : #imageLiteral(resourceName: "iPhone8_illustration-#1")
             break
         case 1:
             titleLabel.text = Text.secondOnboardTitle
             detailsLable.text = Text.secondOnboardDescription
-            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#2") : #imageLiteral(resourceName: "iPhone8_illustration-#2")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 2208 ? #imageLiteral(resourceName: "illustration-#2") : #imageLiteral(resourceName: "iPhone8_illustration-#2")
 
 
             break
         case 2:
             titleLabel.text = Text.thirdOnboardTitle
             detailsLable.text = Text.thirdOnboardDescription
-            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#3") : #imageLiteral(resourceName: "iPhone8_illustration-#3")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 2208 ? #imageLiteral(resourceName: "illustration-#3") : #imageLiteral(resourceName: "iPhone8_illustration-#3")
 
 
             break
         case 3:
             titleLabel.text = Text.forthOnboardTitle
             detailsLable.text = Text.forthOnboardDescription
-            onboardImageView.image = UIScreen.main.nativeBounds.height > 1334 ? #imageLiteral(resourceName: "illustration-#4") : #imageLiteral(resourceName: "iPhone8_illustration-#4")
+            onboardImageView.image = UIScreen.main.nativeBounds.height > 2208 ? #imageLiteral(resourceName: "illustration-#4") : #imageLiteral(resourceName: "iPhone8_illustration-#4")
 
             break
         default:

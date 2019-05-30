@@ -39,9 +39,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-FW-Joo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-FW-Joo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AI4-kR-RtD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="821"/>
@@ -112,12 +111,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Wf9-FW-Joo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1HM-cl-IVR"/>
                             <constraint firstItem="AI4-kR-RtD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8gO-kp-G1e"/>
                             <constraint firstItem="adz-WM-jbJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="B3d-CJ-EHW"/>
                             <constraint firstAttribute="bottom" secondItem="adz-WM-jbJ" secondAttribute="bottom" id="Fra-NF-3qS"/>
                             <constraint firstItem="AI4-kR-RtD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Iag-gE-n0F"/>
                             <constraint firstItem="adz-WM-jbJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TdS-8r-IIo"/>
+                            <constraint firstItem="Wf9-FW-Joo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W9g-A6-1ko"/>
                             <constraint firstItem="AI4-kR-RtD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZNs-7E-hY3"/>
+                            <constraint firstItem="Wf9-FW-Joo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dQC-Qx-NBo"/>
+                            <constraint firstAttribute="bottom" secondItem="Wf9-FW-Joo" secondAttribute="bottom" id="nJK-G4-Mzo"/>
                             <constraint firstItem="adz-WM-jbJ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="p8M-gY-tYM"/>
                             <constraint firstItem="adz-WM-jbJ" firstAttribute="top" secondItem="AI4-kR-RtD" secondAttribute="bottom" constant="-212" id="vFO-bw-f5H"/>
                         </constraints>
