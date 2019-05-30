@@ -52,7 +52,7 @@ class EventCell: UICollectionViewCell {
 extension EventCell {
     
     func setup(type: EventCategoryType) {
-        
+        userView.isHidden = true
         if type == .upcoming {
             
         } else if type == .clubs || type == .clubsJoined {

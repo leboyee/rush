@@ -81,6 +81,11 @@
 		794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */; };
 		7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */; };
 		7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */; };
+		796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9296229FDCD500F91DB1 /* TagCell.swift */; };
+		796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796E9297229FDCD600F91DB1 /* TagCell.xib */; };
+		796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929C229FE0B600F91DB1 /* CloseButton.swift */; };
+		796E92A1229FE0C800F91DB1 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929E229FE0B600F91DB1 /* TagListView.swift */; };
+		796E92A2229FE0C800F91DB1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929F229FE0B600F91DB1 /* TagView.swift */; };
 		7983D22C228982B500DE054E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22B228982B500DE054E /* Image.swift */; };
 		7983D22E228982DC00DE054E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22D228982DC00DE054E /* Keys.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
@@ -184,6 +189,12 @@
 		794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserPostCell.swift; sourceTree = "<group>"; };
 		7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateUserPostCell.xib; sourceTree = "<group>"; };
+		796E9296229FDCD500F91DB1 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		796E9297229FDCD600F91DB1 /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		796E929C229FE0B600F91DB1 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		796E929D229FE0B600F91DB1 /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
+		796E929E229FE0B600F91DB1 /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		796E929F229FE0B600F91DB1 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		7983D22B228982B500DE054E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7983D22D228982DC00DE054E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +476,8 @@
 		79356A46229D761500DA54AF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				796E9296229FDCD500F91DB1 /* TagCell.swift */,
+				796E9297229FDCD600F91DB1 /* TagCell.xib */,
 				7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */,
 				7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */,
 				79173F45229EB39A0003FD9B /* ClubManageCell.swift */,
@@ -490,6 +503,25 @@
 				794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		796E929A229FE0B600F91DB1 /* ExternalLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				796E929B229FE0B600F91DB1 /* TagListView */,
+			);
+			path = ExternalLibraries;
+			sourceTree = "<group>";
+		};
+		796E929B229FE0B600F91DB1 /* TagListView */ = {
+			isa = PBXGroup;
+			children = (
+				796E929C229FE0B600F91DB1 /* CloseButton.swift */,
+				796E929D229FE0B600F91DB1 /* TagListView.h */,
+				796E929E229FE0B600F91DB1 /* TagListView.swift */,
+				796E929F229FE0B600F91DB1 /* TagView.swift */,
+			);
+			path = TagListView;
 			sourceTree = "<group>";
 		};
 		79DF74182292BA9F0012DCB7 /* SelectEvent */ = {
@@ -553,6 +585,7 @@
 				C05FC16622805F9D00721F3F /* Interfaces */,
 				C05FC16322805F9D00721F3F /* Resources */,
 				79240158228C59D900E3E154 /* Managers */,
+				796E929A229FE0B600F91DB1 /* ExternalLibraries */,
 				C05FC15822805F3E00721F3F /* Info.plist */,
 			);
 			path = Rush;
@@ -703,6 +736,7 @@
 				79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */,
 				0918E77F228444850098AF35 /* Home.storyboard in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
+				796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
@@ -823,6 +857,7 @@
 				7983D22E228982DC00DE054E /* Keys.swift in Sources */,
 				79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */,
 				79DF741F2292BA9F0012DCB7 /* SelectEventTypeViewController.swift in Sources */,
+				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
@@ -839,6 +874,8 @@
 				7983D22C228982B500DE054E /* Image.swift in Sources */,
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
 				79DF741D2292BA9F0012DCB7 /* SelectEventTypeLogics.swift in Sources */,
+				796E92A2229FE0C800F91DB1 /* TagView.swift in Sources */,
+				796E92A1229FE0C800F91DB1 /* TagListView.swift in Sources */,
 				79DF74242292C68E0012DCB7 /* CreateClubMediates.swift in Sources */,
 				7903D0B5228E8CE5004E33B9 /* HomeLogics.swift in Sources */,
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
@@ -851,6 +888,7 @@
 				0918E773228436990098AF35 /* ChatsViewController.swift in Sources */,
 				1A3F55E72285C38800D42154 /* OnboardingMediates.swift in Sources */,
 				79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */,
+				796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */,
 				0992539C22846A1D00914E7B /* (null) in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */,

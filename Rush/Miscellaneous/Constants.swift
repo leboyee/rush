@@ -35,6 +35,7 @@ struct Cell {
     static let clubName             = "ClubNameCell"
     static let clubManage           = "ClubManageCell"
     static let createUserPost       = "CreateUserPostCell"
+    static let tag                  = "TagCell"
 }
 
 struct ReusableView {
@@ -88,6 +89,9 @@ public struct Text {
     static let nameClub                 = "Name club"
     static let addDesc                  = "Add description"
     static let createGroupChat          = "Create group chat"
+    static let joined                   = "Joined"
+    static let interestTag              = "Interest tags"
+    static let posts                    = "Posts"
 }
 
 public struct Message {
@@ -115,6 +119,7 @@ enum EventCategoryType {
 }
 
 enum EventType {
+    case none
     case publik
     case closed
     case inviteOnly

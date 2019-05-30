@@ -28,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="371" height="92"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup-green-left" translatesAutoresizingMaskIntoConstraints="NO" id="1gr-t5-5Yw">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup-green-left" translatesAutoresizingMaskIntoConstraints="NO" id="1gr-t5-5Yw">
                         <rect key="frame" x="16" y="8" width="339" height="84"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbM-GI-Gbv">

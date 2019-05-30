@@ -13,7 +13,7 @@ class HomeViewController: CustomViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var isShowTutorial = true
-    var isShowJoinEvents = true
+    var isShowJoinEvents = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,9 @@ class HomeViewController: CustomViewController {
     func setupUI() {
         setupTableView()
         
+        tableView.layer.cornerRadius = 24
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBarButton
         
@@ -38,7 +41,9 @@ class HomeViewController: CustomViewController {
 // MARK: - Actions
 extension HomeViewController {
     @objc func createButtonAction() {
-        performSegue(withIdentifier: Segues.createClub/*Segues.selectEventType*/, sender: nil)
+        // Segues.createClub
+        // Segues.selectEventType
+        performSegue(withIdentifier: Segues.selectEventType, sender: nil)
     }
 }
 
@@ -52,6 +57,7 @@ extension HomeViewController {
         if segue.identifier == Segues.selectEventType {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .eventCategory
+                vc.delegate = self
             }
         }
      }

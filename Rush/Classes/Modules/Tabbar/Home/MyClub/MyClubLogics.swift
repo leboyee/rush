@@ -36,13 +36,17 @@ extension MyClubViewController {
         
     }
     
+    func fillTagCell(_ cell: TagCell) {
+        cell.setup(tagList: ["ABC", "DEF", "TYU", "HDGHJKDHD", "DLHDDDHKD"])
+    }
+    
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         if section == 2 {
-            header.setup(title: "Joined")
+            header.setup(title: Text.joined)
         } else if section == 3 {
-            header.setup(title: "Interest tags")
+            header.setup(title: Text.interestTag)
         } else if section == 4 {
-            header.setup(title: "Posts")
+            header.setup(title: Text.posts)
         }
     }
 }

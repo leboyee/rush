@@ -83,11 +83,16 @@ extension CustomTabbarViewController {
         thirdNavigationController.tabBarItem.image = getImage("chat_tab_inactive")
         thirdNavigationController.tabBarItem.selectedImage = getImage( "chat_tab_active")
         
+        let customTabBarItem = UITabBarItem(title: nil, image:getImage("profile_tab_inactive") , selectedImage: getImage("profile_tab_active"))
+        fourthNavigationViewController.tabBarItem = customTabBarItem
+        
+        /*
         fourthNavigationViewController.tabBarItem.image = getImage("forum_tab_inactive")
         fourthNavigationViewController.tabBarItem.selectedImage = getImage("forum_tab_active")
         
-        let customTabBarItem:UITabBarItem = UITabBarItem(title: nil, image: UIImage(named: "profile_tab_inactive")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(named: "profile_tab_active")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
+        let customTabBarItem = UITabBarItem(title: nil, image:getImage("profile_tab_inactive") , selectedImage: getImage("profile_tab_active"))
         fifthNavigationController.tabBarItem = customTabBarItem
+        */
     }
     
     
@@ -96,7 +101,7 @@ extension CustomTabbarViewController {
     */
     func setupTabbar() {
         
-        viewControllers = [firstNavigationController, secondNavigationController, thirdNavigationController, fourthNavigationViewController, fifthNavigationController]
+        viewControllers = [firstNavigationController, secondNavigationController, thirdNavigationController, fourthNavigationViewController]
         
         /*
         let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 23, height: 23))

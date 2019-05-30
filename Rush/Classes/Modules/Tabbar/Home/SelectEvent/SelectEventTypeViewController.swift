@@ -14,6 +14,16 @@ enum SelectEventType {
     case event
 }
 
+enum ScreenType {
+    case none
+    case club
+    case event
+}
+
+protocol SelectEventTypeDelegate {
+    func createEventClub(_ type: EventType)
+}
+
 class SelectEventTypeViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
@@ -23,6 +33,9 @@ class SelectEventTypeViewController: UIViewController {
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
     
     var type : SelectEventType = .none
+    var screenType : ScreenType = .none
+    var eventType : EventType = .none
+    var delegate : SelectEventTypeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +69,18 @@ extension SelectEventTypeViewController {
             eventCategoryView.isHidden = true
         }
     }
+    
+    func dismiss() {
+        if screenType == .event {
+            Utils.notReadyAlert()
+        } else {
+            delegate?.createEventClub(eventType)
+            DispatchQueue.main.async {
+                self.dismiss(animated: false, completion: nil)
+            }
+        }
+
+    }
 }
 
 // MARK: - Actions
@@ -67,24 +92,26 @@ extension SelectEventTypeViewController {
     
     @IBAction func eventButtonAction() {
         type = .event
+        screenType = .event
         setupUI()
     }
     
     @IBAction func clubButtonAction() {
         type = .event
+        screenType = .club
         setupUI()
     }
     
     @IBAction func publicButtonAction() {
-        Utils.notReadyAlert()
+        dismiss()
     }
     
     @IBAction func closedButtonAction() {
-        Utils.notReadyAlert()
+        dismiss()
     }
     
     @IBAction func inviteButtonAction() {
-        Utils.notReadyAlert()
+        dismiss()
     }
     
 }
