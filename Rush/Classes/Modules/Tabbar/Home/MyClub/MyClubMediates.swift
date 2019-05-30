@@ -23,6 +23,8 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.register(UINib(nibName: Cell.createUserPost, bundle: nil), forCellReuseIdentifier: Cell.createUserPost)
         
+        tableView.register(UINib(nibName: Cell.tag, bundle: nil), forCellReuseIdentifier: Cell.tag)
+        
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
         tableView.reloadData()
@@ -46,6 +48,11 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
             
             return cell
+        } else if indexPath.section == 3 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as! TagCell
+            return cell
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as! CreateUserPostCell
             return cell

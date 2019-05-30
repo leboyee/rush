@@ -76,3 +76,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
        return cellHeight(indexPath)
     }
 }
+
+//MARK: - SelectEventTypeController Delegate
+extension HomeViewController : SelectEventTypeDelegate {
+    func createEventClub(_ type: EventType) {
+        performSegue(withIdentifier: Segues.createClub, sender: nil)
+    }
+}

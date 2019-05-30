@@ -1,10 +1,10 @@
 PODS:
-  - Bugsee (1.22.0)
+  - Bugsee (1.22.1)
   - IQKeyboardManagerSwift (6.3.0)
   - ReachabilitySwift (4.3.0)
-  - SDWebImage (5.0.3):
-    - SDWebImage/Core (= 5.0.3)
-  - SDWebImage/Core (5.0.3)
+  - SDWebImage (5.0.4):
+    - SDWebImage/Core (= 5.0.4)
+  - SDWebImage/Core (5.0.4)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -23,10 +23,10 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Bugsee: 42b4c938cc31b7740ca7ed0895709255b494627e
+  Bugsee: 7d67736c816bb2d6dd44e0117a1c4972488aa3de
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
-  SDWebImage: d4f87d7d36c8a4d9f9459dc282e0caa057fdf935
+  SDWebImage: c739016e4bdf0a4a1f9a04b5e0385395ad63a282
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
 PODFILE CHECKSUM: 99ec9a72ad06a264eee9d6436558cfa36c5220cc
