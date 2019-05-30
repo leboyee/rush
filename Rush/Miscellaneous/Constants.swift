@@ -32,6 +32,9 @@ struct Cell {
     static let eventByDate          = "EventByDateCell"
     static let textIcon             = "TextIconCell"
     static let textView             = "TextViewCell"
+    static let clubName             = "ClubNameCell"
+    static let clubManage           = "ClubManageCell"
+    static let createUserPost       = "CreateUserPostCell"
 }
 
 struct ReusableView {
@@ -53,6 +56,8 @@ struct Segues {
     static let enterEmail                  = "EnterEmailViewSegue"
     static let enterPassword                 = "EnterPasswordSegue"
     static let enterPhoneNo                 = "EnterPhoneSegue"
+    static let enterPassword               = "EnterPasswordSegue"
+    static let myClub                      = "MyClubSegue"
 
 
 }
