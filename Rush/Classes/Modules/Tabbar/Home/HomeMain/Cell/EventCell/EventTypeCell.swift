@@ -12,6 +12,7 @@ enum CellType {
     case none
     case event
     case clubUser
+    case profileImage
 }
 
 class EventTypeCell: UITableViewCell {
@@ -31,6 +32,7 @@ class EventTypeCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Cell.event, bundle: nil), forCellWithReuseIdentifier: Cell.event)
         collectionView.register(UINib(nibName: Cell.user, bundle: nil), forCellWithReuseIdentifier: Cell.user)
+        collectionView.register(UINib(nibName: Cell.profileImage, bundle: nil), forCellWithReuseIdentifier: Cell.profileImage)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,6 +49,10 @@ class EventTypeCell: UITableViewCell {
     
     func setup(userList: [String]) {
         cellType = .clubUser
+    }
+    
+    func setup(imagesList:[UIImage]) {
+        cellType = .profileImage
     }
     
 }

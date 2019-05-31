@@ -26,9 +26,12 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as! EventCell
             fillEventCell(cell, indexPath)
             return cell
-        } else {
+        } else if cellType == .clubUser {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as! UserCell
             fillUserCell(cell, indexPath)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.profileImage, for: indexPath) as! ProfileImageCell
             return cell
         }
     }

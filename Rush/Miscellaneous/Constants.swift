@@ -37,6 +37,7 @@ struct Cell {
     static let createUserPost       = "CreateUserPostCell"
     static let tag                  = "TagCell"
     static let user                 = "UserCell"
+    static let profileImage         = "ProfileImageCell"
 }
 
 struct ReusableView {
@@ -104,6 +105,11 @@ public struct Text {
     static let joined                   = "Joined"
     static let interestTag              = "Interest tags"
     static let posts                    = "Posts"
+    static let images                   = "Images"
+    static let friends                  = "Friends"
+    static let events                   = "Events"
+    static let clubs                    = "Clubs"
+    static let classes                  = "Classes"
 }
 
 public struct Message {

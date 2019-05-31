@@ -32,7 +32,7 @@ extension EventTypeCell {
         } else if cellType == .clubUser {
             return CGSize(width: 72, height: 88)
         } else {
-            return CGSize.zero
+            return CGSize(width: 96, height: 112)
         }
     }
     

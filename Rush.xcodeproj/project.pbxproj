@@ -79,6 +79,8 @@
 		7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570822A157C200BDE3EC /* OtherUserProfileController.swift */; };
 		7912570C22A157C200BDE3EC /* OtherUserProfileLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570922A157C200BDE3EC /* OtherUserProfileLogics.swift */; };
 		7912570D22A157C200BDE3EC /* OtherUserProfileMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570A22A157C200BDE3EC /* OtherUserProfileMediates.swift */; };
+		7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570F22A16DA100BDE3EC /* ProfileImageCell.swift */; };
+		7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7912571022A16DA100BDE3EC /* ProfileImageCell.xib */; };
 		79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F39229E6FA10003FD9B /* ClubNameCell.swift */; };
 		79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79173F3A229E6FA10003FD9B /* ClubNameCell.xib */; };
 		79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F45229EB39A0003FD9B /* ClubManageCell.swift */; };
@@ -204,6 +206,8 @@
 		7912570822A157C200BDE3EC /* OtherUserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileController.swift; sourceTree = "<group>"; };
 		7912570922A157C200BDE3EC /* OtherUserProfileLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileLogics.swift; sourceTree = "<group>"; };
 		7912570A22A157C200BDE3EC /* OtherUserProfileMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileMediates.swift; sourceTree = "<group>"; };
+		7912570F22A16DA100BDE3EC /* ProfileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		7912571022A16DA100BDE3EC /* ProfileImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImageCell.xib; sourceTree = "<group>"; };
 		79173F39229E6FA10003FD9B /* ClubNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubNameCell.swift; sourceTree = "<group>"; };
 		79173F3A229E6FA10003FD9B /* ClubNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubNameCell.xib; sourceTree = "<group>"; };
 		79173F45229EB39A0003FD9B /* ClubManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubManageCell.swift; sourceTree = "<group>"; };
@@ -566,11 +570,21 @@
 		7912570722A157C200BDE3EC /* OtherUserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				7912570E22A16D8600BDE3EC /* Cell */,
 				7912570822A157C200BDE3EC /* OtherUserProfileController.swift */,
 				7912570A22A157C200BDE3EC /* OtherUserProfileMediates.swift */,
 				7912570922A157C200BDE3EC /* OtherUserProfileLogics.swift */,
 			);
 			path = OtherUserProfile;
+			sourceTree = "<group>";
+		};
+		7912570E22A16D8600BDE3EC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7912570F22A16DA100BDE3EC /* ProfileImageCell.swift */,
+				7912571022A16DA100BDE3EC /* ProfileImageCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		79240158228C59D900E3E154 /* Managers */ = {
@@ -858,6 +872,7 @@
 				0918E785228444AB0098AF35 /* Forum.storyboard in Resources */,
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
+				7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */,
 				79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */,
 				0918E77F228444850098AF35 /* Home.storyboard in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
@@ -968,6 +983,7 @@
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
+				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
