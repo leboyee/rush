@@ -28,6 +28,7 @@ extension OtherUserProfileController {
     }
     
     func fillEventCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
+        cell.setup(.none, nil)
         switch indexPath.section {
         case 1:
             cell.setup(imagesList: [])
@@ -40,6 +41,7 @@ extension OtherUserProfileController {
         case 5:
             cell.setup(.classes, nil)
         default:
+            cell.setup(.none, nil)
             break
         }
     }

@@ -129,6 +129,7 @@ public struct UserDefaultKey {
 }
 
 enum EventCategoryType {
+    case none
     case upcoming
     case clubs
     case clubsJoined
