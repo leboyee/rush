@@ -88,12 +88,12 @@ extension CreateClubViewController {
             guard let self_ = self else { return }
             
             if indexPath.section == 2 {
-                if let index = self_.interestList.index(of: (self_.interestList[indexPath.row])) {
+                if let index = self_.interestList.firstIndex(of: (self_.interestList[indexPath.row])) {
                     self_.interestList.remove(at: index)
                     self_.tableView.reloadData()
                 }
             } else if indexPath.section == 3 {
-                if let index = self_.peopleList.index(of: (self_.peopleList[indexPath.row])) {
+                if let index = self_.peopleList.firstIndex(of: (self_.peopleList[indexPath.row])) {
                     self_.peopleList.remove(at: index)
                     self_.tableView.reloadData()
                 }

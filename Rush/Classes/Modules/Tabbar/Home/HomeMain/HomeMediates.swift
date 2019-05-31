@@ -34,9 +34,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as! TutorialPopUpCell
-            fillTutorialCell(cell)
-            return cell
+            if isShowTutorial {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as! TutorialPopUpCell
+                fillTutorialCell(cell)
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         } else {
             if isShowJoinEvents && indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell

@@ -79,7 +79,7 @@ class CustomPickerViewController: UIViewController {
         }
         if presenter.type == .country {
             var countryCodeValue = ""
-            if let categoryId = presenter.countryCode.index(where: { ($0["name"] as! String) == presenter.selectedValue }) {
+            if let categoryId = presenter.countryCode.firstIndex(where: { ($0["name"] as! String) == presenter.selectedValue }) {
                 countryCodeValue = presenter.countryCode[categoryId]["dial_code"] as! String
             }
             
