@@ -18,6 +18,10 @@ class EventTypeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: Cell.event, bundle: nil), forCellWithReuseIdentifier: Cell.event)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,7 +32,8 @@ class EventTypeCell: UITableViewCell {
     
     func setup(_ type : EventCategoryType, _ photos: [Image]?) {
         self.type = type
-        setupCollectionView()
+        reload()
+//        setupCollectionView()
     }
     
     

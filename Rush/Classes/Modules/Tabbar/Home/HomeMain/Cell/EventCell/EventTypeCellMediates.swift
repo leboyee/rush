@@ -10,13 +10,7 @@ import UIKit
 
 extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(UINib(nibName: Cell.event, bundle: nil), forCellWithReuseIdentifier: Cell.event)
-        collectionView.reloadData()
-    }
-    
+
     //MARK: - Presenter Functions
     func reload() {
         collectionView?.reloadData()

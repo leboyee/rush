@@ -21,10 +21,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="Mlv-VQ-JWN">
             <objects>
-                <viewController title="Home" id="Qed-en-kd7" customClass="HomeViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qed-en-kd7" customClass="HomeViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q5v-Dn-T2i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

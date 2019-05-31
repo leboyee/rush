@@ -18,6 +18,6 @@ class CustomViewController: UIViewController {
 
 extension CustomViewController {
     func setupCustomUI() {
-        view.backgroundColor = isDarkModeOn ? UIColor.black : UIColor.black
+        view.backgroundColor = isDarkModeOn ? UIColor.bgBlack : UIColor.bgBlack
     }
 }
