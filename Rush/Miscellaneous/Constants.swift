@@ -59,6 +59,7 @@ struct Segues {
     static let enterPassword               = "EnterPasswordSegue"
     static let enterPhoneNo                = "EnterPhoneSegue"
     static let myClub                      = "MyClubSegue"
+    static let otherUserProfile            = "OtherUserProfileSegue"
 }
 
 struct StoryBoard {

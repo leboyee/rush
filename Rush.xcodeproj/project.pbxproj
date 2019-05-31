@@ -76,6 +76,9 @@
 		7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D0A8228E8CE5004E33B9 /* HomeViewController.swift */; };
 		7912570522A1448600BDE3EC /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570322A1448600BDE3EC /* UserCell.swift */; };
 		7912570622A1448600BDE3EC /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7912570422A1448600BDE3EC /* UserCell.xib */; };
+		7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570822A157C200BDE3EC /* OtherUserProfileController.swift */; };
+		7912570C22A157C200BDE3EC /* OtherUserProfileLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570922A157C200BDE3EC /* OtherUserProfileLogics.swift */; };
+		7912570D22A157C200BDE3EC /* OtherUserProfileMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570A22A157C200BDE3EC /* OtherUserProfileMediates.swift */; };
 		79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F39229E6FA10003FD9B /* ClubNameCell.swift */; };
 		79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79173F3A229E6FA10003FD9B /* ClubNameCell.xib */; };
 		79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F45229EB39A0003FD9B /* ClubManageCell.swift */; };
@@ -198,6 +201,9 @@
 		7903D0A8228E8CE5004E33B9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7912570322A1448600BDE3EC /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7912570422A1448600BDE3EC /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		7912570822A157C200BDE3EC /* OtherUserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileController.swift; sourceTree = "<group>"; };
+		7912570922A157C200BDE3EC /* OtherUserProfileLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileLogics.swift; sourceTree = "<group>"; };
+		7912570A22A157C200BDE3EC /* OtherUserProfileMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileMediates.swift; sourceTree = "<group>"; };
 		79173F39229E6FA10003FD9B /* ClubNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubNameCell.swift; sourceTree = "<group>"; };
 		79173F3A229E6FA10003FD9B /* ClubNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubNameCell.xib; sourceTree = "<group>"; };
 		79173F45229EB39A0003FD9B /* ClubManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubManageCell.swift; sourceTree = "<group>"; };
@@ -304,6 +310,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7912570722A157C200BDE3EC /* OtherUserProfile */,
 				79356A45229D761500DA54AF /* MyClub */,
 				79DF741C2292BA9F0012DCB7 /* CreateClub */,
 				79DF74182292BA9F0012DCB7 /* SelectEvent */,
@@ -554,6 +561,16 @@
 				7903D0A5228E8CE5004E33B9 /* TextHeader.xib */,
 			);
 			path = HeaderFooterView;
+			sourceTree = "<group>";
+		};
+		7912570722A157C200BDE3EC /* OtherUserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7912570822A157C200BDE3EC /* OtherUserProfileController.swift */,
+				7912570A22A157C200BDE3EC /* OtherUserProfileMediates.swift */,
+				7912570922A157C200BDE3EC /* OtherUserProfileLogics.swift */,
+			);
+			path = OtherUserProfile;
 			sourceTree = "<group>";
 		};
 		79240158228C59D900E3E154 /* Managers */ = {
@@ -950,6 +967,7 @@
 				7912570522A1448600BDE3EC /* UserCell.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
+				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
@@ -958,6 +976,7 @@
 				1A62D23022954216001E5790 /* EnterEmailViewLogics.swift in Sources */,
 				1AAE42BF2296787200BDD7C5 /* CustomTextField.swift in Sources */,
 				1AA97B91228979D100C4550C /* StringExtension.swift in Sources */,
+				7912570D22A157C200BDE3EC /* OtherUserProfileMediates.swift in Sources */,
 				1A649E1D2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift in Sources */,
 				1AE78D2A22A00F1900972C17 /* EnterVerificationCodeViewLogics.swift in Sources */,
 				79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */,
@@ -968,6 +987,7 @@
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
+				7912570C22A157C200BDE3EC /* OtherUserProfileLogics.swift in Sources */,
 				7903D0AD228E8CE5004E33B9 /* EventTypeCellLogics.swift in Sources */,
 				7983D22E228982DC00DE054E /* Keys.swift in Sources */,
 				79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */,
