@@ -16,11 +16,11 @@ extension MyClubViewController {
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
-        return 8
+        return 1
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return indexPath.section == 2 ? 88 : UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -36,11 +36,16 @@ extension MyClubViewController {
         
     }
     
+    func fillJoinedUserCell(_ cell: EventTypeCell) {
+        cell.setup(userList: [])
+    }
+    
     func fillTagCell(_ cell: TagCell) {
         cell.setup(tagList: ["ABC", "DEF", "TYU", "HDGHJKDHD", "DLHDDDHKD"])
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
+        header.setup(isDetailArrowHide: true)
         if section == 2 {
             header.setup(title: Text.joined)
         } else if section == 3 {

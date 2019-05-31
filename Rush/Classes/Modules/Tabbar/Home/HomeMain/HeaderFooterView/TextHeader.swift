@@ -37,4 +37,8 @@ extension TextHeader {
     func setup(title: String) {
         titleLabel.text = title
     }
+    
+    func setup(isDetailArrowHide: Bool) {
+        detailButton.isHidden = isDetailArrowHide
+    }
 }

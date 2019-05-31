@@ -8,12 +8,20 @@
 
 import UIKit
 
+enum CellType {
+    case none
+    case event
+    case clubUser
+}
+
 class EventTypeCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var cellSelected: ((_ type : EventCategoryType,_ id: Int,_ index: Int) -> Void)?
+    
     var type : EventCategoryType = .upcoming
+    var cellType : CellType = .none
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +30,7 @@ class EventTypeCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Cell.event, bundle: nil), forCellWithReuseIdentifier: Cell.event)
+        collectionView.register(UINib(nibName: Cell.user, bundle: nil), forCellWithReuseIdentifier: Cell.user)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,10 +40,13 @@ class EventTypeCell: UITableViewCell {
     }
     
     func setup(_ type : EventCategoryType, _ photos: [Image]?) {
+        cellType = .event
         self.type = type
         reload()
-//        setupCollectionView()
     }
     
+    func setup(userList: [String]) {
+        cellType = .clubUser
+    }
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class TagCell: UITableViewCell {
+    
     @IBOutlet weak var tagListView: TagListView!
     
     override func awakeFromNib() {
@@ -26,5 +27,6 @@ class TagCell: UITableViewCell {
 extension TagCell {
     func setup(tagList: [String]) {
         tagListView.addTags(tagList)
+        tagListView.textFont = UIFont.Semibold(sz: 13)
     }
 }

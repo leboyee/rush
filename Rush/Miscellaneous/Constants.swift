@@ -36,6 +36,7 @@ struct Cell {
     static let clubManage           = "ClubManageCell"
     static let createUserPost       = "CreateUserPostCell"
     static let tag                  = "TagCell"
+    static let user                 = "UserCell"
 }
 
 struct ReusableView {

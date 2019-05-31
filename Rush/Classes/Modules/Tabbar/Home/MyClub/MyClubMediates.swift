@@ -27,6 +27,8 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
+        tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
+        
         tableView.reloadData()
     }
     
@@ -48,9 +50,14 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
             
             return cell
+        } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+            fillJoinedUserCell(cell)
+            return cell
         } else if indexPath.section == 3 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as! TagCell
+            fillTagCell(cell)
             return cell
             
         } else {
@@ -63,16 +70,21 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    /*
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        
+        let footer = UIView()
+        let separator = UIView(frame: CGRect(x: section == 2 ?  24 : 0, y: 0, width: screenWidth, height: 1))
+        footer.addSubview(separator)
+        separator.backgroundColor = UIColor.separatorColor
+        return footer
     }
      
      func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-     return heightOfFooter(section)
+        return heightOfFooter(section)
       }
      
-     */
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
