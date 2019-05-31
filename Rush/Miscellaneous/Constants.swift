@@ -56,11 +56,9 @@ struct Segues {
     static let selectEventType             = "SelectEventTypeSegue"
     static let createClub                  = "createClubSegue"
     static let enterEmail                  = "EnterEmailViewSegue"
-    static let enterPassword                 = "EnterPasswordSegue"
-    static let enterPhoneNo                 = "EnterPhoneSegue"
+    static let enterPassword               = "EnterPasswordSegue"
+    static let enterPhoneNo                = "EnterPhoneSegue"
     static let myClub                      = "MyClubSegue"
-
-
 }
 
 struct StoryBoard {
@@ -91,7 +89,8 @@ public struct Text {
     static let next  = "Next"
     static let login = "Login"
     static let receiveCodeButtonTitle = "Recieve confirmation code"
-    
+    static let createAccount = "Create account"
+
     
 
     static let addInterest              = "Add interests"

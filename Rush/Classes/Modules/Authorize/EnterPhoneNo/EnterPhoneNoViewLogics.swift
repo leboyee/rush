@@ -15,7 +15,7 @@ extension EnterPhoneNoViewController {
         let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)]
         let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)]
         
-        let partOne = NSMutableAttributedString(string: "+1-(", attributes: yourAttributes)
+        let partOne = NSMutableAttributedString(string: "\(self.countryCode)-(", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
         let partThree = NSMutableAttributedString(string: ")", attributes: yourAttributes)
         let partFour = NSMutableAttributedString(string: "-754-3010", attributes: yourOtherAttributes)
