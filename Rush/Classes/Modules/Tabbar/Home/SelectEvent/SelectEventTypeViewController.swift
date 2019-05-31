@@ -74,9 +74,9 @@ extension SelectEventTypeViewController {
         if screenType == .event {
             Utils.notReadyAlert()
         } else {
-            delegate?.createEventClub(eventType)
+            self.dismiss(animated: false, completion: nil)
             DispatchQueue.main.async {
-                self.dismiss(animated: false, completion: nil)
+                self.delegate?.createEventClub(self.eventType)
             }
         }
 

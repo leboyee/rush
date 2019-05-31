@@ -10,12 +10,7 @@ import UIKit
 
 extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    
-//    func setupCollectionView() {
-//        
-//        collectionView.reloadData()
-//    }
-    
+
     //MARK: - Presenter Functions
     func reload() {
         collectionView?.reloadData()
