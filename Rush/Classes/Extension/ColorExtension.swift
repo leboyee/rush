@@ -126,4 +126,8 @@ extension UIColor {
     class var brown72: UIColor {
         return UIColor(red: 0.72, green: 0.26, blue: 0.26, alpha: 1)
     }
+    
+    class var separatorColor: UIColor {
+        return UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1)
+    }
 }

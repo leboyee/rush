@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         addThirdPartySDK()
         
       //  setupStoryboard()
+
         
         return true
     }
@@ -60,11 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearance = UINavigationBar.appearance()
         let pargraphStyle = NSMutableParagraphStyle()
         pargraphStyle.alignment = .center
-       navigationBarAppearance.tintColor = UIColor.white
+        navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor.bgBlack
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.shadowImage = UIImage()
+        navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
         
         //Back Button
         navigationBarAppearance.backIndicatorImage = #imageLiteral(resourceName: "back-arrow")

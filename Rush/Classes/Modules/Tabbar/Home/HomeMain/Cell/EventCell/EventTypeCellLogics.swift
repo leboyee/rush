@@ -14,8 +14,12 @@ extension EventTypeCell {
         return 10
     }
     
-    func fillCell(_ cell: EventCell,_ indexPath: IndexPath) {
+    func fillEventCell(_ cell: EventCell,_ indexPath: IndexPath) {
         cell.setup(type: type)
+    }
+    
+    func fillUserCell(_ cell: UserCell,_ indexPath: IndexPath) {
+        
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {
@@ -23,7 +27,13 @@ extension EventTypeCell {
     }
     
     func cellSize() -> CGSize {
-        return CGSize(width: 224, height: 157)
+        if cellType == .event {
+            return CGSize(width: 224, height: 157)
+        } else if cellType == .clubUser {
+            return CGSize(width: 72, height: 88)
+        } else {
+            return CGSize(width: 96, height: 112)
+        }
     }
     
 }

@@ -22,9 +22,18 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as! EventCell
-        fillCell(cell, indexPath)
-        return cell
+        if cellType == .event {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as! EventCell
+            fillEventCell(cell, indexPath)
+            return cell
+        } else if cellType == .clubUser {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as! UserCell
+            fillUserCell(cell, indexPath)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.profileImage, for: indexPath) as! ProfileImageCell
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

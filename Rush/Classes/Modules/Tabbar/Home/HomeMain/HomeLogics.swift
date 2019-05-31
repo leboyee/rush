@@ -78,6 +78,12 @@ extension HomeViewController {
         } else if section == 3 {
             header.setup(title: "Classes")
         }
+        
+        header.detailButtonClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            // Open other user profile UI for test
+            self_.performSegue(withIdentifier: Segues.otherUserProfile , sender: nil)
+        }
     }
     
     
