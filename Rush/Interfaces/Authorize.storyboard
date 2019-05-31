@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cDf-ZM-CWh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0cf-VN-0pj">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -319,7 +319,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="show" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbV-zM-u2d" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="371.5" y="53.5" width="31.5" height="16"/>
+                                        <rect key="frame" x="369" y="53.5" width="34" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="qik-Jc-ehh"/>
                                         </constraints>
@@ -367,7 +367,7 @@
                                 <rect key="frame" x="0.0" y="192" width="414" height="88"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 capital letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le2-rH-p0p" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="41" y="16" width="82.5" height="16"/>
+                                        <rect key="frame" x="41" y="16" width="87" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="vZ7-2V-ybP"/>
                                         </constraints>
@@ -376,7 +376,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITD-2n-ae1" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="41" y="40" width="55.5" height="16"/>
+                                        <rect key="frame" x="41" y="40" width="57" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="WOO-r0-esw"/>
                                         </constraints>
@@ -385,7 +385,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReE-Yp-ssQ" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="41" y="64" width="72.5" height="16"/>
+                                        <rect key="frame" x="41" y="64" width="77.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="SlK-ga-G9M"/>
                                         </constraints>
@@ -685,6 +685,7 @@
                         <outlet property="phoneNoTextField" destination="6kF-pa-873" id="HG6-fD-9jm"/>
                         <outlet property="phoneNoTitleLabel" destination="WpU-Ox-PMq" id="jwx-Ie-bff"/>
                         <outlet property="placeHolderTextField" destination="aqD-R1-XVp" id="jtM-Cx-suU"/>
+                        <segue destination="cDf-ZM-CWh" kind="show" identifier="EnterVerificationSegue" id="Qkl-jh-RCi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Se-sJ-yuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -885,7 +886,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MII-RX-6E3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311.59420289855075" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="1119" y="-214"/>
         </scene>
     </scenes>
     <resources>

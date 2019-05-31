@@ -86,7 +86,7 @@ extension EnterPhoneNoViewController {
     }
     
     @IBAction func nextButtonAction() {
-    
+        self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
     }
     
     @IBAction func countryButtonAction() {

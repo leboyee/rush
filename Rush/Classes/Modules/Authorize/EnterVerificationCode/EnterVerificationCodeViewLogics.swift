@@ -75,6 +75,12 @@ extension EnterVerificationCodeViewController {
         guard self.isCodeVerifing == false else { return }
         self.code = code
         self.updateCodeView(code: self.code)
+        if self.code.count == 5 {
+            self.nextButton.setNextButton(isEnable: true)
+        }
+        else {
+            self.nextButton.setNextButton(isEnable: false)
+        }
     }
 }
 

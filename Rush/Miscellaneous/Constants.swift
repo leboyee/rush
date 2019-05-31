@@ -57,6 +57,7 @@ struct Segues {
     static let enterEmail                  = "EnterEmailViewSegue"
     static let enterPassword               = "EnterPasswordSegue"
     static let enterPhoneNo                = "EnterPhoneSegue"
+    static let enterPhoneVerification      = "EnterVerificationSegue"
     static let myClub                      = "MyClubSegue"
 }
 

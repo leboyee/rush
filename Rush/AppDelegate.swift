@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         
-        setupStoryboard()
+      //  setupStoryboard()
         
         return true
     }
@@ -91,6 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
         self.window?.rootViewController = tabbarVC
     }
+    
+    //MARK: - AppDelegate Instance
+    class func getInstance() -> AppDelegate {
+        return UIApplication.shared.delegate! as! AppDelegate
+    }
+
 
 }
 

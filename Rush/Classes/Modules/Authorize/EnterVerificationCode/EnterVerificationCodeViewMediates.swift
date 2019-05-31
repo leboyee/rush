@@ -56,8 +56,6 @@ extension EnterVerificationCodeViewController: UITextFieldDelegate {
         updateCode(code: textField.text ?? "")
 
     }
-    
-
 }
 
 

@@ -96,18 +96,18 @@ extension EnterVerificationCodeViewController {
     
     @IBAction func nextButtonAction() {
         if self.code.count == 5 {
-            self.isCodeVerifing = true
+           // self.isCodeVerifing = true
             //API calling for Code Verifing by server
-            self.codeVerifyingAPI(code: self.code)
+           // self.codeVerifyingAPI(code: self.code)
             //Update View
-            self.updateStageView(stage: .verifying)
+           // self.updateStageView(stage: .verifying)
+            AppDelegate.getInstance().setupStoryboard()
         }
 
     }
     
     @IBAction func resendSMSButtonAction() {
         view.endEditing(true)
-        
     }
     
 }
