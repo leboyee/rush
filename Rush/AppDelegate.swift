@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         
-        //setupStoryboard()
+        setupStoryboard()
         
         return true
     }
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pargraphStyle = NSMutableParagraphStyle()
         pargraphStyle.alignment = .center
        navigationBarAppearance.tintColor = UIColor.white
-        navigationBarAppearance.barTintColor = UIColor.black
+        navigationBarAppearance.barTintColor = UIColor.bgBlack
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.shadowImage = UIImage()
