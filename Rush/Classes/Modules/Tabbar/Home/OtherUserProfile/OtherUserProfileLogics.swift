@@ -27,6 +27,19 @@ extension OtherUserProfileController {
         return 1
     }
     
+    func fillManageCell(_ cell: ClubManageCell) {
+        cell.setup(firstButtonType: .friends)
+        cell.setup(secondButtonType: .message)
+        
+        cell.firstButtonClickEvent = { [weak self] () in
+            guard let _ = self else { return }
+        }
+        
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let _ = self else { return }
+        }
+    }
+    
     func fillEventCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         cell.setup(.none, nil)
         switch indexPath.section {

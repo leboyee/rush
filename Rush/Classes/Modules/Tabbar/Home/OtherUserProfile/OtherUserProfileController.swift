@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 class OtherUserProfileController: UIViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
@@ -21,7 +21,7 @@ class OtherUserProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -36,6 +36,8 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
+        
+        scrollView.delegate = self
         
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -65,6 +67,22 @@ extension OtherUserProfileController {
     
     @objc func shareButtonAction() {
         
+    }
+}
+
+//MARK: - Scroll delegate
+extension OtherUserProfileController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let yOffset = scrollView.contentOffset.y
+        
+        if scrollView == self.scrollView {
+            if yOffset == 0 {
+                tableView.isScrollEnabled = true
+            } else {
+                tableView.isScrollEnabled = false
+            }
+        }
     }
 }
 

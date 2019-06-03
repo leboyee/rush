@@ -32,6 +32,7 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
+            fillManageCell(cell)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
@@ -53,11 +54,11 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
         separator.backgroundColor = UIColor.separatorColor
         return footer
     }
-     
-     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return heightOfFooter(section)
-      }
-     
+    }
+    
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -71,6 +72,6 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }

@@ -111,6 +111,10 @@ public struct Text {
     static let events                   = "Events"
     static let clubs                    = "Clubs"
     static let classes                  = "Classes"
+    static let manage                   = "Manage"
+    static let groupChat                = "Group chat"
+    static let messages                 = "Messages"
+    static let friend                   = "Friend"
 }
 
 public struct Message {

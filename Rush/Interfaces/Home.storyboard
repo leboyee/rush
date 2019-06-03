@@ -503,21 +503,21 @@
                                         </constraints>
                                     </view>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtT-Bo-Uqx">
-                                        <rect key="frame" x="367" y="53" width="31" height="16"/>
+                                        <rect key="frame" x="320" y="53" width="78" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                         <state key="normal" title="Save" backgroundImage="button-black-bg">
                                             <color key="titleColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-pv-Guo">
-                                        <rect key="frame" x="199" y="160" width="16" height="22"/>
+                                        <rect key="frame" x="107.5" y="160" width="199" height="88"/>
                                         <state key="normal" image="add-cover-photo"/>
                                         <connections>
                                             <action selector="addImageButtonAction" destination="bdt-BK-bqh" eventType="touchUpInside" id="fVM-9b-6pD"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-jF-cmE">
-                                        <rect key="frame" x="16" y="53" width="44" height="16"/>
+                                        <rect key="frame" x="16" y="53" width="78" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                         <state key="normal" title="Cancel" backgroundImage="button-black-bg">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -721,7 +721,7 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aMV-sw-YSr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="707"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="24"/>
@@ -740,7 +740,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dSS-lN-YQr" firstAttribute="trailing" secondItem="o4N-SV-DSB" secondAttribute="trailing" id="2ZR-Yy-8kn"/>
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="trailing" secondItem="dSS-lN-YQr" secondAttribute="trailing" id="8Io-ju-g4F"/>
