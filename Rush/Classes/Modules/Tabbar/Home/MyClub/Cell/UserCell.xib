@@ -33,7 +33,7 @@
                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0CB-JQ-S4t">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="0CB-JQ-S4t">
                                 <rect key="frame" x="33.5" y="0.0" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -67,7 +67,14 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="115" height="159"/>
+            <connections>
+                <outlet property="imageView" destination="0CB-JQ-S4t" id="dU7-1w-PRb"/>
+                <outlet property="titleLabel" destination="DrD-Ur-ghc" id="QKr-lt-Fus"/>
+            </connections>
             <point key="canvasLocation" x="9.4202898550724647" y="89.397321428571431"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="profile_tab_inactive" width="23" height="23"/>
+    </resources>
 </document>

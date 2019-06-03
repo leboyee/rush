@@ -75,3 +75,10 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
         return cellHeight(indexPath)
     }
 }
+
+//MARK: - Notification alert delegate
+extension OtherUserProfileController: NotificationAlertDelegate {
+    func undoButtonClickEvent() {
+        Utils.notReadyAlert()
+    }
+}

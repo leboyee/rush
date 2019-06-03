@@ -32,11 +32,13 @@ extension OtherUserProfileController {
         cell.setup(secondButtonType: .message)
         
         cell.firstButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+            guard let self_ = self else { return }
+            self_.performSegue(withIdentifier: Segues.notificationAlert, sender: "You unfriended Jessica O’Hara")
         }
         
         cell.secondButtonClickEvent = { [weak self] () in
             guard let _ = self else { return }
+            Utils.notReadyAlert()
         }
     }
     
@@ -57,6 +59,10 @@ extension OtherUserProfileController {
             cell.setup(.none, nil)
             break
         }
+    }
+    
+    func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
+        
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {

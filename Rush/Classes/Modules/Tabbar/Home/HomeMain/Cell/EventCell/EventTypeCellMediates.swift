@@ -32,6 +32,7 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.profileImage, for: indexPath) as! ProfileImageCell
+            fillImagesCell(cell, indexPath)
             return cell
         }
     }

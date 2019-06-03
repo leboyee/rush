@@ -62,6 +62,7 @@ struct Segues {
     static let enterPhoneVerification      = "EnterVerificationSegue"
     static let myClub                      = "MyClubSegue"
     static let otherUserProfile            = "OtherUserProfileSegue"
+    static let notificationAlert           = "NotificationAlertSegue"
 }
 
 struct StoryBoard {
@@ -115,6 +116,7 @@ public struct Text {
     static let groupChat                = "Group chat"
     static let messages                 = "Messages"
     static let friend                   = "Friend"
+    static let viewAll                  = "View all"
 }
 
 public struct Message {

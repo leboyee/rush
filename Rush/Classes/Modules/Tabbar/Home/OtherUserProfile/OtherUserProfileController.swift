@@ -89,6 +89,12 @@ extension OtherUserProfileController: UIScrollViewDelegate {
 // MARK: - Navigation
 extension OtherUserProfileController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == Segues.notificationAlert {
+            let controller = segue.destination as! NotificationAlertViewController
+            if let message = sender as? String {
+                controller.toastMessage = message
+                controller.delegate = self
+            }
+        }
     }
 }

@@ -758,11 +758,20 @@
                         <outlet property="scrollView" destination="o4N-SV-DSB" id="eGy-3T-I4e"/>
                         <outlet property="tableView" destination="aMV-sw-YSr" id="R0f-8u-nKz"/>
                         <outlet property="userImageView" destination="QXq-6p-oG0" id="17D-S9-lBh"/>
+                        <segue destination="ucK-SL-Bnd" kind="presentation" identifier="NotificationAlertSegue" modalPresentationStyle="overFullScreen" id="E7I-YA-fBT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-832" y="871"/>
+        </scene>
+        <!--NotificationAlertViewController-->
+        <scene sceneID="8c2-bt-lBa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CustomPicker" referencedIdentifier="NotificationAlertViewController" id="ucK-SL-Bnd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cu-ih-TOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="1261"/>
         </scene>
     </scenes>
     <resources>
