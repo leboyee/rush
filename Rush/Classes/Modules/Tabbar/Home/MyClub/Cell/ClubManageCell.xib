@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
         <array key="SF-Pro-Text-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -65,16 +68,51 @@
                                     <action selector="secondButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gad-LB-tBk"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6c-tY-R4E">
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="72.5"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5a-LF-S4O">
+                                        <rect key="frame" x="24" y="0.0" width="312" height="40.5"/>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ppX-40-upc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Message" image="message-profile">
+                                            <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="secondButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xeq-vP-SEd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="h5a-LF-S4O" firstAttribute="top" secondItem="S6c-tY-R4E" secondAttribute="top" id="1F3-vP-kOD"/>
+                                    <constraint firstItem="h5a-LF-S4O" firstAttribute="leading" secondItem="S6c-tY-R4E" secondAttribute="leading" constant="24" id="4oU-7H-74l"/>
+                                    <constraint firstAttribute="trailing" secondItem="h5a-LF-S4O" secondAttribute="trailing" constant="24" id="6Ew-4F-TMR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cqi-bs-Vfs" secondAttribute="trailing" constant="24" id="0PE-RE-mkv"/>
+                            <constraint firstItem="S6c-tY-R4E" firstAttribute="top" secondItem="6eF-Ss-AjY" secondAttribute="top" id="3vh-6M-BWt"/>
                             <constraint firstItem="cqi-bs-Vfs" firstAttribute="width" secondItem="S7U-l5-i2r" secondAttribute="width" id="9eB-SZ-486"/>
                             <constraint firstItem="cqi-bs-Vfs" firstAttribute="top" secondItem="6eF-Ss-AjY" secondAttribute="top" constant="16" id="JiL-kU-nXO"/>
+                            <constraint firstAttribute="bottom" secondItem="S6c-tY-R4E" secondAttribute="bottom" id="O5Z-gA-uKU"/>
                             <constraint firstAttribute="bottom" secondItem="S7U-l5-i2r" secondAttribute="bottom" constant="16" id="arZ-ut-bqu"/>
                             <constraint firstItem="S7U-l5-i2r" firstAttribute="leading" secondItem="6eF-Ss-AjY" secondAttribute="leading" constant="24" id="fxN-ld-KVe"/>
                             <constraint firstAttribute="bottom" secondItem="cqi-bs-Vfs" secondAttribute="bottom" constant="16" id="l7a-Vt-ItH"/>
                             <constraint firstItem="S7U-l5-i2r" firstAttribute="top" secondItem="6eF-Ss-AjY" secondAttribute="top" constant="16" id="lK1-yp-lHB"/>
+                            <constraint firstItem="S6c-tY-R4E" firstAttribute="leading" secondItem="6eF-Ss-AjY" secondAttribute="leading" id="m73-Ui-Y3L"/>
+                            <constraint firstAttribute="trailing" secondItem="S6c-tY-R4E" secondAttribute="trailing" id="tvk-8B-dyR"/>
                             <constraint firstItem="cqi-bs-Vfs" firstAttribute="leading" secondItem="S7U-l5-i2r" secondAttribute="trailing" constant="15" id="zC7-de-nwr"/>
                         </constraints>
                     </view>
@@ -91,6 +129,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="firstButton" destination="S7U-l5-i2r" id="YyU-WM-dE9"/>
+                <outlet property="messageView" destination="S6c-tY-R4E" id="euy-PD-9jH"/>
                 <outlet property="secondButton" destination="cqi-bs-Vfs" id="TXS-Vg-UWH"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="74.330357142857139"/>
@@ -99,5 +138,6 @@
     <resources>
         <image name="club-grpchat" width="20" height="20"/>
         <image name="club-manage" width="20" height="20"/>
+        <image name="message-profile" width="20" height="20"/>
     </resources>
 </document>

@@ -20,16 +20,22 @@ extension OtherUserProfileController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? UITableView.automaticDimension : indexPath.section == 1 ? 112 : indexPath.section == 2 ? 88 : 157
+        return indexPath.section == 0 ? (indexPath.row == 1 ? 56 : UITableView.automaticDimension) : indexPath.section == 1 ? 112 : indexPath.section == 2 ? 88 : 157
     }
     
     func cellCount(_ section: Int) -> Int {
-        return 1
+        return section == 0 ? (isShowMessageButton ? 2 : 1) : 1
     }
     
-    func fillManageCell(_ cell: ClubManageCell) {
-        cell.setup(firstButtonType: .friends)
-        cell.setup(secondButtonType: .message)
+    func fillManageCell(_ cell: ClubManageCell,_ indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            cell.setup(firstButtonType: .accept)
+            cell.setup(secondButtonType: .reject)
+        } else {
+            cell.setup(secondButtonType: .message)
+            cell.setup(isOnlyShowMessage: true)
+        }
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }

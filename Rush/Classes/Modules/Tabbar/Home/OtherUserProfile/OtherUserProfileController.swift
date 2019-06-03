@@ -16,8 +16,7 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
     
-    var interestList = [String]()
-    var peopleList = [String]()
+    var isShowMessageButton = true
     
     override func viewDidLoad() {
         super.viewDidLoad()

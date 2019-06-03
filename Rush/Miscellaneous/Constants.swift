@@ -117,6 +117,8 @@ public struct Text {
     static let messages                 = "Messages"
     static let friend                   = "Friend"
     static let viewAll                  = "View all"
+    static let accept                   = "Accept "
+    static let reject                   = "Reject "
 }
 
 public struct Message {
