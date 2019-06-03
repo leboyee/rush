@@ -55,8 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupTopBar() {
-        
-        
         let navigationBarAppearance = UINavigationBar.appearance()
         let pargraphStyle = NSMutableParagraphStyle()
         pargraphStyle.alignment = .center
@@ -65,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.shadowImage = UIImage()
-        navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
         
         //Back Button
         navigationBarAppearance.backIndicatorImage = #imageLiteral(resourceName: "back-arrow")

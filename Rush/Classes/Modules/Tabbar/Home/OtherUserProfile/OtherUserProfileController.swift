@@ -14,6 +14,7 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
     
     var isShowMessageButton = true
@@ -23,6 +24,13 @@ class OtherUserProfileController: UIViewController {
         
         // Do any additional setup after loading the view.
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor.clear
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     //MARk: - Other function
@@ -41,10 +49,12 @@ class OtherUserProfileController: UIViewController {
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        let total = screenWidth + 15
+        let total = (screenWidth * 0.85) + Utils.navigationHeigh + 18
         heightConstraintOfImageView.constant = total
         
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: (total * 0.5223), left: 0, bottom: 0, right: 0)
+        
+        topConstraintOfLabel.constant = (total * 0.6)
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
@@ -65,6 +75,10 @@ extension OtherUserProfileController {
     }
     
     @objc func shareButtonAction() {
+        
+    }
+    
+    @IBAction func infoButtonAction() {
         
     }
 }
