@@ -16,6 +16,7 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var topConstraintOfScrollViw: NSLayoutConstraint!
     
     var isShowMessageButton = true
     
@@ -30,12 +31,14 @@ class OtherUserProfileController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barTintColor = UIColor.clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.isTranslucent = false
     }
     
@@ -85,7 +88,7 @@ extension OtherUserProfileController {
     }
     
     @IBAction func infoButtonAction() {
-        
+        performSegue(withIdentifier: "ProfileInformationSegue", sender: nil)
     }
 }
 
