@@ -33,6 +33,12 @@ class OtherUserProfileController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.isTranslucent = false
+    }
+    
     //MARk: - Other function
     func setup() {
         setupUI()
@@ -75,7 +81,7 @@ extension OtherUserProfileController {
     }
     
     @objc func shareButtonAction() {
-        
+        performSegue(withIdentifier: "ProfileInformationSegue", sender: nil)
     }
     
     @IBAction func infoButtonAction() {

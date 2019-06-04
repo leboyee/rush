@@ -11,6 +11,8 @@ import UIKit
 class ProfileInformationCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var heightConstraintOfPlaceholder: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraintofDetailLabel: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,4 +25,16 @@ class ProfileInformationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+//MARK: - Other function
+extension ProfileInformationCell {
+    func setup(text: String,placeholder: String) {
+        titleLabel.text = placeholder
+        detailLabel.text = text
+        if placeholder.isEmpty {
+            heightConstraintOfPlaceholder.constant = 0
+            bottomConstraintofDetailLabel.constant = 16
+        }
+    }
 }

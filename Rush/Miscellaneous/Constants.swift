@@ -38,6 +38,7 @@ struct Cell {
     static let tag                  = "TagCell"
     static let user                 = "UserCell"
     static let profileImage         = "ProfileImageCell"
+    static let profileInformation   = "ProfileInformationCell"
 }
 
 struct ReusableView {
@@ -119,6 +120,11 @@ public struct Text {
     static let viewAll                  = "View all"
     static let accept                   = "Accept "
     static let reject                   = "Reject "
+    static let dateOfBirth              = "Date of birth"
+    static let relationship             = "Relationship"
+    static let university               = "University"
+    static let level                    = "Level"
+    static let year                     = "Year"
 }
 
 public struct Message {

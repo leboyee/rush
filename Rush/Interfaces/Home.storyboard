@@ -801,6 +801,7 @@
                         <outlet property="topConstraintOfLabel" destination="JGw-eo-GOl" id="q19-q0-kqa"/>
                         <outlet property="userImageView" destination="QXq-6p-oG0" id="17D-S9-lBh"/>
                         <segue destination="ucK-SL-Bnd" kind="presentation" identifier="NotificationAlertSegue" modalPresentationStyle="overFullScreen" id="E7I-YA-fBT"/>
+                        <segue destination="XdX-g6-gj5" kind="show" identifier="ProfileInformationSegue" id="Lcf-y5-6Em"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -813,7 +814,50 @@
                 <viewControllerPlaceholder storyboardName="CustomPicker" referencedIdentifier="NotificationAlertViewController" id="ucK-SL-Bnd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cu-ih-TOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833" y="1261"/>
+            <point key="canvasLocation" x="-833" y="1278"/>
+        </scene>
+        <!--Profile Information View Controller-->
+        <scene sceneID="yp5-ca-LOd">
+            <objects>
+                <viewController storyboardIdentifier="ProfileInformationViewController" id="XdX-g6-gj5" customClass="ProfileInformationViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AML-YS-Ys4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hg0-Ao-VTI" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="stu-hZ-HAc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="stu-hZ-HAc" secondAttribute="bottom" id="3pf-rM-dX2"/>
+                            <constraint firstAttribute="bottom" secondItem="Hg0-Ao-VTI" secondAttribute="bottom" id="Gqe-4J-vRM"/>
+                            <constraint firstItem="stu-hZ-HAc" firstAttribute="leading" secondItem="m1P-Wz-7RX" secondAttribute="leading" id="TxP-aD-g5j"/>
+                            <constraint firstItem="stu-hZ-HAc" firstAttribute="top" secondItem="m1P-Wz-7RX" secondAttribute="top" id="XUr-p7-UMe"/>
+                            <constraint firstItem="stu-hZ-HAc" firstAttribute="trailing" secondItem="m1P-Wz-7RX" secondAttribute="trailing" id="Z9p-GF-DmU"/>
+                            <constraint firstItem="Hg0-Ao-VTI" firstAttribute="top" secondItem="m1P-Wz-7RX" secondAttribute="top" id="yHM-iE-8MA"/>
+                            <constraint firstItem="Hg0-Ao-VTI" firstAttribute="leading" secondItem="m1P-Wz-7RX" secondAttribute="leading" id="yRn-vZ-TNl"/>
+                            <constraint firstItem="Hg0-Ao-VTI" firstAttribute="trailing" secondItem="m1P-Wz-7RX" secondAttribute="trailing" id="yfP-mB-Gqg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m1P-Wz-7RX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OA4-uw-U2u"/>
+                    <connections>
+                        <outlet property="tableView" destination="stu-hZ-HAc" id="VaI-xA-WJD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5x9-fo-ljL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="1653"/>
         </scene>
     </scenes>
     <resources>
