@@ -43,12 +43,11 @@ class CreateClubViewController: UIViewController {
         setup()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.isTranslucent = false
-        navigationBarAppearance.barTintColor = UIColor.black
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
+ 
     
     //MARk: - Other function
     func setup() {
@@ -63,11 +62,6 @@ class CreateClubViewController: UIViewController {
         heightConstraintOfImageView.constant = total
         
         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.isTranslucent = true
-        navigationBarAppearance.barTintColor = UIColor.clear
-        navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
         
         navigationItem.leftBarButtonItem = cancelBtn
         

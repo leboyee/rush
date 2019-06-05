@@ -114,6 +114,9 @@
 		79C1AC4F22A64D09003C7790 /* ProfileInformationLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1AC4E22A64D09003C7790 /* ProfileInformationLogics.swift */; };
 		79C1AC5722A65507003C7790 /* ProfileInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1AC5522A65507003C7790 /* ProfileInformationCell.swift */; };
 		79C1AC5822A65507003C7790 /* ProfileInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C1AC5622A65507003C7790 /* ProfileInformationCell.xib */; };
+		79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */; };
+		79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */; };
+		79C7DA6622A7987300EA7759 /* FriendsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */; };
 		79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCA228D953A00DDA285 /* CustomBackgoundImageView.swift */; };
 		79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */; };
 		79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */; };
@@ -248,6 +251,9 @@
 		79C1AC4E22A64D09003C7790 /* ProfileInformationLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationLogics.swift; sourceTree = "<group>"; };
 		79C1AC5522A65507003C7790 /* ProfileInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationCell.swift; sourceTree = "<group>"; };
 		79C1AC5622A65507003C7790 /* ProfileInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInformationCell.xib; sourceTree = "<group>"; };
+		79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListMediates.swift; sourceTree = "<group>"; };
+		79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListLogics.swift; sourceTree = "<group>"; };
 		79CF8FCA228D953A00DDA285 /* CustomBackgoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgoundImageView.swift; sourceTree = "<group>"; };
 		79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBrownLabel.swift; sourceTree = "<group>"; };
 		79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackLabel.swift; sourceTree = "<group>"; };
@@ -326,6 +332,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				79C7DA6022A7980F00EA7759 /* ProfileFriendList */,
 				79C1AC4922A64CC0003C7790 /* ProfileInformation */,
 				7912570722A157C200BDE3EC /* OtherUserProfile */,
 				79356A45229D761500DA54AF /* MyClub */,
@@ -691,6 +698,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		79C7DA6022A7980F00EA7759 /* ProfileFriendList */ = {
+			isa = PBXGroup;
+			children = (
+				79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */,
+				79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */,
+				79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */,
+			);
+			path = ProfileFriendList;
+			sourceTree = "<group>";
+		};
 		79DF74182292BA9F0012DCB7 /* SelectEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1034,10 +1051,12 @@
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
+				79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */,
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
+				79C7DA6622A7987300EA7759 /* FriendsListLogics.swift in Sources */,
 				1A3F55E42285C35800D42154 /* OnboardingViewController.swift in Sources */,
 				1AA97B8F228979D100C4550C /* ImageViewExtension.swift in Sources */,
 				1A62D23022954216001E5790 /* EnterEmailViewLogics.swift in Sources */,
@@ -1095,6 +1114,7 @@
 				1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */,
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
 				0918E773228436990098AF35 /* ChatsViewController.swift in Sources */,
+				79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */,
 				1AE78D2B22A00F1900972C17 /* EnterVerificationCodeViewController.swift in Sources */,
 				1A3F55E72285C38800D42154 /* OnboardingMediates.swift in Sources */,
 				79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */,

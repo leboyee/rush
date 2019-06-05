@@ -29,17 +29,13 @@ class OtherUserProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = UIColor.clear
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
     }
     
     //MARk: - Other function
@@ -62,6 +58,7 @@ class OtherUserProfileController: UIViewController {
         heightConstraintOfImageView.constant = total
         
         scrollView.contentInset = UIEdgeInsets(top: (total * 0.5223), left: 0, bottom: 0, right: 0)
+//        topConstraintOfScrollViw.constant = (total * 0.5223) + Utils.navigationHeigh + 18
         
         topConstraintOfLabel.constant = (total * 0.6)
         

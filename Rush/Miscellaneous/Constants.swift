@@ -64,6 +64,7 @@ struct Segues {
     static let myClub                      = "MyClubSegue"
     static let otherUserProfile            = "OtherUserProfileSegue"
     static let notificationAlert           = "NotificationAlertSegue"
+    static let friendList                  = "FriendListSegue"
 }
 
 struct StoryBoard {

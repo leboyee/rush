@@ -76,6 +76,12 @@ extension OtherUserProfileController {
         let text = section == 0 ? "" : section == 1 ? Text.images : section == 2 ? Text.friends : section == 3 ? Text.events : section == 4 ? Text.clubs : section == 5 ? Text.classes : ""
         header.setup(title: text)
         
+        header.detailButtonClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            if section == 2 {
+                 self_.performSegue(withIdentifier: Segues.friendList, sender: nil)
+            }
+        }
     }
 }
 
