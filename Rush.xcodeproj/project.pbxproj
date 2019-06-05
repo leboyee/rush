@@ -18,7 +18,7 @@
 		0918E785228444AB0098AF35 /* Forum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0918E784228444AB0098AF35 /* Forum.storyboard */; };
 		0918E787228444B90098AF35 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0918E786228444B90098AF35 /* Profile.storyboard */; };
 		0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992539022845CF100914E7B /* CustomTabbarViewController.swift */; };
-		0992539C22846A1D00914E7B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		0992539C22846A1D00914E7B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		1A142EC5229EC1A0002C1AFE /* CustomPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EBF229EC1A0002C1AFE /* CustomPickerViewController.swift */; };
 		1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */; };
 		1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EC2229EC1A0002C1AFE /* CustomPickerPreseneter.swift */; };
@@ -132,7 +132,6 @@
 		79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */; };
 		79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F27163229D3A99008C4926 /* TextViewCell.swift */; };
 		79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F27164229D3A99008C4926 /* TextViewCell.xib */; };
-		9930BB0DAE1051FDD286D46D /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3627F78ECD3E2425AB6C34C /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
@@ -153,7 +152,6 @@
 		0918E784228444AB0098AF35 /* Forum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Forum.storyboard; sourceTree = "<group>"; };
 		0918E786228444B90098AF35 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0992539022845CF100914E7B /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
-		0EE7287A622997DCD3DD21DD /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
 		1A142EBF229EC1A0002C1AFE /* CustomPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewController.swift; sourceTree = "<group>"; };
 		1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomPicker.storyboard; sourceTree = "<group>"; };
 		1A142EC2229EC1A0002C1AFE /* CustomPickerPreseneter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerPreseneter.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		1AE78D2622A00F1900972C17 /* EnterVerificationCodeViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewMediates.swift; sourceTree = "<group>"; };
 		1AE78D2722A00F1900972C17 /* EnterVerificationCodeViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewLogics.swift; sourceTree = "<group>"; };
 		1AE78D2822A00F1900972C17 /* EnterVerificationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewController.swift; sourceTree = "<group>"; };
-		2F279CD9FF2B71F89B2A1FD9 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
 		7903D098228E8CE5004E33B9 /* EventByDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventByDateCell.swift; sourceTree = "<group>"; };
 		7903D099228E8CE5004E33B9 /* EventByDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventByDateCell.xib; sourceTree = "<group>"; };
 		7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
@@ -269,7 +266,6 @@
 		79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertViewController.swift; sourceTree = "<group>"; };
 		79F27163229D3A99008C4926 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		79F27164229D3A99008C4926 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
-		BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C05FC15822805F3E00721F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -278,7 +274,6 @@
 		C05FC16A22805F9D00721F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C05FC16F22805FAE00721F3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdParty.swift; sourceTree = "<group>"; };
-		D3627F78ECD3E2425AB6C34C /* Pods_Rush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,7 +281,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9930BB0DAE1051FDD286D46D /* Pods_Rush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,20 +517,9 @@
 			path = EnterVerificationCode;
 			sourceTree = "<group>";
 		};
-		531998D1E6069E5BB9B10557 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D3627F78ECD3E2425AB6C34C /* Pods_Rush.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		69A4CA5176A546F5C0DA9D7C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0EE7287A622997DCD3DD21DD /* Pods-Rush.debug.xcconfig */,
-				2F279CD9FF2B71F89B2A1FD9 /* Pods-Rush.release.xcconfig */,
-				BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -762,7 +745,6 @@
 				C05FC14B22805F3D00721F3F /* Rush */,
 				C05FC14A22805F3D00721F3F /* Products */,
 				69A4CA5176A546F5C0DA9D7C /* Pods */,
-				531998D1E6069E5BB9B10557 /* Frameworks */,
 				1A62D226229500E9001E5790 /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -875,11 +857,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C05FC15B22805F3E00721F3F /* Build configuration list for PBXNativeTarget "Rush" */;
 			buildPhases = (
-				626CB70342D8AE47EE2FF4C0 /* [CP] Check Pods Manifest.lock */,
 				C05FC14522805F3D00721F3F /* Sources */,
 				C05FC14622805F3D00721F3F /* Frameworks */,
 				C05FC14722805F3D00721F3F /* Resources */,
-				99038BB0B9E69C60D63E134F /* [CP] Embed Pods Frameworks */,
 				C05FC177228063CD00721F3F /* ShellScript */,
 			);
 			buildRules = (
@@ -977,45 +957,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		626CB70342D8AE47EE2FF4C0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Rush-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99038BB0B9E69C60D63E134F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C05FC177228063CD00721F3F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1119,7 +1060,7 @@
 				1A3F55E72285C38800D42154 /* OnboardingMediates.swift in Sources */,
 				79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */,
 				796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */,
-				0992539C22846A1D00914E7B /* (null) in Sources */,
+				0992539C22846A1D00914E7B /* BuildFile in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */,
@@ -1276,7 +1217,6 @@
 		};
 		C05FC15C22805F3E00721F3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EE7287A622997DCD3DD21DD /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUGSEE_ENABLE = YES;
@@ -1300,7 +1240,6 @@
 		};
 		C05FC15D22805F3E00721F3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F279CD9FF2B71F89B2A1FD9 /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUGSEE_ENABLE = YES;
@@ -1379,7 +1318,6 @@
 		};
 		C05FC1762280637100721F3F /* ReleaseBeta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA84B74F66D3BAD5F55D799D /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUGSEE_ENABLE = YES;
