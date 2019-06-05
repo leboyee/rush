@@ -29,13 +29,11 @@ class OtherUserProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        
     }
     
     //MARk: - Other function
