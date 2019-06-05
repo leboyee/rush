@@ -68,7 +68,7 @@
                                     <action selector="secondButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gad-LB-tBk"/>
                                 </connections>
                             </button>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6c-tY-R4E">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6c-tY-R4E">
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="72.5"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5a-LF-S4O">
