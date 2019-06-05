@@ -70,6 +70,10 @@ class OtherUserProfileController: UIViewController {
         
         setupTableView()
     }
+    
+    func openFriendListController() {
+//        performSegue(withIdentifier: Segues.friendList, sender: nil)
+    }
 }
 
 //MARK: - Actions

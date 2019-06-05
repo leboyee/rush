@@ -812,7 +812,7 @@
                         <outlet property="userImageView" destination="QXq-6p-oG0" id="17D-S9-lBh"/>
                         <segue destination="ucK-SL-Bnd" kind="presentation" identifier="NotificationAlertSegue" modalPresentationStyle="overFullScreen" id="E7I-YA-fBT"/>
                         <segue destination="XdX-g6-gj5" kind="show" identifier="ProfileInformationSegue" animates="NO" id="Lcf-y5-6Em"/>
-                        <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="z8H-lu-6pg"/>
+                        <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" animates="NO" id="z8H-lu-6pg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -874,7 +874,7 @@
         <scene sceneID="NcX-rj-wI2">
             <objects>
                 <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ftc-MF-NtD">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -887,7 +887,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Pee-ny-c5L" firstAttribute="leading" secondItem="Ftc-MF-NtD" secondAttribute="leading" id="5Od-Me-ZhV"/>
                             <constraint firstAttribute="bottom" secondItem="Pee-ny-c5L" secondAttribute="bottom" id="EHh-Sw-Jd4"/>

@@ -18,7 +18,8 @@ class FriendsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+//        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+//        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
     }
     
 
