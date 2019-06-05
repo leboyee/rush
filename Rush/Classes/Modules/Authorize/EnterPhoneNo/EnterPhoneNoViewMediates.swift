@@ -55,6 +55,7 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        
         if textField.text?.count == frontTextFiled.count {
             setPlaceHolder()
         }
@@ -66,16 +67,16 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
      
         textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if (textField.text?.count ?? 0) >= (12 + countryCode.count)  {
+        let textValidation = textField.text?.replacingOccurrences(of: countryCode, with: "")
+        let validateResult = self.validatePhoneNumber(textValidation ?? "")
+        phoneNoTextField.text = "\(self.frontTextFiled)\(validateResult.formatted)"
+        if (textField.text?.count ?? 0) >= (10 + self.frontTextFiled.count)  {
             nextButton.setNextButton(isEnable: true)
         }
         else {
             nextButton.setNextButton(isEnable: false)
         }
-        let textValidation = textField.text?.replacingOccurrences(of: countryCode, with: "")
-        let validateResult = self.validatePhoneNumber(textValidation ?? "")
-        phoneNoTextField.text = "\(self.frontTextFiled)\(validateResult.formatted)"
-        
+
 
     }
     

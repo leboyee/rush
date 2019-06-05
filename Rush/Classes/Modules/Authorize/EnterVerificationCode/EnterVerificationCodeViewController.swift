@@ -27,6 +27,9 @@ class EnterVerificationCodeViewController: CustomViewController {
     @IBOutlet weak var codeErrorLabel : CustomLabel!
     @IBOutlet weak var codeErrorCancelButton : CustomButton!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var codeViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var codeLabelWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var codeLabelLeadingConstraint: NSLayoutConstraint!
 
     var code = ""
     var isCodeVerifing = false
@@ -59,6 +62,16 @@ class EnterVerificationCodeViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
+    override func viewWillLayoutSubviews() {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+            codeViewWidthConstraint.constant =  270
+            codeLabelLeadingConstraint.constant = 16
+            codeLabelWidthConstraint.constant = 280
+        }
+
+    }
+    
+    //MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0cf-VN-0pj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0cf-VN-0pj">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -760,28 +760,26 @@
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="26"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="6oK-1k-2KB">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="6oK-1k-2KB">
                                                 <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="6oK-1k-2KB" secondAttribute="height" multiplier="1:1" id="DK5-N3-axh"/>
+                                                </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-wh-y5B">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-wh-y5B">
                                                 <rect key="frame" x="66" y="0.0" width="63" height="63"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="fnz-k4-hfi">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="fnz-k4-hfi">
                                                 <rect key="frame" x="132" y="0.0" width="63" height="63"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="SIg-LL-3W3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="SIg-LL-3W3">
                                                 <rect key="frame" x="198" y="0.0" width="63" height="63"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="Y9Q-Wj-sh8">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input-code" translatesAutoresizingMaskIntoConstraints="NO" id="Y9Q-Wj-sh8">
                                                 <rect key="frame" x="264" y="0.0" width="63" height="63"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8g4-xZ-bGx" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="6" width="340" height="50"/>
+                                                <rect key="frame" x="26" y="6.5" width="340" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="340" id="SYA-HO-qrV"/>
                                                     <constraint firstAttribute="height" constant="50" id="qUb-Th-43b"/>
@@ -792,14 +790,31 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="8g4-xZ-bGx" secondAttribute="bottom" constant="7" id="3cm-f6-ymN"/>
-                                            <constraint firstAttribute="trailing" secondItem="8g4-xZ-bGx" secondAttribute="trailing" constant="-36" id="A0x-UT-1tv"/>
-                                            <constraint firstItem="8g4-xZ-bGx" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" constant="6" id="T6E-Fc-IE0"/>
+                                            <constraint firstItem="fnz-k4-hfi" firstAttribute="width" secondItem="6oK-1k-2KB" secondAttribute="width" id="6km-JZ-PJh"/>
+                                            <constraint firstItem="SIg-LL-3W3" firstAttribute="leading" secondItem="fnz-k4-hfi" secondAttribute="trailing" constant="3" id="82b-c1-grk"/>
+                                            <constraint firstItem="Y9Q-Wj-sh8" firstAttribute="width" secondItem="6oK-1k-2KB" secondAttribute="width" id="Bkb-2j-Ruy"/>
+                                            <constraint firstItem="fnz-k4-hfi" firstAttribute="height" secondItem="6oK-1k-2KB" secondAttribute="height" id="Bps-ZX-u7c"/>
+                                            <constraint firstItem="6oK-1k-2KB" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" id="JB0-kH-21u"/>
+                                            <constraint firstItem="SIg-LL-3W3" firstAttribute="height" secondItem="6oK-1k-2KB" secondAttribute="height" id="OSh-qm-o8B"/>
+                                            <constraint firstItem="fnz-k4-hfi" firstAttribute="leading" secondItem="5ag-wh-y5B" secondAttribute="trailing" constant="3" id="QYF-QQ-OTr"/>
+                                            <constraint firstItem="Y9Q-Wj-sh8" firstAttribute="height" secondItem="6oK-1k-2KB" secondAttribute="height" id="RUj-L2-Rga"/>
+                                            <constraint firstItem="5ag-wh-y5B" firstAttribute="width" secondItem="6oK-1k-2KB" secondAttribute="width" id="Rwe-6U-jdc"/>
                                             <constraint firstAttribute="width" constant="330" id="THf-Bl-Hwd"/>
+                                            <constraint firstItem="6oK-1k-2KB" firstAttribute="leading" secondItem="u5B-KR-KyK" secondAttribute="leading" id="V7u-ub-tuf"/>
                                             <constraint firstItem="4Wm-Mx-yA6" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" constant="6" id="X1S-wV-Hqe"/>
                                             <constraint firstItem="4Wm-Mx-yA6" firstAttribute="leading" secondItem="u5B-KR-KyK" secondAttribute="leading" id="Z6H-bT-7JX"/>
+                                            <constraint firstItem="fnz-k4-hfi" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" id="b2p-7X-h6D"/>
+                                            <constraint firstItem="5ag-wh-y5B" firstAttribute="height" secondItem="6oK-1k-2KB" secondAttribute="height" id="e7j-UX-usw"/>
+                                            <constraint firstItem="SIg-LL-3W3" firstAttribute="width" secondItem="6oK-1k-2KB" secondAttribute="width" id="eLO-8q-0Ll"/>
+                                            <constraint firstItem="5ag-wh-y5B" firstAttribute="leading" secondItem="6oK-1k-2KB" secondAttribute="trailing" constant="3" id="fF7-NW-1uT"/>
                                             <constraint firstAttribute="height" constant="63" id="gJe-jN-3Dm"/>
+                                            <constraint firstAttribute="trailing" secondItem="Y9Q-Wj-sh8" secondAttribute="trailing" constant="3" id="gt0-H1-46q"/>
+                                            <constraint firstItem="Y9Q-Wj-sh8" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" id="iMN-HV-ZbK"/>
                                             <constraint firstItem="8g4-xZ-bGx" firstAttribute="leading" secondItem="u5B-KR-KyK" secondAttribute="leading" constant="26" id="mba-dZ-onz"/>
+                                            <constraint firstItem="8g4-xZ-bGx" firstAttribute="centerY" secondItem="6oK-1k-2KB" secondAttribute="centerY" id="wgR-Ov-cEL"/>
+                                            <constraint firstItem="5ag-wh-y5B" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" id="x97-is-yMK"/>
+                                            <constraint firstItem="SIg-LL-3W3" firstAttribute="top" secondItem="u5B-KR-KyK" secondAttribute="top" id="y86-wS-alP"/>
+                                            <constraint firstItem="Y9Q-Wj-sh8" firstAttribute="leading" secondItem="SIg-LL-3W3" secondAttribute="trailing" constant="3" id="zHS-Mh-K8q"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -878,6 +893,9 @@
                         <outlet property="codeErrorCancelButton" destination="5UY-C0-eMq" id="hjD-Ak-prP"/>
                         <outlet property="codeErrorLabel" destination="nFt-Tl-Vu9" id="tpD-O9-Add"/>
                         <outlet property="codeLabel" destination="8g4-xZ-bGx" id="QIu-Pk-dlw"/>
+                        <outlet property="codeLabelLeadingConstraint" destination="mba-dZ-onz" id="BiR-ca-2FZ"/>
+                        <outlet property="codeLabelWidthConstraint" destination="SYA-HO-qrV" id="P9d-H3-vlq"/>
+                        <outlet property="codeViewWidthConstraint" destination="THf-Bl-Hwd" id="9gf-Nn-NEH"/>
                         <outlet property="digitTextField" destination="4Wm-Mx-yA6" id="Hg8-uE-2fe"/>
                         <outlet property="nextButton" destination="ocL-fA-zxq" id="VpX-4l-5Bp"/>
                         <outlet property="resendCodeButton" destination="7oJ-IJ-Tth" id="DBL-Hf-jiA"/>

@@ -13,15 +13,19 @@ extension EnterVerificationCodeViewController {
     
     func updateCodeView(code: String) {
         let mainstring = NSMutableAttributedString.init()
+        var isIPhone5 = false
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+            isIPhone5 = true
+        }
         for char in code {
             if char == "1" {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
-                attributedString.addAttributes([NSAttributedString.Key.kern : 50.5, NSAttributedString.Key.font : UIFont.DisplayBold(sz: 30), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
+                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 43.5 : 50.5, NSAttributedString.Key.font : UIFont.DisplayBold(sz: isIPhone5 ? 25 : 30), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
                 mainstring.append(attributedString)
             }
             else {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
-                attributedString.addAttributes([NSAttributedString.Key.kern : 47, NSAttributedString.Key.font : UIFont.DisplayBold(sz: 28), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
+                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 40 : 47, NSAttributedString.Key.font : UIFont.DisplayBold(sz: isIPhone5 ? 23 : 28), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
                 mainstring.append(attributedString)
             }
         }

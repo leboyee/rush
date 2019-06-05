@@ -87,7 +87,7 @@ public struct Text {
     static let emailTitleLogin  = "Enter school email to login"
     static let passwordTitleRegister  = "Protect account with password"
     static let passwordTitleLogin  = "Enter school email to login"
-    static let phoneNoTitleRegister  = "Add phone number to higher security"
+    static let phoneNoTitleRegister  = "Add phone number to increase security"
     static let phoneNoTitleLogin  = "Enter your phone number"
 
     static let show  = "show"
