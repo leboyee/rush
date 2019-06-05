@@ -15,6 +15,7 @@ class MyClubViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var topConstraintOfScrollView: NSLayoutConstraint!
     
     var interestList = [String]()
     var peopleList = [String]()

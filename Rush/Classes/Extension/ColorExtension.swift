@@ -119,6 +119,10 @@ extension UIColor {
         return UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 1)
     }
     
+    class var lightGray93: UIColor {
+        return UIColor(red: 0.93, green: 0.93, blue: 0.94, alpha: 1)
+    }
+    
     class var green24: UIColor {
         return UIColor(red: 0.24, green: 0.56, blue: 0.33, alpha: 1)
     }

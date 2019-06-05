@@ -38,6 +38,7 @@ struct Cell {
     static let tag                  = "TagCell"
     static let user                 = "UserCell"
     static let profileImage         = "ProfileImageCell"
+    static let profileInformation   = "ProfileInformationCell"
 }
 
 struct ReusableView {
@@ -62,6 +63,8 @@ struct Segues {
     static let enterPhoneVerification      = "EnterVerificationSegue"
     static let myClub                      = "MyClubSegue"
     static let otherUserProfile            = "OtherUserProfileSegue"
+    static let notificationAlert           = "NotificationAlertSegue"
+    static let friendList                  = "FriendListSegue"
 }
 
 struct StoryBoard {
@@ -111,6 +114,18 @@ public struct Text {
     static let events                   = "Events"
     static let clubs                    = "Clubs"
     static let classes                  = "Classes"
+    static let manage                   = "Manage"
+    static let groupChat                = "Group chat"
+    static let messages                 = "Messages"
+    static let friend                   = "Friend"
+    static let viewAll                  = "View all"
+    static let accept                   = "Accept "
+    static let reject                   = "Reject "
+    static let dateOfBirth              = "Date of birth"
+    static let relationship             = "Relationship"
+    static let university               = "University"
+    static let level                    = "Level"
+    static let year                     = "Year"
 }
 
 public struct Message {
