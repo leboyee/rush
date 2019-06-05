@@ -79,7 +79,7 @@ extension OtherUserProfileController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }
             if section == 2 {
-                 self_.performSegue(withIdentifier: Segues.friendList, sender: nil)
+//                 self_.performSegue(withIdentifier: Segues.friendList, sender: nil)
             }
         }
     }
