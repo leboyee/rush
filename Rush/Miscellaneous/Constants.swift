@@ -91,7 +91,7 @@ public struct Text {
     static let hide  = "hide"
     static let next  = "Next"
     static let login = "Login"
-    static let receiveCodeButtonTitle = "Recieve confirmation code"
+    static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
 
     
