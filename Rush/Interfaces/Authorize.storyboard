@@ -718,7 +718,7 @@
                                             <constraint firstAttribute="height" constant="48" id="8Ir-UI-SOb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
-                                        <state key="normal" title="Recieve confirmation code">
+                                        <state key="normal" title="Receive confirmation code">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>

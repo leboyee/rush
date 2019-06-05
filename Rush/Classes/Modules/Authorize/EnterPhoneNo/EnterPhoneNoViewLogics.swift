@@ -46,5 +46,10 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
         self.flagImage.image = UIImage(named: "\(countryName.replacingOccurrences(of: " ", with: ""))")
         setContryCodeWith()
         self.phoneNoTextField.text = "\(self.frontTextFiled)\(phoneNoTextField.text ?? "")"
+        if phoneNoTextField.text?.count == frontTextFiled.count {
+            setPlaceHolder()
+        }
+
+        
     }
 }

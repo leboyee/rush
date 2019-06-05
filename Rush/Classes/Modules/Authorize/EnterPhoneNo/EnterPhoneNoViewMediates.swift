@@ -66,7 +66,7 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
      
         textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if (textField.text?.count ?? 0) >= (15 + countryCode.count)  {
+        if (textField.text?.count ?? 0) >= (12 + countryCode.count)  {
             nextButton.setNextButton(isEnable: true)
         }
         else {
