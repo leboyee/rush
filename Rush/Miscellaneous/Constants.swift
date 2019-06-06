@@ -39,6 +39,8 @@ struct Cell {
     static let user                 = "UserCell"
     static let profileImage         = "ProfileImageCell"
     static let profileInformation   = "ProfileInformationCell"
+    static let friendList           = "FriendListCell"
+    static let friendClub           = "FriendClubCell"
 }
 
 struct ReusableView {

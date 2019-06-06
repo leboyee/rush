@@ -72,7 +72,7 @@ class OtherUserProfileController: UIViewController {
     }
     
     func openFriendListController() {
-//        performSegue(withIdentifier: Segues.friendList, sender: nil)
+        performSegue(withIdentifier: Segues.friendList, sender: nil)
     }
 }
 

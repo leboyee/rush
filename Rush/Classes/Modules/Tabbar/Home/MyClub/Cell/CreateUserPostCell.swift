@@ -10,6 +10,9 @@ import UIKit
 
 class CreateUserPostCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var containView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +24,18 @@ class CreateUserPostCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension CreateUserPostCell {
+    func setup(font: UIFont) {
+        titleLabel.font = font
+    }
+    
+    func setup(containViewColor: UIColor) {
+        containView.backgroundColor = containViewColor
+    }
+    
+    func setup(titleColor: UIColor) {
+        titleLabel.textColor = titleColor
+    }
 }

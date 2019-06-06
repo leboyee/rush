@@ -8,6 +8,19 @@
 
 import UIKit
 
-class FriendsListLogics: NSObject {
+extension FriendsListViewController {
+    
+    func cellHeight(_ indexPath: IndexPath) -> CGFloat {
+        return  UITableView.automaticDimension
+    }
+    
+    func cellCount(_ section: Int) -> Int {
+        return 50
+    }
+    
+    func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
+        
+        
+    }
 
 }
