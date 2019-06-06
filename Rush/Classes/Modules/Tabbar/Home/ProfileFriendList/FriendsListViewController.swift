@@ -22,6 +22,7 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var firstSegmentButton: UIButton!
     @IBOutlet weak var secondSegmentButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,9 @@ class FriendsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setupUI() {

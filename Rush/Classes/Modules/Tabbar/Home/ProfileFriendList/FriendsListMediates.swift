@@ -12,6 +12,9 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func setupTableView() {
         
+        containView.layer.cornerRadius = 24
+        containView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 56
