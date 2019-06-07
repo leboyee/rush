@@ -83,8 +83,8 @@ extension HomeViewController {
             guard let _ = self else { return }
             // Open other user profile UI for test
 //            self_.performSegue(withIdentifier: Segues.otherUserProfile , sender: nil)
-//            Utils.notReadyAlert()
-            self?.performSegue(withIdentifier: "FriendListSegue" , sender: nil)
+            Utils.notReadyAlert()
+//            self?.performSegue(withIdentifier: "FriendListSegue" , sender: nil)
             
         }
     }
