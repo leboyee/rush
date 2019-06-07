@@ -53,6 +53,11 @@ class EnterUserNameViewController: CustomViewController {
 
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    
     //MARK: - Setup
     func setup() {
         setupUI()

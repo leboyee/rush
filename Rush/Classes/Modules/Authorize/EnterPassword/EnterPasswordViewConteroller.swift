@@ -80,11 +80,11 @@ class EnterPasswordViewConteroller: CustomViewController {
         self.bgImageView.setBgForLoginSignup()
         
         if loginType == .Register {
-            capitalLetterLabel.text = Text.passwordTitleRegister
+            passwordTitleLabel.text = Text.passwordTitleRegister
             nextButton.setTitle(Text.next, for: .normal)
         }
         else {
-            capitalLetterLabel.text = Text.passwordTitleLogin
+            passwordTitleLabel.text = Text.passwordTitleLogin
             nextButton.setTitle(Text.login, for: .normal)
         }
     }
