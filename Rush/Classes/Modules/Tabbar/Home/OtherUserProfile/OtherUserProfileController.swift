@@ -41,10 +41,6 @@ class OtherUserProfileController: UIViewController {
         setupUI()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
     func setupUI() {
         
         scrollView.delegate = self
@@ -116,6 +112,9 @@ extension OtherUserProfileController {
                 controller.toastMessage = message
                 controller.delegate = self
             }
+        } else if segue.identifier == Segues.friendList {
+            let vc = segue.destination as! FriendsListViewController
+            vc.type = sender as? UserProfileDetailType ?? .none
         }
     }
 }

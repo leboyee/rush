@@ -133,12 +133,15 @@ public struct Text {
     static let university               = "University"
     static let level                    = "Level"
     static let year                     = "Year"
+    static let UpcomingEvents           = "Upcoming events"
+    static let createEventAndOpenClub   = "Create events and open clubs"
 }
 
 public struct Message {
     static let tryAgainErrorMessage            = "Try again, please."
     static let phPhotoLibraryAuthorizedMesssage  = "Photo library access is required to add photo."
     static let cameraAuthorizedMesssage = "Camera access is required to capture photo."
+    static let joinEventsAndClassses = "Join events and classes to see your schedual in Calendar."
 }
 
 public struct Icons {
