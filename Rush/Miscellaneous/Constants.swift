@@ -67,6 +67,9 @@ struct Segues {
     static let otherUserProfile            = "OtherUserProfileSegue"
     static let notificationAlert           = "NotificationAlertSegue"
     static let friendList                  = "FriendListSegue"
+    static let enterUserNameSegue                  = "EnterUserNameSegue"
+
+    
 }
 
 struct StoryBoard {
@@ -91,7 +94,9 @@ public struct Text {
     static let passwordTitleLogin  = "Enter school email to login"
     static let phoneNoTitleRegister  = "Add phone number to increase security"
     static let phoneNoTitleLogin  = "Enter your phone number"
+    static let userNameTitleRegister  = "Profile setup"
 
+    
     static let show  = "show"
     static let hide  = "hide"
     static let next  = "Next"

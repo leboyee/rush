@@ -49,6 +49,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        self.view.endEditing(true)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
@@ -98,6 +99,7 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
+        self.view.endEditing(true)
         self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
     }
     

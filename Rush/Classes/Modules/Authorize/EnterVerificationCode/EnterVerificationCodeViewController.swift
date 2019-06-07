@@ -49,6 +49,7 @@ class EnterVerificationCodeViewController: CustomViewController {
         super.viewWillAppear(animated)
         digitTextField.autocorrectionType = .no
         digitTextField.keyboardType = .numberPad
+        digitTextField.becomeFirstResponder()
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -80,7 +81,6 @@ class EnterVerificationCodeViewController: CustomViewController {
     func setupUI() {
         // Navigation Bar Button
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        digitTextField.becomeFirstResponder()
 
         // Set Custom part of Class
         nextButton.setNextButton(isEnable: false)
@@ -114,7 +114,9 @@ extension EnterVerificationCodeViewController {
            // self.codeVerifyingAPI(code: self.code)
             //Update View
            // self.updateStageView(stage: .verifying)
-            AppDelegate.getInstance().setupStoryboard()
+            self.view.endEditing(true)
+            self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
+            //AppDelegate.getInstance().setupStoryboard()
         }
 
     }
