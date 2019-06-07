@@ -79,7 +79,13 @@ extension OtherUserProfileController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }
             if section == 2 {
-                 self_.openFriendListController()
+                 self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
+            } else if section == 3 {
+                self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
+            } else if section == 4 {
+                self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubs)
+            } else if section == 5 {
+                self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
         }
     }

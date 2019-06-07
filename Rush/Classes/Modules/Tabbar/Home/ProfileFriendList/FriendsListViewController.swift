@@ -33,12 +33,13 @@ class FriendsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-        navigationController?.navigationBar.isTranslucent = false
+//        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+//        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+//        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setupUI() {
+        self.view.backgroundColor = UIColor.bgBlack
         selectedSegment(tag: 0)
         setupTableView()
     }
@@ -77,6 +78,13 @@ class FriendsListViewController: UIViewController {
         
         firstSegmentButton.setTitle(firstTitle, for: .normal)
         secondSegmentButton.setTitle(secondTitle, for: .normal)
+        
+        let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
+        navigationItem.leftBarButtonItem = leftbarButton
+    }
+    
+    @objc func backButtonAction() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

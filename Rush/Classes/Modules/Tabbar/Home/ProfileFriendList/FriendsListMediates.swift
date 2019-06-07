@@ -12,8 +12,8 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func setupTableView() {
         
-        containView.layer.cornerRadius = 24
-        containView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tableView.layer.cornerRadius = 24
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         tableView.delegate = self
         tableView.dataSource = self

@@ -21,6 +21,9 @@ class CustomBackgoundImageView: UIImageView {
     
     func setupCustomUI() {
         
+        self.layer.cornerRadius = 24
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         self.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
     }
     
