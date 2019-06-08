@@ -29,16 +29,16 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            bottomViewConstraint.constant = keyboardHeight + 10
+            //bottomViewConstraint.constant = keyboardHeight + 10
             self.view.layoutIfNeeded()
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+     //   if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             bottomViewConstraint.constant = 30
             self.view.layoutIfNeeded()
-        }
+       // }
     }
 
     
@@ -52,6 +52,8 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
         return true
     }
     
@@ -61,7 +63,6 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         return true
     }
     

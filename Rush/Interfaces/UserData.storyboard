@@ -39,7 +39,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74n-HN-KKK">
-                                <rect key="frame" x="0.0" y="101" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="233"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-r6-6NM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="16" width="382" height="16"/>
@@ -153,7 +153,7 @@
                                     <constraint firstItem="Cki-GM-c8c" firstAttribute="leading" secondItem="74n-HN-KKK" secondAttribute="leading" id="OVe-lB-llC"/>
                                     <constraint firstItem="D7r-0p-irU" firstAttribute="top" secondItem="cbv-r6-6NM" secondAttribute="bottom" constant="4" id="Vgl-Mc-GhW"/>
                                     <constraint firstItem="o4V-DK-0XZ" firstAttribute="leading" secondItem="74n-HN-KKK" secondAttribute="leading" id="aGu-e5-75x"/>
-                                    <constraint firstAttribute="height" constant="400" id="cUN-UQ-eNR"/>
+                                    <constraint firstAttribute="height" constant="233" id="cUN-UQ-eNR"/>
                                     <constraint firstItem="cbv-r6-6NM" firstAttribute="leading" secondItem="74n-HN-KKK" secondAttribute="leading" constant="24" id="nda-qw-NhH"/>
                                     <constraint firstItem="6je-Ei-DZc" firstAttribute="leading" secondItem="74n-HN-KKK" secondAttribute="leading" id="oy6-U4-pBZ"/>
                                     <constraint firstItem="o4V-DK-0XZ" firstAttribute="top" secondItem="Cki-GM-c8c" secondAttribute="bottom" id="rZU-an-LH3"/>

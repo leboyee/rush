@@ -30,21 +30,18 @@ class EnterUserNameViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        firstNameTextField.autocorrectionType = .no
-        lastNameTextField.autocorrectionType = .no
+        firstNameTextField.autocorrectionType = .yes
+        lastNameTextField.autocorrectionType = .yes
 
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
         navigationController?.navigationBar.isHidden = false
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+
     }
     
     override func viewWillLayoutSubviews() {
@@ -111,6 +108,9 @@ extension EnterUserNameViewController {
     }
     
     @IBAction func nextButtonAction() {
+        firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
         AppDelegate.getInstance().setupStoryboard()
     }
 
