@@ -67,8 +67,10 @@ struct Segues {
     static let otherUserProfile            = "OtherUserProfileSegue"
     static let notificationAlert           = "NotificationAlertSegue"
     static let friendList                  = "FriendListSegue"
-    static let enterUserNameSegue                  = "EnterUserNameSegue"
+    static let enterUserNameSegue          = "EnterUserNameSegue"
+    static let addProfilePictureSegue      = "AddProfilePictureSegue"
 
+    
     
 }
 
