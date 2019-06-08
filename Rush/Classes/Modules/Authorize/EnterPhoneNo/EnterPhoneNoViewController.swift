@@ -42,6 +42,12 @@ class EnterPhoneNoViewController: CustomViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewWillLayoutSubviews() {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+            placeHolderTextField.font = UIFont.DisplayBold(sz: 22)
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.view.endEditing(true)
@@ -49,6 +55,8 @@ class EnterPhoneNoViewController: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
+    
+    
     
     func setup() {
         setupUI()

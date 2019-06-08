@@ -122,7 +122,9 @@ extension EnterVerificationCodeViewController {
     }
     
     @IBAction func resendSMSButtonAction() {
-        view.endEditing(true)
+        codeLabel.text = ""
+        digitTextField.text = ""
+        //view.endEditing(true)
     }
     
 }
