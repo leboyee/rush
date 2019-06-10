@@ -80,7 +80,6 @@
                                         <state key="normal" title="Create account" backgroundImage="onboard-bg-button-main"/>
                                         <connections>
                                             <action selector="createButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="9nG-sC-uJy"/>
-                                            <segue destination="KuJ-Fk-pbX" kind="show" id="gQL-57-IqD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVU-1T-UG0">
@@ -95,6 +94,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="63F-uI-wGD"/>
+                                            <segue destination="KuJ-Fk-pbX" kind="show" id="nrp-dH-uTp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -149,13 +149,13 @@
             </objects>
             <point key="canvasLocation" x="100" y="112"/>
         </scene>
-        <!--UserData-->
+        <!--Tabbar-->
         <scene sceneID="GvG-Ps-UCZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserData" id="KuJ-Fk-pbX" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Tabbar" id="KuJ-Fk-pbX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ba-fE-Ymb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="217"/>
+            <point key="canvasLocation" x="-41" y="258"/>
         </scene>
     </scenes>
     <resources>
