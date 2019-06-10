@@ -105,6 +105,9 @@ public struct Text {
     static let login = "Login"
     static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
+    static let changeImage = "Change image"
+
+    
 
     
 

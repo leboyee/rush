@@ -18,6 +18,9 @@ class AddProfilePictureViewController: CustomViewController {
     @IBOutlet weak var nextButton: CustomButton!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userImageViewHeightConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var userPhotoImageView: UIImageView!
     @IBOutlet weak var bottomLabel: UILabel!
 
@@ -120,6 +123,16 @@ extension AddProfilePictureViewController {
        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, info in
             if let img = image {
                 self.userPhotoImageView.image = img
+
+                DispatchQueue.main.async {
+                    self.userImageViewWidthConstraint.constant = 200
+                    self.userImageViewHeightConstraint.constant = 200
+                    self.userPhotoImageView.layoutIfNeeded()
+                    self.view.layoutIfNeeded()
+                    self.userPhotoImageView.layer.cornerRadius = 100
+                    self.userPhotoImageView.clipsToBounds = true
+                    self.bottomLabel.text = Text.changeImage
+                }
             }
         })
     }
