@@ -10,6 +10,8 @@
 import UIKit
 import SVProgressHUD
 import AVKit
+import Photos
+
 
 class Utils: NSObject {
     static let shared = Utils()
@@ -94,6 +96,119 @@ extension Utils {
             alert.show()
         }
     }
+}
+
+//MARK: -  CAMERA
+extension Utils {
+    enum VideoAuthorizationStatus {
+        case justDenied
+        case alreadyDenied
+        case restricted
+        case justAuthorized
+        case alreadyAuthorized
+    }
+    
+    class func authorizeVideo(completion: ((VideoAuthorizationStatus) -> Void)?) {
+        self.authorize(mediaType: AVMediaType.video, completion: completion)
+    }
+    
+    private class func authorize(mediaType: AVMediaType, completion: ((VideoAuthorizationStatus) -> Void)?) {
+        let status = AVCaptureDevice.authorizationStatus(for: mediaType)
+        switch status {
+        case .authorized:
+            completion?(.alreadyAuthorized)
+        case .denied:
+            completion?(.alreadyDenied)
+        case .restricted:
+            completion?(.restricted)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: mediaType, completionHandler: { (granted) in
+                DispatchQueue.main.async {
+                    if(granted) {
+                        completion?(.justAuthorized)
+                    }
+                    else {
+                        completion?(.justDenied)
+                    }
+                }
+            })
+        }
+    }
+}
+//MARK: -  PHOTO LIBRARY
+extension  Utils {
+    
+    enum PhotoLibraryAuthorizationStatus {
+        case justDenied
+        case alreadyDenied
+        case restricted
+        case justAuthorized
+        case alreadyAuthorized
+    }
+    
+    class func authorizePhoto(completion: ((PhotoLibraryAuthorizationStatus) -> Void)?) {
+        self.authorize(completion: completion)
+    }
+    
+    private class func authorize(completion: ((PhotoLibraryAuthorizationStatus) -> Void)?) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            completion?(.alreadyAuthorized)
+        case .denied:
+            completion?(.alreadyDenied)
+        case .restricted:
+            completion?(.restricted)
+        case .notDetermined:
+            // Access has not been determined.
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in
+                if (newStatus == PHAuthorizationStatus.authorized) {
+                    //self.openCameraOrLibrary(type: .photoLibrary)
+                    completion?(.justAuthorized)
+                }
+                else {
+                    completion?(.justDenied)
+                }
+            })
+        }
+    }
+    
+    class func alertCameraAccessNeeded() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+        
+        let alert = UIAlertController(
+            title: "Camera Access",
+            message: "Camera access is required to make full use of this app.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
+            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+        }))
+        
+        alert.show()
+    }
+    
+    
+    class func photoLibraryPermissionAlert() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+        
+        let alert = UIAlertController(
+            title: "Photo Album",
+            message: "Permission is required to add photo.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
+            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+        }))
+        
+        alert.show()
+    }
+    
+    
 }
 
 //MARK: - UserDefault Functions

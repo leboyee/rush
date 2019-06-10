@@ -8,17 +8,18 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import DKImagePickerController
+import DKPhotoGallery
+import DKCamera
 
 
 class AddProfilePictureViewController: CustomViewController {
 
     @IBOutlet weak var nextButton: CustomButton!
-    @IBOutlet weak var userNameTitleLabel: CustomLabel!
-    @IBOutlet weak var userNameDetailLabel: CustomLabel!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
-    @IBOutlet weak var firstNameTextField: AkiraTextField!
-    @IBOutlet weak var lastNameTextField: AkiraTextField!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userPhotoImageView: UIImageView!
+    @IBOutlet weak var bottomLabel: UILabel!
 
     var loginType: LoginType = .Register
     
@@ -30,32 +31,18 @@ class AddProfilePictureViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        firstNameTextField.autocorrectionType = .no
-        lastNameTextField.autocorrectionType = .no
-
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     override func viewWillLayoutSubviews() {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
         }
-
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 
     
     //MARK: - Setup
@@ -65,16 +52,10 @@ class AddProfilePictureViewController: CustomViewController {
     }
     
     func setupUI() {
-        // Navigation Bar Button
-        //self.navigationItem.titleView = CustomNavBarPageController.instanceFromNib()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { // Change `2.0` to the desired number of seconds.
-            self.firstNameTextField.becomeFirstResponder()
-        }
         // Set Custom part of Class
         nextButton.setNextButton(isEnable: false)
         self.bgImageView.setBgForLoginSignup()
-        userNameTitleLabel.text = Text.userNameTitleRegister
         nextButton.setTitle(Text.next, for: .normal)
         setCustomNavigationBarView()
     }
@@ -98,10 +79,53 @@ class AddProfilePictureViewController: CustomViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
 
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
-        
+    }
+}
+
+//MARK: - Other Function
+extension AddProfilePictureViewController {
+    
+    func photoLibraryPermissionCheck() {
+        Utils.authorizePhoto(completion: { [weak self] (status) in
+            guard let self_ = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
+                    self_.openCameraOrLibrary()
+            }
+            else {
+                if status != .justDenied {
+                    Utils.photoLibraryPermissionAlert()
+                }
+            }
+        })
     }
 
+    func openCameraOrLibrary() {
 
+        let pickerController = DKImagePickerController()
+        DKImageExtensionController.registerExtension(extensionClass: CustomCameraExtension.self, for: .camera)
+        
+        pickerController.singleSelect = true
+        pickerController.showsCancelButton = true
+        pickerController.autoCloseOnSingleSelect = true
+        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            self.assignSelectedImages(photos: assets)
+        }
+
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    func assignSelectedImages(photos: [DKAsset]) {
+        var dkAsset: DKAsset!
+        dkAsset = photos[0]
+       dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, info in
+            if let img = image {
+                self.userPhotoImageView.image = img
+            }
+        })
+    }
+    
+
+    
 }
 
 // MARK: - Actions
@@ -113,5 +137,8 @@ extension AddProfilePictureViewController {
     @IBAction func nextButtonAction() {
         AppDelegate.getInstance().setupStoryboard()
     }
-
+    
+    @IBAction func addImageViewButtonAction() {
+        photoLibraryPermissionCheck()
+    }
 }

@@ -47,7 +47,6 @@ class EnterUserNameViewController: CustomViewController {
     override func viewWillLayoutSubviews() {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
         }
-
     }
     
     deinit {
@@ -78,7 +77,6 @@ class EnterUserNameViewController: CustomViewController {
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-        
 
         let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
         let customView = UIView(frame: frame)
@@ -87,18 +85,15 @@ class EnterUserNameViewController: CustomViewController {
         pageView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
         customView.addSubview(pageView)
         self.navigationItem.titleView = customView
+
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
         skipButton.addTarget(self, action:  #selector(backButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
     }
-
-
 }
 
 // MARK: - Actions
@@ -110,8 +105,8 @@ extension EnterUserNameViewController {
     @IBAction func nextButtonAction() {
         firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        AppDelegate.getInstance().setupStoryboard()
+        self.performSegue(withIdentifier: Segues.addProfilePictureSegue, sender: self)
+//        AppDelegate.getInstance().setupStoryboard()
     }
 
 }

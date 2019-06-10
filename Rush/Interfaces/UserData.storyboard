@@ -338,8 +338,20 @@
                                             <constraint firstItem="nH3-Nb-Wtr" firstAttribute="leading" secondItem="gFA-tF-QyD" secondAttribute="leading" constant="8" id="yzZ-zB-sSo"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnZ-y0-a2v">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="615"/>
+                                        <connections>
+                                            <action selector="addImageViewButtonAction" destination="5rq-3M-nWQ" eventType="touchUpInside" id="2Af-cU-Djl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pnZ-y0-a2v" secondAttribute="trailing" id="8aI-FJ-5on"/>
+                                    <constraint firstAttribute="bottom" secondItem="pnZ-y0-a2v" secondAttribute="bottom" id="Mnr-DP-zqv"/>
+                                    <constraint firstItem="pnZ-y0-a2v" firstAttribute="top" secondItem="e2o-UO-Wc6" secondAttribute="top" id="hjm-zz-fWZ"/>
+                                    <constraint firstItem="pnZ-y0-a2v" firstAttribute="leading" secondItem="e2o-UO-Wc6" secondAttribute="leading" id="ndh-ed-YwA"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -367,10 +379,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="bgImageView" destination="aTp-S2-3ac" id="yiv-ZD-ceh"/>
+                        <outlet property="bottomLabel" destination="nH3-Nb-Wtr" id="6d8-To-VMZ"/>
                         <outlet property="bottomViewConstraint" destination="wWx-8d-Yhw" id="BO9-xp-0OZ"/>
                         <outlet property="nextButton" destination="XVK-Js-ieq" id="0KG-K6-cKE"/>
-                        <outlet property="userNameDetailLabel" destination="XrF-BE-H1I" id="Y4y-ia-a5D"/>
-                        <outlet property="userNameTitleLabel" destination="NsM-6I-GWf" id="ZWI-rK-XFR"/>
+                        <outlet property="userPhotoImageView" destination="qDE-5W-qGQ" id="oFt-7s-xNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eg-Dt-wD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
