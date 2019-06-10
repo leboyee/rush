@@ -86,13 +86,14 @@ class EnterUserNameViewController: CustomViewController {
         customView.addSubview(pageView)
         self.navigationItem.titleView = customView
 
+
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
         skipButton.addTarget(self, action:  #selector(backButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
     }
 }
 
