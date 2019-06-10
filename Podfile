@@ -14,14 +14,10 @@ target 'Rush' do
   pod 'IQKeyboardManagerSwift'
   
   #Reachability
-  #pod 'ReachabilitySwift'
-  pod 'ReachabilitySwift', '4.3.0'
+  pod 'ReachabilitySwift'
 
   #SDWebImage
-  pod 'SDWebImage', '4.4.7'
-  
-  #Bugs
-  pod 'Bugsee'
+  pod 'SDWebImage'
   
   #Custom Photo Library
   pod 'DKImagePickerController', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
