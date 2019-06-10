@@ -968,7 +968,6 @@
 				C05FC14522805F3D00721F3F /* Sources */,
 				C05FC14622805F3D00721F3F /* Frameworks */,
 				C05FC14722805F3D00721F3F /* Resources */,
-				C05FC177228063CD00721F3F /* ShellScript */,
 				8A3E840FDDF802ECA46CE61C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1108,23 +1107,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		C05FC177228063CD00721F3F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_SRC=$(find \"$PROJECT_DIR\" -name 'BugseeClean' | head -1)\nif [ ! \"${SCRIPT_SRC}\" ]; then\necho \"Error: BugseeClean script not found.\"\nexit 1\nfi\n/usr/bin/python \"${SCRIPT_SRC}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1384,8 +1366,6 @@
 			baseConfigurationReference = 0701FD9E6BCD8DD8B240C962 /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUGSEE_ENABLE = YES;
-				BUGSEE_KEY = "5963138a-d56f-44c2-a2ca-dbb6ddcf0bf7";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -1408,8 +1388,6 @@
 			baseConfigurationReference = 55CFD1C226CE5AF19EE96D3C /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUGSEE_ENABLE = YES;
-				BUGSEE_KEY = "5963138a-d56f-44c2-a2ca-dbb6ddcf0bf7";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -1487,8 +1465,6 @@
 			baseConfigurationReference = 788A17CACD778B6002694842 /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUGSEE_ENABLE = YES;
-				BUGSEE_KEY = "5963138a-d56f-44c2-a2ca-dbb6ddcf0bf7";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
