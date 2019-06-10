@@ -79,6 +79,7 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
 //MARK: - Notification alert delegate
 extension OtherUserProfileController: NotificationAlertDelegate {
     func undoButtonClickEvent() {
-        Utils.notReadyAlert()
+        friendType = .friends
+        tableView.reloadData()
     }
 }

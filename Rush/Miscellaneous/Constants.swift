@@ -130,6 +130,7 @@ public struct Text {
     static let viewAll                  = "View all"
     static let accept                   = "Accept "
     static let reject                   = "Reject "
+    static let requested                = "Requested"
     static let dateOfBirth              = "Date of birth"
     static let relationship             = "Relationship"
     static let university               = "University"
@@ -143,7 +144,7 @@ public struct Message {
     static let tryAgainErrorMessage            = "Try again, please."
     static let phPhotoLibraryAuthorizedMesssage  = "Photo library access is required to add photo."
     static let cameraAuthorizedMesssage = "Camera access is required to capture photo."
-    static let joinEventsAndClassses = "Join events and classes to see your schedual in Calendar."
+    static let joinEventsAndClassses = "Join events and classes to see your schedule in Calendar."
 }
 
 public struct Icons {

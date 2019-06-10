@@ -66,6 +66,11 @@ extension ClubManageCell {
             firstButton.setTitle(Text.accept, for: .normal)
             firstButton.setTitleColor(UIColor.white, for: .normal)
             firstButton.backgroundColor = UIColor.green24
+        } else if firstButtonType == .requested {
+            firstButton.setImage(#imageLiteral(resourceName: "friend-requested"), for: .normal)
+            firstButton.setTitle(Text.requested, for: .normal)
+            firstButton.setTitleColor(UIColor.bgBlack, for: .normal)
+            firstButton.backgroundColor = UIColor.lightGray93
         }
     }
     

@@ -18,7 +18,8 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var topConstraintOfScrollViw: NSLayoutConstraint!
     
-    var isShowMessageButton = true
+    var isShowMessageButton = false
+    var friendType : ManageButtonType = .friends
     
     override func viewDidLoad() {
         super.viewDidLoad()

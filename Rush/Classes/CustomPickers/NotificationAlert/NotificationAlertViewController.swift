@@ -68,6 +68,7 @@ class NotificationAlertViewController: UIViewController {
     }
     
     @IBAction func undoButtonAction() {
+        dismiss(animated: true, completion: nil)
         delegate?.undoButtonClickEvent()
     }
     

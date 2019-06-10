@@ -30,8 +30,24 @@ extension OtherUserProfileController {
     func fillManageCell(_ cell: ClubManageCell,_ indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            cell.setup(firstButtonType: .accept)
-            cell.setup(secondButtonType: .reject)
+            
+            // For test
+            cell.setup(secondButtonType: .message)
+            if friendType == .none {
+                
+            } else if friendType == .friends {
+                cell.setup(firstButtonType: .friends)
+                isShowMessageButton = false
+            } else if friendType == .requested {
+                cell.setup(firstButtonType: .requested)
+                isShowMessageButton = false
+            } else if friendType == .accept {
+                cell.setup(firstButtonType: .accept)
+                cell.setup(secondButtonType: .reject)
+                isShowMessageButton = true
+            } else if friendType == .addFriend {
+                cell.setup(firstButtonType: .addFriend)
+            }
         } else {
             cell.setup(secondButtonType: .message)
             cell.setup(isOnlyShowMessage: true)
@@ -39,12 +55,32 @@ extension OtherUserProfileController {
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }
-            self_.performSegue(withIdentifier: Segues.notificationAlert, sender: "You unfriended Jessica O’Hara")
+            self_.isShowMessageButton = false
+            if self_.friendType == .none {
+                self_.friendType = .friends
+            } else if self_.friendType == .friends {
+                self_.friendType = .addFriend
+                self_.performSegue(withIdentifier: Segues.notificationAlert, sender: "You unfriended Jessica O'Hara")
+            } else if self_.friendType == .addFriend {
+                self_.friendType = .requested
+            } else if self_.friendType == .requested {
+                self_.isShowMessageButton = true
+                self_.friendType = .accept
+            } else if self_.friendType == .accept {
+                self_.friendType = .friends
+            }
+            self_.tableView.reloadData()
         }
         
         cell.secondButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
-            Utils.notReadyAlert()
+            guard let self_ = self else { return }
+            if self_.friendType == .accept {
+                self_.friendType = .addFriend
+                self_.isShowMessageButton = false
+                self_.tableView.reloadData()
+            } else {
+                Utils.notReadyAlert()
+            }
         }
     }
     
