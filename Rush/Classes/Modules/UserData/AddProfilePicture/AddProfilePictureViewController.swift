@@ -123,9 +123,6 @@ extension AddProfilePictureViewController {
             }
         })
     }
-    
-
-    
 }
 
 // MARK: - Actions

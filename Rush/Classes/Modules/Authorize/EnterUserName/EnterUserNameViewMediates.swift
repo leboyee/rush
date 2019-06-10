@@ -29,15 +29,21 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            //bottomViewConstraint.constant = keyboardHeight + 10
-            self.view.layoutIfNeeded()
+            if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+                bottomViewConstraint.constant = keyboardHeight + 10
+                self.view.layoutIfNeeded()
+
+            }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
      //   if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
             bottomViewConstraint.constant = 30
             self.view.layoutIfNeeded()
+
+        }
        // }
     }
 
