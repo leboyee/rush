@@ -64,7 +64,7 @@ class EnterUserNameViewController: CustomViewController {
         // Navigation Bar Button
         //self.navigationItem.titleView = CustomNavBarPageController.instanceFromNib()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { // Change `2.0` to the desired number of seconds.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Change `2.0` to the desired number of seconds.
             self.firstNameTextField.becomeFirstResponder()
         }
         // Set Custom part of Class

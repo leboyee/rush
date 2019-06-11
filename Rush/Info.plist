@@ -23,7 +23,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allows user to capture photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow user to choose photo from gallery and load from library</string>
+	<string>Allows user to choose photo from gallery and load from library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Text-Bold.otf</string>

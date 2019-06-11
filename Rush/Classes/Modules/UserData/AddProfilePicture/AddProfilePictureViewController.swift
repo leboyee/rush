@@ -129,7 +129,7 @@ extension AddProfilePictureViewController {
         dkAsset = photos[0]
        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, info in
             if let img = image {
-                self.userPhotoImageView.image = img
+                self.userPhotoImageView.image = img.squareImage()
 
                 DispatchQueue.main.async {
                     self.userImageViewWidthConstraint.constant = 200
