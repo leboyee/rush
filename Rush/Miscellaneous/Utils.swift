@@ -296,6 +296,16 @@ extension Utils {
         view.layer.mask = mask
     }
     
+    class func getNavigationBarTitle(title: String) -> UIView {
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        let title = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 48, height: 30))
+        title.text = title
+        title.font = UIFont.DisplaySemibold(sz: 24)
+        title.textColor = UIColor.navBarTitleWhite32
+        customView.addSubview(title)
+        return customView
+    }
+    
 }
 
 //MARK: - Alert Extension

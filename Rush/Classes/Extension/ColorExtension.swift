@@ -134,4 +134,8 @@ extension UIColor {
     class var separatorColor: UIColor {
         return UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1)
     }
+    
+    class var navBarTitleWhite32: UIColor {
+        return UIColor(red: 1, green: 1, blue: 1, alpha: 0.32)
+    }
 }

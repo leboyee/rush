@@ -56,6 +56,8 @@ class FriendsListViewController: UIViewController {
             selectedSegment(tag: 0)
         }
         setupTableView()
+        
+        navigationItem.titleView = Utils.getNavigationBarTitle(title: "Jessica’s classes")
     }
     
     func selectedSegment(tag: Int) {
