@@ -159,9 +159,11 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="detailLabel" destination="b6o-2C-wmW" id="lxC-aR-OTb"/>
                 <outlet property="firstUserImageView" destination="xNr-Ck-2eH" id="cW9-Yf-0hJ"/>
                 <outlet property="secondUserImageView" destination="H4F-MY-mAc" id="bY1-gS-wCw"/>
                 <outlet property="thirdUserImageView" destination="zrq-Rx-77M" id="7cs-wW-kaf"/>
+                <outlet property="titleLabel" destination="our-4i-Tz5" id="rN3-Qg-nvG"/>
                 <outlet property="userCountLabel" destination="ck7-CG-QEg" id="lXK-oE-KVh"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="84.709821428571431"/>

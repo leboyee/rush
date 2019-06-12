@@ -20,7 +20,9 @@ extension FriendsListViewController {
     
     func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
         
-        
     }
 
+    func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
+        cell.setup(detail: "SOMM 24-A")
+    }
 }

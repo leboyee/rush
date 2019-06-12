@@ -1019,8 +1019,8 @@
                                     <constraint firstItem="mGf-Fn-OZe" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" constant="16" id="Epj-PN-hGf"/>
                                     <constraint firstItem="hOi-Yl-Xqs" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" id="Xak-I9-pZ7"/>
                                     <constraint firstAttribute="trailing" secondItem="mGf-Fn-OZe" secondAttribute="trailing" constant="16" id="ohN-R8-0of"/>
+                                    <constraint firstItem="hOi-Yl-Xqs" firstAttribute="top" secondItem="vdy-yw-FIA" secondAttribute="top" constant="56" id="pO8-eb-BTD"/>
                                     <constraint firstAttribute="bottom" secondItem="hOi-Yl-Xqs" secondAttribute="bottom" id="t5m-hP-1FV"/>
-                                    <constraint firstItem="hOi-Yl-Xqs" firstAttribute="top" secondItem="mGf-Fn-OZe" secondAttribute="bottom" constant="8" id="w4t-4g-KQu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1041,7 +1041,9 @@
                         <outlet property="containView" destination="vdy-yw-FIA" id="zsc-jm-oAu"/>
                         <outlet property="firstSegmentButton" destination="kuC-it-jon" id="zqI-kB-fC3"/>
                         <outlet property="secondSegmentButton" destination="qrd-d6-58I" id="waV-xu-YYN"/>
+                        <outlet property="segmentContainView" destination="mGf-Fn-OZe" id="FHe-xr-2W4"/>
                         <outlet property="tableView" destination="hOi-Yl-Xqs" id="wMX-jI-uFK"/>
+                        <outlet property="topConstraintOfTableView" destination="pO8-eb-BTD" id="rkl-5V-UG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaI-BF-S47" userLabel="First Responder" sceneMemberID="firstResponder"/>
