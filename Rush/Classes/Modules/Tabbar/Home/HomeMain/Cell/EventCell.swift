@@ -68,6 +68,14 @@ extension EventCell {
         }
     }
     
+    func setup(eventName: String) {
+        eventNameLabel.text = eventName
+    }
+    
+    func setup(eventDetail: String) {
+        timeLabel.text = eventDetail
+    }
+    
     func setup(isHideDateView: Bool) {
         if isHideDateView {
             widthConstraintOfDateView.constant = 0

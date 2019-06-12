@@ -16,6 +16,16 @@ extension EventTypeCell {
     
     func fillEventCell(_ cell: EventCell,_ indexPath: IndexPath) {
         cell.setup(type: type)
+        if type == .upcoming {
+            cell.setup(eventName: "VR Meetup")
+            cell.setup(eventDetail: "10-12pm")
+        } else if type == .clubs || type == .clubsJoined {
+            cell.setup(eventName: "Development lifehacks")
+            cell.setup(eventDetail: "Get the latest dev skills")
+        } else if type == .classes {
+            
+        }
+        
     }
     
     func fillUserCell(_ cell: UserCell,_ indexPath: IndexPath) {

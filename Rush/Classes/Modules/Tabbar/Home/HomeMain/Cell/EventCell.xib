@@ -141,7 +141,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1f-b5-ctS">
-                                                <rect key="frame" x="0.0" y="4" width="48" height="16"/>
+                                                <rect key="frame" x="0.0" y="1" width="48" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="Vdz-Z4-Qqr"/>
                                                 </constraints>
@@ -150,9 +150,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syb-bb-xJt" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="24" width="48" height="16"/>
+                                                <rect key="frame" x="0.0" y="20" width="48" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="5AK-5E-kZP"/>
+                                                    <constraint firstAttribute="height" constant="20" id="5AK-5E-kZP"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -163,7 +163,7 @@
                                         <constraints>
                                             <constraint firstItem="syb-bb-xJt" firstAttribute="leading" secondItem="Hz7-An-dev" secondAttribute="leading" id="IwD-gb-9wi"/>
                                             <constraint firstAttribute="width" constant="48" id="SWM-lw-bdj"/>
-                                            <constraint firstItem="O1f-b5-ctS" firstAttribute="top" secondItem="Hz7-An-dev" secondAttribute="top" constant="4" id="Wbr-JU-52C"/>
+                                            <constraint firstItem="O1f-b5-ctS" firstAttribute="top" secondItem="Hz7-An-dev" secondAttribute="top" constant="1" id="Wbr-JU-52C"/>
                                             <constraint firstItem="O1f-b5-ctS" firstAttribute="leading" secondItem="Hz7-An-dev" secondAttribute="leading" id="cD3-dM-8bu"/>
                                             <constraint firstAttribute="trailing" secondItem="O1f-b5-ctS" secondAttribute="trailing" id="kjN-6A-Raj"/>
                                             <constraint firstAttribute="bottom" secondItem="syb-bb-xJt" secondAttribute="bottom" constant="2" id="mRW-bb-BWk"/>
