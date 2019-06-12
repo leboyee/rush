@@ -39,14 +39,14 @@ extension HomeViewController {
     
     func fillTutorialCell(_ cell: TutorialPopUpCell) {
         
-        cell.setup(text: "Join events and classes to see your schedual in Calendar.")
+        cell.setup(text: Message.joinEventsAndClassses)
         cell.setup(bgImage: "popup-green-left")
         cell.setup(buttonTitle: "OK")
         
         cell.okButtonClickEvent = { [weak self] (text) in
             guard let self_ = self else { return }
             if text == "OK" {
-                cell.setup(text: "Create events and open clubs")
+                cell.setup(text: Text.createEventAndOpenClub)
                 cell.setup(bgImage: "popup-green-right")
                 cell.setup(buttonTitle: "Nice!")
             } else {
@@ -72,11 +72,11 @@ extension HomeViewController {
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
         if section == 1 {
-            header.setup(title: "Upcoming events")
+            header.setup(title: Text.UpcomingEvents)
         } else if section == 2 {
-            header.setup(title: "Clubs")
+            header.setup(title: Text.clubs)
         } else if section == 3 {
-            header.setup(title: "Classes")
+            header.setup(title: Text.classes)
         }
         
         header.detailButtonClickEvent = { [weak self] () in
