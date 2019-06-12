@@ -23,6 +23,8 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var secondSegmentButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containView: UIView!
+    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
+    @IBOutlet weak var segmentContainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,12 @@ class FriendsListViewController: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
-        selectedSegment(tag: 0)
+        if type == .classes {
+            topConstraintOfTableView.constant = 0
+            segmentContainView.isHidden = true
+        } else {
+            selectedSegment(tag: 0)
+        }
         setupTableView()
     }
     

@@ -14,7 +14,9 @@ class FriendClubCell: UITableViewCell {
     @IBOutlet weak var secondUserImageView: UIImageView!
     @IBOutlet weak var firstUserImageView: UIImageView!
     @IBOutlet weak var userCountLabel: UILabel!
-
+    @IBOutlet weak var titleLabel: CustomBlackLabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,4 +32,15 @@ class FriendClubCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+// MARK: - Other functions
+extension FriendClubCell {
+    func setup(title: String) {
+        titleLabel.text = title
+    }
+    
+    func setup(detail: String) {
+       detailLabel.text = detail
+    }
 }
