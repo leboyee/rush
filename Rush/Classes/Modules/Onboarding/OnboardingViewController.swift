@@ -58,12 +58,12 @@ class OnboardingViewController: UIViewController {
 // MARK: - Actions
 extension OnboardingViewController {
     @IBAction func createButtonAction() {
-        return
         loginType = .Register
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }
     
     @IBAction func loginButtonAction() {
+        return
         loginType = .Login
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }

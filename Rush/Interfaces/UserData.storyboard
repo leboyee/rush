@@ -89,7 +89,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,7 +114,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tC2-fu-bw6">
                                                 <rect key="frame" x="24" y="63" width="390" height="1"/>
@@ -314,8 +314,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFA-tF-QyD">
                                         <rect key="frame" x="82" y="159" width="250" height="250"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-add" translatesAutoresizingMaskIntoConstraints="NO" id="qDE-5W-qGQ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-add" translatesAutoresizingMaskIntoConstraints="NO" id="qDE-5W-qGQ">
                                                 <rect key="frame" x="78" y="86" width="94" height="78"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="78" id="08I-Yz-fX4"/>
+                                                    <constraint firstAttribute="width" constant="94" id="NqK-Qo-wbG"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap anywhere to add image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nH3-Nb-Wtr">
                                                 <rect key="frame" x="8" y="180" width="234" height="16"/>
@@ -329,11 +333,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="nH3-Nb-Wtr" firstAttribute="top" secondItem="qDE-5W-qGQ" secondAttribute="bottom" constant="16" id="3Gp-Um-cxS"/>
+                                            <constraint firstAttribute="trailing" secondItem="nH3-Nb-Wtr" secondAttribute="trailing" constant="8" id="6LD-ZO-gbN"/>
                                             <constraint firstItem="qDE-5W-qGQ" firstAttribute="centerX" secondItem="gFA-tF-QyD" secondAttribute="centerX" id="9wR-xK-Eyh"/>
+                                            <constraint firstItem="nH3-Nb-Wtr" firstAttribute="top" secondItem="qDE-5W-qGQ" secondAttribute="bottom" constant="16" id="cfY-pK-col"/>
                                             <constraint firstItem="qDE-5W-qGQ" firstAttribute="centerY" secondItem="gFA-tF-QyD" secondAttribute="centerY" id="jfp-v6-VCu"/>
                                             <constraint firstAttribute="width" constant="250" id="oy9-Ta-Fy8"/>
                                             <constraint firstAttribute="height" constant="250" id="s90-O5-nko"/>
+                                            <constraint firstItem="nH3-Nb-Wtr" firstAttribute="leading" secondItem="gFA-tF-QyD" secondAttribute="leading" constant="8" id="vlG-Vh-0ce"/>
                                             <constraint firstAttribute="trailing" secondItem="nH3-Nb-Wtr" secondAttribute="trailing" constant="8" id="yT0-X2-2Ub"/>
                                             <constraint firstItem="nH3-Nb-Wtr" firstAttribute="leading" secondItem="gFA-tF-QyD" secondAttribute="leading" constant="8" id="yzZ-zB-sSo"/>
                                         </constraints>
@@ -382,10 +388,35 @@
                         <outlet property="bottomLabel" destination="nH3-Nb-Wtr" id="6d8-To-VMZ"/>
                         <outlet property="bottomViewConstraint" destination="wWx-8d-Yhw" id="BO9-xp-0OZ"/>
                         <outlet property="nextButton" destination="XVK-Js-ieq" id="0KG-K6-cKE"/>
+                        <outlet property="pageControl" destination="Ghf-3h-q60" id="00b-2h-rL6"/>
+                        <outlet property="pageControllerLeadingConstraint" destination="BlF-kj-iB3" id="oa2-YE-RsV"/>
+                        <outlet property="pageControllerView" destination="Dny-qz-lQc" id="bC3-q1-tDJ"/>
+                        <outlet property="userImageViewHeightConstraint" destination="08I-Yz-fX4" id="G3W-qb-T7f"/>
+                        <outlet property="userImageViewWidthConstraint" destination="NqK-Qo-wbG" id="h4C-WT-XlO"/>
                         <outlet property="userPhotoImageView" destination="qDE-5W-qGQ" id="oFt-7s-xNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eg-Dt-wD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Dny-qz-lQc">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ghf-3h-q60" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
+                            <rect key="frame" x="25" y="434.5" width="151" height="37"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="151" id="hFf-Ku-hcd"/>
+                                <constraint firstAttribute="height" constant="37" id="pXR-YB-Yd9"/>
+                            </constraints>
+                        </pageControl>
+                    </subviews>
+                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Ghf-3h-q60" firstAttribute="leading" secondItem="dcE-qX-7am" secondAttribute="leading" constant="25" id="BlF-kj-iB3"/>
+                        <constraint firstItem="Ghf-3h-q60" firstAttribute="centerY" secondItem="dcE-qX-7am" secondAttribute="centerY" id="wHo-iG-X1b"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="dcE-qX-7am"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2553.6231884057975" y="-214.28571428571428"/>
         </scene>

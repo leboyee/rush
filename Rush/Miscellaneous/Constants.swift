@@ -41,6 +41,9 @@ struct Cell {
     static let profileInformation   = "ProfileInformationCell"
     static let friendList           = "FriendListCell"
     static let friendClub           = "FriendClubCell"
+    static let userName             = "UserNameTableViewCell"
+    static let userPostText         = "UserPostTextTableViewCell"
+    static let userPostImage        = "UserPostImageTableViewCell"
 }
 
 struct ReusableView {
@@ -69,6 +72,7 @@ struct Segues {
     static let friendList                  = "FriendListSegue"
     static let enterUserNameSegue          = "EnterUserNameSegue"
     static let addProfilePictureSegue      = "AddProfilePictureSegue"
+    static let openPostScreen              = "SegueOpenPostScreen"
 
     
     
@@ -105,6 +109,9 @@ public struct Text {
     static let login = "Login"
     static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
+    static let changeImage = "Change image"
+
+    
 
     
 
@@ -138,6 +145,8 @@ public struct Text {
     static let year                     = "Year"
     static let UpcomingEvents           = "Upcoming events"
     static let createEventAndOpenClub   = "Create events and open clubs"
+    static let saysomething             = "Say something"
+    
 }
 
 public struct Message {

@@ -14,9 +14,11 @@ class CustomNavBarPageController: UIView {
     @IBOutlet weak var skipButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
     
+    var view : UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        pageControl.isSteps = true
     }
     
     override func layoutSubviews() {

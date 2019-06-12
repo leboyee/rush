@@ -18,8 +18,14 @@ class AddProfilePictureViewController: CustomViewController {
     @IBOutlet weak var nextButton: CustomButton!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userImageViewHeightConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var userPhotoImageView: UIImageView!
     @IBOutlet weak var bottomLabel: UILabel!
+    @IBOutlet weak var pageControllerView: UIView!
+    @IBOutlet weak var pageControl: CustomImagePageControl!
+    @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
 
     var loginType: LoginType = .Register
     
@@ -32,6 +38,7 @@ class AddProfilePictureViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,19 +73,22 @@ class AddProfilePictureViewController: CustomViewController {
 
         let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
         let customView = UIView(frame: frame)
-        let customNavPageView = CustomNavBarPageController()
-        let pageView = customNavPageView.instanceFromNib()
-        pageView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
-        customView.addSubview(pageView)
+        pageControl.isSteps = true
+        pageControl.updateDots()
+        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
+        
+        customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
+        
+        
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(backButtonAction), for: .touchUpInside)
+        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
 
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
     }
 }
 
@@ -119,7 +129,18 @@ extension AddProfilePictureViewController {
         dkAsset = photos[0]
        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, info in
             if let img = image {
-                self.userPhotoImageView.image = img
+                self.userPhotoImageView.image = img.squareImage()
+
+                DispatchQueue.main.async {
+                    self.userImageViewWidthConstraint.constant = 200
+                    self.userImageViewHeightConstraint.constant = 200
+                    self.userPhotoImageView.layoutIfNeeded()
+                    self.view.layoutIfNeeded()
+                    self.userPhotoImageView.layer.cornerRadius = 100
+                    self.userPhotoImageView.clipsToBounds = true
+                    self.bottomLabel.text = Text.changeImage
+                    self.nextButton.setNextButton(isEnable: true)
+                }
             }
         })
     }
@@ -134,6 +155,11 @@ extension AddProfilePictureViewController {
     @IBAction func nextButtonAction() {
         AppDelegate.getInstance().setupStoryboard()
     }
+    
+    @IBAction func skipButtonAction() {
+        AppDelegate.getInstance().setupStoryboard()
+    }
+
     
     @IBAction func addImageViewButtonAction() {
         photoLibraryPermissionCheck()
