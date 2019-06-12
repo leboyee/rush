@@ -65,6 +65,7 @@
                         <segue destination="TBE-VI-sgU" kind="presentation" identifier="createClubSegue" modalPresentationStyle="overFullScreen" id="bhx-N6-4zZ"/>
                         <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="Woq-6I-hkG"/>
                         <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="2qn-kC-bGH"/>
+                        <segue destination="GDB-hs-lng" kind="presentation" identifier="SegueOpenPostScreen" id="OO3-lu-pJg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -687,6 +688,82 @@
             </objects>
             <point key="canvasLocation" x="2844" y="769"/>
         </scene>
+        <!--Create Post View Controller-->
+        <scene sceneID="iLc-RM-4KG">
+            <objects>
+                <viewController id="GDB-hs-lng" customClass="CreatePostViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ytd-xK-HTG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="23H-aQ-r9v">
+                                <rect key="frame" x="0.0" y="44" width="414" height="757.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk4-mP-L1R">
+                                <rect key="frame" x="36.5" y="821.5" width="150" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eJU-Vp-NOm"/>
+                                    <constraint firstAttribute="width" constant="150" id="uS5-X2-sH6"/>
+                                </constraints>
+                                <state key="normal" title="Add  photo">
+                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPhotoButtonAction:" destination="GDB-hs-lng" eventType="touchUpInside" id="ajQ-Ue-GPQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uj6-Pc-Uk9">
+                                <rect key="frame" x="227.5" y="821.5" width="150" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Take photo">
+                                    <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhotoButtonAction:" destination="GDB-hs-lng" eventType="touchUpInside" id="dtE-cc-h5q"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHV-fE-Pwv">
+                                <rect key="frame" x="206.5" y="831" width="1" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="66A-CQ-fxB"/>
+                                    <constraint firstAttribute="height" constant="21" id="w5l-ly-3bD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.75918794014084512" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="23H-aQ-r9v" firstAttribute="top" secondItem="Ujm-Mj-2Th" secondAttribute="top" id="0XG-aw-Q3H"/>
+                            <constraint firstItem="Fk4-mP-L1R" firstAttribute="centerY" secondItem="HHV-fE-Pwv" secondAttribute="centerY" id="1X9-xs-aef"/>
+                            <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="width" secondItem="Fk4-mP-L1R" secondAttribute="width" id="8AW-Sm-IKe"/>
+                            <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="height" secondItem="Fk4-mP-L1R" secondAttribute="height" id="KEH-xO-wl9"/>
+                            <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="leading" secondItem="HHV-fE-Pwv" secondAttribute="trailing" constant="20" id="R5q-pC-4bZ"/>
+                            <constraint firstItem="Ujm-Mj-2Th" firstAttribute="trailing" secondItem="23H-aQ-r9v" secondAttribute="trailing" id="Vjh-7P-GDI"/>
+                            <constraint firstItem="23H-aQ-r9v" firstAttribute="leading" secondItem="Ujm-Mj-2Th" secondAttribute="leading" id="Wqv-q4-iRQ"/>
+                            <constraint firstItem="Fk4-mP-L1R" firstAttribute="top" secondItem="23H-aQ-r9v" secondAttribute="bottom" constant="20" id="ZTa-CC-efc"/>
+                            <constraint firstItem="HHV-fE-Pwv" firstAttribute="leading" secondItem="Fk4-mP-L1R" secondAttribute="trailing" constant="20" id="cUu-63-Tss"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="HHV-fE-Pwv" secondAttribute="bottom" constant="10" id="eYU-0a-18H"/>
+                            <constraint firstItem="HHV-fE-Pwv" firstAttribute="leading" secondItem="Fk4-mP-L1R" secondAttribute="trailing" constant="20" id="ebt-Bv-KgH"/>
+                            <constraint firstItem="HHV-fE-Pwv" firstAttribute="centerX" secondItem="Ujm-Mj-2Th" secondAttribute="centerX" id="s1z-mB-jDB"/>
+                            <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="centerY" secondItem="Fk4-mP-L1R" secondAttribute="centerY" id="ymx-tE-RYq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ujm-Mj-2Th"/>
+                    </view>
+                    <connections>
+                        <outlet property="addPhotoButton" destination="Fk4-mP-L1R" id="xxf-DK-Fm3"/>
+                        <outlet property="tableView" destination="23H-aQ-r9v" id="y21-Rq-Zrw"/>
+                        <outlet property="takePhotoButton" destination="Uj6-Pc-Uk9" id="eRo-Ud-YoX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bAM-uw-Lqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="867" y="121"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ns7-EK-w4v">
             <objects>
@@ -985,6 +1062,6 @@
         <image name="white-info" width="28" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z8H-lu-6pg"/>
+        <segue reference="2qn-kC-bGH"/>
     </inferredMetricsTieBreakers>
 </document>

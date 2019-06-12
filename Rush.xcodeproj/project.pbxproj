@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557AC22B124350080C9AE /* CreatePostViewController.swift */; };
+		091557AF22B1247F0080C9AE /* CreatePostLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557AE22B1247F0080C9AE /* CreatePostLogics.swift */; };
+		091557B122B124B90080C9AE /* CreatePostMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557B022B124B90080C9AE /* CreatePostMediates.swift */; };
+		091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557B322B126F00080C9AE /* UserNameTableViewCell.swift */; };
+		091557B622B126F00080C9AE /* UserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091557B422B126F00080C9AE /* UserNameTableViewCell.xib */; };
+		091557B922B127320080C9AE /* UserPostTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557B722B127320080C9AE /* UserPostTextTableViewCell.swift */; };
+		091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091557B822B127320080C9AE /* UserPostTextTableViewCell.xib */; };
+		091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557BB22B127600080C9AE /* UserPostImageTableViewCell.swift */; };
+		091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091557BC22B127600080C9AE /* UserPostImageTableViewCell.xib */; };
 		0918E773228436990098AF35 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E772228436990098AF35 /* ChatsViewController.swift */; };
 		0918E775228436A40098AF35 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E774228436A40098AF35 /* ExploreViewController.swift */; };
 		0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E776228436AE0098AF35 /* ForumViewController.swift */; };
@@ -159,6 +168,15 @@
 
 /* Begin PBXFileReference section */
 		0701FD9E6BCD8DD8B240C962 /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
+		091557AC22B124350080C9AE /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		091557AE22B1247F0080C9AE /* CreatePostLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostLogics.swift; sourceTree = "<group>"; };
+		091557B022B124B90080C9AE /* CreatePostMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostMediates.swift; sourceTree = "<group>"; };
+		091557B322B126F00080C9AE /* UserNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameTableViewCell.swift; sourceTree = "<group>"; };
+		091557B422B126F00080C9AE /* UserNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserNameTableViewCell.xib; sourceTree = "<group>"; };
+		091557B722B127320080C9AE /* UserPostTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTextTableViewCell.swift; sourceTree = "<group>"; };
+		091557B822B127320080C9AE /* UserPostTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostTextTableViewCell.xib; sourceTree = "<group>"; };
+		091557BB22B127600080C9AE /* UserPostImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostImageTableViewCell.swift; sourceTree = "<group>"; };
+		091557BC22B127600080C9AE /* UserPostImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostImageTableViewCell.xib; sourceTree = "<group>"; };
 		0918E772228436990098AF35 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		0918E774228436A40098AF35 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		0918E776228436AE0098AF35 /* ForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +343,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		091557AB22B124140080C9AE /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				091557B222B126650080C9AE /* Cell */,
+				091557AC22B124350080C9AE /* CreatePostViewController.swift */,
+				091557AE22B1247F0080C9AE /* CreatePostLogics.swift */,
+				091557B022B124B90080C9AE /* CreatePostMediates.swift */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
+		091557B222B126650080C9AE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				091557B322B126F00080C9AE /* UserNameTableViewCell.swift */,
+				091557B422B126F00080C9AE /* UserNameTableViewCell.xib */,
+				091557B722B127320080C9AE /* UserPostTextTableViewCell.swift */,
+				091557B822B127320080C9AE /* UserPostTextTableViewCell.xib */,
+				091557BB22B127600080C9AE /* UserPostImageTableViewCell.swift */,
+				091557BC22B127600080C9AE /* UserPostImageTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0918E76C228436820098AF35 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +406,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				091557AB22B124140080C9AE /* CreatePost */,
 				79C7DA6022A7980F00EA7759 /* ProfileFriendList */,
 				79C1AC4922A64CC0003C7790 /* ProfileInformation */,
 				7912570722A157C200BDE3EC /* OtherUserProfile */,
@@ -1049,8 +1092,10 @@
 				794183B2228960C7009AB12C /* SF-Pro-Text-Heavy.otf in Resources */,
 				1A62D2322295454C001E5790 /* Authorize.storyboard in Resources */,
 				1A142ECD229EE3B8002C1AFE /* RushCountryCode.json in Resources */,
+				091557B622B126F00080C9AE /* UserNameTableViewCell.xib in Resources */,
 				7903D0B0228E8CE5004E33B9 /* EventCell.xib in Resources */,
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
+				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				794183B1228960C7009AB12C /* SF-Pro-Text-Bold.otf in Resources */,
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
@@ -1058,6 +1103,7 @@
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
 				7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */,
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
+				091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */,
 				0918E787228444B90098AF35 /* Profile.storyboard in Resources */,
 				0918E781228444930098AF35 /* Explore.storyboard in Resources */,
 				C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */,
@@ -1119,14 +1165,17 @@
 				1AA97B8D228979D100C4550C /* Notifications.swift in Sources */,
 				1A3F55E82285C38800D42154 /* OnboardingLogics.swift in Sources */,
 				1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */,
+				091557AF22B1247F0080C9AE /* CreatePostLogics.swift in Sources */,
 				1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */,
 				1AE78D2922A00F1900972C17 /* EnterVerificationCodeViewMediates.swift in Sources */,
 				1A142EC5229EC1A0002C1AFE /* CustomPickerViewController.swift in Sources */,
 				7912570522A1448600BDE3EC /* UserCell.swift in Sources */,
+				091557B922B127320080C9AE /* UserPostTextTableViewCell.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
 				1AC635F022AA584F00021E03 /* EnterUserNameViewController.swift in Sources */,
+				091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */,
 				79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */,
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
@@ -1147,6 +1196,8 @@
 				1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */,
 				7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */,
 				1AC635F222AA584F00021E03 /* EnterUserNameViewMediates.swift in Sources */,
+				091557B122B124B90080C9AE /* CreatePostMediates.swift in Sources */,
+				091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
@@ -1192,6 +1243,7 @@
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
 				7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */,
 				79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */,
+				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */,
