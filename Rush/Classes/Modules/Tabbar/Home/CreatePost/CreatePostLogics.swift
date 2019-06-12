@@ -14,9 +14,9 @@ extension CreatePostViewController {
         if indexPath.section == 0 {
             return 100
         }else if indexPath.section == 1 {
-            return 150
-        }else {
             return UITableView.automaticDimension
+        }else {
+            return 250
         }
         
     }

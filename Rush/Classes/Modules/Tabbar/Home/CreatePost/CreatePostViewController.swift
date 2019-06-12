@@ -13,7 +13,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
-    var imageList = [String]()
+    var imageList = [UIImage]()
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -33,10 +33,10 @@ class CreatePostViewController: UIViewController {
         imagePicker.delegate = self
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        //
-        //        let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
-        //        navigationItem.rightBarButtonItem = rightBarButton
-        
+        /*
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
+        navigationItem.rightBarButtonItem = rightBarButton
+        */
         
         // create the button
         let createImage  = UIImage(named: "active-create")!.withRenderingMode(.alwaysOriginal)
@@ -57,34 +57,20 @@ class CreatePostViewController: UIViewController {
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-   
-    
 }
 
+// MARK:- Actions
 extension CreatePostViewController {
     
     @IBAction func takePhotoButtonAction(_ sender: Any) {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-        else
-        {
+            present(imagePicker, animated: true, completion: nil)
+        } else {
             let alert  = UIAlertController(title:Message.warning , message:Message.noCamera , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: Text.okay, style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
         }
         
     }
@@ -92,9 +78,16 @@ extension CreatePostViewController {
     @IBAction func addPhotoButtonAction(_ sender: Any) {
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true
-        self.present(imagePicker, animated: true, completion: nil)
-        
+        present(imagePicker, animated: true, completion: nil)
     }
     
     
+}
+
+ // MARK: - Navigation
+extension CreatePostViewController {
+    /*
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     }
+     */
 }
