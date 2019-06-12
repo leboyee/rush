@@ -19,7 +19,12 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if imageList.count > 0 {
+            return 3
+        }else {
+            return 2
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,5 +49,9 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
+    
+}
+
+extension CreatePostViewController :UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
 }

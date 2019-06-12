@@ -15,6 +15,7 @@ class UserPostTextTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         postTextView.delegate = self
+        postTextView.text = Text.saysomething
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,6 +35,7 @@ extension UserPostTextTableViewCell :UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
+            textView.textColor = UIColor.gray
             textView.text = Text.saysomething
         }
     }

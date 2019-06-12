@@ -13,6 +13,8 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
+    var imageList = [String]()
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ class CreatePostViewController: UIViewController {
     
     func setupUI() {
         setupTableView()
-        
+        imagePicker.delegate = self
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         //
@@ -72,12 +74,25 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController {
     
     @IBAction func takePhotoButtonAction(_ sender: Any) {
-        
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title:Message.warning , message:Message.noCamera , preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Text.okay, style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
-        
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
         
     }
     

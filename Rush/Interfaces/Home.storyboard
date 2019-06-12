@@ -697,7 +697,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="23H-aQ-r9v">
-                                <rect key="frame" x="0.0" y="44" width="414" height="757.5"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="717.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk4-mP-L1R">
@@ -738,7 +738,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.75918794014084512" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="23H-aQ-r9v" firstAttribute="top" secondItem="Ujm-Mj-2Th" secondAttribute="top" id="0XG-aw-Q3H"/>
+                            <constraint firstItem="23H-aQ-r9v" firstAttribute="top" secondItem="Ujm-Mj-2Th" secondAttribute="top" constant="40" id="0XG-aw-Q3H"/>
                             <constraint firstItem="Fk4-mP-L1R" firstAttribute="centerY" secondItem="HHV-fE-Pwv" secondAttribute="centerY" id="1X9-xs-aef"/>
                             <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="width" secondItem="Fk4-mP-L1R" secondAttribute="width" id="8AW-Sm-IKe"/>
                             <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="height" secondItem="Fk4-mP-L1R" secondAttribute="height" id="KEH-xO-wl9"/>

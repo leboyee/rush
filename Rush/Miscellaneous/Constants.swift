@@ -110,6 +110,7 @@ public struct Text {
     static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
     static let changeImage = "Change image"
+    static let okay = "OK"
 
     
 
@@ -154,6 +155,8 @@ public struct Message {
     static let phPhotoLibraryAuthorizedMesssage  = "Photo library access is required to add photo."
     static let cameraAuthorizedMesssage = "Camera access is required to capture photo."
     static let joinEventsAndClassses = "Join events and classes to see your schedule in Calendar."
+    static let noCamera = "You don't have camera"
+    static let warning = "Warning"
 }
 
 public struct Icons {

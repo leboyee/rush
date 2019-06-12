@@ -20,8 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7WE-3g-xty">
-                        <rect key="frame" x="0.0" y="0.0" width="236" height="82.5"/>
+                        <rect key="frame" x="10" y="0.0" width="226" height="82.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -30,7 +31,7 @@
                     <constraint firstAttribute="trailing" secondItem="7WE-3g-xty" secondAttribute="trailing" id="S8S-vW-559"/>
                     <constraint firstAttribute="bottom" secondItem="7WE-3g-xty" secondAttribute="bottom" id="bIi-Ai-nSW"/>
                     <constraint firstItem="7WE-3g-xty" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dof-dz-YdI"/>
-                    <constraint firstItem="7WE-3g-xty" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kaE-iY-fl3"/>
+                    <constraint firstItem="7WE-3g-xty" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kaE-iY-fl3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
