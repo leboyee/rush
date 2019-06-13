@@ -29,15 +29,15 @@ extension EventTypeCell {
     }
     
     func fillUserCell(_ cell: UserCell,_ indexPath: IndexPath) {
-        cell.setup(text: "John")
-        /*
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
+            cell.setup(isShowCount: true)
         } else {
             cell.setup(text: "John")
+            cell.setup(isShowCount: false)
         }
-        */
+        
     }
     
     func fillImagesCell(_ cell: ProfileImageCell,_ indexPath: IndexPath) {

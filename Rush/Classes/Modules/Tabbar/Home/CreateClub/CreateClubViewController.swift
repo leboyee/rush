@@ -13,12 +13,7 @@ class CreateClubViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
-//    @IBOutlet weak var topConstraintOfTapToChangeLabel: NSLayoutConstraint!
-//    @IBOutlet weak var userImageView: UIImageView!
-//    @IBOutlet weak var addPhotoButton: UIButton!
-//    @IBOutlet weak var hoverView: UIView!
-//    @IBOutlet weak var saveButton: UIButton!
-//    @IBOutlet weak var cancelButton: UIButton!
+
     var nameClub = ""
     var clubDescription = ""
     var clubImage : UIImage?
@@ -32,7 +27,7 @@ class CreateClubViewController: UIViewController {
     }
     
     var saveBtnDisActive : UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: #selector(saveButtonAction))
     }
     
     var interestList = [String]()
@@ -113,5 +108,10 @@ extension CreateClubViewController {
 extension CreateClubViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == Segues.myClub {
+            if let vc = segue.destination as? MyClubViewController {
+                vc.clubImage = clubImage
+            }
+        }
     }
 }

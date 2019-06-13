@@ -512,71 +512,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAg-ZS-FI6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="429"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bound-add-img" translatesAutoresizingMaskIntoConstraints="NO" id="nfz-fq-Xra">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="429"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="nfz-fq-Xra" firstAttribute="leading" secondItem="hAg-ZS-FI6" secondAttribute="leading" id="0Sl-kL-pCk"/>
-                                    <constraint firstAttribute="trailing" secondItem="nfz-fq-Xra" secondAttribute="trailing" id="NIM-RD-hgh"/>
-                                    <constraint firstItem="nfz-fq-Xra" firstAttribute="top" secondItem="hAg-ZS-FI6" secondAttribute="top" id="dgp-QG-G10"/>
-                                    <constraint firstAttribute="bottom" secondItem="nfz-fq-Xra" secondAttribute="bottom" id="kP0-Wi-gl0"/>
-                                    <constraint firstAttribute="height" constant="429" id="uaL-Q7-Im9"/>
-                                </constraints>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZf-1s-uAr">
-                                <rect key="frame" x="0.0" y="101" width="414" height="795"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-NE-AzF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="795"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="dS7-NE-AzF" firstAttribute="top" secondItem="ZZf-1s-uAr" secondAttribute="top" id="J6q-3p-L3g"/>
-                                    <constraint firstAttribute="bottom" secondItem="dS7-NE-AzF" secondAttribute="bottom" id="NZH-jV-GcH"/>
-                                    <constraint firstItem="dS7-NE-AzF" firstAttribute="leading" secondItem="ZZf-1s-uAr" secondAttribute="leading" id="bzK-XD-lW6"/>
-                                    <constraint firstItem="dS7-NE-AzF" firstAttribute="width" secondItem="ZZf-1s-uAr" secondAttribute="width" id="hpI-oI-slJ"/>
-                                    <constraint firstItem="dS7-NE-AzF" firstAttribute="height" secondItem="ZZf-1s-uAr" secondAttribute="height" id="mjI-KH-0fw"/>
-                                    <constraint firstAttribute="trailing" secondItem="dS7-NE-AzF" secondAttribute="trailing" id="ntb-xd-fkY"/>
-                                </constraints>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-NE-AzF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="L1G-gZ-BeN" firstAttribute="trailing" secondItem="ZZf-1s-uAr" secondAttribute="trailing" id="36u-kX-Poo"/>
-                            <constraint firstItem="ZZf-1s-uAr" firstAttribute="leading" secondItem="L1G-gZ-BeN" secondAttribute="leading" id="XXM-ti-ZrL"/>
-                            <constraint firstItem="hAg-ZS-FI6" firstAttribute="leading" secondItem="L1G-gZ-BeN" secondAttribute="leading" id="aTf-NS-55L"/>
-                            <constraint firstItem="hAg-ZS-FI6" firstAttribute="top" secondItem="Qnu-5S-Nw6" secondAttribute="top" id="eFr-B8-1i6"/>
-                            <constraint firstItem="ZZf-1s-uAr" firstAttribute="top" secondItem="Qnu-5S-Nw6" secondAttribute="top" constant="101" id="gxV-tP-eXm"/>
-                            <constraint firstAttribute="bottom" secondItem="ZZf-1s-uAr" secondAttribute="bottom" id="jx7-Jw-Uq6"/>
-                            <constraint firstItem="hAg-ZS-FI6" firstAttribute="trailing" secondItem="L1G-gZ-BeN" secondAttribute="trailing" id="ovm-Nc-k4g"/>
+                            <constraint firstAttribute="bottom" secondItem="dS7-NE-AzF" secondAttribute="bottom" id="1JD-BC-E3R"/>
+                            <constraint firstItem="dS7-NE-AzF" firstAttribute="top" secondItem="Qnu-5S-Nw6" secondAttribute="top" id="AjS-lu-PWg"/>
+                            <constraint firstItem="dS7-NE-AzF" firstAttribute="leading" secondItem="L1G-gZ-BeN" secondAttribute="leading" id="gm9-tl-OJK"/>
+                            <constraint firstItem="dS7-NE-AzF" firstAttribute="trailing" secondItem="L1G-gZ-BeN" secondAttribute="trailing" id="ncM-bs-n1P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L1G-gZ-BeN"/>
                     </view>
                     <navigationItem key="navigationItem" id="Nzg-tJ-IZI"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="heightConstraintOfImageView" destination="uaL-Q7-Im9" id="Na9-rI-7M8"/>
-                        <outlet property="scrollView" destination="ZZf-1s-uAr" id="QJg-aL-NPO"/>
                         <outlet property="tableView" destination="dS7-NE-AzF" id="EcT-8Y-U4s"/>
-                        <outlet property="userImageView" destination="nfz-fq-Xra" id="dDp-FR-rDc"/>
+                        <outlet property="topConstraintOfTableView" destination="AjS-lu-PWg" id="ekH-1o-Sx2"/>
                         <segue destination="T8Q-f0-bgb" kind="show" identifier="OtherUserProfileSegue" id="mTv-Vt-j3o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6e4-q3-BZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2333" y="871"/>
+            <point key="canvasLocation" x="2330.434782608696" y="870.53571428571422"/>
         </scene>
         <!--OtherUserProfileController-->
         <scene sceneID="44a-qZ-sP3">

@@ -46,6 +46,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNQ-U0-TKA">
+                                <rect key="frame" x="52" y="14" width="11" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -55,6 +61,8 @@
                             <constraint firstItem="0CB-JQ-S4t" firstAttribute="centerX" secondItem="poJ-qF-3Jq" secondAttribute="centerX" id="QqD-mi-30G"/>
                             <constraint firstItem="DrD-Ur-ghc" firstAttribute="top" secondItem="0CB-JQ-S4t" secondAttribute="bottom" constant="8" id="RO5-Nd-6UA"/>
                             <constraint firstAttribute="bottom" secondItem="DrD-Ur-ghc" secondAttribute="bottom" constant="16" id="Z6D-cZ-Wd8"/>
+                            <constraint firstItem="GNQ-U0-TKA" firstAttribute="centerY" secondItem="0CB-JQ-S4t" secondAttribute="centerY" id="cQa-uB-Bnw"/>
+                            <constraint firstItem="GNQ-U0-TKA" firstAttribute="centerX" secondItem="0CB-JQ-S4t" secondAttribute="centerX" id="rg9-8C-wPq"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -68,6 +76,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="115" height="159"/>
             <connections>
+                <outlet property="countLabel" destination="GNQ-U0-TKA" id="CTB-Fn-wYU"/>
                 <outlet property="imageView" destination="0CB-JQ-S4t" id="dU7-1w-PRb"/>
                 <outlet property="titleLabel" destination="DrD-Ur-ghc" id="QKr-lt-Fus"/>
             </connections>

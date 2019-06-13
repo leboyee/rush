@@ -12,7 +12,14 @@ import Photos
 extension MyClubViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return (section == 0 || section == 1) ? CGFloat(CFloat.leastNormalMagnitude) : 44
+        if section == 0 {
+            // Navigaiton height + cornerRadius height + changePhotoLabelOrigin
+            return ((Utils.navigationHeigh*2) + 24 + 216)
+        } else if section == 1 {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return 44
+        }
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -20,7 +27,7 @@ extension MyClubViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 2 ? 88 : UITableView.automaticDimension
+        return indexPath.section == 2 ? 88 : indexPath.section == 4 ? 48 : UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -53,6 +60,11 @@ extension MyClubViewController {
         } else if section == 4 {
             header.setup(title: Text.posts)
         }
+    }
+    
+    func fillImageHeader(_ view: UserImagesHeaderView) {
+        view.setup(image: clubImage)
+        view.setup(isHideHoverView: true)
     }
 }
 

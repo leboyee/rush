@@ -12,7 +12,8 @@ import Photos
 extension CreateClubViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        let total = ((Utils.navigationHeigh*2) + 200 + 24 + 16)
+        // Navigaiton height + cornerRadius height + changePhotoLabelOrigin
+        let total = ((Utils.navigationHeigh*2) + 24 + 216)
         return section == 0 ? total : CGFloat.leastNormalMagnitude
     }
     

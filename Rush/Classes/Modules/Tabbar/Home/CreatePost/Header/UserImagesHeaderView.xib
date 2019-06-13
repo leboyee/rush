@@ -91,7 +91,6 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="jkU-yp-obC" secondAttribute="bottom" id="GIw-L8-r9d"/>
                         <constraint firstItem="bCC-5K-eRF" firstAttribute="leading" secondItem="IDE-i6-wER" secondAttribute="leading" id="Kf3-29-1m1"/>
@@ -103,6 +102,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IDE-i6-wER" secondAttribute="bottom" id="7SM-o9-PWi"/>
                 <constraint firstItem="IDE-i6-wER" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WnY-hv-PPZ"/>

@@ -138,4 +138,8 @@ extension UIColor {
     class var navBarTitleWhite32: UIColor {
         return UIColor(red: 1, green: 1, blue: 1, alpha: 0.32)
     }
+    
+    class var gray47: UIColor {
+        return UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)
+    }
 }

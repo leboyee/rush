@@ -11,14 +11,13 @@ import Photos
 
 class MyClubViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var topConstraintOfScrollView: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var interestList = [String]()
     var peopleList = [String]()
+    
+    var clubImage : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +33,15 @@ class MyClubViewController: UIViewController {
     
     func setupUI() {
         
+        /*
         let total = screenWidth + 15
         heightConstraintOfImageView.constant = total
         
         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-    
+        */
+        
+        topConstraintOfTableView.constant = -Utils.navigationHeigh
+        
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
@@ -47,6 +50,7 @@ class MyClubViewController: UIViewController {
         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
         navigationItem.leftBarButtonItem = cancel
         
+        // setup tableview
         setupTableView()
     }
 }

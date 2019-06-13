@@ -43,6 +43,10 @@ extension UserImagesHeaderView {
             addPhotoButton.isHidden = false
         }
     }
+    
+    func setup(isHideHoverView: Bool) {
+        hoverView.isHidden = isHideHoverView
+    }
 }
 
 //MARK: - Actions

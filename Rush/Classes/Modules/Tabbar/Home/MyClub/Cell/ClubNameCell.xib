@@ -31,13 +31,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="120.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We love VR games" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-xn-wBr">
-                                <rect key="frame" x="24" y="73" width="272" height="20.5"/>
+                                <rect key="frame" x="24" y="49" width="272" height="20.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VR games" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS8-tv-SXT">
-                                <rect key="frame" x="24" y="24" width="272" height="41"/>
+                                <rect key="frame" x="24" y="0.0" width="272" height="41"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                             <constraint firstItem="TTD-xn-wBr" firstAttribute="leading" secondItem="E1x-y9-pnt" secondAttribute="leading" constant="24" id="OPD-ks-Vsr"/>
                             <constraint firstAttribute="trailing" secondItem="TTD-xn-wBr" secondAttribute="trailing" constant="24" id="ZV2-bq-db5"/>
                             <constraint firstAttribute="trailing" secondItem="yS8-tv-SXT" secondAttribute="trailing" constant="24" id="gUR-KL-dee"/>
-                            <constraint firstItem="yS8-tv-SXT" firstAttribute="top" secondItem="E1x-y9-pnt" secondAttribute="top" constant="24" id="h7a-ZC-wTU"/>
+                            <constraint firstItem="yS8-tv-SXT" firstAttribute="top" secondItem="E1x-y9-pnt" secondAttribute="top" id="h7a-ZC-wTU"/>
                             <constraint firstItem="yS8-tv-SXT" firstAttribute="leading" secondItem="E1x-y9-pnt" secondAttribute="leading" constant="24" id="iGI-wA-eIc"/>
                             <constraint firstItem="TTD-xn-wBr" firstAttribute="top" secondItem="yS8-tv-SXT" secondAttribute="bottom" constant="8" id="njT-MF-2wE"/>
                         </constraints>

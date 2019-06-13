@@ -12,6 +12,7 @@ class UserCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,5 +34,8 @@ extension UserCell {
         } else {
             
         }
+    }
+    func setup(isShowCount: Bool) {
+        countLabel.isHidden = !isShowCount
     }
 }
