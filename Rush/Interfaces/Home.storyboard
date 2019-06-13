@@ -62,7 +62,7 @@
                     <connections>
                         <outlet property="tableView" destination="kDz-Rz-gyU" id="WKU-6W-Png"/>
                         <segue destination="qj4-LD-huY" kind="presentation" identifier="SelectEventTypeSegue" animates="NO" modalPresentationStyle="overFullScreen" id="C9I-aA-3Rl"/>
-                        <segue destination="TBE-VI-sgU" kind="presentation" identifier="createClubSegue" modalPresentationStyle="overFullScreen" id="bhx-N6-4zZ"/>
+                        <segue destination="TBE-VI-sgU" kind="presentation" identifier="createClubSegue" animates="NO" modalPresentationStyle="overFullScreen" id="bhx-N6-4zZ"/>
                         <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="Woq-6I-hkG"/>
                         <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="2qn-kC-bGH"/>
                         <segue destination="GDB-hs-lng" kind="presentation" identifier="SegueOpenPostScreen" id="OO3-lu-pJg"/>
