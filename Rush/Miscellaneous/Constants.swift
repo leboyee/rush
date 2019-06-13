@@ -50,7 +50,7 @@ struct ReusableView {
 
     static let seeAllFooter   = "SeeAllFooter"
     static let textHeader     = "TextHeader"
-
+    static let userImagesHeader = "UserImagesHeaderView"
 }
 
 struct ViewControllerId {

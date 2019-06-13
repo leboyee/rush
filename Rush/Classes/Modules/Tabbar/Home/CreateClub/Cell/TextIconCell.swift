@@ -15,6 +15,7 @@ class TextIconCell: UITableViewCell {
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var chatSwitch: UISwitch!
+    @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
     
     var textDidChanged: ((_ text : String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
@@ -86,6 +87,10 @@ extension TextIconCell {
         setup(isUserInterfaceEnable: false)
         setup(isHideCleareButton: true)
         setup(isShowSwitch: false)
+    }
+    
+    func setup(topLabelConstraint: CGFloat) {
+        topConstraintOfLabel.constant = topLabelConstraint
     }
     
     @IBAction func clearButtonAction() {

@@ -14,8 +14,11 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
+        
+        let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
+        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         
         tableView.register(UINib(nibName: Cell.textIcon, bundle: nil), forCellReuseIdentifier: Cell.textIcon)
         
@@ -49,6 +52,28 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if section == 0 {
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as! UserImagesHeaderView
+            fillImageHeader(view)
+            return view
+        }
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return heightOfHeader(section)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
     /*
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -71,5 +96,38 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
+    }
+}
+
+// MARK: - Scrollview delegate
+extension CreateClubViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let headerView = tableView?.tableHeaderView {
+            let yPos: CGFloat = (scrollView.contentOffset.y + scrollView.adjustedContentInset.top)
+            let heigh: CGFloat = 346
+            if yPos >= 0 {
+                var rect = headerView.frame
+                rect.origin.y = scrollView.contentOffset.y
+                rect.size.height = heigh - yPos
+                headerView.frame = rect
+                tableView?.tableHeaderView = headerView
+            }
+        } else {
+            if tableView.contentOffset.y >= 190 {
+                
+            } else {
+                
+                let animation = CATransition()
+                animation.duration = 0.8
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+                animation.type = CATransitionType.fade
+                
+                navigationController?.navigationBar.layer.add(animation, forKey: nil)
+            }
+            
+            if (tableView.contentOffset.y < -40) {
+                tableView.contentOffset = CGPoint(x: 0, y: -40)
+            }
+        }
     }
 }

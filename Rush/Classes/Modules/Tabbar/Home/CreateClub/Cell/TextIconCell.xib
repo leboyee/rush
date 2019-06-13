@@ -74,7 +74,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="DSu-av-2YE" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" constant="20" id="10q-h3-6gS"/>
                             <constraint firstAttribute="trailing" secondItem="rqx-v5-jP2" secondAttribute="trailing" id="2De-O6-yb5"/>
                             <constraint firstAttribute="bottom" secondItem="rqx-v5-jP2" secondAttribute="bottom" id="6eV-sB-fg8"/>
                             <constraint firstItem="5B6-Kz-wi7" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" constant="21.5" id="86O-YR-Djx"/>
@@ -82,6 +81,7 @@
                             <constraint firstItem="rqx-v5-jP2" firstAttribute="top" secondItem="5B6-Kz-wi7" secondAttribute="bottom" constant="20.5" id="Qvq-wY-dzM"/>
                             <constraint firstAttribute="trailing" secondItem="c2U-wA-Eaf" secondAttribute="trailing" constant="24" id="VNo-EJ-iiM"/>
                             <constraint firstItem="jjv-3x-aT8" firstAttribute="centerY" secondItem="5B6-Kz-wi7" secondAttribute="centerY" id="Y5B-xf-Olf"/>
+                            <constraint firstItem="DSu-av-2YE" firstAttribute="top" secondItem="5B6-Kz-wi7" secondAttribute="top" constant="-1.5" id="YE4-rZ-eTR"/>
                             <constraint firstItem="rqx-v5-jP2" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="dZc-Vh-GF7"/>
                             <constraint firstItem="DSu-av-2YE" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="g0C-On-Xhd"/>
                             <constraint firstItem="c2U-wA-Eaf" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="jzx-kd-WZA"/>
@@ -106,6 +106,7 @@
                 <outlet property="iconImageView" destination="DSu-av-2YE" id="PsC-oE-UU6"/>
                 <outlet property="separatorView" destination="rqx-v5-jP2" id="uKV-Hn-7GB"/>
                 <outlet property="textField" destination="5B6-Kz-wi7" id="wH1-0V-5zv"/>
+                <outlet property="topConstraintOfLabel" destination="86O-YR-Djx" id="AXn-2y-aAD"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="96.09375"/>
         </tableViewCell>

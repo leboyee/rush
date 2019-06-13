@@ -12,7 +12,8 @@ import Photos
 extension CreateClubViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat.leastNormalMagnitude : 50
+        let total = ((Utils.navigationHeigh*2) + 200 + 24 + 16)
+        return section == 0 ? total : CGFloat.leastNormalMagnitude
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -36,11 +37,12 @@ extension CreateClubViewController {
         
         cell.resetAllField()
         if indexPath.section == 0 && indexPath.row == 0 {
+            cell.setup(topLabelConstraint: 2)
             cell.setup(iconImage: "club-gray-1")
-            cell.setup(placeholder: Text.nameClub, title: "")
+            cell.setup(placeholder: Text.nameClub, title: nameClub)
             cell.setup(isUserInterfaceEnable: true)
         } else if indexPath.section == 1 {
-            cell.setup(placeholder: Text.addDesc, title: "")
+            cell.setup(placeholder: Text.addDesc, title: clubDescription)
         } else if indexPath.section == 2 {
             if indexPath.row == interestList.count {
                 cell.setup(placeholder: "", title: "")
@@ -71,7 +73,11 @@ extension CreateClubViewController {
         
         cell.textDidEndEditing = { [weak self] (text) in
             guard let self_ = self else { return }
-            if indexPath.section == 2 {
+            if indexPath.section == 0 {
+                self_.nameClub = text
+            } else if indexPath.section == 1 {
+                self_.clubDescription = text
+            } else if indexPath.section == 2 {
                 if !self_.interestList.contains(text) {
                     self_.interestList.append(text)
                     self_.tableView.reloadData()
@@ -82,6 +88,7 @@ extension CreateClubViewController {
                     self_.tableView.reloadData()
                 }
             }
+            self_.validateAllFields()
         }
         
         cell.clearButtonClickEvent = { [weak self] () in
@@ -109,8 +116,18 @@ extension CreateClubViewController {
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
         
     }
+    
+    func fillImageHeader(_ view: UserImagesHeaderView) {
+        view.setup(image: clubImage)
+        view.addPhotoButtonEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.openCameraOrLibrary(type: .photoLibrary)
+            
+        }
+    }
 }
 
+// MARK: - Other functions
 extension CreateClubViewController {
     // MARK: - Capture Image
     func openCameraOrLibrary( type : UIImagePickerController.SourceType) {
@@ -133,8 +150,9 @@ extension CreateClubViewController {
             if UIImagePickerController.isSourceTypeAvailable(type) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
-                imagePicker.sourceType = type;
-                imagePicker.allowsEditing = false;
+                imagePicker.sourceType = type
+                imagePicker.allowsEditing = false
+                imagePicker.navigationBar.isTranslucent = false
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }
@@ -150,8 +168,17 @@ extension CreateClubViewController {
             }
         })
     }
+    
+    func validateAllFields() {
+        if clubImage != nil && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+            navigationItem.rightBarButtonItem = saveBtnActive
+        } else {
+            navigationItem.rightBarButtonItem = saveBtnDisActive
+        }
+    }
 }
 
+// MARK: - UIImagePickerControllerDelegate methods
 extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -178,7 +205,9 @@ extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigati
             }
             
             DispatchQueue.main.async {
-                self.userImageView.image = captureImage
+                self.clubImage = captureImage
+                self.validateAllFields()
+                self.tableView.reloadData()
                 picker.dismiss(animated: true, completion: nil)
             }
             

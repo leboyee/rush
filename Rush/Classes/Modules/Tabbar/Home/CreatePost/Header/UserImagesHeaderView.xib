@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserImagesHeaderView" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="410"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDE-i6-wER">
+                    <rect key="frame" x="0.0" y="0.0" width="404" height="410"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkU-yp-obC">
+                            <rect key="frame" x="0.0" y="0.0" width="404" height="410"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zoM-HP-R3I">
+                                    <rect key="frame" x="0.0" y="0.0" width="404" height="410"/>
+                                    <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE5-lQ-O7G">
+                                    <rect key="frame" x="0.0" y="0.0" width="404" height="410"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-club" translatesAutoresizingMaskIntoConstraints="NO" id="KuK-Ke-Jes">
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="410"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wht-xs-KkQ">
+                                            <rect key="frame" x="137.5" y="342" width="129" height="28"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                            <state key="normal" title="Tap to change cover">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="changePhotoButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Qfh-c3-xgd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="KuK-Ke-Jes" secondAttribute="trailing" id="9CS-Bj-KzW"/>
+                                        <constraint firstItem="wht-xs-KkQ" firstAttribute="centerX" secondItem="OE5-lQ-O7G" secondAttribute="centerX" id="J0U-c0-Gc8"/>
+                                        <constraint firstItem="KuK-Ke-Jes" firstAttribute="top" secondItem="OE5-lQ-O7G" secondAttribute="top" id="rx9-sq-Jn3"/>
+                                        <constraint firstAttribute="bottom" secondItem="KuK-Ke-Jes" secondAttribute="bottom" id="tBN-Mp-7BK"/>
+                                        <constraint firstItem="KuK-Ke-Jes" firstAttribute="leading" secondItem="OE5-lQ-O7G" secondAttribute="leading" id="tW6-i4-clg"/>
+                                        <constraint firstAttribute="bottom" secondItem="wht-xs-KkQ" secondAttribute="bottom" constant="40" id="yDP-2J-aVf"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sub-Me-Sf2">
+                                    <rect key="frame" x="102.5" y="160" width="199" height="88"/>
+                                    <state key="normal" image="add-cover-photo"/>
+                                    <connections>
+                                        <action selector="addPhotoButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="QRM-9p-zc2"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Sub-Me-Sf2" firstAttribute="centerX" secondItem="jkU-yp-obC" secondAttribute="centerX" id="Dgp-ZR-vKX"/>
+                                <constraint firstAttribute="trailing" secondItem="zoM-HP-R3I" secondAttribute="trailing" id="HsG-IJ-fyE"/>
+                                <constraint firstAttribute="trailing" secondItem="OE5-lQ-O7G" secondAttribute="trailing" id="J6M-bD-Pyh"/>
+                                <constraint firstItem="OE5-lQ-O7G" firstAttribute="top" secondItem="jkU-yp-obC" secondAttribute="top" id="T4O-zN-8wQ"/>
+                                <constraint firstItem="Sub-Me-Sf2" firstAttribute="top" secondItem="jkU-yp-obC" secondAttribute="top" constant="160" id="Tvx-Bx-mt6"/>
+                                <constraint firstItem="OE5-lQ-O7G" firstAttribute="leading" secondItem="jkU-yp-obC" secondAttribute="leading" id="Vbh-4Y-OD6"/>
+                                <constraint firstItem="zoM-HP-R3I" firstAttribute="top" secondItem="jkU-yp-obC" secondAttribute="top" id="e0R-6w-Vhg"/>
+                                <constraint firstAttribute="bottom" secondItem="OE5-lQ-O7G" secondAttribute="bottom" id="eYv-q8-kmx"/>
+                                <constraint firstAttribute="bottom" secondItem="zoM-HP-R3I" secondAttribute="bottom" id="fIh-nu-apV"/>
+                                <constraint firstItem="zoM-HP-R3I" firstAttribute="leading" secondItem="jkU-yp-obC" secondAttribute="leading" id="wJZ-at-SV0"/>
+                            </constraints>
+                        </view>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCC-5K-eRF">
+                            <rect key="frame" x="0.0" y="386" width="404" height="48"/>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="QQy-Tx-cgE"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="24"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="jkU-yp-obC" secondAttribute="bottom" id="GIw-L8-r9d"/>
+                        <constraint firstItem="bCC-5K-eRF" firstAttribute="leading" secondItem="IDE-i6-wER" secondAttribute="leading" id="Kf3-29-1m1"/>
+                        <constraint firstItem="jkU-yp-obC" firstAttribute="top" secondItem="IDE-i6-wER" secondAttribute="top" id="LRQ-l9-reI"/>
+                        <constraint firstAttribute="trailing" secondItem="jkU-yp-obC" secondAttribute="trailing" id="MTd-Rl-Qee"/>
+                        <constraint firstItem="jkU-yp-obC" firstAttribute="leading" secondItem="IDE-i6-wER" secondAttribute="leading" id="fSb-0a-UVX"/>
+                        <constraint firstAttribute="bottom" secondItem="bCC-5K-eRF" secondAttribute="bottom" constant="-24" id="leV-Am-6R2"/>
+                        <constraint firstAttribute="trailing" secondItem="bCC-5K-eRF" secondAttribute="trailing" id="ujA-Rn-heh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IDE-i6-wER" secondAttribute="bottom" id="7SM-o9-PWi"/>
+                <constraint firstItem="IDE-i6-wER" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WnY-hv-PPZ"/>
+                <constraint firstItem="IDE-i6-wER" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ZDf-Gx-Xir"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IDE-i6-wER" secondAttribute="trailing" id="py4-4a-kTX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addPhotoButton" destination="Sub-Me-Sf2" id="gIK-9H-2pG"/>
+                <outlet property="changePhotoButton" destination="wht-xs-KkQ" id="Y8M-mL-cRd"/>
+                <outlet property="hoverView" destination="OE5-lQ-O7G" id="7Su-gg-752"/>
+                <outlet property="roundedView" destination="bCC-5K-eRF" id="hAr-KM-4le"/>
+                <outlet property="userImageView" destination="zoM-HP-R3I" id="QP6-wK-ufg"/>
+            </connections>
+            <point key="canvasLocation" x="280" y="-61.169415292353825"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add-cover-photo" width="199" height="88"/>
+        <image name="hover-club" width="375" height="390"/>
+    </resources>
+</document>

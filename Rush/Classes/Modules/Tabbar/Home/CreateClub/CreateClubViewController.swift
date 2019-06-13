@@ -11,15 +11,17 @@ import Photos
 
 class CreateClubViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
-    @IBOutlet weak var topConstraintOfTapToChangeLabel: NSLayoutConstraint!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var hoverView: UIView!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
+//    @IBOutlet weak var topConstraintOfTapToChangeLabel: NSLayoutConstraint!
+//    @IBOutlet weak var userImageView: UIImageView!
+//    @IBOutlet weak var addPhotoButton: UIButton!
+//    @IBOutlet weak var hoverView: UIView!
+//    @IBOutlet weak var saveButton: UIButton!
+//    @IBOutlet weak var cancelButton: UIButton!
+    var nameClub = ""
+    var clubDescription = ""
+    var clubImage : UIImage?
     
     var cancelBtn : UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
@@ -56,6 +58,16 @@ class CreateClubViewController: UIViewController {
     
     func setupUI() {
         
+        topConstraintOfTableView.constant = -Utils.navigationHeigh
+        
+        // Set navigation buttons
+        navigationItem.leftBarButtonItem = cancelBtn
+        navigationItem.rightBarButtonItem = saveBtnDisActive
+        
+        // Setup tableview
+        setupTableView()
+        
+        /*
         let total = screenWidth + 15
         
         topConstraintOfTapToChangeLabel.constant = total - 106
@@ -63,7 +75,6 @@ class CreateClubViewController: UIViewController {
         
         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
         
-        navigationItem.leftBarButtonItem = cancelBtn
         
         if userImageView.image != nil {
             addPhotoButton.isHidden = true
@@ -73,7 +84,7 @@ class CreateClubViewController: UIViewController {
             addPhotoButton.isHidden = false
            navigationItem.rightBarButtonItem = saveBtnDisActive
         }
-        setupTableView()
+        */
     }
 }
 

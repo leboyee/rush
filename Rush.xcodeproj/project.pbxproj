@@ -131,6 +131,8 @@
 		7983D22E228982DC00DE054E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22D228982DC00DE054E /* Keys.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
 		7995715A22895DE500EF7C3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715922895DE500EF7C3D /* Constants.swift */; };
+		79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */; };
+		79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */; };
 		79BE868722A946C20056529E /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868522A946C20056529E /* FriendListCell.swift */; };
 		79BE868822A946C20056529E /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BE868622A946C20056529E /* FriendListCell.xib */; };
 		79BE868B22A94E9F0056529E /* FriendClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868922A94E9F0056529E /* FriendClubCell.swift */; };
@@ -294,6 +296,8 @@
 		7983D22D228982DC00DE054E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7995715922895DE500EF7C3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImagesHeaderView.swift; sourceTree = "<group>"; };
+		79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImagesHeaderView.xib; sourceTree = "<group>"; };
 		79BE868522A946C20056529E /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
 		79BE868622A946C20056529E /* FriendListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
 		79BE868922A94E9F0056529E /* FriendClubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendClubCell.swift; sourceTree = "<group>"; };
@@ -346,10 +350,11 @@
 		091557AB22B124140080C9AE /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
+				79A9377022B2288B00A602CD /* Header */,
 				091557B222B126650080C9AE /* Cell */,
 				091557AC22B124350080C9AE /* CreatePostViewController.swift */,
-				091557AE22B1247F0080C9AE /* CreatePostLogics.swift */,
 				091557B022B124B90080C9AE /* CreatePostMediates.swift */,
+				091557AE22B1247F0080C9AE /* CreatePostLogics.swift */,
 			);
 			path = CreatePost;
 			sourceTree = "<group>";
@@ -787,6 +792,15 @@
 			path = TagListView;
 			sourceTree = "<group>";
 		};
+		79A9377022B2288B00A602CD /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */,
+				79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		79BE868422A9469A0056529E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1073,6 +1087,7 @@
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
 				7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */,
+				79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */,
 				79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */,
 				0918E77F228444850098AF35 /* Home.storyboard in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
@@ -1255,6 +1270,7 @@
 				1AE78D2B22A00F1900972C17 /* EnterVerificationCodeViewController.swift in Sources */,
 				1A3F55E72285C38800D42154 /* OnboardingMediates.swift in Sources */,
 				79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */,
+				79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */,
 				796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */,
 				0992539C22846A1D00914E7B /* (null) in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
