@@ -26,6 +26,8 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     @IBOutlet weak var segmentContainView: UIView!
     
+    var userName = "Jessica"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,9 +57,12 @@ class FriendsListViewController: UIViewController {
         } else {
             selectedSegment(tag: 0)
         }
+        // Setup tableview
         setupTableView()
         
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: "Jessica’s classes")
+        // Set navigation title
+        let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
+        navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
     }
     
     func selectedSegment(tag: Int) {
@@ -79,6 +84,7 @@ class FriendsListViewController: UIViewController {
             secondSegmentButton.isSelected = false
         }
         
+        // Testind values for tester :)
         var firstTitle = ""
         var secondTitle = ""
         if type == .friends {

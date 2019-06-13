@@ -296,12 +296,12 @@ extension Utils {
         view.layer.mask = mask
     }
     
-    class func getNavigationBarTitle(title: String) -> UIView {
+    class func getNavigationBarTitle(title: String, textColor: UIColor) -> UIView {
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 48, height: 30))
         label.text = title
-        label.font = UIFont.DisplaySemibold(sz: 24)
-        label.textColor = UIColor.navBarTitleWhite32
+        label.font = UIFont.DisplayBold(sz: 24)
+        label.textColor = textColor
         customView.addSubview(label)
         return customView
     }

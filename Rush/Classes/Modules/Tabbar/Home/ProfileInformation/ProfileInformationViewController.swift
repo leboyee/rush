@@ -24,7 +24,11 @@ class ProfileInformationViewController: UIViewController {
     }
     
     func setupUI() {
+        // Setup tableview
         setupTableView()
+        
+        // Setup navigation title
+        navigationItem.titleView = Utils.getNavigationBarTitle(title: "Jessica O’Hara", textColor: UIColor.white)
     }
 }
 
