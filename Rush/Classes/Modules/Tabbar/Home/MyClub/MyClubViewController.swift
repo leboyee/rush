@@ -70,5 +70,11 @@ extension MyClubViewController {
 extension MyClubViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == Segues.otherUserProfile {
+            if let vc = segue.destination as? OtherUserProfileController {
+                // image for test
+                vc.clubImage = clubImage
+            }
+        }
     }
 }

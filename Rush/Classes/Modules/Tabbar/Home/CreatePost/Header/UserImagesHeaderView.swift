@@ -16,11 +16,13 @@ class UserImagesHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var hoverView: UIView!
     @IBOutlet weak var changePhotoButton: UIButton!
-    
+    @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var usernameView: UIView!
     
     var settingButtonEvent: (() -> Void)?
     var addPhotoButtonEvent: (() -> Void)?
     var selectedPhoto: ((_ indexpath: IndexPath) -> Void)?
+    var infoButtonEvent: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +49,13 @@ extension UserImagesHeaderView {
     func setup(isHideHoverView: Bool) {
         hoverView.isHidden = isHideHoverView
     }
+    
+    func setup(isHideUsernameView: Bool) {
+        usernameView.isHidden = isHideUsernameView
+        if isHideUsernameView == false {
+            changePhotoButton.isHidden = true
+        }
+    }
 }
 
 //MARK: - Actions
@@ -59,5 +68,9 @@ extension UserImagesHeaderView {
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
         addPhotoButtonEvent?()
+    }
+    
+    @IBAction func infoButtonAction() {
+        infoButtonEvent?()
     }
 }

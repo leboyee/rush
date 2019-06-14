@@ -105,13 +105,13 @@
                             <constraint firstAttribute="trailing" secondItem="cqi-bs-Vfs" secondAttribute="trailing" constant="24" id="0PE-RE-mkv"/>
                             <constraint firstItem="S6c-tY-R4E" firstAttribute="top" secondItem="6eF-Ss-AjY" secondAttribute="top" id="3vh-6M-BWt"/>
                             <constraint firstItem="cqi-bs-Vfs" firstAttribute="width" secondItem="S7U-l5-i2r" secondAttribute="width" id="9eB-SZ-486"/>
-                            <constraint firstItem="cqi-bs-Vfs" firstAttribute="top" secondItem="6eF-Ss-AjY" secondAttribute="top" constant="16" id="JiL-kU-nXO"/>
                             <constraint firstAttribute="bottom" secondItem="S6c-tY-R4E" secondAttribute="bottom" id="O5Z-gA-uKU"/>
                             <constraint firstAttribute="bottom" secondItem="S7U-l5-i2r" secondAttribute="bottom" constant="16" id="arZ-ut-bqu"/>
                             <constraint firstItem="S7U-l5-i2r" firstAttribute="leading" secondItem="6eF-Ss-AjY" secondAttribute="leading" constant="24" id="fxN-ld-KVe"/>
                             <constraint firstAttribute="bottom" secondItem="cqi-bs-Vfs" secondAttribute="bottom" constant="16" id="l7a-Vt-ItH"/>
                             <constraint firstItem="S7U-l5-i2r" firstAttribute="top" secondItem="6eF-Ss-AjY" secondAttribute="top" constant="16" id="lK1-yp-lHB"/>
                             <constraint firstItem="S6c-tY-R4E" firstAttribute="leading" secondItem="6eF-Ss-AjY" secondAttribute="leading" id="m73-Ui-Y3L"/>
+                            <constraint firstItem="cqi-bs-Vfs" firstAttribute="top" secondItem="S7U-l5-i2r" secondAttribute="top" id="squ-yZ-sgU"/>
                             <constraint firstAttribute="trailing" secondItem="S6c-tY-R4E" secondAttribute="trailing" id="tvk-8B-dyR"/>
                             <constraint firstItem="cqi-bs-Vfs" firstAttribute="leading" secondItem="S7U-l5-i2r" secondAttribute="trailing" constant="15" id="zC7-de-nwr"/>
                         </constraints>
@@ -131,6 +131,7 @@
                 <outlet property="firstButton" destination="S7U-l5-i2r" id="YyU-WM-dE9"/>
                 <outlet property="messageView" destination="S6c-tY-R4E" id="euy-PD-9jH"/>
                 <outlet property="secondButton" destination="cqi-bs-Vfs" id="TXS-Vg-UWH"/>
+                <outlet property="topConstraintOfButton" destination="lK1-yp-lHB" id="k53-cD-hhW"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="74.330357142857139"/>
         </tableViewCell>
