@@ -13,8 +13,11 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
     var imageList = [UIImage]()
     var imagePicker = UIImagePickerController()
+    var iskeyboard : Bool = false
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +58,8 @@ class CreatePostViewController: UIViewController {
         // add button shift to the side
         navigationItem.rightBarButtonItem = createButtonItem
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
 }

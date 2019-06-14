@@ -13,6 +13,8 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 500
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Cell.userName, bundle: nil), forCellReuseIdentifier: Cell.userName)
         tableView.register(UINib(nibName: Cell.userPostText, bundle: nil), forCellReuseIdentifier: Cell.userPostText)
         tableView.register(UINib(nibName: Cell.userPostImage, bundle: nil), forCellReuseIdentifier: Cell.userPostImage)
@@ -50,6 +52,12 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
+    }
+    
+   
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500.0
     }
     
 }

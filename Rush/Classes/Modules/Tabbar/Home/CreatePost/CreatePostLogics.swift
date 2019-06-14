@@ -16,12 +16,21 @@ extension CreatePostViewController {
         }else if indexPath.section == 1 {
             return UITableView.automaticDimension
         }else {
-            return 250
+            return 375
         }
-        
     }
     
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            viewBottamConstraint.constant = keyboardSize.size.height + 40
+        }
+    }
+
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        viewBottamConstraint.constant = 20
+    }
     
 }
 
