@@ -12,11 +12,11 @@ import Photos
 extension OtherUserProfileController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat(CFloat.leastNormalMagnitude) : 44
+        return section == 0 ? ((Utils.navigationHeigh*2) + 24 + 216) : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
-        return (section == 0 || section == 1 || section == 2) ? 1 : 0
+        return (section == 0 || section == 1 || section == 2) ? 1 : CGFloat.leastNormalMagnitude
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
@@ -33,6 +33,8 @@ extension OtherUserProfileController {
             
             // For test
             cell.setup(secondButtonType: .message)
+            cell.setup(topConstraint: 0)
+            
             if friendType == .none {
                 
             } else if friendType == .friends {
@@ -123,6 +125,19 @@ extension OtherUserProfileController {
             } else if section == 5 {
                 self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
+        }
+    }
+    
+    func fillImageHeader(_ view: UserImagesHeaderView) {
+        view.setup(image: clubImage)
+        view.setup(isHideUsernameView: false)
+        view.addPhotoButtonEvent = { [weak self] () in
+            guard let _ = self else { return }
+            
+        }
+        view.infoButtonEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
         }
     }
 }

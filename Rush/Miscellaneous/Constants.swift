@@ -73,7 +73,7 @@ struct Segues {
     static let enterUserNameSegue          = "EnterUserNameSegue"
     static let addProfilePictureSegue      = "AddProfilePictureSegue"
     static let openPostScreen              = "SegueOpenPostScreen"
-
+    static let profileInformation          = "ProfileInformationSegue"
     
     
 }

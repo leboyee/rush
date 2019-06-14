@@ -27,7 +27,7 @@ class CreateClubViewController: UIViewController {
     }
     
     var saveBtnDisActive : UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: #selector(saveButtonAction))
     }
     
     var interestList = [String]()

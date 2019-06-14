@@ -11,15 +11,16 @@ import Photos
 
 class OtherUserProfileController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var topConstraintOfScrollViw: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var isShowMessageButton = false
     var friendType : ManageButtonType = .friends
+    
+    var clubImage : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class OtherUserProfileController: UIViewController {
     
     func setupUI() {
         
+        /*
         scrollView.delegate = self
         
         tableView.layer.cornerRadius = 24
@@ -56,6 +58,9 @@ class OtherUserProfileController: UIViewController {
 //        topConstraintOfScrollViw.constant = (total * 0.5223) + Utils.navigationHeigh + 18
         
         topConstraintOfLabel.constant = (total * 0.6)
+        */
+        
+        topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
@@ -80,27 +85,7 @@ extension OtherUserProfileController {
     }
     
     @objc func shareButtonAction() {
-        performSegue(withIdentifier: "ProfileInformationSegue", sender: nil)
-    }
-    
-    @IBAction func infoButtonAction() {
-        performSegue(withIdentifier: "ProfileInformationSegue", sender: nil)
-    }
-}
-
-//MARK: - Scroll delegate
-extension OtherUserProfileController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let yOffset = scrollView.contentOffset.y
-        
-        if scrollView == self.scrollView {
-            if yOffset == 0 {
-                tableView.isScrollEnabled = true
-            } else {
-                tableView.isScrollEnabled = false
-            }
-        }
+        Utils.notReadyAlert()
     }
 }
 

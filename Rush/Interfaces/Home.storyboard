@@ -112,7 +112,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="418"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fw-na-Y1N">
-                                                        <rect key="frame" x="24" y="16" width="77" height="16"/>
+                                                        <rect key="frame" x="24" y="16" width="70" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="wg3-DO-a16"/>
                                                         </constraints>
@@ -138,7 +138,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-c7-pKd">
-                                                                <rect key="frame" x="64" y="22" width="45" height="20"/>
+                                                                <rect key="frame" x="64" y="22" width="43" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clubs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcu-it-xUd">
-                                                                <rect key="frame" x="64" y="22" width="46" height="20"/>
+                                                                <rect key="frame" x="64" y="22" width="44.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -219,7 +219,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="418"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose event type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCY-7z-0PE">
-                                                        <rect key="frame" x="24" y="16" width="123.5" height="16"/>
+                                                        <rect key="frame" x="24" y="16" width="113" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="93g-LZ-T92"/>
                                                         </constraints>
@@ -245,13 +245,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi5-af-bIB">
-                                                                <rect key="frame" x="64" y="18" width="46.5" height="20"/>
+                                                                <rect key="frame" x="64" y="18" width="47.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer, the attendees, and the event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePn-b0-IWc">
-                                                                <rect key="frame" x="64" y="42" width="326" height="31.5"/>
+                                                                <rect key="frame" x="64" y="42" width="326" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -301,13 +301,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4w-kN-3BI">
-                                                                <rect key="frame" x="64" y="18" width="53" height="20"/>
+                                                                <rect key="frame" x="64" y="18" width="54" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer. Non-invited users must submit request to see event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9l-KB-LUp">
-                                                                <rect key="frame" x="64" y="44" width="326" height="47"/>
+                                                                <rect key="frame" x="64" y="44" width="326" height="45.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -363,7 +363,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only members can see the flyer, who's is invited, and the event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1j-O0-2SJ">
-                                                                <rect key="frame" x="64" y="42" width="326" height="31.5"/>
+                                                                <rect key="frame" x="64" y="42" width="326" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -535,20 +535,12 @@
                     <connections>
                         <outlet property="tableView" destination="dS7-NE-AzF" id="EcT-8Y-U4s"/>
                         <outlet property="topConstraintOfTableView" destination="AjS-lu-PWg" id="ekH-1o-Sx2"/>
-                        <segue destination="T8Q-f0-bgb" kind="show" identifier="OtherUserProfileSegue" id="mTv-Vt-j3o"/>
+                        <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="6WS-Tq-lcO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6e4-q3-BZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2330.434782608696" y="870.53571428571422"/>
-        </scene>
-        <!--OtherUserProfileController-->
-        <scene sceneID="44a-qZ-sP3">
-            <objects>
-                <viewControllerPlaceholder referencedIdentifier="OtherUserProfileController" id="T8Q-f0-bgb" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9wf-AX-Rmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2844" y="769"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="iLc-RM-4KG">
@@ -649,7 +641,7 @@
             <objects>
                 <viewController storyboardIdentifier="OtherUserProfileController" id="0uK-H1-ybm" customClass="OtherUserProfileController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kvd-Gl-yn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oam-q1-oyi">
@@ -668,7 +660,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9v-em-60A">
-                                        <rect key="frame" x="24" y="233" width="320" height="16"/>
+                                        <rect key="frame" x="24" y="233" width="320" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                         <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -706,49 +698,34 @@
                                     <constraint firstAttribute="height" constant="425" id="xmK-4t-ezt"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4N-SV-DSB">
-                                <rect key="frame" x="0.0" y="101" width="414" height="707"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aMV-sw-YSr">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="707"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="aMV-sw-YSr" firstAttribute="height" secondItem="o4N-SV-DSB" secondAttribute="height" id="3Aj-FD-rry"/>
-                                    <constraint firstItem="aMV-sw-YSr" firstAttribute="width" secondItem="o4N-SV-DSB" secondAttribute="width" id="VWs-fh-jph"/>
-                                    <constraint firstItem="aMV-sw-YSr" firstAttribute="leading" secondItem="o4N-SV-DSB" secondAttribute="leading" id="aDi-2l-Bml"/>
-                                    <constraint firstItem="aMV-sw-YSr" firstAttribute="top" secondItem="o4N-SV-DSB" secondAttribute="top" id="j5S-RM-Vtv"/>
-                                    <constraint firstAttribute="trailing" secondItem="aMV-sw-YSr" secondAttribute="trailing" id="msh-1f-HCh"/>
-                                    <constraint firstAttribute="bottom" secondItem="aMV-sw-YSr" secondAttribute="bottom" id="rMc-0A-L3h"/>
-                                </constraints>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="aMV-sw-YSr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dSS-lN-YQr" firstAttribute="trailing" secondItem="o4N-SV-DSB" secondAttribute="trailing" id="2ZR-Yy-8kn"/>
+                            <constraint firstItem="aMV-sw-YSr" firstAttribute="leading" secondItem="dSS-lN-YQr" secondAttribute="leading" id="4Jt-kQ-QLS"/>
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="trailing" secondItem="dSS-lN-YQr" secondAttribute="trailing" id="8Io-ju-g4F"/>
-                            <constraint firstItem="o4N-SV-DSB" firstAttribute="top" secondItem="kvd-Gl-yn3" secondAttribute="top" constant="101" id="Gbp-Hf-qfw"/>
+                            <constraint firstItem="aMV-sw-YSr" firstAttribute="top" secondItem="kvd-Gl-yn3" secondAttribute="top" id="Bkd-1a-dbs"/>
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="leading" secondItem="dSS-lN-YQr" secondAttribute="leading" id="RUZ-pi-ZhA"/>
-                            <constraint firstItem="o4N-SV-DSB" firstAttribute="leading" secondItem="dSS-lN-YQr" secondAttribute="leading" id="Slu-rZ-Hu8"/>
-                            <constraint firstAttribute="bottom" secondItem="o4N-SV-DSB" secondAttribute="bottom" id="ZAf-5L-5je"/>
+                            <constraint firstItem="dSS-lN-YQr" firstAttribute="bottom" secondItem="aMV-sw-YSr" secondAttribute="bottom" id="WA4-qd-bge"/>
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="top" secondItem="kvd-Gl-yn3" secondAttribute="top" id="Zvf-J9-pJm"/>
+                            <constraint firstItem="aMV-sw-YSr" firstAttribute="trailing" secondItem="dSS-lN-YQr" secondAttribute="trailing" id="bN1-gT-5XH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dSS-lN-YQr"/>
                     </view>
                     <navigationItem key="navigationItem" id="71i-Wt-JVo"/>
                     <connections>
                         <outlet property="heightConstraintOfImageView" destination="xmK-4t-ezt" id="cwd-xI-6CF"/>
-                        <outlet property="scrollView" destination="o4N-SV-DSB" id="eGy-3T-I4e"/>
                         <outlet property="tableView" destination="aMV-sw-YSr" id="R0f-8u-nKz"/>
                         <outlet property="topConstraintOfLabel" destination="JGw-eo-GOl" id="q19-q0-kqa"/>
-                        <outlet property="topConstraintOfScrollViw" destination="Gbp-Hf-qfw" id="Gst-sd-IYp"/>
+                        <outlet property="topConstraintOfTableView" destination="Bkd-1a-dbs" id="qSK-8f-qsV"/>
                         <outlet property="userImageView" destination="QXq-6p-oG0" id="17D-S9-lBh"/>
                         <segue destination="ucK-SL-Bnd" kind="presentation" identifier="NotificationAlertSegue" modalPresentationStyle="overFullScreen" id="E7I-YA-fBT"/>
                         <segue destination="XdX-g6-gj5" kind="show" identifier="ProfileInformationSegue" animates="NO" id="Lcf-y5-6Em"/>
@@ -772,11 +749,11 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileInformationViewController" id="XdX-g6-gj5" customClass="ProfileInformationViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AML-YS-Ys4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hg0-Ao-VTI" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -784,7 +761,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="stu-hZ-HAc">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
@@ -815,14 +792,14 @@
             <objects>
                 <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-ny-c5L" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdy-yw-FIA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-Fn-OZe">
                                         <rect key="frame" x="16" y="16" width="382" height="32"/>
@@ -870,7 +847,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Yl-Xqs">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="796"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -924,6 +901,7 @@
         <image name="white-info" width="28" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2qn-kC-bGH"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="6WS-Tq-lcO"/>
     </inferredMetricsTieBreakers>
 </document>

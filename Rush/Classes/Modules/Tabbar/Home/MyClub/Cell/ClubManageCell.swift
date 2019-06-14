@@ -27,7 +27,8 @@ class ClubManageCell: UITableViewCell {
     @IBOutlet weak var messageView: UIView!
     var firstButtonClickEvent: (() -> Void)?
     var secondButtonClickEvent: (() -> Void)?
-
+    @IBOutlet weak var topConstraintOfButton: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -101,6 +102,10 @@ extension ClubManageCell {
         } else {
             messageView.isHidden = true
         }
+    }
+    
+    func setup(topConstraint: CGFloat) {
+        topConstraintOfButton.constant = topConstraint
     }
 }
 
