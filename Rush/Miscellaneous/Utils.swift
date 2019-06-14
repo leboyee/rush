@@ -306,6 +306,15 @@ extension Utils {
         return customView
     }
     
+    // Static Arrays
+    class func chooseLevelArray() -> [String] {
+        return ["High school", "Undergraduate", "Graduate", "Alumni", "Professor"]
+    }
+    
+    class func chooseYearArray() -> [String] {
+        return ["Freshman", "Sophomore", "Junior", "Senior"]
+    }
+    
 }
 
 //MARK: - Alert Extension

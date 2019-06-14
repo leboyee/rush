@@ -44,6 +44,8 @@ struct Cell {
     static let userName             = "UserNameTableViewCell"
     static let userPostText         = "UserPostTextTableViewCell"
     static let userPostImage        = "UserPostImageTableViewCell"
+    static let listCell             = "ListCell"
+
 }
 
 struct ReusableView {
@@ -74,6 +76,9 @@ struct Segues {
     static let addProfilePictureSegue      = "AddProfilePictureSegue"
     static let openPostScreen              = "SegueOpenPostScreen"
     static let profileInformation          = "ProfileInformationSegue"
+    static let chooseLevelSegue            = "ChooseLevelSegue"
+    static let chooseYearSegue            = "ChooseYearSegue"
+
     
     
 }
@@ -157,6 +162,8 @@ public struct Message {
     static let joinEventsAndClassses = "Join events and classes to see your schedule in Calendar."
     static let noCamera = "You don't have camera"
     static let warning = "Warning"
+    static let skipSavedImageMessage = "You skipped previous step. Don’t worry, \nyour image was saved!"
+
 }
 
 public struct Icons {

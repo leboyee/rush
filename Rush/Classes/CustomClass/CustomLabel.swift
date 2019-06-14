@@ -33,6 +33,10 @@ class CustomLabel: UILabel {
     func passwordFormateLabels() {
         self.textColor = UIColor.lightGray13
     }
+    
+    func setSkipLevelOnChooseLevelView() {
+        self.textColor = UIColor.white
+    }
 
 
     

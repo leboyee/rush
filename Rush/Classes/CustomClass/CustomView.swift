@@ -33,7 +33,10 @@ class CustomView: UIView {
         break
             
         }
-        
+    }
+    
+    func setSkipBackgrounViewColor() {
+        self.backgroundColor = UIColor.green24
     }
 
 }

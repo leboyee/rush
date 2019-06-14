@@ -107,3 +107,14 @@ extension EnterPhoneNoViewController {
         present(customPickerController, animated: false, completion: nil)
     }
 }
+
+// MARK: - Navigation
+extension EnterPhoneNoViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.enterPassword {
+            if let vc = segue.destination as? EnterPasswordViewConteroller {
+                vc.loginType = loginType
+            }
+        }
+    }
+}

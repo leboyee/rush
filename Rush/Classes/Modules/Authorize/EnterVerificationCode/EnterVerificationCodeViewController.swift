@@ -126,5 +126,15 @@ extension EnterVerificationCodeViewController {
         digitTextField.text = ""
         //view.endEditing(true)
     }
-    
+}
+
+// MARK: - Navigation
+extension EnterVerificationCodeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.enterPassword {
+            if let vc = segue.destination as? EnterPasswordViewConteroller {
+                vc.loginType = loginType
+            }
+        }
+    }
 }

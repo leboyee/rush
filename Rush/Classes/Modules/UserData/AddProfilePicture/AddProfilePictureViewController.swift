@@ -28,7 +28,7 @@ class AddProfilePictureViewController: CustomViewController {
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
 
     var loginType: LoginType = .Register
-    
+    var isSkip: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -79,7 +79,6 @@ class AddProfilePictureViewController: CustomViewController {
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
-        
         
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
@@ -153,15 +152,27 @@ extension AddProfilePictureViewController {
     }
     
     @IBAction func nextButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
+        self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
     
     @IBAction func skipButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
+        isSkip = true
+        self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
 
     
     @IBAction func addImageViewButtonAction() {
         photoLibraryPermissionCheck()
+    }
+}
+
+// MARK: - Navigation
+extension AddProfilePictureViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.chooseLevelSegue {
+            if let vc = segue.destination as? ChooseLevelViewController {
+                vc.isSkip = isSkip
+            }
+        }
     }
 }

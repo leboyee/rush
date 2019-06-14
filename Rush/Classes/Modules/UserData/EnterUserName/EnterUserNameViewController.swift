@@ -107,7 +107,16 @@ extension EnterUserNameViewController {
         firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.performSegue(withIdentifier: Segues.addProfilePictureSegue, sender: self)
-//        AppDelegate.getInstance().setupStoryboard()
     }
+}
 
+// MARK: - Navigation
+extension EnterUserNameViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.enterPassword {
+            if let vc = segue.destination as? EnterPasswordViewConteroller {
+                vc.loginType = loginType
+            }
+        }
+    }
 }
