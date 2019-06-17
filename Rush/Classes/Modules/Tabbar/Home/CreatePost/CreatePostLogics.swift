@@ -50,25 +50,13 @@ extension CreatePostViewController {
         cell.textDidEndEditing = {
             [weak self] () in
             guard let self_ = self else { return }
-            if self_.postText.isNotEmpty {
-                // Update create post button
-            }
+            self_.createButtonValidation()
         }
     }
     
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         cell.postImageView.image = imageList[indexPath.row]
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            viewBottamConstraint.constant = keyboardSize.size.height + 40
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        viewBottamConstraint.constant = 20
     }
 }
 

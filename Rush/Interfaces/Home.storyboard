@@ -560,13 +560,20 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="23H-aQ-r9v">
-                                <rect key="frame" x="0.0" y="101" width="414" height="720.5"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="686.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-ck-daz">
-                                <rect key="frame" x="0.0" y="822" width="414" height="74"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-ck-daz">
+                                <rect key="frame" x="0.0" y="788" width="414" height="74"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk4-mP-L1R">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDf-lc-gAU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Ia0-o4-igA"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk4-mP-L1R">
                                         <rect key="frame" x="41.5" y="17" width="150" height="40"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -577,17 +584,27 @@
                                         <state key="normal" title="Add  photo" image="addPhoto">
                                             <color key="titleColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addPhotoButtonAction:" destination="GDB-hs-lng" eventType="touchUpInside" id="ajQ-Ue-GPQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uj6-Pc-Uk9">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uj6-Pc-Uk9">
                                         <rect key="frame" x="222.5" y="17" width="150" height="40"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Take photo" image="addCamera">
                                             <color key="titleColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="takePhotoButtonAction:" destination="GDB-hs-lng" eventType="touchUpInside" id="dtE-cc-h5q"/>
                                         </connections>
@@ -609,9 +626,12 @@
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="width" secondItem="Fk4-mP-L1R" secondAttribute="width" id="BtT-SI-vZY"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="centerY" secondItem="Fk4-mP-L1R" secondAttribute="centerY" id="CLk-R0-rTc"/>
                                     <constraint firstItem="HHV-fE-Pwv" firstAttribute="leading" secondItem="Fk4-mP-L1R" secondAttribute="trailing" constant="15" id="E5Y-Qo-Vt1"/>
+                                    <constraint firstAttribute="trailing" secondItem="eDf-lc-gAU" secondAttribute="trailing" id="E8V-5S-ypJ"/>
                                     <constraint firstItem="HHV-fE-Pwv" firstAttribute="centerX" secondItem="Pyo-ck-daz" secondAttribute="centerX" id="GYa-3Z-yEJ"/>
+                                    <constraint firstItem="eDf-lc-gAU" firstAttribute="top" secondItem="Pyo-ck-daz" secondAttribute="top" id="I4K-ES-eAc"/>
                                     <constraint firstAttribute="height" constant="74" id="aml-ew-bWF"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="height" secondItem="Fk4-mP-L1R" secondAttribute="height" id="g0T-4R-DCY"/>
+                                    <constraint firstItem="eDf-lc-gAU" firstAttribute="leading" secondItem="Pyo-ck-daz" secondAttribute="leading" id="hdM-Yk-DpN"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="leading" secondItem="HHV-fE-Pwv" secondAttribute="trailing" constant="15" id="o6Z-a9-bDy"/>
                                     <constraint firstItem="Fk4-mP-L1R" firstAttribute="centerY" secondItem="Pyo-ck-daz" secondAttribute="centerY" id="oTa-8S-jvQ"/>
                                     <constraint firstItem="HHV-fE-Pwv" firstAttribute="centerY" secondItem="Pyo-ck-daz" secondAttribute="centerY" id="yoB-hV-ZBP"/>
@@ -622,6 +642,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Kag-AY-KAJ" secondAttribute="bottom" id="18W-54-ZRa"/>
                             <constraint firstItem="23H-aQ-r9v" firstAttribute="leading" secondItem="Ujm-Mj-2Th" secondAttribute="leading" id="Fgq-Wl-RuD"/>
+                            <constraint firstItem="Ujm-Mj-2Th" firstAttribute="bottom" secondItem="Pyo-ck-daz" secondAttribute="bottom" id="HsU-c2-nuj"/>
                             <constraint firstItem="23H-aQ-r9v" firstAttribute="top" secondItem="Kag-AY-KAJ" secondAttribute="top" id="RZS-us-WbT"/>
                             <constraint firstItem="Pyo-ck-daz" firstAttribute="leading" secondItem="Ujm-Mj-2Th" secondAttribute="leading" id="bjm-vR-M0v"/>
                             <constraint firstItem="Kag-AY-KAJ" firstAttribute="top" secondItem="Ujm-Mj-2Th" secondAttribute="top" constant="13" id="eHQ-X7-5IL"/>
@@ -630,7 +651,6 @@
                             <constraint firstItem="Pyo-ck-daz" firstAttribute="top" secondItem="23H-aQ-r9v" secondAttribute="bottom" constant="0.5" id="nZw-FK-VND"/>
                             <constraint firstItem="23H-aQ-r9v" firstAttribute="trailing" secondItem="Ujm-Mj-2Th" secondAttribute="trailing" id="uIU-Ar-zRQ"/>
                             <constraint firstItem="Kag-AY-KAJ" firstAttribute="trailing" secondItem="Ujm-Mj-2Th" secondAttribute="trailing" id="uKp-gR-dZ5"/>
-                            <constraint firstAttribute="bottom" secondItem="Pyo-ck-daz" secondAttribute="bottom" id="xPt-xo-f5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ujm-Mj-2Th"/>
                     </view>
@@ -639,7 +659,7 @@
                         <outlet property="addPhotoButton" destination="Fk4-mP-L1R" id="xxf-DK-Fm3"/>
                         <outlet property="tableView" destination="23H-aQ-r9v" id="y21-Rq-Zrw"/>
                         <outlet property="takePhotoButton" destination="Uj6-Pc-Uk9" id="eRo-Ud-YoX"/>
-                        <outlet property="viewBottamConstraint" destination="xPt-xo-f5h" id="mlg-3t-JrL"/>
+                        <outlet property="viewBottamConstraint" destination="HsU-c2-nuj" id="Bw1-Hj-tmr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAM-uw-Lqf" userLabel="First Responder" sceneMemberID="firstResponder"/>

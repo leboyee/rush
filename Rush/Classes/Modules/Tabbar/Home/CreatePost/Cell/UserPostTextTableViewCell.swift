@@ -33,6 +33,14 @@ class UserPostTextTableViewCell: UITableViewCell {
 
 // MARK: - TextView delegate methods
 extension UserPostTextTableViewCell :UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
         
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.count > 0 {
@@ -46,4 +54,6 @@ extension UserPostTextTableViewCell :UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         textDidEndEditing?()
     }
+    
+    
 }

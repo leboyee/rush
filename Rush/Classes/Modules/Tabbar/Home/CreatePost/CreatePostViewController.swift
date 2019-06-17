@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import IQKeyboardManagerSwift
 
 class CreatePostViewController: UIViewController {
 
@@ -21,11 +22,31 @@ class CreatePostViewController: UIViewController {
    
     var postText = ""
     
+    var createBtnActive : UIBarButtonItem {
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
+    }
+    
+    var createBtnDisActive : UIBarButtonItem {
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "create-inactive"), style: .plain, target: self, action: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func setup() {
@@ -50,6 +71,27 @@ class CreatePostViewController: UIViewController {
         // Notification's of keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            viewBottamConstraint.constant = keyboardHeight + (Utils.isHasSafeArea ? -34 : 0)
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        viewBottamConstraint.constant = 0
+    }
+    
+    func createButtonValidation() {
+        if postText.isNotEmpty && imageList.count > 0 {
+            navigationItem.rightBarButtonItem = createBtnActive
+        } else {
+            navigationItem.rightBarButtonItem = createBtnDisActive
+        }
     }
 }
 
@@ -84,6 +126,7 @@ extension CreatePostViewController {
                 imagePicker.delegate = self;
                 imagePicker.sourceType = type;
                 imagePicker.allowsEditing = false;
+                imagePicker.navigationBar.isTranslucent = false
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }

@@ -68,6 +68,7 @@ extension CreatePostViewController :UIImagePickerControllerDelegate,UINavigation
             imageList.append(pickedImage)
         }
         picker.dismiss(animated: true, completion: nil)
+        createButtonValidation()
         tableView.reloadData()
     }
     
