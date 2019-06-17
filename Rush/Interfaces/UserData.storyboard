@@ -441,7 +441,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFI-ah-S8l">
                                 <rect key="frame" x="0.0" y="101" width="414" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bew-3g-h2T" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bew-3g-h2T" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="16" width="382" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="gBq-oX-7XK"/>
@@ -585,7 +585,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGw-Tl-mcW">
                                 <rect key="frame" x="0.0" y="101" width="414" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yye-ph-XSV" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yye-ph-XSV" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="16" width="382" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="a6B-6O-WfJ"/>
