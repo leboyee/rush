@@ -65,8 +65,7 @@ class CreatePostViewController: UIViewController {
         navigationItem.leftBarButtonItem = cancel
         
         // Right item button
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
-        navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.rightBarButtonItem = createBtnDisActive
         
         // Notification's of keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -123,9 +122,9 @@ extension CreatePostViewController {
         DispatchQueue.main.async {
             if UIImagePickerController.isSourceTypeAvailable(type) {
                 let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self;
-                imagePicker.sourceType = type;
-                imagePicker.allowsEditing = false;
+                imagePicker.delegate = self
+                imagePicker.sourceType = type
+                imagePicker.allowsEditing = false
                 imagePicker.navigationBar.isTranslucent = false
                 self.present(imagePicker, animated: true, completion: nil)
             }
