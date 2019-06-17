@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
+import DKImagePickerController
 
 class CreatePostViewController: UIViewController {
 
@@ -16,9 +17,10 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
-    var imageList = [UIImage]()
+    var imageList = [PHAsset]()
     var imagePicker = UIImagePickerController()
     var iskeyboard : Bool = false
+    var picker = ImagePickerController()
    
     var postText = ""
     
@@ -102,7 +104,11 @@ extension CreatePostViewController {
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
-        openCameraOrLibrary(type: .photoLibrary)
+//        openCameraOrLibrary(type: .gallery)
+
+        picker.delegate = self
+        picker.navigationBar.isTranslucent = false
+        present(picker, animated: false, completion: nil)
     }
     
     @IBAction func cancelButtonAction() {
@@ -116,73 +122,56 @@ extension CreatePostViewController {
 }
 
 // MARK: - Imagepicker fuctions
-extension CreatePostViewController {
-    // MARK: - Capture Image
-    func openCameraOrLibrary( type : UIImagePickerController.SourceType) {
-        DispatchQueue.main.async {
-            if UIImagePickerController.isSourceTypeAvailable(type) {
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = type
-                imagePicker.allowsEditing = false
-                imagePicker.navigationBar.isTranslucent = false
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-        }
+extension CreatePostViewController: ImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
+        return true
     }
     
-    func photoLibraryPermission() {
-        // Get the current authorization state.
-        let status = PHPhotoLibrary.authorizationStatus()
-        
-        if (status == PHAuthorizationStatus.authorized) {
-            // Access has been granted.
-            self.openCameraOrLibrary(type: .photoLibrary)
-            
-        }
-            
-        else if (status == PHAuthorizationStatus.denied) {
-            // Access has been denied.
-            photoLibraryPermissionAlert()
-        }
-            
-        else if (status == PHAuthorizationStatus.notDetermined) {
-            
-            // Access has not been determined.
-            PHPhotoLibrary.requestAuthorization({ (newStatus) in
-                
-                if (newStatus == PHAuthorizationStatus.authorized) {
-                    self.openCameraOrLibrary(type: .photoLibrary)
+    func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
+        imageList = assets
+        picker.dismiss(animated: false, completion: nil)
+        tableView.reloadData()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
+        picker.dismiss(animated: false, completion: nil)
+    }
+    
+    
+    func photoLibraryPermissionCheck(type : DKImageExtensionType) {
+        if type == .gallery {
+            Utils.authorizePhoto(completion: { [weak self] (status) in
+                guard let self_ = self else { return }
+                if status == .alreadyAuthorized || status == .justAuthorized {
+                    self_.openCameraOrLibrary(type: type)
                 }
-                    
                 else {
-                    
+                    if status != .justDenied {
+                        Utils.photoLibraryPermissionAlert()
+                    }
                 }
             })
-        }
-            
-        else if (status == PHAuthorizationStatus.restricted) {
-            // Restricted access - normally won't happen.
-            photoLibraryPermissionAlert()
-            
+        } else {
+            showCameraPermissionPopup()
         }
     }
     
-    func photoLibraryPermissionAlert() {
-        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+    // MARK: - Capture Image
+    func openCameraOrLibrary(type : DKImageExtensionType) {
+        let pickerController = DKImagePickerController()
+        DKImageExtensionController.registerExtension(extensionClass: CustomCameraExtension.self, for: type)
         
-        let alert = UIAlertController(
-            title: "Photo Album",
-            message: "Permission is required to add photo.",
-            preferredStyle: UIAlertController.Style.alert
-        )
+        pickerController.singleSelect = false
+        pickerController.showsCancelButton = true
+        pickerController.autoCloseOnSingleSelect = false
+        pickerController.allowMultipleTypes = true
+        pickerController.assetType = .allPhotos
+        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+//            self.assignSelectedImages(photos: assets)
+        }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
+        self.present(pickerController, animated: true, completion: nil)
     }
     
     

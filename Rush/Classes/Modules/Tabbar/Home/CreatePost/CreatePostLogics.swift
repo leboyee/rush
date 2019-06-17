@@ -56,7 +56,8 @@ extension CreatePostViewController {
     
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        cell.postImageView.image = imageList[indexPath.row]
+        let asset = imageList[indexPath.row]
+//        cell.postImageView.image = asset.
     }
 }
 

@@ -63,16 +63,5 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
 
 extension CreatePostViewController :UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[.originalImage] as? UIImage {
-            imageList.append(pickedImage)
-        }
-        picker.dismiss(animated: true, completion: nil)
-        createButtonValidation()
-        tableView.reloadData()
-    }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
 }
