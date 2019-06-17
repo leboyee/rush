@@ -112,12 +112,13 @@ extension AddProfilePictureViewController {
 
         let pickerController = DKImagePickerController()
         DKImageExtensionController.registerExtension(extensionClass: CustomCameraExtension.self, for: .camera)
-        
         pickerController.singleSelect = true
         pickerController.showsCancelButton = true
         pickerController.autoCloseOnSingleSelect = true
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
-            self.assignSelectedImages(photos: assets)
+            if assets.count > 0 {
+                self.assignSelectedImages(photos: assets)
+            }
         }
 
         self.present(pickerController, animated: true, completion: nil)
