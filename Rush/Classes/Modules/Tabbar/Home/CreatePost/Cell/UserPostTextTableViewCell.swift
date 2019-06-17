@@ -11,42 +11,39 @@ import UIKit
 class UserPostTextTableViewCell: UITableViewCell {
 
 
+    @IBOutlet weak var placeHolderLabel: UILabel!
     @IBOutlet weak var postTextView: UITextView!
+    var textDidEndEditing:(() -> Void)?
+    var updateTableView:((_ textView: UITextView) -> Void)?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         postTextView.delegate = self
-        postTextView.text = Text.saysomething
-//        postTextView.translatesAutoresizingMaskIntoConstraints = true
+        postTextView.isScrollEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
 }
+
+// MARK: - TextView delegate methods
 extension UserPostTextTableViewCell :UITextViewDelegate {
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if textView.text == Text.saysomething {
-            textView.text = ""
+        
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 0 {
+            placeHolderLabel.isHidden = true
+        } else {
+            placeHolderLabel.isHidden = false
         }
-        return true
+        updateTableView?(textView)
     }
-    
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.textColor = UIColor.gray
-            textView.text = Text.saysomething
-        }
+        textDidEndEditing?()
     }
-    
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        return true
-    }
-    
-    
 }

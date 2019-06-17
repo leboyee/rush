@@ -36,6 +36,11 @@ class HomeViewController: CustomViewController {
     
     func setupNavigation() {
         
+        // Right item button
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
+        navigationItem.rightBarButtonItem = rightBarButton
+        
+        /*
         // create the button
         let createImage  = UIImage(named: "active-create")!.withRenderingMode(.alwaysOriginal)
         let createButton = UIButton(frame: CGRect(x: 0, y: 0, width: 78, height: 36))
@@ -52,7 +57,8 @@ class HomeViewController: CustomViewController {
         
         // add button shift to the side
         navigationItem.rightBarButtonItem = createButtonItem
-        
+        */
+ 
         // Set navigation title (date)
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
         let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
@@ -81,7 +87,7 @@ extension HomeViewController {
     @objc func createButtonAction() {
         // Segues.createClub
         // Segues.selectEventType
-        performSegue(withIdentifier: Segues.selectEventType, sender: nil)
+        performSegue(withIdentifier: Segues.openPostScreen, sender: nil)
     }
 }
 

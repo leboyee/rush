@@ -11,6 +11,10 @@ import UIKit
 extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func setupTableView() {
+        
+        tableView.layer.cornerRadius = 24
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 500
@@ -41,26 +45,20 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as! UserPostTextTableViewCell
+            fillTextViewCell(cell)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as! UserPostImageTableViewCell
-            cell.postImageView.image = imageList[indexPath.row]
+            fillImageCell(cell, indexPath)
             return cell
         }
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
-    
-   
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500.0
-    }
-    
 }
+
 //MARK:- Action
 
 extension CreatePostViewController :UIImagePickerControllerDelegate,UINavigationControllerDelegate {

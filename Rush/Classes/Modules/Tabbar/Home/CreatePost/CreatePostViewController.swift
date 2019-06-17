@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class CreatePostViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class CreatePostViewController: UIViewController {
     var imagePicker = UIImagePickerController()
     var iskeyboard : Bool = false
    
+    var postText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,61 +34,168 @@ class CreatePostViewController: UIViewController {
     
     
     func setupUI() {
+        // Setup tableview
         setupTableView()
-        imagePicker.delegate = self
-        tableView.layer.cornerRadius = 24
-        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        /*
+        
+        navigationController?.navigationBar.isTranslucent = false
+    
+        // Left item button
+        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
+        navigationItem.leftBarButtonItem = cancel
+        
+        // Right item button
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBarButton
-        */
         
-        // create the button
-        let createImage  = UIImage(named: "active-create")!.withRenderingMode(.alwaysOriginal)
-        let createButton = UIButton(frame: CGRect(x: 0, y: 0, width: 78, height: 36))
-        createButton.setBackgroundImage(createImage, for: .normal)
-//        createButton.addTarget(self, action: #selector(createButtonAction), for:.touchUpInside)
-        
-        // here where the magic happens, you can shift it where you like
-        createButton.transform = CGAffineTransform(translationX: -5, y: 5)
-        
-        // add the button to a container, otherwise the transform will be ignored
-        let createButtonContainer = UIView(frame: createButton.frame)
-        createButtonContainer.addSubview(createButton)
-        let createButtonItem = UIBarButtonItem(customView: createButtonContainer)
-        
-        // add button shift to the side
-        navigationItem.rightBarButtonItem = createButtonItem
-        
+        // Notification's of keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
 }
 
 // MARK:- Actions
 extension CreatePostViewController {
     
     @IBAction func takePhotoButtonAction(_ sender: Any) {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = true
-            present(imagePicker, animated: true, completion: nil)
-        } else {
-            let alert  = UIAlertController(title:Message.warning , message:Message.noCamera , preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: Text.okay, style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
-        
+        openCameraOrLibrary(type: .camera)
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
-        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
+        openCameraOrLibrary(type: .photoLibrary)
+    }
+    
+    @IBAction func cancelButtonAction() {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    @objc func createButtonAction() {
+        
+    }
+    
+}
+
+// MARK: - Imagepicker fuctions
+extension CreatePostViewController {
+    // MARK: - Capture Image
+    func openCameraOrLibrary( type : UIImagePickerController.SourceType) {
+        DispatchQueue.main.async {
+            if UIImagePickerController.isSourceTypeAvailable(type) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self;
+                imagePicker.sourceType = type;
+                imagePicker.allowsEditing = false;
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func photoLibraryPermission() {
+        // Get the current authorization state.
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        if (status == PHAuthorizationStatus.authorized) {
+            // Access has been granted.
+            self.openCameraOrLibrary(type: .photoLibrary)
+            
+        }
+            
+        else if (status == PHAuthorizationStatus.denied) {
+            // Access has been denied.
+            photoLibraryPermissionAlert()
+        }
+            
+        else if (status == PHAuthorizationStatus.notDetermined) {
+            
+            // Access has not been determined.
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in
+                
+                if (newStatus == PHAuthorizationStatus.authorized) {
+                    self.openCameraOrLibrary(type: .photoLibrary)
+                }
+                    
+                else {
+                    
+                }
+            })
+        }
+            
+        else if (status == PHAuthorizationStatus.restricted) {
+            // Restricted access - normally won't happen.
+            photoLibraryPermissionAlert()
+            
+        }
+    }
+    
+    func photoLibraryPermissionAlert() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+        
+        let alert = UIAlertController(
+            title: "Photo Album",
+            message: "Permission is required to add photo.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
+            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     
+    private func showCameraPermissionPopup() {
+        let cameraMediaType = AVMediaType.video
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
+        
+        switch cameraAuthorizationStatus {
+        case .denied:
+            NSLog("cameraAuthorizationStatus=denied")
+            self.alertCameraAccessNeeded()
+            break
+        case .authorized:
+            NSLog("cameraAuthorizationStatus=authorized")
+            openCameraOrLibrary(type: .camera)
+            break
+        case .restricted:
+            NSLog("cameraAuthorizationStatus=restricted")
+            self.alertCameraAccessNeeded()
+            break
+        case .notDetermined:
+            NSLog("cameraAuthorizationStatus=notDetermined")
+            
+            // Prompting user for the permission to use the camera.
+            AVCaptureDevice.requestAccess(for: cameraMediaType) { granted in
+                DispatchQueue.main.sync {
+                    if granted {
+                        // do something
+                        self.openCameraOrLibrary(type: .camera)
+                    } else {
+                        // do something else
+                    }
+                }
+            }
+        @unknown default:
+            break
+        }
+    }
+    
+    func alertCameraAccessNeeded() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+        
+        let alert = UIAlertController(
+            title: "Camera Access",
+            message: "Camera access is required to make full use of this app.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
+            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
  // MARK: - Navigation
