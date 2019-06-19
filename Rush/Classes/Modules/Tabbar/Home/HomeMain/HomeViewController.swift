@@ -88,7 +88,7 @@ extension HomeViewController {
         // Segues.createClub
         // Segues.selectEventType
         // Segues.openPostScreen
-        performSegue(withIdentifier: Segues.createClub, sender: nil)
+        performSegue(withIdentifier: Segues.openPostScreen, sender: nil)
     }
 }
 

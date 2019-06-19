@@ -45,7 +45,7 @@ struct Cell {
     static let userPostText         = "UserPostTextTableViewCell"
     static let userPostImage        = "UserPostImageTableViewCell"
     static let listCell             = "ListCell"
-
+    static let selectGallaryPhoto   = "SelectGallaryPhotoCell"
 }
 
 struct ReusableView {

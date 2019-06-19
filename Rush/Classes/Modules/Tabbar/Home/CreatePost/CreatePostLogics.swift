@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Photos
+
 
 extension CreatePostViewController {
     
@@ -57,7 +59,7 @@ extension CreatePostViewController {
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let asset = imageList[indexPath.row]
-//        cell.postImageView.image = asset.
+        cell.setup(imageAsset: asset)
     }
 }
 

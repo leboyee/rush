@@ -128,6 +128,11 @@
 		794183B4228960C7009AB12C /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */; };
 		794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */; };
 		794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */; };
+		79493CE622B90E960026AD0E /* SelectGallaryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */; };
+		79493CE722B90E960026AD0E /* SelectGallaryPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */; };
+		79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */; };
+		79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */; };
+		79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */; };
 		7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */; };
 		7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */; };
 		796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9296229FDCD500F91DB1 /* TagCell.swift */; };
@@ -329,6 +334,11 @@
 		794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoCell.swift; sourceTree = "<group>"; };
+		79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectGallaryPhotoCell.xib; sourceTree = "<group>"; };
+		79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoMediator.swift; sourceTree = "<group>"; };
+		79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoPresenter.swift; sourceTree = "<group>"; };
+		79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoViewController.swift; sourceTree = "<group>"; };
 		7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserPostCell.swift; sourceTree = "<group>"; };
 		7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateUserPostCell.xib; sourceTree = "<group>"; };
 		796E9296229FDCD500F91DB1 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -485,6 +495,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				79493CDF22B90E960026AD0E /* SelectGallaryPhoto */,
 				091557AB22B124140080C9AE /* CreatePost */,
 				79C7DA6022A7980F00EA7759 /* ProfileFriendList */,
 				79C1AC4922A64CC0003C7790 /* ProfileInformation */,
@@ -878,6 +889,26 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		79493CDF22B90E960026AD0E /* SelectGallaryPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				79493CE022B90E960026AD0E /* Cell */,
+				79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */,
+				79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */,
+				79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */,
+			);
+			path = SelectGallaryPhoto;
+			sourceTree = "<group>";
+		};
+		79493CE022B90E960026AD0E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */,
+				79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		796E929A229FE0B600F91DB1 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -1250,6 +1281,7 @@
 				794183B2228960C7009AB12C /* SF-Pro-Text-Heavy.otf in Resources */,
 				1A62D2322295454C001E5790 /* Authorize.storyboard in Resources */,
 				1A142ECD229EE3B8002C1AFE /* RushCountryCode.json in Resources */,
+				79493CE722B90E960026AD0E /* SelectGallaryPhotoCell.xib in Resources */,
 				091557B622B126F00080C9AE /* UserNameTableViewCell.xib in Resources */,
 				7903D0B0228E8CE5004E33B9 /* EventCell.xib in Resources */,
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
@@ -1382,6 +1414,7 @@
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
 				797FFDA322B7BC480055A001 /* ImagePickerConfigurable.swift in Sources */,
+				79493CE622B90E960026AD0E /* SelectGallaryPhotoCell.swift in Sources */,
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
 				79DF74212292BAB80012DCB7 /* CreateClubViewController.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
@@ -1430,6 +1463,7 @@
 				79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */,
 				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,
 				1A339B6422B3CEA9005509EA /* ChooseYearViewController.swift in Sources */,
+				79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */,
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,
@@ -1451,6 +1485,7 @@
 				1A339B4D22B3A060005509EA /* ChooseLevelViewController.swift in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
+				79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */,
 				797FFDB322B7BC480055A001 /* PhotoGalleryViewController.swift in Sources */,
 				1ACEAC1622AC040A00B734D3 /* AddProfilePictureViewMediates.swift in Sources */,
 				79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */,
@@ -1465,6 +1500,7 @@
 				7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */,
 				1A142EC8229EC1A0002C1AFE /* CustomPickerMediator.swift in Sources */,
 				79C1AC5722A65507003C7790 /* ProfileInformationCell.swift in Sources */,
+				79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */,
 				79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */,
 				797FFDA722B7BC480055A001 /* Parameters.swift in Sources */,
 			);
@@ -1613,7 +1649,7 @@
 			baseConfigurationReference = 0701FD9E6BCD8DD8B240C962 /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
@@ -1624,7 +1660,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1635,7 +1671,7 @@
 			baseConfigurationReference = 55CFD1C226CE5AF19EE96D3C /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
@@ -1646,7 +1682,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1712,7 +1748,7 @@
 			baseConfigurationReference = 788A17CACD778B6002694842 /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
@@ -1723,7 +1759,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

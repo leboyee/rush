@@ -16,9 +16,9 @@ import Photos
 /// Carousell flavoured image picker with multiple photo selections.
 @objc
 open class ImagePickerController: UINavigationController {
-
+    
     // MARK: - Initialization
-
+    
     /// An Objective-C compatible initializer without appearance configuration.
     ///
     /// - Parameter selectedAssets: Preselected image assets that will be highlighted.
@@ -26,7 +26,7 @@ open class ImagePickerController: UINavigationController {
     public convenience init(selectedAssets: [PHAsset]) {
         self.init(selectedAssets: selectedAssets, configuration: nil)
     }
-
+    
     /// Returns a newly initialized image picker controller with appearance configuration.
     ///
     /// - Parameters:
@@ -35,7 +35,7 @@ open class ImagePickerController: UINavigationController {
     public convenience init(selectedAssets: [PHAsset] = [], configuration: ImagePickerConfigurable? = nil) {
         self.init(selectedAssets: selectedAssets, configuration: configuration, cameraType: UIImagePickerController.self)
     }
-
+    
     /// Returns a newly initialized image picker controller with a customized type of camera.
     ///
     /// - Parameters:
@@ -46,10 +46,10 @@ open class ImagePickerController: UINavigationController {
         selectedAssets: [PHAsset],
         configuration: ImagePickerConfigurable?,
         cameraType: T.Type) where T: CameraCompatible {
-
+        
         self.init(selectedAssets: selectedAssets, configuration: configuration, camera: cameraType.init)
     }
-
+    
     /// Returns a newly initialized image picker controller with a closure for camera configuration.
     ///
     /// - Parameters:
@@ -60,24 +60,24 @@ open class ImagePickerController: UINavigationController {
         selectedAssets: [PHAsset],
         configuration: ImagePickerConfigurable?,
         camera initializer: @escaping () -> T) where T: CameraCompatible {
-
+        
         self.selectedAssets = selectedAssets
         self.configuration = configuration
         self.allowedSelections = configuration?.allowedSelections ?? .unlimited
-
+        
         super.init(nibName: nil, bundle: nil)
-
+        
         if let cancelBarButtonItem = configuration?.cancelBarButtonItem {
             cancelBarButtonItem.target = self
             cancelBarButtonItem.action = #selector(cancel(_:))
             self.cancelBarButton = cancelBarButtonItem
         }
-
+        
         if let doneBarButtonItem = configuration?.doneBarButtonItem {
             doneBarButtonItem.target = self
             doneBarButtonItem.action = #selector(done(_:))
         }
-
+        
         camera = { [weak self] in
             let camera = initializer()
             camera.sourceType = .camera
@@ -85,7 +85,7 @@ open class ImagePickerController: UINavigationController {
             return camera
         }
     }
-
+    
     /// Returns an object initialized from data in a given unarchiver.
     ///
     /// - Parameters:
@@ -93,19 +93,19 @@ open class ImagePickerController: UINavigationController {
     public required init?(coder aDecoder: NSCoder) {
         self.selectedAssets = []
         self.configuration = nil
-        self.allowedSelections = .unlimited
+        self.allowedSelections = .limit(to: 4)
         super.init(coder: aDecoder)
     }
-
+    
     // MARK: - Properties
-
+    
     /// The image picker's delegate object, which should conform to ImagePickerControllerDelegate.
     open override weak var delegate: UINavigationControllerDelegate? {
         didSet {
             imagePickerDelegate = delegate as? ImagePickerControllerDelegate
         }
     }
-
+    
     /// A localized string that shows on the navigation bar.
     open override var title: String? {
         didSet {
@@ -113,21 +113,21 @@ open class ImagePickerController: UINavigationController {
             albumButton.isHidden = title?.isEmpty ?? true
         }
     }
-
+    
     /// A localized string that shows above the photos.
     public var hint: NSAttributedString? {
         didSet {
             galleryViewController?.hint = hint
         }
     }
-
+    
     fileprivate var selectedAssets: [PHAsset]
     fileprivate let configuration: ImagePickerConfigurable?
     fileprivate let allowedSelections: ImagePickerSelection
-
+    
     fileprivate weak var imagePickerDelegate: ImagePickerControllerDelegate?
     fileprivate lazy var slideUpPresentation: UIViewControllerTransitioningDelegate = SlideUpPresentation()
-
+    
     fileprivate var galleryViewController: PhotoGalleryViewController? {
         didSet {
             // Remove the reference to the album button from the previous view controller.
@@ -142,86 +142,86 @@ open class ImagePickerController: UINavigationController {
             galleryViewController.navigationItem.setLeftBarButton(cancelBarButton, animated: true)
             galleryViewController.navigationItem.titleView = albumButton
             galleryViewController.navigationItem.rightBarButtonItem = selectedAssets.count > 0 ? doneActiveBarButton : doneDisActiveBarButton
-//            doneBarButton.isEnabled = shouldEnableDoneBarButtonItem(with: selectedAssets)
+            //            doneBarButton.isEnabled = shouldEnableDoneBarButtonItem(with: selectedAssets)
         }
     }
-
+    
     fileprivate lazy var camera: () -> UIViewController = {
         let camera = UIImagePickerController()
         camera.sourceType = .camera
         camera.delegate = self
         return camera
     }
-
+    
     fileprivate lazy var emptyViewController: UIViewController = {
         let controller = UIViewController()
         controller.view.backgroundColor = UIColor.white
         return controller
     }()
-
+    
     fileprivate lazy var systemPhotoLibraryController: UIViewController = {
         let photoLibrary = UIImagePickerController()
         photoLibrary.sourceType = .photoLibrary
-//        photoLibrary.configure(with: self.configuration)
+        //        photoLibrary.configure(with: self.configuration)
         photoLibrary.delegate = self
         return photoLibrary
     }()
-
+    
     fileprivate lazy var albumButton: PhotoAlbumTitleButton = {
         let button = self.configuration.map(PhotoAlbumTitleButton.init) ?? PhotoAlbumTitleButton()
         button.addTarget(self, action: #selector(togglePhotoAlbums(_:)), for: .touchUpInside)
         return button
     }()
-
+    
     fileprivate lazy var cancelBarButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(cancel(_:)))
-
-
-//    fileprivate lazy var doneBarButton: UIBarButtonItem = {
-//        let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
-//        barButton.isEnabled = false
-//        return barButton
-//    }()
+    
+    
+    //    fileprivate lazy var doneBarButton: UIBarButtonItem = {
+    //        let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
+    //        barButton.isEnabled = false
+    //        return barButton
+    //    }()
     
     
     fileprivate lazy var doneDisActiveBarButton: UIBarButtonItem = {
-        let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "create-inactive"), style: .done, target: self, action: nil)
+        let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "done-inactive"), style: .done, target: self, action: nil)
         return barButton
     }()
     
     fileprivate lazy var doneActiveBarButton: UIBarButtonItem = {
-        let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .done, target: self, action: #selector(done(_:)))
+        let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "done-active"), style: .done, target: self, action: #selector(done(_:)))
         return barButton
     }()
     
-
+    
     fileprivate lazy var photoAlbums: PHFetchResult<PHAssetCollection> =
         PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
-
+    
     fileprivate lazy var favorites: PHFetchResult<PHAssetCollection> =
         PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
-
+    
     fileprivate lazy var cameraRoll: PHFetchResult<PHAssetCollection> =
         PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-
+    
     /// A closure to present system permission message of photo library when the status is denied or restricted.
     fileprivate var showPermissionErrorIfNeeded: (() -> Void)?
-
+    
     // MARK: - UIViewController
-
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
-//        configure(with: configuration)
+        //        configure(with: configuration)
         setViewControllers([emptyViewController], animated: false)
         handle(photoLibraryPermission: PHPhotoLibrary.authorizationStatus())
     }
-
+    
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showPermissionErrorIfNeeded?()
     }
-
+    
     // MARK: - Methods
-
+    
     /// Update `selectedAssets` with new values and update the UI.
     ///
     /// - Note: This method won't trigger any `ImagePickerControllerDelegate` callbacks.
@@ -236,29 +236,29 @@ open class ImagePickerController: UINavigationController {
 
 
 extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     // MARK: - UIImagePickerControllerDelegate
-
+    
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         defer {
             picker.dismiss(animated: true, completion: nil)
         }
-
+        
         guard let originalImage = info[.originalImage] as? UIImage else {
             return
         }
-
+        
         // Instead of using UIImagePickerControllerEditedImage, crop the original image for higher resolution if UIImagePickerControllerCropRect is specified.
         var croppedImage: UIImage?
         if let cropRect = info[.cropRect] as? CGRect, let cgImage = originalImage.cgImage?.cropping(to: cropRect) {
             croppedImage = UIImage(cgImage: cgImage, scale: originalImage.scale, orientation: originalImage.imageOrientation)
         }
-
+        
         PHPhotoLibrary.shared().performChanges({
             PHAssetChangeRequest.creationRequestForAsset(from: croppedImage ?? originalImage)
         }, completionHandler: nil)
     }
-
+    
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         switch PHPhotoLibrary.authorizationStatus() {
         case .denied, .restricted:
@@ -269,7 +269,7 @@ extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationCo
             picker.dismiss(animated: true, completion: nil)
         }
     }
-
+    
 }
 
 
@@ -277,7 +277,7 @@ extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationCo
 
 
 extension ImagePickerController: PhotoAlbumsViewControllerDelegate {
-
+    
     internal func photoAlbumsViewController(_ controller: PhotoAlbumsViewController, didSelectAlbum album: PHAssetCollection) {
         title = album.localizedTitle
         galleryViewController = PhotoGalleryViewController(album: album, configuration: configuration)
@@ -286,7 +286,7 @@ extension ImagePickerController: PhotoAlbumsViewControllerDelegate {
             self.albumButton.isSelected = false
         }
     }
-
+    
 }
 
 
@@ -294,16 +294,16 @@ extension ImagePickerController: PhotoAlbumsViewControllerDelegate {
 
 
 extension ImagePickerController: PhotoGalleryViewControllerDelegate {
-
+    
     internal func photoGalleryViewController(_ controller: PhotoGalleryViewController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
         return imagePickerDelegate?.imagePickerController(self, shouldLaunchCameraWithAuthorization: status) ?? true
     }
-
+    
     internal func photoGalleryViewController(_ controller: PhotoGalleryViewController, shouldTogglePhoto asset: PHAsset) -> Bool {
         if selectedAssets.firstIndex(of: asset) != nil {
             return true
         }
-
+        
         switch allowedSelections {
         case .limit(to: let number) where 1 < number:
             return selectedAssets.count < number
@@ -311,7 +311,7 @@ extension ImagePickerController: PhotoGalleryViewControllerDelegate {
             return true
         }
     }
-
+    
     internal func photoGalleryViewController(_ controller: PhotoGalleryViewController, didTogglePhoto asset: PHAsset) {
         
         if let selectedIndex = selectedAssets.firstIndex(of: asset) {
@@ -320,7 +320,7 @@ extension ImagePickerController: PhotoGalleryViewControllerDelegate {
         } else {
             switch allowedSelections {
             case .limit(to: let number) where 1 < number && selectedAssets.count < number:
-                fallthrough // swiftlint:disable:this no_fallthrough_only
+            fallthrough // swiftlint:disable:this no_fallthrough_only
             case .unlimited:
                 selectedAssets.append(asset)
                 imagePickerDelegate?.imagePickerController?(self, didSelectImageAsset: asset)
@@ -332,14 +332,14 @@ extension ImagePickerController: PhotoGalleryViewControllerDelegate {
                 break
             }
         }
-         controller.navigationItem.rightBarButtonItem = selectedAssets.count > 0 ? doneActiveBarButton : doneDisActiveBarButton
+        controller.navigationItem.rightBarButtonItem = selectedAssets.count > 0 ? doneActiveBarButton : doneDisActiveBarButton
     }
-
+    
     internal func photoGalleryViewController(_ controller: PhotoGalleryViewController, taggedTextForPhoto asset: PHAsset) -> String? {
         guard let index = selectedAssets.firstIndex(of: asset) else {
             return nil
         }
-
+        
         switch allowedSelections {
         case .limit(to: let number) where number == 1:
             return "✔︎"
@@ -347,11 +347,11 @@ extension ImagePickerController: PhotoGalleryViewControllerDelegate {
             return String(index + 1)
         }
     }
-
+    
     internal func photoGalleryViewControllerDidSelectCameraButton(_ controller: PhotoGalleryViewController) {
         launchCamera()
     }
-
+    
 }
 
 
@@ -359,12 +359,12 @@ extension ImagePickerController: PhotoGalleryViewControllerDelegate {
 
 
 fileprivate extension ImagePickerController {
-
+    
     fileprivate func shouldEnableDoneBarButtonItem(with selectedAssets: [PHAsset]) -> Bool {
         galleryViewController?.navigationItem.rightBarButtonItem = selectedAssets.count > 0 ? doneActiveBarButton : doneDisActiveBarButton
         return imagePickerDelegate?.imagePickerController?(self, shouldEnableDoneBarButtonItemWithSelected: selectedAssets) ?? !selectedAssets.isEmpty
     }
-
+    
     fileprivate func handle(photoLibraryPermission status: PHAuthorizationStatus) {
         switch status {
         case .notDetermined:
@@ -374,11 +374,11 @@ fileprivate extension ImagePickerController {
                     self.showPermissionErrorIfNeeded?()
                 }
             }
-
+            
         case .authorized:
             title = cameraRoll.firstObject?.localizedTitle
             galleryViewController = PhotoGalleryViewController(album: cameraRoll.firstObject, configuration: configuration)
-
+            
         case .denied, .restricted:
             // Workaround the issue in iOS 11 where UIImagePickerController doesn't show the permission denied message.
             // It requires additional PHAuthorizationStatus check before presenting Pickle.ImagePickerController.
@@ -396,13 +396,13 @@ fileprivate extension ImagePickerController {
             }
         }
     }
-
+    
     fileprivate func launchCamera() {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         guard imagePickerDelegate?.imagePickerController(self, shouldLaunchCameraWithAuthorization: status) ?? true else {
             return
         }
-
+        
         switch status {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { _ in
@@ -418,53 +418,75 @@ fileprivate extension ImagePickerController {
             }
         }
     }
-
+    
     private func transitioningDelegate(for controller: PhotoAlbumsViewController) -> UIViewControllerTransitioningDelegate {
         if let transitioningDelegate = imagePickerDelegate?.imagePickerController?(self, transitioningDelegateForPresentingAlbumsViewController: controller) {
             slideUpPresentation = transitioningDelegate
         }
         return slideUpPresentation
     }
-
+    
     // MARK: IBActions
-
+    
     @objc
     fileprivate func togglePhotoAlbums(_ sender: UIControl) {
         let showsPhotoAlbums = !sender.isSelected
-
+        
         if showsPhotoAlbums {
             let albums = imagePickerDelegate?.photoAlbumsForImagePickerController?(self) ?? [cameraRoll, favorites, photoAlbums]
-            let controller = PhotoAlbumsViewController(source: albums, configuration: configuration)
+            
+            let storyBoard = UIStoryboard(name: "CustomPicker", bundle: nil)
+            let controller = storyBoard.instantiateViewController(withIdentifier: "SelectGallaryPhotoViewController") as! SelectGallaryPhotoViewController
+            controller.modalPresentationStyle = .overFullScreen
+            controller.source = albums
             controller.delegate = self
-            controller.title = title
-            controller.modalPresentationStyle = .custom
-            controller.transitioningDelegate = transitioningDelegate(for: controller)
-            present(controller, animated: true, completion: nil)
+            controller.configuration = configuration
+            present(controller, animated: false, completion: nil)
+            
+            //            let controller = PhotoAlbumsViewController(source: albums, configuration: configuration)
+            //            controller.delegate = self
+            //            controller.title = title
+            //            controller.modalPresentationStyle = .custom
+            //            controller.transitioningDelegate = transitioningDelegate(for: controller)
+            //            present(controller, animated: true, completion: nil)
         } else {
             presentedViewController?.dismiss(animated: true, completion: nil)
         }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             // Remove the animation on the navigation bar added by system during modal presentation.
-            self.navigationBar.layer.removeAllAnimations()
+            
             UIView.animate(withDuration: SlideUpPresentation.animationDuration) {
                 sender.isSelected = showsPhotoAlbums
             }
-
-            self.galleryViewController?.navigationItem.setLeftBarButton(showsPhotoAlbums ? nil : self.cancelBarButton, animated: true)
-            self.galleryViewController?.navigationItem.setRightBarButton(showsPhotoAlbums ? nil : (self.selectedAssets.count > 0 ? self.doneActiveBarButton : self.doneDisActiveBarButton), animated: true)
+            /*
+             self.navigationBar.layer.removeAllAnimations()
+             self.galleryViewController?.navigationItem.setLeftBarButton(showsPhotoAlbums ? nil : self.cancelBarButton, animated: true)
+             self.galleryViewController?.navigationItem.setRightBarButton(showsPhotoAlbums ? nil : (self.selectedAssets.count > 0 ? self.doneActiveBarButton : self.doneDisActiveBarButton), animated: true)
+             */
         }
     }
-
+    
     @objc
     private func cancel(_ sender: UIBarButtonItem?) {
         imagePickerDelegate?.imagePickerControllerDidCancel(self)
     }
-
+    
     @objc
     private func done(_ sender: UIBarButtonItem) {
         imagePickerDelegate?.imagePickerController(self, didFinishPickingImageAssets: selectedAssets)
     }
-
+    
 }
-// swiftlint:enable
+// MARK: - SelectGallaryPhotoViewControllerDelegate
+extension ImagePickerController: SelectGallaryPhotoViewControllerDelegate {
+    
+    func dismissView(_ album: PHAssetCollection?) {
+        title = album?.localizedTitle ?? "Other"
+        galleryViewController = PhotoGalleryViewController(album: album, configuration: configuration)
+        dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: SlideUpPresentation.animationDuration) {
+            self.albumButton.isSelected = false
+        }
+    }
+}

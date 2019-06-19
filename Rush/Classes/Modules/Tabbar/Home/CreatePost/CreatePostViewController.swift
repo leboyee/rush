@@ -104,7 +104,6 @@ extension CreatePostViewController {
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
-//        openCameraOrLibrary(type: .gallery)
 
         picker.delegate = self
         picker.navigationBar.isTranslucent = false
@@ -131,6 +130,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
         imageList = assets
         picker.dismiss(animated: false, completion: nil)
+        self.picker = ImagePickerController()
         tableView.reloadData()
     }
     
