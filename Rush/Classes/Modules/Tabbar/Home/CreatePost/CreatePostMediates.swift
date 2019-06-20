@@ -61,7 +61,7 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
 
 //MARK:- Action
 
-extension CreatePostViewController :UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension CreatePostViewController {
     
     
 }
