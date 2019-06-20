@@ -80,14 +80,9 @@ extension HomeViewController {
         }
         
         header.detailButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+            guard let self_ = self else { return }
             // Open other user profile UI for test
-//            self_.performSegue(withIdentifier: Segues.otherUserProfile , sender: nil)
-            Utils.notReadyAlert()
-//            self?.performSegue(withIdentifier: "FriendListSegue" , sender: nil)
-            
+            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
         }
     }
-    
-    
 }

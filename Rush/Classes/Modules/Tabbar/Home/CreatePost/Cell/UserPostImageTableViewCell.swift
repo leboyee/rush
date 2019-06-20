@@ -33,6 +33,8 @@ extension UserPostImageTableViewCell {
     
     func setup(imageAsset: PHAsset) {
         
+        postImageView.image = nil
+        
         let imageSize = CGSize(
             width: screenWidth * UIScreen.main.scale,
             height: screenWidth * UIScreen.main.scale

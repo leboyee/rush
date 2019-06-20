@@ -689,7 +689,7 @@
             <objects>
                 <viewController storyboardIdentifier="OtherUserProfileController" id="0uK-H1-ybm" customClass="OtherUserProfileController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kvd-Gl-yn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oam-q1-oyi">
@@ -747,7 +747,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="aMV-sw-YSr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -762,9 +762,9 @@
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="trailing" secondItem="dSS-lN-YQr" secondAttribute="trailing" id="8Io-ju-g4F"/>
                             <constraint firstItem="aMV-sw-YSr" firstAttribute="top" secondItem="kvd-Gl-yn3" secondAttribute="top" id="Bkd-1a-dbs"/>
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="leading" secondItem="dSS-lN-YQr" secondAttribute="leading" id="RUZ-pi-ZhA"/>
-                            <constraint firstItem="dSS-lN-YQr" firstAttribute="bottom" secondItem="aMV-sw-YSr" secondAttribute="bottom" id="WA4-qd-bge"/>
                             <constraint firstItem="Oam-q1-oyi" firstAttribute="top" secondItem="kvd-Gl-yn3" secondAttribute="top" id="Zvf-J9-pJm"/>
                             <constraint firstItem="aMV-sw-YSr" firstAttribute="trailing" secondItem="dSS-lN-YQr" secondAttribute="trailing" id="bN1-gT-5XH"/>
+                            <constraint firstAttribute="bottom" secondItem="aMV-sw-YSr" secondAttribute="bottom" id="rNa-pM-iid"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dSS-lN-YQr"/>
                     </view>
@@ -797,11 +797,11 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileInformationViewController" id="XdX-g6-gj5" customClass="ProfileInformationViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AML-YS-Ys4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hg0-Ao-VTI" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -809,7 +809,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="stu-hZ-HAc">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
@@ -840,14 +840,14 @@
             <objects>
                 <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-ny-c5L" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdy-yw-FIA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-Fn-OZe">
                                         <rect key="frame" x="16" y="16" width="382" height="32"/>
@@ -895,7 +895,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Yl-Xqs">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="796"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -969,7 +969,7 @@
         <image name="white-info" width="28" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2qn-kC-bGH"/>
-        <segue reference="Woq-6I-hkG"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="6WS-Tq-lcO"/>
     </inferredMetricsTieBreakers>
 </document>

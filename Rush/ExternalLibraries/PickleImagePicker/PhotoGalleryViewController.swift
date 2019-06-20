@@ -78,7 +78,7 @@ internal final class PhotoGalleryViewController: UIViewController,
     private var sessionHandler: CameraSessionHandler?
     private let album: PHAssetCollection
     private let configuration: ImagePickerConfigurable?
-    internal private(set) lazy var isCameraCompatible: Bool = self.album.isCameraCompatible
+    internal private(set) lazy var isCameraCompatible: Bool = false //self.album.isCameraCompatible *chirag*
 
     internal private(set) lazy var fetchResult: PHFetchResult<PHAsset> = {
         let options = PHFetchOptions()

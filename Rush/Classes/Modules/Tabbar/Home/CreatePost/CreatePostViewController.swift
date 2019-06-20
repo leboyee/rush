@@ -100,14 +100,11 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController {
     
     @IBAction func takePhotoButtonAction(_ sender: Any) {
-        openCameraOrLibrary(type: .camera)
+        showCameraPermissionPopup()
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
-        picker = ImagePickerController()
-        picker.delegate = self
-        picker.navigationBar.isTranslucent = false
-        present(picker, animated: false, completion: nil)
+        showPhotoGallaryPermissionPopup()
     }
     
     @IBAction func cancelButtonAction() {
@@ -139,93 +136,68 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     }
     
     
-    func photoLibraryPermissionCheck(type : DKImageExtensionType) {
-        if type == .gallery {
-            Utils.authorizePhoto(completion: { [weak self] (status) in
-                guard let self_ = self else { return }
-                if status == .alreadyAuthorized || status == .justAuthorized {
-                    self_.openCameraOrLibrary(type: type)
-                }
-                else {
-                    if status != .justDenied {
-                        Utils.photoLibraryPermissionAlert()
-                    }
-                }
-            })
-        } else {
-            showCameraPermissionPopup()
-        }
-    }
-    
     // MARK: - Capture Image
-    func openCameraOrLibrary(type : DKImageExtensionType) {
-        let pickerController = DKImagePickerController()
-        DKImageExtensionController.registerExtension(extensionClass: CustomCameraExtension.self, for: type)
-        
-        pickerController.singleSelect = false
-        pickerController.showsCancelButton = true
-        pickerController.autoCloseOnSingleSelect = false
-        pickerController.allowMultipleTypes = true
-        pickerController.assetType = .allPhotos
-        pickerController.didSelectAssets = { (assets: [DKAsset]) in
-//            self.assignSelectedImages(photos: assets)
-        }
-        
-        self.present(pickerController, animated: true, completion: nil)
-    }
-    
-    
-    private func showCameraPermissionPopup() {
-        let cameraMediaType = AVMediaType.video
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
-        
-        switch cameraAuthorizationStatus {
-        case .denied:
-            NSLog("cameraAuthorizationStatus=denied")
-            self.alertCameraAccessNeeded()
-            break
-        case .authorized:
-            NSLog("cameraAuthorizationStatus=authorized")
-            openCameraOrLibrary(type: .camera)
-            break
-        case .restricted:
-            NSLog("cameraAuthorizationStatus=restricted")
-            self.alertCameraAccessNeeded()
-            break
-        case .notDetermined:
-            NSLog("cameraAuthorizationStatus=notDetermined")
-            
-            // Prompting user for the permission to use the camera.
-            AVCaptureDevice.requestAccess(for: cameraMediaType) { granted in
-                DispatchQueue.main.sync {
-                    if granted {
-                        // do something
-                        self.openCameraOrLibrary(type: .camera)
-                    } else {
-                        // do something else
-                    }
+    func openCameraOrLibrary(type : UIImagePickerController.SourceType) {
+        DispatchQueue.main.async {
+            if type == .photoLibrary {
+                let status = PHPhotoLibrary.authorizationStatus()
+                guard status == .authorized else {
+                    Utils.photoLibraryPermissionAlert()
+                    return
+                }
+            } else {
+                let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+                guard status == .authorized else {
+                    Utils.alertCameraAccessNeeded()
+                    return
                 }
             }
-        @unknown default:
-            break
+            
+            if type == .photoLibrary {
+                self.picker = ImagePickerController()
+                self.picker.delegate = self
+                self.picker.navigationBar.isTranslucent = false
+                self.present(self.picker, animated: false, completion: nil)
+            } else {
+                // Camera
+                Utils.notReadyAlert()
+            }
         }
     }
     
-    func alertCameraAccessNeeded() {
-        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
-        
-        let alert = UIAlertController(
-            title: "Camera Access",
-            message: "Camera access is required to make full use of this app.",
-            preferredStyle: UIAlertController.Style.alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
+    private func showCameraPermissionPopup() {
+        // Camera
+        Utils.authorizeVideo { (status) in
+            switch status {
+            case .justDenied:
+                break
+            case .alreadyDenied:
+                Utils.alertCameraAccessNeeded()
+            case .restricted:
+                Utils.alertCameraAccessNeeded()
+            case .justAuthorized:
+                self.openCameraOrLibrary(type: .camera)
+            case .alreadyAuthorized:
+                self.openCameraOrLibrary(type: .camera)
+            }
+        }
+    }
+    
+    private func showPhotoGallaryPermissionPopup() {
+        Utils.authorizePhoto { (status) in
+            switch status {
+            case .justDenied:
+                break
+            case .alreadyDenied:
+                Utils.photoLibraryPermissionAlert()
+            case .restricted:
+                Utils.photoLibraryPermissionAlert()
+            case .justAuthorized:
+                self.openCameraOrLibrary(type: .photoLibrary)
+            case .alreadyAuthorized:
+                self.openCameraOrLibrary(type: .photoLibrary)
+            }
+        }
     }
 }
 
