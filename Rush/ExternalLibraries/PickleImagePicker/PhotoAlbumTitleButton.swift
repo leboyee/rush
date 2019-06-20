@@ -91,11 +91,10 @@ internal final class PhotoAlbumTitleButton: UIControl {
 
     private lazy var arrowIcon: UIImageView = {
         let icon = UIImageView()
-        let image = UIImage(named: "image-picker-down-arrow")
+        let image = UIImage(named: "dropdown")
         icon.image = image?.withRenderingMode(.alwaysTemplate)
         icon.tintColor = self.configuration.tintColor
         icon.clipsToBounds = true
-        icon.backgroundColor = UIColor.red
         icon.contentMode = .scaleAspectFill
         return icon
     }()

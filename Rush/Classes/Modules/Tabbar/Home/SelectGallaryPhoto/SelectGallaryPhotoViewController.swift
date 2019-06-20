@@ -25,6 +25,7 @@ class SelectGallaryPhotoViewController: UIViewController {
     
     var selectedIndex = 0
     var selectedAlbum: PHAssetCollection?
+    var selectedTitle = ""
     
     var panGestureRecognizer: UIPanGestureRecognizer?
     var originalPosition: CGPoint?
@@ -71,7 +72,7 @@ class SelectGallaryPhotoViewController: UIViewController {
     
     private func setupUI() {
         setUpTableView()
-        
+                
         // Set dynamic height of screen
         hightConstraintOfContainerView.constant = screenHeight * 0.6
         

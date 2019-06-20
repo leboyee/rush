@@ -439,6 +439,7 @@ fileprivate extension ImagePickerController {
             let controller = storyBoard.instantiateViewController(withIdentifier: "SelectGallaryPhotoViewController") as! SelectGallaryPhotoViewController
             controller.modalPresentationStyle = .overFullScreen
             controller.source = albums
+            controller.selectedTitle = title ?? "Others"
             controller.delegate = self
             controller.configuration = configuration
             present(controller, animated: false, completion: nil)

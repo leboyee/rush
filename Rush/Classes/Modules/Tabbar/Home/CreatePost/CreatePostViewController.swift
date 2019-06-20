@@ -104,7 +104,7 @@ extension CreatePostViewController {
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
-
+        picker = ImagePickerController()
         picker.delegate = self
         picker.navigationBar.isTranslucent = false
         present(picker, animated: false, completion: nil)
