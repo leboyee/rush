@@ -12,19 +12,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="159" id="KGk-i7-Jjw" customClass="UserPostImageTableViewCell" customModule="Rush" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="169" id="KGk-i7-Jjw" customClass="UserPostImageTableViewCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="169"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="180" height="168.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4hY-Wy-10F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="166.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfm-6i-1mH">
-                        <rect key="frame" x="329" y="10" width="30" height="30"/>
+                        <rect key="frame" x="137" y="15" width="30" height="30"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="MqN-YW-kfp"/>
@@ -36,11 +36,11 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nfm-6i-1mH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="0uy-fn-Cuj"/>
+                    <constraint firstItem="nfm-6i-1mH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="0uy-fn-Cuj"/>
                     <constraint firstAttribute="trailing" secondItem="4hY-Wy-10F" secondAttribute="trailing" id="6QI-Rr-krd"/>
                     <constraint firstItem="4hY-Wy-10F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8rj-AS-vXf"/>
                     <constraint firstItem="4hY-Wy-10F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="A16-Jv-WGc"/>
-                    <constraint firstAttribute="trailing" secondItem="nfm-6i-1mH" secondAttribute="trailing" constant="16" id="S3t-en-hLt"/>
+                    <constraint firstAttribute="trailing" secondItem="nfm-6i-1mH" secondAttribute="trailing" constant="13" id="S3t-en-hLt"/>
                     <constraint firstAttribute="bottom" secondItem="4hY-Wy-10F" secondAttribute="bottom" constant="2" id="ymX-fL-Ve9"/>
                 </constraints>
             </tableViewCellContentView>
@@ -50,10 +50,10 @@
                 <outlet property="cancelButton" destination="nfm-6i-1mH" id="Ng7-i7-Hfr"/>
                 <outlet property="postImageView" destination="4hY-Wy-10F" id="gab-ho-DrH"/>
             </connections>
-            <point key="canvasLocation" x="63.04347826086957" y="72.65625"/>
+            <point key="canvasLocation" x="-78.260869565217391" y="76.004464285714278"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="delete-white" width="24" height="24"/>
+        <image name="delete-white" width="32" height="32"/>
     </resources>
 </document>

@@ -20,7 +20,9 @@ class CreatePostViewController: UIViewController {
     var imageList = [PHAsset]()
     var imagePicker = UIImagePickerController()
     var iskeyboard : Bool = false
+    
     var picker = ImagePickerController()
+    
    
     var postText = ""
     
@@ -157,10 +159,20 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 self.picker = ImagePickerController()
                 self.picker.delegate = self
                 self.picker.navigationBar.isTranslucent = false
+                self.picker.updateSelectedAssets(with: self.imageList)
                 self.present(self.picker, animated: false, completion: nil)
             } else {
                 // Camera
-                Utils.notReadyAlert()
+                let camera = DKCamera()
+                
+                camera.didCancel = {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+                camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable : Any]?) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                self.present(camera, animated: true, completion: nil)
             }
         }
     }

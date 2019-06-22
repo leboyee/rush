@@ -72,13 +72,19 @@ extension CreateClubViewController {
             cell.setup(isShowSwitch: true)
         }
         
-        cell.textDidEndEditing = { [weak self] (text) in
+        cell.textDidChanged = {  [weak self] (text) in
             guard let self_ = self else { return }
             if indexPath.section == 0 {
                 self_.nameClub = text
             } else if indexPath.section == 1 {
                 self_.clubDescription = text
-            } else if indexPath.section == 2 {
+            }
+            self_.validateAllFields()
+        }
+        
+        cell.textDidEndEditing = { [weak self] (text) in
+            guard let self_ = self else { return }
+            if indexPath.section == 2 {
                 if !self_.interestList.contains(text) {
                     self_.interestList.append(text)
                     self_.tableView.reloadData()
@@ -171,10 +177,10 @@ extension CreateClubViewController {
     }
     
     func validateAllFields() {
-        if clubImage != nil && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+        if clubImage != nil /*&& nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0*/ {
             navigationItem.rightBarButtonItem = saveBtnActive
         } else {
-            navigationItem.rightBarButtonItem = saveBtnDisActive
+            navigationItem.rightBarButtonItem = saveBtnActive// saveBtnDisActive
         }
     }
 }
