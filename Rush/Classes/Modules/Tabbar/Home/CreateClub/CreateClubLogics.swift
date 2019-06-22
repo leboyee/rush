@@ -72,6 +72,46 @@ extension CreateClubViewController {
             cell.setup(isShowSwitch: true)
         }
         
+        cell.switchValueChanged = { [weak self] (isOn) in
+            guard let _ = self else { return }
+            
+        }
+    }
+    
+    func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
+        
+        cell.resetAllField()
+        if indexPath.section == 0 && indexPath.row == 0 {
+            cell.setup(iconImage: "club-gray-1")
+            cell.setup(placeholder: Text.nameClub, text: nameClub)
+            cell.setup(isUserInterfaceEnable: true)
+        } else if indexPath.section == 1 {
+            cell.setup(placeholder: Text.addDesc, text: clubDescription)
+        } else if indexPath.section == 2 {
+            if indexPath.row == interestList.count {
+                cell.setup(placeholder: "", text: "")
+                cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
+                cell.setup(keyboardReturnKeyType: .done)
+                cell.setup(isUserInterfaceEnable: false)
+            } else {
+                cell.setup(isHideCleareButton: false)
+                cell.setup(placeholder: "", text: interestList[indexPath.row])
+            }
+            cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
+        } else if indexPath.section == 3 {
+            
+            if indexPath.row == peopleList.count {
+                cell.setup(placeholder: "", text: "")
+                cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
+                cell.setup(keyboardReturnKeyType: .done)
+                cell.setup(isUserInterfaceEnable: false)
+            } else {
+                cell.setup(isHideCleareButton: false)
+                cell.setup(placeholder: "", text: peopleList[indexPath.row])
+            }
+            cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
+        }
+        
         cell.textDidChanged = {  [weak self] (text) in
             guard let self_ = self else { return }
             if indexPath.section == 0 {
@@ -114,14 +154,24 @@ extension CreateClubViewController {
             }
         }
         
-        cell.switchValueChanged = { [weak self] (isOn) in
-            guard let _ = self else { return }
-            
+        cell.updateTableView = {
+            [weak self] (textView) in
+            guard let self_ = self else { return }
+                        
+            let startHeight = textView.frame.size.height
+            var calcHeight = textView.sizeThatFits(textView.frame.size).height
+            if calcHeight == startHeight && textView.text.isEmpty {
+                calcHeight = calcHeight + 1
+            }
+            if startHeight != calcHeight {
+                // Disable animations
+                UIView.setAnimationsEnabled(false)
+                self_.tableView.beginUpdates()
+                self_.tableView.endUpdates()
+                // Enable animations
+                UIView.setAnimationsEnabled(true)
+            }
         }
-    }
-    
-    func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
-        
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {

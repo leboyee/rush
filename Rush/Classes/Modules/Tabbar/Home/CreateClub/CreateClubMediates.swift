@@ -37,13 +37,13 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as! TextViewCell
-            fillTextViewCell(cell, indexPath)
-            return cell
-        } else {
+        if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as! TextIconCell
             fillTextIconCell(cell, indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as! TextViewCell
+            fillTextViewCell(cell, indexPath)
             return cell
         }
     }
