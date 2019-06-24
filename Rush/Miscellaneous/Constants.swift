@@ -83,10 +83,13 @@ struct Segues {
     static let profileInformation          = "ProfileInformationSegue"
     static let chooseLevelSegue            = "ChooseLevelSegue"
     static let chooseYearSegue             = "ChooseYearSegue"
+    static let chooseUniverSitySegueFromLevelView             = "ChooseUniverSitySegueFromLevelView"
+
     static let chooseUniversitySegue       = "ChooseUniversitySegue"
     static let addMajorViewSegue           = "AddMajorViewSegue"
+    static let addMinorViewSegue           = "AddMinorViewSegue"
 
-    
+
     
 }
 

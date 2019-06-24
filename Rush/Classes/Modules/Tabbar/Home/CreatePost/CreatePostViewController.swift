@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 import DKImagePickerController
+import DKCamera
 
 class CreatePostViewController: UIViewController {
 
@@ -164,7 +165,6 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
             } else {
                 // Camera
                 let camera = DKCamera()
-                
                 camera.didCancel = {
                     self.dismiss(animated: true, completion: nil)
                 }

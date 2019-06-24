@@ -101,11 +101,12 @@ extension AddMajorsViewController {
     }
     
     @IBAction func skipButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
+        self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
     }
 
     
     @IBAction func nextButtonAction() {
-        
+        self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+
     }
 }

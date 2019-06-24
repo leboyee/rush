@@ -106,6 +106,7 @@ extension AddMinorsViewController {
 
     
     @IBAction func nextButtonAction() {
-        
+        AppDelegate.getInstance().setupStoryboard()
+
     }
 }

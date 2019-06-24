@@ -96,7 +96,12 @@ class ChooseLevelViewController: CustomViewController {
 extension ChooseLevelViewController {
     func moveToNext() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.performSegue(withIdentifier: Segues.chooseYearSegue, sender: self)
+            if self.selectedIndex > 2 {
+                self.performSegue(withIdentifier: Segues.chooseUniverSitySegueFromLevelView, sender: self)
+            }
+            else {
+                self.performSegue(withIdentifier: Segues.chooseYearSegue, sender: self)
+            }
         }
     }
     
@@ -124,7 +129,6 @@ extension ChooseLevelViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.chooseYearSegue {
             if let vc = segue.destination as? ChooseYearViewController {
-                print(vc)
             }
         }
     }
