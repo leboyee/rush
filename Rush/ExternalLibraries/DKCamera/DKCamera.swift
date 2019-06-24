@@ -264,6 +264,8 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     open var saveButton: UIButton!
     open var previewImageView: UIImageView!
     
+    var photoSavedImageView = UIImageView()
+    
     let cameraResource: DKCameraResource
     
     public init() {
@@ -578,6 +580,10 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let rootLayer = self.view.layer
         rootLayer.masksToBounds = true
         rootLayer.insertSublayer(self.previewLayer, at: 0)
+        
+        // Saved imageview
+        photoSavedImageView = UIImageView(frame: CGRect(x: (screenWidth/2) - 42.5, y: previewLayer.frame.origin.y + (self.previewLayer.frame.size.height/2) - 42.5 , width: 85, height: 85))
+        photoSavedImageView.image = #imageLiteral(resourceName: "camera_saved")
     }
     
     open func setupCurrentDevice() {
@@ -933,6 +939,22 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     @objc internal func saveCamera() {
         // save image in gallery
+        UIImageWriteToSavedPhotosAlbum(previewImageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    //MARK: - Add image to Library
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            Utils.alert(message: error.localizedDescription, title: "Save error")
+        } else {
+            self.view.addSubview(photoSavedImageView)
+            photoSavedImageView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.photoSavedImageView.removeFromSuperview()
+                self.photoSavedImageView.isHidden = true
+            }
+        }
     }
     
     // MARK: - Handles Flash
@@ -945,6 +967,8 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             self.flashMode = .auto
         case .off:
             self.flashMode = .on
+        @unknown default:
+            break
         }
     }
     
