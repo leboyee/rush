@@ -18,7 +18,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
-    var imageList = [PHAsset]()
+    var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var iskeyboard : Bool = false
     
@@ -160,7 +160,11 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 self.picker = ImagePickerController()
                 self.picker.delegate = self
                 self.picker.navigationBar.isTranslucent = false
-                self.picker.updateSelectedAssets(with: self.imageList)
+                var assets = [PHAsset]()
+                for img in self.imageList {
+                    if let value = img as? PHAsset { assets.append(value) }
+                }
+                self.picker.updateSelectedAssets(with: assets)
                 self.present(self.picker, animated: false, completion: nil)
             } else {
                 // Camera
@@ -170,6 +174,8 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 }
                 
                 camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable : Any]?) in
+                    
+                    self.tableView.reloadData()
                     self.dismiss(animated: true, completion: nil)
                 }
                 self.present(camera, animated: true, completion: nil)

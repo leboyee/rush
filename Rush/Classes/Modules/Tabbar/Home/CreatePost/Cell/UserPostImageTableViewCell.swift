@@ -31,29 +31,32 @@ class UserPostImageTableViewCell: UITableViewCell {
 // MARK: - Other function
 extension UserPostImageTableViewCell {
     
-    func setup(imageAsset: PHAsset) {
+    func setup(imageAsset: Any) {
         
         postImageView.image = nil
-        
-        let imageSize = CGSize(
-            width: screenWidth * UIScreen.main.scale,
-            height: screenWidth * UIScreen.main.scale
-        )
-        
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.resizeMode = .exact
-        requestOptions.isNetworkAccessAllowed = true
-        
-        PHCachingImageManager.default().requestImage(
-            for: imageAsset,
-            targetSize: imageSize,
-            contentMode: .aspectFill,
-            options: requestOptions
-        ) { [weak self] image, _ in
-            guard let self_ = self else { return }
-            if let image = image {
-                self_.postImageView.image = image
+        if let asset = imageAsset as? PHAsset {
+            let imageSize = CGSize(
+                width: screenWidth * UIScreen.main.scale,
+                height: screenWidth * UIScreen.main.scale
+            )
+            
+            let requestOptions = PHImageRequestOptions()
+            requestOptions.resizeMode = .exact
+            requestOptions.isNetworkAccessAllowed = true
+            
+            PHCachingImageManager.default().requestImage(
+                for: asset,
+                targetSize: imageSize,
+                contentMode: .aspectFill,
+                options: requestOptions
+            ) { [weak self] image, _ in
+                guard let self_ = self else { return }
+                if let image = image {
+                    self_.postImageView.image = image
+                }
             }
+        } else if let image = imageAsset as? UIImage {
+            postImageView.image = image
         }
     }
 }
