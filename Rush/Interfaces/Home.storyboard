@@ -574,10 +574,9 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk4-mP-L1R">
-                                        <rect key="frame" x="41.5" y="17" width="150" height="40"/>
+                                        <rect key="frame" x="24" y="17" width="167.5" height="40"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="CEJ-wH-a42"/>
                                             <constraint firstAttribute="height" constant="40" id="vC2-fd-ZfV"/>
                                         </constraints>
                                         <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -594,7 +593,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uj6-Pc-Uk9">
-                                        <rect key="frame" x="222.5" y="17" width="150" height="40"/>
+                                        <rect key="frame" x="222.5" y="17" width="167.5" height="40"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Take photo" image="addCamera">
@@ -623,6 +622,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Fk4-mP-L1R" firstAttribute="leading" secondItem="Pyo-ck-daz" secondAttribute="leading" constant="24" id="63V-Jc-jBy"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="width" secondItem="Fk4-mP-L1R" secondAttribute="width" id="BtT-SI-vZY"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="centerY" secondItem="Fk4-mP-L1R" secondAttribute="centerY" id="CLk-R0-rTc"/>
                                     <constraint firstItem="HHV-fE-Pwv" firstAttribute="leading" secondItem="Fk4-mP-L1R" secondAttribute="trailing" constant="15" id="E5Y-Qo-Vt1"/>
@@ -632,6 +632,7 @@
                                     <constraint firstAttribute="height" constant="74" id="aml-ew-bWF"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="height" secondItem="Fk4-mP-L1R" secondAttribute="height" id="g0T-4R-DCY"/>
                                     <constraint firstItem="eDf-lc-gAU" firstAttribute="leading" secondItem="Pyo-ck-daz" secondAttribute="leading" id="hdM-Yk-DpN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uj6-Pc-Uk9" secondAttribute="trailing" constant="24" id="ltp-6z-OI8"/>
                                     <constraint firstItem="Uj6-Pc-Uk9" firstAttribute="leading" secondItem="HHV-fE-Pwv" secondAttribute="trailing" constant="15" id="o6Z-a9-bDy"/>
                                     <constraint firstItem="Fk4-mP-L1R" firstAttribute="centerY" secondItem="Pyo-ck-daz" secondAttribute="centerY" id="oTa-8S-jvQ"/>
                                     <constraint firstItem="HHV-fE-Pwv" firstAttribute="centerY" secondItem="Pyo-ck-daz" secondAttribute="centerY" id="yoB-hV-ZBP"/>

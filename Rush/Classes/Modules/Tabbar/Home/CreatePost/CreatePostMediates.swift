@@ -59,8 +59,7 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-//MARK:- Action
-
+//MARK:- DKCamera delegate methods
 extension CreatePostViewController {
     
     

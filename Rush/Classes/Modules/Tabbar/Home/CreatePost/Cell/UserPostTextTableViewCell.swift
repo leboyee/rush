@@ -29,6 +29,10 @@ class UserPostTextTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+    
+    func setup(font: UIFont) {
+        postTextView.font = font
+    }
 }
 
 // MARK: - TextView delegate methods
