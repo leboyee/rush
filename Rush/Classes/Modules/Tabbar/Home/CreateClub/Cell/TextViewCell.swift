@@ -43,9 +43,9 @@ extension TextViewCell {
     
     func resetAllField() {
         setup(isHideCleareButton: true)
-        setup(iconImage: "")
         setup(isUserInterfaceEnable: false)
         setup(isHideCleareButton: true)
+        imgView.image = nil
     }
     
     func setup(isEmpty: Bool) {
@@ -68,6 +68,7 @@ extension TextViewCell {
     
     func setup(placeholder: String, text: String) {
         textView.text = text
+        placeHolderLabel.text = placeholder
         setup(isEmpty: text.isEmpty)
     }
     
