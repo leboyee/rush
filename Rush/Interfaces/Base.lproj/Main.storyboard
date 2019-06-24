@@ -80,6 +80,7 @@
                                         <state key="normal" title="Create account" backgroundImage="onboard-bg-button-main"/>
                                         <connections>
                                             <action selector="createButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="9nG-sC-uJy"/>
+                                            <segue destination="Gdl-hw-GuU" kind="show" id="O3U-07-arr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVU-1T-UG0">

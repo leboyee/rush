@@ -69,10 +69,14 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text?.count == 0 && string == " "{
+            return false
+        }
         return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        
         if firstNameTextField.text?.count ?? 0 > 0 && lastNameTextField.text?.count ?? 0 > 0 {
             self.nextButton.setNextButton(isEnable: true)
         }

@@ -1,5 +1,5 @@
 //
-//  ChooseYearViewController.swift
+//  AddMinorsViewController.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -10,13 +10,18 @@ import UIKit
 import IQKeyboardManagerSwift
 
 
-class ChooseYearViewController: CustomViewController {
+class AddMinorsViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var pageControllerView: UIView!
     @IBOutlet weak var pageControl: CustomImagePageControl!
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var nextButton: CustomButton!
+
+    var selectedArray = [Int]()
     
     var selectedIndex = -1
     
@@ -53,6 +58,8 @@ class ChooseYearViewController: CustomViewController {
         // Set Custom part of Class
         self.bgImageView.setBgForLoginSignup()
         setCustomNavigationBarView()
+        self.nextButton.setNextButton(isEnable: true)
+        bottomView.isHidden = true
     }
 
     
@@ -80,27 +87,25 @@ class ChooseYearViewController: CustomViewController {
 }
 
 //MARK: - Other Function
-extension ChooseYearViewController {
+extension AddMinorsViewController {
     func moveToNext() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.performSegue(withIdentifier: Segues.chooseUniversitySegue, sender: self)
-            //AppDelegate.getInstance().setupStoryboard()
-        }
+        bottomView.isHidden = self.selectedArray.count > 0 ? false : true
+        self.tableView.reloadData()
     }
 }
 
 // MARK: - Actions
-extension ChooseYearViewController {
+extension AddMinorsViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
     
     @IBAction func skipButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseUniversitySegue, sender: self)
+        AppDelegate.getInstance().setupStoryboard()
     }
 
     
-    @IBAction func addImageViewButtonAction() {
+    @IBAction func nextButtonAction() {
         
     }
 }

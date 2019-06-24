@@ -1,5 +1,5 @@
 //
-//  ChooseYearViewController.swift
+//  ChooseUniversityViewController.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -10,13 +10,15 @@ import UIKit
 import IQKeyboardManagerSwift
 
 
-class ChooseYearViewController: CustomViewController {
+class ChooseUniversityViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var pageControllerView: UIView!
     @IBOutlet weak var pageControl: CustomImagePageControl!
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
+
     
     var selectedIndex = -1
     
@@ -80,23 +82,24 @@ class ChooseYearViewController: CustomViewController {
 }
 
 //MARK: - Other Function
-extension ChooseYearViewController {
+extension ChooseUniversityViewController {
     func moveToNext() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.performSegue(withIdentifier: Segues.chooseUniversitySegue, sender: self)
+            self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
             //AppDelegate.getInstance().setupStoryboard()
         }
     }
 }
 
 // MARK: - Actions
-extension ChooseYearViewController {
+extension ChooseUniversityViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
     
     @IBAction func skipButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseUniversitySegue, sender: self)
+        self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
+        //AppDelegate.getInstance().setupStoryboard()
     }
 
     

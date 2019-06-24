@@ -157,7 +157,9 @@ extension AddProfilePictureViewController {
     }
     
     @IBAction func skipButtonAction() {
-        isSkip = true
+        if userPhotoImageView.image != nil {
+            isSkip = true
+        }
         self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
 

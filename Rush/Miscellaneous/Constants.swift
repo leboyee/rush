@@ -46,6 +46,11 @@ struct Cell {
     static let userPostImage        = "UserPostImageTableViewCell"
     static let listCell             = "ListCell"
     static let selectGallaryPhoto   = "SelectGallaryPhotoCell"
+    static let universityCell   = "UniversityCell"
+    static let addMajorsCell   = "AddMajorsCell"
+
+
+    
 }
 
 struct ReusableView {
@@ -77,7 +82,9 @@ struct Segues {
     static let openPostScreen              = "SegueOpenPostScreen"
     static let profileInformation          = "ProfileInformationSegue"
     static let chooseLevelSegue            = "ChooseLevelSegue"
-    static let chooseYearSegue            = "ChooseYearSegue"
+    static let chooseYearSegue             = "ChooseYearSegue"
+    static let chooseUniversitySegue       = "ChooseUniversitySegue"
+    static let addMajorViewSegue           = "AddMajorViewSegue"
 
     
     
