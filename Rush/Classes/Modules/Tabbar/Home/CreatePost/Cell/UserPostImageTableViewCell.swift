@@ -13,6 +13,8 @@ class UserPostImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var postImageView: UIImageView!
+    var clearButtonClickEvent: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,5 +60,9 @@ extension UserPostImageTableViewCell {
         } else if let image = imageAsset as? UIImage {
             postImageView.image = image
         }
+    }
+    
+    @IBAction func clearButtonAction() {
+        clearButtonClickEvent?()
     }
 }

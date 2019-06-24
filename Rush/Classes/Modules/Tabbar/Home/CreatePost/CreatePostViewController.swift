@@ -9,8 +9,7 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
-import DKImagePickerController
-import DKCamera
+
 
 class CreatePostViewController: UIViewController {
 
@@ -128,7 +127,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
-        imageList = assets
+        imageList.append(contentsOf: assets)
         picker.dismiss(animated: false, completion: nil)
         self.picker = ImagePickerController()
         tableView.reloadData()
@@ -174,7 +173,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 }
                 
                 camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable : Any]?) in
-                    
+                    if let img = image { self.imageList.append(img) }
                     self.tableView.reloadData()
                     self.dismiss(animated: true, completion: nil)
                 }

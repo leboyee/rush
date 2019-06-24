@@ -68,6 +68,12 @@ extension CreatePostViewController {
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let asset = imageList[indexPath.row]
         cell.setup(imageAsset: asset)
+        
+        cell.clearButtonClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.imageList.remove(at: indexPath.row)
+            self_.tableView.reloadData()
+        }
     }
 }
 

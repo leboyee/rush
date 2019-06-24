@@ -145,6 +145,9 @@
 		79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */; };
 		79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */; };
 		79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */; };
+		79650BFF22C1099B0004BCB9 /* DKCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFC22C1099B0004BCB9 /* DKCamera.swift */; };
+		79650C0022C1099B0004BCB9 /* DKCameraLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFD22C1099B0004BCB9 /* DKCameraLocationManager.swift */; };
+		79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */; };
 		7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */; };
 		7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */; };
 		796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9296229FDCD500F91DB1 /* TagCell.swift */; };
@@ -364,6 +367,9 @@
 		79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoMediator.swift; sourceTree = "<group>"; };
 		79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoPresenter.swift; sourceTree = "<group>"; };
 		79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoViewController.swift; sourceTree = "<group>"; };
+		79650BFC22C1099B0004BCB9 /* DKCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCamera.swift; sourceTree = "<group>"; };
+		79650BFD22C1099B0004BCB9 /* DKCameraLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCameraLocationManager.swift; sourceTree = "<group>"; };
+		79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCameraResource.swift; sourceTree = "<group>"; };
 		7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserPostCell.swift; sourceTree = "<group>"; };
 		7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateUserPostCell.xib; sourceTree = "<group>"; };
 		796E9296229FDCD500F91DB1 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -988,9 +994,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		79650BFB22C1099B0004BCB9 /* DKCamera */ = {
+			isa = PBXGroup;
+			children = (
+				79650BFC22C1099B0004BCB9 /* DKCamera.swift */,
+				79650BFD22C1099B0004BCB9 /* DKCameraLocationManager.swift */,
+				79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */,
+			);
+			path = DKCamera;
+			sourceTree = "<group>";
+		};
 		796E929A229FE0B600F91DB1 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				79650BFB22C1099B0004BCB9 /* DKCamera */,
 				797FFD8122B7BC480055A001 /* PickleImagePicker */,
 				796E929B229FE0B600F91DB1 /* TagListView */,
 			);
@@ -1432,6 +1449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79650C0022C1099B0004BCB9 /* DKCameraLocationManager.swift in Sources */,
 				1AB0C15222C0F6BB000D016E /* AddMinorsViewController.swift in Sources */,
 				79356A4C229D761600DA54AF /* MyClubViewController.swift in Sources */,
 				1AA97B8D228979D100C4550C /* Notifications.swift in Sources */,
@@ -1506,6 +1524,7 @@
 				1A353AC222BD05B60069752D /* ChooseUniversityViewMediates.swift in Sources */,
 				79DF74212292BAB80012DCB7 /* CreateClubViewController.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
+				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				1ACEAC1422AC040A00B734D3 /* AddProfilePictureViewLogics.swift in Sources */,
 				1A339B6522B3CEA9005509EA /* ChooseYearViewMediates.swift in Sources */,
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
@@ -1561,6 +1580,7 @@
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
 				0918E773228436990098AF35 /* ChatsViewController.swift in Sources */,
 				79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */,
+				79650BFF22C1099B0004BCB9 /* DKCamera.swift in Sources */,
 				1AC635F622AA6E9500021E03 /* TextFieldEffects.swift in Sources */,
 				1A353AC322BD05B60069752D /* ChooseUniversityViewLogics.swift in Sources */,
 				1AE78D2B22A00F1900972C17 /* EnterVerificationCodeViewController.swift in Sources */,
