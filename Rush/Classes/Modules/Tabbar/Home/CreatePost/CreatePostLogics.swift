@@ -39,14 +39,20 @@ extension CreatePostViewController {
             if calcHeight == startHeight && textView.text.isEmpty {
                 calcHeight = calcHeight + 1
             }
-            /*
+            
             let numLines = Int((Float(textView.contentSize.height / (textView.font?.lineHeight ?? 0))))
-            if numLines >= 3 {
+            
+            if self_.bigFontCount != 0 && self_.bigFontCount <= textView.text.count {
                 cell.setup(font: UIFont.Regular(sz: 17))
             } else {
-                cell.setup(font: UIFont.DisplayBold(sz: 28))
+                if numLines >= 3 {
+                    self_.bigFontCount = textView.text.count
+                    cell.setup(font: UIFont.Regular(sz: 17))
+                } else {
+                    cell.setup(font: UIFont.DisplayBold(sz: 28))
+                }
             }
-            */
+            
             if startHeight != calcHeight {
                 // Disable animations
                 UIView.setAnimationsEnabled(false)
