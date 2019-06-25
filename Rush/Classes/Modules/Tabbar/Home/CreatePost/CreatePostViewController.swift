@@ -20,7 +20,7 @@ class CreatePostViewController: UIViewController {
     var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var iskeyboard : Bool = false
-    
+    var bigFontCount = 0
     var picker = ImagePickerController()
     
    
