@@ -132,6 +132,8 @@
 		7929DA5322C24AFD00700B42 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7929DA5222C24AFD00700B42 /* PostPresenter.swift */; };
 		7929DA5722C253A400700B42 /* PostLikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7929DA5522C253A400700B42 /* PostLikeCell.swift */; };
 		7929DA5822C253A400700B42 /* PostLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7929DA5622C253A400700B42 /* PostLikeCell.xib */; };
+		7929DA5B22C2630D00700B42 /* PostCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7929DA5922C2630D00700B42 /* PostCommentCell.swift */; };
+		7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7929DA5A22C2630D00700B42 /* PostCommentCell.xib */; };
 		79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A47229D761500DA54AF /* MyClubLogics.swift */; };
 		79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A48229D761500DA54AF /* MyClubMediates.swift */; };
 		79356A4C229D761600DA54AF /* MyClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A49229D761500DA54AF /* MyClubViewController.swift */; };
@@ -359,6 +361,8 @@
 		7929DA5222C24AFD00700B42 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
 		7929DA5522C253A400700B42 /* PostLikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikeCell.swift; sourceTree = "<group>"; };
 		7929DA5622C253A400700B42 /* PostLikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostLikeCell.xib; sourceTree = "<group>"; };
+		7929DA5922C2630D00700B42 /* PostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCell.swift; sourceTree = "<group>"; };
+		7929DA5A22C2630D00700B42 /* PostCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCommentCell.xib; sourceTree = "<group>"; };
 		79356A47229D761500DA54AF /* MyClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubLogics.swift; sourceTree = "<group>"; };
 		79356A48229D761500DA54AF /* MyClubMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubMediates.swift; sourceTree = "<group>"; };
 		79356A49229D761500DA54AF /* MyClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubViewController.swift; sourceTree = "<group>"; };
@@ -956,6 +960,8 @@
 			children = (
 				7929DA5522C253A400700B42 /* PostLikeCell.swift */,
 				7929DA5622C253A400700B42 /* PostLikeCell.xib */,
+				7929DA5922C2630D00700B42 /* PostCommentCell.swift */,
+				7929DA5A22C2630D00700B42 /* PostCommentCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1404,6 +1410,7 @@
 				794183B4228960C7009AB12C /* SF-Pro-Text-Medium.otf in Resources */,
 				794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
+				7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
 				794183B2228960C7009AB12C /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -1607,6 +1614,7 @@
 				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,
 				1A339B6422B3CEA9005509EA /* ChooseYearViewController.swift in Sources */,
 				79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */,
+				7929DA5B22C2630D00700B42 /* PostCommentCell.swift in Sources */,
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,

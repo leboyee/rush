@@ -23,6 +23,8 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.userPostText, bundle: nil), forCellReuseIdentifier: Cell.userPostText)
         tableView.register(UINib(nibName: Cell.userPostImage, bundle: nil), forCellReuseIdentifier: Cell.userPostImage)
         tableView.register(UINib(nibName: Cell.postLikeCell, bundle: nil), forCellReuseIdentifier: Cell.postLikeCell)
+        tableView.register(UINib(nibName: Cell.postCommentCell, bundle: nil), forCellReuseIdentifier: Cell.postCommentCell)
+        
         
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
     }
@@ -33,7 +35,7 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 4 {
-            return commentList.count
+            return 1
         }
         return 1
     }
@@ -53,6 +55,9 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
         } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as! PostLikeCell
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as! PostCommentCell
+            return cell
         }
         return UITableViewCell()
     }
@@ -68,7 +73,7 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 4 ? 50 : CGFloat.leastNormalMagnitude
+        return section == 4 ? 36 : CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

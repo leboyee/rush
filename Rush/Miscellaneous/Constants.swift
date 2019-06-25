@@ -49,7 +49,7 @@ struct Cell {
     static let universityCell       = "UniversityCell"
     static let addMajorsCell        = "AddMajorsCell"
     static let postLikeCell         = "PostLikeCell"
-
+    static let postCommentCell      = "PostCommentCell"
     
 }
 
