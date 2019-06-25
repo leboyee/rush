@@ -74,7 +74,7 @@ class CreatePostViewController: UIViewController {
         navigationItem.leftBarButtonItem = cancel
         
         // Right item button
-        navigationItem.rightBarButtonItem = createBtnDisActive
+        navigationItem.rightBarButtonItem = createBtnActive
         
         // Notification's of keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -122,7 +122,7 @@ extension CreatePostViewController {
     }
     
     @objc func createButtonAction() {
-        
+        performSegue(withIdentifier: Segues.postSegue, sender: nil)
     }
     
 }
@@ -138,6 +138,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
         imageList.append(contentsOf: assets)
         picker.dismiss(animated: false, completion: nil)
         self.picker = ImagePickerController()
+        createButtonValidation()
         tableView.reloadData()
     }
     
@@ -228,8 +229,14 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
 
  // MARK: - Navigation
 extension CreatePostViewController {
-    /*
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.postSegue {
+            if let vc = segue.destination as? PostViewController {
+                vc.imageList = imageList
+            }
+        }
      }
-     */
+    
 }

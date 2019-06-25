@@ -46,9 +46,9 @@ struct Cell {
     static let userPostImage        = "UserPostImageTableViewCell"
     static let listCell             = "ListCell"
     static let selectGallaryPhoto   = "SelectGallaryPhotoCell"
-    static let universityCell   = "UniversityCell"
-    static let addMajorsCell   = "AddMajorsCell"
-
+    static let universityCell       = "UniversityCell"
+    static let addMajorsCell        = "AddMajorsCell"
+    static let postLikeCell         = "PostLikeCell"
 
     
 }
@@ -89,7 +89,7 @@ struct Segues {
     static let chooseUniversitySegue       = "ChooseUniversitySegue"
     static let addMajorViewSegue           = "AddMajorViewSegue"
     static let addMinorViewSegue           = "AddMinorViewSegue"
-
+    static let postSegue                   = "PostSegue"
 
     
 }
@@ -163,7 +163,7 @@ public struct Text {
     static let UpcomingEvents           = "Upcoming events"
     static let createEventAndOpenClub   = "Create events and open clubs"
     static let saysomething             = "Say something"
-    
+    static let comments                 = "Comments"
 }
 
 public struct Message {
