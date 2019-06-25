@@ -120,6 +120,10 @@ class SelectGallaryPhotoViewController: UIViewController {
     }
     
     func dismiss() {
+        if selectedAlbum == nil {
+            selectedAlbum = source[0][0]
+        }
+        
         self.delegate?.dismissView?(selectedAlbum)
         DispatchQueue.main.async {
             self.dismiss(animated: false, completion: nil)
