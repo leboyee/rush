@@ -82,7 +82,15 @@ extension HomeViewController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }
             // Open other user profile UI for test
-            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
+            
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
+            vc.delegate = self
+            vc.modalPresentationStyle = .overFullScreen
+            vc.view.backgroundColor = UIColor.bgBlack
+            let navigation = UINavigationController(rootViewController: vc)
+            self_.navigationController?.present(navigation, animated: true, completion: nil)
+//            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
         }
     }
 }

@@ -62,6 +62,7 @@ struct ReusableView {
 
 struct ViewControllerId {
     static let customPickerViewController        = "CustomPickerViewController"
+    static let createPostViewController          = "CreatePostViewController"
 }
 
 /* Create the struct for Section wise */

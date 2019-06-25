@@ -10,21 +10,26 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 
+protocol CreatePostViewControllerDelegate {
+    func showSnackBar(text: String, buttonText: String)
+}
+
 
 class CreatePostViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var tableView        : UITableView!
+    @IBOutlet weak var addPhotoButton   : UIButton!
+    @IBOutlet weak var takePhotoButton  : UIButton!
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
-    var imageList = [Any]()
-    var imagePicker = UIImagePickerController()
-    var iskeyboard : Bool = false
-    var bigFontCount = 0
-    var picker = ImagePickerController()
     
-   
-    var postText = ""
+    var imageList       = [Any]()
+    var imagePicker     = UIImagePickerController()
+    var bigFontCount    = 0
+    var picker          = ImagePickerController()
+    var delegate        : CreatePostViewControllerDelegate?
+    var iskeyboard      : Bool = false
+    var postText        = ""
+    
     
     var createBtnActive : UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
@@ -80,7 +85,6 @@ class CreatePostViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            
             viewBottamConstraint.constant = keyboardHeight + (Utils.isHasSafeArea ? -34 : 0)
         }
     }
@@ -110,7 +114,11 @@ extension CreatePostViewController {
     }
     
     @IBAction func cancelButtonAction() {
-        dismiss(animated: false, completion: nil)
+        
+        self.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.delegate?.showSnackBar(text: "You didn't finish your post.", buttonText: "Finish it")
+        }
     }
     
     @objc func createButtonAction() {

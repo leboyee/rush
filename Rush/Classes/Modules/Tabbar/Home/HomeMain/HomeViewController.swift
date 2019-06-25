@@ -16,6 +16,8 @@ class HomeViewController: CustomViewController {
     var isShowJoinEvents = false
     
     var date = "January 24"
+    var notificationTitle = ""
+    var notificationButtonTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,14 +99,22 @@ extension HomeViewController {
 // MARK: - Navigation
 extension HomeViewController {
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Segues.selectEventType {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .eventCategory
                 vc.delegate = self
             }
+        } else if segue.identifier == Segues.openPostScreen {
+            if let vc = segue.destination as? CreatePostViewController {
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.notificationAlert {
+            let controller = segue.destination as! NotificationAlertViewController
+            controller.toastMessage = notificationTitle
+            controller.buttonTitle = notificationButtonTitle
+            controller.delegate = self
         }
-     }
-    
+    }
 }

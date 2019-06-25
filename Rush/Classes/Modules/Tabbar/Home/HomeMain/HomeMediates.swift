@@ -90,3 +90,19 @@ extension HomeViewController : SelectEventTypeDelegate {
         openCreateClubViewController()
     }
 }
+
+//MARK: - CreatePostViewController Delegate
+extension HomeViewController : CreatePostViewControllerDelegate {
+    func showSnackBar(text: String, buttonText: String) {
+        notificationTitle = text
+        notificationButtonTitle = buttonText
+        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+    }
+}
+
+//MARK: - Notification alert delegate
+extension HomeViewController: NotificationAlertDelegate {
+    func undoButtonClickEvent() {
+        
+    }
+}
