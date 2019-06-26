@@ -306,6 +306,15 @@ extension Utils {
         return customView
     }
     
+    class func setAttributedText(_ attriBute1: String,_ attriBute2: String,_ size1: CGFloat,_ size2: CGFloat) -> NSMutableAttributedString {
+        let mainString = NSMutableAttributedString()
+        let attributedString1 = NSAttributedString(string: attriBute1, attributes: [NSAttributedString.Key.foregroundColor : UIColor.brown24, NSAttributedString.Key.font : UIFont.Regular(sz: size1)])
+        let attributedString2 = NSAttributedString(string: attriBute2, attributes: [NSAttributedString.Key.foregroundColor : UIColor.bgBlack, NSAttributedString.Key.font : UIFont.Regular(sz: size2)])
+        mainString.append(attributedString1)
+        mainString.append(attributedString2)
+        return mainString
+    }
+    
     // Static Arrays
     class func chooseLevelArray() -> [String] {
         return ["High school", "Undergraduate", "Graduate", "Alumni", "Professor"]

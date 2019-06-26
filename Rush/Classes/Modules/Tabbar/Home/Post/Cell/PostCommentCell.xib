@@ -37,8 +37,8 @@
                                     <constraint firstAttribute="width" constant="40" id="ajh-kP-69o"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ue-3R-lAq">
-                                <rect key="frame" x="137" y="37" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ue-3R-lAq">
+                                <rect key="frame" x="24" y="12" width="40" height="40"/>
                                 <connections>
                                     <action selector="userProfileButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iXr-uZ-zQ8"/>
                                 </connections>
@@ -144,7 +144,7 @@
                 <outlet property="usernameLabel" destination="5Kk-Lp-fzf" id="6Uh-8A-EY7"/>
                 <outlet property="widthConstraintOfImageView" destination="ajh-kP-69o" id="6SS-9T-C1d"/>
             </connections>
-            <point key="canvasLocation" x="100.00000000000001" y="92.075892857142847"/>
+            <point key="canvasLocation" x="173.91304347826087" y="58.59375"/>
         </tableViewCell>
     </objects>
     <resources>

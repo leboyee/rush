@@ -20,11 +20,15 @@ class PostCommentCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     var userProfileClickEvent:(() -> Void)?
-    
+    var userNameClickEvent: ((_ name: String) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(gesture:)))
+        self.detailLabel.addGestureRecognizer(tap)
+        self.detailLabel.isUserInteractionEnabled = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,11 +55,28 @@ extension PostCommentCell {
         }
     }
     
+    func setup(attributedText: String) {
+        let text = Utils.setAttributedText("Peter Rally", ", Yes, me too!", 17, 17)
+        detailLabel.attributedText = text
+    }
+    
     @IBAction func replayButtonAction() {
         
     }
     
     @IBAction func userProfileButtonAction() {
         userProfileClickEvent?()
+    }
+    
+    @IBAction func tapLabel(gesture: UITapGestureRecognizer) {
+        
+        let range = detailLabel.text?.range(of: "Peter Rally")
+        if range != nil {
+            let nsrange = detailLabel.text?.nsRange(from: range!)
+            if gesture.didTapAttributedTextInLabel(label: detailLabel, targetRange: nsrange!) {
+                print("Tapped targetRange1")
+                userNameClickEvent?("Peter Rally")
+            }
+        }
     }
 }

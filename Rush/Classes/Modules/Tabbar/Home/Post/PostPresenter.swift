@@ -46,13 +46,22 @@ extension PostViewController {
     func fillCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
         if indexPath.row == 0 {
             cell.setup(isReplayCell: false)
-        } else {
+        } else if indexPath.row == 1 {
             cell.setup(isReplayCell: true)
+            cell.setup(attributedText: "")
+        } else {
+            cell.setup(isReplayCell: false)
         }
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let self_ = self else { return }
             self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+        }
+        
+        cell.userNameClickEvent = { [weak self] (name) in
+            guard let self_ = self else { return }
+            self_.textView.text = "\(name), can I bring friends?"
+            self_.textView.becomeFirstResponder()
         }
     }
 }
