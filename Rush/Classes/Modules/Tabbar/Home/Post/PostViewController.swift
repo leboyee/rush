@@ -20,6 +20,7 @@ class PostViewController: UIViewController {
     var imageList   = [Any]()
     
     var commentText = ""
+    var username = ""
     
     
     override func viewDidLoad() {
@@ -59,6 +60,14 @@ class PostViewController: UIViewController {
 extension PostViewController {
     @objc func shareButtonAction() {
         Utils.notReadyAlert()
+    }
+    
+    @IBAction func sendButtonAction()  {
+        if commentText.count > 0 {
+            username = ""
+            textView.text = ""
+            textView.resignFirstResponder()
+        }
     }
 }
 

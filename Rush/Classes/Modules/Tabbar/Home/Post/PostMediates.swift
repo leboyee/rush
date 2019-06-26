@@ -25,8 +25,6 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.userPostImage, bundle: nil), forCellReuseIdentifier: Cell.userPostImage)
         tableView.register(UINib(nibName: Cell.postLikeCell, bundle: nil), forCellReuseIdentifier: Cell.postLikeCell)
         tableView.register(UINib(nibName: Cell.postCommentCell, bundle: nil), forCellReuseIdentifier: Cell.postCommentCell)
-        
-        
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
     }
     
@@ -86,8 +84,10 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
 // MARK: - Textview delegate
 extension PostViewController: GrowingTextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        commentText = textView.text
         
+        let text = textView.text.replacingOccurrences(of: username, with: "")
+        commentText = textView.text
+        textView.attributedText = Utils.setAttributedText(username, text, 17, 17)
         if textView.text.count > 0 {
             sendButton.setBackgroundImage(#imageLiteral(resourceName: "send_active"), for: .normal)
         } else {
@@ -96,7 +96,8 @@ extension PostViewController: GrowingTextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-
+        let text = textView.text.replacingOccurrences(of: username, with: "")
+        textView.attributedText = Utils.setAttributedText(username, text, 17, 17)
     }
     
     func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {

@@ -22,6 +22,8 @@ class PostCommentCell: UITableViewCell {
     var userProfileClickEvent:(() -> Void)?
     var userNameClickEvent: ((_ name: String) -> Void)?
 
+    var username = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -55,8 +57,9 @@ extension PostCommentCell {
         }
     }
     
-    func setup(attributedText: String) {
-        let text = Utils.setAttributedText("Peter Rally", ", Yes, me too!", 17, 17)
+    func setup(name: String, attributedText: String) {
+        username = name
+        let text = Utils.setAttributedText(name, ", Yes, me too!", 17, 17)
         detailLabel.attributedText = text
     }
     
@@ -74,8 +77,7 @@ extension PostCommentCell {
         if range != nil {
             let nsrange = detailLabel.text?.nsRange(from: range!)
             if gesture.didTapAttributedTextInLabel(label: detailLabel, targetRange: nsrange!) {
-                print("Tapped targetRange1")
-                userNameClickEvent?("Peter Rally")
+                userNameClickEvent?(username)
             }
         }
     }

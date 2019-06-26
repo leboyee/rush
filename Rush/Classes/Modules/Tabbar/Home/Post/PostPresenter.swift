@@ -28,7 +28,6 @@ extension PostViewController {
         
         cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
         cell.setup(font: UIFont.Regular(sz: 17))
-        
     }
     
     // Image cell (section 2)
@@ -48,7 +47,7 @@ extension PostViewController {
             cell.setup(isReplayCell: false)
         } else if indexPath.row == 1 {
             cell.setup(isReplayCell: true)
-            cell.setup(attributedText: "")
+            cell.setup(name:"Peter Rally" ,attributedText: "")
         } else {
             cell.setup(isReplayCell: false)
         }
@@ -60,7 +59,8 @@ extension PostViewController {
         
         cell.userNameClickEvent = { [weak self] (name) in
             guard let self_ = self else { return }
-            self_.textView.text = "\(name), can I bring friends?"
+            self_.username = "Peter Rally"
+            self_.textView.attributedText = Utils.setAttributedText(self_.username, ", can I bring friends?", 17, 17)
             self_.textView.becomeFirstResponder()
         }
     }
