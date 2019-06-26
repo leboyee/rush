@@ -35,7 +35,7 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 4 {
-            return 1
+            return commentList.count
         }
         return 1
     }
@@ -57,6 +57,7 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as! PostCommentCell
+            fillCommentCell(cell, indexPath)
             return cell
         }
         return UITableViewCell()

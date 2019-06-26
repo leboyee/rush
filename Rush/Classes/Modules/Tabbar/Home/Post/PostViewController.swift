@@ -35,8 +35,8 @@ class PostViewController: UIViewController {
         // For test
         if imageList.count == 0 {
             imageList.append(UIImage(named: "bound-add-img")!)
-            
         }
+        commentList = ["1", "2"]
     }
 }
 

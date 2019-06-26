@@ -41,5 +41,14 @@ extension PostViewController {
         header.setup(title: Text.comments)
         header.setup(isDetailArrowHide: true)
     }
+    
+    // Comment cell
+    func fillCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            cell.setup(isReplayCell: false)
+        } else {
+            cell.setup(isReplayCell: true)
+        }
+    }
 }
 
