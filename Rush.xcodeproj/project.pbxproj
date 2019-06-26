@@ -192,6 +192,8 @@
 		797FFDBA22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD9D22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift */; };
 		797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD9E22B7BC480055A001 /* VideoPropertyView.swift */; };
 		7982F66022C3A7F100BC8B36 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7982F65F22C3A7F100BC8B36 /* GrowingTextView.swift */; };
+		7982F66222C3B04000BC8B36 /* CustomBlackTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7982F66122C3B04000BC8B36 /* CustomBlackTextView.swift */; };
+		7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7982F66322C3B0F500BC8B36 /* CustomBlackButton.swift */; };
 		7983D22C228982B500DE054E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22B228982B500DE054E /* Image.swift */; };
 		7983D22E228982DC00DE054E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22D228982DC00DE054E /* Keys.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
@@ -423,6 +425,8 @@
 		797FFD9D22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+ImagePickerConfigurable.swift"; sourceTree = "<group>"; };
 		797FFD9E22B7BC480055A001 /* VideoPropertyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPropertyView.swift; sourceTree = "<group>"; };
 		7982F65F22C3A7F100BC8B36 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
+		7982F66122C3B04000BC8B36 /* CustomBlackTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBlackTextView.swift; sourceTree = "<group>"; };
+		7982F66322C3B0F500BC8B36 /* CustomBlackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBlackButton.swift; sourceTree = "<group>"; };
 		7983D22B228982B500DE054E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7983D22D228982DC00DE054E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -580,6 +584,8 @@
 				79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */,
 				79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */,
 				79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */,
+				7982F66122C3B04000BC8B36 /* CustomBlackTextView.swift */,
+				7982F66322C3B0F500BC8B36 /* CustomBlackButton.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -1558,6 +1564,7 @@
 				797FFDAA22B7BC480055A001 /* PhotoAlbumsViewController.swift in Sources */,
 				1AB0C15422C0F6BB000D016E /* AddMinorsViewLogics.swift in Sources */,
 				1A3CB08E22BD3242005D3D87 /* AddMajorsCell.swift in Sources */,
+				7982F66222C3B04000BC8B36 /* CustomBlackTextView.swift in Sources */,
 				7912570C22A157C200BDE3EC /* OtherUserProfileLogics.swift in Sources */,
 				797FFDB822B7BC480055A001 /* UIColor+Palette.swift in Sources */,
 				1ACEAC1822AC294200B734D3 /* CustomCameraExtension.swift in Sources */,
@@ -1580,6 +1587,7 @@
 				1ACEAC1422AC040A00B734D3 /* AddProfilePictureViewLogics.swift in Sources */,
 				1A339B6522B3CEA9005509EA /* ChooseYearViewMediates.swift in Sources */,
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
+				7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */,
 				797FFDB522B7BC480055A001 /* SlideUpPresentation.swift in Sources */,
 				1AA97B92228979D100C4550C /* DateExtension.swift in Sources */,
 				1AA97B8A228979D100C4550C /* FontExtension.swift in Sources */,

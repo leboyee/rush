@@ -38,5 +38,9 @@ class CustomView: UIView {
     func setSkipBackgrounViewColor() {
         self.backgroundColor = UIColor.green24
     }
+    
+    func setBackgroundColor(){
+        self.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
+    }
 
 }

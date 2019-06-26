@@ -21,6 +21,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var addPhotoButton   : UIButton!
     @IBOutlet weak var takePhotoButton  : UIButton!
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: CustomView!
     
     var imageList       = [Any]()
     var imagePicker     = UIImagePickerController()
@@ -67,6 +68,7 @@ class CreatePostViewController: UIViewController {
         // Setup tableview
         setupTableView()
         
+       bottomView.setBackgroundColor()
         navigationController?.navigationBar.isTranslucent = false
     
         // Left item button

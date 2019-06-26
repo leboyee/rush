@@ -14,6 +14,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var textView: GrowingTextView!
     @IBOutlet weak var textBgView: UIView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var bottomView: CustomView!
     
     var commentList = [String]()
     var imageList   = [Any]()
@@ -30,7 +31,7 @@ class PostViewController: UIViewController {
     }
     
     func setupUI() {
-        
+        bottomView.setBackgroundColor()
         navigationController?.navigationBar.isTranslucent = false
         self.view.backgroundColor = UIColor.bgBlack
         

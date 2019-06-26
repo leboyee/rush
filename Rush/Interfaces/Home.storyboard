@@ -564,7 +564,7 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="686.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-ck-daz">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-ck-daz" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="788" width="414" height="74"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDf-lc-gAU">
@@ -659,6 +659,7 @@
                     <navigationItem key="navigationItem" id="dZF-r6-UAs"/>
                     <connections>
                         <outlet property="addPhotoButton" destination="Fk4-mP-L1R" id="xxf-DK-Fm3"/>
+                        <outlet property="bottomView" destination="Pyo-ck-daz" id="Qyp-Sj-jLY"/>
                         <outlet property="tableView" destination="23H-aQ-r9v" id="y21-Rq-Zrw"/>
                         <outlet property="takePhotoButton" destination="Uj6-Pc-Uk9" id="eRo-Ud-YoX"/>
                         <outlet property="viewBottamConstraint" destination="HsU-c2-nuj" id="Bw1-Hj-tmr"/>
@@ -711,7 +712,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9v-em-60A">
-                                        <rect key="frame" x="24" y="233" width="320" height="15.5"/>
+                                        <rect key="frame" x="24" y="233" width="320" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                         <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -979,7 +980,7 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="708.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="809.5" width="414" height="52.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-cp-dBF">
@@ -1052,6 +1053,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="A1A-pq-iKF"/>
                     <connections>
+                        <outlet property="bottomView" destination="bRg-Fz-ojJ" id="aIK-LR-xVh"/>
                         <outlet property="sendButton" destination="pRr-GQ-Oev" id="WpP-ZK-ePN"/>
                         <outlet property="tableView" destination="DLh-Vm-q6n" id="3EI-N7-qWL"/>
                         <outlet property="textBgView" destination="Gar-6h-cWt" id="XBw-jV-N0T"/>
