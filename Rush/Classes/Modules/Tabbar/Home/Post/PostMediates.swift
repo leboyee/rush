@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GrowingTextView
 
 extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     
@@ -79,5 +80,29 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
+    }
+}
+
+// MARK: - Textview delegate
+extension PostViewController: GrowingTextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        commentText = textView.text
+        
+        if textView.text.count > 0 {
+            sendButton.setBackgroundImage(#imageLiteral(resourceName: "send_active"), for: .normal)
+        } else {
+            sendButton.setBackgroundImage(#imageLiteral(resourceName: "send"), for: .normal)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+
+    }
+    
+    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 }

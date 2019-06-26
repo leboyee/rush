@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import GrowingTextView
 
 class PostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textView: GrowingTextView!
+    @IBOutlet weak var textBgView: UIView!
+    @IBOutlet weak var sendButton: UIButton!
+    
     var commentList = [String]()
     var imageList   = [Any]()
+    
+    var commentText = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +37,13 @@ class PostViewController: UIViewController {
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
+        
+        // comment textview
+        
+        textView.placeholder = "Aa"
+        textView.delegate = self
+        textBgView.backgroundColor = UIColor.lightGray93
+        textBgView.layer.cornerRadius = textBgView.frame.size.height / 2
         
         setupTableView()
         
