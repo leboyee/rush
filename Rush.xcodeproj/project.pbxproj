@@ -191,6 +191,7 @@
 		797FFDB922B7BC480055A001 /* UIFont+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD9C22B7BC480055A001 /* UIFont+Style.swift */; };
 		797FFDBA22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD9D22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift */; };
 		797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD9E22B7BC480055A001 /* VideoPropertyView.swift */; };
+		7982F66022C3A7F100BC8B36 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7982F65F22C3A7F100BC8B36 /* GrowingTextView.swift */; };
 		7983D22C228982B500DE054E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22B228982B500DE054E /* Image.swift */; };
 		7983D22E228982DC00DE054E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22D228982DC00DE054E /* Keys.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
@@ -421,6 +422,7 @@
 		797FFD9C22B7BC480055A001 /* UIFont+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Style.swift"; sourceTree = "<group>"; };
 		797FFD9D22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+ImagePickerConfigurable.swift"; sourceTree = "<group>"; };
 		797FFD9E22B7BC480055A001 /* VideoPropertyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPropertyView.swift; sourceTree = "<group>"; };
+		7982F65F22C3A7F100BC8B36 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
 		7983D22B228982B500DE054E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7983D22D228982DC00DE054E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 		796E929A229FE0B600F91DB1 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				7982F65E22C3A7F100BC8B36 /* GrowingTextView */,
 				79650BFB22C1099B0004BCB9 /* DKCamera */,
 				797FFD8122B7BC480055A001 /* PickleImagePicker */,
 				796E929B229FE0B600F91DB1 /* TagListView */,
@@ -1096,6 +1099,14 @@
 				797FFD9E22B7BC480055A001 /* VideoPropertyView.swift */,
 			);
 			path = PickleImagePicker;
+			sourceTree = "<group>";
+		};
+		7982F65E22C3A7F100BC8B36 /* GrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7982F65F22C3A7F100BC8B36 /* GrowingTextView.swift */,
+			);
+			path = GrowingTextView;
 			sourceTree = "<group>";
 		};
 		79A9377022B2288B00A602CD /* Header */ = {
@@ -1533,6 +1544,7 @@
 				1A339B5D22B3B88A005509EA /* EnterUserNameViewController.swift in Sources */,
 				79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */,
 				79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */,
+				7982F66022C3A7F100BC8B36 /* GrowingTextView.swift in Sources */,
 				1A3F55EC2285C42600D42154 /* OnBoardingCollectionViewCell.swift in Sources */,
 				1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */,
 				7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */,

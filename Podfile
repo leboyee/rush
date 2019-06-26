@@ -23,5 +23,5 @@ target 'Rush' do
   pod 'DKImagePickerController', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
 
   #Comment textview
-  pod 'GrowingTextView', '0.7.0'
+  #pod 'GrowingTextView', '0.7.0'
 end

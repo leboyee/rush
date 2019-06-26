@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GrowingTextView
 
 class PostViewController: UIViewController {
     
@@ -41,7 +40,7 @@ class PostViewController: UIViewController {
         
         // comment textview
         
-        textView.placeholder = "Aa"
+        textView.placeHolder = "Aa"
         textView.delegate = self
         textBgView.backgroundColor = UIColor.lightGray93
         textBgView.layer.cornerRadius = textBgView.frame.size.height / 2
