@@ -19,6 +19,8 @@ class PostCommentCell: UITableViewCell {
     @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var userProfileClickEvent:(() -> Void)?
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,5 +53,9 @@ extension PostCommentCell {
     
     @IBAction func replayButtonAction() {
         
+    }
+    
+    @IBAction func userProfileButtonAction() {
+        userProfileClickEvent?()
     }
 }

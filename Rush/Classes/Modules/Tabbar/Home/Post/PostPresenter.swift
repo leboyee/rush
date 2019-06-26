@@ -49,6 +49,11 @@ extension PostViewController {
         } else {
             cell.setup(isReplayCell: true)
         }
+        
+        cell.userProfileClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+        }
     }
 }
 

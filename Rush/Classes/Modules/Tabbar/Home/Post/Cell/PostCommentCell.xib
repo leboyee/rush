@@ -37,6 +37,12 @@
                                     <constraint firstAttribute="width" constant="40" id="ajh-kP-69o"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ue-3R-lAq">
+                                <rect key="frame" x="137" y="37" width="46" height="30"/>
+                                <connections>
+                                    <action selector="userProfileButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iXr-uZ-zQ8"/>
+                                </connections>
+                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKd-IC-wXE">
                                 <rect key="frame" x="72" y="12" width="166.5" height="76.5"/>
                                 <subviews>
@@ -102,7 +108,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1ue-3R-lAq" firstAttribute="bottom" secondItem="2hE-Zc-eZ5" secondAttribute="bottom" id="39W-Dh-E73"/>
                             <constraint firstItem="2hE-Zc-eZ5" firstAttribute="top" secondItem="UZH-lq-Xbl" secondAttribute="top" constant="12" id="BYx-aZ-sNH"/>
+                            <constraint firstItem="1ue-3R-lAq" firstAttribute="top" secondItem="2hE-Zc-eZ5" secondAttribute="top" id="FdQ-eQ-VIr"/>
+                            <constraint firstItem="1ue-3R-lAq" firstAttribute="trailing" secondItem="2hE-Zc-eZ5" secondAttribute="trailing" id="J74-WV-66O"/>
+                            <constraint firstItem="1ue-3R-lAq" firstAttribute="leading" secondItem="2hE-Zc-eZ5" secondAttribute="leading" id="MVk-uk-BFF"/>
                             <constraint firstItem="2hE-Zc-eZ5" firstAttribute="leading" secondItem="UZH-lq-Xbl" secondAttribute="leading" constant="24" id="PgK-YT-ZBe"/>
                             <constraint firstItem="aKd-IC-wXE" firstAttribute="leading" secondItem="2hE-Zc-eZ5" secondAttribute="trailing" constant="8" id="TCG-lB-8Y9"/>
                             <constraint firstItem="4yd-IX-a8t" firstAttribute="trailing" secondItem="aKd-IC-wXE" secondAttribute="trailing" id="UKS-sL-w0U"/>

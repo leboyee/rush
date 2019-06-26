@@ -976,7 +976,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
-                                <rect key="frame" x="0.0" y="101" width="414" height="709.5"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="710"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ">
@@ -992,9 +992,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="VeI-Lg-Kuj"/>
                                     <constraint firstItem="gHo-cp-dBF" firstAttribute="leading" secondItem="bRg-Fz-ojJ" secondAttribute="leading" id="ldi-1I-lWg"/>
                                     <constraint firstItem="gHo-cp-dBF" firstAttribute="top" secondItem="bRg-Fz-ojJ" secondAttribute="top" id="mXs-B0-sQ3"/>
-                                    <constraint firstAttribute="height" constant="51" id="pGy-cH-8dP"/>
                                     <constraint firstAttribute="trailing" secondItem="gHo-cp-dBF" secondAttribute="trailing" id="q8v-J6-qrM"/>
                                 </constraints>
                             </view>
@@ -1005,11 +1005,11 @@
                             <constraint firstItem="DLh-Vm-q6n" firstAttribute="top" secondItem="CAi-QB-nk1" secondAttribute="top" id="FzS-kx-PGI"/>
                             <constraint firstItem="CAi-QB-nk1" firstAttribute="leading" secondItem="EKr-N6-Jz5" secondAttribute="leading" id="T2a-er-dUj"/>
                             <constraint firstItem="EKr-N6-Jz5" firstAttribute="bottom" secondItem="bRg-Fz-ojJ" secondAttribute="bottom" id="aUS-ec-GE3"/>
-                            <constraint firstItem="bRg-Fz-ojJ" firstAttribute="top" secondItem="DLh-Vm-q6n" secondAttribute="bottom" constant="0.5" id="hll-87-Ltd"/>
                             <constraint firstItem="bRg-Fz-ojJ" firstAttribute="leading" secondItem="EKr-N6-Jz5" secondAttribute="leading" id="mCH-KY-oTC"/>
                             <constraint firstItem="DLh-Vm-q6n" firstAttribute="leading" secondItem="EKr-N6-Jz5" secondAttribute="leading" id="mo2-KL-vUy"/>
                             <constraint firstItem="CAi-QB-nk1" firstAttribute="trailing" secondItem="EKr-N6-Jz5" secondAttribute="trailing" id="nwk-SP-akC"/>
                             <constraint firstItem="DLh-Vm-q6n" firstAttribute="trailing" secondItem="EKr-N6-Jz5" secondAttribute="trailing" id="pLr-9R-fcs"/>
+                            <constraint firstItem="bRg-Fz-ojJ" firstAttribute="top" secondItem="DLh-Vm-q6n" secondAttribute="bottom" id="qTB-aG-I2L"/>
                             <constraint firstItem="CAi-QB-nk1" firstAttribute="top" secondItem="EKr-N6-Jz5" secondAttribute="top" constant="13" id="wh7-nO-Umt"/>
                             <constraint firstItem="bRg-Fz-ojJ" firstAttribute="trailing" secondItem="EKr-N6-Jz5" secondAttribute="trailing" id="ybn-as-NZz"/>
                         </constraints>
@@ -1018,11 +1018,20 @@
                     <navigationItem key="navigationItem" id="A1A-pq-iKF"/>
                     <connections>
                         <outlet property="tableView" destination="DLh-Vm-q6n" id="3EI-N7-qWL"/>
+                        <segue destination="0uI-5Q-VQI" kind="show" identifier="OtherUserProfileSegue" id="BAj-kr-2kr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Lb-Ay-fCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="121"/>
+            <point key="canvasLocation" x="2562.3188405797105" y="120.53571428571428"/>
+        </scene>
+        <!--OtherUserProfileController-->
+        <scene sceneID="0nT-rf-7QM">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="OtherUserProfileController" id="0uI-5Q-VQI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNr-Ha-G1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3173" y="121"/>
         </scene>
     </scenes>
     <resources>
@@ -1038,8 +1047,8 @@
         <image name="white-info" width="28" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2qn-kC-bGH"/>
-        <segue reference="bqe-q0-s4j"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="E7I-YA-fBT"/>
         <segue reference="Woq-6I-hkG"/>
     </inferredMetricsTieBreakers>
 </document>
