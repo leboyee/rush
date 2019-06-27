@@ -90,7 +90,7 @@ struct Segues {
     static let addMajorViewSegue           = "AddMajorViewSegue"
     static let addMinorViewSegue           = "AddMinorViewSegue"
     static let postSegue                   = "PostSegue"
-
+    static let sharePostSegue              = "sharePostSegue"
     
 }
 

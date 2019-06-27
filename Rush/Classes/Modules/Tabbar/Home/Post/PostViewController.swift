@@ -59,7 +59,7 @@ class PostViewController: UIViewController {
 // MARK: - Actions
 extension PostViewController {
     @objc func shareButtonAction() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
     
     @IBAction func sendButtonAction()  {
@@ -73,8 +73,18 @@ extension PostViewController {
 
 // MARK: - Navigation
 extension PostViewController {
-    /*
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.sharePostSegue {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.notificationAlert {
+            let vc = segue.destination as! NotificationAlertViewController
+            vc.toastMessage = "Your post is deleted."
+            vc.buttonTitle = "Undo"
+            vc.delegate = self
+        }
      }
-     */
+     
 }

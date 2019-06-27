@@ -107,3 +107,18 @@ extension PostViewController: GrowingTextViewDelegate {
         }
     }
 }
+
+//MARK: - SharePostViewControllerDelegate
+extension PostViewController : SharePostViewControllerDelegate {
+    func deletePost() {
+        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+    }
+}
+
+//MARK: - Notification alert delegate
+extension PostViewController: NotificationAlertDelegate {
+    func undoButtonClickEvent() {
+        
+    }
+}
+

@@ -152,6 +152,7 @@
 		79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */; };
 		79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */; };
 		79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */; };
+		7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7958B7F622C4DBEA00A66BDC /* SharePostViewController.swift */; };
 		79650BFF22C1099B0004BCB9 /* DKCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFC22C1099B0004BCB9 /* DKCamera.swift */; };
 		79650C0022C1099B0004BCB9 /* DKCameraLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFD22C1099B0004BCB9 /* DKCameraLocationManager.swift */; };
 		79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */; };
@@ -384,6 +385,7 @@
 		79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoMediator.swift; sourceTree = "<group>"; };
 		79493CE422B90E960026AD0E /* SelectGallaryPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoPresenter.swift; sourceTree = "<group>"; };
 		79493CE522B90E960026AD0E /* SelectGallaryPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoViewController.swift; sourceTree = "<group>"; };
+		7958B7F622C4DBEA00A66BDC /* SharePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePostViewController.swift; sourceTree = "<group>"; };
 		79650BFC22C1099B0004BCB9 /* DKCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCamera.swift; sourceTree = "<group>"; };
 		79650BFD22C1099B0004BCB9 /* DKCameraLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCameraLocationManager.swift; sourceTree = "<group>"; };
 		79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCameraResource.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7958B7F522C4DBD300A66BDC /* SharePost */,
 				7929DA4D22C24AC400700B42 /* Post */,
 				79493CDF22B90E960026AD0E /* SelectGallaryPhoto */,
 				091557AB22B124140080C9AE /* CreatePost */,
@@ -1037,6 +1040,14 @@
 				79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		7958B7F522C4DBD300A66BDC /* SharePost */ = {
+			isa = PBXGroup;
+			children = (
+				7958B7F622C4DBEA00A66BDC /* SharePostViewController.swift */,
+			);
+			path = SharePost;
 			sourceTree = "<group>";
 		};
 		79650BFB22C1099B0004BCB9 /* DKCamera */ = {
@@ -1576,6 +1587,7 @@
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
+				7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */,
 				797FFDA322B7BC480055A001 /* ImagePickerConfigurable.swift in Sources */,
 				79493CE622B90E960026AD0E /* SelectGallaryPhotoCell.swift in Sources */,
 				1A3CB08D22BD3242005D3D87 /* AddMajorsViewLogics.swift in Sources */,
