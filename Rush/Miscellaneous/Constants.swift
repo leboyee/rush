@@ -97,7 +97,7 @@ struct Segues {
     static let chooseClassesViewSegue           = "ChooseClassesViewSegue"
     static let postSegue                   = "PostSegue"
     static let sharePostSegue              = "sharePostSegue"
-    
+    static let clubListSegue               = "ClubListSegue"
 }
 
 struct StoryBoard {
@@ -170,6 +170,7 @@ public struct Text {
     static let createEventAndOpenClub   = "Create events and open clubs"
     static let saysomething             = "Say something"
     static let comments                 = "Comments"
+    static let myClubs                  = "My clubs"
 }
 
 public struct Message {
