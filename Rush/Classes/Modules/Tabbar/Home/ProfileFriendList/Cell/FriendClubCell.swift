@@ -16,6 +16,7 @@ class FriendClubCell: UITableViewCell {
     @IBOutlet weak var userCountLabel: UILabel!
     @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var topConstraintOfContentView: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,5 +43,9 @@ extension FriendClubCell {
     
     func setup(detail: String) {
        detailLabel.text = detail
+    }
+    
+    func setup(topConstraint: CGFloat) {
+        topConstraintOfContentView.constant = topConstraint
     }
 }

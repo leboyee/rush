@@ -83,14 +83,18 @@ extension HomeViewController {
             guard let self_ = self else { return }
             // Open other user profile UI for test
             
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
-            vc.delegate = self
-            vc.modalPresentationStyle = .overFullScreen
-            vc.view.backgroundColor = UIColor.bgBlack
-            let navigation = UINavigationController(rootViewController: vc)
-            self_.navigationController?.present(navigation, animated: true, completion: nil)
-//            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
+            if section == 2 {
+                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: nil)
+            } else {
+                let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
+                vc.delegate = self
+                vc.modalPresentationStyle = .overFullScreen
+                vc.view.backgroundColor = UIColor.bgBlack
+                let navigation = UINavigationController(rootViewController: vc)
+                self_.navigationController?.present(navigation, animated: true, completion: nil)
+                //            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
+            }
         }
     }
 }
