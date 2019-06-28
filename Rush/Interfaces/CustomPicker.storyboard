@@ -229,7 +229,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVw-Dy-SjY">
-                                <rect key="frame" x="0.0" y="667" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwY-9g-Whc">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
@@ -244,16 +244,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refer sent." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2a-re-QdB">
-                                                <rect key="frame" x="32" y="16" width="249" height="16"/>
+                                                <rect key="frame" x="32" y="16" width="67" height="16"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STc-4R-N25">
-                                                <rect key="frame" x="297" y="10" width="46" height="28"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="46" id="yqj-hy-6Qk"/>
-                                                </constraints>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STc-4R-N25">
+                                                <rect key="frame" x="115" y="10" width="228" height="28"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                                 <state key="normal" title="Undo">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -294,7 +291,7 @@
                             <constraint firstItem="AyL-90-e5h" firstAttribute="leading" secondItem="YBo-hl-kr0" secondAttribute="leading" id="eoV-QE-uu2"/>
                             <constraint firstItem="YVw-Dy-SjY" firstAttribute="leading" secondItem="AyL-90-e5h" secondAttribute="leading" id="es0-nE-NXt"/>
                             <constraint firstItem="AyL-90-e5h" firstAttribute="top" secondItem="cTP-eO-6b2" secondAttribute="top" id="gmk-CA-CUS"/>
-                            <constraint firstItem="YBo-hl-kr0" firstAttribute="bottom" secondItem="YVw-Dy-SjY" secondAttribute="bottom" constant="-48" id="lNc-ay-vgs"/>
+                            <constraint firstItem="YBo-hl-kr0" firstAttribute="bottom" secondItem="YVw-Dy-SjY" secondAttribute="bottom" id="lNc-ay-vgs"/>
                             <constraint firstItem="AyL-90-e5h" firstAttribute="bottom" secondItem="YBo-hl-kr0" secondAttribute="bottom" id="lat-kd-ykG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YBo-hl-kr0"/>
@@ -303,6 +300,7 @@
                         <outlet property="containerView" destination="YVw-Dy-SjY" id="vbG-JO-XQW"/>
                         <outlet property="containerViewConstraint" destination="lNc-ay-vgs" id="Aaz-Jc-VP6"/>
                         <outlet property="titleLabel" destination="N2a-re-QdB" id="Tab-83-RnP"/>
+                        <outlet property="undoButton" destination="STc-4R-N25" id="Ouw-8D-vEY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfg-jq-dH3" userLabel="First Responder" sceneMemberID="firstResponder"/>

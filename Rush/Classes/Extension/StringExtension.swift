@@ -134,3 +134,15 @@ extension String
     
 }
 
+extension String {
+    func substring(with nsrange: NSRange) -> Substring? {
+        guard let range = Range(nsrange, in: self) else { return nil }
+        return self[range]
+    }
+}
+
+extension StringProtocol {
+    func nsRange(from range: Range<Index>) -> NSRange {
+        return .init(range, in: self)
+    }
+}

@@ -10,21 +10,27 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 
+protocol CreatePostViewControllerDelegate {
+    func showSnackBar(text: String, buttonText: String)
+}
+
 
 class CreatePostViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var tableView        : UITableView!
+    @IBOutlet weak var addPhotoButton   : UIButton!
+    @IBOutlet weak var takePhotoButton  : UIButton!
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
-    var imageList = [Any]()
-    var imagePicker = UIImagePickerController()
-    var iskeyboard : Bool = false
+    @IBOutlet weak var bottomView: CustomView!
     
-    var picker = ImagePickerController()
+    var imageList       = [Any]()
+    var imagePicker     = UIImagePickerController()
+    var bigFontCount    = 0
+    var picker          = ImagePickerController()
+    var delegate        : CreatePostViewControllerDelegate?
+    var iskeyboard      : Bool = false
+    var postText        = ""
     
-   
-    var postText = ""
     
     var createBtnActive : UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
@@ -62,6 +68,7 @@ class CreatePostViewController: UIViewController {
         // Setup tableview
         setupTableView()
         
+       bottomView.setBackgroundColor()
         navigationController?.navigationBar.isTranslucent = false
     
         // Left item button
@@ -69,7 +76,7 @@ class CreatePostViewController: UIViewController {
         navigationItem.leftBarButtonItem = cancel
         
         // Right item button
-        navigationItem.rightBarButtonItem = createBtnDisActive
+        navigationItem.rightBarButtonItem = createBtnActive
         
         // Notification's of keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -80,7 +87,6 @@ class CreatePostViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            
             viewBottamConstraint.constant = keyboardHeight + (Utils.isHasSafeArea ? -34 : 0)
         }
     }
@@ -110,11 +116,15 @@ extension CreatePostViewController {
     }
     
     @IBAction func cancelButtonAction() {
-        dismiss(animated: false, completion: nil)
+        
+        self.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.delegate?.showSnackBar(text: "You didn't finish your post.", buttonText: "Finish it")
+        }
     }
     
     @objc func createButtonAction() {
-        
+        performSegue(withIdentifier: Segues.postSegue, sender: nil)
     }
     
 }
@@ -130,6 +140,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
         imageList.append(contentsOf: assets)
         picker.dismiss(animated: false, completion: nil)
         self.picker = ImagePickerController()
+        createButtonValidation()
         tableView.reloadData()
     }
     
@@ -220,8 +231,14 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
 
  // MARK: - Navigation
 extension CreatePostViewController {
-    /*
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.postSegue {
+            if let vc = segue.destination as? PostViewController {
+                vc.imageList = imageList
+            }
+        }
      }
-     */
+    
 }

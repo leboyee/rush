@@ -33,6 +33,11 @@ class UserPostTextTableViewCell: UITableViewCell {
     func setup(font: UIFont) {
         postTextView.font = font
     }
+    
+    func setup(text: String, placeholder: String) {
+        postTextView.text = text
+        placeHolderLabel.text = placeholder
+    }
 }
 
 // MARK: - TextView delegate methods

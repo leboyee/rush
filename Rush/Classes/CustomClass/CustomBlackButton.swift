@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomBlackLabel: UILabel {
+class CustomBlackButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -20,6 +20,6 @@ class CustomBlackLabel: UILabel {
     }
     
     func setupCustomUI() {
-        self.textColor = isDarkModeOn ? UIColor.white : UIColor.bgBlack
+        self.setTitleColor(isDarkModeOn ? UIColor.white : UIColor.bgBlack, for: .normal)
     }
 }

@@ -19,8 +19,10 @@ class NotificationAlertViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var undoButton: UIButton!
     
     var toastMessage = ""
+    var buttonTitle = ""
     var delegate: NotificationAlertDelegate?
 
     override func viewDidLoad() {
@@ -33,6 +35,7 @@ class NotificationAlertViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         titleLabel.text = toastMessage
+        undoButton.setTitle(buttonTitle, for: .normal)
         
         let total = 49 + 16 // Tabbar height + padding
         
