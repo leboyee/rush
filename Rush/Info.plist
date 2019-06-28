@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APIKey</key>
+	<string>$(APIKEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -22,8 +24,12 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Allows user to capture photos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save post photo in your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows user to choose photo from gallery and load from library.</string>
+	<key>ServerAddress</key>
+	<string>$(SERVER_ADDRESS)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Text-Bold.otf</string>
@@ -57,7 +63,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to save post photo in your photo library.</string>
 </dict>
 </plist>
