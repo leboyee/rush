@@ -23,7 +23,7 @@ class EnterPhoneNoViewController: CustomViewController {
 
     var countryCode: String = "+1"
     var frontTextFiled: String = "+1"
-
+    var user = Profile()
     var loginType: LoginType = .Register
     
     override func viewDidLoad() {
@@ -95,7 +95,9 @@ extension EnterPhoneNoViewController {
     }
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
+        
+        phoneVerificationApiCalled()
+        //self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
     }
     
     @IBAction func countryButtonAction() {

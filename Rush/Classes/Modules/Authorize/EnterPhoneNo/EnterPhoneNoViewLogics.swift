@@ -53,3 +53,24 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
         
     }
 }
+
+extension EnterPhoneNoViewController {
+    /*
+     * This function is used to call signin api
+     */
+    func phoneVerificationApiCalled() {
+        Utils.showSpinner()
+        let verifyTye = loginType == .Register ? "signup" : "login"
+        let param = [kCountry_Code:  self.countryCode, kPhone: self.phoneNoTextField.text, kVerify_Type: verifyTye] as [String: Any]
+        
+        ServiceManager.shared.signInSingup(params: param) {
+            [weak self] (status, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if (status) {
+            } else {
+                Utils.alert(message:"Please try again")
+            }
+        }
+    }
+}

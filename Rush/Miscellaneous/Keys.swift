@@ -43,4 +43,13 @@ struct Keys {
     
 }
 
+//MARK: - API's Output Keys
+
+let kPhone               = "phone"
+let kCountry_Code        = "country_code"
+let kVerify_Type         = "verify_type"
+let kSocialId            = "socialId"
+let kIsNewRegister       = "isNewRegister"
+let kUser_Type           = "user_type"
+let kToken               = "token"
 
