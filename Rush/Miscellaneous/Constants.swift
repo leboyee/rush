@@ -50,6 +50,8 @@ struct Cell {
     static let addMajorsCell        = "AddMajorsCell"
     static let postLikeCell         = "PostLikeCell"
     static let postCommentCell      = "PostCommentCell"
+    static let classesCell      = "ClassesCell"
+
     
 }
 
@@ -58,6 +60,9 @@ struct ReusableView {
     static let seeAllFooter   = "SeeAllFooter"
     static let textHeader     = "TextHeader"
     static let userImagesHeader = "UserImagesHeaderView"
+    static let classesHeader = "ClassesHeader"
+
+    
 }
 
 struct ViewControllerId {
@@ -89,6 +94,7 @@ struct Segues {
     static let chooseUniversitySegue       = "ChooseUniversitySegue"
     static let addMajorViewSegue           = "AddMajorViewSegue"
     static let addMinorViewSegue           = "AddMinorViewSegue"
+    static let chooseClassesViewSegue           = "ChooseClassesViewSegue"
     static let postSegue                   = "PostSegue"
     static let sharePostSegue              = "sharePostSegue"
     

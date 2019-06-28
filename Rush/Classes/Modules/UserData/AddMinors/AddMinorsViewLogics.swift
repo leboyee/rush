@@ -15,11 +15,11 @@ extension AddMinorsViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return Utils.chooseYearArray().count
+        return 10
     }
     
     func fillAddMajorCell(_ cell: AddMajorsCell, _ indexPath: IndexPath) {
-        cell.setup(title:Utils.chooseYearArray()[indexPath.row])
+        cell.setup(title: "Test Minors")
         cell.setup(isSelected: selectedArray.contains(indexPath.row))
     }
 }
