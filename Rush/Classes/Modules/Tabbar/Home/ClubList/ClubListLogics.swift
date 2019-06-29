@@ -51,6 +51,7 @@ extension ClubListViewController {
         } else {
             cell.setup(topConstraint: 0)
         }
+        cell.setup(detail: "We have you to code better")
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {

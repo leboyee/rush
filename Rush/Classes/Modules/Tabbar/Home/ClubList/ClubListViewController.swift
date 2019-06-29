@@ -40,8 +40,21 @@ class ClubListViewController: CustomViewController {
         // Right item button
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "plus_white"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBarButton
-         
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: "Search clubs", textColor: UIColor.navBarTitleWhite32)
+        
+        // Set left bar button and title
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 48, height: 30))
+        label.text = "Search clubs"
+        label.font = UIFont.DisplayBold(sz: 24)
+        label.textColor = UIColor.navBarTitleWhite32
+        customView.addSubview(label)
+        customView.addSubview(searchButton)
+        
+        searchButton.addTarget(self, action: #selector(openSearchClubScreenButtonAction), for: .touchUpInside)
+        
+        navigationItem.titleView = customView
     }
     
     func openCreateClubViewController() {
@@ -52,7 +65,11 @@ class ClubListViewController: CustomViewController {
 // MARK: - Actions
 extension ClubListViewController {
     @objc func createButtonAction() {
-//        performSegue(withIdentifier: Segues.selectEventType, sender: nil)
+        Utils.notReadyAlert()
+    }
+    
+    @objc func openSearchClubScreenButtonAction() {
+        Utils.notReadyAlert()
     }
 }
 
