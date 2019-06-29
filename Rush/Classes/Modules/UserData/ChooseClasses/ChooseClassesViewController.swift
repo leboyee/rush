@@ -1,5 +1,5 @@
 //
-//  AddMinorsViewController.swift
+//  ChooseClassesViewController.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 
-class AddMinorsViewController: CustomViewController {
+class ChooseClassesViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var pageControllerView: UIView!
@@ -21,9 +21,9 @@ class AddMinorsViewController: CustomViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
 
-    var selectedArray = [Int]()
-    
+    var selectedArray = [SubClasses]()
     var selectedIndex = -1
+    var classesArray = [Classes]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,6 @@ class AddMinorsViewController: CustomViewController {
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-        
 
         let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
         let customView = UIView(frame: frame)
@@ -82,12 +81,11 @@ class AddMinorsViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
-        
     }
 }
 
 //MARK: - Other Function
-extension AddMinorsViewController {
+extension ChooseClassesViewController {
     func moveToNext() {
         bottomView.isHidden = self.selectedArray.count > 0 ? false : true
         self.tableView.reloadData()
@@ -95,21 +93,18 @@ extension AddMinorsViewController {
 }
 
 // MARK: - Actions
-extension AddMinorsViewController {
+extension ChooseClassesViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
     
     @IBAction func skipButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
-        //AppDelegate.getInstance().setupStoryboard()
+        AppDelegate.getInstance().setupStoryboard()
     }
 
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
-
-       //AppDelegate.getInstance().setupStoryboard()
+        AppDelegate.getInstance().setupStoryboard()
 
     }
 }
