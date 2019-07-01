@@ -18,6 +18,8 @@ enum ManageButtonType {
     case reject
     case manage
     case groupChat
+    case joined
+    case groupChatClub
 }
 
 class ClubManageCell: UITableViewCell {
@@ -72,6 +74,11 @@ extension ClubManageCell {
             firstButton.setTitle(Text.requested, for: .normal)
             firstButton.setTitleColor(UIColor.bgBlack, for: .normal)
             firstButton.backgroundColor = UIColor.lightGray93
+        } else if firstButtonType == .joined {
+            firstButton.setImage(#imageLiteral(resourceName: "friend-checkmark"), for: .normal)
+            firstButton.setTitle(Text.joined, for: .normal)
+            firstButton.setTitleColor(UIColor.bgBlack, for: .normal)
+            firstButton.backgroundColor = UIColor.lightGray93
         }
     }
     
@@ -82,7 +89,6 @@ extension ClubManageCell {
             secondButton.setTitle(Text.groupChat, for: .normal)
             secondButton.setTitleColor(UIColor.white, for: .normal)
             secondButton.backgroundColor = UIColor.bgBlack
-            
         } else if secondButtonType == .message {
             secondButton.setImage(#imageLiteral(resourceName: "message-profile"), for: .normal)
             secondButton.setTitle(Text.messages, for: .normal)
@@ -93,6 +99,11 @@ extension ClubManageCell {
             secondButton.setTitle(Text.reject, for: .normal)
             secondButton.setTitleColor(UIColor.white, for: .normal)
             secondButton.backgroundColor = UIColor.brown24
+        } else if secondButtonType == .groupChatClub {
+            secondButton.setImage(#imageLiteral(resourceName: "club-grpchat"), for: .normal)
+            secondButton.setTitle(Text.groupChat, for: .normal)
+            secondButton.setTitleColor(UIColor.bgBlack, for: .normal)
+            secondButton.backgroundColor = UIColor.lightGray93
         }
     }
     

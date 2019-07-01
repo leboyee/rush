@@ -41,6 +41,7 @@ extension ClubDetailViewController {
         return 1
     }
     
+    // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
         cell.setup(title: "Development lifehacks")
         cell.setup(detail: "Get the latest VR Experience with Samsung Gear. You can travel through sdf sdf lkjruto jfdgjlkj dklgj ljdf g", numberOfLines: isReadMore ? 0 : 2)
@@ -51,6 +52,11 @@ extension ClubDetailViewController {
             self_.isReadMore = !self_.isReadMore
             self_.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
+    }
+    
+    func fillClubManageCell(_ cell: ClubManageCell) {
+        cell.setup(firstButtonType: .joined)
+        cell.setup(secondButtonType: .groupChatClub)
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
@@ -66,6 +72,14 @@ extension ClubDetailViewController {
     
     func fillTagCell(_ cell: TagCell) {
         cell.setup(tagList: ["ABC", "DEF", "TYU", "HDGHJKDHD", "DLHDDDHKD"])
+    }
+    
+    func fillSingleButtonCell(_ cell: SingleButtonCell) {
+        cell.joinButtonClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.joinedClub = true
+            self_.tableView.reloadData()
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {

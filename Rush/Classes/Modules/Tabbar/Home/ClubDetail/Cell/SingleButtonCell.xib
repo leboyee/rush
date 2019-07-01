@@ -36,6 +36,9 @@
                                 <state key="normal" title="Join group" backgroundImage="bg-button-main-brown">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="joinButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0WQ-D4-pcV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,6 +60,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="joinButton" destination="uk5-AG-iQ2" id="y8l-Xo-t29"/>
+            </connections>
             <point key="canvasLocation" x="160.1449275362319" y="72.65625"/>
         </tableViewCell>
     </objects>

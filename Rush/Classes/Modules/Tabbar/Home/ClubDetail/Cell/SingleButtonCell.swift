@@ -9,6 +9,9 @@
 import UIKit
 
 class SingleButtonCell: UITableViewCell {
+    
+    @IBOutlet weak var joinButton: UIButton!
+    var joinButtonClickEvent: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,4 +24,11 @@ class SingleButtonCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+// MARK: - Other functions
+extension SingleButtonCell {
+    @IBAction func joinButtonAction() {
+        joinButtonClickEvent?()
+    }
 }

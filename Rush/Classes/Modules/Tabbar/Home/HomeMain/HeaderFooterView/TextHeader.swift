@@ -43,7 +43,7 @@ extension TextHeader {
     }
     
     func setup(detailArrowImage: UIImage) {
-        detailButton.setBackgroundImage( detailArrowImage, for: .normal)
+        detailButton.setImage( detailArrowImage, for: .normal)
     }
     
     func setup(textColor: UIColor) {

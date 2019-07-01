@@ -56,6 +56,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 1 {
             if joinedClub {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
+                fillClubManageCell(cell)
                 return cell
             } else {
                 return UITableViewCell()
@@ -78,6 +79,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as! SingleButtonCell
+                fillSingleButtonCell(cell)
                 return cell
             }
         } else {
