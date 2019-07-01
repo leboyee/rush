@@ -66,6 +66,7 @@ extension UserPostImageTableViewCell {
         cancelButton.isHidden = isCleareButtonHide
     }
     
+    
     @IBAction func clearButtonAction() {
         clearButtonClickEvent?()
     }

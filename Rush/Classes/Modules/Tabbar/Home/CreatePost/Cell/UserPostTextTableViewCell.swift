@@ -38,6 +38,10 @@ class UserPostTextTableViewCell: UITableViewCell {
         postTextView.text = text
         placeHolderLabel.text = placeholder
     }
+    
+    func setup(isUserInterectionEnable: Bool) {
+        postTextView.isUserInteractionEnabled = isUserInterectionEnable
+    }
 }
 
 // MARK: - TextView delegate methods

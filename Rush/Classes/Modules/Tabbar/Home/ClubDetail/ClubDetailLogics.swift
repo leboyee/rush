@@ -12,16 +12,7 @@ import Photos
 extension ClubDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        if section == 0 {
-            // Navigaiton height + cornerRadius height + changePhotoLabelOrigin
-            return ((Utils.navigationHeigh*2) + 24 + 216)
-        } else if section == 1 {
-            return CGFloat.leastNormalMagnitude
-        } else if section == 5 && joinedClub == false {
-            return CGFloat.leastNormalMagnitude
-        } else {
-            return 44
-        }
+        return section == 0 ? ((Utils.navigationHeigh*2) + 24 + 216) : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -29,7 +20,11 @@ extension ClubDetailViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
+        if indexPath.section > 5 {
+            return indexPath.row == 2 ? (indexPath.section == 6 ? CGFloat.leastNormalMagnitude :  screenWidth) : UITableView.automaticDimension
+        } else {
+            return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
+        }
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -37,6 +32,8 @@ extension ClubDetailViewController {
             return interestList.count + 1
         } else if section == 3 {
             return peopleList.count + 1
+        } else if section > 5 {
+            return 4
         }
         return 1
     }
@@ -80,6 +77,20 @@ extension ClubDetailViewController {
             self_.joinedClub = true
             self_.tableView.reloadData()
         }
+    }
+    
+    // Textview cell (section 6 row 1)
+    func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
+        
+        cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
+        cell.setup(font: UIFont.Regular(sz: 17))
+        cell.setup(isUserInterectionEnable: false)
+    }
+    
+    // Image cell (section 6 row 2)
+    func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
+        cell.imageView?.image = #imageLiteral(resourceName: "bound-add-img")
+        cell.setup(isCleareButtonHide: true)
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {

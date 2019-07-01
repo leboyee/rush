@@ -19,29 +19,20 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
-        
-        tableView.register(UINib(nibName: Cell.clubName, bundle: nil), forCellReuseIdentifier: Cell.clubName)
-        
-        tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
-        
-        tableView.register(UINib(nibName: Cell.createUserPost, bundle: nil), forCellReuseIdentifier: Cell.createUserPost)
-        
-        tableView.register(UINib(nibName: Cell.tag, bundle: nil), forCellReuseIdentifier: Cell.tag)
-        
-        tableView.register(UINib(nibName: Cell.eventByDate, bundle: nil), forCellReuseIdentifier: Cell.eventByDate)
-        
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
-        tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
+        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLikeCell]
         
-         tableView.register(UINib(nibName: Cell.singleButtonCell, bundle: nil), forCellReuseIdentifier: Cell.singleButtonCell)
+        for cell in cells {
+            tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
+        }
         
         tableView.reloadData()
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return joinedClub ? 6 : 6
+        return joinedClub ? (6 + clubPostList.count) : 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,7 +74,24 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
-            return UITableViewCell()
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
+                fillEventByDateCell(cell)
+                return cell
+            } else if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as! UserPostTextTableViewCell
+                fillTextViewCell(cell)
+                return cell
+            } else if indexPath.row == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as! UserPostImageTableViewCell
+                fillImageCell(cell, indexPath)
+                return cell
+            } else if indexPath.row == 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as! PostLikeCell
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         }
     }
     

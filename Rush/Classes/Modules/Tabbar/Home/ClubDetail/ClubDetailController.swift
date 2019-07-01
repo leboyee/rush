@@ -16,6 +16,7 @@ class ClubDetailViewController: UIViewController {
     
     var interestList = [String]()
     var peopleList = [String]()
+    var clubPostList: [String] = ["1", "2"]
     
     var clubImage : UIImage?
     
