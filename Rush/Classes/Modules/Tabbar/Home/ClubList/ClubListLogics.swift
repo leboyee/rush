@@ -81,4 +81,10 @@ extension ClubListViewController {
 //            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
         }
     }
+    
+    func cellSelected(_ indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
+        }
+    }
 }

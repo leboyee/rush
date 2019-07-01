@@ -65,6 +65,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailLabel" destination="TTD-xn-wBr" id="rBG-fU-3fc"/>
+                <outlet property="titleLabel" destination="yS8-tv-SXT" id="ErP-xV-x1X"/>
+            </connections>
             <point key="canvasLocation" x="63.768115942028992" y="87.388392857142847"/>
         </tableViewCell>
     </objects>

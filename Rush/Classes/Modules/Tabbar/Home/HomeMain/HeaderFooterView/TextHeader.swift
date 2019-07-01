@@ -42,6 +42,10 @@ extension TextHeader {
         detailButton.isHidden = isDetailArrowHide
     }
     
+    func setup(detailArrowImage: UIImage) {
+        detailButton.setBackgroundImage( detailArrowImage, for: .normal)
+    }
+    
     func setup(textColor: UIColor) {
         titleLabel.textColor = textColor
     }

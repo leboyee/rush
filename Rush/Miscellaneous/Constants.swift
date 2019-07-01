@@ -50,8 +50,8 @@ struct Cell {
     static let addMajorsCell        = "AddMajorsCell"
     static let postLikeCell         = "PostLikeCell"
     static let postCommentCell      = "PostCommentCell"
-    static let classesCell      = "ClassesCell"
-
+    static let classesCell          = "ClassesCell"
+    static let singleButtonCell     = "SingleButtonCell"
     
 }
 
@@ -98,6 +98,7 @@ struct Segues {
     static let postSegue                   = "PostSegue"
     static let sharePostSegue              = "sharePostSegue"
     static let clubListSegue               = "ClubListSegue"
+    static let clubDetailSegue             = "ClubDetailSegue"
 }
 
 struct StoryBoard {
@@ -171,6 +172,8 @@ public struct Text {
     static let saysomething             = "Say something"
     static let comments                 = "Comments"
     static let myClubs                  = "My clubs"
+    static let organizer                = "Organizer"
+    static let popularPost              = "Popular posts"
 }
 
 public struct Message {
