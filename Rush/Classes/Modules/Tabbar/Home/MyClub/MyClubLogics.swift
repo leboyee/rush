@@ -40,7 +40,7 @@ extension MyClubViewController {
     }
     
     func fillClubNameCell(_ cell: ClubNameCell) {
-        
+        cell.setup(isHideReadmoreButton: true)
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {

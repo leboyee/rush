@@ -174,6 +174,8 @@ public struct Text {
     static let myClubs                  = "My clubs"
     static let organizer                = "Organizer"
     static let popularPost              = "Popular posts"
+    static let readLess                 = "Read less..."
+    static let readMore                 = "Read more..."
 }
 
 public struct Message {

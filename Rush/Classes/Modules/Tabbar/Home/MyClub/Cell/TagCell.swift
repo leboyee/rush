@@ -26,6 +26,7 @@ class TagCell: UITableViewCell {
 }
 extension TagCell {
     func setup(tagList: [String]) {
+        tagListView.removeAllTags()
         tagListView.addTags(tagList)
         tagListView.textFont = UIFont.Semibold(sz: 13)
     }

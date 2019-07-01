@@ -43,7 +43,14 @@ extension ClubDetailViewController {
     
     func fillClubNameCell(_ cell: ClubNameCell) {
         cell.setup(title: "Development lifehacks")
-        cell.setup(detail: "Get the latest VR Experience with Samsung Gear. You can travel through...", numberOfLines: isReadMore ? 0 : 2)
+        cell.setup(detail: "Get the latest VR Experience with Samsung Gear. You can travel through sdf sdf lkjruto jfdgjlkj dklgj ljdf g", numberOfLines: isReadMore ? 0 : 2)
+        cell.setup(readmoreSelected: isReadMore)
+        cell.setup(isHideReadmoreButton: false)
+        cell.readMoreClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.isReadMore = !self_.isReadMore
+            self_.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        }
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
