@@ -45,7 +45,7 @@ extension EventTypeCell {
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {
-        
+        self.cellSelected?(self.type, 0, indexPath.item)
     }
     
     func cellSize() -> CGSize {

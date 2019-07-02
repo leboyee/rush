@@ -36,12 +36,29 @@ extension ClubListViewController {
     
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            cell.setup(.clubs, nil)
-        } else if indexPath.section == 2 {
-            cell.setup(.clubs, nil)
+        if screenType == .club {
+            if indexPath.section == 1 {
+                cell.setup(.clubs, nil)
+            } else if indexPath.section == 2 {
+                cell.setup(.clubs, nil)
+            } else {
+                cell.setup(.clubs, nil)
+            }
         } else {
-            cell.setup(.clubs, nil)
+            if indexPath.section == 1 {
+                cell.setup(.classes, nil)
+            } else if indexPath.section == 2 {
+                cell.setup(.classes, nil)
+            } else {
+                cell.setup(.classes, nil)
+            }
+        }
+        
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let self_ = self else { return }
+            if type == .classes {
+                self_.performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
+            }
         }
     }
     
@@ -56,29 +73,44 @@ extension ClubListViewController {
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
         header.setup(isDetailArrowHide: false)
-        if section == 0 {
-            header.setup(title: Text.myClubs)
-            header.setup(isDetailArrowHide: true)
-        } else if section == 1 {
-            header.setup(title: "Sports")
-        } else if section == 2 {
-            header.setup(title: "Art")
-        } else if section == 3 {
-            header.setup(title: "Technologies")
+        
+        if screenType == .club {
+            if section == 0 {
+                header.setup(title: Text.myClubs)
+                header.setup(isDetailArrowHide: true)
+            } else if section == 1 {
+                header.setup(title: "Sports")
+            } else if section == 2 {
+                header.setup(title: "Art")
+            } else if section == 3 {
+                header.setup(title: "Technologies")
+            }
+        } else {
+            if section == 0 {
+                header.setup(title: Text.myClasses)
+                header.setup(isDetailArrowHide: true)
+            } else if section == 1 {
+                header.setup(title: "Arts & humanities")
+            } else if section == 2 {
+                header.setup(title: "Business & managment")
+            }
         }
         
         header.detailButtonClickEvent = { [weak self] () in
             guard let self_ = self else { return }
             // Open other user profile UI for test
             
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
-            vc.delegate = self
-            vc.modalPresentationStyle = .overFullScreen
-            vc.view.backgroundColor = UIColor.bgBlack
-            let navigation = UINavigationController(rootViewController: vc)
-            self_.navigationController?.present(navigation, animated: true, completion: nil)
-//            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
+            if self_.screenType == .club {
+                let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
+                vc.delegate = self
+                vc.modalPresentationStyle = .overFullScreen
+                vc.view.backgroundColor = UIColor.bgBlack
+                let navigation = UINavigationController(rootViewController: vc)
+                self_.navigationController?.present(navigation, animated: true, completion: nil)
+            } else {
+                // self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
+            }
         }
     }
     

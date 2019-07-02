@@ -52,7 +52,7 @@ struct Cell {
     static let postCommentCell      = "PostCommentCell"
     static let classesCell          = "ClassesCell"
     static let singleButtonCell     = "SingleButtonCell"
-    
+    static let searchClubCell       = "SearchClubCell"
 }
 
 struct ReusableView {
@@ -68,6 +68,7 @@ struct ReusableView {
 struct ViewControllerId {
     static let customPickerViewController        = "CustomPickerViewController"
     static let createPostViewController          = "CreatePostViewController"
+    static let searchClubViewController          = "SearchClubViewController"
 }
 
 /* Create the struct for Section wise */
@@ -99,12 +100,14 @@ struct Segues {
     static let sharePostSegue              = "sharePostSegue"
     static let clubListSegue               = "ClubListSegue"
     static let clubDetailSegue             = "ClubDetailSegue"
+    static let searchClubSegue             = "SearchClubSegue"
 }
 
 struct StoryBoard {
     static let main                      =     "Main"
     static let customPicker              =     "CustomPicker"
     static let tabbar                    =     "Tabbar"
+    static let home                      =     "Home"
 }
 
 public struct Text {
@@ -176,6 +179,10 @@ public struct Text {
     static let popularPost              = "Popular posts"
     static let readLess                 = "Read less..."
     static let readMore                 = "Read more..."
+    static let exploreTopics            = "Explore topics:"
+    static let searchClubs              = "Search clubs"
+    static let searchClasses            = "Search classes"
+    static let myClasses                = "My classes"
 }
 
 public struct Message {

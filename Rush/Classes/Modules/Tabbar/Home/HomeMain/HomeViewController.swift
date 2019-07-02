@@ -111,10 +111,13 @@ extension HomeViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.notificationAlert {
-            let controller = segue.destination as! NotificationAlertViewController
-            controller.toastMessage = notificationTitle
-            controller.buttonTitle = notificationButtonTitle
-            controller.delegate = self
+            let vc = segue.destination as! NotificationAlertViewController
+            vc.toastMessage = notificationTitle
+            vc.buttonTitle = notificationButtonTitle
+            vc.delegate = self
+        } else if segue.identifier == Segues.clubListSegue {
+            let vc = segue.destination as! ClubListViewController
+            vc.screenType = sender as? ClubListType ?? .none
         }
     }
 }

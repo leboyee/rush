@@ -84,7 +84,9 @@ extension HomeViewController {
             // Open other user profile UI for test
             
             if section == 2 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: nil)
+                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
+            } else if section == 3 {
+                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
             } else {
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController

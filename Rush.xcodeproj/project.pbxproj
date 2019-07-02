@@ -250,6 +250,11 @@
 		79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */; };
 		79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F27163229D3A99008C4926 /* TextViewCell.swift */; };
 		79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F27164229D3A99008C4926 /* TextViewCell.xib */; };
+		79F377A622CB5D69003FC33E /* SearchClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A322CB5D69003FC33E /* SearchClubLogics.swift */; };
+		79F377A722CB5D69003FC33E /* SearchClubMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A422CB5D69003FC33E /* SearchClubMediates.swift */; };
+		79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A522CB5D69003FC33E /* SearchClubViewController.swift */; };
+		79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377AA22CB6297003FC33E /* SearchClubCell.swift */; };
+		79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F377AB22CB6297003FC33E /* SearchClubCell.xib */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -507,6 +512,11 @@
 		79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertViewController.swift; sourceTree = "<group>"; };
 		79F27163229D3A99008C4926 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		79F27164229D3A99008C4926 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
+		79F377A322CB5D69003FC33E /* SearchClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubLogics.swift; sourceTree = "<group>"; };
+		79F377A422CB5D69003FC33E /* SearchClubMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubMediates.swift; sourceTree = "<group>"; };
+		79F377A522CB5D69003FC33E /* SearchClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubViewController.swift; sourceTree = "<group>"; };
+		79F377AA22CB6297003FC33E /* SearchClubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubCell.swift; sourceTree = "<group>"; };
+		79F377AB22CB6297003FC33E /* SearchClubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchClubCell.xib; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -594,6 +604,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				79F377A222CB5D69003FC33E /* SearchClub */,
 				7991909A22C9D5A00044602E /* ClubDetail */,
 				7958B7F822C4E8E000A66BDC /* ClubList */,
 				7958B7F522C4DBD300A66BDC /* SharePost */,
@@ -1362,6 +1373,26 @@
 			path = NotificationAlert;
 			sourceTree = "<group>";
 		};
+		79F377A222CB5D69003FC33E /* SearchClub */ = {
+			isa = PBXGroup;
+			children = (
+				79F377A922CB6297003FC33E /* Cell */,
+				79F377A322CB5D69003FC33E /* SearchClubLogics.swift */,
+				79F377A422CB5D69003FC33E /* SearchClubMediates.swift */,
+				79F377A522CB5D69003FC33E /* SearchClubViewController.swift */,
+			);
+			path = SearchClub;
+			sourceTree = "<group>";
+		};
+		79F377A922CB6297003FC33E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				79F377AA22CB6297003FC33E /* SearchClubCell.swift */,
+				79F377AB22CB6297003FC33E /* SearchClubCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -1552,6 +1583,7 @@
 				794183B0228960C7009AB12C /* SF-Pro-Display-Semibold.otf in Resources */,
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
+				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
 				1AC635FB22AA8F6900021E03 /* CustomNavBarPageController.xib in Resources */,
 				7903D0AC228E8CE5004E33B9 /* EventTypeCell.xib in Resources */,
 				794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */,
@@ -1689,6 +1721,7 @@
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				7991909F22C9D5A00044602E /* ClubDetailController.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
+				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,
 				1A2809EF22C6304000B4E764 /* Classes.swift in Sources */,
 				7958B7FE22C4E8E000A66BDC /* ClubListViewController.swift in Sources */,
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
@@ -1762,6 +1795,7 @@
 				1A339B5E22B3B88A005509EA /* EnterUserNameViewLogics.swift in Sources */,
 				79BE868B22A94E9F0056529E /* FriendClubCell.swift in Sources */,
 				1A62D23522954AF6001E5790 /* CustomImagePageControl.swift in Sources */,
+				79F377A722CB5D69003FC33E /* SearchClubMediates.swift in Sources */,
 				79C1AC4B22A64CE0003C7790 /* ProfileInformationViewController.swift in Sources */,
 				797FFDB222B7BC480055A001 /* PhotoGalleryViewController+UIViewControllerPreviewing.swift in Sources */,
 				1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */,
@@ -1809,6 +1843,8 @@
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,
+				79F377A622CB5D69003FC33E /* SearchClubLogics.swift in Sources */,
+				79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */,
 				1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */,
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
 				0918E773228436990098AF35 /* ChatsViewController.swift in Sources */,

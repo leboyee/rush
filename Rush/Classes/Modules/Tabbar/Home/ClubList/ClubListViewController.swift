@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum ClubListType {
+    case none
+    case club
+    case classes
+}
+
 class ClubListViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +23,8 @@ class ClubListViewController: CustomViewController {
     var date = "January 24"
     var notificationTitle = ""
     var notificationButtonTitle = ""
+    
+    var screenType : ClubListType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +46,17 @@ class ClubListViewController: CustomViewController {
     func setupNavigation() {
         
         // Right item button
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "plus_white"), style: .plain, target: self, action: #selector(createButtonAction))
-        navigationItem.rightBarButtonItem = rightBarButton
+        if screenType == .club {
+            let rightBarButton = UIBarButtonItem(image: UIImage(named: "plus_white"), style: .plain, target: self, action: #selector(createButtonAction))
+            navigationItem.rightBarButtonItem = rightBarButton
+        }
         
         // Set left bar button and title
-        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        let customView = UIView(frame: CGRect(x: screenType == .club ? 0 :48, y: 0, width: screenWidth - 48, height: 44))
         let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
         
-        let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 48, height: 30))
-        label.text = "Search clubs"
+        let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 2, width: screenWidth - 48, height: 30))
+        label.text = screenType == .club ? Text.searchClubs : Text.searchClasses
         label.font = UIFont.DisplayBold(sz: 24)
         label.textColor = UIColor.navBarTitleWhite32
         customView.addSubview(label)
@@ -69,7 +79,9 @@ extension ClubListViewController {
     }
     
     @objc func openSearchClubScreenButtonAction() {
-        Utils.notReadyAlert()
+        if screenType == .club {
+            performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
+        }
     }
 }
 
@@ -94,6 +106,10 @@ extension ClubListViewController {
             controller.toastMessage = notificationTitle
             controller.buttonTitle = notificationButtonTitle
             controller.delegate = self
+        } else if segue.identifier == Segues.searchClubSegue {
+            let vc = segue.destination as! SearchClubViewController
+            vc.searchType = screenType == .club ? .searchList : .classes
+            vc.searchText = "Fine arts classes"
         }
     }
 }
