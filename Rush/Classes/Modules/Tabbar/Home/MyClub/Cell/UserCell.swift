@@ -24,7 +24,7 @@ class UserCell: UICollectionViewCell {
 extension UserCell {
     
     func setup(text: String) {
-        titleLabel.textColor = text == Text.viewAll ? UIColor.lightGrayColor : UIColor.bgBlack
+        titleLabel.textColor = text == Text.viewAll ? UIColor.lightGrayColor : isDarkModeOn ? UIColor.white : UIColor.bgBlack
         titleLabel.text = text
     }
     

@@ -11,7 +11,7 @@ import UIKit
 
 class UserImagesHeaderView: UITableViewHeaderFooterView {
    
-    @IBOutlet weak var roundedView: UIView!
+    @IBOutlet weak var roundedView: CustomView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var hoverView: UIView!
@@ -29,6 +29,7 @@ class UserImagesHeaderView: UITableViewHeaderFooterView {
         // Initialization code
         roundedView.layer.cornerRadius = 24
         roundedView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        roundedView.setBackgroundColor()
     }
 }
 

@@ -54,17 +54,38 @@ extension ClubDetailViewController {
     func fillClubManageCell(_ cell: ClubManageCell) {
         cell.setup(firstButtonType: .joined)
         cell.setup(secondButtonType: .groupChatClub)
+        
+        cell.firstButtonClickEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            Utils.alert(title: "Are you sure you want to leave from this club?",buttons: ["Yes", "No"],handler: { (index) in
+                if index == 0 {
+                    self_.joinedClub = false
+                    self_.tableView.reloadData()
+                }
+            })
+        }
+        
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let _ = self else { return }
+            Utils.notReadyAlert()
+        }
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
         cell.setup(userList: [])
     }
     
-    func fillEventByDateCell(_ cell: EventByDateCell) {
+    func fillEventByDateCell(_ cell: EventByDateCell,_ indexPath: IndexPath) {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(title: "Marta Keller")
         cell.setup(detail: "3 events")
+        cell.setup(isHideSeparator: true)
+        if indexPath.section > 5 {
+            cell.setup(bottomConstraintOfImage: 0)
+        } else {
+            cell.setup(bottomConstraintOfImage: 18.5)
+        }
     }
     
     func fillTagCell(_ cell: TagCell) {
@@ -89,7 +110,7 @@ extension ClubDetailViewController {
     
     // Image cell (section 6 row 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        cell.imageView?.image = #imageLiteral(resourceName: "bound-add-img")
+        cell.postImageView?.image = #imageLiteral(resourceName: "bound-add-img")
         cell.setup(isCleareButtonHide: true)
     }
     

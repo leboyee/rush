@@ -129,9 +129,11 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bottomConstraintOfImageView" destination="fkD-DA-gKA" id="n2d-uo-gw4"/>
                 <outlet property="detailLabel" destination="9rE-xE-php" id="ASB-yT-NOp"/>
                 <outlet property="imgView" destination="VRF-Lx-TIn" id="UZW-1L-wUd"/>
                 <outlet property="leadingConstraintOfDateView" destination="eFS-Vg-zlj" id="sO6-xJ-cvv"/>
+                <outlet property="separatorView" destination="bge-rT-0MG" id="edd-Fe-FRv"/>
                 <outlet property="titleLabel" destination="erI-m4-jFg" id="sj8-1a-P2M"/>
                 <outlet property="topConstraintOfImageView" destination="MLL-SD-l16" id="2zE-xQ-iEF"/>
                 <outlet property="widthConstraintOfDateView" destination="kKT-lY-zgw" id="4rb-is-5a7"/>

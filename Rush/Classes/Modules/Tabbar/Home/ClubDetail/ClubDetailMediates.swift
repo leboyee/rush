@@ -58,7 +58,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
-            fillEventByDateCell(cell)
+            fillEventByDateCell(cell, indexPath)
             return cell
         } else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as! TagCell
@@ -76,7 +76,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
-                fillEventByDateCell(cell)
+                fillEventByDateCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as! UserPostTextTableViewCell
