@@ -111,7 +111,16 @@ extension PostViewController: GrowingTextViewDelegate {
 //MARK: - SharePostViewControllerDelegate
 extension PostViewController : SharePostViewControllerDelegate {
     func deletePost() {
+        /*
         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+        */
+        let snackbar = TTGSnackbar(message: "Your post is deleted.",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (snackbar) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }
 

@@ -87,6 +87,7 @@ extension HomeViewController {
         // Segues.selectEventType
         // Segues.openPostScreen
         performSegue(withIdentifier: Segues.selectEventType, sender: nil)
+        
     }
 }
 

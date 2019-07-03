@@ -62,7 +62,18 @@ extension OtherUserProfileController {
                 self_.friendType = .friends
             } else if self_.friendType == .friends {
                 self_.friendType = .addFriend
+                /*
                 self_.performSegue(withIdentifier: Segues.notificationAlert, sender: "You unfriended Jessica O'Hara")
+                */
+                
+                let snackbar = TTGSnackbar(message: "You unfriended Jessica O'Hara",
+                                           duration: .middle,
+                                           actionText: "",
+                                           actionBlock: { (snackbar) in
+                                            Utils.notReadyAlert()
+                })
+                snackbar.show()
+                
             } else if self_.friendType == .addFriend {
                 self_.friendType = .requested
             } else if self_.friendType == .requested {
@@ -102,6 +113,18 @@ extension OtherUserProfileController {
         default:
             cell.setup(.none, nil)
             break
+        }
+        
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let self_ = self else { return }
+            if indexPath.section == 2 {
+                if index != 0 { // User profile
+                    Utils.notReadyAlert()
+                    //  self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+                } else { // Open user list
+                    Utils.notReadyAlert()
+                }
+            }
         }
     }
     

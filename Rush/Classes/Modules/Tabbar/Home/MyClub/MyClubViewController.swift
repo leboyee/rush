@@ -63,7 +63,7 @@ extension MyClubViewController {
     }
     
     @objc func shareButtonAction() {
-        performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+        Utils.notReadyAlert()
     }
 }
 

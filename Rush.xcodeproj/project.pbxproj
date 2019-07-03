@@ -180,6 +180,7 @@
 		796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929C229FE0B600F91DB1 /* CloseButton.swift */; };
 		796E92A1229FE0C800F91DB1 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929E229FE0B600F91DB1 /* TagListView.swift */; };
 		796E92A2229FE0C800F91DB1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929F229FE0B600F91DB1 /* TagView.swift */; };
+		79723DF422CCC3B000E8A76A /* TTGSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79723DF322CCC3B000E8A76A /* TTGSnackbar.swift */; };
 		797FFD9F22B7BC480055A001 /* CameraCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD8222B7BC480055A001 /* CameraCompatible.swift */; };
 		797FFDA022B7BC480055A001 /* CameraSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD8322B7BC480055A001 /* CameraSessionHandler.swift */; };
 		797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797FFD8422B7BC480055A001 /* GalleryPhotoCell.swift */; };
@@ -442,6 +443,7 @@
 		796E929D229FE0B600F91DB1 /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
 		796E929E229FE0B600F91DB1 /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
 		796E929F229FE0B600F91DB1 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		79723DF322CCC3B000E8A76A /* TTGSnackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGSnackbar.swift; sourceTree = "<group>"; };
 		797FFD8222B7BC480055A001 /* CameraCompatible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCompatible.swift; sourceTree = "<group>"; };
 		797FFD8322B7BC480055A001 /* CameraSessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSessionHandler.swift; sourceTree = "<group>"; };
 		797FFD8422B7BC480055A001 /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
@@ -1191,6 +1193,7 @@
 		796E929A229FE0B600F91DB1 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				79723DF222CCC3B000E8A76A /* TTGSnackbar */,
 				7982F65E22C3A7F100BC8B36 /* GrowingTextView */,
 				79650BFB22C1099B0004BCB9 /* DKCamera */,
 				797FFD8122B7BC480055A001 /* PickleImagePicker */,
@@ -1208,6 +1211,14 @@
 				796E929F229FE0B600F91DB1 /* TagView.swift */,
 			);
 			path = TagListView;
+			sourceTree = "<group>";
+		};
+		79723DF222CCC3B000E8A76A /* TTGSnackbar */ = {
+			isa = PBXGroup;
+			children = (
+				79723DF322CCC3B000E8A76A /* TTGSnackbar.swift */,
+			);
+			path = TTGSnackbar;
 			sourceTree = "<group>";
 		};
 		797FFD8122B7BC480055A001 /* PickleImagePicker */ = {
@@ -1704,6 +1715,7 @@
 				797FFDB922B7BC480055A001 /* UIFont+Style.swift in Sources */,
 				1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */,
 				1AE78D2922A00F1900972C17 /* EnterVerificationCodeViewMediates.swift in Sources */,
+				79723DF422CCC3B000E8A76A /* TTGSnackbar.swift in Sources */,
 				1A142EC5229EC1A0002C1AFE /* CustomPickerViewController.swift in Sources */,
 				7912570522A1448600BDE3EC /* UserCell.swift in Sources */,
 				797FFDB722B7BC480055A001 /* SlideUpPresentingAnimator.swift in Sources */,
