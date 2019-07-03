@@ -87,7 +87,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - SelectEventTypeController Delegate
 extension HomeViewController : SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
-        openCreateClubViewController()
+        performSegue(withIdentifier: Segues.createClub, sender: nil)
     }
 }
 

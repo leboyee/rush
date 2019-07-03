@@ -78,10 +78,6 @@ class HomeViewController: CustomViewController {
         navigationView.addSubview(viewCalender)
         navigationItem.titleView = navigationView
     }
-    
-    func openCreateClubViewController() {
-        performSegue(withIdentifier: Segues.createClub, sender: nil)
-    }
 }
 
 // MARK: - Actions

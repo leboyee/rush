@@ -87,7 +87,7 @@ class CreatePostViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            viewBottamConstraint.constant = keyboardHeight + (Utils.isHasSafeArea ? -34 : 0)
+            viewBottamConstraint.constant = keyboardHeight /*+ (Utils.isHasSafeArea ? -34 : 0)*/
         }
     }
     

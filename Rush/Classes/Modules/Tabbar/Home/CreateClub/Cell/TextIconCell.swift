@@ -79,6 +79,7 @@ extension TextIconCell {
     
     func setup(isShowSwitch: Bool) {
         chatSwitch.isHidden = !isShowSwitch
+        clearButton.isHidden = isShowSwitch
     }
     
     func resetAllField() {
