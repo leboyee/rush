@@ -45,6 +45,15 @@ extension MyClubViewController {
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
         cell.setup(userList: [])
+        
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let self_ = self else { return }
+            if index != 0 { // User profile
+                self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+            } else { // Open user list
+                Utils.notReadyAlert()
+            }
+        }
     }
     
     func fillTagCell(_ cell: TagCell) {

@@ -82,9 +82,18 @@ extension ClubListViewController : SelectEventTypeDelegate {
 //MARK: - CreatePostViewController Delegate
 extension ClubListViewController : CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
+        /*
         notificationTitle = text
         notificationButtonTitle = buttonText
         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+        */
+        let snackbar = TTGSnackbar(message: text,
+                                   duration: .middle,
+                                   actionText: buttonText,
+                                   actionBlock: { (snackbar) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }
 

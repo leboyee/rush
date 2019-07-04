@@ -199,10 +199,10 @@ extension CreateClubViewController {
     }
     
     func validateAllFields() {
-        if clubImage != nil /*&& nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0*/ {
+        if clubImage != nil && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
             navigationItem.rightBarButtonItem = saveBtnActive
         } else {
-            navigationItem.rightBarButtonItem = saveBtnActive// saveBtnDisActive
+            navigationItem.rightBarButtonItem = saveBtnDisActive// saveBtnDisActive
         }
     }
 }

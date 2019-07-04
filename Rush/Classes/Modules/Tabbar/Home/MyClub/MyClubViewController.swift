@@ -47,8 +47,8 @@ class MyClubViewController: UIViewController {
         navigationItem.rightBarButtonItem = share
         
         // back button
-        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-        navigationItem.leftBarButtonItem = cancel
+        let back = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
+        navigationItem.leftBarButtonItem = back
         
         // setup tableview
         setupTableView()
@@ -57,12 +57,13 @@ class MyClubViewController: UIViewController {
 
 //MARK: - Actions
 extension MyClubViewController {
-    @IBAction func cancelButtonAction() {
-        dismiss(animated: true, completion: nil)
+    @IBAction func backButtonAction() {
+        let viewControllers = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: false)
     }
     
     @objc func shareButtonAction() {
-        performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+        Utils.notReadyAlert()
     }
 }
 

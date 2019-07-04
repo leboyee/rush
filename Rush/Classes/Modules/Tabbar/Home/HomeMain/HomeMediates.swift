@@ -87,16 +87,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - SelectEventTypeController Delegate
 extension HomeViewController : SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
-        openCreateClubViewController()
+        performSegue(withIdentifier: Segues.createClub, sender: nil)
     }
 }
 
 //MARK: - CreatePostViewController Delegate
 extension HomeViewController : CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
+        /*
         notificationTitle = text
         notificationButtonTitle = buttonText
         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+        */
+        let snackbar = TTGSnackbar(message: text,
+                                   duration: .middle,
+                                   actionText: buttonText,
+                                   actionBlock: { (snackbar) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }
 
