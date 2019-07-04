@@ -175,6 +175,11 @@
 		79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */; };
 		7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */; };
 		7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */; };
+		796A6F2822CDEEAD00916D79 /* ClassDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796A6F2522CDEEAD00916D79 /* ClassDetailController.swift */; };
+		796A6F2922CDEEAD00916D79 /* ClassDetailLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796A6F2622CDEEAD00916D79 /* ClassDetailLogics.swift */; };
+		796A6F2A22CDEEAD00916D79 /* ClassDetailMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796A6F2722CDEEAD00916D79 /* ClassDetailMediates.swift */; };
+		796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F2B22CE169A00916D79 /* TimeSlotCell.xib */; };
+		796A6F2E22CE169A00916D79 /* TimeSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796A6F2C22CE169A00916D79 /* TimeSlotCell.swift */; };
 		796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9296229FDCD500F91DB1 /* TagCell.swift */; };
 		796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796E9297229FDCD600F91DB1 /* TagCell.xib */; };
 		796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E929C229FE0B600F91DB1 /* CloseButton.swift */; };
@@ -437,6 +442,11 @@
 		79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCameraResource.swift; sourceTree = "<group>"; };
 		7965E425229ECF21004E3CA2 /* CreateUserPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserPostCell.swift; sourceTree = "<group>"; };
 		7965E426229ECF22004E3CA2 /* CreateUserPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateUserPostCell.xib; sourceTree = "<group>"; };
+		796A6F2522CDEEAD00916D79 /* ClassDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailController.swift; sourceTree = "<group>"; };
+		796A6F2622CDEEAD00916D79 /* ClassDetailLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailLogics.swift; sourceTree = "<group>"; };
+		796A6F2722CDEEAD00916D79 /* ClassDetailMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailMediates.swift; sourceTree = "<group>"; };
+		796A6F2B22CE169A00916D79 /* TimeSlotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeSlotCell.xib; sourceTree = "<group>"; };
+		796A6F2C22CE169A00916D79 /* TimeSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSlotCell.swift; sourceTree = "<group>"; };
 		796E9296229FDCD500F91DB1 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		796E9297229FDCD600F91DB1 /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		796E929C229FE0B600F91DB1 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
@@ -606,6 +616,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				796A6F2322CDEEAD00916D79 /* ClassDetail */,
 				79F377A222CB5D69003FC33E /* SearchClub */,
 				7991909A22C9D5A00044602E /* ClubDetail */,
 				7958B7F822C4E8E000A66BDC /* ClubList */,
@@ -1190,6 +1201,26 @@
 			path = DKCamera;
 			sourceTree = "<group>";
 		};
+		796A6F2322CDEEAD00916D79 /* ClassDetail */ = {
+			isa = PBXGroup;
+			children = (
+				796A6F2422CDEEAD00916D79 /* Cell */,
+				796A6F2522CDEEAD00916D79 /* ClassDetailController.swift */,
+				796A6F2722CDEEAD00916D79 /* ClassDetailMediates.swift */,
+				796A6F2622CDEEAD00916D79 /* ClassDetailLogics.swift */,
+			);
+			path = ClassDetail;
+			sourceTree = "<group>";
+		};
+		796A6F2422CDEEAD00916D79 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				796A6F2C22CE169A00916D79 /* TimeSlotCell.swift */,
+				796A6F2B22CE169A00916D79 /* TimeSlotCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		796E929A229FE0B600F91DB1 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -1625,6 +1656,7 @@
 				794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
 				7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */,
+				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
 				794183B2228960C7009AB12C /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -1782,6 +1814,7 @@
 				7958B7FD22C4E8E000A66BDC /* ClubListMediates.swift in Sources */,
 				79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */,
 				79DF741F2292BA9F0012DCB7 /* SelectEventTypeViewController.swift in Sources */,
+				796A6F2E22CE169A00916D79 /* TimeSlotCell.swift in Sources */,
 				79C1AC4D22A64CF9003C7790 /* ProfileInformationMediates.swift in Sources */,
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
@@ -1843,6 +1876,7 @@
 				797FFDB122B7BC480055A001 /* PhotoGalleryTagLabel.swift in Sources */,
 				797FFDA922B7BC480055A001 /* PhotoAlbumsTableView.swift in Sources */,
 				79DF74242292C68E0012DCB7 /* CreateClubMediates.swift in Sources */,
+				796A6F2922CDEEAD00916D79 /* ClassDetailLogics.swift in Sources */,
 				7903D0B5228E8CE5004E33B9 /* HomeLogics.swift in Sources */,
 				1AB0C15322C0F6BB000D016E /* AddMinorsViewMediates.swift in Sources */,
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
@@ -1856,6 +1890,7 @@
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,
 				79F377A622CB5D69003FC33E /* SearchClubLogics.swift in Sources */,
+				796A6F2A22CDEEAD00916D79 /* ClassDetailMediates.swift in Sources */,
 				79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */,
 				1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */,
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
@@ -1889,6 +1924,7 @@
 				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,
 				0918E775228436A40098AF35 /* ExploreViewController.swift in Sources */,
+				796A6F2822CDEEAD00916D79 /* ClassDetailController.swift in Sources */,
 				797FFDAE22B7BC480055A001 /* PhotoGalleryCameraIconView.swift in Sources */,
 				7903D0B3228E8CE5004E33B9 /* TextHeader.swift in Sources */,
 				C05FC17022805FAE00721F3F /* Utils.swift in Sources */,

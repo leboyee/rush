@@ -53,6 +53,7 @@ struct Cell {
     static let classesCell          = "ClassesCell"
     static let singleButtonCell     = "SingleButtonCell"
     static let searchClubCell       = "SearchClubCell"
+    static let timeSlot             = "TimeSlotCell"
 }
 
 struct ReusableView {
@@ -101,6 +102,7 @@ struct Segues {
     static let clubListSegue               = "ClubListSegue"
     static let clubDetailSegue             = "ClubDetailSegue"
     static let searchClubSegue             = "SearchClubSegue"
+    static let classDetailSegue            = "ClassDetailSegue"
 }
 
 struct StoryBoard {
@@ -183,6 +185,7 @@ public struct Text {
     static let searchClubs              = "Search clubs"
     static let searchClasses            = "Search classes"
     static let myClasses                = "My classes"
+    static let rosters                  = "Rosters"
 }
 
 public struct Message {

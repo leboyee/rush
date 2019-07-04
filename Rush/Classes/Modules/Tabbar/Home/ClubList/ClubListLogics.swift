@@ -116,7 +116,11 @@ extension ClubListViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         if indexPath.section == 0 {
-            performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
+            if screenType == .club {
+                performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
+            } else {
+                performSegue(withIdentifier: Segues.classDetailSegue, sender: nil)
+            }
         }
     }
 }

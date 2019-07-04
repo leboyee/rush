@@ -70,7 +70,7 @@ extension TextIconCell {
     }
     
     func setup(isUserInterfaceEnable: Bool) {
-        textField.isUserInteractionEnabled = isUserInteractionEnabled
+        textField.isUserInteractionEnabled = isUserInterfaceEnable
     }
     
     func setup(keyboardReturnKeyType: UIReturnKeyType) {
@@ -83,15 +83,22 @@ extension TextIconCell {
     }
     
     func resetAllField() {
-        setup(isHideCleareButton: true)
         setup(iconImage: "")
         setup(isUserInterfaceEnable: false)
-        setup(isHideCleareButton: true)
         setup(isShowSwitch: false)
+        setup(isHideCleareButton: true)
     }
     
     func setup(topLabelConstraint: CGFloat) {
         topConstraintOfLabel.constant = topLabelConstraint
+    }
+    
+    func setup(isSetDropDown: Bool) {
+        if isSetDropDown {
+            clearButton.setImage(#imageLiteral(resourceName: "downArrow"), for: .normal)
+        } else {
+            clearButton.setImage(#imageLiteral(resourceName: "delete-white"), for: .normal)
+        }
     }
     
     @IBAction func clearButtonAction() {

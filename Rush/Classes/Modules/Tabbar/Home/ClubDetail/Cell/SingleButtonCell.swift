@@ -28,6 +28,11 @@ class SingleButtonCell: UITableViewCell {
 
 // MARK: - Other functions
 extension SingleButtonCell {
+    
+    func setup(title: String) {
+        joinButton.setTitle(title, for: .normal)
+    }
+    
     @IBAction func joinButtonAction() {
         joinButtonClickEvent?()
     }
