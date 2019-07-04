@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="-41" y="258"/>
         </scene>
-        <!--ChooseClassesViewController-->
+        <!--ChooseInterestViewController-->
         <scene sceneID="5IQ-Md-Pta">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseClassesViewController" id="Gdl-hw-GuU" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseInterestViewController" id="Gdl-hw-GuU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="old-xu-FWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="241" y="371"/>

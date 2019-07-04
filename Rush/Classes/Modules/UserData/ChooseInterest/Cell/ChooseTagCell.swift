@@ -8,10 +8,12 @@
 
 import UIKit
 
-class TagCell: UITableViewCell {
+class ChooseTagCell: UITableViewCell {
     
     @IBOutlet weak var tagListView: TagListView!
-    
+    @IBOutlet weak var taglistSuperView: UIView!
+    @IBOutlet weak var tagListViewHeightConstraint: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +26,7 @@ class TagCell: UITableViewCell {
     }
     
 }
-extension TagCell {
+extension ChooseTagCell {
     func setup(tagList: [String]) {
         tagListView.removeAllTags()
         tagListView.addTags(tagList)
@@ -35,10 +37,14 @@ extension TagCell {
         tagListView.removeAllTags()
         tagListView.addTags(tagList)
         tagListView.textFont = UIFont.Regular(sz: 17)
+        tagListView.delegate = self
+        tagListView.tagSelectedBackgroundColor = UIColor.black
+        self.layoutIfNeeded()
+
     }
 }
 
-extension TagCell: TagListViewDelegate {
+extension ChooseTagCell: TagListViewDelegate {
     // MARK: TagListViewDelegate
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("Tag pressed: \(title), \(sender)")
@@ -49,5 +55,4 @@ extension TagCell: TagListViewDelegate {
         print("Tag Remove pressed: \(title), \(sender)")
         sender.removeTagView(tagView)
     }
-
 }

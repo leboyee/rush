@@ -77,6 +77,11 @@
 		1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649E192297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift */; };
 		1A649E1D2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649E1A2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift */; };
 		1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649E1E2297FE1E00B2E9E7 /* CustomView.swift */; };
+		1A7402C622CCA0BD0089CDAE /* ChooseInterestViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */; };
+		1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */; };
+		1A7402C822CCA0BD0089CDAE /* ChooseInterestViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */; };
+		1A7402CC22CD029F0089CDAE /* ChooseTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7402CA22CD029F0089CDAE /* ChooseTagCell.xib */; };
+		1A7402CD22CD029F0089CDAE /* ChooseTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402CB22CD029F0089CDAE /* ChooseTagCell.swift */; };
 		1A93E1A2229E44BE00724A6C /* EnterPhoneNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E19F229E44BE00724A6C /* EnterPhoneNoViewController.swift */; };
 		1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A0229E44BE00724A6C /* EnterPhoneNoViewLogics.swift */; };
 		1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */; };
@@ -334,6 +339,11 @@
 		1A649E192297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordlViewLogics.swift; sourceTree = "<group>"; };
 		1A649E1A2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewMediates.swift; sourceTree = "<group>"; };
 		1A649E1E2297FE1E00B2E9E7 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewMediates.swift; sourceTree = "<group>"; };
+		1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewController.swift; sourceTree = "<group>"; };
+		1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewLogics.swift; sourceTree = "<group>"; };
+		1A7402CA22CD029F0089CDAE /* ChooseTagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseTagCell.xib; sourceTree = "<group>"; };
+		1A7402CB22CD029F0089CDAE /* ChooseTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTagCell.swift; sourceTree = "<group>"; };
 		1A93E19F229E44BE00724A6C /* EnterPhoneNoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewController.swift; sourceTree = "<group>"; };
 		1A93E1A0229E44BE00724A6C /* EnterPhoneNoViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewLogics.swift; sourceTree = "<group>"; };
 		1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewMediates.swift; sourceTree = "<group>"; };
@@ -881,6 +891,26 @@
 			path = EnterPassword;
 			sourceTree = "<group>";
 		};
+		1A7402C222CCA0BD0089CDAE /* ChooseInterest */ = {
+			isa = PBXGroup;
+			children = (
+				1A7402C922CD029F0089CDAE /* Cell */,
+				1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */,
+				1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */,
+				1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */,
+			);
+			path = ChooseInterest;
+			sourceTree = "<group>";
+		};
+		1A7402C922CD029F0089CDAE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A7402CB22CD029F0089CDAE /* ChooseTagCell.swift */,
+				1A7402CA22CD029F0089CDAE /* ChooseTagCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		1A93E19E229E448E00724A6C /* EnterPhoneNo */ = {
 			isa = PBXGroup;
 			children = (
@@ -965,6 +995,7 @@
 		1ACEAC0F22AC040A00B734D3 /* UserData */ = {
 			isa = PBXGroup;
 			children = (
+				1A7402C222CCA0BD0089CDAE /* ChooseInterest */,
 				1A2809DD22C5F43B00B4E764 /* ChooseClasses */,
 				1AB0C14E22C0F6BB000D016E /* AddMinors */,
 				1A3CB08522BD3242005D3D87 /* AddMajors */,
@@ -1603,6 +1634,7 @@
 				796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
+				1A7402CC22CD029F0089CDAE /* ChooseTagCell.xib in Resources */,
 				1A142ECB229EC895002C1AFE /* CountryPhoneCode.json in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
@@ -1708,6 +1740,7 @@
 				7912570522A1448600BDE3EC /* UserCell.swift in Sources */,
 				797FFDB722B7BC480055A001 /* SlideUpPresentingAnimator.swift in Sources */,
 				1A339B5122B3AE1D005509EA /* ListCell.swift in Sources */,
+				1A7402C622CCA0BD0089CDAE /* ChooseInterestViewMediates.swift in Sources */,
 				091557B922B127320080C9AE /* UserPostTextTableViewCell.swift in Sources */,
 				1AB0C15A22C1203E000D016E /* NetworkManagerServices.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
@@ -1745,6 +1778,7 @@
 				79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */,
 				79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */,
 				7982F66022C3A7F100BC8B36 /* GrowingTextView.swift in Sources */,
+				1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */,
 				1A3F55EC2285C42600D42154 /* OnBoardingCollectionViewCell.swift in Sources */,
 				1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */,
 				7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */,
@@ -1776,6 +1810,7 @@
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
 				7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */,
 				797FFDA322B7BC480055A001 /* ImagePickerConfigurable.swift in Sources */,
+				1A7402CD22CD029F0089CDAE /* ChooseTagCell.swift in Sources */,
 				79493CE622B90E960026AD0E /* SelectGallaryPhotoCell.swift in Sources */,
 				1A3CB08D22BD3242005D3D87 /* AddMajorsViewLogics.swift in Sources */,
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
@@ -1855,6 +1890,7 @@
 				1AE78D2B22A00F1900972C17 /* EnterVerificationCodeViewController.swift in Sources */,
 				1A2809EA22C60E6700B4E764 /* ClassesHeader.swift in Sources */,
 				797FFD9F22B7BC480055A001 /* CameraCompatible.swift in Sources */,
+				1A7402C822CCA0BD0089CDAE /* ChooseInterestViewLogics.swift in Sources */,
 				1A3F55E72285C38800D42154 /* OnboardingMediates.swift in Sources */,
 				79173F3B229E6FA10003FD9B /* ClubNameCell.swift in Sources */,
 				79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */,
