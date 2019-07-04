@@ -206,6 +206,11 @@ open class TagListView: UIView {
     private(set) var rows = 0 {
         didSet {
             invalidateIntrinsicContentSize()
+            var frame = self.frame
+            frame.size.height = self.intrinsicContentSize.height + 20
+            self.frame = frame
+            print(frame.size.height)
+            self.layoutIfNeeded()
         }
     }
     
@@ -237,6 +242,7 @@ open class TagListView: UIView {
         var currentRowWidth: CGFloat = 0
         for (index, tagView) in tagViews.enumerated() {
             tagView.frame.size = tagView.intrinsicContentSize
+
             tagViewHeight = tagView.frame.height
             
             if currentRowTagCount == 0 || currentRowWidth + tagView.frame.width > frame.width {
@@ -250,6 +256,7 @@ open class TagListView: UIView {
                 addSubview(currentRowView)
 
                 tagView.frame.size.width = min(tagView.frame.size.width, frame.width)
+
             }
             
             let tagBackgroundView = tagBackgroundViews[index]
@@ -341,7 +348,6 @@ open class TagListView: UIView {
         defer { rearrangeViews() }
         tagViews.append(tagView)
         tagBackgroundViews.append(UIView(frame: tagView.bounds))
-        
         return tagView
     }
     
@@ -364,7 +370,6 @@ open class TagListView: UIView {
         defer { rearrangeViews() }
         tagViews.insert(tagView, at: index)
         tagBackgroundViews.insert(UIView(frame: tagView.bounds), at: index)
-        
         return tagView
     }
     

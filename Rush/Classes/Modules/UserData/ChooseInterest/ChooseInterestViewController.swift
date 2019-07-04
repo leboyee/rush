@@ -1,5 +1,5 @@
 //
-//  ChooseClassesViewController.swift
+//  ChooseInterestViewController.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 
-class ChooseClassesViewController: CustomViewController {
+class ChooseInterestViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var pageControllerView: UIView!
@@ -20,10 +20,9 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
-
+    var interestArray = ["Art", "Music","Beauty & style","Cars & Trucks","Hobbies","Animals & pets","Technologies","Travel","Education","Gaming","Art", "Music","Beauty & style","Cars & Trucks","Hobbies","Animals & pets","Technologies","Travel","Education"]
+    
     var selectedArray = [SubClasses]()
-    var selectedIndex = -1
-    var classesArray = [Classes]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +84,7 @@ class ChooseClassesViewController: CustomViewController {
 }
 
 //MARK: - Other Function
-extension ChooseClassesViewController {
+extension ChooseInterestViewController {
     func moveToNext() {
         bottomView.isHidden = self.selectedArray.count > 0 ? false : true
         self.tableView.reloadData()
@@ -93,22 +92,18 @@ extension ChooseClassesViewController {
 }
 
 // MARK: - Actions
-extension ChooseClassesViewController {
+extension ChooseInterestViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
     
     @IBAction func skipButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
-        //AppDelegate.getInstance().setupStoryboard()
-    }
-    
-    
-    @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
-        
-        //AppDelegate.getInstance().setupStoryboard()
-        
+        AppDelegate.getInstance().setupStoryboard()
     }
 
+    
+    @IBAction func nextButtonAction() {
+        AppDelegate.getInstance().setupStoryboard()
+
+    }
 }
