@@ -11,6 +11,9 @@ import UIKit
 class ExploreViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchfield: UITextField!
+    @IBOutlet weak var clearButton: UIButton!
     
     var isShowTutorial = false
     var isShowJoinEvents = true
@@ -39,7 +42,7 @@ class ExploreViewController: CustomViewController {
     func setupNavigation() {
         
         // Right item button
-        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(createButtonAction))
+        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(changeLocationButtonAction))
         navigationItem.rightBarButtonItem = rightBarButton
         
  
@@ -65,11 +68,11 @@ class ExploreViewController: CustomViewController {
 
 // MARK: - Actions
 extension ExploreViewController {
-    @objc func createButtonAction() {
-        // Segues.createClub
-        // Segues.selectEventType
-        // Segues.openPostScreen
-        performSegue(withIdentifier: Segues.selectEventType, sender: nil)
+    @objc func changeLocationButtonAction() {
+        Utils.notReadyAlert()
+    }
+    
+    @IBAction func clearButtonAction() {
         
     }
 }

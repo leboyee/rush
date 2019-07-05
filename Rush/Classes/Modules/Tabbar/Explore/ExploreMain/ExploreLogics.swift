@@ -28,7 +28,7 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if section == 0 {
-            return 4
+            return 3
         } else {
             return 1
         }
@@ -36,17 +36,22 @@ extension ExploreViewController {
     
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
+            cell.setup(.none, nil)
         if indexPath.section == 1 {
             cell.setup(.upcoming, nil)
         } else if indexPath.section == 2 {
             cell.setup(.clubs, nil)
-        } else {
+        } else if indexPath.section == 3 {
             cell.setup(.classes, nil)
         }
     }
     
     func fillExploreCell(_ cell: ExploreCell, _ indexPath: IndexPath) {
+        let title = indexPath.row == 0 ? Text.events : indexPath.row == 1 ? Text.clubs : indexPath.row == 2 ? Text.classes : ""
+        cell.setup(title: title)
         
+        let detail = indexPath.row == 0 ? "Find events based on your \ninterests" : indexPath.row == 1 ? "Share your interests with \npeople" : indexPath.row == 2 ? "Keep track of your \nacademics" : ""
+        cell.setup(detail: detail)
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
@@ -59,23 +64,17 @@ extension ExploreViewController {
         }
         
         header.detailButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
+            guard let _ = self else { return }
             // Open other user profile UI for test
             
+            Utils.notReadyAlert()
+            /*
             if section == 2 {
                 self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
             } else if section == 3 {
                 self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
-            } else {
-                let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
-                vc.delegate = self
-                vc.modalPresentationStyle = .overFullScreen
-                vc.view.backgroundColor = UIColor.bgBlack
-                let navigation = UINavigationController(rootViewController: vc)
-                self_.navigationController?.present(navigation, animated: true, completion: nil)
-                //            self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
             }
+            */
         }
     }
 }

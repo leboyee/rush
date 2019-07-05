@@ -12,8 +12,8 @@ import UIKit
 extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
-        tableView.layer.cornerRadius = 24
-        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        searchView.layer.cornerRadius = 24
+        searchView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         tableView.delegate = self
         tableView.dataSource = self
