@@ -246,3 +246,11 @@ enum passwordFormate {
     case wrong
 }
 
+enum ExploreSearchType {
+    case none
+    case event
+    case club
+    case classes
+    case people
+}
+

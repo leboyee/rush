@@ -27,10 +27,14 @@ extension ExploreViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        if section == 0 {
-            return 3
+        if isSearch {
+            return searchType == .event ? eventList.count : 1
         } else {
-            return 1
+            if section == 0 {
+                return 3
+            } else {
+                return 1
+            }
         }
     }
     
@@ -52,6 +56,11 @@ extension ExploreViewController {
         
         let detail = indexPath.row == 0 ? "Find events based on your \ninterests" : indexPath.row == 1 ? "Share your interests with \npeople" : indexPath.row == 2 ? "Keep track of your \nacademics" : ""
         cell.setup(detail: detail)
+    }
+    
+    func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
+        cell.setup(title: eventList[indexPath.row])
+        cell.setup(isHideTopSeparator: true)
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {

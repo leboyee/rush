@@ -20,13 +20,14 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.exploreCell, bundle: nil), forCellReuseIdentifier: Cell.exploreCell)
+        tableView.register(UINib(nibName: Cell.searchClubCell, bundle: nil), forCellReuseIdentifier: Cell.searchClubCell)
         
         tableView.reloadData()
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return isSearch ? 1 : 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,14 +36,26 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.exploreCell, for: indexPath) as! ExploreCell
-            fillExploreCell(cell, indexPath)
-            return cell
+        if isSearch {
+            if searchType == .event {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as! SearchClubCell
+                fillEventCell(cell, indexPath)
+                return cell
+            } else if searchType == .people {
+                return UITableViewCell()
+            } else {
+                return UITableViewCell()
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
-            fillEventTypeCell(cell, indexPath)
-            return cell
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.exploreCell, for: indexPath) as! ExploreCell
+                fillExploreCell(cell, indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+                fillEventTypeCell(cell, indexPath)
+                return cell
+            }
         }
     }
     
@@ -70,6 +83,35 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
+    }
+}
+
+//MARK: - Textfield Delegate
+extension ExploreViewController : UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        isSearch = true
+        heightConstraintOfFilter.constant = 67
+        tableView.reloadData()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isSearch = false
+        heightConstraintOfFilter.constant = 0
+        tableView.reloadData()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func textFieldDidChanged(_ textField: UITextField) {
+        if (textField.text ?? "").count > 0 {
+            clearButton.isHidden = false
+        } else {
+            clearButton.isHidden = true
+        }
     }
 }
 

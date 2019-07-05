@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ExploreViewController: CustomViewController {
     
@@ -15,12 +16,30 @@ class ExploreViewController: CustomViewController {
     @IBOutlet weak var searchfield: UITextField!
     @IBOutlet weak var clearButton: UIButton!
     
-    var isShowTutorial = false
+    @IBOutlet weak var eventButton: UIButton!
+    @IBOutlet weak var clubButton: UIButton!
+    @IBOutlet weak var classButton: UIButton!
+    @IBOutlet weak var peopleButton: UIButton!
+    
+    @IBOutlet weak var firstSeparator: UIView!
+    @IBOutlet weak var secondSeparator: UIView!
+    @IBOutlet weak var thirsSeparator: UIView!
+    
+    
+    
+    
+    @IBOutlet weak var heightConstraintOfFilter: NSLayoutConstraint!
+    
+    var searchType: ExploreSearchType = .event
+    
     var isShowJoinEvents = true
+    var isSearch = false
     
     var university = "Harvard University"
     var notificationTitle = ""
     var notificationButtonTitle = ""
+    
+    var eventList : [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +48,28 @@ class ExploreViewController: CustomViewController {
         setup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+         super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+    }
+    
     func setup() {
         setupUI()
     }
     
     func setupUI() {
-        setupTableView()
         
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        
+        searchfield.returnKeyType = .go
+        searchfield.delegate = self
+        searchfield.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
+        
+        heightConstraintOfFilter.constant = 0
+        
+        setupTableView()
         setupNavigation()
     }
     
@@ -73,7 +107,7 @@ extension ExploreViewController {
     }
     
     @IBAction func clearButtonAction() {
-        
+        searchfield.text = ""
     }
 }
 
