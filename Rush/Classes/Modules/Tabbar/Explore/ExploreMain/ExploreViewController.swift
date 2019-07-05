@@ -98,6 +98,23 @@ class ExploreViewController: CustomViewController {
         navigationView.addSubview(universityLabel)
         navigationItem.titleView = navigationView
     }
+    
+    func updateFilterViewUI(selected: Int) {
+        
+        eventButton.setTitleColor(selected == 0 ? UIColor.white : UIColor.buttonDisableTextColor, for: .normal)
+        clubButton.setTitleColor(selected == 1 ? UIColor.white : UIColor.buttonDisableTextColor, for: .normal)
+        classButton.setTitleColor(selected == 2 ? UIColor.white : UIColor.buttonDisableTextColor, for: .normal)
+        peopleButton.setTitleColor(selected == 3 ? UIColor.white : UIColor.buttonDisableTextColor, for: .normal)
+        
+        eventButton.backgroundColor = selected == 0 ? UIColor.bgBlack : UIColor.buttonDisableBgColor
+        clubButton.backgroundColor = selected == 1 ? UIColor.bgBlack : UIColor.buttonDisableBgColor
+        classButton.backgroundColor = selected == 2 ? UIColor.bgBlack : UIColor.buttonDisableBgColor
+        peopleButton.backgroundColor = selected == 3 ? UIColor.bgBlack : UIColor.buttonDisableBgColor
+        
+        firstSeparator.backgroundColor = (selected == 0 || selected == 1) ? UIColor.bgBlack : UIColor.gray83
+        secondSeparator.backgroundColor = (selected == 1 || selected == 2) ? UIColor.bgBlack : UIColor.gray83
+        thirsSeparator.backgroundColor = (selected == 2 || selected == 3) ? UIColor.bgBlack : UIColor.gray83
+    }
 }
 
 // MARK: - Actions
@@ -108,6 +125,31 @@ extension ExploreViewController {
     
     @IBAction func clearButtonAction() {
         searchfield.text = ""
+    }
+    
+    @IBAction func eventButtonAction(_ sender: Any) {
+        if let btn = sender as? UIButton {
+            
+            if btn.tag != 0 {
+                Utils.notReadyAlert()
+                return
+            }
+            
+            if btn.tag == 0 { // Event
+                searchType = .event
+            } else if btn.tag == 1 { // Club
+                searchType = .club
+            } else if btn.tag == 2 { // Classes
+                searchType = .classes
+            } else if btn.tag == 3 { // People
+                searchType = .people
+            } else {
+                searchType = .none
+            }
+            updateFilterViewUI(selected: btn.tag)
+        }
+        
+        tableView.reloadData()
     }
 }
 

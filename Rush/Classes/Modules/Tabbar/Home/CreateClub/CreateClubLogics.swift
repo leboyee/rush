@@ -164,9 +164,19 @@ extension CreateClubViewController {
             
             if type == .photoLibrary {
                 let status = PHPhotoLibrary.authorizationStatus()
-                guard status == .authorized else {
-                    self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                    return
+                
+                if status == .notDetermined {
+                    Utils.authorizePhoto(completion: { (statusF) in
+                        if statusF == .alreadyDenied {
+                            self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
+                            return
+                        }
+                    })
+                } else {
+                    guard status == .authorized else {
+                        self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
+                        return
+                    }
                 }
             } else {
                 let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)

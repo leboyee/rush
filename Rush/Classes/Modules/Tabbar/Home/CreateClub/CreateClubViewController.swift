@@ -86,7 +86,7 @@ class CreateClubViewController: UIViewController {
 //MARK: - Actions
 extension CreateClubViewController {
     @IBAction func cancelButtonAction() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func saveButtonAction() {
