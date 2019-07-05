@@ -17,7 +17,6 @@
 		091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091557BB22B127600080C9AE /* UserPostImageTableViewCell.swift */; };
 		091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091557BC22B127600080C9AE /* UserPostImageTableViewCell.xib */; };
 		0918E773228436990098AF35 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E772228436990098AF35 /* ChatsViewController.swift */; };
-		0918E775228436A40098AF35 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E774228436A40098AF35 /* ExploreViewController.swift */; };
 		0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E776228436AE0098AF35 /* ForumViewController.swift */; };
 		0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0918E77A228436C70098AF35 /* ProfileViewController.swift */; };
 		0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0918E77C22843D420098AF35 /* Tabbar.storyboard */; };
@@ -250,6 +249,11 @@
 		79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */; };
 		79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */; };
 		79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */; };
+		79D29C9F22CF2C74008C6ED0 /* ExploreLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D29C9C22CF2C74008C6ED0 /* ExploreLogics.swift */; };
+		79D29CA022CF2C74008C6ED0 /* ExploreMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D29C9D22CF2C74008C6ED0 /* ExploreMediates.swift */; };
+		79D29CA122CF2C74008C6ED0 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D29C9E22CF2C74008C6ED0 /* ExploreViewController.swift */; };
+		79D29CA422CF339B008C6ED0 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D29CA222CF339A008C6ED0 /* ExploreCell.swift */; };
+		79D29CA522CF339B008C6ED0 /* ExploreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D29CA322CF339B008C6ED0 /* ExploreCell.xib */; };
 		79DF741D2292BA9F0012DCB7 /* SelectEventTypeLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF74192292BA9F0012DCB7 /* SelectEventTypeLogics.swift */; };
 		79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF741A2292BA9F0012DCB7 /* SelectEventTypeMediates.swift */; };
 		79DF741F2292BA9F0012DCB7 /* SelectEventTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF741B2292BA9F0012DCB7 /* SelectEventTypeViewController.swift */; };
@@ -286,7 +290,6 @@
 		091557BB22B127600080C9AE /* UserPostImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostImageTableViewCell.swift; sourceTree = "<group>"; };
 		091557BC22B127600080C9AE /* UserPostImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostImageTableViewCell.xib; sourceTree = "<group>"; };
 		0918E772228436990098AF35 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		0918E774228436A40098AF35 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		0918E776228436AE0098AF35 /* ForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumViewController.swift; sourceTree = "<group>"; };
 		0918E77A228436C70098AF35 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0918E77C22843D420098AF35 /* Tabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabbar.storyboard; sourceTree = "<group>"; };
@@ -523,6 +526,11 @@
 		79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBrownLabel.swift; sourceTree = "<group>"; };
 		79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackLabel.swift; sourceTree = "<group>"; };
 		79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackBackgroundView.swift; sourceTree = "<group>"; };
+		79D29C9C22CF2C74008C6ED0 /* ExploreLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreLogics.swift; sourceTree = "<group>"; };
+		79D29C9D22CF2C74008C6ED0 /* ExploreMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreMediates.swift; sourceTree = "<group>"; };
+		79D29C9E22CF2C74008C6ED0 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		79D29CA222CF339A008C6ED0 /* ExploreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		79D29CA322CF339B008C6ED0 /* ExploreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreCell.xib; sourceTree = "<group>"; };
 		79DF74192292BA9F0012DCB7 /* SelectEventTypeLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEventTypeLogics.swift; sourceTree = "<group>"; };
 		79DF741A2292BA9F0012DCB7 /* SelectEventTypeMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEventTypeMediates.swift; sourceTree = "<group>"; };
 		79DF741B2292BA9F0012DCB7 /* SelectEventTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEventTypeViewController.swift; sourceTree = "<group>"; };
@@ -610,7 +618,7 @@
 		0918E76E228436820098AF35 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				0918E774228436A40098AF35 /* ExploreViewController.swift */,
+				79D29C9A22CF2C74008C6ED0 /* ExploreMain */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -1398,6 +1406,26 @@
 			path = ProfileFriendList;
 			sourceTree = "<group>";
 		};
+		79D29C9A22CF2C74008C6ED0 /* ExploreMain */ = {
+			isa = PBXGroup;
+			children = (
+				79D29C9B22CF2C74008C6ED0 /* Cell */,
+				79D29C9C22CF2C74008C6ED0 /* ExploreLogics.swift */,
+				79D29C9D22CF2C74008C6ED0 /* ExploreMediates.swift */,
+				79D29C9E22CF2C74008C6ED0 /* ExploreViewController.swift */,
+			);
+			path = ExploreMain;
+			sourceTree = "<group>";
+		};
+		79D29C9B22CF2C74008C6ED0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				79D29CA222CF339A008C6ED0 /* ExploreCell.swift */,
+				79D29CA322CF339B008C6ED0 /* ExploreCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		79DF74182292BA9F0012DCB7 /* SelectEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1668,6 +1696,7 @@
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
 				7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */,
 				79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */,
+				79D29CA522CF339B008C6ED0 /* ExploreCell.xib in Resources */,
 				1A2809ED22C60E6700B4E764 /* ClassesCell.xib in Resources */,
 				1A3CB08F22BD3242005D3D87 /* AddMajorsCell.xib in Resources */,
 				79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */,
@@ -1793,6 +1822,7 @@
 				797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */,
 				1A3CB09022BD3242005D3D87 /* AddMajorsViewMediates.swift in Sources */,
 				091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */,
+				79D29CA022CF2C74008C6ED0 /* ExploreMediates.swift in Sources */,
 				1A3CB08C22BD3242005D3D87 /* AddMajorsViewController.swift in Sources */,
 				79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */,
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
@@ -1890,6 +1920,7 @@
 				7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */,
 				C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */,
 				7983D22C228982B500DE054E /* Image.swift in Sources */,
+				79D29CA422CF339B008C6ED0 /* ExploreCell.swift in Sources */,
 				797FFDA522B7BC480055A001 /* ImagePickerControllerDelegate.swift in Sources */,
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
 				797FFDB622B7BC480055A001 /* SlideUpPresentationController.swift in Sources */,
@@ -1950,16 +1981,17 @@
 				0992539C22846A1D00914E7B /* (null) in Sources */,
 				797FFDAC22B7BC480055A001 /* PhotoDetailViewController.swift in Sources */,
 				1A339B4D22B3A060005509EA /* ChooseLevelViewController.swift in Sources */,
+				79D29CA122CF2C74008C6ED0 /* ExploreViewController.swift in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */,
 				797FFDB322B7BC480055A001 /* PhotoGalleryViewController.swift in Sources */,
+				79D29C9F22CF2C74008C6ED0 /* ExploreLogics.swift in Sources */,
 				1ACEAC1622AC040A00B734D3 /* AddProfilePictureViewMediates.swift in Sources */,
 				79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */,
 				1A353AC822BD130E0069752D /* UniversityCell.swift in Sources */,
 				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,
-				0918E775228436A40098AF35 /* ExploreViewController.swift in Sources */,
 				796A6F2822CDEEAD00916D79 /* ClassDetailController.swift in Sources */,
 				797FFDAE22B7BC480055A001 /* PhotoGalleryCameraIconView.swift in Sources */,
 				7903D0B3228E8CE5004E33B9 /* TextHeader.swift in Sources */,

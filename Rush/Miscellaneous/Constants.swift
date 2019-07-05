@@ -54,8 +54,8 @@ struct Cell {
     static let singleButtonCell     = "SingleButtonCell"
     static let searchClubCell       = "SearchClubCell"
     static let timeSlot             = "TimeSlotCell"
-    static let chooseTagCell       = "ChooseTagCell"
-
+    static let chooseTagCell        = "ChooseTagCell"
+    static let exploreCell          = "ExploreCell"
     
 }
 
@@ -192,6 +192,10 @@ public struct Text {
     static let searchClasses            = "Search classes"
     static let myClasses                = "My classes"
     static let rosters                  = "Rosters"
+    static let exploreIn                = "Explore in"
+    static let todayEvent               = "Today's events"
+    static let clubsMightLike           = "Clubs you might like"
+    static let classesYouMightLike      = "Classes you might like"
 }
 
 public struct Message {
