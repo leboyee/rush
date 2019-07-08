@@ -233,11 +233,63 @@
                         <outlet property="secondSeparator" destination="4wd-lR-MPe" id="pS1-iv-Yho"/>
                         <outlet property="tableView" destination="sbD-fu-wqp" id="f6n-7N-YsZ"/>
                         <outlet property="thirsSeparator" destination="83r-Kq-QsE" id="FOs-Tr-Fsp"/>
+                        <segue destination="wtT-AY-LdS" kind="show" identifier="EventCategorySegue" id="xzX-jX-aYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AV-99-LfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="120.53571428571428"/>
+            <point key="canvasLocation" x="-832" y="24"/>
+        </scene>
+        <!--Event Category List View Controller-->
+        <scene sceneID="Woa-0f-gpl">
+            <objects>
+                <viewController storyboardIdentifier="EventCategoryListViewController" id="wtT-AY-LdS" customClass="EventCategoryListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="BG3-ZF-O7p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kAk-2O-Z7p" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZ8-M3-2NZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-5f-ceh">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xpu-5f-ceh" secondAttribute="trailing" id="aJ5-m4-mKf"/>
+                                    <constraint firstItem="xpu-5f-ceh" firstAttribute="leading" secondItem="QZ8-M3-2NZ" secondAttribute="leading" id="bSW-gC-9gF"/>
+                                    <constraint firstItem="xpu-5f-ceh" firstAttribute="top" secondItem="QZ8-M3-2NZ" secondAttribute="top" id="d7j-3j-H6h"/>
+                                    <constraint firstAttribute="bottom" secondItem="xpu-5f-ceh" secondAttribute="bottom" id="oQu-Fm-ICg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="QZ8-M3-2NZ" firstAttribute="leading" secondItem="VAF-DL-4Vj" secondAttribute="leading" id="00r-AX-rvG"/>
+                            <constraint firstItem="VAF-DL-4Vj" firstAttribute="trailing" secondItem="kAk-2O-Z7p" secondAttribute="trailing" id="7W1-lJ-Jwn"/>
+                            <constraint firstAttribute="bottom" secondItem="QZ8-M3-2NZ" secondAttribute="bottom" id="I3X-5Z-meI"/>
+                            <constraint firstItem="VAF-DL-4Vj" firstAttribute="trailing" secondItem="QZ8-M3-2NZ" secondAttribute="trailing" id="KTD-fU-dsP"/>
+                            <constraint firstAttribute="bottom" secondItem="kAk-2O-Z7p" secondAttribute="bottom" id="RFP-lH-ucy"/>
+                            <constraint firstItem="QZ8-M3-2NZ" firstAttribute="top" secondItem="VAF-DL-4Vj" secondAttribute="top" id="jVY-Rh-9Yp"/>
+                            <constraint firstItem="kAk-2O-Z7p" firstAttribute="leading" secondItem="BG3-ZF-O7p" secondAttribute="leading" id="nn7-5q-cC8"/>
+                            <constraint firstItem="kAk-2O-Z7p" firstAttribute="top" secondItem="BG3-ZF-O7p" secondAttribute="top" id="q6h-rh-5dk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VAF-DL-4Vj"/>
+                    </view>
+                    <connections>
+                        <outlet property="containView" destination="QZ8-M3-2NZ" id="xbG-rP-OB8"/>
+                        <outlet property="tableView" destination="xpu-5f-ceh" id="ACS-md-TXX"/>
+                        <outlet property="topConstraintOfTableView" destination="d7j-3j-H6h" id="M3Y-ci-9Qg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y9o-lX-mNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="39" y="23"/>
         </scene>
     </scenes>
     <resources>

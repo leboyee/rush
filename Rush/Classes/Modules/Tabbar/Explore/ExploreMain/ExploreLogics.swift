@@ -90,4 +90,10 @@ extension ExploreViewController {
             */
         }
     }
+    
+    func cellSelected(_ indexPath: IndexPath) {
+        if isSearch && searchType == .event {
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: eventList[indexPath.row])
+        }
+    }
 }

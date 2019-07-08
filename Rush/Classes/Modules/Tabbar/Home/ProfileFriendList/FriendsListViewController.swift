@@ -94,7 +94,7 @@ class FriendsListViewController: UIViewController {
             firstTitle = "4 attending"
             secondTitle = "3 managed"
         } else if type == .clubs {
-            firstTitle = "3 joind"
+            firstTitle = "3 joined"
             secondTitle = "0 managed"
         }
         

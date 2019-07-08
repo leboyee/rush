@@ -107,7 +107,7 @@ struct Segues {
     static let searchClubSegue             = "SearchClubSegue"
     static let classDetailSegue            = "ClassDetailSegue"
     static let chooseInterestViewSegue             = "ChooseInterestViewSegue"
-
+    static let eventCategorySegue          = "EventCategorySegue"
     
 }
 
