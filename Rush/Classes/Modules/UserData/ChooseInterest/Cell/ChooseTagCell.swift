@@ -37,22 +37,9 @@ extension ChooseTagCell {
         tagListView.removeAllTags()
         tagListView.addTags(tagList)
         tagListView.textFont = UIFont.Regular(sz: 17)
-        tagListView.delegate = self
         tagListView.tagSelectedBackgroundColor = UIColor.black
         self.layoutIfNeeded()
 
     }
 }
 
-extension ChooseTagCell: TagListViewDelegate {
-    // MARK: TagListViewDelegate
-    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
-        print("Tag pressed: \(title), \(sender)")
-        tagView.isSelected = !tagView.isSelected
-    }
-    
-    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
-        print("Tag Remove pressed: \(title), \(sender)")
-        sender.removeTagView(tagView)
-    }
-}

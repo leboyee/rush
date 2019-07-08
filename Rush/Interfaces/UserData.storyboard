@@ -1339,6 +1339,12 @@
                                     <constraint firstItem="5li-tl-1sw" firstAttribute="leading" secondItem="hPc-Nl-kf6" secondAttribute="leading" constant="24" id="xBa-UA-tam"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ibg-l7-aKX">
+                                <rect key="frame" x="0.0" y="222" width="414" height="674"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1z-Sv-tZP">
                                 <rect key="frame" x="0.0" y="811" width="414" height="60"/>
                                 <subviews>
@@ -1366,12 +1372,6 @@
                                     <constraint firstAttribute="trailing" secondItem="RvF-oL-JZp" secondAttribute="trailing" constant="24" id="qhl-eC-sXN"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ibg-l7-aKX">
-                                <rect key="frame" x="0.0" y="222" width="414" height="674"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1402,6 +1402,7 @@
                         <outlet property="pageControllerLeadingConstraint" destination="XYk-va-ejJ" id="VRx-eI-4fK"/>
                         <outlet property="pageControllerView" destination="TfU-Bd-Loh" id="aEk-Ny-EtL"/>
                         <outlet property="tableView" destination="ibg-l7-aKX" id="ynE-QO-acu"/>
+                        <segue destination="P1C-g5-gPF" kind="show" identifier="UserInfoViewSegue" id="q1I-Ca-f81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xff-YE-Txr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1409,7 +1410,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="7" translatesAutoresizingMaskIntoConstraints="NO" id="Fk6-mw-ga4" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fk6-mw-ga4" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
                             <rect key="frame" x="25" y="434.5" width="151" height="37"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -1427,6 +1428,14 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="7356.521739130435" y="-214.28571428571428"/>
+        </scene>
+        <!--UserInfo-->
+        <scene sceneID="E5y-UH-dHJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserInfo" id="P1C-g5-gPF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zsw-Zz-Pyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8102" y="-240"/>
         </scene>
     </scenes>
     <resources>

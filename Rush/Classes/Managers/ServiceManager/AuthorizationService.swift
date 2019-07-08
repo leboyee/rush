@@ -15,9 +15,34 @@ extension ServiceManager {
     
     
     /*
+     * we check that if user already register with same email
+     */
+    func checkEmail(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.checkEmail(params: params) { [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
+    
+    /*
+     * Get Phone token For Verify user
+     */
+    func authPhone(params : [String : Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.authPhone(params: params) { [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status,errorMessage)
+            })
+        }
+    }
+
+    /*
      *
      */
-    func signInSingup(params : [String : Any], closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
+    func singup(params : [String : Any], closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
         NetworkManager.shared.signup(params: params) {
             [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }

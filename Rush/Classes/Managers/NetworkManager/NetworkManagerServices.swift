@@ -10,12 +10,16 @@ import Foundation
 extension NetworkManager {
 
     //MARK: - Autherization API's
+    func checkEmail(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "email/check", params: params, resultHandler: resultHandler)
+    }
+    
     func login(params : [String : Any] , resultHandler: @escaping ResultClosure) {
         requestPost(path: "auth/login", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
     func signup(params : [String : Any] , resultHandler: @escaping ResultClosure) {
-        requestPost(path: "auth/login", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+        requestPost(path: "auth/signup", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
     func connectWithFB(params : [String : Any] , resultHandler: @escaping ResultClosure) {
@@ -27,7 +31,11 @@ extension NetworkManager {
     }
 
     func phonetkn(params : [String : Any] , resultHandler: @escaping ResultClosure) {
-        requestPost(path: "/auth/phone", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+        requestPost(path: "auth/phone", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+
+    func authPhone(params : [String : Any] , resultHandler: @escaping ResultClosure) {
+        requestPost(path: "auth/phone", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
 

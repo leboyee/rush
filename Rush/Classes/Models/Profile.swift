@@ -14,6 +14,7 @@ class Profile: NSObject {
     var userId              : String = ""
     var phone               : String = ""
     var socialId            : String = ""
+    var email                : String = ""
     var name                : String = ""
     var password            : String = ""
     var phoneNumber         : String = ""

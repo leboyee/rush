@@ -29,7 +29,8 @@ class EnterPasswordViewConteroller: CustomViewController {
 
     
     var loginType: LoginType = .Register
-    
+    var profile = Profile()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -99,6 +100,7 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
+        profile.password = passwordTextField.text ?? ""
         self.view.endEditing(true)
         self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
     }
@@ -115,4 +117,19 @@ extension EnterPasswordViewConteroller {
             passwordShowButton.isSelected = true
         }
     }
+}
+
+// MARK: - Navigation
+extension EnterPasswordViewConteroller {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.enterPhoneNo {
+            if let vc = segue.destination as? EnterPhoneNoViewController {
+                vc.loginType = loginType
+                vc.profile = profile
+            }
+        }
+    }
+    
 }

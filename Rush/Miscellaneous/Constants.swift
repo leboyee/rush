@@ -56,7 +56,11 @@ struct Cell {
     static let timeSlot             = "TimeSlotCell"
     static let chooseTagCell        = "ChooseTagCell"
     static let exploreCell          = "ExploreCell"
+    static let inputCell          = "InputCell"
+    static let userInfoCell          = "UserInfoCell"
+
     
+
 }
 
 struct ReusableView {
@@ -73,6 +77,8 @@ struct ViewControllerId {
     static let customPickerViewController        = "CustomPickerViewController"
     static let createPostViewController          = "CreatePostViewController"
     static let searchClubViewController          = "SearchClubViewController"
+    static let datePickerViewController        = "DatePickerViewController"
+
 }
 
 /* Create the struct for Section wise */
@@ -107,6 +113,7 @@ struct Segues {
     static let searchClubSegue             = "SearchClubSegue"
     static let classDetailSegue            = "ClassDetailSegue"
     static let chooseInterestViewSegue             = "ChooseInterestViewSegue"
+    static let userInfoViewSegue             = "UserInfoViewSegue"
 
     
 }
@@ -206,7 +213,7 @@ public struct Message {
     static let noCamera = "You don't have camera"
     static let warning = "Warning"
     static let skipSavedImageMessage = "You skipped previous step. Don’t worry, \nyour image was saved!"
-
+    static let emailAlreadyInUse = "This email address is already in use."
 }
 
 public struct Icons {

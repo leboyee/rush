@@ -15,6 +15,7 @@ enum PickerType : String {
     case cityState  = "City, State"
     case relation   = "Relation"
     case new        = "New password"
+    case gender        = "Gender"
     case docType        = "Select Identification Document"
 
 }
@@ -85,7 +86,15 @@ extension CustomPickerPreseneter {
             let countryNameStringArray = countryCode
                 .map({ $0["name"]  as! String})
             pickerDataList = countryNameStringArray
-        } 
+        }
+        if type == .relation {
+            title =  ""
+            pickerDataList = ["Single","Taken","Prefer not to say"]
+        }
+        if type == .gender {
+            title =  ""
+            pickerDataList = ["Male","Female"]
+        }
         updateTitle?(title)
     }
   

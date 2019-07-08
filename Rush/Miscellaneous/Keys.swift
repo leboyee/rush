@@ -52,4 +52,11 @@ let kSocialId            = "socialId"
 let kIsNewRegister       = "isNewRegister"
 let kUser_Type           = "user_type"
 let kToken               = "token"
+let kEmail                = "email"
+let kIsEmailExist                = "isEmailExist"
+let kPhone_token                = "phone_token"
+let kPassword                = "password"
+
+
+
 

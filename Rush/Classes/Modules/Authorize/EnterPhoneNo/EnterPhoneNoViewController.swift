@@ -23,7 +23,7 @@ class EnterPhoneNoViewController: CustomViewController {
 
     var countryCode: String = "+1"
     var frontTextFiled: String = "+1"
-    var user = Profile()
+    var profile = Profile()
     var loginType: LoginType = .Register
     
     override func viewDidLoad() {
@@ -82,7 +82,6 @@ class EnterPhoneNoViewController: CustomViewController {
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }
         setPlaceHolder()
-        
     }
 
 
@@ -95,8 +94,8 @@ extension EnterPhoneNoViewController {
     }
     
     @IBAction func nextButtonAction() {
-        
-        phoneVerificationApiCalled()
+       // moveToVerificationView()
+        authPhone()
         //self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
     }
     
@@ -110,12 +109,22 @@ extension EnterPhoneNoViewController {
     }
 }
 
+//MARK: Presenter
+extension EnterPhoneNoViewController {
+    func moveToVerificationView() {
+        self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
+    }
+    
+    
+    
+}
 // MARK: - Navigation
 extension EnterPhoneNoViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.enterPassword {
-            if let vc = segue.destination as? EnterPasswordViewConteroller {
+        if segue.identifier == Segues.enterPhoneVerification {
+            if let vc = segue.destination as? EnterVerificationCodeViewController {
                 vc.loginType = loginType
+                vc.profile = profile
             }
         }
     }

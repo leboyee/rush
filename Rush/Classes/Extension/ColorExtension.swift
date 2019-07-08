@@ -146,4 +146,8 @@ extension UIColor {
     class var gray83: UIColor {
         return UIColor(red: 0.83, green: 0.83, blue: 0.85, alpha: 1)
     }
+    
+    class var textFiledPlaceHolder: UIColor {
+        return UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)
+    }
 }

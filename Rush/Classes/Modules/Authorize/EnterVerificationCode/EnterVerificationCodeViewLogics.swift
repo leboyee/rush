@@ -91,45 +91,45 @@ extension EnterVerificationCodeViewController {
 //MARK: - Manage Interator or API's Calling
 extension EnterVerificationCodeViewController {
     
-    func codeVerifyingAPI(code : String) {
-//        ServiceManager.shared.phonetkn(params: [kToken : code]) {
-//            [weak self] (status, errorMessage) in
-//            guard let self_ = self else { return }
-//            if status {
-//                self_.updateViewStage?(.verified)
-//
-//                /*
-//                 //Comment due to push is not exist in app
-//                 //Update Push Token when user is verified successully
-//                 if let pushToken = Utils.getDataFromUserDefault(kPushToken) as? String {
-//                 AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
-//                 } */
-//            } else {
-//                self_.isCodeVerifing = false
-//                self_.updateViewStage?(.error)
-//            }
-//        }
+    func signupApiCalled(code : String) {
+        let param = [kEmail: profile.email, kPassword: profile.password,kCountry_Code:  profile.countryCode, kPhone: profile.phone, kPhone_token: code] as [String: Any]
+
+        ServiceManager.shared.singup(params: param) {
+            [weak self] (status, errorMessage) in
+            guard let self_ = self else { return }
+            if status {
+                self_.singupSuccess()
+                //self_.updateViewStage?(.verified)
+                /*
+                 //Comment due to push is not exist in app
+                 //Update Push Token when user is verified successully
+                 if let pushToken = Utils.getDataFromUserDefault(kPushToken) as? String {
+                 AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
+                 } */
+            } else {
+                self_.isCodeVerifing = false
+                //self_.updateViewStage?(.error)
+            }
+        }
     }
     
-    func phoneVerificationApiCalled() {
-        
-//        Utils.showSpinner()
-//
-//        let countryCodeString = ((countryCode.replacingOccurrences(of: "+", with: "")).replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: ""))
-//
-//        let verifyTye = comeFrom == .signup ? "signup" : "login"
-//        let param = [kCountry_Code: countryCodeString, kPhone: phoneNumber.replacingOccurrences(of: "-", with: ""), kVerify_Type:   verifyTye] as [String: Any]
-//        ServiceManager.shared.signInSingup(params: param) {
-//            [weak self] (status, errorMessage) in
-//            Utils.hideSpinner()
-//            guard let self_ = self else { return }
-//            if (status) {
-//                self_.codeSentSuccess?()
-//                self_.updateViewStage?(.start)
-//            } else {
-//                self_.showMessage?(errorMessage ?? "Please try again")
-//            }
-//        }
+    func resendCodeApiCalled() {
+        Utils.showSpinner()
+        let verifyTye = loginType == .Register ? "signup" : "login"
+        let countryCodeString = profile.countryCode
+        let phoneString = profile.phone
+        let param = [kCountry_Code:  countryCodeString, kPhone: phoneString, kVerify_Type: verifyTye] as [String: Any]
+        ServiceManager.shared.authPhone(params: param) {
+            [weak self] (status, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if (status){
+                Utils.alert(message: "Code sent successfully.")
+            }
+            else {
+                Utils.alert(message: errorMessage ?? "Please contact Admin")
+            }
+        }
     }
-    
+
 }

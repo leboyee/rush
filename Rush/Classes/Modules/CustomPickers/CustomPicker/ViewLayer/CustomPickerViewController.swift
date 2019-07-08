@@ -42,7 +42,7 @@ class CustomPickerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.containerViewConstraint.constant = 0
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.containerView.layoutIfNeeded()
             self.view.layoutIfNeeded()
         }
@@ -93,6 +93,19 @@ class CustomPickerViewController: UIViewController {
     @IBAction func dismissButtonAction(_ sender: Any) {
         dismiss(animated: false, completion: nil)
     }
+    
+    @IBAction func handleTapGesture(gesture: UITapGestureRecognizer) {
+        if gesture.state == .ended {
+            self.containerViewConstraint.constant = 262
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.layoutIfNeeded()
+            }) { (status) in
+                self.dismiss(animated: false, completion: nil)
+            }
+            
+        }
+    }
+    
     
 }
 

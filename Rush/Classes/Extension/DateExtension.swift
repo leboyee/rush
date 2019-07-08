@@ -222,6 +222,13 @@ extension Date {
         return formatter.date(from: dateString)
     }
     
+    func starnderDateFormate(date: Date) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "dd.MM.yyyy"
+        return timeFormatter.string(from:date)
+    }
+
+    
     func secondsFromBeginningOfTheDay() -> TimeInterval {
         let calendar = Calendar.current
         // omitting fractions of seconds for simplicity

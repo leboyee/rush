@@ -56,20 +56,29 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
 
 extension EnterPhoneNoViewController {
     /*
-     * This function is used to call signin api
+     * Get SMS code and register Phone
      */
-    func phoneVerificationApiCalled() {
+    func authPhone() {
         Utils.showSpinner()
         let verifyTye = loginType == .Register ? "signup" : "login"
-        let param = [kCountry_Code:  self.countryCode, kPhone: self.phoneNoTextField.text, kVerify_Type: verifyTye] as [String: Any]
-        
-        ServiceManager.shared.signInSingup(params: param) {
+        let countryCodeString = self.countryCode.replacingOccurrences(of: "+", with: "")
+        var phoneString = self.phoneNoTextField.text?.replacingOccurrences(of: self.countryCode, with: "") ?? ""
+        phoneString = phoneString.replacingOccurrences(of: "+", with: "")
+        phoneString = phoneString.replacingOccurrences(of: "-", with: "")
+        phoneString = phoneString.replacingOccurrences(of: "(", with: "")
+        phoneString = phoneString.replacingOccurrences(of: ")", with: "")
+        profile.phone = phoneString
+        profile.countryCode = countryCodeString
+        let param = [kCountry_Code:  countryCodeString, kPhone: phoneString, kVerify_Type: verifyTye] as [String: Any]
+        ServiceManager.shared.authPhone(params: param) {
             [weak self] (status, errorMessage) in
             Utils.hideSpinner()
             guard let self_ = self else { return }
-            if (status) {
-            } else {
-                Utils.alert(message:"Please try again")
+            if (status){
+               self_.moveToVerificationView()
+            }
+            else {
+                Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }
     }

@@ -38,7 +38,8 @@ class EnterVerificationCodeViewController: CustomViewController {
 
 
     var loginType: LoginType = .Register
-    
+    var profile = Profile()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -109,13 +110,9 @@ extension EnterVerificationCodeViewController {
     
     @IBAction func nextButtonAction() {
         if self.code.count == 5 {
-           // self.isCodeVerifing = true
-            //API calling for Code Verifing by server
-           // self.codeVerifyingAPI(code: self.code)
-            //Update View
-           // self.updateStageView(stage: .verifying)
             self.view.endEditing(true)
-            self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
+            signupApiCalled(code: self.code)
+            //self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
             //AppDelegate.getInstance().setupStoryboard()
         }
 
@@ -124,16 +121,27 @@ extension EnterVerificationCodeViewController {
     @IBAction func resendSMSButtonAction() {
         codeLabel.text = ""
         digitTextField.text = ""
+        resendCodeApiCalled()
         //view.endEditing(true)
     }
 }
 
+//MARK: Presenter
+extension EnterVerificationCodeViewController {
+    func singupSuccess() {
+        self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
+    }
+    
+}
+
+
 // MARK: - Navigation
 extension EnterVerificationCodeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.enterPassword {
-            if let vc = segue.destination as? EnterPasswordViewConteroller {
+        if segue.identifier == Segues.enterUserNameSegue {
+            if let vc = segue.destination as? EnterUserNameViewController {
                 vc.loginType = loginType
+                vc.profile = profile
             }
         }
     }

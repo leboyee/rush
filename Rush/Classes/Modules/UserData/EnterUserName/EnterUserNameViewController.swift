@@ -21,7 +21,7 @@ class EnterUserNameViewController: CustomViewController {
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
 
     var loginType: LoginType = .Register
-    
+    var profile = Profile()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

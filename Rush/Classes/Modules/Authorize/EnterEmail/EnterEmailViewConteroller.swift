@@ -30,6 +30,7 @@ class EnterEmailViewConteroller: CustomViewController {
 
 
     var loginType: LoginType = .Register
+    var profile = Profile()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,13 +106,15 @@ extension EnterEmailViewConteroller {
     }
     
     @IBAction func nextButtonAction() {
-        var emailText = "\(emailTextField.text ?? "").edu"
+        var emailText = "\(emailTextField.text ?? "")"
         emailText = emailText.trimmingCharacters(in: .whitespacesAndNewlines)
         if emailText.isValidEmailAddress {
             emailErroLabel.isHidden = true
             errorButton.isHidden = true
             self.view.endEditing(true)
-            self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
+            profile.email = emailText
+            checkUserAvailable()
+            //self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
         }
         else {
             if loginType == .Login {
@@ -142,8 +145,17 @@ extension EnterEmailViewConteroller {
         if segue.identifier == Segues.enterPassword {
             if let vc = segue.destination as? EnterPasswordViewConteroller {
                 vc.loginType = loginType
+                vc.profile = profile
             }
         }
     }
     
+}
+
+//MARK: Presenter
+extension EnterEmailViewConteroller {
+    
+    func  emailSuccess() {
+         self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
+    }
 }
