@@ -130,7 +130,7 @@ extension ExploreViewController {
     @IBAction func eventButtonAction(_ sender: Any) {
         if let btn = sender as? UIButton {
             
-            if btn.tag != 0 {
+            if btn.tag == 1 || btn.tag == 2 {
                 Utils.notReadyAlert()
                 return
             }

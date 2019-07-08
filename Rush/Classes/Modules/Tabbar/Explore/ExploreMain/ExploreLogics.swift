@@ -28,7 +28,7 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            return searchType == .event ? eventList.count : 1
+            return (searchType == .event || searchType == .people) ? eventList.count : 1
         } else {
             if section == 0 {
                 return 3
@@ -61,6 +61,10 @@ extension ExploreViewController {
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
         cell.setup(title: eventList[indexPath.row])
         cell.setup(isHideTopSeparator: true)
+    }
+    
+    func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
+        cell.setup(title: "John Lotter")
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
