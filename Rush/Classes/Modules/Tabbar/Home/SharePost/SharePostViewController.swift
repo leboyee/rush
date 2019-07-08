@@ -18,11 +18,15 @@ class SharePostViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
+    @IBOutlet weak var radiusView: UIView!
     
     var delegate: SharePostViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        radiusView.layer.cornerRadius = 24
+        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     override func viewWillAppear(_ animated: Bool) {

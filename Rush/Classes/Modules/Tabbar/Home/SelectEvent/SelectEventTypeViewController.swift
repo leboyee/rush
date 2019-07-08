@@ -31,6 +31,7 @@ class SelectEventTypeViewController: UIViewController {
     @IBOutlet weak var eventView: UIView!
     @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
+    @IBOutlet weak var radiusView: UIView!
     
     var type : SelectEventType = .none
     var screenType : ScreenType = .none
@@ -59,6 +60,9 @@ class SelectEventTypeViewController: UIViewController {
 // MARK: - Other function
 extension SelectEventTypeViewController {
     func setupUI() {
+        radiusView.layer.cornerRadius = 24
+        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         if type == .eventCategory {
             heightConstraintOfContainerView.constant = 214
             eventCategoryView.isHidden = false

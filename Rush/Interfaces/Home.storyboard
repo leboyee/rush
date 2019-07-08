@@ -425,11 +425,6 @@
                                             <constraint firstAttribute="bottom" secondItem="eID-Jz-2fb" secondAttribute="bottom" id="g4I-hX-Vfr"/>
                                             <constraint firstItem="eID-Jz-2fb" firstAttribute="leading" secondItem="t81-5I-Hwj" secondAttribute="leading" id="q9M-h0-KXj"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -466,6 +461,7 @@
                         <outlet property="eventCategoryView" destination="JTQ-Uy-Abk" id="B4l-GH-h6v"/>
                         <outlet property="eventView" destination="eID-Jz-2fb" id="vkq-KW-F30"/>
                         <outlet property="heightConstraintOfContainerView" destination="FiV-h8-b8i" id="rhp-8w-SDk"/>
+                        <outlet property="radiusView" destination="t81-5I-Hwj" id="mdq-la-pJe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azY-28-IKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -480,16 +476,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3LW-V3-Kk7" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-24" width="414" height="944"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-Tg-SvU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3LW-V3-Kk7" secondAttribute="bottom" constant="-24" id="8BK-T0-Yt8"/>
+                            <constraint firstItem="3LW-V3-Kk7" firstAttribute="leading" secondItem="vrW-hN-dy5" secondAttribute="leading" id="ACr-sv-7fZ"/>
                             <constraint firstItem="XKO-Tg-SvU" firstAttribute="top" secondItem="S43-Rz-Fuc" secondAttribute="top" id="CbL-3k-qDk"/>
                             <constraint firstAttribute="bottom" secondItem="XKO-Tg-SvU" secondAttribute="bottom" id="IXz-9e-Zfd"/>
+                            <constraint firstItem="3LW-V3-Kk7" firstAttribute="top" secondItem="S43-Rz-Fuc" secondAttribute="top" constant="-24" id="LPE-6B-QcD"/>
                             <constraint firstItem="XKO-Tg-SvU" firstAttribute="trailing" secondItem="vrW-hN-dy5" secondAttribute="trailing" id="XMo-pd-7wg"/>
+                            <constraint firstItem="3LW-V3-Kk7" firstAttribute="trailing" secondItem="vrW-hN-dy5" secondAttribute="trailing" id="dgt-F8-Pce"/>
                             <constraint firstItem="XKO-Tg-SvU" firstAttribute="leading" secondItem="vrW-hN-dy5" secondAttribute="leading" id="qn6-8Y-8ng"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vrW-hN-dy5"/>
@@ -954,11 +963,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
                                 <rect key="frame" x="0.0" y="101" width="414" height="708.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="809.5" width="414" height="52.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-cp-dBF">
@@ -968,10 +977,10 @@
                                             <constraint firstAttribute="height" constant="1" id="lgu-4k-bNO"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
                                         <rect key="frame" x="16" y="8" width="342" height="36.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="310" height="36.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -987,7 +996,7 @@
                                             <constraint firstItem="oh8-FT-Rgh" firstAttribute="top" secondItem="Gar-6h-cWt" secondAttribute="top" id="ufI-IH-qnS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
                                         <rect key="frame" x="374" y="14.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="2OE-ZK-g2l"/>
@@ -1191,11 +1200,6 @@
                                             <constraint firstAttribute="bottom" secondItem="eUM-uP-zP2" secondAttribute="bottom" id="VSx-Me-YYf"/>
                                             <constraint firstAttribute="trailing" secondItem="eUM-uP-zP2" secondAttribute="trailing" id="VUU-3f-Q5U"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1230,6 +1234,7 @@
                         <outlet property="bottomConstraintOfContainerView" destination="Yu3-nL-PsI" id="PFm-8v-mvD"/>
                         <outlet property="containerView" destination="lSb-D1-eJe" id="EOe-O4-z80"/>
                         <outlet property="heightConstraintOfContainerView" destination="BKE-cA-eHz" id="TWc-BU-ewm"/>
+                        <outlet property="radiusView" destination="1S9-Eu-JkI" id="lnd-Eb-gQC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KzY-kz-KPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
