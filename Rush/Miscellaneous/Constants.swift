@@ -58,9 +58,7 @@ struct Cell {
     static let exploreCell          = "ExploreCell"
     static let inputCell          = "InputCell"
     static let userInfoCell          = "UserInfoCell"
-
-    
-
+    static let peopleCell           = "PeopleCell"
 }
 
 struct ReusableView {
@@ -114,7 +112,7 @@ struct Segues {
     static let classDetailSegue            = "ClassDetailSegue"
     static let chooseInterestViewSegue             = "ChooseInterestViewSegue"
     static let userInfoViewSegue             = "UserInfoViewSegue"
-
+    static let eventCategorySegue          = "EventCategorySegue"
     
 }
 

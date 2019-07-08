@@ -38,4 +38,8 @@ extension CreateUserPostCell {
     func setup(titleColor: UIColor) {
         titleLabel.textColor = titleColor
     }
+    
+    func setup(title:String) {
+        titleLabel.text = title
+    }
 }

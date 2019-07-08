@@ -48,9 +48,17 @@ class ExploreViewController: CustomViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
          super.viewDidDisappear(animated)
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
@@ -59,10 +67,6 @@ class ExploreViewController: CustomViewController {
     }
     
     func setupUI() {
-        
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        
         searchfield.returnKeyType = .go
         searchfield.delegate = self
         searchfield.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
@@ -130,7 +134,7 @@ extension ExploreViewController {
     @IBAction func eventButtonAction(_ sender: Any) {
         if let btn = sender as? UIButton {
             
-            if btn.tag != 0 {
+            if btn.tag == 1 || btn.tag == 2 {
                 Utils.notReadyAlert()
                 return
             }
@@ -160,23 +164,10 @@ extension ExploreViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == Segues.selectEventType {
-            if let vc = segue.destination as? SelectEventTypeViewController {
-                vc.type = .eventCategory
-                vc.delegate = self
+        if segue.identifier == Segues.eventCategorySegue {
+            if let vc = segue.destination as? EventCategoryListViewController {
+                vc.categoryName = sender as? String ?? ""
             }
-        } else if segue.identifier == Segues.openPostScreen {
-            if let vc = segue.destination as? CreatePostViewController {
-                vc.delegate = self
-            }
-        } else if segue.identifier == Segues.notificationAlert {
-            let vc = segue.destination as! NotificationAlertViewController
-            vc.toastMessage = notificationTitle
-            vc.buttonTitle = notificationButtonTitle
-            vc.delegate = self
-        } else if segue.identifier == Segues.clubListSegue {
-            let vc = segue.destination as! ClubListViewController
-            vc.screenType = sender as? ClubListType ?? .none
         }
     }
 }

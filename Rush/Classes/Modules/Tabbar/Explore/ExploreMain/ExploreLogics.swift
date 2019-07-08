@@ -28,7 +28,7 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            return searchType == .event ? eventList.count : 1
+            return (searchType == .event || searchType == .people) ? eventList.count : 1
         } else {
             if section == 0 {
                 return 3
@@ -63,6 +63,10 @@ extension ExploreViewController {
         cell.setup(isHideTopSeparator: true)
     }
     
+    func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
+        cell.setup(title: "John Lotter")
+    }
+    
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
         if section == 1 {
             header.setup(title: Text.todayEvent)
@@ -84,6 +88,12 @@ extension ExploreViewController {
                 self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
             }
             */
+        }
+    }
+    
+    func cellSelected(_ indexPath: IndexPath) {
+        if isSearch && searchType == .event {
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: eventList[indexPath.row])
         }
     }
 }

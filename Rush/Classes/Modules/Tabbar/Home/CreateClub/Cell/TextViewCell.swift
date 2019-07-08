@@ -15,6 +15,7 @@ class TextViewCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var topPlaceHolderConstraint: NSLayoutConstraint!
     @IBOutlet weak var topTextViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintOfBgView: NSLayoutConstraint!
     @IBOutlet weak var clearButton: UIButton!
     
     var textDidChanged: ((_ text : String) -> Void)?
@@ -42,6 +43,7 @@ class TextViewCell: UITableViewCell {
 extension TextViewCell {
     
     func resetAllField() {
+        topConstraintOfBgView.constant = 0
         setup(isHideCleareButton: true)
         setup(isUserInterfaceEnable: false)
         setup(isHideCleareButton: true)
@@ -124,6 +126,12 @@ extension TextViewCell: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if text == "\n" && textView.returnKeyType == .done {
+            textView.resignFirstResponder()
+            return false
+        }
+        
         let currentString: NSString = textView.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: text) as NSString

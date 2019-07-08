@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import IQKeyboardManagerSwift
 
 extension CreateClubViewController {
     
@@ -49,10 +50,12 @@ extension CreateClubViewController {
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
         
         cell.resetAllField()
+        cell.setup(keyboardReturnKeyType: .done)
         if indexPath.section == 0 {
             cell.setup(iconImage: "club-gray-1")
             cell.setup(placeholder: Text.nameClub, text: nameClub)
             cell.setup(isUserInterfaceEnable: true)
+            cell.topConstraintOfBgView.constant = -16
         } else if indexPath.section == 1 {
             cell.setup(placeholder: Text.addDesc, text: clubDescription)
         } else if indexPath.section == 2 {
@@ -71,7 +74,6 @@ extension CreateClubViewController {
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
-                cell.setup(keyboardReturnKeyType: .done)
                 cell.setup(isUserInterfaceEnable: false)
             } else {
                 cell.setup(isHideCleareButton: false)
@@ -96,15 +98,17 @@ extension CreateClubViewController {
             if txt.last == "\n" {
                 txt = String(txt.dropLast())
             }
-            if indexPath.section == 2 {
-                if !self_.interestList.contains(txt) {
-                    self_.interestList.append(txt)
-                    self_.tableView.reloadData()
-                }
-            } else if indexPath.section == 3 {
-                if !self_.peopleList.contains(txt) {
-                    self_.peopleList.append(txt)
-                    self_.tableView.reloadData()
+            if text.isNotEmpty {
+                if indexPath.section == 2 {
+                    if !self_.interestList.contains(txt) {
+                        self_.interestList.append(txt)
+                        self_.tableView.reloadData()
+                    }
+                } else if indexPath.section == 3 {
+                    if !self_.peopleList.contains(txt) {
+                        self_.peopleList.append(txt)
+                        self_.tableView.reloadData()
+                    }
                 }
             }
             self_.validateAllFields()
@@ -124,6 +128,7 @@ extension CreateClubViewController {
                     self_.tableView.reloadData()
                 }
             }
+            self_.validateAllFields()
         }
         
         cell.updateTableView = {
@@ -242,7 +247,7 @@ extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigati
                     showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
                 }
             }
-            
+            IQKeyboardManager.shared.enableAutoToolbar = false
             DispatchQueue.main.async {
                 self.clubImage = captureImage
                 self.validateAllFields()
@@ -254,6 +259,7 @@ extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigati
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        IQKeyboardManager.shared.enableAutoToolbar = false
         DispatchQueue.main.async {
             picker.dismiss(animated: true, completion: nil)
         }

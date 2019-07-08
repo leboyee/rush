@@ -21,6 +21,7 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.exploreCell, bundle: nil), forCellReuseIdentifier: Cell.exploreCell)
         tableView.register(UINib(nibName: Cell.searchClubCell, bundle: nil), forCellReuseIdentifier: Cell.searchClubCell)
+        tableView.register(UINib(nibName: Cell.peopleCell, bundle: nil), forCellReuseIdentifier: Cell.peopleCell)
         
         tableView.reloadData()
     }
@@ -42,7 +43,9 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
                 fillEventCell(cell, indexPath)
                 return cell
             } else if searchType == .people {
-                return UITableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as! PeopleCell
+                fillPeopleCell(cell, indexPath)
+                return cell
             } else {
                 return UITableViewCell()
             }
@@ -60,7 +63,7 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        cellSelected(indexPath)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
