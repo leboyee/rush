@@ -83,8 +83,12 @@ extension ClubDetailViewController {
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
             cell.setup(bottomConstraintOfImage: 0)
+            cell.setup(bottomConstraintOfDate: 4)
+            cell.setup(dotButtonConstraint: 24)
         } else {
             cell.setup(bottomConstraintOfImage: 18.5)
+            cell.setup(bottomConstraintOfDate: 22)
+            cell.setup(dotButtonConstraint: -24)
         }
     }
     

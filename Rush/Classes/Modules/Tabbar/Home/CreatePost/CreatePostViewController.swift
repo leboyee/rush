@@ -137,7 +137,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
-        imageList.append(contentsOf: assets)
+        imageList = assets
         picker.dismiss(animated: false, completion: nil)
         self.picker = ImagePickerController()
         createButtonValidation()

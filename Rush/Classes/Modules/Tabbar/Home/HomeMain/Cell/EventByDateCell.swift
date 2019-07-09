@@ -14,6 +14,8 @@ class EventByDateCell: UITableViewCell {
     @IBOutlet weak var widthConstraintOfDateView: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfImageView: NSLayoutConstraint!
+    @IBOutlet weak var bottomContraintOfDateLabel: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraintOfDot: NSLayoutConstraint!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -23,6 +25,7 @@ class EventByDateCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        trailingConstraintOfDot.constant = -24
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,11 +63,19 @@ extension EventByDateCell {
         bottomConstraintOfImageView.constant = bottomConstraintOfImage
     }
     
+    func setup(bottomConstraintOfDate: CGFloat) {
+        bottomContraintOfDateLabel.constant = bottomConstraintOfDate
+    }
+    
     func setup(cornerRadius: CGFloat) {
         imgView.layer.cornerRadius = cornerRadius
     }
     
     func setup(isHideSeparator: Bool) {
         separatorView.isHidden = isHideSeparator
+    }
+    
+    func setup(dotButtonConstraint: CGFloat) {
+        trailingConstraintOfDot.constant = dotButtonConstraint
     }
 }

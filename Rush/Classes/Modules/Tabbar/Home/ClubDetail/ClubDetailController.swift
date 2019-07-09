@@ -47,6 +47,7 @@ class ClubDetailViewController: UIViewController {
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.isTranslucent = true
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))

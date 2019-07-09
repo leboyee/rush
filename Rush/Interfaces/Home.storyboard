@@ -1120,7 +1120,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7h-If-Bta" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                                                <rect key="frame" x="64" y="22" width="46.5" height="20"/>
+                                                                <rect key="frame" x="64" y="22" width="44.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1156,7 +1156,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uu-J4-GOP">
-                                                                <rect key="frame" x="64" y="22" width="92.5" height="20"/>
+                                                                <rect key="frame" x="64" y="22" width="87" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1245,7 +1245,7 @@
         <scene sceneID="9El-aa-gVh">
             <objects>
                 <viewController storyboardIdentifier="ClubListViewController" id="5ii-Rw-7GN" customClass="ClubListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UII-T1-lSM">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="UII-T1-lSM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1291,12 +1291,12 @@
         <scene sceneID="vJt-pQ-NUm">
             <objects>
                 <viewController storyboardIdentifier="ClubDetailViewController" id="tgq-BU-5qI" customClass="ClubDetailViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ffV-Ir-PbL">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="ffV-Ir-PbL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cXj-sC-BLR" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="38" width="414" height="858"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -1309,7 +1309,7 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="cXj-sC-BLR" firstAttribute="top" secondItem="ffV-Ir-PbL" secondAttribute="top" constant="38" id="3zE-6P-Vsf"/>
+                            <constraint firstItem="cXj-sC-BLR" firstAttribute="top" secondItem="ffV-Ir-PbL" secondAttribute="top" id="3zE-6P-Vsf"/>
                             <constraint firstItem="cXj-sC-BLR" firstAttribute="trailing" secondItem="lx2-fZ-wgM" secondAttribute="trailing" id="CyR-aw-KkI"/>
                             <constraint firstItem="6WQ-b2-H8b" firstAttribute="leading" secondItem="lx2-fZ-wgM" secondAttribute="leading" id="HmS-Ru-DHt"/>
                             <constraint firstItem="6WQ-b2-H8b" firstAttribute="trailing" secondItem="lx2-fZ-wgM" secondAttribute="trailing" id="RVp-iB-nIt"/>

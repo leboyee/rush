@@ -50,15 +50,14 @@ class ExploreViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+        if isSearch {
+            searchfield.becomeFirstResponder()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
          super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
@@ -129,6 +128,7 @@ extension ExploreViewController {
     
     @IBAction func clearButtonAction() {
         searchfield.text = ""
+        clearButton.isHidden = true
     }
     
     @IBAction func eventButtonAction(_ sender: Any) {

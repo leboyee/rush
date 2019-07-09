@@ -74,7 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VR Meetup" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erI-m4-jFg" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="144" y="30.5" width="160" height="16"/>
+                                <rect key="frame" x="144" y="30.5" width="112" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Bh8-UM-la4"/>
                                 </constraints>
@@ -83,7 +83,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-12pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rE-xE-php">
-                                <rect key="frame" x="144" y="48.5" width="160" height="16"/>
+                                <rect key="frame" x="144" y="48.5" width="112" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="PGx-wL-fQS"/>
                                 </constraints>
@@ -91,6 +91,14 @@
                                 <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yC1-xW-jb6">
+                                <rect key="frame" x="272" y="32" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="AT9-Vb-DFZ"/>
+                                    <constraint firstAttribute="height" constant="24" id="Qs9-GX-Aug"/>
+                                </constraints>
+                                <state key="normal" image="graydot"/>
+                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bge-rT-0MG">
                                 <rect key="frame" x="24" y="86.5" width="296" height="1"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,7 +109,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9rE-xE-php" secondAttribute="trailing" constant="16" id="2GT-xB-1xW"/>
+                            <constraint firstItem="9rE-xE-php" firstAttribute="trailing" secondItem="erI-m4-jFg" secondAttribute="trailing" id="5fw-Mz-kYK"/>
+                            <constraint firstItem="yC1-xW-jb6" firstAttribute="leading" secondItem="erI-m4-jFg" secondAttribute="trailing" constant="16" id="7MV-TK-XFf"/>
                             <constraint firstAttribute="trailing" secondItem="bge-rT-0MG" secondAttribute="trailing" id="B8A-3x-4Xa"/>
                             <constraint firstAttribute="bottom" secondItem="bge-rT-0MG" secondAttribute="bottom" id="DlS-a6-mqy"/>
                             <constraint firstItem="erI-m4-jFg" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="HEh-m6-86D"/>
@@ -113,8 +122,9 @@
                             <constraint firstItem="bge-rT-0MG" firstAttribute="leading" secondItem="5if-oU-dmR" secondAttribute="leading" constant="24" id="eHt-FL-6MZ"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="top" secondItem="erI-m4-jFg" secondAttribute="bottom" constant="2" id="eQc-2o-aFa"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="VRF-Lx-TIn" secondAttribute="bottom" constant="18.5" id="fkD-DA-gKA"/>
+                            <constraint firstItem="yC1-xW-jb6" firstAttribute="centerY" secondItem="VRF-Lx-TIn" secondAttribute="centerY" id="npp-eW-kEy"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="pkG-kH-Wtk"/>
-                            <constraint firstAttribute="trailing" secondItem="erI-m4-jFg" secondAttribute="trailing" constant="16" id="wvr-HY-Q2V"/>
+                            <constraint firstAttribute="trailing" secondItem="yC1-xW-jb6" secondAttribute="trailing" constant="24" id="zew-mX-g2E"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -130,18 +140,21 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bottomConstraintOfImageView" destination="fkD-DA-gKA" id="n2d-uo-gw4"/>
+                <outlet property="bottomContraintOfDateLabel" destination="Z8I-9j-jXN" id="etl-EY-b2g"/>
                 <outlet property="detailLabel" destination="9rE-xE-php" id="ASB-yT-NOp"/>
                 <outlet property="imgView" destination="VRF-Lx-TIn" id="UZW-1L-wUd"/>
                 <outlet property="leadingConstraintOfDateView" destination="eFS-Vg-zlj" id="sO6-xJ-cvv"/>
                 <outlet property="separatorView" destination="bge-rT-0MG" id="edd-Fe-FRv"/>
                 <outlet property="titleLabel" destination="erI-m4-jFg" id="sj8-1a-P2M"/>
                 <outlet property="topConstraintOfImageView" destination="MLL-SD-l16" id="2zE-xQ-iEF"/>
+                <outlet property="trailingConstraintOfDot" destination="zew-mX-g2E" id="IoF-8W-E6j"/>
                 <outlet property="widthConstraintOfDateView" destination="kKT-lY-zgw" id="4rb-is-5a7"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="93.75"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="graydot" width="24" height="24"/>
         <image name="img-event" width="48" height="48"/>
     </resources>
 </document>
