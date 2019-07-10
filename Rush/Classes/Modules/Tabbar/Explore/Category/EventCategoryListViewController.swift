@@ -10,11 +10,18 @@ import UIKit
 
 class EventCategoryListViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
-    var categoryName = "Jessica"
+    var categoryName = ""
+    
+    var isFirstFilter = false
+    var isSecondFilter = false
+    var isThirdFilter = false
+    
+    var type : ScreenType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +50,14 @@ class EventCategoryListViewController: UIViewController {
         // Setup tableview
         setupTableView()
         
+        // Setup collectionview
+        setupCollectionView()
+        
         // Set navigation title
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: categoryName, textColor: UIColor.white)
+        
+        categoryName = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : categoryName
+        
+        navigationItem.titleView = Utils.getNavigationBarTitle(title: categoryName, textColor: type == .none ? UIColor.white : UIColor.navBarTitleWhite32)
     }
     
     @objc func backButtonAction() {

@@ -56,9 +56,10 @@ struct Cell {
     static let timeSlot             = "TimeSlotCell"
     static let chooseTagCell        = "ChooseTagCell"
     static let exploreCell          = "ExploreCell"
-    static let inputCell          = "InputCell"
-    static let userInfoCell          = "UserInfoCell"
+    static let inputCell            = "InputCell"
+    static let userInfoCell         = "UserInfoCell"
     static let peopleCell           = "PeopleCell"
+    static let sortingCell          = "SortingCell"
 }
 
 struct ReusableView {

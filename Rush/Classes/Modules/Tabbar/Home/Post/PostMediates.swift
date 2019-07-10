@@ -59,7 +59,6 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
             fillCommentCell(cell, indexPath)
             return cell
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

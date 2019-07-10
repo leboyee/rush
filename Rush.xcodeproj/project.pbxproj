@@ -163,6 +163,8 @@
 		79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A47229D761500DA54AF /* MyClubLogics.swift */; };
 		79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A48229D761500DA54AF /* MyClubMediates.swift */; };
 		79356A4C229D761600DA54AF /* MyClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A49229D761500DA54AF /* MyClubViewController.swift */; };
+		793B64EF22D5BC1700D9BD6D /* SortingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B64ED22D5BC1700D9BD6D /* SortingCell.swift */; };
+		793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793B64EE22D5BC1700D9BD6D /* SortingCell.xib */; };
 		794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A3228960C7009AB12C /* SF-Pro-Display-Bold.otf */; };
 		794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A4228960C7009AB12C /* SF-Pro-Display-Light.otf */; };
 		794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A5228960C7009AB12C /* SF-Pro-Display-Medium.otf */; };
@@ -452,6 +454,8 @@
 		79356A47229D761500DA54AF /* MyClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubLogics.swift; sourceTree = "<group>"; };
 		79356A48229D761500DA54AF /* MyClubMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubMediates.swift; sourceTree = "<group>"; };
 		79356A49229D761500DA54AF /* MyClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubViewController.swift; sourceTree = "<group>"; };
+		793B64ED22D5BC1700D9BD6D /* SortingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCell.swift; sourceTree = "<group>"; };
+		793B64EE22D5BC1700D9BD6D /* SortingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortingCell.xib; sourceTree = "<group>"; };
 		794183A3228960C7009AB12C /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		794183A4228960C7009AB12C /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		794183A5228960C7009AB12C /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
@@ -1257,6 +1261,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		793B64EC22D5BBA000D9BD6D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				793B64ED22D5BC1700D9BD6D /* SortingCell.swift */,
+				793B64EE22D5BC1700D9BD6D /* SortingCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		794183A2228960C7009AB12C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1553,6 +1566,7 @@
 		79EF134522D3588D00E260D9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				793B64EC22D5BBA000D9BD6D /* Cell */,
 				79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */,
 				79EF134722D3588D00E260D9 /* EventCategoryListMediates.swift */,
 				79EF134822D3588D00E260D9 /* EventCategoryListViewController.swift */,
@@ -1824,6 +1838,7 @@
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
 				7929DA5822C253A400700B42 /* PostLikeCell.xib in Resources */,
+				793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */,
 				7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */,
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */,
@@ -2009,6 +2024,7 @@
 				799190A022C9D5A00044602E /* ClubDetailLogics.swift in Sources */,
 				1ACEAC1522AC040A00B734D3 /* AddProfilePictureViewController.swift in Sources */,
 				1A353AC422BD05B60069752D /* ChooseUniversityViewController.swift in Sources */,
+				793B64EF22D5BC1700D9BD6D /* SortingCell.swift in Sources */,
 				1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */,
 				1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */,
 				79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */,

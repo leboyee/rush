@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+
 
 class PostViewController: UIViewController {
     
@@ -29,8 +31,10 @@ class PostViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
     }
+
     
     func setupUI() {
+        
         bottomView.setBackgroundColor()
         navigationController?.navigationBar.isTranslucent = false
         self.view.backgroundColor = UIColor.bgBlack

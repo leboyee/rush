@@ -166,7 +166,12 @@ extension ExploreViewController {
         
         if segue.identifier == Segues.eventCategorySegue {
             if let vc = segue.destination as? EventCategoryListViewController {
-                vc.categoryName = sender as? String ?? ""
+                if let type = sender as? ScreenType {
+                    vc.type = type
+                } else {
+                    vc.categoryName = sender as? String ?? ""
+                    vc.type = .none
+                }
             }
         }
     }
