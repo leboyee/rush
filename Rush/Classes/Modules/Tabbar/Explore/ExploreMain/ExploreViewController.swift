@@ -58,7 +58,7 @@ class ExploreViewController: CustomViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
          super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enableAutoToolbar = true
+//        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func setup() {
