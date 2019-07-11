@@ -1120,7 +1120,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7h-If-Bta" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                                                <rect key="frame" x="64" y="22" width="44.5" height="20"/>
+                                                                <rect key="frame" x="64" y="22" width="46.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1156,7 +1156,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uu-J4-GOP">
-                                                                <rect key="frame" x="64" y="22" width="87" height="20"/>
+                                                                <rect key="frame" x="64" y="22" width="92.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1435,8 +1435,8 @@
         <image name="white-info" width="28" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2qn-kC-bGH"/>
-        <segue reference="bqe-q0-s4j"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="E7I-YA-fBT"/>
         <segue reference="Woq-6I-hkG"/>
     </inferredMetricsTieBreakers>
 </document>

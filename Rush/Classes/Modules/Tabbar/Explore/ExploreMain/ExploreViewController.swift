@@ -90,15 +90,15 @@ class ExploreViewController: CustomViewController {
         explore.font = UIFont.DisplayBold(sz: 24)
         explore.textColor = UIColor.white
         
-        // View calender button setup
-        
-        let universityLabel = UILabel(frame: CGRect(x: 0, y: 30, width: screenWidth - 130, height: 18))
-        universityLabel.text = university
-        universityLabel.font = UIFont.DisplaySemibold(sz: 13)
-        universityLabel.textColor = UIColor.gray47
-        
+        // University button setup
+        let universityButton = UIButton(frame: CGRect(x: 0, y: 30, width: screenWidth - 130, height: 18))
+        universityButton.setTitle(university, for: .normal)
+        universityButton.contentHorizontalAlignment = .left
+        universityButton.setTitleColor(UIColor.gray47, for: .normal)
+        universityButton.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        universityButton.addTarget(self, action: #selector(changeUniversity), for: .touchUpInside)
         navigationView.addSubview(explore)
-        navigationView.addSubview(universityLabel)
+        navigationView.addSubview(universityButton)
         navigationItem.titleView = navigationView
     }
     
@@ -124,6 +124,10 @@ class ExploreViewController: CustomViewController {
 extension ExploreViewController {
     @objc func changeLocationButtonAction() {
         Utils.notReadyAlert()
+    }
+    
+    @objc func changeUniversity() {
+        performSegue(withIdentifier: Segues.universitySegue, sender: nil)
     }
     
     @IBAction func clearButtonAction() {

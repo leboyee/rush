@@ -234,6 +234,7 @@
                         <outlet property="tableView" destination="sbD-fu-wqp" id="f6n-7N-YsZ"/>
                         <outlet property="thirsSeparator" destination="83r-Kq-QsE" id="FOs-Tr-Fsp"/>
                         <segue destination="wtT-AY-LdS" kind="show" identifier="EventCategorySegue" id="xzX-jX-aYt"/>
+                        <segue destination="UuK-AW-iVw" kind="show" identifier="UniversitySegue" id="2n4-fV-eKp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AV-99-LfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,6 +328,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9o-lX-mNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="37.681159420289859" y="22.767857142857142"/>
+        </scene>
+        <!--University View Controller-->
+        <scene sceneID="xaZ-9i-CM1">
+            <objects>
+                <viewController storyboardIdentifier="UniversityViewController" id="UuK-AW-iVw" customClass="UniversityViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uWE-pk-Uco">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KJe-Ir-aDc" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="819"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ueO-6T-YW1">
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KJe-Ir-aDc" firstAttribute="trailing" secondItem="TsV-db-2QS" secondAttribute="trailing" id="0hJ-vN-4Df"/>
+                            <constraint firstAttribute="bottom" secondItem="KJe-Ir-aDc" secondAttribute="bottom" constant="-24" id="3eD-W1-Jtp"/>
+                            <constraint firstItem="KJe-Ir-aDc" firstAttribute="leading" secondItem="TsV-db-2QS" secondAttribute="leading" id="7hf-hI-zw5"/>
+                            <constraint firstItem="ueO-6T-YW1" firstAttribute="top" secondItem="KJe-Ir-aDc" secondAttribute="top" id="MhV-q7-GYb"/>
+                            <constraint firstAttribute="bottom" secondItem="ueO-6T-YW1" secondAttribute="bottom" id="Q1b-MA-d4T"/>
+                            <constraint firstItem="KJe-Ir-aDc" firstAttribute="top" secondItem="TsV-db-2QS" secondAttribute="top" constant="13" id="WqK-Qi-HGI"/>
+                            <constraint firstItem="ueO-6T-YW1" firstAttribute="trailing" secondItem="TsV-db-2QS" secondAttribute="trailing" id="hOj-ER-iEe"/>
+                            <constraint firstItem="ueO-6T-YW1" firstAttribute="leading" secondItem="TsV-db-2QS" secondAttribute="leading" id="oww-Im-wIT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TsV-db-2QS"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="ueO-6T-YW1" id="2fE-Wp-lSC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="20h-Es-rc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797" y="23"/>
         </scene>
     </scenes>
     <resources>

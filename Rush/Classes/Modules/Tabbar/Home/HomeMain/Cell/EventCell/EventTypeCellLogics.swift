@@ -37,7 +37,6 @@ extension EventTypeCell {
             cell.setup(text: "John")
             cell.setup(isShowCount: false)
         }
-        
     }
     
     func fillImagesCell(_ cell: ProfileImageCell,_ indexPath: IndexPath) {
@@ -57,5 +56,4 @@ extension EventTypeCell {
             return CGSize(width: 96, height: 112)
         }
     }
-    
 }

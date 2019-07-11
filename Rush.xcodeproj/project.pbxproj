@@ -163,6 +163,9 @@
 		79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A47229D761500DA54AF /* MyClubLogics.swift */; };
 		79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A48229D761500DA54AF /* MyClubMediates.swift */; };
 		79356A4C229D761600DA54AF /* MyClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79356A49229D761500DA54AF /* MyClubViewController.swift */; };
+		7938D06122D75D74002D1537 /* UniversityLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7938D05E22D75D73002D1537 /* UniversityLogics.swift */; };
+		7938D06222D75D74002D1537 /* UniversityMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7938D05F22D75D73002D1537 /* UniversityMediates.swift */; };
+		7938D06322D75D74002D1537 /* UniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7938D06022D75D73002D1537 /* UniversityViewController.swift */; };
 		793B64EF22D5BC1700D9BD6D /* SortingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B64ED22D5BC1700D9BD6D /* SortingCell.swift */; };
 		793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793B64EE22D5BC1700D9BD6D /* SortingCell.xib */; };
 		794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183A3228960C7009AB12C /* SF-Pro-Display-Bold.otf */; };
@@ -454,6 +457,9 @@
 		79356A47229D761500DA54AF /* MyClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubLogics.swift; sourceTree = "<group>"; };
 		79356A48229D761500DA54AF /* MyClubMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubMediates.swift; sourceTree = "<group>"; };
 		79356A49229D761500DA54AF /* MyClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClubViewController.swift; sourceTree = "<group>"; };
+		7938D05E22D75D73002D1537 /* UniversityLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversityLogics.swift; sourceTree = "<group>"; };
+		7938D05F22D75D73002D1537 /* UniversityMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversityMediates.swift; sourceTree = "<group>"; };
+		7938D06022D75D73002D1537 /* UniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversityViewController.swift; sourceTree = "<group>"; };
 		793B64ED22D5BC1700D9BD6D /* SortingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCell.swift; sourceTree = "<group>"; };
 		793B64EE22D5BC1700D9BD6D /* SortingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortingCell.xib; sourceTree = "<group>"; };
 		794183A3228960C7009AB12C /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -648,6 +654,7 @@
 		0918E76E228436820098AF35 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				7938D05D22D75D73002D1537 /* University */,
 				79EF134522D3588D00E260D9 /* Category */,
 				79D29C9A22CF2C74008C6ED0 /* ExploreMain */,
 			);
@@ -1259,6 +1266,16 @@
 				79173F3A229E6FA10003FD9B /* ClubNameCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		7938D05D22D75D73002D1537 /* University */ = {
+			isa = PBXGroup;
+			children = (
+				7938D05E22D75D73002D1537 /* UniversityLogics.swift */,
+				7938D05F22D75D73002D1537 /* UniversityMediates.swift */,
+				7938D06022D75D73002D1537 /* UniversityViewController.swift */,
+			);
+			path = University;
 			sourceTree = "<group>";
 		};
 		793B64EC22D5BBA000D9BD6D /* Cell */ = {
@@ -1926,6 +1943,7 @@
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
 				797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */,
+				7938D06322D75D74002D1537 /* UniversityViewController.swift in Sources */,
 				1A3CB09022BD3242005D3D87 /* AddMajorsViewMediates.swift in Sources */,
 				091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */,
 				79D29CA022CF2C74008C6ED0 /* ExploreMediates.swift in Sources */,
@@ -2034,6 +2052,7 @@
 				79D29CA422CF339B008C6ED0 /* ExploreCell.swift in Sources */,
 				797FFDA522B7BC480055A001 /* ImagePickerControllerDelegate.swift in Sources */,
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
+				7938D06222D75D74002D1537 /* UniversityMediates.swift in Sources */,
 				797FFDB622B7BC480055A001 /* SlideUpPresentationController.swift in Sources */,
 				797FFDAB22B7BC480055A001 /* PhotoAlbumTitleButton.swift in Sources */,
 				7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */,
@@ -2100,6 +2119,7 @@
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */,
 				79EF134B22D3588D00E260D9 /* EventCategoryListViewController.swift in Sources */,
+				7938D06122D75D74002D1537 /* UniversityLogics.swift in Sources */,
 				797FFDB322B7BC480055A001 /* PhotoGalleryViewController.swift in Sources */,
 				79D29C9F22CF2C74008C6ED0 /* ExploreLogics.swift in Sources */,
 				1ACEAC1622AC040A00B734D3 /* AddProfilePictureViewMediates.swift in Sources */,

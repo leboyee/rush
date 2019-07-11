@@ -114,7 +114,7 @@ struct Segues {
     static let chooseInterestViewSegue             = "ChooseInterestViewSegue"
     static let userInfoViewSegue             = "UserInfoViewSegue"
     static let eventCategorySegue          = "EventCategorySegue"
-    
+    static let universitySegue             = "UniversitySegue"
 }
 
 struct StoryBoard {

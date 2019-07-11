@@ -69,9 +69,9 @@ class HomeViewController: CustomViewController {
         dateLabel.textColor = UIColor.white
         
         // View calender button setup
-        let viewCalender = UIButton(frame: CGRect(x: -10, y: 30, width: 100, height: 18))
+        let viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
         viewCalender.setTitle("View calendar", for: .normal)
-        viewCalender.titleLabel?.textAlignment = .left
+        viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
         navigationView.addSubview(dateLabel)
