@@ -33,11 +33,6 @@ class OtherUserProfileController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
     //MARk: - Other function
     func setup() {
         setupUI()
@@ -85,7 +80,7 @@ extension OtherUserProfileController {
     }
     
     @objc func shareButtonAction() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
 
@@ -101,6 +96,10 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.friendList {
             let vc = segue.destination as! FriendsListViewController
             vc.type = sender as? UserProfileDetailType ?? .none
+        } else if segue.identifier == Segues.sharePostSegue {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.type = .profile
+            }
         }
     }
 }

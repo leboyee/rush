@@ -39,10 +39,13 @@ class SearchClubViewController: CustomViewController {
         setup()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
     func setup() {
@@ -56,11 +59,6 @@ class SearchClubViewController: CustomViewController {
     }
     
     func setupNavigation() {
-        
-        navigationController?.navigationBar.isTranslucent = false
-        
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
         
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))

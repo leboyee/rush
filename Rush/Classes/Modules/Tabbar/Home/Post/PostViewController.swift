@@ -31,7 +31,11 @@ class PostViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared.enable = true
+    }
     
     func setupUI() {
         

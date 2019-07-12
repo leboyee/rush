@@ -203,6 +203,10 @@ public struct Text {
     static let todayEvent               = "Today's events"
     static let clubsMightLike           = "Clubs you might like"
     static let classesYouMightLike      = "Classes you might like"
+    static let deleteClass              = "Delete class"
+    static let deletePost               = "Delete post"
+    static let deleteClub               = "Delete club"
+    static let report                   = "Report"
 }
 
 public struct Message {

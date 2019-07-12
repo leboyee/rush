@@ -88,7 +88,7 @@ extension ClassDetailViewController {
     }
     
     func fillTimeSlotCell(_ cell: TimeSlotCell,_ indexPath: IndexPath) {
-        cell.setup(placeholder: "", title: timeList[indexPath.row])
+        cell.setup(day: timeList[indexPath.row])
         cell.setup(isHideDropDown: indexPath.row == 0 ? false : true)
     }
     

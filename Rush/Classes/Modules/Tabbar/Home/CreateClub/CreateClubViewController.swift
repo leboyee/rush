@@ -44,12 +44,9 @@ class CreateClubViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
  
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enableAutoToolbar = true
-    }
     
     //MARk: - Other function
     func setup() {
@@ -57,7 +54,6 @@ class CreateClubViewController: UIViewController {
     }
     
     func setupUI() {
-        IQKeyboardManager.shared.enableAutoToolbar = false
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         

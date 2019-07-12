@@ -53,11 +53,6 @@ class CreatePostViewController: UIViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-    }
-    
     func setup() {
         setupUI()
     }
