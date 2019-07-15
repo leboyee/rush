@@ -85,9 +85,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZD-Qo-Itt" customClass="CustomBlackButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="81" y="0.0" width="43" height="16"/>
+                                        <rect key="frame" x="81" y="0.0" width="36" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                                        <state key="normal" title="Replay">
+                                        <state key="normal" title="Reply">
                                             <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>

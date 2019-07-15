@@ -79,7 +79,7 @@ class ExploreViewController: CustomViewController {
     func setupNavigation() {
         
         // Right item button
-        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(changeLocationButtonAction))
+        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(changeUniversity))
         navigationItem.rightBarButtonItem = rightBarButton
         
  
@@ -91,12 +91,11 @@ class ExploreViewController: CustomViewController {
         explore.textColor = UIColor.white
         
         // University button setup
-        let universityButton = UIButton(frame: CGRect(x: 0, y: 30, width: screenWidth - 130, height: 18))
+        let universityButton = UIButton(frame: CGRect(x: 0, y: 26, width: screenWidth - 130, height: 18))
         universityButton.setTitle(university, for: .normal)
         universityButton.contentHorizontalAlignment = .left
         universityButton.setTitleColor(UIColor.gray47, for: .normal)
         universityButton.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
-        universityButton.addTarget(self, action: #selector(changeUniversity), for: .touchUpInside)
         navigationView.addSubview(explore)
         navigationView.addSubview(universityButton)
         navigationItem.titleView = navigationView

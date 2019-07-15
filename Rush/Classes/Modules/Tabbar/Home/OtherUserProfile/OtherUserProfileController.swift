@@ -40,6 +40,9 @@ class OtherUserProfileController: UIViewController {
     
     func setupUI() {
         
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        
         /*
         scrollView.delegate = self
         
@@ -95,6 +98,7 @@ extension OtherUserProfileController {
             }
         } else if segue.identifier == Segues.friendList {
             let vc = segue.destination as! FriendsListViewController
+            vc.hidesBottomBarWhenPushed = false
             vc.type = sender as? UserProfileDetailType ?? .none
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {

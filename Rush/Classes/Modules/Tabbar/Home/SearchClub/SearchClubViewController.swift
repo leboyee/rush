@@ -68,6 +68,7 @@ class SearchClubViewController: CustomViewController {
             searchTextField.font = UIFont.DisplayBold(sz: 24)
             searchTextField.textColor = UIColor.white
             searchTextField.returnKeyType = .go
+            searchTextField.autocorrectionType = .no
             searchTextField.delegate = self
             searchTextField.attributedPlaceholder = NSAttributedString(string: "Search clubs", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)

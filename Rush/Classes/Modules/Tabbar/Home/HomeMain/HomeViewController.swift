@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+
 
 class HomeViewController: CustomViewController {
     
@@ -26,6 +28,12 @@ class HomeViewController: CustomViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
     func setup() {
         setupUI()
     }
@@ -41,7 +49,7 @@ class HomeViewController: CustomViewController {
         // Right item button
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBarButton
-        
+            
         /*
         // create the button
         let createImage  = UIImage(named: "active-create")!.withRenderingMode(.alwaysOriginal)
@@ -114,6 +122,7 @@ extension HomeViewController {
             vc.delegate = self
         } else if segue.identifier == Segues.clubListSegue {
             let vc = segue.destination as! ClubListViewController
+            vc.hidesBottomBarWhenPushed = false
             vc.screenType = sender as? ClubListType ?? .none
         }
     }

@@ -92,6 +92,9 @@ extension PostViewController {
             vc.toastMessage = "Your post is deleted."
             vc.buttonTitle = "Undo"
             vc.delegate = self
+        } else if segue.identifier == Segues.otherUserProfile {
+            let vc = segue.destination as! OtherUserProfileController
+            vc.clubImage = #imageLiteral(resourceName: "bound-add-img")
         }
      }
      

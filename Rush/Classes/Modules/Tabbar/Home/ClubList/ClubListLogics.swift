@@ -101,13 +101,7 @@ extension ClubListViewController {
             // Open other user profile UI for test
             
             if self_.screenType == .club {
-                let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.createPostViewController) as! CreatePostViewController
-                vc.delegate = self
-                vc.modalPresentationStyle = .overFullScreen
-                vc.view.backgroundColor = UIColor.bgBlack
-                let navigation = UINavigationController(rootViewController: vc)
-                self_.navigationController?.present(navigation, animated: true, completion: nil)
+                
             } else {
                 // self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
             }
