@@ -97,6 +97,7 @@ struct Segues {
     static let enterUserNameSegue          = "EnterUserNameSegue"
     static let addProfilePictureSegue      = "AddProfilePictureSegue"
     static let openPostScreen              = "SegueOpenPostScreen"
+    static let createPost                  = "CreatePostSegue"
     static let profileInformation          = "ProfileInformationSegue"
     static let chooseLevelSegue            = "ChooseLevelSegue"
     static let chooseYearSegue             = "ChooseYearSegue"

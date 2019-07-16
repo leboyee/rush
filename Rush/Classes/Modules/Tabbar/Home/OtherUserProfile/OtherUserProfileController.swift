@@ -31,6 +31,8 @@ class OtherUserProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isTranslucent = false
     }
     
     //MARk: - Other function

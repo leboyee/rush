@@ -111,7 +111,7 @@ extension HomeViewController {
                 vc.type = .eventCategory
                 vc.delegate = self
             }
-        } else if segue.identifier == Segues.openPostScreen {
+        } else if segue.identifier == Segues.createPost {
             if let vc = segue.destination as? CreatePostViewController {
                 vc.delegate = self
             }
