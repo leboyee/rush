@@ -15,7 +15,7 @@ extension ChatsViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return 5
+        return 0
     }
     
     func fillCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {

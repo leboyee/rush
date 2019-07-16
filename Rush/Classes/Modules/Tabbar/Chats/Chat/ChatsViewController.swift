@@ -40,7 +40,7 @@ class ChatsViewController: CustomViewController {
     }
     
     func setupUI() {
-        blankView.isHidden = true
+        blankView.isHidden = false
         
         setupTableView()
         
