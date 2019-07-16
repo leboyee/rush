@@ -32,6 +32,8 @@ class HomeViewController: CustomViewController {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isTranslucent = false
     }
     
     func setup() {

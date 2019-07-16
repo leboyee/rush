@@ -20,7 +20,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="88" id="KGk-i7-Jjw" customClass="ChatListCell" customModule="Rush" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -97,12 +97,22 @@
                             <constraint firstAttribute="trailing" secondItem="erI-m4-jFg" secondAttribute="trailing" constant="16" id="yhW-GH-jsD"/>
                         </constraints>
                     </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCh-ot-tho">
+                        <rect key="frame" x="24" y="86.5" width="396" height="1"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="WPU-g9-ubl"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="5if-oU-dmR" secondAttribute="trailing" id="70t-pj-LCS"/>
                     <constraint firstItem="5if-oU-dmR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="D5f-qq-Jyt"/>
+                    <constraint firstItem="PCh-ot-tho" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="KAw-i6-jZf"/>
                     <constraint firstAttribute="bottom" secondItem="5if-oU-dmR" secondAttribute="bottom" id="Lh0-Nb-YFX"/>
+                    <constraint firstAttribute="bottom" secondItem="PCh-ot-tho" secondAttribute="bottom" id="e7O-gT-2m2"/>
+                    <constraint firstAttribute="trailing" secondItem="PCh-ot-tho" secondAttribute="trailing" constant="-100" id="mun-Ro-4fT"/>
                     <constraint firstItem="5if-oU-dmR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xCq-SA-l0u"/>
                 </constraints>
             </tableViewCellContentView>
