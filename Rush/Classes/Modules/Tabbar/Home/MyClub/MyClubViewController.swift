@@ -63,7 +63,7 @@ extension MyClubViewController {
     }
     
     @objc func shareButtonAction() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
 
@@ -74,7 +74,12 @@ extension MyClubViewController {
         if segue.identifier == Segues.otherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {
                 // image for test
-                vc.clubImage = clubImage
+                vc.clubImage = #imageLiteral(resourceName: "bound-add-img")
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.sharePostSegue {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.type = .club
             }
         }
     }

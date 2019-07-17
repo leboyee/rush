@@ -31,6 +31,14 @@ class ClassDetailViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.barTintColor = UIColor.clear
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    
     //MARk: - Other function
     func setup() {
         setupUI()
@@ -46,8 +54,6 @@ class ClassDetailViewController: UIViewController {
         */
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
@@ -71,7 +77,7 @@ extension ClassDetailViewController {
     }
     
     @objc func shareButtonAction() {
-        performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
 
@@ -83,6 +89,11 @@ extension ClassDetailViewController {
             if let vc = segue.destination as? OtherUserProfileController {
                 // image for test
                 vc.clubImage = clubImage
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.sharePostSegue {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.type = .classes
             }
         }
     }

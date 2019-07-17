@@ -37,16 +37,7 @@ class FriendsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-        navigationController?.navigationBar.isTranslucent = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.barTintColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
+        
     }
     
     func setupUI() {
@@ -106,7 +97,7 @@ class FriendsListViewController: UIViewController {
     }
     
     @objc func backButtonAction() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
 }
 

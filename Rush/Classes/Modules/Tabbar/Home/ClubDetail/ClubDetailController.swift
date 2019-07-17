@@ -47,6 +47,7 @@ class ClubDetailViewController: UIViewController {
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.isTranslucent = true
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
@@ -70,7 +71,7 @@ extension ClubDetailViewController {
     }
     
     @objc func shareButtonAction() {
-        performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
 
@@ -82,6 +83,11 @@ extension ClubDetailViewController {
             if let vc = segue.destination as? OtherUserProfileController {
                 // image for test
                 vc.clubImage = clubImage
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.sharePostSegue {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.type = .club
             }
         }
     }

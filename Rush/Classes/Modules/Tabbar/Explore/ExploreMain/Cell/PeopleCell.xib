@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-ec-y42">
-                                <rect key="frame" x="25" y="54" width="350" height="1"/>
+                                <rect key="frame" x="25" y="54" width="394" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="WNm-ez-W4T"/>
@@ -54,7 +54,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="HTb-ec-y42" secondAttribute="bottom" id="N0H-PI-xX0"/>
-                            <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" id="X7Q-C9-lbu"/>
+                            <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" constant="-44" id="X7Q-C9-lbu"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="leading" secondItem="ihz-0M-yys" secondAttribute="trailing" constant="16" id="apW-sL-d3m"/>
                             <constraint firstItem="ihz-0M-yys" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="24" id="fd8-iV-kvt"/>
                             <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="15" id="hTI-GU-6lj"/>
@@ -75,6 +75,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="titleLabel" destination="Mr7-TO-QxM" id="R2E-Yd-MUi"/>
             </connections>

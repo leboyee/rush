@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+
 
 class HomeViewController: CustomViewController {
     
@@ -26,6 +28,14 @@ class HomeViewController: CustomViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isTranslucent = false
+    }
+    
     func setup() {
         setupUI()
     }
@@ -41,7 +51,7 @@ class HomeViewController: CustomViewController {
         // Right item button
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBarButton
-        
+            
         /*
         // create the button
         let createImage  = UIImage(named: "active-create")!.withRenderingMode(.alwaysOriginal)
@@ -69,9 +79,9 @@ class HomeViewController: CustomViewController {
         dateLabel.textColor = UIColor.white
         
         // View calender button setup
-        let viewCalender = UIButton(frame: CGRect(x: -10, y: 30, width: 100, height: 18))
+        let viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
         viewCalender.setTitle("View calendar", for: .normal)
-        viewCalender.titleLabel?.textAlignment = .left
+        viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
         navigationView.addSubview(dateLabel)
@@ -103,7 +113,7 @@ extension HomeViewController {
                 vc.type = .eventCategory
                 vc.delegate = self
             }
-        } else if segue.identifier == Segues.openPostScreen {
+        } else if segue.identifier == Segues.createPost {
             if let vc = segue.destination as? CreatePostViewController {
                 vc.delegate = self
             }
@@ -114,6 +124,7 @@ extension HomeViewController {
             vc.delegate = self
         } else if segue.identifier == Segues.clubListSegue {
             let vc = segue.destination as! ClubListViewController
+            vc.hidesBottomBarWhenPushed = false
             vc.screenType = sender as? ClubListType ?? .none
         }
     }

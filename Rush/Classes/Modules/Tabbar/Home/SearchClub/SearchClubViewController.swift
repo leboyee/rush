@@ -39,10 +39,13 @@ class SearchClubViewController: CustomViewController {
         setup()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
     func setup() {
@@ -57,11 +60,6 @@ class SearchClubViewController: CustomViewController {
     
     func setupNavigation() {
         
-        navigationController?.navigationBar.isTranslucent = false
-        
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         
@@ -70,6 +68,7 @@ class SearchClubViewController: CustomViewController {
             searchTextField.font = UIFont.DisplayBold(sz: 24)
             searchTextField.textColor = UIColor.white
             searchTextField.returnKeyType = .go
+            searchTextField.autocorrectionType = .no
             searchTextField.delegate = self
             searchTextField.attributedPlaceholder = NSAttributedString(string: "Search clubs", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)

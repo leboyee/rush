@@ -232,6 +232,8 @@ open class ImagePickerController: UINavigationController {
         galleryViewController?.collectionView.reloadData()
         galleryViewController?.navigationItem.rightBarButtonItem = selectedAssets.count > 0 ? doneActiveBarButton : doneDisActiveBarButton
     }
+    
+    var selectedAlbum: PHAssetCollection?
 }
 
 
@@ -439,6 +441,7 @@ fileprivate extension ImagePickerController {
             let controller = storyBoard.instantiateViewController(withIdentifier: "SelectGallaryPhotoViewController") as! SelectGallaryPhotoViewController
             controller.modalPresentationStyle = .overFullScreen
             controller.source = albums
+            controller.selectedAlbum = selectedAlbum
             controller.selectedTitle = title ?? "Others"
             controller.delegate = self
             controller.configuration = configuration
@@ -483,9 +486,10 @@ fileprivate extension ImagePickerController {
 extension ImagePickerController: SelectGallaryPhotoViewControllerDelegate {
     
     func dismissView(_ album: PHAssetCollection?) {
+        selectedAlbum = album
         title = album?.localizedTitle ?? "Other"
         galleryViewController = PhotoGalleryViewController(album: album, configuration: configuration)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
         UIView.animate(withDuration: SlideUpPresentation.animationDuration) {
             self.albumButton.isSelected = false
         }

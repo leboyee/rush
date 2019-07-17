@@ -8,10 +8,16 @@
 
 import UIKit
 
+enum SharePostType {
+    case post
+    case club
+    case classes
+    case profile
+}
+
 protocol SharePostViewControllerDelegate {
     func deletePost()
 }
-
 
 class SharePostViewController: UIViewController {
     
@@ -19,14 +25,17 @@ class SharePostViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var radiusView: UIView!
+    @IBOutlet weak var shareLabel: UILabel!
+    @IBOutlet weak var deleteLabel: UILabel!
     
     var delegate: SharePostViewControllerDelegate?
+    
+    var type : SharePostType = .post
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        radiusView.layer.cornerRadius = 24
-        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +45,21 @@ class SharePostViewController: UIViewController {
                 self.containerView.layoutIfNeeded()
                 self.view.layoutIfNeeded()
             }
+        }
+    }
+    
+    func setupUI() {
+        radiusView.layer.cornerRadius = 24
+        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        if type == .classes {
+            deleteLabel.text = Text.deleteClass
+        } else if type == .club {
+            deleteLabel.text = Text.deleteClub
+        } else if type == .profile {
+            deleteLabel.text = Text.report
+        } else {
+            deleteLabel.text = Text.deletePost
         }
     }
 

@@ -32,6 +32,42 @@ class SelectGallaryPhotoCell: UITableViewCell {
 extension SelectGallaryPhotoCell {
     
     func setup(album: PHAssetCollection) {
+        
+        let options = PHFetchOptions()
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+        
+        let fetchResult = PHAsset.fetchAssets(in: album, options: options)
+        
+        if fetchResult.count > 0 {
+            if let asset = fetchResult.lastObject {
+                
+                let imageSize = CGSize(
+                    width: frame.height * UIScreen.main.scale,
+                    height: frame.height * UIScreen.main.scale
+                )
+                
+                let requestOptions = PHImageRequestOptions()
+                requestOptions.resizeMode = .exact
+                requestOptions.isNetworkAccessAllowed = true
+                
+                PHCachingImageManager.default().requestImage(
+                    for: asset,
+                    targetSize: imageSize,
+                    contentMode: .aspectFill,
+                    options: requestOptions
+                ) { [weak self] image, _ in
+                    guard let self_ = self else { return }
+                    if let image = image {
+                        self_.userImageView.image = image
+                    }
+                }
+            }
+        }
+        
+        userName.text = album.localizedTitle ?? "Others"
+        
+        /*
         let options = PHFetchOptions()
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
@@ -66,6 +102,7 @@ extension SelectGallaryPhotoCell {
                 }
             }
         })
+        */
     }
     
     func setup(isCheckMark: Bool) {

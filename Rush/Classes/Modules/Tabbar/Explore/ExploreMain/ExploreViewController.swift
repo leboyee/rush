@@ -50,16 +50,15 @@ class ExploreViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+        if isSearch {
+            searchfield.becomeFirstResponder()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
          super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+//        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func setup() {
@@ -80,7 +79,7 @@ class ExploreViewController: CustomViewController {
     func setupNavigation() {
         
         // Right item button
-        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(changeLocationButtonAction))
+        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(changeUniversity))
         navigationItem.rightBarButtonItem = rightBarButton
         
  
@@ -91,15 +90,14 @@ class ExploreViewController: CustomViewController {
         explore.font = UIFont.DisplayBold(sz: 24)
         explore.textColor = UIColor.white
         
-        // View calender button setup
-        
-        let universityLabel = UILabel(frame: CGRect(x: 0, y: 30, width: screenWidth - 130, height: 18))
-        universityLabel.text = university
-        universityLabel.font = UIFont.DisplaySemibold(sz: 13)
-        universityLabel.textColor = UIColor.gray47
-        
+        // University button setup
+        let universityButton = UIButton(frame: CGRect(x: 0, y: 26, width: screenWidth - 130, height: 18))
+        universityButton.setTitle(university, for: .normal)
+        universityButton.contentHorizontalAlignment = .left
+        universityButton.setTitleColor(UIColor.gray47, for: .normal)
+        universityButton.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
         navigationView.addSubview(explore)
-        navigationView.addSubview(universityLabel)
+        navigationView.addSubview(universityButton)
         navigationItem.titleView = navigationView
     }
     
@@ -127,8 +125,13 @@ extension ExploreViewController {
         Utils.notReadyAlert()
     }
     
+    @objc func changeUniversity() {
+        performSegue(withIdentifier: Segues.universitySegue, sender: nil)
+    }
+    
     @IBAction func clearButtonAction() {
         searchfield.text = ""
+        clearButton.isHidden = true
     }
     
     @IBAction func eventButtonAction(_ sender: Any) {
@@ -166,7 +169,12 @@ extension ExploreViewController {
         
         if segue.identifier == Segues.eventCategorySegue {
             if let vc = segue.destination as? EventCategoryListViewController {
-                vc.categoryName = sender as? String ?? ""
+                if let type = sender as? ScreenType {
+                    vc.type = type
+                } else {
+                    vc.categoryName = sender as? String ?? ""
+                    vc.type = .none
+                }
             }
         }
     }

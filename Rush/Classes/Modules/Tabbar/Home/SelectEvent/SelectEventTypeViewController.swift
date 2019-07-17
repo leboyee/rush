@@ -18,6 +18,7 @@ enum ScreenType {
     case none
     case club
     case event
+    case classes
 }
 
 protocol SelectEventTypeDelegate {

@@ -20,7 +20,9 @@ extension ClassDetailViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section > 5 {
+        if indexPath.section == 1 && joinedClub == false {
+            return CGFloat.leastNormalMagnitude
+        } else if indexPath.section > 5 {
             return indexPath.row == 2 ? (indexPath.section == 6 ? CGFloat.leastNormalMagnitude :  screenWidth) : UITableView.automaticDimension
         } else {
             return indexPath.section == 4 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : UITableView.automaticDimension
@@ -39,8 +41,9 @@ extension ClassDetailViewController {
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
         cell.setup(title: "Development lifehacks")
-        cell.setup(detail: "Get the latest VR Experience", numberOfLines: 0)
+        cell.setup(detail: "FINA 140", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
+        cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
@@ -85,7 +88,7 @@ extension ClassDetailViewController {
     }
     
     func fillTimeSlotCell(_ cell: TimeSlotCell,_ indexPath: IndexPath) {
-        cell.setup(placeholder: "", title: timeList[indexPath.row])
+        cell.setup(day: timeList[indexPath.row])
         cell.setup(isHideDropDown: indexPath.row == 0 ? false : true)
     }
     
@@ -101,8 +104,10 @@ extension ClassDetailViewController {
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
             cell.setup(bottomConstraintOfImage: 0)
+            cell.setup(bottomConstraintOfDate: 4)
         } else {
             cell.setup(bottomConstraintOfImage: 18.5)
+            cell.setup(bottomConstraintOfDate: 22)
         }
     }
 

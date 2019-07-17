@@ -62,18 +62,22 @@ extension OtherUserProfileController {
                 self_.friendType = .friends
             } else if self_.friendType == .friends {
                 self_.friendType = .addFriend
-                /*
-                self_.performSegue(withIdentifier: Segues.notificationAlert, sender: "You unfriended Jessica O'Hara")
-                */
                 
                 let snackbar = TTGSnackbar(message: "You unfriended Jessica O'Hara",
                                            duration: .middle,
-                                           actionText: "",
+                                           actionText: "Undo",
                                            actionBlock: { (snackbar) in
-                                            Utils.notReadyAlert()
+                                            self_.friendType = .friends
+                                            self_.tableView.reloadData()
                 })
                 snackbar.show()
                 
+                /*
+                self_.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.async {
+                    self_.delegate?.unfriendUser("Jessica O'Hara")
+                }
+                */
             } else if self_.friendType == .addFriend {
                 self_.friendType = .requested
             } else if self_.friendType == .requested {
@@ -118,12 +122,7 @@ extension OtherUserProfileController {
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let self_ = self else { return }
             if indexPath.section == 2 {
-                if index != 0 { // User profile
-                    Utils.notReadyAlert()
-                    //  self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
-                } else { // Open user list
-                    Utils.notReadyAlert()
-                }
+                self_.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             }
         }
     }
@@ -134,7 +133,9 @@ extension OtherUserProfileController {
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         
-        let text = section == 0 ? "" : section == 1 ? Text.images : section == 2 ? Text.friends : section == 3 ? Text.events : section == 4 ? Text.clubs : section == 5 ? Text.classes : ""
+        var text = section == 0 ? "" : section == 1 ? Text.images : section == 2 ? Text.friends : section == 3 ? Text.events : section == 4 ? Text.clubs : section == 5 ? Text.classes : ""
+        
+        text = ((section == 3 && friendType == .requested) || (section == 3 && friendType == .addFriend)) ? Text.UpcomingEvents : text
         header.setup(title: text)
         
         header.detailButtonClickEvent = { [weak self] () in

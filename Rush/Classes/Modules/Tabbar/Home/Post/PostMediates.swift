@@ -19,6 +19,7 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 500
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Cell.userName, bundle: nil), forCellReuseIdentifier: Cell.userName)
         tableView.register(UINib(nibName: Cell.userPostText, bundle: nil), forCellReuseIdentifier: Cell.userPostText)
@@ -59,7 +60,6 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
             fillCommentCell(cell, indexPath)
             return cell
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,10 +124,16 @@ extension PostViewController : SharePostViewControllerDelegate {
     }
 }
 
-//MARK: - Notification alert delegate
-extension PostViewController: NotificationAlertDelegate {
-    func undoButtonClickEvent() {
-        
+//MARK: - OtherUserProfile delegate
+extension PostViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (snackbar) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }
 

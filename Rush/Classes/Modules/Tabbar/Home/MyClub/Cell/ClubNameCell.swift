@@ -60,6 +60,10 @@ extension ClubNameCell {
         }
     }
     
+    func setup(detailTextColor: UIColor) {
+        detailLabel.textColor = detailTextColor
+    }
+    
     @IBAction func readMoreButtonAction() {
         readMoreClickEvent?()
     }

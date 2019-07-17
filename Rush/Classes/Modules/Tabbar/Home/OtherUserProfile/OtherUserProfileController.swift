@@ -9,6 +9,10 @@
 import UIKit
 import Photos
 
+protocol OtherUserProfileProtocol {
+    func unfriendUser(_ name: String)
+}
+
 class OtherUserProfileController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +23,8 @@ class OtherUserProfileController: UIViewController {
     
     var isShowMessageButton = false
     var friendType : ManageButtonType = .friends
+    
+    var delegate : OtherUserProfileProtocol?
     
     var clubImage : UIImage?
     
@@ -31,11 +37,8 @@ class OtherUserProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isTranslucent = false
     }
     
     //MARk: - Other function
@@ -44,6 +47,9 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
+        
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
         
         /*
         scrollView.delegate = self
@@ -85,7 +91,7 @@ extension OtherUserProfileController {
     }
     
     @objc func shareButtonAction() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
 
@@ -100,7 +106,12 @@ extension OtherUserProfileController {
             }
         } else if segue.identifier == Segues.friendList {
             let vc = segue.destination as! FriendsListViewController
+            vc.hidesBottomBarWhenPushed = false
             vc.type = sender as? UserProfileDetailType ?? .none
+        } else if segue.identifier == Segues.sharePostSegue {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.type = .profile
+            }
         }
     }
 }

@@ -14,6 +14,10 @@ class TimeSlotCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var upArrowImageView: UIImageView!
     
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    
     var textDidChanged: ((_ text : String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
     var textDidEndEditing: ((_ text : String) -> Void)?
@@ -33,18 +37,12 @@ class TimeSlotCell: UITableViewCell {
 
 extension TimeSlotCell {
     
-    func setup(titleColor: UIColor) {
-        textField.textColor = titleColor
+    func setup(day: String) {
+        dayLabel.text = day
     }
     
-    
-    func setup(placeholder: String,title: String) {
-        textField.text = title
-        textField.placeholder = placeholder
-    }
-    
-    func setup(isUserInterfaceEnable: Bool) {
-        textField.isUserInteractionEnabled = isUserInterfaceEnable
+    func setup(time: String) {
+        timeLabel.text = time
     }
     
     func setup(isHideDropDown: Bool) {

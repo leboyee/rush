@@ -95,22 +95,10 @@ class SelectGallaryPhotoViewController: UIViewController {
                     y: value
                 )
             }
-            print(translation.y)
         } else if panGesture.state == .ended {
-            let velocity = panGesture.velocity(in: containerView)
             
             if translation.y >= screenHeight * 0.2 {
-                UIView.animate(withDuration: 0.2
-                    , animations: {
-                        self.containerView.frame.origin = CGPoint(
-                            x: self.containerView.frame.origin.x,
-                            y: self.containerView.frame.size.height
-                        )
-                }, completion: { (isCompleted) in
-                    if isCompleted {
-                        self.dismiss()
-                    }
-                })
+                self.dismiss()
             } else {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.containerView.center = self.originalPosition!

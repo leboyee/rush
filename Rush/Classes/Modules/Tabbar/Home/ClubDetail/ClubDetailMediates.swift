@@ -67,6 +67,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 5 {
             if joinedClub {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as! CreateUserPostCell
+                cell.setup(font: UIFont.Semibold(sz: 13))
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as! SingleButtonCell
@@ -134,5 +135,18 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
+    }
+}
+
+//MARK: - OtherUserProfile delegate
+extension ClubDetailViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+            duration: .middle,
+            actionText: "Undo",
+            actionBlock: { (snackbar) in
+                Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }

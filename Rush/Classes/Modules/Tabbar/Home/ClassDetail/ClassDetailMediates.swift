@@ -45,9 +45,13 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
             fillClubNameCell(cell)
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
-            fillClubManageCell(cell)
-            return cell
+            if joinedClub {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
+                fillClubManageCell(cell)
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         } else if indexPath.section == 2 || indexPath.section == 3 {
             if indexPath.section == 2 && isShowMore {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Cell.timeSlot, for: indexPath) as! TimeSlotCell
@@ -140,5 +144,19 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
+    }
+}
+
+
+//MARK: - OtherUserProfile delegate
+extension ClassDetailViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+            duration: .middle,
+            actionText: "Undo",
+            actionBlock: { (snackbar) in
+                Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }

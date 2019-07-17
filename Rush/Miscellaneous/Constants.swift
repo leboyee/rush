@@ -56,9 +56,11 @@ struct Cell {
     static let timeSlot             = "TimeSlotCell"
     static let chooseTagCell        = "ChooseTagCell"
     static let exploreCell          = "ExploreCell"
-    static let inputCell          = "InputCell"
-    static let userInfoCell          = "UserInfoCell"
+    static let inputCell            = "InputCell"
+    static let userInfoCell         = "UserInfoCell"
     static let peopleCell           = "PeopleCell"
+    static let sortingCell          = "SortingCell"
+    static let chatListCell         = "ChatListCell"
 }
 
 struct ReusableView {
@@ -75,8 +77,8 @@ struct ViewControllerId {
     static let customPickerViewController        = "CustomPickerViewController"
     static let createPostViewController          = "CreatePostViewController"
     static let searchClubViewController          = "SearchClubViewController"
-    static let datePickerViewController        = "DatePickerViewController"
-
+    static let datePickerViewController          = "DatePickerViewController"
+    static let otherUserProfileController        = "OtherUserProfileController"
 }
 
 /* Create the struct for Section wise */
@@ -95,6 +97,7 @@ struct Segues {
     static let enterUserNameSegue          = "EnterUserNameSegue"
     static let addProfilePictureSegue      = "AddProfilePictureSegue"
     static let openPostScreen              = "SegueOpenPostScreen"
+    static let createPost                  = "CreatePostSegue"
     static let profileInformation          = "ProfileInformationSegue"
     static let chooseLevelSegue            = "ChooseLevelSegue"
     static let chooseYearSegue             = "ChooseYearSegue"
@@ -114,9 +117,10 @@ struct Segues {
     static let userInfoViewSegue             = "UserInfoViewSegue"
     static let eventCategorySegue          = "EventCategorySegue"
     static let loginPhoneNoSegue          = "LoginPhoneNoSegue"
+    static let universitySegue             = "UniversitySegue"
+    static let searchChatSegue             = "SearchChatSegue"
+    static let contactListSegue            = "ContactListSegue"
 
-    
-    
 }
 
 struct StoryBoard {
@@ -204,6 +208,10 @@ public struct Text {
     static let todayEvent               = "Today's events"
     static let clubsMightLike           = "Clubs you might like"
     static let classesYouMightLike      = "Classes you might like"
+    static let deleteClass              = "Delete class"
+    static let deletePost               = "Delete post"
+    static let deleteClub               = "Delete club"
+    static let report                   = "Report"
 }
 
 public struct Message {

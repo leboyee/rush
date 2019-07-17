@@ -51,12 +51,9 @@ class CreatePostViewController: UIViewController {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+        navigationController?.navigationBar.isTranslucent = false
+        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isTranslucent = true
     }
     
     func setup() {
@@ -69,7 +66,8 @@ class CreatePostViewController: UIViewController {
         setupTableView()
         
        bottomView.setBackgroundColor()
-        navigationController?.navigationBar.isTranslucent = false
+        
+        self.view.backgroundColor = UIColor.bgBlack
     
         // Left item button
         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
@@ -117,7 +115,7 @@ extension CreatePostViewController {
     
     @IBAction func cancelButtonAction() {
         
-        self.dismiss(animated: false, completion: nil)
+        self.navigationController?.popViewController(animated: true)
         DispatchQueue.main.async {
             self.delegate?.showSnackBar(text: "You didn't finish your post.", buttonText: "Finish it")
         }
@@ -137,7 +135,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
-        imageList.append(contentsOf: assets)
+        imageList = assets
         picker.dismiss(animated: false, completion: nil)
         self.picker = ImagePickerController()
         createButtonValidation()

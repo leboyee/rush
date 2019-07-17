@@ -94,6 +94,9 @@ extension ExploreViewController {
     func cellSelected(_ indexPath: IndexPath) {
         if isSearch && searchType == .event {
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: eventList[indexPath.row])
+        } else if indexPath.section == 0 && isSearch == false {
+            let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
         }
     }
 }
