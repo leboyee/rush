@@ -16,6 +16,7 @@ class ChatsViewController: CustomViewController {
     @IBOutlet weak var blankView: UIView!
     
     var searchText = ""
+    var isSearch = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class ChatsViewController: CustomViewController {
     }
     
     func setupUI() {
-        blankView.isHidden = false
+        blankView.isHidden = true
         
         setupTableView()
         
@@ -51,25 +52,42 @@ class ChatsViewController: CustomViewController {
         
         navigationController?.navigationBar.isTranslucent = false
         
-        // Right item button
-        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
-        navigationItem.rightBarButtonItem = rightBarButton
-        
-        // Set left bar button and title
-        let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
-        
-        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 72, height: 44))
-        
-        let label = UILabel(frame: CGRect(x: 0, y: 10, width: screenWidth - 72, height: 30))
-        label.text = "Search in chats"
-        label.font = UIFont.DisplayBold(sz: 24)
-        label.textColor = UIColor.navBarTitleWhite32
-        customView.addSubview(label)
-        customView.addSubview(searchButton)
-        
-        searchButton.addTarget(self, action: #selector(openSearchChatScreenButtonAction), for: .touchUpInside)
-        
-        navigationItem.titleView = customView
+        if isSearch {
+            
+            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+            
+            let searchTextField = UITextField(frame: CGRect(x: 0, y: 3, width: screenWidth - 55, height: 28))
+            searchTextField.font = UIFont.DisplayBold(sz: 24)
+            searchTextField.textColor = UIColor.white
+            searchTextField.returnKeyType = .search
+            searchTextField.autocorrectionType = .no
+            searchTextField.delegate = self
+            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
+            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+            customView.addSubview(searchTextField)
+            navigationItem.titleView = customView
+        } else {
+            
+            // Right item button
+            let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
+            navigationItem.rightBarButtonItem = rightBarButton
+            
+            // Set left bar button and title
+            let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
+            
+            let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 72, height: 44))
+            
+            let label = UILabel(frame: CGRect(x: 0, y: 5, width: screenWidth - 72, height: 30))
+            label.text = "Search in chats"
+            label.font = UIFont.DisplayBold(sz: 24)
+            label.textColor = UIColor.navBarTitleWhite32
+            customView.addSubview(label)
+            customView.addSubview(searchButton)
+            
+            searchButton.addTarget(self, action: #selector(openSearchChatScreenButtonAction), for: .touchUpInside)
+            
+            navigationItem.titleView = customView
+        }
     }
 }
 
@@ -84,7 +102,7 @@ extension ChatsViewController {
     }
     
     @objc func openSearchChatScreenButtonAction() {
-        
+        performSegue(withIdentifier: Segues.searchChatSegue, sender: nil)
     }
 }
 
@@ -94,7 +112,11 @@ extension ChatsViewController {
 extension ChatsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == Segues.searchChatSegue {
+            if let vc = segue.destination as? ChatsViewController {
+                vc.isSearch = true
+            }
+        }
         
     }
 }

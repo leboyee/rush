@@ -83,11 +83,20 @@
                     <connections>
                         <outlet property="blankView" destination="w6T-v1-UGh" id="zlQ-e0-dbu"/>
                         <outlet property="tableView" destination="8zg-e4-hRT" id="8e8-f9-Xb1"/>
+                        <segue destination="qrh-ad-aRf" kind="show" identifier="SearchChatSegue" id="g7R-HN-4bh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylo-k4-Z0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-256.52173913043481" y="-35.491071428571423"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="Kvq-5U-XUg">
+            <objects>
+                <viewControllerPlaceholder id="qrh-ad-aRf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJ0-FN-ehY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307" y="-35"/>
         </scene>
     </scenes>
     <resources>
