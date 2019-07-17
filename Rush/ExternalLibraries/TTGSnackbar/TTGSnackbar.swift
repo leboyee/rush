@@ -133,7 +133,7 @@ open class TTGSnackbar: UIView {
     }
     
     /// Bottom margin. Default is 4, only work when snackbar is at bottom
-    @objc open dynamic var bottomMargin: CGFloat = 45 {
+    @objc open dynamic var bottomMargin: CGFloat = (UITabBarController().tabBar.frame.size.height + 12) {
         didSet {
             bottomMarginConstraint?.constant = -bottomMargin
             superview?.layoutIfNeeded()

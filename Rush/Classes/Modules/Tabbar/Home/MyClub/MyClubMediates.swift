@@ -110,3 +110,16 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
        return cellHeight(indexPath)
     }
 }
+
+//MARK: - OtherUserProfile delegate
+extension MyClubViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+            duration: .middle,
+            actionText: "Undo",
+            actionBlock: { (snackbar) in
+                Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+}

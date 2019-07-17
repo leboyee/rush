@@ -77,8 +77,8 @@ struct ViewControllerId {
     static let customPickerViewController        = "CustomPickerViewController"
     static let createPostViewController          = "CreatePostViewController"
     static let searchClubViewController          = "SearchClubViewController"
-    static let datePickerViewController        = "DatePickerViewController"
-
+    static let datePickerViewController          = "DatePickerViewController"
+    static let otherUserProfileController        = "OtherUserProfileController"
 }
 
 /* Create the struct for Section wise */

@@ -124,10 +124,16 @@ extension PostViewController : SharePostViewControllerDelegate {
     }
 }
 
-//MARK: - Notification alert delegate
-extension PostViewController: NotificationAlertDelegate {
-    func undoButtonClickEvent() {
-        
+//MARK: - OtherUserProfile delegate
+extension PostViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (snackbar) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
     }
 }
 

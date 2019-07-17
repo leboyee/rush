@@ -87,14 +87,10 @@ extension PostViewController {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
             }
-        } else if segue.identifier == Segues.notificationAlert {
-            let vc = segue.destination as! NotificationAlertViewController
-            vc.toastMessage = "Your post is deleted."
-            vc.buttonTitle = "Undo"
-            vc.delegate = self
         } else if segue.identifier == Segues.otherUserProfile {
             let vc = segue.destination as! OtherUserProfileController
             vc.clubImage = #imageLiteral(resourceName: "bound-add-img")
+            vc.delegate = self
         }
      }
      

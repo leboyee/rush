@@ -44,6 +44,7 @@ class CreateClubViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.isTranslucent = true
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
  

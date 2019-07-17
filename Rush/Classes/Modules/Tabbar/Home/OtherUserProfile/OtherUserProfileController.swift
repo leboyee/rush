@@ -9,6 +9,10 @@
 import UIKit
 import Photos
 
+protocol OtherUserProfileProtocol {
+    func unfriendUser(_ name: String)
+}
+
 class OtherUserProfileController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +23,8 @@ class OtherUserProfileController: UIViewController {
     
     var isShowMessageButton = false
     var friendType : ManageButtonType = .friends
+    
+    var delegate : OtherUserProfileProtocol?
     
     var clubImage : UIImage?
     

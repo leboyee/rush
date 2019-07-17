@@ -83,6 +83,7 @@ extension ClubDetailViewController {
             if let vc = segue.destination as? OtherUserProfileController {
                 // image for test
                 vc.clubImage = clubImage
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
