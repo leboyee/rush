@@ -15,6 +15,19 @@ extension ServiceManager {
     
     
     /*
+     *
+     */
+    func login(params : [String : Any], closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
+        NetworkManager.shared.login(params: params) {
+            [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status,errorMessage)
+            })
+        }
+    }
+    
+    /*
      * we check that if user already register with same email
      */
     func checkEmail(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
@@ -46,7 +59,7 @@ extension ServiceManager {
         NetworkManager.shared.signup(params: params) {
             [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
-            self_.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+            self_.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status,errorMessage)
             })
         }
@@ -58,7 +71,7 @@ extension ServiceManager {
         NetworkManager.shared.logout(params: [:]) {
             [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
-            self_.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+            self_.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status,errorMessage)
             })
         }
@@ -101,6 +114,19 @@ extension ServiceManager {
         }
     }
     
+    func updateProfile(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.updateProfile(params: params) {
+            [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                if let user = data?["user"] as? [String: Any] {
+                    Authorization.shared.updateUserData(data: user)
+                }
+                closer(data, errorMessage)
+            })
+        }
+    }
+
     
     /*
     //MARK: - Profile

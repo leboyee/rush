@@ -1049,11 +1049,11 @@
 				1A2809DD22C5F43B00B4E764 /* ChooseClasses */,
 				1AB0C14E22C0F6BB000D016E /* AddMinors */,
 				1A3CB08522BD3242005D3D87 /* AddMajors */,
-				1A339B5922B3B88A005509EA /* EnterUserName */,
 				1ACEAC1022AC040A00B734D3 /* AddProfilePicture */,
 				1A339B4722B3A060005509EA /* ChooseLevel */,
 				1A339B6022B3CEA8005509EA /* ChooseYear */,
 				1A353ABE22BD05B60069752D /* SelectUniversity */,
+				1A339B5922B3B88A005509EA /* EnterUserName */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -2253,7 +2253,7 @@
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2263,8 +2263,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
-				SERVER_ADDRESS = "http://3.15.70.78/api/";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2276,8 +2276,8 @@
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2287,8 +2287,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
-				SERVER_ADDRESS = "http://3.15.70.78/api/";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2355,8 +2355,8 @@
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2366,8 +2366,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
-				SERVER_ADDRESS = "http://3.15.70.78/api/";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

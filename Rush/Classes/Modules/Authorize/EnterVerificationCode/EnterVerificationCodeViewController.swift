@@ -111,7 +111,12 @@ extension EnterVerificationCodeViewController {
     @IBAction func nextButtonAction() {
         if self.code.count == 5 {
             self.view.endEditing(true)
-            signupApiCalled(code: self.code)
+            if loginType == .Register {
+                signupApiCalled(code: self.code)
+            }
+            else {
+                loginApiCalled(code: self.code)
+            }
             //self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
             //AppDelegate.getInstance().setupStoryboard()
         }

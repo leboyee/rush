@@ -197,6 +197,9 @@
                                 <state key="normal" title="Login with phone number" backgroundImage="bg-button-small">
                                     <color key="titleColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginWithPhoneNumberButtonAction" destination="0cf-VN-0pj" eventType="touchUpInside" id="lJo-OD-4Ed"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZL-Rs-Qko" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="20" y="204.5" width="35" height="35"/>
@@ -263,6 +266,7 @@
                         <outlet property="nextButtonBottomConstraint" destination="opf-dZ-BaT" id="m3z-ty-uVK"/>
                         <outlet property="termLabel" destination="aRm-C8-0Xj" id="T9v-fh-WW4"/>
                         <segue destination="QHJ-za-7QQ" kind="show" identifier="EnterPasswordSegue" id="cXv-Ki-c6j"/>
+                        <segue destination="DWt-eV-rW3" kind="show" identifier="LoginPhoneNoSegue" id="omQ-De-aFE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSs-Wp-Su4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -924,4 +928,7 @@
         <image name="icon-flag" width="24" height="24"/>
         <image name="input-code" width="63" height="63"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="omQ-De-aFE"/>
+    </inferredMetricsTieBreakers>
 </document>

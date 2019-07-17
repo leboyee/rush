@@ -63,7 +63,6 @@ extension OnboardingViewController {
     }
     
     @IBAction func loginButtonAction() {
-        return
         loginType = .Login
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }

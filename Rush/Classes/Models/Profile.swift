@@ -16,10 +16,23 @@ class Profile: NSObject {
     var socialId            : String = ""
     var email                : String = ""
     var name                : String = ""
+    var firstName                : String = ""
+    var lastName                : String = ""
     var password            : String = ""
     var phoneNumber         : String = ""
     var countryCode         : String = ""
-    
+    var educationLevel      : String = ""
+    var educationYear      : String = ""
+    var majors  = [String]()
+    var minors  = [String]()
+    var classes  = [Classes]()
+    var interest  = [String]()
+    var university : String = ""
+    var birthDate: String = ""
+    var gender: String = ""
+    var relationShip: String = ""
+    var homeTown: String = ""
+
     var photo               : Image?
     var contributedMeals    : Int = 0
     var distributedMeals    : Int = 0
@@ -57,8 +70,34 @@ class Profile: NSObject {
         if let value = data["phone"] as? String {
             phone = value
         }
+        
+        if let value = data["first_name"] as? String {
+            firstName = value
+        }
+        
+        if let value = data["last_name"] as? String {
+            lastName = value
+        }
+        
+        if let value = data["country_code"] as? Int {
+            countryCode = "\(value)"
+        }
+        if let value = data["phone"] as? Int {
+            phone = "\(value)"
+        }
+        if let value = data["u_birth_date"] as? String {
+            birthDate = value
+        }
+        if let value = data["u_gender"] as? String {
+            gender = value
+        }
+        if let value = data["u_relationship"] as? String {
+            relationShip = value
+        }
+        if let value = data["u_hometown"] as? String {
+            homeTown = value
+        }
+        
     }
-
-
-
 }
+

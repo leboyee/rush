@@ -102,7 +102,13 @@ extension EnterPasswordViewConteroller {
     @IBAction func nextButtonAction() {
         profile.password = passwordTextField.text ?? ""
         self.view.endEditing(true)
-        self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
+        if loginType == .Login {
+            loginApiCalled()
+        }
+        else {
+            self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
+        }
+        
     }
     
     @IBAction func passwordShowHideButton() {

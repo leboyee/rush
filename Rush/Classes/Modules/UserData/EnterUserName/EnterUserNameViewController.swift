@@ -106,7 +106,7 @@ extension EnterUserNameViewController {
     @IBAction func nextButtonAction() {
         firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        self.performSegue(withIdentifier: Segues.addProfilePictureSegue, sender: self)
+        updateProfileAPI()
     }
 }
 
@@ -118,5 +118,13 @@ extension EnterUserNameViewController {
                 vc.loginType = loginType
             }
         }
+    }
+}
+
+// MARK: - Preseneter
+extension EnterUserNameViewController {
+
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.addProfilePictureSegue, sender: self)
     }
 }

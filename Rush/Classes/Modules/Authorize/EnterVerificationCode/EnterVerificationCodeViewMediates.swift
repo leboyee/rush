@@ -13,8 +13,14 @@ extension EnterVerificationCodeViewController: UITextFieldDelegate {
     
     func setupMediator() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        
         digitTextField.delegate = self
         digitTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+
 
     }
     
@@ -27,6 +33,16 @@ extension EnterVerificationCodeViewController: UITextFieldDelegate {
         }
     }
 
+    @objc func keyboardWillHide(notification: NSNotification) {
+        //   if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        bottomViewConstraint.constant = 30
+//        if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+//            bottomViewConstraint.constant = 30
+//            self.view.layoutIfNeeded()
+//            
+//        }
+        // }
+    }
     
     //MARK : UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

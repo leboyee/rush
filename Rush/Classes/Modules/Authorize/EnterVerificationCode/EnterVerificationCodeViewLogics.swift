@@ -107,11 +107,38 @@ extension EnterVerificationCodeViewController {
                  AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
                  } */
             } else {
+                self_.digitTextField.becomeFirstResponder()
                 self_.isCodeVerifing = false
+                Utils.alert(message: errorMessage ?? "Please contact Admin")
                 //self_.updateViewStage?(.error)
             }
         }
     }
+    
+    func loginApiCalled(code : String) {
+        let param = [kPhone_token: code] as [String: Any]
+        
+        ServiceManager.shared.phonetkn(params: param) {
+            [weak self] (status, errorMessage) in
+            guard let self_ = self else { return }
+            if status {
+                self_.singupSuccess()
+                //self_.updateViewStage?(.verified)
+                /*
+                 //Comment due to push is not exist in app
+                 //Update Push Token when user is verified successully
+                 if let pushToken = Utils.getDataFromUserDefault(kPushToken) as? String {
+                 AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
+                 } */
+            } else {
+                self_.digitTextField.becomeFirstResponder()
+                self_.isCodeVerifing = false
+                Utils.alert(message: errorMessage ?? "Please contact Admin")
+                //self_.updateViewStage?(.error)
+            }
+        }
+    }
+
     
     func resendCodeApiCalled() {
         Utils.showSpinner()
@@ -123,6 +150,7 @@ extension EnterVerificationCodeViewController {
             [weak self] (status, errorMessage) in
             Utils.hideSpinner()
             guard let self_ = self else { return }
+            self_.digitTextField.becomeFirstResponder()
             if (status){
                 Utils.alert(message: "Code sent successfully.")
             }

@@ -56,6 +56,8 @@ let kEmail                = "email"
 let kIsEmailExist                = "isEmailExist"
 let kPhone_token                = "phone_token"
 let kPassword                = "password"
+let kFirst_name                = "first_name"
+let KLast_name                = "last_name"
 
 
 

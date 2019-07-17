@@ -31,9 +31,9 @@ class NetworkManager: NSObject {
     
     static let shared = NetworkManager()
     
-    let errorDomain = "com.messapps.rush"
+    let errorDomain = "com.messapps.paidmeals"
     static var userAgent : String!
-
+    
     var xAPIKey: String  {
         get {
             return Bundle.main.infoDictionary!["APIKey"] as! String
@@ -93,9 +93,9 @@ class NetworkManager: NSObject {
             }
             
             dict["X-API-Key"] = xAPIKey
-            //if Authorization.shared.authorized {
-            //    dict["X-Session-ID"] = Authorization.shared.session!
-            //}
+            if Authorization.shared.authorized {
+                dict["X-Session-ID"] = Authorization.shared.session!
+            }
             
             if let pushToken = Utils.getDataFromUserDefault(kPushToken) {
                 dict["X-Push-Token"] = pushToken as? String
@@ -103,9 +103,9 @@ class NetworkManager: NSObject {
             
             dict["X-Device-Type"] = "ios"
             if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-               dict["X-App-Version"] = "\(version)"
+                dict["X-App-Version"] = "\(version)"
             }
-
+            
             //Set time offset
             let timezoneoffset = NSTimeZone.system.secondsFromGMT()
             dict[kTimezoneOffset] = String(timezoneoffset)
@@ -171,9 +171,9 @@ class NetworkManager: NSObject {
     }
     
     func requestPut(path: String,
-                     params: Any,
-                     contentType: ContentType,
-                     resultHandler: @escaping ResultClosure) {
+                    params: Any,
+                    contentType: ContentType,
+                    resultHandler: @escaping ResultClosure) {
         
         makeNetworkActivityHidden(false)
         
@@ -221,10 +221,10 @@ class NetworkManager: NSObject {
             
             
             #if targetEnvironment(simulator)
-                if data != nil {
-                    let jsonString = String(data: data!, encoding: String.Encoding.utf8)
-                    print(jsonString!)
-                }
+            if data != nil {
+                let jsonString = String(data: data!, encoding: String.Encoding.utf8)
+                print(jsonString!)
+            }
             #endif
             
             defer {

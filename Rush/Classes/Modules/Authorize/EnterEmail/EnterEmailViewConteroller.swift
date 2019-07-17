@@ -135,6 +135,12 @@ extension EnterEmailViewConteroller {
         }
     }
     
+    //Login with Phone Number
+    @IBAction func loginWithPhoneNumberButtonAction() {
+        self.view.endEditing(true)
+        self.performSegue(withIdentifier: Segues.loginPhoneNoSegue, sender: self)
+    }
+    
 }
 
 // MARK: - Navigation
@@ -148,6 +154,13 @@ extension EnterEmailViewConteroller {
                 vc.profile = profile
             }
         }
+        
+        if segue.identifier == Segues.loginPhoneNoSegue {
+            if let vc = segue.destination as? EnterPhoneNoViewController {
+                vc.loginType = loginType
+            }
+        }
+
     }
     
 }

@@ -31,7 +31,7 @@ extension NetworkManager {
     }
 
     func phonetkn(params : [String : Any] , resultHandler: @escaping ResultClosure) {
-        requestPost(path: "auth/phone", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+        requestPost(path: "auth/phonetkn", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
     func authPhone(params : [String : Any] , resultHandler: @escaping ResultClosure) {
@@ -46,7 +46,7 @@ extension NetworkManager {
 
     //MARK: - Profile
     func updateProfile(params : [String : Any], resultHandler: @escaping ResultClosure) {
-        requestUploadImage(path: "profile", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+        requestPost(path: "profile", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
     func getProfile(params : [String : Any], resultHandler: @escaping ResultClosure) {
