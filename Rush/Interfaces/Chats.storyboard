@@ -62,7 +62,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="WXI-2X-c7d" firstAttribute="leading" secondItem="J6Q-V5-OXW" secondAttribute="leading" id="4FY-O0-BZz"/>
                             <constraint firstItem="w6T-v1-UGh" firstAttribute="top" secondItem="J6Q-V5-OXW" secondAttribute="top" constant="13" id="Dvr-ua-aQf"/>
@@ -84,6 +84,7 @@
                         <outlet property="blankView" destination="w6T-v1-UGh" id="zlQ-e0-dbu"/>
                         <outlet property="tableView" destination="8zg-e4-hRT" id="8e8-f9-Xb1"/>
                         <segue destination="qrh-ad-aRf" kind="show" identifier="SearchChatSegue" id="g7R-HN-4bh"/>
+                        <segue destination="tnW-FZ-l2x" kind="show" identifier="ContactListSegue" id="jb4-Hq-FIm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylo-k4-Z0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,7 +97,50 @@
                 <viewControllerPlaceholder id="qrh-ad-aRf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJ0-FN-ehY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307" y="-35"/>
+            <point key="canvasLocation" x="-256" y="397"/>
+        </scene>
+        <!--Contacts List View Controller-->
+        <scene sceneID="Wls-X0-Zcv">
+            <objects>
+                <viewController storyboardIdentifier="ContactsListViewController" id="tnW-FZ-l2x" customClass="ContactsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lWV-RP-fAh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="391-vC-3PL" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="819"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="p1g-VT-RcE">
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="p1g-VT-RcE" firstAttribute="trailing" secondItem="bGc-US-R78" secondAttribute="trailing" id="0Py-cJ-ZaD"/>
+                            <constraint firstAttribute="bottom" secondItem="p1g-VT-RcE" secondAttribute="bottom" id="GYH-sj-lQ0"/>
+                            <constraint firstItem="p1g-VT-RcE" firstAttribute="top" secondItem="391-vC-3PL" secondAttribute="top" id="LCU-UD-teL"/>
+                            <constraint firstItem="391-vC-3PL" firstAttribute="trailing" secondItem="bGc-US-R78" secondAttribute="trailing" id="LOo-W9-Hcu"/>
+                            <constraint firstItem="391-vC-3PL" firstAttribute="top" secondItem="bGc-US-R78" secondAttribute="top" constant="13" id="MBm-FV-5Yc"/>
+                            <constraint firstAttribute="bottom" secondItem="391-vC-3PL" secondAttribute="bottom" constant="-24" id="Mw0-MX-UHv"/>
+                            <constraint firstItem="p1g-VT-RcE" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" id="bhm-7a-10d"/>
+                            <constraint firstItem="391-vC-3PL" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" id="iZb-tD-47k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bGc-US-R78"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="p1g-VT-RcE" id="k4a-zd-6HL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dO-PG-gPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="-35"/>
         </scene>
     </scenes>
     <resources>

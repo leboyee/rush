@@ -177,6 +177,9 @@
 		794183B4228960C7009AB12C /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */; };
 		794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */; };
 		794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */; };
+		79438E3522DF58A500DFABE4 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */; };
+		79438E3722DF58BE00DFABE4 /* ContactsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */; };
+		79438E3922DF58D100DFABE4 /* ContactsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */; };
 		79493CE622B90E960026AD0E /* SelectGallaryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */; };
 		79493CE722B90E960026AD0E /* SelectGallaryPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */; };
 		79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */; };
@@ -475,6 +478,9 @@
 		794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
+		79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListMediates.swift; sourceTree = "<group>"; };
+		79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListLogics.swift; sourceTree = "<group>"; };
 		79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoCell.swift; sourceTree = "<group>"; };
 		79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectGallaryPhotoCell.xib; sourceTree = "<group>"; };
 		79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoMediator.swift; sourceTree = "<group>"; };
@@ -654,6 +660,7 @@
 		0918E76D228436820098AF35 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				79438E3322DF588500DFABE4 /* ContactList */,
 				7994A3B722D76EF50057527C /* Chat */,
 			);
 			path = Chats;
@@ -1312,6 +1319,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		79438E3322DF588500DFABE4 /* ContactList */ = {
+			isa = PBXGroup;
+			children = (
+				79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */,
+				79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */,
+				79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */,
+			);
+			path = ContactList;
+			sourceTree = "<group>";
+		};
 		79493CDF22B90E960026AD0E /* SelectGallaryPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1953,6 +1970,7 @@
 				1A3F55E82285C38800D42154 /* OnboardingLogics.swift in Sources */,
 				79EF134922D3588D00E260D9 /* EventCategoryListLogics.swift in Sources */,
 				1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */,
+				79438E3922DF58D100DFABE4 /* ContactsListLogics.swift in Sources */,
 				1AB0C16322C12B22000D016E /* Authorization.swift in Sources */,
 				091557AF22B1247F0080C9AE /* CreatePostLogics.swift in Sources */,
 				797FFDB022B7BC480055A001 /* PhotoGalleryLiveViewCell.swift in Sources */,
@@ -2000,6 +2018,7 @@
 				79EF134A22D3588D00E260D9 /* EventCategoryListMediates.swift in Sources */,
 				797FFDBA22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift in Sources */,
 				1A649E1D2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift in Sources */,
+				79438E3522DF58A500DFABE4 /* ContactsListViewController.swift in Sources */,
 				1AE78D2A22A00F1900972C17 /* EnterVerificationCodeViewLogics.swift in Sources */,
 				7929DA4F22C24ADB00700B42 /* PostViewController.swift in Sources */,
 				1A339B4C22B3A060005509EA /* ChooseLevelViewMediates.swift in Sources */,
@@ -2049,6 +2068,7 @@
 				1A353AC222BD05B60069752D /* ChooseUniversityViewMediates.swift in Sources */,
 				79DF74212292BAB80012DCB7 /* CreateClubViewController.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
+				79438E3722DF58BE00DFABE4 /* ContactsListMediates.swift in Sources */,
 				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				1ACEAC1422AC040A00B734D3 /* AddProfilePictureViewLogics.swift in Sources */,
 				1A339B6522B3CEA9005509EA /* ChooseYearViewMediates.swift in Sources */,
