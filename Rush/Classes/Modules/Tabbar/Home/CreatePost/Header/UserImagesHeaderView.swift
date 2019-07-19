@@ -74,4 +74,8 @@ extension UserImagesHeaderView {
     @IBAction func infoButtonAction() {
         infoButtonEvent?()
     }
+    
+    @IBAction func nameTapButtonAction() {
+        infoButtonEvent?()
+    }
 }

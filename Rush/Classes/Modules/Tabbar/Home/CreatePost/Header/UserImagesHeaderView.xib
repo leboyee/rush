@@ -59,6 +59,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bv-0b-pQO">
+                                                    <rect key="frame" x="24" y="4" width="192.5" height="33.5"/>
+                                                    <connections>
+                                                        <action selector="nameTapButtonAction" destination="iN0-l3-epB" eventType="touchUpInside" id="5u1-ww-m5E"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ci-pq-xTB">
                                                     <rect key="frame" x="24" y="43.5" width="119.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
@@ -79,8 +85,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="9bv-0b-pQO" firstAttribute="bottom" secondItem="SBR-PG-QSJ" secondAttribute="bottom" id="0fP-X5-N4C"/>
+                                                <constraint firstItem="9bv-0b-pQO" firstAttribute="trailing" secondItem="SBR-PG-QSJ" secondAttribute="trailing" id="5K6-3z-82i"/>
+                                                <constraint firstItem="9bv-0b-pQO" firstAttribute="leading" secondItem="SBR-PG-QSJ" secondAttribute="leading" id="97y-8j-rbe"/>
                                                 <constraint firstItem="SBR-PG-QSJ" firstAttribute="top" secondItem="TXF-XI-Sqx" secondAttribute="top" constant="4" id="BZK-Pg-jl5"/>
                                                 <constraint firstAttribute="bottom" secondItem="2Ci-pq-xTB" secondAttribute="bottom" constant="40" id="Fth-XR-tMW"/>
+                                                <constraint firstItem="9bv-0b-pQO" firstAttribute="top" secondItem="SBR-PG-QSJ" secondAttribute="top" id="VxB-o2-cNH"/>
                                                 <constraint firstItem="2Ci-pq-xTB" firstAttribute="top" secondItem="SBR-PG-QSJ" secondAttribute="bottom" constant="6" id="W4o-qo-sWm"/>
                                                 <constraint firstItem="aHP-DZ-Arg" firstAttribute="centerY" secondItem="TXF-XI-Sqx" secondAttribute="centerY" id="cnS-Z2-JX7"/>
                                                 <constraint firstItem="SBR-PG-QSJ" firstAttribute="leading" secondItem="TXF-XI-Sqx" secondAttribute="leading" constant="24" id="eu7-pc-hbH"/>
