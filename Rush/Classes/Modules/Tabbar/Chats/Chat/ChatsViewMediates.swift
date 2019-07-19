@@ -31,6 +31,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as! ChatListCell
+        fillCell(cell, indexPath)
         return cell
     }
     
@@ -64,7 +65,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
         
         // create a color from patter image and set the color as a background color of action
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        view.backgroundColor = UIColor.bgWhite96
+        view.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
         let imageView = UIImageView(frame: CGRect(x: (80 - 32) / 2,
                                                   y: (80 - 32) / 2,
                                                   width: 32,

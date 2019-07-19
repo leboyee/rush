@@ -17,6 +17,13 @@ class ChatsViewController: CustomViewController {
     
     var searchText = ""
     var isSearch = false
+    var chatlist : [String] = ["Fine art", "Marta Keller", "Adam Batler", "Marta Mulla", "Julia Herber", "Peter Conner"] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var filterList = [String]()
+    var searchField : UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,51 +50,64 @@ class ChatsViewController: CustomViewController {
     func setupUI() {
         blankView.isHidden = true
         
+        // Test
+        filterList = chatlist
+        
         setupTableView()
         
         setupNavigation()
     }
     
     func setupNavigation() {
-        
         navigationController?.navigationBar.isTranslucent = false
+        setupChatListNavigation()
+    }
+    
+    func setupChatListNavigation() {
+        // Right item button
+        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
+        navigationItem.rightBarButtonItem = rightBarButton
         
-        if isSearch {
-            
-            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
-            
-            let searchTextField = UITextField(frame: CGRect(x: 0, y: 3, width: screenWidth - 55, height: 28))
-            searchTextField.font = UIFont.DisplayBold(sz: 24)
-            searchTextField.textColor = UIColor.white
-            searchTextField.returnKeyType = .search
-            searchTextField.autocorrectionType = .no
-            searchTextField.delegate = self
-            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
-            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-            customView.addSubview(searchTextField)
-            navigationItem.titleView = customView
-        } else {
-            
-            // Right item button
-            let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
-            navigationItem.rightBarButtonItem = rightBarButton
-            
-            // Set left bar button and title
-            let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
-            
-            let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 72, height: 44))
-            
-            let label = UILabel(frame: CGRect(x: 0, y: 5, width: screenWidth - 72, height: 30))
-            label.text = "Search in chats"
-            label.font = UIFont.DisplayBold(sz: 24)
-            label.textColor = UIColor.navBarTitleWhite32
-            customView.addSubview(label)
-            customView.addSubview(searchButton)
-            
-            searchButton.addTarget(self, action: #selector(openSearchChatScreenButtonAction), for: .touchUpInside)
-            
-            navigationItem.titleView = customView
-        }
+        // Set left bar button and title
+        let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
+        
+        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 72, height: 44))
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 5, width: screenWidth - 72, height: 30))
+        label.text = "Search in chats"
+        label.font = UIFont.DisplayBold(sz: 24)
+        label.textColor = UIColor.navBarTitleWhite32
+        customView.addSubview(label)
+        customView.addSubview(searchButton)
+        
+        searchButton.addTarget(self, action: #selector(openSearchChatScreenButtonAction), for: .touchUpInside)
+        
+        navigationItem.titleView = customView
+        
+        navigationItem.leftBarButtonItem = nil
+    }
+    
+    func setupSearchChatNavigation() {
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
+
+        
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        
+        searchField = UITextField(frame: CGRect(x: 0, y: 6, width: screenWidth - 55, height: 28))
+        searchField.font = UIFont.DisplayBold(sz: 24)
+        searchField.textColor = UIColor.white
+        searchField.returnKeyType = .search
+        searchField.autocorrectionType = .no
+        searchField.delegate = self
+        searchField.becomeFirstResponder()
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
+        searchField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchField)
+        navigationItem.titleView = customView
+        
+        // Right item button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "grayDelete"), style: .plain, target: self, action: #selector(clearButtonAction))
     }
 }
 
@@ -102,7 +122,16 @@ extension ChatsViewController {
     }
     
     @objc func openSearchChatScreenButtonAction() {
-        performSegue(withIdentifier: Segues.searchChatSegue, sender: nil)
+        setupSearchChatNavigation()
+    }
+    
+    @objc func backButtonAction() {
+        setupChatListNavigation()
+    }
+    
+    @objc func clearButtonAction() {
+        searchField.text = ""
+        chatlist = filterList
     }
 }
 

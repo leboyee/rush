@@ -15,11 +15,11 @@ extension ChatsViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return 5
+        return chatlist.count
     }
     
-    func fillCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
-        
+    func fillCell(_ cell: ChatListCell, _ indexPath: IndexPath) {
+        cell.setup(title: chatlist[indexPath.row])
     }
     
     func cellSelected(_ indexPath: IndexPath) {
@@ -29,7 +29,15 @@ extension ChatsViewController {
 
 extension ChatsViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
-        
+        let text = textField.text ?? ""
+        if text.isEmpty {
+            chatlist = filterList
+            
+        } else {
+            let filter = chatlist.filter {( $0.lowercased().contains(text.lowercased()))}
+            chatlist = filter
+        }
+        tableView.reloadData()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -37,7 +45,7 @@ extension ChatsViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        Utils.notReadyAlert()
+        chatlist = filterList
         textField.resignFirstResponder()
         return true
     }
