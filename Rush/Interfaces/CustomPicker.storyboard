@@ -21,7 +21,6 @@
         <!--Custom Picker View Controller-->
         <scene sceneID="COl-dZ-gBg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="giQ-Ac-0eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CustomPickerViewController" id="U3r-jm-NRV" customClass="CustomPickerViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IdB-aP-zfE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -118,6 +117,7 @@
                         <outlet property="titleLabel" destination="zJG-TY-18z" id="JCO-oM-AQu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="giQ-Ac-0eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer cancelsTouchesInView="NO" id="Fnd-hp-owG">
                     <connections>
                         <action selector="handleTapGestureWithGesture:" destination="U3r-jm-NRV" id="6RP-LM-3Nk"/>
@@ -130,12 +130,6 @@
         <!--Date Picker View Controller-->
         <scene sceneID="4Lm-7Q-hTs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ziK-l6-Sa9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer cancelsTouchesInView="NO" id="mfX-v6-4bp">
-                    <connections>
-                        <outlet property="delegate" destination="IOy-au-YdT" id="oJA-G7-8t1"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <viewController storyboardIdentifier="DatePickerViewController" id="aIu-9D-UPx" customClass="DatePickerViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IOy-au-YdT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -151,7 +145,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-V1-TRV">
-                                                <rect key="frame" x="16" y="13" width="123" height="18"/>
+                                                <rect key="frame" x="16" y="13" width="117.5" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -224,6 +218,12 @@
                         <outlet property="titleLabel" destination="0Pv-V1-TRV" id="6Cp-2u-WjZ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ziK-l6-Sa9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="mfX-v6-4bp">
+                    <connections>
+                        <outlet property="delegate" destination="IOy-au-YdT" id="oJA-G7-8t1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="197.59999999999999" y="926.08695652173924"/>
         </scene>
@@ -387,7 +387,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sza-fV-R75">
                                                         <rect key="frame" x="0.0" y="49" width="375" height="227"/>
                                                         <subviews>
-                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ5-wZ-Id0">
+                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ5-wZ-Id0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" red="0.59999999999999998" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>

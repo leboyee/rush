@@ -32,7 +32,7 @@ class SelectGallaryPhotoCell: UITableViewCell {
 extension SelectGallaryPhotoCell {
     
     func setup(album: PHAssetCollection) {
-        
+        userImageView.image = nil
         let options = PHFetchOptions()
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
@@ -51,6 +51,7 @@ extension SelectGallaryPhotoCell {
                 requestOptions.resizeMode = .exact
                 requestOptions.isNetworkAccessAllowed = true
                 
+                userImageView.image = nil
                 PHCachingImageManager.default().requestImage(
                     for: asset,
                     targetSize: imageSize,
