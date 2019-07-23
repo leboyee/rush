@@ -47,6 +47,7 @@ class HomeViewController: CustomViewController {
     }
     
     func setupNavigation() {
+        self.view.backgroundColor = UIColor.bgBlack
         
         // Right item button
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
