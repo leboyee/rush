@@ -356,3 +356,94 @@ extension UIAlertController {
         alertWindow = nil
     }
 }
+
+//MARK:- String Function
+extension Utils {
+    class func onlyDisplayFirstNameOrLastNameFirstCharacter(_ fullName : String) -> String {
+        let removeWhiteSpaceName = fullName.replacingOccurrences(of: ", ", with: ",")
+        let result = removeWhiteSpaceName.components(separatedBy: ",")
+        var fullName = [String]()
+        for name in result {
+            fullName.append(name.smallName)
+        }
+        return fullName.joined(separator:", ")
+    }
+    
+    class func removeLoginUserNameFromChannel(channelName:String?) -> String {
+        if var name = channelName {
+            name = name.replacingOccurrences(of: Authorization.shared.profile?.name ?? "", with: "")
+            name = name.replacingOccurrences(of: ", , ", with: ", ")
+            name = name.trimmingCharacters(in: CharacterSet.init(charactersIn: ","))
+            name = name.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            
+            if let lastCh = name.last?.description {
+                if lastCh == "," {
+                    name.removeLast()
+                }
+            }
+            
+            return name
+        } else {
+            return channelName!
+        }
+    }
+    
+    class func getPathForFileName(_ filename: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
+        let filePath = String(format: "%@/%@", paths[0],filename)
+        return filePath
+    }
+    
+    class func getFileName(_ fileType: String) -> String {
+        let time = Date().timeIntervalSince1970
+        return String(format:"%0.0f.%@",time,fileType)
+    }
+    
+    class func saveImageInApp(_ imageName: String, _ image: UIImage) -> Bool {
+        
+        if imageName.trimmingCharacters(in: CharacterSet.whitespaces).count == 0 {
+            return false
+        }
+        
+        let filePath = getPathForFileName(imageName)
+        let _ = deleteFileFromApp(imageName)
+        let _ = createEmptyFile(imageName)
+        
+        let data = image.jpegData(compressionQuality: 0.75)
+        do {
+            try data?.write(to: URL(fileURLWithPath: filePath))
+            return isFileExist(imageName)
+        } catch {
+            return false
+        }
+    }
+    
+    class func deleteFileFromApp(_ fileName: String) -> Bool {
+        if fileName.trimmingCharacters(in: CharacterSet.whitespaces).count == 0 {
+            return false
+        }
+        
+        let filePath = getPathForFileName(fileName)
+        if FileManager.default.fileExists(atPath: filePath) {
+            do {
+                try FileManager.default.removeItem(at: URL(string: filePath)!)
+            } catch {
+                return false
+            }
+        }
+        return true
+    }
+    
+    class func createEmptyFile(_ filePath: String) -> Bool {
+        return FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)
+    }
+    
+    class func isFileExist(_ fileName: String) -> Bool {
+        
+        let filePath = getPathForFileName(fileName)
+        if FileManager.default.fileExists(atPath: filePath) {
+            return true
+        }
+        return false
+    }
+}

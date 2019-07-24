@@ -24,6 +24,9 @@ let kAppOpenFirstTime           = "kAppOpenFirstTime"
 
 //MARK:- User Default
 let kLastLocation               = "com.paidmeals.lastlocation"
+let kDeviceTokenPushKey         = "com.friends.devicetokenpush"
+let kDeviceTokenPushDataKey     = "com.friends.devicetokenpushdata"
+let kUpdateUnreadcount          = "com.friends.updateunreadcount"
 
 
 //MARK: - API's Keys
@@ -41,6 +44,14 @@ struct Keys {
     static let url                   = "url"
     static let list                  = "list"
     
+    static let matchId            = "match_id"
+    static let matchStatus        = "match_status"
+    static let friendUserId       = "frd_user_id"
+    static let friendOtherUserId  = "frd_other_user_id"
+    static let friendStatus       = "frd_status"
+    static let friendType         = "frd_type"
+    static let friend             = "friend"
+    static let friendId           = "frd_id"
 }
 
 //MARK: - API's Output Keys

@@ -21,7 +21,8 @@ target 'Rush' do
   
   #Custom Photo Library
   pod 'DKImagePickerController', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
+  
+  #Chatting SDK
+  pod 'SendBirdSDK'
 
-  #Comment textview
-  #pod 'GrowingTextView', '0.7.0'
 end
