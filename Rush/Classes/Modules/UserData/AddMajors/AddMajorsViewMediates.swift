@@ -18,8 +18,9 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.addMajorsCell, bundle: nil), forCellReuseIdentifier: Cell.addMajorsCell)
-        
         tableView.reloadData()
+        searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
+
     }
     
     
@@ -39,14 +40,14 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedArray.contains(indexPath.row ){
-            guard let index = selectedArray.firstIndex(where: {
-                $0 == indexPath.row
-            }) else { return }
+        let major = majorArray[indexPath.row]
+
+        if selectedArray.contains(major["name"] as? String ?? "") {
+            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
             selectedArray.remove(at: index)
         }
         else {
-            selectedArray.append(indexPath.row)
+            selectedArray.append(major["name"] as? String ?? "")
         }
         self.moveToNext()
 
@@ -56,5 +57,32 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
         return cellHeight(indexPath)
     }
 }
+
+extension AddMajorsViewController: UITextFieldDelegate {
+    
+    //MARK : UITextFieldDelegate
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @objc func textDidChanged(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
+        getMajorList(searchText: searchText)
+    }
+
+    
+}
+
+
 
 

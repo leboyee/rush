@@ -103,6 +103,7 @@ extension EnterPasswordViewConteroller {
         profile.password = passwordTextField.text ?? ""
         self.view.endEditing(true)
         if loginType == .Login {
+            Authorization.shared.session = ""
             loginApiCalled()
         }
         else {
@@ -138,4 +139,13 @@ extension EnterPasswordViewConteroller {
         }
     }
     
+}
+
+
+// MARK: - Preseneter
+extension EnterPasswordViewConteroller {
+    
+    func profileUpdateSuccess(){
+        AppDelegate.getInstance().setupStoryboard()
+    }
 }

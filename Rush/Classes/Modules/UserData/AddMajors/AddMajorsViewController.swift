@@ -21,9 +21,9 @@ class AddMajorsViewController: CustomViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
 
-    var selectedArray = [Int]()
-    
+    var selectedArray = [String]()
     var selectedIndex = -1
+    var majorArray = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,7 @@ class AddMajorsViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
+        getMajorList(searchText: "")
     }
     
     func setupUI() {
@@ -106,7 +107,15 @@ extension AddMajorsViewController {
 
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+    }
+}
 
+// MARK: - Preseneter
+extension AddMajorsViewController {
+    
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
     }
 }

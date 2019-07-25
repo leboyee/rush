@@ -18,10 +18,29 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.addMajorsCell, bundle: nil), forCellReuseIdentifier: Cell.addMajorsCell)
-        
         tableView.reloadData()
+        
+        searchTextField.delegate = self
+        searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
+
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
+    //MARK: - Keyboard functions
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            minorButtonConstraint.constant = keyboardHeight + 10
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        minorButtonConstraint.constant = 30
+
+    }
+
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -39,14 +58,13 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedArray.contains(indexPath.row ){
-            guard let index = selectedArray.firstIndex(where: {
-                $0 == indexPath.row
-            }) else { return }
+        let major = minorArray[indexPath.row]
+        if selectedArray.contains(major["name"] as? String ?? "") {
+            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
             selectedArray.remove(at: index)
         }
         else {
-            selectedArray.append(indexPath.row)
+            selectedArray.append(major["name"] as? String ?? "")
         }
         self.moveToNext()
 
@@ -58,3 +76,29 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+extension AddMinorsViewController: UITextFieldDelegate {
+    
+    //MARK : UITextFieldDelegate
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @objc func textDidChanged(_ textField: UITextField) {
+        deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+        let searchText = textField.text ?? ""
+        self.minorCustomButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+        getMinorList(searchText: searchText)
+    }
+    
+    
+}

@@ -95,6 +95,7 @@ extension EnterPhoneNoViewController {
     
     @IBAction func nextButtonAction() {
        //moveToVerificationView()
+        Authorization.shared.session = ""
         authPhone()
         //self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
     }

@@ -21,7 +21,7 @@
         <!--User Info View Controller-->
         <scene sceneID="Uiz-aL-qXS">
             <objects>
-                <viewController storyboardIdentifier="ChooseInterestViewController" id="fna-18-kRd" customClass="UserInfoViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fna-18-kRd" customClass="UserInfoViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iJf-Wq-Zc3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextButtonAction" destination="fna-18-kRd" eventType="touchUpInside" id="127-JD-ZIh"/>
+                                            <action selector="finisheRegistrationButtonAction" destination="fna-18-kRd" eventType="touchUpInside" id="91d-sB-ySn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -151,6 +151,9 @@
                         <outlet property="pageControllerLeadingConstraint" destination="8CD-GE-amO" id="AgL-xC-b8T"/>
                         <outlet property="pageControllerView" destination="1ZJ-bd-ccJ" id="kuh-kJ-ds2"/>
                         <outlet property="tableView" destination="GG3-q1-8Ik" id="qAH-7O-TqD"/>
+                        <outlet property="titleLabelOne" destination="VAq-eN-2eS" id="JTg-ck-DME"/>
+                        <outlet property="titleLableTwo" destination="h65-2G-Uf0" id="yfG-D2-NS9"/>
+                        <segue destination="h9X-yK-yho" kind="show" identifier="AddInviteViewSegue" id="GUW-jX-25t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcZ-Te-nBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,5 +180,139 @@
             </objects>
             <point key="canvasLocation" x="7356.521739130435" y="-214.28571428571428"/>
         </scene>
+        <!--Add Invite View Controller-->
+        <scene sceneID="Ggh-7T-5rk">
+            <objects>
+                <viewController id="h9X-yK-yho" customClass="AddInviteViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="twX-sZ-HR7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgforInvite" translatesAutoresizingMaskIntoConstraints="NO" id="Z9K-Xc-dre" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gn7-XR-HOJ">
+                                <rect key="frame" x="0.0" y="57" width="414" height="688"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGz-pf-5hh">
+                                        <rect key="frame" x="24" y="236.5" width="366" height="215"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileSetIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kdD-EY-JeF">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="CDD-lM-ThX"/>
+                                                    <constraint firstAttribute="height" constant="40" id="kPi-1R-iCM"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile is set!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agj-4b-XFF">
+                                                <rect key="frame" x="0.0" y="52" width="84" height="16"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Would you like to invite friends to Rush?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1im-sE-bCN">
+                                                <rect key="frame" x="0.0" y="76" width="366" height="122"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="215" id="6Sp-kH-gEe"/>
+                                            <constraint firstItem="kdD-EY-JeF" firstAttribute="leading" secondItem="jGz-pf-5hh" secondAttribute="leading" id="8l3-AD-lLx"/>
+                                            <constraint firstItem="Agj-4b-XFF" firstAttribute="leading" secondItem="jGz-pf-5hh" secondAttribute="leading" id="C0j-7R-34S"/>
+                                            <constraint firstItem="1im-sE-bCN" firstAttribute="top" secondItem="Agj-4b-XFF" secondAttribute="bottom" constant="8" id="JTN-Ny-LS9"/>
+                                            <constraint firstAttribute="trailing" secondItem="1im-sE-bCN" secondAttribute="trailing" id="PqP-mF-0bp"/>
+                                            <constraint firstItem="kdD-EY-JeF" firstAttribute="top" secondItem="jGz-pf-5hh" secondAttribute="top" id="TZf-as-KTN"/>
+                                            <constraint firstItem="Agj-4b-XFF" firstAttribute="top" secondItem="kdD-EY-JeF" secondAttribute="bottom" constant="12" id="V3t-1y-cCf"/>
+                                            <constraint firstItem="1im-sE-bCN" firstAttribute="leading" secondItem="jGz-pf-5hh" secondAttribute="leading" id="iiH-U0-OfV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jGz-pf-5hh" secondAttribute="trailing" constant="24" id="OTs-4T-slI"/>
+                                    <constraint firstItem="jGz-pf-5hh" firstAttribute="leading" secondItem="Gn7-XR-HOJ" secondAttribute="leading" constant="24" id="Rlv-YB-Yb1"/>
+                                    <constraint firstItem="jGz-pf-5hh" firstAttribute="centerY" secondItem="Gn7-XR-HOJ" secondAttribute="centerY" id="zKc-KS-Roa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dR1-iA-f01">
+                                <rect key="frame" x="0.0" y="745" width="414" height="126"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSx-1h-Qem" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="7" width="366" height="48"/>
+                                        <color key="backgroundColor" red="0.5607843137254902" green="0.23921568627450979" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Rki-6f-y6x"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Invite from contacts">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWm-91-ocx" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="63" width="366" height="48"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="iMv-Od-539"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="  Invite from Facebook" image="facebook-app-logo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eWm-91-ocx" secondAttribute="trailing" constant="24" id="1dF-lV-hld"/>
+                                    <constraint firstItem="GSx-1h-Qem" firstAttribute="top" secondItem="dR1-iA-f01" secondAttribute="top" constant="7" id="8Gc-eD-qzh"/>
+                                    <constraint firstItem="GSx-1h-Qem" firstAttribute="leading" secondItem="dR1-iA-f01" secondAttribute="leading" constant="24" id="Gmw-CX-xVr"/>
+                                    <constraint firstAttribute="trailing" secondItem="GSx-1h-Qem" secondAttribute="trailing" constant="24" id="KZS-bw-HJW"/>
+                                    <constraint firstItem="eWm-91-ocx" firstAttribute="top" secondItem="GSx-1h-Qem" secondAttribute="bottom" constant="8" id="NYT-Al-LlJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="eWm-91-ocx" secondAttribute="bottom" constant="15" id="Xt3-EG-HZq"/>
+                                    <constraint firstItem="eWm-91-ocx" firstAttribute="leading" secondItem="dR1-iA-f01" secondAttribute="leading" constant="24" id="lHm-bz-mwn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gn7-XR-HOJ" firstAttribute="top" secondItem="xjk-yr-j9Q" secondAttribute="top" constant="13" id="3SF-OE-HUk"/>
+                            <constraint firstItem="dR1-iA-f01" firstAttribute="trailing" secondItem="xjk-yr-j9Q" secondAttribute="trailing" id="BgA-hj-mYm"/>
+                            <constraint firstItem="Z9K-Xc-dre" firstAttribute="leading" secondItem="xjk-yr-j9Q" secondAttribute="leading" id="C2L-ib-bVq"/>
+                            <constraint firstItem="Gn7-XR-HOJ" firstAttribute="trailing" secondItem="xjk-yr-j9Q" secondAttribute="trailing" id="J5L-ba-Cgt"/>
+                            <constraint firstAttribute="bottom" secondItem="Z9K-Xc-dre" secondAttribute="bottom" id="OMc-UG-l4C"/>
+                            <constraint firstItem="Gn7-XR-HOJ" firstAttribute="leading" secondItem="xjk-yr-j9Q" secondAttribute="leading" id="cXW-Vc-FNb"/>
+                            <constraint firstAttribute="bottom" secondItem="dR1-iA-f01" secondAttribute="bottom" constant="25" id="fi1-mB-c9g"/>
+                            <constraint firstItem="Z9K-Xc-dre" firstAttribute="trailing" secondItem="xjk-yr-j9Q" secondAttribute="trailing" id="geN-fr-bGS"/>
+                            <constraint firstItem="dR1-iA-f01" firstAttribute="top" secondItem="Gn7-XR-HOJ" secondAttribute="bottom" id="k8I-4d-RyV"/>
+                            <constraint firstItem="dR1-iA-f01" firstAttribute="leading" secondItem="xjk-yr-j9Q" secondAttribute="leading" id="lWB-na-Beq"/>
+                            <constraint firstItem="Z9K-Xc-dre" firstAttribute="top" secondItem="twX-sZ-HR7" secondAttribute="top" id="oY0-m5-HeY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xjk-yr-j9Q"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ypH-iZ-kOr"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="bottomView" destination="dR1-iA-f01" id="0TC-Hu-CDd"/>
+                        <outlet property="inviteContactButton" destination="GSx-1h-Qem" id="rhv-pW-4kQ"/>
+                        <outlet property="inviteFbButton" destination="eWm-91-ocx" id="cQb-OW-QRc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIR-le-NQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8075.36231884058" y="-214.28571428571428"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="bgforInvite" width="375" height="812"/>
+        <image name="facebook-app-logo" width="20" height="20"/>
+        <image name="profileSetIcon" width="40" height="40"/>
+    </resources>
 </document>

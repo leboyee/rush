@@ -15,11 +15,11 @@ extension ChooseUniversityViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return Utils.chooseYearArray().count
+        return Utils.chooseUniversity().count
     }
     
     func fillChooseUniversityCell(_ cell: UniversityCell, _ indexPath: IndexPath) {
-        cell.setup(title:Utils.chooseYearArray()[indexPath.row])
+        cell.setup(title:Utils.chooseUniversity()[indexPath.row])
         cell.setup(checkMark: selectedIndex == indexPath.row ? true : false)
     }
 }

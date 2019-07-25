@@ -15,16 +15,48 @@ extension AddMajorsViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return 10
+        return majorArray.count
     }
     
     func fillAddMajorCell(_ cell: AddMajorsCell, _ indexPath: IndexPath) {
-        cell.setup(title: "Test Major")
-        cell.setup(isSelected: selectedArray.contains(indexPath.row))
+        let major = majorArray[indexPath.row]
+        cell.setup(title: major["name"] as? String ?? "")
+        cell.setup(isSelected: selectedArray.contains(major["name"] as? String ?? ""))
     }
 }
 
 //MARK: - Manage Interator or API's Calling
 extension AddMajorsViewController {
     
+    func getMajorList(searchText: String) {
+        //Utils.showSpinner()
+        ServiceManager.shared.getMajorList(params: ["search": searchText]) {
+            [weak self] (data, errorMessage) in
+            guard let self_ = self else { return }
+           guard let list = data?["list"] as? [[String: Any]] else { return }
+            self_.majorArray = list
+            self_.tableView.reloadData()
+        }
+    }
+    
+    func updateProfileAPI() {
+        
+        
+        let param = [kU_Edu_Majors: selectedArray]  as [String : Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if data != nil {
+                self_.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+
+
 }
+

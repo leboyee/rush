@@ -126,7 +126,37 @@ extension ServiceManager {
             })
         }
     }
+    
+    func uploadUserProfileImage(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.uploadUserProfileImage(params: params) {
+            [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                if let user = data?["user"] as? [String: Any] {
+                    Authorization.shared.updateUserData(data: user)
+                }
+                closer(data, errorMessage)
+            })
+        }
+    }
 
+    func getMajorList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getMajorList(params: params) { [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
+    func getMinorList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getMinorList(params: params) { [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
     
     /*
     //MARK: - Profile

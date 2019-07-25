@@ -17,4 +17,23 @@ extension AddProfilePictureViewController {
 //MARK: - Manage Interator or API's Calling
 extension AddProfilePictureViewController {
     
-}
+    func updateProfileAPI() {
+        var photoData = Data()
+        if (userPhotoImageView.image ?? UIImage()).size.width > 0 {
+            photoData = userPhotoImageView.image?.jpegData(compressionQuality: 0.8) ?? Data()
+        }
+
+        let param = ["u_photo": photoData] as [String : Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.uploadUserProfileImage(params: param) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if data != nil {
+                self_.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }}
