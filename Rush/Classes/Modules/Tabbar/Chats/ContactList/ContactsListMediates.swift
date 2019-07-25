@@ -68,5 +68,9 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
         return CGFloat.leastNormalMagnitude
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = ChatRoomViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
 }

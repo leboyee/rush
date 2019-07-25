@@ -132,6 +132,34 @@ extension String
         return boundingBox.height
     }
     
+    
+    var smallName : String {
+        let fullName = self
+        var components = fullName.components(separatedBy: " ")
+        var name = ""
+        if(components.count > 0)
+        {
+            let firstName = components.removeFirst()
+            let lastName = components.joined(separator: " ")
+            
+            let lastnameCh = lastName.map { String($0) }
+            name = firstName
+            if lastnameCh.count > 0 {
+                name = firstName + " " + (lastnameCh.first ?? "")
+            }
+        }
+        return name
+    }
+    
+    var firstName : String {
+        var fullname = self
+        let allValue = fullname.components(separatedBy: " ")
+        if allValue.count > 0 {
+            fullname = allValue.first ?? fullname
+        }
+        return fullname
+    }
+    
 }
 
 extension String {

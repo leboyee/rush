@@ -43,6 +43,7 @@ class Profile: NSObject {
     var city                : String?
     var state               : String?
     var leaderboard         : Int = 0
+    var isNotificationOn: Bool = true
 
     init(data : [String : Any]) {
         super.init()
@@ -96,6 +97,11 @@ class Profile: NSObject {
         }
         if let value = data["u_hometown"] as? String {
             homeTown = value
+        }
+        
+        isNotificationOn = true
+        if let value = data["is_push_on"] as? Int {
+            isNotificationOn = value == 1 ? true : false
         }
         
     }
