@@ -17,7 +17,6 @@ class ChatRoomViewController: ChatViewController {
     let outgoingAvatarOverlap: CGFloat = 17.5
     var isGroupChat = false
     var userNavImageView = UIImageView()
-    var userNavGroupView = UIView()
     var userNameNavLabel = UILabel()
     var messageList: [MockMessage] = []
     var dismissButton : UIButton?
@@ -165,7 +164,6 @@ class ChatRoomViewController: ChatViewController {
         
         configureInputBarItems()
     }
-    
     
     
     public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -351,35 +349,22 @@ extension ChatRoomViewController {
     }
     
     private func showCameraPermissionPopup() {
-        let cameraMediaType = AVMediaType.video
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
         
-        switch cameraAuthorizationStatus {
-        case .denied:
-            NSLog("cameraAuthorizationStatus=denied")
-            self.alertCameraAccessNeeded()
-            break
-        case .authorized:
-            NSLog("cameraAuthorizationStatus=authorized")
-            openCameraOrLibrary()
-            break
-        case .restricted:
-            NSLog("cameraAuthorizationStatus=restricted")
-            self.alertCameraAccessNeeded()
-            break
-        case .notDetermined:
-            NSLog("cameraAuthorizationStatus=notDetermined")
-            
-            // Prompting user for the permission to use the camera.
-            AVCaptureDevice.requestAccess(for: cameraMediaType) { granted in
-                DispatchQueue.main.sync {
-                    if granted {
-                        // do something
-                        self.openCameraOrLibrary()
-                    } else {
-                        // do something else
-                    }
-                }
+        Utils.authorizeVideo { [unowned self](status) in
+            switch status {
+            case .alreadyDenied:
+                Utils.alertCameraAccessNeeded()
+                break
+            case .alreadyAuthorized:
+                self.openCameraOrLibrary()
+                break
+            case .restricted:
+                Utils.alertCameraAccessNeeded()
+                break
+            case .justAuthorized:
+                self.openCameraOrLibrary()
+            case .justDenied:
+                break
             }
         }
     }
@@ -394,70 +379,22 @@ extension ChatRoomViewController {
         }
     }
     
-    func alertCameraAccessNeeded() {
-        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
-        
-        let alert = UIAlertController(
-            title: "Camera Access",
-            message: "We wants to use camera to capture image.",
-            preferredStyle: UIAlertController.Style.alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func alertPhotoAccessNeeded() {
-        
-        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
-        
-        let alert = UIAlertController(
-            title: "Photo Library Access",
-            message: "Allow user to choose photo from gallery and load from library.",
-            preferredStyle: UIAlertController.Style.alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
-    }
     
     private func showPhotoPermisionPopup() {
-        let photos = PHPhotoLibrary.authorizationStatus()
         
-        switch photos {
-        case .denied:
-            NSLog("cameraAuthorizationStatus=denied")
-            self.alertPhotoAccessNeeded()
-            break
-        case .authorized:
-            NSLog("cameraAuthorizationStatus=authorized")
-            openPhotoLibrary()
-            break
-        case .restricted:
-            NSLog("cameraAuthorizationStatus=restricted")
-            self.alertPhotoAccessNeeded()
-            break
-        case .notDetermined:
-            NSLog("cameraAuthorizationStatus=notDetermined")
-            
-            // Prompting user for the permission to use the photo.
-            PHPhotoLibrary.requestAuthorization({status in
-                if status == .authorized {
-                    DispatchQueue.main.async {
-                        self.openPhotoLibrary()
-                    }
-                } else {
-                    
-                }
-            })
+        Utils.authorizePhoto { [unowned self] (status) in
+            switch status {
+            case .justDenied:
+                break
+            case .alreadyDenied:
+                Utils.photoLibraryPermissionAlert()
+            case .restricted:
+                Utils.photoLibraryPermissionAlert()
+            case .justAuthorized:
+                self.openPhotoLibrary()
+            case .alreadyAuthorized:
+                self.openPhotoLibrary()
+            }
         }
     }
     
@@ -492,13 +429,15 @@ extension ChatRoomViewController {
     }
     
     func setTypingIndicatorHidden(_ isHidden: Bool, performUpdates updates: (() -> Void)? = nil) {
-        //        updateTitleView(title: "MessageKit", subtitle: isHidden ? "2 Online" : "Typing...")
-        //        setTypingBubbleHidden(isHidden, animated: true, whilePerforming: updates) { [weak self] (_) in
-        //            if self?.isLastSectionVisible() == true {
-        //                self?.messagesCollectionView.scrollToBottom(animated: true)
-        //            }
-        //        }
-        //        messagesCollectionView.scrollToBottom(animated: true)
+        /*
+        updateTitleView(title: "MessageKit", subtitle: isHidden ? "2 Online" : "Typing...")
+        setTypingBubbleHidden(isHidden, animated: true, whilePerforming: updates) { [weak self] (_) in
+            if self?.isLastSectionVisible() == true {
+                self?.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        }
+        messagesCollectionView.scrollToBottom(animated: true)
+        */
     }
     
     
@@ -560,74 +499,38 @@ extension ChatRoomViewController {
         refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
+
         
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.white
+        let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
         
-        
-        // MainView
-        let userView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 150, height: 44))
-        
-        // BackView
-        let backView = UIButton(frame: CGRect(x: 0, y: 8, width: 28, height: 28))
-        let back = UIImage(named: "back-White")?.withRenderingMode(.alwaysTemplate)
-        backView.setImage(back, for: .normal)
-        backView.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
-        backView.tintColor = UIColor.white
-        
-        // Group member list button
-        let groupView = UIButton(frame: CGRect(x: 36, y: 0, width: screenWidth - 150 - 36, height: 28))
-        groupView.addTarget(self, action: #selector(openGroupMemberList), for: .touchUpInside)
-        
-        userNavImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-        userNavImageView.backgroundColor = UIColor.black
+        userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
+        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
         userNavImageView.clipsToBounds = true
-        userNavImageView.layer.cornerRadius = 19
+        userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill
-        groupView.addSubview(userNavImageView)
+        titleView.addSubview(userNavImageView)
         
+        let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
+        dateLabel.text = "Boris Marshal"
+        dateLabel.font = UIFont.DisplayBold(sz: 24)
+        dateLabel.textColor = UIColor.white
         
-        userNavGroupView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        userNavGroupView.backgroundColor = UIColor.clear
-        userNavGroupView.clipsToBounds = true
+        // View calender button setup
+        let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
+        viewCalender.setTitle("View profile", for: .normal)
+        viewCalender.contentHorizontalAlignment = .left
+        viewCalender.setTitleColor(UIColor.gray47, for: .normal)
+        viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        titleView.addSubview(dateLabel)
+        titleView.addSubview(viewCalender)
         
-        let imageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
-        imageView1.backgroundColor = UIColor.purple
-        imageView1.clipsToBounds = true
-        imageView1.tag = 1001
-        imageView1.layer.cornerRadius = 14
-        imageView1.contentMode = .scaleAspectFill
-        userNavGroupView.addSubview(imageView1)
+        navigationItem.titleView = titleView
         
-        let imageView2 = UIImageView(frame: CGRect(x: 10, y: 9, width: 28, height: 28))
-        imageView2.backgroundColor = UIColor.purple
-        imageView2.clipsToBounds = true
-        imageView2.tag = 1002
-        imageView2.layer.cornerRadius = 14
-        imageView2.contentMode = .scaleAspectFill
-        userNavGroupView.addSubview(imageView2)
-        userNavGroupView.isHidden = true
-        groupView.addSubview(userNavGroupView)
+        let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
+        navigationItem.leftBarButtonItem = leftbarButton
         
-        // UserName
-        userNameNavLabel = UILabel(frame: CGRect(x: 46, y: 0, width: screenWidth - 150 , height: 38))
-        userNameNavLabel.font = UIFont.Semibold(sz: 17)
-        userNameNavLabel.textColor = UIColor.white
-        
-        userView.addSubview(backView)
-        groupView.addSubview(userNameNavLabel)
-        userView.addSubview(groupView)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userView)
-        
-        let editBarButton = UIBarButtonItem(image: UIImage(named: "addMember-white"), style: .done, target: self, action: #selector(editBarButtonAction))
-        navigationItem.rightBarButtonItem = editBarButton
         
         // add gesture
-        
-        let tap1 = UITapGestureRecognizer(target: self, action:#selector(openGroupMemberList))
-        tap1.cancelsTouchesInView = false
-        userNavGroupView.addGestureRecognizer(tap1)
         
         let tap2 = UITapGestureRecognizer(target: self, action:#selector(openGroupMemberList))
         tap2.cancelsTouchesInView = false
@@ -647,13 +550,6 @@ extension ChatRoomViewController {
         
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
-        
-        /*
-         if isFromMatch {
-         //add empty avatarview
-         addEmptyAvatarView()
-         }
-         */
     }
     
     func updateChannelNameAndImagesOnNav() {
@@ -688,64 +584,23 @@ extension ChatRoomViewController {
         
         emptyMessageView = UIView(frame: self.view.bounds)
         
-        let topY = screenHeight*0.3
-        let outerHeight : CGFloat = 192
-        
-        let outerView = UIView(frame: CGRect(0, topY, 192, outerHeight))
-        outerView.clipsToBounds = false
-        outerView.layer.shadowColor = UIColor.black.withAlphaComponent(0.15).cgColor
-        outerView.layer.shadowOpacity = 1
-        outerView.layer.shadowOffset = CGSize.zero
-        outerView.layer.shadowRadius = 15
-        outerView.isUserInteractionEnabled = false
-        outerView.center.x = view.center.x
-        outerView.layer.shadowPath = UIBezierPath(roundedRect: outerView.bounds, cornerRadius: 192/2).cgPath
-        
-        emptyUserImageView = UIImageView(frame: outerView.bounds)
+        emptyUserImageView = UIImageView(frame: CGRect((screenWidth/2) - 44, (screenHeight/2) - 44, 88, 88))
         emptyUserImageView.clipsToBounds = true
+        emptyUserImageView.image = #imageLiteral(resourceName: "grayChat")
         emptyUserImageView.contentMode = .scaleAspectFill
-        emptyUserImageView.layer.cornerRadius = 192/2
-        
-        outerView.addSubview(emptyUserImageView)
-        emptyMessageView.addSubview(outerView)
-        
-        // time
-        let heightTime : CGFloat = 58
+        emptyUserImageView.layer.cornerRadius = 44
+        emptyMessageView.addSubview(emptyUserImageView)
         
         var timeLabel = UILabel()
-        
-        if isFromMatch {
-            timeLabel = UILabel(frame: CGRect(x: 16, y: topY + outerHeight + 24/* Padding */, width: screenWidth - 32 , height: heightTime))
-        } else {
-            timeLabel = UILabel(frame: CGRect(x: 16, y: topY + outerHeight + 24/* Padding */, width: screenWidth - 32 , height: 130))
-        }
-        
-        timeLabel.font = UIFont.DisplaySemibold(sz: 24)
+        timeLabel = UILabel(frame: CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32 , height: 22))
+        timeLabel.font = UIFont.Semibold(sz: 17)
         timeLabel.numberOfLines = 0
-        timeLabel.textColor = UIColor.green
+        timeLabel.textColor = UIColor.buttonDisableTextColor
         timeLabel.textAlignment = .center
         timeLabel.isUserInteractionEnabled = false
-        
-        
-        if channel != nil {
-            timeLabel.text = String(format: emptyMessageFriendTitle, self.userName)
-        } else {
-            timeLabel.text = String(format: emptyMessageFriendTitle, friendProfile?.name ?? self.userName)
-        }
-        
-        
+        timeLabel.text = String(format: emptyMessageFriendTitle, self.userName)
         emptyMessageView.addSubview(timeLabel)
         
-        if emptyMessageType == .beginner && isFromMatch {
-            // detail
-            let detailLabel = UILabel(frame: CGRect(x: 30, y: topY + outerHeight + heightTime + 32/* Padding */, width: screenWidth - 60 , height: 44))
-            detailLabel.font = UIFont.Regular(sz: 17)
-            detailLabel.numberOfLines = 0
-            detailLabel.textColor = UIColor.blue
-            detailLabel.textAlignment = .center
-            detailLabel.text = "You two matched for a reason. Say something!"
-            emptyMessageView.addSubview(detailLabel)
-        }
         view.addSubview(emptyMessageView)
         
         dismissButton = UIButton(frame: self.view.frame)
@@ -756,11 +611,11 @@ extension ChatRoomViewController {
         if friendProfile != nil {
             if channel != nil {
                 let img = friendProfile?.images?.first?.thumb ?? ""
-                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
+//                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 updateChannelNameAndImagesOnNav()
             } else {
                 let img = friendProfile?.images?.first?.thumb ?? ""
-                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
+//                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 
                 userNameNavLabel.text = friendProfile?.name ?? ""
                 let imgUser = friendProfile?.images?.first?.thumb ?? ""
@@ -781,9 +636,9 @@ extension ChatRoomViewController {
             }
             
             if imgName.isEmpty {
-                emptyUserImageView.sd_setImage(with: URL(string: updateChatUserImage()), completed: nil)
+//                emptyUserImageView.sd_setImage(with: URL(string: updateChatUserImage()), completed: nil)
             } else {
-                emptyUserImageView.sd_setImage(with: URL(string: imgName), completed: nil)
+//                emptyUserImageView.sd_setImage(with: URL(string: imgName), completed: nil)
             }
             userNameNavLabel.text = self.userName
             showSingleOrGroupPhotos(photoURL: updateChatUserImage())
@@ -791,45 +646,11 @@ extension ChatRoomViewController {
     }
     
     func showSingleOrGroupPhotos(photoURL:String?) {
-        userNavGroupView.isHidden = true
-        
         if let photo = photoURL {
             if self.channel == nil || (self.channel?.members?.count ?? 0) <= 2 {
                 //single photo
-                userNavGroupView.isHidden = true
                 userNavImageView.isHidden = false
-                userNavImageView.sd_setImage(with: URL(string: photo), completed: nil)
-            } else {
-                showGroupPhotos()
-            }
-            
-        } else {//group photo
-            showGroupPhotos()
-        }
-    }
-    
-    func showGroupPhotos() {
-        if let members = self.channel?.members {
-            
-            userNavGroupView.isHidden = false
-            userNavImageView.isHidden = true
-            
-            let imageView1 =  userNavGroupView.viewWithTag(1001) as! UIImageView
-            let imageView2 =  userNavGroupView.viewWithTag(1002) as! UIImageView
-            
-            
-            var i = 0
-            for member in members {
-                if let user = member as? SBDUser {
-                    if user.userId != Authorization.shared.profile?.userId {
-                        if i == 0 {
-                            imageView1.sd_setImage(with: URL(string: user.profileUrl ?? ""), completed: nil)
-                            i += 1;
-                        } else {
-                            imageView2.sd_setImage(with: URL(string: user.profileUrl ?? ""), completed: nil)
-                        }
-                    }
-                }
+//                userNavImageView.sd_setImage(with: URL(string: photo), completed: nil)
             }
         }
     }
