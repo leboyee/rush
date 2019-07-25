@@ -323,6 +323,10 @@ extension Utils {
     class func chooseYearArray() -> [String] {
         return ["Freshman", "Sophomore", "Junior", "Senior"]
     }
+    
+    class func chooseUniversity() -> [String] {
+        return ["University of Oxford", "Harvard University", "Stanford University", "Columbia University"]
+    }
 }
 
 //MARK: - Alert Extension

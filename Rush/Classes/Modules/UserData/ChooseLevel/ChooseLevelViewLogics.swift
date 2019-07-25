@@ -27,4 +27,20 @@ extension ChooseLevelViewController {
 //MARK: - Manage Interator or API's Calling
 extension ChooseLevelViewController {
     
+    func updateProfileAPI() {
+        
+        let param = [kU_Edu_Level: Utils.chooseLevelArray()[selectedIndex]]  as [String : Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if data != nil {
+                self_.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

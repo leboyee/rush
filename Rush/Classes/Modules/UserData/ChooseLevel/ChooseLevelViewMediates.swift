@@ -42,7 +42,7 @@ extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         self.tableView.reloadData()
-        self.moveToNext()
+        updateProfileAPI()
     }    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

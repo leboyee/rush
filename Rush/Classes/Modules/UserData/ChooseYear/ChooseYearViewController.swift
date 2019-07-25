@@ -104,3 +104,11 @@ extension ChooseYearViewController {
         
     }
 }
+
+// MARK: - Preseneter
+extension ChooseYearViewController {
+    
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.chooseUniversitySegue, sender: self)
+    }
+}

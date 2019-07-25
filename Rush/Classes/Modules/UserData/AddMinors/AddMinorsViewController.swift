@@ -20,10 +20,14 @@ class AddMinorsViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var minorCustomButton: UIButton!
+    @IBOutlet weak var minorButtonConstraint: NSLayoutConstraint!
 
-    var selectedArray = [Int]()
-    
+    var selectedArray = [String]()
+    var minorArray = [[String: Any]]()
     var selectedIndex = -1
+    var customMinorArray = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +38,19 @@ class AddMinorsViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
+        searchTextField.autocorrectionType = .no
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+
     }
     
     override func viewWillLayoutSubviews() {
@@ -51,6 +63,7 @@ class AddMinorsViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
+        getMinorList(searchText: "")
     }
     
     func setupUI() {
@@ -60,6 +73,10 @@ class AddMinorsViewController: CustomViewController {
         setCustomNavigationBarView()
         self.nextButton.setNextButton(isEnable: true)
         bottomView.isHidden = true
+        deleteButton.isHidden = true
+        minorCustomButton.isHidden = true
+        minorCustomButton.layer.cornerRadius = 8.0
+        minorCustomButton.clipsToBounds = true
     }
 
     
@@ -107,9 +124,32 @@ extension AddMinorsViewController {
 
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
-
+        updateProfileAPI()
        //AppDelegate.getInstance().setupStoryboard()
 
+    }
+    
+    @IBAction func addCustomMinoreButtonAction() {
+        var dict = [String: Any]()
+        dict["name"] = searchTextField.text
+        selectedArray.append(searchTextField.text ?? "")
+        customMinorArray.append(dict)
+        searchTextField.text = ""
+        getMinorList(searchText: "")
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func deleteButtonAction() {
+        searchTextField.text = ""
+        deleteButton.isHidden = true
+        self.minorCustomButton.isHidden = true
+    }
+}
+
+// MARK: - Preseneter
+extension AddMinorsViewController {
+    
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
     }
 }

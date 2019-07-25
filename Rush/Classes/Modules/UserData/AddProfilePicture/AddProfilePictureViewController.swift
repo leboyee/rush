@@ -153,7 +153,8 @@ extension AddProfilePictureViewController {
     }
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
     
     @IBAction func skipButtonAction() {
@@ -177,5 +178,13 @@ extension AddProfilePictureViewController {
                 vc.isSkip = isSkip
             }
         }
+    }
+}
+
+// MARK: - Preseneter
+extension AddProfilePictureViewController {
+    
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
 }

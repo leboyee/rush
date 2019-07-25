@@ -42,8 +42,7 @@ extension ChooseYearViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         self.tableView.reloadData()
-        self.moveToNext()
-
+        self.updateProfileAPI()
     }    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

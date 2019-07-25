@@ -120,6 +120,8 @@ struct Segues {
     static let universitySegue             = "UniversitySegue"
     static let searchChatSegue             = "SearchChatSegue"
     static let contactListSegue            = "ContactListSegue"
+    static let addInviteViewSegue            = "AddInviteViewSegue"
+
 
 }
 

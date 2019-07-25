@@ -133,3 +133,11 @@ extension ChooseLevelViewController {
         }
     }
 }
+
+// MARK: - Preseneter
+extension ChooseLevelViewController {
+    
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.chooseYearSegue, sender: self)
+    }
+}

@@ -106,6 +106,7 @@ extension EnterUserNameViewController {
     @IBAction func nextButtonAction() {
         firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+       // profileUpdateSuccess()
         updateProfileAPI()
     }
 }
