@@ -263,7 +263,7 @@ extension ChatRoomViewController {
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor.clear
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 28, height: 35), animated: false)
-        messageInputBar.sendButton.image = UIImage(named: "send-grey")
+        messageInputBar.sendButton.image = UIImage(named: "send-Gray")
         messageInputBar.sendButton.title = nil
         messageInputBar.sendButton.isEnabled = true
         messageInputBar.sendButton.backgroundColor = UIColor.clear

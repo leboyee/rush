@@ -72,14 +72,14 @@ open class InputTextView: UITextView {
     }()
     
     /// The placeholder text that appears when there is no text. The default value is "Message"
-    open var placeholder: String? = "Message" {
+    open var placeholder: String? = "Aa" {
         didSet {
             placeholderLabel.text = placeholder
         }
     }
     
     /// The placeholderLabel's textColor
-    open var placeholderTextColor: UIColor? = .lightGray {
+    open var placeholderTextColor: UIColor? = UIColor(red: 0.74, green: 0.74, blue: 0.75, alpha: 1) {
         didSet {
             placeholderLabel.textColor = placeholderTextColor
         }
