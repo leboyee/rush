@@ -96,12 +96,14 @@ extension ChooseInterestViewController {
     }
     
     @IBAction func skipButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
+        self.performSegue(withIdentifier: Segues.userInfoViewSegue, sender: self)
+//        AppDelegate.getInstance().setupStoryboard()
     }
 
     
     @IBAction func nextButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
+        self.performSegue(withIdentifier: Segues.userInfoViewSegue, sender: self)
+// AppDelegate.getInstance().setupStoryboard()
 
     }
 }
