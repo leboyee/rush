@@ -37,8 +37,6 @@ class ChatRoomViewController: ChatViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "navigationBar.pdf").resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: UIBarMetrics.default)
-        
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -230,13 +228,13 @@ extension ChatRoomViewController {
     private func configureInputBarItems() {
         
         // Camera button
-        messageInputBar.setLeftStackViewWidthConstant(to: 60, animated: false)
+        messageInputBar.setLeftStackViewWidthConstant(to: 100, animated: false)
         
-        let cameraButton = makeButton(named: "camera-blue")
+        let cameraButton = makeButton(named: "camera")
         cameraButton.isEnabled = true
         cameraButton.isHighlighted = true
-        cameraButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: 0, bottom: 6, right: 0)
-        let leftItems = [cameraButton, .fixedSpace(0)]
+        cameraButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: -10, bottom: 6, right: 10)
+
         //Mark: - AddImage button
         cameraButton.onTouchUpInside { (button) in
             
@@ -244,18 +242,24 @@ extension ChatRoomViewController {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
                 return
             }
-            
-            Utils.alert(message: nil, title: nil, buttons: ["Take photo", "Upload photo"], cancel : "Cancel", destructive: nil, type: .actionSheet) {
-                [weak self] (index) in
-                guard let self_ = self else { return }
-                if index == 0 {
-                    self_.showCameraPermissionPopup()
-                }
-                else if index == 1 {
-                    self_.showPhotoPermisionPopup()
-                }
-            }
+            self.showCameraPermissionPopup()
         }
+        
+        let galleryButton = makeButton(named: "gallery")
+        galleryButton.isEnabled = true
+        galleryButton.isHighlighted = true
+        galleryButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: 0, bottom: 6, right: 0)
+        //Mark: - AddImage button
+        galleryButton.onTouchUpInside { (button) in
+            if self.channel?.members?.count == 1 {
+                Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
+                return
+            }
+            self.showPhotoPermisionPopup()
+        }
+        
+        let leftItems = [galleryButton, cameraButton, .fixedSpace(0)]
+        
         messageInputBar.setStackViewItems(leftItems, forStack: .left, animated: false)
         
         // Send button
@@ -372,10 +376,12 @@ extension ChatRoomViewController {
     func openCameraOrLibrary() {
         DispatchQueue.main.async {
             let imagPickerController  = UIImagePickerController()
-            imagPickerController.delegate = self
-            imagPickerController.sourceType = .camera
-            imagPickerController.allowsEditing = false
-            self.navigationController?.present(imagPickerController, animated: true, completion: nil)
+            if imagPickerController.sourceType == .camera {
+                imagPickerController.delegate = self
+                imagPickerController.sourceType = .camera
+                imagPickerController.allowsEditing = false
+                self.navigationController?.present(imagPickerController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -401,11 +407,11 @@ extension ChatRoomViewController {
     func openPhotoLibrary() {
         DispatchQueue.main.async {
             let imagPickerController  = UIImagePickerController()
-            imagPickerController.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "navigationBar.pdf").resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: UIBarMetrics.default)
             imagPickerController.delegate = self
+            imagPickerController.navigationBar.isTranslucent = false
             imagPickerController.sourceType = .photoLibrary
             imagPickerController.navigationBar.tintColor = UIColor.white
-            imagPickerController.navigationBar.barTintColor = UIColor.blue
+            imagPickerController.navigationBar.barTintColor = UIColor.bgBlack
             imagPickerController.allowsEditing = false
             self.navigationController?.present(imagPickerController, animated: true, completion: nil)
         }
@@ -471,11 +477,11 @@ extension ChatRoomViewController {
                 $0.spacing = .fixed(10)
                 $0.image = UIImage(named: named)?.withRenderingMode(.alwaysTemplate)
                 $0.setSize(CGSize(width: 25, height: 25), animated: false)
-                $0.tintColor = UIColor.blue
+                $0.tintColor = UIColor.gray83
             }.onSelected {
-                $0.tintColor = UIColor.red
+                $0.tintColor = UIColor.gray83
             }.onDeselected {
-                $0.tintColor = UIColor.gray47
+                $0.tintColor = UIColor.gray83
             }.onTouchUpInside { _ in
                 print("Item Tapped")
         }
