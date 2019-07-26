@@ -95,16 +95,13 @@ class ChooseLevelViewController: CustomViewController {
 //MARK: - Other Function
 extension ChooseLevelViewController {
     func moveToNext() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if self.selectedIndex > 2 {
-                self.performSegue(withIdentifier: Segues.chooseUniverSitySegueFromLevelView, sender: self)
-            }
-            else {
-                self.performSegue(withIdentifier: Segues.chooseYearSegue, sender: self)
-            }
+        if self.selectedIndex > 2 {
+            self.performSegue(withIdentifier: Segues.chooseUniverSitySegueFromLevelView, sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: Segues.chooseYearSegue, sender: self)
         }
     }
-    
 }
 
 // MARK: - Actions
@@ -138,6 +135,6 @@ extension ChooseLevelViewController {
 extension ChooseLevelViewController {
     
     func profileUpdateSuccess(){
-        self.performSegue(withIdentifier: Segues.chooseYearSegue, sender: self)
+        moveToNext()
     }
 }
