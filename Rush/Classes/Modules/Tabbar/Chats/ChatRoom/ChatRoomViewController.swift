@@ -30,7 +30,7 @@ class ChatRoomViewController: ChatViewController {
         messagesCollectionView.register(CustomCell.self)
         
         super.viewDidLoad()
-        
+        loadFirstMessages()
         setup()
     }
     
@@ -62,6 +62,21 @@ class ChatRoomViewController: ChatViewController {
     
     func setup()  {
         setupUI()
+    }
+    
+    // Test
+    func loadFirstMessages() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let count = UserDefaults.standard.mockMessagesCount()
+            SampleData.shared.getMessages(count: count) { messages in
+                DispatchQueue.main.async {
+                    self.messageList = messages
+                    self.messageBaseList = messages
+                    self.chatTableReload(initial: true)
+                    self.messagesCollectionView.scrollToBottom()
+                }
+            }
+        }
     }
     
     @objc func loadMoreMessages() {
@@ -126,7 +141,7 @@ class ChatRoomViewController: ChatViewController {
         layout?.setMessageIncomingAvatarSize( ((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? .zero : CGSize(width: 29, height: 29))
         
         // Username label padding ex . John doe
-        layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left:((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? 10 : 18 , bottom: outgoingAvatarOverlap, right: 18))
+        layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left:((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? 18 : 18 , bottom: outgoingAvatarOverlap, right: 18))
         
         // Accessory View frame of Other user
         layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))

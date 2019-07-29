@@ -28,7 +28,7 @@ extension ChatRoomViewController: MessagesDisplayDelegate {
     // MARK: - All Messages
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? UIColor.white : UIColor.white
+        return isFromCurrentSender(message: message) ? UIColor.white : UIColor.lightGray93
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -71,8 +71,8 @@ extension ChatRoomViewController: MessagesDisplayDelegate {
             avatarView.isHidden = isNextMessageSameSender(at: indexPath)
             avatarView.backgroundColor = UIColor.bgBlack17
         } else {
-            avatarView.isHidden = true
-            avatarView.frame = CGRect.zero
+            avatarView.isHidden = false
+//            avatarView.frame = CGRect.zero
         }
     }
     

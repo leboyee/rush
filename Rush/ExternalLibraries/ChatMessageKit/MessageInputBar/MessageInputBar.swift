@@ -37,7 +37,7 @@ open class MessageInputBar: UIView {
     open var backgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1.0)
+        view.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
         return view
     }()
     

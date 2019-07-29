@@ -65,7 +65,7 @@ final internal class SampleData {
     
     var now = Date()
     
-    let messageImages: [UIImage] = [UIImage(named: "pic")!, UIImage(named: "pic")!]
+    let messageImages: [UIImage] = [UIImage(named: "test-event-bg")!, UIImage(named: "test-event-bg")!]
     
     let emojis = [
         "👍",

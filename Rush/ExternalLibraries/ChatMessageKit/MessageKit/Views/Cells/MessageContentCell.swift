@@ -140,10 +140,7 @@ open class MessageContentCell: MessageCollectionViewCell {
             messageContainerView.backgroundColor = UIColor.red
 //             messageContainerView.applyGradient(colours: [UIColor.blue100, UIColor.blue95])
         } else {
-            messageContainerView.backgroundColor = UIColor.white
-            messageContainerView.layer.borderColor = UIColor(red:0.86, green:0.85, blue:0.9, alpha:1).cgColor
-            messageContainerView.layer.borderWidth = 1
-            messageContainerView.layer.cornerRadius = 8
+            messageContainerView.backgroundColor = UIColor.lightGray93
         }
        
         messageContainerView.style = messageStyle

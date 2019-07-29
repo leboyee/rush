@@ -91,6 +91,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         MockSocket.shared.disconnect()
     }
     
+    
     func configureMessageCollectionView() {
         messagesCollectionView.messagesDataSource = self
         scrollsToBottomOnKeyboardBeginsEditing = true // default false

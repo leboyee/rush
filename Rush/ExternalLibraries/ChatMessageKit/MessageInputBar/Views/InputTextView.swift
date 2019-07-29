@@ -156,7 +156,7 @@ open class InputTextView: UITextView {
     /// Sets up the default properties
     open func setup() {
         
-        backgroundColor = .white
+        backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
         font = UIFont.preferredFont(forTextStyle: .body)
         isScrollEnabled = false
         scrollIndicatorInsets = UIEdgeInsets(top: .leastNonzeroMagnitude,

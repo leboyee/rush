@@ -23,7 +23,8 @@ extension ChatsViewController {
     }
     
     func cellSelected(_ indexPath: IndexPath) {
-        
+        let controller = ChatRoomViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
