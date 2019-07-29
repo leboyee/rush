@@ -24,5 +24,8 @@ target 'Rush' do
   
   #Chatting SDK
   pod 'SendBirdSDK'
+  
+  #Swipe cell
+  pod 'MGSwipeTableCell'
 
 end

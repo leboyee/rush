@@ -229,6 +229,8 @@ extension ChatRoomViewController {
         
         // Camera button
         messageInputBar.setLeftStackViewWidthConstant(to: 100, animated: false)
+        messageInputBar.setRightStackViewWidthConstant(to: 57, animated: false)
+        
         
         let cameraButton = makeButton(named: "camera")
         cameraButton.isEnabled = true
@@ -264,16 +266,15 @@ extension ChatRoomViewController {
         messageInputBar.setStackViewItems(leftItems, forStack: .left, animated: false)
         
         // Send button
-        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor.clear
-        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: -50)
         messageInputBar.sendButton.setSize(CGSize(width: 28, height: 35), animated: false)
         messageInputBar.sendButton.image = UIImage(named: "send-Gray")
         messageInputBar.sendButton.title = nil
         messageInputBar.sendButton.isEnabled = true
         messageInputBar.sendButton.backgroundColor = UIColor.clear
         messageInputBar.isTranslucent = false
-        messageInputBar.textViewPadding.right = -38
+        messageInputBar.textViewPadding.right = -30
         messageInputBar.maxTextViewHeight = 44
         messageInputBar.separatorLine.height = 1
         messageInputBar.textViewPadding.bottom = 8

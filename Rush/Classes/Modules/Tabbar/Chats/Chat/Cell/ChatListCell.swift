@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
-class ChatListCell: UITableViewCell {
+class ChatListCell: MGSwipeTableCell {
 
     @IBOutlet weak var topConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfImageView: NSLayoutConstraint!
