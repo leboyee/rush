@@ -148,16 +148,16 @@ class ChatRoomViewController: ChatViewController {
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.height = 1
         messageInputBar.padding = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 16)
-        messageInputBar.inputTextView.tintColor = UIColor.gray
+        messageInputBar.inputTextView.tintColor = UIColor.brown24
         messageInputBar.inputTextView.backgroundColor =  UIColor.white//UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-        messageInputBar.inputTextView.placeholderTextColor = UIColor.gray
+        messageInputBar.inputTextView.placeholderTextColor = UIColor.buttonDisableTextColor
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 9, bottom: 8, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 36)
-        messageInputBar.inputTextView.layer.borderColor = UIColor.gray.cgColor
-        messageInputBar.inputTextView.textColor = UIColor.gray
-        messageInputBar.inputTextView.layer.borderWidth = 1.0
-        messageInputBar.inputTextView.layer.cornerRadius = 8.0
-        messageInputBar.inputTextView.layer.masksToBounds = true
+        messageInputBar.inputTextView.textColor = UIColor.bgBlack
+        messageInputBar.inputTextView.backgroundColor = UIColor.lightGray93
+        messageInputBar.inputTextView.layer.cornerRadius = 17
+        messageInputBar.inputTextView.clipsToBounds = true
+//        messageInputBar.inputTextView.layer.masksToBounds = true
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         configureInputBarItems()
@@ -245,6 +245,7 @@ extension ChatRoomViewController {
             self.showCameraPermissionPopup()
         }
         
+        // Gallery button
         let galleryButton = makeButton(named: "gallery")
         galleryButton.isEnabled = true
         galleryButton.isHighlighted = true

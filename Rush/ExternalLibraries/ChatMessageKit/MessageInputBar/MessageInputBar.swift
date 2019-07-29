@@ -742,10 +742,9 @@ open class MessageInputBar: UIView {
         }
         
         if inputTextView.text.count == 0 {
-            sendButton.image = UIImage(named: "send-grey")
-        }
-        else {
-            sendButton.image = UIImage(named: "send-blue")
+            sendButton.image = #imageLiteral(resourceName: "send-Gray")
+        } else {
+            sendButton.image = #imageLiteral(resourceName: "send_active")
         }
     }
     
@@ -761,10 +760,9 @@ open class MessageInputBar: UIView {
         }
         
         if inputTextView.text.count == 0 {
-            sendButton.image = UIImage(named: "send-grey")
-        }
-        else {
-            sendButton.image = UIImage(named: "send-blue")
+            sendButton.image = #imageLiteral(resourceName: "send-Gray")
+        } else {
+            sendButton.image = #imageLiteral(resourceName: "send_active")
         }
         items.forEach { $0.keyboardEditingBeginsAction() }
     }
@@ -773,7 +771,7 @@ open class MessageInputBar: UIView {
     @objc
     open func inputTextViewDidEndEditing() {
         if inputTextView.text.count == 0 {
-            sendButton.image = UIImage(named: "send-grey")
+            sendButton.image = #imageLiteral(resourceName: "send-Gray")
         }
         items.forEach { $0.keyboardEditingEndsAction() }
     }

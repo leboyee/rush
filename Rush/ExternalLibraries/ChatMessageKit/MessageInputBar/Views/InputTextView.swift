@@ -65,7 +65,7 @@ open class InputTextView: UITextView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .lightGray
-        label.text = "Message"
+        label.text = "Aa"
         label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
