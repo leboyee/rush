@@ -24,6 +24,7 @@ extension ChatsViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         let controller = ChatRoomViewController()
+        controller.isShowTempData = true
         navigationController?.pushViewController(controller, animated: true)
     }
 }

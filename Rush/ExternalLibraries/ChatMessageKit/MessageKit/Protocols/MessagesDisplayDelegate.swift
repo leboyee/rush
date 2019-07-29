@@ -214,7 +214,7 @@ public extension MessagesDisplayDelegate {
         guard let dataSource = messagesCollectionView.messagesDataSource else {
             fatalError(MessageKitError.nilMessagesDataSource)
         }
-        return dataSource.isFromCurrentSender(message: message) ? .white : .darkText
+        return dataSource.isFromCurrentSender(message: message) ? .darkText : .darkText
     }
 
     func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {

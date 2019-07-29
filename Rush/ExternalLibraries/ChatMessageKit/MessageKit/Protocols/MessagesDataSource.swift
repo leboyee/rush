@@ -108,12 +108,22 @@ public protocol MessagesDataSource: AnyObject {
 public extension MessagesDataSource {
 
     func isFromCurrentSender(message: MessageType) -> Bool {
+        // Test
+        if currentSender().id == message.sender.id {
+            return true
+        } else {
+            return false
+        }
+        
+        
+        /*
         let loggedInUserId = Authorization.shared.profile?.userId ?? ""
         if loggedInUserId == message.sender.id {
             return true
         } else {
             return false
         }
+        */
     }
 
     func numberOfItems(inSection section: Int, in messagesCollectionView: MessagesCollectionView) -> Int {

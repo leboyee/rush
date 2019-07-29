@@ -55,7 +55,9 @@ open class MessageKitDateFormatter {
             formatter.dateStyle = .short
             formatter.timeStyle = .short
         case Calendar.current.isDate(date, equalTo: Date(), toGranularity: .weekOfYear):
-            formatter.dateFormat = "EEEE h:mm a"
+            formatter.amSymbol = "am"
+            formatter.pmSymbol = "pm"
+            formatter.dateFormat = "------   dd MMM '|' H a   ------"
         case Calendar.current.isDate(date, equalTo: Date(), toGranularity: .year):
             formatter.dateFormat = "E, d MMM, h:mm a"
         default:

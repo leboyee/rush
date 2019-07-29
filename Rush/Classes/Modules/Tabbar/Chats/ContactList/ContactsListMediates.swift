@@ -70,6 +70,7 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = ChatRoomViewController()
+        controller.isShowTempData = false
         navigationController?.pushViewController(controller, animated: true)
     }
     

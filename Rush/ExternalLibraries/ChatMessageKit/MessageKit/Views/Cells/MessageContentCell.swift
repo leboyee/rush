@@ -136,9 +136,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         
         
         if dataSource.isFromCurrentSender(message: message) {
-//            messageContainerView.backgroundColor = UIColor.white
-            messageContainerView.backgroundColor = UIColor.red
-//             messageContainerView.applyGradient(colours: [UIColor.blue100, UIColor.blue95])
+            messageContainerView.backgroundColor = UIColor.white
         } else {
             messageContainerView.backgroundColor = UIColor.lightGray93
         }

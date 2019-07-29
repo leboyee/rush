@@ -84,6 +84,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -103,6 +104,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         messageInputBar.inputTextView.tintColor = .primaryColor
         messageInputBar.sendButton.tintColor = .primaryColor
     }
+    
     
     // MARK: - Helpers
     func isLastSectionVisible() -> Bool {
@@ -129,7 +131,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if indexPath.section % 3 == 0 {
-            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.Semibold(sz: 13), NSAttributedString.Key.foregroundColor: UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 0.32)])
         }
         return nil
     }

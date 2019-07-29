@@ -22,6 +22,7 @@ class ChatRoomViewController: ChatViewController {
     var dismissButton : UIButton?
     var isLoadFirst = false
     var hasPrev = false
+    var isShowTempData = false
     
     
     override func viewDidLoad() {
@@ -30,7 +31,9 @@ class ChatRoomViewController: ChatViewController {
         messagesCollectionView.register(CustomCell.self)
         
         super.viewDidLoad()
-        loadFirstMessages()
+        if isShowTempData {
+            loadFirstMessages()
+        }
         setup()
     }
     
@@ -44,6 +47,12 @@ class ChatRoomViewController: ChatViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if isShowTempData {
+            MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
+                .onNewMessage { [weak self] message in
+                    self?.insertMessages(message)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,7 +72,7 @@ class ChatRoomViewController: ChatViewController {
     func setup()  {
         setupUI()
     }
-    
+    //===========================================================================
     // Test
     func loadFirstMessages() {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -79,6 +88,36 @@ class ChatRoomViewController: ChatViewController {
         }
     }
     
+    func insertMessages(_ message: MockMessage) {
+        messageBaseList.append(message)
+        // Reload last section to update header/footer labels and insert a new one
+        messagesCollectionView.performBatchUpdates({
+            messagesCollectionView.insertSections([messageBaseList.count - 1])
+            if messageBaseList.count >= 2 {
+                messagesCollectionView.reloadSections([messageBaseList.count - 2])
+            }
+        }, completion: { [weak self] _ in
+            if self?.isLastSectionVisible() == true {
+                self?.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        })
+    }
+    
+    @objc
+    func loadMoreMessages() {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
+            SampleData.shared.getMessages(count: 20) { messages in
+                DispatchQueue.main.async {
+                    self.messageList.insert(contentsOf: messages, at: 0)
+                    self.messagesCollectionView.reloadDataAndKeepOffset()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
+    }
+    //===========================================================================
+    
+    /*
     @objc func loadMoreMessages() {
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
             if !self.isLoadFirst {
@@ -87,6 +126,7 @@ class ChatRoomViewController: ChatViewController {
         }
         refreshControl.endRefreshing()
     }
+    */
     
     func chatTableReload(initial:Bool) {
         
@@ -138,7 +178,7 @@ class ChatRoomViewController: ChatViewController {
             textInsets: UIEdgeInsets(top: 0, left: 18, bottom: outgoingAvatarOverlap, right: 0)))
         
         // Avatar image frame
-        layout?.setMessageIncomingAvatarSize( ((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? .zero : CGSize(width: 29, height: 29))
+        layout?.setMessageIncomingAvatarSize( ((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? CGSize(width: 29, height: 29) : CGSize(width: 29, height: 29))
         
         // Username label padding ex . John doe
         layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left:((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? 18 : 18 , bottom: outgoingAvatarOverlap, right: 18))
@@ -198,7 +238,7 @@ class ChatRoomViewController: ChatViewController {
     
     override func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if isTimeLabelVisible(at: indexPath) {
-            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.Regular(sz: 13), NSAttributedString.Key.foregroundColor: UIColor.gray])
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.Semibold(sz: 13), NSAttributedString.Key.foregroundColor: UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 0.32)])
         }
         return nil
     }

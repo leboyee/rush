@@ -14,7 +14,7 @@ extension ChatRoomViewController: MessagesDisplayDelegate {
     
     // MARK: - Text Messages
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .white : UIColor.bgBlack
+        return isFromCurrentSender(message: message) ? UIColor.bgBlack : UIColor.bgBlack
     }
     
     func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
@@ -56,7 +56,7 @@ extension ChatRoomViewController: MessagesDisplayDelegate {
         }
         
         return .custom { view in
-            let radius: CGFloat = 8
+            let radius: CGFloat = 16
             let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
             let mask = CAShapeLayer()
             mask.path = path.cgPath
@@ -169,6 +169,28 @@ extension ChatRoomViewController: MessageInputBarDelegate {
     //MARK: Send Text Message
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         
+        if isShowTempData {
+            // Here we can parse for which substrings were autocompleted
+            let attributedText = messageInputBar.inputTextView.attributedText!
+            let range = NSRange(location: 0, length: attributedText.length)
+            
+            let components = inputBar.inputTextView.components
+            messageInputBar.inputTextView.text = String()
+            messageInputBar.invalidatePlugins()
+            
+            // Send button activity animation
+            DispatchQueue.global(qos: .default).async {
+                // fake send request task
+                sleep(1)
+                DispatchQueue.main.async { [weak self] in
+                    self?.messageInputBar.inputTextView.placeholder = "Aa"
+                    self?.insertMessages(components)
+                    self?.messagesCollectionView.scrollToBottom(animated: true)
+                }
+            }
+        }
+        
+        /*
         for component in inputBar.inputTextView.components {
             if let str = component as? String {
                 if self.channel == nil {
@@ -188,6 +210,20 @@ extension ChatRoomViewController: MessageInputBarDelegate {
         
         inputBar.inputTextView.text = String()
         inputBar.sendButton.isEnabled = true
+        */
+    }
+    
+    private func insertMessages(_ data: [Any]) {
+        for component in data {
+            let user = SampleData.shared.currentSender
+            if let str = component as? String {
+                let message = MockMessage(text: str, sender: user, messageId: UUID().uuidString, date: Date())
+                insertMessages(message)
+            } else if let img = component as? UIImage {
+                let message = MockMessage(image: img, sender: user, messageId: UUID().uuidString, date: Date())
+                insertMessages(message)
+            }
+        }
     }
     
     
