@@ -46,18 +46,22 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
     }
     
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        
+        let snackbar = TTGSnackbar(message: "Fine art chat was deleted",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (snackbar) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
+        /*
         Utils.alert(message: "Are you sure you want to delete?",buttons: ["Yes", "No"], handler: { (index) in
             if index == 0 {
                 self.tableView.reloadData()
-                let snackbar = TTGSnackbar(message: "Fine art chat was deleted",
-                                           duration: .middle,
-                                           actionText: "Undo",
-                                           actionBlock: { (snackbar) in
-                                            Utils.notReadyAlert()
-                })
-                snackbar.show()
+                
             }
         })
+        */
         return true
     }
 }
