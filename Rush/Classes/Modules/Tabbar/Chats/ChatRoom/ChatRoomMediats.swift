@@ -106,9 +106,17 @@ extension ChatRoomViewController: MessagesLayoutDelegate {
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if isFromCurrentSender(message: message) {
-            return !isPreviousMessageSameSender(at: indexPath) ? (isGroupChat ? 20 : 0) : 0
+            if isTimeLabelVisible(at: indexPath) {
+                return 15
+            } else {
+                return !isPreviousMessageSameSender(at: indexPath) ? (isGroupChat ? 20 : 0) : 0
+            }
         } else {
-            return !isPreviousMessageSameSender(at: indexPath) ? ((isGroupChat ? 20 : 0) + outgoingAvatarOverlap) : 0
+            if isTimeLabelVisible(at: indexPath) {
+                return 30
+            } else {
+                return !isPreviousMessageSameSender(at: indexPath) ? ((isGroupChat ? 20 : 0) + outgoingAvatarOverlap) : 0
+            }
         }
     }
     
