@@ -18,6 +18,7 @@ class ChatRoomViewController: ChatViewController {
     var isGroupChat = false
     var userNavImageView = UIImageView()
     var userNameNavLabel = UILabel()
+    var timeLabel = UILabel()
     var messageList: [MockMessage] = []
     var dismissButton : UIButton?
     var isLoadFirst = false
@@ -103,8 +104,7 @@ class ChatRoomViewController: ChatViewController {
         })
     }
     
-    @objc
-    func loadMoreMessages() {
+    @objc func loadMoreMessages() {
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
             SampleData.shared.getMessages(count: 20) { messages in
                 DispatchQueue.main.async {
@@ -130,23 +130,19 @@ class ChatRoomViewController: ChatViewController {
     
     func chatTableReload(initial:Bool) {
         
-        if let dismiss = dismissButton {
-            dismiss.removeFromSuperview()
-        }
+        messageBaseList = messageList
         
-        self.messageBaseList = self.messageList
-        
-        if (self.messageList.count == 0) {
-            self.addEmptyAvatarView()
+        if (messageList.count == 0) {
+            emptyPlaceholderView(isHide: false)
         } else {
-            self.isLoadFirst = false
-            self.emptyMessageView.removeFromSuperview()
+            emptyPlaceholderView(isHide: true)
+            isLoadFirst = false
         }
         
-        self.messagesCollectionView.reloadData()
+        messagesCollectionView.reloadData()
         
         if initial {
-            self.scrollToBottomAnimated(true)
+            scrollToBottomAnimated(true)
         }
     }
     
@@ -204,15 +200,15 @@ class ChatRoomViewController: ChatViewController {
         messageInputBar.separatorLine.height = 1
         messageInputBar.padding = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 16)
         messageInputBar.inputTextView.tintColor = UIColor.brown24
-        messageInputBar.inputTextView.backgroundColor =  UIColor.white//UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        messageInputBar.inputTextView.backgroundColor =  UIColor.white
         messageInputBar.inputTextView.placeholderTextColor = UIColor.buttonDisableTextColor
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 9, bottom: 8, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 36)
         messageInputBar.inputTextView.textColor = UIColor.bgBlack
         messageInputBar.inputTextView.backgroundColor = UIColor.lightGray93
         messageInputBar.inputTextView.layer.cornerRadius = 17
-        messageInputBar.inputTextView.clipsToBounds = true
-//        messageInputBar.inputTextView.layer.masksToBounds = true
+//        messageInputBar.inputTextView.clipsToBounds = true
+        messageInputBar.inputTextView.layer.masksToBounds = true
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         configureInputBarItems()
@@ -261,7 +257,7 @@ class ChatRoomViewController: ChatViewController {
             let lastRowIndex = messagesCollectionView.numberOfItems(inSection: lastSection) - 1
             
             if indexPath.section == lastSection && indexPath.row == lastRowIndex {
-                return NSAttributedString(string: "Sent", attributes: [NSAttributedString.Key.font: UIFont.Regular(sz: 12), NSAttributedString.Key.foregroundColor: UIColor.gray])
+                return NSAttributedString(string: "" /*"Sent"*/, attributes: [NSAttributedString.Key.font: UIFont.Regular(sz: 12), NSAttributedString.Key.foregroundColor: UIColor.gray])
             } else {
                 return nil
             }
@@ -294,7 +290,6 @@ extension ChatRoomViewController {
 
         //Mark: - AddImage button
         cameraButton.onTouchUpInside { (button) in
-            
             if self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
                 return
@@ -507,13 +502,13 @@ extension ChatRoomViewController {
     
     func insertMessage(_ message: MockMessage) {
         
-        self.messageList.append(message)
-        self.messageBaseList = self.messageList
+        messageList.append(message)
+        messageBaseList = messageList
         
-        if (self.messageList.count == 0) {
-            self.addEmptyAvatarView()
+        if (messageList.count == 0) {
+            emptyPlaceholderView(isHide: false)
         } else {
-            self.emptyMessageView.removeFromSuperview()
+            emptyPlaceholderView(isHide: true)
         }
         
         messagesCollectionView.performBatchUpdates({
@@ -551,54 +546,13 @@ extension ChatRoomViewController {
     func setupUI() {
         
         updateChannelNameAndImagesOnNav()
-        self.perform(#selector(addEmptyAvatarView), with: nil, afterDelay: 1)
+        setupPlaceholderView()
+        setupNavigation()
         
-        
-        if let dismiss = dismissButton {
-            dismiss.removeFromSuperview()
-        }
-        
-        messagesCollectionView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+//        messagesCollectionView.addSubview(refreshControl)
+//        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
-
-        
-        let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
-        
-        userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
-        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
-        userNavImageView.clipsToBounds = true
-        userNavImageView.layer.cornerRadius = 18
-        userNavImageView.contentMode = .scaleAspectFill
-        titleView.addSubview(userNavImageView)
-        
-        let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        dateLabel.text = "Boris Marshal"
-        dateLabel.font = UIFont.DisplayBold(sz: 24)
-        dateLabel.textColor = UIColor.white
-        
-        // View calender button setup
-        let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
-        viewCalender.setTitle("View profile", for: .normal)
-        viewCalender.contentHorizontalAlignment = .left
-        viewCalender.setTitleColor(UIColor.gray47, for: .normal)
-        viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
-        titleView.addSubview(dateLabel)
-        titleView.addSubview(viewCalender)
-        
-        navigationItem.titleView = titleView
-        
-        let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
-        navigationItem.leftBarButtonItem = leftbarButton
-        
-        
-        // add gesture
-        
-        let tap2 = UITapGestureRecognizer(target: self, action:#selector(openGroupMemberList))
-        tap2.cancelsTouchesInView = false
-        userNavImageView.isUserInteractionEnabled = true
-        userNavImageView.addGestureRecognizer(tap2)
         
         if let members = channel?.members {
             if members.count == 2 && channel?.data != "Group" {
@@ -636,14 +590,45 @@ extension ChatRoomViewController {
         }
     }
     
-    @objc func addEmptyAvatarView() {
-        if self.messageList.count != 0 {
-            return
-        }
-        emptyMessageView.removeFromSuperview()
-        if let dismiss = dismissButton {
-            dismiss.removeFromSuperview()
-        }
+    func emptyPlaceholderView(isHide: Bool) {
+        emptyMessageView.isHidden = isHide
+        emptyUserImageView.isHidden = isHide
+        dismissButton?.isHidden = isHide
+        timeLabel.isHidden = isHide
+        messagesCollectionView.reloadData()
+    }
+    
+    func setupNavigation() {
+        let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
+        
+        userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
+        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
+        userNavImageView.clipsToBounds = true
+        userNavImageView.layer.cornerRadius = 18
+        userNavImageView.contentMode = .scaleAspectFill
+        titleView.addSubview(userNavImageView)
+        
+        let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
+        dateLabel.text = "Boris Marshal"
+        dateLabel.font = UIFont.DisplayBold(sz: 24)
+        dateLabel.textColor = UIColor.white
+        
+        // View calender button setup
+        let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
+        viewCalender.setTitle("View profile", for: .normal)
+        viewCalender.contentHorizontalAlignment = .left
+        viewCalender.setTitleColor(UIColor.gray47, for: .normal)
+        viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        titleView.addSubview(dateLabel)
+        titleView.addSubview(viewCalender)
+        
+        navigationItem.titleView = titleView
+        
+        let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
+        navigationItem.leftBarButtonItem = leftbarButton
+    }
+    
+    @objc func setupPlaceholderView() {
         
         emptyMessageView = UIView(frame: self.view.bounds)
         
@@ -654,7 +639,7 @@ extension ChatRoomViewController {
         emptyUserImageView.layer.cornerRadius = 44
         emptyMessageView.addSubview(emptyUserImageView)
         
-        var timeLabel = UILabel()
+        timeLabel = UILabel()
         timeLabel = UILabel(frame: CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32 , height: 22))
         timeLabel.font = UIFont.Semibold(sz: 17)
         timeLabel.numberOfLines = 0
@@ -671,14 +656,23 @@ extension ChatRoomViewController {
         dismissButton?.setTitle("", for: .normal)
         self.view.addSubview(dismissButton!)
         
+        
+        emptyPlaceholderView(isHide: true)
+    
+        messagesCollectionView.alwaysBounceVertical = true
+        timeLabel.isHidden = false
+        messagesCollectionView.addSubview(timeLabel)
+    }
+    
+    func updateUserImage() {
         if friendProfile != nil {
             if channel != nil {
                 let img = friendProfile?.images?.first?.thumb ?? ""
-//                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
+                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 updateChannelNameAndImagesOnNav()
             } else {
                 let img = friendProfile?.images?.first?.thumb ?? ""
-//                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
+                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 
                 userNameNavLabel.text = friendProfile?.name ?? ""
                 let imgUser = friendProfile?.images?.first?.thumb ?? ""
@@ -699,9 +693,9 @@ extension ChatRoomViewController {
             }
             
             if imgName.isEmpty {
-//                emptyUserImageView.sd_setImage(with: URL(string: updateChatUserImage()), completed: nil)
+                emptyUserImageView.sd_setImage(with: URL(string: updateChatUserImage()), completed: nil)
             } else {
-//                emptyUserImageView.sd_setImage(with: URL(string: imgName), completed: nil)
+                emptyUserImageView.sd_setImage(with: URL(string: imgName), completed: nil)
             }
             userNameNavLabel.text = self.userName
             showSingleOrGroupPhotos(photoURL: updateChatUserImage())
@@ -768,9 +762,5 @@ extension ChatRoomViewController {
             userName = frnd.name
         }
         return imageName
-    }
-    
-    @objc func openGroupMemberList() {
-        
     }
 }
