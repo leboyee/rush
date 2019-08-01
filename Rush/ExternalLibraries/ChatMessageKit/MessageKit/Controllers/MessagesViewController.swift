@@ -137,7 +137,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = .white
         messagesCollectionView.keyboardDismissMode = .interactive
-        messagesCollectionView.alwaysBounceVertical = true
+        messagesCollectionView.alwaysBounceVertical = false
         messagesCollectionView.autoresizesSubviews = false
        
         
