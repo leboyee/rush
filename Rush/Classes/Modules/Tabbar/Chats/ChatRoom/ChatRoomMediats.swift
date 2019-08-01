@@ -71,8 +71,12 @@ extension ChatRoomViewController: MessagesDisplayDelegate {
             avatarView.isHidden = isNextMessageSameSender(at: indexPath)
             avatarView.backgroundColor = UIColor.bgBlack17
         } else {
-            avatarView.isHidden = true
-            avatarView.frame = CGRect.zero
+//            avatarView.isHidden = true
+//            avatarView.frame = CGRect.zero
+            let avatar = SampleData.shared.getAvatarFor(sender: message.sender)
+            avatarView.set(avatar: avatar)
+            avatarView.isHidden = isNextMessageSameSender(at: indexPath)
+            avatarView.backgroundColor = UIColor.bgBlack17
         }
     }
     
