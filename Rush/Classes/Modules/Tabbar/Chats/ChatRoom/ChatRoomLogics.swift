@@ -17,7 +17,7 @@ extension ChatRoomViewController {
         if friends.count > 0 {
             self.updateChannelNameAndImagesOnNav()
             if messageList.count == 0 {
-                addEmptyAvatarView()
+                emptyPlaceholderView(isHide: false)
             }
             
             var name = ""
