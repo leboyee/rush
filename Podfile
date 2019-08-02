@@ -28,4 +28,7 @@ target 'Rush' do
   #Swipe cell
   pod 'MGSwipeTableCell'
 
+  #linter
+  pod 'SwiftLint'
+  
 end
