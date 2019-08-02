@@ -128,6 +128,68 @@ extension ChatRoomViewController: MessagesLayoutDelegate {
 //MARK: - UIImagePickerControllerDelegate methods
 extension ChatRoomViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func showCameraPermissionPopup() {
+        Utils.authorizeVideo { [unowned self](status) in
+            switch status {
+            case .alreadyDenied:
+                Utils.alertCameraAccessNeeded()
+                break
+            case .alreadyAuthorized:
+                self.openCameraOrLibrary()
+                break
+            case .restricted:
+                Utils.alertCameraAccessNeeded()
+                break
+            case .justAuthorized:
+                self.openCameraOrLibrary()
+            case .justDenied:
+                break
+            }
+        }
+    }
+    
+    func openCameraOrLibrary() {
+        DispatchQueue.main.async {
+            let imagPickerController  = UIImagePickerController()
+            if imagPickerController.sourceType == .camera {
+                imagPickerController.delegate = self
+                imagPickerController.sourceType = .camera
+                imagPickerController.allowsEditing = false
+                self.navigationController?.present(imagPickerController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func openPhotoLibrary() {
+        DispatchQueue.main.async {
+            let imagPickerController  = UIImagePickerController()
+            imagPickerController.delegate = self
+            imagPickerController.navigationBar.isTranslucent = false
+            imagPickerController.sourceType = .photoLibrary
+            imagPickerController.navigationBar.tintColor = UIColor.white
+            imagPickerController.navigationBar.barTintColor = UIColor.bgBlack
+            imagPickerController.allowsEditing = false
+            self.navigationController?.present(imagPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func showPhotoPermisionPopup() {
+        Utils.authorizePhoto { [unowned self] (status) in
+            switch status {
+            case .justDenied:
+                break
+            case .alreadyDenied:
+                Utils.photoLibraryPermissionAlert()
+            case .restricted:
+                Utils.photoLibraryPermissionAlert()
+            case .justAuthorized:
+                self.openPhotoLibrary()
+            case .alreadyAuthorized:
+                self.openPhotoLibrary()
+            }
+        }
+    }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -274,4 +336,120 @@ extension ChatRoomViewController: MessageInputBarDelegate {
     }
 }
 
+//MARK: - MessageLabelDelegate
+extension ChatRoomViewController: MessageLabelDelegate {
+    func didSelectAddress(_ addressComponents: [String: String]) {
+        print("Address Selected: \(addressComponents)")
+    }
+    
+    func didSelectDate(_ date: Date) {
+        print("Date Selected: \(date)")
+    }
+    
+    func didSelectPhoneNumber(_ phoneNumber: String) {
+        print("Phone Number Selected: \(phoneNumber)")
+    }
+    
+    func didSelectURL(_ url: URL) {
+        print("URL Selected: \(url)")
+    }
+    
+    func didSelectTransitInformation(_ transitInformation: [String: String]) {
+        print("TransitInformation Selected: \(transitInformation)")
+    }
+}
+
+// MARK: - MessagesDataSource methods
+extension ChatRoomViewController: MessagesDataSource {
+    func currentSender() -> Sender {
+        return SampleData.shared.currentSender
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messageList.count
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messageList[indexPath.section]
+    }
+    
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if indexPath.section % 3 == 0 {
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.Semibold(sz: 13), NSAttributedString.Key.foregroundColor: UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 0.32)])
+        }
+        return nil
+    }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        /*
+         let name = message.sender.displayName
+         return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+         */
+        return nil
+    }
+    
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+            let lastSection = messagesCollectionView.numberOfSections - 1
+            let lastRowIndex = messagesCollectionView.numberOfItems(inSection: lastSection) - 1
+            
+            if indexPath.section == lastSection && indexPath.row == lastRowIndex {
+                return NSAttributedString(string: "" /*"Sent"*/, attributes: [NSAttributedString.Key.font: UIFont.Regular(sz: 12), NSAttributedString.Key.foregroundColor: UIColor.gray])
+            } else {
+                return nil
+            }
+        }
+        return nil
+    }
+}
+
+// MARK: - MessageCellDelegate
+extension ChatRoomViewController: MessageCellDelegate {
+    
+    func didTapAvatar(in cell: MessageCollectionViewCell) {
+        print("Avatar tapped")
+    }
+    
+    func didTapMessage(in cell: MessageCollectionViewCell) {
+        print("Message tapped")
+    }
+    
+    func didTapImage(mediaItem: MediaItem) {
+        /*
+         let fullScreenController = FullScreenSlideshowViewController()
+         
+         var inputs = [InputSource]()
+         var inputSource: InputSource {
+         if mediaItem.image == nil {
+         return ImageSource(url: mediaItem.url!.absoluteString)!
+         } else {
+         return ImageSource(image: mediaItem.image!)
+         }
+         }
+         inputs.append(inputSource)
+         
+         fullScreenController.inputs = inputs
+         fullScreenController.initialPage = 0
+         
+         self_.present(fullScreenController, animated: true, completion: nil)
+         */
+    }
+    
+    func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
+        print("Top cell label tapped")
+    }
+    
+    func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
+        print("Top message label tapped")
+    }
+    
+    func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
+        print("Bottom label tapped")
+    }
+    
+    func didTapAccessoryView(in cell: MessageCollectionViewCell) {
+        print("Accessory view tapped")
+    }
+}
 

@@ -173,7 +173,6 @@
 		793BE5F722E87E0D005EF72D /* ChatRoomLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE5F322E87E0D005EF72D /* ChatRoomLogics.swift */; };
 		793BE5F822E87E0D005EF72D /* ChatRoomMediats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE5F422E87E0D005EF72D /* ChatRoomMediats.swift */; };
 		793BE5F922E87E0D005EF72D /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE5F522E87E0D005EF72D /* ChatRoomViewController.swift */; };
-		793BE5FA22E87E0D005EF72D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE5F622E87E0D005EF72D /* ChatViewController.swift */; };
 		793BE5FC22E87F5F005EF72D /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE5FB22E87F5E005EF72D /* Friend.swift */; };
 		793BE65122E88207005EF72D /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE60022E88206005EF72D /* InputBarButtonItem.swift */; };
 		793BE65222E88207005EF72D /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793BE60222E88206005EF72D /* NSMutableAttributedString+Extensions.swift */; };
@@ -550,7 +549,6 @@
 		793BE5F322E87E0D005EF72D /* ChatRoomLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomLogics.swift; sourceTree = "<group>"; };
 		793BE5F422E87E0D005EF72D /* ChatRoomMediats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomMediats.swift; sourceTree = "<group>"; };
 		793BE5F522E87E0D005EF72D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
-		793BE5F622E87E0D005EF72D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		793BE5FB22E87F5E005EF72D /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		793BE60022E88206005EF72D /* InputBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarButtonItem.swift; sourceTree = "<group>"; };
 		793BE60222E88206005EF72D /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
@@ -1473,7 +1471,6 @@
 				793BE5F322E87E0D005EF72D /* ChatRoomLogics.swift */,
 				793BE5F422E87E0D005EF72D /* ChatRoomMediats.swift */,
 				793BE5F522E87E0D005EF72D /* ChatRoomViewController.swift */,
-				793BE5F622E87E0D005EF72D /* ChatViewController.swift */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -2584,7 +2581,6 @@
 				79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */,
 				7929DA5B22C2630D00700B42 /* PostCommentCell.swift in Sources */,
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
-				793BE5FA22E87E0D005EF72D /* ChatViewController.swift in Sources */,
 				793BE65122E88207005EF72D /* InputBarButtonItem.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,

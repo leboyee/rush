@@ -10,8 +10,57 @@ import UIKit
 import SendBirdSDK
 
 extension ChatRoomViewController {
+        
+    func createNewChatGroup(handler: @escaping (_ channel: SBDGroupChannel?) -> Void) {
+        
+        var grpName = ""
+        let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+        var otherUserId = ""
+        var imgUrl = ""
+        let loggedInUserName = Authorization.shared.profile?.name ?? ""
+        let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
+        
+        if let friend = friendProfile {
+            grpName = friend.name + ", " + loggedInUserName
+            imgUrl = (friend.images?.first?.thumb ?? "") + "," + loggedInUserImg
+            otherUserId = friend.userId
+        }
+        
+        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId,loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: "", completionHandler: {
+            [weak self] (channel) in
+            guard let _ = self else { return }
+            DispatchQueue.main
+                .async(execute: {
+                    // Move on Chat detail screen
+                    handler(channel)
+                })
+            }, errorHandler: {_ in
+                print("SOMETHING WRONG IN CREATE NEW CHANNEL")
+        })
+        
+    }
     
-    //MARK: - Input View Handler (Or Presenter Output)
+    func insertMessage(_ message: MockMessage) {
+        
+        messageList.append(message)
+        
+        if (messageList.count == 0) {
+            emptyPlaceholderView(isHide: false)
+        } else {
+            emptyPlaceholderView(isHide: true)
+        }
+        
+        messagesCollectionView.performBatchUpdates({
+            messagesCollectionView.insertSections([messageList.count - 1])
+            if messageList.count >= 2 {
+                messagesCollectionView.reloadSections([messageList.count - 2])
+            }
+        }, completion: { [weak self] _ in
+            if self?.isLastSectionVisible() == true {
+                self?.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        })
+    }
     
     func showAddParticipateToast(_ friends: [Friend]) {
         if friends.count > 0 {
@@ -177,55 +226,134 @@ extension ChatRoomViewController {
             Utils.alert(message: "You can't add existed member again!")
         }
     }
-}
-
-// MARK: - MessageCellDelegate
-extension ChatRoomViewController: MessageCellDelegate {
     
-    func didTapAvatar(in cell: MessageCollectionViewCell) {
-        print("Avatar tapped")
-    }
-    
-    func didTapMessage(in cell: MessageCollectionViewCell) {
-        print("Message tapped")
-       
-    }
-    
-    func didTapImage(mediaItem: MediaItem) {
-        /*
-        let fullScreenController = FullScreenSlideshowViewController()
-        
-        var inputs = [InputSource]()
-        var inputSource: InputSource {
-            if mediaItem.image == nil {
-                return ImageSource(url: mediaItem.url!.absoluteString)!
+    func updateUserImage() {
+        if friendProfile != nil {
+            if channel != nil {
+                let img = friendProfile?.images?.first?.thumb ?? ""
+                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
+                updateChannelNameAndImagesOnNav()
             } else {
-                return ImageSource(image: mediaItem.image!)
+                let img = friendProfile?.images?.first?.thumb ?? ""
+                emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
+                
+                userNameNavLabel.text = friendProfile?.name ?? ""
+                let imgUser = friendProfile?.images?.first?.thumb ?? ""
+                showSingleOrGroupPhotos(photoURL: imgUser)
+            }
+        } else {
+            var imgName = ""
+            if let members = channel?.members {
+                for member in members {
+                    if let user = member as? SBDUser {
+                        let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+                        if loggedInUserId != user.userId {
+                            imgName = user.profileUrl ?? ""
+                            break
+                        }
+                    }
+                }
+            }
+            
+            if imgName.isEmpty {
+                emptyUserImageView.sd_setImage(with: URL(string: updateChatUserImage()), completed: nil)
+            } else {
+                emptyUserImageView.sd_setImage(with: URL(string: imgName), completed: nil)
+            }
+            userNameNavLabel.text = self.userName
+            showSingleOrGroupPhotos(photoURL: updateChatUserImage())
+        }
+    }
+    
+    func showSingleOrGroupPhotos(photoURL:String?) {
+        if let photo = photoURL {
+            if self.channel == nil || (self.channel?.members?.count ?? 0) <= 2 {
+                //single photo
+                userNavImageView.isHidden = false
+                //                userNavImageView.sd_setImage(with: URL(string: photo), completed: nil)
             }
         }
-        inputs.append(inputSource)
+    }
+    
+    func updateChatUserImage() -> String {
         
-        fullScreenController.inputs = inputs
-        fullScreenController.initialPage = 0
-        
-        self_.present(fullScreenController, animated: true, completion: nil)
-        */
+        var imageName = ""
+        if self.channel != nil {
+            if let members = self.channel?.members {
+                _ = Array<NSURL>()
+                if members.count == 2 && self.channel?.data != "Group" {
+                    for member in members {
+                        if let user = member as? SBDUser {
+                            let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+                            if loggedInUserId != user.userId {
+                                imageName = user.profileUrl ?? ""
+                                self.userName = user.nickname ?? ""
+                            }
+                        }
+                    }
+                } else if members.count == 1 {
+                    self.userName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(Utils.removeLoginUserNameFromChannel(channelName: self.channel?.name ?? ""))
+                    
+                    if let url = self.channel?.coverUrl, url.isNotEmpty {
+                        let images = url.components(separatedBy: ",")
+                        for image in images {
+                            if image != Authorization.shared.profile?.photo?.thumb {
+                                imageName = image
+                            }
+                        }
+                    }
+                } else {
+                    
+                    var chatName = ChatManager().getChatName(self.channel)
+                    chatName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(chatName)
+                    self.userName = chatName
+                    
+                    if let url = self.channel?.coverUrl {
+                        /*
+                         let images = url.components(separatedBy: ",")
+                         
+                         for image in images {
+                         urls.append(NSURL(string: image)!)
+                         }
+                         */
+                        imageName = url
+                    }
+                }
+            }
+        } else if let frnd = friendProfile {
+            imageName = frnd.images?.first?.thumb ?? ""
+            userName = frnd.name
+        }
+        return imageName
+    }
+}
+
+// MARK: - Helpers
+extension ChatRoomViewController {
+    
+    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
+        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
     }
     
-    func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top cell label tapped")
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messageList[indexPath.section].sender == messageList[indexPath.section - 1].sender
     }
     
-    func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top message label tapped")
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messageList.count else { return false }
+        return messageList[indexPath.section].sender == messageList[indexPath.section + 1].sender
     }
     
-    func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom label tapped")
+    func setTypingIndicatorHidden(_ isHidden: Bool, performUpdates updates: (() -> Void)? = nil) {
+        /*
+         updateTitleView(title: "MessageKit", subtitle: isHidden ? "2 Online" : "Typing...")
+         setTypingBubbleHidden(isHidden, animated: true, whilePerforming: updates) { [weak self] (_) in
+         if self?.isLastSectionVisible() == true {
+         self?.messagesCollectionView.scrollToBottom(animated: true)
+         }
+         }
+         messagesCollectionView.scrollToBottom(animated: true)
+         */
     }
-    
-    func didTapAccessoryView(in cell: MessageCollectionViewCell) {
-        print("Accessory view tapped")
-    }
-    
 }
