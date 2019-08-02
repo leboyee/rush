@@ -53,10 +53,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     var channel : SBDGroupChannel?
     
-    var emptyMessageType : ChatEmptyMessageType = .beginner
     var chatType : ChatType = .single
-    
-//    open var isLoadFirst = false
     
     
     open var previousMessageQuery : SBDPreviousMessageListQuery?

@@ -134,16 +134,15 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
     
     private func setupDefaults() {
         extendedLayoutIncludesOpaqueBars = true
-        automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = .white
         messagesCollectionView.keyboardDismissMode = .interactive
         messagesCollectionView.alwaysBounceVertical = false
         messagesCollectionView.autoresizesSubviews = false
        
         
-        let tap = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        messagesCollectionView.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        messagesCollectionView.addGestureRecognizer(tap)
         
         self.view.backgroundColor = UIColor.bgBlack
         

@@ -91,18 +91,6 @@ extension MessagesViewController {
         }
         
         messageCollectionViewBottomInset = newBottomInset
-        
-        /*
-        if messagesCollectionView.contentSize.height <=  messagesCollectionView.frame.height {
-            
-            if differenceOfBottomInset < 100 {
-                messagesCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-            } else {
-                messagesCollectionView.setContentOffset(CGPoint(x: 0, y: -60), animated: false)
-            }
-//            print(messagesCollectionView.contentOffset as? Any)
-        }*/
-        
     }
     
     // MARK: - Inset Computation
