@@ -48,12 +48,14 @@ class ChatRoomViewController: ChatViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        /*
         if isShowTempData {
             MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
                 .onNewMessage { [weak self] message in
                     self?.insertMessages(message)
             }
         }
+         */
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -544,13 +546,13 @@ extension ChatRoomViewController {
 // MARK: - Other functions
 extension ChatRoomViewController {
     func setupUI() {
-        
+
         updateChannelNameAndImagesOnNav()
         setupPlaceholderView()
         setupNavigation()
         
-//        messagesCollectionView.addSubview(refreshControl)
-//        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+        messagesCollectionView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
         
@@ -655,13 +657,6 @@ extension ChatRoomViewController {
         dismissButton?.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
         dismissButton?.setTitle("", for: .normal)
         self.view.addSubview(dismissButton!)
-        
-        
-        emptyPlaceholderView(isHide: true)
-    
-        messagesCollectionView.alwaysBounceVertical = true
-        timeLabel.isHidden = false
-        messagesCollectionView.addSubview(timeLabel)
     }
     
     func updateUserImage() {

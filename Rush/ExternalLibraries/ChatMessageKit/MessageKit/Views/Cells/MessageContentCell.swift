@@ -38,7 +38,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         return containerView
     }()
 
-    /// The top label of the cell.
+    /// The top label of the cell. (Time)
     open var cellTopLabel: InsetLabel = {
         let label = InsetLabel()
         label.numberOfLines = 0
@@ -146,6 +146,21 @@ open class MessageContentCell: MessageCollectionViewCell {
         let topCellLabelText = dataSource.cellTopLabelAttributedText(for: message, at: indexPath)
         let topMessageLabelText = dataSource.messageTopLabelAttributedText(for: message, at: indexPath)
         let bottomText = dataSource.messageBottomLabelAttributedText(for: message, at: indexPath)
+        
+        if topCellLabelText?.string.count ?? 0 > 0 {
+            cellTopLabel.attributedText = topCellLabelText
+            let widthOfString : CGFloat = 100
+            
+            let width = CGFloat(1)
+            
+            let leftLine = UIView(frame: CGRect(x: 12, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 90, height: width))
+            leftLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+            cellTopLabel.addSubview(leftLine)
+            
+            let rightLine = UIView(frame: CGRect(x: cellTopLabel.frame.width/2 + widthOfString/2 + 15, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 80, height: width))
+            rightLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+            cellTopLabel.addSubview(rightLine)
+        }
 
         cellTopLabel.attributedText = topCellLabelText
         messageTopLabel.attributedText = topMessageLabelText
