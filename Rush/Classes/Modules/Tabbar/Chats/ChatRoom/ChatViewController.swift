@@ -63,9 +63,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
-    var emptyMessageTitle = "You matched with %@ %@ ago."
     var emptyMessageFriendTitle = "This is a beginning of you chat history."
-    var emptyMessageDetail = "You two matched for a reason. Say something!"
     var userName = ""
     
     let refreshControl = UIRefreshControl()

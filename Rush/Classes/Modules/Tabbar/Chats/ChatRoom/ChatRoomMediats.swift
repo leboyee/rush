@@ -71,8 +71,12 @@ extension ChatRoomViewController: MessagesDisplayDelegate {
             avatarView.isHidden = isNextMessageSameSender(at: indexPath)
             avatarView.backgroundColor = UIColor.bgBlack17
         } else {
-            avatarView.isHidden = true
-            avatarView.frame = CGRect.zero
+//            avatarView.isHidden = true
+//            avatarView.frame = CGRect.zero
+            let avatar = SampleData.shared.getAvatarFor(sender: message.sender)
+            avatarView.set(avatar: avatar)
+            avatarView.isHidden = isNextMessageSameSender(at: indexPath)
+            avatarView.backgroundColor = UIColor.bgBlack17
         }
     }
     
@@ -102,9 +106,17 @@ extension ChatRoomViewController: MessagesLayoutDelegate {
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if isFromCurrentSender(message: message) {
-            return !isPreviousMessageSameSender(at: indexPath) ? (isGroupChat ? 20 : 0) : 0
+            if isTimeLabelVisible(at: indexPath) {
+                return 15
+            } else {
+                return !isPreviousMessageSameSender(at: indexPath) ? (isGroupChat ? 20 : 0) : 0
+            }
         } else {
-            return !isPreviousMessageSameSender(at: indexPath) ? ((isGroupChat ? 20 : 0) + outgoingAvatarOverlap) : 0
+            if isTimeLabelVisible(at: indexPath) {
+                return 30
+            } else {
+                return !isPreviousMessageSameSender(at: indexPath) ? ((isGroupChat ? 20 : 0) + outgoingAvatarOverlap) : 0
+            }
         }
     }
     
