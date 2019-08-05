@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         
-       // setupStoryboard()
+        setupStoryboard()
         
         return true
     }
@@ -88,10 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupStoryboard() {
-        
-        let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
-        let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
-        self.window?.rootViewController = tabbarVC
+        if Authorization.shared.authorized == true {
+            let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+            self.window?.rootViewController = tabbarVC
+        }
     }
     
     //MARK: - AppDelegate Instance

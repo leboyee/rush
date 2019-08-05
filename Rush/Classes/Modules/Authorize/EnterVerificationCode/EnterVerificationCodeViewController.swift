@@ -137,6 +137,11 @@ extension EnterVerificationCodeViewController {
         self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
     }
     
+    func loginSuccess() {
+        AppDelegate.getInstance().setupStoryboard()
+
+    }
+    
 }
 
 
