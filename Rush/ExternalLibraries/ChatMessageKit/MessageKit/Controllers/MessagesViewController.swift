@@ -33,6 +33,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
     /// The `MessagesCollectionView` managed by the messages view controller object.
     open var messagesCollectionView = MessagesCollectionView()
     
+    var userChatView = ChatUserView()
+    
+    open var isGroupChat = true
+    
     /// The `MessageInputBar` used as the `inputAccessoryView` in the view controller.
     open var messageInputBar = MessageInputBar()
     
@@ -146,9 +150,30 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         
         self.view.backgroundColor = UIColor.bgBlack
         
-        messagesCollectionView.layer.cornerRadius = 24
-        messagesCollectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        if isGroupChat {
+            
+            userChatView = ChatUserView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 80))
+            userChatView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(userChatView)
+
+            userChatView.layer.cornerRadius = 24
+            userChatView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
+            let top = userChatView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 11)
+            let bottom = NSLayoutConstraint(item: userChatView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 80)
+            if #available(iOS 11.0, *) {
+                let leading = userChatView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
+                let trailing = userChatView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+                NSLayoutConstraint.activate([top, bottom, trailing, leading])
+            } else {
+                let leading = userChatView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+                let trailing = userChatView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+                NSLayoutConstraint.activate([top, bottom, trailing, leading])
+            }
+        } else {
+            messagesCollectionView.layer.cornerRadius = 24
+            messagesCollectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        }
         
     }
     
@@ -164,7 +189,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
     private func setupConstraints() {
         messagesCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        let top = messagesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 11)
+        let top = messagesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: isGroupChat ? 91 : 11)
         let bottom = messagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         if #available(iOS 11.0, *) {
             let leading = messagesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)

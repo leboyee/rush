@@ -24,7 +24,6 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     let outgoingAvatarOverlap: CGFloat = 17.5
-    var isGroupChat = false
     var userNavImageView = UIImageView()
     var userNameNavLabel = UILabel()
     var timeLabel = UILabel()

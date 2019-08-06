@@ -48,7 +48,7 @@ open class MessagesCollectionView: UICollectionView , UIGestureRecognizerDelegat
         super.init(frame: frame, collectionViewLayout: layout)
         backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
         registerReusableViews()
-//        setupGestureRecognizers()
+        setupGestureRecognizers()
     }
     
     required public init?(coder aDecoder: NSCoder) {

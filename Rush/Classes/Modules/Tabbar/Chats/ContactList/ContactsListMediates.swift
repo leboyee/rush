@@ -44,7 +44,7 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as! PeopleCell
-        let  alpha = alphabet[indexPath.section]
+        let alpha = alphabet[indexPath.section]
         cell.setup(title: "\(alpha) Marshal \(indexPath.row)")
         return cell
     }

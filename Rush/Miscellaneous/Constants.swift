@@ -61,6 +61,7 @@ struct Cell {
     static let peopleCell           = "PeopleCell"
     static let sortingCell          = "SortingCell"
     static let chatListCell         = "ChatListCell"
+    static let chatUserCell         = "ChatUserCell"
 }
 
 struct ReusableView {
