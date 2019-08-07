@@ -326,6 +326,10 @@
 		7994A3C422D778600057527C /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7994A3C222D778600057527C /* ChatListCell.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
 		7995715A22895DE500EF7C3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715922895DE500EF7C3D /* Constants.swift */; };
+		7999362C22FAEDAC001AEEEB /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999362722FAED7B001AEEEB /* ChatUserCell.swift */; };
+		7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7999362822FAED7B001AEEEB /* ChatUserCell.xib */; };
+		7999362E22FAEDAC001AEEEB /* ChatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999362A22FAEDAB001AEEEB /* ChatUserView.swift */; };
+		7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7999362B22FAEDAB001AEEEB /* ChatUserView.xib */; };
 		79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */; };
 		79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */; };
 		79BE868722A946C20056529E /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868522A946C20056529E /* FriendListCell.swift */; };
@@ -363,10 +367,6 @@
 		79EF134922D3588D00E260D9 /* EventCategoryListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */; };
 		79EF134A22D3588D00E260D9 /* EventCategoryListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134722D3588D00E260D9 /* EventCategoryListMediates.swift */; };
 		79EF134B22D3588D00E260D9 /* EventCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134822D3588D00E260D9 /* EventCategoryListViewController.swift */; };
-		79F0023322F873CD007704AD /* ChatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0023222F873CD007704AD /* ChatUserView.swift */; };
-		79F0023522F873F6007704AD /* ChatUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0023422F873F6007704AD /* ChatUserView.xib */; };
-		79F0023922F877BD007704AD /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0023722F877BD007704AD /* ChatUserCell.swift */; };
-		79F0023A22F877BD007704AD /* ChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0023822F877BD007704AD /* ChatUserCell.xib */; };
 		79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F27163229D3A99008C4926 /* TextViewCell.swift */; };
 		79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F27164229D3A99008C4926 /* TextViewCell.xib */; };
 		79F377A622CB5D69003FC33E /* SearchClubLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A322CB5D69003FC33E /* SearchClubLogics.swift */; };
@@ -707,6 +707,10 @@
 		7994A3C222D778600057527C /* ChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7995715922895DE500EF7C3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7999362722FAED7B001AEEEB /* ChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
+		7999362822FAED7B001AEEEB /* ChatUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserCell.xib; sourceTree = "<group>"; };
+		7999362A22FAEDAB001AEEEB /* ChatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserView.swift; sourceTree = "<group>"; };
+		7999362B22FAEDAB001AEEEB /* ChatUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserView.xib; sourceTree = "<group>"; };
 		79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImagesHeaderView.swift; sourceTree = "<group>"; };
 		79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImagesHeaderView.xib; sourceTree = "<group>"; };
 		79BE868522A946C20056529E /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
@@ -744,10 +748,6 @@
 		79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryListLogics.swift; sourceTree = "<group>"; };
 		79EF134722D3588D00E260D9 /* EventCategoryListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryListMediates.swift; sourceTree = "<group>"; };
 		79EF134822D3588D00E260D9 /* EventCategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryListViewController.swift; sourceTree = "<group>"; };
-		79F0023222F873CD007704AD /* ChatUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserView.swift; sourceTree = "<group>"; };
-		79F0023422F873F6007704AD /* ChatUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserView.xib; sourceTree = "<group>"; };
-		79F0023722F877BD007704AD /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
-		79F0023822F877BD007704AD /* ChatUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserCell.xib; sourceTree = "<group>"; };
 		79F27163229D3A99008C4926 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		79F27164229D3A99008C4926 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		79F377A322CB5D69003FC33E /* SearchClubLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubLogics.swift; sourceTree = "<group>"; };
@@ -1476,8 +1476,8 @@
 		793BE5F222E87E0D005EF72D /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
-				79F0023622F876F1007704AD /* Cell */,
-				79F0023122F873A5007704AD /* View */,
+				7999362622FAED7B001AEEEB /* Cell */,
+				7999362922FAEDAB001AEEEB /* View */,
 				793BE5F322E87E0D005EF72D /* ChatRoomLogics.swift */,
 				793BE5F422E87E0D005EF72D /* ChatRoomMediats.swift */,
 				793BE5F522E87E0D005EF72D /* ChatRoomViewController.swift */,
@@ -1906,6 +1906,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		7999362622FAED7B001AEEEB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7999362722FAED7B001AEEEB /* ChatUserCell.swift */,
+				7999362822FAED7B001AEEEB /* ChatUserCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7999362922FAEDAB001AEEEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7999362A22FAEDAB001AEEEB /* ChatUserView.swift */,
+				7999362B22FAEDAB001AEEEB /* ChatUserView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		79A9377022B2288B00A602CD /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -2028,24 +2046,6 @@
 				79EF134822D3588D00E260D9 /* EventCategoryListViewController.swift */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		79F0023122F873A5007704AD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				79F0023222F873CD007704AD /* ChatUserView.swift */,
-				79F0023422F873F6007704AD /* ChatUserView.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		79F0023622F876F1007704AD /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				79F0023722F877BD007704AD /* ChatUserCell.swift */,
-				79F0023822F877BD007704AD /* ChatUserCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		79F377A222CB5D69003FC33E /* SearchClub */ = {
@@ -2261,6 +2261,7 @@
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
 				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
+				7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */,
 				1AC635FB22AA8F6900021E03 /* CustomNavBarPageController.xib in Resources */,
 				7903D0AC228E8CE5004E33B9 /* EventTypeCell.xib in Resources */,
 				794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */,
@@ -2272,7 +2273,6 @@
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
 				7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */,
-				79F0023522F873F6007704AD /* ChatUserView.xib in Resources */,
 				79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */,
 				79D29CA522CF339B008C6ED0 /* ExploreCell.xib in Resources */,
 				1A2809ED22C60E6700B4E764 /* ClassesCell.xib in Resources */,
@@ -2280,6 +2280,7 @@
 				79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */,
 				0918E77F228444850098AF35 /* Home.storyboard in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
+				7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */,
 				7994A3C322D778600057527C /* ChatListCell.xib in Resources */,
 				796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
@@ -2309,7 +2310,6 @@
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
 				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
 				1AEAC49922D3194A008FBB54 /* UserInfo.storyboard in Resources */,
-				79F0023A22F877BD007704AD /* ChatUserCell.xib in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				794183B1228960C7009AB12C /* SF-Pro-Text-Bold.otf in Resources */,
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
@@ -2506,6 +2506,7 @@
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
+				7999362C22FAEDAC001AEEEB /* ChatUserCell.swift in Sources */,
 				7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */,
 				797FFDA322B7BC480055A001 /* ImagePickerConfigurable.swift in Sources */,
 				1A7402CD22CD029F0089CDAE /* ChooseTagCell.swift in Sources */,
@@ -2525,7 +2526,6 @@
 				793BE66722E88207005EF72D /* CellSizeCalculator.swift in Sources */,
 				793BE67022E88207005EF72D /* AvatarPosition.swift in Sources */,
 				1ACEAC1422AC040A00B734D3 /* AddProfilePictureViewLogics.swift in Sources */,
-				79F0023322F873CD007704AD /* ChatUserView.swift in Sources */,
 				1A339B6522B3CEA9005509EA /* ChooseYearViewMediates.swift in Sources */,
 				793BE68C22E88207005EF72D /* TableViewCells.swift in Sources */,
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
@@ -2533,7 +2533,6 @@
 				1A2809E222C5F43B00B4E764 /* ChooseClassesViewMediates.swift in Sources */,
 				7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */,
 				1AEAC4B722D346AA008FBB54 /* UserInfoCell.swift in Sources */,
-				79F0023922F877BD007704AD /* ChatUserCell.swift in Sources */,
 				797FFDB522B7BC480055A001 /* SlideUpPresentation.swift in Sources */,
 				1AA97B92228979D100C4550C /* DateExtension.swift in Sources */,
 				1AA97B8A228979D100C4550C /* FontExtension.swift in Sources */,
@@ -2621,6 +2620,7 @@
 				796A6F2A22CDEEAD00916D79 /* ClassDetailMediates.swift in Sources */,
 				79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */,
 				1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */,
+				7999362E22FAEDAC001AEEEB /* ChatUserView.swift in Sources */,
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
 				793BE69022E88207005EF72D /* MessageContainerView.swift in Sources */,
 				79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */,
