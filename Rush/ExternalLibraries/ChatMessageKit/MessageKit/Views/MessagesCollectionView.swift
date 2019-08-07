@@ -35,12 +35,24 @@ open class MessagesCollectionView: UICollectionView , UIGestureRecognizerDelegat
     open weak var messagesLayoutDelegate: MessagesLayoutDelegate?
 
     open weak var messageCellDelegate: MessageCellDelegate?
+    
+    open var isTypingIndicatorHidden: Bool {
+        return messagesCollectionViewFlowLayout.isTypingIndicatorViewHidden
+    }
 
     private var indexPathForLastItem: IndexPath? {
         let lastSection = numberOfSections - 1
         guard lastSection >= 0, numberOfItems(inSection: lastSection) > 0 else { return nil }
         return IndexPath(item: numberOfItems(inSection: lastSection) - 1, section: lastSection)
     }
+    
+    open var messagesCollectionViewFlowLayout: MessagesCollectionViewFlowLayout {
+        guard let layout = collectionViewLayout as? MessagesCollectionViewFlowLayout else {
+            fatalError(MessageKitError.layoutUsedOnForeignType)
+        }
+        return layout
+    }
+
 
     // MARK: - Initializers
 

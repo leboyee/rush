@@ -206,6 +206,14 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         messageInputBar.inputTextView.resignFirstResponder()
     }
     
+    public var isTypingIndicatorHidden: Bool {
+        return messagesCollectionView.isTypingIndicatorHidden
+    }
+    
+    public func isSectionReservedForTypingIndicator(_ section: Int) -> Bool {
+        return !messagesCollectionView.isTypingIndicatorHidden && section == self.numberOfSections(in: messagesCollectionView) - 1
+    }
+    
     
     // MARK: - UICollectionViewDataSource
     
