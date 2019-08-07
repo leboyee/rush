@@ -377,6 +377,10 @@
 		8A04B13A22FADFAC0055C65F /* CalendarEventListMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13922FADFAC0055C65F /* CalendarEventListMediator.swift */; };
 		8A04B13C22FADFBD0055C65F /* CalendarEventListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13B22FADFBD0055C65F /* CalendarEventListLogics.swift */; };
 		8A04B13E22FAE1180055C65F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B13D22FAE1180055C65F /* Calendar.storyboard */; };
+		8A04B14222FAF4EE0055C65F /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14022FAF4EE0055C65F /* CalendarEventCell.swift */; };
+		8A04B14322FAF4EE0055C65F /* CalendarEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B14122FAF4EE0055C65F /* CalendarEventCell.xib */; };
+		8A04B14522FB042E0055C65F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14422FB042E0055C65F /* Event.swift */; };
+		8A04B14822FB0C4E0055C65F /* event.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B14722FB0C4E0055C65F /* event.json */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -761,6 +765,10 @@
 		8A04B13922FADFAC0055C65F /* CalendarEventListMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListMediator.swift; sourceTree = "<group>"; };
 		8A04B13B22FADFBD0055C65F /* CalendarEventListLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListLogics.swift; sourceTree = "<group>"; };
 		8A04B13D22FAE1180055C65F /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		8A04B14022FAF4EE0055C65F /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
+		8A04B14122FAF4EE0055C65F /* CalendarEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarEventCell.xib; sourceTree = "<group>"; };
+		8A04B14422FB042E0055C65F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		8A04B14722FB0C4E0055C65F /* event.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event.json; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -2077,11 +2085,29 @@
 		8A04B13022FADE560055C65F /* CalendarEventListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8A04B13F22FAF4CB0055C65F /* CalendarEventCell */,
 				8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */,
 				8A04B13922FADFAC0055C65F /* CalendarEventListMediator.swift */,
 				8A04B13B22FADFBD0055C65F /* CalendarEventListLogics.swift */,
 			);
 			path = CalendarEventListViewController;
+			sourceTree = "<group>";
+		};
+		8A04B13F22FAF4CB0055C65F /* CalendarEventCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B14022FAF4EE0055C65F /* CalendarEventCell.swift */,
+				8A04B14122FAF4EE0055C65F /* CalendarEventCell.xib */,
+			);
+			path = CalendarEventCell;
+			sourceTree = "<group>";
+		};
+		8A04B14622FB0C410055C65F /* TempFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B14722FB0C4E0055C65F /* event.json */,
+			);
+			path = TempFiles;
 			sourceTree = "<group>";
 		};
 		C05FC14022805F3D00721F3F = {
@@ -2139,6 +2165,7 @@
 				1AB0C16422C12BAD000D016E /* Profile.swift */,
 				7983D22B228982B500DE054E /* Image.swift */,
 				793BE5FB22E87F5E005EF72D /* Friend.swift */,
+				8A04B14422FB042E0055C65F /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2169,6 +2196,7 @@
 		C05FC16322805F9D00721F3F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A04B14622FB0C410055C65F /* TempFiles */,
 				1A142EC9229EC895002C1AFE /* CountryCode */,
 				794183A2228960C7009AB12C /* Fonts */,
 				C05FC16422805F9D00721F3F /* Images */,
@@ -2320,6 +2348,7 @@
 				1A62D2322295454C001E5790 /* Authorize.storyboard in Resources */,
 				1A142ECD229EE3B8002C1AFE /* RushCountryCode.json in Resources */,
 				79493CE722B90E960026AD0E /* SelectGallaryPhotoCell.xib in Resources */,
+				8A04B14322FAF4EE0055C65F /* CalendarEventCell.xib in Resources */,
 				091557B622B126F00080C9AE /* UserNameTableViewCell.xib in Resources */,
 				1AEAC4B622D346AA008FBB54 /* UserInfoCell.xib in Resources */,
 				7903D0B0228E8CE5004E33B9 /* EventCell.xib in Resources */,
@@ -2333,6 +2362,7 @@
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
 				7929DA5822C253A400700B42 /* PostLikeCell.xib in Resources */,
 				793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */,
+				8A04B14822FB0C4E0055C65F /* event.json in Resources */,
 				7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */,
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */,
@@ -2558,6 +2588,7 @@
 				1A339B5E22B3B88A005509EA /* EnterUserNameViewLogics.swift in Sources */,
 				79BE868B22A94E9F0056529E /* FriendClubCell.swift in Sources */,
 				793BE5F722E87E0D005EF72D /* ChatRoomLogics.swift in Sources */,
+				8A04B14522FB042E0055C65F /* Event.swift in Sources */,
 				1A62D23522954AF6001E5790 /* CustomImagePageControl.swift in Sources */,
 				79F377A722CB5D69003FC33E /* SearchClubMediates.swift in Sources */,
 				79C1AC4B22A64CE0003C7790 /* ProfileInformationViewController.swift in Sources */,
@@ -2656,6 +2687,7 @@
 				7958B7FC22C4E8E000A66BDC /* ClubListLogics.swift in Sources */,
 				797FFDA222B7BC480055A001 /* GalleryVideoCell.swift in Sources */,
 				797FFDA822B7BC480055A001 /* PhotoAlbumCell.swift in Sources */,
+				8A04B14222FAF4EE0055C65F /* CalendarEventCell.swift in Sources */,
 				796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */,
 				7929DA5322C24AFD00700B42 /* PostPresenter.swift in Sources */,
 				0992539C22846A1D00914E7B /* (null) in Sources */,
