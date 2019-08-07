@@ -122,7 +122,7 @@ extension EnterVerificationCodeViewController {
             [weak self] (status, errorMessage) in
             guard let self_ = self else { return }
             if status {
-                self_.loginSuccess()()
+                self_.loginSuccess()
                 //self_.updateViewStage?(.verified)
                 /*
                  //Comment due to push is not exist in app
