@@ -79,7 +79,7 @@ class HomeViewController: CustomViewController {
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.DisplayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left
-        dateButton.addTarget(self, action: #selector(dateButtonAction), for: .touchUpInside)
+        dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
         
         
         // View calender button setup
@@ -106,11 +106,7 @@ extension HomeViewController {
     }
     
     @objc func viewCalenderButtonAction() {
-        
-    }
-    
-    @objc func dateButtonAction() {
-        
+        performSegue(withIdentifier: Segues.calendarHome, sender: nil)
     }
 }
 
