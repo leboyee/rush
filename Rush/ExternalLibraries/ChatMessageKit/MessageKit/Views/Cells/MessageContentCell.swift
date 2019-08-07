@@ -147,18 +147,18 @@ open class MessageContentCell: MessageCollectionViewCell {
         let topMessageLabelText = dataSource.messageTopLabelAttributedText(for: message, at: indexPath)
         let bottomText = dataSource.messageBottomLabelAttributedText(for: message, at: indexPath)
         
-        if topCellLabelText?.string.count ?? 0 > 0 {
+        if topCellLabelText?.string.count ?? 0 > 0 || topCellLabelText != nil {
             cellTopLabel.attributedText = topCellLabelText
             let widthOfString : CGFloat = 100
             
             let width = CGFloat(1)
             
             let leftLine = UIView(frame: CGRect(x: 12, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 90, height: width))
-            leftLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+            leftLine.backgroundColor = UIColor.buttonDisableBgColor
             cellTopLabel.addSubview(leftLine)
             
             let rightLine = UIView(frame: CGRect(x: cellTopLabel.frame.width/2 + widthOfString/2 + 15, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 80, height: width))
-            rightLine.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+            rightLine.backgroundColor = UIColor.buttonDisableBgColor
             cellTopLabel.addSubview(rightLine)
         }
 
