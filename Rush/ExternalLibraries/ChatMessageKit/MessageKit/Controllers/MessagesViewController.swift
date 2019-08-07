@@ -260,6 +260,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
             return cell
         case .custom:
             return messagesDataSource.customCell(for: message, at: indexPath, in: messagesCollectionView)
+        case .event(_):
+            let cell = messagesCollectionView.dequeueReusableCell(EventMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
         }
     }
     
@@ -310,6 +314,8 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         case .custom(_):
             break
         case .video(_):
+            break
+        case .event(_):
             break
         }
     }

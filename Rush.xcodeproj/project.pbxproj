@@ -330,6 +330,7 @@
 		7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7999362822FAED7B001AEEEB /* ChatUserCell.xib */; };
 		7999362E22FAEDAC001AEEEB /* ChatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999362A22FAEDAB001AEEEB /* ChatUserView.swift */; };
 		7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7999362B22FAEDAB001AEEEB /* ChatUserView.xib */; };
+		7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999363022FAF01F001AEEEB /* EventMessageCell.swift */; };
 		79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */; };
 		79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */; };
 		79BE868722A946C20056529E /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868522A946C20056529E /* FriendListCell.swift */; };
@@ -711,6 +712,7 @@
 		7999362822FAED7B001AEEEB /* ChatUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserCell.xib; sourceTree = "<group>"; };
 		7999362A22FAEDAB001AEEEB /* ChatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserView.swift; sourceTree = "<group>"; };
 		7999362B22FAEDAB001AEEEB /* ChatUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserView.xib; sourceTree = "<group>"; };
+		7999363022FAF01F001AEEEB /* EventMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMessageCell.swift; sourceTree = "<group>"; };
 		79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImagesHeaderView.swift; sourceTree = "<group>"; };
 		79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImagesHeaderView.xib; sourceTree = "<group>"; };
 		79BE868522A946C20056529E /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
@@ -1668,6 +1670,7 @@
 		793BE64222E88207005EF72D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7999363022FAF01F001AEEEB /* EventMessageCell.swift */,
 				793BE64322E88207005EF72D /* CustomCell.swift */,
 				793BE64422E88207005EF72D /* LocationMessageCell.swift */,
 				793BE64522E88207005EF72D /* MediaMessageCell.swift */,
@@ -2478,6 +2481,7 @@
 				091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */,
 				79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */,
 				793BE67E22E88207005EF72D /* MediaItem.swift in Sources */,
+				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,

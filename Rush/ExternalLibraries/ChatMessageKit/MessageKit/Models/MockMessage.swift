@@ -40,6 +40,10 @@ private struct CoordinateItem: LocationItem {
 }
 
 private struct ImageMediaItem: MediaItem {
+    // New for event
+    var time: Date?
+    var title: String?
+    var detail: String?
 
     var url: URL?
     var image: UIImage?
@@ -54,6 +58,14 @@ private struct ImageMediaItem: MediaItem {
     
     init(url: URL) {
         self.url = url
+        self.size = CGSize(width: 240, height: 240)
+        self.placeholderImage = UIImage()
+    }
+    
+    init(title: String, detail: String, image: UIImage) {
+        self.title = title
+        self.detail = detail
+        self.image = image
         self.size = CGSize(width: 240, height: 240)
         self.placeholderImage = UIImage()
     }
@@ -129,6 +141,11 @@ internal struct MockMessage: MessageType {
 
     init(emoji: String, sender: Sender, messageId: String, date: Date) {
         self.init(kind: .emoji(emoji), sender: sender, messageId: messageId, date: date)
+    }
+    
+    init(title: String, detail: String, image: UIImage, sender: Sender, messageId: String, date: Date) {
+        let mediaItem = ImageMediaItem(title: title, detail: detail, image: image)
+        self.init(kind: .event(mediaItem), sender: sender, messageId: messageId, date: date)
     }
 
 }

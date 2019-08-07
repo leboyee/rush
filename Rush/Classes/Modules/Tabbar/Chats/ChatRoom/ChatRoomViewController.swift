@@ -53,6 +53,7 @@ class ChatRoomViewController: MessagesViewController {
     override func viewDidLoad() {
         messagesCollectionView = MessagesCollectionView(frame: .zero, collectionViewLayout: CustomMessagesFlowLayout())
         messagesCollectionView.register(CustomCell.self)
+        messagesCollectionView.register(EventMessageCell.self)
         
         super.viewDidLoad()
         setup()
