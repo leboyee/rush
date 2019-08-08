@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: CustomViewController {
 
     let selectedDate = Date()
     let titleHeight: CGFloat = 44

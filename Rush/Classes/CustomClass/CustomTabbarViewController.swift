@@ -18,7 +18,7 @@ class CustomTabbarViewController: UITabBarController, UITabBarControllerDelegate
     var secondNavigationController      : UINavigationController!
     var thirdNavigationController       : UINavigationController!
     var fourthNavigationViewController  : UINavigationController!
-    var fifthNavigationController       : UINavigationController!
+    //var fifthNavigationController       : UINavigationController!
     
     let userImageName = "profile_tab_active"
     
@@ -52,15 +52,17 @@ extension CustomTabbarViewController {
         let chatsViewController = chatStory.instantiateInitialViewController()
         thirdNavigationController = UINavigationController(rootViewController: chatsViewController!)
         
+        /*
         // Fourth tab
         let tStory = UIStoryboard(name: "Forum", bundle: nil)
         let forumViewController = tStory.instantiateInitialViewController()
         fourthNavigationViewController = UINavigationController(rootViewController: forumViewController!)
+        */
         
         // Fifth tab
         let profileStory = UIStoryboard(name: "Profile", bundle: nil)
         let profileViewController = profileStory.instantiateInitialViewController()
-        fifthNavigationController = UINavigationController(rootViewController: profileViewController!)
+        fourthNavigationViewController = UINavigationController(rootViewController: profileViewController!)
         
         self.delegate = self
         setupIcons()

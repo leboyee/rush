@@ -20,6 +20,10 @@ var isProductionBuild: Bool = true
 var isDarkModeOn: Bool = false
 
 
+//MARK:-
+let topViewRadius: CGFloat = 32.0
+
+
 //MARK: Reachability
 var isNetworkAvailable : Bool = true
 
@@ -62,6 +66,7 @@ struct Cell {
     static let sortingCell          = "SortingCell"
     static let chatListCell         = "ChatListCell"
     static let calendarEvent        = "CalendarEventCell"
+    static let settingsInfo         = "SettingsInfoCell"
 }
 
 struct ReusableView {
@@ -157,6 +162,7 @@ public struct Text {
     static let hide  = "hide"
     static let next  = "Next"
     static let login = "Login"
+    static let logout = "Logout"
     static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
     static let changeImage = "Change image"
@@ -216,6 +222,12 @@ public struct Text {
     static let deletePost               = "Delete post"
     static let deleteClub               = "Delete club"
     static let report                   = "Report"
+    static let settings                 = "Settings"
+
+    static let personal                 = "Personal"
+    static let general                  = "General"
+    static let privacy                  = "Privacy"
+
 }
 
 public struct Message {
