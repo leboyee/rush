@@ -204,10 +204,6 @@ class ChatRoomViewController: MessagesViewController {
 extension ChatRoomViewController {
     func configureMessageCollectionView() {
         
-        messagesCollectionView.messagesDataSource = self
-        scrollsToBottomOnKeyboardBeginsEditing = true // default false
-        maintainPositionOnKeyboardFrameChanged = true // default false
-        
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
         
         layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 15)
@@ -249,6 +245,11 @@ extension ChatRoomViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
+        
+        messagesCollectionView.messagesDataSource = self
+        scrollsToBottomOnKeyboardBeginsEditing = true // default false
+        maintainPositionOnKeyboardFrameChanged = true // default false
+        
     }
     
     func configureMessageInputBar() {

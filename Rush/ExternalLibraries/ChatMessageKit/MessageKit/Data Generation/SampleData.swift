@@ -186,7 +186,7 @@ final internal class SampleData {
         case .Event:
             let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
             let image = messageImages[randomNumberImage]
-            return MockMessage(title: "31 JAN", detail: "Thursday", image: image, sender: sender, messageId: uniqueID, date: date)
+            return MockMessage(title: "31 JAN", detail: "Thursday", image: image, sender: system, messageId: uniqueID, date: date)
         }
     }
     
@@ -199,7 +199,7 @@ final internal class SampleData {
             if index == 19 {
                 let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
                 let image = messageImages[randomNumberImage]
-               message = MockMessage(title: "", detail: "", image: image, sender: senders.first!, messageId: NSUUID().uuidString, date: dateAddingRandomTime())
+               message = MockMessage(title: "", detail: "", image: image, sender: senders.last!, messageId: NSUUID().uuidString, date: dateAddingRandomTime())
             }
             messages.append(message)
         }

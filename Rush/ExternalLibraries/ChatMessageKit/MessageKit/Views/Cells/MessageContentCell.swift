@@ -138,7 +138,11 @@ open class MessageContentCell: MessageCollectionViewCell {
         if dataSource.isFromCurrentSender(message: message) {
             messageContainerView.backgroundColor = UIColor.white
         } else {
-            messageContainerView.backgroundColor = UIColor.lightGray93
+            if let _ = self as? EventMessageCell {
+                messageContainerView.backgroundColor = UIColor.clear
+            } else {
+                messageContainerView.backgroundColor = UIColor.lightGray93
+            }
         }
        
         messageContainerView.style = messageStyle
@@ -147,19 +151,26 @@ open class MessageContentCell: MessageCollectionViewCell {
         let topMessageLabelText = dataSource.messageTopLabelAttributedText(for: message, at: indexPath)
         let bottomText = dataSource.messageBottomLabelAttributedText(for: message, at: indexPath)
         
-        if topCellLabelText?.string.count ?? 0 > 0 || topCellLabelText != nil {
+        let widthOfString : CGFloat = 100
+        
+        let width = CGFloat(1)
+        
+        let leftLine = UIView(frame: CGRect(x: 12, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 90, height: width))
+        let rightLine = UIView(frame: CGRect(x: cellTopLabel.frame.width/2 + widthOfString/2 + 15, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 80, height: width))
+        
+        print(" ============   \(topCellLabelText?.string ?? "NULL")   ============")
+        
+        if topCellLabelText?.string.count ?? 0 > 0 {
             cellTopLabel.attributedText = topCellLabelText
-            let widthOfString : CGFloat = 100
             
-            let width = CGFloat(1)
-            
-            let leftLine = UIView(frame: CGRect(x: 12, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 90, height: width))
             leftLine.backgroundColor = UIColor.buttonDisableBgColor
             cellTopLabel.addSubview(leftLine)
             
-            let rightLine = UIView(frame: CGRect(x: cellTopLabel.frame.width/2 + widthOfString/2 + 15, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 80, height: width))
             rightLine.backgroundColor = UIColor.buttonDisableBgColor
             cellTopLabel.addSubview(rightLine)
+        } else {
+            leftLine.backgroundColor = .clear
+            rightLine.backgroundColor = .clear
         }
 
         cellTopLabel.attributedText = topCellLabelText

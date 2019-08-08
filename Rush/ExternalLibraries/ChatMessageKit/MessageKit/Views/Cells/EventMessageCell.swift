@@ -45,9 +45,16 @@ open class EventMessageCell: MessageContentCell {
     /// Responsible for setting up the constraints of the cell's subviews.
     open func setupConstraints() {
         
-        mainView.fillSuperview()
-        mainView.backgroundColor = .white
+//        mainView.fillSuperview()
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: mainView.superview!.topAnchor, constant: 0),
+            mainView.leadingAnchor.constraint(equalTo: mainView.superview!.leadingAnchor, constant: 15),
+            mainView.bottomAnchor.constraint(equalTo: mainView.superview!.bottomAnchor, constant: 0),
+            mainView.trailingAnchor.constraint(equalTo: mainView.superview!.trailingAnchor,constant: 0)
+            ])
         
+        messageContainerView.backgroundColor = .white
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         let top = imageView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 8)
@@ -64,35 +71,41 @@ open class EventMessageCell: MessageContentCell {
         messageContainerView.addSubview(imageView)
         setupConstraints()
         
-        let date = UILabel(frame: CGRect(x: 100, y: 8, width: 16, height: 16))
+        mainView.backgroundColor = .white
+        mainView.layer.cornerRadius = 24
+        mainView.clipsToBounds = true
+        
+        messageContainerView.layer.cornerRadius = 24
+        
+        let date = UILabel(frame: CGRect(x: 115, y: 8, width: 16, height: 16))
         date.text = "31"
         date.font = UIFont.Semibold(sz: 13)
         messageContainerView.addSubview(date)
         
         
-        let month = UILabel(frame: CGRect(x: 120, y: 8, width: 200, height: 16))
+        let month = UILabel(frame: CGRect(x: 135, y: 8, width: 200, height: 16))
         month.text = "JAN"
         month.textColor = UIColor.buttonDisableTextColor
         month.font = UIFont.Semibold(sz: 13)
         messageContainerView.addSubview(month)
         
-        let day = UILabel(frame: CGRect(x: 100, y: 23, width: 61, height: 16))
+        let day = UILabel(frame: CGRect(x: 115, y: 23, width: 61, height: 16))
         day.text = "Thursday"
         day.font = UIFont.Semibold(sz: 13)
         messageContainerView.addSubview(day)
         
-        let time = UILabel(frame: CGRect(x: 165, y: 24, width: 200, height: 16))
+        let time = UILabel(frame: CGRect(x: 180, y: 24, width: 200, height: 16))
         time.text = "10-12 pm"
         time.textColor = UIColor.buttonDisableTextColor
         time.font = UIFont.Semibold(sz: 13)
         messageContainerView.addSubview(time)
         
-        let title = UILabel(frame: CGRect(x: 100, y: 53, width: screenWidth - 71 - 100, height: 28))
+        let title = UILabel(frame: CGRect(x: 115, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
         title.text = "VR games"
         title.font = UIFont.DisplayBold(sz: 23)
         messageContainerView.addSubview(title)
         
-        let detail = UILabel(frame: CGRect(x: 100, y: 89, width: screenWidth - 71 - 100, height: 54))
+        let detail = UILabel(frame: CGRect(x: 115, y: 89, width: screenWidth - 71 - 100 - 15, height: 54))
         detail.numberOfLines = 3
         detail.text = "Get the latest VR Experience with Samsung Gear. You can travel through the worlds as detail of UI thr samsung"
         detail.font = UIFont.Regular(sz: 13)
