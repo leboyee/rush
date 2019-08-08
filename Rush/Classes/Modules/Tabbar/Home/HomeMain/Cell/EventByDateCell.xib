@@ -74,7 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VR Meetup" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erI-m4-jFg" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="144" y="30.5" width="112" height="16"/>
+                                <rect key="frame" x="144" y="29.5" width="112" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Bh8-UM-la4"/>
                                 </constraints>
@@ -120,7 +120,7 @@
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="9rE-xE-php" secondAttribute="bottom" constant="22" id="Z8I-9j-jXN"/>
                             <constraint firstItem="2CT-Ja-d9S" firstAttribute="leading" secondItem="5if-oU-dmR" secondAttribute="leading" constant="16" id="eFS-Vg-zlj"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="leading" secondItem="5if-oU-dmR" secondAttribute="leading" constant="24" id="eHt-FL-6MZ"/>
-                            <constraint firstItem="9rE-xE-php" firstAttribute="top" secondItem="erI-m4-jFg" secondAttribute="bottom" constant="2" id="eQc-2o-aFa"/>
+                            <constraint firstItem="9rE-xE-php" firstAttribute="top" secondItem="erI-m4-jFg" secondAttribute="bottom" constant="3" id="eQc-2o-aFa"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="VRF-Lx-TIn" secondAttribute="bottom" constant="18.5" id="fkD-DA-gKA"/>
                             <constraint firstItem="yC1-xW-jb6" firstAttribute="centerY" secondItem="VRF-Lx-TIn" secondAttribute="centerY" id="npp-eW-kEy"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="pkG-kH-Wtk"/>

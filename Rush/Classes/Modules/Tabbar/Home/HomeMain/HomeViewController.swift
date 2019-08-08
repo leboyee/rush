@@ -74,10 +74,13 @@ class HomeViewController: CustomViewController {
  
         // Set navigation title (date)
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
-        let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        dateLabel.text = date
-        dateLabel.font = UIFont.DisplayBold(sz: 24)
-        dateLabel.textColor = UIColor.white
+        let dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
+        dateButton.setTitle(date, for: .normal)
+        dateButton.setTitleColor(UIColor.white, for: .normal)
+        dateButton.titleLabel?.font = UIFont.DisplayBold(sz: 24)
+        dateButton.contentHorizontalAlignment = .left
+        dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
+        
         
         // View calender button setup
         let viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
@@ -85,7 +88,8 @@ class HomeViewController: CustomViewController {
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
-        navigationView.addSubview(dateLabel)
+        viewCalender.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
+        navigationView.addSubview(dateButton)
         navigationView.addSubview(viewCalender)
         navigationItem.titleView = navigationView
     }
@@ -99,6 +103,10 @@ extension HomeViewController {
         // Segues.openPostScreen
         performSegue(withIdentifier: Segues.selectEventType, sender: nil)
         
+    }
+    
+    @objc func viewCalenderButtonAction() {
+        performSegue(withIdentifier: Segues.calendarHome, sender: nil)
     }
 }
 

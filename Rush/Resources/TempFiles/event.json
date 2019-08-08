@@ -1,0 +1,110 @@
+[
+  {
+    "id": 9,
+    "title": "Fine Arts",
+    "type": "Class",
+    "date": "2019-08-10T00:00:00Z",
+    "start": "2019-08-10T10:00:00Z",
+    "end": "2019-08-10T11:00:00Z",
+    "thumbnil": "https://wallsheaven.com/photos/A147312511/400/speaker-giving-a-talk-in-conference-hall-at-business-event.-audience-at-the-conference-hall.-business-and-entrepreneurship..webp"
+  },
+  {
+    "id": 12,
+    "title": "VR Meetups",
+    "type": "Event",
+    "date": "2019-08-11T00:00:00Z",
+    "start": "2019-08-11T13:00:00Z",
+    "end": "2019-08-11T15:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/cocktail-event.jpg"
+  },
+  {
+    "id": 13,
+    "title": "Literature",
+    "type": "Class",
+    "date": "2019-08-11T00:00:00Z",
+    "start": "2019-08-11T10:00:00Z",
+    "end": "2019-08-11T11:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/trade-event.jpg"
+  },
+  {
+    "id": 14,
+    "title": "Harvard Football",
+    "type": "Class",
+    "date": "2019-08-12T00:00:00Z",
+    "start": "2019-08-12T10:00:00Z",
+    "end": "2019-08-12T11:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/cocktail-event.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Math",
+    "type": "Class",
+    "date": "2019-08-12T00:00:00Z",
+    "start": "2019-08-12T12:00:00Z",
+    "end": "2019-08-12T14:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Pool Party",
+    "type": "Event",
+    "date": "2019-08-14T00:00:00Z",
+    "start": "2019-08-14T10:00:00Z",
+    "end": "2019-08-14T11:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/birthday-event.jpg"
+  },
+  {
+    "id": 17,
+    "title": "Let's game",
+    "type": "Class",
+    "date": "2019-08-16T00:00:00Z",
+    "start": "2019-08-16T10:00:00Z",
+    "end": "2019-08-16T12:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Cafe Meet",
+    "type": "Event",
+    "date": "2019-08-17T00:00:00Z",
+    "start": "2019-08-17T14:00:00Z",
+    "end": "2019-08-17T15:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/birthday-event.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Arts",
+    "type": "Class",
+    "date": "2019-08-19T00:00:00Z",
+    "start": "2019-08-19T09:00:00Z",
+    "end": "2019-08-19T10:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Mom's Birthday",
+    "type": "Event",
+    "date": "2019-08-19T00:00:00Z",
+    "start": "2019-08-19T18:00:00Z",
+    "end": "2019-08-19T22:00:00Z",
+    "thumbnil": "https://www.pathwaywbc.org/wp-content/uploads/Nashville-Small-Business-Forum-e1431619981855.jpg"
+  },
+  {
+    "id": 24,
+    "title": "Month end meet",
+    "type": "Event",
+    "date": "2019-08-31T00:00:00Z",
+    "start": "2019-08-31T10:00:00Z",
+    "end": "2019-08-31T12:00:00Z",
+    "thumbnil": "https://www.brc.com.au/Images/UserUploadedImages/11/birthday-event.jpg"
+  },
+  {
+    "id": 26,
+    "title": "Project kickoff",
+    "type": "Event",
+    "date": "2019-09-01T00:00:00Z",
+    "start": "2019-09-01T10:00:00Z",
+    "end": "2019-09-01T12:00:00Z",
+    "thumbnil": "https://www.pathwaywbc.org/wp-content/uploads/Nashville-Small-Business-Forum-e1431619981855.jpg"
+  }
+]
