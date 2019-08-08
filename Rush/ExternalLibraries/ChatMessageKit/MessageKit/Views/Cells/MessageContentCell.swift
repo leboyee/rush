@@ -59,6 +59,9 @@ open class MessageContentCell: MessageCollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
+    
+    var leftLine = UIView()
+    var rightLine = UIView()
 
     // Should only add customized subviews - don't change accessoryView itself.
     open var accessoryView: UIView = UIView()
@@ -155,12 +158,11 @@ open class MessageContentCell: MessageCollectionViewCell {
         
         let width = CGFloat(1)
         
-        let leftLine = UIView(frame: CGRect(x: 12, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 90, height: width))
-        let rightLine = UIView(frame: CGRect(x: cellTopLabel.frame.width/2 + widthOfString/2 + 15, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 80, height: width))
-        
-        print(" ============   \(topCellLabelText?.string ?? "NULL")   ============")
-        
         if topCellLabelText?.string.count ?? 0 > 0 {
+            
+            leftLine = UIView(frame: CGRect(x: 12, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 90, height: width))
+            rightLine = UIView(frame: CGRect(x: cellTopLabel.frame.width/2 + widthOfString/2 + 15, y: cellTopLabel.frame.height/2 - width/2, width: screenWidth/2 - 80, height: width))
+            
             cellTopLabel.attributedText = topCellLabelText
             
             leftLine.backgroundColor = UIColor.buttonDisableBgColor
@@ -168,9 +170,18 @@ open class MessageContentCell: MessageCollectionViewCell {
             
             rightLine.backgroundColor = UIColor.buttonDisableBgColor
             cellTopLabel.addSubview(rightLine)
+            
+            leftLine.isHidden = false
+            rightLine.isHidden = false
         } else {
+            leftLine = UIView()
+            rightLine = UIView()
             leftLine.backgroundColor = .clear
             rightLine.backgroundColor = .clear
+            leftLine.isHidden = true
+            rightLine.isHidden = true
+            leftLine.removeFromSuperview()
+            rightLine.removeFromSuperview()
         }
 
         cellTopLabel.attributedText = topCellLabelText
@@ -285,6 +296,7 @@ open class MessageContentCell: MessageCollectionViewCell {
     /// Positions the cell's top label.
     /// - attributes: The `MessagesCollectionViewLayoutAttributes` for the cell.
     open func layoutCellTopLabel(with attributes: MessagesCollectionViewLayoutAttributes) {
+        cellTopLabel.clipsToBounds = true
         cellTopLabel.frame = CGRect(origin: .zero, size: attributes.cellTopLabelSize)
     }
     

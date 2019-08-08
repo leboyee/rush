@@ -246,7 +246,7 @@ extension ChatRoomViewController: MessageInputBarDelegate {
         if isShowTempData {
             // Here we can parse for which substrings were autocompleted
             let attributedText = messageInputBar.inputTextView.attributedText!
-            let range = NSRange(location: 0, length: attributedText.length)
+            let _ = NSRange(location: 0, length: attributedText.length)
             
             let components = inputBar.inputTextView.components
             messageInputBar.inputTextView.text = String()
@@ -374,7 +374,7 @@ extension ChatRoomViewController: MessagesDataSource {
     }
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        if indexPath.section % 3 == 0 {
+        if isTimeLabelVisible(at: indexPath) {
             return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.Semibold(sz: 13), NSAttributedString.Key.foregroundColor: UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 0.32)])
         }
         return nil
