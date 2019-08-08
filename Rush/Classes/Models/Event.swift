@@ -9,7 +9,7 @@
 import UIKit
 
 struct EventGroup {
-    var date: Date
+    var dateString: String
     var events: [Event]
 }
 
@@ -21,7 +21,8 @@ class Event: Codable {
     var type: String
     var start: Date?
     var end: Date?
-    
+    var thumbnil: String?
+
     private enum CodingKeys: String, CodingKey {
         case id
         case date
@@ -29,5 +30,6 @@ class Event: Codable {
         case type
         case start
         case end
+        case thumbnil
     }
 }

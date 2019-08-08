@@ -17,6 +17,7 @@ extension CalendarEventListViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 88.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Cell.calendarEvent, bundle: nil), forCellReuseIdentifier: Cell.calendarEvent)
         tableView.reloadData()
