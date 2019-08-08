@@ -61,6 +61,7 @@ struct Cell {
     static let peopleCell           = "PeopleCell"
     static let sortingCell          = "SortingCell"
     static let chatListCell         = "ChatListCell"
+    static let calendarEvent        = "CalendarEventCell"
 }
 
 struct ReusableView {
@@ -121,6 +122,7 @@ struct Segues {
     static let searchChatSegue             = "SearchChatSegue"
     static let contactListSegue            = "ContactListSegue"
     static let addInviteViewSegue            = "AddInviteViewSegue"
+    static let calendarHome                = "CalendarHomeSegue"
 
 
 }
