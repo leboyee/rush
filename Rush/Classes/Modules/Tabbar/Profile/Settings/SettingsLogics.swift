@@ -115,6 +115,13 @@ extension SettingsViewController {
     
     func selectedRow(_ indexPath: IndexPath) {
         
+        if indexPath.section == 2, indexPath.row == 0 {
+            showPrivacyInvite()
+        } else if indexPath.section == 2, indexPath.row == 1 {
+            showPrivacyMessage()
+        } else if indexPath.section == 1, indexPath.row == 0 {
+            showNotifications()
+        }
     }
 }
 

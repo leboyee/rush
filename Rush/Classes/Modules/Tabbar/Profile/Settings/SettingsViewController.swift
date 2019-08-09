@@ -55,6 +55,24 @@ extension SettingsViewController {
     }
 }
 
+//MARK: - Other Functions
+extension SettingsViewController {
+
+    func showPrivacyInvite() {
+        performSegue(withIdentifier: Segues.privacySettings, sender: PrivacyType.invitesfrom)
+
+    }
+    
+    func showPrivacyMessage() {
+        performSegue(withIdentifier: Segues.privacySettings, sender: PrivacyType.messagefrom)
+    }
+   
+    func showNotifications() {
+        
+    }
+    
+}
+
 //MARK: - Navigation
 extension SettingsViewController {
 
@@ -63,6 +81,9 @@ extension SettingsViewController {
         if segue.identifier == Segues.webViewFile {
             let vc = segue.destination as! WebViewFileViewController
             vc.type = sender as? WebFile ?? .policy
+        } else if segue.identifier == Segues.privacySettings {
+            let vc = segue.destination as! PrivacySettingsViewController
+            vc.type = sender as? PrivacyType ?? .invitesfrom
         }
     }
 }

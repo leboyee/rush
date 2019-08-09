@@ -36,10 +36,6 @@ class CustomLabel: UILabel {
     
     func setSkipLevelOnChooseLevelView() {
         self.textColor = UIColor.white
-    }
-
-
-    
-    
+    }    
 
 }

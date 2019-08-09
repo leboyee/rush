@@ -70,6 +70,7 @@ struct Cell {
     static let settingsInfo         = "SettingsInfoCell"
     static let switchCell           = "SwitchCell"
     static let instagram            = "InstagramCell"
+    static let checkMark            = "CheckMarkCell"
 
 }
 
@@ -133,6 +134,7 @@ struct Segues {
     static let addInviteViewSegue                 = "AddInviteViewSegue"
     static let calendarHome                       = "CalendarHomeSegue"
     static let webViewFile                        = "WebViewFileSegue"
+    static let privacySettings                    = "PrivacySettingsSegue"
 
 
 }
@@ -239,8 +241,11 @@ public struct Text {
     static let darkMode                  = "Dark mode"
     static let whoCanInviteMe            = "Who can invite me"
     static let whoCanMessageMe           = "Who can message me"
-    static let dataPolicy            = "Data policy"
-    static let termsConditions            = "Terms & conditions"
+    static let dataPolicy                = "Data policy"
+    static let termsConditions           = "Terms & conditions"
+
+    static let invitesFrom            = "Invites from"
+    static let messagesFrom            = "Messages from"
 
     
 }
