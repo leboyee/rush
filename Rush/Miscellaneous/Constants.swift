@@ -65,6 +65,7 @@ struct Cell {
     static let peopleCell           = "PeopleCell"
     static let sortingCell          = "SortingCell"
     static let chatListCell         = "ChatListCell"
+    static let chatUserCell         = "ChatUserCell"
     static let calendarEvent        = "CalendarEventCell"
     static let settingsInfo         = "SettingsInfoCell"
     static let switchCell           = "SwitchCell"
