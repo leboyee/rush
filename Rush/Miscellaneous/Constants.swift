@@ -20,6 +20,10 @@ var isProductionBuild: Bool = true
 var isDarkModeOn: Bool = false
 
 
+//MARK:-
+let topViewRadius: CGFloat = 32.0
+
+
 //MARK: Reachability
 var isNetworkAvailable : Bool = true
 
@@ -63,6 +67,10 @@ struct Cell {
     static let chatListCell         = "ChatListCell"
     static let chatUserCell         = "ChatUserCell"
     static let calendarEvent        = "CalendarEventCell"
+    static let settingsInfo         = "SettingsInfoCell"
+    static let switchCell           = "SwitchCell"
+    static let instagram            = "InstagramCell"
+
 }
 
 struct ReusableView {
@@ -86,44 +94,45 @@ struct ViewControllerId {
 /* Create the struct for Section wise */
 struct Segues {
 
-    static let selectEventType             = "SelectEventTypeSegue"
-    static let createClub                  = "createClubSegue"
-    static let enterEmail                  = "EnterEmailViewSegue"
-    static let enterPassword               = "EnterPasswordSegue"
-    static let enterPhoneNo                = "EnterPhoneSegue"
-    static let enterPhoneVerification      = "EnterVerificationSegue"
-    static let myClub                      = "MyClubSegue"
-    static let otherUserProfile            = "OtherUserProfileSegue"
-    static let notificationAlert           = "NotificationAlertSegue"
-    static let friendList                  = "FriendListSegue"
-    static let enterUserNameSegue          = "EnterUserNameSegue"
-    static let addProfilePictureSegue      = "AddProfilePictureSegue"
-    static let openPostScreen              = "SegueOpenPostScreen"
-    static let createPost                  = "CreatePostSegue"
-    static let profileInformation          = "ProfileInformationSegue"
-    static let chooseLevelSegue            = "ChooseLevelSegue"
-    static let chooseYearSegue             = "ChooseYearSegue"
-    static let chooseUniverSitySegueFromLevelView             = "ChooseUniverSitySegueFromLevelView"
+    static let selectEventType                    = "SelectEventTypeSegue"
+    static let createClub                         = "createClubSegue"
+    static let enterEmail                         = "EnterEmailViewSegue"
+    static let enterPassword                      = "EnterPasswordSegue"
+    static let enterPhoneNo                       = "EnterPhoneSegue"
+    static let enterPhoneVerification             = "EnterVerificationSegue"
+    static let myClub                             = "MyClubSegue"
+    static let otherUserProfile                   = "OtherUserProfileSegue"
+    static let notificationAlert                  = "NotificationAlertSegue"
+    static let friendList                         = "FriendListSegue"
+    static let enterUserNameSegue                 = "EnterUserNameSegue"
+    static let addProfilePictureSegue             = "AddProfilePictureSegue"
+    static let openPostScreen                     = "SegueOpenPostScreen"
+    static let createPost                         = "CreatePostSegue"
+    static let profileInformation                 = "ProfileInformationSegue"
+    static let chooseLevelSegue                   = "ChooseLevelSegue"
+    static let chooseYearSegue                    = "ChooseYearSegue"
+    static let chooseUniverSitySegueFromLevelView = "ChooseUniverSitySegueFromLevelView"
 
-    static let chooseUniversitySegue       = "ChooseUniversitySegue"
-    static let addMajorViewSegue           = "AddMajorViewSegue"
-    static let addMinorViewSegue           = "AddMinorViewSegue"
-    static let chooseClassesViewSegue           = "ChooseClassesViewSegue"
-    static let postSegue                   = "PostSegue"
-    static let sharePostSegue              = "sharePostSegue"
-    static let clubListSegue               = "ClubListSegue"
-    static let clubDetailSegue             = "ClubDetailSegue"
-    static let searchClubSegue             = "SearchClubSegue"
-    static let classDetailSegue            = "ClassDetailSegue"
-    static let chooseInterestViewSegue             = "ChooseInterestViewSegue"
-    static let userInfoViewSegue             = "UserInfoViewSegue"
-    static let eventCategorySegue          = "EventCategorySegue"
-    static let loginPhoneNoSegue          = "LoginPhoneNoSegue"
-    static let universitySegue             = "UniversitySegue"
-    static let searchChatSegue             = "SearchChatSegue"
-    static let contactListSegue            = "ContactListSegue"
-    static let addInviteViewSegue            = "AddInviteViewSegue"
-    static let calendarHome                = "CalendarHomeSegue"
+    static let chooseUniversitySegue              = "ChooseUniversitySegue"
+    static let addMajorViewSegue                  = "AddMajorViewSegue"
+    static let addMinorViewSegue                  = "AddMinorViewSegue"
+    static let chooseClassesViewSegue             = "ChooseClassesViewSegue"
+    static let postSegue                          = "PostSegue"
+    static let sharePostSegue                     = "sharePostSegue"
+    static let clubListSegue                      = "ClubListSegue"
+    static let clubDetailSegue                    = "ClubDetailSegue"
+    static let searchClubSegue                    = "SearchClubSegue"
+    static let classDetailSegue                   = "ClassDetailSegue"
+    static let chooseInterestViewSegue            = "ChooseInterestViewSegue"
+    static let userInfoViewSegue                  = "UserInfoViewSegue"
+    static let eventCategorySegue                 = "EventCategorySegue"
+    static let loginPhoneNoSegue                  = "LoginPhoneNoSegue"
+    static let universitySegue                    = "UniversitySegue"
+    static let searchChatSegue                    = "SearchChatSegue"
+    static let contactListSegue                   = "ContactListSegue"
+    static let addInviteViewSegue                 = "AddInviteViewSegue"
+    static let calendarHome                       = "CalendarHomeSegue"
+    static let webViewFile                        = "WebViewFileSegue"
 
 
 }
@@ -158,6 +167,7 @@ public struct Text {
     static let hide  = "hide"
     static let next  = "Next"
     static let login = "Login"
+    static let logout = "Logout"
     static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
     static let changeImage = "Change image"
@@ -217,6 +227,22 @@ public struct Text {
     static let deletePost               = "Delete post"
     static let deleteClub               = "Delete club"
     static let report                   = "Report"
+    static let settings                 = "Settings"
+
+    static let personal                 = "Personal"
+    static let general                  = "General"
+    static let privacy                  = "Privacy"
+
+    static let email                     = "Email"
+    static let password                  = "Password"
+    static let notifications             = "Notifications"
+    static let darkMode                  = "Dark mode"
+    static let whoCanInviteMe            = "Who can invite me"
+    static let whoCanMessageMe           = "Who can message me"
+    static let dataPolicy            = "Data policy"
+    static let termsConditions            = "Terms & conditions"
+
+    
 }
 
 public struct Message {

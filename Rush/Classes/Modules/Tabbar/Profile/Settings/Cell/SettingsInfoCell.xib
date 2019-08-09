@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsInfoCell" id="KGk-i7-Jjw" customClass="SettingsInfoCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnz-AG-WK8" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="24" y="12" width="327" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km@messapps.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQE-yn-NHQ" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="24" y="32" width="327" height="20.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9z-T0-Y4x">
+                        <rect key="frame" x="302" y="18" width="49" height="28"/>
+                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
+                        <state key="normal" title="Change">
+                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="rightButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="p1b-Q0-Kqr"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="qpH-qx-rU8">
+                        <rect key="frame" x="345" y="27.5" width="6" height="9"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1SH-9k-s09" customClass="RSeparatorLine" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="24" y="62.5" width="351" height="1"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="xBC-3C-U36"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Bnz-AG-WK8" secondAttribute="trailing" constant="24" id="1Kp-ar-bs2"/>
+                    <constraint firstItem="W9z-T0-Y4x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9eq-TF-tg4"/>
+                    <constraint firstAttribute="trailing" secondItem="qpH-qx-rU8" secondAttribute="trailing" constant="24" id="MFp-Ls-bN0"/>
+                    <constraint firstItem="qpH-qx-rU8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MHk-Ek-e7A"/>
+                    <constraint firstItem="Bnz-AG-WK8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Myp-FA-IHh"/>
+                    <constraint firstItem="XQE-yn-NHQ" firstAttribute="leading" secondItem="Bnz-AG-WK8" secondAttribute="leading" id="Orc-mg-xtq"/>
+                    <constraint firstItem="XQE-yn-NHQ" firstAttribute="trailing" secondItem="Bnz-AG-WK8" secondAttribute="trailing" id="RNe-uE-Vjv"/>
+                    <constraint firstAttribute="trailing" secondItem="W9z-T0-Y4x" secondAttribute="trailing" constant="24" id="Tj4-eJ-Cj9"/>
+                    <constraint firstAttribute="trailing" secondItem="1SH-9k-s09" secondAttribute="trailing" id="U6K-4a-36T"/>
+                    <constraint firstAttribute="bottom" secondItem="1SH-9k-s09" secondAttribute="bottom" id="UEJ-8U-wkU"/>
+                    <constraint firstItem="XQE-yn-NHQ" firstAttribute="top" secondItem="Bnz-AG-WK8" secondAttribute="bottom" constant="4" id="XCX-Dc-YYh"/>
+                    <constraint firstItem="Bnz-AG-WK8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="b9g-mV-I2o"/>
+                    <constraint firstItem="1SH-9k-s09" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="hxo-RP-6vs"/>
+                    <constraint firstAttribute="bottom" secondItem="XQE-yn-NHQ" secondAttribute="bottom" constant="11" id="ocO-ra-kSS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="arrowImageView" destination="qpH-qx-rU8" id="giy-nH-uq6"/>
+                <outlet property="detailLabel" destination="XQE-yn-NHQ" id="QL4-x5-9Jf"/>
+                <outlet property="rightButton" destination="W9z-T0-Y4x" id="dnR-Pj-2eS"/>
+                <outlet property="titleLabel" destination="Bnz-AG-WK8" id="ptH-9a-Hwf"/>
+            </connections>
+            <point key="canvasLocation" x="136.95652173913044" y="34.821428571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_leftArrow" width="6" height="9"/>
+    </resources>
+</document>

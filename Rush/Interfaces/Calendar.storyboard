@@ -43,7 +43,7 @@
         <scene sceneID="00N-RW-N3h">
             <objects>
                 <viewController storyboardIdentifier="CalendarEventListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JZ3-gW-XlZ" customClass="CalendarEventListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="ANz-JA-7iQ">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="ANz-JA-7iQ" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="805"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -59,6 +59,7 @@
                             <constraint firstAttribute="trailing" secondItem="9yw-V8-Tef" secondAttribute="trailing" id="mx0-Ai-2oX"/>
                             <constraint firstAttribute="bottom" secondItem="9yw-V8-Tef" secondAttribute="bottom" id="sYD-Nv-hfm"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="05b-RP-UQ0"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="9yw-V8-Tef" id="qGH-8L-ee9"/>

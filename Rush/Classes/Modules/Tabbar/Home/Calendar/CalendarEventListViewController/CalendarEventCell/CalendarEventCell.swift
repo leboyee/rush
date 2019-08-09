@@ -12,11 +12,11 @@ import SDWebImage
 class CalendarEventCell: UITableViewCell {
 
     @IBOutlet weak var eventImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateLabel: CustomBlackLabel!
     @IBOutlet weak var separator: UIView!
     @IBOutlet weak var leadingSeparatorConstraint: NSLayoutConstraint!
 
