@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChatUserCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="77" height="74"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="77" height="74"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg6-Ho-csk">
+                        <rect key="frame" x="0.0" y="0.0" width="77" height="74"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="Mdw-BM-rg5">
+                                <rect key="frame" x="22.5" y="21" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="Zr4-B2-kka"/>
+                                    <constraint firstAttribute="height" constant="32" id="f2y-bs-3PP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bz5-Vr-TG9">
+                                <rect key="frame" x="42.5" y="41" width="14" height="14"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-9u-qrO">
+                                        <rect key="frame" x="2" y="2" width="10" height="10"/>
+                                        <color key="backgroundColor" red="0.26666666666666666" green="0.69803921568627447" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="7Rg-CE-VQR"/>
+                                            <constraint firstAttribute="height" constant="10" id="GkB-lP-OAO"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="RRH-qC-WjU"/>
+                                    <constraint firstAttribute="height" constant="14" id="akY-Hz-u71"/>
+                                    <constraint firstItem="LP3-9u-qrO" firstAttribute="centerY" secondItem="Bz5-Vr-TG9" secondAttribute="centerY" id="pvk-pq-Hg8"/>
+                                    <constraint firstItem="LP3-9u-qrO" firstAttribute="centerX" secondItem="Bz5-Vr-TG9" secondAttribute="centerX" id="vZW-WP-DFz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWw-aN-MeO">
+                                <rect key="frame" x="22.5" y="21" width="32" height="32"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-white" translatesAutoresizingMaskIntoConstraints="NO" id="9ey-cc-wTP">
+                                        <rect key="frame" x="8" y="8" width="16" height="16"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9ey-cc-wTP" firstAttribute="centerY" secondItem="XWw-aN-MeO" secondAttribute="centerY" id="3tp-XY-8lO"/>
+                                    <constraint firstItem="9ey-cc-wTP" firstAttribute="centerX" secondItem="XWw-aN-MeO" secondAttribute="centerX" id="h6h-TH-NXi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Bz5-Vr-TG9" firstAttribute="bottom" secondItem="Mdw-BM-rg5" secondAttribute="bottom" constant="2" id="72P-af-5yY"/>
+                            <constraint firstItem="XWw-aN-MeO" firstAttribute="top" secondItem="Mdw-BM-rg5" secondAttribute="top" id="7ty-Ls-gLF"/>
+                            <constraint firstItem="Bz5-Vr-TG9" firstAttribute="trailing" secondItem="Mdw-BM-rg5" secondAttribute="trailing" constant="2" id="9pm-A7-6mJ"/>
+                            <constraint firstItem="XWw-aN-MeO" firstAttribute="leading" secondItem="Mdw-BM-rg5" secondAttribute="leading" id="Itw-aO-6av"/>
+                            <constraint firstItem="XWw-aN-MeO" firstAttribute="trailing" secondItem="Mdw-BM-rg5" secondAttribute="trailing" id="Vk7-9L-IiJ"/>
+                            <constraint firstItem="XWw-aN-MeO" firstAttribute="bottom" secondItem="Mdw-BM-rg5" secondAttribute="bottom" id="Zey-jg-SXa"/>
+                            <constraint firstItem="Mdw-BM-rg5" firstAttribute="centerY" secondItem="fg6-Ho-csk" secondAttribute="centerY" id="nGM-Zp-nBZ"/>
+                            <constraint firstItem="Mdw-BM-rg5" firstAttribute="centerX" secondItem="fg6-Ho-csk" secondAttribute="centerX" id="vDx-K9-w6X"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fg6-Ho-csk" secondAttribute="trailing" id="O4J-Fj-guy"/>
+                <constraint firstItem="fg6-Ho-csk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QYK-r2-n9e"/>
+                <constraint firstAttribute="bottom" secondItem="fg6-Ho-csk" secondAttribute="bottom" id="gQ1-3E-7Is"/>
+                <constraint firstItem="fg6-Ho-csk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jW2-Jh-kn8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="77" height="74"/>
+            <connections>
+                <outlet property="arrowView" destination="XWw-aN-MeO" id="X2l-MG-IOB"/>
+                <outlet property="onlineView" destination="Bz5-Vr-TG9" id="Oxt-Y6-Brj"/>
+            </connections>
+            <point key="canvasLocation" x="89.130434782608702" y="50.892857142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="arrow-white" width="16" height="16"/>
+        <image name="img-event" width="48" height="48"/>
+    </resources>
+</document>

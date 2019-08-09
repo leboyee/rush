@@ -39,5 +39,11 @@ public protocol MediaItem {
 
     /// The size of the media item.
     var size: CGSize { get }
+    
+    var time: Date? { get }
+    
+    var title: String? { get }
+    
+    var detail: String? { get }
 
 }

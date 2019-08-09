@@ -24,7 +24,6 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     let outgoingAvatarOverlap: CGFloat = 17.5
-    var isGroupChat = false
     var userNavImageView = UIImageView()
     var userNameNavLabel = UILabel()
     var timeLabel = UILabel()
@@ -54,6 +53,7 @@ class ChatRoomViewController: MessagesViewController {
     override func viewDidLoad() {
         messagesCollectionView = MessagesCollectionView(frame: .zero, collectionViewLayout: CustomMessagesFlowLayout())
         messagesCollectionView.register(CustomCell.self)
+        messagesCollectionView.register(EventMessageCell.self)
         
         super.viewDidLoad()
         setup()
@@ -95,6 +95,10 @@ class ChatRoomViewController: MessagesViewController {
         
         guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
             fatalError("Ouch. nil data source for messages")
+        }
+        
+        guard !isSectionReservedForTypingIndicator(indexPath.section) else {
+            return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
@@ -200,10 +204,6 @@ class ChatRoomViewController: MessagesViewController {
 extension ChatRoomViewController {
     func configureMessageCollectionView() {
         
-        messagesCollectionView.messagesDataSource = self
-        scrollsToBottomOnKeyboardBeginsEditing = true // default false
-        maintainPositionOnKeyboardFrameChanged = true // default false
-        
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
         
         layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 15)
@@ -245,6 +245,11 @@ extension ChatRoomViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
+        
+        messagesCollectionView.messagesDataSource = self
+        scrollsToBottomOnKeyboardBeginsEditing = true // default false
+        maintainPositionOnKeyboardFrameChanged = true // default false
+        
     }
     
     func configureMessageInputBar() {

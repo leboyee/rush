@@ -326,6 +326,11 @@
 		7994A3C422D778600057527C /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7994A3C222D778600057527C /* ChatListCell.swift */; };
 		7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715222895A8600EF7C3D /* CustomViewController.swift */; };
 		7995715A22895DE500EF7C3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995715922895DE500EF7C3D /* Constants.swift */; };
+		7999362C22FAEDAC001AEEEB /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999362722FAED7B001AEEEB /* ChatUserCell.swift */; };
+		7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7999362822FAED7B001AEEEB /* ChatUserCell.xib */; };
+		7999362E22FAEDAC001AEEEB /* ChatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999362A22FAEDAB001AEEEB /* ChatUserView.swift */; };
+		7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7999362B22FAEDAB001AEEEB /* ChatUserView.xib */; };
+		7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999363022FAF01F001AEEEB /* EventMessageCell.swift */; };
 		79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */; };
 		79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */; };
 		79BE868722A946C20056529E /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868522A946C20056529E /* FriendListCell.swift */; };
@@ -714,6 +719,11 @@
 		7994A3C222D778600057527C /* ChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		7995715222895A8600EF7C3D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7995715922895DE500EF7C3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7999362722FAED7B001AEEEB /* ChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
+		7999362822FAED7B001AEEEB /* ChatUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserCell.xib; sourceTree = "<group>"; };
+		7999362A22FAEDAB001AEEEB /* ChatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserView.swift; sourceTree = "<group>"; };
+		7999362B22FAEDAB001AEEEB /* ChatUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatUserView.xib; sourceTree = "<group>"; };
+		7999363022FAF01F001AEEEB /* EventMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMessageCell.swift; sourceTree = "<group>"; };
 		79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImagesHeaderView.swift; sourceTree = "<group>"; };
 		79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImagesHeaderView.xib; sourceTree = "<group>"; };
 		79BE868522A946C20056529E /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
@@ -1491,6 +1501,8 @@
 		793BE5F222E87E0D005EF72D /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
+				7999362622FAED7B001AEEEB /* Cell */,
+				7999362922FAEDAB001AEEEB /* View */,
 				793BE5F322E87E0D005EF72D /* ChatRoomLogics.swift */,
 				793BE5F422E87E0D005EF72D /* ChatRoomMediats.swift */,
 				793BE5F522E87E0D005EF72D /* ChatRoomViewController.swift */,
@@ -1681,6 +1693,7 @@
 		793BE64222E88207005EF72D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7999363022FAF01F001AEEEB /* EventMessageCell.swift */,
 				793BE64322E88207005EF72D /* CustomCell.swift */,
 				793BE64422E88207005EF72D /* LocationMessageCell.swift */,
 				793BE64522E88207005EF72D /* MediaMessageCell.swift */,
@@ -1917,6 +1930,24 @@
 				7994A3C122D778600057527C /* ChatListCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		7999362622FAED7B001AEEEB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7999362722FAED7B001AEEEB /* ChatUserCell.swift */,
+				7999362822FAED7B001AEEEB /* ChatUserCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7999362922FAEDAB001AEEEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7999362A22FAEDAB001AEEEB /* ChatUserView.swift */,
+				7999362B22FAEDAB001AEEEB /* ChatUserView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		79A9377022B2288B00A602CD /* Header */ = {
@@ -2306,6 +2337,7 @@
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
 				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
+				7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */,
 				1AC635FB22AA8F6900021E03 /* CustomNavBarPageController.xib in Resources */,
 				7903D0AC228E8CE5004E33B9 /* EventTypeCell.xib in Resources */,
 				794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */,
@@ -2325,6 +2357,7 @@
 				8A04B13E22FAE1180055C65F /* Calendar.storyboard in Resources */,
 				0918E77F228444850098AF35 /* Home.storyboard in Resources */,
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
+				7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */,
 				7994A3C322D778600057527C /* ChatListCell.xib in Resources */,
 				796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
@@ -2526,6 +2559,7 @@
 				091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */,
 				79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */,
 				793BE67E22E88207005EF72D /* MediaItem.swift in Sources */,
+				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
@@ -2554,6 +2588,7 @@
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
+				7999362C22FAEDAC001AEEEB /* ChatUserCell.swift in Sources */,
 				7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */,
 				797FFDA322B7BC480055A001 /* ImagePickerConfigurable.swift in Sources */,
 				1A7402CD22CD029F0089CDAE /* ChooseTagCell.swift in Sources */,
@@ -2670,6 +2705,7 @@
 				79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */,
 				8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */,
 				1A649E1F2297FE1E00B2E9E7 /* CustomView.swift in Sources */,
+				7999362E22FAEDAC001AEEEB /* ChatUserView.swift in Sources */,
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
 				793BE69022E88207005EF72D /* MessageContainerView.swift in Sources */,
 				79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */,

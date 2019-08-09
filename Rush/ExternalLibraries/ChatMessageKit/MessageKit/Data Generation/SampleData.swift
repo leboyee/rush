@@ -42,6 +42,7 @@ final internal class SampleData {
         case Url = 6
         case Phone = 7
         case Custom = 8
+        case Event = 9
         
         static func random() -> MessageTypes {
             // Update as new enumerations are added
@@ -182,6 +183,10 @@ final internal class SampleData {
             return MockMessage(text: "123-456-7890", sender: sender, messageId: uniqueID, date: date)
         case .Custom:
             return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date)
+        case .Event:
+            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
+            let image = messageImages[randomNumberImage]
+            return MockMessage(title: "31 JAN", detail: "Thursday", image: image, sender: system, messageId: uniqueID, date: date)
         }
     }
     
@@ -189,8 +194,13 @@ final internal class SampleData {
         var messages: [MockMessage] = []
         // Disable Custom Messages
         UserDefaults.standard.set(false, forKey: "Custom Messages")
-        for _ in 0..<count {
-            let message = randomMessage(allowedSenders: senders)
+        for index in 0..<count {
+            var message = randomMessage(allowedSenders: senders)
+            if index == 19 {
+                let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
+                let image = messageImages[randomNumberImage]
+               message = MockMessage(title: "", detail: "", image: image, sender: senders.last!, messageId: NSUUID().uuidString, date: dateAddingRandomTime())
+            }
             messages.append(message)
         }
         completion(messages)
