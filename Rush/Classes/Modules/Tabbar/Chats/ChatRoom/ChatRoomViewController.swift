@@ -126,7 +126,7 @@ class ChatRoomViewController: MessagesViewController {
     func loadFirstMessages() {
         DispatchQueue.global(qos: .userInitiated).async {
             let count = UserDefaults.standard.mockMessagesCount()
-            SampleData.shared.getMessages(count: count) { messages in
+            SampleData.shared.getMessages(count: count, isGroupChat: self.isGroupChat) { messages in
                 DispatchQueue.main.async {
                     self.messageList = messages
                     self.chatTableReload(initial: true)
@@ -153,7 +153,7 @@ class ChatRoomViewController: MessagesViewController {
     
     @objc func loadMoreMessages() {
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
-            SampleData.shared.getMessages(count: 20) { messages in
+            SampleData.shared.getMessages(count: 20, isGroupChat: self.isGroupChat) { messages in
                 DispatchQueue.main.async {
                     self.messageList.insert(contentsOf: messages, at: 0)
                     self.messagesCollectionView.reloadDataAndKeepOffset()

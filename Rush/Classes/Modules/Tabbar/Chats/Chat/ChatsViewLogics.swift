@@ -25,6 +25,11 @@ extension ChatsViewController {
     func cellSelected(_ indexPath: IndexPath) {
         let controller = ChatRoomViewController()
         controller.isShowTempData = true
+        if indexPath.row == 0 {
+            controller.isGroupChat = true
+        } else {
+            controller.isGroupChat = false
+        }
         navigationController?.pushViewController(controller, animated: true)
     }
 }
