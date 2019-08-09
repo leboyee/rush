@@ -141,11 +141,50 @@
                     <connections>
                         <outlet property="tableView" destination="TcW-2N-tP4" id="X0H-ae-oYU"/>
                         <segue destination="SCR-Ws-le9" kind="show" identifier="WebViewFileSegue" id="pb6-SO-yzi"/>
+                        <segue destination="baD-jv-Ic4" kind="show" identifier="PrivacySettingsSegue" id="JcE-bh-VLy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="160.86956521739131" y="12.723214285714285"/>
+        </scene>
+        <!--Privacy Settings View Controller-->
+        <scene sceneID="9fs-Ab-LU0">
+            <objects>
+                <viewController storyboardIdentifier="PrivacySettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="baD-jv-Ic4" customClass="PrivacySettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7eN-hG-Ssj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86f-Hb-JB8" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dlp-qa-tGc">
+                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="86f-Hb-JB8" firstAttribute="trailing" secondItem="P7F-Jh-rSn" secondAttribute="trailing" id="2Qi-Wc-M9Y"/>
+                            <constraint firstItem="Dlp-qa-tGc" firstAttribute="leading" secondItem="P7F-Jh-rSn" secondAttribute="leading" id="8fZ-vw-FPN"/>
+                            <constraint firstItem="Dlp-qa-tGc" firstAttribute="trailing" secondItem="P7F-Jh-rSn" secondAttribute="trailing" id="92D-xq-aWb"/>
+                            <constraint firstItem="86f-Hb-JB8" firstAttribute="top" secondItem="P7F-Jh-rSn" secondAttribute="top" constant="13" id="MhT-JC-HBf"/>
+                            <constraint firstItem="86f-Hb-JB8" firstAttribute="leading" secondItem="P7F-Jh-rSn" secondAttribute="leading" id="PRx-gv-7gD"/>
+                            <constraint firstItem="Dlp-qa-tGc" firstAttribute="bottom" secondItem="P7F-Jh-rSn" secondAttribute="bottom" id="WDX-cg-KDr"/>
+                            <constraint firstAttribute="bottom" secondItem="86f-Hb-JB8" secondAttribute="bottom" id="WER-5N-Zhv"/>
+                            <constraint firstItem="Dlp-qa-tGc" firstAttribute="top" secondItem="P7F-Jh-rSn" secondAttribute="top" constant="13" id="oVI-zw-y24"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P7F-Jh-rSn"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Dlp-qa-tGc" id="C2O-Wt-bPN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="255"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
@@ -183,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-bh-tKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.91304347826099" y="12.723214285714285"/>
+            <point key="canvasLocation" x="975" y="-421"/>
         </scene>
     </scenes>
 </document>

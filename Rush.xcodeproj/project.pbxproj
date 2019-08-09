@@ -401,6 +401,14 @@
 		8A04B16622FD5F1C0055C65F /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B16522FD5F1C0055C65F /* terms.html */; };
 		8A04B16822FD6ED30055C65F /* RSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B16722FD6ED30055C65F /* RSwitch.swift */; };
 		8A04B16B22FD7ACB0055C65F /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B16A22FD7ACB0055C65F /* ThemeManager.swift */; };
+		8A04B16E22FD8B680055C65F /* PrivacySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B16D22FD8B680055C65F /* PrivacySettingsViewController.swift */; };
+		8A04B17022FD8B7F0055C65F /* PrivacySettingsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B16F22FD8B7F0055C65F /* PrivacySettingsMediator.swift */; };
+		8A04B17222FD8B8E0055C65F /* PrivacySettingsLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17122FD8B8E0055C65F /* PrivacySettingsLogics.swift */; };
+		8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17422FD8C3E0055C65F /* NotificationSettingsViewController.swift */; };
+		8A04B17722FD8C530055C65F /* NotificationSettingsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17622FD8C530055C65F /* NotificationSettingsMediator.swift */; };
+		8A04B17922FD8C630055C65F /* NotificationSettingsLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17822FD8C630055C65F /* NotificationSettingsLogics.swift */; };
+		8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17B22FD96720055C65F /* CheckMarkCell.swift */; };
+		8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B17C22FD96720055C65F /* CheckMarkCell.xib */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -809,6 +817,14 @@
 		8A04B16522FD5F1C0055C65F /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		8A04B16722FD6ED30055C65F /* RSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSwitch.swift; sourceTree = "<group>"; };
 		8A04B16A22FD7ACB0055C65F /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		8A04B16D22FD8B680055C65F /* PrivacySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsViewController.swift; sourceTree = "<group>"; };
+		8A04B16F22FD8B7F0055C65F /* PrivacySettingsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsMediator.swift; sourceTree = "<group>"; };
+		8A04B17122FD8B8E0055C65F /* PrivacySettingsLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsLogics.swift; sourceTree = "<group>"; };
+		8A04B17422FD8C3E0055C65F /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		8A04B17622FD8C530055C65F /* NotificationSettingsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsMediator.swift; sourceTree = "<group>"; };
+		8A04B17822FD8C630055C65F /* NotificationSettingsLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsLogics.swift; sourceTree = "<group>"; };
+		8A04B17B22FD96720055C65F /* CheckMarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkCell.swift; sourceTree = "<group>"; };
+		8A04B17C22FD96720055C65F /* CheckMarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckMarkCell.xib; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -923,6 +939,8 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8A04B17322FD8C0B0055C65F /* NotificationSettings */,
+				8A04B16C22FD8B480055C65F /* PrivacySettings */,
 				8A04B16222FD5E3B0055C65F /* WebViewFile */,
 				8A04B14A22FC2B3F0055C65F /* Settings */,
 				8A04B14922FC2B290055C65F /* UserProfile */,
@@ -2226,6 +2244,36 @@
 			path = TheamManager;
 			sourceTree = "<group>";
 		};
+		8A04B16C22FD8B480055C65F /* PrivacySettings */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B17A22FD96460055C65F /* Cell */,
+				8A04B16D22FD8B680055C65F /* PrivacySettingsViewController.swift */,
+				8A04B16F22FD8B7F0055C65F /* PrivacySettingsMediator.swift */,
+				8A04B17122FD8B8E0055C65F /* PrivacySettingsLogics.swift */,
+			);
+			path = PrivacySettings;
+			sourceTree = "<group>";
+		};
+		8A04B17322FD8C0B0055C65F /* NotificationSettings */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B17422FD8C3E0055C65F /* NotificationSettingsViewController.swift */,
+				8A04B17622FD8C530055C65F /* NotificationSettingsMediator.swift */,
+				8A04B17822FD8C630055C65F /* NotificationSettingsLogics.swift */,
+			);
+			path = NotificationSettings;
+			sourceTree = "<group>";
+		};
+		8A04B17A22FD96460055C65F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B17B22FD96720055C65F /* CheckMarkCell.swift */,
+				8A04B17C22FD96720055C65F /* CheckMarkCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -2450,6 +2498,7 @@
 				1A7402CC22CD029F0089CDAE /* ChooseTagCell.xib in Resources */,
 				1A142ECB229EC895002C1AFE /* CountryPhoneCode.json in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
+				8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
 				79C1AC5822A65507003C7790 /* ProfileInformationCell.xib in Resources */,
 				79BE868C22A94E9F0056529E /* FriendClubCell.xib in Resources */,
@@ -2575,17 +2624,20 @@
 				797FFDB722B7BC480055A001 /* SlideUpPresentingAnimator.swift in Sources */,
 				1A339B5122B3AE1D005509EA /* ListCell.swift in Sources */,
 				1A7402C622CCA0BD0089CDAE /* ChooseInterestViewMediates.swift in Sources */,
+				8A04B17922FD8C630055C65F /* NotificationSettingsLogics.swift in Sources */,
 				8A04B15C22FC6C3A0055C65F /* SwitchCell.swift in Sources */,
 				091557B922B127320080C9AE /* UserPostTextTableViewCell.swift in Sources */,
 				1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */,
 				1AB0C15A22C1203E000D016E /* NetworkManagerServices.swift in Sources */,
 				793BE65322E88207005EF72D /* MessageInputBar.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
+				8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				793BE65A22E88207005EF72D /* MessagesViewController+Keyboard.swift in Sources */,
 				793BE68022E88207005EF72D /* MessageLabelDelegate.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
 				793BE65F22E88207005EF72D /* Bundle+Extensions.swift in Sources */,
+				8A04B17022FD8B7F0055C65F /* PrivacySettingsMediator.swift in Sources */,
 				797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */,
 				793BE65922E88207005EF72D /* SeparatorLine.swift in Sources */,
 				7938D06322D75D74002D1537 /* UniversityViewController.swift in Sources */,
@@ -2698,6 +2750,7 @@
 				79438E3722DF58BE00DFABE4 /* ContactsListMediates.swift in Sources */,
 				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				793BE66722E88207005EF72D /* CellSizeCalculator.swift in Sources */,
+				8A04B17722FD8C530055C65F /* NotificationSettingsMediator.swift in Sources */,
 				793BE67022E88207005EF72D /* AvatarPosition.swift in Sources */,
 				1ACEAC1422AC040A00B734D3 /* AddProfilePictureViewLogics.swift in Sources */,
 				1A339B6522B3CEA9005509EA /* ChooseYearViewMediates.swift in Sources */,
@@ -2741,6 +2794,7 @@
 				793BE69922E88565005EF72D /* ChatManager.swift in Sources */,
 				79D29CA422CF339B008C6ED0 /* ExploreCell.swift in Sources */,
 				8A04B14C22FC2B5B0055C65F /* SettingsViewController.swift in Sources */,
+				8A04B17222FD8B8E0055C65F /* PrivacySettingsLogics.swift in Sources */,
 				793BE67222E88207005EF72D /* HorizontalEdgeInsets.swift in Sources */,
 				797FFDA522B7BC480055A001 /* ImagePickerControllerDelegate.swift in Sources */,
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
@@ -2750,6 +2804,7 @@
 				1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */,
 				7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */,
 				1A2809E322C5F43B00B4E764 /* ChooseClassesViewLogics.swift in Sources */,
+				8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */,
 				793BE68F22E88207005EF72D /* InsetLabel.swift in Sources */,
 				797FFDA622B7BC480055A001 /* LiveView.swift in Sources */,
 				7994A3BE22D76FD00057527C /* ChatsViewController.swift in Sources */,
@@ -2830,6 +2885,7 @@
 				1A339B4D22B3A060005509EA /* ChooseLevelViewController.swift in Sources */,
 				79D29CA122CF2C74008C6ED0 /* ExploreViewController.swift in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
+				8A04B16E22FD8B680055C65F /* PrivacySettingsViewController.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				793BE69122E88207005EF72D /* MessageLabel.swift in Sources */,
 				8A04B15922FC446B0055C65F /* RSeparatorLine.swift in Sources */,
