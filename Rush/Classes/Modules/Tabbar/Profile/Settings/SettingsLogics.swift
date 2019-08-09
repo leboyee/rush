@@ -33,7 +33,70 @@ extension SettingsViewController {
     }
     
     func fillCell(_ cell: SettingsInfoCell, _ indexPath: IndexPath) {
+        cell.set(isHideRightButton: true)
+        cell.set(isHideArrow: true)
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                cell.set(title: Text.email)
+                cell.set(detail: "km@messapps.com")
+            case 1:
+                cell.set(title: Text.password)
+                cell.set(detail: "••••••••••••")
+                cell.set(isHideRightButton: false)
+            default:
+                break
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                cell.set(title: Text.notifications)
+                cell.set(isHideArrow: false)
+                cell.set(detail: "Events, clubs and classes")
+            case 1:
+                cell.set(title: Text.darkMode)
+            default:
+                break
+            }
+        case 2:
+            cell.set(isHideArrow: false)
+            switch indexPath.row {
+            case 0:
+                cell.set(title: Text.whoCanInviteMe)
+                cell.set(detail: "Everyone")
+
+            case 1:
+                cell.set(title: Text.whoCanMessageMe)
+                cell.set(detail: "Only friends")
+
+            default:
+                break
+            }
+            
+        default:
+            break
+        }
         
+        cell.rightEvent = { [weak self] () in
+            guard let _ = self else { return }
+            Utils.notReadyAlert()
+        }
+        
+    }
+    
+    func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {
+        
+    }
+    
+    func fillSwitchCell(_ cell: SwitchCell, _ indexPath: IndexPath) {
+        
+        cell.set(isOn: isDarkModeOn)
+        cell.switchEvent = {  [weak self] (isOn) in
+            guard let _ = self else { return }
+            isDarkModeOn = isOn
+            ThemeManager.shared.loadTheme()
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {

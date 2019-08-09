@@ -20,6 +20,9 @@ extension SettingsViewController {
         tableView.estimatedRowHeight = 88.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Cell.settingsInfo, bundle: nil), forCellReuseIdentifier: Cell.settingsInfo)
+        tableView.register(UINib(nibName: Cell.switchCell, bundle: nil), forCellReuseIdentifier: Cell.switchCell)
+        tableView.register(UINib(nibName: Cell.instagram, bundle: nil), forCellReuseIdentifier: Cell.instagram)
+
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.reloadData()
     }
@@ -39,9 +42,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.settingsInfo, for: indexPath) as! SettingsInfoCell
-        fillCell(cell, indexPath)
-        return cell
+        
+        if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.instagram, for: indexPath) as! InstagramCell
+            fillInstagramCell(cell, indexPath)
+            return cell
+        } else if indexPath.section == 1, indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.switchCell, for: indexPath) as! SwitchCell
+            fillSwitchCell(cell, indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.settingsInfo, for: indexPath) as! SettingsInfoCell
+            fillCell(cell, indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -54,6 +68,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
         fillTextHeader(header, section)
         return header

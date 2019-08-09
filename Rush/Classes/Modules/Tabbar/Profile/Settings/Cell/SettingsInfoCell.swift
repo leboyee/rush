@@ -15,6 +15,7 @@ class SettingsInfoCell: UITableViewCell {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var arrowImageView: UIImageView!
 
+    var rightEvent: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,36 @@ class SettingsInfoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+}
+
+//MARK: - Actions
+extension SettingsInfoCell {
+    
+    @IBAction func rightButtonAction() {
+        rightEvent?()
+    }
+    
+}
+
+//MARK: - Data Functions
+extension SettingsInfoCell {
+    
+    func set(title: String) {
+        titleLabel.text = title
+    }
+    
+    func set(detail: String) {
+        detailLabel.text = detail
+    }
+    
+    func set(isHideRightButton: Bool) {
+        rightButton.isHidden = isHideRightButton
+    }
+    
+    func set(isHideArrow: Bool) {
+        arrowImageView.isHidden = isHideArrow
     }
     
 }

@@ -46,5 +46,23 @@ extension SettingsViewController {
         Utils.notReadyAlert()
     }
     
+    @IBAction func policyButtonAction() {
+        performSegue(withIdentifier: Segues.webViewFile, sender: WebFile.policy)
+    }
+    
+    @IBAction func termsButtonAction() {
+        performSegue(withIdentifier: Segues.webViewFile, sender: WebFile.term)
+    }
 }
 
+//MARK: - Navigation
+extension SettingsViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.webViewFile {
+            let vc = segue.destination as! WebViewFileViewController
+            vc.type = sender as? WebFile ?? .policy
+        }
+    }
+}

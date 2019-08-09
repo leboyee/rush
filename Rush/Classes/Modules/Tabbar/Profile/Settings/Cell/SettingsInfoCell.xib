@@ -48,6 +48,9 @@
                         <state key="normal" title="Change">
                             <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="rightButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="p1b-Q0-Kqr"/>
+                        </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="qpH-qx-rU8">
                         <rect key="frame" x="345" y="27.5" width="6" height="9"/>
