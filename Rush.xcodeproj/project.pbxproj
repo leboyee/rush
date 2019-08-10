@@ -26,6 +26,8 @@
 		0918E787228444B90098AF35 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0918E786228444B90098AF35 /* Profile.storyboard */; };
 		0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992539022845CF100914E7B /* CustomTabbarViewController.swift */; };
 		0992539C22846A1D00914E7B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		1A088E4A22FECBC800DF6004 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A088E4922FECBC800DF6004 /* ContactsManager.swift */; };
+		1A088E5322FED12700DF6004 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A088E5222FED12700DF6004 /* Contact.swift */; };
 		1A142EC5229EC1A0002C1AFE /* CustomPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EBF229EC1A0002C1AFE /* CustomPickerViewController.swift */; };
 		1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */; };
 		1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EC2229EC1A0002C1AFE /* CustomPickerPreseneter.swift */; };
@@ -94,6 +96,10 @@
 		1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B86228979D100C4550C /* ImageResizerExtension.swift */; };
 		1AA97B91228979D100C4550C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B87228979D100C4550C /* StringExtension.swift */; };
 		1AA97B92228979D100C4550C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B88228979D100C4550C /* DateExtension.swift */; };
+		1AA9AB3E22FF31C200E0E450 /* AddInstragamPhotoViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9AB3B22FF31C100E0E450 /* AddInstragamPhotoViewLogics.swift */; };
+		1AA9AB3F22FF31C200E0E450 /* AddInstragamPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9AB3C22FF31C100E0E450 /* AddInstragamPhotoViewController.swift */; };
+		1AA9AB4022FF31C200E0E450 /* AddInstragamPhotoMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9AB3D22FF31C100E0E450 /* AddInstragamPhotoMediates.swift */; };
+		1AA9AB4222FF3D9600E0E450 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AA9AB4122FF3D9600E0E450 /* Event.storyboard */; };
 		1AAE42BF2296787200BDD7C5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE42BE2296787200BDD7C5 /* CustomTextField.swift */; };
 		1AAE42C12296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE42C02296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift */; };
 		1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE42C22296CC7B00BDD7C5 /* CustomButton.swift */; };
@@ -437,6 +443,8 @@
 		0918E784228444AB0098AF35 /* Forum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Forum.storyboard; sourceTree = "<group>"; };
 		0918E786228444B90098AF35 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0992539022845CF100914E7B /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
+		1A088E4922FECBC800DF6004 /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
+		1A088E5222FED12700DF6004 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1A142EBF229EC1A0002C1AFE /* CustomPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewController.swift; sourceTree = "<group>"; };
 		1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomPicker.storyboard; sourceTree = "<group>"; };
 		1A142EC2229EC1A0002C1AFE /* CustomPickerPreseneter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerPreseneter.swift; sourceTree = "<group>"; };
@@ -505,6 +513,10 @@
 		1AA97B86228979D100C4550C /* ImageResizerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizerExtension.swift; sourceTree = "<group>"; };
 		1AA97B87228979D100C4550C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1AA97B88228979D100C4550C /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		1AA9AB3B22FF31C100E0E450 /* AddInstragamPhotoViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstragamPhotoViewLogics.swift; sourceTree = "<group>"; };
+		1AA9AB3C22FF31C100E0E450 /* AddInstragamPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstragamPhotoViewController.swift; sourceTree = "<group>"; };
+		1AA9AB3D22FF31C100E0E450 /* AddInstragamPhotoMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstragamPhotoMediates.swift; sourceTree = "<group>"; };
+		1AA9AB4122FF3D9600E0E450 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		1AAE42BE2296787200BDD7C5 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1AAE42C02296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEmailAttributedLabel.swift; sourceTree = "<group>"; };
 		1AAE42C22296CC7B00BDD7C5 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -916,6 +928,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1AA9AB4422FF3DCC00E0E450 /* Event */,
 				8A04B12E22FADDED0055C65F /* Calendar */,
 				796A6F2322CDEEAD00916D79 /* ClassDetail */,
 				79F377A222CB5D69003FC33E /* SearchClub */,
@@ -970,6 +983,14 @@
 				8A04B16722FD6ED30055C65F /* RSwitch.swift */,
 			);
 			path = CustomClass;
+			sourceTree = "<group>";
+		};
+		1A088E4822FECBC800DF6004 /* ContactsManager */ = {
+			isa = PBXGroup;
+			children = (
+				1A088E4922FECBC800DF6004 /* ContactsManager.swift */,
+			);
+			path = ContactsManager;
 			sourceTree = "<group>";
 		};
 		1A142EBC229EC1A0002C1AFE /* CustomPickers */ = {
@@ -1250,6 +1271,23 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		1AA9AB3A22FF31C100E0E450 /* AddInstragam */ = {
+			isa = PBXGroup;
+			children = (
+				1AA9AB3C22FF31C100E0E450 /* AddInstragamPhotoViewController.swift */,
+				1AA9AB3B22FF31C100E0E450 /* AddInstragamPhotoViewLogics.swift */,
+				1AA9AB3D22FF31C100E0E450 /* AddInstragamPhotoMediates.swift */,
+			);
+			path = AddInstragam;
+			sourceTree = "<group>";
+		};
+		1AA9AB4422FF3DCC00E0E450 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		1AB0C14E22C0F6BB000D016E /* AddMinors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,6 +1301,7 @@
 		1AB0C15522C1203E000D016E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1A088E4822FECBC800DF6004 /* ContactsManager */,
 				8A04B16922FD7AAF0055C65F /* TheamManager */,
 				1AB0C16122C12B22000D016E /* AuthorizationManager */,
 				1AB0C15B22C120D8000D016E /* ServiceManager */,
@@ -1346,6 +1385,7 @@
 		1AEAC49B22D31BE3008FBB54 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				1AA9AB3A22FF31C100E0E450 /* AddInstragam */,
 				1AEB56A522E842730041EAA7 /* AddInvite */,
 				1AEAC49C22D31BE3008FBB54 /* AddUserInfo */,
 			);
@@ -1796,8 +1836,8 @@
 			isa = PBXGroup;
 			children = (
 				79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */,
-				79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */,
 				79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */,
+				79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */,
 			);
 			path = ContactList;
 			sourceTree = "<group>";
@@ -2325,6 +2365,7 @@
 		C05FC15F22805F9C00721F3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A088E5222FED12700DF6004 /* Contact.swift */,
 				1A2809EE22C6304000B4E764 /* Classes.swift */,
 				1AB0C16422C12BAD000D016E /* Profile.swift */,
 				7983D22B228982B500DE054E /* Image.swift */,
@@ -2393,6 +2434,7 @@
 				1AC635FA22AA8F6900021E03 /* CustomNavBarPageController.xib */,
 				1AEAC49822D3194A008FBB54 /* UserInfo.storyboard */,
 				8A04B13D22FAE1180055C65F /* Calendar.storyboard */,
+				1AA9AB4122FF3D9600E0E450 /* Event.storyboard */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -2543,6 +2585,7 @@
 				1A353AC922BD130E0069752D /* UniversityCell.xib in Resources */,
 				7903D0AA228E8CE5004E33B9 /* EventByDateCell.xib in Resources */,
 				7912570622A1448600BDE3EC /* UserCell.xib in Resources */,
+				1AA9AB4222FF3D9600E0E450 /* Event.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2630,6 +2673,7 @@
 				1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */,
 				1AB0C15A22C1203E000D016E /* NetworkManagerServices.swift in Sources */,
 				793BE65322E88207005EF72D /* MessageInputBar.swift in Sources */,
+				1AA9AB4022FF31C200E0E450 /* AddInstragamPhotoMediates.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
@@ -2637,6 +2681,7 @@
 				793BE68022E88207005EF72D /* MessageLabelDelegate.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
 				793BE65F22E88207005EF72D /* Bundle+Extensions.swift in Sources */,
+				1AA9AB3F22FF31C200E0E450 /* AddInstragamPhotoViewController.swift in Sources */,
 				8A04B17022FD8B7F0055C65F /* PrivacySettingsMediator.swift in Sources */,
 				797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */,
 				793BE65922E88207005EF72D /* SeparatorLine.swift in Sources */,
@@ -2727,6 +2772,7 @@
 				793BE65B22E88207005EF72D /* MessagesViewController+Menu.swift in Sources */,
 				79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */,
 				79DF741F2292BA9F0012DCB7 /* SelectEventTypeViewController.swift in Sources */,
+				1A088E5322FED12700DF6004 /* Contact.swift in Sources */,
 				796A6F2E22CE169A00916D79 /* TimeSlotCell.swift in Sources */,
 				79C1AC4D22A64CF9003C7790 /* ProfileInformationMediates.swift in Sources */,
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
@@ -2776,6 +2822,7 @@
 				797FFDB222B7BC480055A001 /* PhotoGalleryViewController+UIViewControllerPreviewing.swift in Sources */,
 				1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */,
 				1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */,
+				1A088E4A22FECBC800DF6004 /* ContactsManager.swift in Sources */,
 				8A04B15622FC3DEE0055C65F /* SettingsInfoCell.swift in Sources */,
 				1AAE42C12296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift in Sources */,
 				799190A022C9D5A00044602E /* ClubDetailLogics.swift in Sources */,
@@ -2800,6 +2847,7 @@
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
 				7938D06222D75D74002D1537 /* UniversityMediates.swift in Sources */,
 				797FFDB622B7BC480055A001 /* SlideUpPresentationController.swift in Sources */,
+				1AA9AB3E22FF31C200E0E450 /* AddInstragamPhotoViewLogics.swift in Sources */,
 				797FFDAB22B7BC480055A001 /* PhotoAlbumTitleButton.swift in Sources */,
 				1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */,
 				7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */,

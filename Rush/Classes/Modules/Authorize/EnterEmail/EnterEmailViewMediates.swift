@@ -70,12 +70,18 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-
+        if isEmailError == true {
+            isEmailError = false
+            nextButton.setNextButton(isEnable: true)
+        }
         if textField.text == ".edu" {
             textField.text = ""
             eduLabel.text = ".edu"
             eduLabel.isHidden = false
             self.view.layoutIfNeeded()
+            if loginType == .Login  {
+                nextButton.setNextButton(isEnable: false)
+            }
         }
         else {
             if textField.text?.count == 1 {
@@ -85,9 +91,15 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
                 if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4){
                     textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
                 }
+                if loginType == .Login {
+                    nextButton.setNextButton(isEnable: true)
+                }
                 self.view.layoutIfNeeded()
             }
             if textField.text?.count == 0 {
+                if loginType == .Login {
+                    nextButton.setNextButton(isEnable: false)
+                }
                 eduLabel.text = ".edu"
                 eduLabel.isHidden = false
                 self.view.layoutIfNeeded()

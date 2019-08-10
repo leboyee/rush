@@ -182,7 +182,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect email. You maybe forgot about “@” or entered wrong email." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejt-fl-mbn" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="63" y="206" width="331" height="31.5"/>
+                                <rect key="frame" x="63" y="206" width="331" height="30.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -202,7 +202,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZL-Rs-Qko" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="20" y="204.5" width="35" height="35"/>
+                                <rect key="frame" x="20" y="204" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1DQ-A1-7J7"/>
                                     <constraint firstAttribute="width" constant="35" id="wiH-4F-yix"/>
@@ -213,7 +213,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1q-lZ-8Qs" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="22" y="248" width="392" height="1"/>
+                                <rect key="frame" x="22" y="247.5" width="392" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="YWd-K6-JzT"/>
@@ -293,7 +293,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxL-OT-ZMB">
                                 <rect key="frame" x="0.0" y="101" width="414" height="91"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protect account with password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04j-px-Ybb" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04j-px-Ybb" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="16" width="382" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="g6N-lr-Ts3"/>
@@ -302,7 +302,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create passsword" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="7cE-dE-KdU" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter passsword" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="7cE-dE-KdU" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="40" width="330" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="D0N-tK-SAZ"/>
@@ -493,6 +493,7 @@
                         <outlet property="bottomViewConstraint" destination="s4H-qq-r15" id="b9A-HF-Wqj"/>
                         <outlet property="capitalLetterDotView" destination="r68-yv-8fi" id="sfs-ig-pRS"/>
                         <outlet property="capitalLetterLabel" destination="le2-rH-p0p" id="oUG-iJ-0Fm"/>
+                        <outlet property="hintView" destination="M77-84-iwt" id="XdC-IE-vQJ"/>
                         <outlet property="nextButton" destination="TLD-ww-5fV" id="D5i-sp-IFg"/>
                         <outlet property="numberDotView" destination="prq-b2-xot" id="rcq-3w-BuW"/>
                         <outlet property="numberLabel" destination="ITD-2n-ae1" id="IuX-Oy-S50"/>
@@ -929,6 +930,6 @@
         <image name="input-code" width="63" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="omQ-De-aFE"/>
+        <segue reference="Xon-BR-uWp"/>
     </inferredMetricsTieBreakers>
 </document>

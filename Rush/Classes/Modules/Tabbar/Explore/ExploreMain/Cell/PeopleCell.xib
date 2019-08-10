@@ -50,10 +50,22 @@
                                     <constraint firstAttribute="height" constant="32" id="saw-ss-Qls"/>
                                 </constraints>
                             </imageView>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TO-CB-NWZ">
+                                <rect key="frame" x="319" y="7" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6wg-wn-u7Q"/>
+                                    <constraint firstAttribute="height" constant="40" id="AAP-jm-e5j"/>
+                                </constraints>
+                                <state key="normal" image="empty"/>
+                                <state key="selected" image="selected"/>
+                                <state key="highlighted" image="selected"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8TO-CB-NWZ" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="7" id="44q-sy-PCs"/>
                             <constraint firstAttribute="bottom" secondItem="HTb-ec-y42" secondAttribute="bottom" id="N0H-PI-xX0"/>
+                            <constraint firstItem="HTb-ec-y42" firstAttribute="top" secondItem="8TO-CB-NWZ" secondAttribute="bottom" constant="7" id="UMg-dG-naU"/>
                             <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" constant="-44" id="X7Q-C9-lbu"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="leading" secondItem="ihz-0M-yys" secondAttribute="trailing" constant="16" id="apW-sL-d3m"/>
                             <constraint firstItem="ihz-0M-yys" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="24" id="fd8-iV-kvt"/>
@@ -61,6 +73,7 @@
                             <constraint firstItem="HTb-ec-y42" firstAttribute="top" secondItem="Mr7-TO-QxM" secondAttribute="bottom" constant="16.5" id="hba-P0-Lah"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="17" id="lsE-7R-hBn"/>
                             <constraint firstItem="HTb-ec-y42" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="25" id="mcl-dU-OqU"/>
+                            <constraint firstAttribute="trailing" secondItem="8TO-CB-NWZ" secondAttribute="trailing" constant="16" id="sme-98-FpU"/>
                             <constraint firstItem="ihz-0M-yys" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="12" id="teG-0H-Fwu"/>
                         </constraints>
                     </view>
@@ -77,12 +90,16 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="profileImage" destination="ihz-0M-yys" id="K2f-X0-Ozt"/>
+                <outlet property="selectionButton" destination="8TO-CB-NWZ" id="9AC-0f-6B8"/>
                 <outlet property="titleLabel" destination="Mr7-TO-QxM" id="R2E-Yd-MUi"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="84.375"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="empty" width="16" height="16"/>
         <image name="profile_tab_inactive" width="23" height="23"/>
+        <image name="selected" width="16" height="16"/>
     </resources>
 </document>

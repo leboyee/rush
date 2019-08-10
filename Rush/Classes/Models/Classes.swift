@@ -14,6 +14,7 @@ class Classes: NSObject {
     var id              : Int = 0
     var category        : String = ""
     var subClasses =  [SubClasses]()
+    
     init(data : [String : Any]) {
         super.init()
         setData(data: data)

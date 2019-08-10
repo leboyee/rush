@@ -119,22 +119,40 @@
                                 <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB2-a6-bGT" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="24" y="720" width="366" height="48"/>
+                                <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="RbW-qr-Vb0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="inviteButtonAction" destination="tnW-FZ-l2x" eventType="touchUpInside" id="zKo-1u-Wvi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="p1g-VT-RcE" firstAttribute="trailing" secondItem="bGc-US-R78" secondAttribute="trailing" id="0Py-cJ-ZaD"/>
+                            <constraint firstItem="bGc-US-R78" firstAttribute="trailing" secondItem="JB2-a6-bGT" secondAttribute="trailing" constant="24" id="Dlb-gT-ZOH"/>
                             <constraint firstAttribute="bottom" secondItem="p1g-VT-RcE" secondAttribute="bottom" id="GYH-sj-lQ0"/>
                             <constraint firstItem="p1g-VT-RcE" firstAttribute="top" secondItem="391-vC-3PL" secondAttribute="top" id="LCU-UD-teL"/>
                             <constraint firstItem="391-vC-3PL" firstAttribute="trailing" secondItem="bGc-US-R78" secondAttribute="trailing" id="LOo-W9-Hcu"/>
                             <constraint firstItem="391-vC-3PL" firstAttribute="top" secondItem="bGc-US-R78" secondAttribute="top" constant="13" id="MBm-FV-5Yc"/>
                             <constraint firstAttribute="bottom" secondItem="391-vC-3PL" secondAttribute="bottom" constant="-24" id="Mw0-MX-UHv"/>
+                            <constraint firstItem="bGc-US-R78" firstAttribute="bottom" secondItem="JB2-a6-bGT" secondAttribute="bottom" constant="6" id="Ofl-NA-TAg"/>
                             <constraint firstItem="p1g-VT-RcE" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" id="bhm-7a-10d"/>
+                            <constraint firstItem="JB2-a6-bGT" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" constant="24" id="dTJ-fq-gzb"/>
                             <constraint firstItem="391-vC-3PL" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" id="iZb-tD-47k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bGc-US-R78"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="inviteButton" destination="JB2-a6-bGT" id="Egx-wU-WpH"/>
                         <outlet property="tableView" destination="p1g-VT-RcE" id="k4a-zd-6HL"/>
                     </connections>
                 </viewController>

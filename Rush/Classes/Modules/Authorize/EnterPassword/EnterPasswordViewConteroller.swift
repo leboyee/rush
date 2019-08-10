@@ -22,11 +22,9 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var numberLabel: CustomLabel!
     @IBOutlet weak var symbolLabel: CustomLabel!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
-
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var passwordShowButton: UIButton!
-
+    @IBOutlet weak var hintView: UIView!
     
     var loginType: LoginType = .Register
     var profile = Profile()

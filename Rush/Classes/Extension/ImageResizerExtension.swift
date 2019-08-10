@@ -66,6 +66,14 @@ extension UIImage {
         
     }
     
+     func image(withBase64  base64: String) -> UIImage? {
+        guard let dataDecoded = Data(base64Encoded: base64, options: .ignoreUnknownCharacters),
+            let decodedImage = UIImage(data: dataDecoded) else {
+                return nil
+        }
+        return decodedImage
+    }
+
     
 }
 
