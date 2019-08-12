@@ -50,7 +50,7 @@ extension SettingsViewController {
 extension SettingsViewController {
     
     @objc func logoutAction() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.logoutPopup, sender: nil)
     }
     
     @IBAction func policyButtonAction() {
@@ -75,7 +75,11 @@ extension SettingsViewController {
     }
    
     func showNotifications() {
-        performSegue(withIdentifier: Segues.notificationSettings, sender: nil)        
+        performSegue(withIdentifier: Segues.notificationSettings, sender: nil)
+    }
+    
+    func showInstagramDisconnect() {
+        performSegue(withIdentifier: Segues.disconnectInstagram, sender: nil)
     }
     
     func showMessage(message: String) {

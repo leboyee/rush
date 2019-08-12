@@ -26,8 +26,8 @@ extension NetworkManager {
         requestPost(path: "auth/social/login", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
-    func logout(params : [String : Any] , resultHandler: @escaping ResultClosure) {
-        requestPost(path: "auth/logout", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    func logout(resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "auth/logout", params: [:], resultHandler: resultHandler)
     }
 
     func phonetkn(params : [String : Any] , resultHandler: @escaping ResultClosure) {

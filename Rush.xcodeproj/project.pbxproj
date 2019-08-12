@@ -415,6 +415,10 @@
 		8A04B17922FD8C630055C65F /* NotificationSettingsLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17822FD8C630055C65F /* NotificationSettingsLogics.swift */; };
 		8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B17B22FD96720055C65F /* CheckMarkCell.swift */; };
 		8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B17C22FD96720055C65F /* CheckMarkCell.xib */; };
+		8A04B182230149370055C65F /* DisconnectInstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B181230149370055C65F /* DisconnectInstagramViewController.swift */; };
+		8A04B184230149470055C65F /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B183230149470055C65F /* LogoutViewController.swift */; };
+		8A04B18623014E1B0055C65F /* DisconnectInstagramLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B18523014E1B0055C65F /* DisconnectInstagramLogics.swift */; };
+		8A04B188230152960055C65F /* LogoutLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B187230152960055C65F /* LogoutLogics.swift */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -837,6 +841,10 @@
 		8A04B17822FD8C630055C65F /* NotificationSettingsLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsLogics.swift; sourceTree = "<group>"; };
 		8A04B17B22FD96720055C65F /* CheckMarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkCell.swift; sourceTree = "<group>"; };
 		8A04B17C22FD96720055C65F /* CheckMarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckMarkCell.xib; sourceTree = "<group>"; };
+		8A04B181230149370055C65F /* DisconnectInstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectInstagramViewController.swift; sourceTree = "<group>"; };
+		8A04B183230149470055C65F /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		8A04B18523014E1B0055C65F /* DisconnectInstagramLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectInstagramLogics.swift; sourceTree = "<group>"; };
+		8A04B187230152960055C65F /* LogoutLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutLogics.swift; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -952,6 +960,8 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8A04B180230149100055C65F /* Logout */,
+				8A04B17F230149000055C65F /* DisconnectInstagram */,
 				8A04B17322FD8C0B0055C65F /* NotificationSettings */,
 				8A04B16C22FD8B480055C65F /* PrivacySettings */,
 				8A04B16222FD5E3B0055C65F /* WebViewFile */,
@@ -2314,6 +2324,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8A04B17F230149000055C65F /* DisconnectInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B181230149370055C65F /* DisconnectInstagramViewController.swift */,
+				8A04B18523014E1B0055C65F /* DisconnectInstagramLogics.swift */,
+			);
+			path = DisconnectInstagram;
+			sourceTree = "<group>";
+		};
+		8A04B180230149100055C65F /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B183230149470055C65F /* LogoutViewController.swift */,
+				8A04B187230152960055C65F /* LogoutLogics.swift */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -2663,6 +2691,7 @@
 				793BE65622E88207005EF72D /* MessageInputBarDelegate.swift in Sources */,
 				79723DF422CCC3B000E8A76A /* TTGSnackbar.swift in Sources */,
 				1A142EC5229EC1A0002C1AFE /* CustomPickerViewController.swift in Sources */,
+				8A04B182230149370055C65F /* DisconnectInstagramViewController.swift in Sources */,
 				7912570522A1448600BDE3EC /* UserCell.swift in Sources */,
 				797FFDB722B7BC480055A001 /* SlideUpPresentingAnimator.swift in Sources */,
 				1A339B5122B3AE1D005509EA /* ListCell.swift in Sources */,
@@ -2696,6 +2725,7 @@
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				7991909F22C9D5A00044602E /* ClubDetailController.swift in Sources */,
 				793BE65C22E88207005EF72D /* MessagesViewController.swift in Sources */,
+				8A04B184230149470055C65F /* LogoutViewController.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,
 				1A2809EF22C6304000B4E764 /* Classes.swift in Sources */,
@@ -2750,6 +2780,7 @@
 				793BE67E22E88207005EF72D /* MediaItem.swift in Sources */,
 				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
+				8A04B188230152960055C65F /* LogoutLogics.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
 				793BE67722E88207005EF72D /* MessageKitError.swift in Sources */,
@@ -2825,6 +2856,7 @@
 				1A088E4A22FECBC800DF6004 /* ContactsManager.swift in Sources */,
 				8A04B15622FC3DEE0055C65F /* SettingsInfoCell.swift in Sources */,
 				1AAE42C12296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift in Sources */,
+				8A04B18623014E1B0055C65F /* DisconnectInstagramLogics.swift in Sources */,
 				799190A022C9D5A00044602E /* ClubDetailLogics.swift in Sources */,
 				1ACEAC1522AC040A00B734D3 /* AddProfilePictureViewController.swift in Sources */,
 				1A353AC422BD05B60069752D /* ChooseUniversityViewController.swift in Sources */,

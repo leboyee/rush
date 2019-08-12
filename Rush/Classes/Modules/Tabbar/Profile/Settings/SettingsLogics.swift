@@ -119,6 +119,11 @@ extension SettingsViewController {
     
     func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {
         
+        cell.instagramEvent = { [weak self] () in
+            guard let self_ = self else { return }
+            self_.showInstagramDisconnect()
+        }
+        
     }
     
     func fillSwitchCell(_ cell: SwitchCell, _ indexPath: IndexPath) {

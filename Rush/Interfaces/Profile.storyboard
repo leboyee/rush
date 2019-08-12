@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
         <array key="SF-Pro-Text-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -143,6 +146,8 @@
                         <segue destination="SCR-Ws-le9" kind="show" identifier="WebViewFileSegue" id="pb6-SO-yzi"/>
                         <segue destination="baD-jv-Ic4" kind="show" identifier="PrivacySettingsSegue" id="JcE-bh-VLy"/>
                         <segue destination="JDF-J1-pkR" kind="show" identifier="NotificationSettingsSegue" id="AG0-Az-k7Z"/>
+                        <segue destination="lSf-6x-Jg6" kind="presentation" identifier="DisconnectInstagramSegue" animates="NO" modalPresentationStyle="overFullScreen" id="2cS-pu-J6g"/>
+                        <segue destination="eCx-fz-AbD" kind="presentation" identifier="LogoutPopupSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Qbh-H5-b15"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,7 +190,218 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="255"/>
+            <point key="canvasLocation" x="967" y="-199"/>
+        </scene>
+        <!--Disconnect Instagram View Controller-->
+        <scene sceneID="2vv-fq-i3i">
+            <objects>
+                <viewController storyboardIdentifier="DisconnectInstagramViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lSf-6x-Jg6" customClass="DisconnectInstagramViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q3f-ze-LZ8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5V-Tp-8KF">
+                                <rect key="frame" x="27" y="897" width="360" height="302"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram64px" translatesAutoresizingMaskIntoConstraints="NO" id="811-aV-sQs">
+                                        <rect key="frame" x="148" y="24" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="kko-9d-P4E"/>
+                                            <constraint firstAttribute="height" constant="64" id="uZe-IY-cOG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnect Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbA-S3-8OH">
+                                        <rect key="frame" x="88.5" y="104" width="183" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your images won’t automatically upload to Rush if you disconnect" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mxX-cm-XGA">
+                                        <rect key="frame" x="24" y="128" width="312" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edW-d2-4VP" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="176" width="312" height="48"/>
+                                        <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Cu1-lK-o5f"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Disconnect">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="disconnectButtonAction" destination="lSf-6x-Jg6" eventType="touchUpInside" id="apR-0W-BQF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6d-A2-OmD" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="232" width="312" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="w4p-Aw-1ay"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelButtonAction" destination="lSf-6x-Jg6" eventType="touchUpInside" id="Z0x-Re-AzF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="U6d-A2-OmD" firstAttribute="leading" secondItem="m5V-Tp-8KF" secondAttribute="leading" constant="24" id="1rq-7g-tYu"/>
+                                    <constraint firstItem="edW-d2-4VP" firstAttribute="leading" secondItem="m5V-Tp-8KF" secondAttribute="leading" constant="24" id="5oh-VX-LkL"/>
+                                    <constraint firstAttribute="trailing" secondItem="edW-d2-4VP" secondAttribute="trailing" constant="24" id="B5V-UA-nQJ"/>
+                                    <constraint firstItem="mxX-cm-XGA" firstAttribute="top" secondItem="XbA-S3-8OH" secondAttribute="bottom" constant="4" id="CyQ-eX-tWH"/>
+                                    <constraint firstAttribute="height" constant="302" id="IAW-HA-Yqa"/>
+                                    <constraint firstItem="mxX-cm-XGA" firstAttribute="leading" secondItem="m5V-Tp-8KF" secondAttribute="leading" constant="24" id="MNf-Ed-ndm"/>
+                                    <constraint firstAttribute="trailing" secondItem="mxX-cm-XGA" secondAttribute="trailing" constant="24" id="OfL-3s-QK5"/>
+                                    <constraint firstAttribute="trailing" secondItem="U6d-A2-OmD" secondAttribute="trailing" constant="24" id="Osv-Pj-kqJ"/>
+                                    <constraint firstItem="XbA-S3-8OH" firstAttribute="centerX" secondItem="m5V-Tp-8KF" secondAttribute="centerX" id="XRS-P6-bwQ"/>
+                                    <constraint firstItem="edW-d2-4VP" firstAttribute="top" secondItem="mxX-cm-XGA" secondAttribute="bottom" constant="16.5" id="doO-hw-yCm"/>
+                                    <constraint firstItem="811-aV-sQs" firstAttribute="top" secondItem="m5V-Tp-8KF" secondAttribute="top" constant="24" id="eRF-5G-lev"/>
+                                    <constraint firstItem="811-aV-sQs" firstAttribute="centerX" secondItem="m5V-Tp-8KF" secondAttribute="centerX" id="kXF-0q-Tfe"/>
+                                    <constraint firstItem="U6d-A2-OmD" firstAttribute="top" secondItem="edW-d2-4VP" secondAttribute="bottom" constant="8" id="n03-us-zhh"/>
+                                    <constraint firstItem="XbA-S3-8OH" firstAttribute="top" secondItem="811-aV-sQs" secondAttribute="bottom" constant="16" id="p5m-fu-P4M"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="m5V-Tp-8KF" firstAttribute="width" secondItem="q3f-ze-LZ8" secondAttribute="width" multiplier="0.87" id="be5-Zr-Ze1"/>
+                            <constraint firstItem="m5V-Tp-8KF" firstAttribute="centerX" secondItem="q3f-ze-LZ8" secondAttribute="centerX" id="d6b-Fg-Vd2"/>
+                            <constraint firstItem="m5V-Tp-8KF" firstAttribute="centerY" secondItem="q3f-ze-LZ8" secondAttribute="centerY" constant="600" id="hkh-XZ-lK3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8GM-Cf-mNO"/>
+                    </view>
+                    <connections>
+                        <outlet property="verticalCentreConstraint" destination="hkh-XZ-lK3" id="VAc-cr-lV4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eix-Nr-X0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-600" y="751"/>
+        </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="DNL-Gm-or3">
+            <objects>
+                <viewController storyboardIdentifier="LogoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eCx-fz-AbD" customClass="LogoutViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l5b-5D-V1H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxV-XI-4Ar">
+                                <rect key="frame" x="27" y="937" width="360" height="222"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaving already?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnW-Nh-gHt">
+                                        <rect key="frame" x="110" y="24" width="140.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-q2-cHZ">
+                                        <rect key="frame" x="24" y="48" width="312" height="31.5"/>
+                                        <string key="text">If you logout, you won’t receive
+event updates.</string>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVP-Ii-apy" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="96" width="312" height="48"/>
+                                        <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="2Sm-yY-Kep"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logoutButtonAction" destination="eCx-fz-AbD" eventType="touchUpInside" id="0Xc-Jl-gkR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHS-3J-xMk" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="152" width="312" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="ZZu-np-dZ5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelButtonAction" destination="eCx-fz-AbD" eventType="touchUpInside" id="a1H-Op-iUu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gVP-Ii-apy" firstAttribute="top" secondItem="gMU-q2-cHZ" secondAttribute="bottom" constant="16.5" id="49t-aW-7tJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="yHS-3J-xMk" secondAttribute="trailing" constant="24" id="6N9-tR-2wP"/>
+                                    <constraint firstAttribute="trailing" secondItem="gMU-q2-cHZ" secondAttribute="trailing" constant="24" id="GMJ-bx-et8"/>
+                                    <constraint firstItem="gMU-q2-cHZ" firstAttribute="top" secondItem="PnW-Nh-gHt" secondAttribute="bottom" constant="4" id="Jr2-8f-Pda"/>
+                                    <constraint firstItem="yHS-3J-xMk" firstAttribute="top" secondItem="gVP-Ii-apy" secondAttribute="bottom" constant="8" id="Mil-0b-PAL"/>
+                                    <constraint firstItem="PnW-Nh-gHt" firstAttribute="centerX" secondItem="IxV-XI-4Ar" secondAttribute="centerX" id="T5a-UP-Sbw"/>
+                                    <constraint firstItem="PnW-Nh-gHt" firstAttribute="top" secondItem="IxV-XI-4Ar" secondAttribute="top" constant="24" id="gQf-YO-dvx"/>
+                                    <constraint firstItem="yHS-3J-xMk" firstAttribute="leading" secondItem="IxV-XI-4Ar" secondAttribute="leading" constant="24" id="i9J-2v-bR8"/>
+                                    <constraint firstAttribute="trailing" secondItem="gVP-Ii-apy" secondAttribute="trailing" constant="24" id="llI-WY-Fof"/>
+                                    <constraint firstItem="gVP-Ii-apy" firstAttribute="leading" secondItem="IxV-XI-4Ar" secondAttribute="leading" constant="24" id="vM7-4b-OJz"/>
+                                    <constraint firstItem="gMU-q2-cHZ" firstAttribute="leading" secondItem="IxV-XI-4Ar" secondAttribute="leading" constant="24" id="xo7-NZ-2ld"/>
+                                    <constraint firstAttribute="height" constant="222" id="yBg-KP-s4R"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="IxV-XI-4Ar" firstAttribute="centerY" secondItem="l5b-5D-V1H" secondAttribute="centerY" constant="600" id="9m4-BD-iLf"/>
+                            <constraint firstItem="IxV-XI-4Ar" firstAttribute="centerX" secondItem="l5b-5D-V1H" secondAttribute="centerX" id="hTF-Ww-lwT"/>
+                            <constraint firstItem="IxV-XI-4Ar" firstAttribute="width" secondItem="l5b-5D-V1H" secondAttribute="width" multiplier="0.87" id="oVT-qv-CBd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5hD-9w-9QU"/>
+                    </view>
+                    <connections>
+                        <outlet property="verticalCentreConstraint" destination="9m4-BD-iLf" id="b35-Wc-TOL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ilh-gn-sYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.86956521739131" y="750.66964285714278"/>
         </scene>
         <!--Notification Settings View Controller-->
         <scene sceneID="oW5-HU-yyQ">
@@ -223,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBL-Dr-Ojk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="944"/>
+            <point key="canvasLocation" x="942" y="467"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
@@ -261,7 +477,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-bh-tKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="-421"/>
+            <point key="canvasLocation" x="943" y="-875"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="instagram64px" width="64" height="64"/>
+    </resources>
 </document>

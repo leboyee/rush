@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupStoryboard()
         
+        //Add Observer For Force logout
+        NotificationCenter.default.addObserver(self, selector: #selector(forceLogout), name: Notification.Name.badAccess, object: nil)
+        
         return true
     }
 
@@ -87,18 +90,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //MARK: - AppDelegate Instance
+    class func getInstance() -> AppDelegate {
+        return UIApplication.shared.delegate! as! AppDelegate
+    }
+    
+    //MARK: - Force logout
+    @objc func forceLogout() {
+        DispatchQueue.main.async {
+            Authorization.shared.signOut()
+            self.setupStoryboard()
+        }
+    }
+    
+    
     func setupStoryboard() {
         if Authorization.shared.authorized == true {
             let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
             let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
             self.window?.rootViewController = tabbarVC
+        } else {
+            let tabbarStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+            self.window?.rootViewController = tabbarVC
         }
     }
     
-    //MARK: - AppDelegate Instance
-    class func getInstance() -> AppDelegate {
-        return UIApplication.shared.delegate! as! AppDelegate
-    }
+    
 
     //Temporary used for Registraiont
     func moveToTabbarWithoutRegister() {
