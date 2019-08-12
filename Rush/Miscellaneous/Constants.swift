@@ -136,6 +136,9 @@ struct Segues {
     static let webViewFile                        = "WebViewFileSegue"
     static let privacySettings                    = "PrivacySettingsSegue"
     static let notificationSettings               = "NotificationSettingsSegue"
+    static let inviteContactSegue                 = "InviteContactSegue"
+    static let addInstagramPhotoViewSegue         = "AddInstagramPhotoViewSegue"
+
 
 
 }
@@ -160,7 +163,7 @@ public struct Text {
     static let emailTitleRegister  = "Enter school email to create account"
     static let emailTitleLogin  = "Enter school email to login"
     static let passwordTitleRegister  = "Protect account with password"
-    static let passwordTitleLogin  = "Enter school email to login"
+    static let passwordTitleLogin  = "What is your password?"
     static let phoneNoTitleRegister  = "Add phone number to increase security"
     static let phoneNoTitleLogin  = "Enter your phone number"
     static let userNameTitleRegister  = "Profile setup"
@@ -245,9 +248,10 @@ public struct Text {
     static let dataPolicy                = "Data policy"
     static let termsConditions           = "Terms & conditions"
 
-    static let invitesFrom            = "Invites from"
-    static let messagesFrom            = "Messages from"
-    static let recieveNotifications   = "Recieve notifications"
+    static let invitesFrom               = "Invites from"
+    static let messagesFrom              = "Messages from"
+    static let recieveNotifications      = "Recieve notifications"
+    static let inviteFromContact         = "Invite from contacts"
 
     
 }
@@ -261,6 +265,10 @@ public struct Message {
     static let warning = "Warning"
     static let skipSavedImageMessage = "You skipped previous step. Don’t worry, \nyour image was saved!"
     static let emailAlreadyInUse = "This email address is already in use."
+    static let emailNotAvailable = "Please enter correct email."
+    
+    static let instagramTitle = "Instagram connected"
+    static let instagramMessage = "Your photos will be automatically uploaded to Rush. It might take a few minutes."
 }
 
 public struct Icons {

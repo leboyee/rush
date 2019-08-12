@@ -245,4 +245,11 @@ extension Date {
         let date2Seconds = date.secondsFromBeginningOfTheDay()
         return date2Seconds - date1Seconds
     }
+    
+    func standardServerFormatterDateFromString(dateString: String) -> Date {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd"
+        return timeFormatter.date(from: dateString)!
+    }
+
 }

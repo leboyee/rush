@@ -12,8 +12,10 @@ class PeopleCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: CustomLabel!
     @IBOutlet weak var tickImageView: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var topSeparator: UILabel!
-    
+    @IBOutlet weak var selectionButton: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,8 +36,20 @@ extension PeopleCell {
         titleLabel.text = title
     }
     
+    func setupImage(image: UIImage) {
+        profileImage.image = image
+    }
+    
     func setup(checkMark: Bool) {
         self.accessoryType = checkMark == true ? .checkmark : .none
+    }
+    
+    func setup(isHidden: Bool) {
+        self.selectionButton.isHidden = isHidden
+    }
+    
+    func setup(isSelected: Bool) {
+        self.selectionButton.isSelected = isSelected
     }
     
     func setup(isHideTopSeparator: Bool) {

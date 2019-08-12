@@ -13,6 +13,9 @@
         <array key="SF-Pro-Display-Semibold.otf">
             <string>SFProDisplay-Semibold</string>
         </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
         <array key="SF-Pro-Text-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -46,13 +49,13 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="121"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h65-2G-Uf0" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="70" width="367" height="33.5"/>
+                                        <rect key="frame" x="24" y="69.5" width="367" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add information about" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAq-eN-2eS" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="36" width="367" height="33.5"/>
+                                        <rect key="frame" x="24" y="36" width="367" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -67,7 +70,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1Z-lE-Jna">
-                                        <rect key="frame" x="0.0" y="119.5" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="118.5" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="voU-Mt-guD"/>
@@ -211,13 +214,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile is set!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agj-4b-XFF">
-                                                <rect key="frame" x="0.0" y="52" width="84" height="16"/>
+                                                <rect key="frame" x="0.0" y="52" width="74.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Would you like to invite friends to Rush?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1im-sE-bCN">
-                                                <rect key="frame" x="0.0" y="76" width="366" height="122"/>
+                                                <rect key="frame" x="0.0" y="76" width="366" height="79.5"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -256,6 +259,9 @@
                                         <state key="normal" title="Invite from contacts">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="inviteContactButtonAction" destination="h9X-yK-yho" eventType="touchUpInside" id="v2D-mE-qTv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWm-91-ocx" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="63" width="366" height="48"/>
@@ -303,16 +309,133 @@
                         <outlet property="bottomView" destination="dR1-iA-f01" id="0TC-Hu-CDd"/>
                         <outlet property="inviteContactButton" destination="GSx-1h-Qem" id="rhv-pW-4kQ"/>
                         <outlet property="inviteFbButton" destination="eWm-91-ocx" id="cQb-OW-QRc"/>
+                        <segue destination="S3C-t1-ppa" kind="show" identifier="InviteContactSegue" id="5Yn-No-Rpp"/>
+                        <segue destination="Uip-Jx-t8I" kind="show" identifier="AddInstagramPhotoViewSegue" id="kqS-RM-vNn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIR-le-NQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8075.36231884058" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="8072" y="-214"/>
+        </scene>
+        <!--ContactsListViewController-->
+        <scene sceneID="nCM-Wf-UO0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chats" referencedIdentifier="ContactsListViewController" id="S3C-t1-ppa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5g2-rc-mDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8946" y="-297"/>
+        </scene>
+        <!--Add Instragam Photo View Controller-->
+        <scene sceneID="fcb-gX-1EG">
+            <objects>
+                <viewController id="Uip-Jx-t8I" customClass="AddInstragamPhotoViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T9G-It-hDC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgforInvite" translatesAutoresizingMaskIntoConstraints="NO" id="Wmc-NH-SSx" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0a-jw-rsy">
+                                <rect key="frame" x="0.0" y="57" width="414" height="724"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZw-bU-TPt">
+                                        <rect key="frame" x="24" y="224.5" width="366" height="229"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram-logo" translatesAutoresizingMaskIntoConstraints="NO" id="qPR-pu-Hhi">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="LGU-ot-Kvo"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Mwz-tZ-z4y"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Automatically upload photos from Instagram" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFH-tC-n2B">
+                                                <rect key="frame" x="0.0" y="56" width="366" height="122"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="We can sync your photos so you don’t have to upload them manually!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-aP-CgY">
+                                                <rect key="frame" x="0.0" y="183" width="366" height="41"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="2iQ-aP-CgY" firstAttribute="top" secondItem="gFH-tC-n2B" secondAttribute="bottom" constant="5" id="6Q2-f8-zi7"/>
+                                            <constraint firstItem="gFH-tC-n2B" firstAttribute="top" secondItem="qPR-pu-Hhi" secondAttribute="bottom" constant="16" id="8AP-K3-3eg"/>
+                                            <constraint firstItem="qPR-pu-Hhi" firstAttribute="top" secondItem="bZw-bU-TPt" secondAttribute="top" id="8BG-nf-qPk"/>
+                                            <constraint firstAttribute="bottom" secondItem="2iQ-aP-CgY" secondAttribute="bottom" constant="5" id="IaE-dL-vkZ"/>
+                                            <constraint firstItem="qPR-pu-Hhi" firstAttribute="leading" secondItem="bZw-bU-TPt" secondAttribute="leading" id="a8Q-Eu-HMy"/>
+                                            <constraint firstAttribute="trailing" secondItem="2iQ-aP-CgY" secondAttribute="trailing" id="ahd-x6-9Bb"/>
+                                            <constraint firstItem="2iQ-aP-CgY" firstAttribute="leading" secondItem="bZw-bU-TPt" secondAttribute="leading" id="fma-8d-JMa"/>
+                                            <constraint firstAttribute="trailing" secondItem="gFH-tC-n2B" secondAttribute="trailing" id="m1i-gp-ga0"/>
+                                            <constraint firstItem="gFH-tC-n2B" firstAttribute="leading" secondItem="bZw-bU-TPt" secondAttribute="leading" id="oz4-6D-pLL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bZw-bU-TPt" firstAttribute="centerX" secondItem="h0a-jw-rsy" secondAttribute="centerX" id="BFf-Uz-f7J"/>
+                                    <constraint firstItem="bZw-bU-TPt" firstAttribute="centerY" secondItem="h0a-jw-rsy" secondAttribute="centerY" constant="-23" id="VUm-3k-mBm"/>
+                                    <constraint firstAttribute="trailing" secondItem="bZw-bU-TPt" secondAttribute="trailing" constant="24" id="oeT-lX-6xY"/>
+                                    <constraint firstItem="bZw-bU-TPt" firstAttribute="leading" secondItem="h0a-jw-rsy" secondAttribute="leading" constant="24" id="qk3-Ly-Bxa"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-Fo-EwG" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="24" y="799" width="366" height="48"/>
+                                <color key="backgroundColor" red="0.5607843137254902" green="0.23921568627450979" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="IL2-on-ORt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="Connect Instagram">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectButtonAction" destination="Uip-Jx-t8I" eventType="touchUpInside" id="z9z-Ma-BxP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3h2-YJ-kbR" firstAttribute="trailing" secondItem="gLA-Fo-EwG" secondAttribute="trailing" constant="24" id="0WE-hr-EW0"/>
+                            <constraint firstItem="h0a-jw-rsy" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="BtV-5v-I5v"/>
+                            <constraint firstItem="Wmc-NH-SSx" firstAttribute="top" secondItem="T9G-It-hDC" secondAttribute="top" id="G0G-EJ-wd9"/>
+                            <constraint firstAttribute="bottom" secondItem="Wmc-NH-SSx" secondAttribute="bottom" id="KYb-37-Szd"/>
+                            <constraint firstItem="3h2-YJ-kbR" firstAttribute="bottom" secondItem="gLA-Fo-EwG" secondAttribute="bottom" constant="15" id="KqN-Xq-5xM"/>
+                            <constraint firstItem="h0a-jw-rsy" firstAttribute="top" secondItem="3h2-YJ-kbR" secondAttribute="top" constant="13" id="Usn-Jf-YDj"/>
+                            <constraint firstItem="Wmc-NH-SSx" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="Vu7-hj-OIq"/>
+                            <constraint firstItem="gLA-Fo-EwG" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" constant="24" id="bgU-SU-ICp"/>
+                            <constraint firstItem="h0a-jw-rsy" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="e0k-cu-YvJ"/>
+                            <constraint firstItem="gLA-Fo-EwG" firstAttribute="top" secondItem="h0a-jw-rsy" secondAttribute="bottom" constant="18" id="mHK-UC-G19"/>
+                            <constraint firstItem="Wmc-NH-SSx" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="xbn-Sc-lO3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3h2-YJ-kbR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PxD-PZ-Lf4"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="connectButton" destination="gLA-Fo-EwG" id="pka-hW-S76"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9nD-lo-1DC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9511.5942028985519" y="-214.28571428571428"/>
         </scene>
     </scenes>
     <resources>
         <image name="bgforInvite" width="375" height="812"/>
         <image name="facebook-app-logo" width="20" height="20"/>
+        <image name="instagram-logo" width="40" height="40"/>
         <image name="profileSetIcon" width="40" height="40"/>
     </resources>
 </document>

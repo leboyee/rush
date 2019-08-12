@@ -100,6 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate! as! AppDelegate
     }
 
+    //Temporary used for Registraiont
+    func moveToTabbarWithoutRegister() {
+            let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+            self.window?.rootViewController = tabbarVC
+    }
 
 }
 

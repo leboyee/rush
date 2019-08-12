@@ -29,6 +29,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allows user to capture photos.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app requires contacts for invite friends.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Please allow access to save post photo in your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

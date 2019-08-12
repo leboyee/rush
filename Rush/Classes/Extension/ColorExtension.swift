@@ -154,4 +154,10 @@ extension UIColor {
     class var textFiledPlaceHolder: UIColor {
         return UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)
     }
+    
+    class var instaPopupBgColor: UIColor {
+        return UIColor(red: 0.96, green: 0.96, blue: 0.97, alpha: 1)
+    }
+    
+    
 }

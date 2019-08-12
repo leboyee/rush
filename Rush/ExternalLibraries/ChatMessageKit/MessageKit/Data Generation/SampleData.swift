@@ -53,10 +53,10 @@ final internal class SampleData {
         }
     }
     
-    let system = Sender(id: "000000", displayName: "System", avatarUrl: "")
-    let nathan = Sender(id: "000001", displayName: "Nathan Tannar", avatarUrl: "")
-    let steven = Sender(id: "000002", displayName: "Steven Deutsch", avatarUrl: "")
-    let wu = Sender(id: "000003", displayName: "Wu Zhong", avatarUrl: "")
+    let system = Sender(id: "000000", displayName: "System", avatarUrl: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+    let nathan = Sender(id: "000001", displayName: "Nathan Tannar", avatarUrl: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+    let steven = Sender(id: "000002", displayName: "Steven Deutsch", avatarUrl: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+    let wu = Sender(id: "000003", displayName: "Wu Zhong", avatarUrl: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
     
     lazy var senders = [nathan, steven, wu]
     
@@ -190,13 +190,13 @@ final internal class SampleData {
         }
     }
     
-    func getMessages(count: Int, completion: ([MockMessage]) -> Void) {
+    func getMessages(count: Int, isGroupChat: Bool, completion: ([MockMessage]) -> Void) {
         var messages: [MockMessage] = []
         // Disable Custom Messages
         UserDefaults.standard.set(false, forKey: "Custom Messages")
         for index in 0..<count {
             var message = randomMessage(allowedSenders: senders)
-            if index == 19 {
+            if index == 19 && isGroupChat {
                 let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
                 let image = messageImages[randomNumberImage]
                message = MockMessage(title: "", detail: "", image: image, sender: senders.last!, messageId: NSUUID().uuidString, date: dateAddingRandomTime())

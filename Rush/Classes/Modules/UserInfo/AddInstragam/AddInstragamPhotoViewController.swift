@@ -1,5 +1,5 @@
 //
-//  AddInviteViewController.swift
+//  AddInstragamPhotoViewController.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -10,12 +10,11 @@ import UIKit
 import IQKeyboardManagerSwift
 
 
-class AddInviteViewController: CustomViewController {
+class AddInstragamPhotoViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var inviteContactButton: CustomButton!
-    @IBOutlet weak var inviteFbButton: CustomButton!
+    @IBOutlet weak var connectButton: CustomButton!
     
     
     override func viewDidLoad() {
@@ -48,10 +47,8 @@ class AddInviteViewController: CustomViewController {
     func setupUI() {
 
         // Set Custom part of Class
-        inviteContactButton.layer.cornerRadius = 8.0
-        inviteContactButton.clipsToBounds = true
-        inviteFbButton.layer.cornerRadius = 8.0
-        inviteFbButton.clipsToBounds = true
+        connectButton.layer.cornerRadius = 8.0
+        connectButton.clipsToBounds = true
         
         setCustomNavigationBarView()
     }
@@ -60,44 +57,63 @@ class AddInviteViewController: CustomViewController {
     // Custom navigation Title View
     func setCustomNavigationBarView() {
         
-        let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
-        skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
+        let gotProfileButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 128, height: 36))
+        gotProfileButton.setImage(UIImage(named: "goToProfileButton"), for: .normal)
+        gotProfileButton.addTarget(self, action:  #selector(gotProfileButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: gotProfileButton)
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
         
     }
 }
 
 //MARK: - Other Function
-extension AddInviteViewController {
+extension AddInstragamPhotoViewController {
+
+    func connectInstragramAlert() {
+        let alert = UIAlertController(title: "\n\n\n\(Message.instagramTitle)", message:Message.instagramMessage, preferredStyle: .alert)
+        let imgViewTitle = UIImageView(frame: CGRect(x: 100 , y: 25, width: 64, height: 64))
+        imgViewTitle.image = #imageLiteral(resourceName: "instagram")
+        
+        alert.view.tintColor = UIColor.instaPopupBgColor
+        alert.view.addSubview(imgViewTitle)
+        self.present(alert, animated: true, completion: nil)
+        self.dismissAlert(alert: alert)
+
+    }
+    
+    func dismissAlert(alert: UIAlertController) {
+        let when = DispatchTime.now() + 3
+        DispatchQueue.main.asyncAfter(deadline: when){
+            // your code with delay
+            alert.dismiss(animated: true, completion:nil)
+
+        }
+    }
 
    
 }
 
 // MARK: - Actions
-extension AddInviteViewController {
+extension AddInstragamPhotoViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
     
-     @objc func skipButtonAction() {
-        self.performSegue(withIdentifier: Segues.addInstagramPhotoViewSegue, sender: self)
+     @objc func gotProfileButtonAction() {
+        AppDelegate.getInstance().moveToTabbarWithoutRegister()
+        //Utils.alert(message: "In Development")
     }
 
-    @IBAction func inviteContactButtonAction() {
-        self.performSegue(withIdentifier: Segues.inviteContactSegue, sender: self)
+    @IBAction func connectButtonAction() {
+        connectInstragramAlert()
     }
     
-    @IBAction func finisheRegistrationButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
-    }
 }
 
 // MARK: - Navigation
-extension AddInviteViewController {
+extension AddInstragamPhotoViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.inviteContactSegue {

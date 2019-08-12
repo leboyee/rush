@@ -25,11 +25,12 @@ extension EnterEmailViewConteroller {
             
             guard let self_ = self else { return }
             if (data != nil){
-                if (data![kIsEmailExist] as? Bool) == false {
+                if (data![kIsEmailExist] as? Bool) == true {
                     self_.emailSuccess()
                 }
                 else {
-                    Utils.alert(message: Message.emailAlreadyInUse)
+                    self_.emailErrorHideShow(isHide: false)
+                    //Utils.alert(message: Message.emailNotAvailable)
                 }
             }
             else {

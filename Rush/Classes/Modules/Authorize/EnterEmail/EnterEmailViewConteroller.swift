@@ -31,7 +31,7 @@ class EnterEmailViewConteroller: CustomViewController {
 
     var loginType: LoginType = .Register
     var profile = Profile()
-    
+    var isEmailError : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -93,6 +93,8 @@ class EnterEmailViewConteroller: CustomViewController {
             nextButtonBottomConstraint.constant = 0
             loginNumberButtonConstraint.constant = 16
             emailTitleLable.text = Text.emailTitleLogin
+            nextButton.setNextButton(isEnable: false)
+
         }
     }
 
@@ -114,7 +116,6 @@ extension EnterEmailViewConteroller {
             self.view.endEditing(true)
             profile.email = emailText
             checkUserAvailable()
-            //self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
         }
         else {
             if loginType == .Login {
@@ -170,5 +171,24 @@ extension EnterEmailViewConteroller {
     
     func  emailSuccess() {
          self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
+    }
+    
+    func emailErrorHideShow(isHide: Bool) {
+        if loginType == .Login {
+            if isHide == true {
+                loginNumberButtonConstraint.constant = 16
+                loginLineLable.isHidden = true
+            }
+            else {
+                loginNumberButtonConstraint.constant = 76
+                loginLineLable.isHidden = false
+                self.emailErroLabel.isHidden = false
+                self.errorButton.isHidden = false
+                self.nextButton.setNextButton(isEnable: false)
+                self.isEmailError = true
+            }
+        }
+   
+
     }
 }
