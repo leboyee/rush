@@ -138,6 +138,8 @@ struct Segues {
     static let notificationSettings               = "NotificationSettingsSegue"
     static let inviteContactSegue                 = "InviteContactSegue"
     static let addInstagramPhotoViewSegue         = "AddInstagramPhotoViewSegue"
+    static let disconnectInstagram                = "DisconnectInstagramSegue"
+    static let logoutPopup                        = "LogoutPopupSegue"
 
 
 

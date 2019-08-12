@@ -10,6 +10,8 @@ import UIKit
 
 class InstagramCell: UITableViewCell {
 
+    var instagramEvent: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +29,7 @@ class InstagramCell: UITableViewCell {
 extension InstagramCell {
     
     @IBAction func connectButtonAction() {
-        Utils.notReadyAlert()
+        instagramEvent?()
     }
     
 }

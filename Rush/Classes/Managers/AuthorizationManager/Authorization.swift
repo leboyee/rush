@@ -61,8 +61,6 @@ class Authorization: NSObject {
         Utils.removeDataFromUserDefault(kPushTokenUpdateOnServer)
         
         Utils.removeDataFromUserDefault(kLastLocation)
-        //Utils.removeDataFromUserDefault(kLastLocationUpdateTime)
-        //Utils.removeDataFromUserDefault(kLastLocationName)
         UIApplication.shared.applicationIconBadgeNumber = 0
         
     }

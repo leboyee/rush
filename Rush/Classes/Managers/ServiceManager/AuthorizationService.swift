@@ -68,10 +68,10 @@ extension ServiceManager {
   
     
     func logout(closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
-        NetworkManager.shared.logout(params: [:]) {
+        NetworkManager.shared.logout() {
             [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
-            self_.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+            self_.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status,errorMessage)
             })
         }
