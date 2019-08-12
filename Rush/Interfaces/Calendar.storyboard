@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umR-2D-T2W" customClass="CalendarView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="352"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="352" id="fF9-0S-8HR"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbJ-rQ-IIt">
                                 <rect key="frame" x="0.0" y="57" width="414" height="805"/>
                                 <connections>
@@ -27,13 +34,22 @@
                         </subviews>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="umR-2D-T2W" firstAttribute="top" secondItem="d99-8O-b6R" secondAttribute="top" id="1wX-Jr-uYf"/>
                             <constraint firstItem="MbJ-rQ-IIt" firstAttribute="trailing" secondItem="d99-8O-b6R" secondAttribute="trailing" id="Jc8-Ge-bzb"/>
+                            <constraint firstItem="umR-2D-T2W" firstAttribute="leading" secondItem="d99-8O-b6R" secondAttribute="leading" id="Zl6-CW-jHk"/>
                             <constraint firstItem="MbJ-rQ-IIt" firstAttribute="top" secondItem="d99-8O-b6R" secondAttribute="top" constant="13" id="d0o-92-lel"/>
                             <constraint firstItem="MbJ-rQ-IIt" firstAttribute="leading" secondItem="d99-8O-b6R" secondAttribute="leading" id="fHA-RO-n7t"/>
                             <constraint firstItem="MbJ-rQ-IIt" firstAttribute="bottom" secondItem="d99-8O-b6R" secondAttribute="bottom" id="hdh-Aa-bQF"/>
+                            <constraint firstItem="umR-2D-T2W" firstAttribute="trailing" secondItem="d99-8O-b6R" secondAttribute="trailing" id="keF-Os-F8P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d99-8O-b6R"/>
                     </view>
+                    <connections>
+                        <outlet property="calenderView" destination="umR-2D-T2W" id="sEX-QJ-9hK"/>
+                        <outlet property="calenderViewHeight" destination="fF9-0S-8HR" id="mew-EX-nLg"/>
+                        <outlet property="listTopConstraint" destination="d0o-92-lel" id="JaC-cE-DSk"/>
+                        <outlet property="listView" destination="MbJ-rQ-IIt" id="4CI-CZ-fNe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siO-uY-ylF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

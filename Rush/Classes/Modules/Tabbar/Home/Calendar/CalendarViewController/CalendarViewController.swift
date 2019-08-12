@@ -13,7 +13,19 @@ class CalendarViewController: CustomViewController {
     let selectedDate = Date()
     let titleHeight: CGFloat = 44
     let titleWidth: CGFloat = screenWidth - 110
+    let topListPadding: CGFloat = 13.0
 
+    var groups = [EventGroup]()
+    var child: CalendarEventListViewController?
+    
+    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var listTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var calenderView: CalendarView!
+    @IBOutlet weak var calenderViewHeight: NSLayoutConstraint!
+    
+    var dateButton: UIButton!
+    var isCalendarOpen = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +43,8 @@ extension CalendarViewController {
         
         let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: titleWidth, height: titleHeight))
         let text = selectedDate.toString(format: "MMMM dd") + " ▾"
-        let dateButton = UIButton(frame: CGRect(x: 0, y: 2, width: titleWidth, height: 30.0))
+        
+        dateButton = UIButton(frame: CGRect(x: 0, y: 2, width: titleWidth, height: 30.0))
         dateButton.setTitle(text, for: .normal)
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.DisplayBold(sz: 24)
@@ -45,6 +58,21 @@ extension CalendarViewController {
         let calendar = UIBarButtonItem(customView: imageView)
         navigationItem.rightBarButtonItem = calendar
 
+        setupCalender()
+        
+        /*
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
+        listView.addGestureRecognizer(panGesture)
+        panGesture.cancelsTouchesInView = true
+        */
+        
+        self.children.forEach { (vc) in
+            if vc is CalendarEventListViewController {
+                child = vc as? CalendarEventListViewController
+            }
+        }
+        
+        fetchEvents()
     }
     
 }
@@ -53,10 +81,17 @@ extension CalendarViewController {
 extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
-        Utils.notReadyAlert()
+        
+        var text = dateButton.title(for: .normal)
+        if isCalendarOpen {
+            text = text?.replacingOccurrences(of: "▴", with: "▾")
+            listTopConstraint.constant = topListPadding
+        } else {
+            text = text?.replacingOccurrences(of: "▾", with: "▴")
+            listTopConstraint.constant = topListPadding + calenderViewHeight.constant
+        }
+        isCalendarOpen = !isCalendarOpen
+        dateButton.setTitle(text, for: .normal)
     }
-    
-    @objc func calenderButtonAction() {
-       
-    }
+   
 }

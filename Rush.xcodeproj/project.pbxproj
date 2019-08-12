@@ -419,6 +419,12 @@
 		8A04B184230149470055C65F /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B183230149470055C65F /* LogoutViewController.swift */; };
 		8A04B18623014E1B0055C65F /* DisconnectInstagramLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B18523014E1B0055C65F /* DisconnectInstagramLogics.swift */; };
 		8A04B188230152960055C65F /* LogoutLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B187230152960055C65F /* LogoutLogics.swift */; };
+		8A04B1902301796A0055C65F /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B18A2301796A0055C65F /* CalendarView.xib */; };
+		8A04B1912301796A0055C65F /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B18B2301796A0055C65F /* CalendarDayCell.swift */; };
+		8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B18C2301796A0055C65F /* CalendarDayCell.xib */; };
+		8A04B1932301796A0055C65F /* CalendarMonthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B18D2301796A0055C65F /* CalendarMonthCell.xib */; };
+		8A04B1942301796A0055C65F /* CalendarMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B18E2301796A0055C65F /* CalendarMonthCell.swift */; };
+		8A04B1952301796A0055C65F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B18F2301796A0055C65F /* CalendarView.swift */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -845,6 +851,12 @@
 		8A04B183230149470055C65F /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		8A04B18523014E1B0055C65F /* DisconnectInstagramLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectInstagramLogics.swift; sourceTree = "<group>"; };
 		8A04B187230152960055C65F /* LogoutLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutLogics.swift; sourceTree = "<group>"; };
+		8A04B18A2301796A0055C65F /* CalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
+		8A04B18B2301796A0055C65F /* CalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
+		8A04B18C2301796A0055C65F /* CalendarDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDayCell.xib; sourceTree = "<group>"; };
+		8A04B18D2301796A0055C65F /* CalendarMonthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarMonthCell.xib; sourceTree = "<group>"; };
+		8A04B18E2301796A0055C65F /* CalendarMonthCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarMonthCell.swift; sourceTree = "<group>"; };
+		8A04B18F2301796A0055C65F /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1217,8 +1229,9 @@
 		1A62D23322954AF6001E5790 /* SubClass */ = {
 			isa = PBXGroup;
 			children = (
-				1ACEAC1722AC294200B734D3 /* CustomCameraExtension.swift */,
+				8A04B1892301796A0055C65F /* CalendarView */,
 				1AC635F322AA6E9500021E03 /* CustomTextField */,
+				1ACEAC1722AC294200B734D3 /* CustomCameraExtension.swift */,
 				1A62D23422954AF6001E5790 /* CustomImagePageControl.swift */,
 				1AC635FC22AA907900021E03 /* CustomNavBarPageController.swift */,
 			);
@@ -2342,6 +2355,19 @@
 			path = Logout;
 			sourceTree = "<group>";
 		};
+		8A04B1892301796A0055C65F /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B18A2301796A0055C65F /* CalendarView.xib */,
+				8A04B18B2301796A0055C65F /* CalendarDayCell.swift */,
+				8A04B18C2301796A0055C65F /* CalendarDayCell.xib */,
+				8A04B18D2301796A0055C65F /* CalendarMonthCell.xib */,
+				8A04B18E2301796A0055C65F /* CalendarMonthCell.swift */,
+				8A04B18F2301796A0055C65F /* CalendarView.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -2570,6 +2596,7 @@
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
+				8A04B1902301796A0055C65F /* CalendarView.xib in Resources */,
 				79C1AC5822A65507003C7790 /* ProfileInformationCell.xib in Resources */,
 				79BE868C22A94E9F0056529E /* FriendClubCell.xib in Resources */,
 				1A2809EB22C60E6700B4E764 /* ClassesHeader.xib in Resources */,
@@ -2579,10 +2606,12 @@
 				C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */,
 				7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */,
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
+				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				8A04B15D22FC6C3A0055C65F /* SwitchCell.xib in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
 				794183B2228960C7009AB12C /* SF-Pro-Text-Heavy.otf in Resources */,
+				8A04B1932301796A0055C65F /* CalendarMonthCell.xib in Resources */,
 				1A62D2322295454C001E5790 /* Authorize.storyboard in Resources */,
 				1A142ECD229EE3B8002C1AFE /* RushCountryCode.json in Resources */,
 				79493CE722B90E960026AD0E /* SelectGallaryPhotoCell.xib in Resources */,
@@ -2722,6 +2751,7 @@
 				79D29CA022CF2C74008C6ED0 /* ExploreMediates.swift in Sources */,
 				1A3CB08C22BD3242005D3D87 /* AddMajorsViewController.swift in Sources */,
 				79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */,
+				8A04B1912301796A0055C65F /* CalendarDayCell.swift in Sources */,
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				7991909F22C9D5A00044602E /* ClubDetailController.swift in Sources */,
 				793BE65C22E88207005EF72D /* MessagesViewController.swift in Sources */,
@@ -2841,6 +2871,7 @@
 				1AA97B92228979D100C4550C /* DateExtension.swift in Sources */,
 				1AA97B8A228979D100C4550C /* FontExtension.swift in Sources */,
 				1A2809E122C5F43B00B4E764 /* ChooseClassesViewController.swift in Sources */,
+				8A04B1952301796A0055C65F /* CalendarView.swift in Sources */,
 				793BE66D22E88207005EF72D /* MessageSizeCalculator.swift in Sources */,
 				1A339B5E22B3B88A005509EA /* EnterUserNameViewLogics.swift in Sources */,
 				79BE868B22A94E9F0056529E /* FriendClubCell.swift in Sources */,
@@ -3004,6 +3035,7 @@
 				1AC635FD22AA907900021E03 /* CustomNavBarPageController.swift in Sources */,
 				7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */,
 				1A142EC8229EC1A0002C1AFE /* CustomPickerMediator.swift in Sources */,
+				8A04B1942301796A0055C65F /* CalendarMonthCell.swift in Sources */,
 				79C1AC5722A65507003C7790 /* ProfileInformationCell.swift in Sources */,
 				79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */,
 				79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */,

@@ -64,4 +64,10 @@ extension CalendarEventListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= 0 {
+            scrollView.contentOffset = CGPoint.zero
+        }
+    }
 }
