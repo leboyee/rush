@@ -37,10 +37,12 @@ extension SettingsViewController {
         let customTitleView = Utils.getNavigationBarTitle(title: Text.settings, textColor: UIColor.white)
         navigationItem.titleView = customTitleView
         
-        
-        let logout = UIBarButtonItem(title: Text.logout, style: .done, target: self, action: #selector(logoutAction))
+        let button = UIButton()
+        button.setTitle(Text.logout, for: .normal)
+        button.titleLabel?.font = UIFont.Semibold(sz: 13.0)
+        button.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+        let logout = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = logout
-        
         setupTableView()
     }
     
