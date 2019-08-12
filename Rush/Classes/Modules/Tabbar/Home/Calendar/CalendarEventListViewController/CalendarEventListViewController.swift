@@ -12,7 +12,7 @@ class CalendarEventListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     let radius: CGFloat = 32.0
-    var groups = [EventGroup]()
+    var groups: [EventGroup]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ extension CalendarEventListViewController {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.cornerRadius = radius
         setupTableView()
-        fetchEvents()
     }
     
 }
+
