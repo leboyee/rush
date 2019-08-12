@@ -18,7 +18,7 @@ class PrivacySettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var type: PrivacyType = .invitesfrom
     let list = ["Everyone", "Only friends", "Friends and their friends", "Nobody"]
-    var selectedIndex: Int = 0
+    var user: Profile?
 
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -35,8 +35,18 @@ extension PrivacySettingsViewController {
         let text = type == .invitesfrom ? Text.invitesFrom : Text.messagesFrom
         let customTitleView = Utils.getNavigationBarTitle(title: text, textColor: UIColor.white)
         navigationItem.titleView = customTitleView
-        
+        user = Authorization.shared.profile
+
         setupTableView()
     }
     
+}
+
+
+//MARK: - Presenter Funcation
+extension PrivacySettingsViewController {
+    
+    func showMessage(message: String) {
+        Utils.alert(message: message)
+    }
 }

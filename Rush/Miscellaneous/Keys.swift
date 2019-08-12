@@ -52,6 +52,16 @@ struct Keys {
     static let friendType         = "frd_type"
     static let friend             = "friend"
     static let friendId           = "frd_id"
+    
+    
+    static let u_is_notify_on     = "u_is_notify_on"
+    static let u_is_event_notify  = "u_is_event_notify"
+    static let u_is_club_notify   = "u_is_club_notify"
+    static let u_is_class_notify  = "u_is_class_notify"
+    static let u_who_can_message  = "u_who_can_message"
+    static let u_who_can_invite   = "u_who_can_invite"
+    static let u_is_dark_mode     = "u_is_dark_mode"
+    
 }
 
 //MARK: - API's Output Keys

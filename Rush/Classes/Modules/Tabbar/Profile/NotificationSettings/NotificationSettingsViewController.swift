@@ -9,22 +9,38 @@
 import UIKit
 
 class NotificationSettingsViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    var type: PrivacyType = .invitesfrom
+    let list = ["Events", "Clubs", "Classes"]
+    var selectedIndex: [Int] = []
+    var user: Profile?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+}
 
-        // Do any additional setup after loading the view.
+//MARK: - Setup
+extension NotificationSettingsViewController {
+    
+    private func setup() {
+        view.backgroundColor = UIColor.bgBlack
+        
+        let text = type == .invitesfrom ? Text.invitesFrom : Text.messagesFrom
+        let customTitleView = Utils.getNavigationBarTitle(title: text, textColor: UIColor.white)
+        navigationItem.titleView = customTitleView
+        user = Authorization.shared.profile
+        setupTableView()
     }
     
+}
 
-    /*
-    // MARK: - Navigation
+//MARK: - Presenter Funcation
+extension NotificationSettingsViewController {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func showMessage(message: String) {
+        Utils.alert(message: message)
     }
-    */
-
 }

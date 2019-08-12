@@ -135,8 +135,9 @@ struct Segues {
     static let calendarHome                       = "CalendarHomeSegue"
     static let webViewFile                        = "WebViewFileSegue"
     static let privacySettings                    = "PrivacySettingsSegue"
-    static let inviteContactSegue                    = "InviteContactSegue"
-    static let addInstagramPhotoViewSegue                    = "AddInstagramPhotoViewSegue"
+    static let notificationSettings               = "NotificationSettingsSegue"
+    static let inviteContactSegue                 = "InviteContactSegue"
+    static let addInstagramPhotoViewSegue         = "AddInstagramPhotoViewSegue"
 
 
 
@@ -247,9 +248,10 @@ public struct Text {
     static let dataPolicy                = "Data policy"
     static let termsConditions           = "Terms & conditions"
 
-    static let invitesFrom            = "Invites from"
-    static let messagesFrom            = "Messages from"
-    static let inviteFromContact        = "Invite from contacts"
+    static let invitesFrom               = "Invites from"
+    static let messagesFrom              = "Messages from"
+    static let recieveNotifications      = "Recieve notifications"
+    static let inviteFromContact         = "Invite from contacts"
 
     
 }

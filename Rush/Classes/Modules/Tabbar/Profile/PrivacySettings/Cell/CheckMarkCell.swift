@@ -30,12 +30,16 @@ class CheckMarkCell: UITableViewCell {
 // MARK: - Other functions
 extension CheckMarkCell {
     
-    func setup(title: String) {
+    func set(title: String) {
         titleLabel.text = title
     }
     
-    func setup(isCheckMarkShow: Bool) {
+    func set(isCheckMarkShow: Bool) {
         tickImageView.isHidden = !isCheckMarkShow
+    }
+    
+    func set(isCheckBoxShow: Bool) {
+        tickImageView.image = isCheckBoxShow ? #imageLiteral(resourceName: "selected.pdf") : #imageLiteral(resourceName: "empty.pdf")
     }
     
 }
