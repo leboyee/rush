@@ -34,6 +34,8 @@ extension SettingsViewController {
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
         
+        tabBarController?.tabBar.isHidden = true
+        
         let customTitleView = Utils.getNavigationBarTitle(title: Text.settings, textColor: UIColor.white)
         navigationItem.titleView = customTitleView
         

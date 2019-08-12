@@ -79,15 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupBarButton() {
         let barButtonItemAppearance = UIBarButtonItem.appearance()
-        if #available(iOS 11, *) {
-            barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-            barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
-            barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1 * screenWidth, vertical: 0), for: .default)
-            
-        } else {
-            barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80), for: .default)
-            
-        }
+        barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
+        barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1 * screenWidth, vertical: 0), for: .default)
     }
     
     //MARK: - AppDelegate Instance

@@ -21,7 +21,7 @@
         <!--Profile-->
         <scene sceneID="aVm-4u-yGG">
             <objects>
-                <viewController title="Profile" id="jT0-nn-O1x" customClass="ProfileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" extendedLayoutIncludesOpaqueBars="YES" id="jT0-nn-O1x" customClass="ProfileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BgX-Be-3HI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
         <!--Settings View Controller-->
         <scene sceneID="Cco-VF-uMf">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WgC-rz-tQV" customClass="SettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WgC-rz-tQV" customClass="SettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rMA-vi-9rz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
         <!--Privacy Settings View Controller-->
         <scene sceneID="9fs-Ab-LU0">
             <objects>
-                <viewController storyboardIdentifier="PrivacySettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="baD-jv-Ic4" customClass="PrivacySettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacySettingsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="baD-jv-Ic4" customClass="PrivacySettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7eN-hG-Ssj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -406,7 +406,7 @@ event updates.</string>
         <!--Notification Settings View Controller-->
         <scene sceneID="oW5-HU-yyQ">
             <objects>
-                <viewController storyboardIdentifier="NotificationSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JDF-J1-pkR" customClass="NotificationSettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationSettingsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JDF-J1-pkR" customClass="NotificationSettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rTZ-4H-ffg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -444,7 +444,7 @@ event updates.</string>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
             <objects>
-                <viewController storyboardIdentifier="WebViewFileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SCR-Ws-le9" customClass="WebViewFileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewFileViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SCR-Ws-le9" customClass="WebViewFileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0RT-iZ-KBl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
