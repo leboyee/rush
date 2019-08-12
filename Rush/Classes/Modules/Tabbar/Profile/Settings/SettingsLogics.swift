@@ -54,6 +54,39 @@ extension SettingsViewController {
                 cell.set(title: Text.notifications)
                 cell.set(isHideArrow: false)
                 cell.set(detail: "Events, clubs and classes")
+                if user?.isNotificationOn == false {
+                    cell.set(detail: "Off")
+                } else {
+                    
+                    if let isEvent = user?.isEventNotificationOn ,
+                       let isClub = user?.isClubNotificationOn,
+                       let isClass = user?.isClassNotificationOn {
+                        var text = ""
+                        if isEvent {
+                            text = "Events"
+                        }
+                        
+                        if isClub {
+                            if text.isEmpty {
+                               text = "Clubs"
+                            } else {
+                                text = text + ", " + "Clubs"
+                            }
+                        }
+                        
+                        if isClass {
+                            if text.isEmpty {
+                                text = "Classes"
+                            } else {
+                                text = text + ", " + "Classes"
+                            }
+                        }
+                        
+                        cell.set(detail: text.capitalized)
+                    }
+                    
+                }
+                
             case 1:
                 cell.set(title: Text.darkMode)
             default:
@@ -64,12 +97,11 @@ extension SettingsViewController {
             switch indexPath.row {
             case 0:
                 cell.set(title: Text.whoCanInviteMe)
-                cell.set(detail: "Everyone")
+                cell.set(detail: user?.whoCanInviteYou ?? "")
 
             case 1:
                 cell.set(title: Text.whoCanMessageMe)
-                cell.set(detail: "Only friends")
-
+                cell.set(detail: user?.whoCanMessageYou ?? "")
             default:
                 break
             }
@@ -93,9 +125,8 @@ extension SettingsViewController {
         
         cell.set(isOn: isDarkModeOn)
         cell.switchEvent = {  [weak self] (isOn) in
-            guard let _ = self else { return }
-            isDarkModeOn = isOn
-            ThemeManager.shared.loadTheme()
+            guard let self_ = self else { return }
+            self_.updateUserProfile(params: [Keys.u_is_dark_mode : isOn ? "1" : "0"])
         }
     }
     
@@ -131,9 +162,25 @@ extension SettingsViewController {
     
 }
 
-//MARK: - API's
+// MARK: - API's
 extension SettingsViewController {
     
-    
+    private func updateUserProfile(params: [String: Any]) {
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: params) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if let _ = data {
+                self_.user = Authorization.shared.profile
+                /// Update Application Theme
+                ThemeManager.shared.loadTheme()
+            } else if let message = errorMessage {
+                self_.showMessage(message: message)
+            }
+            
+            /// Reload Cells
+            self_.tableView.reloadData()
+        }
+    }
 }
-

@@ -142,6 +142,7 @@
                         <outlet property="tableView" destination="TcW-2N-tP4" id="X0H-ae-oYU"/>
                         <segue destination="SCR-Ws-le9" kind="show" identifier="WebViewFileSegue" id="pb6-SO-yzi"/>
                         <segue destination="baD-jv-Ic4" kind="show" identifier="PrivacySettingsSegue" id="JcE-bh-VLy"/>
+                        <segue destination="JDF-J1-pkR" kind="show" identifier="NotificationSettingsSegue" id="AG0-Az-k7Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,6 +186,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="974" y="255"/>
+        </scene>
+        <!--Notification Settings View Controller-->
+        <scene sceneID="oW5-HU-yyQ">
+            <objects>
+                <viewController storyboardIdentifier="NotificationSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JDF-J1-pkR" customClass="NotificationSettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rTZ-4H-ffg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dmb-yf-A0T" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2iR-Zp-tDW">
+                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2iR-Zp-tDW" firstAttribute="leading" secondItem="CY3-zH-ZaY" secondAttribute="leading" id="3yd-ea-5G2"/>
+                            <constraint firstItem="Dmb-yf-A0T" firstAttribute="leading" secondItem="CY3-zH-ZaY" secondAttribute="leading" id="4hA-WQ-HYh"/>
+                            <constraint firstItem="2iR-Zp-tDW" firstAttribute="top" secondItem="CY3-zH-ZaY" secondAttribute="top" constant="13" id="4pK-mv-fyU"/>
+                            <constraint firstItem="Dmb-yf-A0T" firstAttribute="top" secondItem="CY3-zH-ZaY" secondAttribute="top" constant="13" id="89M-iU-D3F"/>
+                            <constraint firstItem="2iR-Zp-tDW" firstAttribute="bottom" secondItem="CY3-zH-ZaY" secondAttribute="bottom" id="92R-Pz-0Vs"/>
+                            <constraint firstItem="Dmb-yf-A0T" firstAttribute="trailing" secondItem="CY3-zH-ZaY" secondAttribute="trailing" id="Oe6-Td-Gkj"/>
+                            <constraint firstItem="2iR-Zp-tDW" firstAttribute="trailing" secondItem="CY3-zH-ZaY" secondAttribute="trailing" id="bPZ-bS-ZOb"/>
+                            <constraint firstAttribute="bottom" secondItem="Dmb-yf-A0T" secondAttribute="bottom" id="lrm-3b-cRL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CY3-zH-ZaY"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="2iR-Zp-tDW" id="W0o-5x-1e1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cBL-Dr-Ojk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="944"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">

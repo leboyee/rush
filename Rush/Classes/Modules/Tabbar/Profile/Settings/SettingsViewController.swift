@@ -11,12 +11,19 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    var user: Profile?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        user = Authorization.shared.profile
+        tableView.reloadData()
     }
     
 }
@@ -68,9 +75,12 @@ extension SettingsViewController {
     }
    
     func showNotifications() {
-        
+        performSegue(withIdentifier: Segues.notificationSettings, sender: nil)        
     }
     
+    func showMessage(message: String) {
+        Utils.alert(message: message)
+    }
 }
 
 //MARK: - Navigation

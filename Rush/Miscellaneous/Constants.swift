@@ -135,6 +135,7 @@ struct Segues {
     static let calendarHome                       = "CalendarHomeSegue"
     static let webViewFile                        = "WebViewFileSegue"
     static let privacySettings                    = "PrivacySettingsSegue"
+    static let notificationSettings               = "NotificationSettingsSegue"
 
 
 }
@@ -246,6 +247,7 @@ public struct Text {
 
     static let invitesFrom            = "Invites from"
     static let messagesFrom            = "Messages from"
+    static let recieveNotifications   = "Recieve notifications"
 
     
 }

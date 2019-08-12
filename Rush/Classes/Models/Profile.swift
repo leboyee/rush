@@ -34,17 +34,18 @@ class Profile: NSObject {
     var homeTown: String = ""
 
     var photo               : Image?
-    var contributedMeals    : Int = 0
-    var distributedMeals    : Int = 0
-    var isPrivateOn         : Bool = false
-    var isMealNotificationOn: Bool = false
-    var latitude            : String?
-    var longitude           : String?
-    var city                : String?
-    var state               : String?
-    var leaderboard         : Int = 0
-    var isNotificationOn: Bool = true
 
+    /// Added by Kamal for Rush
+    var isDarkMode: Bool = false
+    var isNotificationOn: Bool = true
+    var isEventNotificationOn: Bool = true
+    var isClubNotificationOn: Bool = true
+    var isClassNotificationOn: Bool = true
+    var whoCanMessageYou: String = ""
+    var whoCanInviteYou: String = ""
+
+    
+    
     init(data : [String : Any]) {
         super.init()
         setData(data: data)
@@ -99,9 +100,52 @@ class Profile: NSObject {
             homeTown = value
         }
         
+        /// Added by Kamal for Rush
+        
+        isDarkMode = true
+        if let value = data[Keys.u_is_dark_mode] as? Int {
+            isDarkMode = value == 1 ? true : false
+        } else if let value = data[Keys.u_is_dark_mode] as? String {
+            isDarkMode = value == "1" ? true : false
+        }
+        /// Update global variable
+        isDarkModeOn = isDarkMode
+        
         isNotificationOn = true
-        if let value = data["is_push_on"] as? Int {
+        if let value = data[Keys.u_is_notify_on] as? Int {
             isNotificationOn = value == 1 ? true : false
+        } else if let value = data[Keys.u_is_notify_on] as? String {
+            isNotificationOn = value == "1" ? true : false
+        }
+        
+        isEventNotificationOn = true
+        if let value = data[Keys.u_is_event_notify] as? Int {
+            isEventNotificationOn = value == 1 ? true : false
+        } else if let value = data[Keys.u_is_event_notify] as? String {
+            isEventNotificationOn = value == "1" ? true : false
+        }
+        
+        isClubNotificationOn = true
+        if let value = data[Keys.u_is_club_notify] as? Int {
+            isClubNotificationOn = value == 1 ? true : false
+        } else if let value = data[Keys.u_is_club_notify] as? String {
+            isClubNotificationOn = value == "1" ? true : false
+        }
+        
+        isClassNotificationOn = true
+        if let value = data[Keys.u_is_class_notify] as? Int {
+            isClassNotificationOn = value == 1 ? true : false
+        } else if let value = data[Keys.u_is_class_notify] as? String {
+            isClassNotificationOn = value == "1" ? true : false
+        }
+        
+        
+        if let value = data[Keys.u_who_can_message] as? String {
+            whoCanMessageYou = value
+        }
+        
+        if let value = data[Keys.u_who_can_invite] as? String {
+            whoCanInviteYou = value
         }
         
     }
