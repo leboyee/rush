@@ -82,6 +82,8 @@ extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
         
+        guard groups.count > 0 else { return }
+        
         var text = dateButton.title(for: .normal)
         if isCalendarOpen {
             text = text?.replacingOccurrences(of: "▴", with: "▾")
