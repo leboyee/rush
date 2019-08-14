@@ -71,7 +71,7 @@ struct Cell {
     static let switchCell           = "SwitchCell"
     static let instagram            = "InstagramCell"
     static let checkMark            = "CheckMarkCell"
-
+    static let notification         = "NotificationCell"
 }
 
 struct ReusableView {
@@ -254,6 +254,7 @@ public struct Text {
     static let messagesFrom              = "Messages from"
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
+    static let interests                 = "Interests"
 
     
 }

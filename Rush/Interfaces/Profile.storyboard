@@ -26,27 +26,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKO-jb-Bmc" customClass="ParallaxHeader" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="344" id="yDQ-wg-Qf0"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwP-H1-UCw">
-                                <rect key="frame" x="323" y="94" width="67" height="34"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="360" y="56" width="30" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="⚙︎">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="WgC-rz-tQV" kind="show" id="JpC-61-lJ7"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-4p-a17" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="304" width="414" height="592"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="sLR-sx-qn9">
+                                <rect key="frame" x="0.0" y="130" width="414" height="732"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="WwP-H1-UCw" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="50" id="64M-jI-bV1"/>
+                            <constraint firstItem="kFX-4p-a17" firstAttribute="top" secondItem="KKO-jb-Bmc" secondAttribute="bottom" constant="-40" id="20V-yY-Af0"/>
+                            <constraint firstItem="WwP-H1-UCw" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="12" id="64M-jI-bV1"/>
+                            <constraint firstAttribute="bottom" secondItem="kFX-4p-a17" secondAttribute="bottom" id="6f4-n8-gW5"/>
+                            <constraint firstItem="sLR-sx-qn9" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="F6s-d6-q9c"/>
+                            <constraint firstItem="KKO-jb-Bmc" firstAttribute="top" secondItem="BgX-Be-3HI" secondAttribute="top" id="Lgc-DV-gAh"/>
                             <constraint firstItem="LP0-4Y-hab" firstAttribute="trailing" secondItem="WwP-H1-UCw" secondAttribute="trailing" constant="24" id="Mgf-c2-3Xl"/>
+                            <constraint firstItem="sLR-sx-qn9" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="86" id="O7h-tG-BxX"/>
+                            <constraint firstItem="kFX-4p-a17" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="SqE-iP-m0a"/>
+                            <constraint firstItem="KKO-jb-Bmc" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="T5Z-WW-UiJ"/>
+                            <constraint firstItem="sLR-sx-qn9" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="TT7-i8-ElZ"/>
+                            <constraint firstItem="sLR-sx-qn9" firstAttribute="bottom" secondItem="LP0-4Y-hab" secondAttribute="bottom" id="aJm-cR-83S"/>
+                            <constraint firstItem="KKO-jb-Bmc" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="adj-fA-m9T"/>
+                            <constraint firstItem="kFX-4p-a17" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="yLM-vc-f9b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LP0-4Y-hab"/>
                     </view>
+                    <connections>
+                        <outlet property="header" destination="KKO-jb-Bmc" id="9gr-3g-uKd"/>
+                        <outlet property="headerHeightConstraint" destination="yDQ-wg-Qf0" id="2yO-hN-wp9"/>
+                        <outlet property="tableView" destination="sLR-sx-qn9" id="OPq-rx-JRP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqU-TN-DgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-600" y="13"/>
+            <point key="canvasLocation" x="-600" y="12.723214285714285"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Cco-VF-uMf">
