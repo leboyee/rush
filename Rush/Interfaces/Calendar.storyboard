@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Calendar View Controller-->
         <scene sceneID="724-6i-Vxt">
@@ -67,9 +75,68 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="805"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0H-Sa-sRg">
+                                <rect key="frame" x="0.0" y="245" width="414" height="315"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar_empty_image" translatesAutoresizingMaskIntoConstraints="NO" id="Q8b-rg-ty9">
+                                        <rect key="frame" x="142" y="0.0" width="130" height="96"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing planned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwa-hZ-bUb">
+                                        <rect key="frame" x="154" y="120.5" width="106" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ydw-l1-d5M">
+                                        <rect key="frame" x="24" y="142" width="366" height="100.5"/>
+                                        <string key="text">There are over 100
+events that you might
+like!</string>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
+                                        <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myr-NA-Dfi" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="267" width="366" height="48"/>
+                                        <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Gsb-Y4-bqq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Explore events">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="exploreEvents" destination="JZ3-gW-XlZ" eventType="touchUpInside" id="j1T-tQ-Uh0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ydw-l1-d5M" firstAttribute="top" secondItem="lwa-hZ-bUb" secondAttribute="bottom" constant="5.5" id="6P4-gG-38O"/>
+                                    <constraint firstAttribute="height" constant="315" id="96y-TA-uDj"/>
+                                    <constraint firstItem="Myr-NA-Dfi" firstAttribute="leading" secondItem="K0H-Sa-sRg" secondAttribute="leading" constant="24" id="Abl-UD-JuZ"/>
+                                    <constraint firstItem="lwa-hZ-bUb" firstAttribute="top" secondItem="Q8b-rg-ty9" secondAttribute="bottom" constant="24.5" id="CKM-Qq-y7l"/>
+                                    <constraint firstAttribute="trailing" secondItem="ydw-l1-d5M" secondAttribute="trailing" constant="24" id="FtK-Fp-29i"/>
+                                    <constraint firstItem="Q8b-rg-ty9" firstAttribute="top" secondItem="K0H-Sa-sRg" secondAttribute="top" id="H2w-Js-ckH"/>
+                                    <constraint firstItem="lwa-hZ-bUb" firstAttribute="centerX" secondItem="K0H-Sa-sRg" secondAttribute="centerX" id="gn4-bx-yAh"/>
+                                    <constraint firstItem="ydw-l1-d5M" firstAttribute="leading" secondItem="K0H-Sa-sRg" secondAttribute="leading" constant="24" id="o1V-qU-gOU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Myr-NA-Dfi" secondAttribute="trailing" constant="24" id="oIb-xe-xVg"/>
+                                    <constraint firstItem="Q8b-rg-ty9" firstAttribute="centerX" secondItem="K0H-Sa-sRg" secondAttribute="centerX" id="st6-K7-Rt0"/>
+                                    <constraint firstItem="Myr-NA-Dfi" firstAttribute="top" secondItem="ydw-l1-d5M" secondAttribute="bottom" constant="24.5" id="tdt-Bd-vkS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="K0H-Sa-sRg" firstAttribute="trailing" secondItem="05b-RP-UQ0" secondAttribute="trailing" id="9L0-u0-jOp"/>
+                            <constraint firstItem="K0H-Sa-sRg" firstAttribute="leading" secondItem="05b-RP-UQ0" secondAttribute="leading" id="NIr-yK-sOd"/>
+                            <constraint firstItem="K0H-Sa-sRg" firstAttribute="centerY" secondItem="ANz-JA-7iQ" secondAttribute="centerY" id="dun-1Y-57e"/>
                             <constraint firstItem="9yw-V8-Tef" firstAttribute="top" secondItem="ANz-JA-7iQ" secondAttribute="top" id="eTW-Ok-m0t"/>
                             <constraint firstItem="9yw-V8-Tef" firstAttribute="leading" secondItem="ANz-JA-7iQ" secondAttribute="leading" id="kcM-vp-vMq"/>
                             <constraint firstAttribute="trailing" secondItem="9yw-V8-Tef" secondAttribute="trailing" id="mx0-Ai-2oX"/>
@@ -78,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="05b-RP-UQ0"/>
                     </view>
                     <connections>
+                        <outlet property="emptyView" destination="K0H-Sa-sRg" id="KeZ-Q5-Hle"/>
                         <outlet property="tableView" destination="9yw-V8-Tef" id="qGH-8L-ee9"/>
                     </connections>
                 </viewController>
@@ -86,4 +154,7 @@
             <point key="canvasLocation" x="869.56521739130437" y="92.745535714285708"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendar_empty_image" width="130" height="96"/>
+    </resources>
 </document>

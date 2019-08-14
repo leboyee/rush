@@ -11,6 +11,7 @@ import UIKit
 extension CalendarViewController {
 
     private func restuctureEventGroup(events: [Event]) {
+        
         events.forEach { (event) in
             let dateString = event.date.toString(format: "yyyy-MM-dd")
             guard var group = groups.first(where: { $0.dateString == dateString}) else {
@@ -23,8 +24,9 @@ extension CalendarViewController {
                 groups[index] = group
             }
         }
-        child?.groups = groups
-        child?.tableView.reloadData()
+        /// load list of events in child view controller
+        child?.loadEvents(groups: groups)
+
     }
 }
 
