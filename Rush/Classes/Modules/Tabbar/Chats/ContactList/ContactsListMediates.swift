@@ -99,6 +99,7 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
         else {
             let controller = ChatRoomViewController()
             controller.isShowTempData = false
+            controller.isGroupChat = false
             navigationController?.pushViewController(controller, animated: true)
         }
 
