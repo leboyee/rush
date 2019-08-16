@@ -73,6 +73,13 @@ extension ClubDetailViewController {
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
         cell.setup(userList: [])
+        
+        cell.userSelected = { [weak self] (id, index) in
+            guard let self_ = self else { return }
+            if index != 0 {
+                self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+            }
+        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell,_ indexPath: IndexPath) {

@@ -44,7 +44,11 @@ extension EventTypeCell {
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {
-        self.cellSelected?(self.type, 0, indexPath.item)
+        if cellType == .clubUser {
+            userSelected?(0, indexPath.item)
+        } else {
+            cellSelected?(self.type, 0, indexPath.item)
+        }
     }
     
     func cellSize() -> CGSize {

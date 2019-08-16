@@ -772,14 +772,14 @@
             <objects>
                 <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-ny-c5L" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdy-yw-FIA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-Fn-OZe">
                                         <rect key="frame" x="16" y="16" width="382" height="32"/>
@@ -827,7 +827,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Yl-Xqs">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="796"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -1252,6 +1252,7 @@
                         <outlet property="tableView" destination="6WQ-b2-H8b" id="Q0w-ID-Iee"/>
                         <outlet property="topConstraintOfTableView" destination="imr-LU-Mgv" id="8mC-hz-8MY"/>
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" animates="NO" modalPresentationStyle="overFullScreen" id="LvJ-Dj-Yna"/>
+                        <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="90w-At-CBu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaL-DG-qyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1360,8 +1361,9 @@
         <image name="share_gray" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0IY-Pg-ID3"/>
-        <segue reference="2qn-kC-bGH"/>
-        <segue reference="bqe-q0-s4j"/>
+        <segue reference="LvJ-Dj-Yna"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="E7I-YA-fBT"/>
+        <segue reference="90w-At-CBu"/>
     </inferredMetricsTieBreakers>
 </document>

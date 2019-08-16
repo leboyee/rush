@@ -20,6 +20,7 @@ class EventTypeCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var cellSelected: ((_ type : EventCategoryType,_ id: Int,_ index: Int) -> Void)?
+    var userSelected: ((_ id: Int,_ index: Int) -> Void)?
     
     var type : EventCategoryType = .upcoming
     var cellType : CellType = .none
