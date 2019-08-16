@@ -142,6 +142,7 @@ struct Segues {
     static let disconnectInstagram                = "DisconnectInstagramSegue"
     static let logoutPopup                        = "LogoutPopupSegue"
 
+    static let profileFriendProfile               = "ProfileFriendProfileSegue"
 
 
 }

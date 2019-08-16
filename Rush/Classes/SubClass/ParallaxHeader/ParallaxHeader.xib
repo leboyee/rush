@@ -20,7 +20,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParallaxHeader" customModule="Rush" customModuleProvider="target">
             <connections>
+                <outlet property="cameraButton" destination="AKy-D4-vqR" id="4b9-c5-hNO"/>
+                <outlet property="editButton" destination="hGU-Vz-3Cp" id="QrH-4P-G5r"/>
+                <outlet property="infoIcon" destination="izS-tB-QBh" id="GcC-ga-Q4g"/>
                 <outlet property="nameLabel" destination="I0K-gM-rfV" id="CMc-V3-QOp"/>
+                <outlet property="profileImageView" destination="G5b-en-NIm" id="Qkh-kl-WUI"/>
                 <outlet property="universityLabel" destination="uxF-T4-ADW" id="GtM-hR-TVr"/>
             </connections>
         </placeholder>
@@ -30,6 +34,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5b-en-NIm">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-club" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-fQ-nSe">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamal Mittal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0K-gM-rfV">
@@ -47,21 +54,44 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info" translatesAutoresizingMaskIntoConstraints="NO" id="izS-tB-QBh">
                     <rect key="frame" x="362" y="245" width="28" height="30"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKy-D4-vqR">
+                    <rect key="frame" x="107.5" y="102" width="199" height="88"/>
+                    <state key="normal" image="ic_cameraWithText"/>
+                    <connections>
+                        <action selector="cameraButtonAction" destination="-1" eventType="touchUpInside" id="zXi-8D-Ytj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGU-Vz-3Cp">
+                    <rect key="frame" x="0.0" y="232.5" width="414" height="55.5"/>
+                    <connections>
+                        <action selector="editProfileButtonAction" destination="-1" eventType="touchUpInside" id="CuF-mC-ajS"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="G5b-en-NIm" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="1Ty-P4-NWc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="izS-tB-QBh" secondAttribute="trailing" constant="24" id="49E-ln-xtb"/>
+                <constraint firstItem="AKy-D4-vqR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="63j-is-EL2"/>
                 <constraint firstAttribute="bottom" secondItem="izS-tB-QBh" secondAttribute="bottom" constant="69" id="AtD-PX-nFK"/>
                 <constraint firstItem="I0K-gM-rfV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="BSm-Lw-QUV"/>
                 <constraint firstAttribute="bottom" secondItem="G5b-en-NIm" secondAttribute="bottom" id="DiE-2G-o2A"/>
+                <constraint firstItem="7Py-fQ-nSe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Le3-Rg-Ua5"/>
                 <constraint firstItem="G5b-en-NIm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Nao-jS-8KL"/>
+                <constraint firstItem="hGU-Vz-3Cp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OfQ-b7-dMb"/>
                 <constraint firstItem="uxF-T4-ADW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Pi3-Dg-Jme"/>
+                <constraint firstItem="7Py-fQ-nSe" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SDF-Sz-iAg"/>
                 <constraint firstAttribute="bottom" secondItem="uxF-T4-ADW" secondAttribute="bottom" constant="56" id="ce1-n3-h5t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I0K-gM-rfV" secondAttribute="trailing" constant="24" id="cia-3d-IWb"/>
                 <constraint firstItem="G5b-en-NIm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fU0-gE-NmA"/>
+                <constraint firstItem="hGU-Vz-3Cp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="hdO-uv-oMD"/>
+                <constraint firstItem="7Py-fQ-nSe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="k8X-Ag-hjm"/>
+                <constraint firstItem="hGU-Vz-3Cp" firstAttribute="top" secondItem="I0K-gM-rfV" secondAttribute="top" id="lcu-KH-NNj"/>
+                <constraint firstItem="AKy-D4-vqR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="102" id="pde-Su-YqF"/>
+                <constraint firstAttribute="bottom" secondItem="7Py-fQ-nSe" secondAttribute="bottom" id="rKr-0a-vRM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uxF-T4-ADW" secondAttribute="trailing" constant="24" id="uLg-i5-Smi"/>
                 <constraint firstItem="uxF-T4-ADW" firstAttribute="top" secondItem="I0K-gM-rfV" secondAttribute="bottom" constant="6" id="x5l-9h-Pdx"/>
+                <constraint firstItem="uxF-T4-ADW" firstAttribute="bottom" secondItem="hGU-Vz-3Cp" secondAttribute="bottom" id="ztJ-qL-O6s"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -69,6 +99,8 @@
         </view>
     </objects>
     <resources>
+        <image name="hover-club" width="375" height="390"/>
+        <image name="ic_cameraWithText" width="199" height="88"/>
         <image name="ic_info" width="28" height="30"/>
     </resources>
 </document>

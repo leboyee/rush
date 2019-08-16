@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import SDWebImage
+
+protocol ParallaxHeaderDelegate: class {
+    func editProfileEvent()
+}
 
 class ParallaxHeader: UIView {
 
     @IBOutlet weak var nameLabel : UILabel!
     @IBOutlet weak var universityLabel : UILabel!
+    @IBOutlet weak var profileImageView : UIImageView!
+    @IBOutlet weak var editButton : UIButton!
+    @IBOutlet weak var cameraButton : UIButton!
+    @IBOutlet weak var infoIcon : UIImageView!
+
+    weak var delegate: ParallaxHeaderDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,6 +54,41 @@ extension ParallaxHeader {
         let leading = view.leadingAnchor.constraint(equalTo: self.leadingAnchor)
         let trailing = view.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         addConstraints([top, bottom, trailing, leading])
+    }
+    
+}
+
+//MARK: - Other
+extension ParallaxHeader {
+
+    func enableEdit(isEnabled: Bool) {
+        infoIcon.isHidden = !isEnabled
+        editButton.isHidden = !isEnabled
+    }
+    
+    func set(name: String) {
+        nameLabel.text = name
+    }
+    
+    func set(university: String) {
+        universityLabel.text = university
+    }
+    
+    func set(url: URL?) {
+        profileImageView.sd_setImage(with: url, placeholderImage: nil)
+    }
+    
+}
+
+//MARK:- Actions
+extension ParallaxHeader {
+
+    @IBAction func editProfileButtonAction() {
+        delegate?.editProfileEvent()
+    }
+    
+    @IBAction func cameraButtonAction() {
+        Utils.notReadyAlert()
     }
     
 }

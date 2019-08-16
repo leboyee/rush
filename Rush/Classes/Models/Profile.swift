@@ -15,7 +15,9 @@ class Profile: NSObject {
     var phone               : String = ""
     var socialId            : String = ""
     var email                : String = ""
-    var name                : String = ""
+    var name                : String {
+        return firstName + " " + lastName
+    }
     var firstName                : String = ""
     var lastName                : String = ""
     var password            : String = ""
@@ -59,10 +61,6 @@ class Profile: NSObject {
     func setData(data : [String : Any]) {
         if let value = data["user_id"] as? Int64 {
             userId = String(value)
-        }
-
-        if let value = data["name"] as? String {
-            name = value
         }
 
         if let value = data["social_id"] as? String {

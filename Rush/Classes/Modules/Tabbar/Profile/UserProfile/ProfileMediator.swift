@@ -25,6 +25,11 @@ extension ProfileViewController {
         tableView.reloadData()
     }
     
+    func setupHeader() {
+        /// setup header
+        header.delegate = self
+    }
+    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -92,3 +97,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension ProfileViewController: ParallaxHeaderDelegate {
+    func editProfileEvent() {
+        showEditProfile()
+    }
+}

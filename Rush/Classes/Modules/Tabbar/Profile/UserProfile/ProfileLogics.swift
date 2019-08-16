@@ -65,6 +65,17 @@ extension ProfileViewController {
         default:
             break
         }
+        
+        cell.cellSelected = { [weak self] (_, _, index) in
+            if indexPath.section == 0 {
+                self?.showAllImages(with: index)
+            } else if indexPath.section == 1 {
+                if let friends = self?.profileDetail.friends {
+                    let friend = friends[index] as Friend
+                    self?.showFriend(user: friend)
+                }
+            }
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -78,12 +89,19 @@ extension ProfileViewController {
             header.setup(title: Text.interests)
         case 3:
             header.setup(title: Text.notifications)
+            header.setup(isDetailArrowHide: true)
         default:
             header.setup(title: "")
         }
         
-        header.detailButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        header.detailButtonClickEvent = { [weak self] () in
+            if section == 0 {
+                self?.showAllImages(with: 0)
+            } else if section == 1 {
+                self?.showAllFriends()
+            } else if section == 2 {
+                self?.showAllInterests()
+            }
         }
     }
     
