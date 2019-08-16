@@ -19,6 +19,7 @@ class CalendarView: UIView {
 
     @IBOutlet weak var monthLabel : UILabel!
     @IBOutlet weak var collectionView : UICollectionView!
+    var isWeekStartFromMonday = true
 
     let bottomPadding: CGFloat = 10.0
     weak var delegate : CalendarViewDelegate!
@@ -166,6 +167,7 @@ extension CalendarView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CalendarMonthCell.self), for: indexPath) as! CalendarMonthCell
+        cell.isWeekStartFromMonday = isWeekStartFromMonday
         let date = minDateOfCalendar.plus(months: UInt(indexPath.row))
         cell.reloadMonthCalendar(date:date, selectedDate: selectedDate)
         cell.delegate = self
@@ -180,7 +182,19 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.size.width
         //Calculate Height
         let date = minDateOfCalendar.plus(months: UInt(self.currentIndex))
-        let count = (date.daysInMonth + date.weekday - 1)
+        
+        var weekday = Int(date.weekday - 1)
+        if isWeekStartFromMonday {
+            weekday -= 1
+            if weekday < 0 {
+                weekday += 7
+            }
+        }
+        
+        let count = (date.daysInMonth + UInt(weekday))
+       
+        //let count = (date.daysInMonth + (isWeekStartFromMonday ? date.weekday : (date.weekday - 1)))
+        
         var numberOfRows = count / 7
         if(count % 7 > 0) {
             numberOfRows += 1

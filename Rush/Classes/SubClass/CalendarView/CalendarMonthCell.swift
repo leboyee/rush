@@ -18,7 +18,8 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
 
     @IBOutlet weak var monthCollectionView : UICollectionView!
     weak var delegate : CalendarMonthCellDelegate!
-    
+    var isWeekStartFromMonday = false
+
     var dateList = [AnyObject]()
     var selectedDate : Date?
     override func awakeFromNib() {
@@ -93,7 +94,15 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     func getMonthDateList(date : Date)
     {
         self.dateList.removeAll()
-        let weekday = date.weekday
+        var weekday = date.weekday
+        /// Default Sunday is 1 and Saturday is 7 and Calendar week start from Sunday
+        /// But if Week start from Monday, we need to move 1 day before. So Monday is 1 and Sunday = 7
+        if isWeekStartFromMonday {
+           weekday -= 1
+           if weekday == 0 {
+              weekday = 7
+           }
+        }
         
         for _ in (1..<weekday).reversed()  {
             self.dateList.append(NSNull())
