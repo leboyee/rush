@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell: UICollectionViewCell {
 
@@ -26,6 +27,10 @@ extension UserCell {
     func setup(text: String) {
         titleLabel.textColor = text == Text.viewAll ? UIColor.lightGrayColor : isDarkModeOn ? UIColor.white : UIColor.bgBlack
         titleLabel.text = text
+    }
+    
+    func setup(url: URL?) {
+        imageView.sd_setImage(with: url, placeholderImage: nil)
     }
     
     func setup(image: String) {

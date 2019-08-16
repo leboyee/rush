@@ -11,8 +11,8 @@ import UIKit
 struct ProfileDetail {
     var profile: Profile?
     var images: [Image]?
-    var friends: [Any]?
-    var interests: [Any]?
+    var friends: [Friend]?
+    var interests: [Tag]?
     var notifications: [Any]?
 }
 
@@ -51,6 +51,31 @@ extension ProfileViewController {
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
      
+        //TODO: - Temp Data
+        profileDetail.interests = [Tag(id: 01, text: "Games"), Tag(id: 03, text: "Technologies"), Tag(id: 04, text: "VR"), Tag(id: 05, text: "Development"), Tag(id: 06, text: "Swift")]
+        
+        let f1 = Friend()
+        f1.firstName = "John"
+        f1.photo = Image(url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile1.jpg")
+        
+        let f2 = Friend()
+        f2.firstName = "Jame"
+        f2.photo = Image(url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile4.jpg")
+        
+        let f3 = Friend()
+        f3.firstName = "Elizabeth"
+        f3.photo = Image(url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile7.jpg")
+        
+        let f4 = Friend()
+        f4.firstName = "Sarah"
+        f4.photo = Image(url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile5.jpg")
+        
+        let f5 = Friend()
+        f5.firstName = "Karen"
+        f5.photo = Image(url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile3.jpg")
+        
+        profileDetail.friends = [f1, f2, f3, f4, f5]
+        
         setupTableView()
     }
     

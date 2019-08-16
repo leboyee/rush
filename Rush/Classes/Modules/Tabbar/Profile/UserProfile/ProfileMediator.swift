@@ -19,6 +19,7 @@ extension ProfileViewController {
         tableView.estimatedRowHeight = 150.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Cell.notification, bundle: nil), forCellReuseIdentifier: Cell.notification)
+        tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 50, right: 0)
         tableView.reloadData()
@@ -37,11 +38,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cellCount(section)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight(indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.notification, for: indexPath) as! NotificationCell
-        fillNotificationCell(cell, indexPath)
-        return cell
+        if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.notification, for: indexPath) as! NotificationCell
+            fillNotificationCell(cell, indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+            fillEventTypeCell(cell, indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,18 +86,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let y = headerFullHeight - (scrollView.contentOffset.y + headerFullHeight)
         let height = min(max(y, smallHeight), screenHeight)
         self.headerHeightConstraint.constant = height
-
-        /*
-        let height = headerSmallHeight + (AppDelegate.getInstance().window?.safeAreaInsets.top ?? 0)
-        if scrollView.contentOffset.y.isZero {
-            self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y)
-        } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= height {
-            self.headerHeightConstraint.constant -= scrollView.contentOffset.y/100
-            if self.headerHeightConstraint.constant < height {
-                self.headerHeightConstraint.constant = height
-            }
-        }
-        */
+        print(height)
+    
     }
     
 }

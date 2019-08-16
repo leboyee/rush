@@ -14,9 +14,16 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var eventImageView: UIImageView!
 
+    let  startSeparator = "⌠"
+    let  endSeparator = "⌡"
+    var ranges = [NSRange]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        eventImageView.layer.borderWidth = 3.0
+        eventImageView.layer.borderColor = UIColor.gray96.cgColor
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,5 +31,55 @@ class NotificationCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+}
+
+
+extension NotificationCell {
+    
+    func setup() {
+        let detailText = "⌠Marta Keller⌡ invites you to join ⌠VR Meetips⌡"
+        label.attributedText = getFormattedString(string: detailText)
+    }
+    
+}
+
+//MARK: - Private Functions
+extension NotificationCell {
+    private func getFormattedString(string: String) -> NSAttributedString {
+        ranges.removeAll()
+        let scanner = Scanner(string: string)
+        var strings = [String]()
+        
+        while !scanner.isAtEnd {
+            var text: NSString?
+            scanner.scanUpTo(startSeparator, into: nil)
+            scanner.scanUpTo(endSeparator, into: &text)
+            if let value = text {
+                var valueWithoutSeparator = value.replacingOccurrences(of: startSeparator, with: "")
+                valueWithoutSeparator = valueWithoutSeparator.replacingOccurrences(of: endSeparator, with: "")
+                strings.append(valueWithoutSeparator)
+            }
+        }
+        
+        var stringWithoutSeparator = string.replacingOccurrences(of: startSeparator, with: "")
+        stringWithoutSeparator = stringWithoutSeparator.replacingOccurrences(of: endSeparator, with: "")
+        
+        let pargraphStyle = NSMutableParagraphStyle()
+        pargraphStyle.lineSpacing = 1.29
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightBrown, NSAttributedString.Key.font: UIFont.Regular(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle,
+                          NSAttributedString.Key.kern: -0.41] as [NSAttributedString.Key : Any]
+        
+        let attstr = NSMutableAttributedString(string: stringWithoutSeparator, attributes: attributes)
+        let boldAttributes = [NSAttributedString.Key.font: UIFont.Medium(sz: 17.0)]
+        for text in strings {
+            if let range = (stringWithoutSeparator as NSString).range(of: text) as NSRange? {
+                attstr.setAttributes(boldAttributes, range: range)
+                ranges.append(range)
+            }
+        }
+        return attstr
+    }
+    
     
 }

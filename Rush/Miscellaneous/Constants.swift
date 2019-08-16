@@ -72,6 +72,7 @@ struct Cell {
     static let instagram            = "InstagramCell"
     static let checkMark            = "CheckMarkCell"
     static let notification         = "NotificationCell"
+    static let text                 = "TextCell"
 }
 
 struct ReusableView {

@@ -32,8 +32,8 @@ class Profile: NSObject {
     var gender: String = ""
     var relationShip: String = ""
     var homeTown: String = ""
-
     var photo               : Image?
+    var images: [Image]?
 
     /// Added by Kamal for Rush
     var isDarkMode: Bool = false

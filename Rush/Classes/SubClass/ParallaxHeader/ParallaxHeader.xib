@@ -44,10 +44,15 @@
                     <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info" translatesAutoresizingMaskIntoConstraints="NO" id="izS-tB-QBh">
+                    <rect key="frame" x="362" y="245" width="28" height="30"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="G5b-en-NIm" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="1Ty-P4-NWc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="izS-tB-QBh" secondAttribute="trailing" constant="24" id="49E-ln-xtb"/>
+                <constraint firstAttribute="bottom" secondItem="izS-tB-QBh" secondAttribute="bottom" constant="69" id="AtD-PX-nFK"/>
                 <constraint firstItem="I0K-gM-rfV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="BSm-Lw-QUV"/>
                 <constraint firstAttribute="bottom" secondItem="G5b-en-NIm" secondAttribute="bottom" id="DiE-2G-o2A"/>
                 <constraint firstItem="G5b-en-NIm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Nao-jS-8KL"/>
@@ -63,4 +68,7 @@
             <point key="canvasLocation" x="47.826086956521742" y="-154.01785714285714"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_info" width="28" height="30"/>
+    </resources>
 </document>

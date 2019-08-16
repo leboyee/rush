@@ -22,7 +22,6 @@ class Friend: Profile {
     var friendOtherUserId: String = "0"
     var friendStatus : Int = 0
     var friendType   : Int = 0
-    var images: [Image]?
     
     var matchId: Int64 = 0
     var matchStatus: Int64 = 0
