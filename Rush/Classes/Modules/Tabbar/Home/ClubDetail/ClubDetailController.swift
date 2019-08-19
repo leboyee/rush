@@ -18,7 +18,7 @@ class ClubDetailViewController: UIViewController {
     var peopleList = [String]()
     var clubPostList: [String] = ["1", "2"]
     
-    var clubImage : UIImage?
+    var clubImage : UIImage = #imageLiteral(resourceName: "bound-add-img")
     
     var isReadMore = false
     var joinedClub = false

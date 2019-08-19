@@ -505,6 +505,8 @@ extension ChatRoomViewController {
         timeLabel.textColor = UIColor.buttonDisableTextColor
         timeLabel.textAlignment = .center
         timeLabel.isUserInteractionEnabled = false
+        timeLabel.adjustsFontSizeToFitWidth = true
+        timeLabel.minimumScaleFactor = 0.2
         timeLabel.text = String(format: emptyMessageFriendTitle, self.userName)
         emptyMessageView.addSubview(timeLabel)
         view.addSubview(emptyMessageView)
