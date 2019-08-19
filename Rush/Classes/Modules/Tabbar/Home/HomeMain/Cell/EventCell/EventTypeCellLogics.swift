@@ -11,6 +11,9 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
+        if cellType == .interests || cellType == .friends {
+            return list?.count ?? 0
+        }
         return 10
     }
     
@@ -39,6 +42,21 @@ extension EventTypeCell {
         }
     }
     
+    func fillFriendCell(_ cell: UserCell,_ indexPath: IndexPath) {
+        if let friend = list?[indexPath.row] as? Friend {
+            cell.setup(text: friend.firstName)
+            cell.setup(url: friend.photo?.urlThumb)
+            cell.setup(isShowCount: false)
+        }
+    }
+    
+    
+    func fillInterestCell(_ cell: TextCell,_ indexPath: IndexPath) {
+        if let tag = list?[indexPath.row] as? Tag {
+            cell.setup(text: tag.text)
+        }
+    }
+    
     func fillImagesCell(_ cell: ProfileImageCell,_ indexPath: IndexPath) {
         
     }
@@ -51,10 +69,19 @@ extension EventTypeCell {
         }
     }
     
-    func cellSize() -> CGSize {
-        if cellType == .event {
+    func cellSize(indexPath: IndexPath) -> CGSize {
+        if cellType == .interests {
+            if let tag = list?[indexPath.row] as? Tag {
+                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.Semibold(sz: 13.0)))
+                //Add Padding
+                textWidth += (padding*2)
+                let height: CGFloat = 28.0
+                return CGSize(width: textWidth, height: height)
+            }
+            return CGSize.zero
+        } else if cellType == .event {
             return CGSize(width: 224, height: 157)
-        } else if cellType == .clubUser {
+        } else if cellType == .clubUser || cellType == .friends {
             return CGSize(width: 72, height: 88)
         } else {
             return CGSize(width: 96, height: 112)

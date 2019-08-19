@@ -71,7 +71,8 @@ struct Cell {
     static let switchCell           = "SwitchCell"
     static let instagram            = "InstagramCell"
     static let checkMark            = "CheckMarkCell"
-
+    static let notification         = "NotificationCell"
+    static let text                 = "TextCell"
 }
 
 struct ReusableView {
@@ -141,6 +142,7 @@ struct Segues {
     static let disconnectInstagram                = "DisconnectInstagramSegue"
     static let logoutPopup                        = "LogoutPopupSegue"
 
+    static let profileFriendProfile               = "ProfileFriendProfileSegue"
 
 
 }
@@ -254,6 +256,7 @@ public struct Text {
     static let messagesFrom              = "Messages from"
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
+    static let interests                 = "Interests"
 
     
 }

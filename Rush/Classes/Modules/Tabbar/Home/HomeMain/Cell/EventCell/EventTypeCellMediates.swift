@@ -22,13 +22,21 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if cellType == .event {
+        if cellType == .interests {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.text, for: indexPath) as! TextCell
+            fillInterestCell(cell, indexPath)
+            return cell
+        } else if cellType == .event {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as! EventCell
             fillEventCell(cell, indexPath)
             return cell
-        } else if cellType == .clubUser {
+        } else if cellType == .clubUser || cellType == .friends {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as! UserCell
-            fillUserCell(cell, indexPath)
+            if cellType == .clubUser {
+                fillUserCell(cell, indexPath)
+            } else if cellType == .friends {
+                fillFriendCell(cell, indexPath)
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.profileImage, for: indexPath) as! ProfileImageCell
@@ -42,10 +50,13 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return cellSize()
+        return cellSize(indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if cellType == .interests {
+            return UIEdgeInsets(top: 0, left: 24, bottom: 16, right: 8)
+        }
         return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 8)
     }
 }

@@ -13,17 +13,23 @@ enum CellType {
     case event
     case clubUser
     case profileImage
+    case friends
+    case interests
+
 }
 
 class EventTypeCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var separator: UIView!
+
     var cellSelected: ((_ type : EventCategoryType,_ id: Int,_ index: Int) -> Void)?
     var userSelected: ((_ id: Int,_ index: Int) -> Void)?
     
     var type : EventCategoryType = .upcoming
     var cellType : CellType = .none
+    var list: [Any]?
+    let padding: CGFloat = 16.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +40,8 @@ class EventTypeCell: UITableViewCell {
         collectionView.register(UINib(nibName: Cell.event, bundle: nil), forCellWithReuseIdentifier: Cell.event)
         collectionView.register(UINib(nibName: Cell.user, bundle: nil), forCellWithReuseIdentifier: Cell.user)
         collectionView.register(UINib(nibName: Cell.profileImage, bundle: nil), forCellWithReuseIdentifier: Cell.profileImage)
+        collectionView.register(UINib(nibName: Cell.text, bundle: nil), forCellWithReuseIdentifier: Cell.text)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -52,8 +60,21 @@ class EventTypeCell: UITableViewCell {
         cellType = .clubUser
     }
     
+    func setup(friends: [Friend]) {
+        cellType = .friends
+        list = friends
+    }
+    
+    func setup(interests: [Tag]) {
+        cellType = .interests
+        list = interests
+    }
+    
     func setup(imagesList:[UIImage]) {
         cellType = .profileImage
     }
     
+    func setup(isSeparatorHide: Bool) {
+        separator.isHidden = isSeparatorHide
+    }
 }

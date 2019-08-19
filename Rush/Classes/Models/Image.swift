@@ -40,6 +40,13 @@ class Image: NSObject {
         super.init()
     }
     
+    // TODO: - Development Function
+    init(url: String) {
+        super.init()
+        main = url
+        thumb = url
+    }
+    
     func setData(data : [String : Any]) {
         if let values = data[Keys.main] as? [String: Any], let url = values[Keys.url] as? String {
             main = url
