@@ -47,7 +47,7 @@ class Image: NSObject {
         thumb = url
     }
     
-    func setData(data : [String : Any]) {
+    func setData(data: [String: Any]) {
         if let values = data[Keys.main] as? [String: Any], let url = values[Keys.url] as? String {
             main = url
         }
@@ -57,14 +57,11 @@ class Image: NSObject {
         }
     }
     
-    func setData(jsonString : String) {
+    func setData(jsonString: String) {
         if let data = jsonString.data(using: .utf8) {
             do {
-                if let object = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [[String : Any]]
-                {
-                    if let first = object.first {
-                         setData(data: first)
-                    }
+                if let object = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String : Any] {
+                    setData(data: object)
                 } else {
                     print("Error in json : " + jsonString)
                 }
