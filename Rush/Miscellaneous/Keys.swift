@@ -62,6 +62,9 @@ struct Keys {
     static let u_who_can_invite   = "u_who_can_invite"
     static let u_is_dark_mode     = "u_is_dark_mode"
     
+    static let pageNo             = "pageNo"
+    static let search             = "search"
+
 }
 
 //MARK: - API's Output Keys

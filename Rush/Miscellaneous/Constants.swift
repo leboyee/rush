@@ -143,7 +143,7 @@ struct Segues {
     static let logoutPopup                        = "LogoutPopupSegue"
 
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
-
+    static let chatContactListSegue               = "ChatContactListSegue"
 
 }
 
