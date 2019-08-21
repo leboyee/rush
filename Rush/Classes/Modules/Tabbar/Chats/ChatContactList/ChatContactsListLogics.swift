@@ -26,6 +26,18 @@ extension ChatContactsListViewController {
         cell.setup(title: user?.name ?? "")
     }
     
+    func cellSelected(_ indexPath: IndexPath) {
+        let alpha = alphabet[indexPath.section]
+        let users = friendsList[alpha.lowercased()] as? [Profile]
+        let user = users?[indexPath.row]
+        let controller = ChatRoomViewController()
+        controller.isShowTempData = false
+        controller.friendProfile = user
+        controller.userName = user?.name ?? ""
+        controller.isGroupChat = false
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     func loadMoreCell(_ indexPath: IndexPath) {
         if indexPath.row == (friendsList.count - 2) && isNextPageExist {
             getFriendListAPI()
