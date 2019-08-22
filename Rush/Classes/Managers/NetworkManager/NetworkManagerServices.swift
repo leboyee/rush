@@ -81,4 +81,7 @@ extension NetworkManager {
         requestUploadImage(path: "club", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
    
+    func getClubList(sortBy: String, params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "/club/\(sortBy)/list", params: params, resultHandler: resultHandler)
+    }
 }

@@ -93,3 +93,26 @@ extension HomeViewController {
         }
     }
 }
+
+//MARK: - Services
+extension HomeViewController {
+    func getMyClubListAPI(sortBy: String) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
+                     Keys.search: searchText,
+                     Keys.sort_by: sortBy,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let _ = self else { return }
+            if data != nil {
+                
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+}
