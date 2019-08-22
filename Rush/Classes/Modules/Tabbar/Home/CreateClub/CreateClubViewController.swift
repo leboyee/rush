@@ -18,6 +18,9 @@ class CreateClubViewController: UIViewController {
     var nameClub = ""
     var clubDescription = ""
     var clubImage : UIImage?
+    var isCreateGroupChat = true
+    
+    var selectedContactList = [Contact]()
     
     var cancelBtn : UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
@@ -32,7 +35,7 @@ class CreateClubViewController: UIViewController {
     }
     
     var interestList = [String]()
-    var peopleList = [String]()
+    var peopleList = [Contact]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +96,7 @@ extension CreateClubViewController {
     }
     
     @objc func saveButtonAction() {
-        performSegue(withIdentifier: Segues.myClub, sender: nil)
+        createClubAPI()
     }
     
     @IBAction func addImageButtonAction() {
@@ -112,9 +115,13 @@ extension CreateClubViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Segues.myClub {
-            if let vc = segue.destination as? MyClubViewController {
-                vc.clubImage = clubImage
-            }
+            guard let vc = segue.destination as? MyClubViewController else { return }
+            vc.clubImage = clubImage
+        } else if segue.identifier == Segues.contactListSegue {
+            guard let vc = segue.destination as? ContactsListViewController else { return }
+            vc.isFromRegister = true
+            vc.delegate = self
+            vc.selectedItem = peopleList
         }
     }
 }

@@ -385,6 +385,7 @@
 		79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A522CB5D69003FC33E /* SearchClubViewController.swift */; };
 		79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377AA22CB6297003FC33E /* SearchClubCell.swift */; };
 		79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F377AB22CB6297003FC33E /* SearchClubCell.xib */; };
+		79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA26F4230EC5AF0007F0ED /* HomeServices.swift */; };
 		8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13122FADEA30055C65F /* CalendarViewController.swift */; };
 		8A04B13422FADEC50055C65F /* CalendarEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */; };
 		8A04B13622FADF2D0055C65F /* CalendarLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13522FADF2D0055C65F /* CalendarLogics.swift */; };
@@ -831,6 +832,7 @@
 		79F377A522CB5D69003FC33E /* SearchClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubViewController.swift; sourceTree = "<group>"; };
 		79F377AA22CB6297003FC33E /* SearchClubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubCell.swift; sourceTree = "<group>"; };
 		79F377AB22CB6297003FC33E /* SearchClubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchClubCell.xib; sourceTree = "<group>"; };
+		79FA26F4230EC5AF0007F0ED /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		8A04B13122FADEA30055C65F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListViewController.swift; sourceTree = "<group>"; };
 		8A04B13522FADF2D0055C65F /* CalendarLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLogics.swift; sourceTree = "<group>"; };
@@ -1379,6 +1381,7 @@
 				1AB0C15C22C120D8000D016E /* AuthorizationService.swift */,
 				1AB0C15F22C1247F000D016E /* ServiceManager.swift */,
 				7905CDBD230D63120011C83B /* ChatServices.swift */,
+				79FA26F4230EC5AF0007F0ED /* HomeServices.swift */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -2972,6 +2975,7 @@
 				1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */,
 				793BE66E22E88207005EF72D /* TextMessageSizeCalculator.swift in Sources */,
 				79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */,
+				79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */,
 				7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */,
 				C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */,
 				793BE67B22E88207005EF72D /* NSConstraintLayoutSet.swift in Sources */,

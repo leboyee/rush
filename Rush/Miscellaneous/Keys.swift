@@ -65,6 +65,12 @@ struct Keys {
     static let pageNo             = "pageNo"
     static let search             = "search"
 
+    static let club_name = "club_name"
+    static let club_desc = "club_desc"
+    static let club_interests = "club_interests"
+    static let club_invited_user_ids = "club_invited_user_ids"
+    static let club_is_chat_group = "club_is_chat_group"
+    static let club_photo = "club_photo"
 }
 
 //MARK: - API's Output Keys

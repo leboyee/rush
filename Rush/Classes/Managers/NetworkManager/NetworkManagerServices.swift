@@ -76,5 +76,9 @@ extension NetworkManager {
     func getFriendList(params : [String : Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "friend", params: params, resultHandler: resultHandler)
     }
+    
+    func createClub(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestUploadImage(path: "club", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
    
 }
