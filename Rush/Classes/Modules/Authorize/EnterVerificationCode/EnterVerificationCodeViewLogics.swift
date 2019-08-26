@@ -20,12 +20,12 @@ extension EnterVerificationCodeViewController {
         for char in code {
             if char == "1" {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
-                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 43.5 : 50.5, NSAttributedString.Key.font : UIFont.DisplayBold(sz: isIPhone5 ? 25 : 30), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
+                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 43.5 : 50.5, NSAttributedString.Key.font : UIFont.displayBold(sz: isIPhone5 ? 25 : 30), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
                 mainstring.append(attributedString)
             }
             else {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
-                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 40 : 47, NSAttributedString.Key.font : UIFont.DisplayBold(sz: isIPhone5 ? 23 : 28), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
+                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 40 : 47, NSAttributedString.Key.font : UIFont.displayBold(sz: isIPhone5 ? 23 : 28), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
                 mainstring.append(attributedString)
             }
         }

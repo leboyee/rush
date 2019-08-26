@@ -27,7 +27,7 @@ extension PostViewController {
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
         
         cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
-        cell.setup(font: UIFont.Regular(sz: 17))
+        cell.setup(font: UIFont.regular(sz: 17))
     }
     
     // Image cell (section 2)

@@ -69,7 +69,7 @@ import UIKit
     }
     
     private func placeholderFontFromFont(_ font: UIFont) -> UIFont! {
-        let smallerFont = (isFirstResponder || text!.isNotEmpty) ? UIFont.Semibold(sz: 13.0) : UIFont.Regular(sz: 16.0)
+        let smallerFont = (isFirstResponder || text!.isNotEmpty) ? UIFont.semibold(sz: 13.0) : UIFont.regular(sz: 16.0)
         return smallerFont
     }
     

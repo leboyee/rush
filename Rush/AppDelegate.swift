@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pargraphStyle.alignment = .center
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor.bgBlack
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
         navigationBarAppearance.isTranslucent = true
         navigationBarAppearance.shadowImage = UIImage()
         navigationBarAppearance.backgroundColor = UIColor.bgBlack
@@ -84,12 +84,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1 * screenWidth, vertical: 0), for: .default)
     }
     
-    //MARK: - AppDelegate Instance
-    class func getInstance() -> AppDelegate {
-        return UIApplication.shared.delegate! as! AppDelegate
+    // MARK: - AppDelegate Instance
+    class var shared: AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
     }
     
-    //MARK: - Force logout
+    // MARK: - Force logout
     @objc func forceLogout() {
         DispatchQueue.main.async {
             Authorization.shared.signOut()

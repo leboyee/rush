@@ -6,23 +6,23 @@
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
-
 import UIKit
 import SVProgressHUD
 import AVKit
 import Photos
 
-
 class Utils: NSObject {
     static let shared = Utils()
 }
 
-
-//MARK: - Alerts
+// MARK: - Alerts
 extension Utils {
     
     class func notReadyAlert() {
-        let alert = UIAlertController(title: "In development!", message: "This component isn't ready", preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: "In development!",
+            message: "This component isn't ready",
+            preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         action.setValue(UIColor.black, forKey: "titleTextColor")
         alert.addAction(action)
@@ -39,7 +39,15 @@ extension Utils {
         }
     }
     
-    class func alert(message: String? = nil, title: String? = nil, titleImage : UIImage? = nil, buttons : [String] , cancel : String? = nil, destructive : String? = nil, type : UIAlertController.Style = .alert, handler :@escaping (Int)->()) {
+    class func alert(
+        message: String? = nil,
+        title: String? = nil,
+        titleImage: UIImage? = nil,
+        buttons: [String],
+        cancel: String? = nil,
+        destructive: String? = nil,
+        type: UIAlertController.Style = .alert,
+        handler: @escaping (Int) -> Void) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: type)
             //Set Image with Title
@@ -48,7 +56,13 @@ extension Utils {
                 let imageAttachment =  NSTextAttachment()
                 imageAttachment.image = titleImage
                 let imageOffsetY: CGFloat = -15.0
-                imageAttachment.bounds = CGRect(x: 0, y: imageOffsetY, width: imageAttachment.image!.size.width, height: imageAttachment.image!.size.height)
+                imageAttachment.bounds = CGRect(
+                    x: 0,
+                    y: imageOffsetY,
+                    width: imageAttachment.image!.size.width,
+                    height: imageAttachment.image!.size.height
+                )
+                
                 let attachmentString = NSAttributedString(attachment: imageAttachment)
                 
                 let completeText = NSMutableAttributedString(string: "")
@@ -59,7 +73,14 @@ extension Utils {
                 paragraphStyle.lineSpacing = 0.7
                 paragraphStyle.alignment = .center
                 paragraphStyle.lineHeightMultiple = 1.4
-                let titleImage = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0), NSAttributedString.Key.paragraphStyle : paragraphStyle])
+                let titleImage = NSMutableAttributedString(
+                    string: text,
+                    attributes: [
+                        NSAttributedString.Key.foregroundColor: UIColor.black,
+                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0),
+                        NSAttributedString.Key.paragraphStyle: paragraphStyle
+                    ]
+                )
                 completeText.append(titleImage)
                 alert.setValue(completeText, forKey: "attributedTitle")
             }
@@ -98,7 +119,7 @@ extension Utils {
     }
 }
 
-//MARK: -  CAMERA
+// MARK: - CAMERA
 extension Utils {
     enum VideoAuthorizationStatus {
         case justDenied
@@ -112,7 +133,9 @@ extension Utils {
         self.authorize(mediaType: AVMediaType.video, completion: completion)
     }
     
-    private class func authorize(mediaType: AVMediaType, completion: ((VideoAuthorizationStatus) -> Void)?) {
+    private class func authorize(
+        mediaType: AVMediaType,
+        completion: ((VideoAuthorizationStatus) -> Void)?) {
         let status = AVCaptureDevice.authorizationStatus(for: mediaType)
         switch status {
         case .authorized:
@@ -124,18 +147,19 @@ extension Utils {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: mediaType, completionHandler: { (granted) in
                 DispatchQueue.main.async {
-                    if(granted) {
+                    if granted {
                         completion?(.justAuthorized)
-                    }
-                    else {
+                    } else {
                         completion?(.justDenied)
                     }
                 }
             })
+        @unknown default:
+            print("")
         }
     }
 }
-//MARK: -  PHOTO LIBRARY
+// MARK: - PHOTO LIBRARY
 extension  Utils {
     
     enum PhotoLibraryAuthorizationStatus {
@@ -162,34 +186,34 @@ extension  Utils {
         case .notDetermined:
             // Access has not been determined.
             PHPhotoLibrary.requestAuthorization({ (newStatus) in
-                if (newStatus == PHAuthorizationStatus.authorized) {
-                    //self.openCameraOrLibrary(type: .photoLibrary)
+                if newStatus == PHAuthorizationStatus.authorized {
                     completion?(.justAuthorized)
-                }
-                else {
+                } else {
                     completion?(.justDenied)
                 }
             })
+        @unknown default:
+            print("")
         }
     }
     
     class func alertCameraAccessNeeded() {
         let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
-        
         let alert = UIAlertController(
             title: "Camera Access",
             message: "Camera access is required to make full use of this app.",
             preferredStyle: UIAlertController.Style.alert
         )
-        
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
+        alert.addAction(
+            UIAlertAction(
+                title: "Settings",
+                style: .cancel,
+                handler: { (_) -> Void in
             UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
         }))
-        
         alert.show()
     }
-    
     
     class func photoLibraryPermissionAlert() {
         let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
@@ -201,17 +225,18 @@ extension  Utils {
         )
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: { (alert) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+        alert.addAction(
+            UIAlertAction(
+                title: "Settings",
+                style: .cancel,
+                handler: { (_) -> Void in
+                  UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
         }))
-        
         alert.show()
     }
-    
-    
 }
 
-//MARK: - UserDefault Functions
+// MARK: - UserDefault Functions
 extension Utils {
     class func saveDataToUserDefault(_ data : Any, _ key : String) {
         let archived = NSKeyedArchiver.archivedData(withRootObject: data)
@@ -220,10 +245,10 @@ extension Utils {
     }
     
     class func getDataFromUserDefault(_ key : String) -> Any? {
-        guard let archived =  UserDefaults.standard.object(forKey: key) else {
+        guard let archived =  UserDefaults.standard.object(forKey: key) as? Data else {
             return nil
         }
-        return NSKeyedUnarchiver.unarchiveObject(with: archived as! Data);
+        return NSKeyedUnarchiver.unarchiveObject(with: archived)
     }
     
     class func removeDataFromUserDefault(_ key : String) {
@@ -233,7 +258,7 @@ extension Utils {
     
 }
 
-//MARK: - Spinner
+// MARK: - Spinner
 extension Utils {
     class func showSpinner() {
         DispatchQueue.main.async {
@@ -300,7 +325,7 @@ extension Utils {
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 48, height: 30))
         label.text = title
-        label.font = UIFont.DisplayBold(sz: 24)
+        label.font = UIFont.displayBold(sz: 24)
         label.textColor = textColor
         customView.addSubview(label)
         return customView
@@ -308,8 +333,8 @@ extension Utils {
     
     class func setAttributedText(_ attriBute1: String,_ attriBute2: String,_ size1: CGFloat,_ size2: CGFloat) -> NSMutableAttributedString {
         let mainString = NSMutableAttributedString()
-        let attributedString1 = NSAttributedString(string: attriBute1, attributes: [NSAttributedString.Key.foregroundColor : UIColor.brown24, NSAttributedString.Key.font : UIFont.Regular(sz: size1)])
-        let attributedString2 = NSAttributedString(string: attriBute2, attributes: [NSAttributedString.Key.foregroundColor : UIColor.bgBlack, NSAttributedString.Key.font : UIFont.Regular(sz: size2)])
+        let attributedString1 = NSAttributedString(string: attriBute1, attributes: [NSAttributedString.Key.foregroundColor : UIColor.brown24, NSAttributedString.Key.font : UIFont.regular(sz: size1)])
+        let attributedString2 = NSAttributedString(string: attriBute2, attributes: [NSAttributedString.Key.foregroundColor : UIColor.bgBlack, NSAttributedString.Key.font : UIFont.regular(sz: size2)])
         mainString.append(attributedString1)
         mainString.append(attributedString2)
         return mainString

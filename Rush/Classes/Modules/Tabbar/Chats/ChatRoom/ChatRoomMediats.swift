@@ -375,7 +375,7 @@ extension ChatRoomViewController: MessagesDataSource {
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if isTimeLabelVisible(at: indexPath) {
-            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.Semibold(sz: 13), NSAttributedString.Key.foregroundColor: UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 0.32)])
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.semibold(sz: 13), NSAttributedString.Key.foregroundColor: UIColor(red: 0.13, green: 0.12, blue: 0.18, alpha: 0.32)])
         }
         return nil
     }
@@ -395,7 +395,7 @@ extension ChatRoomViewController: MessagesDataSource {
             let lastRowIndex = messagesCollectionView.numberOfItems(inSection: lastSection) - 1
             
             if indexPath.section == lastSection && indexPath.row == lastRowIndex {
-                return NSAttributedString(string: "" /*"Sent"*/, attributes: [NSAttributedString.Key.font: UIFont.Regular(sz: 12), NSAttributedString.Key.foregroundColor: UIColor.gray])
+                return NSAttributedString(string: "" /*"Sent"*/, attributes: [NSAttributedString.Key.font: UIFont.regular(sz: 12), NSAttributedString.Key.foregroundColor: UIColor.gray])
             } else {
                 return nil
             }

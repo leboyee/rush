@@ -40,7 +40,7 @@ extension ClassesHeader {
         titleLabelHightConstraint.constant = 24
         detailsLabel.isHidden = false
         detailsLabel.text = detailsLableText
-        titleLabel.font = UIFont.Semibold(sz: 14)
+        titleLabel.font = UIFont.semibold(sz: 14)
     }
     
     

@@ -47,8 +47,8 @@ class UserInfoViewController: CustomViewController {
     
     override func viewWillLayoutSubviews() {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
-            titleLabelOne.font = UIFont.Bold(sz: 24)
-            titleLableTwo.font = UIFont.Bold(sz: 24)
+            titleLabelOne.font = UIFont.bold(sz: 24)
+            titleLableTwo.font = UIFont.bold(sz: 24)
         }
     }
     

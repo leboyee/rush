@@ -795,7 +795,7 @@ private extension TTGSnackbar {
         messageLabel.accessibilityIdentifier = "messageLabel"
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.textColor = UIColor.white
-        messageLabel.font = UIFont.Regular(sz: 13)
+        messageLabel.font = UIFont.regular(sz: 13)
         messageLabel.backgroundColor = UIColor.clear
         messageLabel.lineBreakMode = .byTruncatingTail
         messageLabel.numberOfLines = 0;
@@ -808,7 +808,7 @@ private extension TTGSnackbar {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.backgroundColor = UIColor.clear
         actionButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-        actionButton.titleLabel?.font = UIFont.Semibold(sz: 13)
+        actionButton.titleLabel?.font = UIFont.semibold(sz: 13)
         actionButton.titleLabel?.adjustsFontSizeToFitWidth = true
         actionButton.titleLabel?.numberOfLines = actionTextNumberOfLines
         actionButton.setTitle(actionText, for: UIControl.State())
@@ -821,7 +821,7 @@ private extension TTGSnackbar {
         secondActionButton.translatesAutoresizingMaskIntoConstraints = false
         secondActionButton.backgroundColor = UIColor.clear
         secondActionButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-        secondActionButton.titleLabel?.font = UIFont.Semibold(sz: 13)
+        secondActionButton.titleLabel?.font = UIFont.semibold(sz: 13)
         secondActionButton.titleLabel?.adjustsFontSizeToFitWidth = true
         secondActionButton.titleLabel?.numberOfLines = actionTextNumberOfLines
         secondActionButton.setTitle(secondActionText, for: UIControl.State())

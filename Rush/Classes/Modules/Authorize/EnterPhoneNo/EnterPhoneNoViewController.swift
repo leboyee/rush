@@ -44,7 +44,7 @@ class EnterPhoneNoViewController: CustomViewController {
     
     override func viewWillLayoutSubviews() {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
-            placeHolderTextField.font = UIFont.DisplayBold(sz: 22)
+            placeHolderTextField.font = UIFont.displayBold(sz: 22)
         }
     }
     

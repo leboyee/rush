@@ -24,7 +24,7 @@ extension ContactsListViewController {
         let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
         let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 72, height: 30))
         label.text = isFromRegister == true ? Text.inviteFromContact : "Search people"
-        label.font = UIFont.DisplayBold(sz: 24)
+        label.font = UIFont.displayBold(sz: 24)
         label.textColor = UIColor.navBarTitleWhite32
         customView.addSubview(label)
         navigationItem.titleView = customView
@@ -68,7 +68,7 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
         let key = items[section].key
         label.text = key//alphabet[section]
         label.textColor = UIColor.buttonDisableTextColor
-        label.font = UIFont.Semibold(sz: 13)
+        label.font = UIFont.semibold(sz: 13)
         header.addSubview(label)
         return header
     }

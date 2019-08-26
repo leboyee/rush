@@ -41,7 +41,7 @@ extension SettingsViewController {
         
         let button = UIButton()
         button.setTitle(Text.logout, for: .normal)
-        button.titleLabel?.font = UIFont.Semibold(sz: 13.0)
+        button.titleLabel?.font = UIFont.semibold(sz: 13.0)
         button.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
         let logout = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = logout

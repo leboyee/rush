@@ -47,7 +47,7 @@ extension CalendarViewController {
         dateButton = UIButton(frame: CGRect(x: 0, y: 2, width: titleWidth, height: 30.0))
         dateButton.setTitle(text, for: .normal)
         dateButton.setTitleColor(UIColor.white, for: .normal)
-        dateButton.titleLabel?.font = UIFont.DisplayBold(sz: 24)
+        dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left
         dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
         customTitleView.addSubview(dateButton)

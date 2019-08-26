@@ -52,7 +52,7 @@ extension TextViewCell {
     
     func setup(isEmpty: Bool) {
         if isEmpty {
-            placeHolderLabel.font = UIFont.Regular(sz: 17.0)
+            placeHolderLabel.font = UIFont.regular(sz: 17.0)
             topPlaceHolderConstraint.constant = 17
             topTextViewConstraint.constant = 15
             placeHolderLabel.isHidden = false
@@ -92,7 +92,7 @@ extension TextViewCell {
     
     func setup(placeholder: String) {
         
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.Regular(sz: 17.0)]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.regular(sz: 17.0)]
         let attstr = NSMutableAttributedString(string: placeholder, attributes: attributes)
         placeHolderLabel.attributedText = attstr
     }

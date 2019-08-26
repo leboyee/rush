@@ -144,6 +144,6 @@ extension EnterPasswordViewConteroller {
 extension EnterPasswordViewConteroller {
     
     func profileUpdateSuccess(){
-        AppDelegate.getInstance().setupStoryboard()
+        AppDelegate.shared?.setupStoryboard()
     }
 }

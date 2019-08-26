@@ -30,13 +30,13 @@ extension ChooseTagCell {
     func setup(tagList: [String]) {
         tagListView.removeAllTags()
         tagListView.addTags(tagList)
-        tagListView.textFont = UIFont.Semibold(sz: 13)
+        tagListView.textFont = UIFont.semibold(sz: 13)
     }
     
     func setupInterest(tagList: [String]) {
         tagListView.removeAllTags()
         tagListView.addTags(tagList)
-        tagListView.textFont = UIFont.Regular(sz: 17)
+        tagListView.textFont = UIFont.regular(sz: 17)
         tagListView.tagSelectedBackgroundColor = UIColor.black
         self.layoutIfNeeded()
 

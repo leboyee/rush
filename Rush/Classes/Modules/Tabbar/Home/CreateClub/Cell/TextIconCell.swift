@@ -55,7 +55,7 @@ extension TextIconCell {
     
     func setup(placeholder: String) {
         
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.Regular(sz: 17.0)]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.regular(sz: 17.0)]
         let attstr = NSMutableAttributedString(string: placeholder, attributes: attributes)
         textField.attributedPlaceholder = attstr
     }

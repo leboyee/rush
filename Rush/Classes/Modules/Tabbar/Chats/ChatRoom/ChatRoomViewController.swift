@@ -470,7 +470,7 @@ extension ChatRoomViewController {
         
         let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
         dateLabel.text = "Boris Marshal"
-        dateLabel.font = UIFont.DisplayBold(sz: 24)
+        dateLabel.font = UIFont.displayBold(sz: 24)
         dateLabel.textColor = UIColor.white
         
         // View calender button setup
@@ -478,7 +478,7 @@ extension ChatRoomViewController {
         viewCalender.setTitle("View profile", for: .normal)
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
-        viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         titleView.addSubview(dateLabel)
         titleView.addSubview(viewCalender)
         
@@ -500,7 +500,7 @@ extension ChatRoomViewController {
         
         timeLabel = UILabel()
         timeLabel = UILabel(frame: CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32 , height: 22))
-        timeLabel.font = UIFont.Semibold(sz: 17)
+        timeLabel.font = UIFont.semibold(sz: 17)
         timeLabel.numberOfLines = 0
         timeLabel.textColor = UIColor.buttonDisableTextColor
         timeLabel.textAlignment = .center

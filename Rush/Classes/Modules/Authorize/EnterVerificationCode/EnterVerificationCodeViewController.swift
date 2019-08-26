@@ -138,7 +138,7 @@ extension EnterVerificationCodeViewController {
     }
     
     func loginSuccess() {
-        AppDelegate.getInstance().setupStoryboard()
+        AppDelegate.shared?.setupStoryboard()
 
     }
     

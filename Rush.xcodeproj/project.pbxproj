@@ -381,6 +381,7 @@
 		79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A522CB5D69003FC33E /* SearchClubViewController.swift */; };
 		79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377AA22CB6297003FC33E /* SearchClubCell.swift */; };
 		79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F377AB22CB6297003FC33E /* SearchClubCell.xib */; };
+		8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1E22313EC4600258227 /* TableViewExtension.swift */; };
 		8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13122FADEA30055C65F /* CalendarViewController.swift */; };
 		8A04B13422FADEC50055C65F /* CalendarEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */; };
 		8A04B13622FADF2D0055C65F /* CalendarLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13522FADF2D0055C65F /* CalendarLogics.swift */; };
@@ -823,6 +824,7 @@
 		79F377A522CB5D69003FC33E /* SearchClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubViewController.swift; sourceTree = "<group>"; };
 		79F377AA22CB6297003FC33E /* SearchClubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubCell.swift; sourceTree = "<group>"; };
 		79F377AB22CB6297003FC33E /* SearchClubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchClubCell.xib; sourceTree = "<group>"; };
+		8A02C1E22313EC4600258227 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		8A04B13122FADEA30055C65F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListViewController.swift; sourceTree = "<group>"; };
 		8A04B13522FADF2D0055C65F /* CalendarLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLogics.swift; sourceTree = "<group>"; };
@@ -1312,6 +1314,7 @@
 				1AA97B86228979D100C4550C /* ImageResizerExtension.swift */,
 				1AA97B87228979D100C4550C /* StringExtension.swift */,
 				1AA97B88228979D100C4550C /* DateExtension.swift */,
+				8A02C1E22313EC4600258227 /* TableViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2825,6 +2828,7 @@
 				7991909F22C9D5A00044602E /* ClubDetailController.swift in Sources */,
 				793BE65C22E88207005EF72D /* MessagesViewController.swift in Sources */,
 				8A04B184230149470055C65F /* LogoutViewController.swift in Sources */,
+				8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,
 				1A2809EF22C6304000B4E764 /* Classes.swift in Sources */,

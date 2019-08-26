@@ -72,7 +72,7 @@ extension EventTypeCell {
     func cellSize(indexPath: IndexPath) -> CGSize {
         if cellType == .interests {
             if let tag = list?[indexPath.row] as? Tag {
-                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.Semibold(sz: 13.0)))
+                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
                 //Add Padding
                 textWidth += (padding*2)
                 let height: CGFloat = 28.0

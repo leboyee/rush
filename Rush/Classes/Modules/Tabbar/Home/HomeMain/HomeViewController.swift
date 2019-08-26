@@ -77,7 +77,7 @@ class HomeViewController: CustomViewController {
         let dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
         dateButton.setTitle(date, for: .normal)
         dateButton.setTitleColor(UIColor.white, for: .normal)
-        dateButton.titleLabel?.font = UIFont.DisplayBold(sz: 24)
+        dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left
         dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
         
@@ -87,7 +87,7 @@ class HomeViewController: CustomViewController {
         viewCalender.setTitle("View calendar", for: .normal)
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
-        viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         viewCalender.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
         navigationView.addSubview(dateButton)
         navigationView.addSubview(viewCalender)

@@ -79,36 +79,36 @@ open class EventMessageCell: MessageContentCell {
         
         let date = UILabel(frame: CGRect(x: 115, y: 8, width: 16, height: 16))
         date.text = "31"
-        date.font = UIFont.Semibold(sz: 13)
+        date.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(date)
         
         
         let month = UILabel(frame: CGRect(x: 135, y: 8, width: 200, height: 16))
         month.text = "JAN"
         month.textColor = UIColor.buttonDisableTextColor
-        month.font = UIFont.Semibold(sz: 13)
+        month.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(month)
         
         let day = UILabel(frame: CGRect(x: 115, y: 23, width: 61, height: 16))
         day.text = "Thursday"
-        day.font = UIFont.Semibold(sz: 13)
+        day.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(day)
         
         let time = UILabel(frame: CGRect(x: 180, y: 24, width: 200, height: 16))
         time.text = "10-12 pm"
         time.textColor = UIColor.buttonDisableTextColor
-        time.font = UIFont.Semibold(sz: 13)
+        time.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(time)
         
         let title = UILabel(frame: CGRect(x: 115, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
         title.text = "VR games"
-        title.font = UIFont.DisplayBold(sz: 23)
+        title.font = UIFont.displayBold(sz: 23)
         messageContainerView.addSubview(title)
         
         let detail = UILabel(frame: CGRect(x: 115, y: 89, width: screenWidth - 71 - 100 - 15, height: 54))
         detail.numberOfLines = 3
         detail.text = "Get the latest VR Experience with Samsung Gear. You can travel through the worlds as detail of UI thr samsung"
-        detail.font = UIFont.Regular(sz: 13)
+        detail.font = UIFont.regular(sz: 13)
         messageContainerView.addSubview(detail)
     }
 

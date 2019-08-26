@@ -65,12 +65,12 @@ class SearchClubViewController: CustomViewController {
         
         if searchType == .searchList {
             let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
-            searchTextField.font = UIFont.DisplayBold(sz: 24)
+            searchTextField.font = UIFont.displayBold(sz: 24)
             searchTextField.textColor = UIColor.white
             searchTextField.returnKeyType = .go
             searchTextField.autocorrectionType = .no
             searchTextField.delegate = self
-            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search clubs", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
+            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search clubs", attributes: [NSAttributedString.Key.font : UIFont.displayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
             customView.addSubview(searchTextField)
             navigationItem.titleView = customView

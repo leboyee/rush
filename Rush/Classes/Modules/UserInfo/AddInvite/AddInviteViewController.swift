@@ -92,7 +92,7 @@ extension AddInviteViewController {
     }
     
     @IBAction func finisheRegistrationButtonAction() {
-        AppDelegate.getInstance().setupStoryboard()
+        AppDelegate.shared?.setupStoryboard()
     }
 }
 

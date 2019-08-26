@@ -1,5 +1,4 @@
 //
-//  MARK: -
 //  Rush
 //
 //  Created by kamal on 08/08/19.
@@ -70,7 +69,7 @@ extension SettingsViewController {
                             if text.isEmpty {
                                text = "Clubs"
                             } else {
-                                text = text + ", " + "Clubs"
+                                text += (", " + "Clubs")
                             }
                         }
                         
@@ -78,7 +77,7 @@ extension SettingsViewController {
                             if text.isEmpty {
                                 text = "Classes"
                             } else {
-                                text = text + ", " + "Classes"
+                                text += (", " + "Classes")
                             }
                         }
                         
@@ -120,8 +119,8 @@ extension SettingsViewController {
     func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {
         
         cell.instagramEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.showInstagramDisconnect()
+            guard let unself = self else { return }
+            unself.showInstagramDisconnect()
         }
         
     }
@@ -130,8 +129,8 @@ extension SettingsViewController {
         
         cell.set(isOn: isDarkModeOn)
         cell.switchEvent = {  [weak self] (isOn) in
-            guard let self_ = self else { return }
-            self_.updateUserProfile(params: [Keys.u_is_dark_mode : isOn ? "1" : "0"])
+            guard let unself = self else { return }
+            unself.updateUserProfile(params: [Keys.uIsDarkMode : isOn ? "1" : "0"])
         }
     }
     
@@ -161,10 +160,8 @@ extension SettingsViewController {
     }
 }
 
-//MARK: -Other function
+// MARK: - Other function
 extension SettingsViewController {
-    
-    
 }
 
 // MARK: - API's
@@ -172,20 +169,19 @@ extension SettingsViewController {
     
     private func updateUserProfile(params: [String: Any]) {
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: params) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: params) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            if let _ = data {
-                self_.user = Authorization.shared.profile
+            guard let unself = self else { return }
+            if data != nil {
+                unself.user = Authorization.shared.profile
                 /// Update Application Theme
                 ThemeManager.shared.loadTheme()
             } else if let message = errorMessage {
-                self_.showMessage(message: message)
+                unself.showMessage(message: message)
             }
             
             /// Reload Cells
-            self_.tableView.reloadData()
+            unself.tableView.reloadData()
         }
     }
 }

@@ -87,7 +87,7 @@ class ExploreViewController: CustomViewController {
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
         let explore = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
         explore.text = Text.exploreIn
-        explore.font = UIFont.DisplayBold(sz: 24)
+        explore.font = UIFont.displayBold(sz: 24)
         explore.textColor = UIColor.white
         
         // University button setup
@@ -95,7 +95,7 @@ class ExploreViewController: CustomViewController {
         universityButton.setTitle(university, for: .normal)
         universityButton.contentHorizontalAlignment = .left
         universityButton.setTitleColor(UIColor.gray47, for: .normal)
-        universityButton.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        universityButton.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         navigationView.addSubview(explore)
         navigationView.addSubview(universityButton)
         navigationItem.titleView = navigationView

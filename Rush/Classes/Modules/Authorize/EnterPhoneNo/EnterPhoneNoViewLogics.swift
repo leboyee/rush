@@ -12,8 +12,8 @@ extension EnterPhoneNoViewController {
     
     func setPlaceHolder() {
 
-        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
-        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
+        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
         
         let partOne = NSMutableAttributedString(string: "\(self.countryCode)-(", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
@@ -25,7 +25,7 @@ extension EnterPhoneNoViewController {
         partOne.append(partFour)
         placeHolderTextField.attributedPlaceholder = partOne
         
-        phoneNoTextField.font = UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)
+        phoneNoTextField.font = UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)
     }
     
     func setContryCodeWith() {

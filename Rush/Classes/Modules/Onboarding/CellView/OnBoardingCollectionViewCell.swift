@@ -23,14 +23,14 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
         // Initialization code
         
        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
-                titleLabel.font = UIFont.DisplaySemibold(sz: 18)
-            detailsLable.font = UIFont.Regular(sz: 12)
+                titleLabel.font = UIFont.displaySemibold(sz: 18)
+            detailsLable.font = UIFont.regular(sz: 12)
         topDetailLableContraint.constant = 45
 
         
         } else if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones6.rawValue  {
-            titleLabel.font = UIFont.DisplaySemibold(sz: 23)
-          detailsLable.font = UIFont.Regular(sz: 15)
+            titleLabel.font = UIFont.displaySemibold(sz: 23)
+          detailsLable.font = UIFont.regular(sz: 15)
         topDetailLableContraint.constant = 10
         
         } else if UIDevice.current.screenType.rawValue ==  UIDevice.ScreenType.iPhones6Plus.rawValue  {

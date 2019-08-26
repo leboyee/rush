@@ -27,7 +27,7 @@ extension PrivacySettingsViewController {
     
     func selectedRow(_ indexPath: IndexPath) {
         
-        let key = type == .invitesfrom ? Keys.u_who_can_invite : Keys.u_who_can_message
+        let key = type == .invitesfrom ? Keys.uWhoCanInvite: Keys.uWhoCanMessage
         let params = [key: list[indexPath.row]]
         updateUserProfile(params: params)
     }

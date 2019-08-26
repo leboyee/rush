@@ -54,13 +54,13 @@ struct Keys {
     static let friendId           = "frd_id"
     
     
-    static let u_is_notify_on     = "u_is_notify_on"
-    static let u_is_event_notify  = "u_is_event_notify"
-    static let u_is_club_notify   = "u_is_club_notify"
-    static let u_is_class_notify  = "u_is_class_notify"
-    static let u_who_can_message  = "u_who_can_message"
-    static let u_who_can_invite   = "u_who_can_invite"
-    static let u_is_dark_mode     = "u_is_dark_mode"
+    static let uIsNotifyOn     = "u_is_notify_on"
+    static let uIsEventNotify  = "u_is_event_notify"
+    static let uIsClubNotify   = "u_is_club_notify"
+    static let uIsClassNotify  = "u_is_class_notify"
+    static let uWhoCanMessage  = "u_who_can_message"
+    static let uWhoCanInvite   = "u_who_can_invite"
+    static let uIsDarkMode     = "u_is_dark_mode"
     
 }
 

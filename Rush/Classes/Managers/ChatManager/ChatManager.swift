@@ -37,15 +37,15 @@ extension ChatManager {
     
     func connectToChatServer(userId: String, username: String, profileImageUrl: String) {
         
-        AppDelegate.getInstance().registerPushTokenWithSendBird()
+        AppDelegate.shared?.registerPushTokenWithSendBird()
         
         SBDMain.connect(withUserId: userId, completionHandler: { (user, error) in
             if error == nil {
                 
                 //register token if it is pending
-                if AppDelegate.getInstance().isTokenRegistrationPending {
-                    AppDelegate.getInstance().unregisterPushTokenWithSendBird()
-                    AppDelegate.getInstance().registerPushTokenWithSendBird()
+                if AppDelegate.shared?.isTokenRegistrationPending == true {
+                    AppDelegate.shared?.unregisterPushTokenWithSendBird()
+                    AppDelegate.shared?.registerPushTokenWithSendBird()
                 }
                 
                 //Update user information
@@ -77,7 +77,7 @@ extension ChatManager {
     
     func disconnectFromChatServer() {
         //first unregister token
-        AppDelegate.getInstance().unregisterPushTokenWithSendBird()
+        AppDelegate.shared?.unregisterPushTokenWithSendBird()
         
         //dissconnect from server
         SBDMain.disconnect(completionHandler: {
