@@ -86,7 +86,7 @@ internal struct MockMessage: MessageType {
         self.sentDate = date
     }
     
-    init(message:SBDBaseMessage) {
+    init(message: SBDBaseMessage) {
         // convert Int to Double
         let timeInterval = Double(message.createdAt)
         

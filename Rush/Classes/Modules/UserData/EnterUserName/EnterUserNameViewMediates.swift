@@ -29,7 +29,7 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+            if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones5.rawValue  {
                 bottomViewConstraint.constant = keyboardHeight + 10
                 self.view.layoutIfNeeded()
 
@@ -39,7 +39,7 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     
     @objc func keyboardWillHide(notification: NSNotification) {
      //   if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-        if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones5.rawValue  {
             bottomViewConstraint.constant = 30
             self.view.layoutIfNeeded()
 

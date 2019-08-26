@@ -22,18 +22,18 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-       if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+       if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
                 titleLabel.font = UIFont.DisplaySemibold(sz: 18)
             detailsLable.font = UIFont.Regular(sz: 12)
         topDetailLableContraint.constant = 45
 
         
-        } else if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_6_6s_7_8.rawValue  {
+        } else if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones6.rawValue  {
             titleLabel.font = UIFont.DisplaySemibold(sz: 23)
           detailsLable.font = UIFont.Regular(sz: 15)
         topDetailLableContraint.constant = 10
         
-        } else if UIDevice.current.screenType.rawValue ==  UIDevice.ScreenType.iPhones_6Plus_6sPlus_7Plus_8Plus.rawValue  {
+        } else if UIDevice.current.screenType.rawValue ==  UIDevice.ScreenType.iPhones6Plus.rawValue  {
         
         }
         else   {

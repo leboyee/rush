@@ -27,11 +27,11 @@ class OnboardingViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
             createButtonHeightConstratit.constant =  35
             pageControllerTopConstraint.constant = 0
         }
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_6_6s_7_8.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones6.rawValue  {
             createButtonHeightConstratit.constant =  40
             pageControllerTopConstraint.constant = 10
         }

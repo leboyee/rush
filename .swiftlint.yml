@@ -1,0 +1,31 @@
+disabled_rules: # rule identifiers to exclude from running
+  - todo
+  - valid_ibinspectable
+  - function_parameter_count
+opt_in_rules:
+  - closure_spacing
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+line_length: 100
+type_body_length:
+  - 400 # warning
+  - 500 # error
+function_body_length:
+  - 100 # warning
+  - 150 # error
+cyclomatic_complexity:
+  - 25 # warning
+  - 30 # error
+file_length:
+- 2000 # warning
+- 3000 # error
+type_name:
+  min_length: 1
+  max_length: 40
+variable_name:
+  min_length: 1
+  max_length: 40
+trailing_whitespace:
+  ignores_empty_lines: true
+  ignores_comments: true

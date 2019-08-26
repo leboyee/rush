@@ -14,7 +14,7 @@ extension EnterVerificationCodeViewController {
     func updateCodeView(code: String) {
         let mainstring = NSMutableAttributedString.init()
         var isIPhone5 = false
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
             isIPhone5 = true
         }
         for char in code {
