@@ -18,7 +18,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarView" customModule="Rush" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="5Vm-2i-i0y" id="nS7-Ea-cGd"/>
+                <outlet property="infoViewHeight" destination="Jke-Cd-iOA" id="PwQ-w8-hVo"/>
                 <outlet property="monthLabel" destination="43S-LW-X1B" id="bn6-UK-oOf"/>
+                <outlet property="monthNameView" destination="NHO-T7-FiX" id="7CJ-5r-lMl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,34 +31,50 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4C-yd-Oy7">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43S-LW-X1B">
-                            <rect key="frame" x="62" y="24" width="290" height="20.5"/>
-                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-dz-HyT">
-                            <rect key="frame" x="15" y="17" width="35" height="35"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-T7-FiX">
+                            <rect key="frame" x="15" y="17" width="384" height="35"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43S-LW-X1B">
+                                    <rect key="frame" x="47" y="7" width="290" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-dz-HyT">
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="KF2-7j-kin"/>
+                                        <constraint firstAttribute="width" constant="35" id="P9O-nE-OOF"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_arrow_left"/>
+                                    <connections>
+                                        <action selector="previousButtonActionWithSender:" destination="-1" eventType="touchUpInside" id="fj9-Wb-qLq"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlZ-hi-Xoi">
+                                    <rect key="frame" x="349" y="0.0" width="35" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="35" id="HQ1-eF-lUr"/>
+                                        <constraint firstAttribute="height" constant="35" id="xtM-4Q-sRd"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_arrow_right"/>
+                                    <connections>
+                                        <action selector="nextButtonActionWithSender:" destination="-1" eventType="touchUpInside" id="LPR-tw-yzJ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="KF2-7j-kin"/>
-                                <constraint firstAttribute="width" constant="35" id="P9O-nE-OOF"/>
+                                <constraint firstItem="zlZ-hi-Xoi" firstAttribute="centerY" secondItem="43S-LW-X1B" secondAttribute="centerY" id="3Jz-P9-HSZ"/>
+                                <constraint firstItem="43S-LW-X1B" firstAttribute="centerY" secondItem="oHn-dz-HyT" secondAttribute="centerY" id="5zV-O9-VGN"/>
+                                <constraint firstItem="oHn-dz-HyT" firstAttribute="leading" secondItem="NHO-T7-FiX" secondAttribute="leading" id="AQF-ae-9nN"/>
+                                <constraint firstAttribute="trailing" secondItem="43S-LW-X1B" secondAttribute="trailing" constant="47" id="Buk-Tp-PXw"/>
+                                <constraint firstAttribute="height" constant="35" id="K9d-te-O1N"/>
+                                <constraint firstItem="43S-LW-X1B" firstAttribute="leading" secondItem="NHO-T7-FiX" secondAttribute="leading" constant="47" id="LAG-nh-sxL"/>
+                                <constraint firstItem="43S-LW-X1B" firstAttribute="top" secondItem="NHO-T7-FiX" secondAttribute="top" constant="7" id="tZc-5b-bTR"/>
+                                <constraint firstAttribute="trailing" secondItem="zlZ-hi-Xoi" secondAttribute="trailing" id="y40-ds-sD3"/>
                             </constraints>
-                            <state key="normal" image="ic_arrow_left"/>
-                            <connections>
-                                <action selector="previousButtonActionWithSender:" destination="-1" eventType="touchUpInside" id="fj9-Wb-qLq"/>
-                            </connections>
-                        </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlZ-hi-Xoi">
-                            <rect key="frame" x="364" y="17" width="35" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="35" id="HQ1-eF-lUr"/>
-                                <constraint firstAttribute="height" constant="35" id="xtM-4Q-sRd"/>
-                            </constraints>
-                            <state key="normal" image="ic_arrow_right"/>
-                            <connections>
-                                <action selector="nextButtonActionWithSender:" destination="-1" eventType="touchUpInside" id="LPR-tw-yzJ"/>
-                            </connections>
-                        </button>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56B-c5-EkF">
                             <rect key="frame" x="6" y="63" width="402" height="32"/>
                             <subviews>
@@ -144,17 +162,13 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="43S-LW-X1B" secondAttribute="trailing" constant="62" id="2aU-jz-gav"/>
-                        <constraint firstItem="zlZ-hi-Xoi" firstAttribute="centerY" secondItem="43S-LW-X1B" secondAttribute="centerY" id="4cM-qT-FM8"/>
                         <constraint firstAttribute="bottom" secondItem="56B-c5-EkF" secondAttribute="bottom" constant="9" id="IXn-AN-LlQ"/>
                         <constraint firstAttribute="height" constant="104" id="Jke-Cd-iOA"/>
                         <constraint firstItem="56B-c5-EkF" firstAttribute="leading" secondItem="N4C-yd-Oy7" secondAttribute="leading" constant="6" id="Jsd-mn-bP1"/>
-                        <constraint firstItem="oHn-dz-HyT" firstAttribute="leading" secondItem="N4C-yd-Oy7" secondAttribute="leading" constant="15" id="bxx-nH-Zma"/>
-                        <constraint firstItem="43S-LW-X1B" firstAttribute="centerY" secondItem="oHn-dz-HyT" secondAttribute="centerY" id="cUh-mg-5Nm"/>
-                        <constraint firstItem="43S-LW-X1B" firstAttribute="top" secondItem="N4C-yd-Oy7" secondAttribute="top" constant="24" id="gKM-os-LGh"/>
+                        <constraint firstAttribute="trailing" secondItem="NHO-T7-FiX" secondAttribute="trailing" constant="15" id="QR6-qe-2Na"/>
+                        <constraint firstItem="NHO-T7-FiX" firstAttribute="leading" secondItem="N4C-yd-Oy7" secondAttribute="leading" constant="15" id="WoB-1C-dlN"/>
+                        <constraint firstItem="NHO-T7-FiX" firstAttribute="top" secondItem="N4C-yd-Oy7" secondAttribute="top" constant="17" id="hPJ-Bp-ZIk"/>
                         <constraint firstAttribute="trailing" secondItem="56B-c5-EkF" secondAttribute="trailing" constant="6" id="j5o-5k-MXw"/>
-                        <constraint firstAttribute="trailing" secondItem="zlZ-hi-Xoi" secondAttribute="trailing" constant="15" id="shf-I6-nwc"/>
-                        <constraint firstItem="43S-LW-X1B" firstAttribute="leading" secondItem="N4C-yd-Oy7" secondAttribute="leading" constant="62" id="vJ9-z5-Bkq"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Vm-2i-i0y">

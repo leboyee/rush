@@ -10,24 +10,29 @@ import UIKit
 
 protocol CalendarViewDelegate : class {
     func setHeightOfView( height : CGFloat);
-    func changeMonth(month : String, year : String)
+    func changeMonth(date : Date)
     func selectedDate( date : Date)
     func isEventExist( date : Date) -> Bool
 }
 
 class CalendarView: UIView {
 
-    @IBOutlet weak var monthLabel : UILabel!
-    @IBOutlet weak var collectionView : UICollectionView!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var monthNameView: UIView!
+    @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
+
     var isWeekStartFromMonday = true
+    var isNeedToHideMonthNameView = true
 
+    
     let bottomPadding: CGFloat = 10.0
-    weak var delegate : CalendarViewDelegate!
-    var minDateOfCalendar : Date = Date.parse(dateString: "2017-06-01", format: "yyyy-MM-dd")!
-    var maxDateOfCalendar : Date = Date.parse(dateString: "2027-06-01", format: "yyyy-MM-dd")!
-    var currentIndex : Int = 0
-    var selectedDate : Date?
-
+    weak var delegate: CalendarViewDelegate!
+    var minDateOfCalendar: Date = Date.parse(dateString: "2017-06-01", format: "yyyy-MM-dd")!
+    var maxDateOfCalendar: Date = Date.parse(dateString: "2027-06-01", format: "yyyy-MM-dd")!
+    var currentIndex: Int = 0
+    var selectedDate: Date?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -49,6 +54,12 @@ extension CalendarView {
         addSubview(view)
         addViewConstraint(view: view)
         configureCollectionView()
+        
+        if isNeedToHideMonthNameView {
+            infoViewHeight.constant = 48.0
+            monthNameView.isHidden = true
+        }
+        
         DispatchQueue.main.async {
             self.setCurrentMonth()
         }
@@ -224,7 +235,8 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
             currentIndex = page
             setMonthTitle()
             let date = minDateOfCalendar.plus(months: UInt(self.currentIndex))
-            self.delegate?.changeMonth(month: String(date.month), year: String(date.year))
+            self.delegate?.changeMonth(date: date)
+            //self.delegate?.changeMonth(month: String(date.month), year: String(date.year))
             DispatchQueue.main.async {
                 collectionView.reloadData()
             }
