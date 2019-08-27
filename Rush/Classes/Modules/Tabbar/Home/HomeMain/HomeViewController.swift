@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class HomeViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -50,8 +49,10 @@ class HomeViewController: CustomViewController {
         self.view.backgroundColor = UIColor.bgBlack
         
         // Right item button
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
-        navigationItem.rightBarButtonItem = rightBarButton
+        let img = UIImage(named: "active-create")
+        let selector = #selector(createButtonAction)
+        let rightBar = UIBarButtonItem(image: img, style: .plain, target: self, action: selector)
+        navigationItem.rightBarButtonItem = rightBar
             
         /*
         // create the button
@@ -79,8 +80,7 @@ class HomeViewController: CustomViewController {
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left
-        dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
-        
+        dateButton.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
         
         // View calender button setup
         let viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
@@ -88,7 +88,7 @@ class HomeViewController: CustomViewController {
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
-        viewCalender.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
+        viewCalender.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
         navigationView.addSubview(dateButton)
         navigationView.addSubview(viewCalender)
         navigationItem.titleView = navigationView
@@ -102,21 +102,16 @@ extension HomeViewController {
         // Segues.selectEventType
         // Segues.openPostScreen
         performSegue(withIdentifier: Segues.selectEventType, sender: nil)
-        
     }
     
-    @objc func viewCalenderButtonAction() {
+    @objc func viewCalenderBtnAction() {
         performSegue(withIdentifier: Segues.calendarHome, sender: nil)
     }
 }
 
-
-
 // MARK: - Navigation
 extension HomeViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == Segues.selectEventType {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .eventCategory
@@ -127,14 +122,16 @@ extension HomeViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.notificationAlert {
-            let vc = segue.destination as! NotificationAlertViewController
-            vc.toastMessage = notificationTitle
-            vc.buttonTitle = notificationButtonTitle
-            vc.delegate = self
+            if let vc = segue.destination as? NotificationAlertViewController {
+                vc.toastMessage = notificationTitle
+                vc.buttonTitle = notificationButtonTitle
+                vc.delegate = self
+            }
         } else if segue.identifier == Segues.clubListSegue {
-            let vc = segue.destination as! ClubListViewController
-            vc.hidesBottomBarWhenPushed = false
-            vc.screenType = sender as? ClubListType ?? .none
+            if let vc = segue.destination as? ClubListViewController {
+                vc.hidesBottomBarWhenPushed = false
+                vc.screenType = sender as? ClubListType ?? .none
+            }
         }
     }
 }

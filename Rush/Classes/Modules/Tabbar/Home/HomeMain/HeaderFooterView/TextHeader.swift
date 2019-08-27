@@ -26,7 +26,7 @@ class TextHeader: UITableViewHeaderFooterView {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension TextHeader {
     @IBAction func replaceButtonAction(_ sender: Any) {
         detailButtonClickEvent?()

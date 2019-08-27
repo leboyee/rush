@@ -34,8 +34,6 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var firstUserImageView: UIImageView!
     @IBOutlet weak var userCountLabel: UILabel!
     
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

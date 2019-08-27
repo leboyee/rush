@@ -17,7 +17,7 @@ extension EventTypeCell {
         return 10
     }
     
-    func fillEventCell(_ cell: EventCell,_ indexPath: IndexPath) {
+    func fillEventCell(_ cell: EventCell, _ indexPath: IndexPath) {
         cell.setup(type: type)
         if type == .upcoming {
             cell.setup(eventName: "VR Meetup")
@@ -31,7 +31,7 @@ extension EventTypeCell {
         
     }
     
-    func fillUserCell(_ cell: UserCell,_ indexPath: IndexPath) {
+    func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
@@ -42,7 +42,7 @@ extension EventTypeCell {
         }
     }
     
-    func fillFriendCell(_ cell: UserCell,_ indexPath: IndexPath) {
+    func fillFriendCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if let friend = list?[indexPath.row] as? Friend {
             cell.setup(text: friend.firstName)
             cell.setup(url: friend.photo?.urlThumb)
@@ -51,13 +51,13 @@ extension EventTypeCell {
     }
     
     
-    func fillInterestCell(_ cell: TextCell,_ indexPath: IndexPath) {
+    func fillInterestCell(_ cell: TextCell, _ indexPath: IndexPath) {
         if let tag = list?[indexPath.row] as? Tag {
             cell.setup(text: tag.text)
         }
     }
     
-    func fillImagesCell(_ cell: ProfileImageCell,_ indexPath: IndexPath) {
+    func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
         
     }
     

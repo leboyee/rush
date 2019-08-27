@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
@@ -25,7 +24,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -38,19 +36,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             if isShowTutorial {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as! TutorialPopUpCell
-                fillTutorialCell(cell)
-                return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
+                    fillTutorialCell(cell)
+                    return cell
             } else {
                 return UITableViewCell()
             }
         } else {
             if isShowJoinEvents && indexPath.section == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
                 fillEventByDateCell(cell, indexPath)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
                 fillEventTypeCell(cell, indexPath)
                 return cell
             }
@@ -66,7 +64,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
         fillTextHeader(header, section)
         return header
     }
@@ -84,15 +82,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//MARK: - SelectEventTypeController Delegate
+// MARK: - SelectEventTypeController Delegate
 extension HomeViewController : SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
         performSegue(withIdentifier: Segues.createClub, sender: nil)
     }
 }
 
-//MARK: - CreatePostViewController Delegate
-extension HomeViewController : CreatePostViewControllerDelegate {
+// MARK: - CreatePostViewController Delegate
+extension HomeViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
         /*
         notificationTitle = text
@@ -102,14 +100,14 @@ extension HomeViewController : CreatePostViewControllerDelegate {
         let snackbar = TTGSnackbar(message: text,
                                    duration: .middle,
                                    actionText: buttonText,
-                                   actionBlock: { (snackbar) in
+                                   actionBlock: { (_) in
                                     Utils.notReadyAlert()
         })
         snackbar.show()
     }
 }
 
-//MARK: - Notification alert delegate
+// MARK: - Notification alert delegate
 extension HomeViewController: NotificationAlertDelegate {
     func undoButtonClickEvent() {
         

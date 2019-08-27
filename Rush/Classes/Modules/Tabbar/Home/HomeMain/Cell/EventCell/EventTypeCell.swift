@@ -41,7 +41,6 @@ class EventTypeCell: UITableViewCell {
         collectionView.register(UINib(nibName: Cell.user, bundle: nil), forCellWithReuseIdentifier: Cell.user)
         collectionView.register(UINib(nibName: Cell.profileImage, bundle: nil), forCellWithReuseIdentifier: Cell.profileImage)
         collectionView.register(UINib(nibName: Cell.text, bundle: nil), forCellWithReuseIdentifier: Cell.text)
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +49,7 @@ class EventTypeCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(_ type : EventCategoryType, _ photos: [Image]?) {
+    func setup(_ type: EventCategoryType, _ photos: [Image]?) {
         cellType = .event
         self.type = type
         reload()
@@ -70,7 +69,7 @@ class EventTypeCell: UITableViewCell {
         list = interests
     }
     
-    func setup(imagesList:[UIImage]) {
+    func setup(imagesList: [UIImage]) {
         cellType = .profileImage
     }
     
