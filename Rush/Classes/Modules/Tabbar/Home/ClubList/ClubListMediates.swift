@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
@@ -24,7 +23,6 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return screenType == .club ? 4 : 3
     }
@@ -35,11 +33,11 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isShowJoinEvents && indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as! FriendClubCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
             fillMyClubCell(cell, indexPath)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillEventTypeCell(cell, indexPath)
             return cell
         }
@@ -68,36 +66,36 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
-//MARK: - SelectEventTypeController Delegate
+// MARK: - SelectEventTypeController Delegate
 extension ClubListViewController : SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
         openCreateClubViewController()
     }
 }
 
-//MARK: - CreatePostViewController Delegate
-extension ClubListViewController : CreatePostViewControllerDelegate {
+// MARK: - CreatePostViewController Delegate
+extension ClubListViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
         /*
-        notificationTitle = text
-        notificationButtonTitle = buttonText
-        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
-        */
+         notificationTitle = text
+         notificationButtonTitle = buttonText
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
         let snackbar = TTGSnackbar(message: text,
                                    duration: .middle,
                                    actionText: buttonText,
-                                   actionBlock: { (snackbar) in
+                                   actionBlock: { (_) in
                                     Utils.notReadyAlert()
         })
         snackbar.show()
     }
 }
 
-//MARK: - Notification alert delegate
+// MARK: - Notification alert delegate
 extension ClubListViewController: NotificationAlertDelegate {
     func undoButtonClickEvent() {
         

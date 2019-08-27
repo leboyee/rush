@@ -9,7 +9,7 @@
 import UIKit
 
 class TimeSlotCell: UITableViewCell {
-
+    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var upArrowImageView: UIImageView!
@@ -18,21 +18,20 @@ class TimeSlotCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     
-    var textDidChanged: ((_ text : String) -> Void)?
+    var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
-    var textDidEndEditing: ((_ text : String) -> Void)?
+    var textDidEndEditing: ((_ text: String) -> Void)?
     var switchValueChanged: ((_ isOn: Bool) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
-    }    
+    }
 }
 
 extension TimeSlotCell {

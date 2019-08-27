@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-protocol OtherUserProfileProtocol {
+protocol OtherUserProfileProtocol: class {
     func unfriendUser(_ name: String)
 }
 
@@ -22,9 +22,9 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var isShowMessageButton = false
-    var friendType : ManageButtonType = .friends
+    var friendType: ManageButtonType = .friends
     
-    var delegate : OtherUserProfileProtocol?
+    weak var delegate : OtherUserProfileProtocol?
     
     var clubImage : UIImage?
     
@@ -52,19 +52,19 @@ class OtherUserProfileController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         
         /*
-        scrollView.delegate = self
-        
-        tableView.layer.cornerRadius = 24
-        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        let total = (screenWidth * 0.85) + Utils.navigationHeigh + 18
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total * 0.5223), left: 0, bottom: 0, right: 0)
-//        topConstraintOfScrollViw.constant = (total * 0.5223) + Utils.navigationHeigh + 18
-        
-        topConstraintOfLabel.constant = (total * 0.6)
-        */
+         scrollView.delegate = self
+         
+         tableView.layer.cornerRadius = 24
+         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+         
+         let total = (screenWidth * 0.85) + Utils.navigationHeigh + 18
+         heightConstraintOfImageView.constant = total
+         
+         scrollView.contentInset = UIEdgeInsets(top: (total * 0.5223), left: 0, bottom: 0, right: 0)
+         //        topConstraintOfScrollViw.constant = (total * 0.5223) + Utils.navigationHeigh + 18
+         
+         topConstraintOfLabel.constant = (total * 0.6)
+         */
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
@@ -84,7 +84,7 @@ class OtherUserProfileController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension OtherUserProfileController {
     @IBAction func cancelButtonAction() {
         navigationController?.popViewController(animated: true)
@@ -99,15 +99,17 @@ extension OtherUserProfileController {
 extension OtherUserProfileController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.notificationAlert {
-            let controller = segue.destination as! NotificationAlertViewController
-            if let message = sender as? String {
-                controller.toastMessage = message
-                controller.delegate = self
+            if let controller = segue.destination as? NotificationAlertViewController {
+                if let message = sender as? String {
+                    controller.toastMessage = message
+                    controller.delegate = self
+                }
             }
         } else if segue.identifier == Segues.friendList {
-            let vc = segue.destination as! FriendsListViewController
-            vc.hidesBottomBarWhenPushed = false
-            vc.type = sender as? UserProfileDetailType ?? .none
+            if let vc = segue.destination as? FriendsListViewController {
+                vc.hidesBottomBarWhenPushed = false
+                vc.type = sender as? UserProfileDetailType ?? .none
+            }
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .profile

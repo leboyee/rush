@@ -14,14 +14,12 @@ import Photos
 }
 
 class SelectGallaryPhotoViewController: UIViewController {
-    
-    
-    @IBOutlet weak var containerView    : UIView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var hightConstraintOfContainerView: NSLayoutConstraint!
-    @IBOutlet weak var titleLabel       : UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var delegate: SelectGallaryPhotoViewControllerDelegate?
+    weak var delegate: SelectGallaryPhotoViewControllerDelegate?
     
     var selectedIndex = 0
     var selectedAlbum: PHAssetCollection?
@@ -64,8 +62,7 @@ class SelectGallaryPhotoViewController: UIViewController {
         }
     }
     
-    
-    //MARK: - setup
+    // MARK: - setup
     private func setup() {
         setupUI()
     }

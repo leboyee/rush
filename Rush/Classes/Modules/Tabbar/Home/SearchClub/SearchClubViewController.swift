@@ -26,11 +26,11 @@ class SearchClubViewController: CustomViewController {
     
     var selectedIndex = -1
     
-    var searchType : SearchClubType = .none
+    var searchType: SearchClubType = .none
     var searchText = ""
     
-    var categoryList : [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
-    var classesList : [String] = ["101-01", "101-02", "101-03", "102-01", "102-02", "102-03", "103-A", "103-B", "103-C"]
+    var categoryList: [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
+    var classesList: [String] = ["101-01", "101-02", "101-03", "102-01", "102-02", "102-03", "103-A", "103-B", "103-C"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,9 @@ class SearchClubViewController: CustomViewController {
             searchTextField.returnKeyType = .go
             searchTextField.autocorrectionType = .no
             searchTextField.delegate = self
-            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search clubs", attributes: [NSAttributedString.Key.font : UIFont.displayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
+            let font = UIFont.displayBold(sz: 24)
+            let color = UIColor.navBarTitleWhite32
+            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search clubs", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
             customView.addSubview(searchTextField)
             navigationItem.titleView = customView
@@ -91,13 +93,8 @@ extension SearchClubViewController {
     }
 }
 
-
-
 // MARK: - Navigation
 extension SearchClubViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
     }
 }

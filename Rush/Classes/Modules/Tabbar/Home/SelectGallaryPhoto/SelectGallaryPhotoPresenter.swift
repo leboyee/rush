@@ -6,12 +6,11 @@
 //  Copyright © 2019 Kamal Mittal. All rights reserved.
 //
 
-
 import UIKit
 
 extension SelectGallaryPhotoViewController {
     
-    func fillCell(_ cell: SelectGallaryPhotoCell,_ indexPath: IndexPath) {
+    func fillCell(_ cell: SelectGallaryPhotoCell, _ indexPath: IndexPath) {
         
         let albumPhoto = source[indexPath.section][indexPath.row]
         cell.setup(album: albumPhoto)

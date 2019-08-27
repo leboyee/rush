@@ -21,7 +21,6 @@ class PostCommentCell: UITableViewCell {
     
     var userProfileClickEvent:(() -> Void)?
     var userNameClickEvent: ((_ name: String) -> Void)?
-
     var username = ""
     
     override func awakeFromNib() {
@@ -32,13 +31,12 @@ class PostCommentCell: UITableViewCell {
         self.detailLabel.addGestureRecognizer(tap)
         self.detailLabel.isUserInteractionEnabled = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-    
 }
 
 // MARK: - Other functions

@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 class UserPostImageTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var postImageView: UIImageView!
     var clearButtonClickEvent: (() -> Void)?
@@ -21,10 +21,10 @@ class UserPostImageTableViewCell: UITableViewCell {
         cancelButton.clipsToBounds = true
         cancelButton.layer.cornerRadius = cancelButton.frame.size.width / 2
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -52,9 +52,9 @@ extension UserPostImageTableViewCell {
                 contentMode: .aspectFill,
                 options: requestOptions
             ) { [weak self] image, _ in
-                guard let self_ = self else { return }
+                guard let unself = self else { return }
                 if let image = image {
-                    self_.postImageView.image = image
+                    unself.postImageView.image = image
                 }
             }
         } else if let image = imageAsset as? UIImage {
@@ -65,7 +65,6 @@ extension UserPostImageTableViewCell {
     func setup(isCleareButtonHide: Bool) {
         cancelButton.isHidden = isCleareButtonHide
     }
-    
     
     @IBAction func clearButtonAction() {
         clearButtonClickEvent?()

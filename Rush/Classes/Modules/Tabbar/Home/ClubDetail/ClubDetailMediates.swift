@@ -53,42 +53,42 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillJoinedUserCell(cell)
             return cell
         } else if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
             fillEventByDateCell(cell, indexPath)
             return cell
         } else if indexPath.section == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as! TagCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as? TagCell else { return UITableViewCell() }
             fillTagCell(cell)
             return cell
         } else if indexPath.section == 5 {
             if joinedClub {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as! CreateUserPostCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
                 cell.setup(font: UIFont.semibold(sz: 13))
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as! SingleButtonCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell else { return UITableViewCell() }
                 fillSingleButtonCell(cell)
                 return cell
             }
         } else {
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
                 fillEventByDateCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as! UserPostTextTableViewCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
                 fillTextViewCell(cell)
                 return cell
             } else if indexPath.row == 2 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as! UserPostImageTableViewCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
                 fillImageCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as! PostLikeCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
                 return cell
             } else {
                 return UITableViewCell()
@@ -100,7 +100,6 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         cellSelected(indexPath)
     }
     
-    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footer = UIView()
@@ -109,21 +108,19 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         separator.backgroundColor = UIColor.separatorColor
         return footer
     }
-     
-     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return heightOfFooter(section)
-      }
-     
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return heightOfFooter(section)
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as! UserImagesHeaderView
+            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
             fillImageHeader(view)
             return view
         } else {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
             fillTextHeader(header, section)
             return header
         }
@@ -134,17 +131,17 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
-//MARK: - OtherUserProfile delegate
+// MARK: - OtherUserProfile delegate
 extension ClubDetailViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
         let snackbar = TTGSnackbar(message: "You unfriended \(name)",
             duration: .middle,
             actionText: "Undo",
-            actionBlock: { (snackbar) in
+            actionBlock: { (_) in
                 Utils.notReadyAlert()
         })
         snackbar.show()

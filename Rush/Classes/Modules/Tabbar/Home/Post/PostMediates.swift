@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension PostViewController :UITableViewDelegate,UITableViewDataSource {
+extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         
@@ -42,21 +42,21 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userName, for: indexPath) as! UserNameTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userName, for: indexPath) as? UserNameTableViewCell else { return UITableViewCell() }
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as! UserPostTextTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
             fillTextViewCell(cell)
             return cell
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as! UserPostImageTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
             fillImageCell(cell, indexPath)
             return cell
         } else if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as! PostLikeCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as! PostCommentCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as? PostCommentCell else { return UITableViewCell() }
             fillCommentCell(cell, indexPath)
             return cell
         }
@@ -67,7 +67,7 @@ extension PostViewController :UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
         fillTextHeader(header, section)
         return header
     }
@@ -108,32 +108,31 @@ extension PostViewController: GrowingTextViewDelegate {
     }
 }
 
-//MARK: - SharePostViewControllerDelegate
-extension PostViewController : SharePostViewControllerDelegate {
+// MARK: - SharePostViewControllerDelegate
+extension PostViewController: SharePostViewControllerDelegate {
     func deletePost() {
         /*
-        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
-        */
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
         let snackbar = TTGSnackbar(message: "Your post is deleted.",
                                    duration: .middle,
                                    actionText: "Undo",
-                                   actionBlock: { (snackbar) in
+                                   actionBlock: { (_) in
                                     Utils.notReadyAlert()
         })
         snackbar.show()
     }
 }
 
-//MARK: - OtherUserProfile delegate
+// MARK: - OtherUserProfile delegate
 extension PostViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
         let snackbar = TTGSnackbar(message: "You unfriended \(name)",
-                                   duration: .middle,
-                                   actionText: "Undo",
-                                   actionBlock: { (snackbar) in
-                                    Utils.notReadyAlert()
+            duration: .middle,
+            actionText: "Undo",
+            actionBlock: { (_) in
+                Utils.notReadyAlert()
         })
         snackbar.show()
     }
 }
-

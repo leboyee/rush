@@ -28,7 +28,7 @@ class SelectGallaryPhotoCell: UITableViewCell {
     
 }
 
-//MARK: - Others
+// MARK: - Others
 extension SelectGallaryPhotoCell {
     
     func setup(album: PHAssetCollection) {
@@ -111,7 +111,7 @@ extension SelectGallaryPhotoCell {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension SelectGallaryPhotoCell {
     
 }

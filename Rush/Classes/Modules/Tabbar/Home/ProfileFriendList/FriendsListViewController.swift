@@ -101,7 +101,7 @@ class FriendsListViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension FriendsListViewController {
     @IBAction func firstSegmentButtonAction() {
         if firstSegmentButton.isSelected {

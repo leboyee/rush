@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 class ClassDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
@@ -19,14 +19,14 @@ class ClassDetailViewController: UIViewController {
     var classesPostList: [String] = ["1", "2"]
     var timeList: [String] = ["Thursday", "Friday", "Sunday", "Tuesday", "Wednesday"]
     
-    var clubImage : UIImage?
+    var clubImage: UIImage?
     
     var isShowMore = false
     var joinedClub = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -47,11 +47,11 @@ class ClassDetailViewController: UIViewController {
     func setupUI() {
         
         /*
-        let total = screenWidth + 15
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        */
+         let total = screenWidth + 15
+         heightConstraintOfImageView.constant = total
+         
+         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
+         */
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
@@ -60,10 +60,10 @@ class ClassDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = share
         
         /*
-        // back button
-        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-        navigationItem.leftBarButtonItem = cancel
-        */
+         // back button
+         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
+         navigationItem.leftBarButtonItem = cancel
+         */
         
         // setup tableview
         setupTableView()

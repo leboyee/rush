@@ -51,22 +51,21 @@ extension ClassDetailViewController {
         cell.setup(secondButtonType: .groupChatClub)
         
         cell.firstButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            Utils.alert(title: "Are you sure you want to leave from this class?",buttons: ["Yes", "No"],handler: { (index) in
+            guard let unself = self else { return }
+            Utils.alert(title: "Are you sure you want to leave from this class?", buttons: ["Yes", "No"], handler: { (index) in
                 if index == 0 {
-                    self_.joinedClub = false
-                    self_.tableView.reloadData()
+                    unself.joinedClub = false
+                    unself.tableView.reloadData()
                 }
             })
         }
         
-        cell.secondButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+        cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
     }
     
-    func fillTimeCell(_ cell: TextIconCell,_ indexPath: IndexPath) {
+    func fillTimeCell(_ cell: TextIconCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(isUserInterfaceEnable: false)
         if indexPath.section == 3 {
@@ -79,15 +78,15 @@ extension ClassDetailViewController {
             cell.setup(isHideCleareButton: false)
             
             cell.clearButtonClickEvent = { [weak self] () in
-                guard let self_ = self else { return }
+                guard let unself = self else { return }
                 // Show all time slot
-                self_.isShowMore = true
-                self_.tableView.reloadData()
+                unself.isShowMore = true
+                unself.tableView.reloadData()
             }
         }
     }
     
-    func fillTimeSlotCell(_ cell: TimeSlotCell,_ indexPath: IndexPath) {
+    func fillTimeSlotCell(_ cell: TimeSlotCell, _ indexPath: IndexPath) {
         cell.setup(day: timeList[indexPath.row])
         cell.setup(isHideDropDown: indexPath.row == 0 ? false : true)
     }
@@ -96,7 +95,7 @@ extension ClassDetailViewController {
         cell.setup(userList: [])
     }
     
-    func fillEventByDateCell(_ cell: EventByDateCell,_ indexPath: IndexPath) {
+    func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(title: "Marta Keller")
@@ -110,14 +109,13 @@ extension ClassDetailViewController {
             cell.setup(bottomConstraintOfDate: 22)
         }
     }
-
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
         cell.setup(title: "Join class")
         cell.joinButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.joinedClub = true
-            self_.tableView.reloadData()
+            guard let unself = self else { return }
+            unself.joinedClub = true
+            unself.tableView.reloadData()
         }
     }
     

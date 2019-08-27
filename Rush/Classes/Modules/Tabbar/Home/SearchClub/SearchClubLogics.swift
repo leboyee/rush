@@ -31,7 +31,7 @@ extension SearchClubViewController {
         cell.setup(detail: "We have you to code better")
     }
 
-    func fillTextHeader(_ header: TextHeader,_ section: Int) {
+    func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(title: Text.exploreTopics)
         header.setup(isDetailArrowHide: true)
     }

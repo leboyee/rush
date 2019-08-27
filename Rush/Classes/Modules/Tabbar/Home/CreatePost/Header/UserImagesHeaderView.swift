@@ -59,7 +59,7 @@ extension UserImagesHeaderView {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 
 extension UserImagesHeaderView {
     
