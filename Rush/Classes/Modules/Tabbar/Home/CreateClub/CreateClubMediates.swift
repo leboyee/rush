@@ -49,7 +49,9 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.section == 3 {
+            performSegue(withIdentifier: Segues.contactListSegue, sender: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -129,5 +131,14 @@ extension CreateClubViewController: UIScrollViewDelegate {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
         }
+    }
+}
+
+// MARK: - ContactsListProtocol methods
+extension CreateClubViewController: ContactsListProtocol {
+    func selectedContacts(_ contacts: [Contact]) {
+        peopleList = contacts
+        validateAllFields()
+        tableView.reloadData()
     }
 }

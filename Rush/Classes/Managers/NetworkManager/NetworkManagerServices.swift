@@ -73,6 +73,15 @@ extension NetworkManager {
         requestGet(path: "minor", params: params, resultHandler: resultHandler)
     }
 
-
+    func getFriendList(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "friend", params: params, resultHandler: resultHandler)
+    }
+    
+    func createClub(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestUploadImage(path: "club", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
    
+    func getClubList(sortBy: String, params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "/club/\(sortBy)/list", params: params, resultHandler: resultHandler)
+    }
 }

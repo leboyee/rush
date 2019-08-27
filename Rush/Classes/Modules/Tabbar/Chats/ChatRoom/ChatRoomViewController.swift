@@ -33,7 +33,7 @@ class ChatRoomViewController: MessagesViewController {
     var hasPrev = false
     var isShowTempData = false
     var isAllowTestMessage = false
-    var friendProfile: Friend?
+    var friendProfile: Profile?
     var channel : SBDGroupChannel?
     var chatType : ChatType = .single
     open var previousMessageQuery : SBDPreviousMessageListQuery?
@@ -469,7 +469,7 @@ extension ChatRoomViewController {
         titleView.addSubview(userNavImageView)
         
         let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        dateLabel.text = "Boris Marshal"
+        dateLabel.text = userName
         dateLabel.font = UIFont.DisplayBold(sz: 24)
         dateLabel.textColor = UIColor.white
         

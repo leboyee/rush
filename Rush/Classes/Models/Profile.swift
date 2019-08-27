@@ -59,8 +59,8 @@ class Profile: NSObject {
 
     //MARK: - Private Functions
     func setData(data : [String : Any]) {
-        if let value = data["user_id"] as? Int64 {
-            userId = String(value)
+        if let value = data["_id"] as? String {
+            userId = value
         }
 
         if let value = data["social_id"] as? String {

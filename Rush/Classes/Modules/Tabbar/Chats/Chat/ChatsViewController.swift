@@ -118,7 +118,7 @@ extension ChatsViewController {
     }
     
     @objc func exitButtonAction() {
-        performSegue(withIdentifier: Segues.contactListSegue, sender: nil)
+        performSegue(withIdentifier: Segues.chatContactListSegue, sender: nil)
     }
     
     @objc func openSearchChatScreenButtonAction() {
@@ -145,8 +145,8 @@ extension ChatsViewController {
             if let vc = segue.destination as? ChatsViewController {
                 vc.isSearch = true
             }
-        } else if segue.identifier == Segues.contactListSegue {
-            if let vc = segue.destination as? ContactsListViewController {
+        } else if segue.identifier == Segues.chatContactListSegue {
+            if let vc = segue.destination as? ChatContactsListViewController {
                 vc.hidesBottomBarWhenPushed = true
             }
         }

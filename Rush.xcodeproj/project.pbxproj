@@ -150,6 +150,13 @@
 		7903D0B5228E8CE5004E33B9 /* HomeLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D0A6228E8CE5004E33B9 /* HomeLogics.swift */; };
 		7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D0A7228E8CE5004E33B9 /* HomeMediates.swift */; };
 		7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D0A8228E8CE5004E33B9 /* HomeViewController.swift */; };
+		7905CDB3230D5E170011C83B /* ChatContactsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDB0230D5E170011C83B /* ChatContactsListLogics.swift */; };
+		7905CDB4230D5E170011C83B /* ChatContactsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDB1230D5E170011C83B /* ChatContactsListMediates.swift */; };
+		7905CDB5230D5E170011C83B /* ChatContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDB2230D5E170011C83B /* ChatContactsListViewController.swift */; };
+		7905CDBA230D5E730011C83B /* ContactsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDB7230D5E730011C83B /* ContactsListLogics.swift */; };
+		7905CDBB230D5E730011C83B /* ContactsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDB8230D5E730011C83B /* ContactsListMediates.swift */; };
+		7905CDBC230D5E730011C83B /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDB9230D5E730011C83B /* ContactsListViewController.swift */; };
+		7905CDBE230D63120011C83B /* ChatServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905CDBD230D63120011C83B /* ChatServices.swift */; };
 		7912570522A1448600BDE3EC /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570322A1448600BDE3EC /* UserCell.swift */; };
 		7912570622A1448600BDE3EC /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7912570422A1448600BDE3EC /* UserCell.xib */; };
 		7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912570822A157C200BDE3EC /* OtherUserProfileController.swift */; };
@@ -258,9 +265,6 @@
 		794183B4228960C7009AB12C /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */; };
 		794183B5228960C7009AB12C /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */; };
 		794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */; };
-		79438E3522DF58A500DFABE4 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */; };
-		79438E3722DF58BE00DFABE4 /* ContactsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */; };
-		79438E3922DF58D100DFABE4 /* ContactsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */; };
 		79493CE622B90E960026AD0E /* SelectGallaryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */; };
 		79493CE722B90E960026AD0E /* SelectGallaryPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */; };
 		79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */; };
@@ -381,6 +385,7 @@
 		79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A522CB5D69003FC33E /* SearchClubViewController.swift */; };
 		79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377AA22CB6297003FC33E /* SearchClubCell.swift */; };
 		79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F377AB22CB6297003FC33E /* SearchClubCell.xib */; };
+		79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA26F4230EC5AF0007F0ED /* HomeServices.swift */; };
 		8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13122FADEA30055C65F /* CalendarViewController.swift */; };
 		8A04B13422FADEC50055C65F /* CalendarEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */; };
 		8A04B13622FADF2D0055C65F /* CalendarLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13522FADF2D0055C65F /* CalendarLogics.swift */; };
@@ -591,6 +596,13 @@
 		7903D0A6228E8CE5004E33B9 /* HomeLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLogics.swift; sourceTree = "<group>"; };
 		7903D0A7228E8CE5004E33B9 /* HomeMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMediates.swift; sourceTree = "<group>"; };
 		7903D0A8228E8CE5004E33B9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7905CDB0230D5E170011C83B /* ChatContactsListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsListLogics.swift; sourceTree = "<group>"; };
+		7905CDB1230D5E170011C83B /* ChatContactsListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsListMediates.swift; sourceTree = "<group>"; };
+		7905CDB2230D5E170011C83B /* ChatContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsListViewController.swift; sourceTree = "<group>"; };
+		7905CDB7230D5E730011C83B /* ContactsListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListLogics.swift; sourceTree = "<group>"; };
+		7905CDB8230D5E730011C83B /* ContactsListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListMediates.swift; sourceTree = "<group>"; };
+		7905CDB9230D5E730011C83B /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
+		7905CDBD230D63120011C83B /* ChatServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServices.swift; sourceTree = "<group>"; };
 		7912570322A1448600BDE3EC /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7912570422A1448600BDE3EC /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		7912570822A157C200BDE3EC /* OtherUserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileController.swift; sourceTree = "<group>"; };
@@ -699,9 +711,6 @@
 		794183AA228960C7009AB12C /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		794183AB228960C7009AB12C /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
-		79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
-		79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListMediates.swift; sourceTree = "<group>"; };
-		79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListLogics.swift; sourceTree = "<group>"; };
 		79493CE122B90E960026AD0E /* SelectGallaryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoCell.swift; sourceTree = "<group>"; };
 		79493CE222B90E960026AD0E /* SelectGallaryPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectGallaryPhotoCell.xib; sourceTree = "<group>"; };
 		79493CE322B90E960026AD0E /* SelectGallaryPhotoMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGallaryPhotoMediator.swift; sourceTree = "<group>"; };
@@ -823,6 +832,7 @@
 		79F377A522CB5D69003FC33E /* SearchClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubViewController.swift; sourceTree = "<group>"; };
 		79F377AA22CB6297003FC33E /* SearchClubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubCell.swift; sourceTree = "<group>"; };
 		79F377AB22CB6297003FC33E /* SearchClubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchClubCell.xib; sourceTree = "<group>"; };
+		79FA26F4230EC5AF0007F0ED /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		8A04B13122FADEA30055C65F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListViewController.swift; sourceTree = "<group>"; };
 		8A04B13522FADF2D0055C65F /* CalendarLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLogics.swift; sourceTree = "<group>"; };
@@ -940,8 +950,8 @@
 		0918E76D228436820098AF35 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				7905CDAF230D5E170011C83B /* ChatContactList */,
 				793BE5F222E87E0D005EF72D /* ChatRoom */,
-				79438E3322DF588500DFABE4 /* ContactList */,
 				7994A3B722D76EF50057527C /* Chat */,
 			);
 			path = Chats;
@@ -1370,6 +1380,8 @@
 			children = (
 				1AB0C15C22C120D8000D016E /* AuthorizationService.swift */,
 				1AB0C15F22C1247F000D016E /* ServiceManager.swift */,
+				7905CDBD230D63120011C83B /* ChatServices.swift */,
+				79FA26F4230EC5AF0007F0ED /* HomeServices.swift */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -1394,6 +1406,7 @@
 		1ACEAC0F22AC040A00B734D3 /* UserData */ = {
 			isa = PBXGroup;
 			children = (
+				7905CDB6230D5E730011C83B /* ContactList */,
 				1A7402C222CCA0BD0089CDAE /* ChooseInterest */,
 				1A2809DD22C5F43B00B4E764 /* ChooseClasses */,
 				1AB0C14E22C0F6BB000D016E /* AddMinors */,
@@ -1546,6 +1559,26 @@
 				7903D0A5228E8CE5004E33B9 /* TextHeader.xib */,
 			);
 			path = HeaderFooterView;
+			sourceTree = "<group>";
+		};
+		7905CDAF230D5E170011C83B /* ChatContactList */ = {
+			isa = PBXGroup;
+			children = (
+				7905CDB0230D5E170011C83B /* ChatContactsListLogics.swift */,
+				7905CDB1230D5E170011C83B /* ChatContactsListMediates.swift */,
+				7905CDB2230D5E170011C83B /* ChatContactsListViewController.swift */,
+			);
+			path = ChatContactList;
+			sourceTree = "<group>";
+		};
+		7905CDB6230D5E730011C83B /* ContactList */ = {
+			isa = PBXGroup;
+			children = (
+				7905CDB7230D5E730011C83B /* ContactsListLogics.swift */,
+				7905CDB8230D5E730011C83B /* ContactsListMediates.swift */,
+				7905CDB9230D5E730011C83B /* ContactsListViewController.swift */,
+			);
+			path = ContactList;
 			sourceTree = "<group>";
 		};
 		7912570722A157C200BDE3EC /* OtherUserProfile */ = {
@@ -1877,16 +1910,6 @@
 				794183AC228960C7009AB12C /* SF-Pro-Text-Semibold.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		79438E3322DF588500DFABE4 /* ContactList */ = {
-			isa = PBXGroup;
-			children = (
-				79438E3422DF58A500DFABE4 /* ContactsListViewController.swift */,
-				79438E3822DF58D100DFABE4 /* ContactsListLogics.swift */,
-				79438E3622DF58BE00DFABE4 /* ContactsListMediates.swift */,
-			);
-			path = ContactList;
 			sourceTree = "<group>";
 		};
 		79493CDF22B90E960026AD0E /* SelectGallaryPhoto */ = {
@@ -2754,7 +2777,6 @@
 				793BE66522E88207005EF72D /* UIView+Extensions.swift in Sources */,
 				79EF134922D3588D00E260D9 /* EventCategoryListLogics.swift in Sources */,
 				1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */,
-				79438E3922DF58D100DFABE4 /* ContactsListLogics.swift in Sources */,
 				1AB0C16322C12B22000D016E /* Authorization.swift in Sources */,
 				091557AF22B1247F0080C9AE /* CreatePostLogics.swift in Sources */,
 				797FFDB022B7BC480055A001 /* PhotoGalleryLiveViewCell.swift in Sources */,
@@ -2777,6 +2799,7 @@
 				8A04B17922FD8C630055C65F /* NotificationSettingsLogics.swift in Sources */,
 				8A04B15C22FC6C3A0055C65F /* SwitchCell.swift in Sources */,
 				091557B922B127320080C9AE /* UserPostTextTableViewCell.swift in Sources */,
+				7905CDB4230D5E170011C83B /* ChatContactsListMediates.swift in Sources */,
 				1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */,
 				1AB0C15A22C1203E000D016E /* NetworkManagerServices.swift in Sources */,
 				793BE65322E88207005EF72D /* MessageInputBar.swift in Sources */,
@@ -2787,6 +2810,7 @@
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				793BE65A22E88207005EF72D /* MessagesViewController+Keyboard.swift in Sources */,
 				793BE68022E88207005EF72D /* MessageLabelDelegate.swift in Sources */,
+				7905CDBA230D5E730011C83B /* ContactsListLogics.swift in Sources */,
 				7912570B22A157C200BDE3EC /* OtherUserProfileController.swift in Sources */,
 				793BE65F22E88207005EF72D /* Bundle+Extensions.swift in Sources */,
 				1AA9AB3F22FF31C200E0E450 /* AddInstragamPhotoViewController.swift in Sources */,
@@ -2835,7 +2859,7 @@
 				797FFDBA22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift in Sources */,
 				1A649E1D2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift in Sources */,
 				793BE68822E88207005EF72D /* LocationMessageCell.swift in Sources */,
-				79438E3522DF58A500DFABE4 /* ContactsListViewController.swift in Sources */,
+				7905CDBB230D5E730011C83B /* ContactsListMediates.swift in Sources */,
 				1AE78D2A22A00F1900972C17 /* EnterVerificationCodeViewLogics.swift in Sources */,
 				793BE65522E88207005EF72D /* InputPlugin.swift in Sources */,
 				7929DA4F22C24ADB00700B42 /* PostViewController.swift in Sources */,
@@ -2858,6 +2882,7 @@
 				1AB0C15922C1203E000D016E /* NetworkManager.swift in Sources */,
 				091557B122B124B90080C9AE /* CreatePostMediates.swift in Sources */,
 				797FFDA022B7BC480055A001 /* CameraSessionHandler.swift in Sources */,
+				7905CDB3230D5E170011C83B /* ChatContactsListLogics.swift in Sources */,
 				091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */,
 				79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */,
 				793BE67E22E88207005EF72D /* MediaItem.swift in Sources */,
@@ -2908,7 +2933,7 @@
 				8A1076C02306BC2600512AA3 /* Tag.swift in Sources */,
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
-				79438E3722DF58BE00DFABE4 /* ContactsListMediates.swift in Sources */,
+				7905CDBE230D63120011C83B /* ChatServices.swift in Sources */,
 				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				793BE66722E88207005EF72D /* CellSizeCalculator.swift in Sources */,
 				8A04B17722FD8C530055C65F /* NotificationSettingsMediator.swift in Sources */,
@@ -2950,6 +2975,7 @@
 				1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */,
 				793BE66E22E88207005EF72D /* TextMessageSizeCalculator.swift in Sources */,
 				79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */,
+				79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */,
 				7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */,
 				C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */,
 				793BE67B22E88207005EF72D /* NSConstraintLayoutSet.swift in Sources */,
@@ -3013,6 +3039,7 @@
 				79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */,
 				7929DA5B22C2630D00700B42 /* PostCommentCell.swift in Sources */,
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
+				7905CDBC230D5E730011C83B /* ContactsListViewController.swift in Sources */,
 				793BE65122E88207005EF72D /* InputBarButtonItem.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,
@@ -3088,6 +3115,7 @@
 				793BE66A22E88207005EF72D /* MediaMessageSizeCalculator.swift in Sources */,
 				793BE66B22E88207005EF72D /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				793BE66222E88207005EF72D /* Settings+UserDefaults.swift in Sources */,
+				7905CDB5230D5E170011C83B /* ChatContactsListViewController.swift in Sources */,
 				1AC635FD22AA907900021E03 /* CustomNavBarPageController.swift in Sources */,
 				7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */,
 				1A142EC8229EC1A0002C1AFE /* CustomPickerMediator.swift in Sources */,
