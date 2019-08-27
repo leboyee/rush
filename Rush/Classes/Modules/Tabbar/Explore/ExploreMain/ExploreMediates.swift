@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {

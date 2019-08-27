@@ -27,7 +27,7 @@ class ChatsViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -90,7 +90,6 @@ class ChatsViewController: CustomViewController {
     func setupSearchChatNavigation() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-
         
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         
@@ -101,7 +100,9 @@ class ChatsViewController: CustomViewController {
         searchField.autocorrectionType = .no
         searchField.delegate = self
         searchField.becomeFirstResponder()
-        searchField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font : UIFont.displayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
+        let font = UIFont.displayBold(sz: 24)
+        let color = UIColor.navBarTitleWhite32
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
         searchField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         customView.addSubview(searchField)
         navigationItem.titleView = customView
@@ -134,8 +135,6 @@ extension ChatsViewController {
         chatlist = filterList
     }
 }
-
-
 
 // MARK: - Navigation
 extension ChatsViewController {

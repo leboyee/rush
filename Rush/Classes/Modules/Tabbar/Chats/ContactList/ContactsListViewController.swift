@@ -11,10 +11,9 @@ import UIKit
 typealias ContactsPresenterItem = (key: String, contacts: [Contact])
 
 class ContactsListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inviteButton: UIButton!
-
     
     var isFromRegister = false
     var items = [ContactsPresenterItem]()
@@ -24,10 +23,10 @@ class ContactsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
-      
+        
     }
     
     func setupUI() {
@@ -37,22 +36,20 @@ class ContactsListViewController: UIViewController {
         getContacts()
         inviteButton.layer.cornerRadius = 8.0
         inviteButton.clipsToBounds = true
-
+        
     }
     
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
-
 
 // MARK: - Actions
 extension ContactsListViewController {
@@ -63,16 +60,12 @@ extension ContactsListViewController {
     @IBAction func inviteButtonAction() {
         Utils.alert(message: "Api in development")
     }
-
 }
 
 // MARK: - Mediator
 extension ContactsListViewController {
-
     func inviteButtonVisiable() {
         inviteButton.setTitle(selectedItem.count == 1 ? "Invite 1 contact" : "Invite \(selectedItem.count) contacts", for: .normal)
         inviteButton.isHidden = self.selectedItem.count > 0 ? false : true
     }
-    
-    
 }

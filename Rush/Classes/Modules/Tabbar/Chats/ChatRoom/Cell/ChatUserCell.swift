@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatUserCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var arrowView: UIView!
     @IBOutlet weak var onlineView: UIView!
     
@@ -18,10 +18,9 @@ class ChatUserCell: UICollectionViewCell {
         // Initialization code
         onlineView.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
     }
-
 }
 
-//MARK: - Others
+// MARK: - Others
 extension ChatUserCell {
     func setup(isHideArrowView: Bool) {
         arrowView.isHidden = isHideArrowView

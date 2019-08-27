@@ -32,13 +32,13 @@ extension ContactsListViewController {
         if isFromRegister == true {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
-
+            
         }
     }
 }
 
 // MARK: - Tableview methods
-extension ContactsListViewController : UITableViewDelegate, UITableViewDataSource {
+extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
@@ -46,23 +46,23 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].contacts.count
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as! PeopleCell
-       // let alpha = alphabet[indexPath.section]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as? PeopleCell else { return UITableViewCell() }
+        // let alpha = alphabet[indexPath.section]
         let array = items[indexPath.section].contacts
         let item = array[indexPath.row]
         cell.setup(title: "\(item.displayName)")
-        cell.setupImage(image: UIImage(named:"profile_tab_inactive")!)
+        cell.setupImage(image: UIImage(named: "profile_tab_inactive")!)
         cell.setup(isHidden: !isFromRegister)
         cell.setup(isSelected: selectedItem.contains(item))
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      
+        
         let header = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 32))
         let label = UILabel(frame: CGRect(x: 24, y: 16, width: screenWidth, height: 16))
         let key = items[section].key
@@ -94,15 +94,13 @@ extension ContactsListViewController : UITableViewDelegate, UITableViewDataSourc
             }
             self.tableView.reloadData()
             inviteButtonVisiable()
-
-        }
-        else {
+        } else {
             let controller = ChatRoomViewController()
             controller.isShowTempData = false
             controller.isGroupChat = false
             navigationController?.pushViewController(controller, animated: true)
         }
-
+        
     }
     
 }
