@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class ChatsViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!

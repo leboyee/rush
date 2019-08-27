@@ -42,7 +42,4 @@ extension ClassesHeader {
         detailsLabel.text = detailsLableText
         titleLabel.font = UIFont.semibold(sz: 14)
     }
-    
-    
-    
 }

@@ -15,7 +15,6 @@ class UserPostTextTableViewCell: UITableViewCell {
     var textDidEndEditing:(() -> Void)?
     var updateTableView:((_ textView: UITextView) -> Void)?
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,10 +43,10 @@ class UserPostTextTableViewCell: UITableViewCell {
 }
 
 // MARK: - TextView delegate methods
-extension UserPostTextTableViewCell :UITextViewDelegate {
+extension UserPostTextTableViewCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
+        if text == "\n" {
             textView.resignFirstResponder()
             return false
         }

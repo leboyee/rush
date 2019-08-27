@@ -24,7 +24,7 @@ class ClubListViewController: CustomViewController {
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
-    var screenType : ClubListType = .none
+    var screenType: ClubListType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()

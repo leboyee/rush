@@ -23,11 +23,11 @@ class CreateClubViewController: UIViewController {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
     
-    var saveBtnActive : UIBarButtonItem {
+    var saveBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
     }
     
-    var saveBtnDisActive : UIBarButtonItem {
+    var saveBtnDisActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
     }
     
@@ -47,7 +47,6 @@ class CreateClubViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
-    
     
     // MARK: - Other function
     func setup() {
@@ -97,8 +96,7 @@ extension CreateClubViewController {
     }
     
     @IBAction func addImageButtonAction() {
-        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) {
-            [weak self] (index) in
+        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
             guard let unself = self else { return }
             if index != 2 {
                 unself.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)

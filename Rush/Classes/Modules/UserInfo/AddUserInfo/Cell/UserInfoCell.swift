@@ -13,8 +13,8 @@ class UserInfoCell: UITableViewCell {
     @IBOutlet weak var textField: AkiraTextField!
     @IBOutlet weak var iconImageView: UIImageView!
     
-    var textDidChanged: ((_ text : String) -> Void)?
-    var textDidEndEditing: ((_ text : String) -> Void)?
+    var textDidChanged: ((_ text: String) -> Void)?
+    var textDidEndEditing: ((_ text: String) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,12 +25,12 @@ class UserInfoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }    
+    }
 }
 
 extension UserInfoCell {
     
-    func setup(placeholder: String,title: String) {
+    func setup(placeholder: String, title: String) {
         textField.placeholderColor = UIColor.textFiledPlaceHolder
         textField.placeholderLabel.textColor = (isFirstResponder || textField.text!.isNotEmpty) ? UIColor.bgBlack : UIColor.placeholderColor
         textField.text = title

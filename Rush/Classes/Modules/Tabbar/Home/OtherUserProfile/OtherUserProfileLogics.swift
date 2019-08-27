@@ -55,19 +55,19 @@ extension OtherUserProfileController {
         }
         
         cell.firstButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.isShowMessageButton = false
-            if self_.friendType == .none {
-                self_.friendType = .friends
-            } else if self_.friendType == .friends {
-                self_.friendType = .addFriend
+            guard let unself = self else { return }
+            unself.isShowMessageButton = false
+            if unself.friendType == .none {
+                unself.friendType = .friends
+            } else if unself.friendType == .friends {
+                unself.friendType = .addFriend
                 
                 let snackbar = TTGSnackbar(message: "You unfriended Jessica O'Hara",
                                            duration: .middle,
                                            actionText: "Undo",
                                            actionBlock: { (_) in
-                                            self_.friendType = .friends
-                                            self_.tableView.reloadData()
+                                            unself.friendType = .friends
+                                            unself.tableView.reloadData()
                 })
                 snackbar.show()
                 
@@ -77,15 +77,15 @@ extension OtherUserProfileController {
                     self_.delegate?.unfriendUser("Jessica O'Hara")
                 }
                 */
-            } else if self_.friendType == .addFriend {
-                self_.friendType = .requested
-            } else if self_.friendType == .requested {
-                self_.isShowMessageButton = true
-                self_.friendType = .accept
-            } else if self_.friendType == .accept {
-                self_.friendType = .friends
+            } else if unself.friendType == .addFriend {
+                unself.friendType = .requested
+            } else if unself.friendType == .requested {
+                unself.isShowMessageButton = true
+                unself.friendType = .accept
+            } else if unself.friendType == .accept {
+                unself.friendType = .friends
             }
-            self_.tableView.reloadData()
+            unself.tableView.reloadData()
         }
         
         cell.secondButtonClickEvent = { [weak self] () in

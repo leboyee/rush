@@ -18,9 +18,9 @@ class TextViewCell: UITableViewCell {
     @IBOutlet weak var topConstraintOfBgView: NSLayoutConstraint!
     @IBOutlet weak var clearButton: UIButton!
     
-    var textDidChanged: ((_ text : String) -> Void)?
+    var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
-    var textDidEndEditing: ((_ text : String) -> Void)?
+    var textDidEndEditing: ((_ text: String) -> Void)?
     var updateTableView:((_ textView: UITextView) -> Void)?
     
     var maxLength = 300

@@ -52,7 +52,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
         fillTextHeader(header, section)
         return header
     }
@@ -71,7 +71,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - SelectEventTypeController Delegate
-extension ClubListViewController : SelectEventTypeDelegate {
+extension ClubListViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
         openCreateClubViewController()
     }

@@ -17,9 +17,9 @@ class TextIconCell: UITableViewCell {
     @IBOutlet weak var chatSwitch: UISwitch!
     @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
     
-    var textDidChanged: ((_ text : String) -> Void)?
+    var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
-    var textDidEndEditing: ((_ text : String) -> Void)?
+    var textDidEndEditing: ((_ text: String) -> Void)?
     var switchValueChanged: ((_ isOn: Bool) -> Void)?
     
     override func awakeFromNib() {

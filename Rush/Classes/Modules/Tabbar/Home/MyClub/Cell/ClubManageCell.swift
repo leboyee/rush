@@ -44,7 +44,7 @@ class ClubManageCell: UITableViewCell {
     
 }
 
-//MARK: - Other functions
+// MARK: - Other functions
 extension ClubManageCell {
     
     func setup(firstButtonType: ManageButtonType) {
@@ -120,7 +120,7 @@ extension ClubManageCell {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension ClubManageCell {
     
     @IBAction func firstButtonAction() {

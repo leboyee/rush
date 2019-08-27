@@ -17,7 +17,6 @@ class TimeSlotCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    
     var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
     var textDidEndEditing: ((_ text: String) -> Void)?

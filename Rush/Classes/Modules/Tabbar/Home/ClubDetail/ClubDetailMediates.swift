@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
@@ -30,7 +29,6 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return joinedClub ? (6 + clubPostList.count) : 6
     }
@@ -41,12 +39,12 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubName, for: indexPath) as! ClubNameCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubName, for: indexPath) as? ClubNameCell else { return UITableViewCell() }
             fillClubNameCell(cell)
             return cell
         } else if indexPath.section == 1 {
             if joinedClub {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
+                guard let cell = tableV else { return UITableViewCell() }iew.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell
                 fillClubManageCell(cell)
                 return cell
             } else {
