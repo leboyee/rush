@@ -77,7 +77,7 @@ extension CalendarViewController {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
@@ -96,4 +96,13 @@ extension CalendarViewController {
         dateButton.setTitle(text, for: .normal)
     }
    
+}
+
+// MARK: - Mediator/Presenter Functions
+extension CalendarViewController {
+ 
+    func monthChange(text: String) {
+        dateButton.setTitle(text, for: .normal)
+    }
+    
 }
