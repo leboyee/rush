@@ -33,9 +33,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5b-en-NIm">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKy-D4-vqR">
                     <rect key="frame" x="107.5" y="102" width="199" height="88"/>
                     <state key="normal" image="ic_cameraWithText"/>
@@ -43,6 +40,9 @@
                         <action selector="cameraButtonAction" destination="-1" eventType="touchUpInside" id="zXi-8D-Ytj"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5b-en-NIm">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
+                </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-club" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-fQ-nSe">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
                 </imageView>

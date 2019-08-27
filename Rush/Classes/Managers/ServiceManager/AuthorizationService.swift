@@ -113,6 +113,24 @@ extension ServiceManager {
             })
         }
     }
+
+    // MARK: - Profile
+    func getProfile(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        if Authorization.shared.authorized {
+            NetworkManager.shared.getProfile(params: params) { [weak self] (data, error, code) -> (Void) in
+                guard let self_ = self else { return }
+                self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                    //Only if self profile is called and at that time param count is always zero
+                    if params.count == 0, let user = data?[Keys.user] as? [String: Any] {
+                        Authorization.shared.updateUserData(data: user)
+                    }
+                    closer(data, errorMessage)
+                })
+            }
+        } else {
+            closer(nil, Message.tryAgainErrorMessage)
+        }
+    }
     
     func updateProfile(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.updateProfile(params: params) {
@@ -140,6 +158,7 @@ extension ServiceManager {
         }
     }
 
+    // MARK: - Major Minor
     func getMajorList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getMajorList(params: params) { [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
@@ -178,24 +197,5 @@ extension ServiceManager {
     }
  
  */
-    /*
-    func getProfile(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
-        if Authorization.shared.authorized {
-            NetworkManager.shared.getProfile(params: params) { [weak self] (data, error, code) -> (Void) in
-                guard let self_ = self else { return }
-                self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                    //Only if self profile is called and at that time param count is always zero
-                    if params.count == 0, let user = data?[Keys.user] as? [String: Any] {
-                        Authorization.shared.updateUserData(data: user)
-                    }
-                    closer(data, errorMessage)
-                })
-            }
-        } else {
-            closer(nil, Message.tryAgainErrorMessage)
-        }
-    }
-    */
-
     
 }

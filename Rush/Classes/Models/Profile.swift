@@ -18,23 +18,22 @@ class Profile: NSObject {
     var name                : String {
         return firstName + " " + lastName
     }
-    var firstName                : String = ""
-    var lastName                : String = ""
-    var password            : String = ""
-    var phoneNumber         : String = ""
-    var countryCode         : String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var password: String = ""
+    var countryCode: String = ""
     var educationLevel      : String = ""
     var educationYear      : String = ""
-    var majors  = [String]()
-    var minors  = [String]()
-    var classes  = [Classes]()
-    var interest  = [String]()
-    var university : String = ""
+    var majors = [String]()
+    var minors = [String]()
+    var classes = [Classes]()
+    var interest = [String]()
+    var university: String = ""
     var birthDate: String = ""
     var gender: String = ""
     var relationShip: String = ""
     var homeTown: String = ""
-    var photo               : Image?
+    var photo: Image?
     var images: [Image]?
 
     /// Added by Kamal for Rush
@@ -45,8 +44,6 @@ class Profile: NSObject {
     var isClassNotificationOn: Bool = true
     var whoCanMessageYou: String = ""
     var whoCanInviteYou: String = ""
-
-    
     
     init(data : [String : Any]) {
         super.init()
@@ -69,6 +66,8 @@ class Profile: NSObject {
 
         if let value = data["phone"] as? String {
             phone = value
+        } else if let value = data["phone"] as? Int {
+            phone = "\(value)"
         }
         
         if let value = data["first_name"] as? String {
@@ -82,25 +81,30 @@ class Profile: NSObject {
         if let value = data["country_code"] as? Int {
             countryCode = "\(value)"
         }
-        if let value = data["phone"] as? Int {
-            phone = "\(value)"
-        }
+        
         if let value = data["u_birth_date"] as? String {
             birthDate = value
         }
+        
         if let value = data["u_gender"] as? String {
             gender = value
         }
+        
         if let value = data["u_relationship"] as? String {
             relationShip = value
         }
+        
         if let value = data["u_hometown"] as? String {
             homeTown = value
         }
         
         /// Added by Kamal for Rush
         
-        isDarkMode = true
+        if let value = data["u_photo"] as? String {
+            photo = Image(json: value)
+        }
+        
+        isDarkMode = false
         if let value = data[Keys.u_is_dark_mode] as? Int {
             isDarkMode = value == 1 ? true : false
         } else if let value = data[Keys.u_is_dark_mode] as? String {
