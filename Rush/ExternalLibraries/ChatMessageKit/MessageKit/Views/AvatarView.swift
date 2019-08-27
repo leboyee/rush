@@ -94,7 +94,7 @@ open class AvatarView: UIImageView {
     private func getImageFrom(initials: String) -> UIImage {
         let width = frame.width
         let height = frame.height
-        if width == 0 || height == 0 {return UIImage()}
+        if width == 0 || height == 0 { return UIImage() }
         var font = placeholderFont
 
         _ = UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: height), false, UIScreen.main.scale)
@@ -112,14 +112,17 @@ open class AvatarView: UIImageView {
 
         let textStyle = NSMutableParagraphStyle()
         textStyle.alignment = .center
-        let textFontAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: placeholderTextColor, NSAttributedString.Key.paragraphStyle: textStyle]
+        let textFontAttributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: placeholderTextColor, NSAttributedString.Key.paragraphStyle: textStyle]
 
         let textTextHeight: CGFloat = initials.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
         context.saveGState()
         context.clip(to: textRect)
         initials.draw(in: CGRect(textRect.minX, textRect.minY + (textRect.height - textTextHeight) / 2, textRect.width, textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
-        guard let renderedImage = UIGraphicsGetImageFromCurrentImageContext() else { assertionFailure("Could not create image from context"); return UIImage()}
+        guard let renderedImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            assertionFailure("Could not create image from context")
+            return UIImage()
+        }
         return renderedImage
     }
 

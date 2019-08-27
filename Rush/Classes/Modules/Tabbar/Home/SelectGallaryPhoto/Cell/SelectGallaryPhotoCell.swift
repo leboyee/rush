@@ -58,9 +58,9 @@ extension SelectGallaryPhotoCell {
                     contentMode: .aspectFill,
                     options: requestOptions
                 ) { [weak self] image, _ in
-                    guard let self_ = self else { return }
+                    guard let unself = self else { return }
                     if let image = image {
-                        self_.userImageView.image = image
+                        unself.userImageView.image = image
                     }
                 }
             }

@@ -53,7 +53,8 @@ open class MessageInputBar: UIView {
      A UIVisualEffectView that adds a blur effect to make the view appear transparent.
      
      ## Important Notes ##
-     1. The blurView is initially not added to the backgroundView to improve performance when not needed. When `isTranslucent` is set to TRUE for the first time the blurView is added and anchored to the `backgroundView`s edge anchors
+     1. The blurView is initially not added to the backgroundView to improve performance when not needed. When
+     `isTranslucent` is set to TRUE for the first time the blurView is added and anchored to the `backgroundView`s edge anchors
      */
     open var blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .light)

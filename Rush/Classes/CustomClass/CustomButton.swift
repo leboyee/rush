@@ -25,13 +25,12 @@ class CustomButton: UIButton {
 
     func setNextButton(isEnable: Bool) {
         self.layer.cornerRadius = 8.0
-        self.clipsToBounds = true        
+        self.clipsToBounds = true
         if isEnable == true {
             self.isEnabled = isEnable
             self.backgroundColor =  UIColor.brown24
             self.setTitleColor(UIColor.white, for: .normal)
-        }
-        else {
+        } else {
             self.isEnabled = isEnable
             self.backgroundColor =  UIColor.buttonDisableBgColor
             self.setTitleColor(UIColor.buttonDisableTextColor, for: .normal)
@@ -45,9 +44,6 @@ class CustomButton: UIButton {
     func setLoginWithNumberButton() {
         self.setTitleColor(UIColor.lightGrayColor, for: .normal)
     }
-
-    
-
     
     /*
     // Only override draw() if you perform custom drawing.
