@@ -26,7 +26,6 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return isSearch ? 1 : 4
     }
@@ -39,11 +38,11 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         
         if isSearch {
             if searchType == .event {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as! SearchClubCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as? SearchClubCell else { return UITableViewCell() }
                 fillEventCell(cell, indexPath)
                 return cell
             } else if searchType == .people {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as! PeopleCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as? PeopleCell else { return UITableViewCell() }
                 fillPeopleCell(cell, indexPath)
                 return cell
             } else {
@@ -51,11 +50,11 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.exploreCell, for: indexPath) as! ExploreCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.exploreCell, for: indexPath) as? ExploreCell else { return UITableViewCell() }
                 fillExploreCell(cell, indexPath)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
                 fillEventTypeCell(cell, indexPath)
                 return cell
             }
@@ -71,7 +70,7 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
         fillTextHeader(header, section)
         return header
     }
@@ -85,12 +84,12 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
-//MARK: - Textfield Delegate
-extension ExploreViewController : UITextFieldDelegate {
+// MARK: - Textfield Delegate
+extension ExploreViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         isSearch = true
@@ -121,32 +120,32 @@ extension ExploreViewController : UITextFieldDelegate {
     }
 }
 
-//MARK: - SelectEventTypeController Delegate
-extension ExploreViewController : SelectEventTypeDelegate {
+// MARK: - SelectEventTypeController Delegate
+extension ExploreViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
         performSegue(withIdentifier: Segues.createClub, sender: nil)
     }
 }
 
-//MARK: - CreatePostViewController Delegate
-extension ExploreViewController : CreatePostViewControllerDelegate {
+// MARK: - CreatePostViewController Delegate
+extension ExploreViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
         /*
-        notificationTitle = text
-        notificationButtonTitle = buttonText
-        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
-        */
+         notificationTitle = text
+         notificationButtonTitle = buttonText
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
         let snackbar = TTGSnackbar(message: text,
                                    duration: .middle,
                                    actionText: buttonText,
-                                   actionBlock: { (snackbar) in
+                                   actionBlock: { (_) in
                                     Utils.notReadyAlert()
         })
         snackbar.show()
     }
 }
 
-//MARK: - Notification alert delegate
+// MARK: - Notification alert delegate
 extension ExploreViewController: NotificationAlertDelegate {
     func undoButtonClickEvent() {
         
