@@ -9,7 +9,7 @@
 import UIKit
 
 class TextCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
@@ -19,14 +19,11 @@ class TextCell: UICollectionViewCell {
         clipsToBounds = true
         layer.cornerRadius = 8.0
     }
-
+    
 }
 
 extension TextCell {
-    
     func setup(text: String) {
         label.text = text
     }
-    
 }
-

@@ -25,7 +25,6 @@ class TextViewCell: UITableViewCell {
     
     var maxLength = 300
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,7 +36,6 @@ class TextViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    
 }
 
 extension TextViewCell {

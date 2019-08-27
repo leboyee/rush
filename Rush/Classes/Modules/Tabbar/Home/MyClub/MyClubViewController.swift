@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 class MyClubViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
@@ -21,7 +21,7 @@ class MyClubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -34,11 +34,11 @@ class MyClubViewController: UIViewController {
     func setupUI() {
         
         /*
-        let total = screenWidth + 15
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        */
+         let total = screenWidth + 15
+         heightConstraintOfImageView.constant = total
+         
+         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
+         */
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
@@ -55,7 +55,7 @@ class MyClubViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension MyClubViewController {
     @IBAction func backButtonAction() {
         let viewControllers = self.navigationController!.viewControllers as [UIViewController]

@@ -21,12 +21,12 @@ enum ScreenType {
     case classes
 }
 
-protocol SelectEventTypeDelegate {
+protocol SelectEventTypeDelegate: class {
     func createEventClub(_ type: EventType)
 }
 
 class SelectEventTypeViewController: UIViewController {
-
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var eventCategoryView: UIView!
     @IBOutlet weak var eventView: UIView!
@@ -37,11 +37,11 @@ class SelectEventTypeViewController: UIViewController {
     var type : SelectEventType = .none
     var screenType : ScreenType = .none
     var eventType : EventType = .none
-    var delegate : SelectEventTypeDelegate?
+    weak var delegate : SelectEventTypeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
     }
@@ -55,7 +55,7 @@ class SelectEventTypeViewController: UIViewController {
             }
         }
     }
-
+    
 }
 
 // MARK: - Other function
@@ -84,7 +84,7 @@ extension SelectEventTypeViewController {
                 self.delegate?.createEventClub(self.eventType)
             }
         }
-
+        
     }
 }
 
