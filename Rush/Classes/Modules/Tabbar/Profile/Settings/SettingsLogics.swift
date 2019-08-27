@@ -118,10 +118,15 @@ extension SettingsViewController {
     }
     
     func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {
-        
+        cell.set(instagramStatus: isInstagramConnected, user: "")
         cell.instagramEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.showInstagramDisconnect()
+            guard let unsefe = self else { return }
+            if unsefe.isInstagramConnected {
+                unsefe.showInstagramDisconnect()
+            } else {
+                unsefe.isInstagramConnected = !unsefe.isInstagramConnected
+            }
+            unsefe.tableView.reloadData()
         }
         
     }
