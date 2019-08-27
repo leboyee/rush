@@ -9,8 +9,8 @@
 import UIKit
 
 @objc public protocol TagListViewDelegate {
-    @objc optional func tagPressed(_ title: String, tagView: TagView, sender: TagListView) -> Void
-    @objc optional func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) -> Void
+    @objc optional func tagPressed(_ title: String, tagView: TagView, sender: TagListView)
+    @objc optional func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView)
 }
 
 @IBDesignable
@@ -364,7 +364,6 @@ open class TagListView: UIView {
         return insertTagView(createNewTagView(title), at: index)
     }
     
-
     @discardableResult
     open func insertTagView(_ tagView: TagView, at index: Int) -> TagView {
         defer { rearrangeViews() }

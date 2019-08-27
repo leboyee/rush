@@ -16,13 +16,13 @@ class ChatsViewController: CustomViewController {
     
     var searchText = ""
     var isSearch = false
-    var chatlist : [String] = ["Fine art", "Marta Keller", "Adam Batler", "Marta Mulla", "Julia Herber", "Peter Conner"] {
+    var chatlist: [String] = ["Fine art", "Marta Keller", "Adam Batler", "Marta Mulla", "Julia Herber", "Peter Conner"] {
         didSet {
             tableView.reloadData()
         }
     }
     var filterList = [String]()
-    var searchField : UITextField!
+    var searchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

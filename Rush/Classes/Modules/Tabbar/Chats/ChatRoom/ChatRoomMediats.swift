@@ -236,7 +236,7 @@ extension ChatRoomViewController: MessageInputBarDelegate {
         
         if isShowTempData {
             // Here we can parse for which substrings were autocompleted
-            let attributedText = messageInputBar.inputTextView.attributedText!
+            //let _ = messageInputBar.inputTextView.attributedText!
             //let _ = NSRange(location: 0, length: attributedText.length)
             
             let components = inputBar.inputTextView.components

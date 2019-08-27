@@ -12,7 +12,7 @@ extension ContactsListViewController {
     
     func getContacts() {
         Utils.showSpinner()
-        ContactsManager().getUserContacts { [weak self] (contacts, status, message) in
+        ContactsManager().getUserContacts { [weak self] (contacts, _, _) in
             guard let unself = self else { return }
             for contact in contacts {
                 var sectionKey = ""

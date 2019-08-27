@@ -50,7 +50,6 @@ extension EventTypeCell {
         }
     }
     
-    
     func fillInterestCell(_ cell: TextCell, _ indexPath: IndexPath) {
         if let tag = list?[indexPath.row] as? Tag {
             cell.setup(text: tag.text)

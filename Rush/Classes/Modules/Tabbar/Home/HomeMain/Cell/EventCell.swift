@@ -10,7 +10,6 @@ import UIKit
 
 class EventCell: UICollectionViewCell {
 
-    
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var privacyImageView: UIImageView!
     @IBOutlet weak var widthConstraintOfDateView: NSLayoutConstraint!

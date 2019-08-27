@@ -12,7 +12,9 @@ import Photos
 extension ClassDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? ((Utils.navigationHeigh*2) + 24 + 216) : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
+        let photoHeight = (Utils.navigationHeigh*2) + 24 + 216
+        let least = CGFloat.leastNormalMagnitude
+        return section == 0 ? photoHeight : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {

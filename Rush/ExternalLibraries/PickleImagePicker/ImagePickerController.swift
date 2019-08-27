@@ -174,14 +174,11 @@ open class ImagePickerController: UINavigationController {
     }()
     
     fileprivate lazy var cancelBarButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(cancel(_:)))
-    
-    
     //    fileprivate lazy var doneBarButton: UIBarButtonItem = {
     //        let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
     //        barButton.isEnabled = false
     //        return barButton
     //    }()
-    
     
     fileprivate lazy var doneDisActiveBarButton: UIBarButtonItem = {
         let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "done-inactive"), style: .done, target: self, action: nil)
@@ -192,7 +189,6 @@ open class ImagePickerController: UINavigationController {
         let barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "done-active"), style: .done, target: self, action: #selector(done(_:)))
         return barButton
     }()
-    
     
     fileprivate lazy var photoAlbums: PHFetchResult<PHAssetCollection> =
         PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
@@ -236,7 +232,6 @@ open class ImagePickerController: UINavigationController {
     var selectedAlbum: PHAssetCollection?
 }
 
-
 extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - UIImagePickerControllerDelegate
@@ -274,9 +269,7 @@ extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationCo
     
 }
 
-
 // MARK: - PhotoAlbumsViewControllerDelegate
-
 
 extension ImagePickerController: PhotoAlbumsViewControllerDelegate {
     
@@ -291,9 +284,7 @@ extension ImagePickerController: PhotoAlbumsViewControllerDelegate {
     
 }
 
-
 // MARK: - PhotoGalleryViewControllerDelegate
-
 
 extension ImagePickerController: PhotoGalleryViewControllerDelegate {
     
@@ -356,18 +347,16 @@ extension ImagePickerController: PhotoGalleryViewControllerDelegate {
     
 }
 
-
 // MARK: - Private
-
 
 fileprivate extension ImagePickerController {
     
-    fileprivate func shouldEnableDoneBarButtonItem(with selectedAssets: [PHAsset]) -> Bool {
+    func shouldEnableDoneBarButtonItem(with selectedAssets: [PHAsset]) -> Bool {
         galleryViewController?.navigationItem.rightBarButtonItem = selectedAssets.count > 0 ? doneActiveBarButton : doneDisActiveBarButton
         return imagePickerDelegate?.imagePickerController?(self, shouldEnableDoneBarButtonItemWithSelected: selectedAssets) ?? !selectedAssets.isEmpty
     }
     
-    fileprivate func handle(photoLibraryPermission status: PHAuthorizationStatus) {
+    func handle(photoLibraryPermission status: PHAuthorizationStatus) {
         switch status {
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization { status in
@@ -396,10 +385,12 @@ fileprivate extension ImagePickerController {
                     self?.showPermissionErrorIfNeeded = nil
                 })
             }
+        default:
+            break
         }
     }
     
-    fileprivate func launchCamera() {
+    func launchCamera() {
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         guard imagePickerDelegate?.imagePickerController(self, shouldLaunchCameraWithAuthorization: status) ?? true else {
             return
@@ -431,22 +422,22 @@ fileprivate extension ImagePickerController {
     // MARK: IBActions
     
     @objc
-    fileprivate func togglePhotoAlbums(_ sender: UIControl) {
+    func togglePhotoAlbums(_ sender: UIControl) {
         let showsPhotoAlbums = !sender.isSelected
         
         if showsPhotoAlbums {
             let albums = imagePickerDelegate?.photoAlbumsForImagePickerController?(self) ?? [cameraRoll, favorites, photoAlbums]
             
             let storyBoard = UIStoryboard(name: "CustomPicker", bundle: nil)
-            let controller = storyBoard.instantiateViewController(withIdentifier: "SelectGallaryPhotoViewController") as! SelectGallaryPhotoViewController
-            controller.modalPresentationStyle = .overFullScreen
-            controller.source = albums
-            controller.selectedAlbum = selectedAlbum
-            controller.selectedTitle = title ?? "Others"
-            controller.delegate = self
-            controller.configuration = configuration
-            present(controller, animated: false, completion: nil)
-            
+            if let controller = storyBoard.instantiateViewController(withIdentifier: "SelectGallaryPhotoViewController") as? SelectGallaryPhotoViewController {
+                controller.modalPresentationStyle = .overFullScreen
+                controller.source = albums
+                controller.selectedAlbum = selectedAlbum
+                controller.selectedTitle = title ?? "Others"
+                controller.delegate = self
+                controller.configuration = configuration
+                present(controller, animated: false, completion: nil)
+            }
             //            let controller = PhotoAlbumsViewController(source: albums, configuration: configuration)
             //            controller.delegate = self
             //            controller.title = title
@@ -466,7 +457,6 @@ fileprivate extension ImagePickerController {
             /*
              self.navigationBar.layer.removeAllAnimations()
              self.galleryViewController?.navigationItem.setLeftBarButton(showsPhotoAlbums ? nil : self.cancelBarButton, animated: true)
-             self.galleryViewController?.navigationItem.setRightBarButton(showsPhotoAlbums ? nil : (self.selectedAssets.count > 0 ? self.doneActiveBarButton : self.doneDisActiveBarButton), animated: true)
              */
         }
     }

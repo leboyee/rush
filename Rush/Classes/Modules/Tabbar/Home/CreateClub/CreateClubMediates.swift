@@ -121,7 +121,7 @@ extension CreateClubViewController: UIScrollViewDelegate {
                 navigationController?.navigationBar.layer.add(animation, forKey: nil)
             }
             
-            if (tableView.contentOffset.y < -40) {
+            if tableView.contentOffset.y < -40 {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
         }

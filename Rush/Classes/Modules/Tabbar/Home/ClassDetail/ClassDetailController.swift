@@ -38,8 +38,7 @@ class ClassDetailViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    
-    //MARk: - Other function
+    // MARK: - Other function
     func setup() {
         setupUI()
     }
@@ -70,7 +69,7 @@ class ClassDetailViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension ClassDetailViewController {
     @IBAction func cancelButtonAction() {
         dismiss(animated: true, completion: nil)

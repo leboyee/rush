@@ -25,7 +25,7 @@ type_name:
   max_length: 40
 variable_name:
   min_length: 1
-  max_length: 40
+  max_length: 60
 trailing_whitespace:
   ignores_empty_lines: true
   ignores_comments: true

@@ -34,10 +34,10 @@ class SelectEventTypeViewController: UIViewController {
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var radiusView: UIView!
     
-    var type : SelectEventType = .none
-    var screenType : ScreenType = .none
-    var eventType : EventType = .none
-    weak var delegate : SelectEventTypeDelegate?
+    var type: SelectEventType = .none
+    var screenType: ScreenType = .none
+    var eventType: EventType = .none
+    weak var delegate: SelectEventTypeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

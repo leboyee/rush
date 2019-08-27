@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var isTokenRegistrationPending = true
-    var channel : SBDGroupChannel?
+    var channel: SBDGroupChannel?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -97,7 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
     func setupStoryboard() {
         if Authorization.shared.authorized == true {
             let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
@@ -109,8 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = tabbarVC
         }
     }
-    
-    
 
     //Temporary used for Registraiont
     func moveToTabbarWithoutRegister() {
@@ -120,4 +117,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

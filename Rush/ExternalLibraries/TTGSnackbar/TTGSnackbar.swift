@@ -64,10 +64,10 @@ open class TTGSnackbar: UIView {
     // MARK: - Typealias.
     
     /// Action callback closure definition.
-    public typealias TTGActionBlock = (_ snackbar:TTGSnackbar) -> Void
+    public typealias TTGActionBlock = (_ snackbar: TTGSnackbar) -> Void
     
     /// Dismiss callback closure definition.
-    public typealias TTGDismissBlock = (_ snackbar:TTGSnackbar) -> Void
+    public typealias TTGDismissBlock = (_ snackbar: TTGSnackbar) -> Void
     
     /// Swipe gesture callback closure
     public typealias TTGSwipeBlock = (_ snackbar: TTGSnackbar, _ direction: UISwipeGestureRecognizer.Direction) -> Void
@@ -87,13 +87,13 @@ open class TTGSnackbar: UIView {
     @objc open dynamic var shouldActivateLeftAndRightMarginOnCustomContentView: Bool = false
     
     /// Action callback.
-    @objc open dynamic var actionBlock: TTGActionBlock? = nil
+    @objc open dynamic var actionBlock: TTGActionBlock?
     
     /// Second action block
-    @objc open dynamic var secondActionBlock: TTGActionBlock? = nil
+    @objc open dynamic var secondActionBlock: TTGActionBlock?
     
     /// Dismiss callback.
-    @objc open dynamic var dismissBlock: TTGDismissBlock? = nil
+    @objc open dynamic var dismissBlock: TTGDismissBlock?
     
     /// Snackbar display duration. Default is Short - 1 second.
     @objc open dynamic var duration: TTGSnackbarDuration = TTGSnackbarDuration.short
@@ -320,28 +320,28 @@ open class TTGSnackbar: UIView {
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
     
     /// Timer to dismiss the snackbar.
-    fileprivate var dismissTimer: Timer? = nil
+    fileprivate var dismissTimer: Timer?
     
     /// Keyboard mark
     fileprivate var keyboardIsShown: Bool = false
     fileprivate var keyboardHeight: CGFloat = 0
     
     // Constraints.
-    fileprivate var leftMarginConstraint: NSLayoutConstraint? = nil
-    fileprivate var rightMarginConstraint: NSLayoutConstraint? = nil
-    fileprivate var bottomMarginConstraint: NSLayoutConstraint? = nil
-    fileprivate var topMarginConstraint: NSLayoutConstraint? = nil // Only work when top animation type
-    fileprivate var centerXConstraint: NSLayoutConstraint? = nil
+    fileprivate var leftMarginConstraint: NSLayoutConstraint?
+    fileprivate var rightMarginConstraint: NSLayoutConstraint?
+    fileprivate var bottomMarginConstraint: NSLayoutConstraint?
+    fileprivate var topMarginConstraint: NSLayoutConstraint?// Only work when top animation type
+    fileprivate var centerXConstraint: NSLayoutConstraint?
     
     // Content constraints.
-    fileprivate var iconImageViewWidthConstraint: NSLayoutConstraint? = nil
-    fileprivate var actionButtonMaxWidthConstraint: NSLayoutConstraint? = nil
-    fileprivate var secondActionButtonMaxWidthConstraint: NSLayoutConstraint? = nil
+    fileprivate var iconImageViewWidthConstraint: NSLayoutConstraint?
+    fileprivate var actionButtonMaxWidthConstraint: NSLayoutConstraint?
+    fileprivate var secondActionButtonMaxWidthConstraint: NSLayoutConstraint?
     
-    fileprivate var contentViewLeftConstraint: NSLayoutConstraint? = nil
-    fileprivate var contentViewRightConstraint: NSLayoutConstraint? = nil
-    fileprivate var contentViewTopConstraint: NSLayoutConstraint? = nil
-    fileprivate var contentViewBottomConstraint: NSLayoutConstraint? = nil
+    fileprivate var contentViewLeftConstraint: NSLayoutConstraint?
+    fileprivate var contentViewRightConstraint: NSLayoutConstraint?
+    fileprivate var contentViewTopConstraint: NSLayoutConstraint?
+    fileprivate var contentViewBottomConstraint: NSLayoutConstraint?
     
     // MARK: - Deinit
     deinit {
@@ -589,7 +589,7 @@ public extension TTGSnackbar {
      Show.
      */
     fileprivate func showWithAnimation() {
-        var animationBlock: (() -> Void)? = nil
+        var animationBlock: (() -> Void)?
         let superViewWidth = (superview?.frame)!.width
         let snackbarHeight = systemLayoutSizeFitting(.init(width: superViewWidth - leftMargin - rightMargin, height: TTGSnackbar.snackbarMinHeight)).height
         
@@ -678,7 +678,7 @@ public extension TTGSnackbar {
         var safeAreaInsets = UIEdgeInsets.zero
         
         if #available(iOS 11.0, *) {
-            safeAreaInsets = self.superview?.safeAreaInsets ?? UIEdgeInsets.zero;
+            safeAreaInsets = self.superview?.safeAreaInsets ?? UIEdgeInsets.zero
         }
         
         if !animated {
@@ -687,7 +687,7 @@ public extension TTGSnackbar {
             return
         }
         
-        var animationBlock: (() -> Void)? = nil
+        var animationBlock: (() -> Void)?
         
         switch animationType {
             
@@ -733,11 +733,10 @@ public extension TTGSnackbar {
                         () -> Void in
                         animationBlock?()
                         self.superview?.layoutIfNeeded()
-        }) {
-            (finished) -> Void in
+        }, completion: { (_) in
             self.dismissBlock?(self)
             self.removeFromSuperview()
-        }
+        })
     }
     
     /**
@@ -752,7 +751,6 @@ public extension TTGSnackbar {
 // MARK: - Init configuration.
 
 private extension TTGSnackbar {
-    
     func configure() {
         // Clear subViews
         for subView in subviews {
@@ -798,7 +796,7 @@ private extension TTGSnackbar {
         messageLabel.font = UIFont.regular(sz: 13)
         messageLabel.backgroundColor = UIColor.clear
         messageLabel.lineBreakMode = .byTruncatingTail
-        messageLabel.numberOfLines = 0;
+        messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .left
         messageLabel.text = message
         contentView.addSubview(messageLabel)
@@ -1037,4 +1035,3 @@ private extension TTGSnackbar {
         }
     }
 }
-

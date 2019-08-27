@@ -44,7 +44,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             if joinedClub {
-                guard let cell = tableV else { return UITableViewCell() }iew.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell else { return UITableViewCell() }
                 fillClubManageCell(cell)
                 return cell
             } else {

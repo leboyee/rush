@@ -123,7 +123,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
             fillImageHeader(view)
             return view
         } else {
-            if (section == 2 || section == 3) {
+            if section == 2 || section == 3 {
                 return UIView()
             } else {
                 guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }

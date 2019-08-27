@@ -94,13 +94,11 @@ open class TagView: UIButton {
                 // Instead, we keep the current color.
                 backgroundColor = highlightedBackgroundColor
             }
-        }
-        else if isSelected {
+        } else if isSelected {
             backgroundColor = selectedBackgroundColor ?? tagBackgroundColor
             layer.borderColor = selectedBorderColor?.cgColor ?? borderColor?.cgColor
             setTitleColor(selectedTextColor, for: UIControl.State())
-        }
-        else {
+        } else {
             backgroundColor = tagBackgroundColor
             layer.borderColor = borderColor?.cgColor
             setTitleColor(textColor, for: UIControl.State())
@@ -200,8 +198,7 @@ open class TagView: UIButton {
     private func updateRightInsets() {
         if enableRemoveButton {
             titleEdgeInsets.right = paddingX  + removeButtonIconSize + paddingX
-        }
-        else {
+        } else {
             titleEdgeInsets.right = paddingX
         }
     }

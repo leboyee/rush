@@ -23,10 +23,10 @@ class EventTypeCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var separator: UIView!
 
-    var cellSelected: ((_ type : EventCategoryType,_ id: Int,_ index: Int) -> Void)?
-    var userSelected: ((_ id: Int,_ index: Int) -> Void)?
+    var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
+    var userSelected: ((_ id: Int, _ index: Int) -> Void)?
     
-    var type : EventCategoryType = .upcoming
+    var type: EventCategoryType = .upcoming
     var cellType : CellType = .none
     var list: [Any]?
     let padding: CGFloat = 16.0
