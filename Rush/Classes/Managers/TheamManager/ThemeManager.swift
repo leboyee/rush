@@ -21,12 +21,14 @@ class ThemeManager: NSObject {
             RSwitch.appearance().onTintColor = UIColor.white
             RSeparatorLine.appearance().backgroundColor = UIColor.separatorColorDark
             CustomBrownLabel.appearance().textColor = UIColor.white
+            TextCell.appearance().backgroundColor = UIColor.separatorColorDark
         } else {
             CustomBlackLabel.appearance().textColor = UIColor.bgBlack
             RBackgoundView.appearance().backgroundColor = UIColor.bgWhite96
             RSwitch.appearance().onTintColor = UIColor.brown24
             RSeparatorLine.appearance().backgroundColor = UIColor.separatorColor
             CustomBrownLabel.appearance().textColor = UIColor.brown24
+            TextCell.appearance().backgroundColor = UIColor.white
         }
         
         UIApplication.shared.windows.forEach { window in

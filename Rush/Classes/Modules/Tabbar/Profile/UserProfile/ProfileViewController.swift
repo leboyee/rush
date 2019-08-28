@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController {
         
         /// Load All data of screen
         loadAllData()
-        
+        tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

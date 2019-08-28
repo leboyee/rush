@@ -144,6 +144,7 @@ struct Segues {
 
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
     static let chatContactListSegue               = "ChatContactListSegue"
+    static let homeEventDetail                    = "HomeEventDetailSegue"
 
 }
 

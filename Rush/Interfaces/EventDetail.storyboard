@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bCs-U8-s0W">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Event Detail View Controller-->
+        <scene sceneID="CPw-3U-YkD">
+            <objects>
+                <viewController storyboardIdentifier="EventDetailViewController" id="bCs-U8-s0W" customClass="EventDetailViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="qOh-7g-gMB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="edI-nT-bi1" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="677-ZA-Vck">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="677-ZA-Vck" firstAttribute="top" secondItem="qOh-7g-gMB" secondAttribute="top" id="0Kk-yF-60i"/>
+                            <constraint firstItem="edI-nT-bi1" firstAttribute="leading" secondItem="Z5q-s4-5Zz" secondAttribute="leading" id="7yp-Jk-cHA"/>
+                            <constraint firstAttribute="bottom" secondItem="edI-nT-bi1" secondAttribute="bottom" id="KXP-gg-5Xj"/>
+                            <constraint firstAttribute="bottom" secondItem="677-ZA-Vck" secondAttribute="bottom" id="O4f-Vl-nzX"/>
+                            <constraint firstItem="677-ZA-Vck" firstAttribute="trailing" secondItem="Z5q-s4-5Zz" secondAttribute="trailing" id="Y0S-kc-Z2M"/>
+                            <constraint firstItem="677-ZA-Vck" firstAttribute="leading" secondItem="Z5q-s4-5Zz" secondAttribute="leading" id="YZY-aA-cEV"/>
+                            <constraint firstItem="edI-nT-bi1" firstAttribute="trailing" secondItem="Z5q-s4-5Zz" secondAttribute="trailing" id="aWo-11-JAi"/>
+                            <constraint firstItem="edI-nT-bi1" firstAttribute="top" secondItem="qOh-7g-gMB" secondAttribute="top" id="rhg-NI-3IC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z5q-s4-5Zz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FLI-XK-sb4"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="677-ZA-Vck" id="vai-eb-5n3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1724.6376811594205" y="-589.28571428571422"/>
+        </scene>
+    </scenes>
+</document>

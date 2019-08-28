@@ -64,6 +64,13 @@ extension HomeViewController {
         } else {
             cell.setup(.classes, nil)
         }
+        
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let unsafe = self else { return }
+            if type == .upcoming {
+                unsafe.showEvent()
+            }
+        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {

@@ -107,6 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
             self.window?.rootViewController = tabbarVC
         }
+        ThemeManager.shared.loadTheme()
     }
     
     

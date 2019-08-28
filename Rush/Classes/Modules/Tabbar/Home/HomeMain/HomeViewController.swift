@@ -115,6 +115,14 @@ extension HomeViewController {
     }
 }
 
+// MARK: - Mediator / Presenter Functions
+extension HomeViewController {
+
+    func showEvent() {
+        performSegue(withIdentifier: Segues.homeEventDetail, sender: nil)
+    }
+    
+}
 
 
 // MARK: - Navigation
