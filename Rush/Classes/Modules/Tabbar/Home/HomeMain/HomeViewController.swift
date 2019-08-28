@@ -23,6 +23,7 @@ class HomeViewController: CustomViewController {
     
     var searchText = ""
     var pageNo = 1
+    var clubList = [Club]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
