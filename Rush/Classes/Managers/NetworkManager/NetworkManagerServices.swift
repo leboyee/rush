@@ -82,6 +82,6 @@ extension NetworkManager {
     }
    
     func getClubList(sortBy: String, params : [String : Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "/club/\(sortBy)/list", params: params, resultHandler: resultHandler)
+        requestGet(path: "club/\(sortBy)/list", params: params, resultHandler: resultHandler)
     }
 }
