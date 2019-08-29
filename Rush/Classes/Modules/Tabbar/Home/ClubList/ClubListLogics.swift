@@ -19,7 +19,7 @@ extension ClubListViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && isShowJoinEvents {
+        if indexPath.section == 0 && (myClubList.count > 0 || myClassesList.count > 0) {
             return UITableView.automaticDimension
         } else {
             return 157
@@ -27,8 +27,10 @@ extension ClubListViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        if isShowJoinEvents && section == 0 {
-            return 4
+        if myClubList.count > 0 && screenType == .club && section == 0 {
+            return myClubList.count
+        } else if myClassesList.count > 0 && screenType == .classes && section == 0 {
+            return myClassesList.count
         } else {
             return 1
         }
@@ -68,7 +70,16 @@ extension ClubListViewController {
         } else {
             cell.setup(topConstraint: 0)
         }
-        cell.setup(detail: "We have you to code better")
+        
+        if myClubList.count > 0 {
+            let club = myClubList[indexPath.row]
+            cell.setup(title: club.club_name)
+            cell.setup(detail: club.club_desc)
+        } else if myClassesList.count > 0 {
+            let classes = myClassesList[indexPath.row]
+            cell.setup(title: classes.club_name)
+            cell.setup(detail: classes.club_desc)
+        }
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
