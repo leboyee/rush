@@ -118,3 +118,35 @@ extension ClubListViewController {
         }
     }
 }
+
+//MARK: - Services
+extension ClubListViewController {
+    func getMyClubListAPI(sortBy: String) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
+                     Keys.search: searchText,
+                     Keys.sort_by: sortBy,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let list = data?[Keys.list] as? [[String: Any]] {
+                for club in list {
+                    do {
+                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(Club.self, from: dataClub)
+                        uwself.myClubList.append(value)
+                    } catch {
+                        
+                    }
+                }
+                uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+}

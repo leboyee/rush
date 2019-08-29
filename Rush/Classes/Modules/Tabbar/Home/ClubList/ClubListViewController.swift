@@ -26,6 +26,10 @@ class ClubListViewController: CustomViewController {
     
     var screenType : ClubListType = .none
     
+    var searchText = ""
+    var pageNo = 1
+    var myClubList = [Club]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
