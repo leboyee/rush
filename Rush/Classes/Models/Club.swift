@@ -21,6 +21,8 @@ class Club: Decodable {
     var club_created_at: String = ""
     var club_updated_at: String = ""
     var user: User?
+    var invitees: [Invitees]?
+    
     
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -34,6 +36,7 @@ class Club: Decodable {
         case club_created_at
         case club_updated_at
         case user
+        case invitees
     }
     
     init() {
@@ -53,5 +56,6 @@ class Club: Decodable {
         club_created_at = (try? container?.decode(String.self, forKey: .club_created_at)) ?? ""
         club_updated_at = (try? container?.decode(String.self, forKey: .club_updated_at)) ?? ""
         user = (try? container?.decode(User.self, forKey: .user))
+        invitees = (try? container?.decode([Invitees].self, forKey: .invitees))
     }
 }

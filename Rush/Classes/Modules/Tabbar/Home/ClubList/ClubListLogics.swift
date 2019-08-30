@@ -75,6 +75,7 @@ extension ClubListViewController {
             let club = myClubList[indexPath.row]
             cell.setup(title: club.club_name)
             cell.setup(detail: club.club_desc)
+            cell.setup(invitee: club.invitees)
         } else if myClassesList.count > 0 {
             let classes = myClassesList[indexPath.row]
             cell.setup(title: classes.club_name)

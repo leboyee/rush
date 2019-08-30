@@ -166,6 +166,7 @@
                 <outlet property="titleLabel" destination="our-4i-Tz5" id="rN3-Qg-nvG"/>
                 <outlet property="topConstraintOfContentView" destination="JDH-7q-qJw" id="4Gh-du-q6p"/>
                 <outlet property="userCountLabel" destination="ck7-CG-QEg" id="lXK-oE-KVh"/>
+                <outlet property="userView" destination="JPL-wJ-NTN" id="70I-Mb-otM"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="84.709821428571431"/>
         </tableViewCell>

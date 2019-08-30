@@ -375,6 +375,7 @@
 		79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF742B2292D2C90012DCB7 /* TextIconCell.swift */; };
 		79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DF742C2292D2C90012DCB7 /* TextIconCell.xib */; };
 		79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */; };
+		79E8437E231964E200470BD4 /* Invitees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E8437D231964E200470BD4 /* Invitees.swift */; };
 		79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EF134122D34FD500E260D9 /* PeopleCell.xib */; };
 		79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134222D34FD500E260D9 /* PeopleCell.swift */; };
 		79EF134922D3588D00E260D9 /* EventCategoryListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */; };
@@ -824,6 +825,7 @@
 		79DF742B2292D2C90012DCB7 /* TextIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIconCell.swift; sourceTree = "<group>"; };
 		79DF742C2292D2C90012DCB7 /* TextIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextIconCell.xib; sourceTree = "<group>"; };
 		79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertViewController.swift; sourceTree = "<group>"; };
+		79E8437D231964E200470BD4 /* Invitees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitees.swift; sourceTree = "<group>"; };
 		79EF134122D34FD500E260D9 /* PeopleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleCell.xib; sourceTree = "<group>"; };
 		79EF134222D34FD500E260D9 /* PeopleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleCell.swift; sourceTree = "<group>"; };
 		79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryListLogics.swift; sourceTree = "<group>"; };
@@ -2499,6 +2501,7 @@
 				8A04B14422FB042E0055C65F /* Event.swift */,
 				8A1076BF2306BC2600512AA3 /* Tag.swift */,
 				79BB941B2316A650008B3D18 /* Club.swift */,
+				79E8437D231964E200470BD4 /* Invitees.swift */,
 				79BB941D2316A7EF008B3D18 /* User.swift */,
 			);
 			path = Models;
@@ -2951,6 +2954,7 @@
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
 				793BE68222E88207005EF72D /* MessagesDisplayDelegate.swift in Sources */,
 				1A2809E222C5F43B00B4E764 /* ChooseClassesViewMediates.swift in Sources */,
+				79E8437E231964E200470BD4 /* Invitees.swift in Sources */,
 				7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */,
 				1AEAC4B722D346AA008FBB54 /* UserInfoCell.swift in Sources */,
 				797FFDB522B7BC480055A001 /* SlideUpPresentation.swift in Sources */,
