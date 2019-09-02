@@ -161,7 +161,6 @@ extension EnterEmailViewConteroller {
                 vc.loginType = loginType
             }
         }
-
     }
     
 }

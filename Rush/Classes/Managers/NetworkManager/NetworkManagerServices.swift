@@ -72,6 +72,10 @@ extension NetworkManager {
     func getMinorList(params : [String : Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "minor", params: params, resultHandler: resultHandler)
     }
+    
+    func getInterestList(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "interest", params: params, resultHandler: resultHandler)
+    }
 
     func getFriendList(params : [String : Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "friend", params: params, resultHandler: resultHandler)

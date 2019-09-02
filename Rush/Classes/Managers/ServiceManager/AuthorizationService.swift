@@ -177,6 +177,15 @@ extension ServiceManager {
         }
     }
     
+    func getInterestList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getInterestList(params: params) { [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
     /*
     //MARK: - Profile
     func updateProfile(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {

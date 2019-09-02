@@ -33,6 +33,8 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
             }
             classesArray.append(classes)
         }
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+
         tableView.reloadData()
     }
     
@@ -75,12 +77,7 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let classies = classesArray[indexPath.section]
         let subClassies = classies.subClasses[indexPath.row]
-        if selectedArray.contains(subClassies) {
-            
-        }
-        else {
-            selectedArray.append(subClassies)
-        }
+        self.selectedArray["\(indexPath.section)"] = subClassies
         selectedIndex = -1
         moveToNext()
         tableView.reloadData()
