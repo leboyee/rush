@@ -18,6 +18,7 @@ class FriendClubCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var topConstraintOfContentView: NSLayoutConstraint!
     @IBOutlet weak var userView: UIView!
+    @IBOutlet weak var mainImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +49,10 @@ extension FriendClubCell {
     
     func setup(topConstraint: CGFloat) {
         topConstraintOfContentView.constant = topConstraint
+    }
+    
+    func setup(imageUrl: URL?) {
+        mainImageView.sd_setImage(with: imageUrl, completed: nil)
     }
     
     func setup(invitee: [Invitees]?) {
