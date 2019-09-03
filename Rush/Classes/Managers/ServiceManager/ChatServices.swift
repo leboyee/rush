@@ -18,10 +18,9 @@ extension ServiceManager {
      search: friend name which we want to search
      */
     func fetchFriendsList(params: [String : Any], closer: @escaping (_ params: [String : Any]?, _ errorMessage: String?) -> Void) {
-        NetworkManager.shared.getFriendList(params: params) {
-            [weak self] (data, error, code) -> (Void) in
-            guard let self_ = self else { return }
-            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+        NetworkManager.shared.getFriendList(params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
         }

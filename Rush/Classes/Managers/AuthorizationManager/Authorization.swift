@@ -25,7 +25,7 @@ class Authorization: NSObject {
         restore()
     }
     
-    func signIn(data: Dictionary<String, Any>, sessionId: String) {
+    func signIn(data: [String: Any], sessionId: String) {
         session = sessionId
         fillUser(data: data)
         
@@ -35,19 +35,16 @@ class Authorization: NSObject {
     
     func restore() {
         session = Utils.getDataFromUserDefault(kSavedSession) as? String
-        let data = Utils.getDataFromUserDefault(kSavedProfile)
-        guard data != nil else {
-            return
+        if let data = Utils.getDataFromUserDefault(kSavedProfile) as? [String: Any] {
+            fillUser(data: data)
         }
-        fillUser(data: (data as! [String : Any]))
     }
     
-    
-    func getUserData() -> [String : Any]? {
+    func getUserData() -> [String: Any]? {
         return Utils.getDataFromUserDefault(kSavedProfile) as? [String : Any]
     }
     
-    func updateUserData(data : [String : Any]) {
+    func updateUserData(data: [String: Any]) {
         Utils.saveDataToUserDefault(data, kSavedProfile)
         restore()
     }
@@ -69,7 +66,7 @@ class Authorization: NSObject {
         Utils.saveDataToUserDefault("", kSavedSession)
     }
     
-    //MARK: Private
+    // MARK: Private
     private func fillUser(data: [String : Any]) {
         if profile == nil {
             profile = Profile(data: data)

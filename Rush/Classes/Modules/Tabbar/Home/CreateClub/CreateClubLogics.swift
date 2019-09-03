@@ -41,10 +41,9 @@ extension CreateClubViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-
         cell.switchValueChanged = { [weak self] (isOn) in
-            guard let self_ = self else { return }
-            self_.isCreateGroupChat = isOn
+            guard let unsafe = self else { return }
+            unsafe.isCreateGroupChat = isOn
         }
     }
     
@@ -283,12 +282,11 @@ extension CreateClubViewController {
                      Keys.clubPhoto: img] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.createClub(params: param) {
-            [weak self] (status, errMessage) in
+        ServiceManager.shared.createClub(params: param) { [weak self] (status, errMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if status {
-                self_.navigationController?.popViewController(animated: true)
+                unsafe.navigationController?.popViewController(animated: true)
             } else {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }

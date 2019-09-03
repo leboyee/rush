@@ -70,7 +70,7 @@ class ContactsManager: NSObject {
         }
         //contacts = contacts.filterDuplicate{ ($0.identifier) }
         var contactArray : [Contact] = []
-        for contact:CNContact in contacts {
+        for contact: CNContact in contacts {
             
             let contactIdentifier = "Profile:\(contact.identifier)"
                 let contactModel = Contact()
@@ -82,8 +82,7 @@ class ContactsManager: NSObject {
                     if let month = dateComponents.month, let day = dateComponents.day {
                         if let year  = dateComponents.year {
                             contactModel.birthday = Date().standardServerFormatterDateFromString(dateString: ("\(year)-\(month)-\(day)"))
-                        }
-                        else {
+                        } else {
                             contactModel.birthday = Date().standardServerFormatterDateFromString(dateString: ("\(Date().year)-\(month)-\(day)"))
                         }
                     }

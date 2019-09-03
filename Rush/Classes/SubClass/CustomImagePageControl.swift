@@ -13,15 +13,13 @@ class CustomImagePageControl: UIPageControl {
       //  @IBInspectable var currentPageImage: UIImage?
         
       //  @IBInspectable var otherPagesImage: UIImage?
-    var dotSize = 8;
-    var dotSpacing = 5;
-
+    var dotSize = 8
+    var dotSpacing = 5
     var isSteps: Bool = false
     var currentPageImage:UIImage = UIImage(named: "activePageController")!
     var otherPagesImage:UIImage = UIImage(named: "pagDot")!
     var anotherPagesImage:UIImage = UIImage(named: "pagDot-done")!
-
-
+    
         override var numberOfPages: Int {
             didSet {
                 layoutSubviews()
@@ -87,14 +85,13 @@ class CustomImagePageControl: UIPageControl {
             if currentPage == index {
                 frame.size = CGSize(width: self.dotSize * 6, height: self.dotSize)
                 x += CGFloat(((self.dotSize * 6) + (self.dotSpacing)))
-            }
-            else {
+            } else {
                 frame.size = CGSize(width: self.dotSize, height: self.dotSize)
                 x += CGFloat(((self.dotSize) + (self.dotSpacing)))
                 
             }
             subview.layer.cornerRadius = CGFloat(self.dotSize / 2)
-            subview.frame = frame;
+            subview.frame = frame
             i += 1
         }
     }
@@ -109,28 +106,26 @@ class CustomImagePageControl: UIPageControl {
                     imageView.image = self.currentPageImage
                 } else if self.currentPage > i {
                     imageView.image = self.anotherPagesImage
-                }
-                else {
+                } else {
                     imageView.image = self.otherPagesImage
                 }
-                i = i + 1
+                i += 1
             } else {
                 var dotImage = self.otherPagesImage
                 if i == self.currentPage {
                     dotImage = self.currentPageImage
-                }
-                else if self.currentPage > i {
+                } else if self.currentPage > i {
                     dotImage = self.anotherPagesImage
                 }
                 view.clipsToBounds = false
-                view.addSubview(UIImageView(image:dotImage))
-                i = i + 1
+                view.addSubview(UIImageView(image: dotImage))
+                i += 1
             }
         }
     }
     
-    fileprivate func imageForSubview(_ view:UIView) -> UIImageView? {
-        var dot:UIImageView?
+    fileprivate func imageForSubview(_ view: UIView) -> UIImageView? {
+        var dot: UIImageView?
         
         if let dotImageView = view as? UIImageView {
             dot = dotImageView
