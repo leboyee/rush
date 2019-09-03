@@ -31,4 +31,7 @@ target 'Rush' do
   #linter
   pod 'SwiftLint'
   
+  #google Place
+  pod 'GooglePlaces'
+
 end

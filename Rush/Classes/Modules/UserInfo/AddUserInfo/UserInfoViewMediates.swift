@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import GooglePlaces
+import CoreLocation
 
 extension UserInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -47,4 +48,34 @@ extension UserInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension UserInfoViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        homeTown = place.name ?? ""
+        self.tableView.reloadData()
+//        self.user.address = place.name ?? ""
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+}
 

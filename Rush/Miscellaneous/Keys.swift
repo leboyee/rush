@@ -77,6 +77,9 @@ struct Keys {
     static let interestName           = "name"
     static let userInterests           = "u_interests"
 
+    static let instagramToken           = "insta_token"
+
+    
 }
 
 //MARK: - API's Output Keys

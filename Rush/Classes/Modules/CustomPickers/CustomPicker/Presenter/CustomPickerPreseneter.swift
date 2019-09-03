@@ -28,7 +28,7 @@ class CustomPickerPreseneter: NSObject {
     var type : PickerType = .country
     var currencyList : [String: Any]?
     var countryCode : [[String: Any]] = []
-
+    var selectedIndex: Int = 0
     
     var updateTitle: ((_ title : String) -> Void)?
 

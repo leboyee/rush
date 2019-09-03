@@ -35,6 +35,7 @@
 		1A142ECB229EC895002C1AFE /* CountryPhoneCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A142ECA229EC895002C1AFE /* CountryPhoneCode.json */; };
 		1A142ECD229EE3B8002C1AFE /* RushCountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A142ECC229EE3B8002C1AFE /* RushCountryCode.json */; };
 		1A262F57231D1BF70068A695 /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A262F56231D1BF70068A695 /* Interest.swift */; };
+		1A262F59231D83390068A695 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A262F58231D83380068A695 /* GoogleService-Info.plist */; };
 		1A2809E122C5F43B00B4E764 /* ChooseClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2809DE22C5F43B00B4E764 /* ChooseClassesViewController.swift */; };
 		1A2809E222C5F43B00B4E764 /* ChooseClassesViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2809DF22C5F43B00B4E764 /* ChooseClassesViewMediates.swift */; };
 		1A2809E322C5F43B00B4E764 /* ChooseClassesViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2809E022C5F43B00B4E764 /* ChooseClassesViewLogics.swift */; };
@@ -478,6 +479,7 @@
 		1A142ECA229EC895002C1AFE /* CountryPhoneCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryPhoneCode.json; sourceTree = "<group>"; };
 		1A142ECC229EE3B8002C1AFE /* RushCountryCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RushCountryCode.json; sourceTree = "<group>"; };
 		1A262F56231D1BF70068A695 /* Interest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
+		1A262F58231D83380068A695 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A2809DE22C5F43B00B4E764 /* ChooseClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseClassesViewController.swift; sourceTree = "<group>"; };
 		1A2809DF22C5F43B00B4E764 /* ChooseClassesViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseClassesViewMediates.swift; sourceTree = "<group>"; };
 		1A2809E022C5F43B00B4E764 /* ChooseClassesViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseClassesViewLogics.swift; sourceTree = "<group>"; };
@@ -2527,6 +2529,7 @@
 		C05FC16322805F9D00721F3F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A262F58231D83380068A695 /* GoogleService-Info.plist */,
 				8A04B14622FB0C410055C65F /* TempFiles */,
 				1A142EC9229EC895002C1AFE /* CountryCode */,
 				794183A2228960C7009AB12C /* Fonts */,
@@ -2585,6 +2588,7 @@
 				C05FC14622805F3D00721F3F /* Frameworks */,
 				C05FC14722805F3D00721F3F /* Resources */,
 				EF5B331F4CC424FE8E28BE1B /* [CP] Embed Pods Frameworks */,
+				AC6FABF777F65B56A18533D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2646,6 +2650,7 @@
 				799190A522C9E9BD0044602E /* SingleButtonCell.xib in Resources */,
 				0918E785228444AB0098AF35 /* Forum.storyboard in Resources */,
 				79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */,
+				1A262F59231D83390068A695 /* GoogleService-Info.plist in Resources */,
 				79BE868822A946C20056529E /* FriendListCell.xib in Resources */,
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
@@ -2724,6 +2729,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		AC6FABF777F65B56A18533D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBFB013AD96984B9EF54D2BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

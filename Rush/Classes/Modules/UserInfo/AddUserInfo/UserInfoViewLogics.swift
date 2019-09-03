@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import GooglePlaces
+import CoreLocation
+
 
 extension UserInfoViewController {
     
@@ -68,7 +71,10 @@ extension UserInfoViewController {
                 let customPickerController : CustomPickerViewController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as! CustomPickerViewController
                 customPickerController.pickerDelegate = self
                 customPickerController.presenter.type = .gender
+                customPickerController.presenter.selectedIndex = self.selectedGender
                 customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+               // customPickerController.pickerView.selectRow(self.selectedGender, inComponent: 0, animated: false)
+
                 self.present(customPickerController, animated: false, completion: nil)
                 break
             case 2:
@@ -76,12 +82,19 @@ extension UserInfoViewController {
                 let customPickerController : CustomPickerViewController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as! CustomPickerViewController
                 customPickerController.pickerDelegate = self
                 customPickerController.presenter.type = .relation
+                customPickerController.presenter.selectedIndex = self.selectedRelation
                 customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                 self.present(customPickerController, animated: false, completion: nil)
                 
                 break
             case 3:
-                
+                let autocompleteController = GMSAutocompleteViewController()
+                autocompleteController.delegate = self
+                let filter = GMSAutocompleteFilter()
+                filter.type = .address
+                autocompleteController.autocompleteFilter = filter
+                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
+                self.present(autocompleteController, animated: true, completion: nil)
                 break
                 
             default:
@@ -107,9 +120,11 @@ extension UserInfoViewController: CustomPickerDelegate {
     func selectedValue(data: String, type: String) {
         if type == "Gender" {
             gender = data
+            selectedGender = data == "Male" ? 0 : 1
         }
         else {
             relation = data
+            selectedRelation = data == "Taken" ? 1 : data == "Prefer not to say" ? 2 : 0
         }
         nextButtonEnabled()
         tableView.reloadData()
@@ -122,5 +137,25 @@ extension UserInfoViewController: CustomPickerDelegate {
 extension UserInfoViewController {
     
 }
+
+// MARK: - Manage Interator or API's Calling
+extension UserInfoViewController {
+    func updateProfileAPI() {
+        /*
+        let param = [Keys.userInterests: selectedArray]  as [String : Any]
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if data != nil {
+                self_.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }*/
+    }
+}
+
 
 
