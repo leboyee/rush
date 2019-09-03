@@ -26,12 +26,9 @@ extension SettingsViewController {
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.reloadData()
     }
-    
-    
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionCount()
@@ -44,25 +41,30 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.instagram, for: indexPath) as! InstagramCell
-            fillInstagramCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.instagram, for: indexPath) as? InstagramCell {
+                fillInstagramCell(cell, indexPath)
+                return cell
+            }
         } else if indexPath.section == 1, indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.switchCell, for: indexPath) as! SwitchCell
-            fillSwitchCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.switchCell, for: indexPath) as? SwitchCell {
+                fillSwitchCell(cell, indexPath)
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.settingsInfo, for: indexPath) as! SettingsInfoCell
-            fillCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.settingsInfo, for: indexPath) as? SettingsInfoCell {
+                fillCell(cell, indexPath)
+                return cell
+            }
         }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow(indexPath)
     }
     
-    //MARK: - Header
+    // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight(section)
     }
@@ -74,7 +76,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return header
     }
     
-    //MARK: - Footer
+    // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
@@ -83,4 +85,3 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return UIView()
     }
 }
-

@@ -52,8 +52,7 @@ struct Keys {
     static let friendType         = "frd_type"
     static let friend             = "friend"
     static let friendId           = "frd_id"
-    
-    
+        
     static let uIsNotifyOn     = "u_is_notify_on"
     static let uIsEventNotify  = "u_is_event_notify"
     static let uIsClubNotify   = "u_is_club_notify"
@@ -80,8 +79,8 @@ let kPassword                   = "password"
 let kFirst_name                 = "first_name"
 let KLast_name                  = "last_name"
 let kU_Edu_Level                = "u_edu_level"
-let kU_Edu_Year                = "u_edu_year"
-let kU_Edu_Majors                = "u_edu_majors"
+let kU_Edu_Year                 = "u_edu_year"
+let kU_Edu_Majors               = "u_edu_majors"
 let kU_Edu_Minors               = "u_edu_minors"
 
 
