@@ -72,15 +72,15 @@ extension ClubListViewController {
         }
         if myClubList.count > 0 {
             let club = myClubList[indexPath.row]
-            let image = Image(json: club.club_photo)
-            cell.setup(title: club.club_name)
-            cell.setup(detail: club.club_desc)
+            let image = Image(json: club.clubPhoto)
+            cell.setup(title: club.clubName)
+            cell.setup(detail: club.clubDesc)
             cell.setup(invitee: club.invitees)
             cell.setup(imageUrl: image.urlThumb)
         } else if myClassesList.count > 0 {
             let classes = myClassesList[indexPath.row]
-            cell.setup(title: classes.club_name)
-            cell.setup(detail: classes.club_desc)
+            cell.setup(title: classes.clubName)
+            cell.setup(detail: classes.clubDesc)
         }
     }
     
