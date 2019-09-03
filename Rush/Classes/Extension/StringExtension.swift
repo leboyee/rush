@@ -5,14 +5,10 @@
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
-
-
 import Foundation
 import UIKit
 
-extension String
-{
-    
+extension String {
     var isValidEmailAddress: Bool {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let linkDetector = try? NSDataDetector(types: types.rawValue)
@@ -25,20 +21,22 @@ extension String
     //The password must be at least 6 characters and must include at least one upper and lower case letter.
     var isValidPassword : Bool {
         let pattern = "^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\\d$@$!%*#?&]{6,}$"
-        let regex = try! NSRegularExpression(pattern: pattern)
+        if let regex = try? NSRegularExpression(pattern: pattern) {
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+        }
+        return false
     }
     
     var isCapitalLater: Bool {
         let capitalLetterRegEx  = ".*[A-Z]+.*"
-        let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let texttest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)
         let capitalresult = texttest.evaluate(with: self)
         return capitalresult
     }
     
     var isNumberLater: Bool {
         let numberRegEx  = ".*[0-9]+.*"
-        let texttest = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let texttest = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         let numberresult = texttest.evaluate(with: self)
         return numberresult
     }
@@ -61,30 +59,29 @@ extension String
         }
     }
     
-    var inPhoneNumber : String {
+    var inPhoneNumber: String {
         return replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: nil)
     }
     
-    var inPhoneNumberWithDash : String {
+    var inPhoneNumberWithDash: String {
         return replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "-$1-$2-$3", options: .regularExpression, range: nil)
     }
     
-    var phoneNumberWithoutFormat : String {
+    var phoneNumberWithoutFormat: String {
         return replacingOccurrences(of: "[ |()-]", with: "", options: [.regularExpression])
     }
     
-    var isLink : Bool {
+    var isLink: Bool {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let detector = try? NSDataDetector(types: types.rawValue)
-        guard (detector != nil && self.count > 0) else { return false }
+        guard detector != nil && self.count > 0 else { return false }
         if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count)) > 0 {
             return true
         }
         return false
     }
     
-    
-    var inCurrency : String {
+    var inCurrency: String {
         guard self.count > 0 else { return "$0.00" }
         guard let doubleValue = Double(self) else { return "$0.00" }
         let formatter = NumberFormatter()
@@ -99,8 +96,7 @@ extension String
         return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
     
-    
-    var inNumber : String {
+    var inNumber: String {
         guard self.count > 0 else { return "0" }
         guard let doubleValue = Double(self) else { return "0" }
         let formatter = NumberFormatter()
@@ -118,12 +114,11 @@ extension String
         return !isEmpty && range(of: "[^a-zA-Z ]", options: .regularExpression) == nil
     }
     
-    var valueWithoutCurrency : String {
+    var valueWithoutCurrency: String {
         var price = self.replacingOccurrences(of: ",", with: "")
         price = price.replacingOccurrences(of: "$", with: "")
         return price
     }
-    
     
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
@@ -149,13 +144,11 @@ extension String
         return self.size(withAttributes: fontAttributes)
     }
     
-    
-    var smallName : String {
+    var smallName: String {
         let fullName = self
         var components = fullName.components(separatedBy: " ")
         var name = ""
-        if(components.count > 0)
-        {
+        if components.count > 0 {
             let firstName = components.removeFirst()
             let lastName = components.joined(separator: " ")
             
@@ -168,7 +161,7 @@ extension String
         return name
     }
     
-    var firstName : String {
+    var firstName: String {
         var fullname = self
         let allValue = fullname.components(separatedBy: " ")
         if allValue.count > 0 {

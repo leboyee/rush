@@ -22,9 +22,7 @@ class CalendarView: UIView {
     @IBOutlet weak var monthNameView: UIView!
     @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
     var isWeekStartFromMonday = true
-    var isNeedToHideMonthNameView = true
-
-    
+    var isNeedToHideMonthNameView = true    
     let bottomPadding: CGFloat = 10.0
     weak var delegate: CalendarViewDelegate!
     var minDateOfCalendar: Date = Date.parse(dateString: "2017-06-01", format: "yyyy-MM-dd")!
@@ -49,19 +47,20 @@ extension CalendarView {
     private func commonInit() {
         let nib  = UINib(nibName: String(describing: CalendarView.self), bundle: nil)
 
-        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        view.clipsToBounds = true
-        addSubview(view)
-        addViewConstraint(view: view)
-        configureCollectionView()
-        
-        if isNeedToHideMonthNameView {
-            infoViewHeight.constant = 48.0
-            monthNameView.isHidden = true
-        }
-        
-        DispatchQueue.main.async {
-            self.setCurrentMonth()
+        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            view.clipsToBounds = true
+            addSubview(view)
+            addViewConstraint(view: view)
+            configureCollectionView()
+            
+            if isNeedToHideMonthNameView {
+                infoViewHeight.constant = 48.0
+                monthNameView.isHidden = true
+            }
+            
+            DispatchQueue.main.async {
+                self.setCurrentMonth()
+            }
         }
     }
     
