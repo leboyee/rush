@@ -14,9 +14,10 @@ extension EnterVerificationCodeViewController {
     func updateCodeView(code: String) {
         let mainstring = NSMutableAttributedString.init()
         var isIPhone5 = false
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType == UIDevice.ScreenType.iPhones5 {
             isIPhone5 = true
         }
+       
         for char in code {
             if char == "1" {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
@@ -81,24 +82,22 @@ extension EnterVerificationCodeViewController {
         self.updateCodeView(code: self.code)
         if self.code.count == 5 {
             self.nextButton.setNextButton(isEnable: true)
-        }
-        else {
+        } else {
             self.nextButton.setNextButton(isEnable: false)
         }
     }
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension EnterVerificationCodeViewController {
     
-    func signupApiCalled(code : String) {
+    func signupApiCalled(code: String) {
         let param = [Keys.email: profile.email, Keys.password: profile.password, Keys.countryCode: profile.countryCode, Keys.phone: profile.phone, Keys.phoneToken: code] as [String: Any]
 
-        ServiceManager.shared.singup(params: param) {
-            [weak self] (status, errorMessage) in
-            guard let self_ = self else { return }
+        ServiceManager.shared.singup(params: param) { [weak self] (status, errorMessage) in
+            guard let unsafe = self else { return }
             if status {
-                self_.singupSuccess()
+                unsafe.singupSuccess()
                 //self_.updateViewStage?(.verified)
                 /*
                  //Comment due to push is not exist in app
@@ -107,22 +106,21 @@ extension EnterVerificationCodeViewController {
                  AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
                  } */
             } else {
-                self_.digitTextField.becomeFirstResponder()
-                self_.isCodeVerifing = false
+                unsafe.digitTextField.becomeFirstResponder()
+                unsafe.isCodeVerifing = false
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
                 //self_.updateViewStage?(.error)
             }
         }
     }
     
-    func loginApiCalled(code : String) {
+    func loginApiCalled(code: String) {
         let param = [Keys.phoneToken: code] as [String: Any]
         
-        ServiceManager.shared.phonetkn(params: param) {
-            [weak self] (status, errorMessage) in
-            guard let self_ = self else { return }
+        ServiceManager.shared.phonetkn(params: param) { [weak self] (status, errorMessage) in
+            guard let unsafe = self else { return }
             if status {
-                self_.loginSuccess()
+                unsafe.loginSuccess()
                 //self_.updateViewStage?(.verified)
                 /*
                  //Comment due to push is not exist in app
@@ -131,30 +129,27 @@ extension EnterVerificationCodeViewController {
                  AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
                  } */
             } else {
-                self_.digitTextField.becomeFirstResponder()
-                self_.isCodeVerifing = false
+                unsafe.digitTextField.becomeFirstResponder()
+                unsafe.isCodeVerifing = false
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
                 //self_.updateViewStage?(.error)
             }
         }
     }
-
     
     func resendCodeApiCalled() {
         Utils.showSpinner()
         let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = profile.countryCode
         let phoneString = profile.phone
-        let param = [Keys.countryCode:  countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
-        ServiceManager.shared.authPhone(params: param) {
-            [weak self] (status, errorMessage) in
+        let param = [Keys.countryCode: countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
+        ServiceManager.shared.authPhone(params: param) { [weak self] (status, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            self_.digitTextField.becomeFirstResponder()
-            if (status){
+            guard let unsafe = self else { return }
+            unsafe.digitTextField.becomeFirstResponder()
+            if status {
                 Utils.alert(message: "Code sent successfully.")
-            }
-            else {
+            } else {
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }

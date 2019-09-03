@@ -31,7 +31,7 @@ extension ChatContactsListViewController {
 }
 
 // MARK: - Tableview methods
-extension ChatContactsListViewController : UITableViewDelegate, UITableViewDataSource {
+extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 26
@@ -42,9 +42,11 @@ extension ChatContactsListViewController : UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as! PeopleCell
-        fillCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as? PeopleCell {
+            fillCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

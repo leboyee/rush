@@ -12,7 +12,6 @@ import DKImagePickerController
 import DKPhotoGallery
 import DKCamera
 
-
 class AddProfilePictureViewController: CustomViewController {
 
     @IBOutlet weak var nextButton: CustomButton!
@@ -49,10 +48,8 @@ class AddProfilePictureViewController: CustomViewController {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
         }
     }
-    
 
-    
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -69,38 +66,34 @@ class AddProfilePictureViewController: CustomViewController {
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-        
 
-        let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
-        
+        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
-        
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
     }
 }
 
-//MARK: - Other Function
+// MARK: - Other Function
 extension AddProfilePictureViewController {
     
     func photoLibraryPermissionCheck() {
         Utils.authorizePhoto(completion: { [weak self] (status) in
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if status == .alreadyAuthorized || status == .justAuthorized {
-                    self_.openCameraOrLibrary()
-            }
-            else {
+                    unsafe.openCameraOrLibrary()
+            } else {
                 if status != .justDenied {
                     Utils.photoLibraryPermissionAlert()
                 }
@@ -127,7 +120,7 @@ extension AddProfilePictureViewController {
     func assignSelectedImages(photos: [DKAsset]) {
         var dkAsset: DKAsset!
         dkAsset = photos[0]
-       dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, info in
+       dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, _ in
             if let img = image {
                 self.userPhotoImageView.image = img.squareImage()
 
@@ -164,7 +157,6 @@ extension AddProfilePictureViewController {
         self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
 
-    
     @IBAction func addImageViewButtonAction() {
         photoLibraryPermissionCheck()
     }
@@ -184,7 +176,7 @@ extension AddProfilePictureViewController {
 // MARK: - Preseneter
 extension AddProfilePictureViewController {
     
-    func profileUpdateSuccess(){
+    func profileUpdateSuccess() {
         self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }
 }

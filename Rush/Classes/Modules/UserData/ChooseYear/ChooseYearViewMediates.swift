@@ -33,21 +33,20 @@ extension ChooseYearViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listCell, for: indexPath) as! ListCell
-        fillChooseYearCell(cell, indexPath)
-        return cell
-
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listCell, for: indexPath) as? ListCell {
+            fillChooseYearCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         self.tableView.reloadData()
         self.updateProfileAPI()
-    }    
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
 }
-
-

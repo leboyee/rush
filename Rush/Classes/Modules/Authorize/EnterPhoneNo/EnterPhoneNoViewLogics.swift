@@ -69,16 +69,13 @@ extension EnterPhoneNoViewController {
         phoneString = phoneString.replacingOccurrences(of: ")", with: "")
         profile.phone = phoneString
         profile.countryCode = countryCodeString
-        let param = [Keys.countryCode:  countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
-        ServiceManager.shared.authPhone(params: param) {
-            [weak self] (status, errorMessage) in
+        let param = [Keys.countryCode: countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye]
+        ServiceManager.shared.authPhone(params: param) { [weak self] (status, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            if (status){
-               self_.moveToVerificationView()
-            }
-            else {
-                
+            guard let unsafe = self else { return }
+            if status {
+               unsafe.moveToVerificationView()
+            } else {
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }

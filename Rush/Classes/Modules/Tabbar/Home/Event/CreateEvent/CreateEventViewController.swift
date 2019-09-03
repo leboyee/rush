@@ -86,7 +86,7 @@ class CreateEventViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension CreateEventViewController {
     @IBAction func cancelButtonAction() {
         navigationController?.popViewController(animated: true)
@@ -97,11 +97,10 @@ extension CreateEventViewController {
     }
     
     @IBAction func addImageButtonAction() {
-        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel : "Cancel", type: .actionSheet) {
-            [weak self] (index) in
-            guard let self_ = self else { return }
+        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
+            guard let unsafe = self else { return }
             if index != 2 {
-                self_.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
+                unsafe.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
             }
         }
     }

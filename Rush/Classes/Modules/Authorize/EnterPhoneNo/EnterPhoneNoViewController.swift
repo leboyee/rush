@@ -43,7 +43,7 @@ class EnterPhoneNoViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
             placeHolderTextField.font = UIFont.displayBold(sz: 22)
         }
     }
@@ -55,8 +55,6 @@ class EnterPhoneNoViewController: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
-    
-    
     
     func setup() {
         setupUI()
@@ -76,15 +74,12 @@ class EnterPhoneNoViewController: CustomViewController {
         if loginType == .register {
             phoneNoTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
-        }
-        else {
+        } else {
             phoneNoTitleLabel.text = Text.phoneNoTitleLogin
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }
         setPlaceHolder()
     }
-
-
 }
 
 // MARK: - Actions
@@ -102,22 +97,20 @@ extension EnterPhoneNoViewController {
     
     @IBAction func countryButtonAction() {
         let customPickerStoryboard = UIStoryboard(name: StoryBoard.customPicker, bundle: nil)
-        let customPickerController : CustomPickerViewController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as! CustomPickerViewController
-        customPickerController.pickerDelegate = self
-        customPickerController.presenter.type = .country
-        customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        present(customPickerController, animated: false, completion: nil)
+        if let customPickerController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as? CustomPickerViewController {
+            customPickerController.pickerDelegate = self
+            customPickerController.presenter.type = .country
+            customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(customPickerController, animated: false, completion: nil)
+        }
     }
 }
 
-//MARK: Presenter
+// MARK: - Presenter
 extension EnterPhoneNoViewController {
     func moveToVerificationView() {
         self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
     }
-    
-    
-    
 }
 // MARK: - Navigation
 extension EnterPhoneNoViewController {
