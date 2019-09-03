@@ -26,14 +26,21 @@ extension EnterEmailViewConteroller {
             guard let self_ = self else { return }
             if (data != nil){
                 if (data![kIsEmailExist] as? Bool) == true {
-                    self_.emailSuccess()
+                    if self_.loginType == .Register {
+                        Utils.alert(message: "Email already register.")
+                    } else {
+                         self_.emailSuccess()
+                    }
                 }
                 else {
-                    self_.emailErrorHideShow(isHide: false)
-                    //Utils.alert(message: Message.emailNotAvailable)
+                    if self_.loginType == .Register {
+                            self_.emailSuccess()
+                    } else {
+                          self_.emailErrorHideShow(isHide: false)
+                    }
                 }
             }
-            else {
+            else {                
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
             

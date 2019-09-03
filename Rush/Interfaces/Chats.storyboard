@@ -84,7 +84,7 @@
                         <outlet property="blankView" destination="w6T-v1-UGh" id="zlQ-e0-dbu"/>
                         <outlet property="tableView" destination="8zg-e4-hRT" id="8e8-f9-Xb1"/>
                         <segue destination="qrh-ad-aRf" kind="show" identifier="SearchChatSegue" id="g7R-HN-4bh"/>
-                        <segue destination="tnW-FZ-l2x" kind="show" identifier="ContactListSegue" id="jb4-Hq-FIm"/>
+                        <segue destination="tnW-FZ-l2x" kind="show" identifier="ChatContactListSegue" id="jb4-Hq-FIm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylo-k4-Z0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="-256" y="397"/>
         </scene>
-        <!--Contacts List View Controller-->
+        <!--Chat Contacts List View Controller-->
         <scene sceneID="Wls-X0-Zcv">
             <objects>
-                <viewController storyboardIdentifier="ContactsListViewController" id="tnW-FZ-l2x" customClass="ContactsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatContactsListViewController" id="tnW-FZ-l2x" customClass="ChatContactsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lWV-RP-fAh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,9 +129,6 @@
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="inviteButtonAction" destination="tnW-FZ-l2x" eventType="touchUpInside" id="zKo-1u-Wvi"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -152,7 +149,6 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="inviteButton" destination="JB2-a6-bGT" id="Egx-wU-WpH"/>
                         <outlet property="tableView" destination="p1g-VT-RcE" id="k4a-zd-6HL"/>
                     </connections>
                 </viewController>

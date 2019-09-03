@@ -52,15 +52,28 @@ struct Keys {
     static let friendType         = "frd_type"
     static let friend             = "friend"
     static let friendId           = "frd_id"
-        
-    static let uIsNotifyOn     = "u_is_notify_on"
-    static let uIsEventNotify  = "u_is_event_notify"
-    static let uIsClubNotify   = "u_is_club_notify"
-    static let uIsClassNotify  = "u_is_class_notify"
-    static let uWhoCanMessage  = "u_who_can_message"
-    static let uWhoCanInvite   = "u_who_can_invite"
-    static let uIsDarkMode     = "u_is_dark_mode"
+    static let uIsNotifyOn        = "u_is_notify_on"
+    static let uIsEventNotify     = "u_is_event_notify"
+    static let uIsClubNotify      = "u_is_club_notify"
+    static let uIsClassNotify     = "u_is_class_notify"
+    static let uWhoCanMessage     = "u_who_can_message"
+    static let uWhoCanInvite      = "u_who_can_invite"
+    static let uIsDarkMode        = "u_is_dark_mode"
+    static let pageNo             = "pageNo"
+    static let search             = "search"
+    static let sort_by            = "sort_by"
+
+    static let club_name = "club_name"
+    static let club_desc = "club_desc"
+    static let club_interests = "club_interests"
+    static let club_invited_user_ids = "club_invited_user_ids"
+    static let club_is_chat_group = "club_is_chat_group"
+    static let club_photo = "club_photo"
     
+    static let interestId           = "_id"
+    static let interestName           = "name"
+    static let userInterests           = "u_interests"
+
 }
 
 //MARK: - API's Output Keys

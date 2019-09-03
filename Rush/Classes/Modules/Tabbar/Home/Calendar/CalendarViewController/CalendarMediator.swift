@@ -17,6 +17,21 @@ extension CalendarViewController {
 }
 
 extension CalendarViewController: CalendarViewDelegate {
+   
+    func changeMonth(date: Date) {
+        if date.toString(format: "yyyy") == Date().toString(format: "yyyy") {
+            let text = date.toString(format: "MMMM dd") + " ▴"
+            monthChange(text: text)
+        } else {
+            let text = date.toString(format: "MMMM dd, yyyy") + " ▴"
+            monthChange(text: text)
+        }
+        
+        DispatchQueue.main.async {
+            self.calenderView.setSelectedDate(date: date)
+        }
+    }
+    
     
     func isEventExist(date: Date) -> Bool {
         let allKeys = groups.map({ $0.dateString })
@@ -36,9 +51,6 @@ extension CalendarViewController: CalendarViewDelegate {
         }
     }
     
-    func changeMonth(month: String, year: String) {
-        print(month + " " + year)
-    }
     
     func selectedDate(date: Date) {
         print(date)

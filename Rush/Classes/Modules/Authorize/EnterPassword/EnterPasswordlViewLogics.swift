@@ -30,7 +30,8 @@ extension EnterPasswordViewConteroller {
             if status == true {
                 self_.profileUpdateSuccess()
             } else {
-                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+                self_.passwordNotSuccess()
+                //Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
         }
     }

@@ -20,6 +20,9 @@ class HomeViewController: CustomViewController {
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
+    var searchText = ""
+    var pageNo = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +36,8 @@ class HomeViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
+        
+        getMyClubListAPI(sortBy: "my")
     }
     
     func setup() {

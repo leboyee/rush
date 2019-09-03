@@ -37,6 +37,7 @@ class ChatRoomViewController: MessagesViewController {
     var channel: SBDGroupChannel?
     var chatType: ChatType = .single
     open var previousMessageQuery: SBDPreviousMessageListQuery?
+
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
     var emptyMessageFriendTitle = "This is a beginning of you chat history."
@@ -463,7 +464,7 @@ extension ChatRoomViewController {
         titleView.addSubview(userNavImageView)
         
         let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        dateLabel.text = "Boris Marshal"
+        dateLabel.text = userName
         dateLabel.font = UIFont.displayBold(sz: 24)
         dateLabel.textColor = UIColor.white
         

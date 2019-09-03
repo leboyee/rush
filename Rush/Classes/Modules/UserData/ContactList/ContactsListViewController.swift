@@ -10,6 +10,10 @@ import UIKit
 
 typealias ContactsPresenterItem = (key: String, contacts: [Contact])
 
+protocol ContactsListProtocol: class {
+    func selectedContacts(_ contacts: [Contact])
+}
+
 class ContactsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +24,8 @@ class ContactsListViewController: UIViewController {
     let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var itemsDictionary = [String: [Contact]]()
     var selectedItem = [Contact]()
+    
+    weak var delegate: ContactsListProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +64,15 @@ extension ContactsListViewController {
     }
     
     @IBAction func inviteButtonAction() {
-        Utils.alert(message: "Api in development")
+        if delegate != nil {
+            navigationController?.popViewController(animated: true)
+            DispatchQueue.main.async { [unowned self] () in
+                self.delegate?.selectedContacts(self.selectedItem)
+            }
+        } else {
+            Utils.alert(message: "Api in development")
+        }
+        
     }
 }
 

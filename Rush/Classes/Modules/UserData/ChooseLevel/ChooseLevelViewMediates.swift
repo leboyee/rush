@@ -18,7 +18,7 @@ extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.listCell, bundle: nil), forCellReuseIdentifier: Cell.listCell)
-        
+
         tableView.reloadData()
     }
     

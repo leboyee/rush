@@ -39,6 +39,10 @@ class ProfileViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         navigationController?.isNavigationBarHidden = true
         title = ""
+        
+        /// Load All data of screen
+        loadAllData()
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -146,6 +150,7 @@ extension ProfileViewController {
                          (profileDetail.profile?.university ?? "")
         header.set(university: university)
         header.set(url: profileDetail.profile?.photo?.url)
+        tableView.reloadData()
     }
     
     func showEditProfile() {

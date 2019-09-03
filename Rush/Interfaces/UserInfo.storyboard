@@ -49,13 +49,13 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="121"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h65-2G-Uf0" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="69.5" width="367" height="33"/>
+                                        <rect key="frame" x="24" y="70" width="367" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add information about" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAq-eN-2eS" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="36" width="367" height="33"/>
+                                        <rect key="frame" x="24" y="36" width="367" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1Z-lE-Jna">
-                                        <rect key="frame" x="0.0" y="118.5" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="119.5" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="voU-Mt-guD"/>
@@ -214,13 +214,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile is set!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agj-4b-XFF">
-                                                <rect key="frame" x="0.0" y="52" width="74.5" height="16"/>
+                                                <rect key="frame" x="0.0" y="52" width="84" height="16"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Would you like to invite friends to Rush?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1im-sE-bCN">
-                                                <rect key="frame" x="0.0" y="76" width="366" height="79.5"/>
+                                                <rect key="frame" x="0.0" y="76" width="366" height="122"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="34"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -320,7 +320,7 @@
         <!--ContactsListViewController-->
         <scene sceneID="nCM-Wf-UO0">
             <objects>
-                <viewControllerPlaceholder storyboardName="Chats" referencedIdentifier="ContactsListViewController" id="S3C-t1-ppa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder referencedIdentifier="ContactsListViewController" id="S3C-t1-ppa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5g2-rc-mDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8946" y="-297"/>
@@ -430,6 +430,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nD-lo-1DC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9511.5942028985519" y="-214.28571428571428"/>
+        </scene>
+        <!--Contacts List View Controller-->
+        <scene sceneID="TcB-I1-Bbk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="udi-jN-Ow4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ContactsListViewController" id="cSO-kf-o94" customClass="ContactsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ab-tX-37d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5qB-Gn-fXs" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="819"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="s9m-he-agA">
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBG-TR-v86" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="24" y="720" width="366" height="48"/>
+                                <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="LOi-xJ-M27"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="inviteButtonAction" destination="cSO-kf-o94" eventType="touchUpInside" id="HQO-MZ-YSg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5qB-Gn-fXs" firstAttribute="trailing" secondItem="nXR-Pt-6dr" secondAttribute="trailing" id="6Zd-CD-vDj"/>
+                            <constraint firstItem="nXR-Pt-6dr" firstAttribute="bottom" secondItem="HBG-TR-v86" secondAttribute="bottom" constant="6" id="8Os-3x-13S"/>
+                            <constraint firstItem="s9m-he-agA" firstAttribute="leading" secondItem="nXR-Pt-6dr" secondAttribute="leading" id="NVz-KN-z6A"/>
+                            <constraint firstItem="s9m-he-agA" firstAttribute="trailing" secondItem="nXR-Pt-6dr" secondAttribute="trailing" id="WWo-v5-hAM"/>
+                            <constraint firstItem="5qB-Gn-fXs" firstAttribute="leading" secondItem="nXR-Pt-6dr" secondAttribute="leading" id="bzz-ua-sdb"/>
+                            <constraint firstItem="nXR-Pt-6dr" firstAttribute="trailing" secondItem="HBG-TR-v86" secondAttribute="trailing" constant="24" id="g3N-3r-8Zw"/>
+                            <constraint firstAttribute="bottom" secondItem="s9m-he-agA" secondAttribute="bottom" id="lAx-fM-hi3"/>
+                            <constraint firstItem="5qB-Gn-fXs" firstAttribute="top" secondItem="nXR-Pt-6dr" secondAttribute="top" constant="13" id="opy-0o-K1r"/>
+                            <constraint firstItem="s9m-he-agA" firstAttribute="top" secondItem="5qB-Gn-fXs" secondAttribute="top" id="tTU-b9-t0z"/>
+                            <constraint firstItem="HBG-TR-v86" firstAttribute="leading" secondItem="nXR-Pt-6dr" secondAttribute="leading" constant="24" id="uqf-R1-48p"/>
+                            <constraint firstAttribute="bottom" secondItem="5qB-Gn-fXs" secondAttribute="bottom" constant="-24" id="yxd-tT-HAs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nXR-Pt-6dr"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="inviteButton" destination="HBG-TR-v86" id="VyC-5E-utT"/>
+                        <outlet property="tableView" destination="s9m-he-agA" id="T6d-AU-HXD"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="8071" y="483"/>
         </scene>
     </scenes>
     <resources>

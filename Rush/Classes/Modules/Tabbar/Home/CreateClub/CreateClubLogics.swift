@@ -41,8 +41,10 @@ extension CreateClubViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-        cell.switchValueChanged = { (isOn) in
-            
+
+        cell.switchValueChanged = { [weak self] (isOn) in
+            guard let self_ = self else { return }
+            self_.isCreateGroupChat = isOn
         }
     }
     
@@ -69,16 +71,16 @@ extension CreateClubViewController {
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 3 {
-            
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
                 cell.setup(isUserInterfaceEnable: false)
             } else {
                 cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", text: peopleList[indexPath.row])
+                cell.setup(placeholder: "", text: peopleList[indexPath.row].displayName)
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
+            cell.textView.isUserInteractionEnabled = false
         }
         
         cell.textDidChanged = {  [weak self] (text) in
@@ -104,10 +106,11 @@ extension CreateClubViewController {
                         unself.tableView.reloadData()
                     }
                 } else if indexPath.section == 3 {
-                    if !unself.peopleList.contains(txt) {
-                        unself.peopleList.append(txt)
-                        unself.tableView.reloadData()
-                    }
+
+//                    if !self_.peopleList.contains(txt) {
+//                        self_.peopleList.append(txt)
+//                        self_.tableView.reloadData()
+//                    }
                 }
             }
             unself.validateAllFields()
@@ -259,6 +262,36 @@ extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigatio
         IQKeyboardManager.shared.enableAutoToolbar = false
         DispatchQueue.main.async {
             picker.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - Services
+extension CreateClubViewController {
+    
+    func createClubAPI() {
+        
+        let img = clubImage?.jpegData(compressionQuality: 0.8) ?? Data()
+        let interests = interestList.joined(separator: ",")
+        let userIds = "5d5d213239277643e20f9bf1"
+        
+        let param = [Keys.club_name: nameClub,
+                     Keys.club_desc: clubDescription,
+                     Keys.club_interests: interests,
+                     Keys.club_invited_user_ids: userIds,
+                     Keys.club_is_chat_group: isCreateGroupChat ? 1 : 0,
+                     Keys.club_photo: img] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.createClub(params: param) {
+            [weak self] (status, errMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if status {
+                self_.navigationController?.popViewController(animated: true)
+            } else {
+                Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
+            }
         }
     }
 }

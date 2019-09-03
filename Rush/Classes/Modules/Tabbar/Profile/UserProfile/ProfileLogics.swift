@@ -8,6 +8,24 @@
 
 import UIKit
 
+
+// MARK: - Other Function
+extension ProfileViewController {
+
+    func loadAllData() {
+        fetchUserProfile()
+    }
+    
+    func loadFriends() {
+        
+    }
+    
+    func loadNotifications() {
+        
+    }
+}
+
+// MARK: - Handlers
 extension ProfileViewController {
     
     func sectionCount() -> Int {
@@ -106,6 +124,32 @@ extension ProfileViewController {
     }
     
     func selectedRow(_ indexPath: IndexPath) {
+        
+    }
+}
+
+// MARK: - API's
+extension ProfileViewController {
+
+    private func fetchUserProfile() {
+
+        guard let userId = profileDetail.profile?.userId else { return }
+        guard userId.isNotEmpty else { return }
+
+        let params = isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
+        ServiceManager.shared.getProfile(params: params) { [weak self] (data, errorMessage) in
+            if let object = data?[Keys.user] as? [String: Any] {
+                 self?.profileDetail.profile?.setData(data: object)
+                 self?.setupHeaderData()
+            }
+        }
+    }
+    
+    private func fetchFriendList() {
+        
+    }
+    
+    private func fetchNotificationList() {
         
     }
 }

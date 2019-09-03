@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+typealias ClassPresenterItem = (key: String, subClasses: SubClasses)
 
 class ChooseClassesViewController: CustomViewController {
 
@@ -21,7 +22,7 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
 
-    var selectedArray = [SubClasses]()
+    var selectedArray = [String: Any]()
     var selectedIndex = -1
     var classesArray = [Classes]()
     
