@@ -59,7 +59,7 @@ extension EnterVerificationCodeViewController {
             //Move to Next Screen
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 
-                if self.loginType == .Register {
+                if self.loginType == .register {
                    // self.performSegue(withIdentifier: Segues.phoneVerificationToUserTypeViewSegue, sender: nil)
                 } else {
 //                    let profile = Profile(data: Authorization.shared.getUserData() ?? [:])
@@ -92,7 +92,7 @@ extension EnterVerificationCodeViewController {
 extension EnterVerificationCodeViewController {
     
     func signupApiCalled(code : String) {
-        let param = [kEmail: profile.email, kPassword: profile.password,kCountry_Code:  profile.countryCode, kPhone: profile.phone, kPhone_token: code] as [String: Any]
+        let param = [Keys.email: profile.email, Keys.password: profile.password, Keys.countryCode: profile.countryCode, Keys.phone: profile.phone, Keys.phoneToken: code] as [String: Any]
 
         ServiceManager.shared.singup(params: param) {
             [weak self] (status, errorMessage) in
@@ -116,7 +116,7 @@ extension EnterVerificationCodeViewController {
     }
     
     func loginApiCalled(code : String) {
-        let param = [kPhone_token: code] as [String: Any]
+        let param = [Keys.phoneToken: code] as [String: Any]
         
         ServiceManager.shared.phonetkn(params: param) {
             [weak self] (status, errorMessage) in
@@ -142,10 +142,10 @@ extension EnterVerificationCodeViewController {
     
     func resendCodeApiCalled() {
         Utils.showSpinner()
-        let verifyTye = loginType == .Register ? "signup" : "login"
+        let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = profile.countryCode
         let phoneString = profile.phone
-        let param = [kCountry_Code:  countryCodeString, kPhone: phoneString, kVerify_Type: verifyTye] as [String: Any]
+        let param = [Keys.countryCode:  countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
         ServiceManager.shared.authPhone(params: param) {
             [weak self] (status, errorMessage) in
             Utils.hideSpinner()

@@ -17,7 +17,7 @@ class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var createButtonHeightConstratit: NSLayoutConstraint!
     @IBOutlet weak var pageControllerTopConstraint: NSLayoutConstraint!
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +58,12 @@ class OnboardingViewController: UIViewController {
 // MARK: - Actions
 extension OnboardingViewController {
     @IBAction func createButtonAction() {
-        loginType = .Register
+        loginType = .register
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }
     
     @IBAction func loginButtonAction() {
-        loginType = .Login
+        loginType = .login
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }
 }

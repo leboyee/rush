@@ -275,12 +275,12 @@ extension CreateClubViewController {
         let interests = interestList.joined(separator: ",")
         let userIds = "5d5d213239277643e20f9bf1"
         
-        let param = [Keys.club_name: nameClub,
-                     Keys.club_desc: clubDescription,
-                     Keys.club_interests: interests,
-                     Keys.club_invited_user_ids: userIds,
-                     Keys.club_is_chat_group: isCreateGroupChat ? 1 : 0,
-                     Keys.club_photo: img] as [String: Any]
+        let param = [Keys.clubName: nameClub,
+                     Keys.clubDesc: clubDescription,
+                     Keys.clubInterests: interests,
+                     Keys.clubInvitedUserIds: userIds,
+                     Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
+                     Keys.clubPhoto: img] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.createClub(params: param) {

@@ -37,7 +37,7 @@ class EnterVerificationCodeViewController: CustomViewController {
     var countryCode = ""
 
 
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     var profile = Profile()
 
     override func viewDidLoad() {
@@ -89,7 +89,7 @@ class EnterVerificationCodeViewController: CustomViewController {
         codeErrorLabel.isHidden = true
         self.bgImageView.setBgForLoginSignup()
         
-        if loginType == .Register {
+        if loginType == .register {
             verificationTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.createAccount, for: .normal)
         }
@@ -111,7 +111,7 @@ extension EnterVerificationCodeViewController {
     @IBAction func nextButtonAction() {
         if self.code.count == 5 {
             self.view.endEditing(true)
-            if loginType == .Register {
+            if loginType == .register {
                 signupApiCalled(code: self.code)
             }
             else {

@@ -29,7 +29,7 @@ class EnterEmailViewConteroller: CustomViewController {
     @IBOutlet weak var loginNumberButtonConstraint: NSLayoutConstraint!
 
 
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     var profile = Profile()
     var isEmailError : Bool = false
     override func viewDidLoad() {
@@ -80,7 +80,7 @@ class EnterEmailViewConteroller: CustomViewController {
         errorButton.isHidden = true
         eduLabel.text = ".edu"
 
-        if loginType == .Register {
+        if loginType == .register {
             loginWithPhoneNumberButton.isHidden = true
             loginLineLable.isHidden = true
             emailTitleLable.text = Text.emailTitleRegister
@@ -118,7 +118,7 @@ extension EnterEmailViewConteroller {
             checkUserAvailable()
         }
         else {
-            if loginType == .Login {
+            if loginType == .login {
                 loginNumberButtonConstraint.constant = 76
                 loginLineLable.isHidden = false
             }
@@ -130,7 +130,7 @@ extension EnterEmailViewConteroller {
     @IBAction func errorButtonAction() {
         emailErroLabel.isHidden = true
         errorButton.isHidden = true
-        if loginType == .Login {
+        if loginType == .login {
             loginNumberButtonConstraint.constant = 16
             loginLineLable.isHidden = true
         }
@@ -173,7 +173,7 @@ extension EnterEmailViewConteroller {
     }
     
     func emailErrorHideShow(isHide: Bool) {
-        if loginType == .Login {
+        if loginType == .login {
             if isHide == true {
                 loginNumberButtonConstraint.constant = 16
                 loginLineLable.isHidden = true

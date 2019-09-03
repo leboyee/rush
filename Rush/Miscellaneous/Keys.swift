@@ -7,7 +7,7 @@
 //
 import UIKit
 
-// MARK: Authorization
+// MARK: - Authorization
 let kUserInfo  = "userInfo"
 let kSessionId = "sessionIdKey"
 let kDeviceId  = "deviceIdKey"
@@ -16,20 +16,19 @@ let kTimezoneOffset = "timezoneOffset"
 let kPushTokenUpdateOnServer = "pushTokenUpdateOnServer"
 
 
-// MARK: Network manager
+// MARK: - Network manager
 let kSavedProfile               = "kSavedProfile"
 let kSavedSession               = "kSavedSession"
 let kSavedIsNewUser             = "kSavedNewUser"
 let kAppOpenFirstTime           = "kAppOpenFirstTime"
 
-//MARK:- User Default
+// MARK: - User Default
 let kLastLocation               = "com.paidmeals.lastlocation"
 let kDeviceTokenPushKey         = "com.friends.devicetokenpush"
 let kDeviceTokenPushDataKey     = "com.friends.devicetokenpushdata"
 let kUpdateUnreadcount          = "com.friends.updateunreadcount"
 
-
-//MARK: - API's Keys
+// MARK: - API's Keys
 struct Keys {
 
     static let data                  = "data"
@@ -61,42 +60,36 @@ struct Keys {
     static let uIsDarkMode        = "u_is_dark_mode"
     static let pageNo             = "pageNo"
     static let search             = "search"
-    static let sort_by            = "sort_by"
+    static let sortBy             = "sort_by"
 
-    static let club_name = "club_name"
-    static let club_desc = "club_desc"
-    static let club_interests = "club_interests"
-    static let club_invited_user_ids = "club_invited_user_ids"
-    static let club_is_chat_group = "club_is_chat_group"
-    static let club_photo = "club_photo"
+    static let clubName = "club_name"
+    static let clubDesc = "club_desc"
+    static let clubInterests = "club_interests"
+    static let clubInvitedUserIds = "club_invited_user_ids"
+    static let clubIsChatGroup = "club_is_chat_group"
+    static let clubPhoto = "club_photo"
     
     static let interestId           = "_id"
     static let interestName           = "name"
     static let userInterests           = "u_interests"
 
+    static let phone           = "phone"
+    static let phoneToken           = "phone_token"
+    static let countryCode           = "country_code"
+    static let verifyType           = "verify_type"
+    static let socialId           = "socialId"
+    static let isNewRegister           = "isNewRegister"
+    static let userType           = "user_type"
+    static let token           = "token"
+    static let email           = "email"
+    static let isEmailExist           = "isEmailExist"
+    static let password           = "password"
+    static let firstName           = "first_name"
+    static let lastName           = "last_name"
+
+    static let uEduLevel           = "u_edu_level"
+    static let uEduYear           = "u_edu_year"
+    static let uEduMajors           = "u_edu_majors"
+    static let uEduMinors           = "u_edu_minors"
+
 }
-
-//MARK: - API's Output Keys
-
-let kPhone                      = "phone"
-let kCountry_Code               = "country_code"
-let kVerify_Type                = "verify_type"
-let kSocialId                   = "socialId"
-let kIsNewRegister              = "isNewRegister"
-let kUser_Type                  = "user_type"
-let kToken                      = "token"
-let kEmail                      = "email"
-let kIsEmailExist               = "isEmailExist"
-let kPhone_token                = "phone_token"
-let kPassword                   = "password"
-let kFirst_name                 = "first_name"
-let KLast_name                  = "last_name"
-let kU_Edu_Level                = "u_edu_level"
-let kU_Edu_Year                 = "u_edu_year"
-let kU_Edu_Majors               = "u_edu_majors"
-let kU_Edu_Minors               = "u_edu_minors"
-
-
-
-
-

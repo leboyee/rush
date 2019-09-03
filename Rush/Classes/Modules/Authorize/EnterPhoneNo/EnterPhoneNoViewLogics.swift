@@ -60,7 +60,7 @@ extension EnterPhoneNoViewController {
      */
     func authPhone() {
         Utils.showSpinner()
-        let verifyTye = loginType == .Register ? "signup" : "login"
+        let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = self.countryCode.replacingOccurrences(of: "+", with: "")
         var phoneString = self.phoneNoTextField.text?.replacingOccurrences(of: self.countryCode, with: "") ?? ""
         phoneString = phoneString.replacingOccurrences(of: "+", with: "")
@@ -69,7 +69,7 @@ extension EnterPhoneNoViewController {
         phoneString = phoneString.replacingOccurrences(of: ")", with: "")
         profile.phone = phoneString
         profile.countryCode = countryCodeString
-        let param = [kCountry_Code:  countryCodeString, kPhone: phoneString, kVerify_Type: verifyTye] as [String: Any]
+        let param = [Keys.countryCode:  countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
         ServiceManager.shared.authPhone(params: param) {
             [weak self] (status, errorMessage) in
             Utils.hideSpinner()

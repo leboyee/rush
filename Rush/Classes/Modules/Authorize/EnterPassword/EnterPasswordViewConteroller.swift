@@ -31,7 +31,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var resortPasswordButton: CustomButton!
     @IBOutlet weak var errorButton: CustomButton!
 
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     var profile = Profile()
 
     override func viewDidLoad() {
@@ -85,7 +85,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         errorButton.setEmailErrorButton()
         self.bgImageView.setBgForLoginSignup()
         restorePasswordButtonConstraint.constant = 16
-        if loginType == .Register {
+        if loginType == .register {
             passwordTitleLabel.text = Text.passwordTitleRegister
             nextButton.setTitle(Text.next, for: .normal)
             resortPasswordButton.isHidden = true
@@ -113,7 +113,7 @@ extension EnterPasswordViewConteroller {
     @IBAction func nextButtonAction() {
         profile.password = passwordTextField.text ?? ""
         self.view.endEditing(true)
-        if loginType == .Login {
+        if loginType == .login {
             Authorization.shared.session = ""
             loginApiCalled()
         }
@@ -137,7 +137,7 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func errorButtonAction() {
-        if loginType == .Login {
+        if loginType == .login {
             passwordErrorView.isHidden = true
             restorePasswordButtonConstraint.constant = 16
         }
@@ -178,7 +178,7 @@ extension EnterPasswordViewConteroller {
     }
     
     func passwordErrorHideShow(isHide: Bool) {
-        if loginType == .Login {
+        if loginType == .login {
             if isHide == true {
                 restorePasswordButtonConstraint.constant = 16
                 passwordErrorView.isHidden = true

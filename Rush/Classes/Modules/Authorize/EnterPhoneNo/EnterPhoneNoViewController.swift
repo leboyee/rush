@@ -24,7 +24,7 @@ class EnterPhoneNoViewController: CustomViewController {
     var countryCode: String = "+1"
     var frontTextFiled: String = "+1"
     var profile = Profile()
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class EnterPhoneNoViewController: CustomViewController {
         nextButton.setNextButton(isEnable: false)
         self.bgImageView.setBgForLoginSignup()
         
-        if loginType == .Register {
+        if loginType == .register {
             phoneNoTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }

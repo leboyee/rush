@@ -54,7 +54,7 @@ extension AddMinorsViewController {
     func updateProfileAPI() {
         
         
-        let param = [kU_Edu_Minors: selectedArray]  as [String : Any]
+        let param = [Keys.uEduMinors: selectedArray]  as [String : Any]
         
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) {

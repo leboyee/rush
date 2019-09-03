@@ -53,7 +53,7 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         passwordShowHideLabel.isHidden = textField.text?.count == 0 ? true : false
-        if self.loginType == .Register {
+        if self.loginType == .register {
             capitalLetterDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : textField.text?.isCapitalLater == true ? .correct : .wrong)
             numberDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : textField.text?.isNumberLater == true ? .correct : .wrong)
             symbolDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : (textField.text?.count ?? 0) >= 8 ? .correct : .wrong)

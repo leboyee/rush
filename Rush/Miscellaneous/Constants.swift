@@ -289,11 +289,11 @@ enum EventType {
 }
 
 enum LoginType {
-    case Register
-    case Login
+    case register
+    case login
 }
 
-enum passwordFormate {
+enum PasswordFormate {
     case none
     case correct
     case wrong

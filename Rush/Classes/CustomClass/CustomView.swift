@@ -18,7 +18,7 @@ class CustomView: UIView {
     }
     */
     
-    func setPasswordDotColorView(index: passwordFormate) {
+    func setPasswordDotColorView(index: PasswordFormate) {
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
         switch index {

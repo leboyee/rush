@@ -19,8 +19,8 @@ extension EnterPasswordViewConteroller {
     
     func loginApiCalled() {
         
-        let param = [kEmail: profile.email,
-                     kPassword: profile.password] as [String : Any]
+        let param = [Keys.email: profile.email,
+                     Keys.password: profile.password] as [String : Any]
         
         Utils.showSpinner()
         ServiceManager.shared.login(params: param) {

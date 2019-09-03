@@ -27,7 +27,7 @@ class AddProfilePictureViewController: CustomViewController {
     @IBOutlet weak var pageControl: CustomImagePageControl!
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
 
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     var isSkip: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()

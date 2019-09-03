@@ -19,28 +19,25 @@ extension EnterEmailViewConteroller {
     
     func checkUserAvailable() {
         Utils.showSpinner()
-        ServiceManager.shared.checkEmail(params: [kEmail: emailTextField.text ?? ""]) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.checkEmail(params: [Keys.email: emailTextField.text ?? ""]) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
             
-            guard let self_ = self else { return }
-            if (data != nil){
-                if (data![kIsEmailExist] as? Bool) == true {
-                    if self_.loginType == .Register {
+            guard let unsafe = self else { return }
+            if data != nil {
+                if (data![Keys.isEmailExist] as? Bool) == true {
+                    if unsafe.loginType == .register {
                         Utils.alert(message: "Email already register.")
                     } else {
-                         self_.emailSuccess()
+                         unsafe.emailSuccess()
                     }
-                }
-                else {
-                    if self_.loginType == .Register {
-                            self_.emailSuccess()
+                } else {
+                    if unsafe.loginType == .register {
+                            unsafe.emailSuccess()
                     } else {
-                          self_.emailErrorHideShow(isHide: false)
+                          unsafe.emailErrorHideShow(isHide: false)
                     }
                 }
-            }
-            else {                
+            } else {
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
             

@@ -20,7 +20,7 @@ class EnterUserNameViewController: CustomViewController {
     @IBOutlet weak var lastNameTextField: AkiraTextField!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
 
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     var profile = Profile()
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -42,7 +42,7 @@ extension AddMajorsViewController {
     func updateProfileAPI() {
         
         
-        let param = [kU_Edu_Majors: selectedArray]  as [String : Any]
+        let param = [Keys.uEduMajors: selectedArray]  as [String : Any]
         
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) {

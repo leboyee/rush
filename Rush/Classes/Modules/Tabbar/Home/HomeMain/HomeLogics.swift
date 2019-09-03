@@ -99,7 +99,7 @@ extension HomeViewController {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
-                     Keys.sort_by: sortBy,
+                     Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()
