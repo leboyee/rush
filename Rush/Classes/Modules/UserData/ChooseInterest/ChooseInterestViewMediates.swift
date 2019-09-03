@@ -26,7 +26,6 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -37,9 +36,11 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chooseTagCell, for: indexPath) as! ChooseTagCell
-        fillTagCell(cell)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chooseTagCell, for: indexPath) as? ChooseTagCell {
+            fillTagCell(cell)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -50,5 +51,3 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
         return cellHeight(indexPath)
     }
 }
-
-

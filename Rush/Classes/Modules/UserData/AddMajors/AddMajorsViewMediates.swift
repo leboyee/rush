@@ -34,9 +34,12 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addMajorsCell, for: indexPath) as! AddMajorsCell
-        fillAddMajorCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addMajorsCell, for: indexPath) as? AddMajorsCell {
+            fillAddMajorCell(cell, indexPath)
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -45,13 +48,11 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
         if selectedArray.contains(major["name"] as? String ?? "") {
             guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
             selectedArray.remove(at: index)
-        }
-        else {
+        } else {
             selectedArray.append(major["name"] as? String ?? "")
         }
         self.moveToNext()
-
-    }    
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
@@ -60,7 +61,7 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension AddMajorsViewController: UITextFieldDelegate {
     
-    //MARK : UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -79,10 +80,4 @@ extension AddMajorsViewController: UITextFieldDelegate {
         let searchText = textField.text ?? ""
         getMajorList(searchText: searchText)
     }
-
-    
 }
-
-
-
-

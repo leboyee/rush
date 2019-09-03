@@ -39,8 +39,6 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
         minorButtonConstraint.constant = 30
 
     }
-
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -52,9 +50,11 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addMajorsCell, for: indexPath) as! AddMajorsCell
-        fillAddMajorCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addMajorsCell, for: indexPath) as? AddMajorsCell {
+            fillAddMajorCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,23 +62,20 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
         if selectedArray.contains(major["name"] as? String ?? "") {
             guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
             selectedArray.remove(at: index)
-        }
-        else {
+        } else {
             selectedArray.append(major["name"] as? String ?? "")
         }
         self.moveToNext()
-
-    }    
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
 }
 
-
 extension AddMinorsViewController: UITextFieldDelegate {
     
-    //MARK : UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -99,6 +96,4 @@ extension AddMinorsViewController: UITextFieldDelegate {
         self.minorCustomButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
         getMinorList(searchText: searchText)
     }
-    
-    
 }

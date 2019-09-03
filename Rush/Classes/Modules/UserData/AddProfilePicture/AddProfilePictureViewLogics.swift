@@ -9,12 +9,9 @@
 import UIKit
 
 extension AddProfilePictureViewController {
-    
-    
-    
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension AddProfilePictureViewController {
     
     func updateProfileAPI() {
@@ -26,12 +23,11 @@ extension AddProfilePictureViewController {
         let param = ["u_photo": photoData] as [String : Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.uploadUserProfileImage(params: param) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.uploadUserProfileImage(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                self_.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }

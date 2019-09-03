@@ -9,26 +9,20 @@
 import UIKit
 
 extension EnterUserNameViewController {
-    
-    
-    
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension EnterUserNameViewController {
     
     func updateProfileAPI() {
-        
         let param = [Keys.firstName: firstNameTextField.text ?? "",
-                     Keys.lastName: lastNameTextField.text ?? ""] as [String : Any]
-        
+                     Keys.lastName: lastNameTextField.text ?? ""] as [String: Any]
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: param) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                self_.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }

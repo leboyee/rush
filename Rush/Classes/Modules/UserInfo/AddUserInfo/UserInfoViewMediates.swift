@@ -33,18 +33,18 @@ extension UserInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userInfoCell, for: indexPath) as! UserInfoCell
-        fillUserInfoCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userInfoCell, for: indexPath) as? UserInfoCell {
+            fillUserInfoCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell(indexPath: indexPath)
-    }    
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
 }
-
-

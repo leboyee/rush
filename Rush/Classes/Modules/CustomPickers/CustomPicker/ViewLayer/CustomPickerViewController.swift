@@ -1,4 +1,3 @@
-
 //
 //  CustomPickerViewController.swift
 //  wolf
@@ -29,7 +28,7 @@ class CustomPickerViewController: UIViewController {
     var dataArray = [String]()
     var presenter = CustomPickerPreseneter()
     var mediator  = CustomPickerMediator()
-    weak var pickerDelegate : CustomPickerDelegate!
+    weak var pickerDelegate: CustomPickerDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,12 +64,10 @@ class CustomPickerViewController: UIViewController {
         presenter.viewIsReady()
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     // MARK: - Actions
     @IBAction func doneButtonAction() {
@@ -80,7 +77,7 @@ class CustomPickerViewController: UIViewController {
         if presenter.type == .country {
             var countryCodeValue = ""
             if let categoryId = presenter.countryCode.firstIndex(where: { ($0["name"] as! String) == presenter.selectedValue }) {
-                countryCodeValue = presenter.countryCode[categoryId]["dial_code"] as! String
+                countryCodeValue = presenter.countryCode[categoryId]["dial_code"] as? String ?? ""
             }
             
             pickerDelegate?.selectedCountryValue!(countryName: presenter.selectedValue, countryCode: countryCodeValue)
@@ -99,31 +96,28 @@ class CustomPickerViewController: UIViewController {
             self.containerViewConstraint.constant = 262
             UIView.animate(withDuration: 0.1, animations: {
                 self.view.layoutIfNeeded()
-            }) { (status) in
+            }) { (_) in
                 self.dismiss(animated: false, completion: nil)
             }
             
         }
     }
-    
-    
 }
 
-//MARK: - Input View Handler (Or Presenter Output)
+// MARK: - Input View Handler (Or Presenter Output)
 extension CustomPickerViewController {
     func setupPresenterHandlers() {
         presenter.updateTitle = { [weak self] (title) in
-            guard let self_ = self else { return }
-            self_.titleLabel.text = title
+            guard let unsafe = self else { return }
+            unsafe.titleLabel.text = title
         }
     }
 }
 
-//MARK: - Input View Handler (Or Mediator Output)
+// MARK: - Input View Handler (Or Mediator Output)
 extension CustomPickerViewController {
     
     func setupMediatorHandlers() {
         
     }
 }
-
