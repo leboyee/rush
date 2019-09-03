@@ -11,6 +11,8 @@ import UIKit
 let screenWidth: CGFloat = UIScreen.main.bounds.width
 let screenHeight: CGFloat = UIScreen.main.bounds.height
 
+let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
+
 //MARK: - Production Build
 var isProductionBuild: Bool = true
 

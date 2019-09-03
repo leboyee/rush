@@ -20,7 +20,7 @@ class ChooseInterestViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
-    var interestArray = ["Art", "Music","Beauty & style","Cars & Trucks","Hobbies","Animals & pets","Technologies","Travel","Education","Gaming","Art", "Music","Beauty & style","Cars & Trucks","Hobbies","Animals & pets","Technologies","Travel","Education"]
+    var interestArray = [Interest]()
     
     var selectedArray = [String]()
     
@@ -50,6 +50,7 @@ class ChooseInterestViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
+        getInterestList()
     }
     
     func setupUI() {
@@ -102,8 +103,17 @@ extension ChooseInterestViewController {
 
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.userInfoViewSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.userInfoViewSegue, sender: self)
 // AppDelegate.getInstance().setupStoryboard()
 
+    }
+}
+
+// MARK: - Preseneter
+extension ChooseInterestViewController {
+    
+    func profileUpdateSuccess(){
+        self.performSegue(withIdentifier: Segues.userInfoViewSegue, sender: self)
     }
 }

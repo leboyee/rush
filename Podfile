@@ -28,4 +28,10 @@ target 'Rush' do
   #Swipe cell
   pod 'MGSwipeTableCell'
 
+  #linter
+  pod 'SwiftLint'
+  
+  #google Place
+  pod 'GooglePlaces'
+
 end

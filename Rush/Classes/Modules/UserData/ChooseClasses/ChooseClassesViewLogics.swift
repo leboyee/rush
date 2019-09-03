@@ -39,12 +39,12 @@ extension ChooseClassesViewController {
     
     func fillClassesHeader(_ header: ClassesHeader, _ section: Int) {
         let classies = classesArray[section]
-        let subClassies = classies.subClasses
-        for subClassObj in subClassies {
-            if selectedArray.contains(subClassObj) {
-                header.setup(detailsLableText: subClassObj.name)
-            }
+        print(selectedArray["\(section)"])
+        if selectedArray["\(section)"] != nil {
+            let subClass = selectedArray["\(section)"] as? SubClasses ?? SubClasses()
+            header.setup(detailsLableText: subClass.name)
         }
+
         header.titleLabel.text = classies.category
         header.headerButton.tag = section
         header.headerButton.addTarget(self, action: #selector(headerSelectionAction), for: .touchUpInside)

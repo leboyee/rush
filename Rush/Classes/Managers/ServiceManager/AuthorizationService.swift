@@ -157,6 +157,17 @@ extension ServiceManager {
             })
         }
     }
+    
+    func instagramConnect(params : [String : Any], closer: @escaping (_ status: Bool?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.instagramConnect(params: params) {
+            [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+
 
     // MARK: - Major Minor
     func getMajorList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
@@ -170,6 +181,15 @@ extension ServiceManager {
     
     func getMinorList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getMinorList(params: params) { [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
+    func getInterestList(params : [String : Any],closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getInterestList(params: params) { [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
             self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)

@@ -25,7 +25,12 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordShowButton: UIButton!
     @IBOutlet weak var hintView: UIView!
-    
+    @IBOutlet weak var passwordErrorLabel: CustomLabel!
+    @IBOutlet weak var passwordErrorView: UIView!
+    @IBOutlet weak var restorePasswordButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var resortPasswordButton: CustomButton!
+    @IBOutlet weak var errorButton: CustomButton!
+
     var loginType: LoginType = .Register
     var profile = Profile()
 
@@ -74,17 +79,25 @@ class EnterPasswordViewConteroller: CustomViewController {
         numberDotView.setPasswordDotColorView(index: .none)
         symbolDotView.setPasswordDotColorView(index: .none)
         capitalLetterLabel.passwordFormateLabels()
+        passwordErrorLabel.emailErrorSetColor()
         numberLabel.passwordFormateLabels()
         symbolLabel.passwordFormateLabels()
+        errorButton.setEmailErrorButton()
         self.bgImageView.setBgForLoginSignup()
-        
+        restorePasswordButtonConstraint.constant = 16
         if loginType == .Register {
             passwordTitleLabel.text = Text.passwordTitleRegister
             nextButton.setTitle(Text.next, for: .normal)
+            resortPasswordButton.isHidden = true
+            hintView.isHidden = false
+            passwordErrorView.isHidden = true
         }
         else {
             passwordTitleLabel.text = Text.passwordTitleLogin
             nextButton.setTitle(Text.login, for: .normal)
+            hintView.isHidden = true
+            resortPasswordButton.isHidden = false
+            passwordErrorView.isHidden = true
         }
     }
 
@@ -122,6 +135,19 @@ extension EnterPasswordViewConteroller {
             passwordShowButton.isSelected = true
         }
     }
+    
+    @IBAction func errorButtonAction() {
+        if loginType == .Login {
+            passwordErrorView.isHidden = true
+            restorePasswordButtonConstraint.constant = 16
+        }
+    }
+    
+    @IBAction func restoreButtonAction() {
+        Utils.alert(message: "In Development.")
+    }
+
+
 }
 
 // MARK: - Navigation
@@ -146,4 +172,23 @@ extension EnterPasswordViewConteroller {
     func profileUpdateSuccess(){
         AppDelegate.getInstance().setupStoryboard()
     }
+    
+    func passwordNotSuccess() {
+        passwordErrorHideShow(isHide: false)
+    }
+    
+    func passwordErrorHideShow(isHide: Bool) {
+        if loginType == .Login {
+            if isHide == true {
+                restorePasswordButtonConstraint.constant = 16
+                passwordErrorView.isHidden = true
+            }
+            else {
+                restorePasswordButtonConstraint.constant = 76
+                passwordErrorView.isHidden = false
+                self.nextButton.setNextButton(isEnable: false)
+            }
+        }
+    }
+
 }

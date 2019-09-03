@@ -53,6 +53,10 @@ extension NetworkManager {
         requestUploadImage(path: "profile/photo", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
     
+    func instagramConnect(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "instagram/connect", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
     
 
     func getProfile(params : [String : Any], resultHandler: @escaping ResultClosure) {
@@ -72,6 +76,10 @@ extension NetworkManager {
     func getMinorList(params : [String : Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "minor", params: params, resultHandler: resultHandler)
     }
+    
+    func getInterestList(params : [String : Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "interest", params: params, resultHandler: resultHandler)
+    }
 
     func getFriendList(params : [String : Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "friend", params: params, resultHandler: resultHandler)
@@ -82,6 +90,6 @@ extension NetworkManager {
     }
    
     func getClubList(sortBy: String, params : [String : Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "/club/\(sortBy)/list", params: params, resultHandler: resultHandler)
+        requestGet(path: "club/\(sortBy)/list", params: params, resultHandler: resultHandler)
     }
 }

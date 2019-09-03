@@ -161,7 +161,6 @@ extension EnterEmailViewConteroller {
                 vc.loginType = loginType
             }
         }
-
     }
     
 }
@@ -170,7 +169,7 @@ extension EnterEmailViewConteroller {
 extension EnterEmailViewConteroller {
     
     func  emailSuccess() {
-         self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
+            self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
     }
     
     func emailErrorHideShow(isHide: Bool) {

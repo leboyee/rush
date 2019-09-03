@@ -63,6 +63,8 @@ class CustomPickerViewController: UIViewController {
         presenter.mediator = mediator
         setupPresenterHandlers()
         presenter.viewIsReady()
+        pickerView.selectRow(presenter.selectedIndex, inComponent: 0, animated: false)
+
     }
 
 

@@ -52,7 +52,7 @@ struct Keys {
     static let friendType         = "frd_type"
     static let friend             = "friend"
     static let friendId           = "frd_id"
-    
+
     
     static let u_is_notify_on     = "u_is_notify_on"
     static let u_is_event_notify  = "u_is_event_notify"
@@ -72,6 +72,14 @@ struct Keys {
     static let club_invited_user_ids = "club_invited_user_ids"
     static let club_is_chat_group = "club_is_chat_group"
     static let club_photo = "club_photo"
+    
+    static let interestId           = "_id"
+    static let interestName           = "name"
+    static let userInterests           = "u_interests"
+
+    static let instagramToken           = "insta_token"
+
+    
 }
 
 //MARK: - API's Output Keys
