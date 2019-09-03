@@ -71,9 +71,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
-        fillTextHeader(header, section)
-        return header
+        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader {
+            fillTextHeader(header, section)
+            return header
+        }
+        return nil
     }
     
     // MARK: - Footer

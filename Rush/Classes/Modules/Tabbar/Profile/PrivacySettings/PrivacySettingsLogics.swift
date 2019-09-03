@@ -26,29 +26,26 @@ extension PrivacySettingsViewController {
     }
     
     func selectedRow(_ indexPath: IndexPath) {
-        
         let key = type == .invitesfrom ? Keys.uWhoCanInvite: Keys.uWhoCanMessage
         let params = [key: list[indexPath.row]]
         updateUserProfile(params: params)
     }
 }
 
-
 // MARK: - API's
 extension PrivacySettingsViewController {
     
     private func updateUserProfile(params: [String: Any]) {
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: params) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: params) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            if let _ = data {
-                self_.user = Authorization.shared.profile
+            guard let unsafe = self else { return }
+            if data != nil {
+                unsafe.user = Authorization.shared.profile
                 /// Reload Cells
-                self_.tableView.reloadData()
+                unsafe.tableView.reloadData()
             } else if let message = errorMessage {
-                self_.showMessage(message: message)
+                unsafe.showMessage(message: message)
             }
         }
     }

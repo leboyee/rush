@@ -36,29 +36,31 @@ extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.switchCell, for: indexPath) as! SwitchCell
-            fillSwitchCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.switchCell, for: indexPath) as? SwitchCell {
+                fillSwitchCell(cell, indexPath)
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.checkMark, for: indexPath) as! CheckMarkCell
-            fillCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.checkMark, for: indexPath) as? CheckMarkCell {
+                fillCell(cell, indexPath)
+                return cell
+            }
         }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow(indexPath)
     }
     
-    //MARK: - Header
+    // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
     
-    //MARK: - Footer
+    // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
-    }
-    
-    
+    }    
 }

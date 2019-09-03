@@ -22,7 +22,6 @@ class CalendarEventCell: UITableViewCell {
 
     let normal: CGFloat = 24.0
     let extra: CGFloat = 80.0
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,11 +33,9 @@ class CalendarEventCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
 
-
-//MARK: - Data
+// MARK: - Data
 extension CalendarEventCell {
     
     func set(eventName: String) {
@@ -57,7 +54,6 @@ extension CalendarEventCell {
         }
     }
     
-    
     func set(date: Date?) {
         if let date = date {
             monthLabel.text = date.toString(format: "MMM").uppercased()
@@ -74,7 +70,7 @@ extension CalendarEventCell {
         if let startDate = start {
             var text = startDate.toString(format: "hh:mm a")
             if let endDate = end {
-               text = text + "\n" +  endDate.toString(format: "hh:mm a")
+               text += "\n" +  endDate.toString(format: "hh:mm a")
             }
             timeLabel.text = text
         } else {

@@ -92,17 +92,16 @@ extension SettingsViewController {
     }
 }
 
-//MARK: - Navigation
+// MARK: - Navigation
 extension SettingsViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == Segues.webViewFile {
-            let vc = segue.destination as! WebViewFileViewController
-            vc.type = sender as? WebFile ?? .policy
+            let vc = segue.destination as? WebViewFileViewController
+            vc?.type = sender as? WebFile ?? .policy
         } else if segue.identifier == Segues.privacySettings {
-            let vc = segue.destination as! PrivacySettingsViewController
-            vc.type = sender as? PrivacyType ?? .invitesfrom
+            let vc = segue.destination as? PrivacySettingsViewController
+            vc?.type = sender as? PrivacyType ?? .invitesfrom
         }
     }
 }
