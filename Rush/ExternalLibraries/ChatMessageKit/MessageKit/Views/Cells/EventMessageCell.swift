@@ -82,7 +82,6 @@ open class EventMessageCell: MessageContentCell {
         date.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(date)
         
-        
         let month = UILabel(frame: CGRect(x: 135, y: 8, width: 200, height: 16))
         month.text = "JAN"
         month.textColor = UIColor.buttonDisableTextColor

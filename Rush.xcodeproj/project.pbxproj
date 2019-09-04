@@ -353,6 +353,7 @@
 		79C1AC4F22A64D09003C7790 /* ProfileInformationLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1AC4E22A64D09003C7790 /* ProfileInformationLogics.swift */; };
 		79C1AC5722A65507003C7790 /* ProfileInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1AC5522A65507003C7790 /* ProfileInformationCell.swift */; };
 		79C1AC5822A65507003C7790 /* ProfileInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C1AC5622A65507003C7790 /* ProfileInformationCell.xib */; };
+		79C38326231FF8B5003E26EC /* DKCamera+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C38325231FF8B5003E26EC /* DKCamera+Delegate.swift */; };
 		79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */; };
 		79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */; };
 		79C7DA6622A7987300EA7759 /* FriendsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */; };
@@ -386,8 +387,8 @@
 		79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377A522CB5D69003FC33E /* SearchClubViewController.swift */; };
 		79F377AC22CB6297003FC33E /* SearchClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F377AA22CB6297003FC33E /* SearchClubCell.swift */; };
 		79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F377AB22CB6297003FC33E /* SearchClubCell.xib */; };
-		8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1E22313EC4600258227 /* TableViewExtension.swift */; };
 		79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA26F4230EC5AF0007F0ED /* HomeServices.swift */; };
+		8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1E22313EC4600258227 /* TableViewExtension.swift */; };
 		8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13122FADEA30055C65F /* CalendarViewController.swift */; };
 		8A04B13422FADEC50055C65F /* CalendarEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */; };
 		8A04B13622FADF2D0055C65F /* CalendarLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13522FADF2D0055C65F /* CalendarLogics.swift */; };
@@ -802,6 +803,7 @@
 		79C1AC4E22A64D09003C7790 /* ProfileInformationLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationLogics.swift; sourceTree = "<group>"; };
 		79C1AC5522A65507003C7790 /* ProfileInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationCell.swift; sourceTree = "<group>"; };
 		79C1AC5622A65507003C7790 /* ProfileInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInformationCell.xib; sourceTree = "<group>"; };
+		79C38325231FF8B5003E26EC /* DKCamera+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DKCamera+Delegate.swift"; sourceTree = "<group>"; };
 		79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListMediates.swift; sourceTree = "<group>"; };
 		79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListLogics.swift; sourceTree = "<group>"; };
@@ -835,8 +837,8 @@
 		79F377A522CB5D69003FC33E /* SearchClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubViewController.swift; sourceTree = "<group>"; };
 		79F377AA22CB6297003FC33E /* SearchClubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClubCell.swift; sourceTree = "<group>"; };
 		79F377AB22CB6297003FC33E /* SearchClubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchClubCell.xib; sourceTree = "<group>"; };
-		8A02C1E22313EC4600258227 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		79FA26F4230EC5AF0007F0ED /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
+		8A02C1E22313EC4600258227 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		8A04B13122FADEA30055C65F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListViewController.swift; sourceTree = "<group>"; };
 		8A04B13522FADF2D0055C65F /* CalendarLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLogics.swift; sourceTree = "<group>"; };
@@ -1959,6 +1961,7 @@
 			isa = PBXGroup;
 			children = (
 				79650BFC22C1099B0004BCB9 /* DKCamera.swift */,
+				79C38325231FF8B5003E26EC /* DKCamera+Delegate.swift */,
 				79650BFD22C1099B0004BCB9 /* DKCameraLocationManager.swift */,
 				79650BFE22C1099B0004BCB9 /* DKCameraResource.swift */,
 			);
@@ -3142,6 +3145,7 @@
 				793BE66B22E88207005EF72D /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				793BE66222E88207005EF72D /* Settings+UserDefaults.swift in Sources */,
 				7905CDB5230D5E170011C83B /* ChatContactsListViewController.swift in Sources */,
+				79C38326231FF8B5003E26EC /* DKCamera+Delegate.swift in Sources */,
 				1AC635FD22AA907900021E03 /* CustomNavBarPageController.swift in Sources */,
 				7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */,
 				1A142EC8229EC1A0002C1AFE /* CustomPickerMediator.swift in Sources */,

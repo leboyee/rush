@@ -11,11 +11,11 @@ import UIKit
 
 class Classes: NSObject {
 
-    var id              : Int = 0
-    var category        : String = ""
-    var subClasses =  [SubClasses]()
+    var id: Int = 0
+    var category: String = ""
+    var subClasses = [SubClasses]()
     
-    init(data : [String : Any]) {
+    init(data: [String: Any]) {
         super.init()
         setData(data: data)
     }
@@ -24,23 +24,19 @@ class Classes: NSObject {
         super.init()
     }
 
-    //MARK: - Private Functions
-    func setData(data : [String : Any]) {
+    // MARK: - Private Functions
+    func setData(data: [String: Any]) {
      
     }
-
-
-
 }
-
 
 class SubClasses: NSObject {
     
-    var id              : Int = 0
-    var category        : String = ""
-    var name        : String = ""
+    var id: Int = 0
+    var category: String = ""
+    var name: String = ""
 
-    init(data : [String : Any]) {
+    init(data: [String: Any]) {
         super.init()
         setData(data: data)
     }
@@ -49,11 +45,8 @@ class SubClasses: NSObject {
         super.init()
     }
     
-    //MARK: - Private Functions
-    func setData(data : [String : Any]) {
+    // MARK: - Private Functions
+    func setData(data: [String: Any]) {
         
     }
-    
-    
-    
 }

@@ -310,7 +310,7 @@ extension ChatRoomViewController: MessageInputBarDelegate {
         let stringname = Utils.getFileName("jpg")
         let imageFolder = "\(stringname)"
         if Utils.saveImageInApp(imageFolder, img) {
-            ChatManager().sendImageFileMessage(self.channel, stringname, completionHandler: { (fileMessage) in
+            ChatManager().sendImageFileMessage(self.channel, stringname, completionHandler: { (_) in
                 self.channel?.markAsRead()
             }, errorHandler: { (_) in
                 

@@ -15,12 +15,12 @@ protocol ParallaxHeaderDelegate: class {
 
 class ParallaxHeader: UIView {
 
-    @IBOutlet weak var nameLabel : UILabel!
-    @IBOutlet weak var universityLabel : UILabel!
-    @IBOutlet weak var profileImageView : UIImageView!
-    @IBOutlet weak var editButton : UIButton!
-    @IBOutlet weak var cameraButton : UIButton!
-    @IBOutlet weak var infoIcon : UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var universityLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var infoIcon: UIImageView!
 
     weak var delegate: ParallaxHeaderDelegate?
     
@@ -58,7 +58,7 @@ extension ParallaxHeader {
     
 }
 
-//MARK: - Other
+// MARK: - Other
 extension ParallaxHeader {
 
     func enableEdit(isEnabled: Bool) {
@@ -80,7 +80,7 @@ extension ParallaxHeader {
     
 }
 
-//MARK:- Actions
+// MARK:- Actions
 extension ParallaxHeader {
 
     @IBAction func editProfileButtonAction() {

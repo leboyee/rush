@@ -93,7 +93,7 @@ extension HomeViewController {
     }
 }
 
-//MARK: - Services
+// MARK: - Services
 extension HomeViewController {
     func getMyClubListAPI(sortBy: String) {
         
@@ -103,10 +103,8 @@ extension HomeViewController {
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { (data, errorMessage) in
             Utils.hideSpinner()
-            guard let _ = self else { return }
             if data != nil {
                 
             } else {

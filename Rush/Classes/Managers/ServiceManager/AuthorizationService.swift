@@ -28,7 +28,7 @@ extension ServiceManager {
     /*
      * we check that if user already register with same email
      */
-    func checkEmail(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+    func checkEmail(params: [String: Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.checkEmail(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
@@ -37,11 +37,10 @@ extension ServiceManager {
         }
     }
     
-    
     /*
      * Get Phone token For Verify user
      */
-    func authPhone(params : [String : Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+    func authPhone(params: [String: Any], closer: @escaping(_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.authPhone(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
@@ -53,9 +52,8 @@ extension ServiceManager {
     /*
      *
      */
-    func singup(params : [String : Any], closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
-        NetworkManager.shared.signup(params: params) {
-            [weak self] (data, error, code) -> (Void) in
+    func singup(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.signup(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
@@ -72,7 +70,7 @@ extension ServiceManager {
         }
     }
     
-    func phonetkn(params : [String : Any], closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
+    func phonetkn(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.phonetkn(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
@@ -84,7 +82,7 @@ extension ServiceManager {
     /*
      *  This api is used to resend code as well as change phone number too.
      */
-    func resendSMS(params: [String: Any], closer: @escaping (_ status: Bool,_ errorMessage: String?) -> Void) {
+    func resendSMS(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.resendSMS(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in

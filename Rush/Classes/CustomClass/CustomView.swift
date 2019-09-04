@@ -22,16 +22,12 @@ class CustomView: UIView {
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
         switch index {
-        case .none :
+        case .none:
             self.backgroundColor = UIColor.buttonDisableBgColor
-        break
-        case .correct :
+        case .correct:
             self.backgroundColor = UIColor.green24
-        break
-        case .wrong :
+        case .wrong:
             self.backgroundColor = UIColor.brown72
-        break
-            
         }
     }
     
@@ -39,7 +35,7 @@ class CustomView: UIView {
         self.backgroundColor = UIColor.green24
     }
     
-    func setBackgroundColor(){
+    func setBackgroundColor() {
         self.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
     }
 

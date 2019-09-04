@@ -41,8 +41,7 @@ extension CreateEventViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-        cell.switchValueChanged = { [weak self] (isOn) in
-            guard let _ = self else { return }
+        cell.switchValueChanged = { (isOn) in
             
         }
     }

@@ -45,7 +45,7 @@ extension ChatContactsListViewController {
     }
 }
 
-// MARK:- Services
+// MARK: - Services
 extension ChatContactsListViewController {
     func getFriendListAPI() {
         

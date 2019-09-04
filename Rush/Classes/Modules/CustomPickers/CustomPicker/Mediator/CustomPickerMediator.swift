@@ -23,7 +23,7 @@ class CustomPickerMediator: NSObject {
         pickerView = nil
     }
     
-    //MARK: - Other Functions
+    // MARK: - Other Functions
     func setupMediator(pickerView: UIPickerView) {
         self.pickerView = pickerView
         self.pickerView?.delegate = self

@@ -9,19 +9,19 @@
 import UIKit
 
 enum PickerType: String {
-    case country    = "Country"
-    case countryCode    = "Country Code"
-    case industry   = "Industry"
-    case cityState  = "City, State"
-    case relation   = "Relation"
-    case new        = "New password"
-    case gender        = "Gender"
-    case docType        = "Select Identification Document"
+    case country = "Country"
+    case countryCode = "Country Code"
+    case industry = "Industry"
+    case cityState = "City, State"
+    case relation = "Relation"
+    case new = "New password"
+    case gender = "Gender"
+    case docType = "Select Identification Document"
 
 }
 
 class CustomPickerPreseneter: NSObject {
-    //MARK: - Defines handler and varibales
+    // MARK: - Defines handler and varibales
     weak var mediator: CustomPickerMediator?
     var pickerDataList: [String]?
     var selectedValue: String = ""

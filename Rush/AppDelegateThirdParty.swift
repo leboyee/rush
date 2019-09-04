@@ -25,7 +25,7 @@ extension AppDelegate {
     }
 }
 
-// MARK:- SendBird Chat SDK
+// MARK: - SendBird Chat SDK
 extension AppDelegate: SBDChannelDelegate {
     
     func connectSendbird() {

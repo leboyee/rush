@@ -12,7 +12,4 @@ import UIKit
 
 extension AddInviteViewController {
     
-    
 }
-
-

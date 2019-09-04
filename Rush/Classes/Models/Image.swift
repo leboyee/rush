@@ -11,27 +11,27 @@ import UIKit
 
 class Image: NSObject {
 
-    lazy var id       : String = ""
-    lazy var main     : String = ""
-    lazy var thumb    : String = ""
-    var localImage    : UIImage?
+    lazy var id : String = ""
+    lazy var main : String = ""
+    lazy var thumb : String = ""
+    var localImage : UIImage?
     
-    var url : URL? {
+    var url: URL? {
         guard main.count > 0 else { return nil }
         return URL(string : main)
     }
     
-    var urlThumb : URL? {
+    var urlThumb: URL? {
         guard thumb.count > 0 else { return nil }
         return URL(string : thumb)
     }
     
-    init(data : [String : Any]) {
+    init(data: [String : Any]) {
         super.init()
         setData(data: data)
     }
     
-    init(json : String) {
+    init(json: String) {
         super.init()
         setData(jsonString: json)
     }
@@ -70,5 +70,4 @@ class Image: NSObject {
             }
         }
     }
-    
 }

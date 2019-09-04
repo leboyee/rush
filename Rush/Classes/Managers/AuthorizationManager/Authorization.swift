@@ -67,7 +67,7 @@ class Authorization: NSObject {
     }
     
     // MARK: Private
-    private func fillUser(data: [String : Any]) {
+    private func fillUser(data: [String: Any]) {
         if profile == nil {
             profile = Profile(data: data)
         } else {

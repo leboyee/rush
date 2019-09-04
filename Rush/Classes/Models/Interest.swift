@@ -22,7 +22,7 @@ class Interest: Profile {
         super.init()
     }
     
-    //MARK: - Private Functions
+    // MARK: - Private Functions
     private func setValue(data : [String : Any]) {
         
         if let value = data[Keys.interestId] as? Int64 {

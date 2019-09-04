@@ -96,10 +96,9 @@ class CustomPickerViewController: UIViewController {
             self.containerViewConstraint.constant = 262
             UIView.animate(withDuration: 0.1, animations: {
                 self.view.layoutIfNeeded()
-            }) { (_) in
+            }, completion: { (_) in
                 self.dismiss(animated: false, completion: nil)
-            }
-            
+            })
         }
     }
 }

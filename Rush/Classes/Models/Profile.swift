@@ -54,7 +54,7 @@ class Profile: NSObject {
         super.init()
     }
 
-    //MARK: - Private Functions
+    // MARK: - Private Functions
     func setData(data : [String : Any]) {
         if let value = data["_id"] as? String {
             userId = value
@@ -100,7 +100,6 @@ class Profile: NSObject {
         
         /// Added by Kamal for Rush
         
-
         if let value = data["u_photo"] as? String {
             photo = Image(json: value)
         }
@@ -141,7 +140,6 @@ class Profile: NSObject {
         } else if let value = data[Keys.uIsClassNotify] as? String {
             isClassNotificationOn = value == "1" ? true : false
         }
-        
         
         if let value = data[Keys.uWhoCanMessage] as? String {
             whoCanMessageYou = value

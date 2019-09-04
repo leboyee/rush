@@ -16,7 +16,6 @@ class Contact: NSObject {
     var birthday: Date?
     var avatarBaseString: String = ""
 
-    
     init(data : [String : Any]) {
         super.init()
         setData(data: data)
@@ -26,13 +25,8 @@ class Contact: NSObject {
         super.init()
     }
     
-
-    //MARK: - Private Functions
+    // MARK: - Private Functions
     func setData(data : [String : Any]) {
         
     }
 }
-
-
-
-

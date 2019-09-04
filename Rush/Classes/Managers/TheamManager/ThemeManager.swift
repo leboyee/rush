@@ -11,8 +11,7 @@ import UIKit
 class ThemeManager: NSObject {
 
      static let shared = ThemeManager()
-    
-    
+        
     func loadTheme() {
         
         if isDarkModeOn {

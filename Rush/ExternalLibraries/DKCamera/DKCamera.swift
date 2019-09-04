@@ -948,7 +948,6 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             })
         }
     }
-    
 }
 
 // MARK: - Preview capture image
