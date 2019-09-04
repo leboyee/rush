@@ -15,21 +15,29 @@ struct EventGroup {
 
 class Event: Codable {
     
-    var id: Int64
-    var date: Date
-    var title: String
-    var type: String
+    var id: Int64 = 0
+    var date: Date = Date()
+    var title: String = ""
+    var desc: String = ""
+    var type: String = ""
+    var eventType: EventType = .none
     var start: Date?
     var end: Date?
     var thumbnil: String?
-
+    var address: Address?
+    
+    init() {
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case date
         case title
+        case desc
         case type
         case start
         case end
         case thumbnil
+        case address
     }
 }

@@ -58,6 +58,7 @@ class EventTypeCell: UITableViewCell {
     
     func setup(userList: [String]) {
         cellType = .clubUser
+        reload()
     }
     
     func setup(friends: [Friend]) {
