@@ -316,7 +316,6 @@ internal final class PhotoGalleryViewController: UIViewController,
     }
 }
 
-
 private extension PHAssetCollection {
 
     var isCameraCompatible: Bool {
@@ -327,7 +326,6 @@ private extension PHAssetCollection {
     }
 
 }
-
 
 private extension NSAttributedString {
 

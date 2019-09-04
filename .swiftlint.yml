@@ -9,7 +9,7 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
 line_length: 200
 type_body_length:
-  - 400 # warning
+  - 560 # warning
   - 500 # error
 function_body_length:
   - 100 # warning

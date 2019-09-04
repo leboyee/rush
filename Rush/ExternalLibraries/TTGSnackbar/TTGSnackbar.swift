@@ -752,6 +752,107 @@ public extension TTGSnackbar {
 
 private extension TTGSnackbar {
     func configure() {
+        setNotification()
+        
+        setAllViews()
+        
+        if let icnImgView = iconImageView, let msgLbl = messageLabel, let actvtyIndicator = activityIndicatorView {
+            if let separateVw = separateView, let actionBtn = actionButton, let secondActionBtn = secondActionButton {
+                // Add constraints
+                let h = "H:|-0-[iconImageView]-16-[messageLabel]-2-[seperateView(0.5)]-2-[actionButton(>=44@999)]-0-[secondActionButton(>=44@999)]-0-|"
+                let format = NSLayoutConstraint.FormatOptions(rawValue: 0)
+                let viewList = ["iconImageView": icnImgView, "messageLabel": msgLbl, "seperateView": separateVw, "actionButton": actionBtn, "secondActionButton": secondActionBtn]
+                let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: h, options: format, metrics: nil, views: viewList)
+                
+                let vConstraintsForIconImageView = NSLayoutConstraint.constraints(
+                    withVisualFormat: "V:|-2-[iconImageView]-2-|",
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                    metrics: nil,
+                    views: ["iconImageView": icnImgView])
+                
+                let vConstraintsForMessageLabel = NSLayoutConstraint.constraints(
+                    withVisualFormat: "V:|-0-[messageLabel]-0-|",
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                    metrics: nil,
+                    views: ["messageLabel": msgLbl])
+                
+                let vConstraintsForSeperateView = NSLayoutConstraint.constraints(
+                    withVisualFormat: "V:|-4-[seperateView]-4-|",
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                    metrics: nil,
+                    views: ["seperateView": separateVw])
+                
+                let vConstraintsForActionButton = NSLayoutConstraint.constraints(
+                    withVisualFormat: "V:|-0-[actionButton]-0-|",
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                    metrics: nil,
+                    views: ["actionButton": actionBtn])
+                
+                let vConstraintsForSecondActionButton = NSLayoutConstraint.constraints(
+                    withVisualFormat: "V:|-0-[secondActionButton]-0-|",
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                    metrics: nil,
+                    views: ["secondActionButton": secondActionBtn])
+                
+                iconImageViewWidthConstraint = NSLayoutConstraint.init(
+                    item: icnImgView, attribute: .width, relatedBy: .equal,
+                    toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: TTGSnackbar.snackbarIconImageViewWidth)
+                
+                actionButtonMaxWidthConstraint = NSLayoutConstraint.init(
+                    item: actionBtn, attribute: .width, relatedBy: .lessThanOrEqual,
+                    toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: actionMaxWidth)
+                
+                secondActionButtonMaxWidthConstraint = NSLayoutConstraint.init(
+                    item: secondActionBtn, attribute: .width, relatedBy: .lessThanOrEqual,
+                    toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: actionMaxWidth)
+                
+                let vConstraintForActivityIndicatorView = NSLayoutConstraint.init(
+                    item: actvtyIndicator, attribute: .centerY, relatedBy: .equal,
+                    toItem: contentView, attribute: .centerY, multiplier: 1, constant: 0)
+                
+                let hConstraintsForActivityIndicatorView = NSLayoutConstraint.constraints(
+                    withVisualFormat: "H:[activityIndicatorView]-2-|",
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                    metrics: nil,
+                    views: ["activityIndicatorView": actvtyIndicator])
+                
+                iconImageView.addConstraint(iconImageViewWidthConstraint!)
+                actionButton.addConstraint(actionButtonMaxWidthConstraint!)
+                secondActionButton.addConstraint(secondActionButtonMaxWidthConstraint!)
+                
+                contentView.addConstraints(hConstraints)
+                contentView.addConstraints(vConstraintsForIconImageView)
+                contentView.addConstraints(vConstraintsForMessageLabel)
+                contentView.addConstraints(vConstraintsForSeperateView)
+                contentView.addConstraints(vConstraintsForActionButton)
+                contentView.addConstraints(vConstraintsForSecondActionButton)
+                contentView.addConstraint(vConstraintForActivityIndicatorView)
+                contentView.addConstraints(hConstraintsForActivityIndicatorView)
+            }
+        }
+        messageLabel.setContentHuggingPriority(UILayoutPriority(1000), for: .vertical)
+        messageLabel.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
+        
+        actionButton.setContentHuggingPriority(UILayoutPriority(998), for: .horizontal)
+        actionButton.setContentCompressionResistancePriority(UILayoutPriority(999), for: .horizontal)
+        secondActionButton.setContentHuggingPriority(UILayoutPriority(998), for: .horizontal)
+        secondActionButton.setContentCompressionResistancePriority(UILayoutPriority(999), for: .horizontal)
+        
+        // add gesture recognizers
+        // tap gesture
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapSelf)))
+        
+        self.isUserInteractionEnabled = true
+        
+        // swipe gestures
+        [UISwipeGestureRecognizer.Direction.up, .down, .left, .right].forEach { (direction) in
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.didSwipeSelf(_:)))
+            gesture.direction = direction
+            self.addGestureRecognizer(gesture)
+        }
+    }
+    
+    func setNotification() {
         // Clear subViews
         for subView in subviews {
             subView.removeFromSuperview()
@@ -775,7 +876,9 @@ private extension TTGSnackbar {
         layer.shadowRadius = 8
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
-        
+    }
+    
+    func setAllViews() {
         contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.frame = TTGSnackbar.snackbarDefaultFrame
@@ -836,99 +939,6 @@ private extension TTGSnackbar {
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.stopAnimating()
         contentView.addSubview(activityIndicatorView)
-        
-        // Add constraints
-        let hConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-0-[iconImageView]-16-[messageLabel]-2-[seperateView(0.5)]-2-[actionButton(>=44@999)]-0-[secondActionButton(>=44@999)]-0-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["iconImageView": iconImageView, "messageLabel": messageLabel, "seperateView": separateView, "actionButton": actionButton, "secondActionButton": secondActionButton])
-        
-        let vConstraintsForIconImageView = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-2-[iconImageView]-2-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["iconImageView": iconImageView])
-        
-        let vConstraintsForMessageLabel = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-0-[messageLabel]-0-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["messageLabel": messageLabel])
-        
-        let vConstraintsForSeperateView = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-4-[seperateView]-4-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["seperateView": separateView])
-        
-        let vConstraintsForActionButton = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-0-[actionButton]-0-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["actionButton": actionButton])
-        
-        let vConstraintsForSecondActionButton = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-0-[secondActionButton]-0-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["secondActionButton": secondActionButton])
-        
-        iconImageViewWidthConstraint = NSLayoutConstraint.init(
-            item: iconImageView, attribute: .width, relatedBy: .equal,
-            toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: TTGSnackbar.snackbarIconImageViewWidth)
-        
-        actionButtonMaxWidthConstraint = NSLayoutConstraint.init(
-            item: actionButton, attribute: .width, relatedBy: .lessThanOrEqual,
-            toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: actionMaxWidth)
-        
-        secondActionButtonMaxWidthConstraint = NSLayoutConstraint.init(
-            item: secondActionButton, attribute: .width, relatedBy: .lessThanOrEqual,
-            toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: actionMaxWidth)
-        
-        let vConstraintForActivityIndicatorView = NSLayoutConstraint.init(
-            item: activityIndicatorView, attribute: .centerY, relatedBy: .equal,
-            toItem: contentView, attribute: .centerY, multiplier: 1, constant: 0)
-        
-        let hConstraintsForActivityIndicatorView = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:[activityIndicatorView]-2-|",
-            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["activityIndicatorView": activityIndicatorView])
-        
-        iconImageView.addConstraint(iconImageViewWidthConstraint!)
-        actionButton.addConstraint(actionButtonMaxWidthConstraint!)
-        secondActionButton.addConstraint(secondActionButtonMaxWidthConstraint!)
-        
-        contentView.addConstraints(hConstraints)
-        contentView.addConstraints(vConstraintsForIconImageView)
-        contentView.addConstraints(vConstraintsForMessageLabel)
-        contentView.addConstraints(vConstraintsForSeperateView)
-        contentView.addConstraints(vConstraintsForActionButton)
-        contentView.addConstraints(vConstraintsForSecondActionButton)
-        contentView.addConstraint(vConstraintForActivityIndicatorView)
-        contentView.addConstraints(hConstraintsForActivityIndicatorView)
-        
-        messageLabel.setContentHuggingPriority(UILayoutPriority(1000), for: .vertical)
-        messageLabel.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
-        
-        actionButton.setContentHuggingPriority(UILayoutPriority(998), for: .horizontal)
-        actionButton.setContentCompressionResistancePriority(UILayoutPriority(999), for: .horizontal)
-        secondActionButton.setContentHuggingPriority(UILayoutPriority(998), for: .horizontal)
-        secondActionButton.setContentCompressionResistancePriority(UILayoutPriority(999), for: .horizontal)
-        
-        // add gesture recognizers
-        // tap gesture
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapSelf)))
-        
-        self.isUserInteractionEnabled = true
-        
-        // swipe gestures
-        [UISwipeGestureRecognizer.Direction.up, .down, .left, .right].forEach { (direction) in
-            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.didSwipeSelf(_:)))
-            gesture.direction = direction
-            self.addGestureRecognizer(gesture)
-        }
     }
 }
 
