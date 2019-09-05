@@ -274,7 +274,7 @@ extension CreateClubViewController {
         
         let img = clubImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interests = interestList.joined(separator: ",")
-        let userIds = "5d5d213239277643e20f9bf1"
+        let userIds = "5d5d213239277643e20f9bf1,5d3066d3392776515c7df011"
         
         let param = [Keys.club_name: nameClub,
                      Keys.club_desc: clubDescription,

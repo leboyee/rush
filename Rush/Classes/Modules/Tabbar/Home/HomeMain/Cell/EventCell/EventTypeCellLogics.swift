@@ -11,8 +11,8 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .interests || cellType == .friends {
-            return list?.count ?? 0
+        if cellType == .interests || cellType == .friends || cellType == .clubUser {
+            return (list?.count ?? 0) + 1
         }
         return 10
     }
@@ -35,10 +35,13 @@ extension EventTypeCell {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
+            cell.setup(count: list?.count ?? 0)
             cell.setup(isShowCount: true)
         } else {
-            cell.setup(text: "John")
-            cell.setup(isShowCount: false)
+            if let invitee = list?[indexPath.item - 1] as? Invitees {
+                cell.setup(text: (invitee.user?.firstName ?? "") + " " + (invitee.user?.lastName ?? ""))
+                cell.setup(isShowCount: false)
+            }
         }
     }
     
@@ -50,8 +53,8 @@ extension EventTypeCell {
         }
     }
     
-    
     func fillInterestCell(_ cell: TextCell,_ indexPath: IndexPath) {
+        guard list?.count ?? 0 > indexPath.row else { return }
         if let tag = list?[indexPath.row] as? Tag {
             cell.setup(text: tag.text)
         }
@@ -71,6 +74,7 @@ extension EventTypeCell {
     
     func cellSize(indexPath: IndexPath) -> CGSize {
         if cellType == .interests {
+            guard list?.count ?? 0 > indexPath.row else { return CGSize.zero }
             if let tag = list?[indexPath.row] as? Tag {
                 var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.Semibold(sz: 13.0)))
                 //Add Padding

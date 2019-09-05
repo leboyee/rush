@@ -19,7 +19,7 @@ extension EnterPasswordViewConteroller {
     
     func loginApiCalled() {
         
-        let param = [kEmail: profile.email,
+        let param = [kEmail: "cl@messapps.edu",
                      kPassword: profile.password] as [String : Any]
         
         Utils.showSpinner()

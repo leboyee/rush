@@ -38,7 +38,7 @@ class HomeViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
-        getMyClubListAPI(sortBy: "feed")
+        //getMyClubListAPI(sortBy: "feed")
     }
     
     func setup() {

@@ -57,6 +57,12 @@ extension UserImagesHeaderView {
             changePhotoButton.isHidden = true
         }
     }
+    
+    func setup(imageUrl: URL?) {
+        userImageView.sd_setImage(with: imageUrl, completed: nil)
+        hoverView.isHidden = false
+        addPhotoButton.isHidden = true
+    }
 }
 
 //MARK: - Actions

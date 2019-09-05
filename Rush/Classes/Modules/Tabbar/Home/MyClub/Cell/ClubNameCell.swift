@@ -37,9 +37,27 @@ extension ClubNameCell {
         titleLabel.text = title
     }
     
+    func setupReadMoreButton() {
+        
+        let line = titleLabel.calculateMaxLines()
+        if line < 3 {
+            setup(isHideReadmoreButton: true)
+        } else {
+            setup(isHideReadmoreButton: false)
+        }
+    }
+    
     func setup(detail: String, numberOfLines: Int) {
         detailLabel.text = detail
         detailLabel.numberOfLines = numberOfLines
+        
+        let line = detailLabel.calculateMaxLines()
+        if line < 3 {
+            setup(isHideReadmoreButton: true)
+        } else {
+            setup(isHideReadmoreButton: false)
+        }
+        
     }
     
     func setup(isHideReadmoreButton: Bool) {

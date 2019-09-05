@@ -40,14 +40,15 @@ extension ClubDetailViewController {
     
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
-        cell.setup(title: "Development lifehacks")
-        cell.setup(detail: "Get the latest VR Experience with Samsung Gear. You can travel through sdf sdf lkjruto jfdgjlkj dklgj ljdf g", numberOfLines: isReadMore ? 0 : 2)
-        cell.setup(readmoreSelected: isReadMore)
-        cell.setup(isHideReadmoreButton: false)
-        cell.readMoreClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.isReadMore = !self_.isReadMore
-            self_.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        if let club = clubInfo {
+            cell.setup(title: club.clubName)
+            cell.setup(detail: club.clubDesc, numberOfLines: isReadMore ? 0 : 2)
+            cell.setup(readmoreSelected: isReadMore)
+            cell.readMoreClickEvent = { [weak self] () in
+                guard let self_ = self else { return }
+                self_.isReadMore = !self_.isReadMore
+                self_.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+            }
         }
     }
     
@@ -72,7 +73,7 @@ extension ClubDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(userList: [])
+        cell.setup(userList: clubInfo?.invitees)
         
         cell.userSelected = { [weak self] (id, index) in
             guard let self_ = self else { return }
@@ -83,9 +84,10 @@ extension ClubDetailViewController {
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell,_ indexPath: IndexPath) {
+        let user = clubInfo?.user
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
-        cell.setup(title: "Marta Keller")
+        cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
         cell.setup(detail: "3 events")
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
@@ -100,7 +102,8 @@ extension ClubDetailViewController {
     }
     
     func fillTagCell(_ cell: TagCell) {
-        cell.setup(tagList: ["ABC", "DEF", "TYU", "HDGHJKDHD", "DLHDDDHKD"])
+        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
+        cell.setup(tagList: tags)
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
@@ -113,7 +116,6 @@ extension ClubDetailViewController {
     
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
-        
         cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
         cell.setup(font: UIFont.Regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
@@ -138,7 +140,8 @@ extension ClubDetailViewController {
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(image: #imageLiteral(resourceName: "bound-add-img"))
+        let img = Image(json: clubInfo?.clubPhoto ?? "")
+        view.setup(imageUrl: img.url)
         view.setup(isHideHoverView: true)
     }
     

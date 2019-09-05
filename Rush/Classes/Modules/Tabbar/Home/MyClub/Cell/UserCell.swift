@@ -37,10 +37,15 @@ extension UserCell {
         if image == Text.viewAll {
             imageView.image = nil
         } else {
-            
+            imageView.sd_setImage(with: URL(string: image), completed: nil)
         }
     }
+    
     func setup(isShowCount: Bool) {
         countLabel.isHidden = !isShowCount
+    }
+    
+    func setup(count: Int) {
+        countLabel.text = "\(count)"
     }
 }

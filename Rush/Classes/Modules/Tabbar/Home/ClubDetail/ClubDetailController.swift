@@ -23,6 +23,9 @@ class ClubDetailViewController: UIViewController {
     var isReadMore = false
     var joinedClub = false
     
+    var clubInfo: Club?
+    var isMyClub = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +39,12 @@ class ClubDetailViewController: UIViewController {
     }
     
     func setupUI() {
+        
+        let clubId = clubInfo?.clubUserId ?? "id"
+        let userId = Authorization.shared.profile?.userId ?? ""
+        if userId == clubId {
+            joinedClub = true
+        }
         
         /*
         let total = screenWidth + 15
