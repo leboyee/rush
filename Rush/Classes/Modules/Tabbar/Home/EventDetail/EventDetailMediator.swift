@@ -22,6 +22,7 @@ extension EventDetailViewController {
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
         tableView.register(UINib(nibName: Cell.location, bundle: nil), forCellReuseIdentifier: Cell.location)
+        tableView.register(UINib(nibName: Cell.createPost, bundle: nil), forCellReuseIdentifier: Cell.createPost)
         
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         //tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 50, right: 0)
@@ -67,6 +68,11 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         } else if type == .location {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.location, for: indexPath) as? LocationCell {
                 fillLocationCell(cell)
+                return cell
+            }
+        } else if type == .createPost {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createPost, for: indexPath) as? CreatePostCell {
+                fillCreatePostCell(cell)
                 return cell
             }
         } else {

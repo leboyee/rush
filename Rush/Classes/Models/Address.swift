@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
-import MapKit
 
 class Address: Codable {
 
@@ -37,5 +35,26 @@ class Address: Codable {
 }
 
 extension Address {
+    
+    var fullAddress: String {
+        
+        var address = addressline ?? ""
+        if let line2 = addressline2, line2.isNotEmpty {
+            address += " \(line2)"
+        }
+        
+        if let city = city {
+            address += " \(city)"
+        }
+        
+        if let state = state {
+            address += " \(state)"
+        }
+        
+        if let zipcode = zipcode {
+            address += " \(zipcode)"
+        }
+        return address
+    }
     
 }

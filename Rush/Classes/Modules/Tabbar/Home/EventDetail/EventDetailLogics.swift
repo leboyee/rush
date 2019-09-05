@@ -57,10 +57,9 @@ extension EventDetailViewController {
         var count = 0
         if let eventSection = sections?[section] {
             switch eventSection.type {
-            case .about, .joinRsvp, .location, .manage, .people, .tags, .organizer:
+            case .about, .joinRsvp, .location, .manage, .people, .tags, .organizer, .createPost:
                 count = 1
-            case .posts:
-                count = 1
+            default: break
             }
         }
         return count
@@ -106,7 +105,13 @@ extension EventDetailViewController {
     }
     
     func fillLocationCell(_ cell: LocationCell) {
-        
+        if let address = event?.address {
+           cell.set(address: address)
+        }
+    }
+    
+    func fillCreatePostCell(_ cell: CreatePostCell) {
+       
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -134,7 +139,7 @@ extension EventDetailViewController {
                 EventSection(type: .location, title: "Location"),
                 EventSection(type: .people, title: "Invited people"),
                 EventSection(type: .tags, title: "Interest tags"),
-                EventSection(type: .posts, title: "Posts")
+                EventSection(type: .createPost, title: "Posts")
             ]
         }
         

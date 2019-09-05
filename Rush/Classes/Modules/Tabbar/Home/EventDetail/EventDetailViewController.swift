@@ -20,6 +20,7 @@ enum EventSectionType {
     case location
     case people
     case tags
+    case createPost
     case posts
     case organizer
     case joinRsvp

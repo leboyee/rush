@@ -77,6 +77,7 @@ struct Cell {
     static let text                 = "TextCell"
     static let eventAbout           = "EventAboutCell"
     static let location             = "LocationCell"
+    static let createPost           = "CreatePostCell"
 }
 
 struct ReusableView {

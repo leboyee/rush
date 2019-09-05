@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Add Third Party SDK
         addThirdPartySDK()
-        
         setupStoryboard()
         
         //Add Observer For Force logout

@@ -90,14 +90,13 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1m-we-pog">
-                                <rect key="frame" x="0.0" y="153.5" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="153.5" width="375" height="28"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Y-DG-ihs">
                                         <rect key="frame" x="24" y="0.0" width="109" height="28"/>
                                         <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="109" id="Btz-Le-FMa"/>
-                                            <constraint firstAttribute="height" constant="28" id="dHN-Nm-gHn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,19 +119,26 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Z8Y-DG-ihs" firstAttribute="leading" secondItem="C1m-we-pog" secondAttribute="leading" constant="24" id="0yg-kB-uv5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Z8Y-DG-ihs" secondAttribute="bottom" id="Dhm-rw-PBY"/>
                                     <constraint firstItem="Z8Y-DG-ihs" firstAttribute="top" secondItem="C1m-we-pog" secondAttribute="top" id="JMR-hI-j8B"/>
-                                    <constraint firstAttribute="bottom" secondItem="Z8Y-DG-ihs" secondAttribute="bottom" constant="22" id="bMX-UE-Nxm"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfy-UV-ftE">
+                                <rect key="frame" x="0.0" y="181.5" width="375" height="22"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="is4-m7-x6e" firstAttribute="leading" secondItem="7Lu-KV-O3n" secondAttribute="leading" id="BIv-zw-yZ1"/>
                             <constraint firstItem="128-tt-NCM" firstAttribute="top" secondItem="is4-m7-x6e" secondAttribute="bottom" id="Bex-u3-VXi"/>
+                            <constraint firstAttribute="trailing" secondItem="wfy-UV-ftE" secondAttribute="trailing" id="Ec6-cg-pgv"/>
+                            <constraint firstItem="wfy-UV-ftE" firstAttribute="top" secondItem="C1m-we-pog" secondAttribute="bottom" id="Er1-cO-waR"/>
+                            <constraint firstItem="wfy-UV-ftE" firstAttribute="leading" secondItem="7Lu-KV-O3n" secondAttribute="leading" id="GRy-wP-gIy"/>
                             <constraint firstItem="C1m-we-pog" firstAttribute="leading" secondItem="7Lu-KV-O3n" secondAttribute="leading" id="HZW-lH-pRh"/>
                             <constraint firstAttribute="trailing" secondItem="C1m-we-pog" secondAttribute="trailing" id="Ttm-5K-m64"/>
                             <constraint firstItem="is4-m7-x6e" firstAttribute="top" secondItem="7Lu-KV-O3n" secondAttribute="top" id="cqH-Vf-5hy"/>
                             <constraint firstItem="C1m-we-pog" firstAttribute="top" secondItem="128-tt-NCM" secondAttribute="bottom" id="i13-Bv-cuT"/>
-                            <constraint firstAttribute="bottom" secondItem="C1m-we-pog" secondAttribute="bottom" id="kHD-K4-0JT"/>
+                            <constraint firstAttribute="bottom" secondItem="wfy-UV-ftE" secondAttribute="bottom" id="qhk-TX-GL8"/>
                             <constraint firstAttribute="trailing" secondItem="is4-m7-x6e" secondAttribute="trailing" id="rt9-4q-uuG"/>
                             <constraint firstAttribute="trailing" secondItem="128-tt-NCM" secondAttribute="trailing" id="wYB-QL-AXZ"/>
                             <constraint firstItem="128-tt-NCM" firstAttribute="leading" secondItem="7Lu-KV-O3n" secondAttribute="leading" id="x2K-qL-fj6"/>

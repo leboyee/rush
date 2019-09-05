@@ -46,6 +46,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5G-eE-TXy">
                                         <rect key="frame" x="287" y="8" width="24" height="24"/>
                                         <state key="normal" image="button-arrow-right"/>
+                                        <connections>
+                                            <action selector="showLocation" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bp3-Od-PeK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,6 +61,9 @@
                                     <constraint firstAttribute="trailing" secondItem="y3M-1J-6VG" secondAttribute="trailing" constant="56" id="aAt-NK-ddT"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Csj-M2-tgd">
+                                <rect key="frame" x="153.5" y="47" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -68,6 +74,8 @@
                             <constraint firstItem="gCm-jC-jE1" firstAttribute="leading" secondItem="u0J-5V-vef" secondAttribute="leading" id="TT3-Wt-vd8"/>
                             <constraint firstAttribute="trailing" secondItem="gCm-jC-jE1" secondAttribute="trailing" id="WGj-UI-BP5"/>
                             <constraint firstAttribute="bottom" secondItem="sKw-27-9Q2" secondAttribute="bottom" id="Yls-9g-2AS"/>
+                            <constraint firstItem="Csj-M2-tgd" firstAttribute="centerX" secondItem="gCm-jC-jE1" secondAttribute="centerX" id="bRd-F9-AQK"/>
+                            <constraint firstItem="Csj-M2-tgd" firstAttribute="centerY" secondItem="gCm-jC-jE1" secondAttribute="centerY" id="qRP-zq-6Ia"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -85,6 +93,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="locationImageView" destination="gCm-jC-jE1" id="3iU-vH-WJZ"/>
+                <outlet property="locationLabel" destination="y3M-1J-6VG" id="7VF-s8-T9R"/>
+                <outlet property="spinner" destination="Csj-M2-tgd" id="1IZ-qG-iac"/>
+            </connections>
             <point key="canvasLocation" x="138.40579710144928" y="123.88392857142857"/>
         </tableViewCell>
     </objects>
