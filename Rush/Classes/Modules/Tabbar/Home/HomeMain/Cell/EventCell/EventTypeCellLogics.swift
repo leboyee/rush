@@ -11,8 +11,8 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .interests || cellType == .friends || cellType == .clubUser {
-            return (list?.count ?? 0) + 1
+        if cellType == .interests || cellType == .friends || cellType == .clubUser || (cellType == .event && type == .clubs) { // after stable app (remove this line)
+            return cellType == .clubUser ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         }
         return 10
     }
@@ -23,8 +23,20 @@ extension EventTypeCell {
             cell.setup(eventName: "VR Meetup")
             cell.setup(eventDetail: "10-12pm")
         } else if type == .clubs || type == .clubsJoined {
-            cell.setup(eventName: "Development lifehacks")
-            cell.setup(eventDetail: "Get the latest dev skills")
+            if let clubList = list as? [Club] {
+                let club = clubList[indexPath.item]
+                cell.setup(eventName: club.clubName)
+                cell.setup(eventDetail: club.clubDesc)
+                let clubId = club.clubUserId
+                let userId = Authorization.shared.profile?.userId ?? ""
+                if clubId == userId {
+                    cell.setup(type: .clubsJoined)
+                    cell.setup(invitee: club.invitees)
+                }
+            } else {
+                cell.setup(eventName: "Development lifehacks")
+                cell.setup(eventDetail: "Get the latest dev skills")
+            }
         } else if type == .classes {
             
         }

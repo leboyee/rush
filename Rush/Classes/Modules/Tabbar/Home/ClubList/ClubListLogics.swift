@@ -40,19 +40,19 @@ extension ClubListViewController {
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         if screenType == .club {
             if indexPath.section == 1 {
-                cell.setup(.clubs, nil)
+                cell.setup(.clubs, nil, nil)
             } else if indexPath.section == 2 {
-                cell.setup(.clubs, nil)
+                cell.setup(.clubs, nil, nil)
             } else {
-                cell.setup(.clubs, nil)
+                cell.setup(.clubs, nil, nil)
             }
         } else {
             if indexPath.section == 1 {
-                cell.setup(.classes, nil)
+                cell.setup(.classes, nil, nil)
             } else if indexPath.section == 2 {
-                cell.setup(.classes, nil)
+                cell.setup(.classes, nil, nil)
             } else {
-                cell.setup(.classes, nil)
+                cell.setup(.classes, nil, nil)
             }
         }
         

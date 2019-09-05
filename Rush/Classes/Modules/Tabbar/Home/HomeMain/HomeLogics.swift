@@ -57,12 +57,14 @@ extension HomeViewController {
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
+        
+        // (type, images, data)
         if indexPath.section == 1 {
-            cell.setup(.upcoming, nil)
+            cell.setup(.upcoming, nil, nil)
         } else if indexPath.section == 2 {
-            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil)
+            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
         } else {
-            cell.setup(.classes, nil)
+            cell.setup(.classes, nil, nil)
         }
     }
     
@@ -96,7 +98,7 @@ extension HomeViewController {
 
 //MARK: - Services
 extension HomeViewController {
-    func getMyClubListAPI(sortBy: String) {
+    func getClubListAPI(sortBy: String) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
@@ -118,6 +120,7 @@ extension HomeViewController {
                         
                     }
                 }
+                unowned.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

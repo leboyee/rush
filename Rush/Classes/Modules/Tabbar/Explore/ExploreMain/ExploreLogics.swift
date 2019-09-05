@@ -40,13 +40,13 @@ extension ExploreViewController {
     
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
-            cell.setup(.none, nil)
+        cell.setup(.none, nil, nil)
         if indexPath.section == 1 {
-            cell.setup(.upcoming, nil)
+            cell.setup(.upcoming, nil, nil)
         } else if indexPath.section == 2 {
-            cell.setup(.clubs, nil)
+            cell.setup(.clubs, nil, nil)
         } else if indexPath.section == 3 {
-            cell.setup(.classes, nil)
+            cell.setup(.classes, nil, nil)
         }
     }
     
@@ -82,12 +82,12 @@ extension ExploreViewController {
             
             Utils.notReadyAlert()
             /*
-            if section == 2 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
-            } else if section == 3 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
-            }
-            */
+             if section == 2 {
+             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
+             } else if section == 3 {
+             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
+             }
+             */
         }
     }
     
