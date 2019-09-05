@@ -30,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jj3-gv-xPP" customClass="CustomBlackBackgroundView" customModule="Rush" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="fFR-34-lPB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="fFR-34-lPB">
                                 <rect key="frame" x="16" y="12" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="evk-I8-N5u"/>

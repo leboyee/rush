@@ -99,7 +99,7 @@ extension HomeViewController {
 //MARK: - Services
 extension HomeViewController {
     func getClubListAPI(sortBy: String) {
-        
+        clubList.removeAll()
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sort_by: sortBy,

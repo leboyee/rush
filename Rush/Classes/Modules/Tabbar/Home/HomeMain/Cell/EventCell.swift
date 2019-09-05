@@ -76,6 +76,10 @@ extension EventCell {
         timeLabel.text = eventDetail
     }
     
+    func setup(eventImageUrl: URL?) {
+        eventImageView.sd_setImage(with: eventImageUrl, completed: nil)
+    }
+    
     func setup(isHideDateView: Bool) {
         if isHideDateView {
             widthConstraintOfDateView.constant = 0
