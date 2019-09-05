@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {

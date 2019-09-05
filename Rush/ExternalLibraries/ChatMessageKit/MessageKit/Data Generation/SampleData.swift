@@ -32,20 +32,20 @@ final internal class SampleData {
     private init() {}
     
     enum MessageTypes: UInt32, CaseIterable {
-        case Text = 0
-        case AttributedText = 1
-        case Photo = 2
-        case Video = 3
-        case Emoji = 4
-        case Location = 5
-        case Url = 6
-        case Phone = 7
-        case Custom = 8
-        case Event = 9
+        case textC = 0
+        case attributedTextC = 1
+        case photoC = 2
+        case videoC = 3
+        case emojiC = 4
+        case locationC = 5
+        case urlC = 6
+        case phoneC = 7
+        case customC = 8
+        case eventC = 9
         
         static func random() -> MessageTypes {
             // Update as new enumerations are added
-            let maxValue = Custom.rawValue
+            let maxValue = customC.rawValue
             
             let rand = arc4random_uniform(maxValue+1)
             return MessageTypes(rawValue: rand)!
@@ -144,7 +144,7 @@ final internal class SampleData {
 //            return randomMessageType()
 //        }
         
-        return .Text
+        return .textC
     }
     
     func randomMessage(allowedSenders: [Sender]) -> MockMessage {
@@ -156,34 +156,34 @@ final internal class SampleData {
         let date = dateAddingRandomTime()
         
         switch randomMessageType() {
-        case .Text:
+        case .textC:
             let randomSentence = Lorem.sentence()
             return MockMessage(text: randomSentence, sender: sender, messageId: uniqueID, date: date)
-        case .AttributedText:
+        case .attributedTextC:
             let randomSentence = Lorem.sentence()
             let attributedText = attributedString(with: randomSentence)
             return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
-        case .Photo:
+        case .photoC:
             let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
             let image = messageImages[randomNumberImage]
             return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
-        case .Video:
+        case .videoC:
             let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
             let image = messageImages[randomNumberImage]
             return MockMessage(thumbnail: image, sender: sender, messageId: uniqueID, date: date)
-        case .Emoji:
+        case .emojiC:
             let randomNumberEmoji = Int(arc4random_uniform(UInt32(emojis.count)))
             return MockMessage(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date)
-        case .Location:
+        case .locationC:
             let randomNumberLocation = Int(arc4random_uniform(UInt32(locations.count)))
             return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
-        case .Url:
+        case .urlC:
             return MockMessage(text: "https://github.com/MessageKit", sender: sender, messageId: uniqueID, date: date)
-        case .Phone:
+        case .phoneC:
             return MockMessage(text: "123-456-7890", sender: sender, messageId: uniqueID, date: date)
-        case .Custom:
+        case .customC:
             return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date)
-        case .Event:
+        case .eventC:
             let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
             let image = messageImages[randomNumberImage]
             return MockMessage(title: "31 JAN", detail: "Thursday", image: image, sender: system, messageId: uniqueID, date: date)
@@ -229,7 +229,6 @@ final internal class SampleData {
     }
     
     func getAvatarFor(sender: Sender) -> Avatar {
-        
         
         if sender.avatarUrl.isEmpty {
             let firstName = sender.displayName.components(separatedBy: " ").first

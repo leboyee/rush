@@ -18,7 +18,7 @@ class Image: NSObject {
     
     var url: URL? {
         guard main.count > 0 else { return nil }
-        return URL(string : main)
+        return URL(string: main)
     }
     
     var urlThumb: URL? {
@@ -26,7 +26,7 @@ class Image: NSObject {
         return URL(string : thumb)
     }
     
-    init(data: [String : Any]) {
+    init(data: [String: Any]) {
         super.init()
         setData(data: data)
     }
@@ -60,7 +60,7 @@ class Image: NSObject {
     func setData(jsonString: String) {
         if let data = jsonString.data(using: .utf8) {
             do {
-                if let object = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String : Any] {
+                if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
                     setData(data: object)
                 } else {
                     print("Error in json : " + jsonString)

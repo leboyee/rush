@@ -26,8 +26,7 @@ class Friend: Profile {
     var matchId: Int64 = 0
     var matchStatus: Int64 = 0
     
-    
-    override init(data: [String : Any]) {
+    override init(data: [String: Any]) {
         super.init(data: data)
         setValue(data: data)
     }
@@ -51,7 +50,7 @@ class Friend: Profile {
     }
     
     // MARK: - Private Functions
-    private func setValue(data : [String : Any]) {
+    private func setValue(data: [String : Any]) {
         
         if let object = data[Keys.friend] as? [String: Any] {
             if let frdId = object[Keys.friendId] as? Int64 {

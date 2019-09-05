@@ -6,7 +6,6 @@
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
 
-
 import UIKit
 
 class TextHeader: UITableViewHeaderFooterView {

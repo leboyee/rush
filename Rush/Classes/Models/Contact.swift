@@ -26,7 +26,7 @@ class Contact: NSObject {
     }
     
     // MARK: - Private Functions
-    func setData(data : [String : Any]) {
+    func setData(data: [String: Any]) {
         
     }
 }

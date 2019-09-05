@@ -13,7 +13,7 @@ class Interest: Profile {
     var interestId: Int64 = 0
     var interestName: String = ""
     
-    override init(data : [String : Any]) {
+    override init(data: [String : Any]) {
         super.init(data: data)
         setValue(data: data)
     }
@@ -23,7 +23,7 @@ class Interest: Profile {
     }
     
     // MARK: - Private Functions
-    private func setValue(data : [String : Any]) {
+    private func setValue(data: [String : Any]) {
         
         if let value = data[Keys.interestId] as? Int64 {
             interestId = value

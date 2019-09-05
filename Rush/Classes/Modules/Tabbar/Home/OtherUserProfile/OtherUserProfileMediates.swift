@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {

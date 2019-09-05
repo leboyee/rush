@@ -17,17 +17,17 @@ class CreateEventViewController: UIViewController {
 
     var nameClub = ""
     var clubDescription = ""
-    var clubImage : UIImage?
+    var clubImage: UIImage?
     
-    var cancelBtn : UIBarButtonItem {
+    var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
     
-    var saveBtnActive : UIBarButtonItem {
+    var saveBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
     }
     
-    var saveBtnDisActive : UIBarButtonItem {
+    var saveBtnDisActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
     }
     
@@ -48,8 +48,7 @@ class CreateEventViewController: UIViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
  
-    
-    //MARk: - Other function
+    // MARK: - Other function
     func setup() {
         setupUI()
     }

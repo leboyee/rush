@@ -17,7 +17,7 @@ class MyClubViewController: UIViewController {
     var interestList = [String]()
     var peopleList = [String]()
     
-    var clubImage : UIImage?
+    var clubImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
