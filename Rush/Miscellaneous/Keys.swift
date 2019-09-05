@@ -72,6 +72,8 @@ struct Keys {
     static let club_invited_user_ids = "club_invited_user_ids"
     static let club_is_chat_group = "club_is_chat_group"
     static let club_photo = "club_photo"
+    static let clubId = "club_id"
+    static let club = "club"
     
     static let interestId           = "_id"
     static let interestName           = "name"

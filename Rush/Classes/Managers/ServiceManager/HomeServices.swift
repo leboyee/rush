@@ -10,7 +10,7 @@ import UIKit
 
 extension ServiceManager {
     
-    func createClub(params : [String : Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+    func createClub(params : [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createClub(params: params) {
             [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
@@ -20,9 +20,19 @@ extension ServiceManager {
         }
     }
     
-    func fetchClubList(sortBy: String, params: [String : Any], closer: @escaping (_ params: [String : Any]?, _ errorMessage: String?) -> Void) {
+    func fetchClubList(sortBy: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClubList(sortBy: sortBy, params: params) {
             [weak self] (data, error, code) -> (Void) in
+            guard let self_ = self else { return }
+            self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
+    func fetchClubDetail(club_id: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+        
+        NetworkManager.shared.getClubDetail(clubId: club_id, params: params) { [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }
             self_.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)

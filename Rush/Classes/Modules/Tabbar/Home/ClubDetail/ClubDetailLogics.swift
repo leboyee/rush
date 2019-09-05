@@ -150,6 +150,34 @@ extension ClubDetailViewController {
     }
 }
 
+// MARK: - Services
 extension ClubDetailViewController {
     
+    func getClubDetailAPI() {
+        
+        let id = clubInfo?.id ?? ""
+        
+        Utils.showSpinner()
+        NetworkManager.shared.getClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg, status) -> (Void) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let list = data as? [String: Any] {
+                if let value = list[Keys.data] as? [String: Any] {
+                    if let club = value[Keys.club] as? [String: Any] {
+                        do {
+                            let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                            let decoder = JSONDecoder()
+                            let value = try decoder.decode(Club.self, from: dataClub)
+                            uwself.clubInfo = value
+                        } catch {
+                            
+                        }
+                    }
+                }
+                uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg.debugDescription)
+            }
+        }
+    }
 }
