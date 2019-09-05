@@ -27,7 +27,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMd-Ih-XZ7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="158.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="loV-Lb-Mw5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="loV-Lb-Mw5">
                                 <rect key="frame" x="24" y="16" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="233-7x-mOT"/>
@@ -161,11 +161,13 @@
             <connections>
                 <outlet property="detailLabel" destination="b6o-2C-wmW" id="lxC-aR-OTb"/>
                 <outlet property="firstUserImageView" destination="xNr-Ck-2eH" id="cW9-Yf-0hJ"/>
+                <outlet property="mainImageView" destination="loV-Lb-Mw5" id="To2-YJ-TkO"/>
                 <outlet property="secondUserImageView" destination="H4F-MY-mAc" id="bY1-gS-wCw"/>
                 <outlet property="thirdUserImageView" destination="zrq-Rx-77M" id="7cs-wW-kaf"/>
                 <outlet property="titleLabel" destination="our-4i-Tz5" id="rN3-Qg-nvG"/>
                 <outlet property="topConstraintOfContentView" destination="JDH-7q-qJw" id="4Gh-du-q6p"/>
                 <outlet property="userCountLabel" destination="ck7-CG-QEg" id="lXK-oE-KVh"/>
+                <outlet property="userView" destination="JPL-wJ-NTN" id="70I-Mb-otM"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="84.709821428571431"/>
         </tableViewCell>

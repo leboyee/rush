@@ -345,6 +345,8 @@
 		7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7999363022FAF01F001AEEEB /* EventMessageCell.swift */; };
 		79A9377322B2288B00A602CD /* UserImagesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */; };
 		79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */; };
+		79BB941C2316A650008B3D18 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BB941B2316A650008B3D18 /* Club.swift */; };
+		79BB941E2316A7EF008B3D18 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BB941D2316A7EF008B3D18 /* User.swift */; };
 		79BE868722A946C20056529E /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868522A946C20056529E /* FriendListCell.swift */; };
 		79BE868822A946C20056529E /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BE868622A946C20056529E /* FriendListCell.xib */; };
 		79BE868B22A94E9F0056529E /* FriendClubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BE868922A94E9F0056529E /* FriendClubCell.swift */; };
@@ -375,6 +377,7 @@
 		79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF742B2292D2C90012DCB7 /* TextIconCell.swift */; };
 		79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DF742C2292D2C90012DCB7 /* TextIconCell.xib */; };
 		79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */; };
+		79E8437E231964E200470BD4 /* Invitees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E8437D231964E200470BD4 /* Invitees.swift */; };
 		79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EF134122D34FD500E260D9 /* PeopleCell.xib */; };
 		79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134222D34FD500E260D9 /* PeopleCell.swift */; };
 		79EF134922D3588D00E260D9 /* EventCategoryListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */; };
@@ -794,6 +797,8 @@
 		7999363022FAF01F001AEEEB /* EventMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMessageCell.swift; sourceTree = "<group>"; };
 		79A9377122B2288B00A602CD /* UserImagesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImagesHeaderView.swift; sourceTree = "<group>"; };
 		79A9377222B2288B00A602CD /* UserImagesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImagesHeaderView.xib; sourceTree = "<group>"; };
+		79BB941B2316A650008B3D18 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		79BB941D2316A7EF008B3D18 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79BE868522A946C20056529E /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
 		79BE868622A946C20056529E /* FriendListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
 		79BE868922A94E9F0056529E /* FriendClubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendClubCell.swift; sourceTree = "<group>"; };
@@ -824,6 +829,7 @@
 		79DF742B2292D2C90012DCB7 /* TextIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIconCell.swift; sourceTree = "<group>"; };
 		79DF742C2292D2C90012DCB7 /* TextIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextIconCell.xib; sourceTree = "<group>"; };
 		79E313D422A5027800DA22B4 /* NotificationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertViewController.swift; sourceTree = "<group>"; };
+		79E8437D231964E200470BD4 /* Invitees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitees.swift; sourceTree = "<group>"; };
 		79EF134122D34FD500E260D9 /* PeopleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleCell.xib; sourceTree = "<group>"; };
 		79EF134222D34FD500E260D9 /* PeopleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleCell.swift; sourceTree = "<group>"; };
 		79EF134622D3588D00E260D9 /* EventCategoryListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryListLogics.swift; sourceTree = "<group>"; };
@@ -2499,6 +2505,9 @@
 				793BE5FB22E87F5E005EF72D /* Friend.swift */,
 				8A04B14422FB042E0055C65F /* Event.swift */,
 				8A1076BF2306BC2600512AA3 /* Tag.swift */,
+				79BB941B2316A650008B3D18 /* Club.swift */,
+				79E8437D231964E200470BD4 /* Invitees.swift */,
+				79BB941D2316A7EF008B3D18 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2860,6 +2869,7 @@
 				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,
 				1A2809EF22C6304000B4E764 /* Classes.swift in Sources */,
 				8A04B16422FD5E650055C65F /* WebViewFileViewController.swift in Sources */,
+				79BB941E2316A7EF008B3D18 /* User.swift in Sources */,
 				7958B7FE22C4E8E000A66BDC /* ClubListViewController.swift in Sources */,
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
@@ -2969,6 +2979,7 @@
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
 				793BE68222E88207005EF72D /* MessagesDisplayDelegate.swift in Sources */,
 				1A2809E222C5F43B00B4E764 /* ChooseClassesViewMediates.swift in Sources */,
+				79E8437E231964E200470BD4 /* Invitees.swift in Sources */,
 				7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */,
 				1AEAC4B722D346AA008FBB54 /* UserInfoCell.swift in Sources */,
 				797FFDB522B7BC480055A001 /* SlideUpPresentation.swift in Sources */,
@@ -3107,6 +3118,7 @@
 				8A04B16E22FD8B680055C65F /* PrivacySettingsViewController.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				793BE69122E88207005EF72D /* MessageLabel.swift in Sources */,
+				79BB941C2316A650008B3D18 /* Club.swift in Sources */,
 				8A04B15922FC446B0055C65F /* RSeparatorLine.swift in Sources */,
 				793BE69322E88207005EF72D /* PlayButtonView.swift in Sources */,
 				793BE68622E88207005EF72D /* AvatarView.swift in Sources */,

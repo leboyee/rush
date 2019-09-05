@@ -19,7 +19,7 @@ extension ClubListViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && isShowJoinEvents {
+        if indexPath.section == 0 && (myClubList.count > 0 || myClassesList.count > 0) {
             return UITableView.automaticDimension
         } else {
             return 157
@@ -27,8 +27,10 @@ extension ClubListViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        if isShowJoinEvents && section == 0 {
-            return 4
+        if myClubList.count > 0 && screenType == .club && section == 0 {
+            return myClubList.count
+        } else if myClassesList.count > 0 && screenType == .classes && section == 0 {
+            return myClassesList.count
         } else {
             return 1
         }
@@ -68,7 +70,18 @@ extension ClubListViewController {
         } else {
             cell.setup(topConstraint: 0)
         }
-        cell.setup(detail: "We have you to code better")
+        if myClubList.count > 0 {
+            let club = myClubList[indexPath.row]
+            let image = Image(json: club.clubPhoto)
+            cell.setup(title: club.clubName)
+            cell.setup(detail: club.clubDesc)
+            cell.setup(invitee: club.invitees)
+            cell.setup(imageUrl: image.urlThumb)
+        } else if myClassesList.count > 0 {
+            let classes = myClassesList[indexPath.row]
+            cell.setup(title: classes.clubName)
+            cell.setup(detail: classes.clubDesc)
+        }
     }
     
     func fillTextHeader(_ header: TextHeader,_ section: Int) {
@@ -114,6 +127,38 @@ extension ClubListViewController {
                 performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
             } else {
                 performSegue(withIdentifier: Segues.classDetailSegue, sender: nil)
+            }
+        }
+    }
+}
+
+//MARK: - Services
+extension ClubListViewController {
+    func getMyClubListAPI(sortBy: String) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
+                     Keys.search: searchText,
+                     Keys.sort_by: sortBy,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let list = data?[Keys.list] as? [[String: Any]] {
+                for club in list {
+                    do {
+                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(Club.self, from: dataClub)
+                        uwself.myClubList.append(value)
+                    } catch {
+                        
+                    }
+                }
+                uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }

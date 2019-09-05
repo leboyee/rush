@@ -34,7 +34,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isShowJoinEvents && indexPath.section == 0 {
+        if (myClubList.count > 0 || myClassesList.count > 0) && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as! FriendClubCell
             fillMyClubCell(cell, indexPath)
             return cell
