@@ -64,7 +64,7 @@ class NetworkManager: NSObject {
     private var networkRequestNumber = 0
     
     var defaultHeaders: [String: String] {
-        var dict = [String:String]()
+        var dict = [String: String]()
         dict["Accept"] = "application/json"
         dict["User-Agent"] = NetworkManager.getUserAgent()
         

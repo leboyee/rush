@@ -6,7 +6,6 @@
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
 
-
 import UIKit
 
 class Authorization: NSObject {
@@ -14,7 +13,7 @@ class Authorization: NSObject {
     static let shared = Authorization()
     
     var session: String?
-    var userVerified : Bool = false
+    var userVerified: Bool = false
     var profile : Profile?
     var authorized: Bool {
         return session != nil
@@ -41,7 +40,7 @@ class Authorization: NSObject {
     }
     
     func getUserData() -> [String: Any]? {
-        return Utils.getDataFromUserDefault(kSavedProfile) as? [String : Any]
+        return Utils.getDataFromUserDefault(kSavedProfile) as? [String: Any]
     }
     
     func updateUserData(data: [String: Any]) {

@@ -6,15 +6,14 @@
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
 
-
 import UIKit
 
 class Image: NSObject {
 
-    lazy var id : String = ""
-    lazy var main : String = ""
-    lazy var thumb : String = ""
-    var localImage : UIImage?
+    lazy var id: String = ""
+    lazy var main: String = ""
+    lazy var thumb: String = ""
+    var localImage: UIImage?
     
     var url: URL? {
         guard main.count > 0 else { return nil }
@@ -23,7 +22,7 @@ class Image: NSObject {
     
     var urlThumb: URL? {
         guard thumb.count > 0 else { return nil }
-        return URL(string : thumb)
+        return URL(string: thumb)
     }
     
     init(data: [String: Any]) {

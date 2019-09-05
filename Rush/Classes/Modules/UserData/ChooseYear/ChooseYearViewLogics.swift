@@ -29,7 +29,7 @@ extension ChooseYearViewController {
     
     func updateProfileAPI() {
         
-        let param = [Keys.uEduYear: Utils.chooseYearArray()[selectedIndex]]  as [String : Any]
+        let param = [Keys.uEduYear: Utils.chooseYearArray()[selectedIndex]]  as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in

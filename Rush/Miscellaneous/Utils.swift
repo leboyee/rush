@@ -238,20 +238,20 @@ extension  Utils {
 
 // MARK: - UserDefault Functions
 extension Utils {
-    class func saveDataToUserDefault(_ data : Any, _ key : String) {
+    class func saveDataToUserDefault(_ data: Any, _ key: String) {
         let archived = NSKeyedArchiver.archivedData(withRootObject: data)
         UserDefaults.standard.set(archived, forKey: key)
         UserDefaults.standard.synchronize()
     }
     
-    class func getDataFromUserDefault(_ key : String) -> Any? {
+    class func getDataFromUserDefault(_ key: String) -> Any? {
         guard let archived =  UserDefaults.standard.object(forKey: key) as? Data else {
             return nil
         }
         return NSKeyedUnarchiver.unarchiveObject(with: archived)
     }
     
-    class func removeDataFromUserDefault(_ key : String) {
+    class func removeDataFromUserDefault(_ key: String) {
         UserDefaults.standard.removeObject(forKey: key)
         UserDefaults.standard.synchronize()
     }
@@ -282,9 +282,9 @@ extension Utils {
     }
 }
 
-//MARK: - Local
+// MARK: - Local
 extension Utils {
-    class func locale(for fullCountryName : String) -> String? {
+    class func locale(for fullCountryName: String) -> String? {
         for localeCode in NSLocale.isoCountryCodes {
             let identifier = NSLocale(localeIdentifier: "en_US")
             var countryName = identifier.displayName(forKey: NSLocale.Key.countryCode, value: localeCode)
@@ -297,8 +297,7 @@ extension Utils {
     }
 }
 
-
-//MARK: - Others
+// MARK: - Others
 extension Utils {
     
     class var isHasSafeArea: Bool {
@@ -314,7 +313,7 @@ extension Utils {
         return (navBar + statusBar)
     }
     
-    class func roundCorners(view: UIView,corners: UIRectCorner, radius: CGFloat) {
+    class func roundCorners(view: UIView, corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
@@ -331,10 +330,10 @@ extension Utils {
         return customView
     }
     
-    class func setAttributedText(_ attriBute1: String,_ attriBute2: String,_ size1: CGFloat,_ size2: CGFloat) -> NSMutableAttributedString {
+    class func setAttributedText(_ attriBute1: String, _ attriBute2: String, _ size1: CGFloat, _ size2: CGFloat) -> NSMutableAttributedString {
         let mainString = NSMutableAttributedString()
-        let attributedString1 = NSAttributedString(string: attriBute1, attributes: [NSAttributedString.Key.foregroundColor : UIColor.brown24, NSAttributedString.Key.font : UIFont.regular(sz: size1)])
-        let attributedString2 = NSAttributedString(string: attriBute2, attributes: [NSAttributedString.Key.foregroundColor : UIColor.bgBlack, NSAttributedString.Key.font : UIFont.regular(sz: size2)])
+        let attributedString1 = NSAttributedString(string: attriBute1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.brown24, NSAttributedString.Key.font: UIFont.regular(sz: size1)])
+        let attributedString2 = NSAttributedString(string: attriBute2, attributes: [NSAttributedString.Key.foregroundColor: UIColor.bgBlack, NSAttributedString.Key.font: UIFont.regular(sz: size2)])
         mainString.append(attributedString1)
         mainString.append(attributedString2)
         return mainString
@@ -354,7 +353,7 @@ extension Utils {
     }
 }
 
-//MARK: - Alert Extension
+// MARK: - Alert Extension
 private var kAlertControllerWindow = "kAlertControllerWindow"
 extension UIAlertController {
     
@@ -386,9 +385,9 @@ extension UIAlertController {
     }
 }
 
-//MARK:- String Function
+// MARK:- String Function
 extension Utils {
-    class func onlyDisplayFirstNameOrLastNameFirstCharacter(_ fullName : String) -> String {
+    class func onlyDisplayFirstNameOrLastNameFirstCharacter(_ fullName: String) -> String {
         let removeWhiteSpaceName = fullName.replacingOccurrences(of: ", ", with: ",")
         let result = removeWhiteSpaceName.components(separatedBy: ",")
         var fullName = [String]()
@@ -398,7 +397,7 @@ extension Utils {
         return fullName.joined(separator:", ")
     }
     
-    class func removeLoginUserNameFromChannel(channelName:String?) -> String {
+    class func removeLoginUserNameFromChannel(channelName: String?) -> String {
         if var name = channelName {
             name = name.replacingOccurrences(of: Authorization.shared.profile?.name ?? "", with: "")
             name = name.replacingOccurrences(of: ", , ", with: ", ")
@@ -419,13 +418,13 @@ extension Utils {
     
     class func getPathForFileName(_ filename: String) -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
-        let filePath = String(format: "%@/%@", paths[0],filename)
+        let filePath = String(format: "%@/%@", paths[0], filename)
         return filePath
     }
     
     class func getFileName(_ fileType: String) -> String {
         let time = Date().timeIntervalSince1970
-        return String(format:"%0.0f.%@",time,fileType)
+        return String(format: "%0.0f.%@", time, fileType)
     }
     
     class func saveImageInApp(_ imageName: String, _ image: UIImage) -> Bool {

@@ -50,7 +50,7 @@ class Friend: Profile {
     }
     
     // MARK: - Private Functions
-    private func setValue(data: [String : Any]) {
+    private func setValue(data: [String: Any]) {
         
         if let object = data[Keys.friend] as? [String: Any] {
             if let frdId = object[Keys.friendId] as? Int64 {

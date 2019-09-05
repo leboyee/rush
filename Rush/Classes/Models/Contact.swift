@@ -16,7 +16,7 @@ class Contact: NSObject {
     var birthday: Date?
     var avatarBaseString: String = ""
 
-    init(data : [String : Any]) {
+    init(data: [String: Any]) {
         super.init()
         setData(data: data)
     }

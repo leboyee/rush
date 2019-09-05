@@ -42,7 +42,7 @@ class ServiceManager: NSObject {
                 return
             }
             
-            guard let data = resultDict[Keys.data] as? [String : Any] else {
+            guard let data = resultDict[Keys.data] as? [String: Any] else {
                 return
             }
             closer(data, nil)
@@ -67,7 +67,7 @@ class ServiceManager: NSObject {
                 return
             }
             
-            guard let user = data[Keys.user] as? [String : Any] else {
+            guard let user = data[Keys.user] as? [String: Any] else {
                 return
             }
             

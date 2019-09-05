@@ -13,10 +13,10 @@ import DKImagePickerController
 open class CustomCameraExtension: DKImageBaseExtension, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var didCancel: (() -> Void)?
-    var didFinishCapturingImage: ((_ image: UIImage, _ metadata: [AnyHashable : Any]?) -> Void)?
+    var didFinishCapturingImage: ((_ image: UIImage, _ metadata: [AnyHashable: Any]?) -> Void)?
     var didFinishCapturingVideo: ((_ videoURL: URL) -> Void)?
     
-    open override func perform(with extraInfo: [AnyHashable : Any]) {
+    open override func perform(with extraInfo: [AnyHashable: Any]) {
         let info = extraInfo["didFinishCapturingImage"] as? ((UIImage, [AnyHashable: Any]?) -> Void)
         let video = extraInfo["didFinishCapturingVideo"] as? ((URL) -> Void)
         guard let didFinishCapturingImage = info, let didFinishCapturingVideo = video, let didCancel = extraInfo["didCancel"] as? (() -> Void) else { return }

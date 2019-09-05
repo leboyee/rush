@@ -20,7 +20,7 @@ extension AddProfilePictureViewController {
             photoData = userPhotoImageView.image?.jpegData(compressionQuality: 0.8) ?? Data()
         }
 
-        let param = ["u_photo": photoData] as [String : Any]
+        let param = ["u_photo": photoData] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.uploadUserProfileImage(params: param) { [weak self] (data, errorMessage) in

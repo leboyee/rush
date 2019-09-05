@@ -6,7 +6,6 @@
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
 
-
 import UIKit
 
 //class AuthorizationService: NSObject {
@@ -16,7 +15,7 @@ extension ServiceManager {
     /*
      *
      */
-    func login(params : [String : Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+    func login(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.login(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
@@ -28,7 +27,7 @@ extension ServiceManager {
     /*
      * we check that if user already register with same email
      */
-    func checkEmail(params: [String: Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+    func checkEmail(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.checkEmail(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
@@ -176,7 +175,7 @@ extension ServiceManager {
     
     /*
     // MARK: - Profile
-    func updateProfile(params : [String : Any], closer: @escaping (_ data: [String : Any]?, _ errorMessage: String?) -> Void) {
+    func updateProfile(params : [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.updateProfile(params: params) {
             [weak self] (data, error, code) -> (Void) in
             guard let self_ = self else { return }

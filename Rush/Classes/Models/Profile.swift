@@ -44,7 +44,7 @@ class Profile: NSObject {
     var whoCanMessageYou: String = ""
     var whoCanInviteYou: String = ""
     
-    init(data: [String : Any]) {
+    init(data: [String: Any]) {
         super.init()
         setData(data: data)
     }
@@ -54,7 +54,7 @@ class Profile: NSObject {
     }
 
     // MARK: - Private Functions
-    func setData(data: [String : Any]) {
+    func setData(data: [String: Any]) {
         if let value = data["_id"] as? String {
             userId = value
         }
