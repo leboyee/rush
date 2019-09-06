@@ -24,10 +24,6 @@ class ExploreViewController: CustomViewController {
     @IBOutlet weak var firstSeparator: UIView!
     @IBOutlet weak var secondSeparator: UIView!
     @IBOutlet weak var thirsSeparator: UIView!
-    
-    
-    
-    
     @IBOutlet weak var heightConstraintOfFilter: NSLayoutConstraint!
     
     var searchType: ExploreSearchType = .event
@@ -39,11 +35,11 @@ class ExploreViewController: CustomViewController {
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
-    var eventList : [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
+    var eventList: [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -57,8 +53,8 @@ class ExploreViewController: CustomViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-         super.viewDidDisappear(animated)
-//        IQKeyboardManager.shared.enableAutoToolbar = true
+        super.viewDidDisappear(animated)
+        //        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func setup() {
@@ -82,12 +78,11 @@ class ExploreViewController: CustomViewController {
         let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "changeLocation"), style: .plain, target: self, action: #selector(changeUniversity))
         navigationItem.rightBarButtonItem = rightBarButton
         
- 
         // Set navigation title (date)
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
         let explore = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
         explore.text = Text.exploreIn
-        explore.font = UIFont.DisplayBold(sz: 24)
+        explore.font = UIFont.displayBold(sz: 24)
         explore.textColor = UIColor.white
         
         // University button setup
@@ -95,7 +90,7 @@ class ExploreViewController: CustomViewController {
         universityButton.setTitle(university, for: .normal)
         universityButton.contentHorizontalAlignment = .left
         universityButton.setTitleColor(UIColor.gray47, for: .normal)
-        universityButton.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        universityButton.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         navigationView.addSubview(explore)
         navigationView.addSubview(universityButton)
         navigationItem.titleView = navigationView
@@ -159,8 +154,6 @@ extension ExploreViewController {
         tableView.reloadData()
     }
 }
-
-
 
 // MARK: - Navigation
 extension ExploreViewController {

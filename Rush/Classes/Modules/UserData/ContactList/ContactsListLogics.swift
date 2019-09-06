@@ -9,33 +9,33 @@
 import UIKit
 
 extension ContactsListViewController {
-
+    
     func getContacts() {
         Utils.showSpinner()
-        ContactsManager().getUserContacts {  [weak self] (contacts, status, message) in
-            guard let self_ = self else { return }
+        ContactsManager().getUserContacts { [weak self] (contacts, _, _) in
+            guard let unself = self else { return }
             for contact in contacts {
                 var sectionKey = ""
-                guard let firstLetter = contact.displayName.first else {continue}
+                guard let firstLetter = contact.displayName.first else { continue }
                 let firstLetterString = String(firstLetter).capitalized
                 sectionKey = firstLetterString
-                if self_.itemsDictionary[sectionKey] == nil {
-                    self_.itemsDictionary[sectionKey] = [Contact]()
+                if unself.itemsDictionary[sectionKey] == nil {
+                    unself.itemsDictionary[sectionKey] = [Contact]()
                 }
-                if var models = self_.itemsDictionary[sectionKey] {
+                if var models = unself.itemsDictionary[sectionKey] {
                     models.append(contact)
-                    self_.itemsDictionary[sectionKey] = models
+                    unself.itemsDictionary[sectionKey] = models
                 }
             }
             
-            self_.items = self_.itemsDictionary.map { (key, value) -> ContactsPresenterItem in
+            unself.items = unself.itemsDictionary.map { (key, value) -> ContactsPresenterItem in
                 return (key, value)
                 }.sorted(by: {
                     return $0.key < $1.key
                 })
-            print(self_.items)
+            print(unself.items)
             Utils.hideSpinner()
-            self_.tableView.reloadData()
+            unself.tableView.reloadData()
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatUserView: UIView {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var contentView: UIView!
     
@@ -50,7 +50,7 @@ class ChatUserView: UIView {
     }
 }
 
-//MARK: - CollectionView delegate methods
+// MARK: - CollectionView delegate methods
 extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,7 +58,7 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.chatUserCell, for: indexPath) as! ChatUserCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.chatUserCell, for: indexPath) as? ChatUserCell else { return UICollectionViewCell() }
         if indexPath.item == 6 && isShowAll == false {
             cell.setup(isHideArrowView: false)
         } else {
@@ -81,7 +81,7 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return ((screenWidth) - (32 * 7)) / 6 - 7
     }

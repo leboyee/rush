@@ -143,7 +143,6 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         messagesCollectionView.alwaysBounceVertical = false
         messagesCollectionView.autoresizesSubviews = false
        
-        
 //        let tap = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
 //        tap.cancelsTouchesInView = false
 //        messagesCollectionView.addGestureRecognizer(tap)
@@ -214,7 +213,6 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         return !messagesCollectionView.isTypingIndicatorHidden && section == self.numberOfSections(in: messagesCollectionView) - 1
     }
     
-    
     // MARK: - UICollectionViewDataSource
     
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -260,7 +258,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
             return cell
         case .custom:
             return messagesDataSource.customCell(for: message, at: indexPath, in: messagesCollectionView)
-        case .event(_):
+        case .event:
             let cell = messagesCollectionView.dequeueReusableCell(EventMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
@@ -297,25 +295,24 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
             fatalError(MessageKitError.nilMessagesDataSource)
         }
         
-        
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         
         switch message.kind {
         case .photo (let item):
             messagesCollectionView.messageCellDelegate?.didTapImage(mediaItem: item)
-        case .text(_):
+        case .text:
             break
-        case .attributedText(_):
+        case .attributedText:
             break
-        case .location(_):
+        case .location:
             break
-        case .emoji(_):
+        case .emoji:
             break
-        case .custom(_):
+        case .custom:
             break
-        case .video(_):
+        case .video:
             break
-        case .event(_):
+        case .event:
             break
         }
     }
@@ -398,7 +395,4 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
     @objc private func clearMemoryCache() {
         MessageStyle.bubbleImageCache.removeAllObjects()
     }
-    
 }
-
-

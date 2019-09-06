@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class ChatsViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,17 +16,17 @@ class ChatsViewController: CustomViewController {
     
     var searchText = ""
     var isSearch = false
-    var chatlist : [String] = ["Fine art", "Marta Keller", "Adam Batler", "Marta Mulla", "Julia Herber", "Peter Conner"] {
+    var chatlist: [String] = ["Fine art", "Marta Keller", "Adam Batler", "Marta Mulla", "Julia Herber", "Peter Conner"] {
         didSet {
             tableView.reloadData()
         }
     }
     var filterList = [String]()
-    var searchField : UITextField!
+    var searchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -75,7 +74,7 @@ class ChatsViewController: CustomViewController {
         
         let label = UILabel(frame: CGRect(x: 0, y: 5, width: screenWidth - 72, height: 30))
         label.text = "Search in chats"
-        label.font = UIFont.DisplayBold(sz: 24)
+        label.font = UIFont.displayBold(sz: 24)
         label.textColor = UIColor.navBarTitleWhite32
         customView.addSubview(label)
         customView.addSubview(searchButton)
@@ -90,18 +89,19 @@ class ChatsViewController: CustomViewController {
     func setupSearchChatNavigation() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-
         
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         
         searchField = UITextField(frame: CGRect(x: 0, y: 6, width: screenWidth - 55, height: 28))
-        searchField.font = UIFont.DisplayBold(sz: 24)
+        searchField.font = UIFont.displayBold(sz: 24)
         searchField.textColor = UIColor.white
         searchField.returnKeyType = .search
         searchField.autocorrectionType = .no
         searchField.delegate = self
         searchField.becomeFirstResponder()
-        searchField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font : UIFont.DisplayBold(sz: 24), NSAttributedString.Key.foregroundColor : UIColor.navBarTitleWhite32])
+        let font = UIFont.displayBold(sz: 24)
+        let color = UIColor.navBarTitleWhite32
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
         searchField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         customView.addSubview(searchField)
         navigationItem.titleView = customView
@@ -134,8 +134,6 @@ extension ChatsViewController {
         chatlist = filterList
     }
 }
-
-
 
 // MARK: - Navigation
 extension ChatsViewController {

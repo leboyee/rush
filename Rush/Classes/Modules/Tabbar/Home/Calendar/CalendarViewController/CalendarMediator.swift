@@ -32,7 +32,6 @@ extension CalendarViewController: CalendarViewDelegate {
         }
     }
     
-    
     func isEventExist(date: Date) -> Bool {
         let allKeys = groups.map({ $0.dateString })
         if allKeys.contains(date.toString(format: "yyyy-MM-dd")) {
@@ -50,7 +49,6 @@ extension CalendarViewController: CalendarViewDelegate {
             }
         }
     }
-    
     
     func selectedDate(date: Date) {
         print(date)

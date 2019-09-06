@@ -42,7 +42,7 @@ open class MediaMessageSizeCalculator: MessageSizeCalculator {
             return sizeForMediaItem(maxWidth, item)
         case .video(let item):
             return sizeForMediaItem(maxWidth, item)
-        case .event(_):
+        case .event:
              return CGSize(width: screenWidth - 71, height: 154)
         default:
             fatalError("messageContainerSize received unhandled MessageDataType: \(message.kind)")

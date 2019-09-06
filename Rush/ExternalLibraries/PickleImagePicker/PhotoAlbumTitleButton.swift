@@ -18,7 +18,7 @@ internal final class PhotoAlbumTitleButton: UIControl {
         let highlightedColor: UIColor?
 
         init(font: UIFont?, tintColor: UIColor?, highlightedColor: UIColor?) {
-            self.font = UIFont.DisplaySemibold(sz: 17)
+            self.font = UIFont.displaySemibold(sz: 17)
             self.tintColor = UIColor.white
             self.highlightedColor = UIColor.clear
         }

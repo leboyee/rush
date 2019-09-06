@@ -8,9 +8,8 @@
 
 import UIKit
 
-
-//MARK: Delgate and DataSource
-extension OnboardingViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// MARK: - Delgate and DataSource
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func setupMediator() {
         
@@ -30,9 +29,12 @@ extension OnboardingViewController : UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.onBoardingCollectionViewCell, for: indexPath) as! OnBoardingCollectionViewCell
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.onBoardingCollectionViewCell, for: indexPath) as? OnBoardingCollectionViewCell {
             fillCell(cell: cell, indexPath: indexPath)
             return cell
+        }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -49,5 +51,3 @@ extension OnboardingViewController : UICollectionViewDelegate, UICollectionViewD
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
-
-

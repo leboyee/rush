@@ -19,12 +19,12 @@ extension ChooseUniversityViewController {
     }
     
     func fillChooseUniversityCell(_ cell: UniversityCell, _ indexPath: IndexPath) {
-        cell.setup(title:Utils.chooseUniversity()[indexPath.row])
+        cell.setup(title: Utils.chooseUniversity()[indexPath.row])
         cell.setup(checkMark: selectedIndex == indexPath.row ? true : false)
     }
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension ChooseLevelViewController {
     
 }

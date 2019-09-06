@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class PostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,15 +18,14 @@ class PostViewController: UIViewController {
     @IBOutlet weak var bottomView: CustomView!
     
     var commentList = [String]()
-    var imageList   = [Any]()
+    var imageList = [Any]()
     
     var commentText = ""
     var username = ""
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
     }
@@ -48,7 +46,6 @@ class PostViewController: UIViewController {
         navigationItem.rightBarButtonItem = share
         
         // comment textview
-        
         textView.placeHolder = "Aa"
         textView.delegate = self
         textBgView.backgroundColor = UIColor.lightGray93
@@ -70,7 +67,7 @@ extension PostViewController {
         performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
     
-    @IBAction func sendButtonAction()  {
+    @IBAction func sendButtonAction() {
         if commentText.count > 0 {
             username = ""
             textView.text = ""
@@ -82,16 +79,16 @@ extension PostViewController {
 // MARK: - Navigation
 extension PostViewController {
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.otherUserProfile {
-            let vc = segue.destination as! OtherUserProfileController
-            vc.clubImage = #imageLiteral(resourceName: "bound-add-img")
-            vc.delegate = self
+            if let vc = segue.destination as? OtherUserProfileController {
+                vc.clubImage = #imageLiteral(resourceName: "bound-add-img")
+                vc.delegate = self
+            }
         }
-     }
-     
+    }
 }

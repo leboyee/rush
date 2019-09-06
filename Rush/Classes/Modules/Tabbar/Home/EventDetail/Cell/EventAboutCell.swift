@@ -16,7 +16,6 @@ class EventAboutCell: UITableViewCell {
     @IBOutlet var eventTitleLabel: CustomBlackLabel!
     @IBOutlet var eventDetailLabel: CustomBlackLabel!
     @IBOutlet var readMoreView: UIView!
-
     
     override func awakeFromNib() {
         super.awakeFromNib()

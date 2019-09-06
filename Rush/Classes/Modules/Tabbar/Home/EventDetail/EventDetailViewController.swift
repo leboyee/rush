@@ -26,7 +26,6 @@ enum EventSectionType {
     case joinRsvp
 }
 
-
 struct EventSection {
     var type: EventSectionType
     var title: String?
@@ -44,7 +43,6 @@ class EventDetailViewController: UIViewController {
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
-    
     
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
@@ -107,7 +105,7 @@ extension EventDetailViewController {
     
 }
 
-//MARK: - Navigations
+// MARK: - Navigations
 extension EventDetailViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

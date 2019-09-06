@@ -75,7 +75,7 @@ public class DKCameraLocationManager: NSObject, CLLocationManagerDelegate {
             gpsMetadata[(kCGImagePropertyGPSImgDirectionRef)] = "T"
         }
         
-        return gpsMetadata as [String : Any]
+        return gpsMetadata as [String: Any]
     }
     
     // MARK: - CLLocationManagerDelegate
@@ -86,7 +86,8 @@ public class DKCameraLocationManager: NSObject, CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .authorizedAlways: fallthrough
+        case .authorizedAlways:
+            break
         case .authorizedWhenInUse:
             if self.enable {
                 self.locationManager.startUpdatingLocation()

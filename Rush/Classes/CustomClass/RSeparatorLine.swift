@@ -22,6 +22,4 @@ class RSeparatorLine: UIView {
     func setupCustomUI() {
         backgroundColor = isDarkModeOn ? UIColor.separatorColorDark : UIColor.separatorColor
     }
-
 }
-

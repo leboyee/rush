@@ -27,9 +27,9 @@ class ProfileInformationCell: UITableViewCell {
     
 }
 
-//MARK: - Other function
+// MARK: - Other function
 extension ProfileInformationCell {
-    func setup(text: String,placeholder: String) {
+    func setup(text: String, placeholder: String) {
         titleLabel.text = placeholder
         detailLabel.text = text
         if placeholder.isEmpty {

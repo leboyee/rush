@@ -11,7 +11,6 @@ import UIKit
     @objc func selectedDate(_ date: Date)
 }
 
-
 class DatePickerViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -22,7 +21,7 @@ class DatePickerViewController: UIViewController {
     
     var selectedData = ""
     var presenter = DatePickerPresenter()
-    weak var pickerDelegate : DatePickerDelegate?
+    weak var pickerDelegate: DatePickerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,19 +42,14 @@ class DatePickerViewController: UIViewController {
     
     // MARK: - setup
     func setup() {
-        
         setupPresenter()
         //picker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
-
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     // MARK: - Actions
     @IBAction func doneButtonAction() {
@@ -68,50 +62,41 @@ class DatePickerViewController: UIViewController {
             self.containerViewConstraint.constant = 262
             UIView.animate(withDuration: 0.1, animations: {
                 self.view.layoutIfNeeded()
-            }) { (status) in
+            }, completion: { _ in
                 self.dismiss(animated: false, completion: nil)
-            }
-            
+            })
         }
     }
-    
-    /*
-    @objc func dateChanged(_ datepicker : UIDatePicker) {
-        let date = datePicker.date.toString(format: "MMMM dd, yyyy")
-        
-    }*/
-    
 }
 
-//MARK: - Input View Handler (Or Presenter Output)
+// MARK: - Input View Handler (Or Presenter Output)
 extension DatePickerViewController {
     func setupPresenter() {
         presenter.updateTitle = { [weak self] (title) in
-            guard let self_ = self else { return }
-            self_.titleLabel.text = title
+            guard let unsafe = self else { return }
+            unsafe.titleLabel.text = title
         }
         
         presenter.updatePickerMode = { [weak self] (mode) in
-            guard let self_ = self else { return }
-            self_.datePicker.datePickerMode = mode
+            guard let unsafe = self else { return }
+            unsafe.datePicker.datePickerMode = mode
         }
         
-        presenter.updateMinDate = {  [weak self] (date) in
-            guard let self_ = self else { return }
-            self_.datePicker.minimumDate = date
+        presenter.updateMinDate = { [weak self] (date) in
+            guard let unsafe = self else { return }
+            unsafe.datePicker.minimumDate = date
         }
        
-        presenter.updateMaxDate = {  [weak self] (date) in
-            guard let self_ = self else { return }
-            self_.datePicker.maximumDate = date
+        presenter.updateMaxDate = { [weak self] (date) in
+            guard let unsafe = self else { return }
+            unsafe.datePicker.maximumDate = date
         }
         
-        presenter.updateCurrentDate =  {  [weak self] (date) in
-            guard let self_ = self else { return }
-            self_.datePicker.date = date
+        presenter.updateCurrentDate = { [weak self] (date) in
+            guard let unsafe = self else { return }
+            unsafe.datePicker.date = date
         }
         
         presenter.viewIsReady()
     }
 }
-

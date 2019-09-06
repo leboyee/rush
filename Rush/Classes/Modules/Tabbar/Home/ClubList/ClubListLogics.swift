@@ -36,7 +36,6 @@ extension ClubListViewController {
         }
     }
     
-    
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         if screenType == .club {
             if indexPath.section == 1 {
@@ -57,9 +56,9 @@ extension ClubListViewController {
         }
         
         cell.cellSelected = { [weak self] (type, id, index) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if type == .classes {
-                self_.performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
+                unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
             }
         }
     }
@@ -84,7 +83,7 @@ extension ClubListViewController {
         }
     }
     
-    func fillTextHeader(_ header: TextHeader,_ section: Int) {
+    func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: false)
         
         if screenType == .club {
@@ -110,10 +109,10 @@ extension ClubListViewController {
         }
         
         header.detailButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             // Open other user profile UI for test
             
-            if self_.screenType == .club {
+            if unself.screenType == .club {
                 
             } else {
                 // self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
@@ -132,13 +131,13 @@ extension ClubListViewController {
     }
 }
 
-//MARK: - Services
+// MARK: - Services
 extension ClubListViewController {
     func getMyClubListAPI(sortBy: String) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
-                     Keys.sort_by: sortBy,
+                     Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()

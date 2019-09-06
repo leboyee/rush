@@ -17,17 +17,17 @@ class CreateEventViewController: UIViewController {
 
     var nameClub = ""
     var clubDescription = ""
-    var clubImage : UIImage?
+    var clubImage: UIImage?
     
-    var cancelBtn : UIBarButtonItem {
+    var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
     
-    var saveBtnActive : UIBarButtonItem {
+    var saveBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
     }
     
-    var saveBtnDisActive : UIBarButtonItem {
+    var saveBtnDisActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
     }
     
@@ -48,8 +48,7 @@ class CreateEventViewController: UIViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
  
-    
-    //MARk: - Other function
+    // MARK: - Other function
     func setup() {
         setupUI()
     }
@@ -86,7 +85,7 @@ class CreateEventViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension CreateEventViewController {
     @IBAction func cancelButtonAction() {
         navigationController?.popViewController(animated: true)
@@ -97,11 +96,10 @@ extension CreateEventViewController {
     }
     
     @IBAction func addImageButtonAction() {
-        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel : "Cancel", type: .actionSheet) {
-            [weak self] (index) in
-            guard let self_ = self else { return }
+        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
+            guard let unsafe = self else { return }
             if index != 2 {
-                self_.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
+                unsafe.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
             }
         }
     }

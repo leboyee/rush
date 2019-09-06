@@ -18,18 +18,16 @@ class LogoutViewController: UIViewController {
             self.show()
         }
     }
-    
-    
 }
 
-//MARK: - Other Functions
+// MARK: - Other Functions
 extension LogoutViewController {
     
     private func dismiss() {
         verticalCentreConstraint.constant = screenHeight * 2/3
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
-        }, completion: { status in
+        }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
         })
     }
@@ -38,14 +36,14 @@ extension LogoutViewController {
         verticalCentreConstraint.constant = 0
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
-        }, completion: { status in
+        }, completion: { _ in
             
         })
     }
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension LogoutViewController {
     
     @IBAction func logoutButtonAction() {
@@ -55,6 +53,4 @@ extension LogoutViewController {
     @IBAction func cancelButtonAction() {
         dismiss()
     }
-    
 }
-

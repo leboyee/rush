@@ -14,5 +14,4 @@ class ProfileImageCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
 }

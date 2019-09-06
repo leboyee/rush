@@ -6,7 +6,6 @@
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
 
-
 import UIKit
 
 class TextHeader: UITableViewHeaderFooterView {
@@ -26,7 +25,7 @@ class TextHeader: UITableViewHeaderFooterView {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension TextHeader {
     @IBAction func replaceButtonAction(_ sender: Any) {
         detailButtonClickEvent?()

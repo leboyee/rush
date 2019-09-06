@@ -19,15 +19,11 @@ class ClassesHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         detailsLabel.isHidden = true
-        // Initialization code
-        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
     }
-
-    
 }
 
 // MARK: - Other functions
@@ -40,9 +36,6 @@ extension ClassesHeader {
         titleLabelHightConstraint.constant = 24
         detailsLabel.isHidden = false
         detailsLabel.text = detailsLableText
-        titleLabel.font = UIFont.Semibold(sz: 14)
+        titleLabel.font = UIFont.semibold(sz: 14)
     }
-    
-    
-    
 }

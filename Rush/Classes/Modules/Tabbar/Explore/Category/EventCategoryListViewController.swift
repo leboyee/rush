@@ -9,7 +9,7 @@
 import UIKit
 
 class EventCategoryListViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containView: UIView!
@@ -21,11 +21,11 @@ class EventCategoryListViewController: UIViewController {
     var isSecondFilter = false
     var isThirdFilter = false
     
-    var type : ScreenType = .none
+    var type: ScreenType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
     }
@@ -65,7 +65,7 @@ class EventCategoryListViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension EventCategoryListViewController {
     
 }

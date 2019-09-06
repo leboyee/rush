@@ -42,8 +42,8 @@ extension CreateClubViewController {
         cell.setup(iconImage: "")
         
         cell.switchValueChanged = { [weak self] (isOn) in
-            guard let self_ = self else { return }
-            self_.isCreateGroupChat = isOn
+            guard let unsafe = self else { return }
+            unsafe.isCreateGroupChat = isOn
         }
     }
     
@@ -83,68 +83,69 @@ extension CreateClubViewController {
         }
         
         cell.textDidChanged = {  [weak self] (text) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if indexPath.section == 0 {
-                self_.nameClub = text
+                unself.nameClub = text
             } else if indexPath.section == 1 {
-                self_.clubDescription = text
+                unself.clubDescription = text
             }
-            self_.validateAllFields()
+            unself.validateAllFields()
         }
         
         cell.textDidEndEditing = { [weak self] (text) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             var txt = text
             if txt.last == "\n" {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
                 if indexPath.section == 2 {
-                    if !self_.interestList.contains(txt) {
-                        self_.interestList.append(txt)
-                        self_.tableView.reloadData()
+                    if !unself.interestList.contains(txt) {
+                        unself.interestList.append(txt)
+                        unself.tableView.reloadData()
                     }
                 } else if indexPath.section == 3 {
+
 //                    if !self_.peopleList.contains(txt) {
 //                        self_.peopleList.append(txt)
 //                        self_.tableView.reloadData()
 //                    }
                 }
             }
-            self_.validateAllFields()
+            unself.validateAllFields()
         }
         
         cell.clearButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             
             if indexPath.section == 2 {
-                if let index = self_.interestList.firstIndex(of: (self_.interestList[indexPath.row])) {
-                    self_.interestList.remove(at: index)
-                    self_.tableView.reloadData()
+                if let index = unself.interestList.firstIndex(of: (unself.interestList[indexPath.row])) {
+                    unself.interestList.remove(at: index)
+                    unself.tableView.reloadData()
                 }
             } else if indexPath.section == 3 {
-                if let index = self_.peopleList.firstIndex(of: (self_.peopleList[indexPath.row])) {
-                    self_.peopleList.remove(at: index)
-                    self_.tableView.reloadData()
+                if let index = unself.peopleList.firstIndex(of: (unself.peopleList[indexPath.row])) {
+                    unself.peopleList.remove(at: index)
+                    unself.tableView.reloadData()
                 }
             }
-            self_.validateAllFields()
+            unself.validateAllFields()
         }
         
         cell.updateTableView = {
             [weak self] (textView) in
-            guard let self_ = self else { return }
-                        
+            guard let unself = self else { return }
+            
             let startHeight = textView.frame.size.height
             var calcHeight = textView.sizeThatFits(textView.frame.size).height
             if calcHeight == startHeight && textView.text.isEmpty {
-                calcHeight = calcHeight + 1
+                calcHeight += 1
             }
             if startHeight != calcHeight {
                 // Disable animations
                 UIView.setAnimationsEnabled(false)
-                self_.tableView.beginUpdates()
-                self_.tableView.endUpdates()
+                unself.tableView.beginUpdates()
+                unself.tableView.endUpdates()
                 // Enable animations
                 UIView.setAnimationsEnabled(true)
             }
@@ -154,8 +155,8 @@ extension CreateClubViewController {
     func fillImageHeader(_ view: UserImagesHeaderView) {
         view.setup(image: clubImage)
         view.addPhotoButtonEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.openCameraOrLibrary(type: .photoLibrary)
+            guard let unself = self else { return }
+            unself.openCameraOrLibrary(type: .photoLibrary)
             
         }
     }
@@ -164,7 +165,7 @@ extension CreateClubViewController {
 // MARK: - Other functions
 extension CreateClubViewController {
     // MARK: - Capture Image
-    func openCameraOrLibrary( type : UIImagePickerController.SourceType) {
+    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
         DispatchQueue.main.async {
             
             if type == .photoLibrary {
@@ -203,7 +204,7 @@ extension CreateClubViewController {
     }
     
     private func showPermissionAlert(text: String) {
-        Utils.alert(message: text, title : "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
+        Utils.alert(message: text, title: "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
             if index == 1 {
                 //Open settings
                 if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -223,25 +224,24 @@ extension CreateClubViewController {
 }
 
 // MARK: - UIImagePickerControllerDelegate methods
-extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         autoreleasepool {
             var captureImage = info[UIImagePickerController.InfoKey.originalImage]
                 as? UIImage
             if #available(iOS 11, *), captureImage == nil {
                 if PHPhotoLibrary.authorizationStatus() == .authorized {
-                    let asset                    = info[UIImagePickerController.InfoKey.phAsset] as! PHAsset
-                    let manager                  = PHImageManager.default()
-                    let requestOptions           = PHImageRequestOptions()
+                    let manager = PHImageManager.default()
+                    let requestOptions = PHImageRequestOptions()
                     requestOptions.isSynchronous = true
-                    manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: requestOptions, resultHandler: { (image, info) in
-                        if image != nil
-                        {
-                            captureImage = image
-                        }
-                    })
-                    
+                    if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
+                        manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: requestOptions, resultHandler: { (image, _) in
+                            if image != nil {
+                                captureImage = image
+                            }
+                        })
+                    }
                 } else {
                     //Show Alert for error
                     showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
@@ -254,7 +254,6 @@ extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigati
                 self.tableView.reloadData()
                 picker.dismiss(animated: true, completion: nil)
             }
-            
         }
     }
     
@@ -264,7 +263,6 @@ extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigati
             picker.dismiss(animated: true, completion: nil)
         }
     }
-    
 }
 
 // MARK: - Services
@@ -276,20 +274,19 @@ extension CreateClubViewController {
         let interests = interestList.joined(separator: ",")
         let userIds = "5d5d213239277643e20f9bf1"
         
-        let param = [Keys.club_name: nameClub,
-                     Keys.club_desc: clubDescription,
-                     Keys.club_interests: interests,
-                     Keys.club_invited_user_ids: userIds,
-                     Keys.club_is_chat_group: isCreateGroupChat ? 1 : 0,
-                     Keys.club_photo: img] as [String: Any]
+        let param = [Keys.clubName: nameClub,
+                     Keys.clubDesc: clubDescription,
+                     Keys.clubInterests: interests,
+                     Keys.clubInvitedUserIds: userIds,
+                     Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
+                     Keys.clubPhoto: img] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.createClub(params: param) {
-            [weak self] (status, errMessage) in
+        ServiceManager.shared.createClub(params: param) { [weak self] (status, errMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if status {
-                self_.navigationController?.popViewController(animated: true)
+                unsafe.navigationController?.popViewController(animated: true)
             } else {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }

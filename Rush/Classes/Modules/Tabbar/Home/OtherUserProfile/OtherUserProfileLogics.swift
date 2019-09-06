@@ -27,8 +27,7 @@ extension OtherUserProfileController {
         return section == 0 ? (isShowMessageButton ? 2 : 1) : 1
     }
     
-    func fillManageCell(_ cell: ClubManageCell,_ indexPath: IndexPath) {
-        
+    func fillManageCell(_ cell: ClubManageCell, _ indexPath: IndexPath) {
         if indexPath.row == 0 {
             
             // For test
@@ -56,19 +55,19 @@ extension OtherUserProfileController {
         }
         
         cell.firstButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.isShowMessageButton = false
-            if self_.friendType == .none {
-                self_.friendType = .friends
-            } else if self_.friendType == .friends {
-                self_.friendType = .addFriend
+            guard let unself = self else { return }
+            unself.isShowMessageButton = false
+            if unself.friendType == .none {
+                unself.friendType = .friends
+            } else if unself.friendType == .friends {
+                unself.friendType = .addFriend
                 
                 let snackbar = TTGSnackbar(message: "You unfriended Jessica O'Hara",
                                            duration: .middle,
                                            actionText: "Undo",
-                                           actionBlock: { (snackbar) in
-                                            self_.friendType = .friends
-                                            self_.tableView.reloadData()
+                                           actionBlock: { (_) in
+                                            unself.friendType = .friends
+                                            unself.tableView.reloadData()
                 })
                 snackbar.show()
                 
@@ -78,23 +77,23 @@ extension OtherUserProfileController {
                     self_.delegate?.unfriendUser("Jessica O'Hara")
                 }
                 */
-            } else if self_.friendType == .addFriend {
-                self_.friendType = .requested
-            } else if self_.friendType == .requested {
-                self_.isShowMessageButton = true
-                self_.friendType = .accept
-            } else if self_.friendType == .accept {
-                self_.friendType = .friends
+            } else if unself.friendType == .addFriend {
+                unself.friendType = .requested
+            } else if unself.friendType == .requested {
+                unself.isShowMessageButton = true
+                unself.friendType = .accept
+            } else if unself.friendType == .accept {
+                unself.friendType = .friends
             }
-            self_.tableView.reloadData()
+            unself.tableView.reloadData()
         }
         
         cell.secondButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            if self_.friendType == .accept {
-                self_.friendType = .addFriend
-                self_.isShowMessageButton = false
-                self_.tableView.reloadData()
+            guard let unself = self else { return }
+            if unself.friendType == .accept {
+                unself.friendType = .addFriend
+                unself.isShowMessageButton = false
+                unself.tableView.reloadData()
             } else {
                 Utils.notReadyAlert()
             }
@@ -116,13 +115,12 @@ extension OtherUserProfileController {
             cell.setup(.classes, nil)
         default:
             cell.setup(.none, nil)
-            break
         }
         
         cell.cellSelected = { [weak self] (type, id, index) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if indexPath.section == 2 {
-                self_.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
+                unself.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             }
         }
     }
@@ -139,15 +137,15 @@ extension OtherUserProfileController {
         header.setup(title: text)
         
         header.detailButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if section == 2 {
-                 self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
+                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
             } else if section == 3 {
-                self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
             } else if section == 4 {
-                self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubs)
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubs)
             } else if section == 5 {
-                self_.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
         }
     }
@@ -155,13 +153,12 @@ extension OtherUserProfileController {
     func fillImageHeader(_ view: UserImagesHeaderView) {
         view.setup(image: clubImage)
         view.setup(isHideUsernameView: false)
-        view.addPhotoButtonEvent = { [weak self] () in
-            guard let _ = self else { return }
-            
+        view.addPhotoButtonEvent = { () in
         }
+        
         view.infoButtonEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
+            guard let unself = self else { return }
+            unself.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
         }
     }
 }

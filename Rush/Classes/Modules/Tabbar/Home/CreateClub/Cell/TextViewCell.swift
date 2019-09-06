@@ -18,13 +18,12 @@ class TextViewCell: UITableViewCell {
     @IBOutlet weak var topConstraintOfBgView: NSLayoutConstraint!
     @IBOutlet weak var clearButton: UIButton!
     
-    var textDidChanged: ((_ text : String) -> Void)?
+    var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
-    var textDidEndEditing: ((_ text : String) -> Void)?
+    var textDidEndEditing: ((_ text: String) -> Void)?
     var updateTableView:((_ textView: UITextView) -> Void)?
     
     var maxLength = 300
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +36,6 @@ class TextViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    
 }
 
 extension TextViewCell {
@@ -52,7 +50,7 @@ extension TextViewCell {
     
     func setup(isEmpty: Bool) {
         if isEmpty {
-            placeHolderLabel.font = UIFont.Regular(sz: 17.0)
+            placeHolderLabel.font = UIFont.regular(sz: 17.0)
             topPlaceHolderConstraint.constant = 17
             topTextViewConstraint.constant = 15
             placeHolderLabel.isHidden = false
@@ -92,7 +90,7 @@ extension TextViewCell {
     
     func setup(placeholder: String) {
         
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.Regular(sz: 17.0)]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.regular(sz: 17.0)]
         let attstr = NSMutableAttributedString(string: placeholder, attributes: attributes)
         placeHolderLabel.attributedText = attstr
     }

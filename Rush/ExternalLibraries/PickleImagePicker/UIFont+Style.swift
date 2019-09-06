@@ -25,7 +25,7 @@ internal extension UIFont {
     }
 
     static var forTagLabel: UIFont {
-        return UIFont.Semibold(sz: 13)
+        return UIFont.semibold(sz: 13)
     }
 
     private static func systemSemiBoldFont(ofSize fontSize: CGFloat) -> UIFont {

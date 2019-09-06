@@ -23,8 +23,4 @@ extension UIImageView {
     func stop360Degrees() {
         layer.removeAnimation(forKey: "rotate360")
     }
-    
-    
 }
-
-

@@ -10,22 +10,21 @@ import UIKit
 
 extension EnterVerificationCodeViewController {
     
-    
     func updateCodeView(code: String) {
         let mainstring = NSMutableAttributedString.init()
         var isIPhone5 = false
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType == UIDevice.ScreenType.iPhones5 {
             isIPhone5 = true
         }
+       
         for char in code {
             if char == "1" {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
-                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 43.5 : 50.5, NSAttributedString.Key.font : UIFont.DisplayBold(sz: isIPhone5 ? 25 : 30), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
+                attributedString.addAttributes([NSAttributedString.Key.kern: isIPhone5 ? 43.5 : 50.5, NSAttributedString.Key.font: UIFont.displayBold(sz: isIPhone5 ? 25 : 30), NSAttributedString.Key.foregroundColor: UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
                 mainstring.append(attributedString)
-            }
-            else {
+            } else {
                 let attributedString = NSMutableAttributedString(string: "\(char)")
-                attributedString.addAttributes([NSAttributedString.Key.kern : isIPhone5 ? 40 : 47, NSAttributedString.Key.font : UIFont.DisplayBold(sz: isIPhone5 ? 23 : 28), NSAttributedString.Key.foregroundColor : UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
+                attributedString.addAttributes([NSAttributedString.Key.kern: isIPhone5 ? 40 : 47, NSAttributedString.Key.font: UIFont.displayBold(sz: isIPhone5 ? 23 : 28), NSAttributedString.Key.foregroundColor: UIColor.black], range: NSRange(location: 0, length: "\(char)".count))
                 mainstring.append(attributedString)
             }
         }
@@ -54,12 +53,10 @@ extension EnterVerificationCodeViewController {
         } else if stage == .verified {
             self.codeErrorLabel.isHidden = true
             self.codeErrorCancelButton.isHidden = true
-            
-            
             //Move to Next Screen
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 
-                if self.loginType == .Register {
+                if self.loginType == .register {
                    // self.performSegue(withIdentifier: Segues.phoneVerificationToUserTypeViewSegue, sender: nil)
                 } else {
 //                    let profile = Profile(data: Authorization.shared.getUserData() ?? [:])
@@ -81,24 +78,22 @@ extension EnterVerificationCodeViewController {
         self.updateCodeView(code: self.code)
         if self.code.count == 5 {
             self.nextButton.setNextButton(isEnable: true)
-        }
-        else {
+        } else {
             self.nextButton.setNextButton(isEnable: false)
         }
     }
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension EnterVerificationCodeViewController {
     
-    func signupApiCalled(code : String) {
-        let param = [kEmail: profile.email, kPassword: profile.password,kCountry_Code:  profile.countryCode, kPhone: profile.phone, kPhone_token: code] as [String: Any]
+    func signupApiCalled(code: String) {
+        let param = [Keys.email: profile.email, Keys.password: profile.password, Keys.countryCode: profile.countryCode, Keys.phone: profile.phone, Keys.phoneToken: code] as [String: Any]
 
-        ServiceManager.shared.singup(params: param) {
-            [weak self] (status, errorMessage) in
-            guard let self_ = self else { return }
+        ServiceManager.shared.singup(params: param) { [weak self] (status, errorMessage) in
+            guard let unsafe = self else { return }
             if status {
-                self_.singupSuccess()
+                unsafe.singupSuccess()
                 //self_.updateViewStage?(.verified)
                 /*
                  //Comment due to push is not exist in app
@@ -107,22 +102,21 @@ extension EnterVerificationCodeViewController {
                  AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
                  } */
             } else {
-                self_.digitTextField.becomeFirstResponder()
-                self_.isCodeVerifing = false
+                unsafe.digitTextField.becomeFirstResponder()
+                unsafe.isCodeVerifing = false
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
                 //self_.updateViewStage?(.error)
             }
         }
     }
     
-    func loginApiCalled(code : String) {
-        let param = [kPhone_token: code] as [String: Any]
+    func loginApiCalled(code: String) {
+        let param = [Keys.phoneToken: code] as [String: Any]
         
-        ServiceManager.shared.phonetkn(params: param) {
-            [weak self] (status, errorMessage) in
-            guard let self_ = self else { return }
+        ServiceManager.shared.phonetkn(params: param) { [weak self] (status, errorMessage) in
+            guard let unsafe = self else { return }
             if status {
-                self_.loginSuccess()
+                unsafe.loginSuccess()
                 //self_.updateViewStage?(.verified)
                 /*
                  //Comment due to push is not exist in app
@@ -131,30 +125,27 @@ extension EnterVerificationCodeViewController {
                  AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
                  } */
             } else {
-                self_.digitTextField.becomeFirstResponder()
-                self_.isCodeVerifing = false
+                unsafe.digitTextField.becomeFirstResponder()
+                unsafe.isCodeVerifing = false
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
                 //self_.updateViewStage?(.error)
             }
         }
     }
-
     
     func resendCodeApiCalled() {
         Utils.showSpinner()
-        let verifyTye = loginType == .Register ? "signup" : "login"
+        let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = profile.countryCode
         let phoneString = profile.phone
-        let param = [kCountry_Code:  countryCodeString, kPhone: phoneString, kVerify_Type: verifyTye] as [String: Any]
-        ServiceManager.shared.authPhone(params: param) {
-            [weak self] (status, errorMessage) in
+        let param = [Keys.countryCode: countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
+        ServiceManager.shared.authPhone(params: param) { [weak self] (status, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            self_.digitTextField.becomeFirstResponder()
-            if (status){
+            guard let unsafe = self else { return }
+            unsafe.digitTextField.becomeFirstResponder()
+            if status {
                 Utils.alert(message: "Code sent successfully.")
-            }
-            else {
+            } else {
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }

@@ -22,7 +22,7 @@ class CalendarEventListViewController: UIViewController {
     }
 }
 
-//MARK: - Private and setup
+// MARK: - Private and setup
 extension CalendarEventListViewController {
     
     private func setup() {
@@ -33,7 +33,7 @@ extension CalendarEventListViewController {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension CalendarEventListViewController {
 
     @IBAction func exploreEvents() {
@@ -42,7 +42,7 @@ extension CalendarEventListViewController {
     
 }
 
-//MARK: - Other functions
+// MARK: - Other functions
 extension CalendarEventListViewController {
 
     func loadEvents(groups: [EventGroup]?) {
@@ -58,4 +58,3 @@ extension CalendarEventListViewController {
     }
     
 }
-

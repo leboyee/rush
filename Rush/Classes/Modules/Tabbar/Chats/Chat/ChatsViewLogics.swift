@@ -41,7 +41,7 @@ extension ChatsViewController: UITextFieldDelegate {
             chatlist = filterList
             
         } else {
-            let filter = chatlist.filter {( $0.lowercased().contains(text.lowercased()))}
+            let filter = chatlist.filter { ( $0.lowercased().contains(text.lowercased())) }
             chatlist = filter
         }
         tableView.reloadData()

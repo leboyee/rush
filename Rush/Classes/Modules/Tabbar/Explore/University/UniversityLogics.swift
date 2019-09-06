@@ -27,6 +27,4 @@ extension UniversityViewController {
         selectedIndex = indexPath.row
         tableView.reloadData()
     }
-    
-    
 }

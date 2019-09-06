@@ -137,11 +137,10 @@ open class MessageContentCell: MessageCollectionViewCell {
         displayDelegate.configureAccessoryView(accessoryView, for: message, at: indexPath, in: messagesCollectionView)
         */
         
-        
         if dataSource.isFromCurrentSender(message: message) {
             messageContainerView.backgroundColor = UIColor.white
         } else {
-            if let _ = self as? EventMessageCell {
+            if (self as? EventMessageCell) != nil {
                 messageContainerView.backgroundColor = UIColor.clear
             } else {
                 messageContainerView.backgroundColor = UIColor.lightGray93
@@ -154,7 +153,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         let topMessageLabelText = dataSource.messageTopLabelAttributedText(for: message, at: indexPath)
         let bottomText = dataSource.messageBottomLabelAttributedText(for: message, at: indexPath)
         
-        let widthOfString : CGFloat = 100
+        let widthOfString: CGFloat = 100
         
         let width = CGFloat(1)
         

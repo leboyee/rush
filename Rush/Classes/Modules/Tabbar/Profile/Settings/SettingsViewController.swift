@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     
 }
 
-//MARK: - Setup
+// MARK: - Setup
 extension SettingsViewController {
     
     private func setup() {
@@ -42,7 +42,7 @@ extension SettingsViewController {
         
         let button = UIButton()
         button.setTitle(Text.logout, for: .normal)
-        button.titleLabel?.font = UIFont.Semibold(sz: 13.0)
+        button.titleLabel?.font = UIFont.semibold(sz: 13.0)
         button.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
         let logout = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = logout
@@ -51,7 +51,7 @@ extension SettingsViewController {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension SettingsViewController {
     
     @objc func logoutAction() {
@@ -67,7 +67,7 @@ extension SettingsViewController {
     }
 }
 
-//MARK: - Other Functions
+// MARK: - Other Functions
 extension SettingsViewController {
 
     func showPrivacyInvite() {
@@ -92,17 +92,16 @@ extension SettingsViewController {
     }
 }
 
-//MARK: - Navigation
+// MARK: - Navigation
 extension SettingsViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == Segues.webViewFile {
-            let vc = segue.destination as! WebViewFileViewController
-            vc.type = sender as? WebFile ?? .policy
+            let vc = segue.destination as? WebViewFileViewController
+            vc?.type = sender as? WebFile ?? .policy
         } else if segue.identifier == Segues.privacySettings {
-            let vc = segue.destination as! PrivacySettingsViewController
-            vc.type = sender as? PrivacyType ?? .invitesfrom
+            let vc = segue.destination as? PrivacySettingsViewController
+            vc?.type = sender as? PrivacyType ?? .invitesfrom
         }
     }
 }

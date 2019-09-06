@@ -9,29 +9,28 @@
 import UIKit
 
 extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
 
-    //MARK: - Presenter Functions
+    // MARK: - Presenter Functions
     func reload() {
         collectionView?.reloadData()
     }
     
-    //MARK: - Collection View Delegate and DataSource
+    // MARK: - Collection View Delegate and DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellCount(section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if cellType == .interests {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.text, for: indexPath) as! TextCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.text, for: indexPath) as? TextCell else { return UICollectionViewCell() }
             fillInterestCell(cell, indexPath)
             return cell
         } else if cellType == .event {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as! EventCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as? EventCell else { return UICollectionViewCell() }
             fillEventCell(cell, indexPath)
             return cell
         } else if cellType == .clubUser || cellType == .friends {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as! UserCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as? UserCell else { return UICollectionViewCell() }
             if cellType == .clubUser {
                 fillUserCell(cell, indexPath)
             } else if cellType == .friends {
@@ -39,7 +38,7 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
             }
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.profileImage, for: indexPath) as! ProfileImageCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.profileImage, for: indexPath) as? ProfileImageCell else { return UICollectionViewCell() }
             fillImagesCell(cell, indexPath)
             return cell
         }

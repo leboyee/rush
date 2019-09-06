@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class UserImagesHeaderView: UITableViewHeaderFooterView {
    
     @IBOutlet weak var roundedView: CustomView!
@@ -33,7 +32,7 @@ class UserImagesHeaderView: UITableViewHeaderFooterView {
     }
 }
 
-//MARK: - Setup
+// MARK: - Setup
 extension UserImagesHeaderView {
     func setup(image: UIImage?) {
         userImageView.image = image
@@ -59,7 +58,7 @@ extension UserImagesHeaderView {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 
 extension UserImagesHeaderView {
     

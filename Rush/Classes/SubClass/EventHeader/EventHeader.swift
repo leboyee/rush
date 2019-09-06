@@ -31,19 +31,18 @@ class EventHeader: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
-
-
 }
 
 extension EventHeader {
     
     private func commonInit() {
         let nib  = UINib(nibName: String(describing: EventHeader.self), bundle: nil)
-        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        view.clipsToBounds = true
-        addSubview(view)
-        addViewConstraint(view: view)
-        dateView.roundAllCorners(with: 24.0)
+        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            view.clipsToBounds = true
+            addSubview(view)
+            addViewConstraint(view: view)
+            dateView.roundAllCorners(with: 24.0)
+        }
     }
     
     private func addViewConstraint(view: UIView) {
@@ -92,7 +91,7 @@ extension EventHeader {
     }
 }
 
-//MARK:- Actions
+// MARK: - Actions
 extension EventHeader {
     
     @IBAction func calendarButtonAction() {

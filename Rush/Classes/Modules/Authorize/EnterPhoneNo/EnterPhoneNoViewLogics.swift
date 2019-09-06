@@ -12,8 +12,8 @@ extension EnterPhoneNoViewController {
     
     func setPlaceHolder() {
 
-        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)]
-        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)]
+        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
         
         let partOne = NSMutableAttributedString(string: "\(self.countryCode)-(", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
@@ -25,7 +25,7 @@ extension EnterPhoneNoViewController {
         partOne.append(partFour)
         placeHolderTextField.attributedPlaceholder = partOne
         
-        phoneNoTextField.font = UIFont.DisplayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue ? 22 : 28)
+        phoneNoTextField.font = UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)
     }
     
     func setContryCodeWith() {
@@ -34,14 +34,14 @@ extension EnterPhoneNoViewController {
     
 }
 
-//MARK:- Custom Picker delegate
+// MARK: - Custom Picker delegate
 extension EnterPhoneNoViewController: CustomPickerDelegate {
     func selectedValue(data: String, type: String) {
         
     }
     
     func selectedCountryValue(countryName: String, countryCode: String) {
-        self.phoneNoTextField.text = self.phoneNoTextField.text?.replacingOccurrences(of:"\(self.frontTextFiled)", with: "")
+        self.phoneNoTextField.text = self.phoneNoTextField.text?.replacingOccurrences(of: "\(self.frontTextFiled)", with: "")
         self.countryCode =  countryCode
         self.flagImage.image = UIImage(named: "\(countryName.replacingOccurrences(of: " ", with: ""))")
         setContryCodeWith()
@@ -49,8 +49,6 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
         if phoneNoTextField.text?.count == frontTextFiled.count {
             setPlaceHolder()
         }
-
-        
     }
 }
 
@@ -60,7 +58,7 @@ extension EnterPhoneNoViewController {
      */
     func authPhone() {
         Utils.showSpinner()
-        let verifyTye = loginType == .Register ? "signup" : "login"
+        let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = self.countryCode.replacingOccurrences(of: "+", with: "")
         var phoneString = self.phoneNoTextField.text?.replacingOccurrences(of: self.countryCode, with: "") ?? ""
         phoneString = phoneString.replacingOccurrences(of: "+", with: "")
@@ -69,16 +67,13 @@ extension EnterPhoneNoViewController {
         phoneString = phoneString.replacingOccurrences(of: ")", with: "")
         profile.phone = phoneString
         profile.countryCode = countryCodeString
-        let param = [kCountry_Code:  countryCodeString, kPhone: phoneString, kVerify_Type: verifyTye] as [String: Any]
-        ServiceManager.shared.authPhone(params: param) {
-            [weak self] (status, errorMessage) in
+        let param = [Keys.countryCode: countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye]
+        ServiceManager.shared.authPhone(params: param) { [weak self] (status, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            if (status){
-               self_.moveToVerificationView()
-            }
-            else {
-                
+            guard let unsafe = self else { return }
+            if status {
+               unsafe.moveToVerificationView()
+            } else {
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }

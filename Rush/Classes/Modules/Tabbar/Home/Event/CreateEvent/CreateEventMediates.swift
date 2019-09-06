@@ -5,10 +5,7 @@
 //  Created by Suresh Jagnani on 22/05/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
-
-
 import UIKit
-
 
 extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -28,7 +25,6 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
@@ -39,14 +35,17 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as! TextIconCell
-            fillTextIconCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell {
+                fillTextIconCell(cell, indexPath)
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as! TextViewCell
-            fillTextViewCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell {
+                fillTextViewCell(cell, indexPath)
+                return cell
+            }
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -56,11 +55,12 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as! UserImagesHeaderView
-            fillImageHeader(view)
-            return view
+            if let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView {
+                fillImageHeader(view)
+                return view
+            }
         }
-        return UIView()
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -126,7 +126,7 @@ extension CreateEventViewController: UIScrollViewDelegate {
                 navigationController?.navigationBar.layer.add(animation, forKey: nil)
             }
             
-            if (tableView.contentOffset.y < -40) {
+            if tableView.contentOffset.y < -40 {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
         }

@@ -9,7 +9,7 @@
 import UIKit
 
 class TextIconCell: UITableViewCell {
-
+    
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
@@ -17,9 +17,9 @@ class TextIconCell: UITableViewCell {
     @IBOutlet weak var chatSwitch: UISwitch!
     @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
     
-    var textDidChanged: ((_ text : String) -> Void)?
+    var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
-    var textDidEndEditing: ((_ text : String) -> Void)?
+    var textDidEndEditing: ((_ text: String) -> Void)?
     var switchValueChanged: ((_ isOn: Bool) -> Void)?
     
     override func awakeFromNib() {
@@ -28,14 +28,12 @@ class TextIconCell: UITableViewCell {
         textField.delegate = self
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-    
-    
 }
 
 extension TextIconCell {
@@ -48,14 +46,13 @@ extension TextIconCell {
         clearButton.isHidden = isHideCleareButton
     }
     
-    func setup(placeholder: String,title: String) {
+    func setup(placeholder: String, title: String) {
         textField.text = title
         textField.placeholder = placeholder
     }
     
     func setup(placeholder: String) {
-        
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.Regular(sz: 17.0)]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.regular(sz: 17.0)]
         let attstr = NSMutableAttributedString(string: placeholder, attributes: attributes)
         textField.attributedPlaceholder = attstr
     }
@@ -117,7 +114,7 @@ extension TextIconCell {
 extension TextIconCell: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-    
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

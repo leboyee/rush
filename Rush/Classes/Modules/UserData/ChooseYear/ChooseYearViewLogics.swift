@@ -19,29 +19,27 @@ extension ChooseYearViewController {
     }
     
     func fillChooseYearCell(_ cell: ListCell, _ indexPath: IndexPath) {
-        cell.setup(title:Utils.chooseYearArray()[indexPath.row])
+        cell.setup(title: Utils.chooseYearArray()[indexPath.row])
         cell.setup(checkMark: selectedIndex == indexPath.row ? true : false)
     }
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension ChooseYearViewController {
     
     func updateProfileAPI() {
         
-        let param = [kU_Edu_Year: Utils.chooseYearArray()[selectedIndex]]  as [String : Any]
+        let param = [Keys.uEduYear: Utils.chooseYearArray()[selectedIndex]]  as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: param) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                self_.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
         }
     }
 }
-

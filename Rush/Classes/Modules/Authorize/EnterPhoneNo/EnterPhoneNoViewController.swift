@@ -24,7 +24,7 @@ class EnterPhoneNoViewController: CustomViewController {
     var countryCode: String = "+1"
     var frontTextFiled: String = "+1"
     var profile = Profile()
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,8 @@ class EnterPhoneNoViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
-            placeHolderTextField.font = UIFont.DisplayBold(sz: 22)
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
+            placeHolderTextField.font = UIFont.displayBold(sz: 22)
         }
     }
     
@@ -55,8 +55,6 @@ class EnterPhoneNoViewController: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
-    
-    
     
     func setup() {
         setupUI()
@@ -73,18 +71,15 @@ class EnterPhoneNoViewController: CustomViewController {
         nextButton.setNextButton(isEnable: false)
         self.bgImageView.setBgForLoginSignup()
         
-        if loginType == .Register {
+        if loginType == .register {
             phoneNoTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
-        }
-        else {
+        } else {
             phoneNoTitleLabel.text = Text.phoneNoTitleLogin
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }
         setPlaceHolder()
     }
-
-
 }
 
 // MARK: - Actions
@@ -102,22 +97,20 @@ extension EnterPhoneNoViewController {
     
     @IBAction func countryButtonAction() {
         let customPickerStoryboard = UIStoryboard(name: StoryBoard.customPicker, bundle: nil)
-        let customPickerController : CustomPickerViewController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as! CustomPickerViewController
-        customPickerController.pickerDelegate = self
-        customPickerController.presenter.type = .country
-        customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        present(customPickerController, animated: false, completion: nil)
+        if let customPickerController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as? CustomPickerViewController {
+            customPickerController.pickerDelegate = self
+            customPickerController.presenter.type = .country
+            customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(customPickerController, animated: false, completion: nil)
+        }
     }
 }
 
-//MARK: Presenter
+// MARK: - Presenter
 extension EnterPhoneNoViewController {
     func moveToVerificationView() {
         self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)
     }
-    
-    
-    
 }
 // MARK: - Navigation
 extension EnterPhoneNoViewController {

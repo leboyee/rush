@@ -31,10 +31,10 @@ extension EventCategoryListViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if type == .none || type == .event {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as! EventByDateCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
             return cell
         } else if type == .club || type == .classes {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as! FriendClubCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
             fillClubCell(cell, indexPath)
             return cell
         } else {
@@ -53,10 +53,9 @@ extension EventCategoryListViewController: UITableViewDelegate, UITableViewDataS
 }
 
 // MARK: - Collectionview delegate methods
-extension EventCategoryListViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension EventCategoryListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func setupCollectionView() {
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: Cell.sortingCell, bundle: nil), forCellWithReuseIdentifier: Cell.sortingCell)
@@ -68,7 +67,7 @@ extension EventCategoryListViewController : UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.sortingCell, for: indexPath) as! SortingCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.sortingCell, for: indexPath) as? SortingCell else { return UICollectionViewCell() }
         fillSortingCell(cell, indexPath)
         return cell
     }

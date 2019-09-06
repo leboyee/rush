@@ -19,7 +19,6 @@ class ChatListCell: MGSwipeTableCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,7 +29,6 @@ class ChatListCell: MGSwipeTableCell {
 
         // Configure the view for the selected state
     }
-    
 }
 
 // MARK: - Other functions

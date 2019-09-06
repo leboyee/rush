@@ -10,39 +10,37 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 
-protocol CreatePostViewControllerDelegate {
+protocol CreatePostViewControllerDelegate: class {
     func showSnackBar(text: String, buttonText: String)
 }
 
-
 class CreatePostViewController: UIViewController {
-
-    @IBOutlet weak var tableView        : UITableView!
-    @IBOutlet weak var addPhotoButton   : UIButton!
-    @IBOutlet weak var takePhotoButton  : UIButton!
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomView: CustomView!
     
-    var imageList       = [Any]()
-    var imagePicker     = UIImagePickerController()
-    var bigFontCount    = 0
-    var picker          = ImagePickerController()
-    var delegate        : CreatePostViewControllerDelegate?
-    var iskeyboard      : Bool = false
-    var postText        = ""
+    var imageList = [Any]()
+    var imagePicker = UIImagePickerController()
+    var bigFontCount = 0
+    var picker = ImagePickerController()
+    weak var delegate: CreatePostViewControllerDelegate?
+    var iskeyboard: Bool = false
+    var postText = ""
     
-    
-    var createBtnActive : UIBarButtonItem {
+    var createBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
     }
     
-    var createBtnDisActive : UIBarButtonItem {
+    var createBtnDisActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "create-inactive"), style: .plain, target: self, action: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -60,15 +58,14 @@ class CreatePostViewController: UIViewController {
         setupUI()
     }
     
-    
     func setupUI() {
         // Setup tableview
         setupTableView()
         
-       bottomView.setBackgroundColor()
+        bottomView.setBackgroundColor()
         
         self.view.backgroundColor = UIColor.bgBlack
-    
+        
         // Left item button
         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
         navigationItem.leftBarButtonItem = cancel
@@ -102,7 +99,7 @@ class CreatePostViewController: UIViewController {
     }
 }
 
-// MARK:- Actions
+// MARK: - Actions
 extension CreatePostViewController {
     
     @IBAction func takePhotoButtonAction(_ sender: Any) {
@@ -146,9 +143,8 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
         picker.dismiss(animated: false, completion: nil)
     }
     
-    
     // MARK: - Capture Image
-    func openCameraOrLibrary(type : UIImagePickerController.SourceType) {
+    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
         DispatchQueue.main.async {
             if type == .photoLibrary {
                 let status = PHPhotoLibrary.authorizationStatus()
@@ -181,7 +177,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                     self.dismiss(animated: true, completion: nil)
                 }
                 
-                camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable : Any]?) in
+                camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
                     if let img = image { self.imageList.append(img) }
                     self.tableView.reloadData()
                     self.dismiss(animated: true, completion: nil)
@@ -227,16 +223,13 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     }
 }
 
- // MARK: - Navigation
+// MARK: - Navigation
 extension CreatePostViewController {
-    
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.postSegue {
             if let vc = segue.destination as? PostViewController {
                 vc.imageList = imageList
             }
         }
-     }
-    
+    }
 }

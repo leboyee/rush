@@ -18,9 +18,9 @@ extension ProfileViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150.0
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: Cell.notification, bundle: nil), forCellReuseIdentifier: Cell.notification)
-        tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
-        tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
+        tableView.register(cellName: Cell.notification)
+        tableView.register(cellName: Cell.eventType)
+        tableView.register(reusableViewName: ReusableView.textHeader)
         tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 50, right: 0)
         tableView.reloadData()
     }
@@ -33,7 +33,6 @@ extension ProfileViewController {
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionCount()
@@ -49,33 +48,45 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.notification, for: indexPath) as! NotificationCell
-            fillNotificationCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Cell.notification,
+                for: indexPath) as? NotificationCell {
+                fillNotificationCell(cell, indexPath)
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
-            fillEventTypeCell(cell, indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Cell.eventType,
+                for: indexPath) as? EventTypeCell {
+                fillEventTypeCell(cell, indexPath)
+                return cell
+            }
         }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow(indexPath)
     }
     
-    //MARK: - Header
+    // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight(section)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
-        fillTextHeader(header, section)
-        return header
+        if let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: ReusableView.textHeader
+            ) as? TextHeader {
+            fillTextHeader(header, section)
+            return header
+        }
+        return nil
     }
     
-    //MARK: - Footer
+    // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
@@ -84,15 +95,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return UIView()
     }
     
-    //MARK: - Scroll Delegates
+    // MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let smallHeight = headerSmallHeight + (AppDelegate.getInstance().window?.safeAreaInsets.top ?? 0)
+        let smallHeight = headerSmallHeight + (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
         let y = headerFullHeight - (scrollView.contentOffset.y + headerFullHeight)
         let height = min(max(y, smallHeight), screenHeight)
         self.headerHeightConstraint.constant = height
         print(height)
-    
     }
     
 }
