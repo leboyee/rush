@@ -24,6 +24,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var bottomView: CustomView!
     
     var imageList       = [Any]()
+    var imagedataList = [String: Any]()
     var imagePicker     = UIImagePickerController()
     var bigFontCount    = 0
     var picker          = ImagePickerController()
@@ -31,6 +32,7 @@ class CreatePostViewController: UIViewController {
     var iskeyboard      : Bool = false
     var postText        = ""
     
+    var clubInfo: Club?
     
     var createBtnActive : UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
@@ -76,6 +78,8 @@ class CreatePostViewController: UIViewController {
         // Right item button
         navigationItem.rightBarButtonItem = createBtnActive
         
+        createButtonValidation()
+        
         // Notification's of keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -85,7 +89,7 @@ class CreatePostViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            viewBottamConstraint.constant = keyboardHeight /*+ (Utils.isHasSafeArea ? -34 : 0)*/
+            viewBottamConstraint.constant = UIDevice.current.hasNotch ? (keyboardHeight - 34) : keyboardHeight
         }
     }
     
@@ -94,7 +98,7 @@ class CreatePostViewController: UIViewController {
     }
     
     func createButtonValidation() {
-        if postText.isNotEmpty && imageList.count > 0 {
+        if postText.isNotEmpty {
             navigationItem.rightBarButtonItem = createBtnActive
         } else {
             navigationItem.rightBarButtonItem = createBtnDisActive
@@ -122,7 +126,8 @@ extension CreatePostViewController {
     }
     
     @objc func createButtonAction() {
-        performSegue(withIdentifier: Segues.postSegue, sender: nil)
+        //performSegue(withIdentifier: Segues.postSegue, sender: nil)
+        getImagesDataList(index: 0)
     }
     
 }

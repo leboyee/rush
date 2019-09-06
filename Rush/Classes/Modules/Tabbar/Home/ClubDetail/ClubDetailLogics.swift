@@ -147,6 +147,9 @@ extension ClubDetailViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         
+        if indexPath.section == 5 && joinedClub {
+            performSegue(withIdentifier: Segues.createPost, sender: nil)
+        }
     }
 }
 

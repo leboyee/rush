@@ -11,7 +11,12 @@ import UIKit
 extension HomeViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat.leastNormalMagnitude : 50
+        if section == 0 {
+            return CGFloat.leastNormalMagnitude
+        } else if section == 2 {
+            return clubList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
+        }
+        return 50
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -23,6 +28,8 @@ extension HomeViewController {
             return isShowTutorial ? UITableView.automaticDimension : CGFloat.leastNormalMagnitude
         } else if indexPath.section == 1 && isShowJoinEvents {
             return UITableView.automaticDimension
+        } else if indexPath.section == 2 {
+            return clubList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         } else {
             return 157
         }
@@ -65,6 +72,15 @@ extension HomeViewController {
             cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
         } else {
             cell.setup(.classes, nil, nil)
+        }
+        
+        cell.cellSelected = { [weak self] (type, id, item) in
+            guard let uwself = self else { return }
+            
+            if indexPath.section == 2 {
+                let club = uwself.clubList[item]
+                uwself.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            }
         }
     }
     

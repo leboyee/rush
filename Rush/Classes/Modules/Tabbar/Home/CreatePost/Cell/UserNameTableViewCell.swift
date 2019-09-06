@@ -23,5 +23,15 @@ class UserNameTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
+
+// MARK: - Other functions
+extension UserNameTableViewCell {
+    func setup(title: String) {
+        postUserName.text = title
+    }
     
+    func setup(detail: String) {
+        postUserDescripation.text = detail
+    }
 }

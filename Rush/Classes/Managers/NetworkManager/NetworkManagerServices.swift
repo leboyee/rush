@@ -96,4 +96,8 @@ extension NetworkManager {
     func getClubDetail(clubId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "club/\(clubId)", params: params, resultHandler: resultHandler)
     }
+    
+    func createPost(param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
 }

@@ -11,7 +11,11 @@ import UIKit
 extension ClubListViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return 50
+        if section == 0 && myClubList.count > 0 {
+            return 50
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -22,7 +26,7 @@ extension ClubListViewController {
         if indexPath.section == 0 && (myClubList.count > 0 || myClassesList.count > 0) {
             return UITableView.automaticDimension
         } else {
-            return 157
+            return CGFloat.leastNormalMagnitude
         }
     }
     
