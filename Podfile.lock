@@ -38,6 +38,9 @@ PODS:
     - SDWebImage
     - SDWebImageFLPlugin
   - FLAnimatedImage (1.0.12)
+  - GoogleMaps/Base (3.4.0)
+  - GooglePlaces (3.4.0):
+    - GoogleMaps/Base (= 3.4.0)
   - IQKeyboardManagerSwift (6.4.1)
   - MGSwipeTableCell (1.6.9)
   - ReachabilitySwift (4.3.1)
@@ -55,6 +58,7 @@ DEPENDENCIES:
   - DKImagePickerController/Camera
   - DKImagePickerController/InlineCamera
   - DKImagePickerController/PhotoGallery
+  - GooglePlaces
   - IQKeyboardManagerSwift
   - MGSwipeTableCell
   - ReachabilitySwift
@@ -69,6 +73,8 @@ SPEC REPOS:
     - DKImagePickerController
     - DKPhotoGallery
     - FLAnimatedImage
+    - GoogleMaps
+    - GooglePlaces
     - IQKeyboardManagerSwift
     - MGSwipeTableCell
     - ReachabilitySwift
@@ -83,6 +89,8 @@ SPEC CHECKSUMS:
   DKImagePickerController: 58d6c4b316ac9bfcf6f7259866ef36cc3d985352
   DKPhotoGallery: ce7c1f629450dd07048aa30310319953785857a7
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
+  GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
   IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
@@ -92,6 +100,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
-PODFILE CHECKSUM: c823e2f464795524ea9248d7b7a2f511cc83ca37
+PODFILE CHECKSUM: 5fd8ba5fbacfd4d7e2d4797687d98ecc726c36fd
 
 COCOAPODS: 1.7.5

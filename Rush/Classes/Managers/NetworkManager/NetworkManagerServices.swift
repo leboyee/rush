@@ -50,6 +50,10 @@ extension NetworkManager {
     func uploadUserProfileImage(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "profile/photo", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
+
+    func instagramConnect(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "instagram/connect", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
     
     func getProfile(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "profile", params: params, resultHandler: resultHandler)

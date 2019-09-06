@@ -12,7 +12,7 @@ import SDWebImage
 class UserCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var countLabel: UILabel!
     
     override func awakeFromNib() {

@@ -57,20 +57,24 @@ class EventTypeCell: UITableViewCell {
     
     func setup(userList: [String]) {
         cellType = .clubUser
+        reload()
     }
     
     func setup(friends: [Friend]) {
         cellType = .friends
         list = friends
+        reload()
     }
     
     func setup(interests: [Tag]) {
         cellType = .interests
         list = interests
+        reload()
     }
     
     func setup(imagesList: [UIImage]) {
         cellType = .profileImage
+        reload()
     }
     
     func setup(isSeparatorHide: Bool) {

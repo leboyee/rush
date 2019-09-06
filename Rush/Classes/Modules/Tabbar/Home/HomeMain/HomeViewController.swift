@@ -22,6 +22,7 @@ class HomeViewController: CustomViewController {
     
     var searchText = ""
     var pageNo = 1
+    var clubList = [Club]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +37,7 @@ class HomeViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
-        
-        getMyClubListAPI(sortBy: "my")
+        getMyClubListAPI(sortBy: "feed")
     }
     
     func setup() {
@@ -46,7 +46,6 @@ class HomeViewController: CustomViewController {
     
     func setupUI() {
         setupTableView()
-        
         setupNavigation()
     }
     
@@ -111,6 +110,14 @@ extension HomeViewController {
     
     @objc func viewCalenderBtnAction() {
         performSegue(withIdentifier: Segues.calendarHome, sender: nil)
+    }
+}
+
+// MARK: - Mediator / Presenter Functions
+extension HomeViewController {
+
+    func showEvent() {
+        performSegue(withIdentifier: Segues.homeEventDetail, sender: nil)
     }
 }
 

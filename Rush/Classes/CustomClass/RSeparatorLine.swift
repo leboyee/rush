@@ -13,7 +13,7 @@ class RSeparatorLine: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupCustomUI()
-    }
+}
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,5 +22,4 @@ class RSeparatorLine: UIView {
     func setupCustomUI() {
         backgroundColor = isDarkModeOn ? UIColor.separatorColorDark : UIColor.separatorColor
     }
-
 }

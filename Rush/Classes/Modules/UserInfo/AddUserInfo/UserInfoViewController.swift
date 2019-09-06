@@ -20,7 +20,9 @@ class UserInfoViewController: CustomViewController {
     @IBOutlet weak var nextButton: CustomButton!
     @IBOutlet weak var titleLabelOne: UILabel!
     @IBOutlet weak var titleLableTwo: UILabel!
-    
+
+    var selectedGender: Int = 0
+    var selectedRelation: Int = 0
     var selectedIndex = -1
     var dob = ""
     var gender = ""

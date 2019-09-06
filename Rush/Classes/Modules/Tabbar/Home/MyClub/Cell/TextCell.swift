@@ -9,17 +9,15 @@
 import UIKit
 
 class TextCell: UICollectionViewCell {
-    
-    @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet weak var label: CustomBlackLabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        backgroundColor = UIColor.white
+        //backgroundColor = isDarkModeOn ? UIColor.separatorColorDark : UIColor.white
+        //label.textColor = isDarkModeOn ? UIColor.white : UIColor.bgBlack
         clipsToBounds = true
         layer.cornerRadius = 8.0
     }
-    
 }
 
 extension TextCell {

@@ -434,6 +434,7 @@ extension ChatManager {
     func blockUserId(_ userId: String, handler completionHandler: ((_ status: Bool) -> Void)? = nil) {
         //Block user in SendBird API
         SBDMain.blockUserId(userId, completionHandler: { (_, error) in
+
             if completionHandler != nil {
                 if error == nil {
                     completionHandler?(true)

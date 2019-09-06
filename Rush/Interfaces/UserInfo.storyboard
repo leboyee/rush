@@ -404,19 +404,31 @@
                                     <action selector="connectButtonAction" destination="Uip-Jx-t8I" eventType="touchUpInside" id="z9z-Ma-BxP"/>
                                 </connections>
                             </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65c-4y-CDf">
+                                <rect key="frame" x="0.0" y="84" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3h2-YJ-kbR" firstAttribute="trailing" secondItem="gLA-Fo-EwG" secondAttribute="trailing" constant="24" id="0WE-hr-EW0"/>
                             <constraint firstItem="h0a-jw-rsy" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="BtV-5v-I5v"/>
+                            <constraint firstItem="65c-4y-CDf" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="Dx0-V4-wTk"/>
                             <constraint firstItem="Wmc-NH-SSx" firstAttribute="top" secondItem="T9G-It-hDC" secondAttribute="top" id="G0G-EJ-wd9"/>
                             <constraint firstAttribute="bottom" secondItem="Wmc-NH-SSx" secondAttribute="bottom" id="KYb-37-Szd"/>
                             <constraint firstItem="3h2-YJ-kbR" firstAttribute="bottom" secondItem="gLA-Fo-EwG" secondAttribute="bottom" constant="15" id="KqN-Xq-5xM"/>
+                            <constraint firstItem="65c-4y-CDf" firstAttribute="top" secondItem="T9G-It-hDC" secondAttribute="top" constant="84" id="Tm2-Na-0eQ"/>
                             <constraint firstItem="h0a-jw-rsy" firstAttribute="top" secondItem="3h2-YJ-kbR" secondAttribute="top" constant="13" id="Usn-Jf-YDj"/>
                             <constraint firstItem="Wmc-NH-SSx" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="Vu7-hj-OIq"/>
                             <constraint firstItem="gLA-Fo-EwG" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" constant="24" id="bgU-SU-ICp"/>
                             <constraint firstItem="h0a-jw-rsy" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="e0k-cu-YvJ"/>
+                            <constraint firstItem="65c-4y-CDf" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="fjO-k1-0rE"/>
                             <constraint firstItem="gLA-Fo-EwG" firstAttribute="top" secondItem="h0a-jw-rsy" secondAttribute="bottom" constant="18" id="mHK-UC-G19"/>
+                            <constraint firstAttribute="bottom" secondItem="65c-4y-CDf" secondAttribute="bottom" constant="-84" id="tUh-e2-uKt"/>
                             <constraint firstItem="Wmc-NH-SSx" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="xbn-Sc-lO3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3h2-YJ-kbR"/>
@@ -425,6 +437,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="connectButton" destination="gLA-Fo-EwG" id="pka-hW-S76"/>
+                        <outlet property="wkWebView" destination="65c-4y-CDf" id="esw-Ce-hgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nD-lo-1DC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,7 +447,6 @@
         <!--Contacts List View Controller-->
         <scene sceneID="TcB-I1-Bbk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="udi-jN-Ow4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ContactsListViewController" id="cSO-kf-o94" customClass="ContactsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Ab-tX-37d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
@@ -489,6 +501,7 @@
                         <outlet property="tableView" destination="s9m-he-agA" id="T6d-AU-HXD"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="udi-jN-Ow4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8071" y="483"/>
         </scene>

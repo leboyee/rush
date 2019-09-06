@@ -66,11 +66,21 @@ extension NotificationCell {
         
         let pargraphStyle = NSMutableParagraphStyle()
         pargraphStyle.lineSpacing = 1.29
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightBrown, NSAttributedString.Key.font: UIFont.regular(sz: 17.0), NSAttributedString.Key.paragraphStyle: pargraphStyle,
-                          NSAttributedString.Key.kern: -0.41] as [NSAttributedString.Key: Any]
+
+        let color1 = isDarkModeOn ? UIColor.buttonDisableTextColor : UIColor.bgBlack
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: color1,
+            NSAttributedString.Key.font: UIFont.regular(sz: 17.0),
+            NSAttributedString.Key.paragraphStyle: pargraphStyle,
+            NSAttributedString.Key.kern: -0.41] as [NSAttributedString.Key: Any]
         
+        let color2 = isDarkModeOn ? UIColor.white : UIColor.bgBlack
         let attstr = NSMutableAttributedString(string: stringWithoutSeparator, attributes: attributes)
-        let boldAttributes = [NSAttributedString.Key.font: UIFont.medium(sz: 17.0)]
+
+        let boldAttributes = [
+            NSAttributedString.Key.foregroundColor: color2,
+            NSAttributedString.Key.font: UIFont.medium(sz: 17.0)
+        ]
         for text in strings {
             if let range = (stringWithoutSeparator as NSString).range(of: text) as NSRange? {
                 attstr.setAttributes(boldAttributes, range: range)

@@ -62,6 +62,7 @@ class CustomPickerViewController: UIViewController {
         presenter.mediator = mediator
         setupPresenterHandlers()
         presenter.viewIsReady()
+        //pickerView.selectRow(presenter.selectedValue, inComponent: 0, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

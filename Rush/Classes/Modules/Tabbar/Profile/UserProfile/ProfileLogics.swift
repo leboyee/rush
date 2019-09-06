@@ -40,8 +40,6 @@ extension ProfileViewController {
             return 112.0
         } else if indexPath.section == 1 {
             return 88.0
-        } else if indexPath.section == 0 {
-            return 44.0
         } else {
            return UITableView.automaticDimension
         }

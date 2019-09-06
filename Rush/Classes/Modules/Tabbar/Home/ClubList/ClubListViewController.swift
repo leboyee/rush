@@ -26,6 +26,11 @@ class ClubListViewController: CustomViewController {
     
     var screenType: ClubListType = .none
     
+    var searchText = ""
+    var pageNo = 1
+    var myClubList = [Club]()
+    var myClassesList = [Club]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +44,8 @@ class ClubListViewController: CustomViewController {
     
     func setupUI() {
         setupTableView()
-        
         setupNavigation()
+        getMyClubListAPI(sortBy: "my")
     }
     
     func setupNavigation() {

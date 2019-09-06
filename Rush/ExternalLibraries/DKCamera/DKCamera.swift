@@ -119,7 +119,6 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     fileprivate var newdefaultPhotoSettings: Any?
     @available(iOS 10.0, *)
     fileprivate var defaultPhotoSettings: AVCapturePhotoSettings {
-        get {
             if newdefaultPhotoSettings == nil {
                 let photoSettings = AVCapturePhotoSettings()
                 photoSettings.isHighResolutionPhotoEnabled = true
@@ -128,7 +127,6 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             }
             
             return newdefaultPhotoSettings as? AVCapturePhotoSettings ?? AVCapturePhotoSettings()
-        }
     }
     
     open var contentView = UIView()

@@ -63,6 +63,13 @@ extension HomeViewController {
         } else {
             cell.setup(.classes, nil)
         }
+        
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let unsafe = self else { return }
+            if type == .upcoming {
+                unsafe.showEvent()
+            }
+        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
@@ -103,12 +110,23 @@ extension HomeViewController {
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { (data, errorMessage) in
+
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
-            if data != nil {
-                
+            guard let unowned = self else { return }
+            if let list = data?[Keys.list] as? [[String: Any]] {
+                for club in list {
+                    do {
+                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(Club.self, from: dataClub)
+                        unowned.clubList.append(value)
+                    } catch {
+                        
+                    }
+                }
             } else {
-                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }

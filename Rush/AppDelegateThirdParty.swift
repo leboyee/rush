@@ -9,13 +9,14 @@
 import UIKit
 import IQKeyboardManagerSwift
 import SendBirdSDK
+import GooglePlaces
 
 extension AppDelegate {
     func addThirdPartySDK() {
         
         //KeyboardManager
         setupIQKeyboardManager()
-        
+        setupGoogle()
     }
     
     func setupIQKeyboardManager() {
@@ -23,6 +24,12 @@ extension AppDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
+    
+    // MARK: - Setup Google
+    func setupGoogle() {
+        GMSPlacesClient.provideAPIKey("AIzaSyBa9T2HvCONOPsh73oB3AvCu0UDKOH8REM")
+    }
+    
 }
 
 // MARK: - SendBird Chat SDK

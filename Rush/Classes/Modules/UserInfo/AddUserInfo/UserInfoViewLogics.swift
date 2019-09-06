@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GooglePlaces
+import CoreLocation
 
 extension UserInfoViewController {
     
@@ -73,9 +75,13 @@ extension UserInfoViewController {
                     self.present(customPickerController, animated: false, completion: nil)
                 }
             case 3:
-                
-                break
-                
+                let autocompleteController = GMSAutocompleteViewController()
+                autocompleteController.delegate = self
+                let filter = GMSAutocompleteFilter()
+                filter.type = .address
+                autocompleteController.autocompleteFilter = filter
+                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
+                self.present(autocompleteController, animated: true, completion: nil)
             default:
                 break
             }
@@ -99,8 +105,10 @@ extension UserInfoViewController: CustomPickerDelegate {
     func selectedValue(data: String, type: String) {
         if type == "Gender" {
             gender = data
+            selectedGender = data == "Male" ? 0 : 1
         } else {
             relation = data
+            selectedRelation = data == "Taken" ? 1 : data == "Prefer not to say" ? 2 : 0
         }
         nextButtonEnabled()
         tableView.reloadData()
@@ -111,4 +119,23 @@ extension UserInfoViewController: CustomPickerDelegate {
 // MARK: - Manage Interator or API's Calling
 extension UserInfoViewController {
     
+}
+
+// MARK: - Manage Interator or API's Calling
+extension UserInfoViewController {
+    func updateProfileAPI() {
+        /*
+        let param = [Keys.userInterests: selectedArray]  as [String : Any]
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) {
+            [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let self_ = self else { return }
+            if data != nil {
+                self_.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }*/
+    }
 }
