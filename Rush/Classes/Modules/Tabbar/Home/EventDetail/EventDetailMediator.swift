@@ -25,7 +25,7 @@ extension EventDetailViewController {
         tableView.register(UINib(nibName: Cell.createPost, bundle: nil), forCellReuseIdentifier: Cell.createPost)
         
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
-        tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 0, right: 0)
+        //tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 0, right: 0)
         tableView.reloadData()
     }
     
@@ -113,14 +113,36 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     //MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         let topMergin = (AppDelegate.getInstance().window?.safeAreaInsets.top ?? 0)
         let smallHeaderHeight = event?.date == nil ? headerSmallWithoutDateHeight : headerSmallWithDateHeight
         let smallHeight = smallHeaderHeight + topMergin
-        let y = headerFullHeight - (scrollView.contentOffset.y + headerFullHeight)
-        let height = min(max(y, smallHeight), screenHeight)
+        let h = headerHeightConstraint.constant - scrollView.contentOffset.y
+        let height = min(max(h, smallHeight), screenHeight)
         self.headerHeightConstraint.constant = height
-        print(height)
+        if !smallHeight.isEqual(to: height) {
+            tableView.contentOffset = CGPoint(x: 0, y: 0)
+        }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.headerHeightConstraint.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.headerHeightConstraint.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+}
+
+extension EventDetailViewController {
+    private func animateHeader() {
+        self.headerHeightConstraint.constant = headerFullHeight
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
 }

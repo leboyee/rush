@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="304" width="414" height="592"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="677-ZA-Vck">
-                                        <rect key="frame" x="0.0" y="-367" width="414" height="959"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="592"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -37,7 +37,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="677-ZA-Vck" secondAttribute="bottom" id="4En-S1-zaa"/>
                                     <constraint firstItem="677-ZA-Vck" firstAttribute="leading" secondItem="hNk-ed-2Qe" secondAttribute="leading" id="PrC-66-fkq"/>
-                                    <constraint firstItem="677-ZA-Vck" firstAttribute="top" secondItem="hNk-ed-2Qe" secondAttribute="top" constant="-367" id="XZG-Wu-lfv"/>
+                                    <constraint firstItem="677-ZA-Vck" firstAttribute="top" secondItem="hNk-ed-2Qe" secondAttribute="top" id="XZG-Wu-lfv"/>
                                     <constraint firstAttribute="trailing" secondItem="677-ZA-Vck" secondAttribute="trailing" id="rfP-hG-YaM"/>
                                 </constraints>
                             </view>

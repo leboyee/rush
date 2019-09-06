@@ -48,7 +48,7 @@ class EventDetailViewController: UIViewController {
     
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
-    let headerSmallWithoutDateHeight: CGFloat = 104
+    let headerSmallWithoutDateHeight: CGFloat = 114
 
     override func viewDidLoad() {
         super.viewDidLoad()
