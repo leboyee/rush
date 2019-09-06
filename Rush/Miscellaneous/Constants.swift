@@ -75,6 +75,9 @@ struct Cell {
     static let checkMark            = "CheckMarkCell"
     static let notification         = "NotificationCell"
     static let text                 = "TextCell"
+    static let eventAbout           = "EventAboutCell"
+    static let location             = "LocationCell"
+    static let createPost           = "CreatePostCell"
 }
 
 struct ReusableView {
@@ -146,6 +149,7 @@ struct Segues {
 
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
     static let chatContactListSegue               = "ChatContactListSegue"
+    static let homeEventDetail                    = "HomeEventDetailSegue"
 
 }
 
@@ -297,11 +301,11 @@ enum EventCategoryType {
     
 }
 
-enum EventType {
-    case none
-    case publik
-    case closed
-    case inviteOnly
+enum EventType: String, Codable {
+    case none = "none"
+    case publik = "public"
+    case closed = "closed"
+    case inviteOnly = "invite_only"
 }
 
 enum LoginType {

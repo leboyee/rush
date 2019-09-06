@@ -20,3 +20,6 @@
 //https://3.15.70.78/api
  
  */
+
+
+//https://dispatchswift.com/render-a-map-as-an-image-using-mapkit-3102a5a3fa5

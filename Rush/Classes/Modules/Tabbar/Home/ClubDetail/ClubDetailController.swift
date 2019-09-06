@@ -37,13 +37,6 @@ class ClubDetailViewController: UIViewController {
     
     func setupUI() {
         
-        /*
-        let total = screenWidth + 15
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        */
-        
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         navigationController?.navigationBar.backgroundColor = UIColor.clear
