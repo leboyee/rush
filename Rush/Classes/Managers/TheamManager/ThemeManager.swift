@@ -22,6 +22,8 @@ class ThemeManager: NSObject {
             RSeparatorLine.appearance().backgroundColor = UIColor.separatorColorDark
             CustomBrownLabel.appearance().textColor = UIColor.white
             TextCell.appearance().backgroundColor = UIColor.separatorColorDark
+            RRedArrowImageView.appearance().isHighlighted = true
+
         } else {
             CustomBlackLabel.appearance().textColor = UIColor.bgBlack
             RBackgoundView.appearance().backgroundColor = UIColor.bgWhite96
@@ -29,6 +31,7 @@ class ThemeManager: NSObject {
             RSeparatorLine.appearance().backgroundColor = UIColor.separatorColor
             CustomBrownLabel.appearance().textColor = UIColor.brown24
             TextCell.appearance().backgroundColor = UIColor.white
+            RRedArrowImageView.appearance().isHighlighted = false
         }
         
         UIApplication.shared.windows.forEach { window in

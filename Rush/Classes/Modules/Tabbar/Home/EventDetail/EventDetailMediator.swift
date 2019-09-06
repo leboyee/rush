@@ -25,7 +25,7 @@ extension EventDetailViewController {
         tableView.register(UINib(nibName: Cell.createPost, bundle: nil), forCellReuseIdentifier: Cell.createPost)
         
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
-        //tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 50, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 0, right: 0)
         tableView.reloadData()
     }
     
@@ -110,16 +110,17 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return RSeparatorLine()
     }
     
-    /*
+    
     //MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let smallHeight = headerSmallHeight + (AppDelegate.getInstance().window?.safeAreaInsets.top ?? 0)
+        let topMergin = (AppDelegate.getInstance().window?.safeAreaInsets.top ?? 0)
+        let smallHeaderHeight = event?.date == nil ? headerSmallWithoutDateHeight : headerSmallWithDateHeight
+        let smallHeight = smallHeaderHeight + topMergin
         let y = headerFullHeight - (scrollView.contentOffset.y + headerFullHeight)
         let height = min(max(y, smallHeight), screenHeight)
         self.headerHeightConstraint.constant = height
         print(height)
-        
-    }*/
+    }
     
 }

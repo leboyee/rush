@@ -15,9 +15,11 @@ protocol EventHeaderDelegate: class {
 class EventHeader: UIView {
 
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var dateLabel: CustomBlackLabel!
+    @IBOutlet weak var dayLabel: CustomBlackLabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateView: RBackgoundView!
+    @IBOutlet weak var headerImage: UIImageView!
 
     weak var delegate: EventHeaderDelegate?
     override init(frame: CGRect) {
@@ -30,17 +32,18 @@ class EventHeader: UIView {
         commonInit()
     }
 
+
 }
 
 extension EventHeader {
     
     private func commonInit() {
-        let nib  = UINib(nibName: String(describing: ParallaxHeader.self), bundle: nil)
+        let nib  = UINib(nibName: String(describing: EventHeader.self), bundle: nil)
         let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         view.clipsToBounds = true
         addSubview(view)
         addViewConstraint(view: view)
-        
+        dateView.roundAllCorners(with: 24.0)
     }
     
     private func addViewConstraint(view: UIView) {
@@ -57,12 +60,35 @@ extension EventHeader {
 // MARK: - Other
 extension EventHeader {
     
-    func set(date: Date) {
+    func set(date: Date?) {
+        guard let date = date else {
+            dateView.isHidden = true
+            return
+        }
+        
+        dateView.isHidden = false
+        monthLabel.text = date.toString(format: "MMM").uppercased()
+        dateLabel.text = date.toString(format: "dd")
+        dayLabel.text = date.toString(format: "EEEE")
 
     }
 
-    func set(start: Date, end: Date) {
+    func set(start: Date?, end: Date?) {
 
+        guard let startDate = start else {
+            timeLabel.text = ""
+            return
+        }
+
+        var text = startDate.toString(format: "hh:mm a")
+        if let endDate = end {
+            text +=  "-" +  endDate.toString(format: "hh:mm a")
+        }
+        timeLabel.text = text
+    }
+    
+    func set(url: URL?) {
+        headerImage.sd_setImage(with: url, placeholderImage: nil)
     }
 }
 

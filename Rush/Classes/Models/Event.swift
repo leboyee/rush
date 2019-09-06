@@ -16,7 +16,7 @@ struct EventGroup {
 class Event: Codable {
     
     var id: Int64 = 0
-    var date: Date = Date()
+    var date: Date?
     var title: String = ""
     var desc: String = ""
     var type: String = ""

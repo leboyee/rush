@@ -148,6 +148,8 @@ extension EventDetailViewController {
         event?.title = "Harvard gaming"
         event?.desc = "We going to enjoy VR videogames, will see art exhibitions and much more!"
         event?.date = Date().plus(days: 7)
+        event?.start = event?.date
+        event?.end = event?.date?.plus(hours: 1)
         event?.type = "event"
         event?.eventType = .closed
         event?.address = Address()
@@ -158,6 +160,9 @@ extension EventDetailViewController {
         event?.address?.country = "USA"
         event?.address?.latitude = 40.768452
         event?.address?.longitude = -73.832764
+        event?.thumbnil = "http://www.fedracongressi.com/fedra/wp-content/uploads/2016/02/revelry-event-designers-homepage-slideshow-38.jpeg"
         tableView.reloadData()
+        
+        updateHeaderInfo()
     }
 }

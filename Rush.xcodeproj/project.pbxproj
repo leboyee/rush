@@ -401,6 +401,7 @@
 		8A03459F231FD2060065CF3C /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A03459D231FD2060065CF3C /* LocationCell.xib */; };
 		8A0345A323213DD20065CF3C /* CreatePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345A123213DD20065CF3C /* CreatePostCell.swift */; };
 		8A0345A423213DD20065CF3C /* CreatePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A0345A223213DD20065CF3C /* CreatePostCell.xib */; };
+		8A0345A623226C540065CF3C /* RRedArrowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345A523226C540065CF3C /* RRedArrowImageView.swift */; };
 		8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13122FADEA30055C65F /* CalendarViewController.swift */; };
 		8A04B13422FADEC50055C65F /* CalendarEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */; };
 		8A04B13622FADF2D0055C65F /* CalendarLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13522FADF2D0055C65F /* CalendarLogics.swift */; };
@@ -863,6 +864,7 @@
 		8A03459D231FD2060065CF3C /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		8A0345A123213DD20065CF3C /* CreatePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostCell.swift; sourceTree = "<group>"; };
 		8A0345A223213DD20065CF3C /* CreatePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePostCell.xib; sourceTree = "<group>"; };
+		8A0345A523226C540065CF3C /* RRedArrowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRedArrowImageView.swift; sourceTree = "<group>"; };
 		8A04B13122FADEA30055C65F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8A04B13322FADEC50055C65F /* CalendarEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListViewController.swift; sourceTree = "<group>"; };
 		8A04B13522FADF2D0055C65F /* CalendarLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLogics.swift; sourceTree = "<group>"; };
@@ -1063,6 +1065,7 @@
 				8A04B14D22FC2FC00055C65F /* RBackgoundView.swift */,
 				8A04B15822FC446B0055C65F /* RSeparatorLine.swift */,
 				8A04B16722FD6ED30055C65F /* RSwitch.swift */,
+				8A0345A523226C540065CF3C /* RRedArrowImageView.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -3085,6 +3088,7 @@
 				797FFDAB22B7BC480055A001 /* PhotoAlbumTitleButton.swift in Sources */,
 				1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */,
 				7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */,
+				8A0345A623226C540065CF3C /* RRedArrowImageView.swift in Sources */,
 				1A2809E322C5F43B00B4E764 /* ChooseClassesViewLogics.swift in Sources */,
 				8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */,
 				8A034598231FA58A0065CF3C /* EventAboutCell.swift in Sources */,

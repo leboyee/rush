@@ -18,7 +18,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventHeader" customModule="Rush" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="4fQ-Q8-wYe" id="hwN-RQ-Rqe"/>
+                <outlet property="dateView" destination="urp-ay-FeH" id="m5b-bo-gTn"/>
                 <outlet property="dayLabel" destination="u5S-VD-IJg" id="G68-h8-Pjg"/>
+                <outlet property="headerImage" destination="Hj8-9i-80d" id="zzV-tq-px2"/>
                 <outlet property="monthLabel" destination="UU0-ER-kox" id="Wpr-4i-u4e"/>
                 <outlet property="timeLabel" destination="Gnl-lY-zaU" id="Yar-jA-13B"/>
             </connections>
@@ -34,8 +36,8 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-club" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-zh-cFV">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urp-ay-FeH">
-                    <rect key="frame" x="16" y="232" width="382" height="64"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urp-ay-FeH" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                    <rect key="frame" x="16" y="209" width="382" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU0-ER-kox">
                             <rect key="frame" x="16" y="15" width="48" height="16"/>
@@ -43,13 +45,13 @@
                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fQ-Q8-wYe">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fQ-Q8-wYe" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
                             <rect key="frame" x="16" y="31" width="48" height="16"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                             <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5S-VD-IJg">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5S-VD-IJg" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
                             <rect key="frame" x="80" y="12" width="78.5" height="20.5"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                             <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,45 +63,48 @@
                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCH-8X-9pb">
-                            <rect key="frame" x="279" y="18" width="58" height="28"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beM-PM-fyO">
+                            <rect key="frame" x="279" y="18" width="83" height="28"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                            <state key="normal" title="Calendar">
-                                <color key="titleColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="calendarButtonAction" destination="-1" eventType="touchUpInside" id="7cs-HF-VQs"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beM-PM-fyO">
-                            <rect key="frame" x="342" y="22" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="aMX-Rh-FuT"/>
-                                <constraint firstAttribute="width" constant="20" id="qgh-mJ-8S0"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                            <state key="normal" image="red-arrow">
+                            <state key="normal">
                                 <color key="titleColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="calendarButtonAction" destination="-1" eventType="touchUpInside" id="R8w-QF-K21"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqK-mz-m4f" customClass="CustomBrownLabel" customModule="Rush" customModuleProvider="target">
+                            <rect key="frame" x="279" y="18" width="58" height="28"/>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                            <color key="textColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="bV1-Cq-EHk" customClass="RRedArrowImageView" customModule="Rush" customModuleProvider="target">
+                            <rect key="frame" x="342" y="22" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="5V5-qB-cXJ"/>
+                                <constraint firstAttribute="height" constant="20" id="YtI-Lg-qdB"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="33g-Us-0oz"/>
                         <constraint firstItem="Gnl-lY-zaU" firstAttribute="leading" secondItem="u5S-VD-IJg" secondAttribute="leading" id="3Xi-Us-VKb"/>
+                        <constraint firstItem="beM-PM-fyO" firstAttribute="top" secondItem="wqK-mz-m4f" secondAttribute="top" id="60g-YE-bli"/>
                         <constraint firstItem="Gnl-lY-zaU" firstAttribute="top" secondItem="u5S-VD-IJg" secondAttribute="bottom" id="6Bx-1c-9GK"/>
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="top" secondItem="UU0-ER-kox" secondAttribute="bottom" id="6pN-ii-0dq"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="UU0-ER-kox" secondAttribute="trailing" constant="16" id="956-3V-sct"/>
-                        <constraint firstItem="beM-PM-fyO" firstAttribute="leading" secondItem="zCH-8X-9pb" secondAttribute="trailing" constant="5" id="D4y-bX-bQZ"/>
+                        <constraint firstItem="beM-PM-fyO" firstAttribute="leading" secondItem="wqK-mz-m4f" secondAttribute="leading" id="Bmi-1b-qtp"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="top" secondItem="urp-ay-FeH" secondAttribute="top" constant="12" id="LAH-yI-5jx"/>
-                        <constraint firstItem="zCH-8X-9pb" firstAttribute="centerY" secondItem="urp-ay-FeH" secondAttribute="centerY" id="Lbq-tJ-AmO"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" constant="80" id="LoX-hg-cWa"/>
+                        <constraint firstItem="bV1-Cq-EHk" firstAttribute="trailing" secondItem="beM-PM-fyO" secondAttribute="trailing" id="Ltz-xf-Wv8"/>
+                        <constraint firstItem="beM-PM-fyO" firstAttribute="bottom" secondItem="wqK-mz-m4f" secondAttribute="bottom" id="NjS-k1-mLF"/>
+                        <constraint firstItem="bV1-Cq-EHk" firstAttribute="centerY" secondItem="urp-ay-FeH" secondAttribute="centerY" id="RkM-ca-MAY"/>
                         <constraint firstItem="UU0-ER-kox" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" constant="16" id="TcJ-nA-7WG"/>
+                        <constraint firstAttribute="trailing" secondItem="wqK-mz-m4f" secondAttribute="trailing" constant="45" id="d6p-u3-JSC"/>
+                        <constraint firstAttribute="trailing" secondItem="bV1-Cq-EHk" secondAttribute="trailing" constant="20" id="eOo-cp-bcu"/>
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="trailing" secondItem="UU0-ER-kox" secondAttribute="trailing" id="jVe-n5-zNq"/>
-                        <constraint firstAttribute="trailing" secondItem="beM-PM-fyO" secondAttribute="trailing" constant="20" id="oYJ-S8-5La"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="centerY" secondItem="urp-ay-FeH" secondAttribute="centerY" id="qJ3-1L-oA7"/>
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="leading" secondItem="UU0-ER-kox" secondAttribute="leading" id="s2R-mo-SyU"/>
                         <constraint firstItem="UU0-ER-kox" firstAttribute="top" secondItem="urp-ay-FeH" secondAttribute="top" constant="15" id="vZM-vp-ZD6"/>
@@ -118,7 +123,7 @@
                 <constraint firstAttribute="bottom" secondItem="IqJ-zh-cFV" secondAttribute="bottom" id="aa6-qU-unx"/>
                 <constraint firstItem="Hj8-9i-80d" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="abz-gG-yaO"/>
                 <constraint firstItem="IqJ-zh-cFV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gY2-ze-4Pp"/>
-                <constraint firstAttribute="bottom" secondItem="urp-ay-FeH" secondAttribute="bottom" constant="48" id="jvp-gj-bPa"/>
+                <constraint firstAttribute="bottom" secondItem="urp-ay-FeH" secondAttribute="bottom" constant="71" id="jvp-gj-bPa"/>
                 <constraint firstAttribute="bottom" secondItem="Hj8-9i-80d" secondAttribute="bottom" id="keW-P7-wtK"/>
                 <constraint firstItem="IqJ-zh-cFV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sOa-Zq-OZJ"/>
                 <constraint firstItem="Hj8-9i-80d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="u0x-rR-x3Y"/>

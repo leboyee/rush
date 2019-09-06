@@ -35,7 +35,9 @@ struct EventSection {
 class EventDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var header: EventHeader!
+
     var type: EventDetailType = .my
     var sections: [EventSection]?
     var eventId: String?
@@ -43,17 +45,37 @@ class EventDetailViewController: UIViewController {
     let friendHeight: CGFloat = 88.0
     var event: Event?
     
+    
+    let headerFullHeight: CGFloat = 367
+    let headerSmallWithDateHeight: CGFloat = 182
+    let headerSmallWithoutDateHeight: CGFloat = 104
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 // MARK: - Setup and Privacy
-extension EventDetailViewController {
+extension EventDetailViewController: UIGestureRecognizerDelegate {
     
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
+        
+        //left gesture when back button hide or replaced
+        if let gesture = navigationController?.interactivePopGestureRecognizer {
+            gesture.delegate = self
+        }
         
         setupTableView()
         loadAllData()
@@ -63,10 +85,25 @@ extension EventDetailViewController {
 // MARK: - Actions
 extension EventDetailViewController {
 
+    @IBAction func backButtoAction() {
+        navigationController?.popViewController(animated: true)
+    }
+   
+    @IBAction func shareButtoAction() {
+        Utils.notReadyAlert()
+    }
+    
 }
 
 // MARK: - Others
 extension EventDetailViewController {
+    
+    func updateHeaderInfo() {
+        guard let event = event else { return }
+        header.set(date: event.date)
+        header.set(start: event.start, end: event.end)
+        header.set(url: URL(string: event.thumbnil ?? ""))
+    }
     
 }
 

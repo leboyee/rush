@@ -26,4 +26,10 @@ class RBackgoundView: UIView {
          backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
     }
 
+    
+    func roundAllCorners(with radius: CGFloat) {
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        layer.cornerRadius = radius
+        backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
+    }
 }

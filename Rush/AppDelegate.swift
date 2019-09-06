@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pargraphStyle.alignment = .center
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor.bgBlack
+
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Semibold(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle]
         navigationBarAppearance.isTranslucent = true
         navigationBarAppearance.shadowImage = UIImage()
