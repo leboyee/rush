@@ -47,7 +47,7 @@ extension NotificationSettingsViewController {
         guard indexPath.row != 0 else { return }
         
         let index = indexPath.row - 1
-        var params = [String: Any] ()
+        var params = [String: Any]()
         switch index {
         case 0:
             params[Keys.uIsEventNotify] = !(user?.isEventNotificationOn ?? true)

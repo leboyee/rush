@@ -7,12 +7,9 @@
 //
 
 import UIKit
-
-
 extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
-        
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -22,7 +19,6 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
 
         tableView.register(UINib(nibName: ReusableView.classesHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.classesHeader)
-
         tableView.reloadData()
     }
     

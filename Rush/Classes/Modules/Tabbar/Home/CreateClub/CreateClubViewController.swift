@@ -17,12 +17,12 @@ class CreateClubViewController: UIViewController {
     
     var nameClub = ""
     var clubDescription = ""
-    var clubImage : UIImage?
+    var clubImage: UIImage?
     var isCreateGroupChat = true
     
     var selectedContactList = [Contact]()
     
-    var cancelBtn : UIBarButtonItem {
+    var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
     

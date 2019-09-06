@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class ChooseUniversityViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
@@ -18,8 +17,6 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-
-    
     var selectedIndex = -1
     
     override func viewDidLoad() {
@@ -39,12 +36,11 @@ class ChooseUniversityViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
         }
     }
     
-    
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -56,24 +52,22 @@ class ChooseUniversityViewController: CustomViewController {
         self.bgImageView.setBgForLoginSignup()
         setCustomNavigationBarView()
     }
-
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-        
 
-        let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
+        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
@@ -81,7 +75,7 @@ class ChooseUniversityViewController: CustomViewController {
     }
 }
 
-//MARK: - Other Function
+// MARK: - Other Function
 extension ChooseUniversityViewController {
     func moveToNext() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -101,9 +95,7 @@ extension ChooseUniversityViewController {
         self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
         //AppDelegate.getInstance().setupStoryboard()
     }
-
     
     @IBAction func addImageViewButtonAction() {
-        
     }
 }

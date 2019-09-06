@@ -9,12 +9,9 @@
 import UIKit
 
 extension EnterEmailViewConteroller {
-    
-    
 }
 
-
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension EnterEmailViewConteroller {
     
     func checkUserAvailable() {

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension EnterPhoneNoViewController: UITextFieldDelegate {
     
     func setupMediator() {
@@ -67,7 +66,7 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
         let textValidation = textField.text?.replacingOccurrences(of: countryCode, with: "")
         let validateResult = self.validatePhoneNumber(textValidation ?? "")
         phoneNoTextField.text = "\(self.frontTextFiled)\(validateResult.formatted)"
-        if (textField.text?.count ?? 0) >= (10 + self.frontTextFiled.count)  {
+        if (textField.text?.count ?? 0) >= (10 + self.frontTextFiled.count) {
             nextButton.setNextButton(isEnable: true)
         } else {
             nextButton.setNextButton(isEnable: false)

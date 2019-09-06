@@ -15,7 +15,6 @@ let kPushToken = "pushToken"
 let kTimezoneOffset = "timezoneOffset"
 let kPushTokenUpdateOnServer = "pushTokenUpdateOnServer"
 
-
 // MARK: - Network manager
 let kSavedProfile               = "kSavedProfile"
 let kSavedSession               = "kSavedSession"

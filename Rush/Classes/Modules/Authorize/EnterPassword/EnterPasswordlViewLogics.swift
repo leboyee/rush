@@ -9,8 +9,6 @@
 import UIKit
 
 extension EnterPasswordViewConteroller {
-    
-    
 }
 
 // MARK: - Manage Interator or API's Calling
@@ -22,7 +20,7 @@ extension EnterPasswordViewConteroller {
                      Keys.password: profile.password] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.login(params: param) { [weak self] (status, errorMessage) in
+        ServiceManager.shared.login(params: param) { [weak self] (status, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status == true {

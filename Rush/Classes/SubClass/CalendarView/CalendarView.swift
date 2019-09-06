@@ -22,7 +22,7 @@ class CalendarView: UIView {
     @IBOutlet weak var monthNameView: UIView!
     @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
     var isWeekStartFromMonday = true
-    var isNeedToHideMonthNameView = true    
+    var isNeedToHideMonthNameView = true
     let bottomPadding: CGFloat = 10.0
     weak var delegate: CalendarViewDelegate!
     var minDateOfCalendar: Date = Date.parse(dateString: "2017-06-01", format: "yyyy-MM-dd")!

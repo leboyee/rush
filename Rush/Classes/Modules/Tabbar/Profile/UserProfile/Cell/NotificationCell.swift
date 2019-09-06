@@ -34,7 +34,6 @@ class NotificationCell: UITableViewCell {
     
 }
 
-
 extension NotificationCell {
     
     func setup() {
@@ -44,7 +43,7 @@ extension NotificationCell {
     
 }
 
-//MARK: - Private Functions
+// MARK: - Private Functions
 extension NotificationCell {
     private func getFormattedString(string: String) -> NSAttributedString {
         ranges.removeAll()
@@ -67,8 +66,8 @@ extension NotificationCell {
         
         let pargraphStyle = NSMutableParagraphStyle()
         pargraphStyle.lineSpacing = 1.29
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightBrown, NSAttributedString.Key.font: UIFont.regular(sz: 17.0), NSAttributedString.Key.paragraphStyle : pargraphStyle,
-                          NSAttributedString.Key.kern: -0.41] as [NSAttributedString.Key : Any]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightBrown, NSAttributedString.Key.font: UIFont.regular(sz: 17.0), NSAttributedString.Key.paragraphStyle: pargraphStyle,
+                          NSAttributedString.Key.kern: -0.41] as [NSAttributedString.Key: Any]
         
         let attstr = NSMutableAttributedString(string: stringWithoutSeparator, attributes: attributes)
         let boldAttributes = [NSAttributedString.Key.font: UIFont.medium(sz: 17.0)]
@@ -80,6 +79,4 @@ extension NotificationCell {
         }
         return attstr
     }
-    
-    
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension EnterUserNameViewController: UITextFieldDelegate {
     
     func setupMediator() {
@@ -21,15 +20,13 @@ extension EnterUserNameViewController: UITextFieldDelegate {
         firstNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         lastNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
-
     }
     
-    //MARK: - Keyboard functions
+    // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones5.rawValue  {
+            if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones5.rawValue {
                 bottomViewConstraint.constant = keyboardHeight + 10
                 self.view.layoutIfNeeded()
 
@@ -38,20 +35,14 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-     //   if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-        if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue != UIDevice.ScreenType.iPhones5.rawValue {
             bottomViewConstraint.constant = 30
             self.view.layoutIfNeeded()
 
         }
-       // }
     }
-
     
-    
-
-    
-    //MARK : UITextFieldDelegate
+    // MARK: UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         return true
@@ -79,11 +70,8 @@ extension EnterUserNameViewController: UITextFieldDelegate {
         
         if firstNameTextField.text?.count ?? 0 > 0 && lastNameTextField.text?.count ?? 0 > 0 {
             self.nextButton.setNextButton(isEnable: true)
-        }
-        else {
+        } else {
             self.nextButton.setNextButton(isEnable: false)
         }
     }
 }
-
-

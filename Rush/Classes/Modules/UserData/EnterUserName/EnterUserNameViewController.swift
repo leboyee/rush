@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class EnterUserNameViewController: CustomViewController {
 
     @IBOutlet weak var nextButton: CustomButton!
@@ -45,16 +44,15 @@ class EnterUserNameViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
         }
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
     
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -78,19 +76,17 @@ class EnterUserNameViewController: CustomViewController {
     // Custom navigation Title View
     func setCustomNavigationBarView() {
 
-        let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         let customNavPageView = CustomNavBarPageController()
         let pageView = customNavPageView.instanceFromNib()
-        pageView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
+        pageView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
         customView.addSubview(pageView)
         self.navigationItem.titleView = customView
-
-
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(backButtonAction), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
@@ -124,8 +120,7 @@ extension EnterUserNameViewController {
 
 // MARK: - Preseneter
 extension EnterUserNameViewController {
-
-    func profileUpdateSuccess(){
+    func profileUpdateSuccess() {
         self.performSegue(withIdentifier: Segues.addProfilePictureSegue, sender: self)
     }
 }

@@ -19,7 +19,7 @@ extension String {
     }
     
     //The password must be at least 6 characters and must include at least one upper and lower case letter.
-    var isValidPassword : Bool {
+    var isValidPassword: Bool {
         let pattern = "^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\\d$@$!%*#?&]{6,}$"
         if let regex = try? NSRegularExpression(pattern: pattern) {
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
@@ -47,7 +47,7 @@ extension String {
             let regex = try NSRegularExpression(pattern: pattern)
             let nsString = self as NSString
             let results = regex.matches(in: self, range: NSRange(location: 0, length: nsString.length))
-            if results.count == 1, let phone = results.map({ nsString.substring(with: $0.range)}).first {
+            if results.count == 1, let phone = results.map({ nsString.substring(with: $0.range) }).first {
                 if phone.count == self.count {
                     return true
                 }

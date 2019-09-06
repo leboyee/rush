@@ -62,5 +62,5 @@ extension NotificationSettingsViewController: UITableViewDelegate, UITableViewDa
     // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
-    }    
+    }
 }

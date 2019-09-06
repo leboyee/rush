@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension UserInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {

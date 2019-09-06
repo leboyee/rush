@@ -25,7 +25,7 @@ class CustomNavBarPageController: UIView {
     }
     
     func instanceFromNib() -> UIView {
-        let view = UINib(nibName: "CustomNavBarPageController", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
-        return view
+        let view = UINib(nibName: "CustomNavBarPageController", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UIView
+        return view ?? UIView()
     }
 }

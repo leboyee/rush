@@ -37,7 +37,6 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return classesArray.count
     }

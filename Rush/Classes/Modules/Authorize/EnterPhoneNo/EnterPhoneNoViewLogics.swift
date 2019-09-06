@@ -34,14 +34,14 @@ extension EnterPhoneNoViewController {
     
 }
 
-//MARK:- Custom Picker delegate
+// MARK: - Custom Picker delegate
 extension EnterPhoneNoViewController: CustomPickerDelegate {
     func selectedValue(data: String, type: String) {
         
     }
     
     func selectedCountryValue(countryName: String, countryCode: String) {
-        self.phoneNoTextField.text = self.phoneNoTextField.text?.replacingOccurrences(of:"\(self.frontTextFiled)", with: "")
+        self.phoneNoTextField.text = self.phoneNoTextField.text?.replacingOccurrences(of: "\(self.frontTextFiled)", with: "")
         self.countryCode =  countryCode
         self.flagImage.image = UIImage(named: "\(countryName.replacingOccurrences(of: " ", with: ""))")
         setContryCodeWith()
@@ -49,8 +49,6 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
         if phoneNoTextField.text?.count == frontTextFiled.count {
             setPlaceHolder()
         }
-
-        
     }
 }
 

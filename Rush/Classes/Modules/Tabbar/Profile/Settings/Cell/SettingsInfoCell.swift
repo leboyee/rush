@@ -30,7 +30,7 @@ class SettingsInfoCell: UITableViewCell {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension SettingsInfoCell {
     
     @IBAction func rightButtonAction() {
@@ -39,7 +39,7 @@ extension SettingsInfoCell {
     
 }
 
-//MARK: - Data Functions
+// MARK: - Data Functions
 extension SettingsInfoCell {
     
     func set(title: String) {

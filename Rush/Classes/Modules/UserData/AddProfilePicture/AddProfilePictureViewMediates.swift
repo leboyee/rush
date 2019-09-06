@@ -8,14 +8,7 @@
 
 import UIKit
 
-
 extension AddProfilePictureViewController: UITextFieldDelegate {
-    
     func setupMediator() {
-
-
     }
-    
 }
-
-

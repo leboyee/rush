@@ -8,23 +8,18 @@
 
 import UIKit
 
-
 extension EnterVerificationCodeViewController: UITextFieldDelegate {
     
     func setupMediator() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
         
         digitTextField.delegate = self
         digitTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
-
-
     }
     
-    //MARK: - Keyboard functions
+    // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -44,7 +39,7 @@ extension EnterVerificationCodeViewController: UITextFieldDelegate {
         // }
     }
     
-    //MARK : UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         return true
@@ -59,7 +54,7 @@ extension EnterVerificationCodeViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.count == 0 && string.count <= 5{
+        if string.count == 0 && string.count <= 5 {
             return true
         } else if !string.isNumber {
             return false
@@ -73,5 +68,3 @@ extension EnterVerificationCodeViewController: UITextFieldDelegate {
 
     }
 }
-
-

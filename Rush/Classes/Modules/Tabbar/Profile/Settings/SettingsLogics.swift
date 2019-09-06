@@ -135,7 +135,7 @@ extension SettingsViewController {
         cell.set(isOn: isDarkModeOn)
         cell.switchEvent = {  [weak self] (isOn) in
             guard let unself = self else { return }
-            unself.updateUserProfile(params: [Keys.uIsDarkMode : isOn ? "1" : "0"])
+            unself.updateUserProfile(params: [Keys.uIsDarkMode: isOn ? "1" : "0"])
         }
     }
     

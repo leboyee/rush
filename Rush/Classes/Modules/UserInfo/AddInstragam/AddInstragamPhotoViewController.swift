@@ -9,13 +9,11 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class AddInstragamPhotoViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var connectButton: CustomButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +32,11 @@ class AddInstragamPhotoViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
         }
     }
     
-    
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
     }
@@ -52,14 +49,13 @@ class AddInstragamPhotoViewController: CustomViewController {
         
         setCustomNavigationBarView()
     }
-
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
         
         let gotProfileButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 128, height: 36))
         gotProfileButton.setImage(UIImage(named: "goToProfileButton"), for: .normal)
-        gotProfileButton.addTarget(self, action:  #selector(gotProfileButtonAction), for: .touchUpInside)
+        gotProfileButton.addTarget(self, action: #selector(gotProfileButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: gotProfileButton)
@@ -68,14 +64,13 @@ class AddInstragamPhotoViewController: CustomViewController {
     }
 }
 
-//MARK: - Other Function
+// MARK: - Other Function
 extension AddInstragamPhotoViewController {
 
     func connectInstragramAlert() {
-        let alert = UIAlertController(title: "\n\n\n\(Message.instagramTitle)", message:Message.instagramMessage, preferredStyle: .alert)
-        let imgViewTitle = UIImageView(frame: CGRect(x: 100 , y: 25, width: 64, height: 64))
+        let alert = UIAlertController(title: "\n\n\n\(Message.instagramTitle)", message: Message.instagramMessage, preferredStyle: .alert)
+        let imgViewTitle = UIImageView(frame: CGRect(x: 100, y: 25, width: 64, height: 64))
         imgViewTitle.image = #imageLiteral(resourceName: "instagram")
-        
         alert.view.tintColor = UIColor.instaPopupBgColor
         alert.view.addSubview(imgViewTitle)
         self.present(alert, animated: true, completion: nil)
@@ -85,14 +80,10 @@ extension AddInstragamPhotoViewController {
     
     func dismissAlert(alert: UIAlertController) {
         let when = DispatchTime.now() + 3
-        DispatchQueue.main.asyncAfter(deadline: when){
-            // your code with delay
-            alert.dismiss(animated: true, completion:nil)
-
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            alert.dismiss(animated: true, completion: nil)
         }
     }
-
-   
 }
 
 // MARK: - Actions
@@ -122,7 +113,5 @@ extension AddInstragamPhotoViewController {
                 
             }
         }
-
     }
-    
 }

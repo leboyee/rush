@@ -12,11 +12,7 @@ extension AddInstragamPhotoViewController {
     
 }
 
-
-
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension AddInstragamPhotoViewController {
     
 }
-
-

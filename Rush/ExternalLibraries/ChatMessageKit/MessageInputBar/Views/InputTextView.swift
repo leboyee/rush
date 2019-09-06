@@ -351,7 +351,6 @@ open class InputTextView: UITextView {
                         components.append(text)
                     }
                 }
-                
                 curLocation = range.location + range.length
                 components.append(image)
             }

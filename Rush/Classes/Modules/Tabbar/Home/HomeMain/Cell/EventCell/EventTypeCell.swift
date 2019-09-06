@@ -27,7 +27,7 @@ class EventTypeCell: UITableViewCell {
     var userSelected: ((_ id: Int, _ index: Int) -> Void)?
     
     var type: EventCategoryType = .upcoming
-    var cellType : CellType = .none
+    var cellType: CellType = .none
     var list: [Any]?
     let padding: CGFloat = 16.0
     

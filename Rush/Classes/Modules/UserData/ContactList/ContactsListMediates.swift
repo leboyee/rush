@@ -88,8 +88,7 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
             if selectedItem.contains(item) {
                 guard let index = selectedItem.firstIndex(where: { $0.displayName == item.displayName }) else { return }
                 selectedItem.remove(at: index)
-            }
-            else {
+            } else {
                 selectedItem.append(item)
             }
             self.tableView.reloadData()

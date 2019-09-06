@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -22,7 +21,6 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
         searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
 
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -46,7 +44,7 @@ extension AddMajorsViewController: UITableViewDelegate, UITableViewDataSource {
         let major = majorArray[indexPath.row]
 
         if selectedArray.contains(major["name"] as? String ?? "") {
-            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
+            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? "" }) else { return }
             selectedArray.remove(at: index)
         } else {
             selectedArray.append(major["name"] as? String ?? "")

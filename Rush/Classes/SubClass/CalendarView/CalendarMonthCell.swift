@@ -15,12 +15,12 @@ protocol CalendarMonthCellDelegate: class {
 
 class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var monthCollectionView : UICollectionView!
-    weak var delegate : CalendarMonthCellDelegate!
+    @IBOutlet weak var monthCollectionView: UICollectionView!
+    weak var delegate: CalendarMonthCellDelegate!
     var isWeekStartFromMonday = false
 
     var dateList = [AnyObject]()
-    var selectedDate : Date?
+    var selectedDate: Date?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -385,7 +385,7 @@ extension UIAlertController {
     }
 }
 
-// MARK:- String Function
+// MARK: - String Function
 extension Utils {
     class func onlyDisplayFirstNameOrLastNameFirstCharacter(_ fullName: String) -> String {
         let removeWhiteSpaceName = fullName.replacingOccurrences(of: ", ", with: ",")
@@ -394,7 +394,7 @@ extension Utils {
         for name in result {
             fullName.append(name.smallName)
         }
-        return fullName.joined(separator:", ")
+        return fullName.joined(separator: ", ")
     }
     
     class func removeLoginUserNameFromChannel(channelName: String?) -> String {
@@ -434,8 +434,8 @@ extension Utils {
         }
         
         let filePath = getPathForFileName(imageName)
-        let _ = deleteFileFromApp(imageName)
-        let _ = createEmptyFile(imageName)
+        _ = deleteFileFromApp(imageName)
+        _ = createEmptyFile(imageName)
         
         let data = image.jpegData(compressionQuality: 0.75)
         do {

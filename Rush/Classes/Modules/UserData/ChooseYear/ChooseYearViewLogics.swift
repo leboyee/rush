@@ -19,12 +19,12 @@ extension ChooseYearViewController {
     }
     
     func fillChooseYearCell(_ cell: ListCell, _ indexPath: IndexPath) {
-        cell.setup(title:Utils.chooseYearArray()[indexPath.row])
+        cell.setup(title: Utils.chooseYearArray()[indexPath.row])
         cell.setup(checkMark: selectedIndex == indexPath.row ? true : false)
     }
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension ChooseYearViewController {
     
     func updateProfileAPI() {

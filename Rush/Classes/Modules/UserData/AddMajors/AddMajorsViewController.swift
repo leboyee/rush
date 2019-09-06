@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class AddMajorsViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
@@ -42,12 +41,11 @@ class AddMajorsViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
         }
     }
     
-    
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -63,23 +61,21 @@ class AddMajorsViewController: CustomViewController {
         bottomView.isHidden = true
     }
 
-    
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-        
 
-        let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
+        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
@@ -87,7 +83,7 @@ class AddMajorsViewController: CustomViewController {
     }
 }
 
-//MARK: - Other Function
+// MARK: - Other Function
 extension AddMajorsViewController {
     func moveToNext() {
         bottomView.isHidden = self.selectedArray.count > 0 ? false : true
@@ -104,7 +100,6 @@ extension AddMajorsViewController {
     @IBAction func skipButtonAction() {
         self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
     }
-
     
     @IBAction func nextButtonAction() {
         updateProfileAPI()
@@ -114,8 +109,7 @@ extension AddMajorsViewController {
 
 // MARK: - Preseneter
 extension AddMajorsViewController {
-    
-    func profileUpdateSuccess(){
+    func profileUpdateSuccess() {
         self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
     }
 }

@@ -35,7 +35,7 @@ class CalendarViewController: CustomViewController {
 
 }
 
-//MARK: - Setup
+// MARK: - Setup
 extension CalendarViewController {
     
     private func setup() {
@@ -52,7 +52,6 @@ extension CalendarViewController {
         dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
         customTitleView.addSubview(dateButton)
         navigationItem.titleView = customTitleView
-        
         
         let imageView = UIImageView(image: UIImage(named: "calendar"))
         let calendar = UIBarButtonItem(customView: imageView)

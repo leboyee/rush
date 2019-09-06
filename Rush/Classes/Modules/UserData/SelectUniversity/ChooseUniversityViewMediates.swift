@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -21,7 +20,6 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
         
         tableView.reloadData()
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     
 }
 
-//MARK: - Setup
+// MARK: - Setup
 extension SettingsViewController {
     
     private func setup() {
@@ -51,7 +51,7 @@ extension SettingsViewController {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension SettingsViewController {
     
     @objc func logoutAction() {
@@ -67,7 +67,7 @@ extension SettingsViewController {
     }
 }
 
-//MARK: - Other Functions
+// MARK: - Other Functions
 extension SettingsViewController {
 
     func showPrivacyInvite() {

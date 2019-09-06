@@ -47,12 +47,14 @@ open class EventMessageCell: MessageContentCell {
         
 //        mainView.fillSuperview()
         mainView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate(
+            [
             mainView.topAnchor.constraint(equalTo: mainView.superview!.topAnchor, constant: 0),
             mainView.leadingAnchor.constraint(equalTo: mainView.superview!.leadingAnchor, constant: 15),
             mainView.bottomAnchor.constraint(equalTo: mainView.superview!.bottomAnchor, constant: 0),
-            mainView.trailingAnchor.constraint(equalTo: mainView.superview!.trailingAnchor,constant: 0)
-            ])
+            mainView.trailingAnchor.constraint(equalTo: mainView.superview!.trailingAnchor, constant: 0)
+            ]
+        )
         
         messageContainerView.backgroundColor = .white
         imageView.translatesAutoresizingMaskIntoConstraints = false

@@ -9,6 +9,4 @@
 import UIKit
 
 extension DisconnectInstagramViewController {
-    
-    
 }

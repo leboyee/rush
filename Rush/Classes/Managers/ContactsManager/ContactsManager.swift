@@ -13,12 +13,9 @@ class ContactsManager: NSObject {
     
     var store = CNContactStore()
     var skipPerameter: Int = 0
-    
-    
     static let contactManager = ContactsManager()
 
-
-    //MARK : USER CONTACT SYNC
+    // MARK: - USER CONTACT SYNC
     func requestAccess(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
@@ -26,7 +23,7 @@ class ContactsManager: NSObject {
         case .denied:
             completionHandler(false)
         case .restricted, .notDetermined:
-            store.requestAccess(for: .contacts) { granted, error in
+            store.requestAccess(for: .contacts) { granted, _ in
                 if granted {
                     completionHandler(true)
                 } else {
@@ -43,7 +40,7 @@ class ContactsManager: NSObject {
     func retrieveContactsWithStore() -> ([Contact]) {
         
         let keys = CNContactFormatter.descriptorForRequiredKeys(for: .fullName)
-        let keysToFetch = [CNContactEmailAddressesKey, CNContactPhoneNumbersKey,CNContactBirthdayKey,CNContactPostalAddressesKey,CNContactImageDataKey,keys] as [Any]
+        let keysToFetch = [CNContactEmailAddressesKey, CNContactPhoneNumbersKey, CNContactBirthdayKey, CNContactPostalAddressesKey, CNContactImageDataKey, keys] as [Any]
         let containerId = CNContactStore().defaultContainerIdentifier()
         let _: NSPredicate = CNContact.predicateForContactsInContainer(withIdentifier: containerId)
         
@@ -55,21 +52,22 @@ class ContactsManager: NSObject {
             print("Error fetching containers")
         }
         
-        var contacts:[CNContact] = []
-        
+        var contacts: [CNContact] = []
         // Iterate all containers and append their contacts to our results array
         for container in allContainers {
             let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
             
             do {
-                let containerResults = try store.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
-                contacts.append(contentsOf: containerResults)
+                if let keys = keysToFetch as? [CNKeyDescriptor] {
+                 let containerResults = try store.unifiedContacts(matching: fetchPredicate, keysToFetch: keys)
+                    contacts.append(contentsOf: containerResults)
+                }
             } catch {
                 print("Error fetching results for container")
             }
         }
         //contacts = contacts.filterDuplicate{ ($0.identifier) }
-        var contactArray : [Contact] = []
+        var contactArray: [Contact] = []
         for contact: CNContact in contacts {
             
             let contactIdentifier = "Profile:\(contact.identifier)"
@@ -113,40 +111,29 @@ class ContactsManager: NSObject {
         }
         return contactArray
     }
-
     
-    func getUserContacts(completionHandler: @escaping (_ contacts :[Contact], _ success: Bool, _ error: String) -> Void) {
+    func getUserContacts(completionHandler: @escaping (_ contacts: [Contact], _ success: Bool, _ error: String) -> Void) {
         self.requestAccess(completionHandler: { [weak self] (access) in
-            guard let strongSelf = self else {return}
+            guard let strongSelf = self else { return }
             
-            if (access) {
+            if access {
                 let contact =  strongSelf.retrieveContactsWithStore()
                 if contact.count > 0 {
-                    completionHandler(contact,true,"Success!")
+                    completionHandler(contact, true, "Success!")
+                } else {
+                    completionHandler(contact, true, "Success")
                 }
-                else {
-                    completionHandler(contact,true,"Success")
-                }
-            }
-            else {
+            } else {
                 let message = "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?."
-                completionHandler([Contact](),false,message)
+                completionHandler([Contact](), false, message)
             }
         })
     }
-
-
-
 }
 
-extension Array
-{
-    func filterDuplicate<T>(_ keyValue:(Element)->T) -> [Element]
-    {
+extension Array {
+    func filterDuplicate<T>(_ keyValue: (Element) -> T) -> [Element] {
         var uniqueKeys = Set<String>()
-        return filter{uniqueKeys.insert("\(keyValue($0))").inserted}
+        return filter { uniqueKeys.insert("\(keyValue($0))").inserted }
     }
 }
-
-
-

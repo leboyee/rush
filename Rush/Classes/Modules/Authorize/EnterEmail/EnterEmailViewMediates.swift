@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension EnterEmailViewConteroller: UITextFieldDelegate {
     
     func setupMediator() {
@@ -17,8 +16,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
     }
-    
-    //MARK: - Keyboard functions
+    // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -28,10 +26,8 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         }
     }
 
-    
-    //MARK : UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
         return true
     }
     
@@ -58,7 +54,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         if let range = newString.range(of: edu) {
             newEmail.removeSubrange(range)
             textField.text = "\(newEmail).edu"
-            if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4){
+            if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4) {
                 textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
             }
             return false
@@ -79,16 +75,15 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             eduLabel.text = ".edu"
             eduLabel.isHidden = false
             self.view.layoutIfNeeded()
-            if loginType == .login  {
+            if loginType == .login {
                 nextButton.setNextButton(isEnable: false)
             }
-        }
-        else {
+        } else {
             if textField.text?.count == 1 {
                 eduLabel.text = " .edu"
                 eduLabel.isHidden = true
                 textField.text = "\(textField.text ?? "").edu"
-                if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4){
+                if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4) {
                     textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
                 }
                 if loginType == .login {
@@ -106,6 +101,4 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             }
         }
     }
-    
 }
-

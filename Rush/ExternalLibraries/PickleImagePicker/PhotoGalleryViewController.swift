@@ -18,7 +18,6 @@ internal protocol PhotoGalleryViewControllerDelegate: class {
     func photoGalleryViewControllerDidSelectCameraButton(_ controller: PhotoGalleryViewController)
 }
 
-
 internal final class PhotoGalleryViewController: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,

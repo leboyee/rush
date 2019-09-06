@@ -30,7 +30,7 @@ extension AddMajorsViewController {
     
     func getMajorList(searchText: String) {
         //Utils.showSpinner()
-        ServiceManager.shared.getMajorList(params: ["search": searchText]) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.getMajorList(params: ["search": searchText]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             guard let list = data?["list"] as? [[String: Any]] else { return }
             unsafe.majorArray = list

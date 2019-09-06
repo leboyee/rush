@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension EnterPasswordViewConteroller: UITextFieldDelegate {
     
     func setupMediator() {
@@ -17,7 +16,7 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
 
     }
     
-    //MARK: - Keyboard functions
+    // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -27,8 +26,7 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
         }
     }
 
-    
-    //MARK : UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         return true
@@ -44,10 +42,7 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        
         return true
-        
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -59,14 +54,11 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
             symbolDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : (textField.text?.count ?? 0) >= 8 ? .correct : .wrong)
             if (textField.text?.count ?? 0) >= 8  && textField.text?.isNumberLater == true && textField.text?.isCapitalLater == true {
                 nextButton.setNextButton(isEnable: true)
-            }
-            else {
+            } else {
                 nextButton.setNextButton(isEnable: false)
             }
         } else {
             nextButton.setNextButton(isEnable: textField.text?.count == 0 ? false : true)
         }
-    
-    }    
+    }
 }
-

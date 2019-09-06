@@ -22,16 +22,13 @@ class EnterEmailViewConteroller: CustomViewController {
     @IBOutlet weak var termLabel: CustomEmailAttributedLabel!
     @IBOutlet weak var eduLabel: CustomLabel!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
-
-
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginNumberButtonConstraint: NSLayoutConstraint!
 
-
     var loginType: LoginType = .register
     var profile = Profile()
-    var isEmailError : Bool = false
+    var isEmailError: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -56,7 +53,6 @@ class EnterEmailViewConteroller: CustomViewController {
         navigationController?.navigationBar.isHidden = true
 
     }
-
     
     func setup() {
         setupUI()
@@ -84,8 +80,7 @@ class EnterEmailViewConteroller: CustomViewController {
             loginWithPhoneNumberButton.isHidden = true
             loginLineLable.isHidden = true
             emailTitleLable.text = Text.emailTitleRegister
-        }
-        else {
+        } else {
             termLabel.isHidden = true
             bottomLineLabel.isHidden = true
             loginWithPhoneNumberButton.isHidden = false
@@ -97,8 +92,6 @@ class EnterEmailViewConteroller: CustomViewController {
 
         }
     }
-
-
 }
 
 // MARK: - Actions
@@ -116,8 +109,7 @@ extension EnterEmailViewConteroller {
             self.view.endEditing(true)
             profile.email = emailText
             checkUserAvailable()
-        }
-        else {
+        } else {
             if loginType == .login {
                 loginNumberButtonConstraint.constant = 76
                 loginLineLable.isHidden = false
@@ -165,7 +157,7 @@ extension EnterEmailViewConteroller {
     
 }
 
-//MARK: Presenter
+// MARK: Presenter
 extension EnterEmailViewConteroller {
     
     func  emailSuccess() {
@@ -177,8 +169,7 @@ extension EnterEmailViewConteroller {
             if isHide == true {
                 loginNumberButtonConstraint.constant = 16
                 loginLineLable.isHidden = true
-            }
-            else {
+            } else {
                 loginNumberButtonConstraint.constant = 76
                 loginLineLable.isHidden = false
                 self.emailErroLabel.isHidden = false
@@ -187,7 +178,5 @@ extension EnterEmailViewConteroller {
                 self.isEmailError = true
             }
         }
-   
-
     }
 }

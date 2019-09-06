@@ -9,16 +9,13 @@
 import UIKit
 
 class CustomImagePageControl: UIPageControl {
-    
-      //  @IBInspectable var currentPageImage: UIImage?
-        
-      //  @IBInspectable var otherPagesImage: UIImage?
+            
     var dotSize = 8
     var dotSpacing = 5
     var isSteps: Bool = false
-    var currentPageImage:UIImage = UIImage(named: "activePageController")!
-    var otherPagesImage:UIImage = UIImage(named: "pagDot")!
-    var anotherPagesImage:UIImage = UIImage(named: "pagDot-done")!
+    var currentPageImage = UIImage(named: "activePageController")!
+    var otherPagesImage = UIImage(named: "pagDot")!
+    var anotherPagesImage = UIImage(named: "pagDot-done")!
     
         override var numberOfPages: Int {
             didSet {

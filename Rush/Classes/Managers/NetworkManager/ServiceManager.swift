@@ -16,7 +16,7 @@ class ServiceManager: NSObject {
      *
      */
     func prepareServices() {
-         let _ = NetworkManager.getUserAgent()
+        _ = NetworkManager.getUserAgent()
     }
     
     /*
@@ -38,7 +38,7 @@ class ServiceManager: NSObject {
      */
     func processDataResponse(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         guard code != 200 else {
-            guard let resultDict = result as? Dictionary<String, Any> else {
+            guard let resultDict = result as? [String: Any] else {
                 return
             }
             
@@ -59,11 +59,11 @@ class ServiceManager: NSObject {
      */
     func processLoginResponse(result: Any?, error: Error?, code: Int, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         guard code != 200 else {
-            guard let resultDict = result as? Dictionary<String, Any> else {
+            guard let resultDict = result as? [String: Any] else {
                 return
             }
             
-            guard let data = resultDict[Keys.data] as? Dictionary<String, Any> else {
+            guard let data = resultDict[Keys.data] as? [String: Any] else {
                 return
             }
             
@@ -101,7 +101,7 @@ class ServiceManager: NSObject {
             return
         }
         
-        guard let resultDict = result as? Dictionary<String, Any> else {
+        guard let resultDict = result as? [String: Any] else {
             return
         }
         

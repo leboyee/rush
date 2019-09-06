@@ -19,15 +19,11 @@ class ClassesHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         detailsLabel.isHidden = true
-        // Initialization code
-        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
     }
-
-    
 }
 
 // MARK: - Other functions

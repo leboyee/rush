@@ -40,11 +40,11 @@ extension ParallaxHeader {
     
     private func commonInit() {
         let nib  = UINib(nibName: String(describing: ParallaxHeader.self), bundle: nil)
-        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        view.clipsToBounds = true
-        addSubview(view)
-        addViewConstraint(view: view)
-    
+        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            view.clipsToBounds = true
+            addSubview(view)
+            addViewConstraint(view: view)
+        }
     }
     
     private func addViewConstraint(view: UIView) {
@@ -80,7 +80,7 @@ extension ParallaxHeader {
     
 }
 
-// MARK:- Actions
+// MARK: - Actions
 extension ParallaxHeader {
 
     @IBAction func editProfileButtonAction() {

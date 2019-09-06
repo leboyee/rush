@@ -27,11 +27,11 @@ class OnboardingViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
             createButtonHeightConstratit.constant =  35
             pageControllerTopConstraint.constant = 0
         }
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones6.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones6.rawValue {
             createButtonHeightConstratit.constant =  40
             pageControllerTopConstraint.constant = 10
         }
@@ -47,7 +47,6 @@ class OnboardingViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
 
     func setUpUI() {
         setupMediator()

@@ -14,7 +14,7 @@ class Authorization: NSObject {
     
     var session: String?
     var userVerified: Bool = false
-    var profile : Profile?
+    var profile: Profile?
     var authorized: Bool {
         return session != nil
     }

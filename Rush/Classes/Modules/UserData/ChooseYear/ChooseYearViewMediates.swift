@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ChooseYearViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -21,7 +20,6 @@ extension ChooseYearViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.reloadData()
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

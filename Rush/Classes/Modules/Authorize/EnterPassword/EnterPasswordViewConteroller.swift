@@ -61,7 +61,6 @@ class EnterPasswordViewConteroller: CustomViewController {
 
     }
 
-    
     func setup() {
         setupUI()
         setupMediator()
@@ -91,8 +90,7 @@ class EnterPasswordViewConteroller: CustomViewController {
             resortPasswordButton.isHidden = true
             hintView.isHidden = false
             passwordErrorView.isHidden = true
-        }
-        else {
+        } else {
             passwordTitleLabel.text = Text.passwordTitleLogin
             nextButton.setTitle(Text.login, for: .normal)
             hintView.isHidden = true
@@ -100,8 +98,6 @@ class EnterPasswordViewConteroller: CustomViewController {
             passwordErrorView.isHidden = true
         }
     }
-
-
 }
 
 // MARK: - Actions
@@ -116,8 +112,7 @@ extension EnterPasswordViewConteroller {
         if loginType == .login {
             Authorization.shared.session = ""
             loginApiCalled()
-        }
-        else {
+        } else {
             self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
         }
         
@@ -128,8 +123,7 @@ extension EnterPasswordViewConteroller {
             passwordShowHideLabel.text = Text.show
             passwordShowButton.isSelected = false
             passwordTextField.isSecureTextEntry = true
-        }
-        else {
+        } else {
             passwordTextField.isSecureTextEntry = false
             passwordShowHideLabel.text = Text.hide
             passwordShowButton.isSelected = true
@@ -146,8 +140,6 @@ extension EnterPasswordViewConteroller {
     @IBAction func restoreButtonAction() {
         Utils.alert(message: "In Development.")
     }
-
-
 }
 
 // MARK: - Navigation
@@ -165,11 +157,10 @@ extension EnterPasswordViewConteroller {
     
 }
 
-
 // MARK: - Preseneter
 extension EnterPasswordViewConteroller {
     
-    func profileUpdateSuccess(){
+    func profileUpdateSuccess() {
         AppDelegate.shared?.setupStoryboard()
     }
     
@@ -182,8 +173,7 @@ extension EnterPasswordViewConteroller {
             if isHide == true {
                 restorePasswordButtonConstraint.constant = 16
                 passwordErrorView.isHidden = true
-            }
-            else {
+            } else {
                 restorePasswordButtonConstraint.constant = 76
                 passwordErrorView.isHidden = false
                 self.nextButton.setNextButton(isEnable: false)

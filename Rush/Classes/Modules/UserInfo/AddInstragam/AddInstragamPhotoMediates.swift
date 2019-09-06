@@ -7,11 +7,5 @@
 //
 
 import UIKit
-
-
 extension AddInstragamPhotoViewController {
-    
-    
 }
-
-

@@ -28,7 +28,7 @@ extension AddMinorsViewController {
 extension AddMinorsViewController {
     func getMinorList(searchText: String) {
         //Utils.showSpinner()
-        ServiceManager.shared.getMinorList(params: ["search": searchText]) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.getMinorList(params: ["search": searchText]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             guard let list = data?["list"] as? [[String: Any]] else { return }
             unsafe.minorArray = list
@@ -38,7 +38,7 @@ extension AddMinorsViewController {
                 }
             }
             if unsafe.searchTextField.text?.isEmpty == false {
-                if unsafe.minorArray.contains(where: {$0["name"] as? String == unsafe.searchTextField.text} ) {
+                if unsafe.minorArray.contains(where: { $0["name"] as? String == unsafe.searchTextField.text }) {
                     unsafe.minorCustomButton.isHidden = true
                 } else {
                     unsafe.minorCustomButton.isHidden = false

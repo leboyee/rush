@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -21,7 +20,6 @@ extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource 
 
         tableView.reloadData()
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

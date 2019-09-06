@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -26,7 +25,7 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
-    //MARK: - Keyboard functions
+    // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -60,7 +59,7 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let major = minorArray[indexPath.row]
         if selectedArray.contains(major["name"] as? String ?? "") {
-            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
+            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? "" }) else { return }
             selectedArray.remove(at: index)
         } else {
             selectedArray.append(major["name"] as? String ?? "")

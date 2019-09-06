@@ -37,7 +37,6 @@ class Friend: Profile {
     
     // MARK: - Other functions
     var friendName: String {
-        get {
             if let list = name.components(separatedBy: " ") as [String]?, list.count >= 2 {
                 if let first = list.first, let second = list.last, !first.isEmpty, !second.isEmpty {
                     let indexToOfText = second.index(second.startIndex, offsetBy: 1)
@@ -46,7 +45,6 @@ class Friend: Profile {
                 }
             }
             return name
-        }
     }
     
     // MARK: - Private Functions
