@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension SearchClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
@@ -33,11 +32,11 @@ extension SearchClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if searchType == .searchList || searchType == .classes {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as! SearchClubCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as? SearchClubCell else { return UITableViewCell() }
             fillCell(cell, indexPath)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as! FriendClubCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
             fillMyClubCell(cell, indexPath)
             return cell
         }
@@ -53,7 +52,7 @@ extension SearchClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if searchType == .searchList {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
             fillTextHeader(header, section)
             return header
         } else {

@@ -38,9 +38,8 @@ extension ExploreViewController {
         }
     }
     
-    
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
-            cell.setup(.none, nil)
+        cell.setup(.none, nil)
         if indexPath.section == 1 {
             cell.setup(.upcoming, nil)
         } else if indexPath.section == 2 {
@@ -54,7 +53,10 @@ extension ExploreViewController {
         let title = indexPath.row == 0 ? Text.events : indexPath.row == 1 ? Text.clubs : indexPath.row == 2 ? Text.classes : ""
         cell.setup(title: title)
         
-        let detail = indexPath.row == 0 ? "Find events based on your \ninterests" : indexPath.row == 1 ? "Share your interests with \npeople" : indexPath.row == 2 ? "Keep track of your \nacademics" : ""
+        let sharePeople = "Share your interests with \npeople"
+        let findEvent = "Find events based on your \ninterests"
+        let keepTrack = "Keep track of your \nacademics"
+        let detail = indexPath.row == 0 ? findEvent : indexPath.row == 1 ? sharePeople : indexPath.row == 2 ? keepTrack : ""
         cell.setup(detail: detail)
     }
     
@@ -67,7 +69,7 @@ extension ExploreViewController {
         cell.setup(title: "John Lotter")
     }
     
-    func fillTextHeader(_ header: TextHeader,_ section: Int) {
+    func fillTextHeader(_ header: TextHeader, _ section: Int) {
         if section == 1 {
             header.setup(title: Text.todayEvent)
         } else if section == 2 {
@@ -76,18 +78,17 @@ extension ExploreViewController {
             header.setup(title: Text.classesYouMightLike)
         }
         
-        header.detailButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+        header.detailButtonClickEvent = { () in
             // Open other user profile UI for test
             
             Utils.notReadyAlert()
             /*
-            if section == 2 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
-            } else if section == 3 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
-            }
-            */
+             if section == 2 {
+             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
+             } else if section == 3 {
+             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
+             }
+             */
         }
     }
     

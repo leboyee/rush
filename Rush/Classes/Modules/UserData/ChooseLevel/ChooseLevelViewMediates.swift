@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -22,7 +21,6 @@ extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -33,21 +31,20 @@ extension ChooseLevelViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listCell, for: indexPath) as! ListCell
-        fillChooseLevelCell(cell, indexPath)
-        return cell
-
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listCell, for: indexPath) as? ListCell {
+            fillChooseLevelCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         self.tableView.reloadData()
         updateProfileAPI()
-    }    
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
 }
-
-

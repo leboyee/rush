@@ -24,7 +24,7 @@ extension LogoutViewController {
         ServiceManager.shared.logout { (_, _) in
             Utils.hideSpinner()
             DispatchQueue.main.async {
-                AppDelegate.getInstance().forceLogout()
+                AppDelegate.shared?.forceLogout()
             }
         }
     }

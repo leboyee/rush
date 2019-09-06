@@ -5,15 +5,13 @@
 //  Created by kamal on 23/07/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
-
-
 import UIKit
 
-class CalendarDayCell: UICollectionViewCell{
+class CalendarDayCell: UICollectionViewCell {
 
-    @IBOutlet weak var dateLabel : UILabel!
-    @IBOutlet weak var outerView : UIView!
-    @IBOutlet weak var dotView : UIView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var outerView: UIView!
+    @IBOutlet weak var dotView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,10 +32,9 @@ extension CalendarDayCell {
         dotView.isHidden = !isEventExist
     }
     
-    func setup(isSelected: Bool) {        
+    func setup(isSelected: Bool) {
         outerView.backgroundColor = isSelected ? UIColor.brown24 : UIColor.clear
         outerView.layer.cornerRadius = outerView.frame.height/2.0
         //dateLabel.textColor = isSelected ? UIColor.white : UIColor.white
     }
-    
 }

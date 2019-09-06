@@ -11,26 +11,26 @@ import Photos
 import IQKeyboardManagerSwift
 
 class CreateClubViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
-
+    
     var nameClub = ""
     var clubDescription = ""
-    var clubImage : UIImage?
+    var clubImage: UIImage?
     var isCreateGroupChat = true
     
     var selectedContactList = [Contact]()
     
-    var cancelBtn : UIBarButtonItem {
+    var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
     
-    var saveBtnActive : UIBarButtonItem {
+    var saveBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
     }
     
-    var saveBtnDisActive : UIBarButtonItem {
+    var saveBtnDisActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
     }
     
@@ -39,7 +39,7 @@ class CreateClubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -50,9 +50,8 @@ class CreateClubViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
- 
     
-    //MARk: - Other function
+    // MARK: - Other function
     func setup() {
         setupUI()
     }
@@ -69,27 +68,27 @@ class CreateClubViewController: UIViewController {
         setupTableView()
         
         /*
-        let total = screenWidth + 15
-        
-        topConstraintOfTapToChangeLabel.constant = total - 106
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        
-        
-        if userImageView.image != nil {
-            addPhotoButton.isHidden = true
-            navigationItem.rightBarButtonItem = saveBtnActive
-        } else {
-            hoverView.isHidden = true
-            addPhotoButton.isHidden = false
-           navigationItem.rightBarButtonItem = saveBtnDisActive
-        }
-        */
+         let total = screenWidth + 15
+         
+         topConstraintOfTapToChangeLabel.constant = total - 106
+         heightConstraintOfImageView.constant = total
+         
+         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
+         
+         
+         if userImageView.image != nil {
+         addPhotoButton.isHidden = true
+         navigationItem.rightBarButtonItem = saveBtnActive
+         } else {
+         hoverView.isHidden = true
+         addPhotoButton.isHidden = false
+         navigationItem.rightBarButtonItem = saveBtnDisActive
+         }
+         */
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension CreateClubViewController {
     @IBAction func cancelButtonAction() {
         navigationController?.popViewController(animated: true)
@@ -100,11 +99,10 @@ extension CreateClubViewController {
     }
     
     @IBAction func addImageButtonAction() {
-        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel : "Cancel", type: .actionSheet) {
-            [weak self] (index) in
-            guard let self_ = self else { return }
+        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
+            guard let unself = self else { return }
             if index != 2 {
-                self_.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
+                unself.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
             }
         }
     }

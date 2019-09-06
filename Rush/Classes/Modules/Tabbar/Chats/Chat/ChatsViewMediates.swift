@@ -30,7 +30,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as! ChatListCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as? ChatListCell else { return UITableViewCell() }
         cell.delegate = self
         cell.rightButtons = [MGSwipeButton(title: "", icon: #imageLiteral(resourceName: "chat-delete"), backgroundColor: nil)]
         fillCell(cell, indexPath)
@@ -50,18 +50,18 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
         let snackbar = TTGSnackbar(message: "Fine art chat was deleted",
                                    duration: .middle,
                                    actionText: "Undo",
-                                   actionBlock: { (snackbar) in
+                                   actionBlock: { (_) in
                                     Utils.notReadyAlert()
         })
         snackbar.show()
         /*
-        Utils.alert(message: "Are you sure you want to delete?",buttons: ["Yes", "No"], handler: { (index) in
-            if index == 0 {
-                self.tableView.reloadData()
-                
-            }
-        })
-        */
+         Utils.alert(message: "Are you sure you want to delete?",buttons: ["Yes", "No"], handler: { (index) in
+         if index == 0 {
+         self.tableView.reloadData()
+         
+         }
+         })
+         */
         return true
     }
 }

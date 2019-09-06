@@ -26,7 +26,6 @@ class TutorialPopUpCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
 
 extension TutorialPopUpCell {

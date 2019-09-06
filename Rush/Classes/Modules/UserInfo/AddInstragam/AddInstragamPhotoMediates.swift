@@ -9,17 +9,13 @@
 import UIKit
 import WebKit
 
-
-extension AddInstragamPhotoViewController: WKNavigationDelegate{
+extension AddInstragamPhotoViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         
-        if checkRequestForCallbackURL(request: navigationAction.request){
+        if checkRequestForCallbackURL(request: navigationAction.request) {
             decisionHandler(.allow)
-        }else{
+        } else {
             decisionHandler(.cancel)
         }
     }
 }
-
-
-

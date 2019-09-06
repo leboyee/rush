@@ -13,7 +13,7 @@ class Interest: Codable {
     var interestId: Int64 = 0
     var interestName: String = ""
     
-    init(data: [String : Any]) {
+    init(data: [String: Any]) {
         setValue(data: data)
     }
     
@@ -25,8 +25,8 @@ class Interest: Codable {
         case interestName
     }
     
-    //MARK: - Private Functions
-    private func setValue(data : [String : Any]) {
+    // MARK: - Private Functions
+    private func setValue(data: [String: Any]) {
         
         if let value = data[Keys.interestId] as? Int64 {
             interestId = value

@@ -30,7 +30,7 @@ class User: Decodable {
     var hometown: String = ""
     var isDarkMode: Int = 0
     var whoCanMessage: String = ""
-    var WhoCanInvite: String = ""
+    var whoCanInvite: String = ""
     var isNotifyOn: Int = 0
     var isEventNotify: Int = 0
     var isClassNotify: Int = 0
@@ -63,7 +63,7 @@ class User: Decodable {
         case hometown = "u_hometown"
         case isDarkMode = "u_is_dark_mode"
         case whoCanMessage = "u_who_can_message"
-        case WhoCanInvite = "u_who_can_invite"
+        case whoCanInvite = "u_who_can_invite"
         case isNotifyOn = "u_is_notify_on"
         case isEventNotify = "u_is_event_notify"
         case isClassNotify = "u_is_class_notify"
@@ -100,7 +100,7 @@ class User: Decodable {
         hometown = (try? container?.decode(String.self, forKey: .hometown)) ?? ""
         isDarkMode = (try? container?.decode(Int.self, forKey: .isDarkMode)) ?? 0
         whoCanMessage = (try? container?.decode(String.self, forKey: .whoCanMessage)) ?? ""
-        WhoCanInvite = (try? container?.decode(String.self, forKey: .WhoCanInvite)) ?? ""
+        whoCanInvite = (try? container?.decode(String.self, forKey: .whoCanInvite)) ?? ""
         isNotifyOn = (try? container?.decode(Int.self, forKey: .isNotifyOn)) ?? 0
         isEventNotify = (try? container?.decode(Int.self, forKey: .isEventNotify)) ?? 0
         isClassNotify = (try? container?.decode(Int.self, forKey: .isClassNotify)) ?? 0

@@ -13,7 +13,6 @@ class Invitees: Decodable {
     var id: String = ""
     var user: User?
     
-    
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case user

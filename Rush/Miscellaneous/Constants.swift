@@ -7,30 +7,25 @@
 //
 import UIKit
 
-//MARK: enumration
+// MARK: - enumration
 let screenWidth: CGFloat = UIScreen.main.bounds.width
 let screenHeight: CGFloat = UIScreen.main.bounds.height
 
 let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
-//MARK: - Production Build
+// MARK: - Production Build
 var isProductionBuild: Bool = true
 
-
-
-//MARK: - App color mode
+// MARK: - App color mode
 var isDarkModeOn: Bool = false
 
-
-//MARK:-
+// MARK: -
 let topViewRadius: CGFloat = 32.0
 
-
-//MARK: Reachability
-var isNetworkAvailable : Bool = true
+// MARK: - Reachability
+var isNetworkAvailable: Bool = true
 
 struct Cell {
-
     static let onBoardingCollectionViewCell         = "OnBoardingCollectionViewCell"
     static let event                = "EventCell"
     static let tutorialPopUp        = "TutorialPopUpCell"
@@ -86,8 +81,6 @@ struct ReusableView {
     static let textHeader     = "TextHeader"
     static let userImagesHeader = "UserImagesHeaderView"
     static let classesHeader = "ClassesHeader"
-
-    
 }
 
 struct ViewControllerId {
@@ -177,8 +170,6 @@ public struct Text {
     static let phoneNoTitleRegister  = "Add phone number to increase security"
     static let phoneNoTitleLogin  = "Enter your phone number"
     static let userNameTitleRegister  = "Profile setup"
-
-    
     static let show  = "show"
     static let hide  = "hide"
     static let next  = "Next"
@@ -188,10 +179,6 @@ public struct Text {
     static let createAccount = "Create account"
     static let changeImage = "Change image"
     static let okay = "OK"
-
-    
-
-    
 
     static let addInterest              = "Add interests"
     static let addAnotherInterest       = "Add another interest"
@@ -257,14 +244,11 @@ public struct Text {
     static let whoCanMessageMe           = "Who can message me"
     static let dataPolicy                = "Data policy"
     static let termsConditions           = "Terms & conditions"
-
     static let invitesFrom               = "Invites from"
     static let messagesFrom              = "Messages from"
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
     static let interests                 = "Interests"
-
-    
 }
 
 public struct Message {
@@ -274,12 +258,14 @@ public struct Message {
     static let joinEventsAndClassses = "Join events and classes to see your schedule in Calendar."
     static let noCamera = "You don't have camera"
     static let warning = "Warning"
-    static let skipSavedImageMessage = "You skipped previous step. Don’t worry, \nyour image was saved!"
+    static let skipSavedImageMessage =
+    "You skipped previous step. Don’t worry, \nyour image was saved!"
     static let emailAlreadyInUse = "This email address is already in use."
     static let emailNotAvailable = "Please enter correct email."
     
     static let instagramTitle = "Instagram connected"
-    static let instagramMessage = "Your photos will be automatically uploaded to Rush. It might take a few minutes."
+    static let instagramMessage =
+    "Your photos will be automatically uploaded to Rush. It might take a few minutes."
 }
 
 public struct Icons {
@@ -309,11 +295,11 @@ enum EventType: String, Codable {
 }
 
 enum LoginType {
-    case Register
-    case Login    
+    case register
+    case login
 }
 
-enum passwordFormate {
+enum PasswordFormate {
     case none
     case correct
     case wrong
@@ -326,4 +312,3 @@ enum ExploreSearchType {
     case classes
     case people
 }
-

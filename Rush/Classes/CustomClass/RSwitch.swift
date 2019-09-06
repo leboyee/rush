@@ -22,6 +22,4 @@ class RSwitch: UISwitch {
     func setupCustomUI() {
         onTintColor = isDarkModeOn ? UIColor.white : UIColor.brown24
     }
-
-
 }

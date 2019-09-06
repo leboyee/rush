@@ -36,9 +36,9 @@ extension NotificationSettingsViewController {
         cell.set(title: Text.recieveNotifications)
         cell.set(isOn: user?.isNotificationOn ?? true)
         cell.switchEvent = {  [weak self] (isOn) in
-            guard let self_ = self else { return }
-            let params = [Keys.u_is_notify_on : isOn ? "1" : "0"]
-            self_.updateUserProfile(params: params)
+            guard let unsefe = self else { return }
+            let params = [Keys.uIsNotifyOn: isOn ? "1" : "0"]
+            unsefe.updateUserProfile(params: params)
         }
     }
     
@@ -47,14 +47,14 @@ extension NotificationSettingsViewController {
         guard indexPath.row != 0 else { return }
         
         let index = indexPath.row - 1
-        var params = [String: Any] ()
+        var params = [String: Any]()
         switch index {
         case 0:
-            params[Keys.u_is_event_notify] = !(user?.isEventNotificationOn ?? true)
+            params[Keys.uIsEventNotify] = !(user?.isEventNotificationOn ?? true)
         case 1:
-            params[Keys.u_is_club_notify] = !(user?.isClubNotificationOn ?? true)
+            params[Keys.uIsClubNotify] = !(user?.isClubNotificationOn ?? true)
         case 2:
-            params[Keys.u_is_class_notify] = !(user?.isClassNotificationOn ?? true)
+            params[Keys.uIsClassNotify] = !(user?.isClassNotificationOn ?? true)
         default:
             break
         }
@@ -65,22 +65,20 @@ extension NotificationSettingsViewController {
     }
 }
 
-
 // MARK: - API's
 extension NotificationSettingsViewController {
 
     private func updateUserProfile(params: [String: Any]) {
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: params) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: params) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
-            if let _ = data {
-                self_.user = Authorization.shared.profile
+            guard let unsefe = self else { return }
+            if data != nil {
+                unsefe.user = Authorization.shared.profile
                 /// Reload Cells
-                self_.tableView.reloadData()
+                unsefe.tableView.reloadData()
             } else if let message = errorMessage {
-                self_.showMessage(message: message)
+                unsefe.showMessage(message: message)
             }
         }
     }

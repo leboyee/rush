@@ -28,7 +28,7 @@ extension SelectGallaryPhotoViewController {
     }
 }
 
-extension SelectGallaryPhotoViewController : UITableViewDelegate, UITableViewDataSource {
+extension SelectGallaryPhotoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return source.count
@@ -39,7 +39,7 @@ extension SelectGallaryPhotoViewController : UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.selectGallaryPhoto) as! SelectGallaryPhotoCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.selectGallaryPhoto) as? SelectGallaryPhotoCell else { return UITableViewCell() }
         fillCell(cell, indexPath)
         return cell
     }

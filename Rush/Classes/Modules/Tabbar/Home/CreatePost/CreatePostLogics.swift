@@ -9,10 +9,9 @@
 import UIKit
 import Photos
 
-
 extension CreatePostViewController {
     
-    func cellHeight(_ indexPath:IndexPath) -> CGFloat {
+    func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
             return screenWidth
         } else {
@@ -30,34 +29,34 @@ extension CreatePostViewController {
         
         cell.updateTableView = {
             [weak self] (textView) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             
-            self_.postText = textView.text
+            unself.postText = textView.text
             
             let startHeight = textView.frame.size.height
             var calcHeight = textView.sizeThatFits(textView.frame.size).height
             if calcHeight == startHeight && textView.text.isEmpty {
-                calcHeight = calcHeight + 1
+                calcHeight += 1
             }
             
             let numLines = Int((Float(textView.contentSize.height / (textView.font?.lineHeight ?? 0))))
             
-            if self_.bigFontCount != 0 && self_.bigFontCount <= textView.text.count {
-                cell.setup(font: UIFont.Regular(sz: 17))
+            if unself.bigFontCount != 0 && unself.bigFontCount <= textView.text.count {
+                cell.setup(font: UIFont.regular(sz: 17))
             } else {
                 if numLines >= 3 {
-                    self_.bigFontCount = textView.text.count
-                    cell.setup(font: UIFont.Regular(sz: 17))
+                    unself.bigFontCount = textView.text.count
+                    cell.setup(font: UIFont.regular(sz: 17))
                 } else {
-                    cell.setup(font: UIFont.DisplayBold(sz: 28))
+                    cell.setup(font: UIFont.displayBold(sz: 28))
                 }
             }
             
             if startHeight != calcHeight {
                 // Disable animations
                 UIView.setAnimationsEnabled(false)
-                self_.tableView.beginUpdates()
-                self_.tableView.endUpdates()
+                unself.tableView.beginUpdates()
+                unself.tableView.endUpdates()
                 // Enable animations
                 UIView.setAnimationsEnabled(true)
             }
@@ -65,8 +64,8 @@ extension CreatePostViewController {
         
         cell.textDidEndEditing = {
             [weak self] () in
-            guard let self_ = self else { return }
-            self_.createButtonValidation()
+            guard let unself = self else { return }
+            unself.createButtonValidation()
         }
     }
     
@@ -76,10 +75,9 @@ extension CreatePostViewController {
         cell.setup(imageAsset: asset)
         
         cell.clearButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.imageList.remove(at: indexPath.row)
-            self_.tableView.reloadData()
+            guard let unself = self else { return }
+            unself.imageList.remove(at: indexPath.row)
+            unself.tableView.reloadData()
         }
     }
 }
-

@@ -39,7 +39,7 @@ extension CreateUserPostCell {
         titleLabel.textColor = titleColor
     }
     
-    func setup(title:String) {
+    func setup(title: String) {
         titleLabel.text = title
     }
 }

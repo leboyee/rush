@@ -23,8 +23,8 @@ class EventTypeCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var separator: UIView!
 
-    var cellSelected: ((_ type : EventCategoryType,_ id: Int,_ index: Int) -> Void)?
-    var userSelected: ((_ id: Int,_ index: Int) -> Void)?
+    var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
+    var userSelected: ((_ id: Int, _ index: Int) -> Void)?
     
     var type: EventCategoryType = .upcoming
     var cellType: CellType = .none
@@ -41,7 +41,6 @@ class EventTypeCell: UITableViewCell {
         collectionView.register(UINib(nibName: Cell.user, bundle: nil), forCellWithReuseIdentifier: Cell.user)
         collectionView.register(UINib(nibName: Cell.profileImage, bundle: nil), forCellWithReuseIdentifier: Cell.profileImage)
         collectionView.register(UINib(nibName: Cell.text, bundle: nil), forCellWithReuseIdentifier: Cell.text)
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +49,7 @@ class EventTypeCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(_ type : EventCategoryType, _ photos: [Image]?) {
+    func setup(_ type: EventCategoryType, _ photos: [Image]?) {
         cellType = .event
         self.type = type
         reload()

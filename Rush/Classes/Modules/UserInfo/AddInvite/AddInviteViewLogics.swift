@@ -6,18 +6,10 @@
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
-
 import UIKit
-
 extension AddInviteViewController {
-    
 }
 
-
-
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension AddInviteViewController {
-    
 }
-
-

@@ -10,12 +10,10 @@ import UIKit
 
 extension ChooseClassesViewController {
     
-    
     func heightOfHeader(_ section: Int) -> CGFloat {
         return 56
     }
     
-
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
             return 56
     }
@@ -24,8 +22,7 @@ extension ChooseClassesViewController {
         if selectedIndex == section {
             let classies = classesArray[selectedIndex]
             return classies.subClasses.count
-        }
-        else {
+        } else {
             return 0
         }
        
@@ -39,7 +36,6 @@ extension ChooseClassesViewController {
     
     func fillClassesHeader(_ header: ClassesHeader, _ section: Int) {
         let classies = classesArray[section]
-        print(selectedArray["\(section)"])
         if selectedArray["\(section)"] != nil {
             let subClass = selectedArray["\(section)"] as? SubClasses ?? SubClasses()
             header.setup(detailsLableText: subClass.name)
@@ -54,8 +50,7 @@ extension ChooseClassesViewController {
     @objc func headerSelectionAction(_ sender: UIButton) {
         if selectedIndex == sender.tag {
             selectedIndex = -1
-        }
-        else {
+        } else {
             selectedIndex = sender.tag
         }
         tableView.reloadData()
@@ -63,7 +58,7 @@ extension ChooseClassesViewController {
 
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension ChooseClassesViewController {
     
 }

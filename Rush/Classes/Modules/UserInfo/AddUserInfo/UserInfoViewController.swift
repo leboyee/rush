@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class UserInfoViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
@@ -24,7 +23,6 @@ class UserInfoViewController: CustomViewController {
 
     var selectedGender: Int = 0
     var selectedRelation: Int = 0
-    
     var selectedIndex = -1
     var dob = ""
     var gender = ""
@@ -48,14 +46,13 @@ class UserInfoViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
-            titleLabelOne.font = UIFont.Bold(sz: 24)
-            titleLableTwo.font = UIFont.Bold(sz: 24)
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
+            titleLabelOne.font = UIFont.bold(sz: 24)
+            titleLableTwo.font = UIFont.bold(sz: 24)
         }
     }
     
-    
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -68,39 +65,35 @@ class UserInfoViewController: CustomViewController {
         setCustomNavigationBarView()
         nextButton.setNextButton(isEnable: false)
     }
-
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-        
 
-        let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
+        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
-        
+        skipButton.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
         
     }
 }
 
-//MARK: - Other Function
+// MARK: - Other Function
 extension UserInfoViewController {
 
     func nextButtonEnabled() {
         if dob.isEmpty == false && gender.isEmpty == false && relation.isEmpty == false {
             self.nextButton.setNextButton(isEnable: true)
-        }
-        else {
+        } else {
             self.nextButton.setNextButton(isEnable: false)
         }
     }
@@ -116,7 +109,6 @@ extension UserInfoViewController {
         self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
         //AppDelegate.getInstance().setupStoryboard()
     }
-
     
     @IBAction func finisheRegistrationButtonAction() {
         self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)

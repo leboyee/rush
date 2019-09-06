@@ -34,7 +34,7 @@ public struct Avatar {
     public let image: UIImage?
     
     /// Image url
-    public let imageUrl : String?
+    public let imageUrl: String?
     
     /// The placeholder initials to be used in the case where no image is provided.
     ///
@@ -48,5 +48,4 @@ public struct Avatar {
         self.initials = initials
         self.imageUrl = imageUrl
     }
-    
 }

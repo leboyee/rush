@@ -18,7 +18,7 @@ open class GrowingTextView: UITextView {
     override open var text: String! {
         didSet { setNeedsDisplay() }
     }
-    private weak var heightConstraint: NSLayoutConstraint?
+    private var heightConstraint: NSLayoutConstraint?
     
     // Maximum length of text. 0 means no limit.
     @IBInspectable open var maxLength: Int = 0
@@ -76,9 +76,9 @@ open class GrowingTextView: UITextView {
         // iterate through all text view's constraints and identify
         // height,from: https://github.com/legranddamien/MBAutoGrowingTextView
         for constraint in constraints {
-            if (constraint.firstAttribute == .height) {
-                if (constraint.relation == .equal) {
-                    heightConstraint = constraint;
+            if constraint.firstAttribute == .height {
+                if constraint.relation == .equal {
+                    heightConstraint = constraint
                 }
             }
         }
@@ -111,7 +111,7 @@ open class GrowingTextView: UITextView {
         height = maxHeight > 0 ? min(height, maxHeight) : height
         
         // Add height constraint if it is not found
-        if (heightConstraint == nil) {
+        if heightConstraint == nil {
             heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height)
             addConstraint(heightConstraint!)
         }
@@ -194,4 +194,3 @@ open class GrowingTextView: UITextView {
         }
     }
 }
-

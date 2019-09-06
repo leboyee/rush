@@ -43,12 +43,11 @@ class ChooseClassesViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
         }
     }
     
-    
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -62,30 +61,29 @@ class ChooseClassesViewController: CustomViewController {
         self.nextButton.setNextButton(isEnable: true)
         bottomView.isHidden = true
     }
-
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
 
-        let frame = CGRect(x: 0, y: 0, width: screenWidth , height: 50)
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50 , height: 50)
+        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
         skipButton.setImage(UIImage(named: "skipButton"), for: .normal)
-        skipButton.addTarget(self, action:  #selector(skipButtonAction), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
     }
 }
 
-//MARK: - Other Function
+// MARK: - Other Function
 extension ChooseClassesViewController {
     func moveToNext() {
         bottomView.isHidden = self.selectedArray.count > 0 ? false : true
@@ -104,12 +102,7 @@ extension ChooseClassesViewController {
         //AppDelegate.getInstance().setupStoryboard()
     }
     
-    
     @IBAction func nextButtonAction() {
         self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
-        
-        //AppDelegate.getInstance().setupStoryboard()
-        
     }
-
 }

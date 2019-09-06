@@ -11,39 +11,39 @@ import UIKit
 
 extension UIFont {
     
-    class func Regular(sz : CGFloat) -> UIFont {
+    class func regular(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Regular", size: sz)!
     }
     
-    class func Medium(sz : CGFloat) -> UIFont {
+    class func medium(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Medium", size: sz)!
     }
     
-    class func Bold(sz : CGFloat) -> UIFont {
+    class func bold(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Bold", size: sz)!
     }
     
-    class func Heavy(sz : CGFloat) -> UIFont {
+    class func heavy(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Heavy", size: sz)!
     }
     
-    class func Light(sz : CGFloat) -> UIFont {
+    class func light(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Light", size: sz)!
     }
     
-    class func Semibold(sz : CGFloat) -> UIFont {
+    class func semibold(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Semibold", size: sz)!
     }
     
-    class func DisplayBold(sz : CGFloat) -> UIFont {
+    class func displayBold(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProDisplay-Bold", size: sz)!
     }
     
-    class func DisplayLight(sz : CGFloat) -> UIFont {
+    class func displayLight(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProDisplay-Light", size: sz)!
     }
     
-    class func DisplaySemibold(sz : CGFloat) -> UIFont {
+    class func displaySemibold(sz: CGFloat) -> UIFont {
         return UIFont(name: "SFProDisplay-Semibold", size: sz)!
     }
     

@@ -96,7 +96,7 @@ extension Date {
         return Calendar.current.date(from: dc)!
     }
     
-    public static func secondsBetween(date1 d1:Date, date2 d2:Date) -> Int {
+    public static func secondsBetween(date1 d1: Date, date2 d2: Date) -> Int {
         let dc = Calendar.current.dateComponents([.second], from: d1, to: d2)
         return dc.second!
     }
@@ -131,8 +131,7 @@ extension Date {
         return dc.year!
     }
     
-    //MARK- Comparison Methods
-    
+    // MARK: - Comparison Methods
     public func isGreaterThan(_ date: Date) -> Bool {
         return (self.compare(date) == .orderedDescending)
     }
@@ -153,11 +152,7 @@ extension Date {
         return Calendar.current.isDateInTomorrow(self)
     }
     
-    
-    
-    
-    //MARK- Computed Properties
-    
+    // MARK: - Computed Properties
     public var day: UInt {
         return UInt(Calendar.current.component(.day, from: self as Date))
     }
@@ -201,21 +196,19 @@ extension Date {
         return UInt(range!.count)
     }
     
-    
-    
     public var age: Int {
         let age = Date.yearsBetween(date1: self, date2: Date())
         return age
     }
     
-    //MARK- Compute Date as String
+    // MARK: - Compute Date as String
     public func toString(format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self as Date)
     }
     
-    //MARK: Class Functions
+    // MARK: - Class Functions
     static func parse(dateString: String, format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -225,9 +218,8 @@ extension Date {
     func starnderDateFormate(date: Date) -> String {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "dd.MM.yyyy"
-        return timeFormatter.string(from:date)
+        return timeFormatter.string(from: date)
     }
-
     
     func secondsFromBeginningOfTheDay() -> TimeInterval {
         let calendar = Calendar.current

@@ -21,7 +21,7 @@ class UserCell: UICollectionViewCell {
     }
 }
 
-//MARK: - Others
+// MARK: - Others
 extension UserCell {
     
     func setup(text: String) {

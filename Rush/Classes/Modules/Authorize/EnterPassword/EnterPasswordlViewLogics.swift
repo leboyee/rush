@@ -9,28 +9,24 @@
 import UIKit
 
 extension EnterPasswordViewConteroller {
-    
-    
 }
 
-
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension EnterPasswordViewConteroller {
     
     func loginApiCalled() {
         
-        let param = [kEmail: profile.email,
-                     kPassword: profile.password] as [String : Any]
+        let param = [Keys.email: profile.email,
+                     Keys.password: profile.password] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.login(params: param) {
-            [weak self] (status, errorMessage) in
+        ServiceManager.shared.login(params: param) { [weak self] (status, _) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if status == true {
-                self_.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
-                self_.passwordNotSuccess()
+                unsafe.passwordNotSuccess()
                 //Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
         }

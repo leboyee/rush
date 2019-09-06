@@ -23,9 +23,9 @@ class EnterVerificationCodeViewController: CustomViewController {
     @IBOutlet weak var verificationTitleLabel: CustomLabel!
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var resendCodeButton: CustomButton!
-    @IBOutlet weak var codeLabel : CustomLabel!
-    @IBOutlet weak var codeErrorLabel : CustomLabel!
-    @IBOutlet weak var codeErrorCancelButton : CustomButton!
+    @IBOutlet weak var codeLabel: CustomLabel!
+    @IBOutlet weak var codeErrorLabel: CustomLabel!
+    @IBOutlet weak var codeErrorCancelButton: CustomButton!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var codeViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var codeLabelWidthConstraint: NSLayoutConstraint!
@@ -36,8 +36,7 @@ class EnterVerificationCodeViewController: CustomViewController {
     var phoneNumber = ""
     var countryCode = ""
 
-
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     var profile = Profile()
 
     override func viewDidLoad() {
@@ -65,7 +64,7 @@ class EnterVerificationCodeViewController: CustomViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
             codeViewWidthConstraint.constant =  270
             codeLabelLeadingConstraint.constant = 16
             codeLabelWidthConstraint.constant = 280
@@ -73,7 +72,7 @@ class EnterVerificationCodeViewController: CustomViewController {
 
     }
     
-    //MARK: - Setup
+    // MARK: - Setup
     func setup() {
         setupUI()
         setupMediator()
@@ -89,17 +88,14 @@ class EnterVerificationCodeViewController: CustomViewController {
         codeErrorLabel.isHidden = true
         self.bgImageView.setBgForLoginSignup()
         
-        if loginType == .Register {
+        if loginType == .register {
             verificationTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.createAccount, for: .normal)
-        }
-        else {
+        } else {
             verificationTitleLabel.text = Text.phoneNoTitleLogin
             nextButton.setTitle(Text.login, for: .normal)
         }
     }
-
-
 }
 
 // MARK: - Actions
@@ -111,10 +107,9 @@ extension EnterVerificationCodeViewController {
     @IBAction func nextButtonAction() {
         if self.code.count == 5 {
             self.view.endEditing(true)
-            if loginType == .Register {
+            if loginType == .register {
                 signupApiCalled(code: self.code)
-            }
-            else {
+            } else {
                 loginApiCalled(code: self.code)
             }
             //self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
@@ -131,19 +126,18 @@ extension EnterVerificationCodeViewController {
     }
 }
 
-//MARK: Presenter
+// MARK: - Presenter
 extension EnterVerificationCodeViewController {
     func singupSuccess() {
         self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
     }
     
     func loginSuccess() {
-        AppDelegate.getInstance().setupStoryboard()
+        AppDelegate.shared?.setupStoryboard()
 
     }
     
 }
-
 
 // MARK: - Navigation
 extension EnterVerificationCodeViewController {

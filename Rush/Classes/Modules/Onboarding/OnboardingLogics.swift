@@ -10,7 +10,6 @@ import UIKit
 
 extension OnboardingViewController {
     
-    
     func fillCell(cell: OnBoardingCollectionViewCell, indexPath: IndexPath) {
         cell.setup(index: indexPath.row)
     }
@@ -19,5 +18,3 @@ extension OnboardingViewController {
         self.pageControl.currentPage = index
     }
 }
-
-

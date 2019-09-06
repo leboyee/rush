@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
@@ -21,20 +20,14 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         
         tableView.register(UINib(nibName: Cell.clubName, bundle: nil), forCellReuseIdentifier: Cell.clubName)
-        
         tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
-        
         tableView.register(UINib(nibName: Cell.createUserPost, bundle: nil), forCellReuseIdentifier: Cell.createUserPost)
-        
         tableView.register(UINib(nibName: Cell.tag, bundle: nil), forCellReuseIdentifier: Cell.tag)
-        
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
-        
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         
         tableView.reloadData()
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
@@ -46,25 +39,24 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubName, for: indexPath) as! ClubNameCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubName, for: indexPath) as? ClubNameCell else { return UITableViewCell() }
             fillClubNameCell(cell)
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as! ClubManageCell
-            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell else { return UITableViewCell() }
             return cell
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as! EventTypeCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillJoinedUserCell(cell)
             return cell
         } else if indexPath.section == 3 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as! TagCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as? TagCell else { return UITableViewCell() }
             fillTagCell(cell)
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as! CreateUserPostCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
             return cell
         }
     }
@@ -73,30 +65,26 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
         let footer = UIView()
         let separator = UIView(frame: CGRect(x: section == 2 ?  24 : 0, y: 0, width: screenWidth, height: 1))
         footer.addSubview(separator)
         separator.backgroundColor = UIColor.separatorColor
         return footer
     }
-     
-     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return heightOfFooter(section)
-      }
-     
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return heightOfFooter(section)
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as! UserImagesHeaderView
+            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
             fillImageHeader(view)
             return view
         } else {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
             fillTextHeader(header, section)
             return header
         }
@@ -107,17 +95,17 @@ extension MyClubViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
-//MARK: - OtherUserProfile delegate
+// MARK: - OtherUserProfile delegate
 extension MyClubViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
         let snackbar = TTGSnackbar(message: "You unfriended \(name)",
             duration: .middle,
             actionText: "Undo",
-            actionBlock: { (snackbar) in
+            actionBlock: { (_) in
                 Utils.notReadyAlert()
         })
         snackbar.show()

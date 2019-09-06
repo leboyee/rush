@@ -9,18 +9,17 @@
 import UIKit
 
 class UniversityViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var selectedIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
     }
-    
     
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
@@ -39,7 +38,7 @@ class UniversityViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension UniversityViewController {
     
 }

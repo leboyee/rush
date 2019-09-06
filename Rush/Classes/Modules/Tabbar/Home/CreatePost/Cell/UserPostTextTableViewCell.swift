@@ -9,13 +9,11 @@
 import UIKit
 
 class UserPostTextTableViewCell: UITableViewCell {
-
-
+    
     @IBOutlet weak var placeHolderLabel: UILabel!
     @IBOutlet weak var postTextView: UITextView!
     var textDidEndEditing:(() -> Void)?
     var updateTableView:((_ textView: UITextView) -> Void)?
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +22,7 @@ class UserPostTextTableViewCell: UITableViewCell {
         postTextView.delegate = self
         postTextView.isScrollEnabled = false
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -45,16 +43,16 @@ class UserPostTextTableViewCell: UITableViewCell {
 }
 
 // MARK: - TextView delegate methods
-extension UserPostTextTableViewCell :UITextViewDelegate {
+extension UserPostTextTableViewCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
+        if text == "\n" {
             textView.resignFirstResponder()
             return false
         }
         return true
     }
-        
+    
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.count > 0 {
             placeHolderLabel.isHidden = true
@@ -67,6 +65,4 @@ extension UserPostTextTableViewCell :UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         textDidEndEditing?()
     }
-    
-    
 }

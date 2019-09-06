@@ -23,7 +23,6 @@ class Club: Decodable {
     var user: User?
     var invitees: [Invitees]?
     
-    
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case clubUserId = "club_user_id"

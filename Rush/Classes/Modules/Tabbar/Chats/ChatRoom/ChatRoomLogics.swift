@@ -10,7 +10,7 @@ import UIKit
 import SendBirdSDK
 
 extension ChatRoomViewController {
-        
+    
     func createNewChatGroup(handler: @escaping (_ channel: SBDGroupChannel?) -> Void) {
         
         var grpName = ""
@@ -26,16 +26,14 @@ extension ChatRoomViewController {
             otherUserId = friend.userId
         }
         
-        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId,loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: "", completionHandler: {
-            [weak self] (channel) in
-            guard let _ = self else { return }
+        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId, loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: "", completionHandler: { (channel) in
             DispatchQueue.main
                 .async(execute: {
                     // Move on Chat detail screen
                     handler(channel)
                 })
-            }, errorHandler: {_ in
-                print("SOMETHING WRONG IN CREATE NEW CHANNEL")
+        }, errorHandler: {_ in
+            print("SOMETHING WRONG IN CREATE NEW CHANNEL")
         })
         
     }
@@ -44,7 +42,7 @@ extension ChatRoomViewController {
         
         messageList.append(message)
         
-        if (messageList.count == 0) {
+        if messageList.count == 0 {
             emptyPlaceholderView(isHide: false)
         } else {
             emptyPlaceholderView(isHide: true)
@@ -90,15 +88,14 @@ extension ChatRoomViewController {
         }
     }
     
-    
     func loadPrevisouMessages() {
         messageList.removeAll()
-        hasPrev = true;
+        hasPrev = true
         previousMessageQuery = channel?.createPreviousMessageListQuery()
         loadMessagesWithInitial(initial: true)
     }
     
-    func loadMessagesWithInitial(initial:Bool) {
+    func loadMessagesWithInitial(initial: Bool) {
         if (previousMessageQuery?.isLoading()) ?? false {
             Utils.hideSpinner()
             return
@@ -136,14 +133,13 @@ extension ChatRoomViewController {
         })
     }
     
-    
     /*!
      * @discussion more abstract method to parse a  message
      * @param messages an array of received messages
      * @param initial YEs if this is a first load
      * @return a JSQSBMessage
      */
-    func parseMessageFromChatServer(messages:[SBDBaseMessage]?, initial:Bool) {
+    func parseMessageFromChatServer(messages: [SBDBaseMessage]?, initial: Bool) {
         
         if let messageList = messages {
             for message in messageList {
@@ -163,7 +159,7 @@ extension ChatRoomViewController {
     }
     
     func readAllMessages() {
-        ChatManager().readMessagesOfChannel(channel: channel) { (status) in
+        ChatManager().readMessagesOfChannel(channel: channel) { (_) in
             
         }
     }
@@ -171,8 +167,8 @@ extension ChatRoomViewController {
 
 extension ChatRoomViewController {
     
+    // MARK: - Add Participate
     func addParticipantInGroup(_ friends: [Friend]?) {
-        //MARK: - Add Participate
         var urls = [String]()
         var userIds = [String]()
         var nickNames = [String]()
@@ -191,7 +187,7 @@ extension ChatRoomViewController {
         
         if let friendList = friends {
             for friend in friendList {
-                if !userIds.contains(friend.userId) && !ChatManager().isMemberExistInChannel(channel:self.channel, userid: friend.userId)  {
+                if !userIds.contains(friend.userId) && !ChatManager().isMemberExistInChannel(channel: self.channel, userid: friend.userId) {
                     urls.append(friend.photo?.thumb ?? "")
                     userIds.append(friend.userId)
                     nickNames.append(friend.name)
@@ -213,15 +209,12 @@ extension ChatRoomViewController {
                 groupName: groupNameString,
                 coverImageUrl: coverUrl,
                 data: "Group",
-                completionHandler: {
-                    [weak self] (channel) in
-                    guard let self_ = self else { return }
-                    self_.channel = channel
-                    self_.reloadData(true)
-                    self_.showAddParticipateToast(friends ?? [])
-            }) { (error) in
-                
-            }
+                completionHandler: { [weak self] (channel) in
+                    guard let unself = self else { return }
+                    unself.channel = channel
+                    unself.reloadData(true)
+                    unself.showAddParticipateToast(friends ?? [])
+                }, errorHandler: { _ in })
         } else {
             Utils.alert(message: "You can't add existed member again!")
         }
@@ -265,8 +258,8 @@ extension ChatRoomViewController {
         }
     }
     
-    func showSingleOrGroupPhotos(photoURL:String?) {
-        if let photo = photoURL {
+    func showSingleOrGroupPhotos(photoURL: String?) {
+        if photoURL != nil {
             if self.channel == nil || (self.channel?.members?.count ?? 0) <= 2 {
                 //single photo
                 userNavImageView.isHidden = false
@@ -280,7 +273,7 @@ extension ChatRoomViewController {
         var imageName = ""
         if self.channel != nil {
             if let members = self.channel?.members {
-                _ = Array<NSURL>()
+                // _ = Array<NSURL>()
                 if members.count == 2 && self.channel?.data != "Group" {
                     for member in members {
                         if let user = member as? SBDUser {
@@ -299,6 +292,8 @@ extension ChatRoomViewController {
                         for image in images {
                             if image != Authorization.shared.profile?.photo?.thumb {
                                 imageName = image
+                            } else {
+                                
                             }
                         }
                     }

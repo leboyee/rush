@@ -10,7 +10,6 @@ import UIKit
 
 extension ChooseInterestViewController {
     
-    
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -20,21 +19,17 @@ extension ChooseInterestViewController {
     }
     
     func fillTagCell(_ cell: ChooseTagCell) {
-        let interestNameArray = interestArray.map({ $0.interestName})
+        let interestNameArray = interestArray.map({ $0.interestName })
         cell.setupInterest(tagList: interestNameArray)
         cell.tagListView.delegate = self
 
     }
-
-    
-
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension ChooseInterestViewController {
     
 }
-
 
 extension ChooseInterestViewController: TagListViewDelegate {
     // MARK: TagListViewDelegate
@@ -43,8 +38,7 @@ extension ChooseInterestViewController: TagListViewDelegate {
         tagView.isSelected = !tagView.isSelected
         if tagView.isSelected == true {
             selectedArray.append(title)
-        }
-        else {
+        } else {
             if selectedArray.contains(title) {
                 let index = selectedArray.firstIndex(of: title)
                 selectedArray.remove(at: index ?? 0)
@@ -59,36 +53,33 @@ extension ChooseInterestViewController: TagListViewDelegate {
     }
 }
 
-//MARK: - Manage Interator or API's Calling
+// MARK: - Manage Interator or API's Calling
 extension ChooseInterestViewController {
     
     func getInterestList() {
         //Utils.showSpinner()
-        ServiceManager.shared.getInterestList(params: [:]) {
-            [weak self] (data, errorMessage) in
-            guard let self_ = self else { return }
+        ServiceManager.shared.getInterestList(params: [:]) { [weak self] (data, _) in
+            guard let unsafe = self else { return }
             guard let list = data?["list"] as? [[String: Any]] else { return }
-            self_.interestArray = list.map { (interest) -> Interest in
+            unsafe.interestArray = list.map { (interest) -> Interest in
                 return Interest(data: interest)
             }
-            self_.tableView.reloadData()
+            unsafe.tableView.reloadData()
         }
     }
     
     func updateProfileAPI() {
         
-        let param = [Keys.userInterests: selectedArray]  as [String : Any]
+        let param = [Keys.userInterests: selectedArray]  as [String: Any]
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: param) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                self_.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
         }
     }
 }
-

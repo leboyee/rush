@@ -23,7 +23,7 @@ extension ChatContactsListViewController {
         let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
         let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 72, height: 30))
         label.text = "Search people"
-        label.font = UIFont.DisplayBold(sz: 24)
+        label.font = UIFont.displayBold(sz: 24)
         label.textColor = UIColor.navBarTitleWhite32
         customView.addSubview(label)
         navigationItem.titleView = customView
@@ -31,7 +31,7 @@ extension ChatContactsListViewController {
 }
 
 // MARK: - Tableview methods
-extension ChatContactsListViewController : UITableViewDelegate, UITableViewDataSource {
+extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 26
@@ -42,9 +42,11 @@ extension ChatContactsListViewController : UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as! PeopleCell
-        fillCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as? PeopleCell {
+            fillCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -55,7 +57,7 @@ extension ChatContactsListViewController : UITableViewDelegate, UITableViewDataS
             let label = UILabel(frame: CGRect(x: 24, y: 16, width: screenWidth, height: 16))
             label.text = alphabet[section]
             label.textColor = UIColor.buttonDisableTextColor
-            label.font = UIFont.Semibold(sz: 13)
+            label.font = UIFont.semibold(sz: 13)
             header.addSubview(label)
             return header
         } else {

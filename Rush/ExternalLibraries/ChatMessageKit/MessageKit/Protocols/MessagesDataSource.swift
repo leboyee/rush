@@ -115,7 +115,6 @@ public extension MessagesDataSource {
             return false
         }
         
-        
         /*
         let loggedInUserId = Authorization.shared.profile?.userId ?? ""
         if loggedInUserId == message.sender.id {

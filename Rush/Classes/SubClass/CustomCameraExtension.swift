@@ -13,13 +13,13 @@ import DKImagePickerController
 open class CustomCameraExtension: DKImageBaseExtension, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var didCancel: (() -> Void)?
-    var didFinishCapturingImage: ((_ image: UIImage, _ metadata: [AnyHashable : Any]?) -> Void)?
+    var didFinishCapturingImage: ((_ image: UIImage, _ metadata: [AnyHashable: Any]?) -> Void)?
     var didFinishCapturingVideo: ((_ videoURL: URL) -> Void)?
     
-    open override func perform(with extraInfo: [AnyHashable : Any]) {
-        guard let didFinishCapturingImage = extraInfo["didFinishCapturingImage"] as? ((UIImage, [AnyHashable : Any]?) -> Void)
-            , let didFinishCapturingVideo = extraInfo["didFinishCapturingVideo"] as? ((URL) -> Void)
-            , let didCancel = extraInfo["didCancel"] as? (() -> Void) else { return }
+    open override func perform(with extraInfo: [AnyHashable: Any]) {
+        let info = extraInfo["didFinishCapturingImage"] as? ((UIImage, [AnyHashable: Any]?) -> Void)
+        let video = extraInfo["didFinishCapturingVideo"] as? ((URL) -> Void)
+        guard let didFinishCapturingImage = info, let didFinishCapturingVideo = video, let didCancel = extraInfo["didCancel"] as? (() -> Void) else { return }
 
         self.didFinishCapturingImage = didFinishCapturingImage
         self.didFinishCapturingVideo = didFinishCapturingVideo
@@ -39,17 +39,19 @@ open class CustomCameraExtension: DKImageBaseExtension, UIImagePickerControllerD
     
     // MARK: - UIImagePickerControllerDelegate methods
     
-    open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let mediaType = info[.mediaType] as! String
+    open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        let mediaType = info[.mediaType] as? String
         
-        if mediaType == kUTTypeImage as String {
-            let metadata = info[.mediaMetadata] as! [AnyHashable : Any]
+        if mediaType == String(kUTTypeImage) {
+            let metadata = info[.mediaMetadata] as? [AnyHashable: Any]
             
-            let image = info[.originalImage] as! UIImage
-            self.didFinishCapturingImage?(image, metadata)
-        } else if mediaType == kUTTypeMovie as String {
-            let videoURL = info[.mediaURL] as! URL
-            self.didFinishCapturingVideo?(videoURL)
+            if let image = info[.originalImage] as? UIImage {
+                self.didFinishCapturingImage?(image, metadata)
+            }
+        } else if mediaType == String(kUTTypeMovie) {
+            if let videoURL = info[.mediaURL] as? URL {
+                self.didFinishCapturingVideo?(videoURL)
+            }
         }
     }
     

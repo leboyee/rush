@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
+extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         
@@ -41,14 +41,14 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userName, for: indexPath) as! UserNameTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userName, for: indexPath) as? UserNameTableViewCell else { return UITableViewCell() }
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as! UserPostTextTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
             fillTextViewCell(cell)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as! UserPostImageTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
             fillImageCell(cell, indexPath)
             return cell
         }
@@ -59,8 +59,7 @@ extension CreatePostViewController :UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-//MARK:- DKCamera delegate methods
+// MARK: - DKCamera delegate methods
 extension CreatePostViewController {
-    
     
 }

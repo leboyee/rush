@@ -21,12 +21,12 @@ class PrivacySettingsViewController: UIViewController {
     var user: Profile?
 
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         setup()
     }
 }
 
-//MARK: - Setup
+// MARK: - Setup
 extension PrivacySettingsViewController {
     
     private func setup() {
@@ -41,9 +41,7 @@ extension PrivacySettingsViewController {
     }
     
 }
-
-
-//MARK: - Presenter Funcation
+// MARK: - Presenter Funcation
 extension PrivacySettingsViewController {
     
     func showMessage(message: String) {

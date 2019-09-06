@@ -36,7 +36,6 @@ extension HomeViewController {
         }
     }
     
-    
     func fillTutorialCell(_ cell: TutorialPopUpCell) {
         
         cell.setup(text: Message.joinEventsAndClassses)
@@ -44,14 +43,14 @@ extension HomeViewController {
         cell.setup(buttonTitle: "OK")
         
         cell.okButtonClickEvent = { [weak self] (text) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if text == "OK" {
                 cell.setup(text: Text.createEventAndOpenClub)
                 cell.setup(bgImage: "popup-green-right")
                 cell.setup(buttonTitle: "Nice!")
             } else {
-                self_.isShowTutorial = false
-                self_.tableView.reloadData()
+                unself.isShowTutorial = false
+                unself.tableView.reloadData()
             }
         }
     }
@@ -77,7 +76,7 @@ extension HomeViewController {
         
     }
     
-    func fillTextHeader(_ header: TextHeader,_ section: Int) {
+    func fillTextHeader(_ header: TextHeader, _ section: Int) {
         if section == 1 {
             header.setup(title: Text.UpcomingEvents)
         } else if section == 2 {
@@ -87,30 +86,31 @@ extension HomeViewController {
         }
         
         header.detailButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             // Open other user profile UI for test
             
             if section == 2 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
+                unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.club)
             } else if section == 3 {
-                self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
+                unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.classes)
             } else {
-                self_.performSegue(withIdentifier: Segues.createPost , sender: nil)
+                unself.performSegue(withIdentifier: Segues.createPost, sender: nil)
             }
         }
     }
 }
 
-//MARK: - Services
+// MARK: - Services
 extension HomeViewController {
     func getMyClubListAPI(sortBy: String) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
-                     Keys.sort_by: sortBy,
+                     Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()
+
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let unowned = self else { return }
