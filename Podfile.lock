@@ -68,22 +68,20 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
     - FLAnimatedImage
+    - GoogleMaps
+    - GooglePlaces
     - IQKeyboardManagerSwift
+    - MGSwipeTableCell
     - ReachabilitySwift
     - SDWebImageFLPlugin
     - SendBirdSDK
     - SVProgressHUD
     - SwiftLint
-  trunk:
-    - GoogleMaps
-    - GooglePlaces
-    - MGSwipeTableCell
-    - SDWebImage
 
 SPEC CHECKSUMS:
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9

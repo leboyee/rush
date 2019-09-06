@@ -82,6 +82,13 @@ extension HomeViewController {
                 uwself.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             }
         }
+        
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let unsafe = self else { return }
+            if type == .upcoming {
+                unsafe.showEvent()
+            }
+        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {

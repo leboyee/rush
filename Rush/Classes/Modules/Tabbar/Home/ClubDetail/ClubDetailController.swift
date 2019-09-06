@@ -40,6 +40,7 @@ class ClubDetailViewController: UIViewController {
     
     func setupUI() {
         
+
         // Check this club is created by me(logged in user)
         let clubId = clubInfo?.clubUserId ?? "id"
         let userId = Authorization.shared.profile?.userId ?? ""
@@ -57,6 +58,7 @@ class ClubDetailViewController: UIViewController {
         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
         */
         
+
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         navigationController?.navigationBar.backgroundColor = UIColor.clear

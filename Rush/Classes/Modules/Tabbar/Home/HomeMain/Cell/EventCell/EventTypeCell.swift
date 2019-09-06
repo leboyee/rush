@@ -26,8 +26,8 @@ class EventTypeCell: UITableViewCell {
     var cellSelected: ((_ type : EventCategoryType,_ id: Int,_ index: Int) -> Void)?
     var userSelected: ((_ id: Int,_ index: Int) -> Void)?
     
-    var type : EventCategoryType = .upcoming
-    var cellType : CellType = .none
+    var type: EventCategoryType = .upcoming
+    var cellType: CellType = .none
     var list: [Any]?
     let padding: CGFloat = 16.0
     
@@ -60,20 +60,24 @@ class EventTypeCell: UITableViewCell {
     func setup(userList: [Invitees]?) {
         cellType = .clubUser
         list = userList
+        reload()
     }
     
     func setup(friends: [Friend]) {
         cellType = .friends
         list = friends
+        reload()
     }
     
     func setup(interests: [Tag]) {
         cellType = .interests
         list = interests
+        reload()
     }
     
-    func setup(imagesList:[UIImage]) {
+    func setup(imagesList: [UIImage]) {
         cellType = .profileImage
+        reload()
     }
     
     func setup(isSeparatorHide: Bool) {

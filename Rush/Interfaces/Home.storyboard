@@ -66,6 +66,7 @@
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="rad-wA-dQ6"/>
                         <segue destination="P4d-Mh-kPx" kind="show" identifier="CalendarHomeSegue" id="tP4-31-EJe"/>
                         <segue destination="tgq-BU-5qI" kind="show" identifier="ClubDetailSegue" id="QdI-xB-jJm"/>
+                        <segue destination="KEM-eO-SVs" kind="show" identifier="HomeEventDetailSegue" id="h98-X0-moE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,7 +79,15 @@
                 <viewControllerPlaceholder storyboardName="Calendar" id="P4d-Mh-kPx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChZ-Ws-lIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="541" y="242"/>
+            <point key="canvasLocation" x="538" y="185"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="PCa-G5-pyl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="KEM-eO-SVs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VLh-hr-j2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="295"/>
         </scene>
         <!--Select Event Type View Controller-->
         <scene sceneID="rVd-uR-wx5">

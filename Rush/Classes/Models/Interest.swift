@@ -8,18 +8,21 @@
 
 import UIKit
 
-class Interest: Profile {
+class Interest: Codable {
     
     var interestId: Int64 = 0
     var interestName: String = ""
     
-    override init(data : [String : Any]) {
-        super.init(data: data)
+    init(data: [String : Any]) {
         setValue(data: data)
     }
     
-    override init() {
-        super.init()
+    init() {
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case interestId
+        case interestName
     }
     
     //MARK: - Private Functions
@@ -32,8 +35,6 @@ class Interest: Profile {
         if let value = data[Keys.interestName] as? String {
             interestName = value
         }
-    
-        setData(data: data)
     }
     
 }
