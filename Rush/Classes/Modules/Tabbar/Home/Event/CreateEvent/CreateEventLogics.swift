@@ -224,7 +224,7 @@ extension CreateEventViewController {
 }
 
 // MARK: - UIImagePickerControllerDelegate methods
-extension CreateClubViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension CreateEventViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         autoreleasepool {

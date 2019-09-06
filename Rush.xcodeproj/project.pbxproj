@@ -28,6 +28,9 @@
 		0992539C22846A1D00914E7B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1A088E4A22FECBC800DF6004 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A088E4922FECBC800DF6004 /* ContactsManager.swift */; };
 		1A088E5322FED12700DF6004 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A088E5222FED12700DF6004 /* Contact.swift */; };
+		1A0D01FB23228A08004F6279 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D01F823228A08004F6279 /* CreateEventViewController.swift */; };
+		1A0D01FC23228A08004F6279 /* CreateEventLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D01F923228A08004F6279 /* CreateEventLogics.swift */; };
+		1A0D01FD23228A08004F6279 /* CreateEventMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D01FA23228A08004F6279 /* CreateEventMediates.swift */; };
 		1A142EC5229EC1A0002C1AFE /* CustomPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EBF229EC1A0002C1AFE /* CustomPickerViewController.swift */; };
 		1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */; };
 		1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EC2229EC1A0002C1AFE /* CustomPickerPreseneter.swift */; };
@@ -489,6 +492,9 @@
 		0992539022845CF100914E7B /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
 		1A088E4922FECBC800DF6004 /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		1A088E5222FED12700DF6004 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		1A0D01F823228A08004F6279 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		1A0D01F923228A08004F6279 /* CreateEventLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventLogics.swift; sourceTree = "<group>"; };
+		1A0D01FA23228A08004F6279 /* CreateEventMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventMediates.swift; sourceTree = "<group>"; };
 		1A142EBF229EC1A0002C1AFE /* CustomPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewController.swift; sourceTree = "<group>"; };
 		1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomPicker.storyboard; sourceTree = "<group>"; };
 		1A142EC2229EC1A0002C1AFE /* CustomPickerPreseneter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerPreseneter.swift; sourceTree = "<group>"; };
@@ -1016,6 +1022,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1A0D01F623228A08004F6279 /* Event */,
 				8A02C1E42315507300258227 /* EventDetail */,
 				8A04B12E22FADDED0055C65F /* Calendar */,
 				796A6F2322CDEEAD00916D79 /* ClassDetail */,
@@ -1082,6 +1089,24 @@
 				1A088E4922FECBC800DF6004 /* ContactsManager.swift */,
 			);
 			path = ContactsManager;
+			sourceTree = "<group>";
+		};
+		1A0D01F623228A08004F6279 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				1A0D01F723228A08004F6279 /* CreateEvent */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		1A0D01F723228A08004F6279 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				1A0D01F823228A08004F6279 /* CreateEventViewController.swift */,
+				1A0D01F923228A08004F6279 /* CreateEventLogics.swift */,
+				1A0D01FA23228A08004F6279 /* CreateEventMediates.swift */,
+			);
+			path = CreateEvent;
 			sourceTree = "<group>";
 		};
 		1A142EBC229EC1A0002C1AFE /* CustomPickers */ = {
@@ -2963,6 +2988,7 @@
 				1AE78D2A22A00F1900972C17 /* EnterVerificationCodeViewLogics.swift in Sources */,
 				793BE65522E88207005EF72D /* InputPlugin.swift in Sources */,
 				7929DA4F22C24ADB00700B42 /* PostViewController.swift in Sources */,
+				1A0D01FC23228A08004F6279 /* CreateEventLogics.swift in Sources */,
 				1A339B4C22B3A060005509EA /* ChooseLevelViewMediates.swift in Sources */,
 				1A339B5D22B3B88A005509EA /* EnterUserNameViewController.swift in Sources */,
 				79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */,
@@ -3143,6 +3169,7 @@
 				1AEAC4C422D35BE5008FBB54 /* DatePickerViewController.swift in Sources */,
 				8A02C1F023155EA700258227 /* EventHeader.swift in Sources */,
 				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,
+				1A0D01FD23228A08004F6279 /* CreateEventMediates.swift in Sources */,
 				1A339B6422B3CEA9005509EA /* ChooseYearViewController.swift in Sources */,
 				793BE68322E88207005EF72D /* MessagesLayoutDelegate.swift in Sources */,
 				79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */,
@@ -3151,6 +3178,7 @@
 				7905CDBC230D5E730011C83B /* ContactsListViewController.swift in Sources */,
 				793BE65122E88207005EF72D /* InputBarButtonItem.swift in Sources */,
 				0918E777228436AE0098AF35 /* ForumViewController.swift in Sources */,
+				1A0D01FB23228A08004F6279 /* CreateEventViewController.swift in Sources */,
 				797FFDA122B7BC480055A001 /* GalleryPhotoCell.swift in Sources */,
 				79F377A622CB5D69003FC33E /* SearchClubLogics.swift in Sources */,
 				793BE67622E88207005EF72D /* MessageKitDateFormatter.swift in Sources */,
