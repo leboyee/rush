@@ -22,14 +22,14 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomView: CustomView!
     
-    var imageList       = [Any]()
+    var imageList = [Any]()
     var imagedataList = [String: Any]()
-    var imagePicker     = UIImagePickerController()
-    var bigFontCount    = 0
-    var picker          = ImagePickerController()
-    var delegate        : CreatePostViewControllerDelegate?
-    var iskeyboard      : Bool = false
-    var postText        = ""
+    var imagePicker = UIImagePickerController()
+    var bigFontCount = 0
+    var picker = ImagePickerController()
+    weak var delegate: CreatePostViewControllerDelegate?
+    var iskeyboard: Bool = false
+    var postText = ""
     
     var clubInfo: Club?
     

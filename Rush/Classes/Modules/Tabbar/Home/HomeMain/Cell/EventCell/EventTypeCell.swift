@@ -49,7 +49,7 @@ class EventTypeCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(_ type : EventCategoryType, _ photos: [Image]?,_ dataList: [Any]?) {
+    func setup(_ type: EventCategoryType, _ photos: [Image]?, _ dataList: [Any]?) {
         cellType = .event
         self.type = type
         list = dataList

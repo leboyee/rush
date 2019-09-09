@@ -33,6 +33,12 @@ class ClubDetailViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
     //MARk: - Other function
     func setup() {
         setupUI()
@@ -40,7 +46,6 @@ class ClubDetailViewController: UIViewController {
     
     func setupUI() {
         
-
         // Check this club is created by me(logged in user)
         let clubId = clubInfo?.clubUserId ?? "id"
         let userId = Authorization.shared.profile?.userId ?? ""
@@ -51,28 +56,11 @@ class ClubDetailViewController: UIViewController {
         // fetch club detail
         getClubDetailAPI()
         
-        /*
-        let total = screenWidth + 15
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        */
-        
-
         topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
-        
-        /*
-         // back button
-         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-         navigationItem.leftBarButtonItem = cancel
-         */
         
         // setup tableview
         setupTableView()

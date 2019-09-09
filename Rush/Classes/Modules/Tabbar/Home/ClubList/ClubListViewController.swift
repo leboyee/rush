@@ -111,7 +111,7 @@ extension ClubListViewController {
                 controller.delegate = self
             }
         } else if segue.identifier == Segues.searchClubSegue {
-            let vc = segue.destination as! SearchClubViewController
+            guard let vc = segue.destination as? SearchClubViewController else { return }
             vc.searchType = screenType == .club ? .searchList : .classes
             vc.searchText = "Fine arts classes"
         } else if segue.identifier == Segues.clubDetailSegue {

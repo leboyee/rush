@@ -30,7 +30,6 @@ extension NetworkManager {
         requestDelete(path: "auth/logout", params: [:], resultHandler: resultHandler)
     }
 
-
     func phonetkn(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "auth/phonetkn", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
@@ -65,7 +64,6 @@ extension NetworkManager {
         requestPost(path: "pushtoken", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     
-
     // MARK: - Major and Minor list
     func getMajorList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "major", params: params, resultHandler: resultHandler)

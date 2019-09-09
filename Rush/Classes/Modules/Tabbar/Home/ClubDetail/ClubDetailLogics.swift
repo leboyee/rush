@@ -46,9 +46,9 @@ extension ClubDetailViewController {
             cell.setup(detail: club.clubDesc, numberOfLines: isReadMore ? 0 : 2)
             cell.setup(readmoreSelected: isReadMore)
             cell.readMoreClickEvent = { [weak self] () in
-                guard let self_ = self else { return }
-                self_.isReadMore = !self_.isReadMore
-                self_.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                guard let uwself = self else { return }
+                uwself.isReadMore = !uwself.isReadMore
+                uwself.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
             }
         }
     }
@@ -83,7 +83,7 @@ extension ClubDetailViewController {
         }
     }
     
-    func fillEventByDateCell(_ cell: EventByDateCell,_ indexPath: IndexPath) {
+    func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         let user = clubInfo?.user
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
@@ -161,7 +161,7 @@ extension ClubDetailViewController {
         let id = clubInfo?.id ?? ""
         
         Utils.showSpinner()
-        NetworkManager.shared.getClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg, status) -> (Void) in
+        NetworkManager.shared.getClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg, _) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let list = data as? [String: Any] {

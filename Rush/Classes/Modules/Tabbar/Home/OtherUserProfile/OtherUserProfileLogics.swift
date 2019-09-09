@@ -115,7 +115,6 @@ extension OtherUserProfileController {
             cell.setup(.classes, nil, nil)
         default:
             cell.setup(.none, nil, nil)
-            break
         }
         
         cell.cellSelected = { [weak self] (type, id, index) in

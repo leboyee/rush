@@ -73,19 +73,13 @@ extension HomeViewController {
             cell.setup(.classes, nil, nil)
         }
         
-        cell.cellSelected = { [weak self] (type, id, item) in
-            guard let uwself = self else { return }
-            
-            if indexPath.section == 2 {
-                let club = uwself.clubList[item]
-                uwself.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
-            }
-        }
-        
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
                 unsafe.showEvent()
+            } else if type == .clubs {
+                let club = unsafe.clubList[index]
+                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             }
         }
     }

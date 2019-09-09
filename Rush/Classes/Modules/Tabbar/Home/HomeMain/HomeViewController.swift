@@ -140,7 +140,7 @@ extension HomeViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.clubListSegue {
-            let vc = segue.destination as! ClubListViewController
+            guard let vc = segue.destination as? ClubListViewController else { return }
             vc.hidesBottomBarWhenPushed = false
             vc.screenType = sender as? ClubListType ?? .none
         } else if segue.identifier == Segues.clubDetailSegue {
