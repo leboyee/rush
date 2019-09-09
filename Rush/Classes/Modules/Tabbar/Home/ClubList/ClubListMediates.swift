@@ -75,6 +75,9 @@ extension ClubListViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
         openCreateClubViewController()
     }
+    func addPhotoEvent(_ type: PhotoFrom) {
+        
+    }
 }
 
 // MARK: - CreatePostViewController Delegate

@@ -85,7 +85,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - SelectEventTypeController Delegate
 extension HomeViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
-        performSegue(withIdentifier: Segues.createClub, sender: nil)
+        performSegue(withIdentifier: Segues.createEvent, sender: nil)
+    }
+    
+    func addPhotoEvent(_ type: PhotoFrom) {
+        
     }
 }
 

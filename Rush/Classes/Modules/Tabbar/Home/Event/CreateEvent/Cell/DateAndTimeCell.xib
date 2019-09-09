@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateAndTimeCell" rowHeight="69" id="KGk-i7-Jjw" customClass="DateAndTimeCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7Y-bf-pAa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqx-v5-jP2">
+                                <rect key="frame" x="24" y="62.5" width="296" height="1"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="tlW-kd-7cg"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-uX-cZh">
+                                <rect key="frame" x="64" y="15.5" width="139" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="ltv-GK-saw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="Thursday, 24 Feb">
+                                    <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dateButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="307-zf-YTA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-HL-QLi">
+                                <rect key="frame" x="255" y="15.5" width="49" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="DXm-t2-vxh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="12 pm">
+                                    <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="timeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="156-Ag-0Qx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rqx-v5-jP2" secondAttribute="trailing" id="2De-O6-yb5"/>
+                            <constraint firstAttribute="bottom" secondItem="rqx-v5-jP2" secondAttribute="bottom" id="6eV-sB-fg8"/>
+                            <constraint firstItem="6iw-uX-cZh" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="64" id="85U-dF-xdq"/>
+                            <constraint firstAttribute="trailing" secondItem="KqU-HL-QLi" secondAttribute="trailing" constant="16" id="FZj-ZN-iHg"/>
+                            <constraint firstItem="KqU-HL-QLi" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="Ox8-V4-oRt"/>
+                            <constraint firstItem="6iw-uX-cZh" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="P80-AW-f76"/>
+                            <constraint firstItem="rqx-v5-jP2" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="dZc-Vh-GF7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="E7Y-bf-pAa" secondAttribute="trailing" id="5KQ-Ie-K0n"/>
+                    <constraint firstAttribute="bottom" secondItem="E7Y-bf-pAa" secondAttribute="bottom" id="Kp6-Bf-lH5"/>
+                    <constraint firstItem="E7Y-bf-pAa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Uzu-Sw-O9p"/>
+                    <constraint firstItem="E7Y-bf-pAa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uNr-QQ-MWH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateButton" destination="6iw-uX-cZh" id="MYe-EM-eth"/>
+                <outlet property="separatorView" destination="rqx-v5-jP2" id="uKV-Hn-7GB"/>
+                <outlet property="timeButton" destination="KqU-HL-QLi" id="iBf-g7-5w1"/>
+            </connections>
+            <point key="canvasLocation" x="128.98550724637681" y="96.09375"/>
+        </tableViewCell>
+    </objects>
+</document>

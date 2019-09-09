@@ -50,11 +50,20 @@
                     <connections>
                         <outlet property="tableView" destination="Qgn-V2-eM6" id="8bm-Zv-ZU3"/>
                         <outlet property="topConstraintOfTableView" destination="Uij-lB-sZS" id="6dB-oX-Rzg"/>
+                        <segue destination="Sc4-IO-QLc" kind="presentation" identifier="SelectEventTypeViewSegue" modalPresentationStyle="overFullScreen" id="vC1-tG-MY8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2d-t1-Ohx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365" y="857"/>
+            <point key="canvasLocation" x="1422" y="856"/>
+        </scene>
+        <!--SelectEventTypeViewController-->
+        <scene sceneID="JNc-dm-IsD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SelectEventTypeViewController" id="Sc4-IO-QLc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYh-Z7-lwo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2131" y="856"/>
         </scene>
     </scenes>
 </document>

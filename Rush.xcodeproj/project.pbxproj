@@ -89,6 +89,8 @@
 		1A93E1A2229E44BE00724A6C /* EnterPhoneNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E19F229E44BE00724A6C /* EnterPhoneNoViewController.swift */; };
 		1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A0229E44BE00724A6C /* EnterPhoneNoViewLogics.swift */; };
 		1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */; };
+		1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95C3622323FDB70066798D /* DateAndTimeCell.swift */; };
+		1A95C3652323FDB70066798D /* DateAndTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A95C3632323FDB70066798D /* DateAndTimeCell.xib */; };
 		1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7A2289519400C4550C /* CustomLabel.swift */; };
 		1AA97B7D2289520900C4550C /* CustomOnboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */; };
 		1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7F228979D100C4550C /* DeviceExtension.swift */; };
@@ -398,15 +400,6 @@
 		8A0345B02322A6EA0065CF3C /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AC2322A6EA0065CF3C /* Club.swift */; };
 		8A0345B22322A7310065CF3C /* RRedArrowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345B12322A7310065CF3C /* RRedArrowImageView.swift */; };
 		8A0345B42322A7AB0065CF3C /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A0345B32322A7AB0065CF3C /* EventDetail.storyboard */; };
-		8A0345C02322AE270065CF3C /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A0345B72322AE270065CF3C /* LocationCell.xib */; };
-		8A0345C12322AE270065CF3C /* CreatePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345B82322AE270065CF3C /* CreatePostCell.swift */; };
-		8A0345C22322AE270065CF3C /* EventAboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A0345B92322AE270065CF3C /* EventAboutCell.xib */; };
-		8A0345C32322AE270065CF3C /* CreatePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A0345BA2322AE270065CF3C /* CreatePostCell.xib */; };
-		8A0345C42322AE270065CF3C /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345BB2322AE270065CF3C /* LocationCell.swift */; };
-		8A0345C52322AE270065CF3C /* EventAboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345BC2322AE270065CF3C /* EventAboutCell.swift */; };
-		8A0345C62322AE270065CF3C /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345BD2322AE270065CF3C /* EventDetailViewController.swift */; };
-		8A0345C72322AE270065CF3C /* EventDetailMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345BE2322AE270065CF3C /* EventDetailMediator.swift */; };
-		8A0345C82322AE270065CF3C /* EventDetailLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345BF2322AE270065CF3C /* EventDetailLogics.swift */; };
 		8A0345CC2322AE520065CF3C /* EventHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A0345CA2322AE520065CF3C /* EventHeader.xib */; };
 		8A0345CD2322AE520065CF3C /* EventHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345CB2322AE520065CF3C /* EventHeader.swift */; };
 		8A04B13222FADEA30055C65F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B13122FADEA30055C65F /* CalendarViewController.swift */; };
@@ -554,6 +547,8 @@
 		1A93E19F229E44BE00724A6C /* EnterPhoneNoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewController.swift; sourceTree = "<group>"; };
 		1A93E1A0229E44BE00724A6C /* EnterPhoneNoViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewLogics.swift; sourceTree = "<group>"; };
 		1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewMediates.swift; sourceTree = "<group>"; };
+		1A95C3622323FDB70066798D /* DateAndTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTimeCell.swift; sourceTree = "<group>"; };
+		1A95C3632323FDB70066798D /* DateAndTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateAndTimeCell.xib; sourceTree = "<group>"; };
 		1AA97B7A2289519400C4550C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardImageView.swift; sourceTree = "<group>"; };
 		1AA97B7F228979D100C4550C /* DeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
@@ -868,15 +863,6 @@
 		8A0345AC2322A6EA0065CF3C /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		8A0345B12322A7310065CF3C /* RRedArrowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRedArrowImageView.swift; sourceTree = "<group>"; };
 		8A0345B32322A7AB0065CF3C /* EventDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
-		8A0345B72322AE270065CF3C /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
-		8A0345B82322AE270065CF3C /* CreatePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostCell.swift; sourceTree = "<group>"; };
-		8A0345B92322AE270065CF3C /* EventAboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventAboutCell.xib; sourceTree = "<group>"; };
-		8A0345BA2322AE270065CF3C /* CreatePostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePostCell.xib; sourceTree = "<group>"; };
-		8A0345BB2322AE270065CF3C /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
-		8A0345BC2322AE270065CF3C /* EventAboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAboutCell.swift; sourceTree = "<group>"; };
-		8A0345BD2322AE270065CF3C /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		8A0345BE2322AE270065CF3C /* EventDetailMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailMediator.swift; sourceTree = "<group>"; };
-		8A0345BF2322AE270065CF3C /* EventDetailLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailLogics.swift; sourceTree = "<group>"; };
 		8A0345CA2322AE520065CF3C /* EventHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventHeader.xib; sourceTree = "<group>"; };
 		8A0345CB2322AE520065CF3C /* EventHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHeader.swift; sourceTree = "<group>"; };
 		8A04B13122FADEA30055C65F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -1025,7 +1011,6 @@
 			isa = PBXGroup;
 			children = (
 				1A0D01F623228A08004F6279 /* Event */,
-				8A02C1E42315507300258227 /* EventDetail */,
 				8A04B12E22FADDED0055C65F /* Calendar */,
 				796A6F2322CDEEAD00916D79 /* ClassDetail */,
 				79F377A222CB5D69003FC33E /* SearchClub */,
@@ -1104,6 +1089,7 @@
 		1A0D01F723228A08004F6279 /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
+				1A95C3612323FDB70066798D /* Cell */,
 				1A0D01F823228A08004F6279 /* CreateEventViewController.swift */,
 				1A0D01F923228A08004F6279 /* CreateEventLogics.swift */,
 				1A0D01FA23228A08004F6279 /* CreateEventMediates.swift */,
@@ -1294,13 +1280,6 @@
 			path = CellView;
 			sourceTree = "<group>";
 		};
-		1A62D226229500E9001E5790 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		1A62D227229540CC001E5790 /* Authorize */ = {
 			isa = PBXGroup;
 			children = (
@@ -1375,6 +1354,15 @@
 				1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */,
 			);
 			path = EnterPhoneNo;
+			sourceTree = "<group>";
+		};
+		1A95C3612323FDB70066798D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A95C3622323FDB70066798D /* DateAndTimeCell.swift */,
+				1A95C3632323FDB70066798D /* DateAndTimeCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1AA97B7E228979D100C4550C /* Extension */ = {
@@ -2320,30 +2308,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		8A0345B52322AE270065CF3C /* EventDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8A0345B62322AE270065CF3C /* Cell */,
-				8A0345BD2322AE270065CF3C /* EventDetailViewController.swift */,
-				8A0345BE2322AE270065CF3C /* EventDetailMediator.swift */,
-				8A0345BF2322AE270065CF3C /* EventDetailLogics.swift */,
-			);
-			path = EventDetail;
-			sourceTree = "<group>";
-		};
-		8A0345B62322AE270065CF3C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				8A0345B72322AE270065CF3C /* LocationCell.xib */,
-				8A0345B82322AE270065CF3C /* CreatePostCell.swift */,
-				8A0345B92322AE270065CF3C /* EventAboutCell.xib */,
-				8A0345BA2322AE270065CF3C /* CreatePostCell.xib */,
-				8A0345BB2322AE270065CF3C /* LocationCell.swift */,
-				8A0345BC2322AE270065CF3C /* EventAboutCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		8A0345C92322AE520065CF3C /* EventHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -2538,7 +2502,6 @@
 				C05FC14B22805F3D00721F3F /* Rush */,
 				C05FC14A22805F3D00721F3F /* Products */,
 				69A4CA5176A546F5C0DA9D7C /* Pods */,
-				1A62D226229500E9001E5790 /* Recovered References */,
 				E0D07A7EEDAE4D845F7A28B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -2738,7 +2701,6 @@
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
 				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
-				8A0345C02322AE270065CF3C /* LocationCell.xib in Resources */,
 				7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */,
 				1AC635FB22AA8F6900021E03 /* CustomNavBarPageController.xib in Resources */,
 				7903D0AC228E8CE5004E33B9 /* EventTypeCell.xib in Resources */,
@@ -2747,7 +2709,6 @@
 				799190A522C9E9BD0044602E /* SingleButtonCell.xib in Resources */,
 				0918E785228444AB0098AF35 /* Forum.storyboard in Resources */,
 				79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */,
-				8A0345C32322AE270065CF3C /* CreatePostCell.xib in Resources */,
 				79BE868822A946C20056529E /* FriendListCell.xib in Resources */,
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
@@ -2784,7 +2745,6 @@
 				7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */,
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
-				8A0345C22322AE270065CF3C /* EventAboutCell.xib in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				8A04B15D22FC6C3A0055C65F /* SwitchCell.xib in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
@@ -2813,6 +2773,7 @@
 				793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */,
 				8A04B14822FB0C4E0055C65F /* event.json in Resources */,
 				7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */,
+				1A95C3652323FDB70066798D /* DateAndTimeCell.xib in Resources */,
 				8A0345CC2322AE520065CF3C /* EventHeader.xib in Resources */,
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */,
@@ -2947,7 +2908,6 @@
 				793BE65322E88207005EF72D /* MessageInputBar.swift in Sources */,
 				1AA9AB4022FF31C200E0E450 /* AddInstragamPhotoMediates.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
-				8A0345C12322AE270065CF3C /* CreatePostCell.swift in Sources */,
 				8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
@@ -2962,6 +2922,7 @@
 				793BE65922E88207005EF72D /* SeparatorLine.swift in Sources */,
 				8A04B1A52304126A0055C65F /* NotificationCell.swift in Sources */,
 				7938D06322D75D74002D1537 /* UniversityViewController.swift in Sources */,
+				1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */,
 				1A3CB09022BD3242005D3D87 /* AddMajorsViewMediates.swift in Sources */,
 				091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */,
 				793BE66622E88207005EF72D /* UIViewController+Extensions.swift in Sources */,
@@ -3024,7 +2985,6 @@
 				8A0345B22322A7310065CF3C /* RRedArrowImageView.swift in Sources */,
 				1AEB56AB22E842730041EAA7 /* AddInviteViewLogics.swift in Sources */,
 				1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */,
-				8A0345C52322AE270065CF3C /* EventAboutCell.swift in Sources */,
 				8A04B1A2230410B00055C65F /* ProfileLogics.swift in Sources */,
 				793BE67122E88207005EF72D /* DetectorType.swift in Sources */,
 				7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */,
@@ -3047,7 +3007,6 @@
 				797FFDAA22B7BC480055A001 /* PhotoAlbumsViewController.swift in Sources */,
 				8A0345AD2322A6EA0065CF3C /* Address.swift in Sources */,
 				1AB0C15422C0F6BB000D016E /* AddMinorsViewLogics.swift in Sources */,
-				8A0345C82322AE270065CF3C /* EventDetailLogics.swift in Sources */,
 				1A3CB08E22BD3242005D3D87 /* AddMajorsCell.swift in Sources */,
 				7982F66222C3B04000BC8B36 /* CustomBlackTextView.swift in Sources */,
 				7912570C22A157C200BDE3EC /* OtherUserProfileLogics.swift in Sources */,
@@ -3223,7 +3182,6 @@
 				8A04B16B22FD7ACB0055C65F /* ThemeManager.swift in Sources */,
 				799190A422C9E9BD0044602E /* SingleButtonCell.swift in Sources */,
 				8A04B16822FD6ED30055C65F /* RSwitch.swift in Sources */,
-				8A0345C72322AE270065CF3C /* EventDetailMediator.swift in Sources */,
 				7958B7FC22C4E8E000A66BDC /* ClubListLogics.swift in Sources */,
 				797FFDA222B7BC480055A001 /* GalleryVideoCell.swift in Sources */,
 				797FFDA822B7BC480055A001 /* PhotoAlbumCell.swift in Sources */,
@@ -3241,7 +3199,6 @@
 				8A04B15922FC446B0055C65F /* RSeparatorLine.swift in Sources */,
 				793BE69322E88207005EF72D /* PlayButtonView.swift in Sources */,
 				793BE68622E88207005EF72D /* AvatarView.swift in Sources */,
-				8A0345C62322AE270065CF3C /* EventDetailViewController.swift in Sources */,
 				79493CEA22B90E960026AD0E /* SelectGallaryPhotoViewController.swift in Sources */,
 				8A04B13622FADF2D0055C65F /* CalendarLogics.swift in Sources */,
 				793BE66822E88207005EF72D /* CustomMessageFlowLayout.swift in Sources */,
@@ -3275,7 +3232,6 @@
 				793BE66222E88207005EF72D /* Settings+UserDefaults.swift in Sources */,
 				7905CDB5230D5E170011C83B /* ChatContactsListViewController.swift in Sources */,
 				79C38326231FF8B5003E26EC /* DKCamera+Delegate.swift in Sources */,
-				8A0345C42322AE270065CF3C /* LocationCell.swift in Sources */,
 				1AC635FD22AA907900021E03 /* CustomNavBarPageController.swift in Sources */,
 				7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */,
 				1A142EC8229EC1A0002C1AFE /* CustomPickerMediator.swift in Sources */,

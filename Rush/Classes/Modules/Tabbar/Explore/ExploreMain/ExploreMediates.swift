@@ -124,6 +124,10 @@ extension ExploreViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType) {
         performSegue(withIdentifier: Segues.createClub, sender: nil)
     }
+    
+    func addPhotoEvent(_ type: PhotoFrom) {
+        
+    }
 }
 
 // MARK: - CreatePostViewController Delegate

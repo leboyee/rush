@@ -46,34 +46,85 @@ extension CreateEventViewController {
         }
     }
     
+    func fillDateAndTimeEvent(_ cell: DateAndTimeCell, _ indexPath: IndexPath) {
+        
+        if indexPath.section == 4 {
+            
+            cell.setup(dateButtonText: startDate.isEmpty == true ? Date().eventDateFormat(date: Date()) : startDate)
+            cell.setup(timeButtonText: startTime.isEmpty == true ? "12 pm" : startTime)
+            cell.separatorView.isHidden = true
+            cell.dateButtonClickEvent = { () in
+                Utils.alert(message: "In Development")
+            }
+            
+            cell.timeButtonClickEvent = { () in
+                Utils.alert(message: "In Development")
+            }
+            
+        } else {
+            
+            cell.setup(dateButtonText: endDate.isEmpty == true ? Date().eventDateFormat(date: Date()) : endDate)
+            cell.setup(timeButtonText: endTime.isEmpty == true ? "13 pm" : endTime)
+            cell.separatorView.isHidden = false
+
+            cell.dateButtonClickEvent = { () in
+                Utils.alert(message: "In Development")
+            }
+            
+            cell.timeButtonClickEvent = { () in
+                Utils.alert(message: "In Development")
+            }
+        }
+      
+    }
+    
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
         
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
         if indexPath.section == 0 {
-            cell.setup(iconImage: "club-gray-1")
-            cell.setup(placeholder: Text.nameClub, text: nameClub)
-            cell.setup(isUserInterfaceEnable: true)
+            cell.setup(iconImage: "nameEvent")
+            cell.setup(placeholder: Text.nameEvent, text: nameEvent)
+            cell.setup(isEnabled: true)
             cell.topConstraintOfBgView.constant = -16
         } else if indexPath.section == 1 {
-            cell.setup(placeholder: Text.addDesc, text: clubDescription)
+            cell.setup(placeholder: Text.addDesc, text: eventDescription)
+            cell.setup(isEnabled: true)
         } else if indexPath.section == 2 {
+            if indexPath.row == rsvpArray.count {
+                cell.setup(placeholder: "", text: "")
+                cell.setup(placeholder: indexPath.row == 0 ? Text.addRSVP : Text.addAnotherRSVP)
+                cell.setup(keyboardReturnKeyType: .done)
+                cell.setup(isEnabled: false)
+            } else {
+                cell.setup(isHideCleareButton: false)
+                cell.setup(isEnabled: false)
+                cell.setup(placeholder: "", text: rsvpArray[indexPath.row])
+            }
+            cell.setup(iconImage: indexPath.row == 0 ? "addRSVP" : "")
+        } else if indexPath.section == 3 {
+            cell.setup(iconImage: "addLocation")
+            cell.setup(placeholder: Text.addLocation, text: location)
+            cell.setup(placeholder: Text.addLocation)
+            cell.setup(isEnabled: false)
+        } else if indexPath.section == 6 {
             if indexPath.row == interestList.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
                 cell.setup(keyboardReturnKeyType: .done)
-                cell.setup(isUserInterfaceEnable: false)
+                cell.setup(isEnabled: false)
             } else {
                 cell.setup(isHideCleareButton: false)
+                cell.setup(isEnabled: false)
                 cell.setup(placeholder: "", text: interestList[indexPath.row])
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 7 {
             
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
-                cell.setup(isUserInterfaceEnable: false)
+                cell.setup(isEnabled: false)
             } else {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: peopleList[indexPath.row])
@@ -84,9 +135,9 @@ extension CreateEventViewController {
         cell.textDidChanged = {  [weak self] (text) in
             guard let unsafe = self else { return }
             if indexPath.section == 0 {
-                unsafe.nameClub = text
+                unsafe.nameEvent = text
             } else if indexPath.section == 1 {
-                unsafe.clubDescription = text
+                unsafe.eventDescription = text
             }
             unsafe.validateAllFields()
         }
@@ -98,12 +149,12 @@ extension CreateEventViewController {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
-                if indexPath.section == 2 {
+                if indexPath.section == 6 {
                     if !unsafe.interestList.contains(txt) {
                         unsafe.interestList.append(txt)
                         unsafe.tableView.reloadData()
                     }
-                } else if indexPath.section == 3 {
+                } else if indexPath.section == 7 {
                     if !unsafe.peopleList.contains(txt) {
                         unsafe.peopleList.append(txt)
                         unsafe.tableView.reloadData()
@@ -116,12 +167,12 @@ extension CreateEventViewController {
         cell.clearButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             
-            if indexPath.section == 2 {
+            if indexPath.section == 6 {
                 if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
                 }
-            } else if indexPath.section == 3 {
+            } else if indexPath.section == 7 {
                 if let index = unsafe.peopleList.firstIndex(of: (unsafe.peopleList[indexPath.row])) {
                     unsafe.peopleList.remove(at: index)
                     unsafe.tableView.reloadData()
@@ -150,56 +201,17 @@ extension CreateEventViewController {
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(image: clubImage)
+        view.setup(image: eventImage)
         view.addPhotoButtonEvent = { [weak self] () in
             guard let unsafe = self else { return }
-            unsafe.openCameraOrLibrary(type: .photoLibrary)
-            
+            unsafe.addImageFunction()
+            //unsafe.openCameraOrLibrary(type: .photoLibrary)
         }
     }
 }
 
 // MARK: - Other functions
 extension CreateEventViewController {
-    // MARK: - Capture Image
-    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
-        DispatchQueue.main.async {
-            
-            if type == .photoLibrary {
-                let status = PHPhotoLibrary.authorizationStatus()
-                
-                if status == .notDetermined {
-                    Utils.authorizePhoto(completion: { (statusF) in
-                        if statusF == .alreadyDenied {
-                            self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                            return
-                        }
-                    })
-                } else {
-                    guard status == .authorized else {
-                        self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                        return
-                    }
-                }
-            } else {
-                let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-                guard status == .authorized else {
-                    self.showPermissionAlert(text: Message.cameraAuthorizedMesssage)
-                    return
-                }
-            }
-            
-            if UIImagePickerController.isSourceTypeAvailable(type) {
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = type
-                imagePicker.allowsEditing = false
-                imagePicker.navigationBar.isTranslucent = false
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-        }
-    }
-    
     private func showPermissionAlert(text: String) {
         Utils.alert(
             message: text,
@@ -216,7 +228,7 @@ extension CreateEventViewController {
     }
     
     func validateAllFields() {
-        if clubImage != nil && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+        if eventImage != nil && nameEvent.isNotEmpty && eventDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
             navigationItem.rightBarButtonItem = saveBtnActive
         } else {
             navigationItem.rightBarButtonItem = saveBtnDisActive// saveBtnDisActive
@@ -224,58 +236,3 @@ extension CreateEventViewController {
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate methods
-<<<<<<< HEAD
-extension CreateEventViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-=======
-extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
->>>>>>> develop
-    
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        
-        autoreleasepool {
-            var captureImage = info[UIImagePickerController.InfoKey.originalImage]
-                as? UIImage
-            if #available(iOS 11, *), captureImage == nil {
-                if PHPhotoLibrary.authorizationStatus() == .authorized {
-                    let asset                    = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset
-                    let manager                  = PHImageManager.default()
-                    let requestOptions           = PHImageRequestOptions()
-                    requestOptions.isSynchronous = true
-                    manager.requestImage(
-                        for: asset,
-                        targetSize: PHImageManagerMaximumSize,
-                        contentMode: PHImageContentMode.default,
-                        options: requestOptions,
-                        resultHandler: { (image, _) in
-                        if image != nil {
-                            captureImage = image
-                        }
-                    })
-                    
-                } else {
-                    //Show Alert for error
-                    showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                }
-            }
-            IQKeyboardManager.shared.enableAutoToolbar = false
-            DispatchQueue.main.async {
-                self.clubImage = captureImage
-                self.validateAllFields()
-                self.tableView.reloadData()
-                picker.dismiss(animated: true, completion: nil)
-            }
-            
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        DispatchQueue.main.async {
-            picker.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-}

@@ -22,11 +22,14 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         
         tableView.register(UINib(nibName: Cell.textView, bundle: nil), forCellReuseIdentifier: Cell.textView)
         
+        tableView.register(UINib(nibName: Cell.dateAndTimeEvent, bundle: nil), forCellReuseIdentifier: Cell.dateAndTimeEvent)
+
+        
         tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 9
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,9 +37,19 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 4 {
+        if indexPath.section == 8 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell {
                 fillTextIconCell(cell, indexPath)
+                return cell
+            }
+        } else if indexPath.section == 4 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
+                fillDateAndTimeEvent(cell, indexPath)
+                return cell
+            }
+        } else if indexPath.section == 5 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
+                fillDateAndTimeEvent(cell, indexPath)
                 return cell
             }
         } else {
@@ -49,7 +62,7 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedCell(indexPath)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -129,6 +142,21 @@ extension CreateEventViewController: UIScrollViewDelegate {
             if tableView.contentOffset.y < -40 {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
+        }
+    }
+}
+
+// MARK: - SelectEventTypeController Delegate
+extension CreateEventViewController: SelectEventTypeDelegate {
+    func createEventClub(_ type: EventType) {
+        
+    }
+    
+    func addPhotoEvent(_ type: PhotoFrom) {
+        if type == .cameraRoll {
+            self.openCameraOrLibrary(type: .photoLibrary)
+        } else {
+            Utils.alert(message: "In Development")
         }
     }
 }

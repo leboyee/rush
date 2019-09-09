@@ -17,7 +17,8 @@ class TextViewCell: UITableViewCell {
     @IBOutlet weak var topTextViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfBgView: NSLayoutConstraint!
     @IBOutlet weak var clearButton: UIButton!
-    
+    @IBOutlet weak var bottomLine: UIView!
+
     var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
     var textDidEndEditing: ((_ text: String) -> Void)?
@@ -84,8 +85,17 @@ extension TextViewCell {
         textView.isUserInteractionEnabled = isUserInteractionEnabled
     }
     
+    func setup(isEnabled: Bool) {
+        textView.isUserInteractionEnabled = isEnabled
+    }
+
+    
     func setup(isHideCleareButton: Bool) {
         clearButton.isHidden = isHideCleareButton
+    }
+    
+    func setup(isHiddenBottomLine: Bool) {
+        bottomLine.isHidden = isHiddenBottomLine
     }
     
     func setup(placeholder: String) {
