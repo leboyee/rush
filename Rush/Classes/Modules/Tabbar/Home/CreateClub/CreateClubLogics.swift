@@ -287,6 +287,7 @@ extension CreateClubViewController {
             guard let unsafe = self else { return }
             if status {
                 unsafe.navigationController?.popViewController(animated: true)
+                // unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
             } else {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }
