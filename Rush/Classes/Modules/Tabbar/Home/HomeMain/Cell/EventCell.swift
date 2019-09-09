@@ -73,6 +73,10 @@ extension EventCell {
         timeLabel.text = eventDetail
     }
     
+    func setup(eventImageUrl: URL?) {
+        eventImageView.sd_setImage(with: eventImageUrl, completed: nil)
+    }
+    
     func setup(isHideDateView: Bool) {
         if isHideDateView {
             widthConstraintOfDateView.constant = 0
@@ -101,25 +105,26 @@ extension EventCell {
         }
     }
     
-    func setup(user: [String]) {
+    func setup(invitee: [Invitees]?) {
         
         userCountLabel.isHidden = true
         firstUserImageView.isHidden = false
         secondUserImageView.isHidden = false
         thirdUserImageView.isHidden = false
         
-        if user.count == 0 {
+        if invitee?.count ?? 0 == 0 {
             userView.isHidden = true
-        } else if user.count == 1 {
+        } else if invitee?.count ?? 0 == 1 || invitee?.count ?? 0 > 2 {
+            firstUserImageView.isHidden = true
             secondUserImageView.isHidden = true
-            thirdUserImageView.isHidden = true
-        } else if user.count == 2 {
-            thirdUserImageView.isHidden = true
+        } else if invitee?.count ?? 0 == 2 || invitee?.count ?? 0 > 2 {
+            firstUserImageView.isHidden = true
         }
         
-        if user.count > 3 {
+        if invitee?.count ?? 0 > 3 {
             userCountLabel.isHidden = false
-            userCountLabel.text = "\(user.count)+"
+            let count = invitee?.count ?? 0
+            userCountLabel.text = "\(count - 3)+"
         }
     }
 }

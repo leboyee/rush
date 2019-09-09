@@ -11,8 +11,8 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .interests || cellType == .friends {
-            return list?.count ?? 0
+        if cellType == .interests || cellType == .friends || cellType == .clubUser || (cellType == .event && type == .clubs) { // after stable app (remove this line)
+            return cellType == .clubUser ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         }
         return 10
     }
@@ -23,8 +23,22 @@ extension EventTypeCell {
             cell.setup(eventName: "VR Meetup")
             cell.setup(eventDetail: "10-12pm")
         } else if type == .clubs || type == .clubsJoined {
-            cell.setup(eventName: "Development lifehacks")
-            cell.setup(eventDetail: "Get the latest dev skills")
+            if let clubList = list as? [Club] {
+                let club = clubList[indexPath.item]
+                cell.setup(eventName: club.clubName)
+                cell.setup(eventDetail: club.clubDesc)
+                let img = Image(json: club.clubPhoto)
+                cell.setup(eventImageUrl: img.url)
+                let clubId = club.clubUserId
+                let userId = Authorization.shared.profile?.userId ?? ""
+                if clubId == userId {
+                    cell.setup(type: .clubsJoined)
+                    cell.setup(invitee: club.invitees)
+                }
+            } else {
+                cell.setup(eventName: "Development lifehacks")
+                cell.setup(eventDetail: "Get the latest dev skills")
+            }
         } else if type == .classes {
             
         }
@@ -35,10 +49,13 @@ extension EventTypeCell {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
+            cell.setup(count: list?.count ?? 0)
             cell.setup(isShowCount: true)
         } else {
-            cell.setup(text: "John")
-            cell.setup(isShowCount: false)
+            if let invitee = list?[indexPath.item - 1] as? Invitees {
+                cell.setup(text: (invitee.user?.firstName ?? "") + " " + (invitee.user?.lastName ?? ""))
+                cell.setup(isShowCount: false)
+            }
         }
     }
     
@@ -70,6 +87,7 @@ extension EventTypeCell {
     
     func cellSize(indexPath: IndexPath) -> CGSize {
         if cellType == .interests {
+            guard list?.count ?? 0 > indexPath.row else { return CGSize.zero }
             if let tag = list?[indexPath.row] as? Tag {
                 var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
                 //Add Padding

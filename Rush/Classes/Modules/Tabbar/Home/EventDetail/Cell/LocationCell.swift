@@ -76,7 +76,7 @@ extension LocationCell {
         mapSnapshotOptions.showsPointsOfInterest = true
         
         let snapShotter = MKMapSnapshotter(options: mapSnapshotOptions)
-        snapShotter.start(with: DispatchQueue.global()) { (snapshot, error) in
+        snapShotter.start(with: DispatchQueue.global()) { (snapshot, _) in
             if let image = snapshot?.image {
                 handler(image)
             } else {

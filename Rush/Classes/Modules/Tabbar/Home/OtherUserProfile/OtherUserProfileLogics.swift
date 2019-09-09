@@ -101,20 +101,20 @@ extension OtherUserProfileController {
     }
     
     func fillEventCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
-        cell.setup(.none, nil)
+        cell.setup(.none, nil, nil)
         switch indexPath.section {
         case 1:
             cell.setup(imagesList: [])
         case 2:
             cell.setup(userList: [])
         case 3:
-            cell.setup(.upcoming, nil)
+            cell.setup(.upcoming, nil, nil)
         case 4:
-            cell.setup(.clubs, nil)
+            cell.setup(.clubs, nil, nil)
         case 5:
-            cell.setup(.classes, nil)
+            cell.setup(.classes, nil, nil)
         default:
-            cell.setup(.none, nil)
+            cell.setup(.none, nil, nil)
         }
         
         cell.cellSelected = { [weak self] (type, id, index) in

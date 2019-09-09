@@ -22,7 +22,7 @@ enum ScreenType {
 }
 
 protocol SelectEventTypeDelegate: class {
-    func createEventClub(_ type: EventType)
+    func createEventClub(_ type: EventType, _ screenType: ScreenType)
 }
 
 class SelectEventTypeViewController: UIViewController {
@@ -76,15 +76,10 @@ extension SelectEventTypeViewController {
     }
     
     func dismiss() {
-        if screenType == .event {
-            Utils.notReadyAlert()
-        } else {
-            self.dismiss(animated: false, completion: nil)
-            DispatchQueue.main.async {
-                self.delegate?.createEventClub(self.eventType)
-            }
+        self.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.delegate?.createEventClub(self.eventType, self.screenType)
         }
-        
     }
 }
 
@@ -108,14 +103,17 @@ extension SelectEventTypeViewController {
     }
     
     @IBAction func publicButtonAction() {
+        eventType = .publik
         dismiss()
     }
     
     @IBAction func closedButtonAction() {
+        eventType = .closed
         dismiss()
     }
     
     @IBAction func inviteButtonAction() {
+        eventType = .inviteOnly
         dismiss()
     }
     

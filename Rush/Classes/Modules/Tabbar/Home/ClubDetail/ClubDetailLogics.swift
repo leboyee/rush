@@ -41,14 +41,15 @@ extension ClubDetailViewController {
     
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
-        cell.setup(title: "Development lifehacks")
-        cell.setup(detail: "Get the latest VR Experience with Samsung Gear. You can travel through sdf sdf lkjruto jfdgjlkj dklgj ljdf g", numberOfLines: isReadMore ? 0 : 2)
-        cell.setup(readmoreSelected: isReadMore)
-        cell.setup(isHideReadmoreButton: false)
-        cell.readMoreClickEvent = { [weak self] () in
-            guard let unself = self else { return }
-            unself.isReadMore = !unself.isReadMore
-            unself.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        if let club = clubInfo {
+            cell.setup(title: club.clubName)
+            cell.setup(detail: club.clubDesc, numberOfLines: isReadMore ? 0 : 2)
+            cell.setup(readmoreSelected: isReadMore)
+            cell.readMoreClickEvent = { [weak self] () in
+                guard let uwself = self else { return }
+                uwself.isReadMore = !uwself.isReadMore
+                uwself.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+            }
         }
     }
     
@@ -72,7 +73,7 @@ extension ClubDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(userList: [])
+        cell.setup(userList: clubInfo?.invitees)
         
         cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
@@ -83,9 +84,10 @@ extension ClubDetailViewController {
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
+        let user = clubInfo?.user
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
-        cell.setup(title: "Marta Keller")
+        cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
         cell.setup(detail: "3 events")
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
@@ -100,7 +102,8 @@ extension ClubDetailViewController {
     }
     
     func fillTagCell(_ cell: TagCell) {
-        cell.setup(tagList: ["ABC", "DEF", "TYU", "HDGHJKDHD", "DLHDDDHKD"])
+        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
+        cell.setup(tagList: tags)
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
@@ -113,7 +116,6 @@ extension ClubDetailViewController {
     
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
-        
         cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
         cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
@@ -138,15 +140,47 @@ extension ClubDetailViewController {
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(image: #imageLiteral(resourceName: "bound-add-img"))
+        let img = Image(json: clubInfo?.clubPhoto ?? "")
+        view.setup(imageUrl: img.url)
         view.setup(isHideHoverView: true)
     }
     
     func cellSelected(_ indexPath: IndexPath) {
         
+        if indexPath.section == 5 && joinedClub {
+            performSegue(withIdentifier: Segues.createPost, sender: nil)
+        }
     }
 }
 
+// MARK: - Services
 extension ClubDetailViewController {
     
+    func getClubDetailAPI() {
+        
+        let id = clubInfo?.id ?? ""
+        
+        Utils.showSpinner()
+        NetworkManager.shared.getClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg, _) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let list = data as? [String: Any] {
+                if let value = list[Keys.data] as? [String: Any] {
+                    if let club = value[Keys.club] as? [String: Any] {
+                        do {
+                            let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                            let decoder = JSONDecoder()
+                            let value = try decoder.decode(Club.self, from: dataClub)
+                            uwself.clubInfo = value
+                        } catch {
+                            
+                        }
+                    }
+                }
+                uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg.debugDescription)
+            }
+        }
+    }
 }

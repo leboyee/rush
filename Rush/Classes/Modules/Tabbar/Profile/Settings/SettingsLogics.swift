@@ -109,11 +109,9 @@ extension SettingsViewController {
             break
         }
         
-        cell.rightEvent = { [weak self] () in
-            guard let _ = self else { return }
+        cell.rightEvent = { () in
             Utils.notReadyAlert()
         }
-        
     }
     
     func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {

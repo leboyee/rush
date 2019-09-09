@@ -11,7 +11,11 @@ import UIKit
 extension ClubListViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return 50
+        if section == 0 && myClubList.count > 0 {
+            return 50
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -22,7 +26,7 @@ extension ClubListViewController {
         if indexPath.section == 0 && (myClubList.count > 0 || myClassesList.count > 0) {
             return UITableView.automaticDimension
         } else {
-            return 157
+            return CGFloat.leastNormalMagnitude
         }
     }
     
@@ -39,19 +43,19 @@ extension ClubListViewController {
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         if screenType == .club {
             if indexPath.section == 1 {
-                cell.setup(.clubs, nil)
+                cell.setup(.clubs, nil, nil)
             } else if indexPath.section == 2 {
-                cell.setup(.clubs, nil)
+                cell.setup(.clubs, nil, nil)
             } else {
-                cell.setup(.clubs, nil)
+                cell.setup(.clubs, nil, nil)
             }
         } else {
             if indexPath.section == 1 {
-                cell.setup(.classes, nil)
+                cell.setup(.classes, nil, nil)
             } else if indexPath.section == 2 {
-                cell.setup(.classes, nil)
+                cell.setup(.classes, nil, nil)
             } else {
-                cell.setup(.classes, nil)
+                cell.setup(.classes, nil, nil)
             }
         }
         
@@ -123,7 +127,8 @@ extension ClubListViewController {
     func cellSelected(_ indexPath: IndexPath) {
         if indexPath.section == 0 {
             if screenType == .club {
-                performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
+                let club = myClubList[indexPath.row]
+                performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else {
                 performSegue(withIdentifier: Segues.classDetailSegue, sender: nil)
             }
