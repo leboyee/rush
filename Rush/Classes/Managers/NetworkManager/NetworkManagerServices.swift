@@ -96,4 +96,16 @@ extension NetworkManager {
     func createPost(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
     }
+    
+    func postComment(param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "comment", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
+    func votePost(postId: String, voteType: String, resultHandler: @escaping ResultClosure) {
+        requestPut(path: "post/\(postId)/vote/\(voteType)", params: [:], contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
+    func fetchPostList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "club", params: params, resultHandler: resultHandler)
+    }
 }

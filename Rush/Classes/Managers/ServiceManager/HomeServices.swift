@@ -29,7 +29,6 @@ extension ServiceManager {
     }
     
     func fetchClubDetail(clubId: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
-        
         NetworkManager.shared.getClubDetail(clubId: clubId, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
             uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
@@ -43,6 +42,33 @@ extension ServiceManager {
             guard let uwself = self else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
+            })
+        }
+    }
+    
+    func postComment(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.postComment(param: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
+    func votePost(postId: String, voteType: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.votePost(postId: postId, voteType: voteType) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
+    func getPostList(params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.fetchPostList(params: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
             })
         }
     }
