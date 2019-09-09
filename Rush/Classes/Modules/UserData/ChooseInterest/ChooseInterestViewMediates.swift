@@ -7,12 +7,9 @@
 //
 
 import UIKit
-
-
 extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
-        
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -22,10 +19,8 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
 
         tableView.register(UINib(nibName: ReusableView.classesHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.classesHeader)
-
         tableView.reloadData()
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -37,9 +32,11 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chooseTagCell, for: indexPath) as! ChooseTagCell
-        fillTagCell(cell)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chooseTagCell, for: indexPath) as? ChooseTagCell {
+            fillTagCell(cell)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -50,5 +47,3 @@ extension ChooseInterestViewController: UITableViewDelegate, UITableViewDataSour
         return cellHeight(indexPath)
     }
 }
-
-

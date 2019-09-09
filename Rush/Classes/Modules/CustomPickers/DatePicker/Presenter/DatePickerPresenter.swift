@@ -9,26 +9,25 @@
 import UIKit
 
 class DatePickerPresenter: NSObject {
-    //MARK: - Defines handler and varibales
-    var type : UIDatePicker.Mode = .date
-    var title : String = ""
-    var minDate : Date?
-    var maxDate : Date?
-    var currentDate : Date?
+    // MARK: - Defines handler and varibales
+    var type: UIDatePicker.Mode = .date
+    var title: String = ""
+    var minDate: Date?
+    var maxDate: Date?
+    var currentDate: Date?
 
-    var updateTitle: ((_ title : String) -> Void)?
-    var updatePickerMode: ((_ type : UIDatePicker.Mode) -> Void)?
-    var updateMinDate: ((_ date : Date) -> Void)?
-    var updateMaxDate: ((_ date : Date) -> Void)?
-    var updateCurrentDate: ((_ date : Date) -> Void)?
+    var updateTitle: ((_ title: String) -> Void)?
+    var updatePickerMode: ((_ type: UIDatePicker.Mode) -> Void)?
+    var updateMinDate: ((_ date: Date) -> Void)?
+    var updateMaxDate: ((_ date: Date) -> Void)?
+    var updateCurrentDate: ((_ date: Date) -> Void)?
 
-    
-    //MARK: - Life Cycle
+    // MARK: - Life Cycle
     deinit {
         
     }
     
-    //MARK: - View Output Functions
+    // MARK: - View Output Functions
     func viewIsReady() {
         updateTitle?(title)
         updatePickerMode?(type)
@@ -46,11 +45,6 @@ class DatePickerPresenter: NSObject {
     }
 }
 
-
 extension DatePickerPresenter {
     
 }
-
-
-
-

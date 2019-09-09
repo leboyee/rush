@@ -86,7 +86,7 @@ open class InputTextView: UITextView {
     }
     
     /// The `UIEdgeInsets` the placeholderLabel has within the `InputTextView`
-    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)  {
+    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4) {
         didSet {
             updateConstraintsForPlaceholderLabel()
         }
@@ -172,10 +172,10 @@ open class InputTextView: UITextView {
 
         addSubview(placeholderLabel)
         placeholderLabelConstraintSet = NSLayoutConstraintSet(
-            top:     placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: placeholderLabelInsets.top),
-            bottom:  placeholderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -placeholderLabelInsets.bottom),
-            left:    placeholderLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: placeholderLabelInsets.left),
-            right:   placeholderLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -placeholderLabelInsets.right),
+            top: placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: placeholderLabelInsets.top),
+            bottom: placeholderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -placeholderLabelInsets.bottom),
+            left: placeholderLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: placeholderLabelInsets.left),
+            right: placeholderLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -placeholderLabelInsets.right),
             centerX: placeholderLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             centerY: placeholderLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         )
@@ -203,7 +203,6 @@ open class InputTextView: UITextView {
         placeholderLabelConstraintSet?.left?.constant = placeholderLabelInsets.left
         placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
     }
-    
     
     // MARK: - Notification
     
@@ -331,7 +330,7 @@ open class InputTextView: UITextView {
                 } else if let image = attachment.image(forBounds: attachment.bounds,
                                                        textContainer: nil,
                                                        characterIndex: range.location) {
-                    attachments.append((range,image))
+                    attachments.append((range, image))
                 }
             }
         }
@@ -342,22 +341,20 @@ open class InputTextView: UITextView {
             if !text.isEmpty {
                 components.append(text)
             }
-        }
-        else {
+        } else {
             attachments.forEach { (attachment) in
                 let (range, image) = attachment
                 if curLocation < range.location {
-                    let textRange = NSMakeRange(curLocation, range.location-curLocation)
+                    let textRange = NSMakeRange(curLocation, range.location - curLocation)
                     let text = attributedText.attributedSubstring(from: textRange).string.trimmingCharacters(in: .whitespacesAndNewlines)
                     if !text.isEmpty {
                         components.append(text)
                     }
                 }
-                
                 curLocation = range.location + range.length
                 components.append(image)
             }
-            if curLocation < length - 1  {
+            if curLocation < length - 1 {
                 let text = attributedText.attributedSubstring(from: NSMakeRange(curLocation, length - curLocation)).string.trimmingCharacters(in: .whitespacesAndNewlines)
                 if !text.isEmpty {
                     components.append(text)

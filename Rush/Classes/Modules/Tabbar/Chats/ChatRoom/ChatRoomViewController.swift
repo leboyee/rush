@@ -12,7 +12,7 @@ import SendBirdSDK
 import AVFoundation
 import IQKeyboardManagerSwift
 
-enum ChatType : Int {
+enum ChatType: Int {
     case single = 0
     case group = 1
 }
@@ -28,15 +28,16 @@ class ChatRoomViewController: MessagesViewController {
     var userNameNavLabel = UILabel()
     var timeLabel = UILabel()
     var messageList: [MockMessage] = []
-    var dismissButton : UIButton?
+    var dismissButton: UIButton?
     var isLoadFirst = false
     var hasPrev = false
     var isShowTempData = false
     var isAllowTestMessage = false
-    var friendProfile: Profile?
-    var channel : SBDGroupChannel?
-    var chatType : ChatType = .single
-    open var previousMessageQuery : SBDPreviousMessageListQuery?
+    var friendProfile: Friend?
+    var channel: SBDGroupChannel?
+    var chatType: ChatType = .single
+    open var previousMessageQuery: SBDPreviousMessageListQuery?
+
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
     var emptyMessageFriendTitle = "This is a beginning of you chat history."
@@ -48,7 +49,6 @@ class ChatRoomViewController: MessagesViewController {
         formatter.dateStyle = .medium
         return formatter
     }()
-    
     
     override func viewDidLoad() {
         messagesCollectionView = MessagesCollectionView(frame: .zero, collectionViewLayout: CustomMessagesFlowLayout())
@@ -69,12 +69,12 @@ class ChatRoomViewController: MessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         /*
-        if isShowTempData {
-            MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
-                .onNewMessage { [weak self] message in
-                    self?.insertMessages(message)
-            }
-        }
+         if isShowTempData {
+         MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
+         .onNewMessage { [weak self] message in
+         self?.insertMessages(message)
+         }
+         }
          */
     }
     
@@ -110,7 +110,7 @@ class ChatRoomViewController: MessagesViewController {
         return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
     
-    func setup()  {
+    func setup() {
         setupUI()
     }
     
@@ -165,19 +165,18 @@ class ChatRoomViewController: MessagesViewController {
     //===========================================================================
     
     /*
-    @objc func loadMoreMessages() {
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
-            if !self.isLoadFirst {
-                self.loadMessagesWithInitial(initial: false)
-            }
-        }
-        refreshControl.endRefreshing()
-    }
-    */
+     @objc func loadMoreMessages() {
+     DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
+     if !self.isLoadFirst {
+     self.loadMessagesWithInitial(initial: false)
+     }
+     }
+     refreshControl.endRefreshing()
+     }
+     */
     
-    func chatTableReload(initial:Bool) {
-        
-        if (messageList.count == 0) {
+    func chatTableReload(initial: Bool) {
+        if messageList.count == 0 {
             emptyPlaceholderView(isHide: false)
         } else {
             emptyPlaceholderView(isHide: true)
@@ -191,14 +190,10 @@ class ChatRoomViewController: MessagesViewController {
         }
     }
     
-    
-    
     func reloadData(_ initial: Bool) {
         chatTableReload(initial: initial)
     }
 }
-
-
 
 // MARK: - Chat configration
 extension ChatRoomViewController {
@@ -232,7 +227,8 @@ extension ChatRoomViewController {
         layout?.setMessageIncomingAvatarSize( ((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? CGSize(width: 29, height: 29) : CGSize(width: 29, height: 29))
         
         // Username label padding ex . John doe
-        layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left:((channel?.members?.count ?? 0) <= 2 && channel?.data != "Group") ? 18 : 18 , bottom: outgoingAvatarOverlap, right: 18))
+        let count = channel?.members?.count ?? 0
+        layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left: (count <= 2 && channel?.data != "Group") ? 18 : 18, bottom: outgoingAvatarOverlap, right: 18))
         
         // Accessory View frame of Other user
         layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
@@ -286,8 +282,8 @@ extension ChatRoomViewController {
         cameraButton.isHighlighted = true
         cameraButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: -10, bottom: 6, right: 10)
         
-        //Mark: - AddImage button
-        cameraButton.onTouchUpInside { (button) in
+        // MARK: - AddImage button
+        cameraButton.onTouchUpInside { (_) in
             if self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
                 return
@@ -300,8 +296,9 @@ extension ChatRoomViewController {
         galleryButton.isEnabled = true
         galleryButton.isHighlighted = true
         galleryButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: 0, bottom: 6, right: 0)
-        //Mark: - AddImage button
-        galleryButton.onTouchUpInside { (button) in
+        
+        // MARK: - AddImage button
+        galleryButton.onTouchUpInside { (_) in
             if self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
                 return
@@ -391,9 +388,8 @@ extension ChatRoomViewController {
             }.onTouchUpInside { _ in
                 print("Item Tapped")
         }
-    }    
+    }
 }
-
 
 // MARK: - Other functions
 extension ChatRoomViewController {
@@ -404,7 +400,7 @@ extension ChatRoomViewController {
         }
         configureMessageCollectionView()
         configureMessageInputBar()
-
+        
         updateChannelNameAndImagesOnNav()
         setupPlaceholderView()
         setupNavigation()
@@ -441,7 +437,6 @@ extension ChatRoomViewController {
             showSingleOrGroupPhotos(photoURL: nil)
         }
         
-        
         // Show name
         userNameNavLabel.text = self.userName
         
@@ -470,7 +465,7 @@ extension ChatRoomViewController {
         
         let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
         dateLabel.text = userName
-        dateLabel.font = UIFont.DisplayBold(sz: 24)
+        dateLabel.font = UIFont.displayBold(sz: 24)
         dateLabel.textColor = UIColor.white
         
         // View calender button setup
@@ -478,7 +473,7 @@ extension ChatRoomViewController {
         viewCalender.setTitle("View profile", for: .normal)
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
-        viewCalender.titleLabel?.font = UIFont.DisplaySemibold(sz: 13)
+        viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         titleView.addSubview(dateLabel)
         titleView.addSubview(viewCalender)
         
@@ -499,8 +494,8 @@ extension ChatRoomViewController {
         emptyMessageView.addSubview(emptyUserImageView)
         
         timeLabel = UILabel()
-        timeLabel = UILabel(frame: CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32 , height: 22))
-        timeLabel.font = UIFont.Semibold(sz: 17)
+        timeLabel = UILabel(frame: CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22))
+        timeLabel.font = UIFont.semibold(sz: 17)
         timeLabel.numberOfLines = 0
         timeLabel.textColor = UIColor.buttonDisableTextColor
         timeLabel.textAlignment = .center

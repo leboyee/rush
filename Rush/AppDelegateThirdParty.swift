@@ -32,8 +32,8 @@ extension AppDelegate {
     
 }
 
-//MARK:- SendBird Chat SDK
-extension AppDelegate : SBDChannelDelegate {
+// MARK: - SendBird Chat SDK
+extension AppDelegate: SBDChannelDelegate {
     
     func connectSendbird() {
         SBDMain.initWithApplicationId("834DA8CF-7324-450C-96EC-")
@@ -47,22 +47,21 @@ extension AppDelegate : SBDChannelDelegate {
     
     func registerPushTokenWithSendBird() {
         if Authorization.shared.authorized && (Authorization.shared.profile?.isNotificationOn ?? false) {
-            if ((Utils.getDataFromUserDefault(kDeviceTokenPushDataKey)) != nil) {
+            if (Utils.getDataFromUserDefault(kDeviceTokenPushDataKey)) != nil {
                 if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
                     
-                    SBDMain.registerDevicePushToken(data, unique: true) {
-                        [weak self] (status, error) in
-                        guard let self_ = self else { return }
+                    SBDMain.registerDevicePushToken(data, unique: true) { [weak self] (status, error) in
+                        guard let unself = self else { return }
                         if error == nil {
                             if Int(status.rawValue) == 1 {
-                                self_.isTokenRegistrationPending = true
+                                unself.isTokenRegistrationPending = true
                             } else {
                                 // Registration succeeded.
-                                self_.isTokenRegistrationPending = false
+                                unself.isTokenRegistrationPending = false
                             }
                         } else {
                             // Registration failed.
-                            self_.isTokenRegistrationPending = true
+                            unself.isTokenRegistrationPending = true
                         }
                     }
                 }
@@ -72,9 +71,9 @@ extension AppDelegate : SBDChannelDelegate {
     
     func unregisterPushTokenWithSendBird() {
         
-        if (Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) != nil) {
+        if Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) != nil {
             if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
-                SBDMain.unregisterPushToken(data, completionHandler: { response, error in
+                SBDMain.unregisterPushToken(data, completionHandler: { _, error in
                     if error == nil {
                         print("unregisterPushToken successfully")
                     } else {
@@ -84,8 +83,6 @@ extension AppDelegate : SBDChannelDelegate {
             }
         }
     }
-    
-    
     
     // MARK: - Chat SDK
     
@@ -138,8 +135,8 @@ extension AppDelegate : SBDChannelDelegate {
     
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
         ChatManager().getUnreadCount { (count) in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:kUpdateUnreadcount), object: (count))
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
         }
     }
-    
+
 }

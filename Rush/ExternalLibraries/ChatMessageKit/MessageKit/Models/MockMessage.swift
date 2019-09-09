@@ -86,7 +86,7 @@ internal struct MockMessage: MessageType {
         self.sentDate = date
     }
     
-    init(message:SBDBaseMessage) {
+    init(message: SBDBaseMessage) {
         // convert Int to Double
         let timeInterval = Double(message.createdAt)
         
@@ -94,14 +94,14 @@ internal struct MockMessage: MessageType {
         let myNSDate = Date(timeIntervalSince1970: timeInterval/1000)
         
         if message.isKind(of: SBDUserMessage.self) {
-            let userMessage = message as! SBDUserMessage
-            let sender = Sender.init(id: (userMessage.sender?.userId)!, displayName: (userMessage.sender?.nickname)!, avatarUrl: userMessage.sender?.profileUrl ?? "")
-             self.init(text: userMessage.message ?? "", sender: sender, messageId: "\(message.messageId)", date: myNSDate)
+            let userMessage = message as? SBDUserMessage
+            let sender = Sender.init(id: (userMessage?.sender?.userId)!, displayName: (userMessage?.sender?.nickname)!, avatarUrl: userMessage?.sender?.profileUrl ?? "")
+             self.init(text: userMessage?.message ?? "", sender: sender, messageId: "\(message.messageId)", date: myNSDate)
         } else if message.isKind(of: SBDFileMessage.self) {
-            let userMessage = message as! SBDFileMessage
-            let sender = Sender.init(id: (userMessage.sender?.userId)!, displayName: (userMessage.sender?.nickname)!, avatarUrl: userMessage.sender?.profileUrl ?? "")
+            let userMessage = message as? SBDFileMessage
+            let sender = Sender.init(id: (userMessage?.sender?.userId)!, displayName: (userMessage?.sender?.nickname)!, avatarUrl: userMessage?.sender?.profileUrl ?? "")
 //            self.init(text: "", sender: sender, messageId: "\(message.messageId)", date: myNSDate)
-            self.init(urlImage: URL(string: userMessage.url)! , sender: sender, messageId: "\(message.messageId)", date: myNSDate)
+            self.init(urlImage: URL(string: userMessage?.url ?? "")!, sender: sender, messageId: "\(message.messageId)", date: myNSDate)
         } else {
             self.init(text: "", sender: Sender(id: "", displayName: "", avatarUrl: ""), messageId: "", date: Date())
         }

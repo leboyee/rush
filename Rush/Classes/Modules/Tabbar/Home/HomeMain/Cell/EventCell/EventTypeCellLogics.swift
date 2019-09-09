@@ -17,7 +17,7 @@ extension EventTypeCell {
         return 10
     }
     
-    func fillEventCell(_ cell: EventCell,_ indexPath: IndexPath) {
+    func fillEventCell(_ cell: EventCell, _ indexPath: IndexPath) {
         cell.setup(type: type)
         if type == .upcoming {
             cell.setup(eventName: "VR Meetup")
@@ -45,7 +45,7 @@ extension EventTypeCell {
         
     }
     
-    func fillUserCell(_ cell: UserCell,_ indexPath: IndexPath) {
+    func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
@@ -59,7 +59,7 @@ extension EventTypeCell {
         }
     }
     
-    func fillFriendCell(_ cell: UserCell,_ indexPath: IndexPath) {
+    func fillFriendCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if let friend = list?[indexPath.row] as? Friend {
             cell.setup(text: friend.firstName)
             cell.setup(url: friend.photo?.urlThumb)
@@ -67,14 +67,14 @@ extension EventTypeCell {
         }
     }
     
-    func fillInterestCell(_ cell: TextCell,_ indexPath: IndexPath) {
-        guard list?.count ?? 0 > indexPath.row else { return }
+
+    func fillInterestCell(_ cell: TextCell, _ indexPath: IndexPath) {
         if let tag = list?[indexPath.row] as? Tag {
             cell.setup(text: tag.text)
         }
     }
     
-    func fillImagesCell(_ cell: ProfileImageCell,_ indexPath: IndexPath) {
+    func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
         
     }
     
@@ -90,7 +90,7 @@ extension EventTypeCell {
         if cellType == .interests {
             guard list?.count ?? 0 > indexPath.row else { return CGSize.zero }
             if let tag = list?[indexPath.row] as? Tag {
-                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.Semibold(sz: 13.0)))
+                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
                 //Add Padding
                 textWidth += (padding*2)
                 let height: CGFloat = 28.0

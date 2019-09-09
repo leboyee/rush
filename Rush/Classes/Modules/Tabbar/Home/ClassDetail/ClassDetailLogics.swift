@@ -12,7 +12,9 @@ import Photos
 extension ClassDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? ((Utils.navigationHeigh*2) + 24 + 216) : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
+        let photoHeight = (Utils.navigationHeigh*2) + 24 + 216
+        let least = CGFloat.leastNormalMagnitude
+        return section == 0 ? photoHeight : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -51,22 +53,21 @@ extension ClassDetailViewController {
         cell.setup(secondButtonType: .groupChatClub)
         
         cell.firstButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            Utils.alert(title: "Are you sure you want to leave from this class?",buttons: ["Yes", "No"],handler: { (index) in
+            guard let unself = self else { return }
+            Utils.alert(title: "Are you sure you want to leave from this class?", buttons: ["Yes", "No"], handler: { (index) in
                 if index == 0 {
-                    self_.joinedClub = false
-                    self_.tableView.reloadData()
+                    unself.joinedClub = false
+                    unself.tableView.reloadData()
                 }
             })
         }
         
-        cell.secondButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+        cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
     }
     
-    func fillTimeCell(_ cell: TextIconCell,_ indexPath: IndexPath) {
+    func fillTimeCell(_ cell: TextIconCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(isUserInterfaceEnable: false)
         if indexPath.section == 3 {
@@ -79,15 +80,15 @@ extension ClassDetailViewController {
             cell.setup(isHideCleareButton: false)
             
             cell.clearButtonClickEvent = { [weak self] () in
-                guard let self_ = self else { return }
+                guard let unself = self else { return }
                 // Show all time slot
-                self_.isShowMore = true
-                self_.tableView.reloadData()
+                unself.isShowMore = true
+                unself.tableView.reloadData()
             }
         }
     }
     
-    func fillTimeSlotCell(_ cell: TimeSlotCell,_ indexPath: IndexPath) {
+    func fillTimeSlotCell(_ cell: TimeSlotCell, _ indexPath: IndexPath) {
         cell.setup(day: timeList[indexPath.row])
         cell.setup(isHideDropDown: indexPath.row == 0 ? false : true)
     }
@@ -96,7 +97,7 @@ extension ClassDetailViewController {
         cell.setup(userList: [])
     }
     
-    func fillEventByDateCell(_ cell: EventByDateCell,_ indexPath: IndexPath) {
+    func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(title: "Marta Keller")
@@ -110,14 +111,13 @@ extension ClassDetailViewController {
             cell.setup(bottomConstraintOfDate: 22)
         }
     }
-
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
         cell.setup(title: "Join class")
         cell.joinButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.joinedClub = true
-            self_.tableView.reloadData()
+            guard let unself = self else { return }
+            unself.joinedClub = true
+            unself.tableView.reloadData()
         }
     }
     
@@ -125,7 +125,7 @@ extension ClassDetailViewController {
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
         
         cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
-        cell.setup(font: UIFont.Regular(sz: 17))
+        cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
     }
     

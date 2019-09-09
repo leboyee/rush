@@ -25,96 +25,84 @@ enum RequestType: String {
 
 typealias ResultClosure = (_ success: Any?,
     _ failure: Error?,
-    _ statuscode: Int) -> (Void)
+    _ statuscode: Int) -> Void
 
 class NetworkManager: NSObject {
     
     static let shared = NetworkManager()
     
     let errorDomain = "com.messapps.paidmeals"
-    static var userAgent : String!
-    
-    var xAPIKey: String  {
-        get {
-            return Bundle.main.infoDictionary!["APIKey"] as! String
-        }
+    static var userAgent: String!
+    var xAPIKey: String {
+        return Bundle.main.infoDictionary?["APIKey"] as? String ?? ""
     }
     
     var urlSession: URLSession {
-        get {
-            if (urlSession_ == nil) {
-                self.sessionConfigurator.timeoutIntervalForRequest = 60.0
-                self.sessionConfigurator.timeoutIntervalForResource = 60.0
-                self.sessionConfigurator.httpMaximumConnectionsPerHost = 5
-                self.operationQueue.maxConcurrentOperationCount = 15
-                urlSession_ = URLSession.init(configuration: self.sessionConfigurator,
+        if urlSessionLocal == nil {
+            self.sessionConfigurator.timeoutIntervalForRequest = 60.0
+            self.sessionConfigurator.timeoutIntervalForResource = 60.0
+            self.sessionConfigurator.httpMaximumConnectionsPerHost = 5
+            self.operationQueue.maxConcurrentOperationCount = 15
+            urlSessionLocal = URLSession.init(configuration: self.sessionConfigurator,
                                               delegate: nil,
                                               delegateQueue: self.operationQueue)
-            }
-            return urlSession_!
         }
+        return urlSessionLocal!
     }
     
     var baseUrl: URL {
-        get {
-            var serverAddress = ""
-            var path = ""
-            serverAddress = Bundle.main.infoDictionary?["ServerAddress"] as? String ?? ""
-            path = Bundle.main.infoDictionary?["APIPath"] as? String ?? ""
-            return URL(string: (serverAddress + path))!
-        }
+        var serverAddress = ""
+        var path = ""
+        serverAddress = Bundle.main.infoDictionary?["ServerAddress"] as? String ?? ""
+        path = Bundle.main.infoDictionary?["APIPath"] as? String ?? ""
+        return URL(string: (serverAddress + path))!
     }
     
-    
-    
-    private var urlSession_: URLSession?
+    private var urlSessionLocal: URLSession?
     private let sessionConfigurator = URLSessionConfiguration.default
     private let operationQueue = OperationQueue()
     private var networkRequestNumber = 0
     
     var defaultHeaders: [String: String] {
-        get {
-            
-            var dict = [String:String]()
-            dict["Accept"] = "application/json"
-            dict["User-Agent"] = NetworkManager.getUserAgent()
-            
-            let defaults = UserDefaults.standard
-            var deviceId = defaults.string(forKey: kDeviceId)
-            
-            if deviceId == nil {
-                deviceId = UIDevice.current.identifierForVendor?.uuidString
-                deviceId = deviceId?.replacingOccurrences(of: "-", with: "")
-                defaults.set(deviceId, forKey: kDeviceId)
-            }
-            
-            if deviceId != nil {
-                dict["X-Device-ID"] = deviceId!
-            }
-            
-            dict["X-API-Key"] = xAPIKey
-            if Authorization.shared.authorized {
-                dict["X-Session-ID"] = Authorization.shared.session!
-            }
-            
-            if let pushToken = Utils.getDataFromUserDefault(kPushToken) {
-                dict["X-Push-Token"] = pushToken as? String
-            }
-            
-            dict["X-Device-Type"] = "ios"
-            if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-                dict["X-App-Version"] = "\(version)"
-            }
-            
-            //Set time offset
-            let timezoneoffset = NSTimeZone.system.secondsFromGMT()
-            dict[kTimezoneOffset] = String(timezoneoffset)
-            
-            return dict
+        var dict = [String: String]()
+        dict["Accept"] = "application/json"
+        dict["User-Agent"] = NetworkManager.getUserAgent()
+        
+        let defaults = UserDefaults.standard
+        var deviceId = defaults.string(forKey: kDeviceId)
+        
+        if deviceId == nil {
+            deviceId = UIDevice.current.identifierForVendor?.uuidString
+            deviceId = deviceId?.replacingOccurrences(of: "-", with: "")
+            defaults.set(deviceId, forKey: kDeviceId)
         }
+        
+        if deviceId != nil {
+            dict["X-Device-ID"] = deviceId!
+        }
+        
+        dict["X-API-Key"] = xAPIKey
+        if Authorization.shared.authorized {
+            dict["X-Session-ID"] = Authorization.shared.session!
+        }
+        
+        if let pushToken = Utils.getDataFromUserDefault(kPushToken) {
+            dict["X-Push-Token"] = pushToken as? String
+        }
+        
+        dict["X-Device-Type"] = "ios"
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            dict["X-App-Version"] = "\(version)"
+        }
+        
+        //Set time offset
+        let timezoneoffset = NSTimeZone.system.secondsFromGMT()
+        dict[kTimezoneOffset] = String(timezoneoffset)
+        
+        return dict
     }
     
-    //MARK: Private
+    // MARK: - Private
     func requestDelete(path: String,
                        params: Any,
                        resultHandler: @escaping ResultClosure) {
@@ -140,9 +128,7 @@ class NetworkManager: NSObject {
                        params: Any,
                        resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
         
-        
         makeNetworkActivityHidden(false)
-        
         let requestType = RequestType.get
         let requestGet = self.request(with: requestType,
                                       contentType: ContentType.none,
@@ -187,7 +173,7 @@ class NetworkManager: NSObject {
     }
     
     func requestUploadImage(path: String,
-                            params: [String : Any],
+                            params: [String: Any],
                             contentType: ContentType,
                             resultHandler: @escaping ResultClosure) {
         
@@ -200,7 +186,6 @@ class NetworkManager: NSObject {
         
     }
     
-    
     func requestDataTask(request: URLRequest,
                          requestType: RequestType,
                          resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
@@ -210,15 +195,11 @@ class NetworkManager: NSObject {
             return nil
         }
         
-        let task = urlSession.dataTask(with: request) {
-            [weak self]
-            (data, response, error) in
+        let task = urlSession.dataTask(with: request) { [weak self] (data, response, error) in
             
-            
-            var resultSuccess: Any? = nil
-            var resultError: Error? = nil
+            var resultSuccess: Any?
+            var resultError: Error?
             var resultStatusCode: Int = 0
-            
             
             #if targetEnvironment(simulator)
             if data != nil {
@@ -234,8 +215,7 @@ class NetworkManager: NSObject {
                 }
             }
             
-            guard let self_ = self else { return }
-            
+            guard let unsafe = self else { return }
             guard error == nil else {
                 resultError = error
                 return
@@ -244,34 +224,32 @@ class NetworkManager: NSObject {
             guard let httpResponse = response as? HTTPURLResponse else { return }
             resultStatusCode = httpResponse.statusCode
             
-            
             guard resultStatusCode != 404 else {
                 return
             }
             
             guard resultStatusCode != 401 else {
                 NotificationCenter.default.post(name: Notification.Name.badAccess, object: nil)
-                let response = self_.makeResponseFromServer(data: data, httpResponse: httpResponse, methodName: requestType.rawValue)
+                let response = unsafe.makeResponseFromServer(data: data, httpResponse: httpResponse, methodName: requestType.rawValue)
                 resultSuccess = response
-                resultError = self_.makeError(code: resultStatusCode, description: "Restricted access")
+                resultError = unsafe.makeError(code: resultStatusCode, description: "Restricted access")
                 return
             }
             
             let headers = httpResponse.allHeaderFields
             guard let contentTypeHeader = headers["Content-Type"] as? String else {
-                resultError = self_.makeError(code: 0, description: "The content-type is not setted")
+                resultError = unsafe.makeError(code: 0, description: "The content-type is not setted")
                 return
             }
             
-            
             guard contentTypeHeader.contains("application/json") || contentTypeHeader.contains("json") else {
-                resultError = self_.makeError(code: 0, description: "The content-type is not correct. Must be application/json but was \(contentTypeHeader)")
+                resultError = unsafe.makeError(code: 0, description: "The content-type is not correct. Must be application/json but was \(contentTypeHeader)")
                 //print(NSString.init(data: data!, encoding: String.Encoding.utf8.rawValue))
                 return
             }
             
             guard let dataResponse = self?.makeResponseFromServer(data: data, httpResponse: httpResponse, methodName: requestType.rawValue) else {
-                resultError = self_.makeError(code: 0, description: "response is nil")
+                resultError = unsafe.makeError(code: 0, description: "response is nil")
                 return
             }
             
@@ -285,7 +263,7 @@ class NetworkManager: NSObject {
             } else if let dataResponse = dataResponse as? [[String: Any]] {
                 resultSuccess = dataResponse
             } else {
-                resultError = self_.makeError(code: 0, description: "Unexpected error")
+                resultError = unsafe.makeError(code: 0, description: "Unexpected error")
                 return
             }
         }
@@ -294,12 +272,11 @@ class NetworkManager: NSObject {
     }
     
     func request(with method: RequestType, contentType: ContentType, path: String, params: Any?) -> URLRequest {
-        var url : URL!
-        if (path.isEmpty) {
+        var url: URL!
+        if path.isEmpty {
             //Gift card api
             url = URL(string: "")
-        }
-        else {
+        } else {
             url = URL(string: path, relativeTo: self.baseUrl)
         }
         var request = URLRequest(url: url)
@@ -307,8 +284,6 @@ class NetworkManager: NSObject {
         request.allHTTPHeaderFields = (path.isEmpty) ? [:] : defaultHeaders
         request.url = url
         request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
-        
-        
         
         if method == .get || method == .head {
             request.httpShouldUsePipelining = true
@@ -318,23 +293,21 @@ class NetworkManager: NSObject {
             return request
         }
         
-        
         guard (method == .get || method == .head || method == .delete) == false else {
-            
-            let range = path.range(of: "?")
-            var appendingString = ""
-            let serializedParams = self.serilizeParams(parameters as! Dictionary<String, Any>)
-            if range == nil {
-                appendingString = "?\(serializedParams)"
-            } else {
-                appendingString = "&\(serializedParams)"
+            if let param = parameters as? [String: Any] {
+                let range = path.range(of: "?")
+                var appendingString = ""
+                let serializedParams = self.serilizeParams(param)
+                if range == nil {
+                    appendingString = "?\(serializedParams)"
+                } else {
+                    appendingString = "&\(serializedParams)"
+                }
+                let newUrl = URL(string: url.absoluteString.appending(appendingString))
+                request.url = newUrl
             }
-            let newUrl = URL(string: url.absoluteString.appending(appendingString))
-            request.url = newUrl
-            
             return request
         }
-        
         
         let charset = String(CFStringConvertEncodingToIANACharSetName(CFStringEncoding(String.Encoding.utf8.rawValue)))
         switch contentType {
@@ -343,14 +316,15 @@ class NetworkManager: NSObject {
             //request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             //For Php
             request.setValue("application/json; charset=\(charset)", forHTTPHeaderField: "Content-Type")
-            request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         case ContentType.formData:
             let POSTBoundary = "paidmeals-boundary"
             request.setValue("multipart/form-data; charset=\(charset); boundary=\(POSTBoundary)", forHTTPHeaderField: "Content-Type")
-            request.httpBody = self.buildMultipartFormData(postBody: POSTBoundary, params: parameters as! [[String : AnyObject]])
+            request.httpBody = self.buildMultipartFormData(postBody: POSTBoundary, params: parameters as? [[String: AnyObject]])
         case ContentType.formUrlencoded:
             request.setValue("application/x-www-form-urlencoded; charset=\(charset)", forHTTPHeaderField: "Content-Type")
-            request.httpBody = self.serilizeParams(parameters as! Dictionary<String, Any>).data(using: String.Encoding.utf8)
+            guard let sParams = parameters as? [String: Any] else { return request }
+            request.httpBody = self.serilizeParams(sParams).data(using: String.Encoding.utf8)
         case ContentType.none:
             break
         }
@@ -358,11 +332,9 @@ class NetworkManager: NSObject {
         return request
     }
     
-    
-    func  requestUpload(with contentType: ContentType, path: String, params: [String : Any]?) -> URLRequest {
+    func  requestUpload(with contentType: ContentType, path: String, params: [String: Any]?) -> URLRequest {
         
         let POSTBoundary = "friends-boundary"
-        
         let charset = String(CFStringConvertEncodingToIANACharSetName(CFStringEncoding(String.Encoding.utf8.rawValue)))
         let url = URL(string: path, relativeTo: self.baseUrl)!
         var request = URLRequest(url: url)
@@ -372,7 +344,6 @@ class NetworkManager: NSObject {
         request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
         request.setValue("multipart/form-data; charset=\(charset); boundary=\(POSTBoundary)", forHTTPHeaderField: "Content-Type")
         
-        
         guard params != nil else {
             return request
         }
@@ -380,14 +351,12 @@ class NetworkManager: NSObject {
         var body = Data()
         for (key, value) in params! {
             body.append("--\(POSTBoundary)\r\n".data(using: String.Encoding.utf8)!)
-            if value is Data {
+            if let data = value as? Data {
                 body.append("Content-Disposition: form-data; name=\"\(key)\"; filename=\"\("file.jpg")\"\r\n".data(using: String.Encoding.utf8)!)
                 body.append("Content-Type: \("image/jpg")\r\n\r\n".data(using: String.Encoding.utf8)!)
-                body.append(value as! Data)
+                body.append(data)
                 body.append("\r\n".data(using: String.Encoding.utf8)!)
-            }
-            else
-            {
+            } else {
                 body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: String.Encoding.utf8)!)
                 body.append("\(value)\r\n".data(using: String.Encoding.utf8)!)
             }
@@ -397,7 +366,7 @@ class NetworkManager: NSObject {
         return request
     }
     
-    //MARK: private methods
+    // MARK: - private methods
     static func getUserAgent() -> String {
         if self.userAgent == nil {
             guard let application = Bundle.main.object(forInfoDictionaryKey: "CFBundleName"),
@@ -407,7 +376,7 @@ class NetworkManager: NSObject {
             }
             var size = 0
             sysctlbyname("hw.machine", nil, &size, nil, 0)
-            var machine = [CChar](repeating: 0,  count: size)
+            var machine = [CChar](repeating: 0, count: size)
             sysctlbyname("hw.machine", &machine, &size, nil, 0)
             let machineString = String(cString: machine)
             let os = UIDevice.current.systemVersion
@@ -417,8 +386,7 @@ class NetworkManager: NSObject {
         return userAgent
     }
     
-    //MARK: Helper methods
-    
+    // MARK: - Helper methods
     func makeNetworkActivityHidden(_ hidden: Bool) {
         if hidden {
             self.networkRequestNumber -= 1
@@ -435,7 +403,7 @@ class NetworkManager: NSObject {
         }
     }
     
-    func makeError(code statusCode:Int, description: String) -> Error {
+    func makeError(code statusCode: Int, description: String) -> Error {
         let error = NSError(domain: errorDomain,
                             code: statusCode,
                             userInfo: [NSLocalizedDescriptionKey: description])
@@ -445,21 +413,18 @@ class NetworkManager: NSObject {
     func makeResponseFromServer(data: Data?,
                                 httpResponse: HTTPURLResponse,
                                 methodName: String) -> Any {
-        
         var json: Any = [:]
-        
-        if let data_ = data {
-            if let json_ = try? JSONSerialization.jsonObject(with: data_, options: .mutableContainers) {
-                json = json_
-                
+        if let value = data {
+            if let jsonValue = try? JSONSerialization.jsonObject(with: value, options: .mutableContainers) {
+                json = jsonValue
             } else {
                 let errorDescription = "error while trying to convert response from server to json in \(methodName) request"
                 return makeError(code: 0, description: errorDescription)
             }
         }
         
-        if (httpResponse.statusCode >= 500) {
-            if let js = json as? [String : Any] {
+        if httpResponse.statusCode >= 500 {
+            if let js = json as? [String: Any] {
                 var errorDesctiption = ""
                 if let errorJson = js["error"] as? String {
                     errorDesctiption = errorJson
@@ -474,23 +439,23 @@ class NetworkManager: NSObject {
     }
     
     func buildMultipartFormData(postBody requestBodyBoundary: String,
-                                params: [[String: AnyObject]]) -> Data {
+                                params: [[String: AnyObject]]?) -> Data {
         var mutableData = Data()
         mutableData.append("--\(requestBodyBoundary)\r\n".data(using: String.Encoding.utf8)!)
         var bodyParts = [Data]()
-        for var value in params {
+        for var value in params ?? [] {
             var someData = Data()
             let name = value["name"]!
             let contentType = value["Content-Type"]!
             someData.append("Content-Disposition: form-data; name=\"\(name)\"\r\n".data(using: String.Encoding.utf8)!)
             someData.append("Content-Type: \(contentType)\r\n\r\n".data(using: String.Encoding.utf8)!)
             
-            
             if let dataValue = value["data"] {
-                if dataValue is Dictionary<String, Any> {
-                    someData.append(try! JSONSerialization.data(withJSONObject: dataValue, options: .prettyPrinted))
-                }
-                else {
+                if dataValue is [String: Any] {
+                    if let data = try? JSONSerialization.data(withJSONObject: dataValue, options: .prettyPrinted) {
+                       someData.append(data)
+                    }
+                } else {
                     if let newData = (dataValue as? String)?.data(using: String.Encoding.utf8)! {
                         someData.append(newData)
                     }
@@ -520,25 +485,27 @@ class NetworkManager: NSObject {
         return data
     }
     
-    func serilizeParams(_ params:Dictionary<String, Any>) -> String {
-        
+    func serilizeParams(_ params: [String: Any]) -> String {
         var pairs = [String]()
         for key: String in params.keys {
             let value: Any = params[key] as Any
-            if value is Dictionary <String, Any> {
-                for subKey: String in (value as! Dictionary<String, Any>).keys {
-                    pairs.append("\(key)[\(subKey)]=\(self.escapeValue(for:(value as! Dictionary<String, Any>)[subKey] as! String))")
+            if let dict = value as? [String: Any] {
+                for subKey: String in dict.keys {
+                    let str = ((value as? [String: Any])?[subKey] as? String) ?? ""
+                    pairs.append("\(key)[\(subKey)]=\(self.escapeValue(for: str))")
                 }
-            } else if value is Array<String> {
-                for subValue: String in (value as! Array<String>) {
-                    pairs.append("\(key)[]=\(self.escapeValue(for:(value as! Dictionary<String, Any>)[subValue] as! String))")
+            } else if let arr = value as? [String] {
+                for subValue: String in arr {
+                    let str = ((value as? [String: Any])?[subValue] as? String) ?? ""
+                    pairs.append("\(key)[]=\(self.escapeValue(for: str))")
                 }
             } else {
-                if value is NSNumber {
-                    let valueToEscape: String = "\(value as! NSNumber)"
+                if let num = value as? NSNumber {
+                    let valueToEscape: String = "\(num)"
                     pairs.append("\(key)=\(self.escapeValue(for: valueToEscape))")
                 } else {
-                    pairs.append("\(key)=\(self.escapeValue(for: value as! String))")
+                    let str = value as? String ?? ""
+                    pairs.append("\(key)=\(self.escapeValue(for: str))")
                 }
             }
         }
@@ -550,13 +517,13 @@ class NetworkManager: NSObject {
         return urlParameter.addingPercentEncoding(withAllowedCharacters: CharacterSet(charactersIn: "!*'();:@&=$,/?%#[]"))!
     }
     
-    func makeParamsForData(params: Dictionary<String, Any>) -> Array<Dictionary<String, Any>> {
-        var mutableParams = Array<Dictionary<String, Any>>()
+    func makeParamsForData(params: [String: Any]) -> [[String: Any]] {
+        var mutableParams = [[String: Any]]()
         for key: String in params.keys {
             let metaInfo = ["name": key,
                             "Content-Type": "text/plain",
                             "data": params[key]]
-            mutableParams.append(metaInfo as Any as! [String : Any])
+            mutableParams.append(metaInfo as [String: Any])
         }
         return mutableParams
     }

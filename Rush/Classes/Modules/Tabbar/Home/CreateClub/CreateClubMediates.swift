@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
@@ -19,14 +18,11 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
         
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
-        
         tableView.register(UINib(nibName: Cell.textIcon, bundle: nil), forCellReuseIdentifier: Cell.textIcon)
-        
         tableView.register(UINib(nibName: Cell.textView, bundle: nil), forCellReuseIdentifier: Cell.textView)
         
         tableView.reloadData()
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
@@ -38,11 +34,11 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as! TextIconCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell else { return UITableViewCell() }
             fillTextIconCell(cell, indexPath)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as! TextViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell else { return UITableViewCell() }
             fillTextViewCell(cell, indexPath)
             return cell
         }
@@ -57,7 +53,7 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as! UserImagesHeaderView
+            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
             fillImageHeader(view)
             return view
         }
@@ -77,27 +73,27 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     /*
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
-        fillTextHeader(header, section)
-        return header
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return heightOfHeader(section)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return heightOfFooter(section)
-    }
-    */
+     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+     return UIView()
+     }
+     
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+     fillTextHeader(header, section)
+     return header
+     }
+     
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+     return heightOfHeader(section)
+     }
+     
+     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+     return heightOfFooter(section)
+     }
+     */
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
@@ -127,7 +123,7 @@ extension CreateClubViewController: UIScrollViewDelegate {
                 navigationController?.navigationBar.layer.add(animation, forKey: nil)
             }
             
-            if (tableView.contentOffset.y < -40) {
+            if tableView.contentOffset.y < -40 {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
         }

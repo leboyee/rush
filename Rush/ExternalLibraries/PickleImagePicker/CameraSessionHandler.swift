@@ -8,7 +8,6 @@
 //  See https://github.com/carousell/pickle/graphs/contributors for the list of project authors
 //
 
-
 import Foundation
 import AVFoundation
 

@@ -1,4 +1,3 @@
-
 //
 //  NotificationAlertViewController.swift
 //  wolf
@@ -6,13 +5,11 @@
 //  Created by iChirag on 02/07/18.
 //  Copyright © 2018 Messapps. All rights reserved.
 //
-
 import UIKit
 
-protocol NotificationAlertDelegate {
+protocol NotificationAlertDelegate: class {
     func undoButtonClickEvent()
 }
-
 
 class NotificationAlertViewController: UIViewController {
 
@@ -23,7 +20,7 @@ class NotificationAlertViewController: UIViewController {
     
     var toastMessage = ""
     var buttonTitle = ""
-    var delegate: NotificationAlertDelegate?
+    weak var delegate: NotificationAlertDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +61,6 @@ class NotificationAlertViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     // MARK: - Actions
     func dismissView() {
         dismiss(animated: false, completion: nil)
@@ -84,4 +80,3 @@ class NotificationAlertViewController: UIViewController {
         }
     }
 }
-

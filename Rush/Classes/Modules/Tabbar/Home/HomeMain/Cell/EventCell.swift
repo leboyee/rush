@@ -10,7 +10,6 @@ import UIKit
 
 class EventCell: UICollectionViewCell {
 
-    
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var privacyImageView: UIImageView!
     @IBOutlet weak var widthConstraintOfDateView: NSLayoutConstraint!
@@ -33,8 +32,6 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var secondUserImageView: UIImageView!
     @IBOutlet weak var firstUserImageView: UIImageView!
     @IBOutlet weak var userCountLabel: UILabel!
-    
-
     
     override func awakeFromNib() {
         super.awakeFromNib()

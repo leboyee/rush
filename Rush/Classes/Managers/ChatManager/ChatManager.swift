@@ -12,8 +12,7 @@ import SendBirdSDK
 class ChatManager: NSObject {
     
     static let manager = ChatManager()
-    
-    var channel : SBDGroupChannel?
+    var channel: SBDGroupChannel?
     
     override init() {
         super.init()
@@ -29,7 +28,7 @@ class ChatManager: NSObject {
     }
 }
 
-//MARK: - Connect and disconnect chat server
+// MARK: - Connect and disconnect chat server
 extension ChatManager {
     /*
      Connect to chat server
@@ -37,15 +36,15 @@ extension ChatManager {
     
     func connectToChatServer(userId: String, username: String, profileImageUrl: String) {
         
-        AppDelegate.getInstance().registerPushTokenWithSendBird()
+        AppDelegate.shared?.registerPushTokenWithSendBird()
         
-        SBDMain.connect(withUserId: userId, completionHandler: { (user, error) in
+        SBDMain.connect(withUserId: userId, completionHandler: { (_, error) in
             if error == nil {
                 
                 //register token if it is pending
-                if AppDelegate.getInstance().isTokenRegistrationPending {
-                    AppDelegate.getInstance().unregisterPushTokenWithSendBird()
-                    AppDelegate.getInstance().registerPushTokenWithSendBird()
+                if AppDelegate.shared?.isTokenRegistrationPending == true {
+                    AppDelegate.shared?.unregisterPushTokenWithSendBird()
+                    AppDelegate.shared?.registerPushTokenWithSendBird()
                 }
                 
                 //Update user information
@@ -53,13 +52,14 @@ extension ChatManager {
                 
                 //Set unread count
                 ChatManager().getUnreadCount({ (count) in
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue:kUpdateUnreadcount), object: (count))
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
                 })
             } else {
                 if let domain = error?.domain {
                     if Int(error?.code ?? 0) == 800120 {
-                        Utils.alert(message: "We are not able to connect to chat server.", title: "", buttons: ["Connect again"], cancel: "Cancel", destructive: nil, type: .alert, handler: { (index) in
-                            if (index == 0) {
+                        let msg = "We are not able to connect to chat server."
+                        Utils.alert(message: msg, title: "", buttons: ["Connect again"], cancel: "Cancel", destructive: nil, type: .alert, handler: { (index) in
+                            if index == 0 {
                                 self.connectToChatServer(userId: userId, username: username, profileImageUrl: profileImageUrl)
                             }
                         })
@@ -77,7 +77,7 @@ extension ChatManager {
     
     func disconnectFromChatServer() {
         //first unregister token
-        AppDelegate.getInstance().unregisterPushTokenWithSendBird()
+        AppDelegate.shared?.unregisterPushTokenWithSendBird()
         
         //dissconnect from server
         SBDMain.disconnect(completionHandler: {
@@ -85,8 +85,7 @@ extension ChatManager {
     }
 }
 
-
-//MARK: - Get channel and group list
+// MARK: - Get channel and group list
 extension ChatManager {
     /*
      Get list of all chat groups
@@ -103,9 +102,7 @@ extension ChatManager {
         query?.limit = 100
         
         let list = [AnyHashable]()
-        loadListOfChannels(query: query, channels: list, completionHandler: { [weak self] (channels) in
-            guard let self_ = self else { return }
-            
+        loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
             /*
              var sortedList: [Any]? = nil
@@ -114,9 +111,9 @@ extension ChatManager {
              }
              */
             completionHandler(channels)
-        }) { (error) in
+        }, errorHandler: { (_) in
             
-        }
+        })
     }
     
     /*
@@ -151,22 +148,22 @@ extension ChatManager {
     }
 }
 
-//MARK: - Read and unread message count
+// MARK: - Read and unread message count
 extension ChatManager {
     /*
      Get Unread message count
      */
     
     func getUnreadCount(_ completionHandler: @escaping (_ count: Int) -> Void) {
-        SBDMain.getTotalUnreadMessageCount { (unreadCount, error) in
+        SBDMain.getTotalUnreadMessageCount { (unreadCount, _) in
             completionHandler(Int(unreadCount))
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:kUpdateUnreadcount), object: (unreadCount))
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (unreadCount))
         }
     }
     
     func readMessagesOfChannel(channel: SBDGroupChannel?,
-                               completionHandler: @escaping (_ status : Bool) -> Void) {
+                               completionHandler: @escaping (_ status: Bool) -> Void) {
         SBDMain.markAsRead(withChannelUrls: [channel?.channelUrl ?? ""]) { (error) in
             if error != nil {
                 completionHandler(false)
@@ -178,34 +175,34 @@ extension ChatManager {
     
 }
 
-//MARK: - Create channel and group
+// MARK: - Create channel and group
 extension ChatManager {
     
     /*
      Create Group channel for one user
      */
     
-    func createGroupChannel(userId: String?, name:String?, photoUrl:String?, completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+    func createGroupChannel(userId: String?, name: String?, photoUrl: String?, completionHandler: @escaping(_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping(_ error: Error?) -> Void) {
         
         if userId == nil && (userId?.count ?? 0) == 0 {
             return
         }
         
         /*
-        SBDGroupChannel.createChannel(withUserIds: [userId!], isDistinct: true, completionHandler: { channel, error in
-            if error != nil {
-                if let domain = error?.domain {
-                    Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-                }
-                if let err = error {
-                    errorHandler(err)
-                }
-            } else {
-                if let value = channel {
-                    completionHandler(value)
-                }
-            }
-        })*/
+         SBDGroupChannel.createChannel(withUserIds: [userId!], isDistinct: true, completionHandler: { channel, error in
+         if error != nil {
+         if let domain = error?.domain {
+         Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+         }
+         if let err = error {
+         errorHandler(err)
+         }
+         } else {
+         if let value = channel {
+         completionHandler(value)
+         }
+         }
+         })*/
         var groupFriendsList = [String]()
         groupFriendsList.append(userId ?? "")
         groupFriendsList.append(Authorization.shared.profile?.userId ?? "")
@@ -229,13 +226,11 @@ extension ChatManager {
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
         sbdGroupChannelParams.isDistinct = (userIds?.count == 2) ? true: false
-        sbdGroupChannelParams.addUserIds(userIds as! [String])
+        sbdGroupChannelParams.addUserIds(userIds as? [String] ?? [])
         sbdGroupChannelParams.coverUrl = coverImageUrl
         sbdGroupChannelParams.data = data
         
-        SBDGroupChannel.createChannel(with: sbdGroupChannelParams) {
-            channel, error in
-            
+        SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
             if error != nil {
                 if let domain = error?.domain {
                     Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
@@ -252,7 +247,7 @@ extension ChatManager {
     }
 }
 
-//MARK: - Get channel and group list
+// MARK: - Get channel and group list
 extension ChatManager {
     
     /*
@@ -298,16 +293,18 @@ extension ChatManager {
             
             //Filter for 'Group' or not
             let predicate = NSPredicate(format: "data <> 'Group'")
-            let OneToOneList = (list as NSArray?)?.filtered(using: predicate)
+            let oneToOneList = (list as NSArray?)?.filtered(using: predicate)
             
             //Filter for member Id
             let predicateUserId = NSPredicate(format: "ANY members.userId = '\(userId ?? "")'")
-            let userchannel = (OneToOneList as NSArray?)?.filtered(using: predicateUserId)
+            let userchannel = (oneToOneList as NSArray?)?.filtered(using: predicateUserId)
             
-            if (userchannel?.count ?? 0) > 0 {
-                completionHandler((userchannel?.first as! SBDGroupChannel))
-            } else {
-                completionHandler(nil)
+            if let ch = userchannel?.first as? SBDGroupChannel {
+                if (userchannel?.count ?? 0) > 0 {
+                    completionHandler(ch)
+                } else {
+                    completionHandler(nil)
+                }
             }
         }, errorHandler: { error in
             errorHandler(error)
@@ -315,7 +312,7 @@ extension ChatManager {
     }
 }
 
-//MARK: - Update channel
+// MARK: - Update channel
 extension ChatManager {
     
     func updateChannel(
@@ -371,12 +368,12 @@ extension ChatManager {
         }
     }
     
-    func isMemberExistInChannel(channel:SBDGroupChannel?, userid: String) -> Bool{
+    func isMemberExistInChannel(channel: SBDGroupChannel?, userid: String) -> Bool {
         return channel?.hasMember(userid) ?? false
     }
 }
 
-//MARK: - Send message to channel
+// MARK: - Send message to channel
 extension ChatManager {
     /*
      Send text message to channel
@@ -427,7 +424,7 @@ extension ChatManager {
     }
 }
 
-//MARK: - Block/Unblock user
+// MARK: - Block/Unblock user
 extension ChatManager {
     /*
      Block user
@@ -436,7 +433,8 @@ extension ChatManager {
     // MARK: - Blocked / Unblock
     func blockUserId(_ userId: String, handler completionHandler: ((_ status: Bool) -> Void)? = nil) {
         //Block user in SendBird API
-        SBDMain.blockUserId(userId, completionHandler: { blockedUser, error in
+        SBDMain.blockUserId(userId, completionHandler: { (_, error) in
+
             if completionHandler != nil {
                 if error == nil {
                     completionHandler?(true)
@@ -462,7 +460,7 @@ extension ChatManager {
     }
 }
 
-//MARK: - Remove(Leave) from group or channel
+// MARK: - Remove(Leave) from group or channel
 extension ChatManager {
     
     /*
@@ -486,7 +484,7 @@ extension ChatManager {
      Leave from group/channel
      */
     
-    func leave(userId: String?,completion: ((_ status: Bool) -> Void)? = nil) {
+    func leave(userId: String?, completion: ((_ status: Bool) -> Void)? = nil) {
         
         getChannelForUserId(userId, completionHandler: { (channel) in
             if let chnl = channel {
@@ -500,14 +498,14 @@ extension ChatManager {
             } else {
                 completion?(false)
             }
-        }) { (error) in
+        }, errorHandler: { (_) in
             completion?(false)
-        }
+        })
     }
     
     /*
-        Leave/Exit from group chat
-    */
+     Leave/Exit from group chat
+     */
     
     func exitFromGroup(_ channel: SBDGroupChannel?, completionHandler: @escaping (_ status: Bool) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
@@ -537,7 +535,7 @@ extension ChatManager {
                                groupName: groupNameString,
                                coverImageUrl: coverUrl,
                                data: "Group",
-                               completionHandler: { (updateChannel) in
+                               completionHandler: { (_) in
                                 self.leave(channel) { (status) in
                                     if status {
                                         completionHandler(true)
@@ -552,7 +550,7 @@ extension ChatManager {
     }
 }
 
-//MARK: - Update userInfo
+// MARK: - Update userInfo
 extension ChatManager {
     
     /*
@@ -562,7 +560,7 @@ extension ChatManager {
     // MARK: - Update Info
     func updateUsername(_ username: String?, profileImage profileImageUrl: String?) {
         // update the user name
-        SBDMain.updateCurrentUserInfo(withNickname: username, profileUrl: profileImageUrl, completionHandler: { error in
+        SBDMain.updateCurrentUserInfo(withNickname: username, profileUrl: profileImageUrl, completionHandler: { (_) in
         })
     }
 }
@@ -572,11 +570,10 @@ extension ChatManager: SBDChannelDelegate {
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
         //Set unread count
         ChatManager().getUnreadCount { (count) in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:kUpdateUnreadcount), object: (count))
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
         }
     }
 }
-
 
 // MARK: - Private Methods
 extension ChatManager {
@@ -635,10 +632,9 @@ extension ChatManager {
         return sortedlist
     }
     
-    func isLaterThanDate(_ date: Date,_ compareDate: Date) -> Bool {
+    func isLaterThanDate(_ date: Date, _ compareDate: Date) -> Bool {
         return date.compare(compareDate) == .orderedDescending
     }
-    
     
     func getDateFor(_ channel: SBDGroupChannel?) -> Date? {
         var msgDate: Date?
@@ -659,7 +655,7 @@ extension ChatManager {
     }
 }
 
-//MARK: - Others
+// MARK: - Others
 extension ChatManager {
     func getChatName(_ channel: SBDGroupChannel?) -> String {
         
@@ -673,7 +669,7 @@ extension ChatManager {
                         if groupName.isEmpty {
                             groupName = user.nickname ?? ""
                         } else {
-                            groupName = groupName + ", " + (user.nickname ?? "")
+                            groupName += ", " + (user.nickname ?? "")
                         }
                     }
                 }

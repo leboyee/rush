@@ -14,7 +14,6 @@ extension CalendarEventListViewController {
         
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 88.0
@@ -22,12 +21,9 @@ extension CalendarEventListViewController {
         tableView.register(UINib(nibName: Cell.calendarEvent, bundle: nil), forCellReuseIdentifier: Cell.calendarEvent)
         tableView.reloadData()
     }
-
-    
 }
 
 extension CalendarEventListViewController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionCount()
@@ -38,16 +34,18 @@ extension CalendarEventListViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.calendarEvent, for: indexPath) as! CalendarEventCell
-        fillEventCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.calendarEvent, for: indexPath) as? CalendarEventCell {
+            fillEventCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow(indexPath)
     }
     
-    //MARK: - Header
+    // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight(section)
     }
@@ -56,7 +54,7 @@ extension CalendarEventListViewController: UITableViewDelegate, UITableViewDataS
         return UIView()
     }
     
-    //MARK: - Footer
+    // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }

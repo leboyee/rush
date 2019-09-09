@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 class ClubDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
@@ -18,7 +18,7 @@ class ClubDetailViewController: UIViewController {
     var peopleList = [String]()
     var clubPostList: [String] = ["1", "2"]
     
-    var clubImage : UIImage = #imageLiteral(resourceName: "bound-add-img")
+    var clubImage: UIImage = #imageLiteral(resourceName: "bound-add-img")
     
     var isReadMore = false
     var joinedClub = false
@@ -28,7 +28,7 @@ class ClubDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -69,17 +69,17 @@ class ClubDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = share
         
         /*
-        // back button
-        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-        navigationItem.leftBarButtonItem = cancel
-        */
+         // back button
+         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
+         navigationItem.leftBarButtonItem = cancel
+         */
         
         // setup tableview
         setupTableView()
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension ClubDetailViewController {
     @IBAction func cancelButtonAction() {
         dismiss(animated: true, completion: nil)

@@ -23,7 +23,8 @@ extension ClubDetailViewController {
         if indexPath.section > 5 {
             return indexPath.row == 2 ? (indexPath.section == 6 ? CGFloat.leastNormalMagnitude :  screenWidth) : UITableView.automaticDimension
         } else {
-            return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
+            let auto = UITableView.automaticDimension
+            return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
         }
     }
     
@@ -57,17 +58,16 @@ extension ClubDetailViewController {
         cell.setup(secondButtonType: .groupChatClub)
         
         cell.firstButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            Utils.alert(title: "Are you sure you want to leave from this club?",buttons: ["Yes", "No"],handler: { (index) in
+            guard let unself = self else { return }
+            Utils.alert(title: "Are you sure you want to leave from this club?", buttons: ["Yes", "No"], handler: { (index) in
                 if index == 0 {
-                    self_.joinedClub = false
-                    self_.tableView.reloadData()
+                    unself.joinedClub = false
+                    unself.tableView.reloadData()
                 }
             })
         }
         
-        cell.secondButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+        cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
     }
@@ -76,9 +76,9 @@ extension ClubDetailViewController {
         cell.setup(userList: clubInfo?.invitees)
         
         cell.userSelected = { [weak self] (id, index) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if index != 0 {
-                self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
             }
         }
     }
@@ -108,16 +108,16 @@ extension ClubDetailViewController {
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
         cell.joinButtonClickEvent = { [weak self] () in
-            guard let self_ = self else { return }
-            self_.joinedClub = true
-            self_.tableView.reloadData()
+            guard let unself = self else { return }
+            unself.joinedClub = true
+            unself.tableView.reloadData()
         }
     }
     
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
         cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
-        cell.setup(font: UIFont.Regular(sz: 17))
+        cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
     }
     

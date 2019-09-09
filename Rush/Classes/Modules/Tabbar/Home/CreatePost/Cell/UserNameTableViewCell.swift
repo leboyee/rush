@@ -9,7 +9,7 @@
 import UIKit
 
 class UserNameTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var postUserDescripation: UILabel!
     @IBOutlet weak var postUserName: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
@@ -17,10 +17,10 @@ class UserNameTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 }

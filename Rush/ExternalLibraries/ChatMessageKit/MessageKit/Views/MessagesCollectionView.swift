@@ -24,7 +24,7 @@
 
 import UIKit
 
-open class MessagesCollectionView: UICollectionView , UIGestureRecognizerDelegate {
+open class MessagesCollectionView: UICollectionView, UIGestureRecognizerDelegate {
 
     // MARK: - Properties
 
@@ -52,7 +52,6 @@ open class MessagesCollectionView: UICollectionView , UIGestureRecognizerDelegat
         }
         return layout
     }
-
 
     // MARK: - Initializers
 
@@ -147,7 +146,7 @@ open class MessagesCollectionView: UICollectionView , UIGestureRecognizerDelegat
     public func register<T: UICollectionReusableView>(_ nib: UINib? = UINib(nibName: String(describing: T.self), bundle: nil), headerFooterClassOfNib headerFooterClass: T.Type, forSupplementaryViewOfKind kind: String) {
         register(nib,
                  forSupplementaryViewOfKind: kind,
-                 withReuseIdentifier: String(describing: T.self))        
+                 withReuseIdentifier: String(describing: T.self))
     }
 
     /// Generically dequeues a cell of the correct type allowing you to avoid scattering your code with guard-let-else-fatal

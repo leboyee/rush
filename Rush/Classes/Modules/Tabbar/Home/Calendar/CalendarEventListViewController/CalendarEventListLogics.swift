@@ -50,11 +50,6 @@ extension CalendarEventListViewController {
     }
 }
 
-//MARK: -Other function
+// MARK: - Other function
 extension CalendarEventListViewController {
-
-
-    
 }
-
-

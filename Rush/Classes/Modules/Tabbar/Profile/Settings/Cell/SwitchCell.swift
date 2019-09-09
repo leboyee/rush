@@ -28,7 +28,7 @@ class SwitchCell: UITableViewCell {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension SwitchCell {
     
     @IBAction func switchValueChanged() {
@@ -37,7 +37,7 @@ extension SwitchCell {
     
 }
 
-//MARK: - Data Functions
+// MARK: - Data Functions
 extension SwitchCell {
     
     func set(title: String) {

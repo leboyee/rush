@@ -22,7 +22,6 @@ extension ProfileInformationViewController: UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -32,7 +31,7 @@ extension ProfileInformationViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.profileInformation, for: indexPath) as! ProfileInformationCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.profileInformation, for: indexPath) as? ProfileInformationCell else { return UITableViewCell() }
         fillCell(cell, indexPath)
         return cell
     }
@@ -40,7 +39,6 @@ extension ProfileInformationViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -50,10 +48,8 @@ extension ProfileInformationViewController: UITableViewDelegate, UITableViewData
         return heightOfFooter(section)
     }
     
-    
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
         fillTextHeader(header, section)
         return header
     }

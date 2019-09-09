@@ -47,9 +47,9 @@ extension MyClubViewController {
         cell.setup(userList: [])
         
         cell.cellSelected = { [weak self] (type, id, index) in
-            guard let self_ = self else { return }
+            guard let unself = self else { return }
             if index != 0 { // User profile
-                self_.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
             } else { // Open user list
                 Utils.notReadyAlert()
             }

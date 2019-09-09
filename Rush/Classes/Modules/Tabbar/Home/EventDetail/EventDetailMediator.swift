@@ -38,7 +38,6 @@ extension EventDetailViewController {
 
 extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionCount()
     }
@@ -89,19 +88,21 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         selectedRow(indexPath)
     }
     
-    //MARK: - Header
+    // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight(section)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
-        fillTextHeader(header, section)
-        return header
+        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader {
+            fillTextHeader(header, section)
+            return header
+        }
+        return nil
     }
     
-    //MARK: - Footer
+    // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1.0
     }
@@ -110,10 +111,9 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return RSeparatorLine()
     }
     
-    
-    //MARK: - Scroll Delegates
+    // MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let topMergin = (AppDelegate.getInstance().window?.safeAreaInsets.top ?? 0)
+        let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
         let smallHeaderHeight = event?.date == nil ? headerSmallWithoutDateHeight : headerSmallWithDateHeight
         let smallHeight = smallHeaderHeight + topMergin
         let h = headerHeightConstraint.constant - scrollView.contentOffset.y

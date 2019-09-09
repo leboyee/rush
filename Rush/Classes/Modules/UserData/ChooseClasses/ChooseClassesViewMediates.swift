@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -38,17 +37,17 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.reloadData()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return classesArray.count
     }
     
-  
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.classesHeader) as! ClassesHeader
-        fillClassesHeader(header, section)
-        return header
+        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.classesHeader) as? ClassesHeader {
+            fillClassesHeader(header, section)
+            return header
+        }
+        
+        return nil
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -69,9 +68,11 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.classesCell, for: indexPath) as! ClassesCell
-        fillClassesCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.classesCell, for: indexPath) as? ClassesCell {
+            fillClassesCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,5 +88,3 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
         return cellHeight(indexPath)
     }
 }
-
-

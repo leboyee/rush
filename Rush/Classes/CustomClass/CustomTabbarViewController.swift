@@ -11,18 +11,17 @@ import UIKit
 let globalAppBgColor = UIColor.white
 let tabbarItemTintColor = UIColor(red: 0.56, green: 0.24, blue: 0.33, alpha: 1)
 
-
 class CustomTabbarViewController: UITabBarController, UITabBarControllerDelegate {
     
-    var firstNavigationController       : UINavigationController!
-    var secondNavigationController      : UINavigationController!
-    var thirdNavigationController       : UINavigationController!
-    var fourthNavigationViewController  : UINavigationController!
-    //var fifthNavigationController       : UINavigationController!
+    var firstNavigationController: UINavigationController!
+    var secondNavigationController: UINavigationController!
+    var thirdNavigationController: UINavigationController!
+    var fourthNavigationViewController: UINavigationController!
+    //var fifthNavigationController: UINavigationController!
     
     let userImageName = "profile_tab_active"
     
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupTabbar()
@@ -85,7 +84,7 @@ extension CustomTabbarViewController {
         thirdNavigationController.tabBarItem.image = getImage("chat_tab_inactive")
         thirdNavigationController.tabBarItem.selectedImage = getImage( "chat_tab_active")
         
-        let customTabBarItem = UITabBarItem(title: nil, image:getImage("profile_tab_inactive") , selectedImage: getImage("profile_tab_active"))
+        let customTabBarItem = UITabBarItem(title: nil, image: getImage("profile_tab_inactive"), selectedImage: getImage("profile_tab_active"))
         fourthNavigationViewController.tabBarItem = customTabBarItem
         
         /*
@@ -96,8 +95,7 @@ extension CustomTabbarViewController {
         fifthNavigationController.tabBarItem = customTabBarItem
         */
     }
-    
-    
+
     /*
         Set all view controller to tabbar controllers
     */
@@ -127,7 +125,6 @@ extension CustomTabbarViewController {
 extension CustomTabbarViewController {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
         
     }
 }

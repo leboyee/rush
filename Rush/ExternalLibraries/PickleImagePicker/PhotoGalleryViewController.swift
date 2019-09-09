@@ -18,7 +18,6 @@ internal protocol PhotoGalleryViewControllerDelegate: class {
     func photoGalleryViewControllerDidSelectCameraButton(_ controller: PhotoGalleryViewController)
 }
 
-
 internal final class PhotoGalleryViewController: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
@@ -316,7 +315,6 @@ internal final class PhotoGalleryViewController: UIViewController,
     }
 }
 
-
 private extension PHAssetCollection {
 
     var isCameraCompatible: Bool {
@@ -327,7 +325,6 @@ private extension PHAssetCollection {
     }
 
 }
-
 
 private extension NSAttributedString {
 

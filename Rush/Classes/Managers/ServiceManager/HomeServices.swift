@@ -10,6 +10,7 @@ import UIKit
 
 extension ServiceManager {
     
+
     func createClub(params : [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createClub(params: params) {
             [weak self] (data, error, code) -> (Void) in

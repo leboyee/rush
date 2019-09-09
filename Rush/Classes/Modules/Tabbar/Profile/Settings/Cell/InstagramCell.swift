@@ -27,7 +27,7 @@ class InstagramCell: UITableViewCell {
     
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension InstagramCell {
     
     @IBAction func connectButtonAction() {
@@ -47,12 +47,12 @@ extension InstagramCell {
             let attr = NSMutableAttributedString(
                 string: text,
                 attributes: [
-                    NSAttributedString.Key.foregroundColor : UIColor.green24,
-                    NSAttributedString.Key.font : UIFont.Semibold(sz: 13.0)
+                    NSAttributedString.Key.foregroundColor: UIColor.green24,
+                    NSAttributedString.Key.font: UIFont.semibold(sz: 13.0)
                 ])
             attr.addAttributes([
-                NSAttributedString.Key.foregroundColor : UIColor.gray47,
-                NSAttributedString.Key.font : UIFont.Regular(sz: 13.0)
+                NSAttributedString.Key.foregroundColor: UIColor.gray47,
+                NSAttributedString.Key.font: UIFont.regular(sz: 13.0)
                 ], range: range)
 
             connectLabel.attributedText = attr
@@ -60,9 +60,5 @@ extension InstagramCell {
             connectLabel.text = "Connect"
             connectLabel.textColor = UIColor.darkPink
         }
-        
-        
     }
-    
-    
 }

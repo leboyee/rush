@@ -8,29 +8,27 @@
 
 import UIKit
 
-protocol CalendarMonthCellDelegate : class {
-    func selectedDate( date : Date)
-    func isEventExist( date : Date) -> Bool
-
+protocol CalendarMonthCellDelegate: class {
+    func selectedDate(date: Date)
+    func isEventExist(date: Date) -> Bool
 }
 
 class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var monthCollectionView : UICollectionView!
-    weak var delegate : CalendarMonthCellDelegate!
+    @IBOutlet weak var monthCollectionView: UICollectionView!
+    weak var delegate: CalendarMonthCellDelegate!
     var isWeekStartFromMonday = false
 
     var dateList = [AnyObject]()
-    var selectedDate : Date?
+    var selectedDate: Date?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         monthCollectionView.register(UINib(nibName: String(describing: CalendarDayCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: CalendarDayCell.self))
         monthCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
-
     
-    //MARK: Collection View Delegate and DataSource
+    // MARK: - Collection View Delegate and DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let count = self.dateList.count
@@ -43,24 +41,24 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CalendarDayCell.self), for: indexPath) as! CalendarDayCell
-        
-        cell.outerView.isHidden = true
-        if self.dateList.count > indexPath.row {
-            guard let date = self.dateList[indexPath.row] as? Date else { return cell }
-            cell.outerView.isHidden = false
-            cell.setup(date: date)
-            cell.setup(isSelected: selectedDate == date)
-            cell.setup(isEventExist: delegate?.isEventExist(date: date) ?? false)
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CalendarDayCell.self), for: indexPath) as? CalendarDayCell {
+            cell.outerView.isHidden = true
+            if self.dateList.count > indexPath.row {
+                guard let date = self.dateList[indexPath.row] as? Date else { return cell }
+                cell.outerView.isHidden = false
+                cell.setup(date: date)
+                cell.setup(isSelected: selectedDate == date)
+                cell.setup(isEventExist: delegate?.isEventExist(date: date) ?? false)
+            }
+            return cell
         }
-        return cell
+        return UICollectionViewCell()
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let date = self.dateList[indexPath.row]
-        if date is Date {
-            self.delegate?.selectedDate(date: date as! Date)
-            selectedDate = date as? Date
+        if let date = self.dateList[indexPath.row] as? Date {
+            self.delegate?.selectedDate(date: date)
+            selectedDate = date
             collectionView.reloadData()
         }
     }
@@ -83,16 +81,14 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
         return 0.0
     }
     
-    //MARK: - Other Functions
-    func reloadMonthCalendar(date : Date, selectedDate : Date?)
-    {
+    // MARK: - Other Functions
+    func reloadMonthCalendar(date: Date, selectedDate: Date?) {
         self.selectedDate = selectedDate
         self.getMonthDateList(date: date)
         self.monthCollectionView.reloadData()
     }
     
-    func getMonthDateList(date : Date)
-    {
+    func getMonthDateList(date: Date) {
         self.dateList.removeAll()
         var weekday = date.weekday
         /// Default Sunday is 1 and Saturday is 7 and Calendar week start from Sunday
@@ -104,7 +100,7 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
            }
         }
         
-        for _ in (1..<weekday).reversed()  {
+        for _ in (1..<weekday).reversed() {
             self.dateList.append(NSNull())
         }
         

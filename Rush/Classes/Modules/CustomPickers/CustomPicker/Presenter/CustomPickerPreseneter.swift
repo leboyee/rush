@@ -8,37 +8,34 @@
 
 import UIKit
 
-enum PickerType : String {
-    case country    = "Country"
-    case countryCode    = "Country Code"
-    case industry   = "Industry"
-    case cityState  = "City, State"
-    case relation   = "Relation"
-    case new        = "New password"
-    case gender        = "Gender"
-    case docType        = "Select Identification Document"
+enum PickerType: String {
+    case country = "Country"
+    case countryCode = "Country Code"
+    case industry = "Industry"
+    case cityState = "City, State"
+    case relation = "Relation"
+    case new = "New password"
+    case gender = "Gender"
+    case docType = "Select Identification Document"
 
 }
 
 class CustomPickerPreseneter: NSObject {
-    //MARK: - Defines handler and varibales
-    weak var mediator : CustomPickerMediator?
-    var pickerDataList : [String]?
-    var selectedValue : String = ""
-    var type : PickerType = .country
-    var currencyList : [String: Any]?
-    var countryCode : [[String: Any]] = []
-    var selectedIndex: Int = 0
-    
-    var updateTitle: ((_ title : String) -> Void)?
+    // MARK: - Defines handler and varibales
+    weak var mediator: CustomPickerMediator?
+    var pickerDataList: [String]?
+    var selectedValue: String = ""
+    var type: PickerType = .country
+    var currencyList: [String: Any]?
+    var countryCode: [[String: Any]] = []
+    var updateTitle: ((_ title: String) -> Void)?
 
-
-    //MARK: - Life Cycle
+    // MARK: - Life Cycle
     deinit {
         mediator = nil
     }
     
-    //MARK: - View Output Functions
+    // MARK: - View Output Functions
     func viewIsReady() {
         loadCountryJson()
         pickData()
@@ -46,7 +43,7 @@ class CustomPickerPreseneter: NSObject {
     }
 }
 
-//MARK: - Mediator Output Handler or setup dependencies (TableView)
+// MARK: - Mediator Output Handler or setup dependencies (TableView)
 extension CustomPickerPreseneter {
     
     func setupDependencies() {
@@ -56,22 +53,22 @@ extension CustomPickerPreseneter {
         }
         
         mediator?.numberOfRowsInComponent = { [weak self] (component) in
-            guard let self_ = self else { return 0 }
-            return self_.pickerDataList?.count ?? 0
+            guard let unsafe = self else { return 0 }
+            return unsafe.pickerDataList?.count ?? 0
         }
         
         mediator?.fillPicker = {  [weak self] (component, row) in
-            guard let self_ = self else { return "" }
-            if let value = self_.pickerDataList?[row] {
+            guard let unsafe = self else { return "" }
+            if let value = unsafe.pickerDataList?[row] {
                 return value
             }
             return ""
         }
         
         mediator?.selected = {  [weak self] (component, row) in
-            guard let self_ = self else { return }
-            if let value = self_.pickerDataList?[row] {
-                self_.selectedValue = value
+            guard let unsafe = self else { return }
+            if let value = unsafe.pickerDataList?[row] {
+                unsafe.selectedValue = value
             }
         }
       
@@ -84,16 +81,16 @@ extension CustomPickerPreseneter {
         if type == .country {
             title =  type.rawValue
             let countryNameStringArray = countryCode
-                .map({ $0["name"]  as! String})
+                .map({ $0["name"] }) as? [String]
             pickerDataList = countryNameStringArray
         }
         if type == .relation {
             title =  ""
-            pickerDataList = ["Single","Taken","Prefer not to say"]
+            pickerDataList = ["Single", "Taken", "Prefer not to say"]
         }
         if type == .gender {
             title =  ""
-            pickerDataList = ["Male","Female"]
+            pickerDataList = ["Male", "Female"]
         }
         updateTitle?(title)
     }
@@ -109,8 +106,4 @@ extension CustomPickerPreseneter {
             } catch { }
         }
     }
-
 }
-
-
-

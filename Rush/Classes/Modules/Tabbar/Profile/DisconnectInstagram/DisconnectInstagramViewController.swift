@@ -18,18 +18,16 @@ class DisconnectInstagramViewController: UIViewController {
             self.show()
         }
     }
-
-    
 }
 
-//MARK: - Other Functions
+// MARK: - Other Functions
 extension DisconnectInstagramViewController {
 
     private func dismiss() {
         verticalCentreConstraint.constant = screenHeight * 2/3
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
-        }, completion: { status in
+        }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
         })
     }
@@ -38,14 +36,13 @@ extension DisconnectInstagramViewController {
         verticalCentreConstraint.constant = 0
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
-        }, completion: { status in
+        }, completion: { _ in
 
         })
     }
-    
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension DisconnectInstagramViewController {
     
     @IBAction func disconnectButtonAction() {

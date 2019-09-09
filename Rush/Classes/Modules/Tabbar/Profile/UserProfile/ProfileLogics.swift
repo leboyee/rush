@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 // MARK: - Other Function
 extension ProfileViewController {
 
@@ -45,7 +44,6 @@ extension ProfileViewController {
            return UITableView.automaticDimension
         }
     }
-    
     
     func cellCount(_ section: Int) -> Int {
         
@@ -135,7 +133,7 @@ extension ProfileViewController {
         guard userId.isNotEmpty else { return }
 
         let params = isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
-        ServiceManager.shared.getProfile(params: params) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.getProfile(params: params) { [weak self] (data, _) in
             if let object = data?[Keys.user] as? [String: Any] {
                  self?.profileDetail.profile?.setData(data: object)
                  self?.setupHeaderData()

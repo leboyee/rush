@@ -15,7 +15,7 @@ enum SharePostType {
     case profile
 }
 
-protocol SharePostViewControllerDelegate {
+protocol SharePostViewControllerDelegate: class {
     func deletePost()
 }
 
@@ -28,9 +28,9 @@ class SharePostViewController: UIViewController {
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
     
-    var delegate: SharePostViewControllerDelegate?
+    weak var delegate: SharePostViewControllerDelegate?
     
-    var type : SharePostType = .post
+    var type: SharePostType = .post
 
     override func viewDidLoad() {
         super.viewDidLoad()

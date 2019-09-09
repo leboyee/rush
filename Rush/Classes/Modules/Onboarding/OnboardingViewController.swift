@@ -17,7 +17,7 @@ class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var createButtonHeightConstratit: NSLayoutConstraint!
     @IBOutlet weak var pageControllerTopConstraint: NSLayoutConstraint!
-    var loginType: LoginType = .Register
+    var loginType: LoginType = .register
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +27,11 @@ class OnboardingViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_5_5s_5c_SE.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
             createButtonHeightConstratit.constant =  35
             pageControllerTopConstraint.constant = 0
         }
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones_6_6s_7_8.rawValue  {
+        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones6.rawValue {
             createButtonHeightConstratit.constant =  40
             pageControllerTopConstraint.constant = 10
         }
@@ -48,7 +48,6 @@ class OnboardingViewController: UIViewController {
         return .lightContent
     }
 
-
     func setUpUI() {
         setupMediator()
     }
@@ -58,12 +57,12 @@ class OnboardingViewController: UIViewController {
 // MARK: - Actions
 extension OnboardingViewController {
     @IBAction func createButtonAction() {
-        loginType = .Register
+        loginType = .register
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }
     
     @IBAction func loginButtonAction() {
-        loginType = .Login
+        loginType = .login
         performSegue(withIdentifier: Segues.enterEmail, sender: self)
     }
 }

@@ -10,20 +10,20 @@ import UIKit
 
 class CustomPickerMediator: NSObject {
 
-    weak var pickerView : UIPickerView?
+    weak var pickerView: UIPickerView?
     var selectedRow: Int = 0
 
     var numberOfComponents: (() -> Int)?
-    var numberOfRowsInComponent: ((_ component : Int) -> Int)?
-    var fillPicker: ((_ component : Int, _ row : Int) -> String)?
-    var selected: ((_ component : Int, _ row : Int) -> Void)?
+    var numberOfRowsInComponent: ((_ component: Int) -> Int)?
+    var fillPicker: ((_ component: Int, _ row: Int) -> String)?
+    var selected: ((_ component: Int, _ row: Int) -> Void)?
     
-    //MARK: - Life Cycle
+    // MARK: - Life Cycle
     deinit {
         pickerView = nil
     }
     
-    //MARK: - Other Functions
+    // MARK: - Other Functions
     func setupMediator(pickerView: UIPickerView) {
         self.pickerView = pickerView
         self.pickerView?.delegate = self

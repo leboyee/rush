@@ -21,7 +21,7 @@ class NotificationSettingsViewController: UIViewController {
     }
 }
 
-//MARK: - Setup
+// MARK: - Setup
 extension NotificationSettingsViewController {
     
     private func setup() {
@@ -36,7 +36,7 @@ extension NotificationSettingsViewController {
     
 }
 
-//MARK: - Presenter Funcation
+// MARK: - Presenter Funcation
 extension NotificationSettingsViewController {
 
     func showMessage(message: String) {

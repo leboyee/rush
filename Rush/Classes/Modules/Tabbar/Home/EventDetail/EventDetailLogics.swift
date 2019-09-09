@@ -5,9 +5,7 @@
 //  Created by kamal on 27/08/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
-
 import UIKit
-
 
 // MARK: - Other Function
 extension EventDetailViewController {
@@ -51,7 +49,6 @@ extension EventDetailViewController {
         }
         return UITableView.automaticDimension
     }
-    
     
     func cellCount(_ section: Int) -> Int {
         var count = 0

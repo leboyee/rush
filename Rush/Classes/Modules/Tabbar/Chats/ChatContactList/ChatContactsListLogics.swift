@@ -32,7 +32,7 @@ extension ChatContactsListViewController {
         let user = users?[indexPath.row]
         let controller = ChatRoomViewController()
         controller.isShowTempData = false
-        controller.friendProfile = user
+        controller.friendProfile = user as? Friend
         controller.userName = user?.name ?? ""
         controller.isGroupChat = false
         navigationController?.pushViewController(controller, animated: true)
@@ -45,7 +45,7 @@ extension ChatContactsListViewController {
     }
 }
 
-// MARK:- Services
+// MARK: - Services
 extension ChatContactsListViewController {
     func getFriendListAPI() {
         
@@ -55,17 +55,15 @@ extension ChatContactsListViewController {
         params[Keys.search] = searchText
         params[Keys.profileUserId] = "5d5d207139277643e20f9bee"//Authorization.shared.profile?.userId
         
-        ServiceManager.shared.fetchFriendsList(params: params) {
-            [weak self] (data, errorMessage) in
-            guard let self_ = self else { return }
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+            guard let unsafe = self else { return }
             Utils.hideSpinner()
             
-            if self_.pageNo == 1 {
-                self_.friendsList.removeAll()
+            if unsafe.pageNo == 1 {
+                unsafe.friendsList.removeAll()
             }
             
-            if let list = data?[Keys.list] as? [[String : Any]] {
-                
+            if let list = data?[Keys.list] as? [[String: Any]] {
                 if list.count > 0 {
                     var users = [Profile]()
                     
@@ -74,35 +72,35 @@ extension ChatContactsListViewController {
                         let user = Profile(data: value)
                         users.append(user)
                         if let first = user.firstName.first {
-                            if let value = self_.friendsList[first.description.lowercased()]  as? [Profile] {
+                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [Profile] {
                                 let filter = value.filter { $0.userId == user.userId }
                                 if filter.count == 0 {
                                     var tempUser = [Profile]()
                                     tempUser.append(contentsOf: value)
                                     tempUser.append(user)
-                                    self_.friendsList[first.description.lowercased()] = tempUser
+                                    unsafe.friendsList[first.description.lowercased()] = tempUser
                                 }
                             } else {
-                                self_.friendsList[first.description.lowercased()] = [user]
+                                unsafe.friendsList[first.description.lowercased()] = [user]
                             }
                         }
                     }
                     
-                    if self_.pageNo == 1 {
-                        self_.tempFriendsList = users
+                    if unsafe.pageNo == 1 {
+                        unsafe.tempFriendsList = users
                     } else {
-                        self_.tempFriendsList.append(contentsOf: users)
+                        unsafe.tempFriendsList.append(contentsOf: users)
                     }
-                    self_.pageNo += 1
-                    self_.isNextPageExist = true
+                    unsafe.pageNo += 1
+                    unsafe.isNextPageExist = true
                 } else {
-                    self_.isNextPageExist = false
-                    if self_.pageNo == 1 {
-                        self_.tempFriendsList.removeAll()
+                    unsafe.isNextPageExist = false
+                    if unsafe.pageNo == 1 {
+                        unsafe.tempFriendsList.removeAll()
                     }
                 }
             }
-            self_.tableView.reloadData()
+            unsafe.tableView.reloadData()
         }
     }
 }

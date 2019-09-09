@@ -24,7 +24,7 @@ class ClubListViewController: CustomViewController {
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
-    var screenType : ClubListType = .none
+    var screenType: ClubListType = .none
     
     var searchText = ""
     var pageNo = 1
@@ -33,7 +33,7 @@ class ClubListViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setup()
     }
@@ -62,7 +62,7 @@ class ClubListViewController: CustomViewController {
         
         let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 2, width: screenWidth - 48, height: 30))
         label.text = screenType == .club ? Text.searchClubs : Text.searchClasses
-        label.font = UIFont.DisplayBold(sz: 24)
+        label.font = UIFont.displayBold(sz: 24)
         label.textColor = UIColor.navBarTitleWhite32
         customView.addSubview(label)
         customView.addSubview(searchButton)
@@ -90,8 +90,6 @@ extension ClubListViewController {
     }
 }
 
-
-
 // MARK: - Navigation
 extension ClubListViewController {
     
@@ -107,10 +105,11 @@ extension ClubListViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.notificationAlert {
-            let controller = segue.destination as! NotificationAlertViewController
-            controller.toastMessage = notificationTitle
-            controller.buttonTitle = notificationButtonTitle
-            controller.delegate = self
+            if let controller = segue.destination as? NotificationAlertViewController {
+                controller.toastMessage = notificationTitle
+                controller.buttonTitle = notificationButtonTitle
+                controller.delegate = self
+            }
         } else if segue.identifier == Segues.searchClubSegue {
             let vc = segue.destination as! SearchClubViewController
             vc.searchType = screenType == .club ? .searchList : .classes

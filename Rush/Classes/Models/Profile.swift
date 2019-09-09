@@ -6,24 +6,23 @@
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
 //
 
-
 import UIKit
 
 class Profile: NSObject {
 
-    var userId              : String = ""
-    var phone               : String = ""
-    var socialId            : String = ""
-    var email                : String = ""
-    var name                : String {
+    var userId: String = ""
+    var phone: String = ""
+    var socialId: String = ""
+    var email: String = ""
+    var name: String {
         return firstName + " " + lastName
     }
     var firstName: String = ""
     var lastName: String = ""
     var password: String = ""
     var countryCode: String = ""
-    var educationLevel      : String = ""
-    var educationYear      : String = ""
+    var educationLevel: String = ""
+    var educationYear: String = ""
     var majors = [String]()
     var minors = [String]()
     var classes = [Classes]()
@@ -45,7 +44,7 @@ class Profile: NSObject {
     var whoCanMessageYou: String = ""
     var whoCanInviteYou: String = ""
     
-    init(data : [String : Any]) {
+    init(data: [String: Any]) {
         super.init()
         setData(data: data)
     }
@@ -54,8 +53,8 @@ class Profile: NSObject {
         super.init()
     }
 
-    //MARK: - Private Functions
-    func setData(data : [String : Any]) {
+    // MARK: - Private Functions
+    func setData(data: [String: Any]) {
         if let value = data["_id"] as? String {
             userId = value
         }
@@ -105,51 +104,49 @@ class Profile: NSObject {
         }
         
         isDarkMode = false
-        if let value = data[Keys.u_is_dark_mode] as? Int {
+        if let value = data[Keys.uIsDarkMode] as? Int {
             isDarkMode = value == 1 ? true : false
-        } else if let value = data[Keys.u_is_dark_mode] as? String {
+        } else if let value = data[Keys.uIsDarkMode] as? String {
             isDarkMode = value == "1" ? true : false
         }
         /// Update global variable
         isDarkModeOn = isDarkMode
         
         isNotificationOn = true
-        if let value = data[Keys.u_is_notify_on] as? Int {
+        if let value = data[Keys.uIsNotifyOn] as? Int {
             isNotificationOn = value == 1 ? true : false
-        } else if let value = data[Keys.u_is_notify_on] as? String {
+        } else if let value = data[Keys.uIsNotifyOn] as? String {
             isNotificationOn = value == "1" ? true : false
         }
         
         isEventNotificationOn = true
-        if let value = data[Keys.u_is_event_notify] as? Int {
+        if let value = data[Keys.uIsEventNotify] as? Int {
             isEventNotificationOn = value == 1 ? true : false
-        } else if let value = data[Keys.u_is_event_notify] as? String {
+        } else if let value = data[Keys.uIsEventNotify] as? String {
             isEventNotificationOn = value == "1" ? true : false
         }
         
         isClubNotificationOn = true
-        if let value = data[Keys.u_is_club_notify] as? Int {
+        if let value = data[Keys.uIsClubNotify] as? Int {
             isClubNotificationOn = value == 1 ? true : false
-        } else if let value = data[Keys.u_is_club_notify] as? String {
+        } else if let value = data[Keys.uIsClubNotify] as? String {
             isClubNotificationOn = value == "1" ? true : false
         }
         
         isClassNotificationOn = true
-        if let value = data[Keys.u_is_class_notify] as? Int {
+        if let value = data[Keys.uIsClassNotify] as? Int {
             isClassNotificationOn = value == 1 ? true : false
-        } else if let value = data[Keys.u_is_class_notify] as? String {
+        } else if let value = data[Keys.uIsClassNotify] as? String {
             isClassNotificationOn = value == "1" ? true : false
         }
         
-        
-        if let value = data[Keys.u_who_can_message] as? String {
+        if let value = data[Keys.uWhoCanMessage] as? String {
             whoCanMessageYou = value
         }
         
-        if let value = data[Keys.u_who_can_invite] as? String {
+        if let value = data[Keys.uWhoCanInvite] as? String {
             whoCanInviteYou = value
         }
         
     }
 }
-

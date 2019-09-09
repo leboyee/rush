@@ -18,7 +18,7 @@ enum UserProfileDetailType {
 
 class FriendsListViewController: UIViewController {
 
-    var type : UserProfileDetailType = .clubs
+    var type: UserProfileDetailType = .clubs
     @IBOutlet weak var firstSegmentButton: UIButton!
     @IBOutlet weak var secondSegmentButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -101,7 +101,7 @@ class FriendsListViewController: UIViewController {
     }
 }
 
-//MARK: - Actions
+// MARK: - Actions
 extension FriendsListViewController {
     @IBAction func firstSegmentButtonAction() {
         if firstSegmentButton.isSelected {

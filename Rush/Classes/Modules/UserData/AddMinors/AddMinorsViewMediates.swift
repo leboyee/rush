@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupMediator() {
@@ -26,7 +25,7 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
-    //MARK: - Keyboard functions
+    // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -39,8 +38,6 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
         minorButtonConstraint.constant = 30
 
     }
-
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -52,33 +49,32 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addMajorsCell, for: indexPath) as! AddMajorsCell
-        fillAddMajorCell(cell, indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addMajorsCell, for: indexPath) as? AddMajorsCell {
+            fillAddMajorCell(cell, indexPath)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let major = minorArray[indexPath.row]
         if selectedArray.contains(major["name"] as? String ?? "") {
-            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? ""}) else { return }
+            guard let index = selectedArray.firstIndex(where: { $0 == major["name"] as? String ?? "" }) else { return }
             selectedArray.remove(at: index)
-        }
-        else {
+        } else {
             selectedArray.append(major["name"] as? String ?? "")
         }
         self.moveToNext()
-
-    }    
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
 }
 
-
 extension AddMinorsViewController: UITextFieldDelegate {
     
-    //MARK : UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -99,6 +95,4 @@ extension AddMinorsViewController: UITextFieldDelegate {
         self.minorCustomButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
         getMinorList(searchText: searchText)
     }
-    
-    
 }

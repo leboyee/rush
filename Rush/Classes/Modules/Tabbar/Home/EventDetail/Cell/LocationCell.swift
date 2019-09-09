@@ -80,7 +80,6 @@ extension LocationCell {
             if let image = snapshot?.image {
                 handler(image)
             } else {
-                print(error)
                 handler(nil)
             }
         }
