@@ -81,7 +81,7 @@ extension EventDetailViewController {
             cell.setup(userList: [])
         }
         
-        cell.cellSelected = { [weak self] (_, _, index) in
+        cell.cellSelected = { (_, _, _) in
             
         }
     }
@@ -90,13 +90,11 @@ extension EventDetailViewController {
         cell.setup(firstButtonType: .manage)
         cell.setup(secondButtonType: .groupChatClub)
         
-        cell.firstButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+        cell.firstButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
         
-        cell.secondButtonClickEvent = { [weak self] () in
-            guard let _ = self else { return }
+        cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
     }

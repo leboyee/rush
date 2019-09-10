@@ -121,7 +121,7 @@ extension ExploreViewController: UITextFieldDelegate {
 
 // MARK: - SelectEventTypeController Delegate
 extension ExploreViewController: SelectEventTypeDelegate {
-    func createEventClub(_ type: EventType) {
+    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
         performSegue(withIdentifier: Segues.createClub, sender: nil)
     }
     

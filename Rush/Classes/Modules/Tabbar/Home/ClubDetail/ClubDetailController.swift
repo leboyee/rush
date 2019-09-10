@@ -16,18 +16,27 @@ class ClubDetailViewController: UIViewController {
     
     var interestList = [String]()
     var peopleList = [String]()
-    var clubPostList: [String] = ["1", "2"]
+    var clubPostList: [String] = []
     
     var clubImage: UIImage = #imageLiteral(resourceName: "bound-add-img")
     
     var isReadMore = false
     var joinedClub = false
     
+    var clubInfo: Club?
+    var isMyClub = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     //MARk: - Other function
@@ -37,20 +46,21 @@ class ClubDetailViewController: UIViewController {
     
     func setupUI() {
         
-        topConstraintOfTableView.constant = -Utils.navigationHeigh
+        // Check this club is created by me(logged in user)
+        let clubId = clubInfo?.clubUserId ?? "id"
+        let userId = Authorization.shared.profile?.userId ?? ""
+        if userId == clubId {
+            joinedClub = true
+        }
         
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
+        // fetch club detail
+        getClubDetailAPI()
+        
+        topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
-        
-        /*
-         // back button
-         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-         navigationItem.leftBarButtonItem = cancel
-         */
         
         // setup tableview
         setupTableView()
@@ -82,6 +92,9 @@ extension ClubDetailViewController {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .club
             }
+        } else if segue.identifier == Segues.createPost {
+            guard let vc = segue.destination as? CreatePostViewController else { return }
+            vc.clubInfo = clubInfo
         }
     }
 }

@@ -72,7 +72,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - SelectEventTypeController Delegate
 extension ClubListViewController: SelectEventTypeDelegate {
-    func createEventClub(_ type: EventType) {
+    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
         openCreateClubViewController()
     }
     func addPhotoEvent(_ type: PhotoFrom) {

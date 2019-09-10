@@ -15,7 +15,6 @@ extension EnterPasswordViewConteroller {
 extension EnterPasswordViewConteroller {
     
     func loginApiCalled() {
-        
         let param = [Keys.email: profile.email,
                      Keys.password: profile.password] as [String: Any]
         

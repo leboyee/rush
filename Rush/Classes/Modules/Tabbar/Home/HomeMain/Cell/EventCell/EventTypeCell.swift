@@ -49,14 +49,16 @@ class EventTypeCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(_ type: EventCategoryType, _ photos: [Image]?) {
+    func setup(_ type: EventCategoryType, _ photos: [Image]?, _ dataList: [Any]?) {
         cellType = .event
         self.type = type
+        list = dataList
         reload()
     }
     
-    func setup(userList: [String]) {
+    func setup(userList: [Invitees]?) {
         cellType = .clubUser
+        list = userList
         reload()
     }
     

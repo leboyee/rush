@@ -21,7 +21,12 @@ extension CreatePostViewController {
     
     // Username cell (section 0)
     func userDetailCell(_ cell: UserNameTableViewCell) {
-        
+        if let club = clubInfo { // Club
+            cell.setup(title: (club.user?.firstName ?? "") + " " + (club.user?.lastName ?? ""))
+            cell.setup(detail: "Posting in " + club.clubName)
+        } else { // Event
+            
+        }
     }
     
     // Textview cell (section 1)
@@ -78,6 +83,53 @@ extension CreatePostViewController {
             guard let unself = self else { return }
             unself.imageList.remove(at: indexPath.row)
             unself.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Services
+extension CreatePostViewController {
+    
+    func createPostAPI() {
+        
+        imagedataList["desc"] = postText
+        imagedataList["data_id"] = clubInfo?.id ?? ""
+        imagedataList["data_type"] = "club"
+        imagedataList["total_photos"] = imageList.count
+        Utils.showSpinner()
+        
+        ServiceManager.shared.createPost(params: imagedataList) { [weak self] (status, errorMessage) in
+            guard let uwself = self else { return }
+            Utils.hideSpinner()
+            if status {
+                uwself.navigationController?.popViewController(animated: true)
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getImagesDataList(index: Int) {
+        
+        if index < imageList.count {
+            let image = imageList[index]
+            if let value = image as? PHAsset {
+                let manager = PHImageManager.default()
+                let option = PHImageRequestOptions()
+                manager.requestImageData(for: value, options: option) { [weak self] (data, _, _, _) in
+                    guard let uwself = self else { return }
+                    if let data = data {
+                        uwself.imagedataList["photo_\(index + 1)"] = data
+                        uwself.getImagesDataList(index: index + 1)
+                    }
+                }
+            } else if let value = image as? UIImage {
+                let data = value.jpegData(compressionQuality: 0.8)
+                imagedataList["photo_\(index + 1)"] = data
+                getImagesDataList(index: index + 1)
+            }
+        } else {
+            createPostAPI()
         }
     }
 }

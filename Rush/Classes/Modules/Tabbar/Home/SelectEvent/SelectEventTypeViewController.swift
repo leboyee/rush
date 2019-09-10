@@ -86,15 +86,10 @@ extension SelectEventTypeViewController {
     }
     
     func dismiss() {
-        if screenType == .event {
-            Utils.notReadyAlert()
-        } else {
-            self.dismiss(animated: false, completion: nil)
-            DispatchQueue.main.async {
-                self.delegate?.createEventClub(self.eventType)
-            }
+        self.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.delegate?.createEventClub(self.eventType, self.screenType)
         }
-        
     }
     
     func dismissPhoto(photoFrom: PhotoFrom) {
@@ -124,14 +119,17 @@ extension SelectEventTypeViewController {
         setupUI()
     }
     @IBAction func publicButtonAction() {
+        eventType = .publik
         dismiss()
     }
     
     @IBAction func closedButtonAction() {
+        eventType = .closed
         dismiss()
     }
     
     @IBAction func inviteButtonAction() {
+        eventType = .inviteOnly
         dismiss()
     }
     

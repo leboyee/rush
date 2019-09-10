@@ -59,7 +59,7 @@ struct Keys {
     static let uIsDarkMode        = "u_is_dark_mode"
     static let pageNo             = "pageNo"
     static let search             = "search"
-    static let sortBy             = "sort_by"
+    static let sortBy            = "sort_by"
 
     static let clubName = "club_name"
     static let clubDesc = "club_desc"
@@ -67,7 +67,8 @@ struct Keys {
     static let clubInvitedUserIds = "club_invited_user_ids"
     static let clubIsChatGroup = "club_is_chat_group"
     static let clubPhoto = "club_photo"
-    
+    static let clubId = "club_id"
+    static let club = "club"
     static let interestId           = "_id"
     static let interestName           = "name"
     static let userInterests           = "u_interests"

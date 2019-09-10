@@ -11,7 +11,12 @@ import UIKit
 extension HomeViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat.leastNormalMagnitude : 50
+        if section == 0 {
+            return CGFloat.leastNormalMagnitude
+        } else if section == 2 {
+            return clubList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
+        }
+        return 50
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -23,6 +28,8 @@ extension HomeViewController {
             return isShowTutorial ? UITableView.automaticDimension : CGFloat.leastNormalMagnitude
         } else if indexPath.section == 1 && isShowJoinEvents {
             return UITableView.automaticDimension
+        } else if indexPath.section == 2 {
+            return clubList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         } else {
             return 157
         }
@@ -56,18 +63,23 @@ extension HomeViewController {
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
+        
+        // (type, images, data)
         if indexPath.section == 1 {
-            cell.setup(.upcoming, nil)
+            cell.setup(.upcoming, nil, nil)
         } else if indexPath.section == 2 {
-            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil)
+            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
         } else {
-            cell.setup(.classes, nil)
+            cell.setup(.classes, nil, nil)
         }
         
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
                 unsafe.showEvent()
+            } else if type == .clubs {
+                let club = unsafe.clubList[index]
+                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             }
         }
     }
@@ -102,8 +114,8 @@ extension HomeViewController {
 
 // MARK: - Services
 extension HomeViewController {
-    func getMyClubListAPI(sortBy: String) {
-        
+    func getClubListAPI(sortBy: String) {
+        clubList.removeAll()
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -125,6 +137,7 @@ extension HomeViewController {
                         
                     }
                 }
+                unowned.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
