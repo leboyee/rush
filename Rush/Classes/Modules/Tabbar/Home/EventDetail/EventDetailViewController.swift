@@ -10,8 +10,9 @@ import UIKit
 
 enum EventDetailType {
     case my
+    case joined
+    case invited
     case other
-    case join
 }
 
 enum EventSectionType {

@@ -87,9 +87,14 @@ extension EventDetailViewController {
     }
     
     func fillManageCell(_ cell: ClubManageCell) {
-        cell.setup(firstButtonType: .manage)
-        cell.setup(secondButtonType: .groupChatClub)
         
+        if type == .my {
+            cell.setup(firstButtonType: .manage)
+            cell.setup(secondButtonType: .groupChatClub)
+        } else if type == .invited {
+            cell.setup(firstButtonType: .accept)
+            cell.setup(secondButtonType: .reject)
+        }
         cell.firstButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
@@ -150,7 +155,7 @@ extension EventDetailViewController {
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .createPost, title: "Posts")
             ]
-        } else if type == .join {
+        } else if type == .other {
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
@@ -158,6 +163,25 @@ extension EventDetailViewController {
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .joinRsvp, title: nil)
+            ]
+        } else if type == .joined {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags"),
+                EventSection(type: .createPost, title: "Popular posts")
+            ]
+        } else if type == .invited {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags")
             ]
         }
         
