@@ -460,6 +460,7 @@
 		8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1076BC2306B96800512AA3 /* TextCell.xib */; };
 		8A1076C02306BC2600512AA3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BF2306BC2600512AA3 /* Tag.swift */; };
 		8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */; };
+		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
@@ -927,6 +928,7 @@
 		8A1076BC2306B96800512AA3 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		8A1076BF2306BC2600512AA3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1418,6 +1420,7 @@
 				1AB0C15F22C1247F000D016E /* ServiceManager.swift */,
 				7905CDBD230D63120011C83B /* ChatServices.swift */,
 				79FA26F4230EC5AF0007F0ED /* HomeServices.swift */,
+				8AE9711F2327B4D800CB52D4 /* EventServices.swift */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -3116,6 +3119,7 @@
 				797FFDA522B7BC480055A001 /* ImagePickerControllerDelegate.swift in Sources */,
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
 				7938D06222D75D74002D1537 /* UniversityMediates.swift in Sources */,
+				8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */,
 				797FFDB622B7BC480055A001 /* SlideUpPresentationController.swift in Sources */,
 				1AA9AB3E22FF31C200E0E450 /* AddInstragamPhotoViewLogics.swift in Sources */,
 				797FFDAB22B7BC480055A001 /* PhotoAlbumTitleButton.swift in Sources */,

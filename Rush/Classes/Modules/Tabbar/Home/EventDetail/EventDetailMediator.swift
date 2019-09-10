@@ -25,7 +25,6 @@ extension EventDetailViewController {
         tableView.register(UINib(nibName: Cell.createPost, bundle: nil), forCellReuseIdentifier: Cell.createPost)
         
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
-        //tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 0, right: 0)
         tableView.reloadData()
     }
     
