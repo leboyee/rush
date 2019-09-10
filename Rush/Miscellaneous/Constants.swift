@@ -73,6 +73,7 @@ struct Cell {
     static let eventAbout           = "EventAboutCell"
     static let location             = "LocationCell"
     static let createPost           = "CreatePostCell"
+    static let organizer            = "OrganizerCell"
 }
 
 struct ReusableView {
@@ -249,6 +250,8 @@ public struct Text {
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
     static let interests                 = "Interests"
+    static let joinAndRSVP               = "Join and RSVP"
+
 }
 
 public struct Message {

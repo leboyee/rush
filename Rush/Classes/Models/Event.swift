@@ -25,7 +25,8 @@ class Event: Codable {
     var end: Date?
     var thumbnil: String?
     var address: Address?
-    
+    var owner: Profile?
+
     init() {
     }
     

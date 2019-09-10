@@ -11,7 +11,7 @@ import UIKit
 enum EventDetailType {
     case my
     case other
-    case joined
+    case join
 }
 
 enum EventSectionType {
@@ -48,6 +48,14 @@ class EventDetailViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
 
+    let tempInvitee = [
+         Invitees(name: "Kamal"),
+         Invitees(name: "John"),
+         Invitees(name: "Smith"),
+         Invitees(name: "Suresh"),
+         Invitees(name: "Chirag")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

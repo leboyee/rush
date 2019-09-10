@@ -78,7 +78,7 @@ extension EventDetailViewController {
         if eventSection.type == .tags {
             cell.setup(interests: [Tag(id: 111, text: "Development"), Tag(id: 211, text: "Technologies")])
         } else if eventSection.type == .people {
-            cell.setup(userList: [])
+            cell.setup(userList: tempInvitee)
         }
         
         cell.cellSelected = { (_, _, _) in
@@ -109,6 +109,20 @@ extension EventDetailViewController {
        
     }
     
+    func fillSingleButtonCell(_ cell: SingleButtonCell) {
+        cell.setup(title: Text.joinAndRSVP)
+        cell.joinButtonClickEvent = { () in
+            Utils.notReadyAlert()
+        }
+    }
+    
+    func fillOrganizerCell(_ cell: OrganizerCell) {
+        guard let user = event?.owner else { return }
+        cell.set(name: user.name)
+        cell.set(detail: "3 events")
+        cell.set(url: user.photo?.urlThumb)
+    }
+    
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         guard let eventSection = sections?[section] else { return }
@@ -136,6 +150,15 @@ extension EventDetailViewController {
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .createPost, title: "Posts")
             ]
+        } else if type == .join {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags"),
+                EventSection(type: .joinRsvp, title: nil)
+            ]
         }
         
         // TODO: Dummuy Event
@@ -156,8 +179,14 @@ extension EventDetailViewController {
         event?.address?.latitude = 40.768452
         event?.address?.longitude = -73.832764
         event?.thumbnil = "http://www.fedracongressi.com/fedra/wp-content/uploads/2016/02/revelry-event-designers-homepage-slideshow-38.jpeg"
+        let user = Profile()
+        user.firstName = "Kamal"
+        user.lastName = "Mittal"
+        user.photo = Image(
+            url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile4.jpg"
+        )
+        event?.owner = user
         tableView.reloadData()
-        
         updateHeaderInfo()
     }
 }
