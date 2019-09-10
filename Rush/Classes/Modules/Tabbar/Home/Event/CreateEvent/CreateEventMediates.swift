@@ -24,7 +24,6 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         
         tableView.register(UINib(nibName: Cell.dateAndTimeEvent, bundle: nil), forCellReuseIdentifier: Cell.dateAndTimeEvent)
 
-        
         tableView.reloadData()
     }
     

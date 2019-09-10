@@ -58,7 +58,7 @@ extension TextViewCell {
         } else {
             placeHolderLabel.isHidden = true
             topPlaceHolderConstraint.constant = 8
-            topTextViewConstraint.constant = 25
+            topTextViewConstraint.constant = 20
         }
         layoutIfNeeded()
     }
