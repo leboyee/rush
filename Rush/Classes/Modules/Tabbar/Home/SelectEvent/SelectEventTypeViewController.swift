@@ -23,7 +23,7 @@ enum ScreenType {
 }
 
 protocol SelectEventTypeDelegate: class {
-    func createEventClub(_ type: EventType)
+    func createEventClub(_ type: EventType, _ screenType: ScreenType)
     func addPhotoEvent(_ type: PhotoFrom)
 }
 

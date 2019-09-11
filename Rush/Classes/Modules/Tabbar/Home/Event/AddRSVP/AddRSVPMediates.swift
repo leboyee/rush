@@ -7,28 +7,21 @@
 //
 import UIKit
 
-extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddRSVPViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
+                
+        tableView.register(UINib(nibName: Cell.rsvpCell, bundle: nil), forCellReuseIdentifier: Cell.rsvpCell)
         
-        let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
-        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
-        
-        tableView.register(UINib(nibName: Cell.textIcon, bundle: nil), forCellReuseIdentifier: Cell.textIcon)
-        
-        tableView.register(UINib(nibName: Cell.textView, bundle: nil), forCellReuseIdentifier: Cell.textView)
-        
-        tableView.register(UINib(nibName: Cell.dateAndTimeEvent, bundle: nil), forCellReuseIdentifier: Cell.dateAndTimeEvent)
-
         tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,27 +29,11 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 8 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell {
-                fillTextIconCell(cell, indexPath)
-                return cell
-            }
-        } else if indexPath.section == 4 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
-                fillDateAndTimeEvent(cell, indexPath)
-                return cell
-            }
-        } else if indexPath.section == 5 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
-                fillDateAndTimeEvent(cell, indexPath)
-                return cell
-            }
-        } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell {
-                fillTextViewCell(cell, indexPath)
-                return cell
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.rsvpCell, for: indexPath) as? RSVPCell {
+            fillRsvpCell(cell, indexPath)
+            return cell
         }
+
         return UITableViewCell()
     }
     
@@ -113,7 +90,7 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 // MARK: - Scrollview delegate
-extension CreateEventViewController: UIScrollViewDelegate {
+extension AddRSVPViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let headerView = tableView?.tableHeaderView {
             let yPos: CGFloat = (scrollView.contentOffset.y + scrollView.adjustedContentInset.top)
@@ -145,17 +122,3 @@ extension CreateEventViewController: UIScrollViewDelegate {
     }
 }
 
-// MARK: - SelectEventTypeController Delegate
-extension CreateEventViewController: SelectEventTypeDelegate {
-    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-
-    }
-    
-    func addPhotoEvent(_ type: PhotoFrom) {
-        if type == .cameraRoll {
-            self.openCameraOrLibrary(type: .photoLibrary)
-        } else {
-            Utils.alert(message: "In Development")
-        }
-    }
-}

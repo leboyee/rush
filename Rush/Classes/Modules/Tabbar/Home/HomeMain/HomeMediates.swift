@@ -92,8 +92,8 @@ extension HomeViewController: SelectEventTypeDelegate {
         
         if screenType == .club { // Open club detail
             performSegue(withIdentifier: Segues.createClub, sender: nil)
-        } else { // Open event detail
-            
+        } else if screenType == .event { // Open event detail
+            performSegue(withIdentifier: Segues.createEvent, sender: nil)
         }
     }
 

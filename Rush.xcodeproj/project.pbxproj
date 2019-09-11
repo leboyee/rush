@@ -118,6 +118,12 @@
 		1AB0C16022C1247F000D016E /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C15F22C1247F000D016E /* ServiceManager.swift */; };
 		1AB0C16322C12B22000D016E /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C16222C12B22000D016E /* Authorization.swift */; };
 		1AB0C16522C12BAE000D016E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C16422C12BAD000D016E /* Profile.swift */; };
+		1AB43B2A2327E75600C2FBCE /* RSVP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB43B292327E75600C2FBCE /* RSVP.storyboard */; };
+		1AB43B322327EE0C00C2FBCE /* AddRSVPLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB43B2C2327EE0C00C2FBCE /* AddRSVPLogics.swift */; };
+		1AB43B332327EE0C00C2FBCE /* AddRSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB43B2D2327EE0C00C2FBCE /* AddRSVPViewController.swift */; };
+		1AB43B342327EE0C00C2FBCE /* AddRSVPMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB43B2E2327EE0C00C2FBCE /* AddRSVPMediates.swift */; };
+		1AB43B352327EE0C00C2FBCE /* RSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB43B302327EE0C00C2FBCE /* RSVPCell.xib */; };
+		1AB43B362327EE0C00C2FBCE /* RSVPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB43B312327EE0C00C2FBCE /* RSVPCell.swift */; };
 		1AC635F622AA6E9500021E03 /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC635F422AA6E9500021E03 /* TextFieldEffects.swift */; };
 		1AC635F722AA6E9500021E03 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC635F522AA6E9500021E03 /* AkiraTextField.swift */; };
 		1AC635F922AA766100021E03 /* UserData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC635F822AA766100021E03 /* UserData.storyboard */; };
@@ -577,6 +583,12 @@
 		1AB0C15F22C1247F000D016E /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = ../NetworkManager/ServiceManager.swift; sourceTree = "<group>"; };
 		1AB0C16222C12B22000D016E /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		1AB0C16422C12BAD000D016E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		1AB43B292327E75600C2FBCE /* RSVP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RSVP.storyboard; sourceTree = "<group>"; };
+		1AB43B2C2327EE0C00C2FBCE /* AddRSVPLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRSVPLogics.swift; sourceTree = "<group>"; };
+		1AB43B2D2327EE0C00C2FBCE /* AddRSVPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRSVPViewController.swift; sourceTree = "<group>"; };
+		1AB43B2E2327EE0C00C2FBCE /* AddRSVPMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRSVPMediates.swift; sourceTree = "<group>"; };
+		1AB43B302327EE0C00C2FBCE /* RSVPCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSVPCell.xib; sourceTree = "<group>"; };
+		1AB43B312327EE0C00C2FBCE /* RSVPCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSVPCell.swift; sourceTree = "<group>"; };
 		1AC635F422AA6E9500021E03 /* TextFieldEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		1AC635F522AA6E9500021E03 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		1AC635F822AA766100021E03 /* UserData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserData.storyboard; sourceTree = "<group>"; };
@@ -1081,6 +1093,7 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				1AB43B2B2327EE0C00C2FBCE /* AddRSVP */,
 				1A0D01F723228A08004F6279 /* CreateEvent */,
 			);
 			path = Event;
@@ -1441,6 +1454,26 @@
 				1AB0C16222C12B22000D016E /* Authorization.swift */,
 			);
 			path = AuthorizationManager;
+			sourceTree = "<group>";
+		};
+		1AB43B2B2327EE0C00C2FBCE /* AddRSVP */ = {
+			isa = PBXGroup;
+			children = (
+				1AB43B2D2327EE0C00C2FBCE /* AddRSVPViewController.swift */,
+				1AB43B2C2327EE0C00C2FBCE /* AddRSVPLogics.swift */,
+				1AB43B2E2327EE0C00C2FBCE /* AddRSVPMediates.swift */,
+				1AB43B2F2327EE0C00C2FBCE /* Cell */,
+			);
+			path = AddRSVP;
+			sourceTree = "<group>";
+		};
+		1AB43B2F2327EE0C00C2FBCE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1AB43B312327EE0C00C2FBCE /* RSVPCell.swift */,
+				1AB43B302327EE0C00C2FBCE /* RSVPCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1AC635F322AA6E9500021E03 /* CustomTextField */ = {
@@ -2622,6 +2655,7 @@
 				8A04B13D22FAE1180055C65F /* Calendar.storyboard */,
 				1AA9AB4122FF3D9600E0E450 /* Event.storyboard */,
 				8A0345B32322A7AB0065CF3C /* EventDetail.storyboard */,
+				1AB43B292327E75600C2FBCE /* RSVP.storyboard */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -2698,6 +2732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				794183B0228960C7009AB12C /* SF-Pro-Display-Semibold.otf in Resources */,
+				1AB43B2A2327E75600C2FBCE /* RSVP.storyboard in Resources */,
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
 				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
@@ -2707,6 +2742,7 @@
 				794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */,
 				7903D0B4228E8CE5004E33B9 /* TextHeader.xib in Resources */,
 				799190A522C9E9BD0044602E /* SingleButtonCell.xib in Resources */,
+				1AB43B352327EE0C00C2FBCE /* RSVPCell.xib in Resources */,
 				0918E785228444AB0098AF35 /* Forum.storyboard in Resources */,
 				79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */,
 				79BE868822A946C20056529E /* FriendListCell.xib in Resources */,
@@ -2911,6 +2947,7 @@
 				8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
+				1AB43B332327EE0C00C2FBCE /* AddRSVPViewController.swift in Sources */,
 				793BE65A22E88207005EF72D /* MessagesViewController+Keyboard.swift in Sources */,
 				793BE68022E88207005EF72D /* MessageLabelDelegate.swift in Sources */,
 				7905CDBA230D5E730011C83B /* ContactsListLogics.swift in Sources */,
@@ -3057,10 +3094,12 @@
 				7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */,
 				1AEAC4B722D346AA008FBB54 /* UserInfoCell.swift in Sources */,
 				797FFDB522B7BC480055A001 /* SlideUpPresentation.swift in Sources */,
+				1AB43B362327EE0C00C2FBCE /* RSVPCell.swift in Sources */,
 				1AA97B92228979D100C4550C /* DateExtension.swift in Sources */,
 				1AA97B8A228979D100C4550C /* FontExtension.swift in Sources */,
 				1A2809E122C5F43B00B4E764 /* ChooseClassesViewController.swift in Sources */,
 				8A04B1952301796A0055C65F /* CalendarView.swift in Sources */,
+				1AB43B322327EE0C00C2FBCE /* AddRSVPLogics.swift in Sources */,
 				793BE66D22E88207005EF72D /* MessageSizeCalculator.swift in Sources */,
 				1A339B5E22B3B88A005509EA /* EnterUserNameViewLogics.swift in Sources */,
 				79BE868B22A94E9F0056529E /* FriendClubCell.swift in Sources */,
@@ -3194,6 +3233,7 @@
 				79D29CA122CF2C74008C6ED0 /* ExploreViewController.swift in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
 				8A04B16E22FD8B680055C65F /* PrivacySettingsViewController.swift in Sources */,
+				1AB43B342327EE0C00C2FBCE /* AddRSVPMediates.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				793BE69122E88207005EF72D /* MessageLabel.swift in Sources */,
 				8A04B15922FC446B0055C65F /* RSeparatorLine.swift in Sources */,
