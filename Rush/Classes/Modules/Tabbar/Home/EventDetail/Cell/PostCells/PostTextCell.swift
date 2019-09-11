@@ -10,6 +10,8 @@ import UIKit
 
 class PostTextCell: UITableViewCell {
 
+    @IBOutlet weak var label: CustomBlackLabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

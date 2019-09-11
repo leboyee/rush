@@ -22,9 +22,18 @@ enum EventSectionType {
     case people
     case tags
     case createPost
-    case posts
+    case post
     case organizer
     case joinRsvp
+}
+
+enum PostCellType {
+    case none
+    case user
+    case text
+    case image
+    case like
+    
 }
 
 struct EventSection {

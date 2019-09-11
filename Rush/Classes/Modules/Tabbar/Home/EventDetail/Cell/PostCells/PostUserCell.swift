@@ -10,6 +10,10 @@ import UIKit
 
 class PostUserCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: CustomBlackLabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,11 @@ class PostUserCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+// MARK: - Actions
+extension PostUserCell {    
+    @IBAction func moreButtonAction() {
+        Utils.notReadyAlert()
+    }
 }

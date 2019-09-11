@@ -49,7 +49,6 @@ struct Cell {
     static let selectGallaryPhoto   = "SelectGallaryPhotoCell"
     static let universityCell       = "UniversityCell"
     static let addMajorsCell        = "AddMajorsCell"
-    static let postLikeCell         = "PostLikeCell"
     static let postCommentCell      = "PostCommentCell"
     static let classesCell          = "ClassesCell"
     static let singleButtonCell     = "SingleButtonCell"
@@ -74,6 +73,10 @@ struct Cell {
     static let location             = "LocationCell"
     static let createPost           = "CreatePostCell"
     static let organizer            = "OrganizerCell"
+    static let postLike            = "PostLikeCell"
+    static let postUser            = "PostUserCell"
+    static let postText            = "PostTextCell"
+    static let postImages          = "PostImagesCell"
 }
 
 struct ReusableView {

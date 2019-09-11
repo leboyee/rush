@@ -10,14 +10,14 @@ import UIKit
 
 class Post: Codable {
 
-    var id: Int64
-    var parentId: Int64 // Event / Club / Class
+    var id: String?
+    var parentId: String? // Event / Club / Class
     var text: String?
     var images: [Image]?
-    var numberOfLikes: Int
-    var numberOfComments: Int
+    var numberOfLikes: Int = 0
+    var numberOfComments: Int = 0
     var user: User?
-    
+   
     private enum CodingKeys: String, CodingKey {
         case id
         case parentId
@@ -28,6 +28,9 @@ class Post: Codable {
         case user
     }
 
+    init() {
+    }
+    
     // Added below function for user objects
     public func encode(to encoder: Encoder) throws {
     }

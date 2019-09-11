@@ -29,14 +29,32 @@ extension EventDetailViewController {
     }
     
     func sectionType(section: Int) -> EventSectionType {
-        if let eventSection = sections?[section] {
-            return eventSection.type
+        if section >= sections?.count ?? 0 {
+            return .post
+        } else {
+            let eventSection = sections?[section]
+            return eventSection?.type ?? .about
         }
-        return .about
+    }
+    
+    func postCellType(indexPath: IndexPath) -> PostCellType {
+        let index = indexPath.section - (sections?.count ?? 0)
+        guard let post = postlist?[index] else { return .none }
+        
+        if indexPath.row == 0 {
+            return .user
+        } else if indexPath.row == 1 {
+            return .text
+        } else if indexPath.row == 2, post.images != nil {
+            return .image
+        } else {
+            return .like
+        }
     }
     
     func sectionHeight(_ section: Int) -> CGFloat {
-        if let eventSection = sections?[section], eventSection.title != nil {
+        
+        if section < sections?.count ?? 0, let eventSection = sections?[section], eventSection.title != nil {
             return headerHeight
         }
         return CGFloat.leastNormalMagnitude
@@ -44,7 +62,7 @@ extension EventDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         
-        if let eventSection = sections?[indexPath.section] {
+        if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
             if eventSection.type == .people {
                 return friendHeight
             }
@@ -54,7 +72,12 @@ extension EventDetailViewController {
     
     func cellCount(_ section: Int) -> Int {
         var count = 0
-        if let eventSection = sections?[section] {
+        if section >= sections?.count ?? 0 {
+            let index = section - (sections?.count ?? 0)
+            if let post = postlist?[index] {
+                count = post.images == nil ? 3 : 4
+            }
+        } else if let eventSection = sections?[section] {
             switch eventSection.type {
             case .about, .joinRsvp, .location, .manage, .people, .tags, .organizer, .createPost:
                 count = 1
@@ -65,7 +88,6 @@ extension EventDetailViewController {
     }
     
     func fillAboutCell(_ cell: EventAboutCell, _ indexPath: IndexPath) {
-        
         guard let event = event else { return }
         cell.set(title: event.title)
         cell.set(type: event.eventType)
@@ -134,9 +156,37 @@ extension EventDetailViewController {
         cell.set(url: user.photo?.urlThumb())
     }
     
+    func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
+        let index = indexPath.section - (sections?.count ?? 0)
+        if let post = postlist?[index] {
+            
+        }
+    }
+    
+    func fillPostTextCell(_ cell: PostTextCell, _ indexPath: IndexPath) {
+        let index = indexPath.section - (sections?.count ?? 0)
+        if let post = postlist?[index] {
+            
+        }
+    }
+    
+    func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
+        let index = indexPath.section - (sections?.count ?? 0)
+        if let post = postlist?[index] {
+            
+        }
+    }
+    
+    func fillPostLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+        let index = indexPath.section - (sections?.count ?? 0)
+        if let post = postlist?[index] {
+            
+        }
+    }
+    
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
-        guard let eventSection = sections?[section] else { return }
+        guard section < sections?.count ?? 0, let eventSection = sections?[section] else { return }
         header.setup(title: eventSection.title ?? "")
     }
     
@@ -180,6 +230,21 @@ extension EventDetailViewController {
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .createPost, title: "Popular posts")
             ]
+            
+            let post = Post()
+            
+            let user = User()
+            user.firstName = "Kamal"
+            user.lastName = "Mittal"
+            post.user = user
+            
+            post.id = UUID().uuidString
+            post.text = "Everyone who joined - you going to have a great time! I promise!"
+            post.numberOfLikes = 2
+            post.numberOfComments = 12
+            postlist = [Post]()
+            postlist?.append(post)
+            
         } else if type == .invited {
             sections = [
                 EventSection(type: .about, title: nil),

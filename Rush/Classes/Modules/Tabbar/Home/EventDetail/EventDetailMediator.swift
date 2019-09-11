@@ -26,9 +26,11 @@ extension EventDetailViewController {
         tableView.register(cellName: Cell.createPost)
         tableView.register(cellName: Cell.singleButtonCell)
         tableView.register(cellName: Cell.organizer)
-        
+        tableView.register(cellName: Cell.postUser)
+        tableView.register(cellName: Cell.postText)
+        tableView.register(cellName: Cell.postImages)
+        tableView.register(cellName: Cell.postLike)
         tableView.register(reusableViewName: ReusableView.textHeader)
-
         tableView.reloadData()
     }
     
@@ -56,8 +58,33 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let type = sectionType(section: indexPath.section)
-        
-        if type == .joinRsvp {
+        if type == .post {
+            let type = postCellType(indexPath: indexPath)
+            switch type {
+            case .user:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postUser, for: indexPath) as? PostUserCell {
+                    fillPostUserCell(cell, indexPath)
+                    return cell
+                }
+            case .text:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postText, for: indexPath) as? PostTextCell {
+                    fillPostTextCell(cell, indexPath)
+                    return cell
+                }
+            case .image:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell {
+                    fillPostImageCell(cell, indexPath)
+                    return cell
+                }
+            case .like:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell {
+                    fillPostLikeCell(cell, indexPath)
+                    return cell
+                }
+            default:
+                break
+            }
+        } else if type == .joinRsvp {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell {
                 fillSingleButtonCell(cell)
                 return cell
