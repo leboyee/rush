@@ -44,7 +44,8 @@ class EventDetailViewController: UIViewController {
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
-    
+    var postlist: [Post]?
+
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114

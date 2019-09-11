@@ -23,7 +23,9 @@ extension EventDetailViewController {
 extension EventDetailViewController {
     
     func sectionCount() -> Int {
-        return sections?.count ?? 0
+        var sectionCount = sections?.count ?? 0
+        sectionCount += postlist?.count ?? 0
+        return sectionCount
     }
     
     func sectionType(section: Int) -> EventSectionType {
