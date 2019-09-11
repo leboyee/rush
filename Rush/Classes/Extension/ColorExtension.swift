@@ -154,4 +154,13 @@ extension UIColor {
     class var instaPopupBgColor: UIColor {
         return UIColor(red: 0.96, green: 0.96, blue: 0.97, alpha: 1)
     }
+    
+    class var dotAnimationUnFillColor: UIColor {
+        return UIColor(red: 0.74, green: 0.74, blue: 0.75, alpha: 1)
+    }
+    
+    class var dotAnimationFillColor: UIColor {
+        return UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)
+    }
+    
 }
