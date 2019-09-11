@@ -25,6 +25,7 @@ class ClubDetailViewController: UIViewController {
     
     var clubInfo: Club?
     var isMyClub = false
+    var isFromCreateClub = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,13 @@ class ClubDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent && isFromCreateClub {
+            navigationController?.popViewController(animated: false)
+        }
     }
     
     //MARk: - Other function

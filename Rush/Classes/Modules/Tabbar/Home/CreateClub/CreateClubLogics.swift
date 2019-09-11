@@ -282,12 +282,18 @@ extension CreateClubViewController {
                      Keys.clubPhoto: img] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.createClub(params: param) { [weak self] (status, errMessage) in
+        ServiceManager.shared.createClub(params: param) { [weak self] (data, errMessage) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if status {
-                unsafe.navigationController?.popViewController(animated: true)
-                // unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
+            if let club = data?[Keys.club] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Club.self, from: dataClub)
+                    unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: value)
+                } catch {
+                    
+                }
             } else {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }
