@@ -52,19 +52,22 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5S-VD-IJg" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                            <rect key="frame" x="80" y="12" width="78.5" height="20.5"/>
+                            <rect key="frame" x="72" y="12" width="78.5" height="20.5"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                             <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-12pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-lY-zaU">
-                            <rect key="frame" x="80" y="32.5" width="56" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-12pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Gnl-lY-zaU">
+                            <rect key="frame" x="72" y="32.5" width="202" height="16"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beM-PM-fyO">
                             <rect key="frame" x="279" y="18" width="83" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="83" id="I0y-Xi-fMK"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                             <state key="normal">
                                 <color key="titleColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,10 +97,11 @@
                         <constraint firstItem="beM-PM-fyO" firstAttribute="top" secondItem="wqK-mz-m4f" secondAttribute="top" id="60g-YE-bli"/>
                         <constraint firstItem="Gnl-lY-zaU" firstAttribute="top" secondItem="u5S-VD-IJg" secondAttribute="bottom" id="6Bx-1c-9GK"/>
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="top" secondItem="UU0-ER-kox" secondAttribute="bottom" id="6pN-ii-0dq"/>
-                        <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="UU0-ER-kox" secondAttribute="trailing" constant="16" id="956-3V-sct"/>
+                        <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="UU0-ER-kox" secondAttribute="trailing" constant="8" id="956-3V-sct"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="leading" secondItem="wqK-mz-m4f" secondAttribute="leading" id="Bmi-1b-qtp"/>
+                        <constraint firstItem="beM-PM-fyO" firstAttribute="leading" secondItem="Gnl-lY-zaU" secondAttribute="trailing" constant="5" id="Dva-0c-skV"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="top" secondItem="urp-ay-FeH" secondAttribute="top" constant="12" id="LAH-yI-5jx"/>
-                        <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" constant="80" id="LoX-hg-cWa"/>
+                        <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" constant="72" id="LoX-hg-cWa"/>
                         <constraint firstItem="bV1-Cq-EHk" firstAttribute="trailing" secondItem="beM-PM-fyO" secondAttribute="trailing" id="Ltz-xf-Wv8"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="bottom" secondItem="wqK-mz-m4f" secondAttribute="bottom" id="NjS-k1-mLF"/>
                         <constraint firstItem="bV1-Cq-EHk" firstAttribute="centerY" secondItem="urp-ay-FeH" secondAttribute="centerY" id="RkM-ca-MAY"/>

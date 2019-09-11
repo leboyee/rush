@@ -149,7 +149,7 @@ extension ProfileViewController {
                          "Harvard University" :
                          (profileDetail.profile?.university ?? "")
         header.set(university: university)
-        header.set(url: profileDetail.profile?.photo?.url)
+        header.set(url: profileDetail.profile?.photo?.url())
         tableView.reloadData()
     }
     

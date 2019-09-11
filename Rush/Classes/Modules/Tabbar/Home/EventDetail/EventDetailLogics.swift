@@ -90,11 +90,15 @@ extension EventDetailViewController {
         
         if type == .my {
             cell.setup(firstButtonType: .manage)
-            cell.setup(secondButtonType: .groupChatClub)
+            cell.setup(secondButtonType: .groupChat)
         } else if type == .invited {
             cell.setup(firstButtonType: .accept)
             cell.setup(secondButtonType: .reject)
+        } else if type == .joined {
+            cell.setup(firstButtonType: .going)
+            cell.setup(secondButtonType: .groupChatClub)
         }
+        
         cell.firstButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
@@ -125,7 +129,7 @@ extension EventDetailViewController {
         guard let user = event?.owner else { return }
         cell.set(name: user.name)
         cell.set(detail: "3 events")
-        cell.set(url: user.photo?.urlThumb)
+        cell.set(url: user.photo?.urlThumb())
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {

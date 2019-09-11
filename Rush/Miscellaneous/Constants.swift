@@ -251,6 +251,7 @@ public struct Text {
     static let inviteFromContact         = "Invite from contacts"
     static let interests                 = "Interests"
     static let joinAndRSVP               = "Join and RSVP"
+    static let going                     = "Going"
 
 }
 
