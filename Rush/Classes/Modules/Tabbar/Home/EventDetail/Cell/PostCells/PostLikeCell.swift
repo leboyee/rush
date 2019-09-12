@@ -10,6 +10,12 @@ import UIKit
 
 class PostLikeCell: UITableViewCell {
     
+    @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    var likeButtonEvent: (() -> Void)?
+    var unlikeButtonEvent: (() -> Void)?
+    var commentButtonEvent: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +25,32 @@ class PostLikeCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+}
+
+// MARK: - Actions
+extension PostLikeCell {
+    
+    @IBAction func likeButtonAction() {
+        likeButtonEvent?()
+    }
+    
+    @IBAction func unlikeButtonAction() {
+        unlikeButtonEvent?()
+    }
+    
+    @IBAction func commentButtonAction() {
+        commentButtonEvent?()
+    }
+}
+
+// MARK: - Others
+extension PostLikeCell {
+    func set(numberOfLike: Int) {
+        likeLabel.text = "\(numberOfLike)"
+    }
+    
+    func set(numberOfComment: Int) {
+        commentLabel.text = "\(numberOfComment)"
     }
 }

@@ -16,7 +16,7 @@ extension EventDetailViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 400.0
+        tableView.estimatedRowHeight = 414.0
         tableView.rowHeight = UITableView.automaticDimension
         
         tableView.register(cellName: Cell.eventAbout)

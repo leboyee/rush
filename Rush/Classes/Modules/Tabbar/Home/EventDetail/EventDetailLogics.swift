@@ -159,28 +159,43 @@ extension EventDetailViewController {
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postlist?[index] {
-            
+            cell.set(name: post.user?.name ?? "")
+            cell.set(time: post.createDate)
+            cell.set(url: nil)
         }
     }
     
     func fillPostTextCell(_ cell: PostTextCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postlist?[index] {
-            
+            cell.set(text: post.text ?? "")
         }
     }
     
     func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postlist?[index] {
-            
+            cell.set(images: post.images)
         }
     }
     
     func fillPostLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postlist?[index] {
+            cell.set(numberOfLike: post.numberOfLikes)
+            cell.set(numberOfComment: post.numberOfComments)
             
+            cell.likeButtonEvent = { () in
+                Utils.notReadyAlert()
+            }
+            
+            cell.unlikeButtonEvent = { () in
+                Utils.notReadyAlert()
+            }
+            
+            cell.commentButtonEvent = { () in
+                Utils.notReadyAlert()
+            }
         }
     }
     
@@ -242,6 +257,36 @@ extension EventDetailViewController {
             post.text = "Everyone who joined - you going to have a great time! I promise!"
             post.numberOfLikes = 2
             post.numberOfComments = 12
+            
+            let image1 = Image(
+                url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile4.jpg"
+            )
+            
+            let image2 = Image(
+                url: "http://www.fedracongressi.com/fedra/wp-content/uploads/2016/02/revelry-event-designers-homepage-slideshow-38.jpeg"
+            )
+            
+            let image3 = Image(
+                url: "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
+            )
+            
+            let image4 = Image(
+                url: "https://www.brc.com.au/Images/UserUploadedImages/11/birthday-event.jpg"
+            )
+            
+            let image5 = Image(
+                url: "https://www.brc.com.au/Images/UserUploadedImages/11/trade-event.jpg"
+            )
+            
+            let image6 = Image(
+                url: "https://www.brc.com.au/Images/UserUploadedImages/11/cocktail-event.jpg"
+            )
+            
+            let image7 = Image(
+                url: "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
+            )
+            
+            post.images = [image1, image2, image3, image4, image5, image6, image7]
             postlist = [Post]()
             postlist?.append(post)
             

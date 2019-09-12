@@ -33,3 +33,19 @@ extension PostUserCell {
         Utils.notReadyAlert()
     }
 }
+
+// MARK: - Others
+extension PostUserCell {
+
+    func set(name: String) {
+        nameLabel.text = name
+    }
+    
+    func set(time: Date?) {
+        timeLabel.text = time?.toString(format: "MMM dd") ?? "Now"
+    }
+    
+    func set(url: URL?) {
+        profileImageView.sd_setImage(with: url, placeholderImage: nil)
+    }
+}

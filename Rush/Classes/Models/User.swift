@@ -40,7 +40,9 @@ class User: Decodable {
     var updatedAt: String = ""
     var lastLoginTime: String = ""
     var status: Int = 0
-    
+    var name: String {
+        return firstName + " " + lastName
+    }
     private enum CodingKeys: String, CodingKey {
         
         case id = "_id"
@@ -73,6 +75,7 @@ class User: Decodable {
         case updatedAt = "u_updated_at"
         case lastLoginTime = "last_login_time"
         case status = "u_status"
+        case name
     }
     
     init() {

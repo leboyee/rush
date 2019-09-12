@@ -17,7 +17,8 @@ class Post: Codable {
     var numberOfLikes: Int = 0
     var numberOfComments: Int = 0
     var user: User?
-   
+    var createDate: Date?
+
     private enum CodingKeys: String, CodingKey {
         case id
         case parentId
@@ -26,6 +27,7 @@ class Post: Codable {
         case numberOfLikes
         case numberOfComments
         case user
+        case createDate
     }
 
     init() {

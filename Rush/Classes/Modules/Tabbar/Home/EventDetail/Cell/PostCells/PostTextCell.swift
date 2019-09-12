@@ -24,3 +24,9 @@ class PostTextCell: UITableViewCell {
     }
     
 }
+
+extension PostTextCell {
+    func set(text: String) {
+        label.text = text
+    }
+}

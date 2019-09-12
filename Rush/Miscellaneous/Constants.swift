@@ -77,6 +77,7 @@ struct Cell {
     static let postUser            = "PostUserCell"
     static let postText            = "PostTextCell"
     static let postImages          = "PostImagesCell"
+    static let postImage           = "PostImageCell"
 }
 
 struct ReusableView {
