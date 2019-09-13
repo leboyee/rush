@@ -125,7 +125,19 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfy-UV-ftE">
                                 <rect key="frame" x="0.0" y="181.5" width="375" height="22"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZcM-YZ-Sjg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZcM-YZ-Sjg" firstAttribute="leading" secondItem="wfy-UV-ftE" secondAttribute="leading" id="61E-Rd-HI6"/>
+                                    <constraint firstItem="ZcM-YZ-Sjg" firstAttribute="top" secondItem="wfy-UV-ftE" secondAttribute="top" id="JKI-6F-iCc"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZcM-YZ-Sjg" secondAttribute="bottom" constant="21" id="UFv-Wy-2Od"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZcM-YZ-Sjg" secondAttribute="trailing" id="zV1-Eh-MSW"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <constraints>
@@ -160,6 +172,7 @@
                 <outlet property="eventTypeIconImageView" destination="yTV-h3-Kl0" id="Pbr-XF-u7F"/>
                 <outlet property="eventTypeLabel" destination="Ukv-ih-nRv" id="G3F-Sk-GpY"/>
                 <outlet property="eventTypeView" destination="is4-m7-x6e" id="e0A-EA-WC7"/>
+                <outlet property="readMoreButtonView" destination="wfy-UV-ftE" id="O4l-xD-Lpj"/>
                 <outlet property="readMoreView" destination="C1m-we-pog" id="LxM-VV-MsX"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="174.44196428571428"/>

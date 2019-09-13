@@ -10,8 +10,9 @@ import UIKit
 
 enum EventDetailType {
     case my
-    case other
     case joined
+    case invited
+    case other
 }
 
 enum EventSectionType {
@@ -21,9 +22,18 @@ enum EventSectionType {
     case people
     case tags
     case createPost
-    case posts
+    case post
     case organizer
     case joinRsvp
+}
+
+enum PostCellType {
+    case none
+    case user
+    case text
+    case image
+    case like
+    
 }
 
 struct EventSection {
@@ -43,11 +53,20 @@ class EventDetailViewController: UIViewController {
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
-    
+    var postlist: [Post]?
+
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
 
+    let tempInvitee = [
+         Invitees(name: "Kamal"),
+         Invitees(name: "John"),
+         Invitees(name: "Smith"),
+         Invitees(name: "Suresh"),
+         Invitees(name: "Chirag")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

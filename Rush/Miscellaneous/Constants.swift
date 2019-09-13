@@ -49,7 +49,6 @@ struct Cell {
     static let selectGallaryPhoto   = "SelectGallaryPhotoCell"
     static let universityCell       = "UniversityCell"
     static let addMajorsCell        = "AddMajorsCell"
-    static let postLikeCell         = "PostLikeCell"
     static let postCommentCell      = "PostCommentCell"
     static let classesCell          = "ClassesCell"
     static let singleButtonCell     = "SingleButtonCell"
@@ -73,8 +72,16 @@ struct Cell {
     static let eventAbout           = "EventAboutCell"
     static let location             = "LocationCell"
     static let createPost           = "CreatePostCell"
+
     static let dateAndTimeEvent     = "DateAndTimeCell"
     static let rsvpCell              = "RSVPCell"
+
+    static let organizer            = "OrganizerCell"
+    static let postLike            = "PostLikeCell"
+    static let postUser            = "PostUserCell"
+    static let postText            = "PostTextCell"
+    static let postImages          = "PostImagesCell"
+    static let postImage           = "PostImageCell"
 
 }
 
@@ -257,11 +264,16 @@ public struct Text {
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
     static let interests                 = "Interests"
+<<<<<<< HEAD
     
     static let nameEvent                 = "Name event"
     static let addRSVP                   = "Add RSVP"
     static let addAnotherRSVP            = "Add another RSVP"
     static let addLocation               = "Add location"
+=======
+    static let joinAndRSVP               = "Join and RSVP"
+    static let going                     = "Going"
+>>>>>>> develop
 
 }
 

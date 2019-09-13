@@ -20,6 +20,8 @@ enum ManageButtonType {
     case groupChat
     case joined
     case groupChatClub
+    case going
+
 }
 
 class ClubManageCell: UITableViewCell {
@@ -74,9 +76,10 @@ extension ClubManageCell {
             firstButton.setTitle(Text.requested, for: .normal)
             firstButton.setTitleColor(UIColor.bgBlack, for: .normal)
             firstButton.backgroundColor = UIColor.lightGray93
-        } else if firstButtonType == .joined {
+        } else if firstButtonType == .joined || firstButtonType == .going {
+            let text = firstButtonType == .joined ? Text.joined : Text.going
             firstButton.setImage(#imageLiteral(resourceName: "friend-checkmark"), for: .normal)
-            firstButton.setTitle(Text.joined, for: .normal)
+            firstButton.setTitle(text, for: .normal)
             firstButton.setTitleColor(UIColor.bgBlack, for: .normal)
             firstButton.backgroundColor = UIColor.lightGray93
         }

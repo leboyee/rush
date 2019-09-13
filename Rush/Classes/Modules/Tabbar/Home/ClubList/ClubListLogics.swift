@@ -79,7 +79,7 @@ extension ClubListViewController {
             cell.setup(title: club.clubName)
             cell.setup(detail: club.clubDesc)
             cell.setup(invitee: club.invitees)
-            cell.setup(imageUrl: image.urlThumb)
+            cell.setup(imageUrl: image.urlThumb())
         } else if myClassesList.count > 0 {
             let classes = myClassesList[indexPath.row]
             cell.setup(title: classes.clubName)

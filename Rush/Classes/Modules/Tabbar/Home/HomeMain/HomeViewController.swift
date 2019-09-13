@@ -149,6 +149,10 @@ extension HomeViewController {
         } else if segue.identifier == Segues.createEvent {
             guard let vc = segue.destination as? CreateEventViewController else { return }
             vc.hidesBottomBarWhenPushed = true
+        } else if segue.identifier == Segues.homeEventDetail {
+            guard let vc = segue.destination as? EventDetailViewController else { return }
+            vc.type = .joined
+
         }
         
     }
