@@ -264,17 +264,12 @@ public struct Text {
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
     static let interests                 = "Interests"
-<<<<<<< HEAD
-    
     static let nameEvent                 = "Name event"
     static let addRSVP                   = "Add RSVP"
     static let addAnotherRSVP            = "Add another RSVP"
     static let addLocation               = "Add location"
-=======
     static let joinAndRSVP               = "Join and RSVP"
     static let going                     = "Going"
->>>>>>> develop
-
 }
 
 public struct Message {

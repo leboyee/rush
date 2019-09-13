@@ -12,6 +12,10 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     
     func setupMediator() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
     }
@@ -20,10 +24,15 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            bottomViewConstraint.constant = keyboardHeight + 10
+            bottomViewConstraint.constant = UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? keyboardHeight : keyboardHeight + 10
             self.view.layoutIfNeeded()
             
         }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        bottomViewConstraint.constant = 30
+        self.view.layoutIfNeeded()
     }
 
     // MARK: - UITextFieldDelegate

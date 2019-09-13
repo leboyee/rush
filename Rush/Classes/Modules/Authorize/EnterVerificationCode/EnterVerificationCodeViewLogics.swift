@@ -74,6 +74,10 @@ extension EnterVerificationCodeViewController {
     
     func updateCode(code: String) {
         guard self.isCodeVerifing == false else { return }
+        self.resendCodeButton.setImage(nil, for: .normal)
+        self.resendCodeButton.setTitle("Re-send Code", for: .normal)
+        self.resendCodeButton.isUserInteractionEnabled = true
+                        //Utils.alert(message: "Code sent successfully.")
         self.code = code
         self.updateCodeView(code: self.code)
         if self.code.count == 5 {
@@ -134,17 +138,25 @@ extension EnterVerificationCodeViewController {
     }
     
     func resendCodeApiCalled() {
-        Utils.showSpinner()
+        resendCodeButton.setTitle("", for: .normal)
+        dotView.ajShowDotLoadingIndicator()
+        dotAnimationView.isHidden = false
+        //Utils.showSpinner()
         let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = profile.countryCode
         let phoneString = profile.phone
         let param = [Keys.countryCode: countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
         ServiceManager.shared.authPhone(params: param) { [weak self] (status, errorMessage) in
-            Utils.hideSpinner()
+            //Utils.hideSpinner()
+           
             guard let unsafe = self else { return }
+            unsafe.dotView.ajHideDotLoadingIndicator()
+            unsafe.dotAnimationView.isHidden = true
             unsafe.digitTextField.becomeFirstResponder()
             if status {
-                Utils.alert(message: "Code sent successfully.")
+                unsafe.resendCodeButton.setTitle("Sent", for: .normal)
+                unsafe.resendCodeButton.setImage(#imageLiteral(resourceName: "sentTick"), for: .normal)
+                unsafe.resendCodeButton.isUserInteractionEnabled = true//Utils.alert(message: "Code sent successfully.")
             } else {
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
