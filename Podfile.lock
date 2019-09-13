@@ -68,7 +68,7 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
@@ -100,6 +100,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
-PODFILE CHECKSUM: 5fd8ba5fbacfd4d7e2d4797687d98ecc726c36fd
+PODFILE CHECKSUM: 52a1d922b501599288ff63c011d025538c7117a9
 
-COCOAPODS: 1.8.0.beta.2
+COCOAPODS: 1.7.5

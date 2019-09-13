@@ -243,5 +243,17 @@ extension Date {
         timeFormatter.dateFormat = "yyyy-MM-dd"
         return timeFormatter.date(from: dateString)!
     }
+    
+    func eventDateFormat(date: Date) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "EEEE, dd MMM"
+        return timeFormatter.string(from: date)
+    }
+    
+    func eventTimeFormat(date: Date) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm a"
+        return timeFormatter.string(from: date)
+    }
 
 }

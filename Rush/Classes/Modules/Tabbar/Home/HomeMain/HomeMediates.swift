@@ -85,7 +85,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - SelectEventTypeController Delegate
 extension HomeViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-        
         /*
          screenType: club, event
          type: public, closed, invite only
@@ -93,9 +92,13 @@ extension HomeViewController: SelectEventTypeDelegate {
         
         if screenType == .club { // Open club detail
             performSegue(withIdentifier: Segues.createClub, sender: nil)
-        } else { // Open event detail
-            
+        } else if screenType == .event { // Open event detail
+            performSegue(withIdentifier: Segues.createEvent, sender: nil)
         }
+    }
+
+    func addPhotoEvent(_ type: PhotoFrom) {
+        
     }
 }
 

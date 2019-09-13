@@ -14,10 +14,19 @@ class CreateEventViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
-
-    var nameClub = ""
-    var clubDescription = ""
-    var clubImage: UIImage?
+    
+    var imageList = [Any]()
+    var imagePicker = UIImagePickerController()
+    var picker = ImagePickerController()
+    
+    var nameEvent = ""
+    var eventDescription = ""
+    var location = ""
+    var eventImage: UIImage?
+    var startDate = ""
+    var endDate = ""
+    var startTime = ""
+    var endTime = ""
     
     var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
@@ -32,6 +41,7 @@ class CreateEventViewController: UIViewController {
     }
     
     var interestList = [String]()
+    var rsvpArray = [String]()
     var peopleList = [String]()
     
     override func viewDidLoad() {
@@ -96,23 +106,169 @@ extension CreateEventViewController {
     }
     
     @IBAction func addImageButtonAction() {
-        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
-            guard let unsafe = self else { return }
-            if index != 2 {
-                unsafe.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
-            }
+        self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: self)
+    }
+}
+
+// MARK: - Mediator
+extension CreateEventViewController {
+    func selectedCell(_ indexPath: IndexPath) {
+        
+        if indexPath.section == 0  || indexPath.section == 1 {
+            
+        } else if indexPath.section == 2 {
+            self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
+
+        } else {
+            Utils.alert(message: "In Development")
         }
+        
+    }
+    
+    func addImageFunction() {
+        self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: self)
     }
 }
 
 // MARK: - Navigation
 extension CreateEventViewController {
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == Segues.myClub {
-            if let vc = segue.destination as? MyClubViewController {
-                vc.clubImage = clubImage
+        if segue.identifier == Segues.selectEventPhoto {
+            if let vc = segue.destination as? SelectEventTypeViewController {
+                vc.type = .photo
+                vc.delegate = self
             }
+        }
+    }
+}
+
+// MARK: - Imagepicker fuctions
+extension CreateEventViewController: ImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
+        return true
+    }
+    
+    func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
+        imageList = assets
+        picker.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.setEventImage(imageAsset: self.imageList[0])
+            self.validateAllFields()
+            self.tableView.reloadData()
+        }
+        tableView.reloadData()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
+        picker.dismiss(animated: false, completion: nil)
+    }
+    
+    // MARK: - Capture Image
+    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
+        DispatchQueue.main.async {
+            if type == .photoLibrary {
+                let status = PHPhotoLibrary.authorizationStatus()
+                guard status == .authorized else {
+                    Utils.photoLibraryPermissionAlert()
+                    return
+                }
+            } else {
+                let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+                guard status == .authorized else {
+                    Utils.alertCameraAccessNeeded()
+                    return
+                }
+            }
+            
+            if type == .photoLibrary {
+                self.picker = ImagePickerController()
+                self.picker.delegate = self
+                self.picker.navigationBar.isTranslucent = false
+                var assets = [PHAsset]()
+                for img in self.imageList {
+                    if let value = img as? PHAsset { assets.append(value) }
+                }
+                self.picker.updateSelectedAssets(with: assets)
+                self.present(self.picker, animated: false, completion: nil)
+            } else {
+                // Camera
+                let camera = DKCamera()
+                camera.didCancel = {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+                camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
+                    if let img = image { self.imageList.append(img) }
+                    self.tableView.reloadData()
+                    self.dismiss(animated: true, completion: nil)
+                }
+                self.present(camera, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func showCameraPermissionPopup() {
+        // Camera
+        Utils.authorizeVideo { (status) in
+            switch status {
+            case .justDenied:
+                break
+            case .alreadyDenied:
+                Utils.alertCameraAccessNeeded()
+            case .restricted:
+                Utils.alertCameraAccessNeeded()
+            case .justAuthorized:
+                self.openCameraOrLibrary(type: .camera)
+            case .alreadyAuthorized:
+                self.openCameraOrLibrary(type: .camera)
+            }
+        }
+    }
+    
+    private func showPhotoGallaryPermissionPopup() {
+        Utils.authorizePhoto { (status) in
+            switch status {
+            case .justDenied:
+                break
+            case .alreadyDenied:
+                Utils.photoLibraryPermissionAlert()
+            case .restricted:
+                Utils.photoLibraryPermissionAlert()
+            case .justAuthorized:
+                self.openCameraOrLibrary(type: .photoLibrary)
+            case .alreadyAuthorized:
+                self.openCameraOrLibrary(type: .photoLibrary)
+            }
+        }
+    }
+    
+    func setEventImage(imageAsset: Any) {
+        if let asset = imageAsset as? PHAsset {
+            let imageSize = CGSize(
+                width: screenWidth * UIScreen.main.scale,
+                height: screenWidth * UIScreen.main.scale
+            )
+            
+            let requestOptions = PHImageRequestOptions()
+            requestOptions.resizeMode = .exact
+            requestOptions.isNetworkAccessAllowed = true
+            
+            PHCachingImageManager.default().requestImage(
+                for: asset,
+                targetSize: imageSize,
+                contentMode: .aspectFill,
+                options: requestOptions
+            ) { [weak self] image, _ in
+                guard let unself = self else { return }
+                if let image = image {
+                    unself.eventImage = image
+                }
+            }
+        } else if let image = imageAsset as? UIImage {
+            eventImage = image
         }
     }
 }

@@ -114,6 +114,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="dLe-8m-vIg" id="Ok9-0n-wu5"/>
+                <outlet property="bottomLine" destination="6Mg-1n-2fx" id="M6h-y8-Sbx"/>
                 <outlet property="clearButton" destination="THl-4v-qqV" id="7Rc-Ed-WPQ"/>
                 <outlet property="imgView" destination="QqX-gN-1rb" id="9yS-aQ-BIx"/>
                 <outlet property="placeHolderLabel" destination="KFG-xQ-0bf" id="Z2r-yN-W9O"/>
