@@ -247,12 +247,10 @@ extension EventDetailViewController {
             ]
             
             let post = Post()
-            
             let user = User()
             user.firstName = "Kamal"
             user.lastName = "Mittal"
             post.user = user
-            
             post.id = UUID().uuidString
             post.text = "Everyone who joined - you going to have a great time! I promise!"
             post.numberOfLikes = 2
@@ -285,10 +283,19 @@ extension EventDetailViewController {
             let image7 = Image(
                 url: "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
             )
-            
             post.images = [image1, image2, image3, image4, image5, image6, image7]
-            postlist = [Post]()
-            postlist?.append(post)
+            
+            let post2 = Post()
+            let user2 = User()
+            user2.firstName = "John"
+            user2.lastName = "Smith"
+            post2.user = user2
+            post2.id = UUID().uuidString
+            post2.text = "Everyone who joined - you going to have a great time! I promise!"
+            post2.numberOfLikes = 43
+            post2.numberOfComments = 23
+            
+            postlist = [post, post2]
             
         } else if type == .invited {
             sections = [
