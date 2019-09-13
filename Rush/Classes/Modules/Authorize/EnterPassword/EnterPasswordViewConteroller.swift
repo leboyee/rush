@@ -28,9 +28,6 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var passwordErrorLabel: CustomLabel!
     @IBOutlet weak var passwordErrorView: UIView!
     @IBOutlet weak var restorePasswordButtonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var passwordViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var passwordTopLineConstraint: NSLayoutConstraint!
-    @IBOutlet weak var passwordViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var resortPasswordButton: CustomButton!
     @IBOutlet weak var errorButton: CustomButton!
 
@@ -61,15 +58,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         navigationController?.navigationBar.isHidden = true
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
-            if loginType == .login {
-                passwordViewTopConstraint.constant = -5
-            }
-        }
+
     }
 
     func setup() {
@@ -94,7 +83,6 @@ class EnterPasswordViewConteroller: CustomViewController {
         symbolLabel.passwordFormateLabels()
         errorButton.setEmailErrorButton()
         self.bgImageView.setBgForLoginSignup()
-        passwordErrorLabel.text = "Incorrect password. Please double check it or restore it."
         restorePasswordButtonConstraint.constant = 16
         if loginType == .register {
             passwordTitleLabel.text = Text.passwordTitleRegister
@@ -109,10 +97,6 @@ class EnterPasswordViewConteroller: CustomViewController {
             resortPasswordButton.isHidden = false
             passwordErrorView.isHidden = true
         }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -188,15 +172,9 @@ extension EnterPasswordViewConteroller {
         if loginType == .login {
             if isHide == true {
                 restorePasswordButtonConstraint.constant = 16
-                if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
-                }
                 passwordErrorView.isHidden = true
             } else {
-                restorePasswordButtonConstraint.constant = UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 57 : 76
-                if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
-                    passwordViewTopConstraint.constant = -20
-                    passwordViewHeightConstraint.constant = 84
-                }
+                restorePasswordButtonConstraint.constant = 76
                 passwordErrorView.isHidden = false
                 self.nextButton.setNextButton(isEnable: false)
             }

@@ -568,8 +568,6 @@
                         <outlet property="passwordShowHideLabel" destination="WbV-zM-u2d" id="0YZ-XN-Tcv"/>
                         <outlet property="passwordTextField" destination="7cE-dE-KdU" id="wmI-ar-48Y"/>
                         <outlet property="passwordTitleLabel" destination="04j-px-Ybb" id="Qu5-KN-900"/>
-                        <outlet property="passwordViewHeightConstraint" destination="jb7-zo-sll" id="P4L-kC-RGN"/>
-                        <outlet property="passwordViewTopConstraint" destination="eW4-co-h2p" id="Xm8-P8-uue"/>
                         <outlet property="resortPasswordButton" destination="ZzU-Ym-hda" id="OKS-jU-d4U"/>
                         <outlet property="restorePasswordButtonConstraint" destination="9JL-pC-Ccw" id="9Jm-Ai-6s5"/>
                         <outlet property="symbolDotView" destination="pST-Zm-Vue" id="dV0-ux-OPL"/>
@@ -939,37 +937,6 @@
                                     <action selector="resendSMSButtonAction" destination="cDf-ZM-CWh" eventType="touchUpInside" id="Sxj-na-clP"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kh-tL-f7y">
-                                <rect key="frame" x="24" y="220" width="122" height="30"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrY-gg-3ij">
-                                        <rect key="frame" x="10" y="0.0" width="50" height="30"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="8re-rT-zfg"/>
-                                            <constraint firstAttribute="height" constant="30" id="UI6-sG-4BZ"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNW-SU-pkE">
-                                        <rect key="frame" x="60" y="7.5" width="53" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="wtd-Ha-frx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="13"/>
-                                        <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="lrY-gg-3ij" firstAttribute="leading" secondItem="1kh-tL-f7y" secondAttribute="leading" constant="10" id="2fP-KW-c9d"/>
-                                    <constraint firstAttribute="trailing" secondItem="HNW-SU-pkE" secondAttribute="trailing" constant="9" id="A7k-ZT-crq"/>
-                                    <constraint firstItem="lrY-gg-3ij" firstAttribute="top" secondItem="1kh-tL-f7y" secondAttribute="top" id="H9U-CY-OQM"/>
-                                    <constraint firstItem="HNW-SU-pkE" firstAttribute="centerY" secondItem="1kh-tL-f7y" secondAttribute="centerY" id="VEz-RT-XJa"/>
-                                    <constraint firstItem="HNW-SU-pkE" firstAttribute="leading" secondItem="lrY-gg-3ij" secondAttribute="trailing" id="i9g-uR-yWL"/>
-                                    <constraint firstAttribute="bottom" secondItem="lrY-gg-3ij" secondAttribute="bottom" id="pp7-jJ-oLB"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -978,19 +945,15 @@
                             <constraint firstItem="5UY-C0-eMq" firstAttribute="centerY" secondItem="7oJ-IJ-Tth" secondAttribute="centerY" id="90E-pM-aUV"/>
                             <constraint firstItem="7oJ-IJ-Tth" firstAttribute="top" secondItem="HAE-zO-ehh" secondAttribute="bottom" constant="16" id="Cuk-bU-O00"/>
                             <constraint firstItem="HAE-zO-ehh" firstAttribute="leading" secondItem="e7j-tS-Qjb" secondAttribute="leading" id="J1O-dY-75V"/>
-                            <constraint firstItem="1kh-tL-f7y" firstAttribute="centerY" secondItem="7oJ-IJ-Tth" secondAttribute="centerY" id="JvG-FX-cPA"/>
                             <constraint firstItem="nFt-Tl-Vu9" firstAttribute="leading" secondItem="5UY-C0-eMq" secondAttribute="trailing" constant="2" id="MJ9-n0-bbo"/>
                             <constraint firstItem="7oJ-IJ-Tth" firstAttribute="leading" secondItem="e7j-tS-Qjb" secondAttribute="leading" constant="24" id="Unr-qL-MKT"/>
                             <constraint firstItem="FoT-ni-Cs6" firstAttribute="top" secondItem="e7j-tS-Qjb" secondAttribute="top" constant="13" id="WWo-JV-Rh2"/>
                             <constraint firstAttribute="bottom" secondItem="3My-ND-1YF" secondAttribute="bottom" constant="30" id="WnR-lO-5Y5"/>
-                            <constraint firstItem="1kh-tL-f7y" firstAttribute="width" secondItem="7oJ-IJ-Tth" secondAttribute="width" id="X6d-K7-aaQ"/>
                             <constraint firstAttribute="bottom" secondItem="FoT-ni-Cs6" secondAttribute="bottom" constant="-22" id="X7W-Ae-Pmp"/>
                             <constraint firstItem="3My-ND-1YF" firstAttribute="trailing" secondItem="e7j-tS-Qjb" secondAttribute="trailing" id="Ytq-TP-2rR"/>
-                            <constraint firstItem="1kh-tL-f7y" firstAttribute="height" secondItem="7oJ-IJ-Tth" secondAttribute="height" id="dhO-sb-DDK"/>
                             <constraint firstItem="HAE-zO-ehh" firstAttribute="trailing" secondItem="e7j-tS-Qjb" secondAttribute="trailing" id="gRi-f6-p5y"/>
                             <constraint firstItem="nFt-Tl-Vu9" firstAttribute="centerY" secondItem="5UY-C0-eMq" secondAttribute="centerY" id="gbf-EQ-6m5"/>
                             <constraint firstItem="FoT-ni-Cs6" firstAttribute="trailing" secondItem="e7j-tS-Qjb" secondAttribute="trailing" id="kBi-7g-IUh"/>
-                            <constraint firstItem="1kh-tL-f7y" firstAttribute="centerX" secondItem="7oJ-IJ-Tth" secondAttribute="centerX" id="oaj-kL-g5r"/>
                             <constraint firstItem="FoT-ni-Cs6" firstAttribute="leading" secondItem="e7j-tS-Qjb" secondAttribute="leading" id="od4-PV-r7j"/>
                             <constraint firstItem="e7j-tS-Qjb" firstAttribute="trailing" secondItem="nFt-Tl-Vu9" secondAttribute="trailing" constant="21" id="p0U-Yt-yx6"/>
                         </constraints>
@@ -1008,8 +971,6 @@
                         <outlet property="codeLabelWidthConstraint" destination="SYA-HO-qrV" id="P9d-H3-vlq"/>
                         <outlet property="codeViewWidthConstraint" destination="THf-Bl-Hwd" id="9gf-Nn-NEH"/>
                         <outlet property="digitTextField" destination="4Wm-Mx-yA6" id="Hg8-uE-2fe"/>
-                        <outlet property="dotAnimationView" destination="1kh-tL-f7y" id="xwm-Pf-m77"/>
-                        <outlet property="dotView" destination="lrY-gg-3ij" id="hVr-Kb-0Ho"/>
                         <outlet property="nextButton" destination="ocL-fA-zxq" id="VpX-4l-5Bp"/>
                         <outlet property="resendCodeButton" destination="7oJ-IJ-Tth" id="DBL-Hf-jiA"/>
                         <outlet property="verificationTitleLabel" destination="tbS-Yk-Zqj" id="G0j-iS-slY"/>
@@ -1018,7 +979,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MII-RX-6E3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118.840579710145" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="1119" y="-214"/>
         </scene>
         <!--UserData-->
         <scene sceneID="Pi8-1T-YAk">
