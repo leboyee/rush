@@ -76,7 +76,6 @@ struct Cell {
     static let dateAndTimeEvent     = "DateAndTimeCell"
     static let rsvpCell              = "RSVPCell"
 
-
 }
 
 struct ReusableView {
@@ -150,6 +149,9 @@ struct Segues {
     
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
+    static let addRSVP                             = "AddRSVPSegue"
+
+    
 }
 
 struct StoryBoard {
@@ -260,8 +262,6 @@ public struct Text {
     static let addRSVP                   = "Add RSVP"
     static let addAnotherRSVP            = "Add another RSVP"
     static let addLocation               = "Add location"
-
-    
 
 }
 

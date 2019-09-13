@@ -51,6 +51,7 @@
                         <outlet property="tableView" destination="Qgn-V2-eM6" id="8bm-Zv-ZU3"/>
                         <outlet property="topConstraintOfTableView" destination="Uij-lB-sZS" id="6dB-oX-Rzg"/>
                         <segue destination="Sc4-IO-QLc" kind="presentation" identifier="SelectEventTypeViewSegue" modalPresentationStyle="overFullScreen" id="vC1-tG-MY8"/>
+                        <segue destination="FDc-47-a8H" kind="presentation" identifier="AddRSVPSegue" modalPresentationStyle="overFullScreen" id="IUX-G9-vGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2d-t1-Ohx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,6 +65,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYh-Z7-lwo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2131" y="856"/>
+        </scene>
+        <!--RSVP-->
+        <scene sceneID="KUs-26-WGh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RSVP" id="FDc-47-a8H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfl-Jl-a1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="956"/>
         </scene>
     </scenes>
 </document>

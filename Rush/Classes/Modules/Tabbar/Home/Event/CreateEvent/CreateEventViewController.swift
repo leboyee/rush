@@ -113,7 +113,16 @@ extension CreateEventViewController {
 // MARK: - Mediator
 extension CreateEventViewController {
     func selectedCell(_ indexPath: IndexPath) {
-        Utils.alert(message: "In Development")
+        
+        if indexPath.section == 0  || indexPath.section == 1 {
+            
+        } else if indexPath.section == 2 {
+            self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
+
+        } else {
+            Utils.alert(message: "In Development")
+        }
+        
     }
     
     func addImageFunction() {
@@ -123,6 +132,8 @@ extension CreateEventViewController {
 
 // MARK: - Navigation
 extension CreateEventViewController {
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.selectEventPhoto {
             if let vc = segue.destination as? SelectEventTypeViewController {

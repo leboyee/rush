@@ -13,6 +13,9 @@
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -34,42 +37,59 @@
                                     <constraint firstAttribute="height" constant="1" id="tlW-kd-7cg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-uX-cZh">
-                                <rect key="frame" x="64" y="15.5" width="139" height="33"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jcG-RN-1LB">
+                                <rect key="frame" x="24" y="25" width="280" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="ltv-GK-saw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="mNb-lP-mq6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                <state key="normal" title="Thursday, 24 Feb">
-                                    <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="dateButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="307-zf-YTA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-HL-QLi">
-                                <rect key="frame" x="255" y="15.5" width="49" height="33"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-X3-4by">
+                                <rect key="frame" x="24" y="12" width="54" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="DXm-t2-vxh"/>
+                                    <constraint firstAttribute="height" constant="16" id="toV-xh-b38"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What you would like to know?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6q-we-z1n">
+                                <rect key="frame" x="24" y="32" width="280" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="N8I-IR-IpU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                <state key="normal" title="12 pm">
-                                    <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="timeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="156-Ag-0Qx"/>
-                                </connections>
+                                <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-e1-AxR">
+                                <rect key="frame" x="280" y="12" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="lc5-oE-MDe"/>
+                                    <constraint firstAttribute="height" constant="40" id="oFw-hb-kDv"/>
+                                </constraints>
+                                <state key="normal" image="deleteRSVP"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rqx-v5-jP2" secondAttribute="trailing" id="2De-O6-yb5"/>
+                            <constraint firstItem="h6q-we-z1n" firstAttribute="top" secondItem="Vq2-X3-4by" secondAttribute="bottom" constant="4" id="50n-CZ-svo"/>
                             <constraint firstAttribute="bottom" secondItem="rqx-v5-jP2" secondAttribute="bottom" id="6eV-sB-fg8"/>
-                            <constraint firstItem="6iw-uX-cZh" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="64" id="85U-dF-xdq"/>
-                            <constraint firstAttribute="trailing" secondItem="KqU-HL-QLi" secondAttribute="trailing" constant="16" id="FZj-ZN-iHg"/>
-                            <constraint firstItem="KqU-HL-QLi" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="Ox8-V4-oRt"/>
-                            <constraint firstItem="6iw-uX-cZh" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="P80-AW-f76"/>
+                            <constraint firstItem="rqx-v5-jP2" firstAttribute="top" secondItem="jcG-RN-1LB" secondAttribute="bottom" constant="2.5" id="8Vh-Gc-Igv"/>
+                            <constraint firstAttribute="trailing" secondItem="h6q-we-z1n" secondAttribute="trailing" constant="16" id="DWO-yz-CQl"/>
+                            <constraint firstItem="jCi-e1-AxR" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="ZSL-xT-V8a"/>
+                            <constraint firstAttribute="trailing" secondItem="jcG-RN-1LB" secondAttribute="trailing" constant="16" id="ZVP-3F-cZX"/>
+                            <constraint firstItem="h6q-we-z1n" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="bEs-SJ-7TK"/>
+                            <constraint firstAttribute="trailing" secondItem="jCi-e1-AxR" secondAttribute="trailing" id="dMr-5B-ewJ"/>
                             <constraint firstItem="rqx-v5-jP2" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="dZc-Vh-GF7"/>
+                            <constraint firstItem="Vq2-X3-4by" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" constant="12" id="gsA-Zg-Qg6"/>
+                            <constraint firstItem="jcG-RN-1LB" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="iwK-kM-Cy4"/>
+                            <constraint firstItem="jcG-RN-1LB" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" constant="25" id="oiV-T6-SyD"/>
+                            <constraint firstItem="Vq2-X3-4by" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="rMk-57-a0o"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -84,11 +104,16 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateButton" destination="6iw-uX-cZh" id="MYe-EM-eth"/>
+                <outlet property="clearButton" destination="jCi-e1-AxR" id="E2B-HO-sff"/>
+                <outlet property="dataTextView" destination="jcG-RN-1LB" id="MGs-8M-GZO"/>
+                <outlet property="placeHolderLabel" destination="h6q-we-z1n" id="NwB-gT-Ivp"/>
                 <outlet property="separatorView" destination="rqx-v5-jP2" id="uKV-Hn-7GB"/>
-                <outlet property="timeButton" destination="KqU-HL-QLi" id="iBf-g7-5w1"/>
+                <outlet property="titleLabel" destination="Vq2-X3-4by" id="7SX-kf-c3i"/>
             </connections>
-            <point key="canvasLocation" x="128.98550724637681" y="96.09375"/>
+            <point key="canvasLocation" x="128.98550724637681" y="95.758928571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="deleteRSVP" width="24" height="24"/>
+    </resources>
 </document>

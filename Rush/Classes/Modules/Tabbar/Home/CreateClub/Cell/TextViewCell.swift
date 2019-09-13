@@ -88,7 +88,6 @@ extension TextViewCell {
     func setup(isEnabled: Bool) {
         textView.isUserInteractionEnabled = isEnabled
     }
-
     
     func setup(isHideCleareButton: Bool) {
         clearButton.isHidden = isHideCleareButton
