@@ -116,6 +116,8 @@ extension EnterEmailViewConteroller {
             }
             emailErroLabel.isHidden = false
             errorButton.isHidden = false
+            nextButton.setNextButton(isEnable: false)
+            isEmailError = true
         }
     }
     
