@@ -464,6 +464,12 @@
 		8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1076BC2306B96800512AA3 /* TextCell.xib */; };
 		8A1076C02306BC2600512AA3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BF2306BC2600512AA3 /* Tag.swift */; };
 		8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */; };
+		8A4B325D232B99F100AC1D17 /* RSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */; };
+		8A4B325F232B9A0B00AC1D17 /* RSVPMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */; };
+		8A4B3261232B9A1B00AC1D17 /* RSVPLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */; };
+		8A4B3264232BAE1B00AC1D17 /* EventJoinedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3263232BAE1B00AC1D17 /* EventJoinedPopupViewController.swift */; };
+		8A4B3266232BB05600AC1D17 /* EventJoinedPopupLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3265232BB05600AC1D17 /* EventJoinedPopupLogics.swift */; };
+		8A4B3268232BB7E800AC1D17 /* PostServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3267232BB7E800AC1D17 /* PostServices.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE971232327D8C600CB52D4 /* OrganizerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE971212327D8C600CB52D4 /* OrganizerCell.swift */; };
 		8AE971242327D8C600CB52D4 /* OrganizerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE971222327D8C600CB52D4 /* OrganizerCell.xib */; };
@@ -948,6 +954,12 @@
 		8A1076BC2306B96800512AA3 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		8A1076BF2306BC2600512AA3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPViewController.swift; sourceTree = "<group>"; };
+		8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPMediator.swift; sourceTree = "<group>"; };
+		8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPLogics.swift; sourceTree = "<group>"; };
+		8A4B3263232BAE1B00AC1D17 /* EventJoinedPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventJoinedPopupViewController.swift; sourceTree = "<group>"; };
+		8A4B3265232BB05600AC1D17 /* EventJoinedPopupLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventJoinedPopupLogics.swift; sourceTree = "<group>"; };
+		8A4B3267232BB7E800AC1D17 /* PostServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServices.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE971212327D8C600CB52D4 /* OrganizerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerCell.swift; sourceTree = "<group>"; };
 		8AE971222327D8C600CB52D4 /* OrganizerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizerCell.xib; sourceTree = "<group>"; };
@@ -1052,6 +1064,8 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				8A4B3262232BADFA00AC1D17 /* EventJoinedPopup */,
+				8A4B325B232B99D400AC1D17 /* RSVP */,
 				8A0345B52322AE270065CF3C /* EventDetail */,
 				8A04B12E22FADDED0055C65F /* Calendar */,
 				796A6F2322CDEEAD00916D79 /* ClassDetail */,
@@ -1455,6 +1469,7 @@
 				7905CDBD230D63120011C83B /* ChatServices.swift */,
 				79FA26F4230EC5AF0007F0ED /* HomeServices.swift */,
 				8AE9711F2327B4D800CB52D4 /* EventServices.swift */,
+				8A4B3267232BB7E800AC1D17 /* PostServices.swift */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -2555,6 +2570,25 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8A4B325B232B99D400AC1D17 /* RSVP */ = {
+			isa = PBXGroup;
+			children = (
+				8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */,
+				8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */,
+				8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */,
+			);
+			path = RSVP;
+			sourceTree = "<group>";
+		};
+		8A4B3262232BADFA00AC1D17 /* EventJoinedPopup */ = {
+			isa = PBXGroup;
+			children = (
+				8A4B3263232BAE1B00AC1D17 /* EventJoinedPopupViewController.swift */,
+				8A4B3265232BB05600AC1D17 /* EventJoinedPopupLogics.swift */,
+			);
+			path = EventJoinedPopup;
+			sourceTree = "<group>";
+		};
 		8AE9712D2329142E00CB52D4 /* PostCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -3008,6 +3042,7 @@
 				1AA9AB3F22FF31C200E0E450 /* AddInstragamPhotoViewController.swift in Sources */,
 				8A04B17022FD8B7F0055C65F /* PrivacySettingsMediator.swift in Sources */,
 				797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */,
+				8A4B325F232B9A0B00AC1D17 /* RSVPMediator.swift in Sources */,
 				793BE65922E88207005EF72D /* SeparatorLine.swift in Sources */,
 				8A04B1A52304126A0055C65F /* NotificationCell.swift in Sources */,
 				7938D06322D75D74002D1537 /* UniversityViewController.swift in Sources */,
@@ -3041,6 +3076,7 @@
 				8A04B15022FC37E20055C65F /* SettingsMediator.swift in Sources */,
 				1A339B4B22B3A060005509EA /* ChooseLevelViewLogics.swift in Sources */,
 				8A04B13422FADEC50055C65F /* CalendarEventListViewController.swift in Sources */,
+				8A4B3264232BAE1B00AC1D17 /* EventJoinedPopupViewController.swift in Sources */,
 				1A339B5F22B3B88A005509EA /* EnterUserNameViewMediates.swift in Sources */,
 				1AA97B8F228979D100C4550C /* ImageViewExtension.swift in Sources */,
 				793BE66922E88207005EF72D /* LocationMessageSizeCalculator.swift in Sources */,
@@ -3111,6 +3147,7 @@
 				7983D22E228982DC00DE054E /* Keys.swift in Sources */,
 				7958B7FD22C4E8E000A66BDC /* ClubListMediates.swift in Sources */,
 				793BE65B22E88207005EF72D /* MessagesViewController+Menu.swift in Sources */,
+				8A4B325D232B99F100AC1D17 /* RSVPViewController.swift in Sources */,
 				79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */,
 				79DF741F2292BA9F0012DCB7 /* SelectEventTypeViewController.swift in Sources */,
 				1A088E5322FED12700DF6004 /* Contact.swift in Sources */,
@@ -3128,6 +3165,7 @@
 				793BE66322E88207005EF72D /* UIColor+Extensions.swift in Sources */,
 				793BE67822E88207005EF72D /* MessageStyle.swift in Sources */,
 				793BE66422E88207005EF72D /* UIEdgeInsets+Extensions.swift in Sources */,
+				8A4B3261232B9A1B00AC1D17 /* RSVPLogics.swift in Sources */,
 				1A3CB08D22BD3242005D3D87 /* AddMajorsViewLogics.swift in Sources */,
 				1AC1B36C2328EDE3002F128F /* UIDotLoadingIndicator.swift in Sources */,
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
@@ -3172,6 +3210,7 @@
 				1AAE42C12296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift in Sources */,
 				8A04B18623014E1B0055C65F /* DisconnectInstagramLogics.swift in Sources */,
 				799190A022C9D5A00044602E /* ClubDetailLogics.swift in Sources */,
+				8A4B3268232BB7E800AC1D17 /* PostServices.swift in Sources */,
 				1ACEAC1522AC040A00B734D3 /* AddProfilePictureViewController.swift in Sources */,
 				1A353AC422BD05B60069752D /* ChooseUniversityViewController.swift in Sources */,
 				793B64EF22D5BC1700D9BD6D /* SortingCell.swift in Sources */,
@@ -3281,6 +3320,7 @@
 				7958B7FC22C4E8E000A66BDC /* ClubListLogics.swift in Sources */,
 				797FFDA222B7BC480055A001 /* GalleryVideoCell.swift in Sources */,
 				797FFDA822B7BC480055A001 /* PhotoAlbumCell.swift in Sources */,
+				8A4B3266232BB05600AC1D17 /* EventJoinedPopupLogics.swift in Sources */,
 				8A04B14222FAF4EE0055C65F /* CalendarEventCell.swift in Sources */,
 				796E92A0229FE0C800F91DB1 /* CloseButton.swift in Sources */,
 				7929DA5322C24AFD00700B42 /* PostPresenter.swift in Sources */,

@@ -110,4 +110,7 @@ extension NetworkManager {
         requestGet(path: "event/\(sortBy)/list", params: params, resultHandler: resultHandler)
     }
     
+    func joinEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "/event/\(eventId)/join", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
 }

@@ -13,7 +13,6 @@ extension DisconnectInstagramViewController {
     func disconnect() {
         instagramDisconnect()
     }
-    
 }
 
 extension DisconnectInstagramViewController {

@@ -144,8 +144,8 @@ extension EventDetailViewController {
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
         cell.setup(title: Text.joinAndRSVP)
-        cell.joinButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.joinButtonClickEvent = { [weak self] () in
+            self?.showRSVP()
         }
     }
     
