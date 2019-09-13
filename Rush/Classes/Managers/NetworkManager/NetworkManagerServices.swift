@@ -96,4 +96,14 @@ extension NetworkManager {
     func createPost(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
     }
+    
+    // MARK: - Events
+    func getEventDetail(eventId: String, resultHandler: @escaping ResultClosure) {
+        requestGet(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
+    }
+    
+    func getEventList(sortBy: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "event/\(sortBy)/list", params: params, resultHandler: resultHandler)
+    }
+    
 }

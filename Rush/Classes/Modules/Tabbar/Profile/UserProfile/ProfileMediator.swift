@@ -21,7 +21,6 @@ extension ProfileViewController {
         tableView.register(cellName: Cell.notification)
         tableView.register(cellName: Cell.eventType)
         tableView.register(reusableViewName: ReusableView.textHeader)
-        tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 50, right: 0)
         tableView.reloadData()
     }
     
@@ -97,14 +96,38 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let smallHeight = headerSmallHeight + (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
-        let y = headerFullHeight - (scrollView.contentOffset.y + headerFullHeight)
-        let height = min(max(y, smallHeight), screenHeight)
+        let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
+        let smallHeight = headerSmallHeight + topMergin
+        let h = headerHeightConstraint.constant - scrollView.contentOffset.y
+        let height = min(max(h, smallHeight), screenHeight)
         self.headerHeightConstraint.constant = height
-        print(height)
+        if !smallHeight.isEqual(to: height) {
+            tableView.contentOffset = CGPoint(x: 0, y: 0)
+        }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.headerHeightConstraint.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.headerHeightConstraint.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+}
+
+extension ProfileViewController {
+    private func animateHeader() {
+        self.headerHeightConstraint.constant = headerFullHeight
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
 }
 
 extension ProfileViewController: ParallaxHeaderDelegate {

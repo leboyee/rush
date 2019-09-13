@@ -146,6 +146,9 @@ extension HomeViewController {
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.homeEventDetail {
+            guard let vc = segue.destination as? EventDetailViewController else { return }
+            vc.type = .joined
         }
     }
 }

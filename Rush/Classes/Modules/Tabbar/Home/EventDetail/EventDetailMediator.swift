@@ -16,16 +16,21 @@ extension EventDetailViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 400.0
+        tableView.estimatedRowHeight = 414.0
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: Cell.eventAbout, bundle: nil), forCellReuseIdentifier: Cell.eventAbout)
-        tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
-        tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
-        tableView.register(UINib(nibName: Cell.location, bundle: nil), forCellReuseIdentifier: Cell.location)
-        tableView.register(UINib(nibName: Cell.createPost, bundle: nil), forCellReuseIdentifier: Cell.createPost)
         
-        tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
-        //tableView.contentInset = UIEdgeInsets(top: headerFullHeight, left: 0, bottom: 0, right: 0)
+        tableView.register(cellName: Cell.eventAbout)
+        tableView.register(cellName: Cell.eventType)
+        tableView.register(cellName: Cell.clubManage)
+        tableView.register(cellName: Cell.location)
+        tableView.register(cellName: Cell.createPost)
+        tableView.register(cellName: Cell.singleButtonCell)
+        tableView.register(cellName: Cell.organizer)
+        tableView.register(cellName: Cell.postUser)
+        tableView.register(cellName: Cell.postText)
+        tableView.register(cellName: Cell.postImages)
+        tableView.register(cellName: Cell.postLike)
+        tableView.register(reusableViewName: ReusableView.textHeader)
         tableView.reloadData()
     }
     
@@ -53,8 +58,38 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let type = sectionType(section: indexPath.section)
-        
-        if type == .about {
+        if type == .post {
+            let type = postCellType(indexPath: indexPath)
+            switch type {
+            case .user:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postUser, for: indexPath) as? PostUserCell {
+                    fillPostUserCell(cell, indexPath)
+                    return cell
+                }
+            case .text:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postText, for: indexPath) as? PostTextCell {
+                    fillPostTextCell(cell, indexPath)
+                    return cell
+                }
+            case .image:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell {
+                    fillPostImageCell(cell, indexPath)
+                    return cell
+                }
+            case .like:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell {
+                    fillPostLikeCell(cell, indexPath)
+                    return cell
+                }
+            default:
+                break
+            }
+        } else if type == .joinRsvp {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell {
+                fillSingleButtonCell(cell)
+                return cell
+            }
+        } else if type == .about {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventAbout, for: indexPath) as? EventAboutCell {
                 fillAboutCell(cell, indexPath)
                 return cell
@@ -72,6 +107,11 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         } else if type == .createPost {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createPost, for: indexPath) as? CreatePostCell {
                 fillCreatePostCell(cell)
+                return cell
+            }
+        } else if type == .organizer {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.organizer, for: indexPath) as? OrganizerCell {
+                fillOrganizerCell(cell)
                 return cell
             }
         } else {

@@ -33,6 +33,9 @@
                                     <constraint firstAttribute="height" constant="20" id="IFP-r3-Ikf"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="upvote"/>
+                                <connections>
+                                    <action selector="likeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AdK-e4-fxB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="72" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk2-TI-rBB">
                                 <rect key="frame" x="52" y="18" width="16.5" height="16"/>
@@ -46,8 +49,11 @@
                                     <constraint firstAttribute="height" constant="20" id="ZPS-gY-Voj"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="downvote"/>
+                                <connections>
+                                    <action selector="unlikeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K8o-eg-JuD"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sN-4n-s7r">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sN-4n-s7r">
                                 <rect key="frame" x="104.5" y="18" width="16" height="16"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
                                 <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,6 +65,9 @@
                                     <constraint firstAttribute="height" constant="20" id="Z5j-Xq-Phx"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="comment_inactive"/>
+                                <connections>
+                                    <action selector="commentButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5ke-Gd-j3S"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0S-I4-6ZV">
                                 <rect key="frame" x="280" y="18" width="16" height="16"/>
@@ -104,6 +113,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentLabel" destination="p0S-I4-6ZV" id="lQg-q2-Oti"/>
+                <outlet property="likeLabel" destination="Dk2-TI-rBB" id="cKN-ix-Zwd"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="81.696428571428569"/>
         </tableViewCell>
     </objects>

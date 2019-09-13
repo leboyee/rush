@@ -9,7 +9,7 @@
 import UIKit
 
 class CreatePostCell: UITableViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

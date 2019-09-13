@@ -141,7 +141,7 @@ extension ClubDetailViewController {
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
         let img = Image(json: clubInfo?.clubPhoto ?? "")
-        view.setup(imageUrl: img.url)
+        view.setup(imageUrl: img.url())
         view.setup(isHideHoverView: true)
     }
     
