@@ -80,12 +80,9 @@ extension SettingsViewController {
                                 text += (", " + "Classes")
                             }
                         }
-                        
                         cell.set(detail: text.capitalized)
                     }
-                    
                 }
-                
             case 1:
                 cell.set(title: Text.darkMode)
             default:
@@ -115,15 +112,20 @@ extension SettingsViewController {
     }
     
     func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {
-        cell.set(instagramStatus: isInstagramConnected, user: "")
+        
+        if let name = Authorization.shared.profile?.instaUserName, name.isNotEmpty {
+            cell.set(instagramStatus: true, user: name)
+        } else {
+            cell.set(instagramStatus: false, user: "")
+        }
+        
         cell.instagramEvent = { [weak self] () in
             guard let unsefe = self else { return }
-            if unsefe.isInstagramConnected {
+            if let name = Authorization.shared.profile?.instaUserName, name.isNotEmpty {
                 unsefe.showInstagramDisconnect()
             } else {
-                unsefe.isInstagramConnected = !unsefe.isInstagramConnected
+                /// connect with instagram
             }
-            unsefe.tableView.reloadData()
         }
         
     }

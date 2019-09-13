@@ -43,7 +43,8 @@ class Profile: NSObject {
     var isClassNotificationOn: Bool = true
     var whoCanMessageYou: String = ""
     var whoCanInviteYou: String = ""
-    
+    var instaUserName: String = ""
+
     init(data: [String: Any]) {
         super.init()
         setData(data: data)
@@ -146,6 +147,10 @@ class Profile: NSObject {
         
         if let value = data[Keys.uWhoCanInvite] as? String {
             whoCanInviteYou = value
+        }
+        
+        if let value = data[Keys.instaUsername] as? String {
+            instaUserName = value
         }
         
     }

@@ -12,7 +12,6 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var user: Profile?
-    var isInstagramConnected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -153,6 +153,16 @@ extension ServiceManager {
             })
         }
     }
+    
+    func instagramDisconnect(closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.instagramDisconnect { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+
+    }
 
     // MARK: - Major Minor
     func getMajorList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {

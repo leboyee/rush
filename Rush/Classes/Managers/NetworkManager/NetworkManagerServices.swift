@@ -55,6 +55,10 @@ extension NetworkManager {
         requestPost(path: "instagram/connect", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     
+    func instagramDisconnect(resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "instagram/disconnect", params: [:], resultHandler: resultHandler)
+    }
+    
     func getProfile(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "profile", params: params, resultHandler: resultHandler)
     }
