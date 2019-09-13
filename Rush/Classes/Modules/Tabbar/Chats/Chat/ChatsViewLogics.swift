@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SendBirdSDK
 
 extension ChatsViewController {
     
@@ -15,11 +16,13 @@ extension ChatsViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return chatlist.count
+        return channels.count
     }
     
     func fillCell(_ cell: ChatListCell, _ indexPath: IndexPath) {
-        cell.setup(title: chatlist[indexPath.row])
+//        let channel = channels[indexPath.row]
+//        cell.setup(title: channel.name)
+//        cell.setup(detail: channel.lastMessage?.data ?? "")
     }
     
     func cellSelected(_ indexPath: IndexPath) {
@@ -38,11 +41,11 @@ extension ChatsViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         let text = textField.text ?? ""
         if text.isEmpty {
-            chatlist = filterList
+            channels = filterList
             
         } else {
-            let filter = chatlist.filter { ( $0.lowercased().contains(text.lowercased())) }
-            chatlist = filter
+//            let filter = channels.filter { ( $0.lowercased().contains(text.lowercased())) }
+//            channels = filter
         }
         tableView.reloadData()
     }
@@ -52,8 +55,35 @@ extension ChatsViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        chatlist = filterList
+        channels = filterList
         textField.resignFirstResponder()
         return true
+    }
+}
+
+// MARK: - Services
+extension ChatsViewController {
+    
+    @objc func getListOfGroups() {
+        
+        ChatManager().getListOfAllChatGroups({ [weak self] (list) in
+            guard let unself = self else { return }
+            if let list = list as? [SBDGroupChannel] {
+                unself.channels = list
+            }
+            DispatchQueue.main.async {
+                unself.tableView.reloadData()
+                Utils.hideSpinner()
+            }
+            
+            if unself.channels.count > 0 {
+                unself.blankView.isHidden = true
+            } else {
+                unself.blankView.isHidden = false
+            }
+            }, errorHandler: { error in
+                Utils.hideSpinner()
+                Utils.alert(message: error.debugDescription)
+        })
     }
 }

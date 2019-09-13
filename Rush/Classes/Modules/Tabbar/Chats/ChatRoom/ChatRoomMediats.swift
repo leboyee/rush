@@ -233,7 +233,7 @@ extension ChatRoomViewController: MessageInputBarDelegate {
     
     // MARK: Send Text Message
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
-        
+        /*
         if isShowTempData {
             // Here we can parse for which substrings were autocompleted
             //let _ = messageInputBar.inputTextView.attributedText!
@@ -254,41 +254,27 @@ extension ChatRoomViewController: MessageInputBarDelegate {
                 }
             }
         }
-        
-        /*
-         for component in inputBar.inputTextView.components {
-         if let str = component as? String {
-         if self.channel == nil {
-         createNewChatGroup { (channel) in
-         if let chnl = channel {
-         self.channel = chnl
-         self.sendMessage(text: str)
-         }
-         }
-         } else {
-         sendMessage(text: str)
-         }
-         } else if let img = component as? UIImage {
-         sendImage(img: img)
-         }
-         }
-         
-         inputBar.inputTextView.text = String()
-         inputBar.sendButton.isEnabled = true
-         */
-    }
-    
-    private func insertMessages(_ data: [Any]) {
-        for component in data {
-            let user = SampleData.shared.currentSender
+        */
+
+        for component in inputBar.inputTextView.components {
             if let str = component as? String {
-                let message = MockMessage(text: str, sender: user, messageId: UUID().uuidString, date: Date())
-                insertMessages(message)
+                if self.channel == nil {
+                    createNewChatGroup { (channel) in
+                        if let chnl = channel {
+                            self.channel = chnl
+                            self.sendMessage(text: str)
+                        }
+                    }
+                } else {
+                    sendMessage(text: str)
+                }
             } else if let img = component as? UIImage {
-                let message = MockMessage(image: img, sender: user, messageId: UUID().uuidString, date: Date())
-                insertMessages(message)
+                sendImage(img: img)
             }
         }
+        
+        inputBar.inputTextView.text = String()
+        inputBar.sendButton.isEnabled = true
     }
     
     func sendMessage(text: String) {

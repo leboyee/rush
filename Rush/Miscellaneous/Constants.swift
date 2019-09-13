@@ -89,6 +89,7 @@ struct ViewControllerId {
     static let searchClubViewController          = "SearchClubViewController"
     static let datePickerViewController          = "DatePickerViewController"
     static let otherUserProfileController        = "OtherUserProfileController"
+    static let chatRoomViewController            = "ChatRoomViewController"
 }
 
 /* Create the struct for Section wise */
@@ -275,6 +276,7 @@ public struct Icons {
 
 public struct UserDefaultKey {
     static let searchFilter = "searchFilterData"
+    static let showAlertOfChatRemoved = "showAlertOfChatRemoved"
 
 }
 
