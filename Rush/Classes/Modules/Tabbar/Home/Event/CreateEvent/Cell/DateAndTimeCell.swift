@@ -30,8 +30,6 @@ class DateAndTimeCell: UITableViewCell {
 }
 
 extension DateAndTimeCell {
-    
-    
     func setup(dateButtonText: String) {
         dateButton.setTitle(dateButtonText, for: .normal)
     }
@@ -39,7 +37,6 @@ extension DateAndTimeCell {
     func setup(timeButtonText: String) {
         timeButton.setTitle(timeButtonText, for: .normal)
     }
-    
     
     @IBAction func dateButtonAction() {
         dateButtonClickEvent?()
@@ -50,4 +47,3 @@ extension DateAndTimeCell {
     }
     
 }
-

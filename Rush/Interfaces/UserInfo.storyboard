@@ -404,31 +404,19 @@
                                     <action selector="connectButtonAction" destination="Uip-Jx-t8I" eventType="touchUpInside" id="z9z-Ma-BxP"/>
                                 </connections>
                             </button>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65c-4y-CDf">
-                                <rect key="frame" x="0.0" y="84" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3h2-YJ-kbR" firstAttribute="trailing" secondItem="gLA-Fo-EwG" secondAttribute="trailing" constant="24" id="0WE-hr-EW0"/>
                             <constraint firstItem="h0a-jw-rsy" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="BtV-5v-I5v"/>
-                            <constraint firstItem="65c-4y-CDf" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="Dx0-V4-wTk"/>
                             <constraint firstItem="Wmc-NH-SSx" firstAttribute="top" secondItem="T9G-It-hDC" secondAttribute="top" id="G0G-EJ-wd9"/>
                             <constraint firstAttribute="bottom" secondItem="Wmc-NH-SSx" secondAttribute="bottom" id="KYb-37-Szd"/>
                             <constraint firstItem="3h2-YJ-kbR" firstAttribute="bottom" secondItem="gLA-Fo-EwG" secondAttribute="bottom" constant="15" id="KqN-Xq-5xM"/>
-                            <constraint firstItem="65c-4y-CDf" firstAttribute="top" secondItem="T9G-It-hDC" secondAttribute="top" constant="84" id="Tm2-Na-0eQ"/>
                             <constraint firstItem="h0a-jw-rsy" firstAttribute="top" secondItem="3h2-YJ-kbR" secondAttribute="top" constant="13" id="Usn-Jf-YDj"/>
                             <constraint firstItem="Wmc-NH-SSx" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="Vu7-hj-OIq"/>
                             <constraint firstItem="gLA-Fo-EwG" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" constant="24" id="bgU-SU-ICp"/>
                             <constraint firstItem="h0a-jw-rsy" firstAttribute="trailing" secondItem="3h2-YJ-kbR" secondAttribute="trailing" id="e0k-cu-YvJ"/>
-                            <constraint firstItem="65c-4y-CDf" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="fjO-k1-0rE"/>
                             <constraint firstItem="gLA-Fo-EwG" firstAttribute="top" secondItem="h0a-jw-rsy" secondAttribute="bottom" constant="18" id="mHK-UC-G19"/>
-                            <constraint firstAttribute="bottom" secondItem="65c-4y-CDf" secondAttribute="bottom" constant="-84" id="tUh-e2-uKt"/>
                             <constraint firstItem="Wmc-NH-SSx" firstAttribute="leading" secondItem="3h2-YJ-kbR" secondAttribute="leading" id="xbn-Sc-lO3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3h2-YJ-kbR"/>
@@ -437,7 +425,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="connectButton" destination="gLA-Fo-EwG" id="pka-hW-S76"/>
-                        <outlet property="wkWebView" destination="65c-4y-CDf" id="esw-Ce-hgZ"/>
+                        <segue destination="GSP-qi-T4D" kind="show" identifier="InstaWebViewSegue" id="mxR-zX-vCS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nD-lo-1DC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,6 +492,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udi-jN-Ow4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8071" y="483"/>
+        </scene>
+        <!--Insta Web View View Controller-->
+        <scene sceneID="Kcr-W6-n5x">
+            <objects>
+                <viewController id="GSP-qi-T4D" customClass="InstaWebViewViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ye6-da-Uf6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgforInvite" translatesAutoresizingMaskIntoConstraints="NO" id="JZ7-H8-mqH" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UoB-mR-EdI">
+                                <rect key="frame" x="0.0" y="84" width="414" height="812"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JZ7-H8-mqH" firstAttribute="top" secondItem="ye6-da-Uf6" secondAttribute="top" id="0l7-Zk-512"/>
+                            <constraint firstItem="JZ7-H8-mqH" firstAttribute="trailing" secondItem="Vhy-tS-IPx" secondAttribute="trailing" id="MmY-Hh-KKJ"/>
+                            <constraint firstItem="UoB-mR-EdI" firstAttribute="leading" secondItem="Vhy-tS-IPx" secondAttribute="leading" id="S7G-xc-s3C"/>
+                            <constraint firstItem="UoB-mR-EdI" firstAttribute="trailing" secondItem="Vhy-tS-IPx" secondAttribute="trailing" id="VUs-Je-Q4J"/>
+                            <constraint firstAttribute="bottom" secondItem="UoB-mR-EdI" secondAttribute="bottom" id="iZY-x3-y4K"/>
+                            <constraint firstItem="UoB-mR-EdI" firstAttribute="top" secondItem="ye6-da-Uf6" secondAttribute="top" constant="84" id="k0x-be-rsu"/>
+                            <constraint firstAttribute="bottom" secondItem="JZ7-H8-mqH" secondAttribute="bottom" id="mTh-zU-9WI"/>
+                            <constraint firstItem="JZ7-H8-mqH" firstAttribute="leading" secondItem="Vhy-tS-IPx" secondAttribute="leading" id="oZ3-y0-J70"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vhy-tS-IPx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qLF-Kn-DJS"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="wkWebView" destination="UoB-mR-EdI" id="rNu-8q-elq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBb-63-sx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9511.5942028985519" y="-214.28571428571428"/>
         </scene>
     </scenes>
     <resources>

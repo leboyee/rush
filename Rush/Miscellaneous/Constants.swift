@@ -157,8 +157,6 @@ struct Segues {
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
     static let addRSVP                             = "AddRSVPSegue"
-
-    
 }
 
 struct StoryBoard {

@@ -17,6 +17,7 @@ class ContactsManager: NSObject {
 
     // MARK: - USER CONTACT SYNC
     func requestAccess(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
             completionHandler(true)
@@ -106,28 +107,33 @@ class ContactsManager: NSObject {
                     contactModel.address = addressModel
                     
                 }*/
+            contactModel.displayName = contactModel.displayName.trimmingCharacters(in: .whitespacesAndNewlines)
+            print(contactModel.displayName)
+            if !contactModel.displayName.isEmpty {
                 contactArray.append(contactModel)
-            
+            }
         }
         return contactArray
     }
     
-    func getUserContacts(completionHandler: @escaping (_ contacts: [Contact], _ success: Bool, _ error: String) -> Void) {
-        self.requestAccess(completionHandler: { [weak self] (access) in
-            guard let strongSelf = self else { return }
-            
-            if access {
-                let contact =  strongSelf.retrieveContactsWithStore()
-                if contact.count > 0 {
-                    completionHandler(contact, true, "Success!")
-                } else {
-                    completionHandler(contact, true, "Success")
-                }
+    func getUserContactPermission(completionHandler: @escaping (_ success: Bool, _ error: String) -> Void) {
+        self.requestAccess(completionHandler: {  (success) in
+            if success {
+                completionHandler(true, "Success")
             } else {
                 let message = "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?."
-                completionHandler([Contact](), false, message)
+                completionHandler(false, message)
             }
         })
+    }
+    
+    func getUserContacts(completionHandler: @escaping (_ contacts: [Contact], _ success: Bool, _ error: String) -> Void) {
+        let contact =  self.retrieveContactsWithStore()
+        if contact.count > 0 {
+             completionHandler(contact, true, "Success!")
+        } else {
+            completionHandler(contact, true, "Success")
+        }
     }
 }
 

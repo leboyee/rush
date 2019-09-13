@@ -106,6 +106,9 @@
 		1A6631A9232B8C3F0042DE0D /* AJDotLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6631A5232B8C3F0042DE0D /* AJDotLoadingView.xib */; };
 		1A6631AA232B8C3F0042DE0D /* UIDotLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631A6232B8C3F0042DE0D /* UIDotLoadingIndicator.swift */; };
 		1A6631AB232B8C3F0042DE0D /* AJDotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631A7232B8C3F0042DE0D /* AJDotLoadingView.swift */; };
+		1A6631B6232B98E00042DE0D /* InstaWebViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631B3232B98E00042DE0D /* InstaWebViewMediates.swift */; };
+		1A6631B7232B98E00042DE0D /* InstaWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631B4232B98E00042DE0D /* InstaWebViewViewController.swift */; };
+		1A6631B8232B98E00042DE0D /* InstaWebViewViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631B5232B98E00042DE0D /* InstaWebViewViewLogics.swift */; };
 		1A7402C622CCA0BD0089CDAE /* ChooseInterestViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */; };
 		1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */; };
 		1A7402C822CCA0BD0089CDAE /* ChooseInterestViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */; };
@@ -596,6 +599,9 @@
 		1A6631A5232B8C3F0042DE0D /* AJDotLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJDotLoadingView.xib; sourceTree = "<group>"; };
 		1A6631A6232B8C3F0042DE0D /* UIDotLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDotLoadingIndicator.swift; sourceTree = "<group>"; };
 		1A6631A7232B8C3F0042DE0D /* AJDotLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJDotLoadingView.swift; sourceTree = "<group>"; };
+		1A6631B3232B98E00042DE0D /* InstaWebViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaWebViewMediates.swift; sourceTree = "<group>"; };
+		1A6631B4232B98E00042DE0D /* InstaWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaWebViewViewController.swift; sourceTree = "<group>"; };
+		1A6631B5232B98E00042DE0D /* InstaWebViewViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaWebViewViewLogics.swift; sourceTree = "<group>"; };
 		1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewMediates.swift; sourceTree = "<group>"; };
 		1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewController.swift; sourceTree = "<group>"; };
 		1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewLogics.swift; sourceTree = "<group>"; };
@@ -1449,6 +1455,16 @@
 			path = dotAnimation;
 			sourceTree = "<group>";
 		};
+		1A6631AC232B98350042DE0D /* AddInstaWebView */ = {
+			isa = PBXGroup;
+			children = (
+				1A6631B4232B98E00042DE0D /* InstaWebViewViewController.swift */,
+				1A6631B5232B98E00042DE0D /* InstaWebViewViewLogics.swift */,
+				1A6631B3232B98E00042DE0D /* InstaWebViewMediates.swift */,
+			);
+			path = AddInstaWebView;
+			sourceTree = "<group>";
+		};
 		1A7402C222CCA0BD0089CDAE /* ChooseInterest */ = {
 			isa = PBXGroup;
 			children = (
@@ -1636,6 +1652,7 @@
 		1AEAC49B22D31BE3008FBB54 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				1A6631AC232B98350042DE0D /* AddInstaWebView */,
 				1AA9AB3A22FF31C100E0E450 /* AddInstragam */,
 				1AEB56A522E842730041EAA7 /* AddInvite */,
 				1AEAC49C22D31BE3008FBB54 /* AddUserInfo */,
@@ -3127,6 +3144,7 @@
 				1A649E1D2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift in Sources */,
 				1A6631AA232B8C3F0042DE0D /* UIDotLoadingIndicator.swift in Sources */,
 				793BE68822E88207005EF72D /* LocationMessageCell.swift in Sources */,
+				1A6631B6232B98E00042DE0D /* InstaWebViewMediates.swift in Sources */,
 				7905CDBB230D5E730011C83B /* ContactsListMediates.swift in Sources */,
 				1AE78D2A22A00F1900972C17 /* EnterVerificationCodeViewLogics.swift in Sources */,
 				793BE65522E88207005EF72D /* InputPlugin.swift in Sources */,
@@ -3156,6 +3174,7 @@
 				797FFDA022B7BC480055A001 /* CameraSessionHandler.swift in Sources */,
 				7905CDB3230D5E170011C83B /* ChatContactsListLogics.swift in Sources */,
 				091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */,
+				1A6631B8232B98E00042DE0D /* InstaWebViewViewLogics.swift in Sources */,
 				79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */,
 				793BE67E22E88207005EF72D /* MediaItem.swift in Sources */,
 				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
@@ -3338,6 +3357,7 @@
 				7999362E22FAEDAC001AEEEB /* ChatUserView.swift in Sources */,
 				7903D0B1228E8CE5004E33B9 /* TutorialPopUpCell.swift in Sources */,
 				793BE69022E88207005EF72D /* MessageContainerView.swift in Sources */,
+				1A6631B7232B98E00042DE0D /* InstaWebViewViewController.swift in Sources */,
 				79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */,
 				79650BFF22C1099B0004BCB9 /* DKCamera.swift in Sources */,
 				8A0345B02322A6EA0065CF3C /* Club.swift in Sources */,
@@ -3564,7 +3584,7 @@
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				INFOPLIST_FILE = Rush/Info.plist;
@@ -3575,7 +3595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

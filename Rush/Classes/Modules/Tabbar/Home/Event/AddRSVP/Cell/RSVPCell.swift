@@ -102,5 +102,3 @@ extension RSVPCell: UITextViewDelegate {
         updateTableView?(textView)
     }
 }
-
-
