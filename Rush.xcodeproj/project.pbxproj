@@ -498,6 +498,11 @@
 		C05FC16E22805F9D00721F3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16922805F9D00721F3F /* Main.storyboard */; };
 		C05FC17022805FAE00721F3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC16F22805FAE00721F3F /* Utils.swift */; };
 		C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */; };
+		F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */; };
+		F9C89F6C232D2DD900DC9C85 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */; };
+		F9C89F6D232D2DD900DC9C85 /* AddLocationLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */; };
+		F9C89F71232D38F700DC9C85 /* AddEventLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9C89F6F232D38F700DC9C85 /* AddEventLocationCell.xib */; };
+		F9C89F72232D38F700DC9C85 /* AddEventLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F70232D38F700DC9C85 /* AddEventLocationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -998,6 +1003,11 @@
 		C05FC16A22805F9D00721F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C05FC16F22805FAE00721F3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdParty.swift; sourceTree = "<group>"; };
+		F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationMediates.swift; sourceTree = "<group>"; };
+		F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationLogics.swift; sourceTree = "<group>"; };
+		F9C89F6F232D38F700DC9C85 /* AddEventLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventLocationCell.xib; sourceTree = "<group>"; };
+		F9C89F70232D38F700DC9C85 /* AddEventLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventLocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1152,6 +1162,7 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				F9C89F5F232D2B4A00DC9C85 /* AddLocation */,
 				1AB43B2B2327EE0C00C2FBCE /* AddRSVP */,
 				1A0D01F723228A08004F6279 /* CreateEvent */,
 			);
@@ -2795,6 +2806,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F9C89F5F232D2B4A00DC9C85 /* AddLocation */ = {
+			isa = PBXGroup;
+			children = (
+				F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */,
+				F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */,
+				F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */,
+				F9C89F6E232D38F700DC9C85 /* Cell */,
+			);
+			path = AddLocation;
+			sourceTree = "<group>";
+		};
+		F9C89F6E232D38F700DC9C85 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F9C89F6F232D38F700DC9C85 /* AddEventLocationCell.xib */,
+				F9C89F70232D38F700DC9C85 /* AddEventLocationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2926,6 +2957,7 @@
 				1A66319B232B8BBA0042DE0D /* EventAboutCell.xib in Resources */,
 				1A663191232B8BBA0042DE0D /* PostUserCell.xib in Resources */,
 				7903D0B0228E8CE5004E33B9 /* EventCell.xib in Resources */,
+				F9C89F71232D38F700DC9C85 /* AddEventLocationCell.xib in Resources */,
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
 				1A663198232B8BBA0042DE0D /* PostImageCell.xib in Resources */,
 				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
@@ -3176,6 +3208,7 @@
 				091557AD22B124350080C9AE /* CreatePostViewController.swift in Sources */,
 				1A6631B8232B98E00042DE0D /* InstaWebViewViewLogics.swift in Sources */,
 				79EF134422D34FD500E260D9 /* PeopleCell.swift in Sources */,
+				F9C89F6C232D2DD900DC9C85 /* AddLocationViewController.swift in Sources */,
 				793BE67E22E88207005EF72D /* MediaItem.swift in Sources */,
 				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
@@ -3342,6 +3375,7 @@
 				793BE68322E88207005EF72D /* MessagesLayoutDelegate.swift in Sources */,
 				79493CE822B90E960026AD0E /* SelectGallaryPhotoMediator.swift in Sources */,
 				7929DA5B22C2630D00700B42 /* PostCommentCell.swift in Sources */,
+				F9C89F6D232D2DD900DC9C85 /* AddLocationLogics.swift in Sources */,
 				7903D0B7228E8CE5004E33B9 /* HomeViewController.swift in Sources */,
 				7905CDBC230D5E730011C83B /* ContactsListViewController.swift in Sources */,
 				793BE65122E88207005EF72D /* InputBarButtonItem.swift in Sources */,
@@ -3411,6 +3445,7 @@
 				793BE5FC22E87F5F005EF72D /* Friend.swift in Sources */,
 				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
 				1A6631A1232B8BBA0042DE0D /* EventDetailMediator.swift in Sources */,
+				F9C89F72232D38F700DC9C85 /* AddEventLocationCell.swift in Sources */,
 				793BE67922E88207005EF72D /* MockMessage.swift in Sources */,
 				1A66319F232B8BBA0042DE0D /* EventAboutCell.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,
@@ -3434,6 +3469,7 @@
 				8A04B1942301796A0055C65F /* CalendarMonthCell.swift in Sources */,
 				79C1AC5722A65507003C7790 /* ProfileInformationCell.swift in Sources */,
 				1A6631AB232B8C3F0042DE0D /* AJDotLoadingView.swift in Sources */,
+				F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */,
 				79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */,
 				79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */,
 				797FFDA722B7BC480055A001 /* Parameters.swift in Sources */,

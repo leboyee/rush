@@ -117,10 +117,13 @@ extension CreateEventViewController {
         if indexPath.section == 0  || indexPath.section == 1 {
             
         } else if indexPath.section == 2 {
-            DispatchQueue.main.async {
+               DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
             }
-        } else {
+        } else if indexPath.section == 3 {
+            self.performSegue(withIdentifier: Segues.addLocation, sender: self)
+        }
+        else {
             Utils.alert(message: "In Development")
         }
         
