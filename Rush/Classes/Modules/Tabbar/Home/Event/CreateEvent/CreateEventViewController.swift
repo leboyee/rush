@@ -118,8 +118,10 @@ extension CreateEventViewController {
             
         } else if indexPath.section == 2 {
             self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
-
-        } else {
+        } else if indexPath.section == 3 {
+            self.performSegue(withIdentifier: Segues.addLocation, sender: self)
+        }
+        else {
             Utils.alert(message: "In Development")
         }
         

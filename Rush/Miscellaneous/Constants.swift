@@ -75,6 +75,7 @@ struct Cell {
 
     static let dateAndTimeEvent     = "DateAndTimeCell"
     static let rsvpCell              = "RSVPCell"
+    static let addEventLocationCell              = "AddEventLocationCell"
 
     static let organizer            = "OrganizerCell"
     static let postLike            = "PostLikeCell"
@@ -157,6 +158,7 @@ struct Segues {
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
     static let addRSVP                             = "AddRSVPSegue"
+    static let addLocation                             = "AddLocationSegue"
 }
 
 struct StoryBoard {
