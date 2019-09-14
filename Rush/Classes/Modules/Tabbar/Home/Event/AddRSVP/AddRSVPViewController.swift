@@ -31,16 +31,10 @@ class AddRSVPViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+
     }
  
     // MARK: - Other function
@@ -65,10 +59,11 @@ class AddRSVPViewController: UIViewController {
 // MARK: - Actions
 extension AddRSVPViewController {
     
-    @objc func saveButtonAction() {
+    @IBAction func addNewRSVPButtonAction() {
+        addNewRSVP()
     }
     
-    @IBAction func addImageButtonAction() {
+    @IBAction func saveButtonAction() {
         
     }
 }

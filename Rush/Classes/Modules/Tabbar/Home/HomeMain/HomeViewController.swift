@@ -47,6 +47,7 @@ class HomeViewController: CustomViewController {
     func setupUI() {
         setupTableView()
         setupNavigation()
+        definesPresentationContext = true
     }
     
     func setupNavigation() {

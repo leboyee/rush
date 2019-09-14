@@ -79,7 +79,6 @@ extension CreateEventViewController {
     }
     
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
-        
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
         if indexPath.section == 0 {
@@ -95,11 +94,14 @@ extension CreateEventViewController {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addRSVP : Text.addAnotherRSVP)
                 cell.setup(keyboardReturnKeyType: .done)
+                cell.setup(isUserInterfaceEnable: false)
                 cell.setup(isEnabled: false)
             } else {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(isEnabled: false)
                 cell.setup(placeholder: "", text: rsvpArray[indexPath.row])
+                cell.setup(isUserInterfaceEnable: false)
+                cell.setup(isEnabled: false)
             }
             cell.setup(iconImage: indexPath.row == 0 ? "addRSVP" : "")
         } else if indexPath.section == 3 {
