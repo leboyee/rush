@@ -66,7 +66,7 @@ class CreateEventViewController: UIViewController {
     func setupUI() {
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
+        definesPresentationContext = true
         // Set navigation buttons
         navigationItem.leftBarButtonItem = cancelBtn
         navigationItem.rightBarButtonItem = saveBtnDisActive
@@ -117,7 +117,9 @@ extension CreateEventViewController {
         if indexPath.section == 0  || indexPath.section == 1 {
             
         } else if indexPath.section == 2 {
-            self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
+               DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
+            }
         } else if indexPath.section == 3 {
             self.performSegue(withIdentifier: Segues.addLocation, sender: self)
         }
@@ -134,8 +136,7 @@ extension CreateEventViewController {
 
 // MARK: - Navigation
 extension CreateEventViewController {
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.selectEventPhoto {
             if let vc = segue.destination as? SelectEventTypeViewController {
@@ -143,6 +144,7 @@ extension CreateEventViewController {
                 vc.delegate = self
             }
         }
+        
     }
 }
 

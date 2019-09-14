@@ -100,6 +100,7 @@ struct ViewControllerId {
     static let searchClubViewController          = "SearchClubViewController"
     static let datePickerViewController          = "DatePickerViewController"
     static let otherUserProfileController        = "OtherUserProfileController"
+    static let addRSVPViewController             = "AddRSVPViewController"
 }
 
 /* Create the struct for Section wise */
@@ -166,6 +167,7 @@ struct StoryBoard {
     static let customPicker              =     "CustomPicker"
     static let tabbar                    =     "Tabbar"
     static let home                      =     "Home"
+    static let rsvp                      =     "RSVP"
 }
 
 public struct Text {
