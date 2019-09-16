@@ -12,7 +12,9 @@ import Photos
 class ClubDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
+    @IBOutlet weak var backgroundView: RBackgoundView!
+    @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
+    @IBOutlet weak var clubHeader: ClubHeader!
     
     var interestList = [String]()
     var peopleList = [String]()
@@ -27,6 +29,10 @@ class ClubDetailViewController: UIViewController {
     var isMyClub = false
     var isFromCreateClub = false
     
+    let headerFullHeight: CGFloat = 367
+    let headerSmallWithDateHeight: CGFloat = 182
+    let headerSmallWithoutDateHeight: CGFloat = 114
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,12 +42,12 @@ class ClubDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
         if self.isMovingFromParent && isFromCreateClub {
             navigationController?.popViewController(animated: false)
         }
@@ -63,12 +69,6 @@ class ClubDetailViewController: UIViewController {
         
         // fetch club detail
         getClubDetailAPI()
-        
-        topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
-        // share button
-        let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
-        navigationItem.rightBarButtonItem = share
         
         // setup tableview
         setupTableView()

@@ -12,7 +12,7 @@ import Photos
 extension ClubDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? ((Utils.navigationHeigh*2) + 24 + 216) : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
+        return section == 0 ? CGFloat.leastNormalMagnitude : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -140,11 +140,13 @@ extension ClubDetailViewController {
         }
     }
     
-    func fillImageHeader(_ view: UserImagesHeaderView) {
+    func fillImageHeader() {
         let img = Image(json: clubInfo?.clubPhoto ?? "")
-        view.setup(imageUrl: img.url)
-        view.setup(isHideHoverView: true)
+        clubHeader.setup(imageUrl: img.url)
+        clubHeader.setup(isHideHoverView: true)
     }
+    
+    
     
     func cellSelected(_ indexPath: IndexPath) {
         
@@ -178,6 +180,7 @@ extension ClubDetailViewController {
                         }
                     }
                 }
+                uwself.fillImageHeader()
                 uwself.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg.debugDescription)
