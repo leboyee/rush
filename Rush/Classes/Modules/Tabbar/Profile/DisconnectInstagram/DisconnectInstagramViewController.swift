@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol DisconnectInstagraaDelegate: class {
+    func disconnectInstagram()
+}
+
 class DisconnectInstagramViewController: UIViewController {
 
     @IBOutlet weak var verticalCentreConstraint: NSLayoutConstraint!
+    weak var delegate: DisconnectInstagraaDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +34,7 @@ extension DisconnectInstagramViewController {
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
+            self.delegate?.disconnectInstagram()
         })
     }
     

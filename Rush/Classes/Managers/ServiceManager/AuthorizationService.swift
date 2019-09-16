@@ -145,20 +145,20 @@ extension ServiceManager {
         }
     }
     
-    func instagramConnect(params: [String: Any], closer: @escaping (_ status: Bool?, _ errorMessage: String?) -> Void) {
+    func instagramConnect(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.instagramConnect(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
-                closer(status, errorMessage)
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
             })
         }
     }
     
-    func instagramDisconnect(closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+    func instagramDisconnect(closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.instagramDisconnect { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
-                closer(status, errorMessage)
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
             })
         }
 

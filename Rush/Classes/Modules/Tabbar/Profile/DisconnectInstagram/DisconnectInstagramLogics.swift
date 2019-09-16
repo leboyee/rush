@@ -19,10 +19,11 @@ extension DisconnectInstagramViewController {
     
     private func instagramDisconnect() {
         Utils.showSpinner()
-        ServiceManager.shared.instagramDisconnect { [weak self] (status, errorMessage) in
+        ServiceManager.shared.instagramDisconnect { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
             guard let unsefe = self else { return }
-            if status {
+            if let user = data?[Keys.user] as? [String: Any] {
+                Authorization.shared.updateUserData(data: user)
                 unsefe.dismiss()
             } else if let message = errorMessage {
                 unsefe.showMessage(message: message)

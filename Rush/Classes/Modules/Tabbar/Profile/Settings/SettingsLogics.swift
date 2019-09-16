@@ -113,7 +113,8 @@ extension SettingsViewController {
     
     func fillInstagramCell(_ cell: InstagramCell, _ indexPath: IndexPath) {
         
-        if let name = Authorization.shared.profile?.instaUserName, name.isNotEmpty {
+        if let token = Authorization.shared.profile?.instaToken, token.isNotEmpty {
+            let name = Authorization.shared.profile?.instaUserName ?? ""
             cell.set(instagramStatus: true, user: name)
         } else {
             cell.set(instagramStatus: false, user: "")
@@ -121,10 +122,11 @@ extension SettingsViewController {
         
         cell.instagramEvent = { [weak self] () in
             guard let unsefe = self else { return }
-            if let name = Authorization.shared.profile?.instaUserName, name.isNotEmpty {
+            if let token = Authorization.shared.profile?.instaToken, token.isNotEmpty {
                 unsefe.showInstagramDisconnect()
             } else {
                 /// connect with instagram
+                unsefe.showInstagramConnect()
             }
         }
         

@@ -108,6 +108,14 @@
             </objects>
             <point key="canvasLocation" x="-35" y="-408"/>
         </scene>
+        <!--InstaWebViewViewController-->
+        <scene sceneID="hBz-Li-mPl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserInfo" referencedIdentifier="InstaWebViewViewController" id="ej9-Qv-XoJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydb-HA-wyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="-524"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="Cco-VF-uMf">
             <objects>
@@ -208,6 +216,7 @@
                         <segue destination="JDF-J1-pkR" kind="show" identifier="NotificationSettingsSegue" id="AG0-Az-k7Z"/>
                         <segue destination="lSf-6x-Jg6" kind="presentation" identifier="DisconnectInstagramSegue" animates="NO" modalPresentationStyle="overFullScreen" id="2cS-pu-J6g"/>
                         <segue destination="eCx-fz-AbD" kind="presentation" identifier="LogoutPopupSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Qbh-H5-b15"/>
+                        <segue destination="ej9-Qv-XoJ" kind="show" identifier="SettingsInstagramConnectSegue" id="kOV-2K-PIx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-199"/>
+            <point key="canvasLocation" x="1457" y="-202"/>
         </scene>
         <!--Disconnect Instagram View Controller-->
         <scene sceneID="2vv-fq-i3i">
@@ -499,7 +508,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBL-Dr-Ojk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="467"/>
+            <point key="canvasLocation" x="1457" y="466"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
@@ -537,7 +546,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-bh-tKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="-875"/>
+            <point key="canvasLocation" x="1457" y="-875"/>
         </scene>
     </scenes>
     <resources>
