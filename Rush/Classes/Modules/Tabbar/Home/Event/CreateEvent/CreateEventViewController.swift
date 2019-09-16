@@ -18,7 +18,7 @@ class CreateEventViewController: UIViewController {
     var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()
-    
+    var isCalendar: Bool = false
     var nameEvent = ""
     var eventDescription = ""
     var location = ""
@@ -102,7 +102,7 @@ extension CreateEventViewController {
     }
     
     @objc func saveButtonAction() {
-        performSegue(withIdentifier: Segues.myClub, sender: nil)
+
     }
     
     @IBAction func addImageButtonAction() {
@@ -122,8 +122,7 @@ extension CreateEventViewController {
             }
         } else if indexPath.section == 3 {
             self.performSegue(withIdentifier: Segues.addLocation, sender: self)
-        }
-        else {
+        } else {
             Utils.alert(message: "In Development")
         }
         
@@ -141,6 +140,10 @@ extension CreateEventViewController {
         if segue.identifier == Segues.selectEventPhoto {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .photo
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.addRSVP {
+            if let vc = segue.destination as? AddRSVPViewController {
                 vc.delegate = self
             }
         }

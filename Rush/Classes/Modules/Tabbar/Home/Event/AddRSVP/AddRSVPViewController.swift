@@ -9,6 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol AddRsvpDelegate: class {
+    func addRsvpData(_ rsvpArray: [String])
+}
+
 class AddRSVPViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +21,7 @@ class AddRSVPViewController: UIViewController {
     @IBOutlet weak var bottomViewContraint: NSLayoutConstraint!
     @IBOutlet weak var rsvpPlusButton: CustomButton!
     @IBOutlet weak var saveButton: CustomButton!
+    weak var delegate: AddRsvpDelegate?
 
     var rsvpArray = [String]()
     
@@ -64,7 +69,9 @@ extension AddRSVPViewController {
     }
     
     @IBAction func saveButtonAction() {
-        
+        self.view.endEditing(true)
+        self.delegate?.addRsvpData(rsvpArray)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

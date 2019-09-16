@@ -89,7 +89,7 @@ extension RSVPCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        if text == "\n" && textView.returnKeyType == .done {
+        if text == "\n" && textView.returnKeyType == .go {
             textView.resignFirstResponder()
             return false
         }
@@ -102,7 +102,6 @@ extension RSVPCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         textDidChanged?(textView.text)
-        layoutIfNeeded()
         updateTableView?(textView)
     }
 }

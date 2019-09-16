@@ -37,7 +37,7 @@
                                 <rect key="frame" x="21" y="32" width="280" height="28"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="go"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-X3-4by">
                                 <rect key="frame" x="24" y="12" width="53.5" height="16"/>
@@ -72,6 +72,9 @@
                                     <constraint firstAttribute="height" constant="40" id="oFw-hb-kDv"/>
                                 </constraints>
                                 <state key="normal" image="deleteRSVP"/>
+                                <connections>
+                                    <action selector="clearButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="avf-0M-rs7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

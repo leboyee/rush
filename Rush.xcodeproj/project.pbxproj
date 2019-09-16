@@ -161,6 +161,8 @@
 		1ACEAC1522AC040A00B734D3 /* AddProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEAC1222AC040A00B734D3 /* AddProfilePictureViewController.swift */; };
 		1ACEAC1622AC040A00B734D3 /* AddProfilePictureViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEAC1322AC040A00B734D3 /* AddProfilePictureViewMediates.swift */; };
 		1ACEAC1822AC294200B734D3 /* CustomCameraExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEAC1722AC294200B734D3 /* CustomCameraExtension.swift */; };
+		1AD7CFC2232D647500DA3E54 /* AddEventCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD7CFC0232D647500DA3E54 /* AddEventCalendarCell.swift */; };
+		1AD7CFC3232D647500DA3E54 /* AddEventCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AD7CFC1232D647500DA3E54 /* AddEventCalendarCell.xib */; };
 		1AE78D2922A00F1900972C17 /* EnterVerificationCodeViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE78D2622A00F1900972C17 /* EnterVerificationCodeViewMediates.swift */; };
 		1AE78D2A22A00F1900972C17 /* EnterVerificationCodeViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE78D2722A00F1900972C17 /* EnterVerificationCodeViewLogics.swift */; };
 		1AE78D2B22A00F1900972C17 /* EnterVerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE78D2822A00F1900972C17 /* EnterVerificationCodeViewController.swift */; };
@@ -660,6 +662,8 @@
 		1ACEAC1222AC040A00B734D3 /* AddProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProfilePictureViewController.swift; sourceTree = "<group>"; };
 		1ACEAC1322AC040A00B734D3 /* AddProfilePictureViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProfilePictureViewMediates.swift; sourceTree = "<group>"; };
 		1ACEAC1722AC294200B734D3 /* CustomCameraExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCameraExtension.swift; sourceTree = "<group>"; };
+		1AD7CFC0232D647500DA3E54 /* AddEventCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventCalendarCell.swift; sourceTree = "<group>"; };
+		1AD7CFC1232D647500DA3E54 /* AddEventCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventCalendarCell.xib; sourceTree = "<group>"; };
 		1AE78D2622A00F1900972C17 /* EnterVerificationCodeViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewMediates.swift; sourceTree = "<group>"; };
 		1AE78D2722A00F1900972C17 /* EnterVerificationCodeViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewLogics.swift; sourceTree = "<group>"; };
 		1AE78D2822A00F1900972C17 /* EnterVerificationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewController.swift; sourceTree = "<group>"; };
@@ -1509,6 +1513,8 @@
 		1A95C3612323FDB70066798D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1AD7CFC0232D647500DA3E54 /* AddEventCalendarCell.swift */,
+				1AD7CFC1232D647500DA3E54 /* AddEventCalendarCell.xib */,
 				1A95C3622323FDB70066798D /* DateAndTimeCell.swift */,
 				1A95C3632323FDB70066798D /* DateAndTimeCell.xib */,
 			);
@@ -2971,6 +2977,7 @@
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
 				8A0345B42322A7AB0065CF3C /* EventDetail.storyboard in Resources */,
 				8A04B15722FC3DEE0055C65F /* SettingsInfoCell.xib in Resources */,
+				1AD7CFC3232D647500DA3E54 /* AddEventCalendarCell.xib in Resources */,
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
 				793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */,
@@ -3324,6 +3331,7 @@
 				79CF8FD1228DA47F00DDA285 /* CustomBlackBackgroundView.swift in Sources */,
 				7938D06222D75D74002D1537 /* UniversityMediates.swift in Sources */,
 				8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */,
+				1AD7CFC2232D647500DA3E54 /* AddEventCalendarCell.swift in Sources */,
 				797FFDB622B7BC480055A001 /* SlideUpPresentationController.swift in Sources */,
 				1AA9AB3E22FF31C200E0E450 /* AddInstragamPhotoViewLogics.swift in Sources */,
 				797FFDAB22B7BC480055A001 /* PhotoAlbumTitleButton.swift in Sources */,

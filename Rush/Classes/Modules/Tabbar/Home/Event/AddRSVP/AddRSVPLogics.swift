@@ -20,7 +20,7 @@ extension AddRSVPViewController {
     }
     
     func fillRsvpCell(_ cell: RSVPCell, _ indexPath: IndexPath) {
-        cell.setup(isHideClearButton: rsvpArray.count == (indexPath.row + 1) ? true : false)
+        cell.setup(isHideClearButton: indexPath.row != 0 ? false : rsvpArray.first?.isEmpty ?? true)
         cell.setup(titleText: "RSVP #\(indexPath.row + 1)")
         cell.setup(dataTextViewText: rsvpArray[indexPath.row])
         cell.setup(isEmpty: rsvpArray[indexPath.row].isEmpty)
@@ -45,6 +45,13 @@ extension AddRSVPViewController {
         
         cell.clearButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
+            if indexPath.row == 0 {
+                cell.dataTextView.text = ""
+                cell.dataTextView.resignFirstResponder()
+            } else {
+                unself.rsvpArray.remove(at: indexPath.row)
+                unself.tableView.reloadData()
+            }
             unself.validateAllFields()
         }
         
@@ -72,7 +79,8 @@ extension AddRSVPViewController {
 extension AddRSVPViewController {
     
     func validateAllFields() {
-       
+        let firstRSVP = rsvpArray.first
+        self.saveButton.setRsvpSaveButton(isEnable: firstRSVP?.isEmpty == true ? false : true)
     }
     
     func addNewRSVP() {

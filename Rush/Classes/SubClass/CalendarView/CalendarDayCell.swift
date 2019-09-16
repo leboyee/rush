@@ -12,11 +12,13 @@ class CalendarDayCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var dotView: UIView!
-
+    var outerViewSelectedColor: UIColor = UIColor.brown24
+    var dateSelectedColor: UIColor = .white
+    var dateColor: UIColor = .white
     override func awakeFromNib() {
         super.awakeFromNib()
         dotView.backgroundColor = UIColor.brown24
-        dateLabel.textColor = UIColor.white
+        dateLabel.textColor = dateColor
     }
     
 }
@@ -32,9 +34,27 @@ extension CalendarDayCell {
         dotView.isHidden = !isEventExist
     }
     
+    func setup(dateColor: UIColor) {
+        dateLabel.textColor = dateColor
+        self.dateColor = dateColor
+    }
+    
+    func setup(dotColor: UIColor) {
+        dotView.backgroundColor = dotColor
+    }
+    
+    func setup(outerViewBgSelectedColor: UIColor) {
+        outerViewSelectedColor = outerViewBgSelectedColor
+    }
+    
+    func setup(dateSelectedColor: UIColor) {
+        dateLabel.textColor = dateSelectedColor
+        self.dateSelectedColor = dateSelectedColor
+    }
+    
     func setup(isSelected: Bool) {
-        outerView.backgroundColor = isSelected ? UIColor.brown24 : UIColor.clear
+        outerView.backgroundColor = isSelected ? outerViewSelectedColor : UIColor.clear
         outerView.layer.cornerRadius = outerView.frame.height/2.0
-        //dateLabel.textColor = isSelected ? UIColor.white : UIColor.white
+        dateLabel.textColor = isSelected ? dateSelectedColor : dateColor
     }
 }

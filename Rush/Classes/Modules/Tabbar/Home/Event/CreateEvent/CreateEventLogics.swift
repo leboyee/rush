@@ -23,13 +23,20 @@ extension CreateEventViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 4 {
+            return indexPath.row == 0 ? UITableView.automaticDimension : 322
+        }
         return UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {
         if section == 2 {
+            return rsvpArray.count + 1
+        } else if section == 4 {
+            return isCalendar == true ? 2 : 1
+        } else if section == 6 {
             return interestList.count + 1
-        } else if section == 3 {
+        } else if section == 7 {
             return peopleList.count + 1
         }
         return 1
@@ -53,8 +60,11 @@ extension CreateEventViewController {
             cell.setup(dateButtonText: startDate.isEmpty == true ? Date().eventDateFormat(date: Date()) : startDate)
             cell.setup(timeButtonText: startTime.isEmpty == true ? "12 pm" : startTime)
             cell.separatorView.isHidden = true
-            cell.dateButtonClickEvent = { () in
-                Utils.alert(message: "In Development")
+            cell.dateButtonClickEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                unsafe.isCalendar = true
+                unsafe.tableView.reloadData()
+               // Utils.alert(message: "In Development")
             }
             
             cell.timeButtonClickEvent = { () in
@@ -102,6 +112,12 @@ extension CreateEventViewController {
                 cell.setup(placeholder: "", text: rsvpArray[indexPath.row])
                 cell.setup(isUserInterfaceEnable: false)
                 cell.setup(isEnabled: false)
+            }
+            
+            cell.clearButtonClickEvent = {
+                [weak self] () in
+                guard let unsafe = self else { return }
+                
             }
             cell.setup(iconImage: indexPath.row == 0 ? "addRSVP" : "")
         } else if indexPath.section == 3 {

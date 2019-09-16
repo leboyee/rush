@@ -14,7 +14,8 @@ extension AddRSVPViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
-                
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 325, right: 0)
+
         tableView.register(UINib(nibName: Cell.rsvpCell, bundle: nil), forCellReuseIdentifier: Cell.rsvpCell)
         
         tableView.reloadData()
