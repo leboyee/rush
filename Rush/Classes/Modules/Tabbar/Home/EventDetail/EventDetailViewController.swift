@@ -122,12 +122,20 @@ extension EventDetailViewController {
         header.set(url: URL(string: event.thumbnil ?? ""))
     }
     
+    func showRSVP() {
+        performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: nil)
+    }
+    
 }
 
 // MARK: - Navigations
 extension EventDetailViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == Segues.rsvpJoinEvent {
+            if let vc = segue.destination as? RSVPViewController {
+                vc.event = event
+            }
+        }
     }
 }

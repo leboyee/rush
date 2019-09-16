@@ -91,22 +91,15 @@ extension InstaWebViewViewController {
     
     @IBAction func connectButtonAction() {
         wkWebView.isHidden = false
-        //let instagramHooks = "instagram://"
-        //let instagramUrl = URL(string: instagramHooks)
-//        if UIApplication.shared.canOpenURL(instagramUrl!) {
-//            UIApplication.shared.open(instagramUrl!, options: [:], completionHandler: nil)
-//            //[self.docFile presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
-//        } else {
-            let authURL = String(format: "%@?client_id=2972f8c6aec34238932d142d1ef38665&redirect_uri=%@&response_type=token&DEBUG=True", arguments: [instagramAuthUrl, instragramRedirectUrl])
-            let urlRequest = URLRequest.init(url: URL.init(string: authURL)!)
-            wkWebView.navigationDelegate = self
-            wkWebView.load(urlRequest)
+        let authURL = String(format: "%@?client_id=2972f8c6aec34238932d142d1ef38665&redirect_uri=%@&response_type=token&DEBUG=True", arguments: [instagramAuthUrl, instragramRedirectUrl])
+        let urlRequest = URLRequest.init(url: URL.init(string: authURL)!)
+        wkWebView.navigationDelegate = self
+        wkWebView.load(urlRequest)
     }
     
     func checkRequestForCallbackURL(request: URLRequest) -> Bool {
         let requestURLString = (request.url?.absoluteString)! as String
         if requestURLString.hasPrefix(instragramRedirectUrl) {
-           // let range: Range<String.Index> = requestURLString.range(of: "#access_token=")!
             wkWebView.isHidden = true
             print(String(requestURLString.suffix(requestURLString.count - 31)))
             uploadAccesstokenInsta(token: String(requestURLString.suffix(requestURLString.count - 31)))

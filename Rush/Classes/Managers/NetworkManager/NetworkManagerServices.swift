@@ -55,6 +55,10 @@ extension NetworkManager {
         requestPost(path: "instagram/connect", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     
+    func instagramDisconnect(resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "instagram/disconnect", params: [:], resultHandler: resultHandler)
+    }
+    
     func getProfile(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "profile", params: params, resultHandler: resultHandler)
     }
@@ -106,4 +110,7 @@ extension NetworkManager {
         requestGet(path: "event/\(sortBy)/list", params: params, resultHandler: resultHandler)
     }
     
+    func joinEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "/event/\(eventId)/join", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
 }

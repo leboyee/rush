@@ -33,7 +33,6 @@ class EnterVerificationCodeViewController: CustomViewController {
     @IBOutlet weak var dotAnimationView: UIView!
     @IBOutlet weak var dotView: UIView!
 
-
     var code = ""
     var isCodeVerifing = false
     var phoneNumber = ""
@@ -141,7 +140,6 @@ extension EnterVerificationCodeViewController {
         AppDelegate.shared?.setupStoryboard()
 
     }
-    
 }
 
 // MARK: - Navigation
