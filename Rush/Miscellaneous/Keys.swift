@@ -93,4 +93,6 @@ struct Keys {
     static let uEduMajors           = "u_edu_majors"
     static let uEduMinors           = "u_edu_minors"
     static let instagramToken           = "insta_token"
+    static let images           = "images"
+
 }
