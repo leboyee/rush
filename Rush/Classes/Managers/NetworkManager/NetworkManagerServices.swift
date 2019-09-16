@@ -108,4 +108,8 @@ extension NetworkManager {
     func fetchPostList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "club", params: params, resultHandler: resultHandler)
     }
+    
+    func joinClub(clubId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "club/\(clubId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
 }

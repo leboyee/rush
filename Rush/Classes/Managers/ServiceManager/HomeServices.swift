@@ -10,6 +10,7 @@ import UIKit
 
 extension ServiceManager {
     
+    // MARK: - Club
     func createClub(params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createClub(params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
@@ -37,6 +38,16 @@ extension ServiceManager {
         }
     }
     
+    func joinClub(clubId: String, params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.joinClub(clubId: clubId, param: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
+    // MARK: - Post
     func createPost(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createPost(param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }

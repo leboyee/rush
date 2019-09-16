@@ -111,6 +111,7 @@ extension ClubDetailViewController {
             guard let unself = self else { return }
             unself.joinedClub = true
             unself.tableView.reloadData()
+            //unself.joinClubAPI()
         }
     }
     
@@ -161,10 +162,10 @@ extension ClubDetailViewController {
         let id = clubInfo?.id ?? ""
         
         Utils.showSpinner()
-        NetworkManager.shared.getClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg, _) in
+        ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if let list = data as? [String: Any] {
+            if let list = data {
                 if let value = list[Keys.data] as? [String: Any] {
                     if let club = value[Keys.club] as? [String: Any] {
                         do {
@@ -180,6 +181,22 @@ extension ClubDetailViewController {
                 uwself.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg.debugDescription)
+            }
+        }
+    }
+    
+    func joinClubAPI() {
+        
+        let id = clubInfo?.id ?? "0"
+        
+        Utils.showSpinner()
+        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id]) { [weak self] (status, errorMsg) in
+            guard let uwself = self else { return }
+            if status {
+                uwself.getClubDetailAPI()
+            } else {
+                Utils.hideSpinner()
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
