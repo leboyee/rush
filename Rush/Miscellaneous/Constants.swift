@@ -72,12 +72,17 @@ struct Cell {
     static let eventAbout           = "EventAboutCell"
     static let location             = "LocationCell"
     static let createPost           = "CreatePostCell"
+
+    static let dateAndTimeEvent     = "DateAndTimeCell"
+    static let rsvpCell              = "RSVPCell"
+
     static let organizer            = "OrganizerCell"
     static let postLike            = "PostLikeCell"
     static let postUser            = "PostUserCell"
     static let postText            = "PostTextCell"
     static let postImages          = "PostImagesCell"
     static let postImage           = "PostImageCell"
+
 }
 
 struct ReusableView {
@@ -143,13 +148,16 @@ struct Segues {
     static let inviteContactSegue                 = "InviteContactSegue"
     static let addInstagramPhotoViewSegue         = "AddInstagramPhotoViewSegue"
     static let disconnectInstagram                = "DisconnectInstagramSegue"
+    static let settingsInstagramConnect           = "SettingsInstagramConnectSegue"
     static let logoutPopup                        = "LogoutPopupSegue"
 
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
     static let chatContactListSegue               = "ChatContactListSegue"
     static let homeEventDetail                    = "HomeEventDetailSegue"
     static let rsvpJoinEvent                      = "RSVPJoinEventSegue"
-
+    static let createEvent                         = "CreateEventSegue"
+    static let selectEventPhoto                    = "SelectEventTypeViewSegue"
+    static let addRSVP                             = "AddRSVPSegue"
 }
 
 struct StoryBoard {
@@ -255,9 +263,12 @@ public struct Text {
     static let recieveNotifications      = "Recieve notifications"
     static let inviteFromContact         = "Invite from contacts"
     static let interests                 = "Interests"
+    static let nameEvent                 = "Name event"
+    static let addRSVP                   = "Add RSVP"
+    static let addAnotherRSVP            = "Add another RSVP"
+    static let addLocation               = "Add location"
     static let joinAndRSVP               = "Join and RSVP"
     static let going                     = "Going"
-
 }
 
 public struct Message {
@@ -307,6 +318,12 @@ enum LoginType {
     case register
     case login
 }
+
+enum PhotoFrom {
+    case cameraRoll
+    case unSplash
+}
+
 
 enum PasswordFormate {
     case none

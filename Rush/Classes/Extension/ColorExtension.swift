@@ -162,5 +162,4 @@ extension UIColor {
     class var dotAnimationFillColor: UIColor {
         return UIColor(red: 0.51, green: 0.51, blue: 0.51, alpha: 1)
     }
-    
 }
