@@ -77,11 +77,11 @@ class ClubDetailViewController: UIViewController {
 
 // MARK: - Actions
 extension ClubDetailViewController {
-    @IBAction func cancelButtonAction() {
-        dismiss(animated: true, completion: nil)
+    @IBAction func backButtonAction() {
+        navigationController?.popViewController(animated: false)
     }
     
-    @objc func shareButtonAction() {
+    @IBAction func shareButtonAction() {
         performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
