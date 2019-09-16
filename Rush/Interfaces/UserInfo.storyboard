@@ -496,7 +496,7 @@
         <!--Insta Web View View Controller-->
         <scene sceneID="Kcr-W6-n5x">
             <objects>
-                <viewController id="GSP-qi-T4D" customClass="InstaWebViewViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstaWebViewViewController" extendedLayoutIncludesOpaqueBars="YES" id="GSP-qi-T4D" customClass="InstaWebViewViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ye6-da-Uf6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -540,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBb-63-sx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9511.5942028985519" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="10313" y="-214"/>
         </scene>
     </scenes>
     <resources>

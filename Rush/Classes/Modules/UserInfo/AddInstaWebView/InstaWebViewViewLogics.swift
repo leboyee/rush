@@ -21,7 +21,8 @@ extension InstaWebViewViewController {
         ServiceManager.shared.instagramConnect(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if data != nil {
+            if let user = data?[Keys.user] as? [String: Any] {
+                Authorization.shared.updateUserData(data: user)
                 unsafe.tokenSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)

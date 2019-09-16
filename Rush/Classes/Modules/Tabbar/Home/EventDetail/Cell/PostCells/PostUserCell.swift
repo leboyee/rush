@@ -24,11 +24,10 @@ class PostUserCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
 
 // MARK: - Actions
-extension PostUserCell {    
+extension PostUserCell {
     @IBAction func moreButtonAction() {
         Utils.notReadyAlert()
     }

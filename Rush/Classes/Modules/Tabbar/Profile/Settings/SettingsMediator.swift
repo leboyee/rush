@@ -87,3 +87,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return UIView()
     }
 }
+
+extension SettingsViewController: DisconnectInstagraaDelegate {
+    func disconnectInstagram() {
+        loadSettings()
+    }
+}

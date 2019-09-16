@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Event Detail View Controller-->
         <scene sceneID="CPw-3U-YkD">
@@ -85,15 +93,165 @@
                         <outlet property="header" destination="Tcr-eX-hS2" id="1Rv-OC-4ko"/>
                         <outlet property="headerHeightConstraint" destination="bg2-F5-KGh" id="fia-72-KDt"/>
                         <outlet property="tableView" destination="677-ZA-Vck" id="vai-eb-5n3"/>
+                        <segue destination="EfL-qI-UY9" kind="show" identifier="RSVPJoinEventSegue" id="Hog-Dl-lFR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724.6376811594205" y="-589.28571428571422"/>
+            <point key="canvasLocation" x="1801" y="-666"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lW4-bI-MSi">
+            <objects>
+                <viewController storyboardIdentifier="RSVPViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EfL-qI-UY9" customClass="RSVPViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KEj-OS-mby">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFV-Al-0dd" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-6y-JMO">
+                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cQO-6y-JMO" firstAttribute="trailing" secondItem="8XI-1l-sFj" secondAttribute="trailing" id="8xx-A3-lv3"/>
+                            <constraint firstItem="cQO-6y-JMO" firstAttribute="leading" secondItem="8XI-1l-sFj" secondAttribute="leading" id="DjG-vi-tRb"/>
+                            <constraint firstItem="cQO-6y-JMO" firstAttribute="top" secondItem="8XI-1l-sFj" secondAttribute="top" constant="13" id="G5d-sO-pf5"/>
+                            <constraint firstItem="fFV-Al-0dd" firstAttribute="trailing" secondItem="8XI-1l-sFj" secondAttribute="trailing" id="Wjv-oX-Ptb"/>
+                            <constraint firstItem="fFV-Al-0dd" firstAttribute="top" secondItem="8XI-1l-sFj" secondAttribute="top" constant="13" id="YdY-ia-r0B"/>
+                            <constraint firstAttribute="bottom" secondItem="fFV-Al-0dd" secondAttribute="bottom" id="cc3-wo-B6W"/>
+                            <constraint firstItem="cQO-6y-JMO" firstAttribute="bottom" secondItem="8XI-1l-sFj" secondAttribute="bottom" id="sMO-I0-D9m"/>
+                            <constraint firstItem="fFV-Al-0dd" firstAttribute="leading" secondItem="8XI-1l-sFj" secondAttribute="leading" id="vyu-wt-SPd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8XI-1l-sFj"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="cQO-6y-JMO" id="hJo-N8-mCL"/>
+                        <segue destination="ayU-bi-RPv" kind="presentation" modalPresentationStyle="overFullScreen" id="d2P-Hw-Eph"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2638" y="-666"/>
+        </scene>
+        <!--Event Joined Popup View Controller-->
+        <scene sceneID="IVZ-Qj-ElO">
+            <objects>
+                <viewController storyboardIdentifier="EventJoinedPopupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ayU-bi-RPv" customClass="EventJoinedPopupViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XEi-Lo-6Un">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HE6-Nq-fVZ">
+                                <rect key="frame" x="27" y="897" width="360" height="302"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_joinedevent" translatesAutoresizingMaskIntoConstraints="NO" id="Q7P-Ke-iho">
+                                        <rect key="frame" x="148" y="24" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="JqF-Sy-QLm"/>
+                                            <constraint firstAttribute="width" constant="64" id="z5z-IW-PWO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yay! You joined your first event." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-zt-syk">
+                                        <rect key="frame" x="48.5" y="104" width="263.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn on notifications to never miss out on updates." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vet-ua-le7">
+                                        <rect key="frame" x="32" y="128" width="296" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-zm-e0Y" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="176" width="312" height="48"/>
+                                        <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Dk9-1o-P4c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Receive event updates">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="receiveEventUpdateButtonAction" destination="ayU-bi-RPv" eventType="touchUpInside" id="9p6-Ls-oIx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyD-f4-461" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="232" width="312" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="K76-FX-UjK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Dismiss">
+                                            <color key="titleColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelButtonAction" destination="ayU-bi-RPv" eventType="touchUpInside" id="OPY-iu-mIZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qzC-zt-syk" firstAttribute="top" secondItem="Q7P-Ke-iho" secondAttribute="bottom" constant="16" id="4Fh-Ud-hDc"/>
+                                    <constraint firstItem="qzC-zt-syk" firstAttribute="centerX" secondItem="HE6-Nq-fVZ" secondAttribute="centerX" id="AUF-k3-bye"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vet-ua-le7" secondAttribute="trailing" constant="32" id="Dwh-1f-w1h"/>
+                                    <constraint firstItem="Q7P-Ke-iho" firstAttribute="centerX" secondItem="HE6-Nq-fVZ" secondAttribute="centerX" id="EhF-Vq-hF3"/>
+                                    <constraint firstAttribute="trailing" secondItem="qcm-zm-e0Y" secondAttribute="trailing" constant="24" id="Muf-QL-VRn"/>
+                                    <constraint firstAttribute="trailing" secondItem="nyD-f4-461" secondAttribute="trailing" constant="24" id="P6l-HD-EoA"/>
+                                    <constraint firstItem="qcm-zm-e0Y" firstAttribute="leading" secondItem="HE6-Nq-fVZ" secondAttribute="leading" constant="24" id="WwR-oj-zpe"/>
+                                    <constraint firstItem="Vet-ua-le7" firstAttribute="leading" secondItem="HE6-Nq-fVZ" secondAttribute="leading" constant="32" id="hYC-g0-EEE"/>
+                                    <constraint firstItem="qcm-zm-e0Y" firstAttribute="top" secondItem="Vet-ua-le7" secondAttribute="bottom" constant="16.5" id="kFT-qn-qPL"/>
+                                    <constraint firstItem="Q7P-Ke-iho" firstAttribute="top" secondItem="HE6-Nq-fVZ" secondAttribute="top" constant="24" id="kwi-7w-jJe"/>
+                                    <constraint firstItem="Vet-ua-le7" firstAttribute="top" secondItem="qzC-zt-syk" secondAttribute="bottom" constant="4" id="mPd-Vk-im7"/>
+                                    <constraint firstAttribute="height" constant="302" id="r1O-3c-2gI"/>
+                                    <constraint firstItem="nyD-f4-461" firstAttribute="leading" secondItem="HE6-Nq-fVZ" secondAttribute="leading" constant="24" id="st5-zJ-JtK"/>
+                                    <constraint firstItem="nyD-f4-461" firstAttribute="top" secondItem="qcm-zm-e0Y" secondAttribute="bottom" constant="8" id="xhc-iq-3Ve"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HE6-Nq-fVZ" firstAttribute="centerX" secondItem="XEi-Lo-6Un" secondAttribute="centerX" id="GKI-BS-2KT"/>
+                            <constraint firstItem="HE6-Nq-fVZ" firstAttribute="width" secondItem="XEi-Lo-6Un" secondAttribute="width" multiplier="0.87" id="T5V-Dt-cru"/>
+                            <constraint firstItem="HE6-Nq-fVZ" firstAttribute="centerY" secondItem="XEi-Lo-6Un" secondAttribute="centerY" constant="600" id="zJ1-ga-McT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L2W-Tn-aXm"/>
+                    </view>
+                    <connections>
+                        <outlet property="verticalCentreConstraint" destination="zJ1-ga-McT" id="ABc-wI-wYC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRp-L7-blQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3399" y="-666"/>
         </scene>
     </scenes>
     <resources>
         <image name="back-arrow" width="24" height="28"/>
+        <image name="ic_joinedevent" width="64" height="64"/>
         <image name="share" width="26" height="31"/>
     </resources>
 </document>

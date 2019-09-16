@@ -57,6 +57,7 @@ struct Keys {
     static let uWhoCanMessage     = "u_who_can_message"
     static let uWhoCanInvite      = "u_who_can_invite"
     static let uIsDarkMode        = "u_is_dark_mode"
+    static let instaUsername      = "insta_username"
     static let pageNo             = "pageNo"
     static let search             = "search"
     static let sortBy            = "sort_by"
@@ -92,4 +93,6 @@ struct Keys {
     static let uEduMajors           = "u_edu_majors"
     static let uEduMinors           = "u_edu_minors"
     static let instagramToken           = "insta_token"
+    static let images           = "images"
+
 }

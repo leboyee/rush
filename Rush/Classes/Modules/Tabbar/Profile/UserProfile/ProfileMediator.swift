@@ -21,6 +21,7 @@ extension ProfileViewController {
         tableView.register(cellName: Cell.notification)
         tableView.register(cellName: Cell.eventType)
         tableView.register(reusableViewName: ReusableView.textHeader)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         tableView.reloadData()
     }
     

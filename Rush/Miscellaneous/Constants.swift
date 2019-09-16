@@ -152,12 +152,13 @@ struct Segues {
     static let inviteContactSegue                 = "InviteContactSegue"
     static let addInstagramPhotoViewSegue         = "AddInstagramPhotoViewSegue"
     static let disconnectInstagram                = "DisconnectInstagramSegue"
+    static let settingsInstagramConnect           = "SettingsInstagramConnectSegue"
     static let logoutPopup                        = "LogoutPopupSegue"
 
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
     static let chatContactListSegue               = "ChatContactListSegue"
     static let homeEventDetail                    = "HomeEventDetailSegue"
-    
+    static let rsvpJoinEvent                      = "RSVPJoinEventSegue"
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
     static let addRSVP                             = "AddRSVPSegue"

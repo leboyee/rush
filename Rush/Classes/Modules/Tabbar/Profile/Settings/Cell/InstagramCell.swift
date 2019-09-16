@@ -41,20 +41,27 @@ extension InstagramCell {
 
     func set(instagramStatus: Bool, user: String?) {
         if instagramStatus {
-            let name = "mittalkamal29"
-            let text = "Connected\n\(name)"
-            let range = (text as NSString).range(of: name)
+            var text = ""
+            if let name = user, name.isNotEmpty {
+                text = "Connected\n\(name)"
+            } else {
+                text = "Connected"
+            }
+            
             let attr = NSMutableAttributedString(
                 string: text,
                 attributes: [
                     NSAttributedString.Key.foregroundColor: UIColor.green24,
                     NSAttributedString.Key.font: UIFont.semibold(sz: 13.0)
                 ])
-            attr.addAttributes([
-                NSAttributedString.Key.foregroundColor: UIColor.gray47,
-                NSAttributedString.Key.font: UIFont.regular(sz: 13.0)
-                ], range: range)
-
+            
+            if let name = user, name.isNotEmpty {
+                let range = (text as NSString).range(of: name)
+                attr.addAttributes([
+                    NSAttributedString.Key.foregroundColor: UIColor.gray47,
+                    NSAttributedString.Key.font: UIFont.regular(sz: 13.0)
+                    ], range: range)
+            }
             connectLabel.attributedText = attr
         } else {
             connectLabel.text = "Connect"
