@@ -18,15 +18,21 @@ class CreateEventViewController: UIViewController {
     var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()
-    var isCalendar: Bool = false
     var nameEvent = ""
     var eventDescription = ""
-    var location = ""
+    var address = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     var eventImage: UIImage?
-    var startDate = ""
-    var endDate = ""
+    var startDate = Date()
+    var endDate = Date()
     var startTime = ""
     var endTime = ""
+    var calendarHeight: CGFloat = 352.0
+    var isStartDate: Bool = false
+    var isEndDate: Bool = false
+    var isStartTime: Bool = false
+    var isEndTime: Bool = false
     
     var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
@@ -56,6 +62,7 @@ class CreateEventViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        self.tableView.reloadData()
     }
  
     // MARK: - Other function
@@ -144,6 +151,10 @@ extension CreateEventViewController {
             }
         } else if segue.identifier == Segues.addRSVP {
             if let vc = segue.destination as? AddRSVPViewController {
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.addLocation {
+            if let vc = segue.destination as? AddLocationViewController {
                 vc.delegate = self
             }
         }

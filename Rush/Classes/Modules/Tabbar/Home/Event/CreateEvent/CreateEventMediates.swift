@@ -51,7 +51,7 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             } else {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addEventCalendarCell, for: indexPath) as? AddEventCalendarCell {
-                    //fillDateAndTimeEvent(cell, indexPath)
+                    fillAddCalendarCell(cell, indexPath)
                     return cell
                 }
             }
@@ -152,28 +152,5 @@ extension CreateEventViewController: UIScrollViewDelegate {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
         }
-    }
-}
-
-// MARK: - SelectEventTypeController Delegate
-extension CreateEventViewController: SelectEventTypeDelegate {
-    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-
-    }
-    
-    func addPhotoEvent(_ type: PhotoFrom) {
-        if type == .cameraRoll {
-            self.openCameraOrLibrary(type: .photoLibrary)
-        } else {
-            Utils.alert(message: "In Development")
-        }
-    }
-}
-
-// MARK: - Add Rsvp Delegate
-extension CreateEventViewController: AddRsvpDelegate {
-    func addRsvpData(_ rsvpArray: [String]) {
-        self.rsvpArray.append(contentsOf: rsvpArray)
-        self.tableView.reloadData()
     }
 }

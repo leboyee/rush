@@ -3538,7 +3538,6 @@
 				1A353AC822BD130E0069752D /* UniversityCell.swift in Sources */,
 				793BE5FC22E87F5F005EF72D /* Friend.swift in Sources */,
 				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
-				1A6631A1232B8BBA0042DE0D /* EventDetailMediator.swift in Sources */,
 				F9C89F72232D38F700DC9C85 /* AddEventLocationCell.swift in Sources */,
 				793BE67922E88207005EF72D /* MockMessage.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,

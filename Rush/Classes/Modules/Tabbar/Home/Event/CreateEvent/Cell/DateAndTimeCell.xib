@@ -34,12 +34,14 @@
                                     <constraint firstAttribute="height" constant="1" id="tlW-kd-7cg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-uX-cZh">
-                                <rect key="frame" x="64" y="15.5" width="139" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-uX-cZh">
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="ltv-GK-saw"/>
+                                    <constraint firstAttribute="height" constant="63" id="EIn-BA-kqd"/>
+                                    <constraint firstAttribute="width" secondItem="6iw-uX-cZh" secondAttribute="height" multiplier="220:63" id="eTP-D2-5PX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" title="Thursday, 24 Feb">
                                     <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -47,10 +49,11 @@
                                     <action selector="dateButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="307-zf-YTA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-HL-QLi">
-                                <rect key="frame" x="255" y="15.5" width="49" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-HL-QLi">
+                                <rect key="frame" x="220" y="0.0" width="100" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="DXm-t2-vxh"/>
+                                    <constraint firstAttribute="width" secondItem="KqU-HL-QLi" secondAttribute="height" multiplier="100:63" id="fK1-Ip-QhI"/>
+                                    <constraint firstAttribute="height" constant="63" id="uph-DG-ztH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <state key="normal" title="12 pm">
@@ -65,11 +68,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rqx-v5-jP2" secondAttribute="trailing" id="2De-O6-yb5"/>
                             <constraint firstAttribute="bottom" secondItem="rqx-v5-jP2" secondAttribute="bottom" id="6eV-sB-fg8"/>
-                            <constraint firstItem="6iw-uX-cZh" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="64" id="85U-dF-xdq"/>
-                            <constraint firstAttribute="trailing" secondItem="KqU-HL-QLi" secondAttribute="trailing" constant="16" id="FZj-ZN-iHg"/>
-                            <constraint firstItem="KqU-HL-QLi" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="Ox8-V4-oRt"/>
-                            <constraint firstItem="6iw-uX-cZh" firstAttribute="centerY" secondItem="E7Y-bf-pAa" secondAttribute="centerY" id="P80-AW-f76"/>
+                            <constraint firstItem="6iw-uX-cZh" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="NAV-IG-Hh8"/>
+                            <constraint firstItem="KqU-HL-QLi" firstAttribute="leading" secondItem="6iw-uX-cZh" secondAttribute="trailing" id="OhZ-YB-Pp5"/>
+                            <constraint firstAttribute="trailing" secondItem="KqU-HL-QLi" secondAttribute="trailing" id="Tmc-cz-DNX"/>
+                            <constraint firstAttribute="bottom" secondItem="6iw-uX-cZh" secondAttribute="bottom" constant="0.5" id="Z8U-l9-rxo"/>
                             <constraint firstItem="rqx-v5-jP2" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="dZc-Vh-GF7"/>
+                            <constraint firstItem="KqU-HL-QLi" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="iHY-LN-sx3"/>
+                            <constraint firstItem="KqU-HL-QLi" firstAttribute="leading" secondItem="6iw-uX-cZh" secondAttribute="trailing" id="lWu-FG-ryp"/>
+                            <constraint firstItem="6iw-uX-cZh" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" id="qYd-xh-d9U"/>
+                            <constraint firstAttribute="bottom" secondItem="KqU-HL-QLi" secondAttribute="bottom" constant="0.5" id="vqg-xS-mME"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -88,7 +95,7 @@
                 <outlet property="separatorView" destination="rqx-v5-jP2" id="uKV-Hn-7GB"/>
                 <outlet property="timeButton" destination="KqU-HL-QLi" id="iBf-g7-5w1"/>
             </connections>
-            <point key="canvasLocation" x="128.98550724637681" y="96.09375"/>
+            <point key="canvasLocation" x="128.98550724637681" y="95.758928571428569"/>
         </tableViewCell>
     </objects>
 </document>

@@ -11,12 +11,13 @@ import UIKit
 class AddEventCalendarCell: UITableViewCell {
     
     @IBOutlet weak var calendarView: CalendarView!
+    @IBOutlet weak var calenderViewHeight: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        calendarView.minDateOfCalendar = Date().startOfMonth()
         calendarView.dateColor = UIColor.bgBlack
         calendarView.dateSelectedColor = UIColor.white
-        calendarView.selectedDate(date: Date())
         calendarView.reloadMonth()
         // Initialization code
     }

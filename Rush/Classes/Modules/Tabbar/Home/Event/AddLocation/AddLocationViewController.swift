@@ -8,20 +8,28 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import MapKit
+
+protocol AddEventLocationDelegate: class {
+    func addEventLocationData(_ address: String, latitude: Double, longitude: Double)
+}
 
 class AddLocationViewController: UIViewController {
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var gestureView: UIView!
     @IBOutlet weak var locationEntryTextField: UITextField!
-    var searchedlocationArray = [String]()
+    @IBOutlet weak var curentAdressLabel: UILabel!
     
+    var completerResults: [MKLocalSearchCompletion] = []
+    var mapItemToPresent: MKMapItem?
+    let searchCompleter = MKLocalSearchCompleter()
+    let locationManager = CLLocationManager()
+    var usersCurrentLocation: CLLocation?
+    weak var delegate: AddEventLocationDelegate?
+
+    // MARK: - View-Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchedlocationArray = ["Test title 1",
-        "Test title 2",
-        "Test title 3"]
-
         // Do any additional setup after loading the view.
         setup()
     }
@@ -40,10 +48,30 @@ class AddLocationViewController: UIViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
+        
+        // Stop location update once we have it.
+        locationManager.stopUpdatingLocation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.locationEntryTextField.becomeFirstResponder()
     }
  
     // MARK: - Other function
     func setup() {
+        
+        self.searchCompleter.delegate = self
+        self.locationEntryTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        // Ask for Authorisation from the User.
+        locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
+        
         setupUI()
     }
     
@@ -62,6 +90,19 @@ extension AddLocationViewController {
     
     @IBAction func clearUserEntryForLocationPressed() {
      self.locationEntryTextField.text = ""
+        self.completerResults.removeAll()
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func userPressedChooseCurentLocation() {
+        let placemark = MKPlacemark(coordinate: self.usersCurrentLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
+                                    addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = curentAdressLabel.text
+        self.mapItemToPresent = mapItem
+        self.delegate?.addEventLocationData(curentAdressLabel.text ?? "", latitude: self.usersCurrentLocation?.coordinate.latitude ?? 0.0, longitude: self.usersCurrentLocation?.coordinate.longitude ?? 0.0)
+        self.dismiss(animated: true, completion: nil)
+        print("selected map item is : \(String(describing: self.mapItemToPresent))")
     }
 }
 
@@ -78,7 +119,12 @@ extension AddLocationViewController {
 }
 // MARK: - Mediator
 extension AddLocationViewController {
-    
+    func selectedCell() {
+        self.view.endEditing(true)
+        self.delegate?.addEventLocationData(curentAdressLabel.text ?? "", latitude: self.usersCurrentLocation?.coordinate.latitude ?? 0.0, longitude: self.usersCurrentLocation?.coordinate.longitude ?? 0.0)
+        self.dismiss(animated: true, completion: nil)
+
+    }
 }
 
 // MARK: - Navigation

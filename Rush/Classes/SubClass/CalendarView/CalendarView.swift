@@ -28,11 +28,12 @@ class CalendarView: UIView {
     var minDateOfCalendar: Date = Date.parse(dateString: "2017-06-01", format: "yyyy-MM-dd")!
     var maxDateOfCalendar: Date = Date.parse(dateString: "2027-06-01", format: "yyyy-MM-dd")!
     var currentIndex: Int = 0
-    var selectedDate: Date?
+    var selectedDate: Date = Date()
     var dateColor: UIColor = UIColor.white
     var dotColor: UIColor = UIColor.brown24
     var outerViewSelectedColor: UIColor = UIColor.brown24
     var dateSelectedColor: UIColor = UIColor.white
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -148,7 +149,7 @@ extension CalendarView {
         self.monthLabel.text = month
     }
     
-    func setSelectedDate(date: Date?) {
+    func setSelectedDate(date: Date) {
         selectedDate = date
         reloadMonth()
     }

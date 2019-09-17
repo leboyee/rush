@@ -20,7 +20,7 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     var isWeekStartFromMonday = false
 
     var dateList = [AnyObject]()
-    var selectedDate: Date?
+    var selectedDate: Date = Date()
     var dateColor: UIColor = UIColor.white
     var dotColor: UIColor = UIColor.brown24
     var outerViewSelectedColor: UIColor = UIColor.brown24
@@ -91,7 +91,7 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     }
     
     // MARK: - Other Functions
-    func reloadMonthCalendar(date: Date, selectedDate: Date?) {
+    func reloadMonthCalendar(date: Date, selectedDate: Date) {
         self.selectedDate = selectedDate
         self.getMonthDateList(date: date)
         self.monthCollectionView.reloadData()
