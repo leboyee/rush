@@ -39,7 +39,7 @@ extension RSVPViewController: UIGestureRecognizerDelegate {
             gesture.delegate = self
         }
         
-        //setupTableView()
+        setupTableView()
         //loadAllData()
     }
 }

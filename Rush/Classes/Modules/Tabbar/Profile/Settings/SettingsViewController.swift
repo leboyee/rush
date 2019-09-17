@@ -45,8 +45,6 @@ extension SettingsViewController {
         navigationItem.rightBarButtonItem = logout
         setupTableView()
     }
-    
-    
 }
 
 // MARK: - Actions

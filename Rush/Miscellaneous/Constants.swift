@@ -82,6 +82,7 @@ struct Cell {
     static let postText            = "PostTextCell"
     static let postImages          = "PostImagesCell"
     static let postImage           = "PostImageCell"
+    static let joinRSVP            = "JoinRSVPCell"
 
 }
 
@@ -323,7 +324,6 @@ enum PhotoFrom {
     case cameraRoll
     case unSplash
 }
-
 
 enum PasswordFormate {
     case none

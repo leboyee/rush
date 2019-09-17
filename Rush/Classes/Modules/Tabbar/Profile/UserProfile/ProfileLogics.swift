@@ -13,6 +13,9 @@ extension ProfileViewController {
 
     func loadAllData() {
         fetchUserProfile()
+        fetchImagesList()
+        fetchFriendList()
+        fetchNotificationList()
     }
     
     func loadFriends() {
@@ -129,26 +132,69 @@ extension ProfileViewController {
 
     private func fetchUserProfile() {
 
-        guard let userId = profileDetail.profile?.userId else { return }
-        guard userId.isNotEmpty else { return }
-
-        let params = isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
-        ServiceManager.shared.getProfile(params: params) { [weak self] (data, _) in
-            if let object = data?[Keys.user] as? [String: Any] {
-                 self?.profileDetail.profile?.setData(data: object)
+        downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let userId = self.profileDetail.profile?.userId else { return }
+            guard userId.isNotEmpty else { return }
+            let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
+            ServiceManager.shared.getProfile(params: params) { [weak self] (data, _) in
+                if let object = data?[Keys.user] as? [String: Any] {
+                    self?.profileDetail.profile?.setData(data: object)
+                }
+                
+                if let object = data?[Keys.images] as? [[String: Any]] {
+                    
+                }
+                self?.setupHeaderData()
+                self?.downloadGroup.leave()
             }
-            if let object = data?[Keys.images] as? [[String: Any]] {
-
-            }
-            self?.setupHeaderData()
+        }
+    }
+    
+    private func fetchImagesList() {
+        downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let userId = self.profileDetail.profile?.userId else { return }
+            /*
+            let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
+            ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
+                if let list = data?[Keys.list] as? [[String: Any]] {
+                    
+                }
+                self?.downloadGroup.leave()
+            })*/
+            self.downloadGroup.leave()
         }
     }
     
     private func fetchFriendList() {
-        
+        downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let userId = self.profileDetail.profile?.userId else { return }
+            let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
+            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+                if let list = data?[Keys.list] as? [[String: Any]] {
+                    
+                }
+                self?.downloadGroup.leave()
+            }
+        }
     }
     
     private func fetchNotificationList() {
-        
+        downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let userId = self.profileDetail.profile?.userId else { return }
+
+            self.downloadGroup.leave()
+        }
     }
 }

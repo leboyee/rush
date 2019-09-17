@@ -494,6 +494,8 @@
 		8A4B3297232F5A5B00AC1D17 /* EventDetailMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3282232F5A5B00AC1D17 /* EventDetailMediator.swift */; };
 		8A4B3298232F5A5B00AC1D17 /* EventDetailLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3283232F5A5B00AC1D17 /* EventDetailLogics.swift */; };
 		8A4B3299232F5D2100AC1D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16922805F9D00721F3F /* Main.storyboard */; };
+		8A4B329D2331041700AC1D17 /* JoinRSVPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B329B2331041700AC1D17 /* JoinRSVPCell.swift */; };
+		8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9712C23290B6800CB52D4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9712B23290B6800CB52D4 /* Post.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
@@ -1018,6 +1020,8 @@
 		8A4B3281232F5A5B00AC1D17 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		8A4B3282232F5A5B00AC1D17 /* EventDetailMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailMediator.swift; sourceTree = "<group>"; };
 		8A4B3283232F5A5B00AC1D17 /* EventDetailLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailLogics.swift; sourceTree = "<group>"; };
+		8A4B329B2331041700AC1D17 /* JoinRSVPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRSVPCell.swift; sourceTree = "<group>"; };
+		8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinRSVPCell.xib; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9712B23290B6800CB52D4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -2648,6 +2652,7 @@
 		8A4B325B232B99D400AC1D17 /* RSVP */ = {
 			isa = PBXGroup;
 			children = (
+				8A4B329A233103F800AC1D17 /* Cell */,
 				8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */,
 				8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */,
 				8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */,
@@ -2734,6 +2739,15 @@
 				8A4B3279232F5A5B00AC1D17 /* PostImageCell.xib */,
 			);
 			path = PostCells;
+			sourceTree = "<group>";
+		};
+		8A4B329A233103F800AC1D17 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A4B329B2331041700AC1D17 /* JoinRSVPCell.swift */,
+				8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C05FC14022805F3D00721F3F = {
@@ -3019,6 +3033,7 @@
 				8A4B3293232F5A5B00AC1D17 /* CreatePostCell.xib in Resources */,
 				8A4B3284232F5A5B00AC1D17 /* LocationCell.xib in Resources */,
 				794183B3228960C7009AB12C /* SF-Pro-Text-Light.otf in Resources */,
+				8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */,
 				8A0345B42322A7AB0065CF3C /* EventDetail.storyboard in Resources */,
 				8A04B15722FC3DEE0055C65F /* SettingsInfoCell.xib in Resources */,
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
@@ -3460,6 +3475,7 @@
 				8A04B16B22FD7ACB0055C65F /* ThemeManager.swift in Sources */,
 				799190A422C9E9BD0044602E /* SingleButtonCell.swift in Sources */,
 				8A04B16822FD6ED30055C65F /* RSwitch.swift in Sources */,
+				8A4B329D2331041700AC1D17 /* JoinRSVPCell.swift in Sources */,
 				7958B7FC22C4E8E000A66BDC /* ClubListLogics.swift in Sources */,
 				797FFDA222B7BC480055A001 /* GalleryVideoCell.swift in Sources */,
 				797FFDA822B7BC480055A001 /* PhotoAlbumCell.swift in Sources */,

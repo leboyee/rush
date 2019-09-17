@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
@@ -115,6 +118,43 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-6y-JMO">
                                 <rect key="frame" x="0.0" y="57" width="414" height="805"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="0Yj-6k-oDE">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9w-Dq-llB" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                                            <rect key="frame" x="24" y="16" width="36" height="16"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer questions to join" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-Qq-gad" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                                            <rect key="frame" x="24" y="36" width="366" height="34"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="28"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-vB-XPJ" customClass="RSeparatorLine" customModule="Rush" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="86" width="414" height="1"/>
+                                            <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="XaR-1q-xTg"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Z9z-vB-XPJ" firstAttribute="leading" secondItem="0Yj-6k-oDE" secondAttribute="leading" id="5B3-Gj-awb"/>
+                                        <constraint firstItem="Vz7-Qq-gad" firstAttribute="top" secondItem="e9w-Dq-llB" secondAttribute="bottom" constant="4" id="FAj-lx-xwx"/>
+                                        <constraint firstItem="e9w-Dq-llB" firstAttribute="leading" secondItem="0Yj-6k-oDE" secondAttribute="leading" constant="24" id="W3Y-9r-CtM"/>
+                                        <constraint firstAttribute="trailing" secondItem="Z9z-vB-XPJ" secondAttribute="trailing" id="Wax-Ag-OCW"/>
+                                        <constraint firstItem="Z9z-vB-XPJ" firstAttribute="top" secondItem="Vz7-Qq-gad" secondAttribute="bottom" constant="16" id="fgw-he-geK"/>
+                                        <constraint firstItem="e9w-Dq-llB" firstAttribute="top" secondItem="0Yj-6k-oDE" secondAttribute="top" constant="16" id="om7-QH-KX7"/>
+                                        <constraint firstItem="Vz7-Qq-gad" firstAttribute="leading" secondItem="0Yj-6k-oDE" secondAttribute="leading" constant="24" id="pzm-pO-5iG"/>
+                                        <constraint firstAttribute="bottom" secondItem="Z9z-vB-XPJ" secondAttribute="bottom" id="whx-fR-0EE"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vz7-Qq-gad" secondAttribute="trailing" constant="24" id="zeH-g3-sdO"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2638" y="-666"/>
+            <point key="canvasLocation" x="2637.68115942029" y="-666.29464285714278"/>
         </scene>
         <!--Event Joined Popup View Controller-->
         <scene sceneID="IVZ-Qj-ElO">
