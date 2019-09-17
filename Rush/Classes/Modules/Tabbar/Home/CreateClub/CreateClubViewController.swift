@@ -13,26 +13,21 @@ import IQKeyboardManagerSwift
 class CreateClubViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
+    @IBOutlet weak var clubHeader: ClubHeader!
+    @IBOutlet weak var backgroundView: RBackgoundView!
+    @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
+    var selectedContactList = [Contact]()
     var nameClub = ""
     var clubDescription = ""
     var clubImage: UIImage?
     var isCreateGroupChat = true
     
-    var selectedContactList = [Contact]()
-    
-    var cancelBtn: UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
-    }
-    
-    var saveBtnActive: UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
-    }
-    
-    var saveBtnDisActive: UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
-    }
+    let headerFullHeight: CGFloat = 367
+    let headerSmallWithDateHeight: CGFloat = 182
+    let headerSmallWithoutDateHeight: CGFloat = 114
     
     var interestList = [String]()
     var peopleList = [Contact]()
@@ -46,9 +41,13 @@ class CreateClubViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.isNavigationBarHidden = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     // MARK: - Other function
@@ -58,44 +57,27 @@ class CreateClubViewController: UIViewController {
     
     func setupUI() {
         
-        topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
-        // Set navigation buttons
-        navigationItem.leftBarButtonItem = cancelBtn
-        navigationItem.rightBarButtonItem = saveBtnDisActive
-        
         // Setup tableview
         setupTableView()
         
-        /*
-         let total = screenWidth + 15
-         
-         topConstraintOfTapToChangeLabel.constant = total - 106
-         heightConstraintOfImageView.constant = total
-         
-         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-         
-         
-         if userImageView.image != nil {
-         addPhotoButton.isHidden = true
-         navigationItem.rightBarButtonItem = saveBtnActive
-         } else {
-         hoverView.isHidden = true
-         addPhotoButton.isHidden = false
-         navigationItem.rightBarButtonItem = saveBtnDisActive
-         }
-         */
+        // validate default fields
+        validateAllFields()
+        
+        // Setup header
+        fillImageHeader()
     }
 }
 
 // MARK: - Actions
 extension CreateClubViewController {
     @IBAction func cancelButtonAction() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
     }
     
-    @objc func saveButtonAction() {
-        createClubAPI()
+    @IBAction func saveButtonAction() {
+        if saveButton.isEnabled {
+            createClubAPI()
+        }
     }
     
     @IBAction func addImageButtonAction() {

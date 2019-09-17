@@ -146,8 +146,6 @@ extension ClubDetailViewController {
         clubHeader.setup(isHideHoverView: true)
     }
     
-    
-    
     func cellSelected(_ indexPath: IndexPath) {
         
         if indexPath.section == 5 && joinedClub {
