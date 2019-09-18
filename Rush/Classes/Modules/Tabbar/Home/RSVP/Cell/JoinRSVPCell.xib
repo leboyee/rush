@@ -43,11 +43,11 @@
                         <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fbZ-qX-Knd" customClass="CustomBlackTextView" customModule="Rush" customModuleProvider="target">
-                        <rect key="frame" x="20" y="32" width="335" height="25.5"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Lorem ipsum dolor sit " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fbZ-qX-Knd" customClass="CustomBlackTextView" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="20" y="28" width="335" height="36.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25.5" id="7e0-8n-mri"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36.5" id="7e0-8n-mri"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -62,6 +62,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="iW0-Qa-BmZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="0bH-jX-oE3"/>
+                    <constraint firstItem="vry-A2-TlD" firstAttribute="top" secondItem="fbZ-qX-Knd" secondAttribute="bottom" constant="4" id="46L-IN-SxZ"/>
                     <constraint firstAttribute="trailing" secondItem="aFf-I5-NEZ" secondAttribute="trailing" constant="24" id="5fW-uL-vag"/>
                     <constraint firstAttribute="trailing" secondItem="fbZ-qX-Knd" secondAttribute="trailing" constant="20" id="NW0-MD-vq6"/>
                     <constraint firstItem="fbZ-qX-Knd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="P9B-Pa-uiX"/>
@@ -71,9 +72,8 @@
                     <constraint firstAttribute="bottom" secondItem="vry-A2-TlD" secondAttribute="bottom" id="bnj-FE-OWV"/>
                     <constraint firstAttribute="trailing" secondItem="iW0-Qa-BmZ" secondAttribute="trailing" constant="20" id="dmJ-Uk-bzv"/>
                     <constraint firstItem="vry-A2-TlD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="fuK-hB-V62"/>
-                    <constraint firstAttribute="bottom" secondItem="fbZ-qX-Knd" secondAttribute="bottom" constant="12" id="qZJ-Cq-g9x"/>
                     <constraint firstItem="aFf-I5-NEZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="uK9-XX-XAg"/>
-                    <constraint firstItem="fbZ-qX-Knd" firstAttribute="top" secondItem="aFf-I5-NEZ" secondAttribute="bottom" constant="4" id="yNE-Ye-XNX"/>
+                    <constraint firstItem="fbZ-qX-Knd" firstAttribute="top" secondItem="aFf-I5-NEZ" secondAttribute="bottom" id="yNE-Ye-XNX"/>
                     <constraint firstItem="iW0-Qa-BmZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="zVQ-Xh-ca5"/>
                 </constraints>
             </tableViewCellContentView>

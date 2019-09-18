@@ -8,10 +8,19 @@
 
 import UIKit
 
+struct RSVPAnswer {
+    var index: Int
+    var answer: String
+}
+
 class RSVPViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var joinButtonView: UIView!
+    @IBOutlet weak var joinButton: UIButton!
+
     var event: Event?
+    var answers = [RSVPAnswer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +29,18 @@ class RSVPViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override var inputAccessoryView: UIView? {
+        return joinButtonView
     }
 }
 
@@ -41,5 +57,21 @@ extension RSVPViewController: UIGestureRecognizerDelegate {
         
         setupTableView()
         //loadAllData()
+    }
+}
+
+// MARK: - Action
+extension RSVPViewController {
+
+    @IBAction func joinButtonAction() {
+        
+    }
+}
+
+// MARK: - Other
+extension RSVPViewController {
+
+    func toggleJoinButton(isEnbled: Bool) {
+        joinButton.isEnabled = isEnbled
     }
 }

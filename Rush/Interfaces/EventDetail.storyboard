@@ -171,11 +171,40 @@
                         <viewLayoutGuide key="safeArea" id="8XI-1l-sFj"/>
                     </view>
                     <connections>
+                        <outlet property="joinButton" destination="v4c-gL-krz" id="40h-kz-Y4b"/>
+                        <outlet property="joinButtonView" destination="0ZM-Up-cPu" id="qyb-BP-xUg"/>
                         <outlet property="tableView" destination="cQO-6y-JMO" id="hJo-N8-mCL"/>
                         <segue destination="ayU-bi-RPv" kind="presentation" modalPresentationStyle="overFullScreen" id="d2P-Hw-Eph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" id="0ZM-Up-cPu">
+                    <rect key="frame" x="0.0" y="0.0" width="359" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-gL-krz">
+                            <rect key="frame" x="24" y="16" width="311" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="e8p-CM-CUQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                            <state key="normal" title="Join" backgroundImage="bg-button-main-brown">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled" backgroundImage="bg-button-main">
+                                <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="v4c-gL-krz" secondAttribute="bottom" constant="16" id="9VD-KE-ayR"/>
+                        <constraint firstItem="v4c-gL-krz" firstAttribute="top" secondItem="0ZM-Up-cPu" secondAttribute="top" constant="16" id="Uix-lk-DDV"/>
+                        <constraint firstItem="v4c-gL-krz" firstAttribute="leading" secondItem="0ZM-Up-cPu" secondAttribute="leading" constant="24" id="ght-jb-nse"/>
+                        <constraint firstAttribute="trailing" secondItem="v4c-gL-krz" secondAttribute="trailing" constant="24" id="nlk-oy-9Pw"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="xkU-q0-grq"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2637.68115942029" y="-666.29464285714278"/>
         </scene>
@@ -291,6 +320,8 @@
     </scenes>
     <resources>
         <image name="back-arrow" width="24" height="28"/>
+        <image name="bg-button-main" width="327" height="48"/>
+        <image name="bg-button-main-brown" width="327" height="48"/>
         <image name="ic_joinedevent" width="64" height="64"/>
         <image name="share" width="26" height="31"/>
     </resources>
