@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol DisconnectInstagraaDelegate: class {
+    func disconnectInstagram()
+}
+
 class DisconnectInstagramViewController: UIViewController {
 
     @IBOutlet weak var verticalCentreConstraint: NSLayoutConstraint!
+    weak var delegate: DisconnectInstagraaDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +28,18 @@ class DisconnectInstagramViewController: UIViewController {
 // MARK: - Other Functions
 extension DisconnectInstagramViewController {
 
-    private func dismiss() {
+    func dismiss() {
         verticalCentreConstraint.constant = screenHeight * 2/3
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
+            self.delegate?.disconnectInstagram()
         })
+    }
+    
+    func showMessage(message: String) {
+        Utils.alert(message: message)
     }
     
     private func show() {
@@ -46,7 +56,7 @@ extension DisconnectInstagramViewController {
 extension DisconnectInstagramViewController {
     
     @IBAction func disconnectButtonAction() {
-        Utils.notReadyAlert()
+        disconnect()
     }
     
     @IBAction func cancelButtonAction() {

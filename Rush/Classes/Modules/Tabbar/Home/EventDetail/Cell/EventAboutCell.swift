@@ -16,7 +16,8 @@ class EventAboutCell: UITableViewCell {
     @IBOutlet var eventTitleLabel: CustomBlackLabel!
     @IBOutlet var eventDetailLabel: CustomBlackLabel!
     @IBOutlet var readMoreView: UIView!
-    
+    @IBOutlet var readMoreButtonViewHeight: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,6 +39,7 @@ extension EventAboutCell {
     
     func set(isHideReadMore: Bool) {
         readMoreView.isHidden = isHideReadMore
+        readMoreButtonViewHeight.constant = isHideReadMore ? 0 : 22
     }
     
     func set(title: String) {

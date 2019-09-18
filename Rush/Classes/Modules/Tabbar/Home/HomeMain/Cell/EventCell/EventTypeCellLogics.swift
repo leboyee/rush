@@ -28,7 +28,7 @@ extension EventTypeCell {
                 cell.setup(eventName: club.clubName)
                 cell.setup(eventDetail: club.clubDesc)
                 let img = Image(json: club.clubPhoto)
-                cell.setup(eventImageUrl: img.url)
+                cell.setup(eventImageUrl: img.url())
                 let clubId = club.clubUserId
                 let userId = Authorization.shared.profile?.userId ?? ""
                 if clubId == userId {
@@ -62,7 +62,7 @@ extension EventTypeCell {
     func fillFriendCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if let friend = list?[indexPath.row] as? Friend {
             cell.setup(text: friend.firstName)
-            cell.setup(url: friend.photo?.urlThumb)
+            cell.setup(url: friend.photo?.urlThumb())
             cell.setup(isShowCount: false)
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0js-ko-496">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create Club View Controller-->
+        <!--Create Event View Controller-->
         <scene sceneID="ovX-JM-6if">
             <objects>
-                <viewController id="0js-ko-496" customClass="CreateClubViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0js-ko-496" customClass="CreateEventViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFB-pn-EZf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,11 +50,29 @@
                     <connections>
                         <outlet property="tableView" destination="Qgn-V2-eM6" id="8bm-Zv-ZU3"/>
                         <outlet property="topConstraintOfTableView" destination="Uij-lB-sZS" id="6dB-oX-Rzg"/>
+                        <segue destination="Sc4-IO-QLc" kind="presentation" identifier="SelectEventTypeViewSegue" modalPresentationStyle="overFullScreen" id="vC1-tG-MY8"/>
+                        <segue destination="FDc-47-a8H" kind="presentation" identifier="AddRSVPSegue" modalPresentationStyle="overFullScreen" id="IUX-G9-vGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2d-t1-Ohx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365" y="857"/>
+            <point key="canvasLocation" x="1422" y="856"/>
+        </scene>
+        <!--SelectEventTypeViewController-->
+        <scene sceneID="JNc-dm-IsD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SelectEventTypeViewController" id="Sc4-IO-QLc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYh-Z7-lwo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2131" y="856"/>
+        </scene>
+        <!--RSVP-->
+        <scene sceneID="KUs-26-WGh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RSVP" id="FDc-47-a8H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfl-Jl-a1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="956"/>
         </scene>
     </scenes>
 </document>

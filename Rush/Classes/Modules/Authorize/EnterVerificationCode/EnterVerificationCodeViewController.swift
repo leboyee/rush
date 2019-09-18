@@ -30,6 +30,8 @@ class EnterVerificationCodeViewController: CustomViewController {
     @IBOutlet weak var codeViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var codeLabelWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var codeLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dotAnimationView: UIView!
+    @IBOutlet weak var dotView: UIView!
 
     var code = ""
     var isCodeVerifing = false
@@ -87,7 +89,9 @@ class EnterVerificationCodeViewController: CustomViewController {
         codeErrorCancelButton.isHidden = true
         codeErrorLabel.isHidden = true
         self.bgImageView.setBgForLoginSignup()
-        
+        dotAnimationView.isHidden = true
+        self.resendCodeButton.setTitle("Re-send Code", for: .normal)
+        self.resendCodeButton.isUserInteractionEnabled = true
         if loginType == .register {
             verificationTitleLabel.text = Text.phoneNoTitleRegister
             nextButton.setTitle(Text.createAccount, for: .normal)
@@ -136,7 +140,6 @@ extension EnterVerificationCodeViewController {
         AppDelegate.shared?.setupStoryboard()
 
     }
-    
 }
 
 // MARK: - Navigation

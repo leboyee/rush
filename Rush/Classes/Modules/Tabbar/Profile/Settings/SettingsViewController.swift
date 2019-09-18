@@ -12,7 +12,6 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var user: Profile?
-    var isInstagramConnected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +22,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        user = Authorization.shared.profile
-        tableView.reloadData()
+        loadSettings()
     }
     
 }
@@ -34,7 +32,6 @@ extension SettingsViewController {
     
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
-        
         tabBarController?.tabBar.isHidden = true
         
         let customTitleView = Utils.getNavigationBarTitle(title: Text.settings, textColor: UIColor.white)
@@ -48,6 +45,7 @@ extension SettingsViewController {
         navigationItem.rightBarButtonItem = logout
         setupTableView()
     }
+    
     
 }
 
@@ -83,12 +81,21 @@ extension SettingsViewController {
         performSegue(withIdentifier: Segues.notificationSettings, sender: nil)
     }
     
+    func showInstagramConnect() {
+        performSegue(withIdentifier: Segues.settingsInstagramConnect, sender: nil)
+    }
+    
     func showInstagramDisconnect() {
         performSegue(withIdentifier: Segues.disconnectInstagram, sender: nil)
     }
     
     func showMessage(message: String) {
         Utils.alert(message: message)
+    }
+    
+    func loadSettings() {
+        user = Authorization.shared.profile
+        tableView.reloadData()
     }
 }
 
@@ -102,6 +109,9 @@ extension SettingsViewController {
         } else if segue.identifier == Segues.privacySettings {
             let vc = segue.destination as? PrivacySettingsViewController
             vc?.type = sender as? PrivacyType ?? .invitesfrom
+        } else if segue.identifier == Segues.disconnectInstagram {
+            let vc = segue.destination as? DisconnectInstagramViewController
+            vc?.delegate = self
         }
     }
 }

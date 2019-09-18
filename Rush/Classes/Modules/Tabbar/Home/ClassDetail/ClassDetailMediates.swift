@@ -21,7 +21,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
         var cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.timeSlot, Cell.eventByDate, Cell.eventType, Cell.textIcon]
-        cells.append(contentsOf: [Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLikeCell])
+        cells.append(contentsOf: [Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike])
         
         for cell in cells {
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
@@ -88,7 +88,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 fillImageCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 3 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
                 return cell
             } else {
                 return UITableViewCell()

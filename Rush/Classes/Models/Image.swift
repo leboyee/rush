@@ -8,42 +8,47 @@
 
 import UIKit
 
-class Image: NSObject {
+class Image: Codable {
 
-    lazy var id: String = ""
-    lazy var main: String = ""
-    lazy var thumb: String = ""
-    var localImage: UIImage?
+    var id: String = ""
+    var main: String = ""
+    var thumb: String = ""
     
-    var url: URL? {
-        guard main.count > 0 else { return nil }
-        return URL(string: main)
-    }
-    
-    var urlThumb: URL? {
-        guard thumb.count > 0 else { return nil }
-        return URL(string: thumb)
+    init() {
     }
     
     init(data: [String: Any]) {
-        super.init()
         setData(data: data)
     }
     
     init(json: String) {
-        super.init()
         setData(jsonString: json)
     }
     
-    override init() {
-        super.init()
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case main
+        case thumb
     }
     
     // TODO: - Development Function
     init(url: String) {
-        super.init()
         main = url
         thumb = url
+    }
+    
+}
+
+extension Image {
+    
+    func url() -> URL? {
+        guard main.count > 0 else { return nil }
+        return URL(string: main)
+    }
+    
+    func urlThumb() -> URL? {
+        guard thumb.count > 0 else { return nil }
+        return URL(string: thumb)
     }
     
     func setData(data: [String: Any]) {

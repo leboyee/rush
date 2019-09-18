@@ -37,16 +37,16 @@
                                 <rect key="frame" x="0.0" y="304" width="414" height="592"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="sLR-sx-qn9">
-                                        <rect key="frame" x="0.0" y="-344" width="414" height="902"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="558"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="sLR-sx-qn9" firstAttribute="top" secondItem="kFX-4p-a17" secondAttribute="top" id="iLC-qv-gnv"/>
                                     <constraint firstAttribute="trailing" secondItem="sLR-sx-qn9" secondAttribute="trailing" id="lKV-X8-ICr"/>
                                     <constraint firstItem="sLR-sx-qn9" firstAttribute="leading" secondItem="kFX-4p-a17" secondAttribute="leading" id="uPm-jO-uao"/>
                                     <constraint firstAttribute="bottom" secondItem="sLR-sx-qn9" secondAttribute="bottom" constant="34" id="xrj-2z-Kcb"/>
-                                    <constraint firstItem="sLR-sx-qn9" firstAttribute="top" secondItem="kFX-4p-a17" secondAttribute="top" constant="-344" id="yh4-9w-W3p"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-gb-PRf">
@@ -107,6 +107,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWD-32-QMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-35" y="-408"/>
+        </scene>
+        <!--InstaWebViewViewController-->
+        <scene sceneID="hBz-Li-mPl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserInfo" referencedIdentifier="InstaWebViewViewController" id="ej9-Qv-XoJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydb-HA-wyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="-524"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Cco-VF-uMf">
@@ -208,6 +216,7 @@
                         <segue destination="JDF-J1-pkR" kind="show" identifier="NotificationSettingsSegue" id="AG0-Az-k7Z"/>
                         <segue destination="lSf-6x-Jg6" kind="presentation" identifier="DisconnectInstagramSegue" animates="NO" modalPresentationStyle="overFullScreen" id="2cS-pu-J6g"/>
                         <segue destination="eCx-fz-AbD" kind="presentation" identifier="LogoutPopupSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Qbh-H5-b15"/>
+                        <segue destination="ej9-Qv-XoJ" kind="show" identifier="SettingsInstagramConnectSegue" id="kOV-2K-PIx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-199"/>
+            <point key="canvasLocation" x="1457" y="-202"/>
         </scene>
         <!--Disconnect Instagram View Controller-->
         <scene sceneID="2vv-fq-i3i">
@@ -499,7 +508,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBL-Dr-Ojk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="467"/>
+            <point key="canvasLocation" x="1457" y="466"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
@@ -537,7 +546,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-bh-tKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="-875"/>
+            <point key="canvasLocation" x="1457" y="-875"/>
         </scene>
     </scenes>
     <resources>

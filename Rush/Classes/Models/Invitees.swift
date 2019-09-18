@@ -22,6 +22,12 @@ class Invitees: Decodable {
         // default empty init
     }
     
+    init(name: String) {
+        id = UUID().uuidString
+        self.user = User()
+        self.user?.firstName = name
+    }
+    
     required init(from decoder: Decoder) {
         let container = try? decoder.container(keyedBy: CodingKeys.self)
         id = (try? container?.decode(String.self, forKey: .id)) ?? ""

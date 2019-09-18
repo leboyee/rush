@@ -12,6 +12,7 @@ enum SelectEventType {
     case none
     case eventCategory
     case event
+    case photo
 }
 
 enum ScreenType {
@@ -23,12 +24,14 @@ enum ScreenType {
 
 protocol SelectEventTypeDelegate: class {
     func createEventClub(_ type: EventType, _ screenType: ScreenType)
+    func addPhotoEvent(_ type: PhotoFrom)
 }
 
 class SelectEventTypeViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var eventCategoryView: UIView!
+    @IBOutlet weak var photoSelectionView: UIView!
     @IBOutlet weak var eventView: UIView!
     @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
@@ -68,10 +71,17 @@ extension SelectEventTypeViewController {
             heightConstraintOfContainerView.constant = 214
             eventCategoryView.isHidden = false
             eventView.isHidden = true
+            photoSelectionView.isHidden = true
         } else if type == .event {
             heightConstraintOfContainerView.constant = 426
             eventView.isHidden = false
             eventCategoryView.isHidden = true
+            photoSelectionView.isHidden = true
+        } else if type == .photo {
+            heightConstraintOfContainerView.constant = 214
+            photoSelectionView.isHidden = false
+            eventCategoryView.isHidden = true
+            eventView.isHidden = true
         }
     }
     
@@ -79,6 +89,13 @@ extension SelectEventTypeViewController {
         self.dismiss(animated: false, completion: nil)
         DispatchQueue.main.async {
             self.delegate?.createEventClub(self.eventType, self.screenType)
+        }
+    }
+    
+    func dismissPhoto(photoFrom: PhotoFrom) {
+        self.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.delegate?.addPhotoEvent(photoFrom)
         }
     }
 }
@@ -101,7 +118,6 @@ extension SelectEventTypeViewController {
         screenType = .club
         setupUI()
     }
-    
     @IBAction func publicButtonAction() {
         eventType = .publik
         dismiss()
@@ -117,6 +133,13 @@ extension SelectEventTypeViewController {
         dismiss()
     }
     
+    @IBAction func cameraRollAction() {
+        dismissPhoto(photoFrom: .cameraRoll)
+    }
+    
+    @IBAction func unPlashCollectionAction() {
+        dismissPhoto(photoFrom: .unSplash)
+    }
 }
 
 // MARK: - Navigation

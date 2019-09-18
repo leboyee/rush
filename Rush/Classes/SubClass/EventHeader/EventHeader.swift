@@ -79,9 +79,9 @@ extension EventHeader {
             return
         }
 
-        var text = startDate.toString(format: "hh:mm a")
+        var text = startDate.toString(format: "hh:mma")
         if let endDate = end {
-            text +=  "-" +  endDate.toString(format: "hh:mm a")
+            text +=  "-" +  endDate.toString(format: "hh:mma")
         }
         timeLabel.text = text
     }
