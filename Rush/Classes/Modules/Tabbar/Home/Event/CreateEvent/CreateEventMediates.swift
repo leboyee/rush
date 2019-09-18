@@ -43,24 +43,24 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
                 fillTextIconCell(cell, indexPath)
                 return cell
             }
-        } else if indexPath.section == 4 {
+        } else if indexPath.section == 4 || indexPath.section == 5 {
             if indexPath.row == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
                     fillDateAndTimeEvent(cell, indexPath)
                     return cell
                 }
             } else {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addEventCalendarCell, for: indexPath) as? AddEventCalendarCell {
-                    fillAddCalendarCell(cell, indexPath)
-                    return cell
+                if isStartDate == true || isEndDate == true {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addEventCalendarCell, for: indexPath) as? AddEventCalendarCell {
+                        fillAddCalendarCell(cell, indexPath)
+                        return cell
+                    }
+                } else {
+                   return UITableViewCell()
                 }
+               
             }
          
-        } else if indexPath.section == 5 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
-                fillDateAndTimeEvent(cell, indexPath)
-                return cell
-            }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell {
                 fillTextViewCell(cell, indexPath)

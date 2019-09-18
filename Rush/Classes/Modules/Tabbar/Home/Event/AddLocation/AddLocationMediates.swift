@@ -13,7 +13,7 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 55
+        tableView.estimatedRowHeight = 56
         tableView.rowHeight = UITableView.automaticDimension
                 
         tableView.register(UINib(nibName: Cell.addEventLocationCell, bundle: nil), forCellReuseIdentifier: Cell.addEventLocationCell)

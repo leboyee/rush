@@ -38,6 +38,7 @@ class AddLocationViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
+        locationEntryTextField.becomeFirstResponder()
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -109,6 +110,7 @@ extension AddLocationViewController {
 // MARK: - Other function
 extension AddLocationViewController {
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
+        self.view.endEditing(true)
         let velocity = gesture.velocity(in: self.view)
         if velocity.y > 0 {
             self.dismiss(animated: true, completion: nil)

@@ -23,8 +23,8 @@ extension CreateEventViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 4 {
-            return indexPath.row == 0 ? UITableView.automaticDimension : calendarHeight
+        if indexPath.section == 4 || indexPath.section == 5 {
+            return indexPath.row == 0 ? 64 : calendarHeight
         }
         return UITableView.automaticDimension
     }
@@ -34,7 +34,7 @@ extension CreateEventViewController {
             return rsvpArray.count + 1
         } else if section == 4 {
             return isStartDate == true ? 2 : isStartTime == true ? 2 : 1
-        } else if section == 4 {
+        } else if section == 5 {
             return isEndDate == true ? 2 : isEndTime == true ? 2 : 1
         } else if section == 6 {
             return interestList.count + 1
@@ -57,8 +57,10 @@ extension CreateEventViewController {
     
     func fillAddCalendarCell(_ cell: AddEventCalendarCell, _ indexPath: IndexPath) {
         if indexPath.section == 4 {
-            cell.calenderViewHeight.constant = calendarHeight
             cell.calendarView.delegate = self
+        } else if indexPath.section == 5 {
+            cell.calendarView.delegate = self
+            cell.calendarView.minimumSelectedDate = self.startDate
         }
     }
 
@@ -70,10 +72,15 @@ extension CreateEventViewController {
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
-                unsafe.resetDateFileds()
-                unsafe.isStartDate = true
-                unsafe.tableView.reloadData()
-               // Utils.alert(message: "In Development")
+                if unsafe.isStartDate == false {
+                    unsafe.resetDateFileds()
+                    unsafe.isStartDate = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.resetDateFileds()
+                    unsafe.isStartDate = false
+                    unsafe.tableView.reloadData()
+                }
             }
             cell.timeButtonClickEvent = { () in
                 Utils.alert(message: "In Development")
@@ -83,12 +90,17 @@ extension CreateEventViewController {
             cell.setup(dateButtonText: Date().eventDateFormat(date: endDate))
             cell.setup(timeButtonText: endTime.isEmpty == true ? "13 pm" : endTime)
             cell.separatorView.isHidden = false
-
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
-                unsafe.resetDateFileds()
-                unsafe.isEndDate = true
-                unsafe.tableView.reloadData()
+                if unsafe.isEndDate == false {
+                    unsafe.resetDateFileds()
+                    unsafe.isEndDate = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.resetDateFileds()
+                    unsafe.isEndDate = false
+                    unsafe.tableView.reloadData()
+                }
             }
             
             cell.timeButtonClickEvent = { () in
@@ -133,7 +145,14 @@ extension CreateEventViewController {
             cell.setup(iconImage: "addLocation")
             cell.setup(placeholder: Text.addLocation, text: address)
             cell.setup(placeholder: Text.addLocation)
+            cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
+            cell.clearButtonClickEvent = {
+                [weak self] () in
+                guard let unsafe = self else { return }
+                unsafe.address = ""
+                unsafe.tableView.reloadData()
+            }
         } else if indexPath.section == 6 {
             if indexPath.row == interestList.count {
                 cell.setup(placeholder: "", text: "")
@@ -268,18 +287,21 @@ extension CreateEventViewController {
         isStartTime = false
         isEndTime = false
     }
+
 }
 
 extension CreateEventViewController: CalendarViewDelegate {
     
     func changeMonth(date: Date) {
         //DispatchQueue.main.async {
-            self.startDate = date
+        self.startDate = date
         guard let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 4)) as? AddEventCalendarCell else { return }
         DispatchQueue.main.async {
             cell.calendarView.setSelectedDate(date: self.startDate)
         }
-            self.tableView.reloadData()
+        cell.calenderViewHeight.constant = calendarHeight
+        cell.layoutIfNeeded()
+        self.tableView.reloadData()
         //}
 
     }
@@ -294,7 +316,19 @@ extension CreateEventViewController: CalendarViewDelegate {
     }
     
     func selectedDate(date: Date) {
-        print(date)
+        if isStartDate == true {
+            self.startDate = date
+            if date > endDate {
+                endDate = date
+            }
+        } else if isEndDate == true {
+            self.endDate = date
+            if startDate > date {
+                startDate = date
+            }
+        }
+        resetDateFileds()
+        self.tableView.reloadData()
     }
 }
 

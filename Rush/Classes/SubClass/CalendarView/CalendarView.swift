@@ -28,12 +28,12 @@ class CalendarView: UIView {
     var minDateOfCalendar: Date = Date.parse(dateString: "2017-06-01", format: "yyyy-MM-dd")!
     var maxDateOfCalendar: Date = Date.parse(dateString: "2027-06-01", format: "yyyy-MM-dd")!
     var currentIndex: Int = 0
-    var selectedDate: Date = Date()
+    var selectedDate: Date?
     var dateColor: UIColor = UIColor.white
     var dotColor: UIColor = UIColor.brown24
     var outerViewSelectedColor: UIColor = UIColor.brown24
     var dateSelectedColor: UIColor = UIColor.white
-
+    var minimumSelectedDate: Date?
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -179,6 +179,7 @@ extension CalendarView: UICollectionViewDataSource {
             cell.setup(dotColor: dotColor)
             cell.setup(outerViewBgSelectedColor: outerViewSelectedColor)
             cell.setup(dateSelectedColor: dateSelectedColor)
+            cell.setup(minimumDate: minimumSelectedDate)
             cell.isWeekStartFromMonday = isWeekStartFromMonday
             let date = minDateOfCalendar.plus(months: UInt(indexPath.row))
             cell.reloadMonthCalendar(date: date, selectedDate: selectedDate)

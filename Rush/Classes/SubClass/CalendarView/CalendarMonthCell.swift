@@ -20,11 +20,12 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     var isWeekStartFromMonday = false
 
     var dateList = [AnyObject]()
-    var selectedDate: Date = Date()
+    var selectedDate: Date?
     var dateColor: UIColor = UIColor.white
     var dotColor: UIColor = UIColor.brown24
     var outerViewSelectedColor: UIColor = UIColor.brown24
     var dateSelectedColor: UIColor = UIColor.white
+    var minimumSelectedDate: Date?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,7 +57,7 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
                 guard let date = self.dateList[indexPath.row] as? Date else { return cell }
                 cell.outerView.isHidden = false
                 cell.setup(date: date)
-                cell.setup(isSelected: selectedDate == date)
+                cell.setup(isSelected: selectedDate?.isSameDate(date) ?? false)
                 cell.setup(isEventExist: delegate?.isEventExist(date: date) ?? false)
             }
             return cell
@@ -66,6 +67,11 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let date = self.dateList[indexPath.row] as? Date {
+            if let minDate = minimumSelectedDate {
+                if date < minDate {
+                  return
+                }
+            }
             self.delegate?.selectedDate(date: date)
             selectedDate = date
             collectionView.reloadData()
@@ -91,7 +97,7 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     }
     
     // MARK: - Other Functions
-    func reloadMonthCalendar(date: Date, selectedDate: Date) {
+    func reloadMonthCalendar(date: Date, selectedDate: Date?) {
         self.selectedDate = selectedDate
         self.getMonthDateList(date: date)
         self.monthCollectionView.reloadData()
@@ -137,6 +143,11 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     
     func setup(dateSelectedColor: UIColor) {
         self.dateSelectedColor = dateSelectedColor
+        monthCollectionView.reloadData()
+    }
+    
+    func setup(minimumDate: Date?) {
+        self.minimumSelectedDate = minimumDate
         monthCollectionView.reloadData()
     }
 

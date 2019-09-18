@@ -209,6 +209,11 @@ extension Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
     
+    func isSameDate(_ comparisonDate: Date) -> Bool {
+        let order = Calendar.current.compare(self, to: comparisonDate, toGranularity: .day)
+        return order == .orderedSame
+    }
+    
     // MARK: - Compute Date as String
     public func toString(format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
@@ -254,7 +259,7 @@ extension Date {
     
     func eventDateFormat(date: Date) -> String {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "EEEE, dd MMM"
+        timeFormatter.dateFormat = "EEE, dd MMM"
         return timeFormatter.string(from: date)
     }
     

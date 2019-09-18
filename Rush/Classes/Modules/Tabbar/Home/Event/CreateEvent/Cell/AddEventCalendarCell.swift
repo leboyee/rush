@@ -18,7 +18,10 @@ class AddEventCalendarCell: UITableViewCell {
         calendarView.minDateOfCalendar = Date().startOfMonth()
         calendarView.dateColor = UIColor.bgBlack
         calendarView.dateSelectedColor = UIColor.white
+        calendarView.minimumSelectedDate = Date().minus(days: 1)
+        calendarView.selectedDate = Date()
         calendarView.reloadMonth()
+
         // Initialization code
     }
     

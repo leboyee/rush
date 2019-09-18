@@ -18,39 +18,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddEventLocationCell" rowHeight="55" id="KGk-i7-Jjw" customClass="AddEventLocationCell" customModule="Rush" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7Y-bf-pAa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqx-v5-jP2">
-                                <rect key="frame" x="24" y="53.5" width="296" height="1"/>
-                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York, U.S.A." lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-X3-4by">
+                                <rect key="frame" x="24" y="0.0" width="284" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="tlW-kd-7cg"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York, U.S.A." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-X3-4by">
-                                <rect key="frame" x="24" y="0.0" width="284" height="53.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="53.5" id="bFr-dI-vEk"/>
+                                    <constraint firstAttribute="height" constant="54" id="bFr-dI-vEk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltO-s8-1gc">
+                                <rect key="frame" x="24" y="54.5" width="296" height="1"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="JL7-Oe-Cou"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="rqx-v5-jP2" firstAttribute="top" secondItem="Vq2-X3-4by" secondAttribute="bottom" id="1JV-ww-mP9"/>
-                            <constraint firstAttribute="trailing" secondItem="rqx-v5-jP2" secondAttribute="trailing" id="2De-O6-yb5"/>
-                            <constraint firstAttribute="bottom" secondItem="rqx-v5-jP2" secondAttribute="bottom" id="6eV-sB-fg8"/>
+                            <constraint firstItem="ltO-s8-1gc" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="6bN-Pw-g55"/>
+                            <constraint firstAttribute="trailing" secondItem="ltO-s8-1gc" secondAttribute="trailing" id="AOy-hi-GHI"/>
                             <constraint firstAttribute="trailing" secondItem="Vq2-X3-4by" secondAttribute="trailing" constant="12" id="CVj-fZ-U6L"/>
-                            <constraint firstItem="rqx-v5-jP2" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="dZc-Vh-GF7"/>
+                            <constraint firstAttribute="bottom" secondItem="ltO-s8-1gc" secondAttribute="bottom" id="NCe-so-8cT"/>
                             <constraint firstItem="Vq2-X3-4by" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="gR6-rF-oex"/>
                             <constraint firstItem="Vq2-X3-4by" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="kcQ-ar-Cnn"/>
                         </constraints>
@@ -67,7 +69,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="separatorView" destination="rqx-v5-jP2" id="uKV-Hn-7GB"/>
                 <outlet property="titleLabel" destination="Vq2-X3-4by" id="7SX-kf-c3i"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="95.758928571428569"/>

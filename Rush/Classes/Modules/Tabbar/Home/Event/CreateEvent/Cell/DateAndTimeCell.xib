@@ -34,14 +34,10 @@
                                     <constraint firstAttribute="height" constant="1" id="tlW-kd-7cg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-uX-cZh">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="EIn-BA-kqd"/>
-                                    <constraint firstAttribute="width" secondItem="6iw-uX-cZh" secondAttribute="height" multiplier="220:63" id="eTP-D2-5PX"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iw-uX-cZh">
+                                <rect key="frame" x="0.0" y="0.0" width="224" height="63"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="64" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Thursday, 24 Feb">
                                     <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -49,12 +45,8 @@
                                     <action selector="dateButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="307-zf-YTA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-HL-QLi">
-                                <rect key="frame" x="220" y="0.0" width="100" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="KqU-HL-QLi" secondAttribute="height" multiplier="100:63" id="fK1-Ip-QhI"/>
-                                    <constraint firstAttribute="height" constant="63" id="uph-DG-ztH"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqU-HL-QLi">
+                                <rect key="frame" x="224" y="0.0" width="96" height="63"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <state key="normal" title="12 pm">
                                     <color key="titleColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,17 +58,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KqU-HL-QLi" secondAttribute="bottom" constant="0.5" id="0QQ-eO-Ztz"/>
                             <constraint firstAttribute="trailing" secondItem="rqx-v5-jP2" secondAttribute="trailing" id="2De-O6-yb5"/>
                             <constraint firstAttribute="bottom" secondItem="rqx-v5-jP2" secondAttribute="bottom" id="6eV-sB-fg8"/>
+                            <constraint firstItem="KqU-HL-QLi" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="DY0-O5-fVh"/>
                             <constraint firstItem="6iw-uX-cZh" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="NAV-IG-Hh8"/>
-                            <constraint firstItem="KqU-HL-QLi" firstAttribute="leading" secondItem="6iw-uX-cZh" secondAttribute="trailing" id="OhZ-YB-Pp5"/>
-                            <constraint firstAttribute="trailing" secondItem="KqU-HL-QLi" secondAttribute="trailing" id="Tmc-cz-DNX"/>
+                            <constraint firstItem="6iw-uX-cZh" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" id="PvJ-ZU-2s8"/>
                             <constraint firstAttribute="bottom" secondItem="6iw-uX-cZh" secondAttribute="bottom" constant="0.5" id="Z8U-l9-rxo"/>
                             <constraint firstItem="rqx-v5-jP2" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="dZc-Vh-GF7"/>
-                            <constraint firstItem="KqU-HL-QLi" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="iHY-LN-sx3"/>
-                            <constraint firstItem="KqU-HL-QLi" firstAttribute="leading" secondItem="6iw-uX-cZh" secondAttribute="trailing" id="lWu-FG-ryp"/>
-                            <constraint firstItem="6iw-uX-cZh" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" id="qYd-xh-d9U"/>
-                            <constraint firstAttribute="bottom" secondItem="KqU-HL-QLi" secondAttribute="bottom" constant="0.5" id="vqg-xS-mME"/>
+                            <constraint firstAttribute="trailing" secondItem="KqU-HL-QLi" secondAttribute="trailing" id="g5I-2T-s5d"/>
+                            <constraint firstItem="6iw-uX-cZh" firstAttribute="width" secondItem="E7Y-bf-pAa" secondAttribute="width" multiplier="0.7" id="iss-S3-4GB"/>
+                            <constraint firstItem="KqU-HL-QLi" firstAttribute="width" secondItem="E7Y-bf-pAa" secondAttribute="width" multiplier="0.3" id="swQ-53-Dif"/>
                         </constraints>
                     </view>
                 </subviews>

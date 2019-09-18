@@ -62,7 +62,6 @@ class CreateEventViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
         IQKeyboardManager.shared.enableAutoToolbar = false
-        self.tableView.reloadData()
     }
  
     // MARK: - Other function
