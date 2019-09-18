@@ -752,7 +752,7 @@ open class MessageInputBar: UIView {
     @objc
     open func inputTextViewDidBeginEditing() {
         
-        if let user = Utils.getDataFromUserDefault("showAlertOfChatRemoved") as? String {
+        if let user = Utils.getDataFromUserDefault(UserDefaultKey.showAlertOfChatRemoved) as? String {
             Utils.alert(message: "You can not send message because \(user) removed this chat room.")
             return
         }

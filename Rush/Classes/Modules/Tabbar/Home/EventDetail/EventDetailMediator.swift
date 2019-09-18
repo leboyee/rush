@@ -29,7 +29,7 @@ extension EventDetailViewController {
         tableView.register(cellName: Cell.postUser)
         tableView.register(cellName: Cell.postText)
         tableView.register(cellName: Cell.postImages)
-        tableView.register(cellName: Cell.postLike)
+        tableView.register(cellName: Cell.postBottom)
         tableView.register(reusableViewName: ReusableView.textHeader)
         tableView.reloadData()
     }
@@ -77,8 +77,8 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
                     return cell
                 }
             case .like:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell {
-                    fillPostLikeCell(cell, indexPath)
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postBottom, for: indexPath) as? PostBottomCell {
+                    fillPostBottomCell(cell, indexPath)
                     return cell
                 }
             default:

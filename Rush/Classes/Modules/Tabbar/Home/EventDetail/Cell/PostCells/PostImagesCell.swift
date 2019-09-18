@@ -10,9 +10,11 @@ import UIKit
 
 class PostImagesCell: UITableViewCell {
 
-    @IBOutlet weak var collectionView: DynamicHeightCollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
+
     var list: [Image]?
     let padding: CGFloat = 1.0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -22,7 +24,6 @@ class PostImagesCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
 }
 
 // MARK: - Setup Functions
@@ -32,12 +33,7 @@ extension PostImagesCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let alignedFlowLayout = collectionView.collectionViewLayout as? AlignedCollectionViewFlowLayout
-        alignedFlowLayout?.horizontalAlignment = .left
-        alignedFlowLayout?.verticalAlignment = .top
-        
         collectionView.register(UINib(nibName: Cell.postImage, bundle: nil), forCellWithReuseIdentifier: Cell.postImage)
-
     }
 }
 
@@ -45,7 +41,6 @@ extension PostImagesCell {
     func set(images: [Image]?) {
         self.list = images
         collectionView.reloadData()
-        collectionView.layoutIfNeeded()
     }
 }
 
@@ -64,7 +59,6 @@ extension PostImagesCell: UICollectionViewDataSource {
         } else if itemsCount >= 6 {
             count = 6
         }
-        
         return count
     }
     

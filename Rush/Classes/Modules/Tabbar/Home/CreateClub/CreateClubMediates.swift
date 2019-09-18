@@ -50,13 +50,8 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if section == 0 {
-            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
-            fillImageHeader(view)
-            return view
-        }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
     
@@ -64,33 +59,10 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
         return heightOfHeader(section)
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return heightOfFooter(section)
     }
     
-    /*
-     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-     return UIView()
-     }
-     
-     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-     let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as! TextHeader
-     fillTextHeader(header, section)
-     return header
-     }
-     
-     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-     return heightOfHeader(section)
-     }
-     
-     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-     return heightOfFooter(section)
-     }
-     */
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
@@ -98,35 +70,39 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Scrollview delegate
-extension CreateClubViewController: UIScrollViewDelegate {
+extension CreateClubViewController {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let headerView = tableView?.tableHeaderView {
-            let yPos: CGFloat = (scrollView.contentOffset.y + scrollView.adjustedContentInset.top)
-            let heigh: CGFloat = 346
-            if yPos >= 0 {
-                var rect = headerView.frame
-                rect.origin.y = scrollView.contentOffset.y
-                rect.size.height = heigh - yPos
-                headerView.frame = rect
-                tableView?.tableHeaderView = headerView
-            }
-        } else {
-            if tableView.contentOffset.y >= 190 {
-                
-            } else {
-                
-                let animation = CATransition()
-                animation.duration = 0.8
-                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-                animation.type = CATransitionType.fade
-                
-                navigationController?.navigationBar.layer.add(animation, forKey: nil)
-            }
-            
-            if tableView.contentOffset.y < -40 {
-                tableView.contentOffset = CGPoint(x: 0, y: -40)
+        if clubImage != nil {
+            let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
+            let smallHeaderHeight = headerSmallWithoutDateHeight
+            let smallHeight = smallHeaderHeight + topMergin
+            let h = heightConstraintOfHeader.constant - scrollView.contentOffset.y
+            let height = min(max(h, smallHeight), screenHeight)
+            self.heightConstraintOfHeader.constant = height
+            if !smallHeight.isEqual(to: height) {
+                tableView.contentOffset = CGPoint(x: 0, y: 0)
             }
         }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    private func animateHeader() {
+        self.heightConstraintOfHeader.constant = headerFullHeight
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
 
@@ -136,5 +112,16 @@ extension CreateClubViewController: ContactsListProtocol {
         peopleList = contacts
         validateAllFields()
         tableView.reloadData()
+    }
+}
+
+// MARK: - Club header delegate
+extension CreateClubViewController: ClubHeaderDelegate {
+    func infoOfClub() {
+        
+    }
+    
+    func addPhotoOfClub() {
+        openCameraOrLibrary(type: .photoLibrary)
     }
 }

@@ -85,6 +85,8 @@ struct Cell {
     static let postText            = "PostTextCell"
     static let postImages          = "PostImagesCell"
     static let postImage           = "PostImageCell"
+    static let joinRSVP            = "JoinRSVPCell"
+    static let postBottom          = "PostBottomCell"
 
 }
 
@@ -103,6 +105,7 @@ struct ViewControllerId {
     static let datePickerViewController          = "DatePickerViewController"
     static let otherUserProfileController        = "OtherUserProfileController"
     static let addRSVPViewController             = "AddRSVPViewController"
+    static let chatRoomViewController            = "ChatRoomViewController"
 }
 
 /* Create the struct for Section wise */
@@ -163,6 +166,7 @@ struct Segues {
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
     static let addRSVP                             = "AddRSVPSegue"
     static let addLocation                             = "AddLocationSegue"
+    static let eventJoinedPopup                    = "EventJoinedPopupSegue"
 }
 
 struct StoryBoard {
@@ -301,6 +305,7 @@ public struct Icons {
 
 public struct UserDefaultKey {
     static let searchFilter = "searchFilterData"
+    static let showAlertOfChatRemoved = "showAlertOfChatRemoved"
 
 }
 
@@ -329,7 +334,6 @@ enum PhotoFrom {
     case cameraRoll
     case unSplash
 }
-
 
 enum PasswordFormate {
     case none

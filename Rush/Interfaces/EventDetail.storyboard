@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
@@ -115,6 +118,43 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-6y-JMO">
                                 <rect key="frame" x="0.0" y="57" width="414" height="805"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="0Yj-6k-oDE">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9w-Dq-llB" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                                            <rect key="frame" x="24" y="16" width="36" height="16"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer questions to join" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-Qq-gad" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                                            <rect key="frame" x="24" y="36" width="366" height="34"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="28"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-vB-XPJ" customClass="RSeparatorLine" customModule="Rush" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="86" width="414" height="1"/>
+                                            <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="XaR-1q-xTg"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Z9z-vB-XPJ" firstAttribute="leading" secondItem="0Yj-6k-oDE" secondAttribute="leading" id="5B3-Gj-awb"/>
+                                        <constraint firstItem="Vz7-Qq-gad" firstAttribute="top" secondItem="e9w-Dq-llB" secondAttribute="bottom" constant="4" id="FAj-lx-xwx"/>
+                                        <constraint firstItem="e9w-Dq-llB" firstAttribute="leading" secondItem="0Yj-6k-oDE" secondAttribute="leading" constant="24" id="W3Y-9r-CtM"/>
+                                        <constraint firstAttribute="trailing" secondItem="Z9z-vB-XPJ" secondAttribute="trailing" id="Wax-Ag-OCW"/>
+                                        <constraint firstItem="Z9z-vB-XPJ" firstAttribute="top" secondItem="Vz7-Qq-gad" secondAttribute="bottom" constant="16" id="fgw-he-geK"/>
+                                        <constraint firstItem="e9w-Dq-llB" firstAttribute="top" secondItem="0Yj-6k-oDE" secondAttribute="top" constant="16" id="om7-QH-KX7"/>
+                                        <constraint firstItem="Vz7-Qq-gad" firstAttribute="leading" secondItem="0Yj-6k-oDE" secondAttribute="leading" constant="24" id="pzm-pO-5iG"/>
+                                        <constraint firstAttribute="bottom" secondItem="Z9z-vB-XPJ" secondAttribute="bottom" id="whx-fR-0EE"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vz7-Qq-gad" secondAttribute="trailing" constant="24" id="zeH-g3-sdO"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,13 +171,46 @@
                         <viewLayoutGuide key="safeArea" id="8XI-1l-sFj"/>
                     </view>
                     <connections>
+                        <outlet property="joinButton" destination="v4c-gL-krz" id="40h-kz-Y4b"/>
+                        <outlet property="joinButtonView" destination="5Tl-px-DXx" id="vNZ-sa-Ymm"/>
                         <outlet property="tableView" destination="cQO-6y-JMO" id="hJo-N8-mCL"/>
-                        <segue destination="ayU-bi-RPv" kind="presentation" modalPresentationStyle="overFullScreen" id="d2P-Hw-Eph"/>
+                        <segue destination="ayU-bi-RPv" kind="presentation" identifier="EventJoinedPopupSegue" modalPresentationStyle="overFullScreen" id="d2P-Hw-Eph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="5Tl-px-DXx" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-gL-krz">
+                            <rect key="frame" x="24" y="16" width="366" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="MSb-oX-dbh"/>
+                            </constraints>
+                            <viewLayoutGuide key="safeArea" id="EkW-l4-C4F"/>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                            <state key="normal" title="Join" backgroundImage="bg-button-main-brown">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled" backgroundImage="bg-button-main">
+                                <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="joinButtonAction" destination="EfL-qI-UY9" eventType="touchUpInside" id="1vO-Dc-7QS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="v4c-gL-krz" firstAttribute="leading" secondItem="6IL-X6-tdP" secondAttribute="leading" constant="24" id="IYC-lq-9vE"/>
+                        <constraint firstItem="6IL-X6-tdP" firstAttribute="trailing" secondItem="v4c-gL-krz" secondAttribute="trailing" constant="24" id="JSd-ga-A1U"/>
+                        <constraint firstAttribute="bottom" secondItem="v4c-gL-krz" secondAttribute="bottom" constant="36" id="WGP-zk-YT7"/>
+                        <constraint firstItem="v4c-gL-krz" firstAttribute="top" secondItem="5Tl-px-DXx" secondAttribute="top" constant="16" id="apR-sb-ipe"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="6IL-X6-tdP"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="2638" y="-666"/>
+            <point key="canvasLocation" x="2637.68115942029" y="-666.29464285714278"/>
         </scene>
         <!--Event Joined Popup View Controller-->
         <scene sceneID="IVZ-Qj-ElO">
@@ -251,6 +324,8 @@
     </scenes>
     <resources>
         <image name="back-arrow" width="24" height="28"/>
+        <image name="bg-button-main" width="327" height="48"/>
+        <image name="bg-button-main-brown" width="327" height="48"/>
         <image name="ic_joinedevent" width="64" height="64"/>
         <image name="share" width="26" height="31"/>
     </resources>

@@ -68,14 +68,6 @@ class ChatRoomViewController: MessagesViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        /*
-         if isShowTempData {
-         MockSocket.shared.connect(with: [SampleData.shared.nathan, SampleData.shared.wu])
-         .onNewMessage { [weak self] message in
-         self?.insertMessages(message)
-         }
-         }
-         */
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -85,9 +77,9 @@ class ChatRoomViewController: MessagesViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        SBDMain.removeChannelDelegate(forIdentifier: "ChatRoomViewController")
-        if Utils.getDataFromUserDefault("showAlertOfChatRemoved") != nil {
-            Utils.removeDataFromUserDefault("showAlertOfChatRemoved")
+        SBDMain.removeChannelDelegate(forIdentifier: ViewControllerId.chatRoomViewController)
+        if Utils.getDataFromUserDefault(UserDefaultKey.showAlertOfChatRemoved) != nil {
+            Utils.removeDataFromUserDefault(UserDefaultKey.showAlertOfChatRemoved)
         }
     }
     
@@ -134,21 +126,6 @@ class ChatRoomViewController: MessagesViewController {
                 }
             }
         }
-    }
-    
-    func insertMessages(_ message: MockMessage) {
-        messageList.append(message)
-        // Reload last section to update header/footer labels and insert a new one
-        messagesCollectionView.performBatchUpdates({
-            messagesCollectionView.insertSections([messageList.count - 1])
-            if messageList.count >= 2 {
-                messagesCollectionView.reloadSections([messageList.count - 2])
-            }
-        }, completion: { [weak self] _ in
-            if self?.isLastSectionVisible() == true {
-                self?.messagesCollectionView.scrollToBottom(animated: true)
-            }
-        })
     }
     
     @objc func loadMoreMessages() {
@@ -441,7 +418,7 @@ extension ChatRoomViewController {
         userNameNavLabel.text = self.userName
         
         if (channel?.members?.count ?? 0) == 1 {
-            Utils.saveDataToUserDefault(self.userName, "showAlertOfChatRemoved")
+            Utils.saveDataToUserDefault(self.userName, UserDefaultKey.showAlertOfChatRemoved)
         }
     }
     

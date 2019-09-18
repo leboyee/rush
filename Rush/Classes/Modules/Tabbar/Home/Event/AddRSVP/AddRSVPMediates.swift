@@ -67,3 +67,39 @@ extension AddRSVPViewController: UITableViewDelegate, UITableViewDataSource {
        return cellHeight(indexPath)
     }
 }
+<<<<<<< HEAD
+=======
+
+// MARK: - Scrollview delegate
+extension AddRSVPViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let headerView = tableView?.tableHeaderView {
+            let yPos: CGFloat = (scrollView.contentOffset.y + scrollView.adjustedContentInset.top)
+            let heigh: CGFloat = 346
+            if yPos >= 0 {
+                var rect = headerView.frame
+                rect.origin.y = scrollView.contentOffset.y
+                rect.size.height = heigh - yPos
+                headerView.frame = rect
+                tableView?.tableHeaderView = headerView
+            }
+        } else {
+            if tableView.contentOffset.y >= 190 {
+                
+            } else {
+                
+                let animation = CATransition()
+                animation.duration = 0.8
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+                animation.type = CATransitionType.fade
+                
+                navigationController?.navigationBar.layer.add(animation, forKey: nil)
+            }
+            
+            if tableView.contentOffset.y < -40 {
+                tableView.contentOffset = CGPoint(x: 0, y: -40)
+            }
+        }
+    }
+}
+>>>>>>> develop

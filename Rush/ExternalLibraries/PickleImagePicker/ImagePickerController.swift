@@ -121,7 +121,7 @@ open class ImagePickerController: UINavigationController {
     
     fileprivate var selectedAssets: [PHAsset]
     fileprivate let configuration: ImagePickerConfigurable?
-    fileprivate let allowedSelections: ImagePickerSelection
+    fileprivate var allowedSelections: ImagePickerSelection
     
     fileprivate weak var imagePickerDelegate: ImagePickerControllerDelegate?
     fileprivate lazy var slideUpPresentation: UIViewControllerTransitioningDelegate = SlideUpPresentation()
@@ -228,6 +228,12 @@ open class ImagePickerController: UINavigationController {
     }
     
     var selectedAlbum: PHAssetCollection?
+    
+    var isSingleSelection: Bool = false {
+        didSet {
+            self.allowedSelections = .limit(to: 1)
+        }
+    }
 }
 
 extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

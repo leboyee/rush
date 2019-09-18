@@ -1,8 +1,8 @@
 //
-//  Post.swift
+//  Club.swift
 //  Rush
 //
-//  Created by kamal on 11/09/19.
+//  Created by ideveloper on 28/08/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
@@ -13,8 +13,10 @@ class Post: Codable {
     var id: String?
     var parentId: String? // Event / Club / Class
     var text: String?
+    var desc: String?
     var images: [Image]?
     var numberOfLikes: Int = 0
+    var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
     var user: User?
     var createDate: Date?
@@ -25,9 +27,11 @@ class Post: Codable {
         case text
         case images
         case numberOfLikes
+        case numberOfUnLikes
         case numberOfComments
         case user
         case createDate
+        case desc
     }
 
     init() {

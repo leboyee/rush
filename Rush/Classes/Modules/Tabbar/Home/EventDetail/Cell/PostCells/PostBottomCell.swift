@@ -1,17 +1,16 @@
 //
-//  PostLikeCell.swift
+//  PostBottomCell.swift
 //  Rush
 //
-//  Created by ideveloper on 25/06/19.
+//  Created by Kamal Mittal on 25/06/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
 import UIKit
 
-class PostLikeCell: UITableViewCell {
+class PostBottomCell: UITableViewCell {
     
     @IBOutlet weak var likeLabel: UILabel!
-    @IBOutlet weak var unlikeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     var likeButtonEvent: (() -> Void)?
     var unlikeButtonEvent: (() -> Void)?
@@ -30,7 +29,7 @@ class PostLikeCell: UITableViewCell {
 }
 
 // MARK: - Actions
-extension PostLikeCell {
+extension PostBottomCell {
     
     @IBAction func likeButtonAction() {
         likeButtonEvent?()
@@ -46,13 +45,9 @@ extension PostLikeCell {
 }
 
 // MARK: - Others
-extension PostLikeCell {
+extension PostBottomCell {
     func set(numberOfLike: Int) {
         likeLabel.text = "\(numberOfLike)"
-    }
-    
-    func set(numberOfUnLike: Int) {
-        unlikeLabel.text = "\(numberOfUnLike)"
     }
     
     func set(numberOfComment: Int) {
