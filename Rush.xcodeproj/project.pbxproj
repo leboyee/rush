@@ -3707,7 +3707,6 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"$(inherited)",
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"icucore\"",
@@ -3803,7 +3802,6 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"$(inherited)",
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"icucore\"",
@@ -3955,7 +3953,6 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"$(inherited)",
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"icucore\"",
