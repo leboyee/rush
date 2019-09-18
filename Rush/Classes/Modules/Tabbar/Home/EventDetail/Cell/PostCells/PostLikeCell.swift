@@ -11,6 +11,7 @@ import UIKit
 class PostLikeCell: UITableViewCell {
     
     @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var unlikeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     var likeButtonEvent: (() -> Void)?
     var unlikeButtonEvent: (() -> Void)?
@@ -48,6 +49,10 @@ extension PostLikeCell {
 extension PostLikeCell {
     func set(numberOfLike: Int) {
         likeLabel.text = "\(numberOfLike)"
+    }
+    
+    func set(numberOfUnLike: Int) {
+        unlikeLabel.text = "\(numberOfUnLike)"
     }
     
     func set(numberOfComment: Int) {

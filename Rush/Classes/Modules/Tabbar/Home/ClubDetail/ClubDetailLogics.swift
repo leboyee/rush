@@ -21,9 +21,9 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            let photos = clubPostList[indexPath.section - 6].photos
+            let photos = clubPostList[indexPath.section - 6].images
             if indexPath.row == 2 {
-                return photos.isEmpty ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
+                return photos == nil ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
             }
             return UITableView.automaticDimension
         } else {
@@ -124,7 +124,7 @@ extension ClubDetailViewController {
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        cell.setup(text: post.desc, placeholder: "")
+        cell.setup(text: post.desc ?? "", placeholder: "")
         cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
     }
@@ -137,9 +137,9 @@ extension ClubDetailViewController {
     
     func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        cell.setup(upvote: post.upVotes)
-        cell.setup(downvote: post.downVotes)
-        cell.setup(comment: post.totalComments)
+        cell.set(numberOfLike: post.numberOfLikes)
+        cell.set(numberOfUnLike: post.numberOfUnLikes)
+        cell.set(numberOfComment: post.numberOfComments)
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -156,7 +156,7 @@ extension ClubDetailViewController {
     
     func fillImageHeader() {
         let img = Image(json: clubInfo?.clubPhoto ?? "")
-        clubHeader.setup(imageUrl: img.url)
+        clubHeader.setup(imageUrl: img.url())
         clubHeader.setup(isHideHoverView: true)
     }
     

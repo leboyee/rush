@@ -8,17 +8,8 @@
 
 import UIKit
 
-class PostLikeCell: UITableViewCell {
-    @IBOutlet weak var upvoteButton: UIButton!
-    @IBOutlet weak var upvoteCountLabel: UILabel!
-    @IBOutlet weak var downvoteButton: UIButton!
-    @IBOutlet weak var downvoteCountLabel: UILabel!
-    @IBOutlet weak var commentButton: UIButton!
-    @IBOutlet weak var commentCountLabel: UILabel!
-    
-    var upvoteClickEvent: (() -> Void)?
-    var downvoteClickEvent: (() -> Void)?
-    var commentClickEvent: (() -> Void)?
+class PostTextCell: UITableViewCell {
+    @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,32 +26,5 @@ class PostLikeCell: UITableViewCell {
 extension PostTextCell {
     func set(text: String) {
         label.text = text
-    }
-}
-
-// MARK: - Others
-extension PostLikeCell {
-    func setup(upvote: String) {
-        upvoteCountLabel.text = upvote.isEmpty ? "0" : upvote
-    }
-    
-    func setup(downvote: String) {
-        downvoteCountLabel.text = downvote.isEmpty ? "0" : downvote
-    }
-    
-    func setup(comment: String) {
-        commentCountLabel.text = comment.isEmpty ? "0" : comment
-    }
-    
-    @IBAction func commentButtonAction() {
-        
-    }
-    
-    @IBAction func upvoteButtonAction() {
-        
-    }
-    
-    @IBAction func downvoteButtonAction() {
-        
     }
 }

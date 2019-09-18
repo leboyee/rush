@@ -498,7 +498,6 @@
 		8A4B3298232F5A5B00AC1D17 /* EventDetailLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3283232F5A5B00AC1D17 /* EventDetailLogics.swift */; };
 		8A4B3299232F5D2100AC1D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16922805F9D00721F3F /* Main.storyboard */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
-		8AE9712C23290B6800CB52D4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9712B23290B6800CB52D4 /* Post.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
 		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
@@ -583,21 +582,9 @@
 		1A649E1A2297F55A00B2E9E7 /* EnterPasswordViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewMediates.swift; sourceTree = "<group>"; };
 		1A649E1E2297FE1E00B2E9E7 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		1A663178232B8BBA0042DE0D /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
-		1A66317A232B8BBA0042DE0D /* PostImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostImagesCell.xib; sourceTree = "<group>"; };
-		1A66317B232B8BBA0042DE0D /* PostUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUserCell.swift; sourceTree = "<group>"; };
-		1A66317C232B8BBA0042DE0D /* PostUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostUserCell.xib; sourceTree = "<group>"; };
-		1A66317D232B8BBA0042DE0D /* PostImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImagesCell.swift; sourceTree = "<group>"; };
-		1A66317E232B8BBA0042DE0D /* PostTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTextCell.xib; sourceTree = "<group>"; };
-		1A66317F232B8BBA0042DE0D /* PostLikeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeCell.swift; sourceTree = "<group>"; };
-		1A663180232B8BBA0042DE0D /* PostLikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostLikeCell.xib; sourceTree = "<group>"; };
-		1A663181232B8BBA0042DE0D /* PostImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
-		1A663182232B8BBA0042DE0D /* PostTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTextCell.swift; sourceTree = "<group>"; };
-		1A663183232B8BBA0042DE0D /* PostImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostImageCell.xib; sourceTree = "<group>"; };
-		1A663184232B8BBA0042DE0D /* CreatePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostCell.swift; sourceTree = "<group>"; };
 		1A663185232B8BBA0042DE0D /* OrganizerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizerCell.xib; sourceTree = "<group>"; };
 		1A663186232B8BBA0042DE0D /* EventAboutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventAboutCell.xib; sourceTree = "<group>"; };
 		1A663187232B8BBA0042DE0D /* OrganizerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerCell.swift; sourceTree = "<group>"; };
-		1A663188232B8BBA0042DE0D /* CreatePostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePostCell.xib; sourceTree = "<group>"; };
 		1A663189232B8BBA0042DE0D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		1A66318A232B8BBA0042DE0D /* EventAboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAboutCell.swift; sourceTree = "<group>"; };
 		1A66318B232B8BBA0042DE0D /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -1025,7 +1012,6 @@
 		8A4B3282232F5A5B00AC1D17 /* EventDetailMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailMediator.swift; sourceTree = "<group>"; };
 		8A4B3283232F5A5B00AC1D17 /* EventDetailLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailLogics.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
-		8AE9712B23290B6800CB52D4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		AF0685607954FD14AA963515 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2683,26 +2669,14 @@
 		8A4B326A232F5A1000AC1D17 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				1A66317F232B8BBA0042DE0D /* PostLikeCell.swift */,
-				1A66317B232B8BBA0042DE0D /* PostUserCell.swift */,
-				1A663182232B8BBA0042DE0D /* PostTextCell.swift */,
-				1A663184232B8BBA0042DE0D /* CreatePostCell.swift */,
-				1A663181232B8BBA0042DE0D /* PostImageCell.swift */,
 				1A663189232B8BBA0042DE0D /* LocationCell.swift */,
 				1A663187232B8BBA0042DE0D /* OrganizerCell.swift */,
-				1A66317D232B8BBA0042DE0D /* PostImagesCell.swift */,
 				1A66318D232B8BBA0042DE0D /* EventDetailLogics.swift */,
 				1A66318B232B8BBA0042DE0D /* EventDetailViewController.swift */,
 				1A66318C232B8BBA0042DE0D /* EventDetailMediator.swift */,
 				1A66318A232B8BBA0042DE0D /* EventAboutCell.swift */,
-				1A663188232B8BBA0042DE0D /* CreatePostCell.xib */,
-				1A663180232B8BBA0042DE0D /* PostLikeCell.xib */,
-				1A66317A232B8BBA0042DE0D /* PostImagesCell.xib */,
 				1A663178232B8BBA0042DE0D /* LocationCell.xib */,
 				1A663186232B8BBA0042DE0D /* EventAboutCell.xib */,
-				1A66317C232B8BBA0042DE0D /* PostUserCell.xib */,
-				1A663183232B8BBA0042DE0D /* PostImageCell.xib */,
-				1A66317E232B8BBA0042DE0D /* PostTextCell.xib */,
 				1A663185232B8BBA0042DE0D /* OrganizerCell.xib */,
 			);
 			name = "Recovered References";
@@ -2816,7 +2790,6 @@
 				8A04B14422FB042E0055C65F /* Event.swift */,
 				8A1076BF2306BC2600512AA3 /* Tag.swift */,
 				79DA00BB233219A1006B3A65 /* Post.swift */,
-
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2965,7 +2938,6 @@
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
 				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
 				79D456EE232FAC86001FFDA0 /* ClubHeader.xib in Resources */,
-				8A0345C02322AE270065CF3C /* LocationCell.xib in Resources */,
 				7999362D22FAEDAC001AEEEB /* ChatUserCell.xib in Resources */,
 				1AC635FB22AA8F6900021E03 /* CustomNavBarPageController.xib in Resources */,
 				7903D0AC228E8CE5004E33B9 /* EventTypeCell.xib in Resources */,
@@ -3301,7 +3273,6 @@
 				1ACEAC1822AC294200B734D3 /* CustomCameraExtension.swift in Sources */,
 				1A2809EC22C60E6700B4E764 /* ClassesCell.swift in Sources */,
 				7903D0AD228E8CE5004E33B9 /* EventTypeCellLogics.swift in Sources */,
-				8AE9712C23290B6800CB52D4 /* Post.swift in Sources */,
 				793BE67522E88207005EF72D /* MessageKind.swift in Sources */,
 				7983D22E228982DC00DE054E /* Keys.swift in Sources */,
 				7958B7FD22C4E8E000A66BDC /* ClubListMediates.swift in Sources */,
@@ -3625,6 +3596,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3679,6 +3651,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -3700,6 +3673,76 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3724,6 +3767,76 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3782,6 +3895,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -3803,6 +3917,76 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";

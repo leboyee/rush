@@ -13,8 +13,10 @@ class Post: Codable {
     var id: String?
     var parentId: String? // Event / Club / Class
     var text: String?
+    var desc: String?
     var images: [Image]?
     var numberOfLikes: Int = 0
+    var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
     var user: User?
     var createDate: Date?
@@ -25,9 +27,11 @@ class Post: Codable {
         case text
         case images
         case numberOfLikes
+        case numberOfUnLikes
         case numberOfComments
         case user
         case createDate
+        case desc
     }
 
     init() {

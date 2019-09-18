@@ -88,9 +88,8 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 fillImageCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 3 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLikeCell, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
                 fillLikeCell(cell, indexPath)
-
                 return cell
             } else {
                 return UITableViewCell()
