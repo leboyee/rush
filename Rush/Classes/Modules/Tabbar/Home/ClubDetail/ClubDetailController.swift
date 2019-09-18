@@ -18,7 +18,7 @@ class ClubDetailViewController: UIViewController {
     
     var interestList = [String]()
     var peopleList = [String]()
-    var clubPostList: [String] = []
+    var clubPostList = [Post]()
     
     var clubImage: UIImage = #imageLiteral(resourceName: "bound-add-img")
     

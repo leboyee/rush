@@ -368,6 +368,7 @@
 		79D29CA522CF339B008C6ED0 /* ExploreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D29CA322CF339B008C6ED0 /* ExploreCell.xib */; };
 		79D456ED232FAC86001FFDA0 /* ClubHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D456EB232FAC85001FFDA0 /* ClubHeader.swift */; };
 		79D456EE232FAC86001FFDA0 /* ClubHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D456EC232FAC86001FFDA0 /* ClubHeader.xib */; };
+		79DA00BC233219A1006B3A65 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA00BB233219A1006B3A65 /* Post.swift */; };
 		79DF741D2292BA9F0012DCB7 /* SelectEventTypeLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF74192292BA9F0012DCB7 /* SelectEventTypeLogics.swift */; };
 		79DF741E2292BA9F0012DCB7 /* SelectEventTypeMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF741A2292BA9F0012DCB7 /* SelectEventTypeMediates.swift */; };
 		79DF741F2292BA9F0012DCB7 /* SelectEventTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF741B2292BA9F0012DCB7 /* SelectEventTypeViewController.swift */; };
@@ -837,6 +838,7 @@
 		79D29CA322CF339B008C6ED0 /* ExploreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreCell.xib; sourceTree = "<group>"; };
 		79D456EB232FAC85001FFDA0 /* ClubHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubHeader.swift; sourceTree = "<group>"; };
 		79D456EC232FAC86001FFDA0 /* ClubHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClubHeader.xib; sourceTree = "<group>"; };
+		79DA00BB233219A1006B3A65 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		79DF74192292BA9F0012DCB7 /* SelectEventTypeLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEventTypeLogics.swift; sourceTree = "<group>"; };
 		79DF741A2292BA9F0012DCB7 /* SelectEventTypeMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEventTypeMediates.swift; sourceTree = "<group>"; };
 		79DF741B2292BA9F0012DCB7 /* SelectEventTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEventTypeViewController.swift; sourceTree = "<group>"; };
@@ -2583,6 +2585,7 @@
 				793BE5FB22E87F5E005EF72D /* Friend.swift */,
 				8A04B14422FB042E0055C65F /* Event.swift */,
 				8A1076BF2306BC2600512AA3 /* Tag.swift */,
+				79DA00BB233219A1006B3A65 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2908,6 +2911,7 @@
 				1A3F55E82285C38800D42154 /* OnboardingLogics.swift in Sources */,
 				793BE66522E88207005EF72D /* UIView+Extensions.swift in Sources */,
 				79EF134922D3588D00E260D9 /* EventCategoryListLogics.swift in Sources */,
+				79DA00BC233219A1006B3A65 /* Post.swift in Sources */,
 				1AA97B90228979D100C4550C /* ImageResizerExtension.swift in Sources */,
 				1AB0C16322C12B22000D016E /* Authorization.swift in Sources */,
 				091557AF22B1247F0080C9AE /* CreatePostLogics.swift in Sources */,

@@ -21,7 +21,11 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            return indexPath.row == 2 ? (indexPath.section == 6 ? CGFloat.leastNormalMagnitude :  screenWidth) : UITableView.automaticDimension
+            let photos = clubPostList[indexPath.section - 6].photos
+            if indexPath.row == 2 {
+                return photos.isEmpty ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
+            }
+            return UITableView.automaticDimension
         } else {
             let auto = UITableView.automaticDimension
             return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
@@ -84,17 +88,19 @@ extension ClubDetailViewController {
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
-        let user = clubInfo?.user
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
-        cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
         cell.setup(detail: "3 events")
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
+            let user = clubPostList[indexPath.section - 6].user
+            cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
             cell.setup(bottomConstraintOfImage: 0)
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
         } else {
+            let user = clubInfo?.user
+            cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
             cell.setup(bottomConstraintOfImage: 18.5)
             cell.setup(bottomConstraintOfDate: 22)
             cell.setup(dotButtonConstraint: -24)
@@ -116,8 +122,9 @@ extension ClubDetailViewController {
     }
     
     // Textview cell (section 6 row 1)
-    func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
-        cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
+    func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
+        let post = clubPostList[indexPath.section - 6]
+        cell.setup(text: post.desc, placeholder: "")
         cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
     }
@@ -126,6 +133,13 @@ extension ClubDetailViewController {
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         cell.postImageView?.image = #imageLiteral(resourceName: "bound-add-img")
         cell.setup(isCleareButtonHide: true)
+    }
+    
+    func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+        let post = clubPostList[indexPath.section - 6]
+        cell.setup(upvote: post.upVotes)
+        cell.setup(downvote: post.downVotes)
+        cell.setup(comment: post.totalComments)
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -163,7 +177,6 @@ extension ClubDetailViewController {
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
-            Utils.hideSpinner()
             guard let uwself = self else { return }
             if let list = data {
                 if let value = list[Keys.data] as? [String: Any] {
@@ -179,8 +192,10 @@ extension ClubDetailViewController {
                     }
                 }
                 uwself.fillImageHeader()
+                uwself.getClubPostListAPI()
                 uwself.tableView.reloadData()
             } else {
+                Utils.hideSpinner()
                 Utils.alert(message: errorMsg.debugDescription)
             }
         }
@@ -197,6 +212,34 @@ extension ClubDetailViewController {
                 uwself.getClubDetailAPI()
             } else {
                 Utils.hideSpinner()
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getClubPostListAPI() {
+        
+        let param = ["data_id": clubInfo?.id ?? "",
+                     "data_type": "club",
+                     "search": "",
+                     "pageNo": 1] as [String: Any]
+        
+        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: "club", params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let list = data?[Keys.list] as? [[String: Any]] {
+                for post in list {
+                    do {
+                        let dataPost = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(Post.self, from: dataPost)
+                        uwself.clubPostList.append(value)
+                    } catch {
+                        
+                    }
+                }
+                uwself.tableView.reloadData()
+            } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
