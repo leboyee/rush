@@ -27,6 +27,8 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         tableView.reloadData()
+        
+        fillImageHeader()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,7 +81,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else if indexPath.row == 1 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
-                fillTextViewCell(cell)
+                fillTextViewCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 2 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
@@ -87,6 +89,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
+                fillLikeCell(cell, indexPath)
                 return cell
             } else {
                 return UITableViewCell()
@@ -114,9 +117,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
-            fillImageHeader(view)
-            return view
+            return UIView()
         } else {
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
             fillTextHeader(header, section)
@@ -130,6 +131,41 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
+    }
+    
+    // MARK: - Scroll Delegates
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
+        let smallHeaderHeight = headerSmallWithoutDateHeight
+        let smallHeight = smallHeaderHeight + topMergin
+        let h = heightConstraintOfHeader.constant - scrollView.contentOffset.y
+        let height = min(max(h, smallHeight), screenHeight)
+        self.heightConstraintOfHeader.constant = height
+        if !smallHeight.isEqual(to: height) {
+            tableView.contentOffset = CGPoint(x: 0, y: 0)
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+}
+
+extension ClubDetailViewController {
+    private func animateHeader() {
+        self.heightConstraintOfHeader.constant = headerFullHeight
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
     }
 }
 

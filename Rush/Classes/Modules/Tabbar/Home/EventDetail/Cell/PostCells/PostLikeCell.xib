@@ -34,7 +34,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="upvote"/>
                                 <connections>
-                                    <action selector="likeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AdK-e4-fxB"/>
+                                    <action selector="upvoteButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2HD-eo-JkW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="72" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk2-TI-rBB">
@@ -50,7 +50,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="downvote"/>
                                 <connections>
-                                    <action selector="unlikeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K8o-eg-JuD"/>
+                                    <action selector="downvoteButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0mu-X1-IIf"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sN-4n-s7r">
@@ -66,7 +66,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="comment_inactive"/>
                                 <connections>
-                                    <action selector="commentButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5ke-Gd-j3S"/>
+                                    <action selector="commentButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="64i-nD-ogT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0S-I4-6ZV">
@@ -114,8 +114,12 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="commentLabel" destination="p0S-I4-6ZV" id="lQg-q2-Oti"/>
-                <outlet property="likeLabel" destination="Dk2-TI-rBB" id="cKN-ix-Zwd"/>
+                <outlet property="commentButton" destination="rft-VF-HcK" id="5Au-pf-eWj"/>
+                <outlet property="commentCountLabel" destination="p0S-I4-6ZV" id="Kw0-GK-lcF"/>
+                <outlet property="downvoteButton" destination="BqM-9B-62n" id="qJe-X1-KJL"/>
+                <outlet property="downvoteCountLabel" destination="9sN-4n-s7r" id="zug-Bf-2kY"/>
+                <outlet property="upvoteButton" destination="qAn-Tb-G1H" id="igE-t0-hYY"/>
+                <outlet property="upvoteCountLabel" destination="Dk2-TI-rBB" id="WdP-dh-x4I"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="81.696428571428569"/>
         </tableViewCell>

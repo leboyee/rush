@@ -17,6 +17,7 @@ extension AppDelegate {
         //KeyboardManager
         setupIQKeyboardManager()
         setupGoogle()
+        connectSendbird()
     }
     
     func setupIQKeyboardManager() {
@@ -36,7 +37,7 @@ extension AppDelegate {
 extension AppDelegate: SBDChannelDelegate {
     
     func connectSendbird() {
-        SBDMain.initWithApplicationId("834DA8CF-7324-450C-96EC-")
+        SBDMain.initWithApplicationId("586E0DEA-1868-4E61-9320-38CC32310696")
         SBDMain.add(self as SBDChannelDelegate, identifier: "AppDelegate")
         
         //Connect with Chat Server

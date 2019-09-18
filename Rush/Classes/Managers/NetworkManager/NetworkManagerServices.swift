@@ -105,6 +105,22 @@ extension NetworkManager {
         requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
     }
     
+    func postComment(param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "comment", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
+    func votePost(postId: String, voteType: String, resultHandler: @escaping ResultClosure) {
+        requestPut(path: "post/\(postId)/vote/\(voteType)", params: [:], contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
+    func fetchPostList(dataId: String, type: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "\(type)/\(dataId)/post/list", params: params, resultHandler: resultHandler)
+    }
+    
+    func joinClub(clubId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "club/\(clubId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
     // MARK: - Events
     func getEventDetail(eventId: String, resultHandler: @escaping ResultClosure) {
         requestGet(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)

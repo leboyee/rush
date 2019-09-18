@@ -13,9 +13,7 @@ import IQKeyboardManagerSwift
 extension CreateClubViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        // Navigaiton height + cornerRadius height + changePhotoLabelOrigin
-        let total = ((Utils.navigationHeigh*2) + 24 + 216)
-        return section == 0 ? total : CGFloat.leastNormalMagnitude
+        return section == 0 ? 20 : CGFloat.leastNormalMagnitude
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -105,11 +103,11 @@ extension CreateClubViewController {
                         unself.tableView.reloadData()
                     }
                 } else if indexPath.section == 3 {
-
-//                    if !self_.peopleList.contains(txt) {
-//                        self_.peopleList.append(txt)
-//                        self_.tableView.reloadData()
-//                    }
+                    
+                    //                    if !self_.peopleList.contains(txt) {
+                    //                        self_.peopleList.append(txt)
+                    //                        self_.tableView.reloadData()
+                    //                    }
                 }
             }
             unself.validateAllFields()
@@ -152,13 +150,9 @@ extension CreateClubViewController {
         }
     }
     
-    func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(image: clubImage)
-        view.addPhotoButtonEvent = { [weak self] () in
-            guard let unself = self else { return }
-            unself.openCameraOrLibrary(type: .photoLibrary)
-            
-        }
+    func fillImageHeader() {
+        clubHeader.setup(image: clubImage)
+        clubHeader.delegate = self
     }
 }
 
@@ -216,9 +210,12 @@ extension CreateClubViewController {
     
     func validateAllFields() {
         if clubImage != nil && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
-            navigationItem.rightBarButtonItem = saveBtnActive
+            saveButton.isEnabled = true
+            saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
         } else {
-            navigationItem.rightBarButtonItem = saveBtnDisActive// saveBtnDisActive
+            // saveBtnDisActive
+            saveButton.isEnabled = false
+            saveButton.setImage(#imageLiteral(resourceName: "save-dark"), for: .normal)
         }
     }
 }
@@ -251,7 +248,7 @@ extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigatio
             DispatchQueue.main.async {
                 self.clubImage = captureImage
                 self.validateAllFields()
-                self.tableView.reloadData()
+                self.fillImageHeader()
                 picker.dismiss(animated: true, completion: nil)
             }
         }
@@ -282,12 +279,18 @@ extension CreateClubViewController {
                      Keys.clubPhoto: img] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.createClub(params: param) { [weak self] (status, errMessage) in
+        ServiceManager.shared.createClub(params: param) { [weak self] (data, errMessage) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if status {
-                unsafe.navigationController?.popViewController(animated: true)
-                // unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: nil)
+            if let club = data?[Keys.club] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Club.self, from: dataClub)
+                    unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: value)
+                } catch {
+                    
+                }
             } else {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }

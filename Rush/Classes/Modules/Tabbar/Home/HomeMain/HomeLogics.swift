@@ -116,8 +116,7 @@ extension HomeViewController {
 extension HomeViewController {
     func getClubListAPI(sortBy: String) {
         clubList.removeAll()
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
-                     Keys.search: searchText,
+        let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
         

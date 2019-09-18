@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SendBirdSDK
 import IQKeyboardManagerSwift
 
 class ChatsViewController: CustomViewController {
@@ -16,13 +17,14 @@ class ChatsViewController: CustomViewController {
     
     var searchText = ""
     var isSearch = false
-    var chatlist: [String] = ["Fine art", "Marta Keller", "Adam Batler", "Marta Mulla", "Julia Herber", "Peter Conner"] {
+    
+    var filterList: [SBDGroupChannel] = []
+    var searchField: UITextField!
+    var channels: [SBDGroupChannel] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-    var filterList = [String]()
-    var searchField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,21 +41,18 @@ class ChatsViewController: CustomViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
     }
     
     func setup() {
         setupUI()
+        getListOfGroups()
     }
     
     func setupUI() {
         blankView.isHidden = true
-        
-        // Test
-        filterList = chatlist
+        filterList = channels
         
         setupTableView()
-        
         setupNavigation()
     }
     
@@ -69,9 +68,7 @@ class ChatsViewController: CustomViewController {
         
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
-        
         let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 72, height: 44))
-        
         let label = UILabel(frame: CGRect(x: 0, y: 5, width: screenWidth - 72, height: 30))
         label.text = "Search in chats"
         label.font = UIFont.displayBold(sz: 24)
@@ -82,7 +79,6 @@ class ChatsViewController: CustomViewController {
         searchButton.addTarget(self, action: #selector(openSearchChatScreenButtonAction), for: .touchUpInside)
         
         navigationItem.titleView = customView
-        
         navigationItem.leftBarButtonItem = nil
     }
     
@@ -131,7 +127,7 @@ extension ChatsViewController {
     
     @objc func clearButtonAction() {
         searchField.text = ""
-        chatlist = filterList
+        channels = filterList
     }
 }
 
@@ -140,13 +136,11 @@ extension ChatsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.searchChatSegue {
-            if let vc = segue.destination as? ChatsViewController {
-                vc.isSearch = true
-            }
+            guard let vc = segue.destination as? ChatsViewController else { return }
+            vc.isSearch = true
         } else if segue.identifier == Segues.chatContactListSegue {
-            if let vc = segue.destination as? ChatContactsListViewController {
-                vc.hidesBottomBarWhenPushed = true
-            }
+            guard let vc = segue.destination as? ChatContactsListViewController else { return }
+            vc.hidesBottomBarWhenPushed = true
         }
     }
 }
