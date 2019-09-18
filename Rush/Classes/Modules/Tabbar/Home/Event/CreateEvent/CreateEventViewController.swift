@@ -33,7 +33,8 @@ class CreateEventViewController: UIViewController {
     var isEndDate: Bool = false
     var isStartTime: Bool = false
     var isEndTime: Bool = false
-    
+    var isCreateGroupChat = true
+
     var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
@@ -108,7 +109,7 @@ extension CreateEventViewController {
     }
     
     @objc func saveButtonAction() {
-
+        createEventAPI()
     }
     
     @IBAction func addImageButtonAction() {
@@ -187,42 +188,30 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
     func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
         DispatchQueue.main.async {
             if type == .photoLibrary {
-                let status = PHPhotoLibrary.authorizationStatus()
-                guard status == .authorized else {
-                    Utils.photoLibraryPermissionAlert()
-                    return
-                }
+                Utils.authorizePhoto(completion: { [weak self] (status) in
+                    guard let unsafe = self else { return }
+                    if status == .alreadyAuthorized || status == .justAuthorized {
+                        unsafe.picker = ImagePickerController()
+                        unsafe.picker.delegate = self
+                        unsafe.picker.navigationBar.isTranslucent = false
+                        var assets = [PHAsset]()
+                        for img in unsafe.imageList {
+                            if let value = img as? PHAsset { assets.append(value) }
+                        }
+                        unsafe.picker.updateSelectedAssets(with: assets)
+                        unsafe.present(unsafe.picker, animated: false, completion: nil)
+                    } else {
+                        if status != .justDenied {
+                            Utils.photoLibraryPermissionAlert()
+                        }
+                    }
+                })
             } else {
                 let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
                 guard status == .authorized else {
                     Utils.alertCameraAccessNeeded()
                     return
                 }
-            }
-            
-            if type == .photoLibrary {
-                self.picker = ImagePickerController()
-                self.picker.delegate = self
-                self.picker.navigationBar.isTranslucent = false
-                var assets = [PHAsset]()
-                for img in self.imageList {
-                    if let value = img as? PHAsset { assets.append(value) }
-                }
-                self.picker.updateSelectedAssets(with: assets)
-                self.present(self.picker, animated: false, completion: nil)
-            } else {
-                // Camera
-                let camera = DKCamera()
-                camera.didCancel = {
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-                camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
-                    if let img = image { self.imageList.append(img) }
-                    self.tableView.reloadData()
-                    self.dismiss(animated: true, completion: nil)
-                }
-                self.present(camera, animated: true, completion: nil)
             }
         }
     }
@@ -287,5 +276,6 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
         } else if let image = imageAsset as? UIImage {
             eventImage = image
         }
+        validateAllFields()
     }
 }

@@ -61,7 +61,7 @@
                     <connections>
                         <outlet property="tableView" destination="Qgn-V2-eM6" id="8bm-Zv-ZU3"/>
                         <outlet property="topConstraintOfTableView" destination="Uij-lB-sZS" id="6dB-oX-Rzg"/>
-                        <segue destination="Sc4-IO-QLc" kind="presentation" identifier="SelectEventTypeViewSegue" modalPresentationStyle="overFullScreen" id="vC1-tG-MY8"/>
+                        <segue destination="Sc4-IO-QLc" kind="presentation" identifier="SelectEventTypeViewSegue" animates="NO" modalPresentationStyle="overFullScreen" id="vC1-tG-MY8"/>
                         <segue destination="FDc-47-a8H" kind="presentation" identifier="AddRSVPSegue" modalPresentationStyle="overFullScreen" id="IUX-G9-vGa"/>
                         <segue destination="Ac2-3j-9pY" kind="presentation" identifier="AddLocationSegue" id="ZX7-PM-Tk3"/>
                     </connections>

@@ -274,7 +274,11 @@ extension CreateEventViewController {
     }
     
     func validateAllFields() {
-        if eventImage != nil && nameEvent.isNotEmpty && eventDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+        var array = rsvpArray
+        if array.last?.isEmpty == true {
+            array.remove(at: array.count - 1)
+        }
+        if eventImage != nil && nameEvent.isNotEmpty && eventDescription.isNotEmpty && address.isNotEmpty && array.count > 0 {
             navigationItem.rightBarButtonItem = saveBtnActive
         } else {
             navigationItem.rightBarButtonItem = saveBtnDisActive// saveBtnDisActive
@@ -316,15 +320,16 @@ extension CreateEventViewController: CalendarViewDelegate {
     }
     
     func selectedDate(date: Date) {
+        let newDate = Date().convertDateToDate(date: date)
         if isStartDate == true {
-            self.startDate = date
-            if date > endDate {
-                endDate = date
+            self.startDate = newDate
+            if newDate > endDate {
+                endDate = newDate
             }
         } else if isEndDate == true {
-            self.endDate = date
-            if startDate > date {
-                startDate = date
+            self.endDate = newDate
+            if startDate > newDate {
+                startDate = newDate
             }
         }
         resetDateFileds()
@@ -352,6 +357,7 @@ extension CreateEventViewController: AddRsvpDelegate {
     func addRsvpData(_ rsvpArray: [String]) {
         self.rsvpArray.append(contentsOf: rsvpArray)
         self.tableView.reloadData()
+        self.validateAllFields()
     }
 }
 
@@ -362,5 +368,63 @@ extension CreateEventViewController: AddEventLocationDelegate {
         self.latitude = latitude
         self.longitude = longitude
         self.tableView.reloadData()
+        self.validateAllFields()
+    }
+}
+
+// MARK: - Services
+extension CreateEventViewController {
+    
+    func createEventAPI() {
+        
+        let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
+        let interests = interestList.joined(separator: ",")
+        let userIds = "5d5d213239277643e20f9bf1,5d3066d3392776515c7df011"
+        var array = rsvpArray
+        if array.last?.isEmpty == true {
+            array.remove(at: array.count - 1)
+        }
+        
+        let startDateString = Date().customeFormatDateToString(date: self.startDate, format: "yyyy-MM-dd") + " 12:00 pm"
+        let startUtcDate = Date().localToUTC(date: startDateString)
+        let endDateString = Date().customeFormatDateToString(date: self.endDate, format: "yyyy-MM-dd") + " 13:00 pm"
+        let endUtcDate = Date().localToUTC(date: endDateString)
+        print(startUtcDate)
+        print(endUtcDate)
+        var rsvpJson: String = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: array)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                rsvpJson = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        let param = [Keys.createEventType: "public",
+                     Keys.eventName: self.nameEvent,
+                     Keys.eventDesc: self.eventDescription,
+                     Keys.eventRsvpList: rsvpJson,
+                     Keys.eventAddress: address,
+                     Keys.eventLatitude: "\(latitude)",
+                     Keys.eventLongitude: "\(longitude)",
+                     Keys.eventStartDate: startUtcDate,
+                     Keys.eventEndDate: endUtcDate,
+                     Keys.eventInterests: "test",
+                     Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
+                     Keys.eventInvitedUserIds: userIds,
+                     Keys.eventPhoto: img] as [String: Any]
+
+        print(param)
+        Utils.showSpinner()
+        ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.navigationController?.popViewController(animated: true)
+            } else {
+                Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
     }
 }

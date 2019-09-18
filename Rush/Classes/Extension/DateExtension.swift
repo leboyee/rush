@@ -96,6 +96,31 @@ extension Date {
         return Calendar.current.date(from: dc)!
     }
     
+    public func localToUTC(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+        dateFormatter.calendar = NSCalendar.current
+        dateFormatter.timeZone = TimeZone.current
+        
+        let newDate = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd H:mm:ss"
+        
+        return dateFormatter.string(from: newDate ?? Date())
+    }
+    
+    public func UTCToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "H:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let newDate = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter.string(from: newDate ?? Date())
+    }
+    
     public static func secondsBetween(date1 d1: Date, date2 d2: Date) -> Int {
         let dc = Calendar.current.dateComponents([.second], from: d1, to: d2)
         return dc.second!
@@ -228,9 +253,22 @@ extension Date {
         return formatter.date(from: dateString)
     }
     
+    public func convertDateToDate(date: Date) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        return formatter.date(from: dateString) ?? Date()
+    }
+    
     func starnderDateFormate(date: Date) -> String {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "dd.MM.yyyy"
+        return timeFormatter.string(from: date)
+    }
+    
+    func customeFormatDateToString(date: Date, format: String) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = format
         return timeFormatter.string(from: date)
     }
     
@@ -255,6 +293,12 @@ extension Date {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "yyyy-MM-dd"
         return timeFormatter.date(from: dateString)!
+    }
+    
+    func standardServerFormatterString(date: Date) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd"
+        return timeFormatter.string(from: date) 
     }
     
     func eventDateFormat(date: Date) -> String {
