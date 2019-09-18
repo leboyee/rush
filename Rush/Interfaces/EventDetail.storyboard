@@ -172,21 +172,22 @@
                     </view>
                     <connections>
                         <outlet property="joinButton" destination="v4c-gL-krz" id="40h-kz-Y4b"/>
-                        <outlet property="joinButtonView" destination="0ZM-Up-cPu" id="qyb-BP-xUg"/>
+                        <outlet property="joinButtonView" destination="5Tl-px-DXx" id="vNZ-sa-Ymm"/>
                         <outlet property="tableView" destination="cQO-6y-JMO" id="hJo-N8-mCL"/>
-                        <segue destination="ayU-bi-RPv" kind="presentation" modalPresentationStyle="overFullScreen" id="d2P-Hw-Eph"/>
+                        <segue destination="ayU-bi-RPv" kind="presentation" identifier="EventJoinedPopupSegue" modalPresentationStyle="overFullScreen" id="d2P-Hw-Eph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view clipsSubviews="YES" contentMode="scaleToFill" id="0ZM-Up-cPu">
-                    <rect key="frame" x="0.0" y="0.0" width="359" height="80"/>
+                <view contentMode="scaleToFill" id="5Tl-px-DXx" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-gL-krz">
-                            <rect key="frame" x="24" y="16" width="311" height="48"/>
+                        <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-gL-krz">
+                            <rect key="frame" x="24" y="16" width="366" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="48" id="e8p-CM-CUQ"/>
+                                <constraint firstAttribute="height" constant="48" id="MSb-oX-dbh"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="EkW-l4-C4F"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                             <state key="normal" title="Join" backgroundImage="bg-button-main-brown">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -194,16 +195,19 @@
                             <state key="disabled" backgroundImage="bg-button-main">
                                 <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="joinButtonAction" destination="EfL-qI-UY9" eventType="touchUpInside" id="1vO-Dc-7QS"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="v4c-gL-krz" secondAttribute="bottom" constant="16" id="9VD-KE-ayR"/>
-                        <constraint firstItem="v4c-gL-krz" firstAttribute="top" secondItem="0ZM-Up-cPu" secondAttribute="top" constant="16" id="Uix-lk-DDV"/>
-                        <constraint firstItem="v4c-gL-krz" firstAttribute="leading" secondItem="0ZM-Up-cPu" secondAttribute="leading" constant="24" id="ght-jb-nse"/>
-                        <constraint firstAttribute="trailing" secondItem="v4c-gL-krz" secondAttribute="trailing" constant="24" id="nlk-oy-9Pw"/>
+                        <constraint firstItem="v4c-gL-krz" firstAttribute="leading" secondItem="6IL-X6-tdP" secondAttribute="leading" constant="24" id="IYC-lq-9vE"/>
+                        <constraint firstItem="6IL-X6-tdP" firstAttribute="trailing" secondItem="v4c-gL-krz" secondAttribute="trailing" constant="24" id="JSd-ga-A1U"/>
+                        <constraint firstAttribute="bottom" secondItem="v4c-gL-krz" secondAttribute="bottom" constant="36" id="WGP-zk-YT7"/>
+                        <constraint firstItem="v4c-gL-krz" firstAttribute="top" secondItem="5Tl-px-DXx" secondAttribute="top" constant="16" id="apR-sb-ipe"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="xkU-q0-grq"/>
+                    <viewLayoutGuide key="safeArea" id="6IL-X6-tdP"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="2637.68115942029" y="-666.29464285714278"/>

@@ -8,9 +8,14 @@
 
 import UIKit
 
-struct RSVPAnswer {
+struct RSVPAnswer: Codable {
     var index: Int
     var answer: String
+    
+     private enum CodingKeys: String, CodingKey {
+        case index
+        case answer
+    }
 }
 
 class RSVPViewController: UIViewController {
@@ -21,6 +26,8 @@ class RSVPViewController: UIViewController {
 
     var event: Event?
     var answers = [RSVPAnswer]()
+    //TODO: Temp Variable
+    let questionCount = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +56,8 @@ extension RSVPViewController: UIGestureRecognizerDelegate {
     
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
-        
+        tabBarController?.tabBar.isHidden = true
+
         //left gesture when back button hide or replaced
         if let gesture = navigationController?.interactivePopGestureRecognizer {
             gesture.delegate = self
@@ -64,7 +72,8 @@ extension RSVPViewController: UIGestureRecognizerDelegate {
 extension RSVPViewController {
 
     @IBAction func joinButtonAction() {
-        
+        view.endEditing(true)
+        joinEvent()
     }
 }
 
@@ -73,5 +82,21 @@ extension RSVPViewController {
 
     func toggleJoinButton(isEnbled: Bool) {
         joinButton.isEnabled = isEnbled
+    }
+    
+    func joinSuccessfully() {
+        performSegue(withIdentifier: Segues.eventJoinedPopup, sender: nil)
+        navigationController?.popViewController(animated: false)
+    }
+}
+
+// MARK: - Navigation
+extension RSVPViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.eventJoinedPopup {
+            let vc = segue.destination as? EventJoinedPopupViewController
+            vc?.event = event
+        }
     }
 }

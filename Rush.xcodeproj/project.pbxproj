@@ -153,6 +153,7 @@
 		1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */; };
 		1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */; };
 		1AEB56AB22E842730041EAA7 /* AddInviteViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */; };
+		4F4B6BEE90EEE4B3AD27659B /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D098228E8CE5004E33B9 /* EventByDateCell.swift */; };
 		7903D0AA228E8CE5004E33B9 /* EventByDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7903D099228E8CE5004E33B9 /* EventByDateCell.xib */; };
 		7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */; };
@@ -496,10 +497,11 @@
 		8A4B3299232F5D2100AC1D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16922805F9D00721F3F /* Main.storyboard */; };
 		8A4B329D2331041700AC1D17 /* JoinRSVPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B329B2331041700AC1D17 /* JoinRSVPCell.swift */; };
 		8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */; };
+		8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */; };
+		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9712C23290B6800CB52D4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9712B23290B6800CB52D4 /* Post.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
-		910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A38E461961549A216E72C56 /* Pods_Rush.framework */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
@@ -1022,6 +1024,12 @@
 		8A4B3283232F5A5B00AC1D17 /* EventDetailLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailLogics.swift; sourceTree = "<group>"; };
 		8A4B329B2331041700AC1D17 /* JoinRSVPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRSVPCell.swift; sourceTree = "<group>"; };
 		8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinRSVPCell.xib; sourceTree = "<group>"; };
+		8A4B329F2332129900AC1D17 /* DKCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4B32A12332129900AC1D17 /* DKImagePickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKImagePickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4B32A32332129900AC1D17 /* DKPhotoGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKPhotoGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBottomCell.xib; sourceTree = "<group>"; };
+		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9712B23290B6800CB52D4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -1041,7 +1049,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				910F4BE7B096715EE8B26614 /* Pods_Rush.framework in Frameworks */,
+				4F4B6BEE90EEE4B3AD27659B /* Pods_Rush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2727,10 +2735,12 @@
 		8A4B326F232F5A5B00AC1D17 /* PostCells */ = {
 			isa = PBXGroup;
 			children = (
-				8A4B3270232F5A5B00AC1D17 /* PostImagesCell.xib */,
+				8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */,
+				8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */,
 				8A4B3271232F5A5B00AC1D17 /* PostUserCell.swift */,
 				8A4B3272232F5A5B00AC1D17 /* PostUserCell.xib */,
 				8A4B3273232F5A5B00AC1D17 /* PostImagesCell.swift */,
+				8A4B3270232F5A5B00AC1D17 /* PostImagesCell.xib */,
 				8A4B3274232F5A5B00AC1D17 /* PostTextCell.xib */,
 				8A4B3275232F5A5B00AC1D17 /* PostLikeCell.swift */,
 				8A4B3276232F5A5B00AC1D17 /* PostLikeCell.xib */,
@@ -2887,6 +2897,10 @@
 		E0D07A7EEDAE4D845F7A28B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A4B329F2332129900AC1D17 /* DKCamera.framework */,
+				8A4B32A12332129900AC1D17 /* DKImagePickerController.framework */,
+				8A4B32A32332129900AC1D17 /* DKPhotoGallery.framework */,
+				8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */,
 				6A38E461961549A216E72C56 /* Pods_Rush.framework */,
 			);
 			name = Frameworks;
@@ -2995,6 +3009,7 @@
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
+				8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */,
 				8A04B1902301796A0055C65F /* CalendarView.xib in Resources */,
 				79C1AC5822A65507003C7790 /* ProfileInformationCell.xib in Resources */,
 				79BE868C22A94E9F0056529E /* FriendClubCell.xib in Resources */,
@@ -3371,6 +3386,7 @@
 				1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */,
 				1A142EC7229EC1A0002C1AFE /* CustomPickerPreseneter.swift in Sources */,
 				793BE66E22E88207005EF72D /* TextMessageSizeCalculator.swift in Sources */,
+				8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */,
 				79E313D522A5027800DA22B4 /* NotificationAlertViewController.swift in Sources */,
 				79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */,
 				7965E427229ECF22004E3CA2 /* CreateUserPostCell.swift in Sources */,
@@ -3696,6 +3712,78 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
@@ -3719,6 +3807,78 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3798,6 +3958,78 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";

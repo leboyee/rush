@@ -62,7 +62,20 @@ extension EventDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
+        if indexPath.section > (sections?.count ?? 0) - 1, postCellType(indexPath: indexPath) == .image {
+            let index = indexPath.section - (sections?.count ?? 0)
+            if let post = postlist?[index] {
+                let itemsCount = post.images?.count ?? 0
+                var count = itemsCount % 2 == 0 ? itemsCount : itemsCount - 1
+                if itemsCount == 1 {
+                    count = 1
+                } else if itemsCount >= 6 {
+                    count = 6
+                }
+                let height = (CGFloat(count) / 2.0) * (screenWidth / 2.0)
+                return height
+            }
+        } else if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
             if eventSection.type == .people {
                 return friendHeight
             }
@@ -179,7 +192,7 @@ extension EventDetailViewController {
         }
     }
     
-    func fillPostLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+    func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postlist?[index] {
             cell.set(numberOfLike: post.numberOfLikes)
