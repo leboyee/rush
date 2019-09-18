@@ -81,6 +81,10 @@ extension NetworkManager {
         requestGet(path: "interest", params: params, resultHandler: resultHandler)
     }
 
+    func getImageList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "profile/photo", params: params, resultHandler: resultHandler)
+    }
+    
     func getFriendList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "friend", params: params, resultHandler: resultHandler)
     }

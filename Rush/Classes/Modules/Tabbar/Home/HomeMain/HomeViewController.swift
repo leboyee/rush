@@ -153,6 +153,5 @@ extension HomeViewController {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             vc.type = .other
         }
-        
     }
 }

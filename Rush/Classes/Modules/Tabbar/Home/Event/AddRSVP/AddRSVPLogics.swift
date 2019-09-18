@@ -46,8 +46,6 @@ extension AddRSVPViewController {
             guard let unself = self else { return }
             unself.validateAllFields()
         }
-
-      
     }
     
 }
@@ -59,4 +57,3 @@ extension AddRSVPViewController {
        
     }
 }
-

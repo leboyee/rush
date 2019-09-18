@@ -11,6 +11,7 @@ import UIKit
 class EventJoinedPopupViewController: UIViewController {
 
     @IBOutlet weak var verticalCentreConstraint: NSLayoutConstraint!
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,16 @@ extension EventJoinedPopupViewController {
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
+            if let tabbar = self.presentingViewController as? CustomTabbarViewController {
+                if let navigationController = tabbar.selectedViewController as? UINavigationController {
+                    navigationController.viewControllers.forEach({ (vc) in
+                        if vc.isKind(of: EventDetailViewController.self) {
+                           (vc as? EventDetailViewController)?.type = .joined
+                           (vc as? EventDetailViewController)?.loadAllData()
+                        }
+                    })
+                }
+            }
         })
     }
     

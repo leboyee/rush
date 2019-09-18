@@ -102,4 +102,3 @@ extension AddRSVPViewController: UIScrollViewDelegate {
         }
     }
 }
-

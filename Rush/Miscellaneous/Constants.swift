@@ -82,6 +82,8 @@ struct Cell {
     static let postText            = "PostTextCell"
     static let postImages          = "PostImagesCell"
     static let postImage           = "PostImageCell"
+    static let joinRSVP            = "JoinRSVPCell"
+    static let postBottom          = "PostBottomCell"
 
 }
 
@@ -159,6 +161,7 @@ struct Segues {
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
     static let addRSVP                             = "AddRSVPSegue"
+    static let eventJoinedPopup                    = "EventJoinedPopupSegue"
 }
 
 struct StoryBoard {
@@ -325,7 +328,6 @@ enum PhotoFrom {
     case cameraRoll
     case unSplash
 }
-
 
 enum PasswordFormate {
     case none
