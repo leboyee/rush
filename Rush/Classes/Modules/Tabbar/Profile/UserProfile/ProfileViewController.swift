@@ -27,7 +27,14 @@ class ProfileViewController: UIViewController {
     var profileDetail = ProfileDetail()
     var headerFullHeight: CGFloat = 344
     let headerSmallHeight: CGFloat = 170
-    var isOtherUserProfile: Bool = false
+    var isOtherUserProfile: Bool {
+        return profileDetail.profile?.userId == Authorization.shared.profile?.userId
+    }
+    var notificationPageNo: Int = 1
+    var notificationNextPageExist = false
+    
+    let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
+    let downloadGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,15 @@ class ProfileViewController: UIViewController {
         loadAllData()
         tableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        downloadGroup.notify(queue: downloadQueue) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -56,7 +72,6 @@ extension ProfileViewController {
     
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
-     
         if isOtherUserProfile {
             backButton.isHidden = false
             settingsButton.isHidden = true
@@ -150,7 +165,6 @@ extension ProfileViewController {
                          (profileDetail.profile?.university ?? "")
         header.set(university: university)
         header.set(url: profileDetail.profile?.photo?.url())
-        tableView.reloadData()
     }
     
     func showEditProfile() {
@@ -182,7 +196,6 @@ extension ProfileViewController {
         if segue.identifier == Segues.profileFriendProfile {
             let vc = segue.destination as? ProfileViewController
             vc?.profileDetail.profile = sender as? Profile
-            vc?.isOtherUserProfile = true
         }
     }
 }
