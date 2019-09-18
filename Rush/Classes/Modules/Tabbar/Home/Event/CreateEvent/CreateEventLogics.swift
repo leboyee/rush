@@ -351,7 +351,6 @@ extension CreateEventViewController: SelectEventTypeDelegate {
         }
     }
 }
-<<<<<<< HEAD
 
 // MARK: - Add Rsvp Delegate
 extension CreateEventViewController: AddRsvpDelegate {
@@ -429,5 +428,3 @@ extension CreateEventViewController {
         }
     }
 }
-=======
->>>>>>> develop

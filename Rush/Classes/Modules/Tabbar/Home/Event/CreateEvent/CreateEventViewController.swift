@@ -193,6 +193,7 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
                     if status == .alreadyAuthorized || status == .justAuthorized {
                         unsafe.picker = ImagePickerController()
                         unsafe.picker.delegate = self
+                        unsafe.picker.isSingleSelection = true
                         unsafe.picker.navigationBar.isTranslucent = false
                         var assets = [PHAsset]()
                         for img in unsafe.imageList {

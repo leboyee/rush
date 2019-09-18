@@ -67,8 +67,6 @@ extension AddRSVPViewController: UITableViewDelegate, UITableViewDataSource {
        return cellHeight(indexPath)
     }
 }
-<<<<<<< HEAD
-=======
 
 // MARK: - Scrollview delegate
 extension AddRSVPViewController: UIScrollViewDelegate {
@@ -102,4 +100,3 @@ extension AddRSVPViewController: UIScrollViewDelegate {
         }
     }
 }
->>>>>>> develop

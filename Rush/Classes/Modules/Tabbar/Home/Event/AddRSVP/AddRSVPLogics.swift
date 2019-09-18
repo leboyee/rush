@@ -54,7 +54,6 @@ extension AddRSVPViewController {
             }
             unself.validateAllFields()
         }
-<<<<<<< HEAD
         
         cell.updateTableView = { [weak self] (textView) in
                 guard let unsafe = self else { return }
@@ -72,8 +71,6 @@ extension AddRSVPViewController {
                 UIView.setAnimationsEnabled(true)
             }
         }
-=======
->>>>>>> develop
     }
     
 }
