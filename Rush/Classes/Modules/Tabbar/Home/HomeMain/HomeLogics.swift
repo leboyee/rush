@@ -122,20 +122,11 @@ extension HomeViewController {
         
         Utils.showSpinner()
 
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unowned = self else { return }
-            if let list = data?[Keys.list] as? [[String: Any]] {
-                for club in list {
-                    do {
-                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
-                        let decoder = JSONDecoder()
-                        let value = try decoder.decode(Club.self, from: dataClub)
-                        unowned.clubList.append(value)
-                    } catch {
-                        
-                    }
-                }
+            if let clubs = value {
+                unowned.clubList = clubs
                 unowned.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

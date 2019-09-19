@@ -25,9 +25,9 @@ extension EventTypeCell {
         } else if type == .clubs || type == .clubsJoined {
             if let clubList = list as? [Club] {
                 let club = clubList[indexPath.item]
-                cell.setup(eventName: club.clubName)
-                cell.setup(eventDetail: club.clubDesc)
-                let img = Image(json: club.clubPhoto)
+                cell.setup(eventName: club.clubName ?? "")
+                cell.setup(eventDetail: club.clubDesc ?? "")
+                let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
                 let clubId = club.clubUserId
                 let userId = Authorization.shared.profile?.userId ?? ""

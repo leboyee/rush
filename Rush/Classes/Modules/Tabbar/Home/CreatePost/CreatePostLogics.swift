@@ -23,7 +23,7 @@ extension CreatePostViewController {
     func userDetailCell(_ cell: UserNameTableViewCell) {
         if let club = clubInfo { // Club
             cell.setup(title: (club.user?.firstName ?? "") + " " + (club.user?.lastName ?? ""))
-            cell.setup(detail: "Posting in " + club.clubName)
+            cell.setup(detail: "Posting in " + (club.clubName ?? ""))
         } else { // Event
             
         }

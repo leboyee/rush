@@ -20,11 +20,11 @@ extension ServiceManager {
         }
     }
     
-    func fetchClubList(sortBy: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func fetchClubList(sortBy: String, params: [String: Any], closer: @escaping (_ params: [Club]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClubList(sortBy: sortBy, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
-            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (clubs, errorMessage) in
+                closer(clubs, errorMessage)
             })
         }
     }

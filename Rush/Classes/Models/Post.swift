@@ -32,7 +32,7 @@ class Post: Codable {
         case user
         case createDate
     }
-
+    
     init() {
     }
     

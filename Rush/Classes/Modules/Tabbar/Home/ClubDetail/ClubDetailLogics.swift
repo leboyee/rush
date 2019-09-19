@@ -46,8 +46,8 @@ extension ClubDetailViewController {
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
         if let club = clubInfo {
-            cell.setup(title: club.clubName)
-            cell.setup(detail: club.clubDesc, numberOfLines: isReadMore ? 0 : 2)
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "", numberOfLines: isReadMore ? 0 : 2)
             cell.setup(readmoreSelected: isReadMore)
             cell.readMoreClickEvent = { [weak self] () in
                 guard let uwself = self else { return }
