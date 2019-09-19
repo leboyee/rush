@@ -124,7 +124,7 @@ extension ClubDetailViewController {
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        cell.setup(text: post.desc ?? "", placeholder: "")
+        cell.setup(text: post.text ?? "", placeholder: "")
         cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
     }

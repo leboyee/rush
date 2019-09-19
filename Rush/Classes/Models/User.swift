@@ -8,7 +8,7 @@
 
 import UIKit
 
-class User: Decodable {
+class User: Codable {
 
     var id: String = ""
     var firstName: String = ""
@@ -81,37 +81,42 @@ class User: Decodable {
     init() {
     }
     
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try? container.encode(id, forKey: .id)
+        try? container.encode(firstName, forKey: .firstName)
+        try? container.encode(lastName, forKey: .lastName)
+        try? container.encode(email, forKey: .email)
+        try? container.encode(type, forKey: .type)
+        try? container.encode(countryCode, forKey: .countryCode)
+        try? container.encode(phone, forKey: .phone)
+        try? container.encode(eduLevel, forKey: .eduLevel)
+        try? container.encode(eduYear, forKey: .eduYear)
+        //eduMajors = (try? container?.decode(String.self, forKey: .eduMajors)
+        //eduMinors = (try? container?.decode(String.self, forKey: .eduMinors)
+        //eduClasses = (try? container?.decode(String.self, forKey: .eduClasses)
+        //interests = (try? container?.decode(String.self, forKey: .interests)
+        try? container.encode(university, forKey: .university)
+        try? container.encode(birthDate, forKey: .birthDate)
+        try? container.encode(gender, forKey: .gender)
+        try? container.encode(relationship, forKey: .relationship)
+        try? container.encode(hometown, forKey: .hometown)
+        try? container.encode(isDarkMode, forKey: .isDarkMode)
+        try? container.encode(whoCanMessage, forKey: .whoCanMessage)
+        try? container.encode(whoCanInvite, forKey: .whoCanInvite)
+        try? container.encode(isNotifyOn, forKey: .isNotifyOn)
+        try? container.encode(isEventNotify, forKey: .isEventNotify)
+        try? container.encode(isClassNotify, forKey: .isClassNotify)
+        try? container.encode(latitude, forKey: .latitude)
+        try? container.encode(longitude, forKey: .longitude)
+        try? container.encode(createdAt, forKey: .createdAt)
+        try? container.encode(updatedAt, forKey: .updatedAt)
+        try? container.encode(lastLoginTime, forKey: .lastLoginTime)
+        try? container.encode(status, forKey: .status)
+    }
+    
     required init(from decoder: Decoder) throws {
-        let container = try? decoder.container(keyedBy: CodingKeys.self)
-        id = (try? container?.decode(String.self, forKey: .id)) ?? ""
-        firstName = (try? container?.decode(String.self, forKey: .firstName)) ?? ""
-        lastName = (try? container?.decode(String.self, forKey: .lastName)) ?? ""
-        email = (try? container?.decode(String.self, forKey: .email)) ?? ""
-        type = (try? container?.decode(Int.self, forKey: .type)) ?? 0
-        countryCode = (try? container?.decode(String.self, forKey: .countryCode)) ?? ""
-        phone = (try? container?.decode(String.self, forKey: .phone)) ?? ""
-        eduLevel = (try? container?.decode(String.self, forKey: .eduLevel)) ?? ""
-        eduYear = (try? container?.decode(String.self, forKey: .eduYear)) ?? ""
-        //eduMajors = (try? container?.decode(String.self, forKey: .eduMajors)) ?? ""
-        //eduMinors = (try? container?.decode(String.self, forKey: .eduMinors)) ?? ""
-        //eduClasses = (try? container?.decode(String.self, forKey: .eduClasses)) ?? ""
-        //interests = (try? container?.decode(String.self, forKey: .interests)) ?? ""
-        university = (try? container?.decode(String.self, forKey: .university)) ?? ""
-        birthDate = (try? container?.decode(String.self, forKey: .birthDate)) ?? ""
-        gender = (try? container?.decode(String.self, forKey: .gender)) ?? ""
-        relationship = (try? container?.decode(String.self, forKey: .relationship)) ?? ""
-        hometown = (try? container?.decode(String.self, forKey: .hometown)) ?? ""
-        isDarkMode = (try? container?.decode(Int.self, forKey: .isDarkMode)) ?? 0
-        whoCanMessage = (try? container?.decode(String.self, forKey: .whoCanMessage)) ?? ""
-        whoCanInvite = (try? container?.decode(String.self, forKey: .whoCanInvite)) ?? ""
-        isNotifyOn = (try? container?.decode(Int.self, forKey: .isNotifyOn)) ?? 0
-        isEventNotify = (try? container?.decode(Int.self, forKey: .isEventNotify)) ?? 0
-        isClassNotify = (try? container?.decode(Int.self, forKey: .isClassNotify)) ?? 0
-        latitude = (try? container?.decode(String.self, forKey: .latitude)) ?? ""
-        longitude = (try? container?.decode(String.self, forKey: .longitude)) ?? ""
-        createdAt = (try? container?.decode(String.self, forKey: .createdAt)) ?? ""
-        updatedAt = (try? container?.decode(String.self, forKey: .updatedAt)) ?? ""
-        lastLoginTime = (try? container?.decode(String.self, forKey: .lastLoginTime)) ?? ""
-        status = (try? container?.decode(Int.self, forKey: .status)) ?? 0
+        
     }
 }
