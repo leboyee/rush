@@ -23,6 +23,8 @@ class PostViewController: UIViewController {
     var commentText = ""
     var username = ""
     
+    var post: Post?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +35,13 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if self.isMovingToParent {
+            navigationController?.popViewController(animated: false)
+        }
     }
     
     func setupUI() {

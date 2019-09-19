@@ -142,6 +142,22 @@ extension ClubDetailViewController {
         cell.set(numberOfUnLike: post.numberOfUnLikes)
         cell.set(numberOfComment: post.numberOfComments)
         cell.set(ishideUnlikeLabel: false)
+        
+        cell.likeButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.voteClubAPI(id: post.id ?? "", type: "up")
+        }
+        
+        cell.unlikeButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.voteClubAPI(id: post.id ?? "", type: "down")
+            
+        }
+        
+        cell.commentButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -232,6 +248,18 @@ extension ClubDetailViewController {
             if let value = post {
                 uwself.clubPostList = value
                 uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func voteClubAPI(id: String, type: String) {
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if status {
+                
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

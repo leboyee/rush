@@ -103,6 +103,10 @@ extension ClubDetailViewController {
         } else if segue.identifier == Segues.createPost {
             guard let vc = segue.destination as? CreatePostViewController else { return }
             vc.clubInfo = clubInfo
+        } else if segue.identifier == Segues.postSegue {
+            if let vc = segue.destination as? PostViewController {
+                vc.post = sender as? Post
+            }
         }
     }
 }

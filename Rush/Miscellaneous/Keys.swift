@@ -98,5 +98,6 @@ struct Keys {
     
     static let dataId = "data_id"
     static let dataType = "data_type"
-
+    static let desc = "desc"
+    static let totalPhotos = "total_photos"
 }
