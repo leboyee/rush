@@ -33,33 +33,6 @@ class ServiceManager: NSObject {
         }
     }
     
-    /*
-     *
-     */
-    static func decode<T: Codable>(object: Data, complection: @escaping(T?, String?) -> Void) {
-//        let start = CFAbsoluteTimeGetCurrent()
-        
-        do {
-            let decodedObject = try JSONDecoder().decode(T.self, from: object)
-            complection(decodedObject, nil)
-//            let diff = CFAbsoluteTimeGetCurrent() - start
-        } catch let error {
-            print("ERROR DECODING: \(error)")
-            complection(nil, error.localizedDescription)
-        }
-    }
-    
-    static func decodeObject<T: Codable>(fromData data: Any?) -> T? {
-        if let data = data {
-            let jsonDecoder = JSONDecoder()
-            jsonDecoder.dateDecodingStrategy = .secondsSince1970
-            return try? jsonDecoder.decode(
-                T.self, from: JSONSerialization.data(withJSONObject: data, options: [])
-                ) as T?
-        } else {
-            return nil
-        }
-    }
     
     /*
      *
@@ -77,9 +50,19 @@ class ServiceManager: NSObject {
             guard let list = data["list"] as? [Any] else {
                 return
             }
-                
-            closer(ServiceManager.decodeObject(fromData: list), nil)
-
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.dateDecodingStrategy = .secondsSince1970
+                let decodedObject = try jsonDecoder.decode(T.self, from: JSONSerialization.data(withJSONObject: list, options: []))
+                closer(decodedObject, "")
+            } catch let error {
+                print("ERROR DECODING: \(error)")
+                closer(nil, error.localizedDescription)
+            }
+//            if let items = ServiceManager.decodeObject(fromData: list) {
+//                closer(items, nil)
+//            }
             return
         }
         
