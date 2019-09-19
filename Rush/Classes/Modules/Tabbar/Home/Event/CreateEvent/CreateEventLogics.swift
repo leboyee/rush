@@ -67,7 +67,7 @@ extension CreateEventViewController {
     func fillDateAndTimeEvent(_ cell: DateAndTimeCell, _ indexPath: IndexPath) {
         
         if indexPath.section == 4 {
-            cell.setup(dateButtonText: Date().eventDateFormat(date: startDate))
+            cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
             cell.setup(timeButtonText: startTime.isEmpty == true ? "12 pm" : startTime)
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
@@ -86,8 +86,7 @@ extension CreateEventViewController {
                 Utils.alert(message: "In Development")
             }
         } else {
-            
-            cell.setup(dateButtonText: Date().eventDateFormat(date: endDate))
+            cell.setup(dateButtonText: self.endDate.toString(format: "EEE, dd MMM"))
             cell.setup(timeButtonText: endTime.isEmpty == true ? "13 pm" : endTime)
             cell.separatorView.isHidden = false
             cell.dateButtonClickEvent = { [weak self] () in
@@ -320,6 +319,7 @@ extension CreateEventViewController: CalendarViewDelegate {
     }
     
     func selectedDate(date: Date) {
+        
         let newDate = Date().convertDateToDate(date: date)
         if isStartDate == true {
             self.startDate = newDate
@@ -385,9 +385,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = Date().customeFormatDateToString(date: self.startDate, format: "yyyy-MM-dd") + " 12:00 pm"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 pm"
         let startUtcDate = Date().localToUTC(date: startDateString)
-        let endDateString = Date().customeFormatDateToString(date: self.endDate, format: "yyyy-MM-dd") + " 13:00 pm"
+        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)

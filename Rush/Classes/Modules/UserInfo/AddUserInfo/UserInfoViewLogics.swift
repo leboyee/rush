@@ -94,7 +94,7 @@ extension UserInfoViewController {
 // MARK: - Date Picker Delegate
 extension UserInfoViewController: DatePickerDelegate {
     func selectedDate(_ date: Date) {
-        dob = Date().starnderDateFormate(date: date)
+        dob = date.toString(format: "dd.MM.yyyy")
         nextButtonEnabled()
         self.tableView.reloadData()
     }

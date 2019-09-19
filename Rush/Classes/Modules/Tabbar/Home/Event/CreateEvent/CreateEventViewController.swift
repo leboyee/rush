@@ -271,7 +271,7 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
             ) { [weak self] image, _ in
                 guard let unself = self else { return }
                 if let image = image {
-                    unself.eventImage = image
+                    unself.eventImage = image.squareImage()
                 }
             }
         } else if let image = imageAsset as? UIImage {
