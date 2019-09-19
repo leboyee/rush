@@ -75,12 +75,17 @@ extension ServiceManager {
         }
     }
     
-    func getPostList(dataId: String, type: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func getPostList(dataId: String, type: String, params: [String: Any], closer: @escaping (_ params: [Post]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.fetchPostList(dataId: dataId, type: type, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
-            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+            
+
+            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (posts, errorMessage) in
+                 closer(posts, errorMessage)
             })
+//            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+//                closer(data, errorMessage)
+//            })
         }
     }
 }

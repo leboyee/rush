@@ -224,6 +224,12 @@ extension ClubDetailViewController {
                      "search": "",
                      "pageNo": 1] as [String: Any]
         
+        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: "club", params: param) { [weak self] (post, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            
+        }
+        /*
         ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: "club", params: param) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
@@ -242,6 +248,6 @@ extension ClubDetailViewController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-        }
+        }*/
     }
 }

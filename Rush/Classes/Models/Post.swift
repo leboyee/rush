@@ -35,6 +35,7 @@ class Post: Codable {
     init() {
     }
     
+    /*
     // Added below function for user objects
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -42,5 +43,5 @@ class Post: Codable {
         try container.encode(text, forKey: .text)
         try container.encode(images, forKey: .images)
         try container.encode(user, forKey: .user)
-    }
+    }*/
 }

@@ -36,6 +36,61 @@ class ServiceManager: NSObject {
     /*
      *
      */
+    static func decode<T: Codable>(object: Data, complection: @escaping(T?, String?) -> Void) {
+//        let start = CFAbsoluteTimeGetCurrent()
+        
+        do {
+            let decodedObject = try JSONDecoder().decode(T.self, from: object)
+            complection(decodedObject, nil)
+//            let diff = CFAbsoluteTimeGetCurrent() - start
+        } catch let error {
+            print("ERROR DECODING: \(error)")
+            complection(nil, error.localizedDescription)
+        }
+    }
+    
+    static func decodeObject<T: Codable>(fromData data: Any?) -> T? {
+        if let data = data {
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.dateDecodingStrategy = .secondsSince1970
+            return try? jsonDecoder.decode(
+                T.self, from: JSONSerialization.data(withJSONObject: data, options: [])
+                ) as T?
+        } else {
+            return nil
+        }
+    }
+    
+    /*
+     *
+     */
+    func procesModelResponse<T: Codable>(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: T?, _ errorMessage: String?) -> Void) {
+        guard code != 200 else {
+            guard let resultDict = result as? [String: Any] else {
+                return
+            }
+            
+            guard let data = resultDict[Keys.data] as? [String: Any] else {
+                return
+            }
+            
+            guard let list = data["list"] as? [Any] else {
+                return
+            }
+                
+            closer(ServiceManager.decodeObject(fromData: list), nil)
+
+            return
+        }
+        
+        errorHandler(result: result, error: error) { (errorMessage) in
+            closer(nil, errorMessage)
+        }
+    }
+    
+    /*
+     *
+     */
     func processDataResponse(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         guard code != 200 else {
             guard let resultDict = result as? [String: Any] else {
