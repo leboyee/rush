@@ -47,7 +47,7 @@ class ServiceManager: NSObject {
                 return
             }
             
-            guard let list = data["list"] as? [Any] else {
+            guard let list = data[Keys.list] as? [Any] else {
                 return
             }
             
@@ -60,9 +60,7 @@ class ServiceManager: NSObject {
                 print("ERROR DECODING: \(error)")
                 closer(nil, error.localizedDescription)
             }
-//            if let items = ServiceManager.decodeObject(fromData: list) {
-//                closer(items, nil)
-//            }
+            
             return
         }
         

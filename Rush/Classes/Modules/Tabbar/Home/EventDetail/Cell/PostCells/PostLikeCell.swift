@@ -58,4 +58,8 @@ extension PostLikeCell {
     func set(numberOfComment: Int) {
         commentLabel.text = "\(numberOfComment)"
     }
+    
+    func set(ishideUnlikeLabel: Bool) {
+        unlikeLabel.isHidden = ishideUnlikeLabel
+    }
 }

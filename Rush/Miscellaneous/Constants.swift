@@ -273,6 +273,7 @@ public struct Text {
     static let addLocation               = "Add location"
     static let joinAndRSVP               = "Join and RSVP"
     static let going                     = "Going"
+    static let club                      = "club"
 }
 
 public struct Message {

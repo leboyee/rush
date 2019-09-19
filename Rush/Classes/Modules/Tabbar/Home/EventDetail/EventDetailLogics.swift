@@ -188,7 +188,7 @@ extension EventDetailViewController {
     func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postlist?[index] {
-            cell.set(images: post.images)
+            cell.set(images: post.photos)
         }
     }
     

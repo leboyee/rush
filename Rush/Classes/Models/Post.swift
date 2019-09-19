@@ -14,6 +14,7 @@ class Post: Codable {
     var parentId: String? // Event / Club / Class
     var text: String?
     var images: [Image]?
+    var imageJson: String?
     var numberOfLikes: Int = 0
     var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
@@ -24,7 +25,7 @@ class Post: Codable {
         case id = "_id"
         case parentId = "data_id"
         case text = "desc"
-        case images = "photos"
+        case imageJson = "photos"
         case numberOfLikes = "up_votes"
         case numberOfUnLikes = "down_votes"
         case numberOfComments = "total_comments"
@@ -35,13 +36,24 @@ class Post: Codable {
     init() {
     }
     
-    /*
-    // Added below function for user objects
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(text, forKey: .text)
-        try container.encode(images, forKey: .images)
-        try container.encode(user, forKey: .user)
-    }*/
+    var photos: [Image]? {
+        if let str = imageJson {
+            if let data = str.data(using: .utf8) {
+                var images = [Image]()
+                do {
+                    if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] {
+                        for img in object {
+                            images.append(Image(data: img))
+                        }
+                        return images
+                    } else {
+                        print("Error in json : " + str)
+                    }
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+        }
+        return nil
+    }
 }
