@@ -121,7 +121,6 @@ extension HomeViewController {
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()
-
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unowned = self else { return }
@@ -131,6 +130,19 @@ extension HomeViewController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+        }
+    }
+    
+    func getEventList(sortBy: String) {
+        
+        let param = [Keys.search: searchText,
+                     Keys.sortBy: sortBy,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchEventList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+            Utils.hideSpinner()
+            guard let unowned = self else { return }
+            
         }
     }
 }

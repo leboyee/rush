@@ -116,9 +116,8 @@ extension SelectEventTypeViewController {
     }
     
     @IBAction func clubButtonAction() {
-        type = .event
         screenType = .club
-        setupUI()
+        dismiss()
     }
     @IBAction func publicButtonAction() {
         eventType = .publik
