@@ -18,16 +18,23 @@ class CreateEventViewController: UIViewController {
     var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()
-    
     var nameEvent = ""
     var eventDescription = ""
-    var location = ""
+    var address = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     var eventImage: UIImage?
-    var startDate = ""
-    var endDate = ""
+    var startDate = Date()
+    var endDate = Date()
     var startTime = ""
     var endTime = ""
-    
+    var calendarHeight: CGFloat = 352.0
+    var isStartDate: Bool = false
+    var isEndDate: Bool = false
+    var isStartTime: Bool = false
+    var isEndTime: Bool = false
+    var isCreateGroupChat = true
+
     var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
@@ -66,7 +73,7 @@ class CreateEventViewController: UIViewController {
     func setupUI() {
         
         topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
+        definesPresentationContext = true
         // Set navigation buttons
         navigationItem.leftBarButtonItem = cancelBtn
         navigationItem.rightBarButtonItem = saveBtnDisActive
@@ -102,7 +109,7 @@ extension CreateEventViewController {
     }
     
     @objc func saveButtonAction() {
-        performSegue(withIdentifier: Segues.myClub, sender: nil)
+        createEventAPI()
     }
     
     @IBAction func addImageButtonAction() {
@@ -117,8 +124,11 @@ extension CreateEventViewController {
         if indexPath.section == 0  || indexPath.section == 1 {
             
         } else if indexPath.section == 2 {
-            self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
-
+               DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
+            }
+        } else if indexPath.section == 3 {
+            self.performSegue(withIdentifier: Segues.addLocation, sender: self)
         } else {
             Utils.alert(message: "In Development")
         }
@@ -132,15 +142,23 @@ extension CreateEventViewController {
 
 // MARK: - Navigation
 extension CreateEventViewController {
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.selectEventPhoto {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .photo
                 vc.delegate = self
             }
+        } else if segue.identifier == Segues.addRSVP {
+            if let vc = segue.destination as? AddRSVPViewController {
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.addLocation {
+            if let vc = segue.destination as? AddLocationViewController {
+                vc.delegate = self
+            }
         }
+        
     }
 }
 
@@ -170,42 +188,31 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
     func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
         DispatchQueue.main.async {
             if type == .photoLibrary {
-                let status = PHPhotoLibrary.authorizationStatus()
-                guard status == .authorized else {
-                    Utils.photoLibraryPermissionAlert()
-                    return
-                }
+                Utils.authorizePhoto(completion: { [weak self] (status) in
+                    guard let unsafe = self else { return }
+                    if status == .alreadyAuthorized || status == .justAuthorized {
+                        unsafe.picker = ImagePickerController()
+                        unsafe.picker.delegate = self
+                        unsafe.picker.isSingleSelection = true
+                        unsafe.picker.navigationBar.isTranslucent = false
+                        var assets = [PHAsset]()
+                        for img in unsafe.imageList {
+                            if let value = img as? PHAsset { assets.append(value) }
+                        }
+                        unsafe.picker.updateSelectedAssets(with: assets)
+                        unsafe.present(unsafe.picker, animated: false, completion: nil)
+                    } else {
+                        if status != .justDenied {
+                            Utils.photoLibraryPermissionAlert()
+                        }
+                    }
+                })
             } else {
                 let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
                 guard status == .authorized else {
                     Utils.alertCameraAccessNeeded()
                     return
                 }
-            }
-            
-            if type == .photoLibrary {
-                self.picker = ImagePickerController()
-                self.picker.delegate = self
-                self.picker.navigationBar.isTranslucent = false
-                var assets = [PHAsset]()
-                for img in self.imageList {
-                    if let value = img as? PHAsset { assets.append(value) }
-                }
-                self.picker.updateSelectedAssets(with: assets)
-                self.present(self.picker, animated: false, completion: nil)
-            } else {
-                // Camera
-                let camera = DKCamera()
-                camera.didCancel = {
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-                camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
-                    if let img = image { self.imageList.append(img) }
-                    self.tableView.reloadData()
-                    self.dismiss(animated: true, completion: nil)
-                }
-                self.present(camera, animated: true, completion: nil)
             }
         }
     }
@@ -264,11 +271,12 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
             ) { [weak self] image, _ in
                 guard let unself = self else { return }
                 if let image = image {
-                    unself.eventImage = image
+                    unself.eventImage = image.squareImage()
                 }
             }
         } else if let image = imageAsset as? UIImage {
             eventImage = image
         }
+        validateAllFields()
     }
 }

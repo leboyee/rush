@@ -96,4 +96,17 @@ struct Keys {
     static let images           = "images"
     static let rsvpAns         = "rsvp_ans"
 
+    static let createEventType = "event_type"
+    static let eventName = "event_name"
+    static let eventDesc = "event_desc"
+    static let eventRsvpList = "event_rsvp_list"
+    static let eventAddress = "event_address"
+    static let eventLatitude = "event_latitude"
+    static let eventLongitude = "event_longitude"
+    static let eventStartDate = "event_start_date"
+    static let eventEndDate = "event_end_date"
+    static let eventInterests = "event_interests"
+    static let eventIsChatGroup = "event_is_chat_group"
+    static let eventInvitedUserIds = "event_invited_user_ids"
+    static let eventPhoto = "event_photo"
 }

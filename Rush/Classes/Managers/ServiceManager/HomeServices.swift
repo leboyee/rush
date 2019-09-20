@@ -57,6 +57,15 @@ extension ServiceManager {
         }
     }
     
+    func createEvent(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.createEvent(params: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
     func postComment(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.postComment(param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
@@ -65,7 +74,7 @@ extension ServiceManager {
             })
         }
     }
-    
+        
     func votePost(postId: String, voteType: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.votePost(postId: postId, voteType: voteType) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
@@ -83,4 +92,5 @@ extension ServiceManager {
             })
         }
     }
+
 }
