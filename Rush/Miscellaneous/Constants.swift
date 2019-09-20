@@ -75,7 +75,9 @@ struct Cell {
 
     static let dateAndTimeEvent     = "DateAndTimeCell"
     static let rsvpCell              = "RSVPCell"
-
+    static let addEventLocationCell              = "AddEventLocationCell"
+    static let addEventCalendarCell              = "AddEventCalendarCell"
+    
     static let organizer            = "OrganizerCell"
     static let postLike            = "PostLikeCell"
     static let postUser            = "PostUserCell"
@@ -101,6 +103,7 @@ struct ViewControllerId {
     static let searchClubViewController          = "SearchClubViewController"
     static let datePickerViewController          = "DatePickerViewController"
     static let otherUserProfileController        = "OtherUserProfileController"
+    static let addRSVPViewController             = "AddRSVPViewController"
     static let chatRoomViewController            = "ChatRoomViewController"
 }
 
@@ -161,6 +164,7 @@ struct Segues {
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
     static let addRSVP                             = "AddRSVPSegue"
+    static let addLocation                             = "AddLocationSegue"
     static let eventJoinedPopup                    = "EventJoinedPopupSegue"
 }
 
@@ -169,6 +173,7 @@ struct StoryBoard {
     static let customPicker              =     "CustomPicker"
     static let tabbar                    =     "Tabbar"
     static let home                      =     "Home"
+    static let rsvp                      =     "RSVP"
 }
 
 public struct Text {

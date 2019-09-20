@@ -23,6 +23,8 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.register(UINib(nibName: Cell.textView, bundle: nil), forCellReuseIdentifier: Cell.textView)
         
         tableView.register(UINib(nibName: Cell.dateAndTimeEvent, bundle: nil), forCellReuseIdentifier: Cell.dateAndTimeEvent)
+        
+          tableView.register(UINib(nibName: Cell.addEventCalendarCell, bundle: nil), forCellReuseIdentifier: Cell.addEventCalendarCell)
 
         tableView.reloadData()
     }
@@ -41,16 +43,24 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
                 fillTextIconCell(cell, indexPath)
                 return cell
             }
-        } else if indexPath.section == 4 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
-                fillDateAndTimeEvent(cell, indexPath)
-                return cell
+        } else if indexPath.section == 4 || indexPath.section == 5 {
+            if indexPath.row == 0 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
+                    fillDateAndTimeEvent(cell, indexPath)
+                    return cell
+                }
+            } else {
+                if isStartDate == true || isEndDate == true {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addEventCalendarCell, for: indexPath) as? AddEventCalendarCell {
+                        fillAddCalendarCell(cell, indexPath)
+                        return cell
+                    }
+                } else {
+                   return UITableViewCell()
+                }
+               
             }
-        } else if indexPath.section == 5 {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
-                fillDateAndTimeEvent(cell, indexPath)
-                return cell
-            }
+         
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell {
                 fillTextViewCell(cell, indexPath)
@@ -141,21 +151,6 @@ extension CreateEventViewController: UIScrollViewDelegate {
             if tableView.contentOffset.y < -40 {
                 tableView.contentOffset = CGPoint(x: 0, y: -40)
             }
-        }
-    }
-}
-
-// MARK: - SelectEventTypeController Delegate
-extension CreateEventViewController: SelectEventTypeDelegate {
-    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-
-    }
-    
-    func addPhotoEvent(_ type: PhotoFrom) {
-        if type == .cameraRoll {
-            self.openCameraOrLibrary(type: .photoLibrary)
-        } else {
-            Utils.alert(message: "In Development")
         }
     }
 }

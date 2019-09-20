@@ -9,6 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol AddRsvpDelegate: class {
+    func addRsvpData(_ rsvpArray: [String])
+}
+
 class AddRSVPViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +21,7 @@ class AddRSVPViewController: UIViewController {
     @IBOutlet weak var bottomViewContraint: NSLayoutConstraint!
     @IBOutlet weak var rsvpPlusButton: CustomButton!
     @IBOutlet weak var saveButton: CustomButton!
+    weak var delegate: AddRsvpDelegate?
 
     var rsvpArray = [String]()
     
@@ -31,16 +36,10 @@ class AddRSVPViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+
     }
  
     // MARK: - Other function
@@ -65,11 +64,14 @@ class AddRSVPViewController: UIViewController {
 // MARK: - Actions
 extension AddRSVPViewController {
     
-    @objc func saveButtonAction() {
+    @IBAction func addNewRSVPButtonAction() {
+        addNewRSVP()
     }
     
-    @IBAction func addImageButtonAction() {
-        
+    @IBAction func saveButtonAction() {
+        self.view.endEditing(true)
+        self.delegate?.addRsvpData(rsvpArray)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

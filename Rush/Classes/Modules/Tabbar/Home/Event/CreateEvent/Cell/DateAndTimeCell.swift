@@ -2,7 +2,7 @@
 //  DateAndTimeCell.swift
 //  Rush
 //
-//  Created by ideveloper on 20/05/19.
+//  Created by Suresh Jagnani on 22/05/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
