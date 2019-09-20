@@ -135,7 +135,8 @@ extension HomeViewController {
     
     func getEventList(sortBy: String) {
         
-        let param = [Keys.search: searchText,
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
                      Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
         

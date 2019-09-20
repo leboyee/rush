@@ -103,6 +103,9 @@ extension ClubHeader {
     
     func set(url: URL?) {
         userImageView.sd_setImage(with: url, placeholderImage: nil)
+        hoverView.isHidden = true
+        addPhotoButton.isHidden = true
+        changePhotoButton.isHidden = true
     }
 }
 

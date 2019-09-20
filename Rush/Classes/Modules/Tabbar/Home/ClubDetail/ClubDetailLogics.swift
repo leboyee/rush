@@ -174,8 +174,7 @@ extension ClubDetailViewController {
     
     func fillImageHeader() {
         let img = Image(json: clubInfo?.clubPhoto ?? "")
-        clubHeader.setup(imageUrl: img.url())
-        clubHeader.setup(isHideHoverView: true)
+        clubHeader.set(url: img.url())
     }
     
     func cellSelected(_ indexPath: IndexPath) {
