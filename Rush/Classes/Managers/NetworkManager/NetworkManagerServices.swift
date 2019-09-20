@@ -133,4 +133,8 @@ extension NetworkManager {
     func joinEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "/event/\(eventId)/join", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
+    
+    func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
 }

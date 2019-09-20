@@ -86,10 +86,12 @@ extension SelectEventTypeViewController {
     }
     
     func dismiss() {
-        self.dismiss(animated: false, completion: nil)
-        DispatchQueue.main.async {
-            self.delegate?.createEventClub(self.eventType, self.screenType)
+        self.dismiss(animated: true) {
+            DispatchQueue.main.async {
+                self.delegate?.createEventClub(self.eventType, self.screenType)
+            }
         }
+        //self.dismiss(animated: false, completion: nil)
     }
     
     func dismissPhoto(photoFrom: PhotoFrom) {

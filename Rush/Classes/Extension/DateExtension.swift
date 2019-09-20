@@ -96,6 +96,31 @@ extension Date {
         return Calendar.current.date(from: dc)!
     }
     
+    public func localToUTC(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+        dateFormatter.calendar = NSCalendar.current
+        dateFormatter.timeZone = TimeZone.current
+        
+        let newDate = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd H:mm:ss"
+        
+        return dateFormatter.string(from: newDate ?? Date())
+    }
+    
+    public func UTCToLocal(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "H:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let newDate = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter.string(from: newDate ?? Date())
+    }
+    
     public static func secondsBetween(date1 d1: Date, date2 d2: Date) -> Int {
         let dc = Calendar.current.dateComponents([.second], from: d1, to: d2)
         return dc.second!
@@ -201,6 +226,19 @@ extension Date {
         return age
     }
     
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+    }
+    
+    func isSameDate(_ comparisonDate: Date) -> Bool {
+        let order = Calendar.current.compare(self, to: comparisonDate, toGranularity: .day)
+        return order == .orderedSame
+    }
+    
     // MARK: - Compute Date as String
     public func toString(format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
@@ -215,10 +253,11 @@ extension Date {
         return formatter.date(from: dateString)
     }
     
-    func starnderDateFormate(date: Date) -> String {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "dd.MM.yyyy"
-        return timeFormatter.string(from: date)
+    public func convertDateToDate(date: Date) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        return formatter.date(from: dateString) ?? Date()
     }
     
     func secondsFromBeginningOfTheDay() -> TimeInterval {
@@ -244,16 +283,4 @@ extension Date {
         return timeFormatter.date(from: dateString)!
     }
     
-    func eventDateFormat(date: Date) -> String {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "EEEE, dd MMM"
-        return timeFormatter.string(from: date)
-    }
-    
-    func eventTimeFormat(date: Date) -> String {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm a"
-        return timeFormatter.string(from: date)
-    }
-
 }

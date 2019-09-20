@@ -19,13 +19,15 @@ class RSVPCell: UITableViewCell {
     var textDidChanged: ((_ text: String) -> Void)?
     var clearButtonClickEvent:(() -> Void)?
     var textDidEndEditing: ((_ text: String) -> Void)?
-    var textDidBeginEditing: ((_ text: String) -> Void)?
+    var textDidBeginEditing: (() -> Void)?
     var updateTableView:((_ textView: UITextView) -> Void)?
     var maxLength = 100
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        dataTextView.delegate = self
+        dataTextView.textContainerInset = UIEdgeInsets.zero
         placeHolderLabel.isHidden = false
         dataTextView.delegate = self
     }
@@ -69,6 +71,7 @@ extension RSVPCell: UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         setup(isEmpty: false)
+        textDidBeginEditing?()
         return true
     }
     
@@ -86,7 +89,7 @@ extension RSVPCell: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        if text == "\n" && textView.returnKeyType == .done {
+        if text == "\n" && textView.returnKeyType == .go {
             textView.resignFirstResponder()
             return false
         }
