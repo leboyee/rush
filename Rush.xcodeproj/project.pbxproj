@@ -155,6 +155,7 @@
 		1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */; };
 		1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */; };
 		1AEB56AB22E842730041EAA7 /* AddInviteViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */; };
+		3FEA62B40BDB7892F71FC3A2 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */; };
 		7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D098228E8CE5004E33B9 /* EventByDateCell.swift */; };
 		7903D0AA228E8CE5004E33B9 /* EventByDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7903D099228E8CE5004E33B9 /* EventByDateCell.xib */; };
 		7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */; };
@@ -536,6 +537,7 @@
 		0918E784228444AB0098AF35 /* Forum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Forum.storyboard; sourceTree = "<group>"; };
 		0918E786228444B90098AF35 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0992539022845CF100914E7B /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
+		1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		1A088E4922FECBC800DF6004 /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		1A088E5222FED12700DF6004 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1A0D01F823228A08004F6279 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -676,6 +678,8 @@
 		1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewMediates.swift; sourceTree = "<group>"; };
 		1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewController.swift; sourceTree = "<group>"; };
 		1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewLogics.swift; sourceTree = "<group>"; };
+		1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
+		23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7903D098228E8CE5004E33B9 /* EventByDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventByDateCell.swift; sourceTree = "<group>"; };
 		7903D099228E8CE5004E33B9 /* EventByDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventByDateCell.xib; sourceTree = "<group>"; };
 		7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
@@ -1038,6 +1042,7 @@
 		C05FC16A22805F9D00721F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C05FC16F22805FAE00721F3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdParty.swift; sourceTree = "<group>"; };
+		C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
 		F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationMediates.swift; sourceTree = "<group>"; };
 		F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationLogics.swift; sourceTree = "<group>"; };
@@ -1050,6 +1055,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEA62B40BDB7892F71FC3A2 /* Pods_Rush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1725,6 +1731,9 @@
 		69A4CA5176A546F5C0DA9D7C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */,
+				C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */,
+				1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2899,6 +2908,7 @@
 				8A4B32A12332129900AC1D17 /* DKImagePickerController.framework */,
 				8A4B32A32332129900AC1D17 /* DKPhotoGallery.framework */,
 				8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */,
+				23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2930,10 +2940,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C05FC15B22805F3E00721F3F /* Build configuration list for PBXNativeTarget "Rush" */;
 			buildPhases = (
+				34C9EFAD8E918C0F58D7E9F6 /* [CP] Check Pods Manifest.lock */,
 				C05FC14522805F3D00721F3F /* Sources */,
 				C05FC14622805F3D00721F3F /* Frameworks */,
 				C05FC14722805F3D00721F3F /* Resources */,
 				8A02C1E12313DE4500258227 /* ShellScript */,
+				0056988C3865C149B147B353 /* [CP] Embed Pods Frameworks */,
+				4F804CB086C9C2A96F7F7E94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3091,6 +3104,62 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0056988C3865C149B147B353 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34C9EFAD8E918C0F58D7E9F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rush-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F804CB086C9C2A96F7F7E94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8A02C1E12313DE4500258227 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3668,6 +3737,7 @@
 		};
 		C05FC15C22805F3E00721F3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3763,6 +3833,7 @@
 		};
 		C05FC15D22805F3E00721F3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3914,6 +3985,7 @@
 		};
 		C05FC1762280637100721F3F /* ReleaseBeta */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
