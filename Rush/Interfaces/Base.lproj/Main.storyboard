@@ -51,16 +51,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rwy-9F-S7x">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adz-WM-jbJ">
                                 <rect key="frame" x="0.0" y="609" width="375" height="203"/>
@@ -155,14 +146,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ba-fE-Ymb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="99" y="203"/>
-        </scene>
-        <!--UserInfo-->
-        <scene sceneID="5IQ-Md-Pta">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserInfo" id="Gdl-hw-GuU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="old-xu-FWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="241" y="371"/>
         </scene>
     </scenes>
     <resources>

@@ -135,9 +135,7 @@ extension CreateEventViewController {
             }
             
             cell.clearButtonClickEvent = {
-                [weak self] () in
-                guard let unsafe = self else { return }
-                
+              
             }
             cell.setup(iconImage: indexPath.row == 0 ? "addRSVP" : "")
         } else if indexPath.section == 3 {
@@ -378,7 +376,7 @@ extension CreateEventViewController {
     func createEventAPI() {
         
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        let interests = interestList.joined(separator: ",")
+        //let interests = interestList.joined(separator: ",")
         let userIds = "5d5d213239277643e20f9bf1,5d3066d3392776515c7df011"
         var array = rsvpArray
         if array.last?.isEmpty == true {

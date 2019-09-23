@@ -18,4 +18,14 @@ extension InstaWebViewViewController: WKNavigationDelegate {
             decisionHandler(.cancel)
         }
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        Utils.hideSpinner()
+        
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        Utils.hideSpinner()
+        Utils.alert(message: error.localizedDescription)
+    }
+
 }

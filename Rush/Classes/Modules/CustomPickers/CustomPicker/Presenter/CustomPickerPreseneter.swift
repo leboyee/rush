@@ -29,7 +29,7 @@ class CustomPickerPreseneter: NSObject {
     var currencyList: [String: Any]?
     var countryCode: [[String: Any]] = []
     var updateTitle: ((_ title: String) -> Void)?
-
+    var selectedIndexIn: Int = 0
     // MARK: - Life Cycle
     deinit {
         mediator = nil

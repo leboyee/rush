@@ -44,6 +44,7 @@ class InstaWebViewViewController: CustomViewController {
     func setupUI() {
 
         // Set Custom part of Class
+        Utils.showSpinner()
         setCustomNavigationBarView()
         connectButtonAction()
     }
@@ -73,7 +74,7 @@ extension InstaWebViewViewController {
         let when = DispatchTime.now() + 3
         DispatchQueue.main.asyncAfter(deadline: when) {
             alert.dismiss(animated: true, completion: nil)
-            self.backButtonAction()
+            AppDelegate.shared?.moveToTabbarWithoutRegister()
         }
     }
 
