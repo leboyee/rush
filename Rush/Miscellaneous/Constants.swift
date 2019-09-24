@@ -348,3 +348,11 @@ enum ExploreSearchType {
     case classes
     case people
 }
+
+enum GetEventType: String {
+    case none = ""
+    case upcoming = "upcoming"
+    case my = "my"
+    case myUpcoming = " my-upcoming"
+    case attending = "attending"
+}

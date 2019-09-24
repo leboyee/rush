@@ -105,7 +105,8 @@ extension ClubDetailViewController {
             vc.clubInfo = clubInfo
         } else if segue.identifier == Segues.postSegue {
             if let vc = segue.destination as? PostViewController {
-                vc.post = sender as? Post
+                vc.postInfo = sender as? Post
+                vc.clubInfo = clubInfo
             }
         }
     }

@@ -123,38 +123,32 @@ extension HomeViewController {
         Utils.showSpinner()
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
-            guard let unowned = self else { return }
+            guard let unsafe = self else { return }
             if let clubs = value {
-                unowned.clubList = clubs
-                unowned.tableView.reloadData()
+                unsafe.clubList = clubs
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
     
-    func getEventList(sortBy: String) {
-        
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+    func getEventList(sortBy: GetEventType) {
+        // (Authorization.shared.profile?.userId ?? "")
+        let param = [Keys.profileUserId: "",
                      Keys.search: searchText,
-                     Keys.sortBy: sortBy,
+                     Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
-            guard let unowned = self else { return }
-//            if let value = list[Keys.data] as? [String: Any] {
-//                if let club = value[Keys.club] as? [String: Any] {
-//                    do {
-//                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
-//                        let decoder = JSONDecoder()
-//                        let value = try decoder.decode(Club.self, from: dataClub)
-//                        uwself.clubInfo = value
-//                    } catch {
-//
-//                    }
-//                }
-//            }
+            guard let unsafe = self else { return }
+            if let events = value {
+                unsafe.eventList = events
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
         }
     }
 }

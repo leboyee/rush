@@ -258,7 +258,7 @@ extension ClubDetailViewController {
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if status {
-                
+                uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

@@ -15,7 +15,7 @@ struct EventGroup {
 
 class Event: Codable {
     
-    var id: Int64 = 0
+    var id: String = ""
     var date: Date?
     var title: String = ""
     var desc: String = ""
@@ -31,7 +31,7 @@ class Event: Codable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
         case date
         case title
         case desc
