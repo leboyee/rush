@@ -79,6 +79,7 @@ extension PostViewController {
     
     @IBAction func sendButtonAction() {
         if commentText.count > 0 {
+            addCommentAPI()
             username = ""
             textView.text = ""
             textView.resignFirstResponder()

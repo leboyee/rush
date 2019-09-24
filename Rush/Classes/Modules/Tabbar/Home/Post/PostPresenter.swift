@@ -97,11 +97,47 @@ extension PostViewController {
 // MARK: - Services
 extension PostViewController {
     func voteClubAPI(id: String, type: String) {
-        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (status, errorMsg) in
-            Utils.hideSpinner()
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (data, errorMsg) in
             guard let uwself = self else { return }
+            if let post = data?[Keys.post] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Post.self, from: dataClub)
+                    uwself.postInfo = value
+                    uwself.tableView.reloadData()
+                } catch {
+                    
+                }
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func addCommentAPI() {
+        
+        let param = [Keys.desc: textView.text ?? "",
+                     Keys.postId: postInfo?.id ?? "",
+                     Keys.parentId: clubInfo?.id ?? ""] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.postComment(params: param) { [weak self] (status, errorMsg) in
+            guard let unsafe = self else { return }
             if status {
-                
+                unsafe.getAllCommentListAPI()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getAllCommentListAPI() {
+        
+        ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "") { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if data != nil {
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

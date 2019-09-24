@@ -23,7 +23,7 @@ extension ClubDetailViewController {
         if indexPath.section > 5 {
             let photos = clubPostList[indexPath.section - 6].imageJson?.photos
             if indexPath.row == 2 {
-                return photos == nil ? CGFloat.leastNormalMagnitude : screenWidth
+                return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
             }
             return UITableView.automaticDimension
         } else {
@@ -132,8 +132,8 @@ extension ClubDetailViewController {
     // Image cell (section 6 row 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        if (post.imageJson ?? "").isNotEmpty {
-            cell.set(url: post.imageJson?.photos?.first?.url())
+        if let list = (post.imageJson ?? "").photos {
+            cell.set(url: list.first?.url())
         }
         cell.setup(isCleareButtonHide: true)
     }
@@ -256,10 +256,30 @@ extension ClubDetailViewController {
     }
     
     func voteClubAPI(id: String, type: String) {
-        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (status, errorMsg) in
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if status {
+            if let post = data?[Keys.post] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Post.self, from: dataClub)
+                    
+                    let index = uwself.clubPostList.firstIndex(where: { ( $0.id == value.id ) })
+                    if let position = index, uwself.clubPostList.count > position {
+                        uwself.clubPostList[position] = value
+                        
+                        let oldOffset = uwself.tableView.contentOffset
+                        UIView.setAnimationsEnabled(false)
+                        uwself.tableView.beginUpdates()
+                        uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
+                        uwself.tableView.endUpdates()
+                        uwself.tableView.setContentOffset(oldOffset, animated: false)
+                    }
+                } catch {
+                    
+                }
+                
                 uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

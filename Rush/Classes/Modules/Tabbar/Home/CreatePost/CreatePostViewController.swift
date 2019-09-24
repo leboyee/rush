@@ -169,6 +169,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
             if type == .photoLibrary {
                 self.picker = ImagePickerController()
                 self.picker.delegate = self
+                self.picker.isSingleSelection = true
                 self.picker.navigationBar.isTranslucent = false
                 var assets = [PHAsset]()
                 for img in self.imageList {
