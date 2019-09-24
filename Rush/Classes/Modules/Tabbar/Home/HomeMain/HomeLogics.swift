@@ -143,7 +143,18 @@ extension HomeViewController {
         ServiceManager.shared.fetchEventList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unowned = self else { return }
-            
+//            if let value = list[Keys.data] as? [String: Any] {
+//                if let club = value[Keys.club] as? [String: Any] {
+//                    do {
+//                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+//                        let decoder = JSONDecoder()
+//                        let value = try decoder.decode(Club.self, from: dataClub)
+//                        uwself.clubInfo = value
+//                    } catch {
+//
+//                    }
+//                }
+//            }
         }
     }
 }
