@@ -21,7 +21,7 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            let photos = clubPostList[indexPath.section - 6].photos
+            let photos = clubPostList[indexPath.section - 6].imageJson?.photos
             if indexPath.row == 2 {
                 return photos == nil ? CGFloat.leastNormalMagnitude : screenWidth
             }
@@ -132,7 +132,9 @@ extension ClubDetailViewController {
     // Image cell (section 6 row 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        cell.set(url: post.photos?.first?.url())
+        if (post.imageJson ?? "").isNotEmpty {
+            cell.set(url: post.imageJson?.photos?.first?.url())
+        }
         cell.setup(isCleareButtonHide: true)
     }
     

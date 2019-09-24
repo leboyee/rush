@@ -35,23 +35,38 @@ class Post: Codable {
     
     init() {
     }
-    
+}
+
+extension String {
     var photos: [Image]? {
-        if let str = imageJson {
-            if let data = str.data(using: .utf8) {
-                var images = [Image]()
-                do {
-                    if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] {
-                        for img in object {
-                            images.append(Image(data: img))
-                        }
-                        return images
-                    } else {
-                        print("Error in json : " + str)
+        if let data = self.data(using: .utf8) {
+            var images = [Image]()
+            do {
+                if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] {
+                    for img in object {
+                        images.append(Image(data: img))
                     }
-                } catch let error as NSError {
-                    print(error)
+                    return images
+                } else {
+                    print("Error in json : " + self)
                 }
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
+    }
+    
+    var photo: Image? {
+        if let data = self.data(using: .utf8) {
+            do {
+                if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
+                    return Image(data: object)
+                } else {
+                    print("Error in json : " + self)
+                }
+            } catch let error as NSError {
+                print(error)
             }
         }
         return nil

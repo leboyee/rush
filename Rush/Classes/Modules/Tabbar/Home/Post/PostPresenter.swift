@@ -34,7 +34,9 @@ extension PostViewController {
     
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        cell.set(url: postInfo?.photos?.first?.url())
+        if (postInfo?.imageJson ?? "").isNotEmpty {
+            cell.set(url: postInfo?.imageJson?.photos?.first?.url())
+        }
         cell.setup(isCleareButtonHide: true)
     }
     

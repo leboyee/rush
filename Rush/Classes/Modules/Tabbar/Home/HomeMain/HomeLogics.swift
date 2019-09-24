@@ -13,6 +13,8 @@ extension HomeViewController {
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
             return CGFloat.leastNormalMagnitude
+        } else if section == 1 {
+            return eventList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         } else if section == 2 {
             return clubList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         }
@@ -28,6 +30,8 @@ extension HomeViewController {
             return isShowTutorial ? UITableView.automaticDimension : CGFloat.leastNormalMagnitude
         } else if indexPath.section == 1 && isShowJoinEvents {
             return UITableView.automaticDimension
+        } else if indexPath.section == 1 {
+            return eventList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         } else if indexPath.section == 2 {
             return clubList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         } else {
@@ -66,7 +70,7 @@ extension HomeViewController {
         
         // (type, images, data)
         if indexPath.section == 1 {
-            cell.setup(.upcoming, nil, nil)
+            cell.setup(.upcoming, nil, eventList)
         } else if indexPath.section == 2 {
             cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
         } else {
@@ -76,7 +80,8 @@ extension HomeViewController {
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
-                unsafe.showEvent()
+                let event = unsafe.eventList[index]
+                unsafe.showEvent(event: event)
             } else if type == .clubs {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
@@ -135,7 +140,7 @@ extension HomeViewController {
     
     func getEventList(sortBy: GetEventType) {
         // (Authorization.shared.profile?.userId ?? "")
-        let param = [Keys.profileUserId: "",
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]

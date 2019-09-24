@@ -39,7 +39,7 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
+        getEventList(sortBy: .my)
     }
     
     func setup() {
@@ -119,8 +119,8 @@ extension HomeViewController {
 // MARK: - Mediator / Presenter Functions
 extension HomeViewController {
 
-    func showEvent() {
-        performSegue(withIdentifier: Segues.homeEventDetail, sender: nil)
+    func showEvent(event: Event?) {
+        performSegue(withIdentifier: Segues.homeEventDetail, sender: event)
     }
 }
 
@@ -155,6 +155,7 @@ extension HomeViewController {
         } else if segue.identifier == Segues.homeEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             vc.type = .other
+            vc.event = sender as? Event
         }
     }
 }
