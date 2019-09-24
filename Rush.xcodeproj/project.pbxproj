@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -115,6 +115,10 @@
 		1AAE42BF2296787200BDD7C5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE42BE2296787200BDD7C5 /* CustomTextField.swift */; };
 		1AAE42C12296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE42C02296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift */; };
 		1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE42C22296CC7B00BDD7C5 /* CustomButton.swift */; };
+		1AAE965C233A47CB00868449 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE965B233A47CB00868449 /* Invite.swift */; };
+		1AAE9661233A568D00868449 /* CreateEventInterestViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE965E233A568D00868449 /* CreateEventInterestViewLogics.swift */; };
+		1AAE9662233A568D00868449 /* CreateEventInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE965F233A568D00868449 /* CreateEventInterestViewController.swift */; };
+		1AAE9663233A568D00868449 /* CreateEventInterestViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE9660233A568D00868449 /* CreateEventInterestViewMediates.swift */; };
 		1AB0C15222C0F6BB000D016E /* AddMinorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C14F22C0F6BB000D016E /* AddMinorsViewController.swift */; };
 		1AB0C15322C0F6BB000D016E /* AddMinorsViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C15022C0F6BB000D016E /* AddMinorsViewMediates.swift */; };
 		1AB0C15422C0F6BB000D016E /* AddMinorsViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C15122C0F6BB000D016E /* AddMinorsViewLogics.swift */; };
@@ -155,6 +159,11 @@
 		1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */; };
 		1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */; };
 		1AEB56AB22E842730041EAA7 /* AddInviteViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */; };
+		1AF44212233930E80062B4F2 /* CreateEventInviteMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4420F233930E70062B4F2 /* CreateEventInviteMediates.swift */; };
+		1AF44213233930E80062B4F2 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44210233930E70062B4F2 /* CreateEventInviteLogics.swift */; };
+		1AF44214233930E80062B4F2 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44211233930E70062B4F2 /* CreateEventInviteViewController.swift */; };
+		1AF44218233935770062B4F2 /* InviteHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44216233935770062B4F2 /* InviteHeader.xib */; };
+		1AF44219233935770062B4F2 /* InviteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44217233935770062B4F2 /* InviteHeader.swift */; };
 		5E5D36877546E3B0A5B643C8 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CA32728EF4C37A767CE809 /* Pods_Rush.framework */; };
 		7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D098228E8CE5004E33B9 /* EventByDateCell.swift */; };
 		7903D0AA228E8CE5004E33B9 /* EventByDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7903D099228E8CE5004E33B9 /* EventByDateCell.xib */; };
@@ -638,6 +647,10 @@
 		1AAE42BE2296787200BDD7C5 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1AAE42C02296BE0800BDD7C5 /* CustomEmailAttributedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEmailAttributedLabel.swift; sourceTree = "<group>"; };
 		1AAE42C22296CC7B00BDD7C5 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1AAE965B233A47CB00868449 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		1AAE965E233A568D00868449 /* CreateEventInterestViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInterestViewLogics.swift; sourceTree = "<group>"; };
+		1AAE965F233A568D00868449 /* CreateEventInterestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInterestViewController.swift; sourceTree = "<group>"; };
+		1AAE9660233A568D00868449 /* CreateEventInterestViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInterestViewMediates.swift; sourceTree = "<group>"; };
 		1AB0C14F22C0F6BB000D016E /* AddMinorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMinorsViewController.swift; sourceTree = "<group>"; };
 		1AB0C15022C0F6BB000D016E /* AddMinorsViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMinorsViewMediates.swift; sourceTree = "<group>"; };
 		1AB0C15122C0F6BB000D016E /* AddMinorsViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMinorsViewLogics.swift; sourceTree = "<group>"; };
@@ -679,6 +692,11 @@
 		1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewMediates.swift; sourceTree = "<group>"; };
 		1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewController.swift; sourceTree = "<group>"; };
 		1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewLogics.swift; sourceTree = "<group>"; };
+		1AF4420F233930E70062B4F2 /* CreateEventInviteMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteMediates.swift; sourceTree = "<group>"; };
+		1AF44210233930E70062B4F2 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
+		1AF44211233930E70062B4F2 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
+		1AF44216233935770062B4F2 /* InviteHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteHeader.xib; sourceTree = "<group>"; };
+		1AF44217233935770062B4F2 /* InviteHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteHeader.swift; sourceTree = "<group>"; };
 		444652BA944A7873F2F2B883 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
 		7903D098228E8CE5004E33B9 /* EventByDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventByDateCell.swift; sourceTree = "<group>"; };
 		7903D099228E8CE5004E33B9 /* EventByDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventByDateCell.xib; sourceTree = "<group>"; };
@@ -1204,6 +1222,8 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				1AAE965D233A568D00868449 /* CreateEventInterest */,
+				1AF4420E233930E70062B4F2 /* CreateEventInvite */,
 				F9C89F5F232D2B4A00DC9C85 /* AddLocation */,
 				1AB43B2B2327EE0C00C2FBCE /* AddRSVP */,
 				1A0D01F723228A08004F6279 /* CreateEvent */,
@@ -1543,6 +1563,16 @@
 			path = AddInstragam;
 			sourceTree = "<group>";
 		};
+		1AAE965D233A568D00868449 /* CreateEventInterest */ = {
+			isa = PBXGroup;
+			children = (
+				1AAE965F233A568D00868449 /* CreateEventInterestViewController.swift */,
+				1AAE965E233A568D00868449 /* CreateEventInterestViewLogics.swift */,
+				1AAE9660233A568D00868449 /* CreateEventInterestViewMediates.swift */,
+			);
+			path = CreateEventInterest;
+			sourceTree = "<group>";
+		};
 		1AB0C14E22C0F6BB000D016E /* AddMinors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1726,6 +1756,26 @@
 				1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */,
 			);
 			path = AddInvite;
+			sourceTree = "<group>";
+		};
+		1AF4420E233930E70062B4F2 /* CreateEventInvite */ = {
+			isa = PBXGroup;
+			children = (
+				1AF44215233935770062B4F2 /* InviteHeader */,
+				1AF4420F233930E70062B4F2 /* CreateEventInviteMediates.swift */,
+				1AF44210233930E70062B4F2 /* CreateEventInviteLogics.swift */,
+				1AF44211233930E70062B4F2 /* CreateEventInviteViewController.swift */,
+			);
+			path = CreateEventInvite;
+			sourceTree = "<group>";
+		};
+		1AF44215233935770062B4F2 /* InviteHeader */ = {
+			isa = PBXGroup;
+			children = (
+				1AF44217233935770062B4F2 /* InviteHeader.swift */,
+				1AF44216233935770062B4F2 /* InviteHeader.xib */,
+			);
+			path = InviteHeader;
 			sourceTree = "<group>";
 		};
 		69A4CA5176A546F5C0DA9D7C /* Pods */ = {
@@ -2818,6 +2868,7 @@
 		C05FC15F22805F9C00721F3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1AAE965B233A47CB00868449 /* Invite.swift */,
 				8A0345A92322A6E90065CF3C /* Address.swift */,
 				8A0345AC2322A6EA0065CF3C /* Club.swift */,
 				8A0345AA2322A6E90065CF3C /* Invitees.swift */,
@@ -3091,6 +3142,7 @@
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */,
 				0918E787228444B90098AF35 /* Profile.storyboard in Resources */,
+				1AF44218233935770062B4F2 /* InviteHeader.xib in Resources */,
 				0918E781228444930098AF35 /* Explore.storyboard in Resources */,
 				C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */,
 				1A353AC922BD130E0069752D /* UniversityCell.xib in Resources */,
@@ -3374,6 +3426,7 @@
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
 				7905CDBE230D63120011C83B /* ChatServices.swift in Sources */,
+				1AAE965C233A47CB00868449 /* Invite.swift in Sources */,
 				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				793BE66722E88207005EF72D /* CellSizeCalculator.swift in Sources */,
 				8A04B17722FD8C530055C65F /* NotificationSettingsMediator.swift in Sources */,
@@ -3450,6 +3503,7 @@
 				797FFDA622B7BC480055A001 /* LiveView.swift in Sources */,
 				7994A3BE22D76FD00057527C /* ChatsViewController.swift in Sources */,
 				79BE868722A946C20056529E /* FriendListCell.swift in Sources */,
+				1AAE9663233A568D00868449 /* CreateEventInterestViewMediates.swift in Sources */,
 				1A93E1A2229E44BE00724A6C /* EnterPhoneNoViewController.swift in Sources */,
 				7994A3BF22D76FD00057527C /* ChatsViewLogics.swift in Sources */,
 				1AB0C15D22C120D8000D016E /* AuthorizationService.swift in Sources */,
@@ -3457,6 +3511,7 @@
 				793BE65422E88207005EF72D /* InputItem.swift in Sources */,
 				1AEAC4A322D31BE4008FBB54 /* UserInfoViewController.swift in Sources */,
 				1AC635F722AA6E9500021E03 /* AkiraTextField.swift in Sources */,
+				1AAE9661233A568D00868449 /* CreateEventInterestViewLogics.swift in Sources */,
 				79C1AC4F22A64D09003C7790 /* ProfileInformationLogics.swift in Sources */,
 				79DF741D2292BA9F0012DCB7 /* SelectEventTypeLogics.swift in Sources */,
 				797FFDA422B7BC480055A001 /* ImagePickerController.swift in Sources */,
@@ -3477,10 +3532,12 @@
 				8A04B19C230409110055C65F /* ParallaxHeader.swift in Sources */,
 				796A6F2922CDEEAD00916D79 /* ClassDetailLogics.swift in Sources */,
 				7903D0B5228E8CE5004E33B9 /* HomeLogics.swift in Sources */,
+				1AF44214233930E80062B4F2 /* CreateEventInviteViewController.swift in Sources */,
 				1AEAC4C522D35BE5008FBB54 /* DatePickerPresenter.swift in Sources */,
 				793BE66C22E88207005EF72D /* MessagesCollectionViewLayoutAttributes.swift in Sources */,
 				1AB0C15322C0F6BB000D016E /* AddMinorsViewMediates.swift in Sources */,
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
+				1AF44212233930E80062B4F2 /* CreateEventInviteMediates.swift in Sources */,
 				7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */,
 				793BE65222E88207005EF72D /* NSMutableAttributedString+Extensions.swift in Sources */,
 				79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */,
@@ -3551,8 +3608,10 @@
 				793BE65E22E88207005EF72D /* SampleData.swift in Sources */,
 				793BE67C22E88207005EF72D /* Sender.swift in Sources */,
 				79EF134B22D3588D00E260D9 /* EventCategoryListViewController.swift in Sources */,
+				1AF44213233930E80062B4F2 /* CreateEventInviteLogics.swift in Sources */,
 				8A04B1A02304109A0055C65F /* ProfileMediator.swift in Sources */,
 				793BE66022E88207005EF72D /* CGRect+Extensions.swift in Sources */,
+				1AAE9662233A568D00868449 /* CreateEventInterestViewController.swift in Sources */,
 				7938D06122D75D74002D1537 /* UniversityLogics.swift in Sources */,
 				8A04B13C22FADFBD0055C65F /* CalendarEventListLogics.swift in Sources */,
 				797FFDB322B7BC480055A001 /* PhotoGalleryViewController.swift in Sources */,
@@ -3590,6 +3649,7 @@
 				F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */,
 				79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */,
 				79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */,
+				1AF44219233935770062B4F2 /* InviteHeader.swift in Sources */,
 				8A4B328C232F5A5B00AC1D17 /* PostImageCell.swift in Sources */,
 				797FFDA722B7BC480055A001 /* Parameters.swift in Sources */,
 			);

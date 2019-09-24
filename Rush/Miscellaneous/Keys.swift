@@ -109,4 +109,6 @@ struct Keys {
     static let eventIsChatGroup = "event_is_chat_group"
     static let eventInvitedUserIds = "event_invited_user_ids"
     static let eventPhoto = "event_photo"
+    static let eventContact = "event_Contact"
+
 }
