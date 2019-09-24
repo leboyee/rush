@@ -1,0 +1,105 @@
+PODS:
+  - DKCamera (1.6.4)
+  - DKImagePickerController/Camera (4.1.7):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/Core (4.1.7):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.1.7)
+  - DKImagePickerController/InlineCamera (4.1.7):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/PhotoGallery (4.1.7):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.1.7)
+  - DKPhotoGallery (0.0.14):
+    - DKPhotoGallery/Core (= 0.0.14)
+    - DKPhotoGallery/Model (= 0.0.14)
+    - DKPhotoGallery/Preview (= 0.0.14)
+    - DKPhotoGallery/Resource (= 0.0.14)
+    - SDWebImage
+    - SDWebImageFLPlugin
+  - DKPhotoGallery/Core (0.0.14):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage
+    - SDWebImageFLPlugin
+  - DKPhotoGallery/Model (0.0.14):
+    - SDWebImage
+    - SDWebImageFLPlugin
+  - DKPhotoGallery/Preview (0.0.14):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage
+    - SDWebImageFLPlugin
+  - DKPhotoGallery/Resource (0.0.14):
+    - SDWebImage
+    - SDWebImageFLPlugin
+  - FLAnimatedImage (1.0.12)
+  - GoogleMaps/Base (3.4.0)
+  - GooglePlaces (3.4.0):
+    - GoogleMaps/Base (= 3.4.0)
+  - IQKeyboardManagerSwift (6.4.2)
+  - MGSwipeTableCell (1.6.9)
+  - ReachabilitySwift (4.3.1)
+  - SDWebImage (5.1.1):
+    - SDWebImage/Core (= 5.1.1)
+  - SDWebImage/Core (5.1.1)
+  - SDWebImageFLPlugin (0.3.0):
+    - FLAnimatedImage (>= 1.0.11)
+    - SDWebImage/Core (~> 5.0)
+  - SendBirdSDK (3.0.150)
+  - SVProgressHUD (2.2.5)
+  - SwiftLint (0.35.0)
+
+DEPENDENCIES:
+  - DKImagePickerController/Camera
+  - DKImagePickerController/InlineCamera
+  - DKImagePickerController/PhotoGallery
+  - GooglePlaces
+  - IQKeyboardManagerSwift
+  - MGSwipeTableCell
+  - ReachabilitySwift
+  - SDWebImage
+  - SendBirdSDK
+  - SVProgressHUD
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - DKCamera
+    - DKImagePickerController
+    - DKPhotoGallery
+    - FLAnimatedImage
+    - GoogleMaps
+    - GooglePlaces
+    - IQKeyboardManagerSwift
+    - MGSwipeTableCell
+    - ReachabilitySwift
+    - SDWebImage
+    - SDWebImageFLPlugin
+    - SendBirdSDK
+    - SVProgressHUD
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
+  DKImagePickerController: 6ffad961c212b0debf644f3d1aa72d0a2ee03d5f
+  DKPhotoGallery: 0290d32343574f06eaa4c26f8f2f8a1035e916be
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
+  GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
+  IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
+  MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
+  SendBirdSDK: eaa0287bb4b81569c896f2da2ec5c8228c784435
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+
+PODFILE CHECKSUM: 52a1d922b501599288ff63c011d025538c7117a9
+
+COCOAPODS: 1.8.0
