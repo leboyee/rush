@@ -63,6 +63,7 @@ extension UserInfoViewController {
                 if let customPickerController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as? CustomPickerViewController {
                     customPickerController.pickerDelegate = self
                     customPickerController.presenter.type = .gender
+                    customPickerController.presenter.selectedIndexIn = self.selectedGender
                     customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                     self.present(customPickerController, animated: false, completion: nil)
                 }
@@ -71,6 +72,7 @@ extension UserInfoViewController {
                 if let customPickerController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as? CustomPickerViewController {
                     customPickerController.pickerDelegate = self
                     customPickerController.presenter.type = .relation
+                    customPickerController.presenter.selectedIndexIn = self.selectedRelation
                     customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                     self.present(customPickerController, animated: false, completion: nil)
                 }

@@ -122,6 +122,11 @@ extension EnterVerificationCodeViewController {
 
     }
     
+    @IBAction func errorButtonAction() {
+        codeErrorLabel.isHidden = true
+        codeErrorCancelButton.isHidden = true
+    }
+
     @IBAction func resendSMSButtonAction() {
         codeLabel.text = ""
         digitTextField.text = ""
