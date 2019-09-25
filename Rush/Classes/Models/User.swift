@@ -37,10 +37,10 @@ class User: Codable {
     var isDarkMode: Int = 0
     var whoCanMessage: String?
     var whoCanInvite: String?
-    var isNotifyOn: Bool = false
-    var isEventNotify: Bool = false
-    var isClassNotify: Bool = false
-    var isClubNotify: Bool = false
+    var isNotifyOn: Int = 1
+    var isEventNotify: Int = 1
+    var isClassNotify: Int = 1
+    var isClubNotify: Int = 1
     var latitude: String?
     var longitude: String?
     var createdAt: String?

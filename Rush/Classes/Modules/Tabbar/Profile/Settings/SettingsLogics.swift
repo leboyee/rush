@@ -53,7 +53,7 @@ extension SettingsViewController {
                 cell.set(title: Text.notifications)
                 cell.set(isHideArrow: false)
                 cell.set(detail: "Events, clubs and classes")
-                if user?.isNotifyOn == false {
+                if user?.isNotifyOn == 0 {
                     cell.set(detail: "Off")
                 } else {
                     
@@ -61,11 +61,11 @@ extension SettingsViewController {
                        let isClub = user?.isClubNotify,
                        let isClass = user?.isClassNotify {
                         var text = ""
-                        if isEvent {
+                        if isEvent == 1 {
                             text = "Events"
                         }
                         
-                        if isClub {
+                        if isClub == 1 {
                             if text.isEmpty {
                                text = "Clubs"
                             } else {
@@ -73,7 +73,7 @@ extension SettingsViewController {
                             }
                         }
                         
-                        if isClass {
+                        if isClass == 1 {
                             if text.isEmpty {
                                 text = "Classes"
                             } else {
