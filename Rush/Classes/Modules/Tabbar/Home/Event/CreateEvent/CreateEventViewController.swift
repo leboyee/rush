@@ -207,16 +207,18 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
                 Utils.authorizePhoto(completion: { [weak self] (status) in
                     guard let unsafe = self else { return }
                     if status == .alreadyAuthorized || status == .justAuthorized {
-                        unsafe.picker = ImagePickerController()
-                        unsafe.picker.delegate = self
-                        unsafe.picker.isSingleSelection = true
-                        unsafe.picker.navigationBar.isTranslucent = false
-                        var assets = [PHAsset]()
-                        for img in unsafe.imageList {
-                            if let value = img as? PHAsset { assets.append(value) }
+                        DispatchQueue.main.async {
+                            unsafe.picker = ImagePickerController()
+                            unsafe.picker.delegate = self
+                            unsafe.picker.isSingleSelection = true
+                            unsafe.picker.navigationBar.isTranslucent = false
+                            var assets = [PHAsset]()
+                            for img in unsafe.imageList {
+                                if let value = img as? PHAsset { assets.append(value) }
+                            }
+                            unsafe.picker.updateSelectedAssets(with: assets)
+                            unsafe.present(unsafe.picker, animated: false, completion: nil)
                         }
-                        unsafe.picker.updateSelectedAssets(with: assets)
-                        unsafe.present(unsafe.picker, animated: false, completion: nil)
                     } else {
                         if status != .justDenied {
                             Utils.photoLibraryPermissionAlert()
