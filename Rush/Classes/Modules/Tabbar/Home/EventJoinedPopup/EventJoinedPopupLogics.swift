@@ -11,7 +11,7 @@ import UIKit
 
 extension EventJoinedPopupViewController {
     func updateReceiveNotification() {
-        let params = [Keys.uIsNotifyOn: true, Keys.uIsEventNotify: true]
+        let params = [Keys.uIsNotifyOn: 1, Keys.uIsEventNotify: 1]
         updateUserProfile(params: params)
     }
 }
