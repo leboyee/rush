@@ -103,6 +103,3 @@ class User: Codable {
     }
     
 }
-
-/*{"errors":[],"message":"Success","data":{"user":{"_id":"5d4a7d91392776515c7df196","first_name":"Kamal","last_name":"Mittal","email":"km@messapps.com","u_type":2,"country_code":"91","phone":"9409570520","u_edu_level":"Alumni","u_edu_year":"","u_edu_majors":["Mythology"],"u_edu_minors":["Government/Political Science"],"u_edu_classes":[],"u_interests":[],"u_university":"","u_birth_date":"","u_gender":"","u_relationship":"","u_hometown":"","u_is_dark_mode":"0","u_who_can_message":"Only friends","u_who_can_invite":"Friends and their friends","u_is_notify_on":"1","u_is_event_notify":false,"u_is_club_notify":false,"u_is_class_notify":true,"u_latitude":"","u_longitude":"","u_status":1,"u_created_at":"2019-08-07 07:28:17","u_updated_at":"2019-09-24 12:54:21","last_login_time":"2019-09-24 12:54:21","u_photo":"{\"main\":{\"url\":\"https:\\/\\/rush-app.s3.us-east-2.amazonaws.com\\/user\\/5d4a7d91392776515c7df196\\/profile\\/CQ1hVZ1eJfMTE7Vp_1565162929.jpg\",\"width\":2304,\"height\":2304},\"thumb\":{\"url\":\"https:\\/\\/rush-app.s3.us-east-2.amazonaws.com\\/user\\/5d4a7d91392776515c7df196\\/profile\\/thumb_CQ1hVZ1eJfMTE7Vp_1565162929.jpg\",\"width\":300,\"height\":300}}","insta_token":"","insta_username":""},"images":[]}}
- */
