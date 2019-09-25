@@ -110,7 +110,7 @@ extension NetworkManager {
     }
     
     func getCommentList(postId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "comment/\(postId)", params: param, resultHandler: resultHandler)
+        requestGet(path: "post/\(postId)/comment/list", params: param, resultHandler: resultHandler)
     }
     
     func votePost(postId: String, voteType: String, resultHandler: @escaping ResultClosure) {
