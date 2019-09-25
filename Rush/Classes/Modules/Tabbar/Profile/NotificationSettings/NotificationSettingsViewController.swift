@@ -13,7 +13,7 @@ class NotificationSettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let list = ["Events", "Clubs", "Classes"]
     var selectedIndex: [Int] = []
-    var user: Profile?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()

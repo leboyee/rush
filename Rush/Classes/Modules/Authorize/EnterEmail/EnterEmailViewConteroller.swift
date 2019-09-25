@@ -27,7 +27,7 @@ class EnterEmailViewConteroller: CustomViewController {
     @IBOutlet weak var loginNumberButtonConstraint: NSLayoutConstraint!
 
     var loginType: LoginType = .register
-    var profile = Profile()
+    var profile = User()
     var isEmailError: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()

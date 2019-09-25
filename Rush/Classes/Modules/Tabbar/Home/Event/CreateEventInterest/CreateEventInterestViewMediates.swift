@@ -51,7 +51,7 @@ extension CreateEventInterestViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.inviteHeader) as? InviteHeader else { return UIView() }
-        view.headerTextLabel.text = Authorization.shared.profile?.interest.count ?? 0 > 0 ? section == 0 ? "My interests" : "All interests" : "All interests"
+        view.headerTextLabel.text = Authorization.shared.profile?.interest?.count ?? 0 > 0 ? section == 0 ? "My interests" : "All interests" : "All interests"
         return view
     }
     

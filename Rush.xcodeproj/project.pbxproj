@@ -127,7 +127,6 @@
 		1AB0C15D22C120D8000D016E /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C15C22C120D8000D016E /* AuthorizationService.swift */; };
 		1AB0C16022C1247F000D016E /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C15F22C1247F000D016E /* ServiceManager.swift */; };
 		1AB0C16322C12B22000D016E /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C16222C12B22000D016E /* Authorization.swift */; };
-		1AB0C16522C12BAE000D016E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0C16422C12BAD000D016E /* Profile.swift */; };
 		1AB43B2A2327E75600C2FBCE /* RSVP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB43B292327E75600C2FBCE /* RSVP.storyboard */; };
 		1AB43B322327EE0C00C2FBCE /* AddRSVPLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB43B2C2327EE0C00C2FBCE /* AddRSVPLogics.swift */; };
 		1AB43B332327EE0C00C2FBCE /* AddRSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB43B2D2327EE0C00C2FBCE /* AddRSVPViewController.swift */; };
@@ -660,7 +659,6 @@
 		1AB0C15E22C12144000D016E /* Information.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Information.h; sourceTree = "<group>"; };
 		1AB0C15F22C1247F000D016E /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = ../NetworkManager/ServiceManager.swift; sourceTree = "<group>"; };
 		1AB0C16222C12B22000D016E /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
-		1AB0C16422C12BAD000D016E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1AB43B292327E75600C2FBCE /* RSVP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RSVP.storyboard; sourceTree = "<group>"; };
 		1AB43B2C2327EE0C00C2FBCE /* AddRSVPLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRSVPLogics.swift; sourceTree = "<group>"; };
 		1AB43B2D2327EE0C00C2FBCE /* AddRSVPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRSVPViewController.swift; sourceTree = "<group>"; };
@@ -2876,7 +2874,6 @@
 				1A262F56231D1BF70068A695 /* Interest.swift */,
 				1A088E5222FED12700DF6004 /* Contact.swift */,
 				1A2809EE22C6304000B4E764 /* Classes.swift */,
-				1AB0C16422C12BAD000D016E /* Profile.swift */,
 				7983D22B228982B500DE054E /* Image.swift */,
 				793BE5FB22E87F5E005EF72D /* Friend.swift */,
 				8A04B14422FB042E0055C65F /* Event.swift */,
@@ -3250,7 +3247,6 @@
 				1AB0C16322C12B22000D016E /* Authorization.swift in Sources */,
 				091557AF22B1247F0080C9AE /* CreatePostLogics.swift in Sources */,
 				797FFDB022B7BC480055A001 /* PhotoGalleryLiveViewCell.swift in Sources */,
-				1AB0C16522C12BAE000D016E /* Profile.swift in Sources */,
 				793BE68122E88207005EF72D /* MessagesDataSource.swift in Sources */,
 				793BE68A22E88207005EF72D /* MessageCollectionViewCell.swift in Sources */,
 				797FFDB922B7BC480055A001 /* UIFont+Style.swift in Sources */,

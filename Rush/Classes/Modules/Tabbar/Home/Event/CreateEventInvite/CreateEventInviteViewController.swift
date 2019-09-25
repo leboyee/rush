@@ -20,8 +20,8 @@ class CreateEventInviteViewController: UIViewController {
     var items = [ContactsPresenterItem]()
     var itemsDictionary = [String: [Contact]]()
     var selectedItem = [Contact]()
-    var friendListAraay = [Profile]()
-    var selectedFriendListArray = [Profile]()
+    var friendListAraay = [User]()
+    var selectedFriendListArray = [User]()
     var pageNo = 1
     var isNextPageExist = false
     var searchText = ""

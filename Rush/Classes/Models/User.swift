@@ -19,12 +19,16 @@ class User: Codable {
     var phone: String?
     var eduLevel: String?
     var eduYear: String?
-    /*
-    var eduMajors: String?
-    var eduMinors: String?
-    var eduClasses: String?
-    var interests: String?
-    */
+    var socialId: String?
+    var password: String?
+    var educationLevel: String?
+    var educationYear: String?
+    var majors: [String]?
+    var minors: [String]?
+    //var classes: [Classes]?
+    var interest: [String]?
+    var photo: Image?
+    var images: [Image]?
     var university: String?
     var birthDate: String?
     var gender: String?
@@ -33,18 +37,24 @@ class User: Codable {
     var isDarkMode: Int = 0
     var whoCanMessage: String?
     var whoCanInvite: String?
-    var isNotifyOn: Int = 0
-    var isEventNotify: Int = 0
-    var isClassNotify: Int = 0
+    var isNotifyOn: Int = 1
+    var isEventNotify: Int = 1
+    var isClassNotify: Int = 1
+    var isClubNotify: Int = 1
     var latitude: String?
     var longitude: String?
     var createdAt: String?
     var updatedAt: String?
     var lastLoginTime: String?
     var status: Int = 0
-    
+    var instaUserName: String?
+    var instaToken: String?
+
     var name: String {
         return (firstName ?? "") + " " + (lastName ?? "")
+    }
+    var userId: String {
+        return id ?? "0"
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -56,14 +66,13 @@ class User: Codable {
         case type = "u_type"
         case countryCode = "country_code"
         case phone
-        case eduLevel = "u_edu_level"
-        case eduYear = "u_edu_year"
-        /*
-        case eduMajors = "u_edu_majors"
-        case eduMinors = "u_edu_minors"
-        case eduClasses = "u_edu_classes"
-        case interests = "u_interests"
-        */
+        case educationLevel = "u_edu_level"
+        case educationYear = "u_edu_year"
+        case socialId = "social_id"
+        case password
+        case majors = "u_edu_majors"
+        case minors = "u_edu_minors"
+        case interest = "u_interests"
         case university = "u_university"
         case birthDate = "u_birth_date"
         case gender = "u_gender"
@@ -75,16 +84,22 @@ class User: Codable {
         case isNotifyOn = "u_is_notify_on"
         case isEventNotify = "u_is_event_notify"
         case isClassNotify = "u_is_class_notify"
+        case isClubNotify = "u_is_club_notify"
         case latitude = "u_latitude"
         case longitude = "u_longitude"
         case createdAt = "u_created_at"
         case updatedAt = "u_updated_at"
         case lastLoginTime = "last_login_time"
         case status = "u_status"
+        case instaToken = "insta_token"
+        case instaUserName = "insta_username"
         //        case name
+        //var classes: [Classes]? u_edu_classes,u_university
+
     }
     
     init() {
         
     }
+    
 }

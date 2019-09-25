@@ -47,7 +47,7 @@ extension AppDelegate: SBDChannelDelegate {
     }
     
     func registerPushTokenWithSendBird() {
-        if Authorization.shared.authorized && (Authorization.shared.profile?.isNotificationOn ?? false) {
+        if Authorization.shared.authorized && Authorization.shared.profile?.isNotifyOn == 1 {
             if (Utils.getDataFromUserDefault(kDeviceTokenPushDataKey)) != nil {
                 if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
                     

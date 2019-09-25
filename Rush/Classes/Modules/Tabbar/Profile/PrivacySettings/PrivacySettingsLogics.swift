@@ -17,7 +17,7 @@ extension PrivacySettingsViewController {
     func fillCell(_ cell: CheckMarkCell, _ indexPath: IndexPath) {
        let value = list[indexPath.row]
        cell.set(title: list[indexPath.row])
-        let text = (type == .invitesfrom ? user?.whoCanInviteYou : user?.whoCanMessageYou) ?? ""
+        let text = (type == .invitesfrom ? user?.whoCanInvite : user?.whoCanMessage) ?? ""
         if text.lowercased() == value.lowercased() {
             cell.set(isCheckMarkShow: true)
         } else {
