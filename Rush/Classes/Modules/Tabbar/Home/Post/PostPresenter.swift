@@ -20,24 +20,32 @@ extension PostViewController {
     
     // Username cell (section 0)
     func userDetailCell(_ cell: UserNameTableViewCell) {
-        
+        if let club = clubInfo { // Club
+            cell.setup(title: club.user?.name ?? "")
+            cell.setup(detail: "Posting in " + (club.clubName ?? ""))
+        }
     }
     
     // Textview cell (section 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
-        
-        cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
+        cell.setup(text: postInfo?.text ?? "", placeholder: "")
         cell.setup(font: UIFont.regular(sz: 17))
     }
     
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        cell.setup(imageAsset: imageList[indexPath.row])
+        if (postInfo?.imageJson ?? "").isNotEmpty {
+            cell.set(url: postInfo?.imageJson?.photos?.first?.url())
+        }
         cell.setup(isCleareButtonHide: true)
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
-        header.setup(title: Text.comments)
+        if commentList.count > 0 {
+            header.setup(title: Text.comments)
+        } else {
+            header.setup(title: "")
+        }
         header.setup(isDetailArrowHide: true)
     }
     
@@ -62,6 +70,41 @@ extension PostViewController {
             unself.username = "Peter Rally"
             unself.textView.attributedText = Utils.setAttributedText(unself.username, ", can I bring friends?", 17, 17)
             unself.textView.becomeFirstResponder()
+        }
+    }
+    
+    func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+        if let post = postInfo {
+            cell.set(numberOfLike: post.numberOfLikes)
+            cell.set(numberOfUnLike: post.numberOfUnLikes)
+            cell.set(numberOfComment: post.numberOfComments)
+            cell.set(ishideUnlikeLabel: false)
+            
+            cell.likeButtonEvent = { [weak self] () in
+                guard let uwself = self else { return }
+                uwself.voteClubAPI(id: post.id ?? "", type: "up")
+            }
+            
+            cell.unlikeButtonEvent = { [weak self] () in
+                guard let uwself = self else { return }
+                uwself.voteClubAPI(id: post.id ?? "", type: "down")
+                
+            }
+        }
+    }
+}
+
+// MARK: - Services
+extension PostViewController {
+    func voteClubAPI(id: String, type: String) {
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if status {
+                
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
         }
     }
 }

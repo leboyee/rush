@@ -1,4 +1,3 @@
-        //
 //  CustomPickerViewController.swift
 //  wolf
 //
@@ -62,7 +61,10 @@ class CustomPickerViewController: UIViewController {
         presenter.mediator = mediator
         setupPresenterHandlers()
         presenter.viewIsReady()
-        //pickerView.selectRow(presenter.selectedValue, inComponent: 0, animated: false)
+        pickerView.selectRow(presenter.selectedIndexIn, inComponent: 0, animated: false)
+        if let value = presenter.pickerDataList?[presenter.selectedIndexIn] {
+            presenter.selectedValue = value
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -75,7 +75,8 @@ extension String {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let detector = try? NSDataDetector(types: types.rawValue)
         guard detector != nil && self.count > 0 else { return false }
-        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count)) > 0 {
+        let range = NSRange(location: 0, length: self.count)
+        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: range) > 0 {
             return true
         }
         return false
@@ -193,5 +194,42 @@ extension UILabel {
         let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font ?? UIFont.semibold(sz: 17)], context: nil)
         let linesRoundedUp = Int(ceil(textSize.height/charSize))
         return linesRoundedUp
+    }
+}
+
+// MARK: - String extension for images
+extension String {
+    var photos: [Image]? {
+        if let data = self.data(using: .utf8) {
+            var images = [Image]()
+            do {
+                if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] {
+                    for img in object {
+                        images.append(Image(data: img))
+                    }
+                    return images
+                } else {
+                    print("Error in json : " + self)
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
+    }
+    
+    var photo: Image? {
+        if let data = self.data(using: .utf8) {
+            do {
+                if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
+                    return Image(data: object)
+                } else {
+                    print("Error in json : " + self)
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
 }

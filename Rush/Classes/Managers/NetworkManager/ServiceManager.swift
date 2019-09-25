@@ -33,6 +33,42 @@ class ServiceManager: NSObject {
         }
     }
     
+    
+    /*
+     *
+     */
+    func procesModelResponse<T: Codable>(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: T?, _ errorMessage: String?) -> Void) {
+        guard code != 200 else {
+            guard let resultDict = result as? [String: Any] else {
+                return
+            }
+            
+            guard let data = resultDict[Keys.data] as? [String: Any] else {
+                return
+            }
+            
+            guard let list = data[Keys.list] as? [Any] else {
+                return
+            }
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.dateDecodingStrategy = .secondsSince1970
+                let decodedObject = try jsonDecoder.decode(T.self, from: JSONSerialization.data(withJSONObject: list, options: []))
+                closer(decodedObject, "")
+            } catch let error {
+                print("ERROR DECODING: \(error)")
+                closer(nil, error.localizedDescription)
+            }
+            
+            return
+        }
+        
+        errorHandler(result: result, error: error) { (errorMessage) in
+            closer(nil, errorMessage)
+        }
+    }
+    
     /*
      *
      */

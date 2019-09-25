@@ -21,9 +21,9 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            let photos = clubPostList[indexPath.section - 6].images
+            let photos = clubPostList[indexPath.section - 6].imageJson?.photos
             if indexPath.row == 2 {
-                return photos == nil ? CGFloat.leastNormalMagnitude : UITableView.automaticDimension
+                return photos == nil ? CGFloat.leastNormalMagnitude : screenWidth
             }
             return UITableView.automaticDimension
         } else {
@@ -46,8 +46,8 @@ extension ClubDetailViewController {
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
         if let club = clubInfo {
-            cell.setup(title: club.clubName)
-            cell.setup(detail: club.clubDesc, numberOfLines: isReadMore ? 0 : 2)
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "", numberOfLines: isReadMore ? 0 : 2)
             cell.setup(readmoreSelected: isReadMore)
             cell.readMoreClickEvent = { [weak self] () in
                 guard let uwself = self else { return }
@@ -131,7 +131,10 @@ extension ClubDetailViewController {
     
     // Image cell (section 6 row 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        cell.postImageView?.image = #imageLiteral(resourceName: "bound-add-img")
+        let post = clubPostList[indexPath.section - 6]
+        if (post.imageJson ?? "").isNotEmpty {
+            cell.set(url: post.imageJson?.photos?.first?.url())
+        }
         cell.setup(isCleareButtonHide: true)
     }
     
@@ -140,6 +143,23 @@ extension ClubDetailViewController {
         cell.set(numberOfLike: post.numberOfLikes)
         cell.set(numberOfUnLike: post.numberOfUnLikes)
         cell.set(numberOfComment: post.numberOfComments)
+        cell.set(ishideUnlikeLabel: false)
+        
+        cell.likeButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.voteClubAPI(id: post.id ?? "", type: "up")
+        }
+        
+        cell.unlikeButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.voteClubAPI(id: post.id ?? "", type: "down")
+            
+        }
+        
+        cell.commentButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -156,8 +176,7 @@ extension ClubDetailViewController {
     
     func fillImageHeader() {
         let img = Image(json: clubInfo?.clubPhoto ?? "")
-        clubHeader.setup(imageUrl: img.url())
-        clubHeader.setup(isHideHoverView: true)
+        clubHeader.set(url: img.url())
     }
     
     func cellSelected(_ indexPath: IndexPath) {
@@ -219,26 +238,29 @@ extension ClubDetailViewController {
     
     func getClubPostListAPI() {
         
-        let param = ["data_id": clubInfo?.id ?? "",
-                     "data_type": "club",
-                     "search": "",
-                     "pageNo": 1] as [String: Any]
+        let param = [Keys.dataId: clubInfo?.id ?? "",
+                     Keys.dataType: Text.club,
+                     Keys.search: "",
+                     Keys.pageNo: 1] as [String: Any]
         
-        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: "club", params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if let list = data?[Keys.list] as? [[String: Any]] {
-                for post in list {
-                    do {
-                        let dataPost = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
-                        let decoder = JSONDecoder()
-                        let value = try decoder.decode(Post.self, from: dataPost)
-                        uwself.clubPostList.append(value)
-                    } catch {
-                        
-                    }
-                }
+            if let value = post {
+                uwself.clubPostList = value
                 uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func voteClubAPI(id: String, type: String) {
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if status {
+                uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

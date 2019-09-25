@@ -13,6 +13,8 @@ extension EventTypeCell {
     func cellCount(_ section: Int) -> Int {
         if cellType == .interests || cellType == .friends || cellType == .clubUser || (cellType == .event && type == .clubs) { // after stable app (remove this line)
             return cellType == .clubUser ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
+        } else if type == .upcoming {
+            return list?.count ?? 0
         }
         return 10
     }
@@ -20,14 +22,23 @@ extension EventTypeCell {
     func fillEventCell(_ cell: EventCell, _ indexPath: IndexPath) {
         cell.setup(type: type)
         if type == .upcoming {
-            cell.setup(eventName: "VR Meetup")
-            cell.setup(eventDetail: "10-12pm")
+            if let eventList = list as? [Event] {
+                let event = eventList[indexPath.item]
+                cell.setup(eventName: event.title)
+                cell.setup(eventType: event.type)
+                if event.photoJson.isNotEmpty {
+                    cell.setup(eventImageUrl: event.photoJson.photo?.url())
+                }
+            } else {
+                cell.setup(eventName: "VR Meetup")
+                cell.setup(eventDetail: "10-12pm")
+            }
         } else if type == .clubs || type == .clubsJoined {
             if let clubList = list as? [Club] {
                 let club = clubList[indexPath.item]
-                cell.setup(eventName: club.clubName)
-                cell.setup(eventDetail: club.clubDesc)
-                let img = Image(json: club.clubPhoto)
+                cell.setup(eventName: club.clubName ?? "")
+                cell.setup(eventDetail: club.clubDesc ?? "")
+                let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
                 let clubId = club.clubUserId
                 let userId = Authorization.shared.profile?.userId ?? ""

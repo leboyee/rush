@@ -94,7 +94,7 @@ extension EnterVerificationCodeViewController {
     func signupApiCalled(code: String) {
         let param = [Keys.email: profile.email, Keys.password: profile.password, Keys.countryCode: profile.countryCode, Keys.phone: profile.phone, Keys.phoneToken: code] as [String: Any]
 
-        ServiceManager.shared.singup(params: param) { [weak self] (status, errorMessage) in
+        ServiceManager.shared.singup(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
                 unsafe.singupSuccess()
@@ -108,8 +108,8 @@ extension EnterVerificationCodeViewController {
             } else {
                 unsafe.digitTextField.becomeFirstResponder()
                 unsafe.isCodeVerifing = false
-                Utils.alert(message: errorMessage ?? "Please contact Admin")
-                //self_.updateViewStage?(.error)
+                //Utils.alert(message: errorMessage ?? "Please contact Admin")
+                unsafe.updateStageView(stage: .error)
             }
         }
     }
@@ -117,7 +117,7 @@ extension EnterVerificationCodeViewController {
     func loginApiCalled(code: String) {
         let param = [Keys.phoneToken: code] as [String: Any]
         
-        ServiceManager.shared.phonetkn(params: param) { [weak self] (status, errorMessage) in
+        ServiceManager.shared.phonetkn(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
                 unsafe.loginSuccess()
@@ -131,8 +131,8 @@ extension EnterVerificationCodeViewController {
             } else {
                 unsafe.digitTextField.becomeFirstResponder()
                 unsafe.isCodeVerifing = false
-                Utils.alert(message: errorMessage ?? "Please contact Admin")
-                //self_.updateViewStage?(.error)
+                //Utils.alert(message: errorMessage ?? "Please contact Admin")
+                unsafe.updateStageView(stage: .error)
             }
         }
     }
@@ -158,6 +158,7 @@ extension EnterVerificationCodeViewController {
                 unsafe.resendCodeButton.setImage(#imageLiteral(resourceName: "sentTick"), for: .normal)
                 unsafe.resendCodeButton.isUserInteractionEnabled = true//Utils.alert(message: "Code sent successfully.")
             } else {
+                
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }

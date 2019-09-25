@@ -23,7 +23,7 @@ target 'Rush' do
   pod 'DKImagePickerController', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
   
   #Chatting SDK
-  pod 'SendBirdSDK'
+  pod 'SendBirdSDK', '3.0.149'
   
   #Swipe cell
   pod 'MGSwipeTableCell'

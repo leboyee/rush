@@ -91,7 +91,7 @@ extension AddLocationViewController {
                     print(place.postalCode as Any)
                     print(place.subThoroughfare as Any)
                     var addressString: String = ""
-                    let subLocality = place.subLocality ?? ""
+                    _ = place.subLocality ?? ""
                     /*
                     if subLocality.isEmpty == false {
                         addressString  += subLocality
