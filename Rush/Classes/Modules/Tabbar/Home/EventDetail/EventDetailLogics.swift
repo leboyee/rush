@@ -228,8 +228,12 @@ extension EventDetailViewController {
     
     private func fetchEventDetails() {
         
-        //guard let id = eventId, id.isNotEmpty else { return }
+        guard let id = eventId, id.isNotEmpty else { return }
+        ServiceManager.shared.fetchEventDetail(eventId: id) { (data, errorMessage) in
+            
+        }
         
+        /*
         if type == .my {
             sections = [
                 EventSection(type: .about, title: nil),
@@ -345,7 +349,8 @@ extension EventDetailViewController {
         user.photo = Image(
             url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile4.jpg"
         )
-        event?.owner = user
+        event?.owner = user*/
+        
         tableView.reloadData()
         updateHeaderInfo()
     }

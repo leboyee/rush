@@ -12,18 +12,28 @@ import UIKit
 extension ProfileViewController {
 
     func loadAllData() {
+        loadUserProfile()
+        loadImages()
+        loadFriends()
+        loadNotifications()
+    }
+    
+    func loadUserProfile() {
         fetchUserProfile()
+    }
+    
+    func loadImages() {
         fetchImagesList()
-        fetchFriendList()
-        fetchNotificationList()
     }
     
     func loadFriends() {
-        
+        fetchFriendList()
     }
     
     func loadNotifications() {
-        
+        notificationPageNo = 1
+        notificationNextPageExist = false
+        fetchNotificationList()
     }
 }
 
@@ -35,6 +45,17 @@ extension ProfileViewController {
     }
     
     func sectionHeight(_ section: Int) -> CGFloat {
+        
+        if section == 0, profileDetail.images?.isEmpty ?? true {
+            return CGFloat.leastNormalMagnitude
+        } else if section == 1, profileDetail.friends?.isEmpty ?? true {
+            return CGFloat.leastNormalMagnitude
+        } else if section == 2, profileDetail.interests?.isEmpty ?? true {
+            return CGFloat.leastNormalMagnitude
+        } else if section == 3, profileDetail.notifications?.isEmpty ?? true {
+            return CGFloat.leastNormalMagnitude
+        }
+        
         return 47.0
     }
     
@@ -49,13 +70,22 @@ extension ProfileViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        
         var count = 0
         switch section {
-        case 0, 1, 2:
-            count = 1
+        case 0:
+            if let images = profileDetail.images, !images.isEmpty {
+               count = 1
+            }
+        case 1:
+            if let friends = profileDetail.friends, !friends.isEmpty {
+               count = 1
+            }
+        case 2:
+            if let interests = profileDetail.interests, !interests.isEmpty {
+               count = 1
+            }
         case 3:
-            count = 6
+            count = profileDetail.notifications?.count ?? 0
         default:
             count = 0
         }
@@ -70,7 +100,9 @@ extension ProfileViewController {
         cell.setup(isSeparatorHide: false)
         switch indexPath.section {
         case 0:
-            cell.setup(imagesList: [])
+            if let images = profileDetail.images {
+               cell.setup(imagesList: images)
+            }
         case 1:
             if let friends = profileDetail.friends {
                cell.setup(friends: friends)

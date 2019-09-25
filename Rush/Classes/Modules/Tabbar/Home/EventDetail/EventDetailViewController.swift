@@ -49,7 +49,7 @@ class EventDetailViewController: UIViewController {
 
     var type: EventDetailType = .my
     var sections: [EventSection]?
-    var eventId: String?
+    var eventId: String? = "5d84989e39277643e078cc89"
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
