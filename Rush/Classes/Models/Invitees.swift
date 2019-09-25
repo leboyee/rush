@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Invitees: Decodable {
+class Invitees: Codable {
 
     var id: String = ""
     var user: User?
@@ -26,11 +26,5 @@ class Invitees: Decodable {
         id = UUID().uuidString
         self.user = User()
         self.user?.firstName = name
-    }
-    
-    required init(from decoder: Decoder) {
-        let container = try? decoder.container(keyedBy: CodingKeys.self)
-        id = (try? container?.decode(String.self, forKey: .id)) ?? ""
-        user = (try? container?.decode(User.self, forKey: .user))
     }
 }

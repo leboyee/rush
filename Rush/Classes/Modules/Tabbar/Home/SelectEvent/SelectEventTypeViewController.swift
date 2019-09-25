@@ -42,6 +42,8 @@ class SelectEventTypeViewController: UIViewController {
     var eventType: EventType = .none
     weak var delegate: SelectEventTypeDelegate?
     
+    var gesture: UIPanGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +68,9 @@ extension SelectEventTypeViewController {
     func setupUI() {
         radiusView.layer.cornerRadius = 24
         radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged(_:)))
+        view.addGestureRecognizer(gesture)
         
         if type == .eventCategory {
             heightConstraintOfContainerView.constant = 214
@@ -116,9 +121,8 @@ extension SelectEventTypeViewController {
     }
     
     @IBAction func clubButtonAction() {
-        type = .event
         screenType = .club
-        setupUI()
+        dismiss()
     }
     @IBAction func publicButtonAction() {
         eventType = .publik
@@ -141,6 +145,44 @@ extension SelectEventTypeViewController {
     
     @IBAction func unPlashCollectionAction() {
         dismissPhoto(photoFrom: .unSplash)
+    }
+    
+    @objc func wasDragged(_ gestureRecognizer: UIPanGestureRecognizer) {
+        
+        let translation = gestureRecognizer.translation(in: self.view)
+        if gestureRecognizer.state == UIGestureRecognizer.State.began || gestureRecognizer.state == UIGestureRecognizer.State.changed {
+            guard translation.y > 0 else { return }
+            
+            gestureRecognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.containerView)
+            bottomConstraintOfContainerView.constant -= translation.y
+            UIView.animate(withDuration: 0.8, animations: {
+                self.view.layoutIfNeeded()
+            })
+        } else if gestureRecognizer.state == UIGestureRecognizer.State.ended {
+            if type == .event {
+                if bottomConstraintOfContainerView.constant < -200 {
+                    UIView.animate(withDuration: 0.8, animations: {
+                        self.dismiss(animated: false, completion: nil)
+                    })
+                } else {
+                    self.bottomConstraintOfContainerView.constant = 0
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.view.layoutIfNeeded()
+                    })
+                }
+            } else {
+                if bottomConstraintOfContainerView.constant < -100 {
+                    UIView.animate(withDuration: 0.8, animations: {
+                        self.dismiss(animated: false, completion: nil)
+                    })
+                } else {
+                    self.bottomConstraintOfContainerView.constant = 0
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.view.layoutIfNeeded()
+                    })
+                }
+            }
+        }
     }
 }
 

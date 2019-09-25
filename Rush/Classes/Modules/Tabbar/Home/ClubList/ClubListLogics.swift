@@ -75,15 +75,15 @@ extension ClubListViewController {
         }
         if myClubList.count > 0 {
             let club = myClubList[indexPath.row]
-            let image = Image(json: club.clubPhoto)
-            cell.setup(title: club.clubName)
-            cell.setup(detail: club.clubDesc)
+            let image = Image(json: club.clubPhoto ?? "")
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
             cell.setup(imageUrl: image.urlThumb())
         } else if myClassesList.count > 0 {
             let classes = myClassesList[indexPath.row]
-            cell.setup(title: classes.clubName)
-            cell.setup(detail: classes.clubDesc)
+            cell.setup(title: classes.clubName ?? "")
+            cell.setup(detail: classes.clubDesc ?? "")
         }
     }
     
@@ -146,20 +146,11 @@ extension ClubListViewController {
                      Keys.pageNo: pageNo] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if let list = data?[Keys.list] as? [[String: Any]] {
-                for club in list {
-                    do {
-                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
-                        let decoder = JSONDecoder()
-                        let value = try decoder.decode(Club.self, from: dataClub)
-                        uwself.myClubList.append(value)
-                    } catch {
-                        
-                    }
-                }
+            if let clubs = value {
+                uwself.myClubList = clubs
                 uwself.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

@@ -45,22 +45,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="412"/>
                                     <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-club" translatesAutoresizingMaskIntoConstraints="NO" id="YY7-3o-O77">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="412"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-sj-ZM4">
+                                    <rect key="frame" x="142.5" y="304" width="129" height="28"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                    <state key="normal" title="Tap to change cover">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="changePhotoButtonAction:" destination="-1" eventType="touchUpInside" id="5aj-8m-vKv"/>
+                                    </connections>
+                                </button>
                                 <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-YU-b5h">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="412"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hover-club" translatesAutoresizingMaskIntoConstraints="NO" id="YY7-3o-O77">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="412"/>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-sj-ZM4">
-                                            <rect key="frame" x="142.5" y="344" width="129" height="28"/>
-                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                                            <state key="normal" title="Tap to change cover">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="changePhotoButtonAction:" destination="-1" eventType="touchUpInside" id="5aj-8m-vKv"/>
-                                            </connections>
-                                        </button>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l7d-PF-ZcA">
                                             <rect key="frame" x="0.0" y="312.5" width="414" height="99.5"/>
                                             <subviews>
@@ -113,15 +113,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="YY7-3o-O77" secondAttribute="bottom" id="0AW-as-dzJ"/>
                                         <constraint firstAttribute="trailing" secondItem="l7d-PF-ZcA" secondAttribute="trailing" id="5YO-7q-ttL"/>
-                                        <constraint firstItem="YY7-3o-O77" firstAttribute="leading" secondItem="T8x-YU-b5h" secondAttribute="leading" id="Zih-K0-4im"/>
-                                        <constraint firstItem="6Km-sj-ZM4" firstAttribute="centerX" secondItem="T8x-YU-b5h" secondAttribute="centerX" id="a4c-cE-4yb"/>
                                         <constraint firstItem="l7d-PF-ZcA" firstAttribute="leading" secondItem="T8x-YU-b5h" secondAttribute="leading" id="fok-A9-RHH"/>
-                                        <constraint firstItem="YY7-3o-O77" firstAttribute="top" secondItem="T8x-YU-b5h" secondAttribute="top" id="gUP-r1-gNv"/>
                                         <constraint firstAttribute="bottom" secondItem="l7d-PF-ZcA" secondAttribute="bottom" id="vHw-sx-FAx"/>
-                                        <constraint firstAttribute="trailing" secondItem="YY7-3o-O77" secondAttribute="trailing" id="vXH-t1-KcC"/>
-                                        <constraint firstAttribute="bottom" secondItem="6Km-sj-ZM4" secondAttribute="bottom" constant="40" id="wuX-u4-9R1"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLC-kB-RMK">
@@ -137,34 +131,27 @@
                                 <constraint firstItem="T8x-YU-b5h" firstAttribute="leading" secondItem="l2L-5w-jdh" secondAttribute="leading" id="2LR-fF-lWd"/>
                                 <constraint firstAttribute="bottom" secondItem="T8x-YU-b5h" secondAttribute="bottom" id="3di-rX-GTE"/>
                                 <constraint firstAttribute="trailing" secondItem="zft-In-fw8" secondAttribute="trailing" id="432-3V-SJl"/>
+                                <constraint firstItem="YY7-3o-O77" firstAttribute="leading" secondItem="zft-In-fw8" secondAttribute="leading" id="44X-zp-hZi"/>
                                 <constraint firstItem="zft-In-fw8" firstAttribute="top" secondItem="l2L-5w-jdh" secondAttribute="top" id="QoL-T9-ZyH"/>
                                 <constraint firstItem="T8x-YU-b5h" firstAttribute="top" secondItem="l2L-5w-jdh" secondAttribute="top" id="UUZ-TJ-JOD"/>
                                 <constraint firstAttribute="bottom" secondItem="zft-In-fw8" secondAttribute="bottom" id="XRa-tM-cxZ"/>
                                 <constraint firstItem="XLC-kB-RMK" firstAttribute="top" secondItem="l2L-5w-jdh" secondAttribute="top" constant="160" id="hCe-NS-rjM"/>
                                 <constraint firstItem="zft-In-fw8" firstAttribute="leading" secondItem="l2L-5w-jdh" secondAttribute="leading" id="id9-PK-ziA"/>
                                 <constraint firstItem="XLC-kB-RMK" firstAttribute="centerX" secondItem="l2L-5w-jdh" secondAttribute="centerX" id="jqM-Ku-ZiX"/>
+                                <constraint firstAttribute="bottom" secondItem="6Km-sj-ZM4" secondAttribute="bottom" constant="80" id="ksS-AD-iMJ"/>
+                                <constraint firstItem="YY7-3o-O77" firstAttribute="bottom" secondItem="zft-In-fw8" secondAttribute="bottom" id="nnN-xF-5Me"/>
+                                <constraint firstItem="YY7-3o-O77" firstAttribute="top" secondItem="zft-In-fw8" secondAttribute="top" id="rDu-4o-kzE"/>
+                                <constraint firstItem="6Km-sj-ZM4" firstAttribute="centerX" secondItem="l2L-5w-jdh" secondAttribute="centerX" id="s65-cK-UH2"/>
                                 <constraint firstAttribute="trailing" secondItem="T8x-YU-b5h" secondAttribute="trailing" id="vXd-Ek-NU5"/>
+                                <constraint firstItem="YY7-3o-O77" firstAttribute="trailing" secondItem="zft-In-fw8" secondAttribute="trailing" id="yPQ-ds-Qs6"/>
                             </constraints>
-                        </view>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQN-ku-IbO" customClass="CustomView" customModule="Rush" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="388" width="414" height="48"/>
-                            <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="48" id="7cf-Qs-CbH"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="24"/>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="l2L-5w-jdh" secondAttribute="bottom" id="3UJ-fb-Vq9"/>
                         <constraint firstAttribute="trailing" secondItem="l2L-5w-jdh" secondAttribute="trailing" id="Gl1-yi-B1T"/>
-                        <constraint firstAttribute="bottom" secondItem="kQN-ku-IbO" secondAttribute="bottom" constant="-24" id="e8p-c2-Tol"/>
-                        <constraint firstAttribute="trailing" secondItem="kQN-ku-IbO" secondAttribute="trailing" id="suD-nq-p2I"/>
                         <constraint firstItem="l2L-5w-jdh" firstAttribute="leading" secondItem="x3K-PU-hFT" secondAttribute="leading" id="tLM-vP-dWW"/>
                         <constraint firstItem="l2L-5w-jdh" firstAttribute="top" secondItem="x3K-PU-hFT" secondAttribute="top" id="vzF-GB-3dQ"/>
-                        <constraint firstItem="kQN-ku-IbO" firstAttribute="leading" secondItem="x3K-PU-hFT" secondAttribute="leading" id="zCZ-ZD-jjk"/>
                     </constraints>
                 </view>
             </subviews>

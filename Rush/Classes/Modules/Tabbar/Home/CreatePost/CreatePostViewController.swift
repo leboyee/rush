@@ -235,6 +235,7 @@ extension CreatePostViewController {
         if segue.identifier == Segues.postSegue {
             if let vc = segue.destination as? PostViewController {
                 vc.imageList = imageList
+                vc.postInfo = sender as? Post
             }
         }
     }

@@ -42,6 +42,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userName, for: indexPath) as? UserNameTableViewCell else { return UITableViewCell() }
+            userDetailCell(cell)
             return cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
@@ -53,6 +54,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
+            fillLikeCell(cell, indexPath)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as? PostCommentCell else { return UITableViewCell() }

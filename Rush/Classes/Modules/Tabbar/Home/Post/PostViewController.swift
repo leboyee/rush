@@ -23,6 +23,9 @@ class PostViewController: UIViewController {
     var commentText = ""
     var username = ""
     
+    var clubInfo: Club?
+    var postInfo: Post?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +36,13 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if self.isMovingToParent {
+            navigationController?.popViewController(animated: false)
+        }
     }
     
     func setupUI() {
@@ -57,7 +67,7 @@ class PostViewController: UIViewController {
         if imageList.count == 0 {
             imageList.append(UIImage(named: "bound-add-img")!)
         }
-        commentList = ["1", "2", "3"]
+        // commentList = ["1", "2", "3"]
     }
 }
 

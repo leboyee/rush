@@ -278,6 +278,7 @@ public struct Text {
     static let addLocation               = "Add location"
     static let joinAndRSVP               = "Join and RSVP"
     static let going                     = "Going"
+    static let club                      = "club"
 }
 
 public struct Message {
@@ -346,4 +347,12 @@ enum ExploreSearchType {
     case club
     case classes
     case people
+}
+
+enum GetEventType: String {
+    case none = ""
+    case upcoming = "upcoming"
+    case my = "my"
+    case myUpcoming = "my-upcoming"
+    case attending = "attending"
 }

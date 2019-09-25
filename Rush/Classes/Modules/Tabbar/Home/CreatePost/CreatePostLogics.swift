@@ -22,8 +22,8 @@ extension CreatePostViewController {
     // Username cell (section 0)
     func userDetailCell(_ cell: UserNameTableViewCell) {
         if let club = clubInfo { // Club
-            cell.setup(title: (club.user?.firstName ?? "") + " " + (club.user?.lastName ?? ""))
-            cell.setup(detail: "Posting in " + club.clubName)
+            cell.setup(title: club.user?.name ?? "")
+            cell.setup(detail: "Posting in " + (club.clubName ?? ""))
         } else { // Event
             
         }
@@ -92,17 +92,17 @@ extension CreatePostViewController {
     
     func createPostAPI() {
         
-        imagedataList["desc"] = postText
-        imagedataList["data_id"] = clubInfo?.id ?? ""
-        imagedataList["data_type"] = "club"
-        imagedataList["total_photos"] = imageList.count
+        imagedataList[Keys.desc] = postText
+        imagedataList[Keys.dataId] = clubInfo?.id ?? ""
+        imagedataList[Keys.dataType] = Text.club
+        imagedataList[Keys.totalPhotos] = imageList.count
         Utils.showSpinner()
         
         ServiceManager.shared.createPost(params: imagedataList) { [weak self] (status, errorMessage) in
             guard let uwself = self else { return }
             Utils.hideSpinner()
             if status {
-                uwself.navigationController?.popViewController(animated: true)
+                uwself.performSegue(withIdentifier: Segues.postSegue, sender: nil)
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }

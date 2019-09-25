@@ -127,4 +127,14 @@ extension EventCell {
             userCountLabel.text = "\(count - 3)+"
         }
     }
+    
+    func setup(eventType: String) {
+        if eventType == "public" {
+            privacyImageView.image = #imageLiteral(resourceName: "privacy-public")
+        } else if eventType == "closed" {
+           privacyImageView.image = #imageLiteral(resourceName: "privacy-lock")
+        } else if eventType == "invite_only" {
+            privacyImageView.image = #imageLiteral(resourceName: "invite-blue")
+        }
+    }
 }
