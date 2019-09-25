@@ -82,7 +82,8 @@ extension ClubDetailViewController {
         cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
             if index != 0 {
-                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+                let invitee = unself.clubInfo?.invitees?[index - 1] // -1 of ViewAll Cell item
+                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
             }
         }
     }

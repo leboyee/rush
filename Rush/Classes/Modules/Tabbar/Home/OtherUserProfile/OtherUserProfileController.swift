@@ -27,6 +27,7 @@ class OtherUserProfileController: UIViewController {
     weak var delegate: OtherUserProfileProtocol?
     
     var clubImage: UIImage?
+    var userInfo: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
