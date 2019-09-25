@@ -37,7 +37,7 @@ extension NotificationSettingsViewController {
         cell.set(isOn: user?.isNotificationOn ?? true)
         cell.switchEvent = {  [weak self] (isOn) in
             guard let unsefe = self else { return }
-            let params = [Keys.uIsNotifyOn: isOn ? "1" : "0"]
+            let params = [Keys.uIsNotifyOn: isOn ? true : false]
             unsefe.updateUserProfile(params: params)
         }
     }

@@ -17,6 +17,59 @@ extension EventDetailViewController {
     func loadFriends() {
         
     }
+    
+    func loadEventSection() {
+        guard let event = self.event else { return }
+        if event.creator?.id == Authorization.shared.profile?.userId {
+            type = .my
+        } else {
+            type = .other
+        }
+        
+        if type == .my {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Invited people"),
+                EventSection(type: .tags, title: "Interest tags"),
+                EventSection(type: .createPost, title: "Posts")
+            ]
+            /// Need to call post list here
+            /// Right code here
+        } else if type == .other {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags"),
+                EventSection(type: .joinRsvp, title: nil)
+            ]
+        } else if type == .joined {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags"),
+                EventSection(type: .createPost, title: "Popular posts")
+            ]
+            
+            /// Need to call post list here
+            /// Right code here
+        } else if type == .invited {
+            sections = [
+                EventSection(type: .about, title: nil),
+                EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags")
+            ]
+        }
+    }
 }
 
 // MARK: - Handlers
@@ -163,10 +216,10 @@ extension EventDetailViewController {
     }
     
     func fillOrganizerCell(_ cell: OrganizerCell) {
-        guard let user = event?.owner else { return }
+        guard let user = event?.creator else { return }
         cell.set(name: user.name)
         cell.set(detail: "3 events")
-        cell.set(url: user.photo?.urlThumb())
+        //cell.set(url: user.photo?.urlThumb())
     }
     
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
@@ -227,12 +280,19 @@ extension EventDetailViewController {
 extension EventDetailViewController {
     
     private func fetchEventDetails() {
-        
-        guard let id = eventId, id.isNotEmpty else { return }
-        ServiceManager.shared.fetchEventDetail(eventId: id) { (data, errorMessage) in
-            
+       downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let id = self.eventId, id.isNotEmpty else { return }
+            ServiceManager.shared.fetchEventDetail(eventId: id) { [weak self] (event, errorMessage) in
+                  guard let unsafe = self else { return }
+                  unsafe.event = event
+                  unsafe.loadEventSection()
+                  unsafe.downloadGroup.leave()
+
+              }
         }
-        
         /*
         if type == .my {
             sections = [

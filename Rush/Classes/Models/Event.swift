@@ -28,7 +28,7 @@ class Event: Codable {
     var thumbnil: String?
     var created: String = ""
     var address: Address?
-    var owner: Profile?
+    var creator: User?
 
     init() {
     }
@@ -46,5 +46,6 @@ class Event: Codable {
         case thumbnil
         case address
         case created = "event_created_at"
+        case creator = "user"
     }
 }

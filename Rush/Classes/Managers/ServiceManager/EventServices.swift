@@ -16,20 +16,15 @@ extension ServiceManager {
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, errorMessage) in
                 closer(events, errorMessage)
             })
-            /*
-            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
-            })
-            */
         }
     }
     
     // Event Detail API
-    func fetchEventDetail(eventId: String, closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func fetchEventDetail(eventId: String, closer: @escaping (_ event: Event?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventDetail(eventId: eventId) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (event, errorMessage) in
+                closer(event, errorMessage)
             })
         }
     }

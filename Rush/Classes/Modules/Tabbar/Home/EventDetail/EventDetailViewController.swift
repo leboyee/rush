@@ -49,7 +49,7 @@ class EventDetailViewController: UIViewController {
 
     var type: EventDetailType = .my
     var sections: [EventSection]?
-    var eventId: String? = "5d84989e39277643e078cc89"
+    var eventId: String?
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
@@ -59,6 +59,9 @@ class EventDetailViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
 
+    let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
+    let downloadGroup = DispatchGroup()
+    
     let tempInvitee = [
          Invitees(name: "Kamal"),
          Invitees(name: "John"),
@@ -76,6 +79,17 @@ class EventDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        downloadGroup.notify(queue: downloadQueue) {
+            DispatchQueue.main.async {
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+                Utils.hideSpinner()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,6 +111,8 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
         
         setupTableView()
         loadAllData()
+        tableView.isHidden = true
+        Utils.showSpinner()
     }
 }
 
