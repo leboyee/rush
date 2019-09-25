@@ -12,7 +12,7 @@ extension ChatContactsListViewController {
     
     func cellCount(_ section: Int) -> Int {
         let alpha = alphabet[section]
-        if let data = friendsList[alpha.lowercased()] as? [Profile] {
+        if let data = friendsList[alpha.lowercased()] as? [User] {
             return data.count
         } else {
             return 0
@@ -21,14 +21,14 @@ extension ChatContactsListViewController {
     
     func fillCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         let alpha = alphabet[indexPath.section]
-        let users = friendsList[alpha.lowercased()] as? [Profile]
+        let users = friendsList[alpha.lowercased()] as? [User]
         let user = users?[indexPath.row]
         cell.setup(title: user?.name ?? "")
     }
     
     func cellSelected(_ indexPath: IndexPath) {
         let alpha = alphabet[indexPath.section]
-        let users = friendsList[alpha.lowercased()] as? [Profile]
+        let users = friendsList[alpha.lowercased()] as? [User]
         let user = users?[indexPath.row]
         let controller = ChatRoomViewController()
         controller.isShowTempData = false
@@ -65,17 +65,17 @@ extension ChatContactsListViewController {
             
             if let list = data?[Keys.list] as? [[String: Any]] {
                 if list.count > 0 {
-                    var users = [Profile]()
+                    var users = [User]()
                     
                     for object in list {
                         let value = object[Keys.user] as? [String: Any] ?? [:]
-                        let user = Profile(data: value)
+                        let user = Authorization.shared.getUser(data: value) //***
                         users.append(user)
-                        if let first = user.firstName.first {
-                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [Profile] {
+                        if let first = user.firstName {
+                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [User] {
                                 let filter = value.filter { $0.userId == user.userId }
                                 if filter.count == 0 {
-                                    var tempUser = [Profile]()
+                                    var tempUser = [User]()
                                     tempUser.append(contentsOf: value)
                                     tempUser.append(user)
                                     unsafe.friendsList[first.description.lowercased()] = tempUser

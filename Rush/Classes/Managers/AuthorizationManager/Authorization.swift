@@ -14,7 +14,7 @@ class Authorization: NSObject {
     
     var session: String?
     var userVerified: Bool = false
-    var profile: Profile?
+    var profile: User?
     var authorized: Bool {
         return session != nil
     }
@@ -65,13 +65,38 @@ class Authorization: NSObject {
         Utils.saveDataToUserDefault("", kSavedSession)
     }
     
+    func getUser(data: [String: Any]) -> User {
+        let user = self.profileModelResponse(data: data)
+        return user
+    }
+
     // MARK: Private
     private func fillUser(data: [String: Any]) {
-        if profile == nil {
-            profile = Profile(data: data)
-        } else {
-            profile?.setData(data: data)
-        }
+        self.profile = self.profileModelResponse(data: data)
     }
     
+    func profileModelResponse(data: [String: Any]) -> User {
+        do {
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.dateDecodingStrategy = .secondsSince1970
+            let decodedObject = try jsonDecoder.decode(User.self, from: JSONSerialization.data(withJSONObject: data, options: []))
+            return decodedObject
+        } catch let error {
+            print("ERROR DECODING: \(error)")
+            return User()
+        }
+    }
 }
+
+/*    func profileModelResponse(data: [String: Any], closer: @escaping(_ data: User) -> Void) {
+ do {
+ let jsonDecoder = JSONDecoder()
+ jsonDecoder.dateDecodingStrategy = .secondsSince1970
+ let decodedObject = try jsonDecoder.decode(User.self, from: JSONSerialization.data(withJSONObject: data, options: []))
+ closer(decodedObject)
+ } catch let error {
+ print("ERROR DECODING: \(error)")
+ closer(User())
+ }
+ }
+ */

@@ -19,7 +19,7 @@ extension CreateEventInterestViewController {
     }
     
     func fillTagCell(_ cell: ChooseTagCell, indexPath: IndexPath) {
-        if Authorization.shared.profile?.interest.count ?? 0 > 0 && indexPath.section == 0 {
+        if Authorization.shared.profile?.interest?.count ?? 0 > 0 && indexPath.section == 0 {
             guard let interestProfileArray = Authorization.shared.profile?.interest else { return }
             cell.setupInterest(tagList: interestProfileArray)
             cell.tagListView.delegate = self

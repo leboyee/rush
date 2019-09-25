@@ -9,7 +9,7 @@ import UIKit
 
 class Invite: NSObject {
     var contact: Contact?
-    var profile: Profile?
+    var profile: User?
     var isFriend: Bool = false
 
     init(data: [String: Any]) {

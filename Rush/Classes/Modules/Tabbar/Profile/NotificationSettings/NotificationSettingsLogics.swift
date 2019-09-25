@@ -12,7 +12,7 @@ extension NotificationSettingsViewController {
     
     func cellCount(_ section: Int) -> Int {
         var count = 1
-        count += (user?.isNotificationOn ?? true) ? list.count : 0
+        count += (user?.isNotifyOn ?? true) ? list.count : 0
         return count
     }
     
@@ -21,11 +21,11 @@ extension NotificationSettingsViewController {
         cell.set(title: list[index])
         switch index {
         case 0:
-            cell.set(isCheckBoxShow: user?.isEventNotificationOn ?? true)
+            cell.set(isCheckBoxShow: user?.isEventNotify ?? true)
         case 1:
-            cell.set(isCheckBoxShow: user?.isClubNotificationOn ?? true)
+            cell.set(isCheckBoxShow: user?.isClubNotify ?? true)
         case 2:
-            cell.set(isCheckBoxShow: user?.isClassNotificationOn ?? true)
+            cell.set(isCheckBoxShow: user?.isClassNotify ?? true)
         default:
             break
         }
@@ -34,7 +34,7 @@ extension NotificationSettingsViewController {
     func fillSwitchCell(_ cell: SwitchCell, _ indexPath: IndexPath) {
         
         cell.set(title: Text.recieveNotifications)
-        cell.set(isOn: user?.isNotificationOn ?? true)
+        cell.set(isOn: user?.isNotifyOn ?? true)
         cell.switchEvent = {  [weak self] (isOn) in
             guard let unsefe = self else { return }
             let params = [Keys.uIsNotifyOn: isOn ? "1" : "0"]
@@ -50,11 +50,11 @@ extension NotificationSettingsViewController {
         var params = [String: Any]()
         switch index {
         case 0:
-            params[Keys.uIsEventNotify] = !(user?.isEventNotificationOn ?? true)
+            params[Keys.uIsEventNotify] = !(user?.isEventNotify ?? true)
         case 1:
-            params[Keys.uIsClubNotify] = !(user?.isClubNotificationOn ?? true)
+            params[Keys.uIsClubNotify] = !(user?.isClubNotify ?? true)
         case 2:
-            params[Keys.uIsClassNotify] = !(user?.isClassNotificationOn ?? true)
+            params[Keys.uIsClassNotify] = !(user?.isClassNotify ?? true)
         default:
             break
         }

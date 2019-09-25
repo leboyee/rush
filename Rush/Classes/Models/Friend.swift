@@ -15,7 +15,7 @@ enum FriendStatus {
     case approved
 }
 
-class Friend: Profile {
+class Friend: User {
     
     var friendId: Int64 = 0
     var friendUserId: String = "0"
@@ -26,6 +26,7 @@ class Friend: Profile {
     var matchId: Int64 = 0
     var matchStatus: Int64 = 0
     
+    /*
     override init(data: [String: Any]) {
         super.init(data: data)
         setValue(data: data)
@@ -33,7 +34,7 @@ class Friend: Profile {
     
     override init() {
         super.init()
-    }
+    }*/
     
     // MARK: - Other functions
     var friendName: String {
@@ -82,7 +83,7 @@ class Friend: Profile {
         }
         
         // Profile
-        setData(data: data)
+        //setData(data: data) //***
     }
     
 }

@@ -23,7 +23,7 @@ class EnterPhoneNoViewController: CustomViewController {
 
     var countryCode: String = "+1"
     var frontTextFiled: String = "+1"
-    var profile = Profile()
+    var profile = User()
     var loginType: LoginType = .register
     
     override func viewDidLoad() {
