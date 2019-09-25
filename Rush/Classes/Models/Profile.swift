@@ -99,6 +99,10 @@ class Profile: NSObject {
             homeTown = value
         }
         
+        if let value = data["u_interests"] as? [String] {
+            interest = value
+        }
+        
         /// Added by Kamal for Rush
         
         if let value = data["u_photo"] as? String {

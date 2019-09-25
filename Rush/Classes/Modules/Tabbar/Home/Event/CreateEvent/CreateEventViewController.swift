@@ -34,7 +34,8 @@ class CreateEventViewController: UIViewController {
     var isStartTime: Bool = false
     var isEndTime: Bool = false
     var isCreateGroupChat = true
-
+    var peopleList = [Invite]()
+    
     var cancelBtn: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
     }
@@ -49,7 +50,6 @@ class CreateEventViewController: UIViewController {
     
     var interestList = [String]()
     var rsvpArray = [String]()
-    var peopleList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,7 +128,15 @@ extension CreateEventViewController {
                 self.performSegue(withIdentifier: Segues.addRSVP, sender: self)
             }
         } else if indexPath.section == 3 {
-            self.performSegue(withIdentifier: Segues.addLocation, sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.addLocation, sender: self)
+            }
+        } else if indexPath.section == 6 {
+            self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+        } else if indexPath.section == 7 {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.createEventInviteSegue, sender: self)
+            }
         } else {
             Utils.alert(message: "In Development")
         }
@@ -155,6 +163,14 @@ extension CreateEventViewController {
             }
         } else if segue.identifier == Segues.addLocation {
             if let vc = segue.destination as? AddLocationViewController {
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.createEventInviteSegue {
+            if let vc = segue.destination as? CreateEventInviteViewController {
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.createEventInterestSegue {
+            if let vc = segue.destination as? CreateEventInterestViewController {
                 vc.delegate = self
             }
         }

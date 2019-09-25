@@ -44,7 +44,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2eR-oB-BaI">
-                                <rect key="frame" x="0.0" y="69" width="414" height="827"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="806"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7BY-5F-qyh">
@@ -104,7 +104,7 @@
                             <constraint firstItem="Bta-Kq-BKV" firstAttribute="top" secondItem="Np8-lv-8kC" secondAttribute="top" constant="8" id="Dyn-7N-YHL"/>
                             <constraint firstItem="7BY-5F-qyh" firstAttribute="leading" secondItem="gN1-Iu-vwJ" secondAttribute="leading" id="ESB-Pi-UlE"/>
                             <constraint firstItem="2eR-oB-BaI" firstAttribute="leading" secondItem="gN1-Iu-vwJ" secondAttribute="leading" id="FbM-y0-boN"/>
-                            <constraint firstItem="2eR-oB-BaI" firstAttribute="top" secondItem="fH2-XZ-GUc" secondAttribute="top" constant="69" id="Hfb-O6-QSj"/>
+                            <constraint firstItem="2eR-oB-BaI" firstAttribute="top" secondItem="fH2-XZ-GUc" secondAttribute="top" constant="90" id="Hfb-O6-QSj"/>
                             <constraint firstAttribute="bottom" secondItem="Np8-lv-8kC" secondAttribute="bottom" id="JRx-C9-0h1"/>
                             <constraint firstItem="Bta-Kq-BKV" firstAttribute="centerX" secondItem="Np8-lv-8kC" secondAttribute="centerX" id="Nua-8U-vCj"/>
                             <constraint firstItem="Np8-lv-8kC" firstAttribute="leading" secondItem="gN1-Iu-vwJ" secondAttribute="leading" id="QU9-md-taf"/>

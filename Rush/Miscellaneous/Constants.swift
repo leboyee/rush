@@ -95,6 +95,7 @@ struct ReusableView {
     static let textHeader     = "TextHeader"
     static let userImagesHeader = "UserImagesHeaderView"
     static let classesHeader = "ClassesHeader"
+    static let inviteHeader = "InviteHeader"
 }
 
 struct ViewControllerId {
@@ -166,6 +167,8 @@ struct Segues {
     static let addRSVP                             = "AddRSVPSegue"
     static let addLocation                             = "AddLocationSegue"
     static let eventJoinedPopup                    = "EventJoinedPopupSegue"
+    static let createEventInviteSegue              = "CreateEventInviteSegue"
+    static let createEventInterestSegue            = "CreateEventInterestSegue"
 }
 
 struct StoryBoard {
