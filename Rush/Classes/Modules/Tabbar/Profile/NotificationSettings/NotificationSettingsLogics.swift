@@ -37,7 +37,7 @@ extension NotificationSettingsViewController {
         cell.set(isOn: user?.isNotifyOn ?? true)
         cell.switchEvent = {  [weak self] (isOn) in
             guard let unsefe = self else { return }
-            let params = [Keys.uIsNotifyOn: isOn ? "1" : "0"]
+            let params = [Keys.uIsNotifyOn: isOn ? 1 : 0]
             unsefe.updateUserProfile(params: params)
         }
     }
@@ -50,11 +50,11 @@ extension NotificationSettingsViewController {
         var params = [String: Any]()
         switch index {
         case 0:
-            params[Keys.uIsEventNotify] = !(user?.isEventNotify ?? true)
+            params[Keys.uIsEventNotify] = !(user?.isEventNotify ?? true) ? 1 : 0
         case 1:
-            params[Keys.uIsClubNotify] = !(user?.isClubNotify ?? true)
+            params[Keys.uIsClubNotify] = !(user?.isClubNotify ?? true) ? 1 : 0
         case 2:
-            params[Keys.uIsClassNotify] = !(user?.isClassNotify ?? true)
+            params[Keys.uIsClassNotify] = !(user?.isClassNotify ?? true) ? 1 : 0
         default:
             break
         }
