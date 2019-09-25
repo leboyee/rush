@@ -73,6 +73,7 @@ class Authorization: NSObject {
     // MARK: Private
     private func fillUser(data: [String: Any]) {
         self.profile = self.profileModelResponse(data: data)
+        isDarkModeOn = self.profile?.isDarkMode == 1 ? true : false
     }
     
     func profileModelResponse(data: [String: Any]) -> User {
