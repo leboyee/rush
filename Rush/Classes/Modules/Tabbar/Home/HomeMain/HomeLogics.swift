@@ -120,7 +120,7 @@ extension HomeViewController {
 // MARK: - Services
 extension HomeViewController {
     func getClubListAPI(sortBy: String) {
-        clubList.removeAll()
+        
         let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
@@ -139,7 +139,7 @@ extension HomeViewController {
     }
     
     func getEventList(sortBy: GetEventType) {
-        // (Authorization.shared.profile?.userId ?? "")
+        
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
