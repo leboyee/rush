@@ -12,6 +12,9 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     
     func setupMediator() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         emailTextField.delegate = self
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
@@ -24,6 +27,11 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             self.view.layoutIfNeeded()
             
         }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        bottomViewConstraint.constant = 30
+        self.view.layoutIfNeeded()
     }
 
     // MARK: - UITextFieldDelegate
@@ -75,9 +83,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             eduLabel.text = ".edu"
             eduLabel.isHidden = false
             self.view.layoutIfNeeded()
-            if loginType == .login {
-                nextButton.setNextButton(isEnable: false)
-            }
+            nextButton.setNextButton(isEnable: false)
         } else {
             if textField.text?.count == 1 {
                 eduLabel.text = " .edu"
@@ -86,15 +92,12 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
                 if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4) {
                     textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
                 }
-                if loginType == .login {
-                    nextButton.setNextButton(isEnable: true)
-                }
+
+                nextButton.setNextButton(isEnable: true)
                 self.view.layoutIfNeeded()
             }
             if textField.text?.count == 0 {
-                if loginType == .login {
-                    nextButton.setNextButton(isEnable: false)
-                }
+                nextButton.setNextButton(isEnable: false)
                 eduLabel.text = ".edu"
                 eduLabel.isHidden = false
                 self.view.layoutIfNeeded()

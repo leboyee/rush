@@ -132,7 +132,9 @@ extension CreateEventViewController {
                 self.performSegue(withIdentifier: Segues.addLocation, sender: self)
             }
         } else if indexPath.section == 6 {
-            self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            }
         } else if indexPath.section == 7 {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.createEventInviteSegue, sender: self)

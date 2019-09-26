@@ -54,6 +54,10 @@ class EnterEmailViewConteroller: CustomViewController {
 
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func setup() {
         setupUI()
         setupMediator()
@@ -71,7 +75,7 @@ class EnterEmailViewConteroller: CustomViewController {
         emailTitleLable.emailScreenTitleLabel()
         self.bgImageView.setBgForLoginSignup()
         
-        nextButton.setNextButton(isEnable: true)
+        nextButton.setNextButton(isEnable: false)
         emailErroLabel.isHidden = true
         errorButton.isHidden = true
         eduLabel.text = ".edu"
