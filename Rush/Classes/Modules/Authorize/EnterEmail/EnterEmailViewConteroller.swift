@@ -51,7 +51,6 @@ class EnterEmailViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         navigationController?.navigationBar.isHidden = true
-
     }
     
     deinit {

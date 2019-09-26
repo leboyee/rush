@@ -23,6 +23,7 @@ class UserInfoViewController: CustomViewController {
 
     var selectedGender: Int = 0
     var selectedRelation: Int = 0
+    var selectedDate = Date().minus(years: 19)
     var selectedIndex = -1
     var dob = ""
     var gender = ""

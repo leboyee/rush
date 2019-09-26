@@ -194,7 +194,7 @@ public struct Text {
     static let passwordTitleRegister  = "Protect account with password"
     static let passwordTitleLogin  = "What is your password?"
     static let phoneNoTitleRegister  = "Add phone number to increase security"
-    static let verificationTitleRegister  = "    Enter confirmation code"
+    static let verificationTitleRegister  = "Enter confirmation code"
 
     static let phoneNoTitleLogin  = "Enter your phone number"
     static let userNameTitleRegister  = "Profile setup"
