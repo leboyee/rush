@@ -292,8 +292,9 @@ extension EventDetailViewController {
     
     func selectedRow(_ indexPath: IndexPath) {
         if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
+            /// check section type is create post or not, if yes, move to create post screen
             if eventSection.type == .createPost {
-                Utils.notReadyAlert()
+                showCreatePost()
             }
         }
     }

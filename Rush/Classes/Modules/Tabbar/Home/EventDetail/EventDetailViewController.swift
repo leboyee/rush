@@ -145,6 +145,9 @@ extension EventDetailViewController {
         performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: nil)
     }
     
+    func showCreatePost() {
+        performSegue(withIdentifier: Segues.createEventPost, sender: nil)
+    }
 }
 
 // MARK: - Navigations
@@ -153,6 +156,10 @@ extension EventDetailViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.rsvpJoinEvent {
             if let vc = segue.destination as? RSVPViewController {
+                vc.event = event
+            }
+        } else if segue.identifier == Segues.createEventPost {
+            if let vc = segue.destination as? CreatePostViewController {
                 vc.event = event
             }
         }

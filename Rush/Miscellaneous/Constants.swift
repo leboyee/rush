@@ -109,6 +109,7 @@ struct ViewControllerId {
 }
 
 /* Create the struct for Section wise */
+// MARK: - Segues
 struct Segues {
 
     static let selectEventType                    = "SelectEventTypeSegue"
@@ -169,6 +170,8 @@ struct Segues {
     static let eventJoinedPopup                    = "EventJoinedPopupSegue"
     static let createEventInviteSegue              = "CreateEventInviteSegue"
     static let createEventInterestSegue            = "CreateEventInterestSegue"
+    static let createEventPost            = "CreateEventPostSegue"
+
 }
 
 struct StoryBoard {
