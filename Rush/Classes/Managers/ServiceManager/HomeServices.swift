@@ -75,11 +75,11 @@ extension ServiceManager {
         }
     }
     
-    func fetchCommentList(postId: String, closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func fetchCommentList(postId: String, closer: @escaping (_ comments: [Comment]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getCommentList(postId: postId, param: [:]) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
-            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (comments, errorMessage) in
+                closer(comments, errorMessage)
             })
         }
     }

@@ -17,7 +17,7 @@ class Comment: Codable {
     var postId: String?
     var totalThreadCount: Int = 0
     var user: User?
-    var createDate: Date?
+    var createDate: String?
 
     private enum CodingKeys: String, CodingKey {
         case id = "_id"

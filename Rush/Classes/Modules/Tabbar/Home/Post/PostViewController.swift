@@ -17,7 +17,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var bottomView: CustomView!
     
-    var commentList = [String]()
+    var commentList = [Comment]()
     var imageList = [Any]()
     
     var commentText = ""

@@ -51,6 +51,8 @@ extension PostViewController {
     
     // Comment cell
     func fillCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
+        
+        /*
         if indexPath.row == 0 {
             cell.setup(isReplayCell: false)
         } else if indexPath.row == 1 {
@@ -59,6 +61,10 @@ extension PostViewController {
         } else {
             cell.setup(isReplayCell: false)
         }
+        */
+        let comment = commentList[indexPath.row]
+        cell.setup(username: comment.user?.name ?? "")
+        cell.setup(commentText: comment.desc ?? "")
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
@@ -127,6 +133,7 @@ extension PostViewController {
             if status {
                 unsafe.getAllCommentListAPI()
             } else {
+                Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
@@ -135,8 +142,10 @@ extension PostViewController {
     func getAllCommentListAPI() {
         
         ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "") { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if data != nil {
+            if let value = data {
+                unsafe.commentList = value
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

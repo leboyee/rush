@@ -61,6 +61,14 @@ extension PostCommentCell {
         detailLabel.attributedText = text
     }
     
+    func setup(username: String) {
+        usernameLabel.text = username
+    }
+    
+    func setup(commentText: String) {
+        detailLabel.text = commentText
+    }
+    
     @IBAction func replayButtonAction() {
         
     }
