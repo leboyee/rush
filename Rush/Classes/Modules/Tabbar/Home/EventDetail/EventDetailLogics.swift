@@ -11,11 +11,22 @@ import UIKit
 extension EventDetailViewController {
     
     func loadAllData() {
+        loadEvent()
+        loadInvitees()
+    }
+    
+    func loadEvent() {
         fetchEventDetails()
     }
     
-    func loadFriends() {
-        
+    func loadInvitees() {
+        fetchInvitees()
+    }
+    
+    func loadPosts() {
+        postPageNo = 1
+        isPostNextPageExist = false
+        fetchPosts()
     }
     
     func loadEventSection() {
@@ -36,7 +47,7 @@ extension EventDetailViewController {
                 EventSection(type: .createPost, title: "Posts")
             ]
             /// Need to call post list here
-            /// Right code here
+                loadPosts()
         } else if type == .other {
             sections = [
                 EventSection(type: .about, title: nil),
@@ -58,7 +69,7 @@ extension EventDetailViewController {
             ]
             
             /// Need to call post list here
-            /// Right code here
+                loadPosts()
         } else if type == .invited {
             sections = [
                 EventSection(type: .about, title: nil),
@@ -168,25 +179,34 @@ extension EventDetailViewController {
         if eventSection.type == .tags {
             cell.setup(interests: [Tag(id: 111, text: "Development"), Tag(id: 211, text: "Technologies")])
         } else if eventSection.type == .people {
-            cell.setup(userList: tempInvitee)
+            cell.setup(invitees: tempInvitee)
         }
-        
+        cell.userSelected = { ( _, _) in
+            Utils.notReadyAlert()
+        }
         cell.cellSelected = { (_, _, _) in
-            
+            Utils.notReadyAlert()
         }
     }
     
     func fillManageCell(_ cell: ClubManageCell) {
-        
         if type == .my {
-            cell.setup(firstButtonType: .manage)
-            cell.setup(secondButtonType: .groupChat)
+            if event?.isChatGroup == true {
+                cell.setup(firstButtonType: .manage)
+                cell.setup(secondButtonType: .groupChat)
+            } else {
+                cell.setup(onlyFirstButtonType: .manage)
+            }
         } else if type == .invited {
             cell.setup(firstButtonType: .accept)
             cell.setup(secondButtonType: .reject)
         } else if type == .joined {
-            cell.setup(firstButtonType: .going)
-            cell.setup(secondButtonType: .groupChatClub)
+            if event?.isChatGroup == true {
+               cell.setup(firstButtonType: .going)
+               cell.setup(secondButtonType: .groupChatClub)
+            } else {
+               cell.setup(onlyFirstButtonType: .going)
+            }
         }
         
         cell.firstButtonClickEvent = { () in
@@ -196,12 +216,11 @@ extension EventDetailViewController {
         cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
         }
+        
     }
     
     func fillLocationCell(_ cell: LocationCell) {
-        if let address = event?.address {
-           cell.set(address: address)
-        }
+        cell.set(address: event?.address ?? "", lat: event?.latitude ?? "0", lon: event?.longitude ?? "0")
     }
     
     func fillCreatePostCell(_ cell: CreatePostCell) {
@@ -272,7 +291,11 @@ extension EventDetailViewController {
     }
     
     func selectedRow(_ indexPath: IndexPath) {
-        
+        if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
+            if eventSection.type == .createPost {
+                Utils.notReadyAlert()
+            }
+        }
     }
 }
 
@@ -285,133 +308,21 @@ extension EventDetailViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let id = self.eventId, id.isNotEmpty else { return }
-            ServiceManager.shared.fetchEventDetail(eventId: id) { [weak self] (event, errorMessage) in
+            ServiceManager.shared.fetchEventDetail(eventId: id) { [weak self] (event, _) in
                   guard let unsafe = self else { return }
                   unsafe.event = event
                   unsafe.loadEventSection()
                   unsafe.downloadGroup.leave()
-
               }
         }
-        /*
-        if type == .my {
-            sections = [
-                EventSection(type: .about, title: nil),
-                EventSection(type: .manage, title: nil),
-                EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Invited people"),
-                EventSection(type: .tags, title: "Interest tags"),
-                EventSection(type: .createPost, title: "Posts")
-            ]
-        } else if type == .other {
-            sections = [
-                EventSection(type: .about, title: nil),
-                EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Joined"),
-                EventSection(type: .organizer, title: "Organizer"),
-                EventSection(type: .tags, title: "Interest tags"),
-                EventSection(type: .joinRsvp, title: nil)
-            ]
-        } else if type == .joined {
-            sections = [
-                EventSection(type: .about, title: nil),
-                EventSection(type: .manage, title: nil),
-                EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Joined"),
-                EventSection(type: .organizer, title: "Organizer"),
-                EventSection(type: .tags, title: "Interest tags"),
-                EventSection(type: .createPost, title: "Popular posts")
-            ]
-            
-            let post = Post()
-            let user = User()
-            user.firstName = "Kamal"
-            user.lastName = "Mittal"
-            post.user = user
-            post.id = UUID().uuidString
-            post.text = "Everyone who joined - you going to have a great time! I promise!"
-            post.numberOfLikes = 2
-            post.numberOfComments = 12
-            
-            let image1 = Image(
-                url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile4.jpg"
-            )
-            
-            let image2 = Image(
-                url: "http://www.fedracongressi.com/fedra/wp-content/uploads/2016/02/revelry-event-designers-homepage-slideshow-38.jpeg"
-            )
-            
-            let image3 = Image(
-                url: "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
-            )
-            
-            let image4 = Image(
-                url: "https://www.brc.com.au/Images/UserUploadedImages/11/birthday-event.jpg"
-            )
-            
-            let image5 = Image(
-                url: "https://www.brc.com.au/Images/UserUploadedImages/11/trade-event.jpg"
-            )
-            
-            let image6 = Image(
-                url: "https://www.brc.com.au/Images/UserUploadedImages/11/cocktail-event.jpg"
-            )
-            
-            let image7 = Image(
-                url: "https://www.brc.com.au/Images/UserUploadedImages/11/outdoor-event.jpg"
-            )
-            post.images = [image1, image2, image3, image4, image5, image6, image7]
-            
-            let post2 = Post()
-            let user2 = User()
-            user2.firstName = "John"
-            user2.lastName = "Smith"
-            post2.user = user2
-            post2.id = UUID().uuidString
-            post2.text = "Everyone who joined - you going to have a great time! I promise!"
-            post2.numberOfLikes = 43
-            post2.numberOfComments = 23
-            
-            postlist = [post, post2]
-            
-        } else if type == .invited {
-            sections = [
-                EventSection(type: .about, title: nil),
-                EventSection(type: .manage, title: nil),
-                EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Joined"),
-                EventSection(type: .organizer, title: "Organizer"),
-                EventSection(type: .tags, title: "Interest tags")
-            ]
-        }
-        
-        // TODO: Dummuy Event
-        event = Event()
-        event?.title = "Harvard gaming"
-        event?.desc = "We going to enjoy VR videogames, will see art exhibitions and much more!"
-        event?.date = Date().plus(days: 7)
-        event?.start = event?.date
-        event?.end = event?.date?.plus(hours: 1)
-        event?.type = "event"
-        event?.eventType = .closed
-        event?.address = Address()
-        event?.address?.addressline = "23 East Lake Forest Drive"
-        event?.address?.city = "Flushing"
-        event?.address?.state = "NY"
-        event?.address?.zipcode = "11355"
-        event?.address?.country = "USA"
-        event?.address?.latitude = 40.768452
-        event?.address?.longitude = -73.832764
-        event?.thumbnil = "http://www.fedracongressi.com/fedra/wp-content/uploads/2016/02/revelry-event-designers-homepage-slideshow-38.jpeg"
-        let user = User()
-        user.firstName = "Kamal"
-        user.lastName = "Mittal"
-        user.photo = Image(
-            url: "https://www.liulishenshe.com/Simplify_admin/images/profile/profile4.jpg"
-        )
-        event?.owner = user*/
-        
-        tableView.reloadData()
         updateHeaderInfo()
+    }
+    
+    private func fetchInvitees() {
+    
+    }
+    
+    private func fetchPosts() {
+       
     }
 }

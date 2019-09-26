@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
     var headerFullHeight: CGFloat = 344
     let headerSmallHeight: CGFloat = 170
     var isOtherUserProfile: Bool {
-        return profileDetail.profile?.userId == Authorization.shared.profile?.userId
+        return profileDetail.profile?.userId != Authorization.shared.profile?.userId
     }
     var notificationPageNo: Int = 1
     var notificationNextPageExist = false

@@ -512,6 +512,7 @@
 		8AAA37FD233B505900423D43 /* CreateEventInviteMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37FA233B505900423D43 /* CreateEventInviteMediates.swift */; };
 		8AAA3800233B506200423D43 /* InviteHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA37FE233B506200423D43 /* InviteHeader.xib */; };
 		8AAA3801233B506200423D43 /* InviteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37FF233B506200423D43 /* InviteHeader.swift */; };
+		8AAA3843233CA8AC00423D43 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
@@ -1048,6 +1049,7 @@
 		8AAA37FA233B505900423D43 /* CreateEventInviteMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteMediates.swift; sourceTree = "<group>"; };
 		8AAA37FE233B506200423D43 /* InviteHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteHeader.xib; sourceTree = "<group>"; };
 		8AAA37FF233B506200423D43 /* InviteHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteHeader.swift; sourceTree = "<group>"; };
+		8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1547,6 +1549,7 @@
 				1AA97B87228979D100C4550C /* StringExtension.swift */,
 				1AA97B88228979D100C4550C /* DateExtension.swift */,
 				8A02C1E22313EC4600258227 /* TableViewExtension.swift */,
+				8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3303,6 +3306,7 @@
 				8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */,
 				793BE65C22E88207005EF72D /* MessagesViewController.swift in Sources */,
 				8A04B184230149470055C65F /* LogoutViewController.swift in Sources */,
+				8AAA3843233CA8AC00423D43 /* DateFormatterExtension.swift in Sources */,
 				8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,

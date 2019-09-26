@@ -128,12 +128,12 @@ extension EventCell {
         }
     }
     
-    func setup(eventType: String) {
-        if eventType == "public" {
+    func setup(eventType: EventType) {
+        if eventType == .publik {
             privacyImageView.image = #imageLiteral(resourceName: "privacy-public")
-        } else if eventType == "closed" {
+        } else if eventType == .closed {
            privacyImageView.image = #imageLiteral(resourceName: "privacy-lock")
-        } else if eventType == "invite_only" {
+        } else if eventType == .inviteOnly {
             privacyImageView.image = #imageLiteral(resourceName: "invite-blue")
         }
     }

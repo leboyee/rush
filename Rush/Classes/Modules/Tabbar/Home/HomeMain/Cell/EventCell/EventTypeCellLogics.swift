@@ -11,8 +11,8 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .interests || cellType == .friends || cellType == .clubUser || (cellType == .event && type == .clubs) { // after stable app (remove this line)
-            return cellType == .clubUser ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
+        if cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) { // after stable app (remove this line)
+            return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         } else if type == .upcoming {
             return list?.count ?? 0
         }
@@ -25,7 +25,7 @@ extension EventTypeCell {
             if let eventList = list as? [Event] {
                 let event = eventList[indexPath.item]
                 cell.setup(eventName: event.title)
-                cell.setup(eventType: event.type)
+                cell.setup(eventType: event.eventType)
                 if event.photoJson.isNotEmpty {
                     cell.setup(eventImageUrl: event.photoJson.photo?.url())
                 }
@@ -89,11 +89,11 @@ extension EventTypeCell {
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {
-        if cellType == .clubUser {
-            userSelected?(0, indexPath.item)
-        } else {
-            cellSelected?(self.type, 0, indexPath.item)
-        }
+         if cellType == .invitees {
+             userSelected?(0, indexPath.item)
+         } else {
+             cellSelected?(self.type, 0, indexPath.item)
+         }
     }
     
     func cellSize(indexPath: IndexPath) -> CGSize {
@@ -109,7 +109,7 @@ extension EventTypeCell {
             return CGSize.zero
         } else if cellType == .event {
             return CGSize(width: 224, height: 157)
-        } else if cellType == .clubUser || cellType == .friends {
+        } else if cellType == .invitees || cellType == .friends {
             return CGSize(width: 72, height: 88)
         } else {
             return CGSize(width: 96, height: 112)

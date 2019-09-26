@@ -59,6 +59,8 @@ class EventDetailViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
 
+    var postPageNo = 1
+    var isPostNextPageExist = false
     let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
     let downloadGroup = DispatchGroup()
     
@@ -134,9 +136,9 @@ extension EventDetailViewController {
     
     func updateHeaderInfo() {
         guard let event = event else { return }
-        header.set(date: event.date)
+        header.set(date: event.start)
         header.set(start: event.start, end: event.end)
-        header.set(url: URL(string: event.thumbnil ?? ""))
+        header.set(url: event.photo?.url())
     }
     
     func showRSVP() {

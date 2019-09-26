@@ -23,8 +23,11 @@ extension ServiceManager {
     func fetchEventDetail(eventId: String, closer: @escaping (_ event: Event?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventDetail(eventId: eventId) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (event, errorMessage) in
-                closer(event, errorMessage)
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                if let object = data?[Keys.event] as? [String: Any] {
+                    let event: Event? = unsafe.decodeObject(fromData: object)
+                    closer(event, errorMessage)
+                }
             })
         }
     }
