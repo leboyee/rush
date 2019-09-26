@@ -182,7 +182,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect email. You maybe forgot about “@” or entered wrong email." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejt-fl-mbn" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="63" y="206" width="331" height="30.5"/>
+                                <rect key="frame" x="63" y="206" width="331" height="31.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -202,7 +202,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZL-Rs-Qko" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="20" y="204" width="35" height="35"/>
+                                <rect key="frame" x="20" y="204.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1DQ-A1-7J7"/>
                                     <constraint firstAttribute="width" constant="35" id="wiH-4F-yix"/>
@@ -213,7 +213,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1q-lZ-8Qs" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="22" y="247.5" width="392" height="1"/>
+                                <rect key="frame" x="22" y="248" width="392" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="YWd-K6-JzT"/>
@@ -749,6 +749,9 @@
                             <constraint firstItem="LYL-ay-CsG" firstAttribute="trailing" secondItem="158-DP-7pL" secondAttribute="trailing" id="ssh-Uf-kWP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="158-DP-7pL"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="p9p-L4-jIl" appends="YES" id="2aO-DR-aew"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="6EH-Ii-gdM"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -765,6 +768,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Se-sJ-yuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="p9p-L4-jIl">
+                    <connections>
+                        <action selector="handleTapGestureWithGesture:" destination="DWt-eV-rW3" id="Lbn-dc-xNJ"/>
+                        <outlet property="delegate" destination="DWt-eV-rW3" id="xyZ-Jo-FHl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="311.59420289855075" y="-214.28571428571428"/>
         </scene>

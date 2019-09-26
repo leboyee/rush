@@ -50,8 +50,9 @@ extension CreateEventViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-        cell.switchValueChanged = { (isOn) in
-            
+        cell.switchValueChanged = { [weak self] (isOn) in
+            guard let unsafe = self else { return }
+            unsafe.isCreateGroupChat = isOn
         }
     }
     
@@ -395,7 +396,7 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 pm"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 am"
         let startUtcDate = Date().localToUTC(date: startDateString)
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
         let endUtcDate = Date().localToUTC(date: endDateString)
