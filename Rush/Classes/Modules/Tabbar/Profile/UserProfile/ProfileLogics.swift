@@ -171,10 +171,8 @@ extension ProfileViewController {
             guard let userId = self.profileDetail.profile?.userId else { return }
             guard userId.isNotEmpty else { return }
             let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
-            ServiceManager.shared.getProfile(params: params) { [weak self] (data, _) in
-                if let object = data?[Keys.user] as? [String: Any] {
-                    self?.profileDetail.profile = Authorization.shared.profileModelResponse(data: object)
-                }
+            ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
+                self?.profileDetail.profile = user
                 self?.setupHeaderData()
                 self?.downloadGroup.leave()
             }

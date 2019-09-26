@@ -224,7 +224,9 @@ extension EventDetailViewController {
     }
     
     func fillCreatePostCell(_ cell: CreatePostCell) {
-       
+        if let user = Authorization.shared.profile {
+            cell.set(url: user.photo?.urlThumb())
+        }
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
