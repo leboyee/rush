@@ -39,6 +39,5 @@ extension ChooseTagCell {
         tagListView.textFont = UIFont.regular(sz: 17)
         tagListView.tagSelectedBackgroundColor = UIColor.black
         self.layoutIfNeeded()
-
     }
 }

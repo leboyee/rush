@@ -50,8 +50,9 @@ extension CreateEventViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-        cell.switchValueChanged = { (isOn) in
-            
+        cell.switchValueChanged = { [weak self] (isOn) in
+            guard let unsafe = self else { return }
+            unsafe.isCreateGroupChat = isOn
         }
     }
     
@@ -133,12 +134,6 @@ extension CreateEventViewController {
                 cell.setup(isUserInterfaceEnable: false)
                 cell.setup(isEnabled: false)
             }
-            
-            cell.clearButtonClickEvent = {
-                [weak self] () in
-                guard let unsafe = self else { return }
-                
-            }
             cell.setup(iconImage: indexPath.row == 0 ? "addRSVP" : "")
         } else if indexPath.section == 3 {
             cell.setup(iconImage: "addLocation")
@@ -171,8 +166,9 @@ extension CreateEventViewController {
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
                 cell.setup(isEnabled: false)
             } else {
+                let invite = peopleList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", text: peopleList[indexPath.row])
+                cell.setup(placeholder: "", text: (invite.isFriend == true ? invite.profile?.name : invite.contact?.displayName) ?? "")
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
         }
@@ -194,17 +190,7 @@ extension CreateEventViewController {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
-                if indexPath.section == 6 {
-                    if !unsafe.interestList.contains(txt) {
-                        unsafe.interestList.append(txt)
-                        unsafe.tableView.reloadData()
-                    }
-                } else if indexPath.section == 7 {
-                    if !unsafe.peopleList.contains(txt) {
-                        unsafe.peopleList.append(txt)
-                        unsafe.tableView.reloadData()
-                    }
-                }
+
             }
             unsafe.validateAllFields()
         }
@@ -212,7 +198,12 @@ extension CreateEventViewController {
         cell.clearButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             
-            if indexPath.section == 6 {
+            if indexPath.section == 2 {
+                if let index = unsafe.rsvpArray.firstIndex(of: (unsafe.rsvpArray[indexPath.row])) {
+                    unsafe.rsvpArray.remove(at: index)
+                    unsafe.tableView.reloadData()
+                }
+            } else if indexPath.section == 6 {
                 if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
@@ -372,6 +363,22 @@ extension CreateEventViewController: AddEventLocationDelegate {
     }
 }
 
+// MARK: - Add Invities Delegate
+extension CreateEventViewController: EventInviteDelegate {
+    func selectedInvities(_ invite: [Invite]) {
+        self.peopleList = invite
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: - Add Interest Delegate
+extension CreateEventViewController: EventInterestDelegate {
+    func  selectedInterest(_ interest: [String]) {
+        self.interestList = interest
+        self.tableView.reloadData()
+    }
+}
+
 // MARK: - Services
 extension CreateEventViewController {
     
@@ -379,13 +386,17 @@ extension CreateEventViewController {
         
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interests = interestList.joined(separator: ",")
-        let userIds = "5d5d213239277643e20f9bf1,5d3066d3392776515c7df011"
+        let friendArray = self.peopleList.filter { ($0.isFriend == true) }
+        let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
+
         var array = rsvpArray
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 pm"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 am"
         let startUtcDate = Date().localToUTC(date: startDateString)
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
         let endUtcDate = Date().localToUTC(date: endDateString)
@@ -410,10 +421,11 @@ extension CreateEventViewController {
                      Keys.eventLongitude: "\(longitude)",
                      Keys.eventStartDate: startUtcDate,
                      Keys.eventEndDate: endUtcDate,
-                     Keys.eventInterests: "test",
+                     Keys.eventInterests: interests,
                      Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
-                     Keys.eventInvitedUserIds: userIds,
-                     Keys.eventPhoto: img] as [String: Any]
+                     Keys.eventInvitedUserIds: userIdArray,
+                     Keys.eventPhoto: img,
+                     Keys.eventContact: contactNoArray] as [String: Any]
 
         print(param)
         Utils.showSpinner()

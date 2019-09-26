@@ -23,7 +23,7 @@ class EnterPhoneNoViewController: CustomViewController {
 
     var countryCode: String = "+1"
     var frontTextFiled: String = "+1"
-    var profile = Profile()
+    var profile = User()
     var loginType: LoginType = .register
     
     override func viewDidLoad() {
@@ -56,6 +56,10 @@ class EnterPhoneNoViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func setup() {
         setupUI()
         setupMediator()
@@ -79,6 +83,10 @@ class EnterPhoneNoViewController: CustomViewController {
             nextButton.setTitle(Text.receiveCodeButtonTitle, for: .normal)
         }
         setPlaceHolder()
+    }
+    
+    @IBAction func handleTapGesture(gesture: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 }
 

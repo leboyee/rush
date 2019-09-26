@@ -9,7 +9,7 @@
 import UIKit
 
 struct ProfileDetail {
-    var profile: Profile?
+    var profile: User?
     var images: [Image]?
     var friends: [Friend]?
     var interests: [Tag]?
@@ -195,7 +195,7 @@ extension ProfileViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.profileFriendProfile {
             let vc = segue.destination as? ProfileViewController
-            vc?.profileDetail.profile = sender as? Profile
+            vc?.profileDetail.profile = sender as? User
         }
     }
 }

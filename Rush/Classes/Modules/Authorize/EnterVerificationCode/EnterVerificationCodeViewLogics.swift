@@ -35,7 +35,7 @@ extension EnterVerificationCodeViewController {
     func updateStageView(stage: CodeViewStage) {
         //self_.iconImageView.isHidden = false
         //self_.messageLabel.isHidden = false
-        
+        self.nextButton.setNextButton(isEnable: true)
         if stage == .start {
             self.codeErrorLabel.isHidden = true
             self.codeErrorCancelButton.isHidden = true
@@ -49,6 +49,7 @@ extension EnterVerificationCodeViewController {
             //self_.messageLabel.isHidden = true
             self.codeErrorLabel.isHidden = false
             self.codeErrorCancelButton.isHidden = false
+            self.nextButton.setNextButton(isEnable: false)
             self.view.layoutIfNeeded()
         } else if stage == .verified {
             self.codeErrorLabel.isHidden = true
@@ -94,7 +95,7 @@ extension EnterVerificationCodeViewController {
     func signupApiCalled(code: String) {
         let param = [Keys.email: profile.email, Keys.password: profile.password, Keys.countryCode: profile.countryCode, Keys.phone: profile.phone, Keys.phoneToken: code] as [String: Any]
 
-        ServiceManager.shared.singup(params: param) { [weak self] (status, errorMessage) in
+        ServiceManager.shared.singup(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
                 unsafe.singupSuccess()
@@ -108,8 +109,8 @@ extension EnterVerificationCodeViewController {
             } else {
                 unsafe.digitTextField.becomeFirstResponder()
                 unsafe.isCodeVerifing = false
-                Utils.alert(message: errorMessage ?? "Please contact Admin")
-                //self_.updateViewStage?(.error)
+                //Utils.alert(message: errorMessage ?? "Please contact Admin")
+                unsafe.updateStageView(stage: .error)
             }
         }
     }
@@ -117,7 +118,7 @@ extension EnterVerificationCodeViewController {
     func loginApiCalled(code: String) {
         let param = [Keys.phoneToken: code] as [String: Any]
         
-        ServiceManager.shared.phonetkn(params: param) { [weak self] (status, errorMessage) in
+        ServiceManager.shared.phonetkn(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
                 unsafe.loginSuccess()
@@ -131,8 +132,8 @@ extension EnterVerificationCodeViewController {
             } else {
                 unsafe.digitTextField.becomeFirstResponder()
                 unsafe.isCodeVerifing = false
-                Utils.alert(message: errorMessage ?? "Please contact Admin")
-                //self_.updateViewStage?(.error)
+                //Utils.alert(message: errorMessage ?? "Please contact Admin")
+                unsafe.updateStageView(stage: .error)
             }
         }
     }
@@ -156,8 +157,15 @@ extension EnterVerificationCodeViewController {
             if status {
                 unsafe.resendCodeButton.setTitle("Sent", for: .normal)
                 unsafe.resendCodeButton.setImage(#imageLiteral(resourceName: "sentTick"), for: .normal)
-                unsafe.resendCodeButton.isUserInteractionEnabled = true//Utils.alert(message: "Code sent successfully.")
+                unsafe.nextButton.setNextButton(isEnable: false)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    unsafe.resendCodeButton.setImage(nil, for: .normal)
+                    unsafe.resendCodeButton.setTitle("Re-send Code", for: .normal)
+                    unsafe.resendCodeButton.isUserInteractionEnabled = true
+                })
+
             } else {
+                
                 Utils.alert(message: errorMessage ?? "Please contact Admin")
             }
         }

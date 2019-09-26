@@ -39,7 +39,7 @@ class EnterVerificationCodeViewController: CustomViewController {
     var countryCode = ""
 
     var loginType: LoginType = .register
-    var profile = Profile()
+    var profile = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +93,10 @@ class EnterVerificationCodeViewController: CustomViewController {
         self.resendCodeButton.setTitle("Re-send Code", for: .normal)
         self.resendCodeButton.isUserInteractionEnabled = true
         if loginType == .register {
-            verificationTitleLabel.text = Text.phoneNoTitleRegister
+            verificationTitleLabel.text = Text.verificationTitleRegister
             nextButton.setTitle(Text.createAccount, for: .normal)
         } else {
-            verificationTitleLabel.text = Text.phoneNoTitleLogin
+            verificationTitleLabel.text = Text.verificationTitleRegister
             nextButton.setTitle(Text.login, for: .normal)
         }
     }
@@ -110,7 +110,6 @@ extension EnterVerificationCodeViewController {
     
     @IBAction func nextButtonAction() {
         if self.code.count == 5 {
-            self.view.endEditing(true)
             if loginType == .register {
                 signupApiCalled(code: self.code)
             } else {
@@ -122,7 +121,14 @@ extension EnterVerificationCodeViewController {
 
     }
     
+    @IBAction func errorButtonAction() {
+        codeErrorLabel.isHidden = true
+        codeErrorCancelButton.isHidden = true
+    }
+
     @IBAction func resendSMSButtonAction() {
+        codeErrorLabel.isHidden = true
+        codeErrorCancelButton.isHidden = true
         codeLabel.text = ""
         digitTextField.text = ""
         resendCodeApiCalled()
@@ -137,7 +143,8 @@ extension EnterVerificationCodeViewController {
     }
     
     func loginSuccess() {
-        AppDelegate.shared?.setupStoryboard()
+       //AppDelegate.shared?.setupStoryboard()
+        self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
 
     }
 }

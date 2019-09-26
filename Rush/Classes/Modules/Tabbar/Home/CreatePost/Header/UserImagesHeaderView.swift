@@ -40,9 +40,11 @@ extension UserImagesHeaderView {
         if image != nil {
             hoverView.isHidden = false
             addPhotoButton.isHidden = true
+            changePhotoButton.isHidden = false
         } else {
             hoverView.isHidden = true
             addPhotoButton.isHidden = false
+            changePhotoButton.isHidden = true
         }
     }
     

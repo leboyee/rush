@@ -13,8 +13,8 @@ class Post: Codable {
     var id: String?
     var parentId: String? // Event / Club / Class
     var text: String?
-    var desc: String?
     var images: [Image]?
+    var imageJson: String?
     var numberOfLikes: Int = 0
     var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
@@ -22,22 +22,17 @@ class Post: Codable {
     var createDate: Date?
 
     private enum CodingKeys: String, CodingKey {
-        case id
-        case parentId
-        case text
-        case images
-        case numberOfLikes
-        case numberOfUnLikes
-        case numberOfComments
+        case id = "_id"
+        case parentId = "data_id"
+        case text = "desc"
+        case imageJson = "photos"
+        case numberOfLikes = "up_votes"
+        case numberOfUnLikes = "down_votes"
+        case numberOfComments = "total_comments"
         case user
         case createDate
-        case desc
-    }
-
-    init() {
     }
     
-    // Added below function for user objects
-    public func encode(to encoder: Encoder) throws {
+    init() {
     }
 }

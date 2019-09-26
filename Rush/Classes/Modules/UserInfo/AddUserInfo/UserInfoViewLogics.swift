@@ -54,7 +54,7 @@ extension UserInfoViewController {
                     let minDate = calendar.date(from: minDateComponent)
                     datePikcerController.presenter.maxDate = Date().minus(years: 18)
                     datePikcerController.presenter.minDate = minDate
-                    datePikcerController.presenter.currentDate = Date().minus(years: 19)
+                    datePikcerController.presenter.currentDate = self.selectedDate
                     datePikcerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                     self.present(datePikcerController, animated: false, completion: nil)
                 }
@@ -63,6 +63,7 @@ extension UserInfoViewController {
                 if let customPickerController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as? CustomPickerViewController {
                     customPickerController.pickerDelegate = self
                     customPickerController.presenter.type = .gender
+                    customPickerController.presenter.selectedIndexIn = self.selectedGender
                     customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                     self.present(customPickerController, animated: false, completion: nil)
                 }
@@ -71,6 +72,7 @@ extension UserInfoViewController {
                 if let customPickerController = customPickerStoryboard.instantiateViewController(withIdentifier: ViewControllerId.customPickerViewController) as? CustomPickerViewController {
                     customPickerController.pickerDelegate = self
                     customPickerController.presenter.type = .relation
+                    customPickerController.presenter.selectedIndexIn = self.selectedRelation
                     customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                     self.present(customPickerController, animated: false, completion: nil)
                 }
@@ -94,6 +96,7 @@ extension UserInfoViewController {
 // MARK: - Date Picker Delegate
 extension UserInfoViewController: DatePickerDelegate {
     func selectedDate(_ date: Date) {
+        selectedDate = date
         dob = date.toString(format: "dd.MM.yyyy")
         nextButtonEnabled()
         self.tableView.reloadData()

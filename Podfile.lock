@@ -1,40 +1,40 @@
 PODS:
   - DKCamera (1.6.4)
-  - DKImagePickerController/Camera (4.1.5):
+  - DKImagePickerController/Camera (4.1.7):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/Core (4.1.5):
+  - DKImagePickerController/Core (4.1.7):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.1.5)
-  - DKImagePickerController/InlineCamera (4.1.5):
+  - DKImagePickerController/ImageDataManager (4.1.7)
+  - DKImagePickerController/InlineCamera (4.1.7):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/PhotoGallery (4.1.5):
+  - DKImagePickerController/PhotoGallery (4.1.7):
     - DKImagePickerController/Core
     - DKPhotoGallery
-  - DKImagePickerController/Resource (4.1.5)
-  - DKPhotoGallery (0.0.13):
-    - DKPhotoGallery/Core (= 0.0.13)
-    - DKPhotoGallery/Model (= 0.0.13)
-    - DKPhotoGallery/Preview (= 0.0.13)
-    - DKPhotoGallery/Resource (= 0.0.13)
+  - DKImagePickerController/Resource (4.1.7)
+  - DKPhotoGallery (0.0.14):
+    - DKPhotoGallery/Core (= 0.0.14)
+    - DKPhotoGallery/Model (= 0.0.14)
+    - DKPhotoGallery/Preview (= 0.0.14)
+    - DKPhotoGallery/Resource (= 0.0.14)
     - SDWebImage
     - SDWebImageFLPlugin
-  - DKPhotoGallery/Core (0.0.13):
+  - DKPhotoGallery/Core (0.0.14):
     - DKPhotoGallery/Model
     - DKPhotoGallery/Preview
     - SDWebImage
     - SDWebImageFLPlugin
-  - DKPhotoGallery/Model (0.0.13):
+  - DKPhotoGallery/Model (0.0.14):
     - SDWebImage
     - SDWebImageFLPlugin
-  - DKPhotoGallery/Preview (0.0.13):
+  - DKPhotoGallery/Preview (0.0.14):
     - DKPhotoGallery/Model
     - DKPhotoGallery/Resource
     - SDWebImage
     - SDWebImageFLPlugin
-  - DKPhotoGallery/Resource (0.0.13):
+  - DKPhotoGallery/Resource (0.0.14):
     - SDWebImage
     - SDWebImageFLPlugin
   - FLAnimatedImage (1.0.12)
@@ -63,12 +63,12 @@ DEPENDENCIES:
   - MGSwipeTableCell
   - ReachabilitySwift
   - SDWebImage
-  - SendBirdSDK
+  - SendBirdSDK (= 3.0.149)
   - SVProgressHUD
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
@@ -86,8 +86,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
-  DKImagePickerController: 58d6c4b316ac9bfcf6f7259866ef36cc3d985352
-  DKPhotoGallery: ce7c1f629450dd07048aa30310319953785857a7
+  DKImagePickerController: 6ffad961c212b0debf644f3d1aa72d0a2ee03d5f
+  DKPhotoGallery: 0290d32343574f06eaa4c26f8f2f8a1035e916be
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
   GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
@@ -100,6 +100,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
-PODFILE CHECKSUM: 52a1d922b501599288ff63c011d025538c7117a9
+PODFILE CHECKSUM: 4903c4214349058099790461daf6daa327c59ba1
 
-COCOAPODS: 1.7.5
+
+COCOAPODS: 1.8.0.beta.2

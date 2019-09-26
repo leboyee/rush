@@ -15,30 +15,36 @@ struct EventGroup {
 
 class Event: Codable {
     
-    var id: Int64 = 0
+    var id: String = ""
+    var userId: String = ""
+    var type: String = ""
     var date: Date?
     var title: String = ""
     var desc: String = ""
-    var type: String = ""
+    var photoJson: String = ""
     var eventType: EventType = .none
     var start: Date?
     var end: Date?
     var thumbnil: String?
+    var created: String = ""
     var address: Address?
-    var owner: Profile?
+    var owner: User?
 
     init() {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
+        case userId = "event_user_id"
+        case type = "event_type"
+        case photoJson = "event_photo"
+        case title = "event_name"
         case date
-        case title
-        case desc
-        case type
+        case desc = "event_desc"
         case start
         case end
         case thumbnil
         case address
+        case created = "event_created_at"
     }
 }

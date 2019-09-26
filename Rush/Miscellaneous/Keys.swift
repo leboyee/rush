@@ -95,6 +95,11 @@ struct Keys {
     static let instagramToken           = "insta_token"
     static let images           = "images"
     static let rsvpAns         = "rsvp_ans"
+    
+    static let dataId = "data_id"
+    static let dataType = "data_type"
+    static let desc = "desc"
+    static let totalPhotos = "total_photos"
 
     static let createEventType = "event_type"
     static let eventName = "event_name"
@@ -109,4 +114,6 @@ struct Keys {
     static let eventIsChatGroup = "event_is_chat_group"
     static let eventInvitedUserIds = "event_invited_user_ids"
     static let eventPhoto = "event_photo"
+    static let eventContact = "event_Contact"
+
 }

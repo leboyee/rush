@@ -95,6 +95,7 @@ struct ReusableView {
     static let textHeader     = "TextHeader"
     static let userImagesHeader = "UserImagesHeaderView"
     static let classesHeader = "ClassesHeader"
+    static let inviteHeader = "InviteHeader"
 }
 
 struct ViewControllerId {
@@ -166,6 +167,8 @@ struct Segues {
     static let addRSVP                             = "AddRSVPSegue"
     static let addLocation                             = "AddLocationSegue"
     static let eventJoinedPopup                    = "EventJoinedPopupSegue"
+    static let createEventInviteSegue              = "CreateEventInviteSegue"
+    static let createEventInterestSegue            = "CreateEventInterestSegue"
 }
 
 struct StoryBoard {
@@ -191,6 +194,8 @@ public struct Text {
     static let passwordTitleRegister  = "Protect account with password"
     static let passwordTitleLogin  = "What is your password?"
     static let phoneNoTitleRegister  = "Add phone number to increase security"
+    static let verificationTitleRegister  = "Enter confirmation code"
+
     static let phoneNoTitleLogin  = "Enter your phone number"
     static let userNameTitleRegister  = "Profile setup"
     static let show  = "show"
@@ -278,6 +283,7 @@ public struct Text {
     static let addLocation               = "Add location"
     static let joinAndRSVP               = "Join and RSVP"
     static let going                     = "Going"
+    static let club                      = "club"
 }
 
 public struct Message {
@@ -346,4 +352,12 @@ enum ExploreSearchType {
     case club
     case classes
     case people
+}
+
+enum GetEventType: String {
+    case none = ""
+    case upcoming = "upcoming"
+    case my = "my"
+    case myUpcoming = "my-upcoming"
+    case attending = "attending"
 }

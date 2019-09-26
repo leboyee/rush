@@ -28,7 +28,7 @@ open class CustomCameraExtension: DKImageBaseExtension, UIImagePickerControllerD
         let camera = UIImagePickerController()
         camera.delegate = self
         camera.sourceType = .camera
-        camera.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        camera.mediaTypes = [kUTTypeImage as String]
         
         self.context.imagePickerController.present(camera)
     }

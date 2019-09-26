@@ -33,9 +33,9 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var passwordViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var resortPasswordButton: CustomButton!
     @IBOutlet weak var errorButton: CustomButton!
-
+    var isError: Bool = false
     var loginType: LoginType = .register
-    var profile = Profile()
+    var profile = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +102,7 @@ class EnterPasswordViewConteroller: CustomViewController {
             resortPasswordButton.isHidden = true
             hintView.isHidden = false
             passwordErrorView.isHidden = true
+            passwordTextField.placeholder = "Create password"
         } else {
             passwordTitleLabel.text = Text.passwordTitleLogin
             nextButton.setTitle(Text.login, for: .normal)

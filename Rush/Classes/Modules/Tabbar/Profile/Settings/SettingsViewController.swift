@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var user: Profile?
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
