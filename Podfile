@@ -34,5 +34,8 @@ target 'Rush' do
   #google Place
   pod 'GooglePlaces'
   
+   pod 'FacebookShare'
+   pod 'FacebookCore'
+
 
 end
