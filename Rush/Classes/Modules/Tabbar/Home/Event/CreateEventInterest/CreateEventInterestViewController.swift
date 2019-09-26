@@ -27,8 +27,6 @@ class CreateEventInterestViewController: CustomViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setup()
-        let profile = Profile(data: Authorization.shared.getUserData() ?? [String: Any]())
-        print(profile.interest)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -403,7 +403,7 @@ extension EventDetailViewController {
         event?.address?.latitude = 40.768452
         event?.address?.longitude = -73.832764
         event?.thumbnil = "http://www.fedracongressi.com/fedra/wp-content/uploads/2016/02/revelry-event-designers-homepage-slideshow-38.jpeg"
-        let user = Profile()
+        let user = User()
         user.firstName = "Kamal"
         user.lastName = "Mittal"
         user.photo = Image(

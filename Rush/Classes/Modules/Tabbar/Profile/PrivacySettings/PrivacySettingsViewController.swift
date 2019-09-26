@@ -18,7 +18,7 @@ class PrivacySettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var type: PrivacyType = .invitesfrom
     let list = ["Everyone", "Only friends", "Friends and their friends", "Nobody"]
-    var user: Profile?
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()

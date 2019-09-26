@@ -12,20 +12,21 @@ extension NotificationSettingsViewController {
     
     func cellCount(_ section: Int) -> Int {
         var count = 1
-        count += (user?.isNotificationOn ?? true) ? list.count : 0
+        count += (user?.isNotifyOn ?? 1) == 1 ? list.count : 0
         return count
     }
     
     func fillCell(_ cell: CheckMarkCell, _ indexPath: IndexPath) {
         let index = indexPath.row - 1
+        guard let user = user else { return }
         cell.set(title: list[index])
         switch index {
         case 0:
-            cell.set(isCheckBoxShow: user?.isEventNotificationOn ?? true)
+            cell.set(isCheckBoxShow: user.isEventNotify == 1 ? true : false)
         case 1:
-            cell.set(isCheckBoxShow: user?.isClubNotificationOn ?? true)
+            cell.set(isCheckBoxShow: user.isClubNotify == 1 ? true : false)
         case 2:
-            cell.set(isCheckBoxShow: user?.isClassNotificationOn ?? true)
+            cell.set(isCheckBoxShow: user.isClassNotify == 1 ? true : false)
         default:
             break
         }
@@ -34,7 +35,7 @@ extension NotificationSettingsViewController {
     func fillSwitchCell(_ cell: SwitchCell, _ indexPath: IndexPath) {
         
         cell.set(title: Text.recieveNotifications)
-        cell.set(isOn: user?.isNotificationOn ?? true)
+        cell.set(isOn: user?.isNotifyOn == 1 ? true : false)
         cell.switchEvent = {  [weak self] (isOn) in
             guard let unsefe = self else { return }
             let params = [Keys.uIsNotifyOn: isOn ? 1 : 0]
@@ -50,11 +51,11 @@ extension NotificationSettingsViewController {
         var params = [String: Any]()
         switch index {
         case 0:
-            params[Keys.uIsEventNotify] = !(user?.isEventNotificationOn ?? true) ? 1 : 0
+            params[Keys.uIsEventNotify] = user?.isEventNotify == 1 ? 0 : 1
         case 1:
-            params[Keys.uIsClubNotify] = !(user?.isClubNotificationOn ?? true) ? 1 : 0
+            params[Keys.uIsClubNotify] = user?.isClubNotify == 1 ? 0 : 1
         case 2:
-            params[Keys.uIsClassNotify] = !(user?.isClassNotificationOn ?? true) ? 1 : 0
+            params[Keys.uIsClassNotify] = user?.isClassNotify == 1 ? 0 : 1
         default:
             break
         }

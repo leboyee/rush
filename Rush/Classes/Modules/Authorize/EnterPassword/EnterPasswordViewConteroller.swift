@@ -35,7 +35,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var errorButton: CustomButton!
 
     var loginType: LoginType = .register
-    var profile = Profile()
+    var profile = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()

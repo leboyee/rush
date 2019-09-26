@@ -149,24 +149,39 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 || indexPath.section == 1 {
-            let profile = friendListAraay[indexPath.row]
-            if  selectedFriendListArray.contains(where: { $0.userId == profile.userId }) {
-                guard let index = selectedFriendListArray.firstIndex(where: { $0.name == profile.name }) else { return }
-                selectedFriendListArray.remove(at: index)
+
+        if isRushFriends == true {
+            if indexPath.section == 0 || indexPath.section == 1 {
+                let profile = friendListAraay[indexPath.row]
+                if  selectedFriendListArray.contains(where: { $0.userId == profile.userId}) {
+                    guard let index = selectedFriendListArray.firstIndex(where: { $0.name == profile.name }) else { return }
+                    selectedFriendListArray.remove(at: index)
+                } else {
+                    selectedFriendListArray.append(profile)
+                }
             } else {
-                selectedFriendListArray.append(profile)
+                let array = items[indexPath.section - 2].contacts
+                let item = array[indexPath.row]
+                if selectedItem.contains(item) {
+                    guard let index = selectedItem.firstIndex(where: { $0.displayName == item.displayName }) else { return }
+                    selectedItem.remove(at: index)
+                } else {
+                    selectedItem.append(item)
+                }
             }
         } else {
-            let array = items[indexPath.section - 2].contacts
-            let item = array[indexPath.row]
-            if selectedItem.contains(item) {
-                guard let index = selectedItem.firstIndex(where: { $0.displayName == item.displayName }) else { return }
-                selectedItem.remove(at: index)
-            } else {
-                selectedItem.append(item)
+            if indexPath.section != 1 {
+                let array = items[indexPath.section - 1].contacts
+                let item = array[indexPath.row]
+                if selectedItem.contains(item) {
+                    guard let index = selectedItem.firstIndex(where: { $0.displayName == item.displayName }) else { return }
+                    selectedItem.remove(at: index)
+                } else {
+                    selectedItem.append(item)
+                }
             }
         }
+       
         self.tableView.reloadData()
         inviteButtonVisiable()
     }

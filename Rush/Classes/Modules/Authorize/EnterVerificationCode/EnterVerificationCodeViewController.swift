@@ -39,7 +39,7 @@ class EnterVerificationCodeViewController: CustomViewController {
     var countryCode = ""
 
     var loginType: LoginType = .register
-    var profile = Profile()
+    var profile = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()

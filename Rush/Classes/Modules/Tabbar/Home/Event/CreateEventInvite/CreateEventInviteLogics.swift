@@ -95,17 +95,17 @@ extension CreateEventInviteViewController {
             
             if let list = data?[Keys.list] as? [[String: Any]] {
                 if list.count > 0 {
-                    var users = [Profile]()
+                    var users = [User]()
                     
                     for object in list {
                         let value = object[Keys.user] as? [String: Any] ?? [:]
-                        let user = Profile(data: value)
+                        let user = Authorization.shared.getUser(data: value)
                         users.append(user)
-                        if let first = user.firstName.first {
-                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [Profile] {
+                        if let first = user.firstName { //***
+                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [User] {
                                 let filter = value.filter { $0.userId == user.userId }
                                 if filter.count == 0 {
-                                    var tempUser = [Profile]()
+                                    var tempUser = [User]()
                                     tempUser.append(contentsOf: value)
                                     tempUser.append(user)
                                     unsafe.friendsList[first.description.lowercased()] = tempUser
