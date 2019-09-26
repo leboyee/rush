@@ -169,6 +169,8 @@ struct Segues {
     static let eventJoinedPopup                    = "EventJoinedPopupSegue"
     static let createEventInviteSegue              = "CreateEventInviteSegue"
     static let createEventInterestSegue            = "CreateEventInterestSegue"
+    static let addLocationSegue                    = "RegAddLocationSegue"
+    
 }
 
 struct StoryBoard {

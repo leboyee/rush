@@ -77,13 +77,7 @@ extension UserInfoViewController {
                     self.present(customPickerController, animated: false, completion: nil)
                 }
             case 3:
-                let autocompleteController = GMSAutocompleteViewController()
-                autocompleteController.delegate = self
-                let filter = GMSAutocompleteFilter()
-                filter.type = .address
-                autocompleteController.autocompleteFilter = filter
-                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
-                self.present(autocompleteController, animated: true, completion: nil)
+                self.performSegue(withIdentifier: Segues.addLocationSegue, sender: self)
             default:
                 break
             }
@@ -140,5 +134,15 @@ extension UserInfoViewController {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
         }*/
+    }
+}
+
+// MARK: - Add Location Delegate
+extension UserInfoViewController: AddEventLocationDelegate {
+    func addEventLocationData(_ address: String, latitude: Double, longitude: Double) {
+        self.homeTown = address
+        self.latitude = latitude
+        self.longitude = longitude
+        self.tableView.reloadData()
     }
 }

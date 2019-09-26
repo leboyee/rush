@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="99" y="203"/>
         </scene>
-        <!--UserData-->
+        <!--UserInfo-->
         <scene sceneID="SrW-0P-X60">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserData" id="Xo4-Xf-yRb" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="UserInfo" id="Xo4-Xf-yRb" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eHJ-L4-MsR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTO-XV-Z3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

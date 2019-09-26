@@ -29,6 +29,10 @@ class UserInfoViewController: CustomViewController {
     var gender = ""
     var relation = ""
     var homeTown = ""
+    var address = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,5 +118,17 @@ extension UserInfoViewController {
     @IBAction func finisheRegistrationButtonAction() {
         self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
         //AppDelegate.getInstance().setupStoryboard()
+    }
+}
+
+// MARK: - Navigation
+extension UserInfoViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.addLocationSegue {
+            if let vc = segue.destination as? AddLocationViewController {
+                vc.delegate = self
+            }
+        }
     }
 }
