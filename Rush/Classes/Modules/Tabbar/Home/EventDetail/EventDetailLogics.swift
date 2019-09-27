@@ -327,6 +327,15 @@ extension EventDetailViewController {
             }
         }
     }
+    
+    func willDisplay(_ indexPath: IndexPath) {
+        let totalSection = (sections?.count ?? 0) + (postList?.count ?? 0)
+        /// Post list should be exist and here each section will define one post.
+        guard totalSection > (sections?.count ?? 0) else { return }
+        if isPostNextPageExist, totalSection - 1 == indexPath.section {
+           fetchPosts()
+        }
+    }
 }
 
 // MARK: - API's
@@ -349,10 +358,49 @@ extension EventDetailViewController {
     }
     
     private func fetchInvitees() {
-    
+        downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let id = self.eventId, id.isNotEmpty else { return }
+            
+            let param = [Keys.pageNo: 1]
+            ServiceManager.shared.fetchInviteeList(eventId: id, params: param) { [weak self] (invitees, _) in
+                guard let unsafe = self else { return }
+                unsafe.inviteeList = invitees
+                unsafe.downloadGroup.leave()
+            }
+        }
     }
     
     private func fetchPosts() {
-       
+        downloadQueue.async {
+            let time = DispatchTime.now() + (2 * 60)
+            _ = self.downloadGroup.wait(timeout: time)
+            self.downloadGroup.enter()
+            guard let id = self.eventId, id.isNotEmpty else { return }
+            
+            let param = [Keys.pageNo: self.postPageNo]
+            ServiceManager.shared.getPostList(dataId: id, type: Text.event, params: param) { [weak self] (posts, _) in
+                guard let unsafe = self else { return }
+                if let list = posts {
+                    if list.isEmpty {
+                        unsafe.isPostNextPageExist = false
+                        if unsafe.postPageNo == 1 {
+                            unsafe.postList?.removeAll()
+                        }
+                    } else {
+                        if unsafe.postPageNo == 1 {
+                            unsafe.postList = list
+                        } else {
+                            unsafe.postList?.append(contentsOf: list)
+                        }
+                        unsafe.postPageNo += 1
+                        unsafe.isPostNextPageExist = true
+                    }
+                }
+                unsafe.downloadGroup.leave()
+            }
+        }
     }
 }

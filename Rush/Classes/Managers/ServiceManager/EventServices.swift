@@ -32,6 +32,16 @@ extension ServiceManager {
         }
     }
     
+    // Event Detail API
+    func fetchInviteeList(eventId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getInviteeList(eventId: eventId, params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, errorMessage) in
+                closer(invitees, errorMessage)
+            })
+        }
+    }
+    
     // Join Event API
     func joinEvent(eventId: String, params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.joinEvent(eventId: eventId, params: params) { [weak self] (data, error, code) in

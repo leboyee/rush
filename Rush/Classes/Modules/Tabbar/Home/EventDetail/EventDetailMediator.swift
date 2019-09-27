@@ -128,6 +128,11 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         selectedRow(indexPath)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
+
+    
     // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight(section)

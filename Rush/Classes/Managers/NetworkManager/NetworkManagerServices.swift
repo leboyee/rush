@@ -141,4 +141,8 @@ extension NetworkManager {
     func getCalendarList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "calender/list", params: params, resultHandler: resultHandler)
     }
+    
+    func getInviteeList(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
+    }
 }

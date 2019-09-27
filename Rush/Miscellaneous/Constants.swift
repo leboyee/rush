@@ -286,6 +286,7 @@ public struct Text {
     static let going                     = "Going"
     static let club                      = "club"
     static let post                      = "post"
+    static let event                     = "event"
 }
 
 public struct Message {
