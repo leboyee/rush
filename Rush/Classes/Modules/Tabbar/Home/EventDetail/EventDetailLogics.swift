@@ -42,7 +42,7 @@ extension EventDetailViewController {
                 EventSection(type: .about, title: nil),
                 EventSection(type: .manage, title: nil),
                 EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Invited people"),
+                EventSection(type: .invitee, title: "Invited people"),
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .createPost, title: "Posts")
             ]
@@ -52,7 +52,7 @@ extension EventDetailViewController {
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .joinRsvp, title: nil)
@@ -62,7 +62,7 @@ extension EventDetailViewController {
                 EventSection(type: .about, title: nil),
                 EventSection(type: .manage, title: nil),
                 EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .createPost, title: "Popular posts")
@@ -75,7 +75,7 @@ extension EventDetailViewController {
                 EventSection(type: .about, title: nil),
                 EventSection(type: .manage, title: nil),
                 EventSection(type: .location, title: "Location"),
-                EventSection(type: .people, title: "Joined"),
+                EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags")
             ]
@@ -88,7 +88,7 @@ extension EventDetailViewController {
     
     func sectionCount() -> Int {
         var sectionCount = sections?.count ?? 0
-        sectionCount += postlist?.count ?? 0
+        sectionCount += postList?.count ?? 0
         return sectionCount
     }
     
@@ -103,7 +103,7 @@ extension EventDetailViewController {
     
     func postCellType(indexPath: IndexPath) -> PostCellType {
         let index = indexPath.section - (sections?.count ?? 0)
-        guard let post = postlist?[index] else { return .none }
+        guard let post = postList?[index] else { return .none }
         
         if indexPath.row == 0 {
             return .user
@@ -119,16 +119,33 @@ extension EventDetailViewController {
     func sectionHeight(_ section: Int) -> CGFloat {
         
         if section < sections?.count ?? 0, let eventSection = sections?[section], eventSection.title != nil {
+            if eventSection.type == .invitee, inviteeList?.isEmpty ?? true {
+                return CGFloat.leastNormalMagnitude
+            } else if eventSection.type == .tags, event?.interests?.isEmpty ?? true {
+                return CGFloat.leastNormalMagnitude
+            }
             return headerHeight
+        } else {
+            return CGFloat.leastNormalMagnitude
         }
-        return CGFloat.leastNormalMagnitude
+    }
+    
+    func sectionFooter(_ section: Int) -> CGFloat {
+        if section < sections?.count ?? 0, let eventSection = sections?[section] {
+            if eventSection.type == .invitee, inviteeList?.isEmpty ?? true {
+                return CGFloat.leastNormalMagnitude
+            } else if eventSection.type == .tags, event?.interests?.isEmpty ?? true {
+                return CGFloat.leastNormalMagnitude
+            }
+        }
+        return 1.0
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section > (sections?.count ?? 0) - 1, postCellType(indexPath: indexPath) == .image {
             let index = indexPath.section - (sections?.count ?? 0)
-            if let post = postlist?[index] {
+            if let post = postList?[index] {
                 let itemsCount = post.images?.count ?? 0
                 var count = itemsCount % 2 == 0 ? itemsCount : itemsCount - 1
                 if itemsCount == 1 {
@@ -140,7 +157,7 @@ extension EventDetailViewController {
                 return height
             }
         } else if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
-            if eventSection.type == .people {
+            if eventSection.type == .invitee {
                 return friendHeight
             }
         }
@@ -151,13 +168,21 @@ extension EventDetailViewController {
         var count = 0
         if section >= sections?.count ?? 0 {
             let index = section - (sections?.count ?? 0)
-            if let post = postlist?[index] {
+            if let post = postList?[index] {
                 count = post.images == nil ? 3 : 4
             }
         } else if let eventSection = sections?[section] {
             switch eventSection.type {
-            case .about, .joinRsvp, .location, .manage, .people, .tags, .organizer, .createPost:
+            case .about, .joinRsvp, .location, .manage, .organizer, .createPost:
                 count = 1
+            case .tags:
+                if event?.interests?.isNotEmpty ?? false {
+                    count = 1
+                }
+            case .invitee:
+                if !(inviteeList?.isEmpty ?? true) {
+                    count = 1
+                }
             default: break
             }
         }
@@ -177,13 +202,15 @@ extension EventDetailViewController {
         guard let eventSection = sections?[indexPath.section] else { return }
         cell.setup(isSeparatorHide: true)
         if eventSection.type == .tags {
-            cell.setup(interests: [Tag(id: 111, text: "Development"), Tag(id: 211, text: "Technologies")])
-        } else if eventSection.type == .people {
-            cell.setup(invitees: tempInvitee)
+            cell.setup(interests: event?.interests?.tags ?? [])
+        } else if eventSection.type == .invitee, let list = inviteeList {
+            cell.setup(invitees: list)
         }
+        
         cell.userSelected = { ( _, _) in
             Utils.notReadyAlert()
         }
+        
         cell.cellSelected = { (_, _, _) in
             Utils.notReadyAlert()
         }
@@ -245,7 +272,7 @@ extension EventDetailViewController {
     
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
-        if let post = postlist?[index] {
+        if let post = postList?[index] {
             cell.set(name: post.user?.name ?? "")
             cell.set(time: post.createDate)
             cell.set(url: nil)
@@ -254,21 +281,21 @@ extension EventDetailViewController {
     
     func fillPostTextCell(_ cell: PostTextCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
-        if let post = postlist?[index] {
+        if let post = postList?[index] {
             cell.set(text: post.text ?? "")
         }
     }
     
     func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
-        if let post = postlist?[index] {
+        if let post = postList?[index] {
             cell.set(images: post.imageJson?.photos)
         }
     }
     
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
-        if let post = postlist?[index] {
+        if let post = postList?[index] {
             cell.set(numberOfLike: post.numberOfLikes)
             cell.set(numberOfComment: post.numberOfComments)
             

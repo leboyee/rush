@@ -27,6 +27,7 @@ class Event: Codable {
     var address: String?
     var latitude: String?
     var longitude: String?
+    var interests: String?
     var creator: User?
     var photo: Image? {
         return photoJson.photo
@@ -55,5 +56,6 @@ class Event: Codable {
         case created = "event_created_at"
         case creator = "user"
         case isChatGroupInEvent = "event_is_chat_group"
+        case interests = "event_interests"
     }
 }

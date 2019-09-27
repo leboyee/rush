@@ -105,7 +105,7 @@ extension EventCell {
         }
     }
     
-    func setup(invitee: [Invitees]?) {
+    func setup(invitee: [Invitee]?) {
         
         userCountLabel.isHidden = true
         firstUserImageView.isHidden = false

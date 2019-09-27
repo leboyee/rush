@@ -56,7 +56,7 @@ class EventTypeCell: UITableViewCell {
         reload()
     }
     
-    func setup(invitees: [Invitees]?) {
+    func setup(invitees: [Invitee]?) {
         cellType = .invitees
         list = invitees
         reload()

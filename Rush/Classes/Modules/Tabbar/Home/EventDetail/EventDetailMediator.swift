@@ -144,7 +144,7 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1.0
+        return sectionFooter(section)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

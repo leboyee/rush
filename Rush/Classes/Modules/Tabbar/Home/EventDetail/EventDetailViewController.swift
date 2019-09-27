@@ -19,7 +19,7 @@ enum EventSectionType {
     case about
     case manage
     case location
-    case people
+    case invitee
     case tags
     case createPost
     case post
@@ -53,7 +53,8 @@ class EventDetailViewController: UIViewController {
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
-    var postlist: [Post]?
+    var postList: [Post]?
+    var inviteeList: [Invitee]?
 
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
@@ -63,14 +64,6 @@ class EventDetailViewController: UIViewController {
     var isPostNextPageExist = false
     let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
     let downloadGroup = DispatchGroup()
-    
-    let tempInvitee = [
-         Invitees(name: "Kamal"),
-         Invitees(name: "John"),
-         Invitees(name: "Smith"),
-         Invitees(name: "Suresh"),
-         Invitees(name: "Chirag")
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -414,7 +414,7 @@
 		79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA26F4230EC5AF0007F0ED /* HomeServices.swift */; };
 		8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1E22313EC4600258227 /* TableViewExtension.swift */; };
 		8A0345AD2322A6EA0065CF3C /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345A92322A6E90065CF3C /* Address.swift */; };
-		8A0345AE2322A6EA0065CF3C /* Invitees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AA2322A6E90065CF3C /* Invitees.swift */; };
+		8A0345AE2322A6EA0065CF3C /* Invitee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AA2322A6E90065CF3C /* Invitee.swift */; };
 		8A0345AF2322A6EA0065CF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AB2322A6EA0065CF3C /* User.swift */; };
 		8A0345B02322A6EA0065CF3C /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AC2322A6EA0065CF3C /* Club.swift */; };
 		8A0345B22322A7310065CF3C /* RRedArrowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345B12322A7310065CF3C /* RRedArrowImageView.swift */; };
@@ -948,7 +948,7 @@
 		79FA26F4230EC5AF0007F0ED /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		8A02C1E22313EC4600258227 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		8A0345A92322A6E90065CF3C /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		8A0345AA2322A6E90065CF3C /* Invitees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitees.swift; sourceTree = "<group>"; };
+		8A0345AA2322A6E90065CF3C /* Invitee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitee.swift; sourceTree = "<group>"; };
 		8A0345AB2322A6EA0065CF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8A0345AC2322A6EA0065CF3C /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		8A0345B12322A7310065CF3C /* RRedArrowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRedArrowImageView.swift; sourceTree = "<group>"; };
@@ -2872,7 +2872,7 @@
 				1AAE965B233A47CB00868449 /* Invite.swift */,
 				8A0345A92322A6E90065CF3C /* Address.swift */,
 				8A0345AC2322A6EA0065CF3C /* Club.swift */,
-				8A0345AA2322A6E90065CF3C /* Invitees.swift */,
+				8A0345AA2322A6E90065CF3C /* Invitee.swift */,
 				8A0345AB2322A6EA0065CF3C /* User.swift */,
 				1A262F56231D1BF70068A695 /* Interest.swift */,
 				1A088E5222FED12700DF6004 /* Contact.swift */,
@@ -3484,7 +3484,7 @@
 				793BE68B22E88207005EF72D /* MessageContentCell.swift in Sources */,
 				793BE69922E88565005EF72D /* ChatManager.swift in Sources */,
 				79D29CA422CF339B008C6ED0 /* ExploreCell.swift in Sources */,
-				8A0345AE2322A6EA0065CF3C /* Invitees.swift in Sources */,
+				8A0345AE2322A6EA0065CF3C /* Invitee.swift in Sources */,
 				8A04B14C22FC2B5B0055C65F /* SettingsViewController.swift in Sources */,
 				8A04B17222FD8B8E0055C65F /* PrivacySettingsLogics.swift in Sources */,
 				1A262F57231D1BF70068A695 /* Interest.swift in Sources */,

@@ -55,7 +55,7 @@ extension FriendClubCell {
         mainImageView.sd_setImage(with: imageUrl, completed: nil)
     }
     
-    func setup(invitee: [Invitees]?) {
+    func setup(invitee: [Invitee]?) {
         
         userCountLabel.isHidden = true
         firstUserImageView.isHidden = false

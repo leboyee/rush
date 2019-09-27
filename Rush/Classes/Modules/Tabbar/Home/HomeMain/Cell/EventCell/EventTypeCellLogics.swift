@@ -63,7 +63,7 @@ extension EventTypeCell {
             cell.setup(count: list?.count ?? 0)
             cell.setup(isShowCount: true)
         } else {
-            if let invitee = list?[indexPath.item - 1] as? Invitees {
+            if let invitee = list?[indexPath.item - 1] as? Invitee {
                 cell.setup(text: (invitee.user?.firstName ?? "") + " " + (invitee.user?.lastName ?? ""))
                 cell.setup(isShowCount: false)
             }
