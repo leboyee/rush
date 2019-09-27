@@ -32,6 +32,7 @@ class CreatePostViewController: UIViewController {
     var postText = ""
     
     var clubInfo: Club?
+    var eventInfo: Event?
     
     var createBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
@@ -169,6 +170,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
             if type == .photoLibrary {
                 self.picker = ImagePickerController()
                 self.picker.delegate = self
+                self.picker.isSingleSelection = true
                 self.picker.navigationBar.isTranslucent = false
                 var assets = [PHAsset]()
                 for img in self.imageList {

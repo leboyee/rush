@@ -139,7 +139,7 @@ extension HomeViewController {
     }
     
     func getEventList(sortBy: GetEventType) {
-        // (Authorization.shared.profile?.userId ?? "")
+        
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,

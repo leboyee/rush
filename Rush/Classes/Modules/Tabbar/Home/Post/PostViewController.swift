@@ -17,13 +17,14 @@ class PostViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var bottomView: CustomView!
     
-    var commentList = [String]()
+    var commentList = [Comment]()
     var imageList = [Any]()
     
     var commentText = ""
     var username = ""
     
     var clubInfo: Club?
+    var eventInfo: Event?
     var postInfo: Post?
     
     override func viewDidLoad() {
@@ -67,7 +68,8 @@ class PostViewController: UIViewController {
         if imageList.count == 0 {
             imageList.append(UIImage(named: "bound-add-img")!)
         }
-        // commentList = ["1", "2", "3"]
+        
+        getAllCommentListAPI()
     }
 }
 
@@ -79,6 +81,7 @@ extension PostViewController {
     
     @IBAction func sendButtonAction() {
         if commentText.count > 0 {
+            addCommentAPI()
             username = ""
             textView.text = ""
             textView.resignFirstResponder()
