@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RoR-PN-E3j">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RoR-PN-E3j">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -225,7 +223,7 @@
         <!--Add Profile Picture View Controller-->
         <scene sceneID="WZK-1m-qPG">
             <objects>
-                <viewController id="5rq-3M-nWQ" customClass="AddProfilePictureViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddProfilePictureViewController" id="5rq-3M-nWQ" customClass="AddProfilePictureViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9g4-bp-GtO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -414,7 +412,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Ghf-3h-q60" firstAttribute="leading" secondItem="dcE-qX-7am" secondAttribute="leading" constant="25" id="BlF-kj-iB3"/>
                         <constraint firstItem="Ghf-3h-q60" firstAttribute="centerY" secondItem="dcE-qX-7am" secondAttribute="centerY" id="wHo-iG-X1b"/>
@@ -559,7 +557,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="KEc-Ax-hOj" firstAttribute="centerY" secondItem="9Op-gG-Wg6" secondAttribute="centerY" id="Mhs-5k-VAS"/>
                         <constraint firstItem="KEc-Ax-hOj" firstAttribute="leading" secondItem="9Op-gG-Wg6" secondAttribute="leading" constant="25" id="mpr-bt-LNJ"/>
@@ -679,7 +677,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="7D8-lY-w2A" firstAttribute="leading" secondItem="vzu-8h-eY4" secondAttribute="leading" constant="25" id="GGz-kZ-eqB"/>
                         <constraint firstItem="7D8-lY-w2A" firstAttribute="centerY" secondItem="vzu-8h-eY4" secondAttribute="centerY" id="roC-RQ-uNC"/>
@@ -800,7 +798,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Edv-SY-mbT" firstAttribute="centerY" secondItem="Mcm-qN-Ykx" secondAttribute="centerY" id="15K-4B-W42"/>
                         <constraint firstItem="Edv-SY-mbT" firstAttribute="leading" secondItem="Mcm-qN-Ykx" secondAttribute="leading" constant="25" id="9WQ-Ql-iLk"/>
@@ -953,7 +951,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="4SZ-bm-M2G" firstAttribute="centerY" secondItem="3yb-aD-pU5" secondAttribute="centerY" id="NcR-II-P5F"/>
                         <constraint firstItem="4SZ-bm-M2G" firstAttribute="leading" secondItem="3yb-aD-pU5" secondAttribute="leading" constant="25" id="W3M-tI-CDg"/>
@@ -1140,7 +1138,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="UPd-DR-ucp" firstAttribute="centerY" secondItem="GHK-QE-H4x" secondAttribute="centerY" id="2PN-je-2DF"/>
                         <constraint firstItem="UPd-DR-ucp" firstAttribute="leading" secondItem="GHK-QE-H4x" secondAttribute="leading" constant="25" id="Gub-aG-ITx"/>
@@ -1294,7 +1292,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="aHu-81-v5u" firstAttribute="leading" secondItem="Sho-WF-hk3" secondAttribute="leading" constant="25" id="dCw-wy-8yz"/>
                         <constraint firstItem="aHu-81-v5u" firstAttribute="centerY" secondItem="Sho-WF-hk3" secondAttribute="centerY" id="uDR-rO-uI8"/>
@@ -1453,7 +1451,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Fk6-mw-ga4" firstAttribute="leading" secondItem="ec1-2l-SMg" secondAttribute="leading" constant="25" id="XYk-va-ejJ"/>
                         <constraint firstItem="Fk6-mw-ga4" firstAttribute="centerY" secondItem="ec1-2l-SMg" secondAttribute="centerY" id="tef-yg-PgI"/>

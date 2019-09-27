@@ -8,6 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import FacebookShare
+import FacebookCore
 
 class AddInviteViewController: CustomViewController {
 
@@ -83,6 +85,21 @@ extension AddInviteViewController {
         self.performSegue(withIdentifier: Segues.inviteContactSegue, sender: self)
     }
     
+    @IBAction func fbInviteButtonAction() {
+        let content = ShareLinkContent()
+        content.contentURL = URL(string: "https://messapps.com") ?? URL(fileURLWithPath: "https://developers.facebook.com")
+        
+        let shareDialog = ShareDialog(fromViewController: self, content: content, delegate: self)
+        let fbURl = URL(string: "fb://") ?? URL(fileURLWithPath: "fb://")
+        if UIApplication.shared.canOpenURL(fbURl) {
+            shareDialog.mode = .native
+        } else {
+            print("App not installed")
+            shareDialog.mode = .web
+        }
+        shareDialog.show()
+    }
+    
     @IBAction func finisheRegistrationButtonAction() {
         AppDelegate.shared?.setupStoryboard()
     }
@@ -99,3 +116,4 @@ extension AddInviteViewController {
         }
     }
 }
+

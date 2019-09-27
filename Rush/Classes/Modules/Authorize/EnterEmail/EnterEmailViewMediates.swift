@@ -51,7 +51,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if range.length > 0  && range.location >= ((textField.text?.count ?? 0) - 4) {
+        if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) {
             return false
         }
         let currentString: NSString = textField.text! as NSString

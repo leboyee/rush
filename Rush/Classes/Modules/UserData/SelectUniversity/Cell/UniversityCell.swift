@@ -34,7 +34,7 @@ extension UniversityCell {
     }
     
     func setup(checkMark: Bool) {
-        self.accessoryType = checkMark == true ? .checkmark : .none
+        self.tickImageView.isHidden = !checkMark
     }
     
 }
