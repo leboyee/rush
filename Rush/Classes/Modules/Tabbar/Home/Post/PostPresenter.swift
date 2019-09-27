@@ -51,6 +51,8 @@ extension PostViewController {
     
     // Comment cell
     func fillCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
+        
+        /*
         if indexPath.row == 0 {
             cell.setup(isReplayCell: false)
         } else if indexPath.row == 1 {
@@ -59,6 +61,10 @@ extension PostViewController {
         } else {
             cell.setup(isReplayCell: false)
         }
+        */
+        let comment = commentList[indexPath.row]
+        cell.setup(username: comment.user?.name ?? "")
+        cell.setup(commentText: comment.desc ?? "")
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
@@ -97,11 +103,50 @@ extension PostViewController {
 // MARK: - Services
 extension PostViewController {
     func voteClubAPI(id: String, type: String) {
-        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (status, errorMsg) in
-            Utils.hideSpinner()
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (data, errorMsg) in
             guard let uwself = self else { return }
+            if let post = data?[Keys.post] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Post.self, from: dataClub)
+                    uwself.postInfo = value
+                    uwself.tableView.reloadData()
+                } catch {
+                    
+                }
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func addCommentAPI() {
+        
+        let param = [Keys.desc: textView.text ?? "",
+                     Keys.postId: postInfo?.id ?? "",
+                     Keys.parentId: clubInfo?.id ?? ""] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.postComment(params: param) { [weak self] (status, errorMsg) in
+            guard let unsafe = self else { return }
             if status {
-                
+                unsafe.getAllCommentListAPI()
+            } else {
+                Utils.hideSpinner()
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getAllCommentListAPI() {
+        
+        ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "") { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let value = data {
+                unsafe.commentList = value
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

@@ -375,6 +375,7 @@
 		79C1AC5722A65507003C7790 /* ProfileInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1AC5522A65507003C7790 /* ProfileInformationCell.swift */; };
 		79C1AC5822A65507003C7790 /* ProfileInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C1AC5622A65507003C7790 /* ProfileInformationCell.xib */; };
 		79C38326231FF8B5003E26EC /* DKCamera+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C38325231FF8B5003E26EC /* DKCamera+Delegate.swift */; };
+		79C58120233BA54600FD837A /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C5811F233BA54600FD837A /* Comment.swift */; };
 		79C7DA6222A7984200EA7759 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */; };
 		79C7DA6422A7986100EA7759 /* FriendsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */; };
 		79C7DA6622A7987300EA7759 /* FriendsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */; };
@@ -909,6 +910,7 @@
 		79C1AC5522A65507003C7790 /* ProfileInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationCell.swift; sourceTree = "<group>"; };
 		79C1AC5622A65507003C7790 /* ProfileInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInformationCell.xib; sourceTree = "<group>"; };
 		79C38325231FF8B5003E26EC /* DKCamera+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DKCamera+Delegate.swift"; sourceTree = "<group>"; };
+		79C5811F233BA54600FD837A /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		79C7DA6122A7984200EA7759 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		79C7DA6322A7986100EA7759 /* FriendsListMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListMediates.swift; sourceTree = "<group>"; };
 		79C7DA6522A7987300EA7759 /* FriendsListLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListLogics.swift; sourceTree = "<group>"; };
@@ -2882,6 +2884,7 @@
 				8A04B14422FB042E0055C65F /* Event.swift */,
 				8A1076BF2306BC2600512AA3 /* Tag.swift */,
 				79DA00BB233219A1006B3A65 /* Post.swift */,
+				79C5811F233BA54600FD837A /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3440,6 +3443,7 @@
 				793BE68222E88207005EF72D /* MessagesDisplayDelegate.swift in Sources */,
 				1A2809E222C5F43B00B4E764 /* ChooseClassesViewMediates.swift in Sources */,
 				7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */,
+				79C58120233BA54600FD837A /* Comment.swift in Sources */,
 				1AEAC4B722D346AA008FBB54 /* UserInfoCell.swift in Sources */,
 				797FFDB522B7BC480055A001 /* SlideUpPresentation.swift in Sources */,
 				1AB43B362327EE0C00C2FBCE /* RSVPCell.swift in Sources */,

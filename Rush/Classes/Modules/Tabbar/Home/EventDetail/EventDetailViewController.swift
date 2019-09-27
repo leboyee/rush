@@ -153,7 +153,7 @@ extension EventDetailViewController {
             }
         } else if segue.identifier == Segues.createEventPost {
             if let vc = segue.destination as? CreatePostViewController {
-                vc.event = event
+                vc.eventInfo = event
             }
         }
     }

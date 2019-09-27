@@ -24,8 +24,9 @@ extension CreatePostViewController {
         if let club = clubInfo { // Club
             cell.setup(title: club.user?.name ?? "")
             cell.setup(detail: "Posting in " + (club.clubName ?? ""))
-        } else { // Event
-            
+        } else if let event = eventInfo { // Event
+            cell.setup(title: event.creator?.name ?? "")
+            cell.setup(detail: "Posting in " + (event.title))
         }
     }
     
@@ -91,10 +92,15 @@ extension CreatePostViewController {
 extension CreatePostViewController {
     
     func createPostAPI() {
-        
-        imagedataList[Keys.desc] = postText
-        imagedataList[Keys.dataId] = clubInfo?.id ?? ""
-        imagedataList[Keys.dataType] = Text.club
+        if let club = clubInfo {
+            imagedataList[Keys.desc] = postText
+            imagedataList[Keys.dataId] = club.id ?? ""
+            imagedataList[Keys.dataType] = Text.club
+        } else if let event = eventInfo {
+            imagedataList[Keys.desc] = postText
+            imagedataList[Keys.dataId] = event.id
+            imagedataList[Keys.dataType] = Text.event
+        }
         imagedataList[Keys.totalPhotos] = imageList.count
         Utils.showSpinner()
         
