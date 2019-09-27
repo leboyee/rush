@@ -23,7 +23,7 @@ target 'Rush' do
   pod 'DKImagePickerController', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
   
   #Chatting SDK
-  pod 'SendBirdSDK'
+  pod 'SendBirdSDK', '3.0.149'
   
   #Swipe cell
   pod 'MGSwipeTableCell'
@@ -34,5 +34,10 @@ target 'Rush' do
   #google Place
   pod 'GooglePlaces'
   
+   pod 'FacebookShare'
+   pod 'FacebookCore'
+
+   pod 'UnsplashPhotoPicker', '~> 1.0'
+
 
 end

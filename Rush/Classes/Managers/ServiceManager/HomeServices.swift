@@ -48,11 +48,11 @@ extension ServiceManager {
     }
     
     // MARK: - Post
-    func createPost(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+    func createPost(params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createPost(param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
-            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
-                closer(status, errorMessage)
+            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
             })
         }
     }

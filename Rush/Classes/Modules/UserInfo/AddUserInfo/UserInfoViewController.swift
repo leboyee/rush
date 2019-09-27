@@ -23,11 +23,16 @@ class UserInfoViewController: CustomViewController {
 
     var selectedGender: Int = 0
     var selectedRelation: Int = 0
+    var selectedDate = Date().minus(years: 19)
     var selectedIndex = -1
     var dob = ""
     var gender = ""
     var relation = ""
     var homeTown = ""
+    var address = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +96,7 @@ class UserInfoViewController: CustomViewController {
 extension UserInfoViewController {
 
     func nextButtonEnabled() {
-        if dob.isEmpty == false && gender.isEmpty == false && relation.isEmpty == false {
+        if dob.isEmpty == false && gender.isEmpty == false && relation.isEmpty == false && homeTown.isEmpty == false {
             self.nextButton.setNextButton(isEnable: true)
         } else {
             self.nextButton.setNextButton(isEnable: false)
@@ -111,7 +116,27 @@ extension UserInfoViewController {
     }
     
     @IBAction func finisheRegistrationButtonAction() {
-        self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
         //AppDelegate.getInstance().setupStoryboard()
+    }
+}
+
+// MARK: - Preseneter
+extension UserInfoViewController {
+    func profileUpdateSuccess() {
+        self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
+    }
+}
+
+// MARK: - Navigation
+extension UserInfoViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.addLocationSegue {
+            if let vc = segue.destination as? AddLocationViewController {
+                vc.delegate = self
+            }
+        }
     }
 }

@@ -50,7 +50,7 @@ PODS:
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
-  - SendBirdSDK (3.0.150)
+  - SendBirdSDK (3.0.149)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.35.0)
 
@@ -63,7 +63,7 @@ DEPENDENCIES:
   - MGSwipeTableCell
   - ReachabilitySwift
   - SDWebImage
-  - SendBirdSDK
+  - SendBirdSDK (= 3.0.149)
   - SVProgressHUD
   - SwiftLint
 
@@ -96,11 +96,10 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
-  SendBirdSDK: eaa0287bb4b81569c896f2da2ec5c8228c784435
+  SendBirdSDK: 9afafc0b44bb3ccbaf437cc83a7aeaf39c25ad8d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
-PODFILE CHECKSUM: 52a1d922b501599288ff63c011d025538c7117a9
+PODFILE CHECKSUM: 4903c4214349058099790461daf6daa327c59ba1
 
-
-COCOAPODS: 1.8.0.beta.2
+COCOAPODS: 1.8.0

@@ -32,8 +32,6 @@ class ServiceManager: NSObject {
             closer(false, errorMessage)
         }
     }
-    
-    
     /*
      *
      */

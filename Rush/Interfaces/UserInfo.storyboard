@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fna-18-kRd">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fna-18-kRd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -157,6 +155,7 @@
                         <outlet property="titleLabelOne" destination="VAq-eN-2eS" id="JTg-ck-DME"/>
                         <outlet property="titleLableTwo" destination="h65-2G-Uf0" id="yfG-D2-NS9"/>
                         <segue destination="h9X-yK-yho" kind="show" identifier="AddInviteViewSegue" id="GUW-jX-25t"/>
+                        <segue destination="4dC-DX-a2Y" kind="presentation" identifier="RegAddLocationSegue" id="c2P-4e-jrt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcZ-Te-nBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,7 +172,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.2666666667" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="saf-yy-ljS" firstAttribute="leading" secondItem="0yg-P7-Xre" secondAttribute="leading" constant="25" id="8CD-GE-amO"/>
                         <constraint firstItem="saf-yy-ljS" firstAttribute="centerY" secondItem="0yg-P7-Xre" secondAttribute="centerY" id="wQd-Vm-N0i"/>
@@ -273,6 +272,9 @@
                                         <state key="normal" title="  Invite from Facebook" image="facebook-app-logo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="fbInviteButtonAction" destination="h9X-yK-yho" eventType="touchUpInside" id="iqL-eO-tQS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -541,6 +543,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBb-63-sx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10313" y="-214"/>
+        </scene>
+        <!--AddLocationViewController-->
+        <scene sceneID="msu-YL-Qw4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Event" referencedIdentifier="AddLocationViewController" id="4dC-DX-a2Y" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ala-sm-Uet"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6C3-O7-yZO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7357" y="219"/>
         </scene>
     </scenes>
     <resources>

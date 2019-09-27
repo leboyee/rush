@@ -98,11 +98,19 @@ extension CreatePostViewController {
         imagedataList[Keys.totalPhotos] = imageList.count
         Utils.showSpinner()
         
-        ServiceManager.shared.createPost(params: imagedataList) { [weak self] (status, errorMessage) in
+        ServiceManager.shared.createPost(params: imagedataList) { [weak self] (data, errorMessage) in
             guard let uwself = self else { return }
             Utils.hideSpinner()
-            if status {
-                uwself.performSegue(withIdentifier: Segues.postSegue, sender: nil)
+            
+            if let value = data?[Keys.post] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Post.self, from: dataClub)
+                    uwself.performSegue(withIdentifier: Segues.postSegue, sender: value)
+                } catch {
+                    
+                }
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }

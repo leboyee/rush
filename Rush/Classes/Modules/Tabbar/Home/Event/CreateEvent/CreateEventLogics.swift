@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
+import UnsplashPhotoPicker
 
 extension CreateEventViewController {
     
@@ -50,8 +51,9 @@ extension CreateEventViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-        cell.switchValueChanged = { (isOn) in
-            
+        cell.switchValueChanged = { [weak self] (isOn) in
+            guard let unsafe = self else { return }
+            unsafe.isCreateGroupChat = isOn
         }
     }
     
@@ -60,7 +62,7 @@ extension CreateEventViewController {
             cell.calendarView.delegate = self
         } else if indexPath.section == 5 {
             cell.calendarView.delegate = self
-            cell.calendarView.minimumSelectedDate = self.startDate
+            cell.calendarView.minimumSelectedDate = Date()
         }
     }
 
@@ -68,7 +70,7 @@ extension CreateEventViewController {
         
         if indexPath.section == 4 {
             cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: startTime.isEmpty == true ? "12 pm" : startTime)
+            cell.setup(timeButtonText: startTime.isEmpty == true ? "13 pm" : startTime)
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -87,7 +89,7 @@ extension CreateEventViewController {
             }
         } else {
             cell.setup(dateButtonText: self.endDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: endTime.isEmpty == true ? "13 pm" : endTime)
+            cell.setup(timeButtonText: endTime.isEmpty == true ? "14 pm" : endTime)
             cell.separatorView.isHidden = false
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -133,10 +135,6 @@ extension CreateEventViewController {
                 cell.setup(isUserInterfaceEnable: false)
                 cell.setup(isEnabled: false)
             }
-            
-            cell.clearButtonClickEvent = {
-              
-            }
             cell.setup(iconImage: indexPath.row == 0 ? "addRSVP" : "")
         } else if indexPath.section == 3 {
             cell.setup(iconImage: "addLocation")
@@ -169,8 +167,9 @@ extension CreateEventViewController {
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
                 cell.setup(isEnabled: false)
             } else {
+                let invite = peopleList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", text: peopleList[indexPath.row])
+                cell.setup(placeholder: "", text: (invite.isFriend == true ? invite.profile?.name : invite.contact?.displayName) ?? "")
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
         }
@@ -192,17 +191,7 @@ extension CreateEventViewController {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
-                if indexPath.section == 6 {
-                    if !unsafe.interestList.contains(txt) {
-                        unsafe.interestList.append(txt)
-                        unsafe.tableView.reloadData()
-                    }
-                } else if indexPath.section == 7 {
-                    if !unsafe.peopleList.contains(txt) {
-                        unsafe.peopleList.append(txt)
-                        unsafe.tableView.reloadData()
-                    }
-                }
+
             }
             unsafe.validateAllFields()
         }
@@ -210,7 +199,12 @@ extension CreateEventViewController {
         cell.clearButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             
-            if indexPath.section == 6 {
+            if indexPath.section == 2 {
+                if let index = unsafe.rsvpArray.firstIndex(of: (unsafe.rsvpArray[indexPath.row])) {
+                    unsafe.rsvpArray.remove(at: index)
+                    unsafe.tableView.reloadData()
+                }
+            } else if indexPath.section == 6 {
                 if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
@@ -288,7 +282,35 @@ extension CreateEventViewController {
         isStartTime = false
         isEndTime = false
     }
-
+    
+    func downloadPhoto(_ photo: UnsplashPhoto) {
+        guard let url = photo.urls[.regular] else { return }
+        
+        if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
+            let image = UIImage(data: cachedResponse.data) {
+            eventImage = image
+            self.tableView.reloadData()
+            return
+        }
+        
+        imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.imageDataTask = nil
+            
+            guard let data = data, let image = UIImage(data: data), error == nil else { return }
+            let imageView = UIImageView()
+            DispatchQueue.main.async {
+                UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    strongSelf.eventImage = image
+                    strongSelf.tableView.reloadData()
+                }, completion: nil)
+            }
+        }
+        
+        imageDataTask?.resume()
+    }
+    
 }
 
 extension CreateEventViewController: CalendarViewDelegate {
@@ -345,8 +367,31 @@ extension CreateEventViewController: SelectEventTypeDelegate {
         if type == .cameraRoll {
             self.openCameraOrLibrary(type: .photoLibrary)
         } else {
-            Utils.alert(message: "In Development")
+                   let configuration = UnsplashPhotoPickerConfiguration(
+                       accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
+                       secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
+                       allowsMultipleSelection: false
+                   )
+                   let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+                   unsplashPhotoPicker.photoPickerDelegate = self
+                   present(unsplashPhotoPicker, animated: true, completion: nil)
+            
         }
+    }
+}
+
+// MARK: - UnsplashPhotoPickerDelegate
+extension CreateEventViewController: UnsplashPhotoPickerDelegate {
+    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print("Unsplash photo picker did select \(photos.count) photo(s)")
+        if let photo = photos.first {
+            self.downloadPhoto(photo)
+        }
+        self.tableView.reloadData()
+    }
+
+    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
+        print("Unsplash photo picker did cancel")
     }
 }
 
@@ -370,22 +415,42 @@ extension CreateEventViewController: AddEventLocationDelegate {
     }
 }
 
+// MARK: - Add Invities Delegate
+extension CreateEventViewController: EventInviteDelegate {
+    func selectedInvities(_ invite: [Invite]) {
+        self.peopleList = invite
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: - Add Interest Delegate
+extension CreateEventViewController: EventInterestDelegate {
+    func  selectedInterest(_ interest: [String]) {
+        self.interestList = interest
+        self.tableView.reloadData()
+    }
+}
+
 // MARK: - Services
 extension CreateEventViewController {
     
     func createEventAPI() {
         
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        //let interests = interestList.joined(separator: ",")
-        let userIds = "5d5d213239277643e20f9bf1,5d3066d3392776515c7df011"
+        let interests = interestList.joined(separator: ",")
+        let friendArray = self.peopleList.filter { ($0.isFriend == true) }
+        let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
+
         var array = rsvpArray
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 pm"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
         let startUtcDate = Date().localToUTC(date: startDateString)
-        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
+        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 14:00 pm"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
@@ -408,10 +473,11 @@ extension CreateEventViewController {
                      Keys.eventLongitude: "\(longitude)",
                      Keys.eventStartDate: startUtcDate,
                      Keys.eventEndDate: endUtcDate,
-                     Keys.eventInterests: "test",
+                     Keys.eventInterests: interests,
                      Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
-                     Keys.eventInvitedUserIds: userIds,
-                     Keys.eventPhoto: img] as [String: Any]
+                     Keys.eventInvitedUserIds: userIdArray,
+                     Keys.eventPhoto: img,
+                     Keys.eventContact: contactNoArray] as [String: Any]
 
         print(param)
         Utils.showSpinner()

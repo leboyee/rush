@@ -27,7 +27,7 @@ class EnterEmailViewConteroller: CustomViewController {
     @IBOutlet weak var loginNumberButtonConstraint: NSLayoutConstraint!
 
     var loginType: LoginType = .register
-    var profile = Profile()
+    var profile = User()
     var isEmailError: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,10 @@ class EnterEmailViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         navigationController?.navigationBar.isHidden = true
-
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func setup() {
@@ -71,7 +74,7 @@ class EnterEmailViewConteroller: CustomViewController {
         emailTitleLable.emailScreenTitleLabel()
         self.bgImageView.setBgForLoginSignup()
         
-        nextButton.setNextButton(isEnable: true)
+        nextButton.setNextButton(isEnable: false)
         emailErroLabel.isHidden = true
         errorButton.isHidden = true
         eduLabel.text = ".edu"
