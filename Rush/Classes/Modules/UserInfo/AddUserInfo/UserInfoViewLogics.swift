@@ -118,25 +118,6 @@ extension UserInfoViewController {
     
 }
 
-// MARK: - Manage Interator or API's Calling
-extension UserInfoViewController {
-    func updateProfileAPI() {
-        /*
-        let param = [Keys.userInterests: selectedArray]  as [String : Any]
-        Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: param) {
-            [weak self] (data, errorMessage) in
-            Utils.hideSpinner()
-            guard let self_ = self else { return }
-            if data != nil {
-                self_.profileUpdateSuccess()
-            } else {
-                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
-            }
-        }*/
-    }
-}
-
 // MARK: - Add Location Delegate
 extension UserInfoViewController: AddEventLocationDelegate {
     func addEventLocationData(_ address: String, latitude: Double, longitude: Double) {
@@ -144,5 +125,23 @@ extension UserInfoViewController: AddEventLocationDelegate {
         self.latitude = latitude
         self.longitude = longitude
         self.tableView.reloadData()
+    }
+}
+
+// MARK: - Manage Interator or API's Calling
+extension UserInfoViewController {
+    func updateProfileAPI() {
+        
+        let param = [Keys.userHomeTown: homeTown, Keys.userLatitude: "\(latitude)", Keys.userLongitude: "\(longitude)"]  as [String: Any]
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if data != nil {
+                unsafe.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
     }
 }

@@ -70,9 +70,13 @@ struct Keys {
     static let clubPhoto = "club_photo"
     static let clubId = "club_id"
     static let club = "club"
-    static let interestId           = "_id"
-    static let interestName           = "name"
+    static let interestId              = "_id"
+    static let interestName            = "name"
     static let userInterests           = "u_interests"
+    static let userHomeTown            = "u_hometown"
+    static let userLatitude            = "u_latitude"
+    static let userLongitude           = "u_longitude"
+
 
     static let phone           = "phone"
     static let phoneToken           = "phone_token"

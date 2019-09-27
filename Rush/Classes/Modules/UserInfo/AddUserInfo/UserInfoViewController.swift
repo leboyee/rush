@@ -96,7 +96,7 @@ class UserInfoViewController: CustomViewController {
 extension UserInfoViewController {
 
     func nextButtonEnabled() {
-        if dob.isEmpty == false && gender.isEmpty == false && relation.isEmpty == false {
+        if dob.isEmpty == false && gender.isEmpty == false && relation.isEmpty == false && homeTown.isEmpty == false {
             self.nextButton.setNextButton(isEnable: true)
         } else {
             self.nextButton.setNextButton(isEnable: false)
@@ -116,8 +116,16 @@ extension UserInfoViewController {
     }
     
     @IBAction func finisheRegistrationButtonAction() {
-        self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
         //AppDelegate.getInstance().setupStoryboard()
+    }
+}
+
+// MARK: - Preseneter
+extension UserInfoViewController {
+    func profileUpdateSuccess() {
+        self.performSegue(withIdentifier: Segues.addInviteViewSegue, sender: self)
     }
 }
 
