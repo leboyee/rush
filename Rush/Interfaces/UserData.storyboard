@@ -223,7 +223,7 @@
         <!--Add Profile Picture View Controller-->
         <scene sceneID="WZK-1m-qPG">
             <objects>
-                <viewController id="5rq-3M-nWQ" customClass="AddProfilePictureViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddProfilePictureViewController" id="5rq-3M-nWQ" customClass="AddProfilePictureViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9g4-bp-GtO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1323,13 +1323,13 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="121"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interests" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCV-EN-tIv" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="69.5" width="367" height="33"/>
+                                        <rect key="frame" x="24" y="70" width="367" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose minimum 3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5li-tl-1sw" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="36" width="367" height="33"/>
+                                        <rect key="frame" x="24" y="36" width="367" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1344,7 +1344,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3Z-Hk-kdz">
-                                        <rect key="frame" x="0.0" y="118.5" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="119.5" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="JAG-YJ-Hey"/>

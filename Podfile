@@ -37,5 +37,7 @@ target 'Rush' do
    pod 'FacebookShare'
    pod 'FacebookCore'
 
+   pod 'UnsplashPhotoPicker', '~> 1.0'
+
 
 end

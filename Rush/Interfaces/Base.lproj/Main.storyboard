@@ -83,7 +83,6 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="63F-uI-wGD"/>
-                                            <segue destination="Xo4-Xf-yRb" kind="show" id="udL-5a-z5k"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -146,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="99" y="203"/>
         </scene>
-        <!--UserInfo-->
+        <!--AddProfilePictureViewController-->
         <scene sceneID="SrW-0P-X60">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserInfo" id="Xo4-Xf-yRb" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="AddProfilePictureViewController" id="Xo4-Xf-yRb" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eHJ-L4-MsR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTO-XV-Z3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

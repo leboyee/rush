@@ -15,6 +15,9 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
+    var imageDataTask: URLSessionDataTask?
+    static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
+
     var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()

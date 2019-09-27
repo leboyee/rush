@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
+import UnsplashPhotoPicker
+
 
 extension CreateEventViewController {
     
@@ -281,8 +283,39 @@ extension CreateEventViewController {
         isStartTime = false
         isEndTime = false
     }
+    
 
+    func downloadPhoto(_ photo: UnsplashPhoto) {
+        guard let url = photo.urls[.regular] else { return }
+        
+        if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
+            let image = UIImage(data: cachedResponse.data) {
+            eventImage = image
+            self.tableView.reloadData()
+            return
+        }
+        
+        imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.imageDataTask = nil
+            
+            guard let data = data, let image = UIImage(data: data), error == nil else { return }
+            let imageView = UIImageView()
+            DispatchQueue.main.async {
+                UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    strongSelf.eventImage = image
+                    strongSelf.tableView.reloadData()
+                }, completion: nil)
+            }
+        }
+        
+        imageDataTask?.resume()
+    }
+    
 }
+
+
 
 extension CreateEventViewController: CalendarViewDelegate {
     
@@ -338,8 +371,31 @@ extension CreateEventViewController: SelectEventTypeDelegate {
         if type == .cameraRoll {
             self.openCameraOrLibrary(type: .photoLibrary)
         } else {
-            Utils.alert(message: "In Development")
+                   let configuration = UnsplashPhotoPickerConfiguration(
+                       accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
+                       secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
+                       allowsMultipleSelection: false
+                   )
+                   let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+                   unsplashPhotoPicker.photoPickerDelegate = self
+                   present(unsplashPhotoPicker, animated: true, completion: nil)
+            
         }
+    }
+}
+
+// MARK: - UnsplashPhotoPickerDelegate
+extension CreateEventViewController: UnsplashPhotoPickerDelegate {
+    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print("Unsplash photo picker did select \(photos.count) photo(s)")
+        if let photo = photos.first {
+            self.downloadPhoto(photo)
+        }
+        self.tableView.reloadData()
+    }
+
+    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
+        print("Unsplash photo picker did cancel")
     }
 }
 
