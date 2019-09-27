@@ -11,7 +11,6 @@ import Photos
 import IQKeyboardManagerSwift
 import UnsplashPhotoPicker
 
-
 extension CreateEventViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
@@ -63,7 +62,7 @@ extension CreateEventViewController {
             cell.calendarView.delegate = self
         } else if indexPath.section == 5 {
             cell.calendarView.delegate = self
-            cell.calendarView.minimumSelectedDate = self.startDate
+            cell.calendarView.minimumSelectedDate = Date()
         }
     }
 
@@ -71,7 +70,7 @@ extension CreateEventViewController {
         
         if indexPath.section == 4 {
             cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: startTime.isEmpty == true ? "12 pm" : startTime)
+            cell.setup(timeButtonText: startTime.isEmpty == true ? "13 pm" : startTime)
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -90,7 +89,7 @@ extension CreateEventViewController {
             }
         } else {
             cell.setup(dateButtonText: self.endDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: endTime.isEmpty == true ? "13 pm" : endTime)
+            cell.setup(timeButtonText: endTime.isEmpty == true ? "14 pm" : endTime)
             cell.separatorView.isHidden = false
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -284,7 +283,6 @@ extension CreateEventViewController {
         isEndTime = false
     }
     
-
     func downloadPhoto(_ photo: UnsplashPhoto) {
         guard let url = photo.urls[.regular] else { return }
         
@@ -314,8 +312,6 @@ extension CreateEventViewController {
     }
     
 }
-
-
 
 extension CreateEventViewController: CalendarViewDelegate {
     
@@ -452,9 +448,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 am"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
         let startUtcDate = Date().localToUTC(date: startDateString)
-        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
+        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 14:00 pm"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
