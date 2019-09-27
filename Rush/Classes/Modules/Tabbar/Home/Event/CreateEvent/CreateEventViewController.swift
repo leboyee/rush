@@ -15,6 +15,9 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
+    var imageDataTask: URLSessionDataTask?
+    static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
+
     var imageList = [Any]()
     var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()
@@ -132,7 +135,9 @@ extension CreateEventViewController {
                 self.performSegue(withIdentifier: Segues.addLocation, sender: self)
             }
         } else if indexPath.section == 6 {
-            self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            }
         } else if indexPath.section == 7 {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.createEventInviteSegue, sender: self)

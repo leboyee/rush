@@ -54,7 +54,7 @@ extension UserInfoViewController {
                     let minDate = calendar.date(from: minDateComponent)
                     datePikcerController.presenter.maxDate = Date().minus(years: 18)
                     datePikcerController.presenter.minDate = minDate
-                    datePikcerController.presenter.currentDate = Date().minus(years: 19)
+                    datePikcerController.presenter.currentDate = self.selectedDate
                     datePikcerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
                     self.present(datePikcerController, animated: false, completion: nil)
                 }
@@ -77,13 +77,7 @@ extension UserInfoViewController {
                     self.present(customPickerController, animated: false, completion: nil)
                 }
             case 3:
-                let autocompleteController = GMSAutocompleteViewController()
-                autocompleteController.delegate = self
-                let filter = GMSAutocompleteFilter()
-                filter.type = .address
-                autocompleteController.autocompleteFilter = filter
-                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
-                self.present(autocompleteController, animated: true, completion: nil)
+                self.performSegue(withIdentifier: Segues.addLocationSegue, sender: self)
             default:
                 break
             }
@@ -96,6 +90,7 @@ extension UserInfoViewController {
 // MARK: - Date Picker Delegate
 extension UserInfoViewController: DatePickerDelegate {
     func selectedDate(_ date: Date) {
+        selectedDate = date
         dob = date.toString(format: "dd.MM.yyyy")
         nextButtonEnabled()
         self.tableView.reloadData()
@@ -123,21 +118,30 @@ extension UserInfoViewController {
     
 }
 
+// MARK: - Add Location Delegate
+extension UserInfoViewController: AddEventLocationDelegate {
+    func addEventLocationData(_ address: String, latitude: Double, longitude: Double) {
+        self.homeTown = address
+        self.latitude = latitude
+        self.longitude = longitude
+        self.tableView.reloadData()
+    }
+}
+
 // MARK: - Manage Interator or API's Calling
 extension UserInfoViewController {
     func updateProfileAPI() {
-        /*
-        let param = [Keys.userInterests: selectedArray]  as [String : Any]
+        
+        let param = [Keys.userHomeTown: homeTown, Keys.userLatitude: "\(latitude)", Keys.userLongitude: "\(longitude)"]  as [String: Any]
         Utils.showSpinner()
-        ServiceManager.shared.updateProfile(params: param) {
-            [weak self] (data, errorMessage) in
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let self_ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                self_.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
-        }*/
+        }
     }
 }

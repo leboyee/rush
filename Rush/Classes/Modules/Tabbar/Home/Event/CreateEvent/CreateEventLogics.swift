@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
+import UnsplashPhotoPicker
 
 extension CreateEventViewController {
     
@@ -50,8 +51,9 @@ extension CreateEventViewController {
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
         
-        cell.switchValueChanged = { (isOn) in
-            
+        cell.switchValueChanged = { [weak self] (isOn) in
+            guard let unsafe = self else { return }
+            unsafe.isCreateGroupChat = isOn
         }
     }
     
@@ -60,7 +62,7 @@ extension CreateEventViewController {
             cell.calendarView.delegate = self
         } else if indexPath.section == 5 {
             cell.calendarView.delegate = self
-            cell.calendarView.minimumSelectedDate = self.startDate
+            cell.calendarView.minimumSelectedDate = Date()
         }
     }
 
@@ -68,7 +70,7 @@ extension CreateEventViewController {
         
         if indexPath.section == 4 {
             cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: startTime.isEmpty == true ? "12 pm" : startTime)
+            cell.setup(timeButtonText: startTime.isEmpty == true ? "13 pm" : startTime)
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -87,7 +89,7 @@ extension CreateEventViewController {
             }
         } else {
             cell.setup(dateButtonText: self.endDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: endTime.isEmpty == true ? "13 pm" : endTime)
+            cell.setup(timeButtonText: endTime.isEmpty == true ? "14 pm" : endTime)
             cell.separatorView.isHidden = false
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -280,7 +282,35 @@ extension CreateEventViewController {
         isStartTime = false
         isEndTime = false
     }
-
+    
+    func downloadPhoto(_ photo: UnsplashPhoto) {
+        guard let url = photo.urls[.regular] else { return }
+        
+        if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
+            let image = UIImage(data: cachedResponse.data) {
+            eventImage = image
+            self.tableView.reloadData()
+            return
+        }
+        
+        imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.imageDataTask = nil
+            
+            guard let data = data, let image = UIImage(data: data), error == nil else { return }
+            let imageView = UIImageView()
+            DispatchQueue.main.async {
+                UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    strongSelf.eventImage = image
+                    strongSelf.tableView.reloadData()
+                }, completion: nil)
+            }
+        }
+        
+        imageDataTask?.resume()
+    }
+    
 }
 
 extension CreateEventViewController: CalendarViewDelegate {
@@ -337,8 +367,31 @@ extension CreateEventViewController: SelectEventTypeDelegate {
         if type == .cameraRoll {
             self.openCameraOrLibrary(type: .photoLibrary)
         } else {
-            Utils.alert(message: "In Development")
+                   let configuration = UnsplashPhotoPickerConfiguration(
+                       accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
+                       secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
+                       allowsMultipleSelection: false
+                   )
+                   let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+                   unsplashPhotoPicker.photoPickerDelegate = self
+                   present(unsplashPhotoPicker, animated: true, completion: nil)
+            
         }
+    }
+}
+
+// MARK: - UnsplashPhotoPickerDelegate
+extension CreateEventViewController: UnsplashPhotoPickerDelegate {
+    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print("Unsplash photo picker did select \(photos.count) photo(s)")
+        if let photo = photos.first {
+            self.downloadPhoto(photo)
+        }
+        self.tableView.reloadData()
+    }
+
+    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
+        print("Unsplash photo picker did cancel")
     }
 }
 
@@ -395,9 +448,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 12:00 pm"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
         let startUtcDate = Date().localToUTC(date: startDateString)
-        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
+        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 14:00 pm"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)

@@ -12,6 +12,9 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
     
     func setupMediator() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         phoneNoTextField.delegate = self
         phoneNoTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
@@ -24,6 +27,12 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
             bottomViewConstraint.constant = keyboardHeight + 10
             self.view.layoutIfNeeded()
         }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        bottomViewConstraint.constant = 30
+        self.view.layoutIfNeeded()
+
     }
     
     // MARK: - UITextFieldDelegate

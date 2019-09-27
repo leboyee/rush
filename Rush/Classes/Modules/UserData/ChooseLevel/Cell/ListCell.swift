@@ -15,6 +15,7 @@ class ListCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        tickImageView.isHidden = true
         // Initialization code
         
     }
@@ -34,7 +35,7 @@ extension ListCell {
     }
     
     func setup(checkMark: Bool) {
-        self.accessoryType = checkMark == true ? .checkmark : .none
+        self.tickImageView.isHidden = !checkMark 
     }
     
 }

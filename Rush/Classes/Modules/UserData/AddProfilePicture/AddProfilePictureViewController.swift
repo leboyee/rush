@@ -92,6 +92,19 @@ extension AddProfilePictureViewController {
         Utils.authorizePhoto(completion: { [weak self] (status) in
             guard let unsafe = self else { return }
             if status == .alreadyAuthorized || status == .justAuthorized {
+                    unsafe.cameraPermissionCheck()
+            } else {
+                if status != .justDenied {
+                    Utils.photoLibraryPermissionAlert()
+                }
+            }
+        })
+    }
+    
+    func cameraPermissionCheck() {
+        Utils.authorizeVideo(completion: { [weak self] (status) in
+            guard let unsafe = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
                     unsafe.openCameraOrLibrary()
             } else {
                 if status != .justDenied {
@@ -108,12 +121,13 @@ extension AddProfilePictureViewController {
         pickerController.singleSelect = true
         pickerController.showsCancelButton = true
         pickerController.autoCloseOnSingleSelect = true
+        pickerController.sourceType = .photo
+        pickerController.assetType = .allPhotos
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             if assets.count > 0 {
                 self.assignSelectedImages(photos: assets)
             }
         }
-
         self.present(pickerController, animated: true, completion: nil)
     }
     
@@ -123,7 +137,6 @@ extension AddProfilePictureViewController {
        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, _ in
             if let img = image {
                 self.userPhotoImageView.image = img.squareImage()
-
                 DispatchQueue.main.async {
                     self.userImageViewWidthConstraint.constant = 200
                     self.userImageViewHeightConstraint.constant = 200
@@ -175,7 +188,6 @@ extension AddProfilePictureViewController {
 
 // MARK: - Preseneter
 extension AddProfilePictureViewController {
-    
     func profileUpdateSuccess() {
         self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }

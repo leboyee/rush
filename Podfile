@@ -34,5 +34,10 @@ target 'Rush' do
   #google Place
   pod 'GooglePlaces'
   
+   pod 'FacebookShare'
+   pod 'FacebookCore'
+
+   pod 'UnsplashPhotoPicker', '~> 1.0'
+
 
 end
