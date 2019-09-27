@@ -32,6 +32,7 @@ class CreatePostViewController: UIViewController {
     var postText = ""
     
     var clubInfo: Club?
+    var eventInfo: Event?
     
     var createBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))

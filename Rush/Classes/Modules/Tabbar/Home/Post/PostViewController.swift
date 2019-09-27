@@ -24,6 +24,7 @@ class PostViewController: UIViewController {
     var username = ""
     
     var clubInfo: Club?
+    var eventInfo: Event?
     var postInfo: Post?
     
     override func viewDidLoad() {
