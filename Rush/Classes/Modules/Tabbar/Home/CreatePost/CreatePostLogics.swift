@@ -37,7 +37,7 @@ extension CreatePostViewController {
             [weak self] (textView) in
             guard let unself = self else { return }
             
-            unself.postText = textView.text
+            unself.postText = textView.text.trimmingCharacters(in: .whitespaces)
             
             let startHeight = textView.frame.size.height
             var calcHeight = textView.sizeThatFits(textView.frame.size).height

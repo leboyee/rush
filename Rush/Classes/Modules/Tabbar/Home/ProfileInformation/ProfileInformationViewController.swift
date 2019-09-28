@@ -29,6 +29,16 @@ class ProfileInformationViewController: UIViewController {
         
         // Setup navigation title
         navigationItem.titleView = Utils.getNavigationBarTitle(title: "Jessica O’Hara", textColor: UIColor.white)
+        
+        // back button
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
+    }
+}
+
+// MARK: - Actions
+extension ProfileInformationViewController {
+    @IBAction func cancelButtonAction() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -56,4 +56,9 @@ extension PeopleCell {
         topSeparator.isHidden = isHideTopSeparator
     }
     
+    func setup(isCheckMark: Bool) {
+        tickImageView.image = isCheckMark ? #imageLiteral(resourceName: "iconCheckMark") : nil
+        tickImageView.isHidden = !isCheckMark
+    }
+    
 }

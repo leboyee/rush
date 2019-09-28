@@ -645,7 +645,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSN-Ai-Lxu">
-                                        <rect key="frame" x="16" y="50" width="16" height="22"/>
+                                        <rect key="frame" x="16" y="50" width="78" height="36"/>
                                         <state key="normal" image="cancel-active"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="tgq-BU-5qI" eventType="touchUpInside" id="AsF-zi-5Jt"/>
@@ -653,7 +653,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-7L-6FJ">
-                                        <rect key="frame" x="382" y="50" width="16" height="22"/>
+                                        <rect key="frame" x="320" y="50" width="78" height="36"/>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="save-dark"/>
                                         <userDefinedRuntimeAttributes>
@@ -1466,7 +1466,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-Er-tCS">
-                                        <rect key="frame" x="8" y="50" width="40" height="40"/>
+                                        <rect key="frame" x="8" y="46" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="eHW-yA-wbz"/>
                                             <constraint firstAttribute="height" constant="40" id="nyL-Uo-U1D"/>
@@ -1493,7 +1493,7 @@
                                     <constraint firstItem="kdM-Yq-qgJ" firstAttribute="trailing" secondItem="Uva-vT-poA" secondAttribute="trailing" constant="8" id="FSr-9n-uty"/>
                                     <constraint firstItem="i0n-pd-WjF" firstAttribute="trailing" secondItem="kdM-Yq-qgJ" secondAttribute="trailing" id="H4T-rw-8eB"/>
                                     <constraint firstItem="i0n-pd-WjF" firstAttribute="leading" secondItem="kdM-Yq-qgJ" secondAttribute="leading" id="MCO-Ws-oOz"/>
-                                    <constraint firstItem="Lmm-Er-tCS" firstAttribute="top" secondItem="kdM-Yq-qgJ" secondAttribute="top" constant="6" id="ngh-qw-FzL"/>
+                                    <constraint firstItem="Lmm-Er-tCS" firstAttribute="top" secondItem="kdM-Yq-qgJ" secondAttribute="top" constant="2" id="ngh-qw-FzL"/>
                                     <constraint firstItem="B9z-T2-g2T" firstAttribute="top" secondItem="i0n-pd-WjF" secondAttribute="bottom" constant="-63" id="otV-vc-iMx"/>
                                     <constraint firstItem="Uva-vT-poA" firstAttribute="top" secondItem="kdM-Yq-qgJ" secondAttribute="top" constant="6" id="r0A-AA-7UO"/>
                                     <constraint firstItem="i0n-pd-WjF" firstAttribute="top" secondItem="hpG-n6-gak" secondAttribute="top" id="ukn-om-xVx"/>
@@ -1642,7 +1642,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QdI-xB-jJm"/>
-        <segue reference="yEd-FR-LAH"/>
+        <segue reference="LvJ-Dj-Yna"/>
         <segue reference="S8E-ms-kaf"/>
         <segue reference="2qn-kC-bGH"/>
         <segue reference="bqe-q0-s4j"/>

@@ -365,3 +365,11 @@ enum GetEventType: String {
     case myUpcoming = "my-upcoming"
     case attending = "attending"
 }
+
+enum UserProfileDetailType {
+    case none
+    case friends
+    case events
+    case clubs
+    case classes
+}

@@ -63,7 +63,7 @@ extension ClubDetailViewController {
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            Utils.alert(title: "Are you sure you want to leave from this club?", buttons: ["Yes", "No"], handler: { (index) in
+            Utils.alert(title: "Are you sure you want to leave this club?", buttons: ["Yes", "No"], handler: { (index) in
                 if index == 0 {
                     unself.joinedClub = false
                     unself.tableView.reloadData()

@@ -30,7 +30,7 @@ class UniversityViewController: UIViewController {
         // Set navigation title
         navigationItem.titleView = Utils.getNavigationBarTitle(title: "University/school", textColor: UIColor.navBarTitleWhite32)
         
-        navigationController?.navigationBar.isTranslucent = false
+        //navigationController?.navigationBar.isTranslucent = false
     }
     
     @objc func backButtonAction() {

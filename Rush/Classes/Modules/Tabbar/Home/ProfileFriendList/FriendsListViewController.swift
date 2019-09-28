@@ -8,14 +8,6 @@
 
 import UIKit
 
-enum UserProfileDetailType {
-    case none
-    case friends
-    case events
-    case clubs
-    case classes
-}
-
 class FriendsListViewController: UIViewController {
 
     var type: UserProfileDetailType = .clubs
@@ -80,7 +72,7 @@ class FriendsListViewController: UIViewController {
         var secondTitle = ""
         if type == .friends {
             firstTitle = "122 friends"
-            secondTitle = "20 not going"
+            secondTitle = "20 mutual"
         } else if type == .events {
             firstTitle = "4 attending"
             secondTitle = "3 managed"

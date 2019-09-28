@@ -56,9 +56,7 @@ class HomeViewController: CustomViewController {
         self.view.backgroundColor = UIColor.bgBlack
         
         // Right item button
-        let img = UIImage(named: "active-create")
-        let selector = #selector(createButtonAction)
-        let rightBar = UIBarButtonItem(image: img, style: .plain, target: self, action: selector)
+        let rightBar = UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBar
             
         /*
