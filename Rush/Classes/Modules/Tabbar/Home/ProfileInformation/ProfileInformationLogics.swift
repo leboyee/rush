@@ -23,41 +23,36 @@ extension ProfileInformationViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return section == 0 ? 2 : section == 1 ? 3 : 2
+        return section == 0 ? 2 : section == 1 ? 3 : section == 2 ? (userInfo?.majors?.count ?? 0) : section == 3 ? (userInfo?.minors?.count ?? 0) : 0
     }
     
     func fillCell(_ cell: ProfileInformationCell, _ indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                cell.setup(text: "12.20.1995", placeholder: Text.dateOfBirth)
+                let birth = Date().convrertProfileBirthFormat(dateString: userInfo?.birthDate ?? "")
+                cell.setup(text: birth, placeholder: Text.dateOfBirth)
             } else if indexPath.row == 1 {
-                cell.setup(text: "Taken", placeholder: Text.relationship)
+                cell.setup(text: userInfo?.relationship ?? "", placeholder: Text.relationship)
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                cell.setup(text: "Harvard University", placeholder: Text.university)
+                cell.setup(text: userInfo?.university ?? "", placeholder: Text.university)
             } else if indexPath.row == 1 {
-                cell.setup(text: "High school", placeholder: Text.level)
+                cell.setup(text: userInfo?.educationLevel ?? "", placeholder: Text.level)
             } else if indexPath.row == 2 {
-                cell.setup(text: "Sophomore", placeholder: Text.year)
+                cell.setup(text: userInfo?.educationYear ?? "", placeholder: Text.year)
             }
         } else if indexPath.section == 2 {
-            if indexPath.row == 0 {
-                cell.setup(text: "Business", placeholder: "")
-            } else if indexPath.row == 1 {
-                cell.setup(text: "Economics", placeholder: "")
-            }
+            let major = userInfo?.majors?[indexPath.row] ?? ""
+            cell.setup(text: major, placeholder: "")
         } else if indexPath.section == 3 {
-            if indexPath.row == 0 {
-                cell.setup(text: "Art", placeholder: "")
-            } else if indexPath.row == 1 {
-                cell.setup(text: "Architecture", placeholder: "")
-            }
+            let minor = userInfo?.minors?[indexPath.row] ?? ""
+            cell.setup(text: minor, placeholder: "")
         }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
-        let text = section == 0 ? "Personal" : section == 1 ? "Education" : section == 2 ? "Majors" : section == 3 ? "Minors" : ""
+        let text = section == 0 ? Text.personal : section == 1 ? Text.education : section == 2 ? Text.majors : section == 3 ? Text.minors : ""
         header.setup(textColor: (section == 2 || section == 3) ? UIColor.bgBlack : UIColor.brown24)
         header.setup(title: text)
         header.setup(isDetailArrowHide: true)

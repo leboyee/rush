@@ -66,6 +66,7 @@ extension CreateClubViewController {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: interestList[indexPath.row])
             }
+            //cell.textView.isUserInteractionEnabled = false
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 3 {
             if indexPath.row == peopleList.count {

@@ -47,6 +47,8 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
             performSegue(withIdentifier: Segues.contactListSegue, sender: nil)
+        } else if indexPath.section == 2 {
+            //performSegue(withIdentifier: Segues.chooseInterestSegue, sender: nil)
         }
     }
     

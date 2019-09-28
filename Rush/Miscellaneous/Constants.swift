@@ -171,7 +171,7 @@ struct Segues {
     static let createEventInviteSegue              = "CreateEventInviteSegue"
     static let createEventInterestSegue            = "CreateEventInterestSegue"
     static let addLocationSegue                    = "RegAddLocationSegue"
-    
+    static let chooseInterestSegue                 = "ChooseInterestSegue"
 }
 
 struct StoryBoard {
@@ -289,6 +289,9 @@ public struct Text {
     static let club                      = "club"
     static let post                      = "post"
     static let event                     = "event"
+    static let education                 = "Education"
+    static let majors                    = "Majors"
+    static let minors                    = "Minors"
 }
 
 public struct Message {

@@ -708,6 +708,7 @@
                         <segue destination="jXb-Hn-226" kind="show" identifier="MyClubSegue" id="Fac-K7-HX1"/>
                         <segue destination="6tX-Ig-2Q5" kind="show" identifier="ContactListSegue" id="0Df-64-MEh"/>
                         <segue destination="mi6-YI-bln" kind="show" identifier="ClubDetailSegue" id="p5t-Td-KDq"/>
+                        <segue destination="L1f-77-01p" kind="show" identifier="ChooseInterestSegue" animates="NO" id="VDC-kF-V0P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbw-4h-B29" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -720,7 +721,15 @@
                 <viewControllerPlaceholder storyboardName="UserInfo" referencedIdentifier="ContactsListViewController" id="6tX-Ig-2Q5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKw-hT-Nc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="1266"/>
+            <point key="canvasLocation" x="1204" y="1268"/>
+        </scene>
+        <!--ChooseInterestViewController-->
+        <scene sceneID="c8Z-l4-TXy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseInterestViewController" id="L1f-77-01p" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6xh-6g-yx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="1270"/>
         </scene>
         <!--ClubDetailViewController-->
         <scene sceneID="cec-TL-oMS">
@@ -728,7 +737,7 @@
                 <viewControllerPlaceholder referencedIdentifier="ClubDetailViewController" id="mi6-YI-bln" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cO-9k-nvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778" y="1260"/>
+            <point key="canvasLocation" x="1990" y="1268"/>
         </scene>
         <!--My Club View Controller-->
         <scene sceneID="8h4-qh-0js">

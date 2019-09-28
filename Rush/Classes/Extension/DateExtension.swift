@@ -283,4 +283,15 @@ extension Date {
         return timeFormatter.date(from: dateString)!
     }
     
+    // Convert profile birthdate date formate
+    func convrertProfileBirthFormat(dateString: String) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = timeFormatter.date(from: dateString) {
+            timeFormatter.dateFormat = "dd.MM.yyyy"
+            return timeFormatter.string(from: date)
+        }
+        return ""
+    }
 }
