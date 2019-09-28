@@ -151,7 +151,11 @@ extension CreateClubViewController {
     }
     
     func fillImageHeader() {
-        clubHeader.setup(image: clubImage)
+        if clubInfo == nil {
+            clubHeader.setup(image: clubImage)
+        } else {
+            clubHeader.setup(url: clubInfo?.clubPhoto?.photo?.url())
+        }
         clubHeader.delegate = self
     }
 }
@@ -209,7 +213,7 @@ extension CreateClubViewController {
     }
     
     func validateAllFields() {
-        if clubImage != nil && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+        if (clubImage != nil || (clubInfo != nil && clubHeader.userImageView.image != nil)) && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
         } else {
@@ -295,5 +299,9 @@ extension CreateClubViewController {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }
         }
+    }
+    
+    func updateClubAPI() {
+        Utils.notReadyAlert()
     }
 }

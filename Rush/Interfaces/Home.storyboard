@@ -604,7 +604,7 @@
         <!--Create Club View Controller-->
         <scene sceneID="b4r-Ci-TL8">
             <objects>
-                <viewController id="bdt-BK-bqh" customClass="CreateClubViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateClubViewController" id="bdt-BK-bqh" customClass="CreateClubViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S43-Rz-Fuc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
