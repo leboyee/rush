@@ -47,10 +47,13 @@ class User: Codable {
     var instaUserName: String?
     var instaToken: String?
     private var photoJson: String?
+    private var convertJsonToPhoto: Image?
+
     var photo: Image? {
-        get {
-            return photoJson?.photo
+        if convertJsonToPhoto == nil {
+            convertJsonToPhoto = photoJson?.photo
         }
+        return convertJsonToPhoto
     }
 
     var name: String {

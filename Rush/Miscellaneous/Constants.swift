@@ -367,3 +367,9 @@ enum GetEventType: String {
     case myUpcoming = "my-upcoming"
     case attending = "attending"
 }
+
+struct Vote {
+    static let up = "up"
+    static let down = "down"
+
+}

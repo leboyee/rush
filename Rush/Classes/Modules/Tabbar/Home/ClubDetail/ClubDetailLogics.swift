@@ -21,7 +21,7 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            let photos = clubPostList[indexPath.section - 6].imageJson?.photos
+            let photos = clubPostList[indexPath.section - 6].images
             if indexPath.row == 2 {
                 return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
             }
@@ -133,7 +133,7 @@ extension ClubDetailViewController {
     // Image cell (section 6 row 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        if let list = (post.imageJson ?? "").photos {
+        if let list = post.images {
             cell.set(url: list.first?.url())
         }
         cell.setup(isCleareButtonHide: true)
@@ -257,18 +257,13 @@ extension ClubDetailViewController {
     }
     
     func voteClubAPI(id: String, type: String) {
-        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if let post = data?[Keys.post] as? [String: Any] {
-                do {
-                    let dataClub = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
-                    let decoder = JSONDecoder()
-                    let value = try decoder.decode(Post.self, from: dataClub)
-                    
-                    let index = uwself.clubPostList.firstIndex(where: { ( $0.id == value.id ) })
+            if let post = result {
+                    let index = uwself.clubPostList.firstIndex(where: { ( $0.id == post.id ) })
                     if let position = index, uwself.clubPostList.count > position {
-                        uwself.clubPostList[position] = value
+                        uwself.clubPostList[position] = post
                         
                         let oldOffset = uwself.tableView.contentOffset
                         UIView.setAnimationsEnabled(false)
@@ -277,10 +272,6 @@ extension ClubDetailViewController {
                         uwself.tableView.endUpdates()
                         uwself.tableView.setContentOffset(oldOffset, animated: false)
                     }
-                } catch {
-                    
-                }
-                
                 uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

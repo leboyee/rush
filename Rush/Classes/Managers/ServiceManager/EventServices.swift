@@ -26,7 +26,9 @@ extension ServiceManager {
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 if let object = data?[Keys.event] as? [String: Any] {
                     let event: Event? = unsafe.decodeObject(fromData: object)
-                    closer(event, errorMessage)
+                     closer(event, errorMessage)
+                } else {
+                     closer(nil, errorMessage)
                 }
             })
         }

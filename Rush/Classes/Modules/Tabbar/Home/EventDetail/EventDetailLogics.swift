@@ -109,7 +109,7 @@ extension EventDetailViewController {
             return .user
         } else if indexPath.row == 1 {
             return .text
-        } else if indexPath.row == 2, post.images != nil {
+        } else if indexPath.row == 2, post.images?.count ?? 0 > 0 {
             return .image
         } else {
             return .like
@@ -153,7 +153,10 @@ extension EventDetailViewController {
                 } else if itemsCount >= 6 {
                     count = 6
                 }
-                let height = (CGFloat(count) / 2.0) * (screenWidth / 2.0)
+                var height = screenWidth
+                if count > 1 {
+                    height = (CGFloat(count) / 2.0) * (screenWidth / 2.0)
+                }
                 return height
             }
         } else if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
@@ -169,7 +172,7 @@ extension EventDetailViewController {
         if section >= sections?.count ?? 0 {
             let index = section - (sections?.count ?? 0)
             if let post = postList?[index] {
-                count = post.images == nil ? 3 : 4
+                count = post.images?.count ?? 0 == 0 ? 3 : 4
             }
         } else if let eventSection = sections?[section] {
             switch eventSection.type {
@@ -267,7 +270,7 @@ extension EventDetailViewController {
         guard let user = event?.creator else { return }
         cell.set(name: user.name)
         cell.set(detail: "3 events")
-        //cell.set(url: user.photo?.urlThumb())
+        cell.set(url: user.photo?.urlThumb())
     }
     
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
@@ -275,7 +278,7 @@ extension EventDetailViewController {
         if let post = postList?[index] {
             cell.set(name: post.user?.name ?? "")
             cell.set(time: post.createDate)
-            cell.set(url: nil)
+            cell.set(url: post.user?.photo?.urlThumb())
         }
     }
     
@@ -289,7 +292,7 @@ extension EventDetailViewController {
     func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postList?[index] {
-            cell.set(images: post.imageJson?.photos)
+            cell.set(images: post.images)
         }
     }
     
@@ -299,12 +302,12 @@ extension EventDetailViewController {
             cell.set(numberOfLike: post.numberOfLikes)
             cell.set(numberOfComment: post.numberOfComments)
             
-            cell.likeButtonEvent = { () in
-                Utils.notReadyAlert()
+            cell.likeButtonEvent = { [weak self]() in
+                self?.voteAPI(id: post.id ?? "", type: Vote.up)
             }
             
-            cell.unlikeButtonEvent = { () in
-                Utils.notReadyAlert()
+            cell.unlikeButtonEvent = { [weak self] () in
+                self?.voteAPI(id: post.id ?? "", type: Vote.down)
             }
             
             cell.commentButtonEvent = { () in
@@ -329,10 +332,10 @@ extension EventDetailViewController {
     }
     
     func willDisplay(_ indexPath: IndexPath) {
-        let totalSection = (sections?.count ?? 0) + (postList?.count ?? 0)
+        let totalSection = tableView.numberOfSections
         /// Post list should be exist and here each section will define one post.
         guard totalSection > (sections?.count ?? 0) else { return }
-        if isPostNextPageExist, totalSection - 1 == indexPath.section {
+        if isPostNextPageExist, totalSection - 1 == indexPath.section, indexPath.row == 0 {
            fetchPosts()
         }
     }
@@ -400,6 +403,23 @@ extension EventDetailViewController {
                     }
                 }
                 unsafe.downloadGroup.leave()
+                unsafe.reloadTable()
+            }
+        }
+    }
+    
+    func voteAPI(id: String, type: String) {
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let post = result {
+                    let index = unsafe.postList?.firstIndex(where: { ( $0.id == post.id ) })
+                    if let position = index, unsafe.postList?.count ?? 0 > position {
+                        unsafe.postList?[position] = post
+                        unsafe.reloadTable()
+                    }
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }

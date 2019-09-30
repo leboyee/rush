@@ -80,9 +80,7 @@ class EventDetailViewController: UIViewController {
         super.viewDidAppear(animated)
         downloadGroup.notify(queue: downloadQueue) {
             DispatchQueue.main.async {
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-                Utils.hideSpinner()
+                self.reloadTable()
             }
         }
     }
@@ -126,6 +124,12 @@ extension EventDetailViewController {
 
 // MARK: - Others
 extension EventDetailViewController {
+    
+    func reloadTable() {
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+        Utils.hideSpinner()
+    }
     
     func updateHeaderInfo() {
         guard let event = event else { return }
