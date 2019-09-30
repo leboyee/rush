@@ -12,7 +12,10 @@ extension PostViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            return screenWidth
+            if ((postInfo?.imageJson ?? "").photos?.count ?? 0) > 0 {
+                return screenWidth
+            }
+            return CGFloat.leastNormalMagnitude
         } else {
             return UITableView.automaticDimension
         }
@@ -77,6 +80,12 @@ extension PostViewController {
             unself.textView.attributedText = Utils.setAttributedText(unself.username, ", can I bring friends?", 17, 17)
             unself.textView.becomeFirstResponder()
         }
+        
+        cell.replyClickEvent = { [weak self] () in
+            guard let unself = self else { return }
+            unself.parentComment = comment
+            unself.textView.becomeFirstResponder()
+        }
     }
     
     func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
@@ -125,7 +134,7 @@ extension PostViewController {
         
         let param = [Keys.desc: textView.text ?? "",
                      Keys.postId: postInfo?.id ?? "",
-                     Keys.parentId: clubInfo?.id ?? ""] as [String: Any]
+                     Keys.parentId: parentComment != nil ? (parentComment?.id ?? "0") : ""] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.postComment(params: param) { [weak self] (status, errorMsg) in
@@ -140,13 +149,31 @@ extension PostViewController {
     }
     
     func getAllCommentListAPI() {
-        
+        parentComment = nil
         ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "") { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let value = data {
                 unsafe.commentList = value
                 unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func deletePostAPI() {
+        
+        let id = postInfo?.id ?? "0"
+        Utils.showSpinner()
+        ServiceManager.shared.deletePost(postId: id, params: [Keys.postId: id]) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.delegate?.deletePostSuccess(unsafe.postInfo)
+                DispatchQueue.main.async {
+                    unsafe.navigationController?.popViewController(animated: true)
+                }
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

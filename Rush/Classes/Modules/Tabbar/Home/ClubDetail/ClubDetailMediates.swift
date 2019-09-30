@@ -181,3 +181,27 @@ extension ClubDetailViewController: OtherUserProfileProtocol {
         snackbar.show()
     }
 }
+
+// MARK: - PostVIewController delegate
+extension ClubDetailViewController: PostViewProtocol {
+    func deletePostSuccess(_ post: Post?) {
+        let snackbar = TTGSnackbar(message: "Your post is deleted.",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (_) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+}
+
+// MARK: - CreatePostViewController delegate
+extension ClubDetailViewController: CreatePostViewControllerDelegate {
+    func showSnackBar(text: String, buttonText: String) {
+        
+    }
+
+    func createPostSuccess(_ post: Post) {
+        performSegue(withIdentifier: Segues.postSegue, sender: post)
+    }
+}

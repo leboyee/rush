@@ -9,6 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol PostViewProtocol: class {
+    func deletePostSuccess(_ post: Post?)
+}
+
 class PostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,7 +21,10 @@ class PostViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var bottomView: CustomView!
     
+    weak var delegate: PostViewProtocol?
+    
     var commentList = [Comment]()
+    var parentComment: Comment?
     var imageList = [Any]()
     
     var commentText = ""
@@ -26,6 +33,7 @@ class PostViewController: UIViewController {
     var clubInfo: Club?
     var eventInfo: Event?
     var postInfo: Post?
+    var isFromCreatePost = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +45,6 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = true
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if self.isMovingToParent {
-            navigationController?.popViewController(animated: false)
-        }
     }
     
     func setupUI() {

@@ -132,6 +132,9 @@ extension ExploreViewController: SelectEventTypeDelegate {
 
 // MARK: - CreatePostViewController Delegate
 extension ExploreViewController: CreatePostViewControllerDelegate {
+    func createPostSuccess(_ post: Post) {
+    }
+    
     func showSnackBar(text: String, buttonText: String) {
         /*
          notificationTitle = text

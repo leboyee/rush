@@ -43,6 +43,9 @@ class ClubDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        
+        // fetch club detail
+        getClubDetailAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,9 +69,6 @@ class ClubDetailViewController: UIViewController {
         if userId == clubId {
             joinedClub = true
         }
-        
-        // fetch club detail
-        getClubDetailAPI()
         
         // setup tableview
         setupTableView()
@@ -104,10 +104,12 @@ extension ClubDetailViewController {
         } else if segue.identifier == Segues.createPost {
             guard let vc = segue.destination as? CreatePostViewController else { return }
             vc.clubInfo = clubInfo
+            vc.delegate = self
         } else if segue.identifier == Segues.postSegue {
             if let vc = segue.destination as? PostViewController {
                 vc.postInfo = sender as? Post
                 vc.clubInfo = clubInfo
+                vc.delegate = self
             }
         }
     }

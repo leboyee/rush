@@ -83,6 +83,9 @@ extension ClubListViewController: SelectEventTypeDelegate {
 
 // MARK: - CreatePostViewController Delegate
 extension ClubListViewController: CreatePostViewControllerDelegate {
+    func createPostSuccess(_ post: Post) {
+    }
+    
     func showSnackBar(text: String, buttonText: String) {
         /*
          notificationTitle = text
