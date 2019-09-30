@@ -30,8 +30,12 @@ extension ProfileInformationViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 if let date = userInfo?.birthDate {
-                    let birth = date.convrertProfileBirthFormat()
-                    cell.setup(text: birth, placeholder: Text.dateOfBirth)
+                    if let birthDate = Date.parse(dateString: date, format: "yyyy-MM-dd") {
+                        let birth = birthDate.toString(format: "dd.MM.yyyy")
+                        cell.setup(text: birth, placeholder: Text.dateOfBirth)
+                    } else {
+                        cell.setup(text: "-", placeholder: Text.dateOfBirth)
+                    }
                 }
             } else if indexPath.row == 1 {
                 cell.setup(text: userInfo?.relationship ?? "", placeholder: Text.relationship)

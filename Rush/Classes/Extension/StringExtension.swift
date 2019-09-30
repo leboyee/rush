@@ -169,18 +169,6 @@ extension String {
         }
         return fullname
     }
-    
-    // Convert profile birthdate date formate
-    func convrertProfileBirthFormat() -> String {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "yyyy-MM-dd"
-        
-        if let date = timeFormatter.date(from: self) {
-            timeFormatter.dateFormat = "dd.MM.yyyy"
-            return timeFormatter.string(from: date)
-        }
-        return ""
-    }
 }
 
 extension String {
