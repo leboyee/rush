@@ -47,6 +47,8 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
             performSegue(withIdentifier: Segues.contactListSegue, sender: nil)
+        } else if indexPath.section == 2 {
+            //performSegue(withIdentifier: Segues.chooseInterestSegue, sender: nil)
         }
     }
     
@@ -71,7 +73,7 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
 extension CreateClubViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if clubImage != nil {
+        if clubImage != nil || clubHeader.userImageView.image != nil {
             let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
             let smallHeaderHeight = headerSmallWithoutDateHeight
             let smallHeight = smallHeaderHeight + topMergin

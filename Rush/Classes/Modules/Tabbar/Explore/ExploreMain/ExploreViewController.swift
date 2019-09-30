@@ -46,6 +46,7 @@ class ExploreViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         IQKeyboardManager.shared.enableAutoToolbar = false
         if isSearch {
             searchfield.becomeFirstResponder()
