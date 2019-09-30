@@ -125,7 +125,10 @@ extension HomeViewController {
                      Keys.sortBy: sortBy,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        Utils.showSpinner()
+        if clubList.count == 0 {
+            Utils.showSpinner()
+        }
+        
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }

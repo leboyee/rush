@@ -11,6 +11,8 @@ import UIKit
 class ProfileInformationViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var userInfo: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,17 @@ class ProfileInformationViewController: UIViewController {
         setupTableView()
         
         // Setup navigation title
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: "Jessica O’Hara", textColor: UIColor.white)
+        navigationItem.titleView = Utils.getNavigationBarTitle(title: userInfo?.name ?? "", textColor: UIColor.white)
+        
+        // back button
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
+    }
+}
+
+// MARK: - Actions
+extension ProfileInformationViewController {
+    @IBAction func cancelButtonAction() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

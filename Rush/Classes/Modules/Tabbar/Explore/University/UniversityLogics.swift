@@ -16,11 +16,7 @@ extension UniversityViewController {
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         cell.setup(title: "Harvard University")
-        if selectedIndex == indexPath.row {
-            cell.setup(checkMark: true)
-        } else {
-            cell.setup(checkMark: false)
-        }
+        cell.setup(isCheckMark: selectedIndex == indexPath.row)
     }
     
     func cellSelected(_ indexPath: IndexPath) {

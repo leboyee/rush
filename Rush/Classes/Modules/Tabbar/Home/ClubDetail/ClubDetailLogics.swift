@@ -58,17 +58,34 @@ extension ClubDetailViewController {
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
-        cell.setup(firstButtonType: .joined)
+        if clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+            cell.setup(firstButtonType: .manage)
+        } else {
+            cell.setup(firstButtonType: .joined)
+        }
+        
         cell.setup(secondButtonType: .groupChatClub)
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            Utils.alert(title: "Are you sure you want to leave from this club?", buttons: ["Yes", "No"], handler: { (index) in
-                if index == 0 {
-                    unself.joinedClub = false
-                    unself.tableView.reloadData()
+            
+            // Manage
+            if unself.clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+                if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
+                    controller.clubInfo = unself.clubInfo
+                    let nav = UINavigationController(rootViewController: controller)
+                    unself.navigationController?.present(nav, animated: false, completion: nil)
                 }
-            })
+            } else { // Joined
+                Utils.alert(title: "Are you sure you want to leave this club?", buttons: ["Yes", "No"], handler: { (index) in
+                    if index == 0 {
+                        unself.joinedClub = false
+                        unself.tableView.reloadData()
+                        
+                        // leave club api
+                    }
+                })
+            }
         }
         
         cell.secondButtonClickEvent = { () in
@@ -116,9 +133,9 @@ extension ClubDetailViewController {
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
         cell.joinButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.joinedClub = true
-            unself.tableView.reloadData()
-            //unself.joinClubAPI()
+            //unself.joinedClub = true
+            //unself.tableView.reloadData()
+            unself.joinClubAPI()
         }
     }
     

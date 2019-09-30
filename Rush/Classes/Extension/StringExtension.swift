@@ -170,7 +170,6 @@ extension String {
         }
         return fullname
     }
-    
 }
 
 extension String {

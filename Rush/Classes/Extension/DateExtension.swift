@@ -282,5 +282,4 @@ extension Date {
         timeFormatter.dateFormat = "yyyy-MM-dd"
         return timeFormatter.date(from: dateString)!
     }
-    
 }
