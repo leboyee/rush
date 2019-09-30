@@ -310,8 +310,8 @@ extension EventDetailViewController {
                 self?.voteAPI(id: post.id ?? "", type: Vote.down)
             }
             
-            cell.commentButtonEvent = { () in
-                Utils.notReadyAlert()
+            cell.commentButtonEvent = { [weak self] () in
+                self?.showComments(post: post)
             }
         }
     }

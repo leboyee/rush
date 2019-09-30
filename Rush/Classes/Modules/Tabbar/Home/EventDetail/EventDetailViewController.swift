@@ -145,6 +145,10 @@ extension EventDetailViewController {
     func showCreatePost() {
         performSegue(withIdentifier: Segues.createEventPost, sender: nil)
     }
+    
+    func showComments(post: Post) {
+        performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
+    }
 }
 
 // MARK: - Navigations
@@ -158,6 +162,11 @@ extension EventDetailViewController {
         } else if segue.identifier == Segues.createEventPost {
             if let vc = segue.destination as? CreatePostViewController {
                 vc.eventInfo = event
+            }
+        } else if segue.identifier == Segues.eventPostDetail {
+            if let vc = segue.destination as? PostViewController {
+                vc.eventInfo = event
+                vc.postInfo = sender as? Post
             }
         }
     }

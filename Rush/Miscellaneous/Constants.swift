@@ -172,6 +172,7 @@ struct Segues {
     static let createEventInterestSegue            = "CreateEventInterestSegue"
     static let createEventPost            = "CreateEventPostSegue"
     static let addLocationSegue                    = "RegAddLocationSegue"
+    static let eventPostDetail                  = "EventPostDetailSegue"
     
 }
 

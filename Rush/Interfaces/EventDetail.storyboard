@@ -27,7 +27,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYv-SG-CBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2395" y="-1145"/>
+            <point key="canvasLocation" x="2425" y="-1132"/>
+        </scene>
+        <!--PostViewController-->
+        <scene sceneID="8Up-uQ-Iqg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="PostViewController" id="QDD-Yv-tG6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="i9Y-TT-Y0f"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKk-K7-y3I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2395" y="-1189"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="CPw-3U-YkD">
@@ -106,6 +116,7 @@
                         <outlet property="tableView" destination="677-ZA-Vck" id="vai-eb-5n3"/>
                         <segue destination="EfL-qI-UY9" kind="show" identifier="RSVPJoinEventSegue" id="Hog-Dl-lFR"/>
                         <segue destination="CNg-R7-1NU" kind="show" identifier="CreateEventPostSegue" id="gc2-Vt-4Zh"/>
+                        <segue destination="QDD-Yv-tG6" kind="show" identifier="EventPostDetailSegue" id="m7k-oW-jq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
