@@ -149,6 +149,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         if isRushFriends == true {
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]

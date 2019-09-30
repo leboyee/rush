@@ -1,5 +1,5 @@
 //
-//  Invitees.swift
+//  Invitee.swift
 //  Rush
 //
 //  Created by ideveloper on 30/08/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Invitees: Codable {
+class Invitee: Codable {
 
     var id: String = ""
     var user: User?

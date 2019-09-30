@@ -75,7 +75,8 @@ extension String {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let detector = try? NSDataDetector(types: types.rawValue)
         guard detector != nil && self.count > 0 else { return false }
-        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count)) > 0 {
+        let range = NSRange(location: 0, length: self.count)
+        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: range) > 0 {
             return true
         }
         return false
@@ -230,4 +231,16 @@ extension String {
         }
         return nil
     }
+    
+    var tags: [Tag] {
+        guard self.isNotEmpty else { return [] }
+        var list = [Tag]()
+        let items = self.components(separatedBy: ",")
+            for item in items {
+                let tag = Tag(id: 0, text: item)
+                list.append(tag)
+            }
+        return list
+    }
+    
 }

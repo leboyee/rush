@@ -99,11 +99,11 @@ extension EnterPhoneNoViewController: UITextFieldDelegate {
     func validatePhoneNumber(_ phoneNo: String) -> (formatted: String, valid: Bool) {
         var formatted = ""
         let nsDateString = phoneNo as NSString
+        let range = NSRange(location: 0, length: nsDateString.length)
         let numberOnly = nsDateString.replacingOccurrences(of: "[^0-9]",
                                                            with: "",
                                                            options: .regularExpression,
-                                                           range: NSMakeRange(0, nsDateString.length))
-        
+                                                           range: range)
         var formatted2 = ""
         var counter = 0
         

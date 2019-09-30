@@ -110,6 +110,7 @@ struct ViewControllerId {
 }
 
 /* Create the struct for Section wise */
+// MARK: - Segues
 struct Segues {
 
     static let selectEventType                    = "SelectEventTypeSegue"
@@ -170,7 +171,9 @@ struct Segues {
     static let eventJoinedPopup                    = "EventJoinedPopupSegue"
     static let createEventInviteSegue              = "CreateEventInviteSegue"
     static let createEventInterestSegue            = "CreateEventInterestSegue"
+    static let createEventPost            = "CreateEventPostSegue"
     static let addLocationSegue                    = "RegAddLocationSegue"
+    static let eventPostDetail                  = "EventPostDetailSegue"    
     static let chooseInterestSegue                 = "ChooseInterestSegue"
 }
 
@@ -368,6 +371,11 @@ enum GetEventType: String {
     case my = "my"
     case myUpcoming = "my-upcoming"
     case attending = "attending"
+}
+
+struct Vote {
+    static let up = "up"
+    static let down = "down"
 }
 
 enum UserProfileDetailType {

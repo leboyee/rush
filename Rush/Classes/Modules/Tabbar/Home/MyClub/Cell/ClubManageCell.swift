@@ -29,10 +29,13 @@ class ClubManageCell: UITableViewCell {
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!
     @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var messageButton: UIButton!
+
     var firstButtonClickEvent: (() -> Void)?
     var secondButtonClickEvent: (() -> Void)?
     @IBOutlet weak var topConstraintOfButton: NSLayoutConstraint!
-    
+    @IBOutlet weak var topConstraintOfMessageButton: NSLayoutConstraint!
+    let topPadding: CGFloat = 16.0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -110,6 +113,40 @@ extension ClubManageCell {
         }
     }
     
+     func setup(onlyFirstButtonType: ManageButtonType) {
+         firstButton.isHidden = true
+         secondButton.isHidden = true
+         messageView.isHidden = false
+        topConstraintOfMessageButton.constant = topPadding
+         if onlyFirstButtonType == .manage {
+             messageButton.setImage(#imageLiteral(resourceName: "club-manage"), for: .normal)
+             messageButton.setTitle(Text.manage, for: .normal)
+             messageButton.setTitleColor(UIColor.bgBlack, for: .normal)
+             messageButton.backgroundColor = UIColor.lightGray93
+         } else if onlyFirstButtonType == .friends {
+             messageButton.setImage(#imageLiteral(resourceName: "friend-checkmark"), for: .normal)
+             messageButton.setTitle(Text.friends, for: .normal)
+             messageButton.setTitleColor(UIColor.bgBlack, for: .normal)
+             messageButton.backgroundColor = UIColor.lightGray93
+         } else if onlyFirstButtonType == .addFriend {
+             messageButton.setImage(#imageLiteral(resourceName: "friend-profile"), for: .normal)
+             messageButton.setTitle(Text.friend, for: .normal)
+             messageButton.setTitleColor(UIColor.white, for: .normal)
+             messageButton.backgroundColor = UIColor.bgBlack
+         } else if onlyFirstButtonType == .requested {
+             messageButton.setImage(#imageLiteral(resourceName: "friend-requested"), for: .normal)
+             messageButton.setTitle(Text.requested, for: .normal)
+             messageButton.setTitleColor(UIColor.bgBlack, for: .normal)
+             messageButton.backgroundColor = UIColor.lightGray93
+         } else if onlyFirstButtonType == .joined || onlyFirstButtonType == .going {
+             let text = onlyFirstButtonType == .joined ? Text.joined : Text.going
+             messageButton.setImage(#imageLiteral(resourceName: "friend-checkmark"), for: .normal)
+             messageButton.setTitle(text, for: .normal)
+             messageButton.setTitleColor(UIColor.bgBlack, for: .normal)
+             messageButton.backgroundColor = UIColor.lightGray93
+         }
+     }
+    
     func setup(isOnlyShowMessage: Bool) {
         if isOnlyShowMessage {
             messageView.isHidden = false
@@ -121,6 +158,7 @@ extension ClubManageCell {
     func setup(topConstraint: CGFloat) {
         topConstraintOfButton.constant = topConstraint
     }
+    
 }
 
 // MARK: - Actions
@@ -132,5 +170,9 @@ extension ClubManageCell {
     
     @IBAction func secondButtonAction() {
         secondButtonClickEvent?()
+    }
+    
+    @IBAction func messageButtonAction() {
+        firstButtonClickEvent?()
     }
 }

@@ -25,7 +25,7 @@ extension CreatePostViewController {
             cell.setup(title: club.user?.name ?? "")
             cell.setup(detail: "Posting in " + (club.clubName ?? ""))
         } else if let event = eventInfo { // Event
-            cell.setup(title: event.owner?.name ?? "")
+            cell.setup(title: event.creator?.name ?? "")
             cell.setup(detail: "Posting in " + (event.title))
         }
     }

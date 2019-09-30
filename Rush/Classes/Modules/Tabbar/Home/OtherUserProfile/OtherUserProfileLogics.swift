@@ -106,7 +106,7 @@ extension OtherUserProfileController {
         case 1:
             cell.setup(imagesList: [])
         case 2:
-            cell.setup(userList: [])
+            cell.setup(invitees: [])
         case 3:
             cell.setup(.upcoming, nil, nil)
         case 4:

@@ -27,12 +27,12 @@ extension CalendarEventListViewController {
         if let group = groups?[indexPath.section] {
             let event = group.events[indexPath.row]
             cell.set(eventName: event.title)
-            cell.set(type: event.type)
+            cell.set(type: "Class")
             cell.set(start: event.start, end: event.end)
-            cell.set(path: event.thumbnil)
+            cell.set(path: event.photo?.thumb ?? "")
             
             if indexPath.row == 0 {
-                cell.set(date: event.date)
+                cell.set(date: event.start)
             } else {
                 cell.set(date: nil)
             }

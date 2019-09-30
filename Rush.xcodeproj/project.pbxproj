@@ -158,12 +158,7 @@
 		1AEB56A922E842730041EAA7 /* AddInviteViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */; };
 		1AEB56AA22E842730041EAA7 /* AddInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */; };
 		1AEB56AB22E842730041EAA7 /* AddInviteViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */; };
-		1AF44212233930E80062B4F2 /* CreateEventInviteMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4420F233930E70062B4F2 /* CreateEventInviteMediates.swift */; };
-		1AF44213233930E80062B4F2 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44210233930E70062B4F2 /* CreateEventInviteLogics.swift */; };
-		1AF44214233930E80062B4F2 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44211233930E70062B4F2 /* CreateEventInviteViewController.swift */; };
-		1AF44218233935770062B4F2 /* InviteHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF44216233935770062B4F2 /* InviteHeader.xib */; };
-		1AF44219233935770062B4F2 /* InviteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF44217233935770062B4F2 /* InviteHeader.swift */; };
-		5E5D36877546E3B0A5B643C8 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CA32728EF4C37A767CE809 /* Pods_Rush.framework */; };
+		3FEA62B40BDB7892F71FC3A2 /* Pods_Rush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */; };
 		7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D098228E8CE5004E33B9 /* EventByDateCell.swift */; };
 		7903D0AA228E8CE5004E33B9 /* EventByDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7903D099228E8CE5004E33B9 /* EventByDateCell.xib */; };
 		7903D0AB228E8CE5004E33B9 /* EventTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */; };
@@ -420,7 +415,7 @@
 		79FA26F5230EC5AF0007F0ED /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA26F4230EC5AF0007F0ED /* HomeServices.swift */; };
 		8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1E22313EC4600258227 /* TableViewExtension.swift */; };
 		8A0345AD2322A6EA0065CF3C /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345A92322A6E90065CF3C /* Address.swift */; };
-		8A0345AE2322A6EA0065CF3C /* Invitees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AA2322A6E90065CF3C /* Invitees.swift */; };
+		8A0345AE2322A6EA0065CF3C /* Invitee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AA2322A6E90065CF3C /* Invitee.swift */; };
 		8A0345AF2322A6EA0065CF3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AB2322A6EA0065CF3C /* User.swift */; };
 		8A0345B02322A6EA0065CF3C /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345AC2322A6EA0065CF3C /* Club.swift */; };
 		8A0345B22322A7310065CF3C /* RRedArrowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0345B12322A7310065CF3C /* RRedArrowImageView.swift */; };
@@ -513,6 +508,12 @@
 		8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */; };
 		8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */; };
 		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
+		8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */; };
+		8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */; };
+		8AAA37FD233B505900423D43 /* CreateEventInviteMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37FA233B505900423D43 /* CreateEventInviteMediates.swift */; };
+		8AAA3800233B506200423D43 /* InviteHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA37FE233B506200423D43 /* InviteHeader.xib */; };
+		8AAA3801233B506200423D43 /* InviteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37FF233B506200423D43 /* InviteHeader.swift */; };
+		8AAA3843233CA8AC00423D43 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
@@ -546,8 +547,7 @@
 		0918E784228444AB0098AF35 /* Forum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Forum.storyboard; sourceTree = "<group>"; };
 		0918E786228444B90098AF35 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0992539022845CF100914E7B /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
-		14AB244F27322919ED012275 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
-		16CA32728EF4C37A767CE809 /* Pods_Rush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
 		1A088E4922FECBC800DF6004 /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		1A088E5222FED12700DF6004 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1A0D01F823228A08004F6279 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -691,12 +691,8 @@
 		1AEB56A622E842730041EAA7 /* AddInviteViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewMediates.swift; sourceTree = "<group>"; };
 		1AEB56A722E842730041EAA7 /* AddInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewController.swift; sourceTree = "<group>"; };
 		1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewLogics.swift; sourceTree = "<group>"; };
-		1AF4420F233930E70062B4F2 /* CreateEventInviteMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteMediates.swift; sourceTree = "<group>"; };
-		1AF44210233930E70062B4F2 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
-		1AF44211233930E70062B4F2 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
-		1AF44216233935770062B4F2 /* InviteHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteHeader.xib; sourceTree = "<group>"; };
-		1AF44217233935770062B4F2 /* InviteHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteHeader.swift; sourceTree = "<group>"; };
-		444652BA944A7873F2F2B883 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
+		1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
+		23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7903D098228E8CE5004E33B9 /* EventByDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventByDateCell.swift; sourceTree = "<group>"; };
 		7903D099228E8CE5004E33B9 /* EventByDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventByDateCell.xib; sourceTree = "<group>"; };
 		7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
@@ -954,7 +950,7 @@
 		79FA26F4230EC5AF0007F0ED /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		8A02C1E22313EC4600258227 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		8A0345A92322A6E90065CF3C /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		8A0345AA2322A6E90065CF3C /* Invitees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitees.swift; sourceTree = "<group>"; };
+		8A0345AA2322A6E90065CF3C /* Invitee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitee.swift; sourceTree = "<group>"; };
 		8A0345AB2322A6EA0065CF3C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8A0345AC2322A6EA0065CF3C /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		8A0345B12322A7310065CF3C /* RRedArrowImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRedArrowImageView.swift; sourceTree = "<group>"; };
@@ -1050,9 +1046,14 @@
 		8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBottomCell.xib; sourceTree = "<group>"; };
 		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
+		8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
+		8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
+		8AAA37FA233B505900423D43 /* CreateEventInviteMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteMediates.swift; sourceTree = "<group>"; };
+		8AAA37FE233B506200423D43 /* InviteHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteHeader.xib; sourceTree = "<group>"; };
+		8AAA37FF233B506200423D43 /* InviteHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteHeader.swift; sourceTree = "<group>"; };
+		8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
-		B91EA61FEF9FC739FCC46BAE /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C05FC15822805F3E00721F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1061,6 +1062,7 @@
 		C05FC16A22805F9D00721F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C05FC16F22805FAE00721F3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdParty.swift; sourceTree = "<group>"; };
+		C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
 		F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationMediates.swift; sourceTree = "<group>"; };
 		F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationLogics.swift; sourceTree = "<group>"; };
@@ -1073,7 +1075,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E5D36877546E3B0A5B643C8 /* Pods_Rush.framework in Frameworks */,
+				3FEA62B40BDB7892F71FC3A2 /* Pods_Rush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1549,6 +1551,7 @@
 				1AA97B87228979D100C4550C /* StringExtension.swift */,
 				1AA97B88228979D100C4550C /* DateExtension.swift */,
 				8A02C1E22313EC4600258227 /* TableViewExtension.swift */,
+				8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1761,10 +1764,10 @@
 		1AF4420E233930E70062B4F2 /* CreateEventInvite */ = {
 			isa = PBXGroup;
 			children = (
+				8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */,
+				8AAA37FA233B505900423D43 /* CreateEventInviteMediates.swift */,
+				8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */,
 				1AF44215233935770062B4F2 /* InviteHeader */,
-				1AF4420F233930E70062B4F2 /* CreateEventInviteMediates.swift */,
-				1AF44210233930E70062B4F2 /* CreateEventInviteLogics.swift */,
-				1AF44211233930E70062B4F2 /* CreateEventInviteViewController.swift */,
 			);
 			path = CreateEventInvite;
 			sourceTree = "<group>";
@@ -1772,8 +1775,8 @@
 		1AF44215233935770062B4F2 /* InviteHeader */ = {
 			isa = PBXGroup;
 			children = (
-				1AF44217233935770062B4F2 /* InviteHeader.swift */,
-				1AF44216233935770062B4F2 /* InviteHeader.xib */,
+				8AAA37FF233B506200423D43 /* InviteHeader.swift */,
+				8AAA37FE233B506200423D43 /* InviteHeader.xib */,
 			);
 			path = InviteHeader;
 			sourceTree = "<group>";
@@ -1781,9 +1784,9 @@
 		69A4CA5176A546F5C0DA9D7C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B91EA61FEF9FC739FCC46BAE /* Pods-Rush.debug.xcconfig */,
-				444652BA944A7873F2F2B883 /* Pods-Rush.release.xcconfig */,
-				14AB244F27322919ED012275 /* Pods-Rush.releasebeta.xcconfig */,
+				1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */,
+				C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */,
+				1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2871,7 +2874,7 @@
 				1AAE965B233A47CB00868449 /* Invite.swift */,
 				8A0345A92322A6E90065CF3C /* Address.swift */,
 				8A0345AC2322A6EA0065CF3C /* Club.swift */,
-				8A0345AA2322A6E90065CF3C /* Invitees.swift */,
+				8A0345AA2322A6E90065CF3C /* Invitee.swift */,
 				8A0345AB2322A6EA0065CF3C /* User.swift */,
 				1A262F56231D1BF70068A695 /* Interest.swift */,
 				1A088E5222FED12700DF6004 /* Contact.swift */,
@@ -2959,7 +2962,7 @@
 				8A4B32A12332129900AC1D17 /* DKImagePickerController.framework */,
 				8A4B32A32332129900AC1D17 /* DKPhotoGallery.framework */,
 				8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */,
-				16CA32728EF4C37A767CE809 /* Pods_Rush.framework */,
+				23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2991,13 +2994,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C05FC15B22805F3E00721F3F /* Build configuration list for PBXNativeTarget "Rush" */;
 			buildPhases = (
-				2E0E946066BF3954311D9B7D /* [CP] Check Pods Manifest.lock */,
+				34C9EFAD8E918C0F58D7E9F6 /* [CP] Check Pods Manifest.lock */,
 				C05FC14522805F3D00721F3F /* Sources */,
 				C05FC14622805F3D00721F3F /* Frameworks */,
 				C05FC14722805F3D00721F3F /* Resources */,
 				8A02C1E12313DE4500258227 /* ShellScript */,
-				8EF8DD94F1554FADC85E24ED /* [CP] Embed Pods Frameworks */,
-				19BBD50821CB7A047E3E5204 /* [CP] Copy Pods Resources */,
+				0056988C3865C149B147B353 /* [CP] Embed Pods Frameworks */,
+				4F804CB086C9C2A96F7F7E94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3142,7 +3145,7 @@
 				79F27166229D3A99008C4926 /* TextViewCell.xib in Resources */,
 				091557BE22B127600080C9AE /* UserPostImageTableViewCell.xib in Resources */,
 				0918E787228444B90098AF35 /* Profile.storyboard in Resources */,
-				1AF44218233935770062B4F2 /* InviteHeader.xib in Resources */,
+				8AAA3800233B506200423D43 /* InviteHeader.xib in Resources */,
 				0918E781228444930098AF35 /* Explore.storyboard in Resources */,
 				C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */,
 				1A353AC922BD130E0069752D /* UniversityCell.xib in Resources */,
@@ -3156,24 +3159,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19BBD50821CB7A047E3E5204 /* [CP] Copy Pods Resources */ = {
+		0056988C3865C149B147B353 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2E0E946066BF3954311D9B7D /* [CP] Check Pods Manifest.lock */ = {
+		34C9EFAD8E918C0F58D7E9F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3195,6 +3198,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4F804CB086C9C2A96F7F7E94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8A02C1E12313DE4500258227 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3211,23 +3231,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		8EF8DD94F1554FADC85E24ED /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rush/Pods-Rush-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3303,8 +3306,10 @@
 				8A04B1912301796A0055C65F /* CalendarDayCell.swift in Sources */,
 				7912571122A16DA100BDE3EC /* ProfileImageCell.swift in Sources */,
 				7991909F22C9D5A00044602E /* ClubDetailController.swift in Sources */,
+				8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */,
 				793BE65C22E88207005EF72D /* MessagesViewController.swift in Sources */,
 				8A04B184230149470055C65F /* LogoutViewController.swift in Sources */,
+				8AAA3843233CA8AC00423D43 /* DateFormatterExtension.swift in Sources */,
 				8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,
@@ -3394,6 +3399,7 @@
 				1ACEAC1822AC294200B734D3 /* CustomCameraExtension.swift in Sources */,
 				1A2809EC22C60E6700B4E764 /* ClassesCell.swift in Sources */,
 				7903D0AD228E8CE5004E33B9 /* EventTypeCellLogics.swift in Sources */,
+				8AAA37FD233B505900423D43 /* CreateEventInviteMediates.swift in Sources */,
 				793BE67522E88207005EF72D /* MessageKind.swift in Sources */,
 				7983D22E228982DC00DE054E /* Keys.swift in Sources */,
 				7958B7FD22C4E8E000A66BDC /* ClubListMediates.swift in Sources */,
@@ -3452,6 +3458,7 @@
 				793BE5F722E87E0D005EF72D /* ChatRoomLogics.swift in Sources */,
 				8A04B14522FB042E0055C65F /* Event.swift in Sources */,
 				8A04B16022FC6C820055C65F /* InstagramCell.swift in Sources */,
+				8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */,
 				1A62D23522954AF6001E5790 /* CustomImagePageControl.swift in Sources */,
 				79F377A722CB5D69003FC33E /* SearchClubMediates.swift in Sources */,
 				79C1AC4B22A64CE0003C7790 /* ProfileInformationViewController.swift in Sources */,
@@ -3481,7 +3488,7 @@
 				793BE68B22E88207005EF72D /* MessageContentCell.swift in Sources */,
 				793BE69922E88565005EF72D /* ChatManager.swift in Sources */,
 				79D29CA422CF339B008C6ED0 /* ExploreCell.swift in Sources */,
-				8A0345AE2322A6EA0065CF3C /* Invitees.swift in Sources */,
+				8A0345AE2322A6EA0065CF3C /* Invitee.swift in Sources */,
 				8A04B14C22FC2B5B0055C65F /* SettingsViewController.swift in Sources */,
 				8A04B17222FD8B8E0055C65F /* PrivacySettingsLogics.swift in Sources */,
 				1A262F57231D1BF70068A695 /* Interest.swift in Sources */,
@@ -3532,12 +3539,10 @@
 				8A04B19C230409110055C65F /* ParallaxHeader.swift in Sources */,
 				796A6F2922CDEEAD00916D79 /* ClassDetailLogics.swift in Sources */,
 				7903D0B5228E8CE5004E33B9 /* HomeLogics.swift in Sources */,
-				1AF44214233930E80062B4F2 /* CreateEventInviteViewController.swift in Sources */,
 				1AEAC4C522D35BE5008FBB54 /* DatePickerPresenter.swift in Sources */,
 				793BE66C22E88207005EF72D /* MessagesCollectionViewLayoutAttributes.swift in Sources */,
 				1AB0C15322C0F6BB000D016E /* AddMinorsViewMediates.swift in Sources */,
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
-				1AF44212233930E80062B4F2 /* CreateEventInviteMediates.swift in Sources */,
 				7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */,
 				793BE65222E88207005EF72D /* NSMutableAttributedString+Extensions.swift in Sources */,
 				79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */,
@@ -3608,7 +3613,6 @@
 				793BE65E22E88207005EF72D /* SampleData.swift in Sources */,
 				793BE67C22E88207005EF72D /* Sender.swift in Sources */,
 				79EF134B22D3588D00E260D9 /* EventCategoryListViewController.swift in Sources */,
-				1AF44213233930E80062B4F2 /* CreateEventInviteLogics.swift in Sources */,
 				8A04B1A02304109A0055C65F /* ProfileMediator.swift in Sources */,
 				793BE66022E88207005EF72D /* CGRect+Extensions.swift in Sources */,
 				1AAE9662233A568D00868449 /* CreateEventInterestViewController.swift in Sources */,
@@ -3625,6 +3629,7 @@
 				793BE67922E88207005EF72D /* MockMessage.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,
 				796A6F2822CDEEAD00916D79 /* ClassDetailController.swift in Sources */,
+				8AAA3801233B506200423D43 /* InviteHeader.swift in Sources */,
 				793BE67322E88207005EF72D /* LabelAlignment.swift in Sources */,
 				793BE68722E88207005EF72D /* CustomCell.swift in Sources */,
 				797FFDAE22B7BC480055A001 /* PhotoGalleryCameraIconView.swift in Sources */,
@@ -3649,7 +3654,6 @@
 				F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */,
 				79493CE922B90E960026AD0E /* SelectGallaryPhotoPresenter.swift in Sources */,
 				79DF742D2292D2C90012DCB7 /* TextIconCell.swift in Sources */,
-				1AF44219233935770062B4F2 /* InviteHeader.swift in Sources */,
 				8A4B328C232F5A5B00AC1D17 /* PostImageCell.swift in Sources */,
 				797FFDA722B7BC480055A001 /* Parameters.swift in Sources */,
 			);
@@ -3797,7 +3801,7 @@
 		};
 		C05FC15C22805F3E00721F3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B91EA61FEF9FC739FCC46BAE /* Pods-Rush.debug.xcconfig */;
+			baseConfigurationReference = 1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3894,7 +3898,7 @@
 		};
 		C05FC15D22805F3E00721F3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 444652BA944A7873F2F2B883 /* Pods-Rush.release.xcconfig */;
+			baseConfigurationReference = C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -4047,7 +4051,7 @@
 		};
 		C05FC1762280637100721F3F /* ReleaseBeta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14AB244F27322919ED012275 /* Pods-Rush.releasebeta.xcconfig */;
+			baseConfigurationReference = 1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
 				APIKEY = rush123;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

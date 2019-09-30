@@ -19,7 +19,7 @@ enum EventSectionType {
     case about
     case manage
     case location
-    case people
+    case invitee
     case tags
     case createPost
     case post
@@ -53,19 +53,17 @@ class EventDetailViewController: UIViewController {
     let headerHeight: CGFloat = 47.0
     let friendHeight: CGFloat = 88.0
     var event: Event?
-    var postlist: [Post]?
+    var postList: [Post]?
+    var inviteeList: [Invitee]?
 
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
 
-    let tempInvitee = [
-         Invitees(name: "Kamal"),
-         Invitees(name: "John"),
-         Invitees(name: "Smith"),
-         Invitees(name: "Suresh"),
-         Invitees(name: "Chirag")
-    ]
+    var postPageNo = 1
+    var isPostNextPageExist = false
+    let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
+    let downloadGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +74,15 @@ class EventDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        downloadGroup.notify(queue: downloadQueue) {
+            DispatchQueue.main.async {
+                self.reloadTable()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,6 +104,8 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
         
         setupTableView()
         loadAllData()
+        tableView.isHidden = true
+        Utils.showSpinner()
     }
 }
 
@@ -116,17 +125,30 @@ extension EventDetailViewController {
 // MARK: - Others
 extension EventDetailViewController {
     
+    func reloadTable() {
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+        Utils.hideSpinner()
+    }
+    
     func updateHeaderInfo() {
         guard let event = event else { return }
-        header.set(date: event.date)
+        header.set(date: event.start)
         header.set(start: event.start, end: event.end)
-        header.set(url: URL(string: event.thumbnil ?? ""))
+        header.set(url: event.photo?.url())
     }
     
     func showRSVP() {
         performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: nil)
     }
     
+    func showCreatePost() {
+        performSegue(withIdentifier: Segues.createEventPost, sender: nil)
+    }
+    
+    func showComments(post: Post) {
+        performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
+    }
 }
 
 // MARK: - Navigations
@@ -136,6 +158,15 @@ extension EventDetailViewController {
         if segue.identifier == Segues.rsvpJoinEvent {
             if let vc = segue.destination as? RSVPViewController {
                 vc.event = event
+            }
+        } else if segue.identifier == Segues.createEventPost {
+            if let vc = segue.destination as? CreatePostViewController {
+                vc.eventInfo = event
+            }
+        } else if segue.identifier == Segues.eventPostDetail {
+            if let vc = segue.destination as? PostViewController {
+                vc.eventInfo = event
+                vc.postInfo = sender as? Post
             }
         }
     }

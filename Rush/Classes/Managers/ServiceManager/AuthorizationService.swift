@@ -104,16 +104,21 @@ extension ServiceManager {
     }
 
     // MARK: - Profile
-    func getProfile(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func getProfile(params: [String: Any], closer: @escaping (_ user: User?, _ errorMessage: String?) -> Void) {
         if Authorization.shared.authorized {
             NetworkManager.shared.getProfile(params: params) { [weak self] (data, error, code) in
                 guard let unsafe = self else { return }
                 unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                     //Only if self profile is called and at that time param count is always zero
-                    if params.count == 0, let user = data?[Keys.user] as? [String: Any] {
-                        Authorization.shared.updateUserData(data: user)
+                    if let object = data?[Keys.user] as? [String: Any] {
+                       if params.count == 0 {
+                          Authorization.shared.updateUserData(data: object)
+                       }
+                       let user: User? = unsafe.decodeObject(fromData: object)
+                       closer(user, errorMessage)
+                    } else {
+                       closer(nil, errorMessage)
                     }
-                    closer(data, errorMessage)
                 })
             }
         } else {
