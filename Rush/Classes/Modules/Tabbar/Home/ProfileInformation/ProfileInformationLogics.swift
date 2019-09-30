@@ -29,8 +29,10 @@ extension ProfileInformationViewController {
     func fillCell(_ cell: ProfileInformationCell, _ indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let birth = Date().convrertProfileBirthFormat(dateString: userInfo?.birthDate ?? "")
-                cell.setup(text: birth, placeholder: Text.dateOfBirth)
+                if let date = userInfo?.birthDate {
+                    let birth = date.convrertProfileBirthFormat()
+                    cell.setup(text: birth, placeholder: Text.dateOfBirth)
+                }
             } else if indexPath.row == 1 {
                 cell.setup(text: userInfo?.relationship ?? "", placeholder: Text.relationship)
             }
