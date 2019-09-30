@@ -168,10 +168,8 @@ extension OtherUserProfileController {
     
     func getProfileAPI() {
         let param = [Keys.profileUserId: userInfo?.userId ?? "0"]
-        ServiceManager.shared.getProfile(params: param) { [weak self] (data, _) in
-            if let object = data?[Keys.user] as? [String: Any] {
-                self?.userInfo = Authorization.shared.profileModelResponse(data: object)
-            }
+        ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
+            self?.userInfo = user
             self?.tableView.reloadData()
         }
     }
