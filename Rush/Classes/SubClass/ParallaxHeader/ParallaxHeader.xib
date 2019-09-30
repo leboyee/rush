@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,13 +45,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamal Mittal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0K-gM-rfV">
-                    <rect key="frame" x="24" y="232.5" width="366" height="33.5"/>
+                    <rect key="frame" x="24" y="232.5" width="340" height="33.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxF-T4-ADW">
-                    <rect key="frame" x="24" y="272" width="366" height="16"/>
+                    <rect key="frame" x="24" y="272" width="340" height="16"/>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                     <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -82,14 +80,14 @@
                 <constraint firstItem="uxF-T4-ADW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="Pi3-Dg-Jme"/>
                 <constraint firstItem="7Py-fQ-nSe" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SDF-Sz-iAg"/>
                 <constraint firstAttribute="bottom" secondItem="uxF-T4-ADW" secondAttribute="bottom" constant="56" id="ce1-n3-h5t"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I0K-gM-rfV" secondAttribute="trailing" constant="24" id="cia-3d-IWb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I0K-gM-rfV" secondAttribute="trailing" constant="50" id="cia-3d-IWb"/>
                 <constraint firstItem="G5b-en-NIm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fU0-gE-NmA"/>
                 <constraint firstItem="hGU-Vz-3Cp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="hdO-uv-oMD"/>
                 <constraint firstItem="7Py-fQ-nSe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="k8X-Ag-hjm"/>
                 <constraint firstItem="hGU-Vz-3Cp" firstAttribute="top" secondItem="I0K-gM-rfV" secondAttribute="top" id="lcu-KH-NNj"/>
                 <constraint firstItem="AKy-D4-vqR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="102" id="pde-Su-YqF"/>
                 <constraint firstAttribute="bottom" secondItem="7Py-fQ-nSe" secondAttribute="bottom" id="rKr-0a-vRM"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uxF-T4-ADW" secondAttribute="trailing" constant="24" id="uLg-i5-Smi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uxF-T4-ADW" secondAttribute="trailing" constant="50" id="uLg-i5-Smi"/>
                 <constraint firstItem="uxF-T4-ADW" firstAttribute="top" secondItem="I0K-gM-rfV" secondAttribute="bottom" constant="6" id="x5l-9h-Pdx"/>
                 <constraint firstItem="uxF-T4-ADW" firstAttribute="bottom" secondItem="hGU-Vz-3Cp" secondAttribute="bottom" id="ztJ-qL-O6s"/>
             </constraints>
