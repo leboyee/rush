@@ -474,4 +474,10 @@ extension Utils {
         }
         return false
     }
+    
+    class func getSystemVersion() -> Int {
+        let systemVersion = UIDevice.current.systemVersion
+        return Int(systemVersion) ?? 0
+    }
+  
 }

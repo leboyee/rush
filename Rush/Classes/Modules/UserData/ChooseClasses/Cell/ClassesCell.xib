@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,14 +19,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMd-Ih-XZ7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-ec-y42">
-                                <rect key="frame" x="25" y="54.5" width="394" height="1"/>
+                                <rect key="frame" x="56" y="55" width="363" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="WNm-ez-W4T"/>
@@ -38,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="56" y="4" width="301" height="47"/>
+                                <rect key="frame" x="56" y="4" width="301" height="47.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,7 +49,7 @@
                             <constraint firstAttribute="bottom" secondItem="HTb-ec-y42" secondAttribute="bottom" id="N0H-PI-xX0"/>
                             <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" constant="-44" id="X7Q-C9-lbu"/>
                             <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="18" id="kW5-6B-Eub"/>
-                            <constraint firstItem="HTb-ec-y42" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="25" id="mcl-dU-OqU"/>
+                            <constraint firstItem="HTb-ec-y42" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="56" id="mcl-dU-OqU"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="4" id="oeY-RH-kTY"/>
                         </constraints>
                     </view>

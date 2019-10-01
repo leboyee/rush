@@ -8,8 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-Pro-Display-Semibold.otf">
-            <string>SFProDisplay-Semibold</string>
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
         </array>
         <array key="SF-Pro-Text-Bold.otf">
             <string>SFProText-Bold</string>
@@ -56,7 +56,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="TZl-69-J2A"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -90,7 +90,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,12 +211,35 @@
                         <outlet property="firstNameTextField" destination="kTN-iZ-1ti" id="f0u-vb-e10"/>
                         <outlet property="lastNameTextField" destination="gQA-UD-8aw" id="ODw-gj-oDx"/>
                         <outlet property="nextButton" destination="SJp-Nw-5k8" id="r6z-aA-gYl"/>
+                        <outlet property="pageControl" destination="L8Z-qq-POT" id="BRz-Fa-Qa3"/>
+                        <outlet property="pageControllerLeadingConstraint" destination="g9I-hs-a2G" id="LQy-eP-p99"/>
+                        <outlet property="pageControllerView" destination="gs2-Ia-ocY" id="bn5-5P-58N"/>
                         <outlet property="userNameDetailLabel" destination="D7r-0p-irU" id="uMh-25-Nw0"/>
                         <outlet property="userNameTitleLabel" destination="cbv-r6-6NM" id="NNf-8o-nf0"/>
                         <segue destination="5rq-3M-nWQ" kind="show" identifier="AddProfilePictureSegue" animates="NO" id="3gP-4n-Rw6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81O-8s-uKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="gs2-Ia-ocY">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8Z-qq-POT" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
+                            <rect key="frame" x="25" y="434.5" width="151" height="37"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="151" id="wg6-eC-G8B"/>
+                                <constraint firstAttribute="height" constant="37" id="xzy-b5-RRI"/>
+                            </constraints>
+                        </pageControl>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="L8Z-qq-POT" firstAttribute="leading" secondItem="vFj-fU-YEy" secondAttribute="leading" constant="25" id="g9I-hs-a2G"/>
+                        <constraint firstItem="L8Z-qq-POT" firstAttribute="centerY" secondItem="vFj-fU-YEy" secondAttribute="centerY" id="sl2-VL-Pya"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="vFj-fU-YEy"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1866.6666666666667" y="-214.28571428571428"/>
         </scene>
@@ -254,7 +277,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="kDs-ed-GVY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -456,7 +479,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="qiL-KI-CPu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -601,7 +624,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="Jtq-Jf-cBa"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -735,9 +758,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1P-L4-ssT">
+                                        <rect key="frame" x="359" y="37" width="40" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="WlU-8h-Qhf"/>
+                                            <constraint firstAttribute="height" constant="40" id="npz-Bi-xnX"/>
+                                        </constraints>
+                                        <state key="normal" image="crossDelete"/>
+                                        <connections>
+                                            <action selector="deleteButtonAction" destination="jiR-Nh-Qjh" eventType="touchUpInside" id="xqI-aI-bXy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="p1P-L4-ssT" firstAttribute="top" secondItem="zZH-X4-E41" secondAttribute="bottom" constant="5" id="1gH-7W-nON"/>
                                     <constraint firstItem="Dl2-YP-Shy" firstAttribute="leading" secondItem="6dK-at-E3g" secondAttribute="leading" id="8Px-cC-5vY"/>
                                     <constraint firstItem="Bs7-7L-etO" firstAttribute="leading" secondItem="6dK-at-E3g" secondAttribute="leading" constant="24" id="BcM-6r-aD7"/>
                                     <constraint firstItem="Dl2-YP-Shy" firstAttribute="top" secondItem="Bs7-7L-etO" secondAttribute="bottom" constant="7" id="EpI-Qc-Slr"/>
@@ -748,6 +784,8 @@
                                     <constraint firstItem="zZH-X4-E41" firstAttribute="top" secondItem="6dK-at-E3g" secondAttribute="top" constant="16" id="RAF-DQ-8rz"/>
                                     <constraint firstAttribute="trailing" secondItem="Bs7-7L-etO" secondAttribute="trailing" constant="23" id="Rfa-Bg-vIt"/>
                                     <constraint firstItem="Bs7-7L-etO" firstAttribute="top" secondItem="zZH-X4-E41" secondAttribute="bottom" constant="5" id="ZOx-wt-QfQ"/>
+                                    <constraint firstItem="Dl2-YP-Shy" firstAttribute="top" secondItem="p1P-L4-ssT" secondAttribute="bottom" constant="7" id="rDK-xw-48v"/>
+                                    <constraint firstAttribute="trailing" secondItem="p1P-L4-ssT" secondAttribute="trailing" constant="15" id="rGc-Gp-EWg"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-yW-OQs">
@@ -776,6 +814,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="bgImageView" destination="FYk-C8-OPY" id="u2C-De-k9R"/>
+                        <outlet property="deleteButton" destination="p1P-L4-ssT" id="hVx-Le-7e3"/>
                         <outlet property="pageControl" destination="Edv-SY-mbT" id="WKm-z6-M5s"/>
                         <outlet property="pageControllerLeadingConstraint" destination="9WQ-Ql-iLk" id="mae-II-eA5"/>
                         <outlet property="pageControllerView" destination="XcZ-YK-Xwt" id="RM3-QX-MVz"/>
@@ -1011,11 +1050,12 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpL-9i-IDn">
                                         <rect key="frame" x="363" y="38" width="40" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="dMZ-76-oBw"/>
                                             <constraint firstAttribute="width" constant="40" id="sak-Cg-JtS"/>
                                         </constraints>
-                                        <state key="normal" image="deleteError"/>
+                                        <state key="normal" image="crossDelete"/>
                                         <connections>
                                             <action selector="deleteButtonAction" destination="jiR-Nh-Qjh" eventType="touchUpInside" id="FY6-lL-7Tz"/>
                                         </connections>
@@ -1324,13 +1364,13 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interests" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCV-EN-tIv" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="70" width="367" height="33.5"/>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose minimum 3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5li-tl-1sw" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="36" width="367" height="33.5"/>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1472,9 +1512,9 @@
     </scenes>
     <resources>
         <image name="camera-add" width="94" height="78"/>
-        <image name="deleteError" width="20" height="20"/>
+        <image name="crossDelete" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iOX-Pq-SpL"/>
+        <segue reference="D0d-Cb-9g6"/>
     </inferredMetricsTieBreakers>
 </document>

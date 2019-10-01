@@ -19,6 +19,10 @@ class EnterUserNameViewController: CustomViewController {
     @IBOutlet weak var lastNameTextField: AkiraTextField!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var pageControllerView: UIView!
+    @IBOutlet weak var pageControl: CustomImagePageControl!
+    @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
+
     var loginType: LoginType = .register
     var profile = User()
     override func viewDidLoad() {
@@ -75,13 +79,19 @@ class EnterUserNameViewController: CustomViewController {
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-
+        
         let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
-        let customNavPageView = CustomNavBarPageController()
-        let pageView = customNavPageView.instanceFromNib()
-        pageView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
-        customView.addSubview(pageView)
+        pageControl.isSteps = true
+        pageControl.updateDots()
+        if Utils.getSystemVersion() < 13 {
+            print("done")
+        } else {
+            print("false")
+        }
+        pageControllerView.frame = CGRect(x: Utils.getSystemVersion() < 13 ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+        
+        customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
         let skipButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 76, height: 35))
