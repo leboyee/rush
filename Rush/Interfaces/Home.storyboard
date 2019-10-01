@@ -930,6 +930,7 @@
                         <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="z8H-lu-6pg"/>
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" modalPresentationStyle="overFullScreen" id="0IY-Pg-ID3"/>
                         <segue destination="KEM-eO-SVs" kind="show" identifier="OtherProfileEventDetail" id="Oel-AB-j6R"/>
+                        <segue destination="mi6-YI-bln" kind="show" identifier="ClubDetailSegue" id="gSU-VJ-XvQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1658,6 +1659,7 @@
         <segue reference="E7I-YA-fBT"/>
         <segue reference="90w-At-CBu"/>
         <segue reference="g4h-St-bby"/>
+        <segue reference="gSU-VJ-XvQ"/>
         <segue reference="Oel-AB-j6R"/>
     </inferredMetricsTieBreakers>
 </document>

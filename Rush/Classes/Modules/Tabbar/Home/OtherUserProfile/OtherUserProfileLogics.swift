@@ -116,28 +116,19 @@ extension OtherUserProfileController {
         default:
             cell.setup(.none, nil, nil)
         }
-//        cell.cellSelected = { [weak self] (type, id, index) in
-//            guard let unsafe = self else { return }
-//            if type == .upcoming {
-//                let event = unsafe.eventList[index]
-//                unsafe.showEvent(event: event)
-//            } else if type == .clubs {
-//                let club = unsafe.clubList[index]
-//                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
-//            }
-//        }
+        
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if indexPath.section == 2 {
                 unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             }
-            //            else if type == .upcoming {
-            //                let event = unsafe.eventList[index]
-            //                unsafe.showEvent(event: event)
-            //            } else if type == .clubs {
-            //                let club = unsafe.clubList[index]
-            //                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
-            //            }
+            else if (indexPath.section == 3) {
+                let event = unsafe.eventList[index]
+                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
+            } else if type == .clubs {
+                let club = unsafe.clubList[index]
+                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            }
         }
     }
     
