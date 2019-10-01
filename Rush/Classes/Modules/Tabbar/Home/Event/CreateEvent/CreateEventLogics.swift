@@ -25,7 +25,15 @@ extension CreateEventViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 4 || indexPath.section == 5 {
-            return indexPath.row == 0 ? 64 : calendarHeight
+            if indexPath.row == 0 {
+                return 64
+            } else {
+                if self.isStartDate == true  || self.isEndDate == true {
+                    return calendarHeight
+                } else {
+                    return 216
+                }
+            }
         }
         return UITableView.automaticDimension
     }
@@ -60,9 +68,37 @@ extension CreateEventViewController {
     func fillAddCalendarCell(_ cell: AddEventCalendarCell, _ indexPath: IndexPath) {
         if indexPath.section == 4 {
             cell.calendarView.delegate = self
+            cell.calendarView.minimumSelectedDate = Date()
         } else if indexPath.section == 5 {
             cell.calendarView.delegate = self
             cell.calendarView.minimumSelectedDate = Date()
+        }
+    }
+    
+    func fillEventTimeCell(_ cell: EventTimeCell, _ indexPath: IndexPath) {
+        cell.timeSelected = {
+            [weak self] (date) in
+            guard let unsafe = self else { return }
+            if indexPath.section == 4 {
+                unsafe.startTimeDate = date
+                /*if unsafe.startDate.isSameDate(unsafe.endDate) && unsafe.startTimeDate > unsafe.endTimeDate {
+                    Utils.alert(message: "Start time not allow greter then end event Time")
+                    return
+                }*/
+                unsafe.startTime = date.toString(format: "hh:mm a")
+                unsafe.tableView.reloadData()
+
+            } else {
+                unsafe.endTimeDate = date
+                /*if unsafe.startDate.isSameDate(unsafe.endDate) &&
+                    unsafe.startTimeDate > unsafe.endTimeDate {
+                    Utils.alert(message: "End time not allow smaller then start event Time")
+                    return
+                }*/
+                unsafe.endTimeDate = date
+                unsafe.endTime = date.toString(format: "hh:mm a")
+                unsafe.tableView.reloadData()
+            }
         }
     }
 
@@ -70,7 +106,7 @@ extension CreateEventViewController {
         
         if indexPath.section == 4 {
             cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: startTime.isEmpty == true ? "13 pm" : startTime)
+            cell.setup(timeButtonText: startTime.isEmpty == true ? "01.00 pm" : startTime)
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -84,12 +120,21 @@ extension CreateEventViewController {
                     unsafe.tableView.reloadData()
                 }
             }
-            cell.timeButtonClickEvent = { () in
-                Utils.alert(message: "In Development")
+            cell.timeButtonClickEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                if unsafe.isStartTime == false {
+                    unsafe.resetDateFileds()
+                    unsafe.isStartTime = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.resetDateFileds()
+                    unsafe.isStartTime = false
+                    unsafe.tableView.reloadData()
+                }
             }
         } else {
             cell.setup(dateButtonText: self.endDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: endTime.isEmpty == true ? "14 pm" : endTime)
+            cell.setup(timeButtonText: endTime.isEmpty == true ? "02.00 pm" : endTime)
             cell.separatorView.isHidden = false
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -104,8 +149,17 @@ extension CreateEventViewController {
                 }
             }
             
-            cell.timeButtonClickEvent = { () in
-                Utils.alert(message: "In Development")
+            cell.timeButtonClickEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                if unsafe.isEndTime == false {
+                    unsafe.resetDateFileds()
+                    unsafe.isEndTime = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.resetDateFileds()
+                    unsafe.isEndTime = false
+                    unsafe.tableView.reloadData()
+                }
             }
         }
     }
@@ -142,12 +196,6 @@ extension CreateEventViewController {
             cell.setup(placeholder: Text.addLocation)
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
-            cell.clearButtonClickEvent = {
-                [weak self] () in
-                guard let unsafe = self else { return }
-                unsafe.address = ""
-                unsafe.tableView.reloadData()
-            }
         } else if indexPath.section == 6 {
             if indexPath.row == interestList.count {
                 cell.setup(placeholder: "", text: "")
@@ -161,7 +209,6 @@ extension CreateEventViewController {
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 7 {
-            
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
@@ -176,6 +223,7 @@ extension CreateEventViewController {
         
         cell.textDidChanged = {  [weak self] (text) in
             guard let unsafe = self else { return }
+            
             if indexPath.section == 0 {
                 unsafe.nameEvent = text
             } else if indexPath.section == 1 {
@@ -204,6 +252,9 @@ extension CreateEventViewController {
                     unsafe.rsvpArray.remove(at: index)
                     unsafe.tableView.reloadData()
                 }
+            } else if indexPath.section == 3 {
+                unsafe.address = ""
+                unsafe.tableView.reloadData()
             } else if indexPath.section == 6 {
                 if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
                     unsafe.interestList.remove(at: index)
@@ -236,7 +287,7 @@ extension CreateEventViewController {
             }
         }
     }
-    
+        
     func fillImageHeader(_ view: UserImagesHeaderView) {
         view.setup(image: eventImage)
         view.addPhotoButtonEvent = { [weak self] () in
@@ -374,9 +425,10 @@ extension CreateEventViewController: SelectEventTypeDelegate {
                    )
                    let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
                    unsplashPhotoPicker.photoPickerDelegate = self
-                   present(unsplashPhotoPicker, animated: true, completion: nil)
-            
-        }
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "placeholder", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            (UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) ).defaultTextAttributes =   [NSAttributedString.Key.foregroundColor: UIColor.white]
+            present(unsplashPhotoPicker, animated: true, completion: nil)
+            }
     }
 }
 
@@ -479,7 +531,6 @@ extension CreateEventViewController {
                      Keys.eventPhoto: img,
                      Keys.eventContact: contactNoArray] as [String: Any]
 
-        print(param)
         Utils.showSpinner()
         ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
             Utils.hideSpinner()

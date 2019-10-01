@@ -31,6 +31,8 @@ class CreateEventViewController: UIViewController {
     var endDate = Date()
     var startTime = ""
     var endTime = ""
+    var startTimeDate =  Date.parse(dateString: "01.00 PM", format: "hh:mm a") ?? Date()
+    var endTimeDate =  Date.parse(dateString: "02.00 PM", format: "hh:mm a") ?? Date()
     var calendarHeight: CGFloat = 352.0
     var isStartDate: Bool = false
     var isEndDate: Bool = false

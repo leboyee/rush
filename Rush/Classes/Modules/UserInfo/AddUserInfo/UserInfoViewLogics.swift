@@ -124,6 +124,7 @@ extension UserInfoViewController: AddEventLocationDelegate {
         self.homeTown = address
         self.latitude = latitude
         self.longitude = longitude
+        nextButtonEnabled()
         self.tableView.reloadData()
     }
 }

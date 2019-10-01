@@ -14,7 +14,7 @@ import UIKit
 @IBDesignable open class AkiraTextField: TextFieldEffects {
     private let textFieldInsets = CGPoint(x: 0, y: 0)
     //Update My Kamal Mittal
-    private let placeholderInsets = CGPoint(x: 0, y: 5)
+    private let placeholderInsets = CGPoint(x: 0, y: 0)
     var placeholderColor = UIColor.placeholderColor {
         didSet {
             updatePlaceholder()
