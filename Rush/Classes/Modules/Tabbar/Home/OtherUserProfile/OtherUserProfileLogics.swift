@@ -121,8 +121,7 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if indexPath.section == 2 {
                 unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
-            }
-            else if (indexPath.section == 3) {
+            } else if indexPath.section == 3 {
                 let event = unsafe.eventList[index]
                  unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
             } else if type == .clubs {
