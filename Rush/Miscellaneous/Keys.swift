@@ -125,5 +125,6 @@ struct Keys {
     static let parentId = "parent_id"
 
     static let eventContact = "event_Contact"
+    static let isFirstJoin  = "isFirstJoin"
 
 }

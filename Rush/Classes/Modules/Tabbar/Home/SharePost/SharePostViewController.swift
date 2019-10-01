@@ -11,12 +11,13 @@ import UIKit
 enum SharePostType {
     case post
     case club
+    case event
     case classes
     case profile
 }
 
 protocol SharePostViewControllerDelegate: class {
-    func deletePost()
+    func delete(type: SharePostType, object: Any?)
 }
 
 class SharePostViewController: UIViewController {
@@ -31,6 +32,7 @@ class SharePostViewController: UIViewController {
     weak var delegate: SharePostViewControllerDelegate?
     
     var type: SharePostType = .post
+    var object: Any?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,9 @@ class SharePostViewController: UIViewController {
         radiusView.layer.cornerRadius = 24
         radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        if type == .classes {
+        if type == .event {
+            deleteLabel.text = Text.deleteEvent
+        } else if type == .classes {
             deleteLabel.text = Text.deleteClass
         } else if type == .club {
             deleteLabel.text = Text.deleteClub
@@ -74,7 +78,7 @@ extension SharePostViewController {
     @IBAction func deletePostButtonAction() {
         dismissView()
         DispatchQueue.main.async {
-            self.delegate?.deletePost()
+            self.delegate?.delete(type: self.type, object: self.object)
         }
     }
     

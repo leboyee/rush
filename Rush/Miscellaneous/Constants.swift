@@ -174,8 +174,9 @@ struct Segues {
     static let createEventInterestSegue            = "CreateEventInterestSegue"
     static let createEventPost            = "CreateEventPostSegue"
     static let addLocationSegue                    = "RegAddLocationSegue"
-    static let eventPostDetail                  = "EventPostDetailSegue"    
+    static let eventPostDetail                  = "EventPostDetailSegue"
     static let chooseInterestSegue                 = "ChooseInterestSegue"
+    static let eventDetailShare     = "EventDetailShareSegue"
 }
 
 struct StoryBoard {
@@ -264,6 +265,7 @@ public struct Text {
     static let deleteClass              = "Delete class"
     static let deletePost               = "Delete post"
     static let deleteClub               = "Delete club"
+    static let deleteEvent              = "Delete event"
     static let report                   = "Report"
     static let settings                 = "Settings"
 
