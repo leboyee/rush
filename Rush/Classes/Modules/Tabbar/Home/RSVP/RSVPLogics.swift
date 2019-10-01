@@ -92,8 +92,14 @@ extension RSVPViewController {
 
     private func joinEventWithRSVP(eventId: String, params: [String: Any]) {
         Utils.showSpinner()
-        ServiceManager.shared.joinEvent(eventId: eventId, params: params) { (data, errorMessage) in
+        ServiceManager.shared.joinEvent(eventId: eventId, params: params) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
+            if let object = data {
+                let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
+                self?.joinSuccessfully(isFirstTime: isFirstTime == 1 ? true : false)
+            } else if let message = errorMessage {
+                self?.showMessage(message: message)
+            }
         }
     }
 }

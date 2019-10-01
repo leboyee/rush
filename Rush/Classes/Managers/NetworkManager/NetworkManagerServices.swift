@@ -157,4 +157,13 @@ extension NetworkManager {
     func getInviteeList(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
     }
+    
+    func deleteEvent(eventId: String, resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
+    }
+    
+    //MARK: - Post API
+    func getPostDetail(postId: String, resultHandler: @escaping ResultClosure) {
+        requestGet(path: "post/\(postId)", params: [:], resultHandler: resultHandler)
+    }
 }
