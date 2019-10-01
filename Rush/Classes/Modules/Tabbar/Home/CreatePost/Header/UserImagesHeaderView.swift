@@ -17,6 +17,8 @@ class UserImagesHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var usernameView: UIView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var universtityLabel: UILabel!
     
     var settingButtonEvent: (() -> Void)?
     var addPhotoButtonEvent: (() -> Void)?
@@ -63,6 +65,13 @@ extension UserImagesHeaderView {
         userImageView.sd_setImage(with: imageUrl, completed: nil)
         hoverView.isHidden = false
         addPhotoButton.isHidden = true
+    }
+    
+    func setup(userInfo: User?) {
+        setup(imageUrl: userInfo?.photo?.url())
+        setup(isHideUsernameView: false)
+        userNameLabel.text = userInfo?.name
+        universtityLabel.text = userInfo?.university
     }
 }
 

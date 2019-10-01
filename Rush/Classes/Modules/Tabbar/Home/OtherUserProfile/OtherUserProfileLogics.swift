@@ -151,8 +151,8 @@ extension OtherUserProfileController {
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(image: clubImage)
-        view.setup(isHideUsernameView: false)
+        view.setup(userInfo: userInfo)
+        
         view.addPhotoButtonEvent = { () in
         }
         

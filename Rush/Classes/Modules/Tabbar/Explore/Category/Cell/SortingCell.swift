@@ -29,4 +29,5 @@ extension SortingCell {
     func setup(image: UIImage) {
         arrowImageView.image = image
     }
+
 }
