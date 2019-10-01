@@ -153,7 +153,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
         if isRushFriends == true {
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]
-                if  selectedFriendListArray.contains(where: {$0.user?.id == profile.user?.id}) {
+                if  selectedFriendListArray.contains(where: { $0.user?.id == profile.user?.id }) {
                     guard let index = selectedFriendListArray.firstIndex(where: { $0.user?.name == profile.user?.name }) else { return }
                     selectedFriendListArray.remove(at: index)
                 } else {

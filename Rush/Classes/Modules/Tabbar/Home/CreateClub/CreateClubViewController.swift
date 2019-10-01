@@ -30,7 +30,7 @@ class CreateClubViewController: UIViewController {
     let headerSmallWithoutDateHeight: CGFloat = 114
     
     var interestList = [String]()
-    var peopleList = [Contact]()
+    var peopleList = [Invite]()
     
     var clubInfo: Club?
     
@@ -122,15 +122,19 @@ extension CreateClubViewController {
         if segue.identifier == Segues.myClub {
             guard let vc = segue.destination as? MyClubViewController else { return }
             vc.clubImage = clubImage
-        } else if segue.identifier == Segues.contactListSegue {
-            guard let vc = segue.destination as? ContactsListViewController else { return }
-            vc.isFromRegister = true
-            vc.delegate = self
-            vc.selectedItem = peopleList
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
             vc.isFromCreateClub = true
+        } else if segue.identifier == Segues.createEventInterestSegue {
+            if let vc = segue.destination as? CreateEventInterestViewController {
+                vc.delegate = self
+                vc.selectedArray = interestList
+            }
+        } else if segue.identifier == Segues.createEventInviteSegue {
+            if let vc = segue.destination as? CreateEventInviteViewController {
+                vc.delegate = self
+            }
         }
     }
 }

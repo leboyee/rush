@@ -46,9 +46,13 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
-            performSegue(withIdentifier: Segues.contactListSegue, sender: nil)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.createEventInviteSegue, sender: self)
+            }
         } else if indexPath.section == 2 {
-            //performSegue(withIdentifier: Segues.chooseInterestSegue, sender: nil)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            }
         }
     }
     
@@ -106,15 +110,6 @@ extension CreateClubViewController {
     }
 }
 
-// MARK: - ContactsListProtocol methods
-extension CreateClubViewController: ContactsListProtocol {
-    func selectedContacts(_ contacts: [Contact]) {
-        peopleList = contacts
-        validateAllFields()
-        tableView.reloadData()
-    }
-}
-
 // MARK: - Club header delegate
 extension CreateClubViewController: ClubHeaderDelegate {
     func infoOfClub() {
@@ -123,5 +118,21 @@ extension CreateClubViewController: ClubHeaderDelegate {
     
     func addPhotoOfClub() {
         openCameraOrLibrary(type: .photoLibrary)
+    }
+}
+
+// MARK: - Add Interest Delegate
+extension CreateClubViewController: EventInterestDelegate {
+    func  selectedInterest(_ interest: [String]) {
+        self.interestList = interest
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: - Add Invities Delegate
+extension CreateClubViewController: EventInviteDelegate {
+    func selectedInvities(_ invite: [Invite]) {
+        self.peopleList = invite
+        self.tableView.reloadData()
     }
 }
