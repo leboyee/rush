@@ -15,8 +15,7 @@ extension CreateEventViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
         // Navigaiton height + cornerRadius height + changePhotoLabelOrigin
-        let total = ((Utils.navigationHeigh*2) + 24 + 216)
-        return section == 0 ? total : CGFloat.leastNormalMagnitude
+        return section == 0 ? 20 : CGFloat.leastNormalMagnitude
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -106,7 +105,7 @@ extension CreateEventViewController {
         
         if indexPath.section == 4 {
             cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: startTime.isEmpty == true ? "01.00 pm" : startTime)
+            cell.setup(timeButtonText: startTime.isEmpty == true ? "01:00 PM" : startTime)
             cell.separatorView.isHidden = true
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -134,7 +133,7 @@ extension CreateEventViewController {
             }
         } else {
             cell.setup(dateButtonText: self.endDate.toString(format: "EEE, dd MMM"))
-            cell.setup(timeButtonText: endTime.isEmpty == true ? "02.00 pm" : endTime)
+            cell.setup(timeButtonText: endTime.isEmpty == true ? "02:00 PM" : endTime)
             cell.separatorView.isHidden = false
             cell.dateButtonClickEvent = { [weak self] () in
                 guard let unsafe = self else { return }
@@ -321,9 +320,12 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         if eventImage != nil && nameEvent.isNotEmpty {
-            navigationItem.rightBarButtonItem = saveBtnActive
+                        saveButton.isEnabled = true
+            saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
+
         } else {
-            navigationItem.rightBarButtonItem = saveBtnDisActive// saveBtnDisActive
+               saveButton.isEnabled = false
+                     saveButton.setImage(#imageLiteral(resourceName: "save-dark"), for: .normal)
         }
     }
     
@@ -340,6 +342,7 @@ extension CreateEventViewController {
         if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
             let image = UIImage(data: cachedResponse.data) {
             eventImage = image
+            clubHeader.setup(image: eventImage)
             self.tableView.reloadData()
             self.validateAllFields()
             return
@@ -355,6 +358,7 @@ extension CreateEventViewController {
             DispatchQueue.main.async {
                 UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
                     strongSelf.eventImage = image
+                    strongSelf.clubHeader.setup(image: image)
                     strongSelf.tableView.reloadData()
                     strongSelf.validateAllFields()
                 }, completion: nil)
@@ -363,7 +367,11 @@ extension CreateEventViewController {
         
         imageDataTask?.resume()
     }
-    
+
+       func fillImageHeader() {
+            clubHeader.setup(image: eventImage)
+           clubHeader.delegate = self
+       }
 }
 
 extension CreateEventViewController: CalendarViewDelegate {
@@ -418,19 +426,21 @@ extension CreateEventViewController: SelectEventTypeDelegate {
     
     func addPhotoEvent(_ type: PhotoFrom) {
         if type == .cameraRoll {
-            self.openCameraOrLibrary(type: .photoLibrary)
+            self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: false)
         } else {
-                   let configuration = UnsplashPhotoPickerConfiguration(
-                       accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
-                       secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
-                       allowsMultipleSelection: false
-                   )
-                   let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
-                   unsplashPhotoPicker.photoPickerDelegate = self
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "placeholder", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-            (UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) ).defaultTextAttributes =   [NSAttributedString.Key.foregroundColor: UIColor.white]
-            present(unsplashPhotoPicker, animated: true, completion: nil)
-            }
+            self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: true)
+        }
+    }
+}
+
+// MARK: - Club header delegate
+extension CreateEventViewController: ClubHeaderDelegate {
+    func infoOfClub() {
+        
+    }
+    
+    func addPhotoOfClub() {
+        addImageFunction()
     }
 }
 
@@ -503,12 +513,13 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         
-        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " 13:00 pm"
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
         let startUtcDate = Date().localToUTC(date: startDateString)
-        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " 14:00 pm"
+        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
+        return
         var rsvpJson: String = ""
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: array)

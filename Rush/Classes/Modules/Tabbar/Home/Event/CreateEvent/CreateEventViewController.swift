@@ -9,12 +9,18 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
+import UnsplashPhotoPicker
 
 class CreateEventViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
-    
+    @IBOutlet weak var clubHeader: ClubHeader!
+    @IBOutlet weak var backgroundView: RBackgoundView!
+    @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+
     var imageDataTask: URLSessionDataTask?
     static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
 
@@ -29,10 +35,10 @@ class CreateEventViewController: UIViewController {
     var eventImage: UIImage?
     var startDate = Date()
     var endDate = Date()
-    var startTime = ""
-    var endTime = ""
-    var startTimeDate =  Date.parse(dateString: "01.00 PM", format: "hh:mm a") ?? Date()
-    var endTimeDate =  Date.parse(dateString: "02.00 PM", format: "hh:mm a") ?? Date()
+    var startTime = "01:00 PM"
+    var endTime = "02:00 PM"
+    var startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
+    var endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
     var calendarHeight: CGFloat = 352.0
     var isStartDate: Bool = false
     var isEndDate: Bool = false
@@ -41,17 +47,9 @@ class CreateEventViewController: UIViewController {
     var isCreateGroupChat = true
     var peopleList = [Invite]()
     
-    var cancelBtn: UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "cancel-active"), style: .plain, target: self, action: #selector(cancelButtonAction))
-    }
-    
-    var saveBtnActive: UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-active"), style: .plain, target: self, action: #selector(saveButtonAction))
-    }
-    
-    var saveBtnDisActive: UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "save-dark"), style: .plain, target: self, action: nil)
-    }
+    let headerFullHeight: CGFloat = 367
+    let headerSmallWithDateHeight: CGFloat = 182
+    let headerSmallWithoutDateHeight: CGFloat = 114
     
     var interestList = [String]()
     var rsvpArray = [String]()
@@ -62,48 +60,29 @@ class CreateEventViewController: UIViewController {
         // Do any additional setup after loading the view.
         setup()
     }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.isNavigationBarHidden = true
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
- 
-    // MARK: - Other function
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+
+// MARK: - Other function
     func setup() {
         setupUI()
     }
     
     func setupUI() {
-        
-        topConstraintOfTableView.constant = -Utils.navigationHeigh
-        definesPresentationContext = true
-        // Set navigation buttons
-        navigationItem.leftBarButtonItem = cancelBtn
-        navigationItem.rightBarButtonItem = saveBtnDisActive
-        
+                
         // Setup tableview
         setupTableView()
         
-        /*
-        let total = screenWidth + 15
-        
-        topConstraintOfTapToChangeLabel.constant = total - 106
-        heightConstraintOfImageView.constant = total
-        
-        scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-        
-        
-        if userImageView.image != nil {
-            addPhotoButton.isHidden = true
-            navigationItem.rightBarButtonItem = saveBtnActive
-        } else {
-            hoverView.isHidden = true
-            addPhotoButton.isHidden = false
-           navigationItem.rightBarButtonItem = saveBtnDisActive
-        }
-        */
+        fillImageHeader()
     }
 }
 
@@ -113,7 +92,7 @@ extension CreateEventViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func saveButtonAction() {
+    @IBAction func saveButtonAction() {
         createEventAPI()
     }
     
@@ -208,24 +187,38 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
     }
     
     // MARK: - Capture Image
-    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
+    func openCameraOrLibrary(type: UIImagePickerController.SourceType, isFromUnsplash: Bool) {
         DispatchQueue.main.async {
             if type == .photoLibrary {
                 Utils.authorizePhoto(completion: { [weak self] (status) in
                     guard let unsafe = self else { return }
                     if status == .alreadyAuthorized || status == .justAuthorized {
-                        DispatchQueue.main.async {
-                            unsafe.picker = ImagePickerController()
-                            unsafe.picker.delegate = self
-                            unsafe.picker.isSingleSelection = true
-                            unsafe.picker.navigationBar.isTranslucent = false
-                            var assets = [PHAsset]()
-                            for img in unsafe.imageList {
-                                if let value = img as? PHAsset { assets.append(value) }
-                            }
-                            unsafe.picker.updateSelectedAssets(with: assets)
-                            unsafe.present(unsafe.picker, animated: false, completion: nil)
+                        if isFromUnsplash == true {
+                            let configuration = UnsplashPhotoPickerConfiguration(
+                                                  accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
+                                                  secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
+                                                  allowsMultipleSelection: false
+                                              )
+                                              let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+                                              unsplashPhotoPicker.photoPickerDelegate = self
+                                       UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "placeholder", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                       (UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) ).defaultTextAttributes =   [NSAttributedString.Key.foregroundColor: UIColor.white]
+                            unsafe.present(unsplashPhotoPicker, animated: true, completion: nil)
+                        } else {
+                            DispatchQueue.main.async {
+                                                      unsafe.picker = ImagePickerController()
+                                                      unsafe.picker.delegate = self
+                                                      unsafe.picker.isSingleSelection = true
+                                                      unsafe.picker.navigationBar.isTranslucent = false
+                                                      var assets = [PHAsset]()
+                                                      for img in unsafe.imageList {
+                                                          if let value = img as? PHAsset { assets.append(value) }
+                                                      }
+                                                      unsafe.picker.updateSelectedAssets(with: assets)
+                                                      unsafe.present(unsafe.picker, animated: false, completion: nil)
+                                                  }
                         }
+                      
                     } else {
                         if status != .justDenied {
                             Utils.photoLibraryPermissionAlert()
@@ -238,41 +231,6 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
                     Utils.alertCameraAccessNeeded()
                     return
                 }
-            }
-        }
-    }
-    
-    private func showCameraPermissionPopup() {
-        // Camera
-        Utils.authorizeVideo { (status) in
-            switch status {
-            case .justDenied:
-                break
-            case .alreadyDenied:
-                Utils.alertCameraAccessNeeded()
-            case .restricted:
-                Utils.alertCameraAccessNeeded()
-            case .justAuthorized:
-                self.openCameraOrLibrary(type: .camera)
-            case .alreadyAuthorized:
-                self.openCameraOrLibrary(type: .camera)
-            }
-        }
-    }
-    
-    private func showPhotoGallaryPermissionPopup() {
-        Utils.authorizePhoto { (status) in
-            switch status {
-            case .justDenied:
-                break
-            case .alreadyDenied:
-                Utils.photoLibraryPermissionAlert()
-            case .restricted:
-                Utils.photoLibraryPermissionAlert()
-            case .justAuthorized:
-                self.openCameraOrLibrary(type: .photoLibrary)
-            case .alreadyAuthorized:
-                self.openCameraOrLibrary(type: .photoLibrary)
             }
         }
     }
@@ -297,10 +255,12 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
                 guard let unself = self else { return }
                 if let image = image {
                     unself.eventImage = image.squareImage()
+                    unself.clubHeader.setup(image: unself.eventImage)
                 }
             }
         } else if let image = imageAsset as? UIImage {
             eventImage = image
+            clubHeader.setup(image: eventImage)
         }
         validateAllFields()
     }
