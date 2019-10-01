@@ -93,7 +93,7 @@ extension ExploreViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         isSearch = true
         heightConstraintOfFilter.constant = 67
-        tableView.reloadData()
+        getEventCategoryListAPI()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -132,6 +132,9 @@ extension ExploreViewController: SelectEventTypeDelegate {
 
 // MARK: - CreatePostViewController Delegate
 extension ExploreViewController: CreatePostViewControllerDelegate {
+    func createPostSuccess(_ post: Post) {
+    }
+    
     func showSnackBar(text: String, buttonText: String) {
         /*
          notificationTitle = text

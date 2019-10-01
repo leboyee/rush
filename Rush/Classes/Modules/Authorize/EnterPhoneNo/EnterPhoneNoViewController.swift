@@ -100,6 +100,7 @@ extension EnterPhoneNoViewController {
     
     @IBAction func nextButtonAction() {
        //moveToVerificationView()
+        self.view.endEditing(true)
         Authorization.shared.session = ""
         authPhone()
         //self.performSegue(withIdentifier: Segues.enterPhoneVerification, sender: self)

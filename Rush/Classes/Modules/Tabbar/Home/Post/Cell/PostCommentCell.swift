@@ -21,6 +21,7 @@ class PostCommentCell: UITableViewCell {
     
     var userProfileClickEvent:(() -> Void)?
     var userNameClickEvent: ((_ name: String) -> Void)?
+    var replyClickEvent: (() -> Void)?
     var username = ""
     
     override func awakeFromNib() {
@@ -70,7 +71,7 @@ extension PostCommentCell {
     }
     
     @IBAction func replayButtonAction() {
-        
+        replyClickEvent?()
     }
     
     @IBAction func userProfileButtonAction() {

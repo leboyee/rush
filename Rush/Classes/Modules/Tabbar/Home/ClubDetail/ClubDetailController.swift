@@ -28,6 +28,7 @@ class ClubDetailViewController: UIViewController {
     var clubInfo: Club?
     var isMyClub = false
     var isFromCreateClub = false
+    var isCallAPI = true
     
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
@@ -43,6 +44,13 @@ class ClubDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        
+        // fetch club detail (Flag for come from create post = false otherwise true)
+        if isCallAPI {
+            getClubDetailAPI()
+        } else {
+            isCallAPI = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,9 +74,6 @@ class ClubDetailViewController: UIViewController {
         if userId == clubId {
             joinedClub = true
         }
-        
-        // fetch club detail
-        getClubDetailAPI()
         
         // setup tableview
         setupTableView()
@@ -104,10 +109,12 @@ extension ClubDetailViewController {
         } else if segue.identifier == Segues.createPost {
             guard let vc = segue.destination as? CreatePostViewController else { return }
             vc.clubInfo = clubInfo
+            vc.delegate = self
         } else if segue.identifier == Segues.postSegue {
             if let vc = segue.destination as? PostViewController {
                 vc.postInfo = sender as? Post
                 vc.clubInfo = clubInfo
+                vc.delegate = self
             }
         }
     }

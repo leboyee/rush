@@ -61,3 +61,19 @@ class Event: Codable {
         case rsvp = "event_rsvp_list"
     }
 }
+
+class EventCategory: Codable {
+    
+    var id: String = ""
+    var name: String = ""
+    var sortOrder = 0
+    
+    init() {
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name = "name"
+        case sortOrder = "sort_order"
+    }
+}
