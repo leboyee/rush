@@ -12,7 +12,7 @@ extension PostViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            if ((postInfo?.imageJson ?? "").photos?.count ?? 0) > 0 {
+            if (postInfo?.images?.count ?? 0) > 0 {
                 return screenWidth
             }
             return CGFloat.leastNormalMagnitude
