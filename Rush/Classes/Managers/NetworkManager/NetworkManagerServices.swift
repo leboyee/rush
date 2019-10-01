@@ -161,4 +161,8 @@ extension NetworkManager {
     func getClubCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "category/club", params: params, resultHandler: resultHandler)
     }
+    
+    func getCategoryClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "category/class/list", params: params, resultHandler: resultHandler)
+    }
 }

@@ -27,7 +27,7 @@ class CreateEventInviteViewController: UIViewController {
     var searchText = ""
     var friendsList = [String: Any]()
     var isRushFriends: Bool = false
-    //var selectedFriends = [Contact]()
+    var selectedInvitee = [Invite]()
 
     weak var delegate: EventInviteDelegate?
     
