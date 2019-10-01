@@ -128,6 +128,14 @@ extension EventCell {
         }
     }
     
+    func setup(className: String) {
+        classNameLabel.text = className
+    }
+    
+    func setup(classCount: String) {
+        classCountLabel.text = classCount
+    }
+    
     func setup(eventType: EventType) {
         if eventType == .publik {
             privacyImageView.image = #imageLiteral(resourceName: "privacy-public")
