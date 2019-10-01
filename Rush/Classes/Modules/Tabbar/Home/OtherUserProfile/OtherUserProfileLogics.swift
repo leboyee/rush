@@ -63,20 +63,20 @@ extension OtherUserProfileController {
                 unself.friendType = .addFriend
                 
                 let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: unself.userInfo?.name))",
-                                           duration: .middle,
-                                           actionText: "Undo",
-                                           actionBlock: { (_) in
-                                            unself.friendType = .friends
-                                            unself.tableView.reloadData()
+                    duration: .middle,
+                    actionText: "Undo",
+                    actionBlock: { (_) in
+                        unself.friendType = .friends
+                        unself.tableView.reloadData()
                 })
                 snackbar.show()
                 
                 /*
-                self_.navigationController?.popViewController(animated: true)
-                DispatchQueue.main.async {
-                    self_.delegate?.unfriendUser("Jessica O'Hara")
-                }
-                */
+                 self_.navigationController?.popViewController(animated: true)
+                 DispatchQueue.main.async {
+                 self_.delegate?.unfriendUser("Jessica O'Hara")
+                 }
+                 */
             } else if unself.friendType == .addFriend {
                 unself.friendType = .requested
             } else if unself.friendType == .requested {
@@ -108,20 +108,36 @@ extension OtherUserProfileController {
         case 2:
             cell.setup(invitees: [])
         case 3:
-            cell.setup(.upcoming, nil, nil)
+            cell.setup(.upcoming, nil, eventList)
         case 4:
-            cell.setup(.clubs, nil, nil)
+            cell.setup(.clubs, nil, clubList)
         case 5:
             cell.setup(.classes, nil, nil)
         default:
             cell.setup(.none, nil, nil)
         }
-        
+//        cell.cellSelected = { [weak self] (type, id, index) in
+//            guard let unsafe = self else { return }
+//            if type == .upcoming {
+//                let event = unsafe.eventList[index]
+//                unsafe.showEvent(event: event)
+//            } else if type == .clubs {
+//                let club = unsafe.clubList[index]
+//                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+//            }
+//        }
         cell.cellSelected = { [weak self] (type, id, index) in
-            guard let unself = self else { return }
+            guard let unsafe = self else { return }
             if indexPath.section == 2 {
-                unself.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
+                unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             }
+            //            else if type == .upcoming {
+            //                let event = unsafe.eventList[index]
+            //                unsafe.showEvent(event: event)
+            //            } else if type == .clubs {
+            //                let club = unsafe.clubList[index]
+            //                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            //            }
         }
     }
     
@@ -139,7 +155,7 @@ extension OtherUserProfileController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if section == 2 {
-                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
             } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
             } else if section == 4 {
@@ -173,4 +189,46 @@ extension OtherUserProfileController {
             self?.tableView.reloadData()
         }
     }
+        
+    func getClubListAPI(sortBy: String) {
+            
+            let param = [Keys.search: searchText,
+                         Keys.sortBy: sortBy,
+                         Keys.pageNo: pageNo] as [String: Any]
+            
+            if clubList.count == 0 {
+                Utils.showSpinner()
+            }
+            
+            ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+                Utils.hideSpinner()
+                guard let unsafe = self else { return }
+                if let clubs = value {
+                    unsafe.clubList = clubs
+                    unsafe.tableView.reloadData()
+                } else {
+                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                }
+            }
+        }
+        
+    func getEventList(sortBy: GetEventType) {
+            
+            let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                         Keys.search: searchText,
+                         Keys.sortBy: sortBy.rawValue,
+                         Keys.pageNo: pageNo] as [String: Any]
+            
+            ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+                Utils.hideSpinner()
+                guard let unsafe = self else { return }
+                if let events = value {
+                    unsafe.eventList = events
+                    unsafe.tableView.reloadData()
+                } else {
+                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                }
+            }
+        }
+
 }
