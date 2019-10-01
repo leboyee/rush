@@ -96,7 +96,6 @@ extension CreateEventInviteViewController {
             if let list = data {
                 if list.count > 0 {
                     var users = [Friend]()
-                    
                     for object in list {
                         users.append(object)
                         if let first = object.user?.firstName?.first {
@@ -127,8 +126,12 @@ extension CreateEventInviteViewController {
                         unsafe.friendListAraay.removeAll()
                     }
                 }
+                
+                unsafe.isRushFriends =  unsafe.friendListAraay.count > 0 ? true : false
+                unsafe.getContacts()
+                unsafe.tableView.reloadData()
             }
-            unsafe.tableView.reloadData()
+            
         }
     }
 }
