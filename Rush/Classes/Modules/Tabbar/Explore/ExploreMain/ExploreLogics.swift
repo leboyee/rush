@@ -63,6 +63,8 @@ extension ExploreViewController {
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
         if let data = dataList[indexPath.row] as? EventCategory {
             cell.setup(title: data.name)
+        } else if let data = dataList[indexPath.row] as? ClubCategory {
+            cell.setup(title: data.name)
         }
         cell.setup(isHideTopSeparator: true)
     }
@@ -110,7 +112,20 @@ extension ExploreViewController {
     func getEventCategoryListAPI() {
         Utils.showSpinner()
         let param = [Keys.search: searchText] as [String: Any]
-        ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, _) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let category = data {
+                unsafe.dataList = category
+            }
+            unsafe.tableView.reloadData()
+        }
+    }
+    
+    func getClubCategoryListAPI() {
+        Utils.showSpinner()
+        let param = [Keys.search: searchText] as [String: Any]
+        ServiceManager.shared.fetchClubCategoryList(params: param) { [weak self] (data, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = data {

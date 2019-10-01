@@ -157,4 +157,8 @@ extension NetworkManager {
     func getInviteeList(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
     }
+    
+    func getClubCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "category/club", params: params, resultHandler: resultHandler)
+    }
 }
