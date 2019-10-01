@@ -172,7 +172,9 @@
                 <outlet property="hoverView" destination="OE5-lQ-O7G" id="7Su-gg-752"/>
                 <outlet property="infoButton" destination="aHP-DZ-Arg" id="JvV-5c-YMl"/>
                 <outlet property="roundedView" destination="bCC-5K-eRF" id="hAr-KM-4le"/>
+                <outlet property="universtityLabel" destination="2Ci-pq-xTB" id="gNb-Nh-cGi"/>
                 <outlet property="userImageView" destination="zoM-HP-R3I" id="QP6-wK-ufg"/>
+                <outlet property="userNameLabel" destination="SBR-PG-QSJ" id="le0-HC-Ywi"/>
                 <outlet property="usernameView" destination="TXF-XI-Sqx" id="CoT-bS-8lX"/>
             </connections>
             <point key="canvasLocation" x="280" y="-61.169415292353825"/>
