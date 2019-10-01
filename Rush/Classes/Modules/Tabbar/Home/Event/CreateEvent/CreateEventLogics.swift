@@ -341,6 +341,7 @@ extension CreateEventViewController {
             let image = UIImage(data: cachedResponse.data) {
             eventImage = image
             self.tableView.reloadData()
+            self.validateAllFields()
             return
         }
         
@@ -355,6 +356,7 @@ extension CreateEventViewController {
                 UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
                     strongSelf.eventImage = image
                     strongSelf.tableView.reloadData()
+                    strongSelf.validateAllFields()
                 }, completion: nil)
             }
         }
@@ -439,6 +441,7 @@ extension CreateEventViewController: UnsplashPhotoPickerDelegate {
         if let photo = photos.first {
             self.downloadPhoto(photo)
         }
+        
         self.tableView.reloadData()
     }
 

@@ -56,6 +56,7 @@ extension UserInfoViewController {
                     datePikcerController.presenter.minDate = minDate
                     datePikcerController.presenter.currentDate = self.selectedDate
                     datePikcerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+                    self.nextButton.isHidden = true
                     self.present(datePikcerController, animated: false, completion: nil)
                 }
             case 1:
@@ -65,6 +66,7 @@ extension UserInfoViewController {
                     customPickerController.presenter.type = .gender
                     customPickerController.presenter.selectedIndexIn = self.selectedGender
                     customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+                    self.nextButton.isHidden = true
                     self.present(customPickerController, animated: false, completion: nil)
                 }
             case 2:
@@ -74,6 +76,7 @@ extension UserInfoViewController {
                     customPickerController.presenter.type = .relation
                     customPickerController.presenter.selectedIndexIn = self.selectedRelation
                     customPickerController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+                    self.nextButton.isHidden = true
                     self.present(customPickerController, animated: false, completion: nil)
                 }
             case 3:
@@ -90,6 +93,7 @@ extension UserInfoViewController {
 // MARK: - Date Picker Delegate
 extension UserInfoViewController: DatePickerDelegate {
     func selectedDate(_ date: Date) {
+        nextButton.isHidden = false
         selectedDate = date
         dob = date.toString(format: "dd.MM.yyyy")
         nextButtonEnabled()
@@ -100,6 +104,7 @@ extension UserInfoViewController: DatePickerDelegate {
 // MARK: - Custom Picker delegate
 extension UserInfoViewController: CustomPickerDelegate {
     func selectedValue(data: String, type: String) {
+        nextButton.isHidden = false
         if type == "Gender" {
             gender = data
             selectedGender = data == "Male" ? 0 : 1
