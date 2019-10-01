@@ -10,11 +10,11 @@ import UIKit
 
 struct RSVPAnswer: Codable {
     var index: Int
-    var answer: String
+    var ans: String
     
      private enum CodingKeys: String, CodingKey {
         case index
-        case answer
+        case ans
     }
 }
 
@@ -26,8 +26,6 @@ class RSVPViewController: UIViewController {
 
     var event: Event?
     var answers = [RSVPAnswer]()
-    //TODO: Temp Variable
-    let questionCount = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()

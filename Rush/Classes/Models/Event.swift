@@ -29,6 +29,7 @@ class Event: Codable {
     var longitude: String?
     var interests: String?
     var creator: User?
+    var rsvp: [RSVPQuestion]?
     var photo: Image? {
         return photoJson.photo
     }
@@ -57,5 +58,6 @@ class Event: Codable {
         case creator = "user"
         case isChatGroupInEvent = "event_is_chat_group"
         case interests = "event_interests"
+        case rsvp = "event_rsvp_list"
     }
 }
