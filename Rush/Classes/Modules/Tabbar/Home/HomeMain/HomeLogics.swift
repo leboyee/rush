@@ -17,6 +17,8 @@ extension HomeViewController {
             return eventList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         } else if section == 2 {
             return clubList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
+        } else if section == 3 {
+            return  classList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         }
         return 50
     }
@@ -34,6 +36,8 @@ extension HomeViewController {
             return eventList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         } else if indexPath.section == 2 {
             return clubList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
+        } else if indexPath.section == 3 {
+            return classList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         } else {
             return 157
         }
@@ -74,7 +78,7 @@ extension HomeViewController {
         } else if indexPath.section == 2 {
             cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
         } else {
-            cell.setup(.classes, nil, nil)
+            cell.setup(.classes, nil, classList)
         }
         
         cell.cellSelected = { [weak self] (type, id, index) in
@@ -163,8 +167,14 @@ extension HomeViewController {
     func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
 
-        ServiceManager.shared.fetchCategoryClassList(params: param) { (data, errorMsg) in
-            
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
         }
     }
 }

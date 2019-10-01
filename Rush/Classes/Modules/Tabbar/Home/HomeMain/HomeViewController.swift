@@ -24,6 +24,7 @@ class HomeViewController: CustomViewController {
     var pageNo = 1
     var clubList = [Club]()
     var eventList = [Event]()
+    var classList = [Class]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

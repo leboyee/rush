@@ -246,9 +246,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fine arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xew-ey-dVm">
-                                <rect key="frame" x="16" y="115" width="225" height="16"/>
+                                <rect key="frame" x="16" y="109" width="225" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="H0B-Nu-tIR"/>
+                                    <constraint firstAttribute="height" constant="22" id="H0B-Nu-tIR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
