@@ -84,7 +84,7 @@ class AddMinorsViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: Utils.getSystemVersion() < 13 ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
@@ -123,13 +123,18 @@ extension AddMinorsViewController {
     }
     
     @IBAction func addCustomMinoreButtonAction() {
-        var dict = [String: Any]()
-        dict["name"] = searchTextField.text
-        selectedArray.append(searchTextField.text ?? "")
-        customMinorArray.append(dict)
-        searchTextField.text = ""
-        getMinorList(searchText: "")
-        self.tableView.reloadData()
+        if searchTextField.text?.isEmpty == false {
+            var dict = [String: Any]()
+                 dict["name"] = searchTextField.text
+                 selectedArray.append(searchTextField.text ?? "")
+                 customMinorArray.append(dict)
+                 searchTextField.text = ""
+                 getMinorList(searchText: "")
+                 self.minorCustomButton.isHidden = true
+                 self.view.endEditing(true)
+                 self.tableView.reloadData()
+        }
+     
     }
     
     @IBAction func deleteButtonAction() {

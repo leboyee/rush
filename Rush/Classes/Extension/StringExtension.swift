@@ -18,6 +18,34 @@ extension String {
         return scheme == "mailto" && result?.range.length == self.count
     }
     
+    var isValidEmailAddressString: Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9 @_%+-].*", options: .caseInsensitive)
+            if regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) == nil {
+                return true
+            }
+
+        } catch {
+            debugPrint(error.localizedDescription)
+            return false
+        }
+        return false
+    }
+    
+    var isValidNameString: Bool {
+          do {
+              let regex = try NSRegularExpression(pattern: ".*[^0-9].*", options: .caseInsensitive)
+              if regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) != nil {
+                  return true
+              }
+
+          } catch {
+              debugPrint(error.localizedDescription)
+              return false
+          }
+          return false
+      }
+        
     //The password must be at least 6 characters and must include at least one upper and lower case letter.
     var isValidPassword: Bool {
         let pattern = "^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\\d$@$!%*#?&]{6,}$"

@@ -18,6 +18,9 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.universityCell, bundle: nil), forCellReuseIdentifier: Cell.universityCell)
         
+        searchTextField.delegate = self
+        searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
+
         tableView.reloadData()
     }
     
@@ -46,5 +49,27 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
+    }
+}
+
+extension ChooseUniversityViewController: UITextFieldDelegate {
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @objc func textDidChanged(_ textField: UITextField) {
+        deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
     }
 }

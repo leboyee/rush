@@ -76,7 +76,7 @@ extension EnterVerificationCodeViewController {
     func updateCode(code: String) {
         guard self.isCodeVerifing == false else { return }
         self.resendCodeButton.setImage(nil, for: .normal)
-        self.resendCodeButton.setTitle("Re-send Code", for: .normal)
+        self.resendCodeButton.setTitle("Resend Code", for: .normal)
         self.resendCodeButton.isUserInteractionEnabled = true
                         //Utils.alert(message: "Code sent successfully.")
         self.code = code
@@ -160,7 +160,7 @@ extension EnterVerificationCodeViewController {
                 unsafe.nextButton.setNextButton(isEnable: false)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
                     unsafe.resendCodeButton.setImage(nil, for: .normal)
-                    unsafe.resendCodeButton.setTitle("Re-send Code", for: .normal)
+                    unsafe.resendCodeButton.setTitle("Resend Code", for: .normal)
                     unsafe.resendCodeButton.isUserInteractionEnabled = true
                 })
 

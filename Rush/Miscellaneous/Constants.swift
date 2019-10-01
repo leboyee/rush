@@ -77,7 +77,8 @@ struct Cell {
     static let rsvpCell              = "RSVPCell"
     static let addEventLocationCell              = "AddEventLocationCell"
     static let addEventCalendarCell              = "AddEventCalendarCell"
-    
+    static let eventTimeCell                     = "EventTimeCell"
+
     static let organizer            = "OrganizerCell"
     static let postLike            = "PostLikeCell"
     static let postUser            = "PostUserCell"

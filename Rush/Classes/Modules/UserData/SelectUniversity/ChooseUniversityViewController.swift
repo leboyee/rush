@@ -17,6 +17,8 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var deleteButton: UIButton!
+
     var selectedIndex = -1
     
     override func viewDidLoad() {
@@ -51,6 +53,8 @@ class ChooseUniversityViewController: CustomViewController {
         // Set Custom part of Class
         self.bgImageView.setBgForLoginSignup()
         setCustomNavigationBarView()
+        deleteButton.isHidden = true
+
     }
     
     // Custom navigation Title View
@@ -60,7 +64,7 @@ class ChooseUniversityViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: -112, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: Utils.getSystemVersion() < 13 ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
