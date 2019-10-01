@@ -104,6 +104,9 @@ extension HomeViewController: SelectEventTypeDelegate {
 
 // MARK: - CreatePostViewController Delegate
 extension HomeViewController: CreatePostViewControllerDelegate {
+    func createPostSuccess(_ post: Post) {
+    }
+    
     func showSnackBar(text: String, buttonText: String) {
         /*
         notificationTitle = text

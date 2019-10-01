@@ -105,6 +105,10 @@ extension NetworkManager {
         requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
     }
     
+    func deletePost(postId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "post/\(postId)", params: param, resultHandler: resultHandler)
+    }
+    
     func postComment(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "comment", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
@@ -140,6 +144,10 @@ extension NetworkManager {
     
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
+    
+    func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "category/event", params: params, resultHandler: resultHandler)
     }
     
     func getCalendarList(params: [String: Any], resultHandler: @escaping ResultClosure) {

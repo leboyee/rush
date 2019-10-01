@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 
 protocol CreatePostViewControllerDelegate: class {
     func showSnackBar(text: String, buttonText: String)
+    func createPostSuccess(_ post: Post)
 }
 
 class CreatePostViewController: UIViewController {
@@ -237,6 +238,7 @@ extension CreatePostViewController {
             if let vc = segue.destination as? PostViewController {
                 vc.imageList = imageList
                 vc.postInfo = sender as? Post
+                vc.isFromCreatePost = true
             }
         }
     }

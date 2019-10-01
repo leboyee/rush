@@ -113,7 +113,10 @@ extension CreatePostViewController {
                     let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
                     let decoder = JSONDecoder()
                     let value = try decoder.decode(Post.self, from: dataClub)
-                    uwself.performSegue(withIdentifier: Segues.postSegue, sender: value)
+                    DispatchQueue.main.async {
+                        uwself.delegate?.createPostSuccess(value)
+                    }
+                    uwself.navigationController?.popViewController(animated: false)
                 } catch {
                     
                 }

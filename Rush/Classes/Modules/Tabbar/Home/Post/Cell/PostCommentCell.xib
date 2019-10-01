@@ -81,7 +81,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yd-IX-a8t">
-                                <rect key="frame" x="72" y="88.5" width="166.5" height="16"/>
+                                <rect key="frame" x="72" y="88.5" width="228" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-9x-8kU">
                                         <rect key="frame" x="16" y="0.0" width="49" height="16"/>
@@ -114,17 +114,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1ue-3R-lAq" firstAttribute="bottom" secondItem="2hE-Zc-eZ5" secondAttribute="bottom" id="39W-Dh-E73"/>
+                            <constraint firstAttribute="trailing" secondItem="4yd-IX-a8t" secondAttribute="trailing" constant="20" id="AeX-f2-iud"/>
                             <constraint firstItem="2hE-Zc-eZ5" firstAttribute="top" secondItem="UZH-lq-Xbl" secondAttribute="top" constant="12" id="BYx-aZ-sNH"/>
                             <constraint firstItem="1ue-3R-lAq" firstAttribute="top" secondItem="2hE-Zc-eZ5" secondAttribute="top" id="FdQ-eQ-VIr"/>
                             <constraint firstItem="1ue-3R-lAq" firstAttribute="trailing" secondItem="2hE-Zc-eZ5" secondAttribute="trailing" id="J74-WV-66O"/>
                             <constraint firstItem="1ue-3R-lAq" firstAttribute="leading" secondItem="2hE-Zc-eZ5" secondAttribute="leading" id="MVk-uk-BFF"/>
                             <constraint firstItem="2hE-Zc-eZ5" firstAttribute="leading" secondItem="UZH-lq-Xbl" secondAttribute="leading" constant="24" id="PgK-YT-ZBe"/>
                             <constraint firstItem="aKd-IC-wXE" firstAttribute="leading" secondItem="2hE-Zc-eZ5" secondAttribute="trailing" constant="8" id="TCG-lB-8Y9"/>
-                            <constraint firstItem="4yd-IX-a8t" firstAttribute="trailing" secondItem="aKd-IC-wXE" secondAttribute="trailing" id="UKS-sL-w0U"/>
                             <constraint firstAttribute="bottom" secondItem="4yd-IX-a8t" secondAttribute="bottom" id="WGX-BQ-lDs"/>
                             <constraint firstItem="4yd-IX-a8t" firstAttribute="top" secondItem="aKd-IC-wXE" secondAttribute="bottom" id="a8g-zJ-T9Z"/>
+                            <constraint firstItem="4yd-IX-a8t" firstAttribute="leading" secondItem="aKd-IC-wXE" secondAttribute="leading" id="c39-LL-elD"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aKd-IC-wXE" secondAttribute="trailing" constant="24" id="gXE-M0-FSz"/>
-                            <constraint firstItem="4yd-IX-a8t" firstAttribute="leading" secondItem="aKd-IC-wXE" secondAttribute="leading" id="twC-md-T3I"/>
                             <constraint firstItem="aKd-IC-wXE" firstAttribute="top" secondItem="UZH-lq-Xbl" secondAttribute="top" constant="12" id="wxk-DE-d0M"/>
                         </constraints>
                     </view>
