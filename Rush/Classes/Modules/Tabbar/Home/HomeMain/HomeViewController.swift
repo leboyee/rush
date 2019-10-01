@@ -40,6 +40,7 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
+        getClassCategoryAPI()
     }
     
     func setup() {

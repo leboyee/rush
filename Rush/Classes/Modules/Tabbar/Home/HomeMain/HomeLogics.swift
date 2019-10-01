@@ -159,4 +159,12 @@ extension HomeViewController {
             }
         }
     }
+    
+    func getClassCategoryAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+
+        ServiceManager.shared.fetchCategoryClassList(params: param) { (data, errorMsg) in
+            
+        }
+    }
 }
