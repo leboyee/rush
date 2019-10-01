@@ -40,6 +40,7 @@ class OtherUserProfileController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
+        getProfileAPI()
     }
     
     //MARk: - Other function
@@ -114,6 +115,10 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .profile
+            }
+        } else if segue.identifier == Segues.profileInformation {
+            if let vc = segue.destination as? ProfileInformationViewController {
+                vc.userInfo = userInfo
             }
         }
     }

@@ -106,7 +106,7 @@ extension OtherUserProfileController {
         case 1:
             cell.setup(imagesList: [])
         case 2:
-            cell.setup(userList: [])
+            cell.setup(invitees: [])
         case 3:
             cell.setup(.upcoming, nil, nil)
         case 4:
@@ -163,6 +163,14 @@ extension OtherUserProfileController {
     }
 }
 
+// Services
 extension OtherUserProfileController {
     
+    func getProfileAPI() {
+        let param = [Keys.profileUserId: userInfo?.userId ?? "0"]
+        ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
+            self?.userInfo = user
+            self?.tableView.reloadData()
+        }
+    }
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -72,9 +70,6 @@
                             <state key="normal">
                                 <color key="titleColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <connections>
-                                <action selector="calendarButtonAction" destination="-1" eventType="touchUpInside" id="R8w-QF-K21"/>
-                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqK-mz-m4f" customClass="CustomBrownLabel" customModule="Rush" customModuleProvider="target">
                             <rect key="frame" x="279" y="18" width="58" height="28"/>
@@ -89,6 +84,12 @@
                                 <constraint firstAttribute="height" constant="20" id="YtI-Lg-qdB"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqw-cs-LEB">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="64"/>
+                            <connections>
+                                <action selector="calendarButtonAction" destination="-1" eventType="touchUpInside" id="TCV-d7-bGU"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -96,13 +97,16 @@
                         <constraint firstItem="Gnl-lY-zaU" firstAttribute="leading" secondItem="u5S-VD-IJg" secondAttribute="leading" id="3Xi-Us-VKb"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="top" secondItem="wqK-mz-m4f" secondAttribute="top" id="60g-YE-bli"/>
                         <constraint firstItem="Gnl-lY-zaU" firstAttribute="top" secondItem="u5S-VD-IJg" secondAttribute="bottom" id="6Bx-1c-9GK"/>
+                        <constraint firstItem="cqw-cs-LEB" firstAttribute="top" secondItem="urp-ay-FeH" secondAttribute="top" id="6dd-qd-FWo"/>
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="top" secondItem="UU0-ER-kox" secondAttribute="bottom" id="6pN-ii-0dq"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="UU0-ER-kox" secondAttribute="trailing" constant="8" id="956-3V-sct"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="leading" secondItem="wqK-mz-m4f" secondAttribute="leading" id="Bmi-1b-qtp"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="leading" secondItem="Gnl-lY-zaU" secondAttribute="trailing" constant="5" id="Dva-0c-skV"/>
+                        <constraint firstItem="cqw-cs-LEB" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" id="J2J-Ok-WOQ"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="top" secondItem="urp-ay-FeH" secondAttribute="top" constant="12" id="LAH-yI-5jx"/>
                         <constraint firstItem="u5S-VD-IJg" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" constant="72" id="LoX-hg-cWa"/>
                         <constraint firstItem="bV1-Cq-EHk" firstAttribute="trailing" secondItem="beM-PM-fyO" secondAttribute="trailing" id="Ltz-xf-Wv8"/>
+                        <constraint firstAttribute="trailing" secondItem="cqw-cs-LEB" secondAttribute="trailing" id="Lx3-92-SGa"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="bottom" secondItem="wqK-mz-m4f" secondAttribute="bottom" id="NjS-k1-mLF"/>
                         <constraint firstItem="bV1-Cq-EHk" firstAttribute="centerY" secondItem="urp-ay-FeH" secondAttribute="centerY" id="RkM-ca-MAY"/>
                         <constraint firstItem="UU0-ER-kox" firstAttribute="leading" secondItem="urp-ay-FeH" secondAttribute="leading" constant="16" id="TcJ-nA-7WG"/>
@@ -111,6 +115,7 @@
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="trailing" secondItem="UU0-ER-kox" secondAttribute="trailing" id="jVe-n5-zNq"/>
                         <constraint firstItem="beM-PM-fyO" firstAttribute="centerY" secondItem="urp-ay-FeH" secondAttribute="centerY" id="qJ3-1L-oA7"/>
                         <constraint firstItem="4fQ-Q8-wYe" firstAttribute="leading" secondItem="UU0-ER-kox" secondAttribute="leading" id="s2R-mo-SyU"/>
+                        <constraint firstAttribute="bottom" secondItem="cqw-cs-LEB" secondAttribute="bottom" id="sZR-AK-cCa"/>
                         <constraint firstItem="UU0-ER-kox" firstAttribute="top" secondItem="urp-ay-FeH" secondAttribute="top" constant="15" id="vZM-vp-ZD6"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

@@ -10,6 +10,7 @@ import UIKit
 
 class ServiceManager: NSObject {
     static let shared = ServiceManager()
+    var dateformatter: DateFormatter?
     
     // MARK: - functions
     /*
@@ -19,6 +20,20 @@ class ServiceManager: NSObject {
         _ = NetworkManager.getUserAgent()
     }
     
+    /*
+     *
+     */
+    func decodeObject<T: Decodable>(fromData data: Any?) -> T? {
+        if let jsonData = data as? [String: Any] {
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
+            return try? jsonDecoder.decode(
+                    T.self, from: JSONSerialization.data(withJSONObject: jsonData, options: [])
+            ) as T?
+        } else {
+            return nil
+        }
+    }
     /*
      *
      */
@@ -51,14 +66,13 @@ class ServiceManager: NSObject {
             
             do {
                 let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .secondsSince1970
+                jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
                 let decodedObject = try jsonDecoder.decode(T.self, from: JSONSerialization.data(withJSONObject: list, options: []))
                 closer(decodedObject, "")
             } catch let error {
                 print("ERROR DECODING: \(error)")
                 closer(nil, error.localizedDescription)
             }
-            
             return
         }
         

@@ -9,7 +9,7 @@
 import UIKit
 
 class CreatePostCell: UITableViewCell {
-    
+    @IBOutlet weak var profileImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +21,10 @@ class CreatePostCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension CreatePostCell {
+    func set(url: URL?) {
+        profileImageView.sd_setImage(with: url, placeholderImage: nil)
+    }
 }

@@ -21,7 +21,7 @@ class Club: Codable {
     var clubCreatedAt: String?
     var clubUpdatedAt: String?
     var user: User?
-    var invitees: [Invitees]?
+    var invitees: [Invitee]?
     
     private enum CodingKeys: String, CodingKey {
         case id = "_id"

@@ -25,7 +25,7 @@ extension CreatePostViewController {
             cell.setup(title: club.user?.name ?? "")
             cell.setup(detail: "Posting in " + (club.clubName ?? ""))
         } else if let event = eventInfo { // Event
-            cell.setup(title: event.owner?.name ?? "")
+            cell.setup(title: event.creator?.name ?? "")
             cell.setup(detail: "Posting in " + (event.title))
         }
     }
@@ -37,7 +37,7 @@ extension CreatePostViewController {
             [weak self] (textView) in
             guard let unself = self else { return }
             
-            unself.postText = textView.text
+            unself.postText = textView.text.trimmingCharacters(in: .whitespaces)
             
             let startHeight = textView.frame.size.height
             var calcHeight = textView.sizeThatFits(textView.frame.size).height

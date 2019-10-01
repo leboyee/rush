@@ -16,20 +16,30 @@ extension ServiceManager {
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, errorMessage) in
                 closer(events, errorMessage)
             })
-            /*
-            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
-            })
-            */
         }
     }
     
     // Event Detail API
-    func fetchEventDetail(eventId: String, closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func fetchEventDetail(eventId: String, closer: @escaping (_ event: Event?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventDetail(eventId: eventId) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+                if let object = data?[Keys.event] as? [String: Any] {
+                    let event: Event? = unsafe.decodeObject(fromData: object)
+                     closer(event, errorMessage)
+                } else {
+                     closer(nil, errorMessage)
+                }
+            })
+        }
+    }
+    
+    // Event Detail API
+    func fetchInviteeList(eventId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getInviteeList(eventId: eventId, params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, errorMessage) in
+                closer(invitees, errorMessage)
             })
         }
     }
@@ -39,6 +49,16 @@ extension ServiceManager {
         NetworkManager.shared.joinEvent(eventId: eventId, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
             uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
+    // Calendar List API
+    func fetchCalendarList(params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getCalendarList(params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
         }

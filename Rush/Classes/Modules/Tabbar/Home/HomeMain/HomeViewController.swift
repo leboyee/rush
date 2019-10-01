@@ -39,7 +39,7 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
+        getEventList(sortBy: .myUpcoming)
     }
     
     func setup() {
@@ -56,9 +56,7 @@ class HomeViewController: CustomViewController {
         self.view.backgroundColor = UIColor.bgBlack
         
         // Right item button
-        let img = UIImage(named: "active-create")
-        let selector = #selector(createButtonAction)
-        let rightBar = UIBarButtonItem(image: img, style: .plain, target: self, action: selector)
+        let rightBar = UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBar
             
         /*
@@ -154,7 +152,7 @@ extension HomeViewController {
             vc.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Segues.homeEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.type = .other
+            vc.eventId = (sender as? Event)?.id
             vc.event = sender as? Event
         }
     }

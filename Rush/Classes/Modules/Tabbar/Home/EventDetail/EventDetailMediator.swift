@@ -128,6 +128,10 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         selectedRow(indexPath)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
+    
     // MARK: - Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight(section)
@@ -144,7 +148,7 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     // MARK: - Footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1.0
+        return sectionFooter(section)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -154,7 +158,7 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     // MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
-        let smallHeaderHeight = event?.date == nil ? headerSmallWithoutDateHeight : headerSmallWithDateHeight
+        let smallHeaderHeight = event?.start == nil ? headerSmallWithoutDateHeight : headerSmallWithDateHeight
         let smallHeight = smallHeaderHeight + topMergin
         let h = headerHeightConstraint.constant - scrollView.contentOffset.y
         let height = min(max(h, smallHeight), screenHeight)

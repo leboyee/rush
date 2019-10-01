@@ -32,6 +32,8 @@ class CreateClubViewController: UIViewController {
     var interestList = [String]()
     var peopleList = [Contact]()
     
+    var clubInfo: Club?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +58,8 @@ class CreateClubViewController: UIViewController {
     }
     
     func setupUI() {
+        // set all data for manage(edit) club
+        setupData()
         
         // Setup tableview
         setupTableView()
@@ -66,17 +70,38 @@ class CreateClubViewController: UIViewController {
         // Setup header
         fillImageHeader()
     }
+    
+    func setupData() {
+        if let club = clubInfo {
+            nameClub = club.clubName ?? ""
+            clubDescription = club.clubDesc ?? ""
+            isCreateGroupChat = (club.clubIsChatGroup ?? "0") == "1" ? true : false
+            
+            let interests = (club.clubInterests ?? "").components(separatedBy: ",")
+            interestList = interests
+        }
+    }
 }
 
 // MARK: - Actions
 extension CreateClubViewController {
     @IBAction func cancelButtonAction() {
-        navigationController?.popViewController(animated: false)
+        if clubInfo != nil {
+            dismiss(animated: false, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: false)
+        }
     }
     
     @IBAction func saveButtonAction() {
         if saveButton.isEnabled {
-            createClubAPI()
+            if clubInfo != nil {
+                // Update club info
+                updateClubAPI()
+            } else {
+                // Create club info
+                createClubAPI()
+            }
         }
     }
     

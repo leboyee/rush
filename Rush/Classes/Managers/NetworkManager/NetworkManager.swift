@@ -443,7 +443,7 @@ class NetworkManager: NSObject {
         var mutableData = Data()
         mutableData.append("--\(requestBodyBoundary)\r\n".data(using: String.Encoding.utf8)!)
         var bodyParts = [Data]()
-        for var value in params ?? [] {
+        for value in params ?? [] {
             var someData = Data()
             let name = value["name"]!
             let contentType = value["Content-Type"]!

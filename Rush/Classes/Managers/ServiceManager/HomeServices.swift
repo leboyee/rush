@@ -84,11 +84,16 @@ extension ServiceManager {
         }
     }
         
-    func votePost(postId: String, voteType: String, closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func votePost(postId: String, voteType: String, closer: @escaping (_ post: Post?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.votePost(postId: postId, voteType: voteType) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
             uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+                if let object = data?[Keys.post] as? [String: Any] {
+                    let post: Post? = uwself.decodeObject(fromData: object)
+                    closer(post, nil)
+                } else {
+                    closer(nil, errorMessage)
+                }
             })
         }
     }

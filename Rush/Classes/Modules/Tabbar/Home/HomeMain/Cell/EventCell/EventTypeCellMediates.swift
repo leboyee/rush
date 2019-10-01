@@ -29,9 +29,9 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as? EventCell else { return UICollectionViewCell() }
             fillEventCell(cell, indexPath)
             return cell
-        } else if cellType == .clubUser || cellType == .friends {
+        } else if cellType == .invitees || cellType == .friends {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as? UserCell else { return UICollectionViewCell() }
-            if cellType == .clubUser {
+            if cellType == .invitees {
                 fillUserCell(cell, indexPath)
             } else if cellType == .friends {
                 fillFriendCell(cell, indexPath)

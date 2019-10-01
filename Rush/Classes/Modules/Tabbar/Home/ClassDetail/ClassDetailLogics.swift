@@ -94,7 +94,7 @@ extension ClassDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(userList: [])
+        cell.setup(invitees: [])
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {

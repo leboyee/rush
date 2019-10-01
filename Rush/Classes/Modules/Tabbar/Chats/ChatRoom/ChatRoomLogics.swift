@@ -22,7 +22,7 @@ extension ChatRoomViewController {
         
         if let friend = friendProfile {
             grpName = friend.name + ", " + loggedInUserName
-            imgUrl = (friend.images?.first?.thumb ?? "") + "," + loggedInUserImg
+            imgUrl = (friend.photo?.thumb ?? "") + "," + loggedInUserImg
             otherUserId = friend.userId
         }
         
@@ -223,15 +223,15 @@ extension ChatRoomViewController {
     func updateUserImage() {
         if friendProfile != nil {
             if channel != nil {
-                let img = friendProfile?.images?.first?.thumb ?? ""
+                let img = friendProfile?.photo?.thumb ?? ""
                 emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 updateChannelNameAndImagesOnNav()
             } else {
-                let img = friendProfile?.images?.first?.thumb ?? ""
+                let img = friendProfile?.photo?.thumb ?? ""
                 emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 
                 userNameNavLabel.text = friendProfile?.name ?? ""
-                let imgUser = friendProfile?.images?.first?.thumb ?? ""
+                let imgUser = friendProfile?.photo?.thumb ?? ""
                 showSingleOrGroupPhotos(photoURL: imgUser)
             }
         } else {
@@ -316,7 +316,7 @@ extension ChatRoomViewController {
                 }
             }
         } else if let frnd = friendProfile {
-            imageName = frnd.images?.first?.thumb ?? ""
+            imageName = frnd.photo?.thumb ?? ""
             userName = frnd.name
         }
         return imageName

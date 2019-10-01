@@ -206,11 +206,12 @@ open class TagListView: UIView {
     private(set) var rows = 0 {
         didSet {
             invalidateIntrinsicContentSize()
+            /*
             var frame = self.frame
             frame.size.height = self.intrinsicContentSize.height + 20
             self.frame = frame
             print(frame.size.height)
-            self.layoutIfNeeded()
+            self.layoutIfNeeded()*/
         }
     }
     
