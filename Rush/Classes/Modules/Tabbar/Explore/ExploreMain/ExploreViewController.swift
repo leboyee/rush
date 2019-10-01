@@ -31,11 +31,13 @@ class ExploreViewController: CustomViewController {
     var isShowJoinEvents = true
     var isSearch = false
     
+    var searchText = ""
+    
     var university = "Harvard University"
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
-    var eventList: [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
+    var dataList = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

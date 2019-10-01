@@ -93,7 +93,7 @@ extension ExploreViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         isSearch = true
         heightConstraintOfFilter.constant = 67
-        tableView.reloadData()
+        getEventCategoryListAPI()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

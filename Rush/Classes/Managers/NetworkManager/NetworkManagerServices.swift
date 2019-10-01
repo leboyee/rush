@@ -145,4 +145,8 @@ extension NetworkManager {
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
+    
+    func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "category/event", params: params, resultHandler: resultHandler)
+    }
 }

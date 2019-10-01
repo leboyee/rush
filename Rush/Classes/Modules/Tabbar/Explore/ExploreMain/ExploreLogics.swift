@@ -28,7 +28,7 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            return (searchType == .event || searchType == .people) ? eventList.count : 1
+            return (searchType == .event || searchType == .people) ? dataList.count : 1
         } else {
             if section == 0 {
                 return 3
@@ -61,7 +61,9 @@ extension ExploreViewController {
     }
     
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
-        cell.setup(title: eventList[indexPath.row])
+        if let data = dataList[indexPath.row] as? EventCategory {
+            cell.setup(title: data.name)
+        }
         cell.setup(isHideTopSeparator: true)
     }
     
@@ -94,10 +96,27 @@ extension ExploreViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         if isSearch && searchType == .event {
-            performSegue(withIdentifier: Segues.eventCategorySegue, sender: eventList[indexPath.row])
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: dataList[indexPath.row])
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
+        }
+    }
+}
+
+// MARK: - Services
+extension ExploreViewController {
+    
+    func getEventCategoryListAPI() {
+        Utils.showSpinner()
+        let param = [Keys.search: searchText] as [String: Any]
+        ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let category = data {
+                unsafe.dataList = category
+            }
+            unsafe.tableView.reloadData()
         }
     }
 }
