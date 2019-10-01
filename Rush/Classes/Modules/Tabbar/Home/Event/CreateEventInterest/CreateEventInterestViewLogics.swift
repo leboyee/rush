@@ -72,12 +72,13 @@ extension CreateEventInterestViewController {
             }
             
             if myInterestArray?.count ?? 0 > 0 {
-                var counter = 0
-                for interest in unsafe.interestArray {
-                    if myInterestArray?.contains(interest.interestName) ?? false {
-                       unsafe.interestArray.remove(at: counter)
+                if unsafe.interestArray.count > 0 {
+                    for interest in unsafe.interestArray {
+                        if myInterestArray?.contains(interest.interestName) ?? false {
+                            guard let index = unsafe.interestArray.firstIndex(where: { $0.interestName == interest.interestName }) else { return }
+                            unsafe.interestArray.remove(at: index)
+                        }
                     }
-                    counter += 1
                 }
             }
             unsafe.tableView.reloadData()
