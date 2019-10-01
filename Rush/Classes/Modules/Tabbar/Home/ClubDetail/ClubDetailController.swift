@@ -28,6 +28,7 @@ class ClubDetailViewController: UIViewController {
     var clubInfo: Club?
     var isMyClub = false
     var isFromCreateClub = false
+    var isCallAPI = true
     
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
@@ -44,8 +45,12 @@ class ClubDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         
-        // fetch club detail
-        getClubDetailAPI()
+        // fetch club detail (Flag for come from create post = false otherwise true)
+        if isCallAPI {
+            getClubDetailAPI()
+        } else {
+            isCallAPI = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
