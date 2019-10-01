@@ -62,7 +62,7 @@ extension OtherUserProfileController {
             } else if unself.friendType == .friends {
                 unself.friendType = .addFriend
                 
-                let snackbar = TTGSnackbar(message: "You unfriended Jessica O'Hara",
+                let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: unself.userInfo?.name))",
                                            duration: .middle,
                                            actionText: "Undo",
                                            actionBlock: { (_) in
