@@ -163,7 +163,8 @@ struct Segues {
 
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
     static let chatContactListSegue               = "ChatContactListSegue"
-    static let homeEventDetail                    = "HomeEventDetailSegue"
+    static let homeEventDetail                     = "HomeEventDetailSegue"
+    static let otherProfileEventDetail            = "OtherProfileEventDetail"
     static let rsvpJoinEvent                      = "RSVPJoinEventSegue"
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"

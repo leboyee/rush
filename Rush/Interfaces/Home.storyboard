@@ -929,6 +929,8 @@
                         <segue destination="XdX-g6-gj5" kind="show" identifier="ProfileInformationSegue" id="Lcf-y5-6Em"/>
                         <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="z8H-lu-6pg"/>
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" modalPresentationStyle="overFullScreen" id="0IY-Pg-ID3"/>
+                        <segue destination="KEM-eO-SVs" kind="show" identifier="OtherProfileEventDetail" id="Oel-AB-j6R"/>
+                        <segue destination="mi6-YI-bln" kind="show" identifier="ClubDetailSegue" id="gSU-VJ-XvQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -991,14 +993,14 @@
             <objects>
                 <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-ny-c5L" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdy-yw-FIA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-Fn-OZe">
                                         <rect key="frame" x="16" y="16" width="382" height="32"/>
@@ -1046,7 +1048,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Yl-Xqs">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="796"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -1651,11 +1653,13 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QdI-xB-jJm"/>
-        <segue reference="LvJ-Dj-Yna"/>
+        <segue reference="0IY-Pg-ID3"/>
         <segue reference="S8E-ms-kaf"/>
-        <segue reference="2qn-kC-bGH"/>
-        <segue reference="bqe-q0-s4j"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="E7I-YA-fBT"/>
         <segue reference="90w-At-CBu"/>
         <segue reference="g4h-St-bby"/>
+        <segue reference="gSU-VJ-XvQ"/>
+        <segue reference="Oel-AB-j6R"/>
     </inferredMetricsTieBreakers>
 </document>
