@@ -25,10 +25,7 @@ class User: Codable {
     var educationYear: String?
     var majors: [String]?
     var minors: [String]?
-    //var classes: [Classes]?
     var interest: [String]?
-    var photo: Image?
-    var images: [Image]?
     var university: String?
     var birthDate: String?
     var gender: String?
@@ -49,6 +46,15 @@ class User: Codable {
     var status: Int = 0
     var instaUserName: String?
     var instaToken: String?
+    private var photoJson: String?
+    private var convertJsonToPhoto: Image?
+
+    var photo: Image? {
+        if convertJsonToPhoto == nil {
+            convertJsonToPhoto = photoJson?.photo
+        }
+        return convertJsonToPhoto
+    }
 
     var name: String {
         return (firstName ?? "") + " " + (lastName ?? "")
@@ -93,6 +99,7 @@ class User: Codable {
         case status = "u_status"
         case instaToken = "insta_token"
         case instaUserName = "insta_username"
+        case photoJson = "u_photo"
         //        case name
         //var classes: [Classes]? u_edu_classes,u_university
 

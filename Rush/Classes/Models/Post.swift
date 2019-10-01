@@ -13,13 +13,19 @@ class Post: Codable {
     var id: String?
     var parentId: String? // Event / Club / Class
     var text: String?
-    var images: [Image]?
-    var imageJson: String?
     var numberOfLikes: Int = 0
     var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
     var user: User?
     var createDate: Date?
+    private var imageJson: String?
+    private var convertedListOfImages: [Image]?
+    var images: [Image]? {
+        if convertedListOfImages == nil {
+            convertedListOfImages = imageJson?.photos
+        }
+        return convertedListOfImages
+    }
 
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -34,5 +40,6 @@ class Post: Codable {
     }
     
     init() {
+        
     }
 }

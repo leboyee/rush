@@ -39,7 +39,7 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
+        getEventList(sortBy: .myUpcoming)
     }
     
     func setup() {
@@ -152,7 +152,7 @@ extension HomeViewController {
             vc.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Segues.homeEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.type = .other
+            vc.eventId = (sender as? Event)?.id
             vc.event = sender as? Event
         }
     }

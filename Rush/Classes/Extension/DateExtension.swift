@@ -105,7 +105,6 @@ extension Date {
         let newDate = dateFormatter.date(from: date)
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd H:mm:ss"
-        
         return dateFormatter.string(from: newDate ?? Date())
     }
     

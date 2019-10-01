@@ -40,15 +40,19 @@ extension LocationCell {
 // MARK: - Data Functions
 extension LocationCell {
     
-    func set(address: Address) {
-        locationLabel.text = address.fullAddress
+    func set(address: String, lat: String, lon: String) {
+        locationLabel.text = address
         
         spinner.startAnimating()
-        imageFromLocation(lat: address.latitude ?? 0, lon: address.longitude ?? 0) { image in
-            DispatchQueue.main.async {
+        if let latitude = Double(lat), let longitude = Double(lon) {
+        imageFromLocation(lat: latitude, lon: longitude) { image in
+              DispatchQueue.main.async {
                 self.locationImageView.image = image
                 self.spinner.stopAnimating()
+              }
             }
+        } else {
+            self.locationImageView.image = nil
         }
     }
 }

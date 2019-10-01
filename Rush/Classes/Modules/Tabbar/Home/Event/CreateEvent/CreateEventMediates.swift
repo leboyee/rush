@@ -25,7 +25,8 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.register(UINib(nibName: Cell.dateAndTimeEvent, bundle: nil), forCellReuseIdentifier: Cell.dateAndTimeEvent)
         
           tableView.register(UINib(nibName: Cell.addEventCalendarCell, bundle: nil), forCellReuseIdentifier: Cell.addEventCalendarCell)
-
+        
+        tableView.register(UINib(nibName: Cell.eventTimeCell, bundle: nil), forCellReuseIdentifier: Cell.eventTimeCell)
         tableView.reloadData()
     }
     
@@ -55,6 +56,12 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
                         fillAddCalendarCell(cell, indexPath)
                         return cell
                     }
+                } else if isStartTime == true || isEndTime == true {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventTimeCell, for: indexPath) as? EventTimeCell {
+                        fillEventTimeCell(cell, indexPath)
+                        return cell
+                    }
+
                 } else {
                    return UITableViewCell()
                 }

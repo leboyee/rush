@@ -18,6 +18,34 @@ extension String {
         return scheme == "mailto" && result?.range.length == self.count
     }
     
+    var isValidEmailAddressString: Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9 @_%+-].*", options: .caseInsensitive)
+            if regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) == nil {
+                return true
+            }
+
+        } catch {
+            debugPrint(error.localizedDescription)
+            return false
+        }
+        return false
+    }
+    
+    var isValidNameString: Bool {
+          do {
+              let regex = try NSRegularExpression(pattern: ".*[^0-9].*", options: .caseInsensitive)
+              if regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) != nil {
+                  return true
+              }
+
+          } catch {
+              debugPrint(error.localizedDescription)
+              return false
+          }
+          return false
+      }
+        
     //The password must be at least 6 characters and must include at least one upper and lower case letter.
     var isValidPassword: Bool {
         let pattern = "^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\\d$@$!%*#?&]{6,}$"
@@ -75,7 +103,8 @@ extension String {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let detector = try? NSDataDetector(types: types.rawValue)
         guard detector != nil && self.count > 0 else { return false }
-        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count)) > 0 {
+        let range = NSRange(location: 0, length: self.count)
+        if detector!.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: range) > 0 {
             return true
         }
         return false
@@ -230,4 +259,16 @@ extension String {
         }
         return nil
     }
+    
+    var tags: [Tag] {
+        guard self.isNotEmpty else { return [] }
+        var list = [Tag]()
+        let items = self.components(separatedBy: ",")
+            for item in items {
+                let tag = Tag(id: 0, text: item)
+                list.append(tag)
+            }
+        return list
+    }
+    
 }

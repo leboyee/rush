@@ -11,7 +11,7 @@ import UIKit
 enum CellType {
     case none
     case event
-    case clubUser
+    case invitees
     case profileImage
     case friends
     case interests
@@ -56,9 +56,9 @@ class EventTypeCell: UITableViewCell {
         reload()
     }
     
-    func setup(userList: [Invitees]?) {
-        cellType = .clubUser
-        list = userList
+    func setup(invitees: [Invitee]?) {
+        cellType = .invitees
+        list = invitees
         reload()
     }
     
@@ -74,7 +74,7 @@ class EventTypeCell: UITableViewCell {
         reload()
     }
     
-    func setup(imagesList: [UIImage]) {
+    func setup(imagesList: [Image]) {
         cellType = .profileImage
         reload()
     }

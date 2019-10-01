@@ -37,8 +37,8 @@ extension PostViewController {
     
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        if (postInfo?.imageJson ?? "").isNotEmpty {
-            cell.set(url: postInfo?.imageJson?.photos?.first?.url())
+        if let images = postInfo?.images {
+            cell.set(url: images.first?.url())
         }
         cell.setup(isCleareButtonHide: true)
     }
@@ -112,18 +112,11 @@ extension PostViewController {
 // MARK: - Services
 extension PostViewController {
     func voteClubAPI(id: String, type: String) {
-        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
             guard let uwself = self else { return }
-            if let post = data?[Keys.post] as? [String: Any] {
-                do {
-                    let dataClub = try JSONSerialization.data(withJSONObject: post, options: .prettyPrinted)
-                    let decoder = JSONDecoder()
-                    let value = try decoder.decode(Post.self, from: dataClub)
-                    uwself.postInfo = value
-                    uwself.tableView.reloadData()
-                } catch {
-                    
-                }
+            if let post = result {
+                uwself.postInfo = post
+                uwself.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

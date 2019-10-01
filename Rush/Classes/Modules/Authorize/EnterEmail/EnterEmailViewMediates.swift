@@ -51,6 +51,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isValidEmailAddressString == false { return false }
         if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) {
             return false
         }
@@ -85,14 +86,13 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             self.view.layoutIfNeeded()
             nextButton.setNextButton(isEnable: false)
         } else {
-            if textField.text?.count == 1 {
+            if textField.text?.count ?? 0 > 0 && eduLabel.isHidden == false {
                 eduLabel.text = " .edu"
                 eduLabel.isHidden = true
                 textField.text = "\(textField.text ?? "").edu"
                 if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4) {
                     textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
                 }
-
                 nextButton.setNextButton(isEnable: true)
                 self.view.layoutIfNeeded()
             }

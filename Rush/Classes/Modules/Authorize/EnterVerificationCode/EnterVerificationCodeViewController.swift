@@ -90,7 +90,7 @@ class EnterVerificationCodeViewController: CustomViewController {
         codeErrorLabel.isHidden = true
         self.bgImageView.setBgForLoginSignup()
         dotAnimationView.isHidden = true
-        self.resendCodeButton.setTitle("Re-send Code", for: .normal)
+        self.resendCodeButton.setTitle("Resend Code", for: .normal)
         self.resendCodeButton.isUserInteractionEnabled = true
         if loginType == .register {
             verificationTitleLabel.text = Text.verificationTitleRegister
@@ -143,8 +143,8 @@ extension EnterVerificationCodeViewController {
     }
     
     func loginSuccess() {
-       //AppDelegate.shared?.setupStoryboard()
-        self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
+       AppDelegate.shared?.setupStoryboard()
+       // self.performSegue(withIdentifier: Segues.enterUserNameSegue, sender: self)
 
     }
 }

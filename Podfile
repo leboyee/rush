@@ -11,7 +11,7 @@ target 'Rush' do
   pod 'SVProgressHUD'
   
   #Keyboard Manager
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '6.4.2'
   
   #Reachability
   pod 'ReachabilitySwift'
@@ -37,7 +37,7 @@ target 'Rush' do
    pod 'FacebookShare'
    pod 'FacebookCore'
 
-   pod 'UnsplashPhotoPicker', '~> 1.0'
+  pod 'UnsplashPhotoPicker', '~> 1.0'
 
 
 end
