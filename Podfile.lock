@@ -57,7 +57,7 @@ PODS:
   - GoogleMaps/Base (3.4.0)
   - GooglePlaces (3.4.0):
     - GoogleMaps/Base (= 3.4.0)
-  - IQKeyboardManagerSwift (6.5.1)
+  - IQKeyboardManagerSwift (6.4.2)
   - MGSwipeTableCell (1.6.9)
   - ReachabilitySwift (4.3.1)
   - SDWebImage (5.2.0):
@@ -78,7 +78,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookShare
   - GooglePlaces
-  - IQKeyboardManagerSwift
+  - IQKeyboardManagerSwift (= 6.4.2)
   - MGSwipeTableCell
   - ReachabilitySwift
   - SDWebImage
@@ -120,7 +120,7 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
   GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
-  IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
+  IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
   MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDWebImage: 609192dcf3898c910a2848032372ead951e66364
@@ -130,6 +130,6 @@ SPEC CHECKSUMS:
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   UnsplashPhotoPicker: 3669aef6d3cd8bc45f19d681eef0af5920325c79
 
-PODFILE CHECKSUM: ae4857fc8126fa4ed147ebbc9278a1b00221a389
+PODFILE CHECKSUM: 1d2f7dc4a4d1df4da7a73d494c017c6a93ef585e
 
 COCOAPODS: 1.8.0
