@@ -12,7 +12,7 @@ extension ChatContactsListViewController {
     
     func cellCount(_ section: Int) -> Int {
         let alpha = alphabet[section]
-        if let data = friendsList[alpha.lowercased()] as? [User] {
+        if let data = friendsList[alpha.lowercased()] as? [Friend] {
             return data.count
         } else {
             return 0
@@ -21,19 +21,19 @@ extension ChatContactsListViewController {
     
     func fillCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         let alpha = alphabet[indexPath.section]
-        let users = friendsList[alpha.lowercased()] as? [User]
-        let user = users?[indexPath.row]
-        cell.setup(title: user?.name ?? "")
+        let users = friendsList[alpha.lowercased()] as? [Friend]
+        let friend = users?[indexPath.row]
+        cell.setup(title: friend?.user?.name ?? "")
     }
     
     func cellSelected(_ indexPath: IndexPath) {
         let alpha = alphabet[indexPath.section]
-        let users = friendsList[alpha.lowercased()] as? [User]
-        let user = users?[indexPath.row]
+        let users = friendsList[alpha.lowercased()] as? [Friend]
+        let friend = users?[indexPath.row]
         let controller = ChatRoomViewController()
         controller.isShowTempData = false
-        controller.friendProfile = user as? Friend
-        controller.userName = user?.name ?? ""
+        controller.friendProfile = friend
+        controller.userName = friend?.user?.name ?? ""
         controller.isGroupChat = false
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -53,7 +53,7 @@ extension ChatContactsListViewController {
         
         var params = [Keys.pageNo: "\(pageNo)"]
         params[Keys.search] = searchText
-        params[Keys.profileUserId] = "5d5d207139277643e20f9bee"//Authorization.shared.profile?.userId
+        params[Keys.profileUserId] = Authorization.shared.profile?.userId
         
         ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
@@ -63,25 +63,23 @@ extension ChatContactsListViewController {
                 unsafe.friendsList.removeAll()
             }
             
-            if let list = data?[Keys.list] as? [[String: Any]] {
+            if let list = data {
                 if list.count > 0 {
-                    var users = [User]()
+                    var users = [Friend]()
                     
                     for object in list {
-                        let value = object[Keys.user] as? [String: Any] ?? [:]
-                        let user = Authorization.shared.getUser(data: value) //***
-                        users.append(user)
-                        if let first = user.firstName {
-                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [User] {
-                                let filter = value.filter { $0.userId == user.userId }
+                        users.append(object)
+                        if let first = object.user?.firstName?.first {
+                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [Friend] {
+                                let filter = value.filter { $0.user?.id == object.user?.id }
                                 if filter.count == 0 {
-                                    var tempUser = [User]()
+                                    var tempUser = [Friend]()
                                     tempUser.append(contentsOf: value)
-                                    tempUser.append(user)
+                                    tempUser.append(object)
                                     unsafe.friendsList[first.description.lowercased()] = tempUser
                                 }
                             } else {
-                                unsafe.friendsList[first.description.lowercased()] = [user]
+                                unsafe.friendsList[first.description.lowercased()] = [object]
                             }
                         }
                     }

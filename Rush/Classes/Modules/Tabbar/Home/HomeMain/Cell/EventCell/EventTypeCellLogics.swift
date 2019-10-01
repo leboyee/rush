@@ -73,8 +73,8 @@ extension EventTypeCell {
     
     func fillFriendCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if let friend = list?[indexPath.row] as? Friend {
-            cell.setup(text: friend.firstName ?? "")//***
-            cell.setup(url: friend.photo?.urlThumb())
+            cell.setup(text: friend.user?.firstName ?? "")//***
+            cell.setup(url: friend.user?.photo?.urlThumb())
             cell.setup(isShowCount: false)
         }
     }

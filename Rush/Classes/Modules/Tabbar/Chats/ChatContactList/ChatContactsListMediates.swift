@@ -51,7 +51,7 @@ extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let alpha = alphabet[section]
-        let users = friendsList[alpha.lowercased()] as? [User]
+        let users = friendsList[alpha.lowercased()] as? [Friend]
         if (users?.count ?? 0) > 0 {
             let header = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 32))
             let label = UILabel(frame: CGRect(x: 24, y: 16, width: screenWidth, height: 16))
@@ -69,7 +69,7 @@ extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let alpha = alphabet[section]
-        let users = friendsList[alpha.lowercased()] as? [User]
+        let users = friendsList[alpha.lowercased()] as? [Friend]
         return (users?.count ?? 0) > 0 ? 32 : CGFloat.leastNormalMagnitude
     }
     

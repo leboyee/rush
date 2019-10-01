@@ -70,7 +70,9 @@ extension ExploreViewController {
     }
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
-        cell.setup(title: "John Lotter")
+        if let people = dataList[indexPath.row] as? Friend {
+            cell.setup(title: people.user?.name ?? "")
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -140,6 +142,42 @@ extension ExploreViewController {
                     
                 }
             }
+        }
+    }
+    
+    func getFriendListAPI() {
+        
+        if pageNo == 1 { dataList.removeAll() }
+        
+        var params = [Keys.pageNo: "\(pageNo)"]
+        params[Keys.search] = searchText
+        params[Keys.profileUserId] = Authorization.shared.profile?.userId
+        
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+            guard let unsafe = self else { return }
+            Utils.hideSpinner()
+            
+            if unsafe.pageNo == 1 {
+                unsafe.dataList.removeAll()
+            }
+            
+            if let list = data {
+                if list.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.dataList = list
+                    } else {
+                        unsafe.dataList.append(contentsOf: list)
+                    }
+                    unsafe.pageNo += 1
+                    unsafe.isNextPageExist = true
+                } else {
+                    unsafe.isNextPageExist = false
+                    if unsafe.pageNo == 1 {
+                        unsafe.dataList.removeAll()
+                    }
+                }
+            }
+            unsafe.tableView.reloadData()
         }
     }
 }
