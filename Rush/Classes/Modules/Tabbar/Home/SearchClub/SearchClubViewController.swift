@@ -25,12 +25,10 @@ class SearchClubViewController: CustomViewController {
     var notificationButtonTitle = ""
     
     var selectedIndex = -1
-    
     var searchType: SearchClubType = .none
     var searchText = ""
     
-    var categoryList: [String] = ["Art", "Music", "Technology", "Sports", "Beauty & style", "Startups", "Cars & trucks"]
-    var classesList: [String] = ["101-01", "101-02", "101-03", "102-01", "102-02", "102-03", "103-A", "103-B", "103-C"]
+    var dataList = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +48,10 @@ class SearchClubViewController: CustomViewController {
     
     func setup() {
         setupUI()
+        
+        if searchType == .searchList {
+            getClubCategoryListAPI(isShowSpinner: true)
+        }
     }
     
     func setupUI() {

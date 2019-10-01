@@ -28,7 +28,7 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            return (searchType == .event || searchType == .people) ? dataList.count : 1
+            return dataList.count
         } else {
             if section == 0 {
                 return 3
@@ -110,10 +110,10 @@ extension ExploreViewController {
 extension ExploreViewController {
     
     func getEventCategoryListAPI() {
-        Utils.showSpinner()
+        //Utils.showSpinner()
         let param = [Keys.search: searchText] as [String: Any]
         ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, _) in
-            Utils.hideSpinner()
+            //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = data {
                 unsafe.dataList = category
@@ -123,15 +123,23 @@ extension ExploreViewController {
     }
     
     func getClubCategoryListAPI() {
-        Utils.showSpinner()
+        //Utils.showSpinner()
         let param = [Keys.search: searchText] as [String: Any]
         ServiceManager.shared.fetchClubCategoryList(params: param) { [weak self] (data, _) in
-            Utils.hideSpinner()
+            //Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let category = data {
-                unsafe.dataList = category
+            if let value = data?[Keys.list] as? [[String: Any]] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    if let value = try? decoder.decode([ClubCategory].self, from: dataClub) {
+                        unsafe.dataList = value
+                    }
+                    unsafe.tableView.reloadData()
+                } catch {
+                    
+                }
             }
-            unsafe.tableView.reloadData()
         }
     }
 }
