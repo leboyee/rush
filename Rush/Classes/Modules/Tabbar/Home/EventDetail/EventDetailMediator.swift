@@ -190,3 +190,13 @@ extension EventDetailViewController {
         
     }
 }
+
+extension EventDetailViewController: SharePostViewControllerDelegate {
+    func delete(type: SharePostType, object: Any?) {
+        if type == .event, let event = object as? Event {
+            deleteEvent(event: event)
+        } else if type == .post, let post = object as? Post {
+            deletePost(post: post)
+        }
+    }
+}

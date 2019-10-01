@@ -320,7 +320,7 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if eventImage != nil && nameEvent.isNotEmpty && eventDescription.isNotEmpty && address.isNotEmpty && array.count > 0 {
+        if eventImage != nil && nameEvent.isNotEmpty {
             navigationItem.rightBarButtonItem = saveBtnActive
         } else {
             navigationItem.rightBarButtonItem = saveBtnDisActive// saveBtnDisActive

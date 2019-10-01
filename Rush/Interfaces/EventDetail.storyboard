@@ -29,6 +29,14 @@
             </objects>
             <point key="canvasLocation" x="2425" y="-1132"/>
         </scene>
+        <!--SharePostViewController-->
+        <scene sceneID="l5I-tQ-cBL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SharePostViewController" id="i1V-0o-tW2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cb3-bp-3R6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2425" y="-1246"/>
+        </scene>
         <!--PostViewController-->
         <scene sceneID="8Up-uQ-Iqg">
             <objects>
@@ -117,6 +125,7 @@
                         <segue destination="EfL-qI-UY9" kind="show" identifier="RSVPJoinEventSegue" id="Hog-Dl-lFR"/>
                         <segue destination="CNg-R7-1NU" kind="show" identifier="CreateEventPostSegue" id="gc2-Vt-4Zh"/>
                         <segue destination="QDD-Yv-tG6" kind="show" identifier="EventPostDetailSegue" id="m7k-oW-jq0"/>
+                        <segue destination="i1V-0o-tW2" kind="presentation" identifier="EventDetailShareSegue" animates="NO" modalPresentationStyle="overFullScreen" id="FUB-qK-eXh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>

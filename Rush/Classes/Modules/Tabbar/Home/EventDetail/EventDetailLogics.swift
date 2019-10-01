@@ -29,10 +29,22 @@ extension EventDetailViewController {
         fetchPosts()
     }
     
+    func deleteEvent(event: Event) {
+        deleteEventAPI(id: event.id)
+    }
+    
+    func deletePost(post: Post) {
+        if let id = post.id {
+          deletePostAPI(id: id)
+        }
+    }
+    
     func loadEventSection() {
         guard let event = self.event else { return }
         if event.creator?.id == Authorization.shared.profile?.userId {
             type = .my
+        } else if let eventInvite = event.eventInvite?.first {
+            type = eventInvite.status == 1 ? .joined : .invited
         } else {
             type = .other
         }
@@ -47,7 +59,7 @@ extension EventDetailViewController {
                 EventSection(type: .createPost, title: "Posts")
             ]
             /// Need to call post list here
-                loadPosts()
+            loadPosts()
         } else if type == .other {
             sections = [
                 EventSection(type: .about, title: nil),
@@ -408,18 +420,47 @@ extension EventDetailViewController {
         }
     }
     
-    func voteAPI(id: String, type: String) {
+    private func voteAPI(id: String, type: String) {
         ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let post = result {
-                    let index = unsafe.postList?.firstIndex(where: { ( $0.id == post.id ) })
-                    if let position = index, unsafe.postList?.count ?? 0 > position {
+                let index = unsafe.postList?.firstIndex(where: { ( $0.id == post.id ) })
+                if let position = index, unsafe.postList?.count ?? 0 > position {
                         unsafe.postList?[position] = post
                         unsafe.reloadTable()
-                    }
+                }
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    private func deleteEventAPI(id: String) {
+       Utils.showSpinner()
+       ServiceManager.shared.deleteEvent(eventId: id) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.backButtoAction()
+            } else if let message = errorMsg {
+                unsafe.showMessage(message: message)
+            }
+        }
+    }
+    
+   private func deletePostAPI(id: String) {
+       Utils.showSpinner()
+       ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                if let index = unsafe.postList?.firstIndex(where: { $0.id == id }) {
+                    unsafe.postList?.remove(at: index)
+                    unsafe.reloadTable()
+                }
+            } else if let message = errorMsg {
+                unsafe.showMessage(message: message)
             }
         }
     }
