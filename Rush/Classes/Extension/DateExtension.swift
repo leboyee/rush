@@ -294,13 +294,13 @@ extension Date {
         } else if hourAgo < date {
             return date.toString(format: "hh a")
         } else if dayAgo < date {
-            let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
+            let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour ?? 0
             return "\(diff) hrs ago"
         } else if weekAgo < date {
-            let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+            let diff = Calendar.current.dateComponents([.day], from: date, to: Date()).day ?? 0
             return "\(diff) days ago"
         }
-        let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
+        let diff = Calendar.current.dateComponents([.weekOfYear], from: date, to: Date()).weekOfYear ?? 0
         return "\(diff) weeks ago"
     }
 }
