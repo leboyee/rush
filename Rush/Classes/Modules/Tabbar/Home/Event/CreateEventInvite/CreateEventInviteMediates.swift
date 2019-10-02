@@ -68,12 +68,12 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
         if isRushFriends == true {
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]
-                cell.setup(title: "\(profile.name)")
+                cell.setup(title: "\(profile.user?.name ?? "")")
                 if let image = UIImage(named: "profile_tab_inactive") {
                     cell.setupImage(image: image)
                 }
                 cell.setup(isHidden: false)
-                cell.setup(isSelected: selectedFriendListArray.contains(where: { $0.userId == profile.userId }))
+                cell.setup(isSelected: selectedFriendListArray.contains(where: { $0.user?.id == profile.user?.id }))
                 return cell
             } else {
                 // let alpha = alphabet[indexPath.section]
@@ -153,8 +153,8 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
         if isRushFriends == true {
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]
-                if  selectedFriendListArray.contains(where: { $0.userId == profile.userId }) {
-                    guard let index = selectedFriendListArray.firstIndex(where: { $0.name == profile.name }) else { return }
+                if  selectedFriendListArray.contains(where: { $0.user?.id == profile.user?.id }) {
+                    guard let index = selectedFriendListArray.firstIndex(where: { $0.user?.name == profile.user?.name }) else { return }
                     selectedFriendListArray.remove(at: index)
                 } else {
                     selectedFriendListArray.append(profile)

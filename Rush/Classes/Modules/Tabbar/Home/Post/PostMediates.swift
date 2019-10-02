@@ -111,7 +111,7 @@ extension PostViewController: GrowingTextViewDelegate {
 
 // MARK: - SharePostViewControllerDelegate
 extension PostViewController: SharePostViewControllerDelegate {
-    func deletePost() {
+    func delete(type: SharePostType, object: Any?) {
         deletePostAPI()
     }
 }

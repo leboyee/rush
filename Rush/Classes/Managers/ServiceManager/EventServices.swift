@@ -64,6 +64,16 @@ extension ServiceManager {
         }
     }
     
+    // Delete Event API
+    func deleteEvent(eventId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.deleteEvent(eventId: eventId) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
     // Calendar List API
     func fetchCalendarList(params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getCalendarList(params: params) { [weak self] (data, error, code) in

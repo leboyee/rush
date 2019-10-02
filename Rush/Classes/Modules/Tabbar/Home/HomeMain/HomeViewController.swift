@@ -24,6 +24,7 @@ class HomeViewController: CustomViewController {
     var pageNo = 1
     var clubList = [Club]()
     var eventList = [Event]()
+    var classList = [Class]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
+        getClassCategoryAPI()
     }
     
     func setup() {

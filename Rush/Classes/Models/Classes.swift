@@ -49,3 +49,36 @@ class SubClasses: NSObject {
         
     }
 }
+
+class Class: Codable {
+    var id: String = ""
+    var classList: [SubClass]?
+    var name: String = ""
+    
+    init() { }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case classList = "classes"
+    }
+}
+
+class SubClass: Codable {
+    
+    var id: String = ""
+    var location: String = ""
+    var name: String = ""
+    var photo: String = ""
+    var categoryId: String = ""
+    
+    init() { }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name = "class_name"
+        case location = "calss_location"
+        case photo = "class_photo"
+        case categoryId = "class_cat_id"
+    }
+}

@@ -15,75 +15,37 @@ enum FriendStatus {
     case approved
 }
 
-class Friend: User {
+class Friend: Codable {
     
-    var friendId: Int64 = 0
+    var friendId: String = "0"
     var friendUserId: String = "0"
     var friendOtherUserId: String = "0"
     var friendStatus: Int = 0
     var friendType: Int = 0
+    var user: User?
     
-    var matchId: Int64 = 0
-    var matchStatus: Int64 = 0
-    
-    /*
-    override init(data: [String: Any]) {
-        super.init(data: data)
-        setValue(data: data)
-    }
-    
-    override init() {
-        super.init()
-    }*/
-    
-    // MARK: - Other functions
     var friendName: String {
-            if let list = name.components(separatedBy: " ") as [String]?, list.count >= 2 {
-                if let first = list.first, let second = list.last, !first.isEmpty, !second.isEmpty {
-                    let indexToOfText = second.index(second.startIndex, offsetBy: 1)
-                    let text = first + " " + second[..<indexToOfText]
-                    return text
-                }
-            }
-            return name
-    }
-    
-    // MARK: - Private Functions
-    private func setValue(data: [String: Any]) {
-        
-        if let object = data[Keys.friend] as? [String: Any] {
-            if let frdId = object[Keys.friendId] as? Int64 {
-                friendId = frdId
+        if let list = user?.name.components(separatedBy: " ") as [String]?, list.count >= 2 {
+            if let first = list.first, let second = list.last, !first.isEmpty, !second.isEmpty {
+                let indexToOfText = second.index(second.startIndex, offsetBy: 1)
+                let text = first + " " + second[..<indexToOfText]
+                return text
             }
         }
-        
-        if let frdId = data[Keys.friendId] as? Int64 {
-            friendId = frdId
-        }
-        
-        if let value = data[Keys.friendUserId] as? Int64 {
-            friendUserId = String(value)
-        }
-        
-        if let value = data[Keys.friendOtherUserId] as? Int64 {
-            friendOtherUserId = String(value)
-        }
-        
-        if let value = data[Keys.friendStatus] as? Int {
-            friendStatus = value
-        }
-        
-        if let value = data[Keys.friendType] as? Int {
-            friendType = value
-        }
-        
-        // Match status
-        if let value = data[Keys.matchStatus] as? Int64 {
-            matchStatus = value
-        }
-        
-        // Profile
-        //setData(data: data) //***
+        return user?.name ?? ""
     }
     
+    init() {
+        
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        
+        case friendId = "_id"
+        case friendUserId = "frd_user_id"
+        case friendOtherUserId = "frd_other_user_id"
+        case friendType = "frd_type"
+        case friendStatus = "frd_status"
+        case user
+    }
 }

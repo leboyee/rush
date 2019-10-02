@@ -173,6 +173,10 @@ extension ProfileViewController {
             let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
             ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
                 self?.profileDetail.profile = user
+                if let list = user?.interest {
+                  let string = list.joined(separator: ",")
+                    self?.profileDetail.interests = string.tags
+                }
                 self?.setupHeaderData()
                 self?.downloadGroup.leave()
             }
@@ -205,9 +209,9 @@ extension ProfileViewController {
             guard let userId = self.profileDetail.profile?.userId else { return }
             let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
             ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
-                if let list = data?[Keys.list] as? [[String: Any]] {
-                    
-                }
+//                if let list = data?[Keys.list] as? [[String: Any]] {
+//                    
+//                }
                 self?.downloadGroup.leave()
             }
         }

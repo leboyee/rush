@@ -113,7 +113,6 @@ extension ClubListViewController {
         } else if segue.identifier == Segues.searchClubSegue {
             guard let vc = segue.destination as? SearchClubViewController else { return }
             vc.searchType = screenType == .club ? .searchList : .classes
-            vc.searchText = "Fine arts classes"
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club

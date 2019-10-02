@@ -66,7 +66,7 @@ extension CreateClubViewController {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: interestList[indexPath.row])
             }
-            //cell.textView.isUserInteractionEnabled = false
+            cell.textView.isUserInteractionEnabled = false
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 3 {
             if indexPath.row == peopleList.count {
@@ -74,8 +74,9 @@ extension CreateClubViewController {
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
                 cell.setup(isUserInterfaceEnable: false)
             } else {
+                let invite = peopleList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", text: peopleList[indexPath.row].displayName)
+                cell.setup(placeholder: "", text: (invite.isFriend == true ? invite.profile?.name : invite.contact?.displayName) ?? "")
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
             cell.textView.isUserInteractionEnabled = false

@@ -7,17 +7,6 @@
 //
 
 import UIKit
-
-struct RSVPAnswer: Codable {
-    var index: Int
-    var answer: String
-    
-     private enum CodingKeys: String, CodingKey {
-        case index
-        case answer
-    }
-}
-
 class RSVPViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,8 +15,6 @@ class RSVPViewController: UIViewController {
 
     var event: Event?
     var answers = [RSVPAnswer]()
-    //TODO: Temp Variable
-    let questionCount = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,9 +71,24 @@ extension RSVPViewController {
         joinButton.isEnabled = isEnbled
     }
     
-    func joinSuccessfully() {
-        performSegue(withIdentifier: Segues.eventJoinedPopup, sender: nil)
+    func joinSuccessfully(isFirstTime: Bool) {
+        if isFirstTime {
+           performSegue(withIdentifier: Segues.eventJoinedPopup, sender: nil)
+        }
+        /// Reload event details
+        if let navigationController = navigationController {
+            navigationController.viewControllers.forEach({ (vc) in
+            if vc.isKind(of: EventDetailViewController.self) {
+                (vc as? EventDetailViewController)?.type = .joined
+                (vc as? EventDetailViewController)?.loadAllData()
+               }
+            })
+        }
         navigationController?.popViewController(animated: false)
+    }
+    
+    func showMessage(message: String) {
+        Utils.alert(message: message)
     }
 }
 

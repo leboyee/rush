@@ -13,6 +13,28 @@ struct EventGroup {
     var events: [Event]
 }
 
+struct RSVPAnswer: Codable {
+    var index: Int
+    var ans: String
+    
+     private enum CodingKeys: String, CodingKey {
+        case index
+        case ans
+    }
+}
+
+struct EventInvite: Codable {
+    var id: String = ""
+    var status: Int = -1 // 0 = invited, 1 = joined
+    var rsvpAns: [RSVPAnswer]?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case status
+        case rsvpAns = "rsvp_ans"
+    }
+}
+
 class Event: Codable {
     
     var id: String = ""
@@ -29,6 +51,8 @@ class Event: Codable {
     var longitude: String?
     var interests: String?
     var creator: User?
+    var rsvp: [RSVPQuestion]?
+    var eventInvite: [EventInvite]?
     var photo: Image? {
         return photoJson.photo
     }
@@ -36,9 +60,6 @@ class Event: Codable {
     private var isChatGroupInEvent: String?
     var isChatGroup: Bool {
         return isChatGroupInEvent == "1" ? true : false
-    }
-
-    init() {
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -57,6 +78,8 @@ class Event: Codable {
         case creator = "user"
         case isChatGroupInEvent = "event_is_chat_group"
         case interests = "event_interests"
+        case rsvp = "event_rsvp_list"
+        case eventInvite = "my_event_invite"
     }
 }
 

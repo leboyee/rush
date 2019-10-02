@@ -117,7 +117,7 @@ extension EventDetailViewController {
     }
    
     @IBAction func shareButtoAction() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.eventDetailShare, sender: event)
     }
     
 }
@@ -149,6 +149,11 @@ extension EventDetailViewController {
     func showComments(post: Post) {
         performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
     }
+    
+    func showMessage(message: String) {
+        Utils.alert(message: message)
+    }
+    
 }
 
 // MARK: - Navigations
@@ -167,6 +172,12 @@ extension EventDetailViewController {
             if let vc = segue.destination as? PostViewController {
                 vc.eventInfo = event
                 vc.postInfo = sender as? Post
+            }
+        } else if segue.identifier == Segues.eventDetailShare {
+            if let vc = segue.destination as? SharePostViewController {
+                vc.delegate = self
+                vc.type = .event
+                vc.object = sender
             }
         }
     }
