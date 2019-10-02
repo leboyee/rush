@@ -49,3 +49,4 @@ class Friend: Codable {
         case user
     }
 }
+

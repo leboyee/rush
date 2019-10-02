@@ -15,7 +15,7 @@ class UserPostImageTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     var clearButtonClickEvent: (() -> Void)?
     
-    internal var aspectConstraint : NSLayoutConstraint? {
+    internal var aspectConstraint: NSLayoutConstraint? {
         didSet {
             if oldValue != nil {
                 postImageView.removeConstraint(oldValue!)

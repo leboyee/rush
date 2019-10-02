@@ -35,6 +35,7 @@ struct Cell {
     static let textView             = "TextViewCell"
     static let clubName             = "ClubNameCell"
     static let clubManage           = "ClubManageCell"
+    static let question             = "QuestionCell"
     static let createUserPost       = "CreateUserPostCell"
     static let tag                  = "TagCell"
     static let user                 = "UserCell"
