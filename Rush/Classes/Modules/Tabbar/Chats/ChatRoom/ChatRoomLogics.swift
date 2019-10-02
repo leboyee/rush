@@ -21,9 +21,9 @@ extension ChatRoomViewController {
         let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
         
         if let friend = friendProfile {
-            grpName = friend.name + ", " + loggedInUserName
-            imgUrl = (friend.photo?.thumb ?? "") + "," + loggedInUserImg
-            otherUserId = friend.userId
+            grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
+            imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
+            otherUserId = friend.user?.id ?? "0"
         }
         
         ChatManager().createGroupChannelwithUsers(userIds: [otherUserId, loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: "", completionHandler: { (channel) in
@@ -71,9 +71,9 @@ extension ChatRoomViewController {
             
             for friend in friends {
                 if name.isEmpty {
-                    name = friend.name.smallName + "."
+                    name = (friend.user?.name ?? "").smallName + "."
                 } else {
-                    let smallName  = friend.name.smallName + "."
+                    let smallName  = (friend.user?.name.smallName ?? "") + "."
                     name = "\(name), \(smallName)"
                 }
             }
@@ -187,10 +187,10 @@ extension ChatRoomViewController {
         
         if let friendList = friends {
             for friend in friendList {
-                if !userIds.contains(friend.userId) && !ChatManager().isMemberExistInChannel(channel: self.channel, userid: friend.userId) {
-                    urls.append(friend.photo?.thumb ?? "")
-                    userIds.append(friend.userId)
-                    nickNames.append(friend.name)
+                if !userIds.contains(friend.user?.id ?? "0") && !ChatManager().isMemberExistInChannel(channel: self.channel, userid: (friend.user?.id ?? "0")) {
+                    urls.append(friend.user?.photo?.thumb ?? "")
+                    userIds.append((friend.user?.id ?? "0"))
+                    nickNames.append(friend.user?.name ?? "")
                 }
             }
         }
@@ -223,15 +223,15 @@ extension ChatRoomViewController {
     func updateUserImage() {
         if friendProfile != nil {
             if channel != nil {
-                let img = friendProfile?.photo?.thumb ?? ""
+                let img = friendProfile?.user?.photo?.thumb ?? ""
                 emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 updateChannelNameAndImagesOnNav()
             } else {
-                let img = friendProfile?.photo?.thumb ?? ""
+                let img = friendProfile?.user?.photo?.thumb ?? ""
                 emptyUserImageView.sd_setImage(with: URL(string: img), completed: nil)
                 
-                userNameNavLabel.text = friendProfile?.name ?? ""
-                let imgUser = friendProfile?.photo?.thumb ?? ""
+                userNameNavLabel.text = friendProfile?.user?.name ?? ""
+                let imgUser = friendProfile?.user?.photo?.thumb ?? ""
                 showSingleOrGroupPhotos(photoURL: imgUser)
             }
         } else {
@@ -316,8 +316,8 @@ extension ChatRoomViewController {
                 }
             }
         } else if let frnd = friendProfile {
-            imageName = frnd.photo?.thumb ?? ""
-            userName = frnd.name
+            imageName = frnd.user?.photo?.thumb ?? ""
+            userName = frnd.user?.name ?? ""
         }
         return imageName
     }

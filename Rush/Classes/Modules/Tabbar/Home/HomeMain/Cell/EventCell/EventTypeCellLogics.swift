@@ -13,7 +13,7 @@ extension EventTypeCell {
     func cellCount(_ section: Int) -> Int {
         if cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) { // after stable app (remove this line)
             return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
-        } else if type == .upcoming {
+        } else if type == .upcoming || type == .classes {
             return list?.count ?? 0
         }
         return 10
@@ -51,9 +51,12 @@ extension EventTypeCell {
                 cell.setup(eventDetail: "Get the latest dev skills")
             }
         } else if type == .classes {
-            
+            if let classList = list as? [Class] {
+                let value = classList[indexPath.item]
+                cell.setup(className: value.name)
+                cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
+            }
         }
-        
     }
     
     func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
@@ -73,8 +76,8 @@ extension EventTypeCell {
     
     func fillFriendCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if let friend = list?[indexPath.row] as? Friend {
-            cell.setup(text: friend.firstName ?? "")//***
-            cell.setup(url: friend.photo?.urlThumb())
+            cell.setup(text: friend.user?.firstName ?? "")//***
+            cell.setup(url: friend.user?.photo?.urlThumb())
             cell.setup(isShowCount: false)
         }
     }

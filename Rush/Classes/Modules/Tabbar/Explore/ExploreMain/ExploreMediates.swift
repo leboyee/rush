@@ -36,7 +36,7 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if isSearch {
-            if searchType == .event {
+            if searchType != .people {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as? SearchClubCell else { return UITableViewCell() }
                 fillEventCell(cell, indexPath)
                 return cell
@@ -112,9 +112,19 @@ extension ExploreViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChanged(_ textField: UITextField) {
         if (textField.text ?? "").count > 0 {
+            searchText = textField.text ?? ""
             clearButton.isHidden = false
         } else {
+            searchText = ""
             clearButton.isHidden = true
+        }
+        
+        if searchType == .event {
+            getEventCategoryListAPI()
+        } else if searchType == .club {
+            getClubCategoryListAPI()
+        } else if searchType == .people {
+            getFriendListAPI()
         }
     }
 }

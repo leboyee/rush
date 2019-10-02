@@ -96,11 +96,15 @@ extension ClubDetailViewController {
     func fillJoinedUserCell(_ cell: EventTypeCell) {
         cell.setup(invitees: clubInfo?.invitees)
         
-        cell.cellSelected = { [weak self] (type, id, index) in
+        cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
             if index != 0 {
                 let invitee = unself.clubInfo?.invitees?[index - 1] // -1 of ViewAll Cell item
-                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
+                if invitee?.user?.id == Authorization.shared.profile?.id {
+                    self?.tabBarController?.selectedIndex = 3
+                } else {
+                    unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
+                }
             }
         }
     }

@@ -79,7 +79,7 @@ extension CreateEventInviteViewController {
 extension CreateEventInviteViewController {
     func getFriendListAPI() {
         
-        if pageNo == 1 { friendListAraay.removeAll() }
+        if pageNo == 1 { friendsList.removeAll() }
         
         var params = [Keys.pageNo: "\(pageNo)"]
         params[Keys.search] = searchText
@@ -90,28 +90,25 @@ extension CreateEventInviteViewController {
             Utils.hideSpinner()
             
             if unsafe.pageNo == 1 {
-                unsafe.friendListAraay.removeAll()
+                unsafe.friendsList.removeAll()
             }
             
-            if let list = data?[Keys.list] as? [[String: Any]] {
+            if let list = data {
                 if list.count > 0 {
-                    var users = [User]()
-                    
+                    var users = [Friend]()
                     for object in list {
-                        let value = object[Keys.user] as? [String: Any] ?? [:]
-                        let user = Authorization.shared.getUser(data: value)
-                        users.append(user)
-                        if let first = user.firstName { //***
-                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [User] {
-                                let filter = value.filter { $0.userId == user.userId }
+                        users.append(object)
+                        if let first = object.user?.firstName?.first {
+                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [Friend] {
+                                let filter = value.filter { $0.user?.id == object.user?.id }
                                 if filter.count == 0 {
-                                    var tempUser = [User]()
+                                    var tempUser = [Friend]()
                                     tempUser.append(contentsOf: value)
-                                    tempUser.append(user)
+                                    tempUser.append(object)
                                     unsafe.friendsList[first.description.lowercased()] = tempUser
                                 }
                             } else {
-                                unsafe.friendsList[first.description.lowercased()] = [user]
+                                unsafe.friendsList[first.description.lowercased()] = [object]
                             }
                         }
                     }
@@ -129,11 +126,12 @@ extension CreateEventInviteViewController {
                         unsafe.friendListAraay.removeAll()
                     }
                 }
-                unsafe.isRushFriends =  unsafe.friendListAraay.count > 0 ? true : false
                 
+                unsafe.isRushFriends =  unsafe.friendListAraay.count > 0 ? true : false
+                unsafe.getContacts()
+                unsafe.tableView.reloadData()
             }
-            unsafe.getContacts()
-            unsafe.tableView.reloadData()
+            
         }
     }
 }

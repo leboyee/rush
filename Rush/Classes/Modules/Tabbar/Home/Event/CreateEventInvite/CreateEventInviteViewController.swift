@@ -20,14 +20,14 @@ class CreateEventInviteViewController: UIViewController {
     var items = [ContactsPresenterItem]()
     var itemsDictionary = [String: [Contact]]()
     var selectedItem = [Contact]()
-    var friendListAraay = [User]()
-    var selectedFriendListArray = [User]()
+    var friendListAraay = [Friend]()
+    var selectedFriendListArray = [Friend]()
     var pageNo = 1
     var isNextPageExist = false
     var searchText = ""
     var friendsList = [String: Any]()
     var isRushFriends: Bool = false
-    //var selectedFriends = [Contact]()
+    var selectedInvitee = [Invite]()
 
     weak var delegate: EventInviteDelegate?
     
@@ -66,7 +66,7 @@ extension CreateEventInviteViewController {
                 for profile in self.selectedFriendListArray {
                     let invite = Invite()
                     invite.isFriend = true
-                    invite.profile = profile
+                    invite.profile = profile.user
                     inviteArray.append(invite)
                 }
                 for contact in self.selectedItem {

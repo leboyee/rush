@@ -29,6 +29,11 @@ class OtherUserProfileController: UIViewController {
     var clubImage: UIImage?
     var userInfo: User?
     
+    var searchText = ""
+    var pageNo = 1
+    var clubList = [Club]()
+    var eventList = [Event]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +46,8 @@ class OtherUserProfileController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getProfileAPI()
+        getClubListAPI(sortBy: "feed")
+        getEventList(sortBy: .upcoming)
     }
     
     //MARk: - Other function

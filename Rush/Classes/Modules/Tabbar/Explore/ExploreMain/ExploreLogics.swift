@@ -28,7 +28,7 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            return (searchType == .event || searchType == .people) ? dataList.count : 1
+            return dataList.count
         } else {
             if section == 0 {
                 return 3
@@ -63,12 +63,16 @@ extension ExploreViewController {
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
         if let data = dataList[indexPath.row] as? EventCategory {
             cell.setup(title: data.name)
+        } else if let data = dataList[indexPath.row] as? ClubCategory {
+            cell.setup(title: data.name)
         }
         cell.setup(isHideTopSeparator: true)
     }
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
-        cell.setup(title: "John Lotter")
+        if let people = dataList[indexPath.row] as? Friend {
+            cell.setup(title: people.user?.name ?? "")
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -108,13 +112,70 @@ extension ExploreViewController {
 extension ExploreViewController {
     
     func getEventCategoryListAPI() {
-        Utils.showSpinner()
+        //Utils.showSpinner()
         let param = [Keys.search: searchText] as [String: Any]
-        ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, errorMsg) in
-            Utils.hideSpinner()
+        ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, _) in
+            //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = data {
                 unsafe.dataList = category
+            }
+            unsafe.tableView.reloadData()
+        }
+    }
+    
+    func getClubCategoryListAPI() {
+        //Utils.showSpinner()
+        let param = [Keys.search: searchText] as [String: Any]
+        ServiceManager.shared.fetchClubCategoryList(params: param) { [weak self] (data, _) in
+            //Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let value = data?[Keys.list] as? [[String: Any]] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    if let value = try? decoder.decode([ClubCategory].self, from: dataClub) {
+                        unsafe.dataList = value
+                    }
+                    unsafe.tableView.reloadData()
+                } catch {
+                    
+                }
+            }
+        }
+    }
+    
+    func getFriendListAPI() {
+        
+        if pageNo == 1 { dataList.removeAll() }
+        
+        var params = [Keys.pageNo: "\(pageNo)"]
+        params[Keys.search] = searchText
+        params[Keys.profileUserId] = Authorization.shared.profile?.userId
+        
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+            guard let unsafe = self else { return }
+            Utils.hideSpinner()
+            
+            if unsafe.pageNo == 1 {
+                unsafe.dataList.removeAll()
+            }
+            
+            if let list = data {
+                if list.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.dataList = list
+                    } else {
+                        unsafe.dataList.append(contentsOf: list)
+                    }
+                    unsafe.pageNo += 1
+                    unsafe.isNextPageExist = true
+                } else {
+                    unsafe.isNextPageExist = false
+                    if unsafe.pageNo == 1 {
+                        unsafe.dataList.removeAll()
+                    }
+                }
             }
             unsafe.tableView.reloadData()
         }

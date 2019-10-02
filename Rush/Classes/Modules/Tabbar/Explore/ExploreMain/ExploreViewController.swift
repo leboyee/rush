@@ -38,6 +38,8 @@ class ExploreViewController: CustomViewController {
     var notificationButtonTitle = ""
     
     var dataList = [Any]()
+    var pageNo = 1
+    var isNextPageExist = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,19 +137,24 @@ extension ExploreViewController {
     @IBAction func eventButtonAction(_ sender: Any) {
         if let btn = sender as? UIButton {
             
-            if btn.tag == 1 || btn.tag == 2 {
+            dataList.removeAll()
+            
+            if btn.tag == 2 {
                 Utils.notReadyAlert()
                 return
             }
             
             if btn.tag == 0 { // Event
                 searchType = .event
+                getEventCategoryListAPI()
             } else if btn.tag == 1 { // Club
                 searchType = .club
+                getClubCategoryListAPI()
             } else if btn.tag == 2 { // Classes
                 searchType = .classes
             } else if btn.tag == 3 { // People
                 searchType = .people
+                getFriendListAPI()
             } else {
                 searchType = .none
             }

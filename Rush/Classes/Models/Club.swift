@@ -42,3 +42,17 @@ class Club: Codable {
         // default empty init
     }
 }
+
+class ClubCategory: Codable {
+    
+    var id: String = ""
+    var name: String = ""
+    
+    init() {
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name = "name"
+    }
+}

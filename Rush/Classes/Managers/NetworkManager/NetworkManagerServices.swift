@@ -158,6 +158,14 @@ extension NetworkManager {
         requestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
     }
     
+    func getClubCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "category/club", params: params, resultHandler: resultHandler)
+    }
+    
+    func getCategoryClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "category/class/list", params: params, resultHandler: resultHandler)
+    }
+
     func deleteEvent(eventId: String, resultHandler: @escaping ResultClosure) {
         requestDelete(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
     }
