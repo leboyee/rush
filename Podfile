@@ -11,7 +11,7 @@ target 'Rush' do
   pod 'SVProgressHUD'
   
   #Keyboard Manager
-  pod 'IQKeyboardManagerSwift' #, '6.4.2'
+  pod 'IQKeyboardManagerSwift' , '6.4.2'
   
   #Reachability
   pod 'ReachabilitySwift'
