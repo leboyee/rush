@@ -45,7 +45,11 @@ class ClubListViewController: CustomViewController {
     func setupUI() {
         setupTableView()
         setupNavigation()
-        getMyClubListAPI(sortBy: "my")
+        if screenType == .club {
+            getMyClubListAPI(sortBy: "my")
+        } else {
+            
+        }
     }
     
     func setupNavigation() {
