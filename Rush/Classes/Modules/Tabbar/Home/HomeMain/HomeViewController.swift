@@ -16,7 +16,7 @@ class HomeViewController: CustomViewController {
     var isShowTutorial = true
     var isShowJoinEvents = false
     
-    var date = "January 24"
+    var date = Date()
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
@@ -83,7 +83,8 @@ class HomeViewController: CustomViewController {
         // Set navigation title (date)
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
         let dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        dateButton.setTitle(date, for: .normal)
+        let text = date.toString(format: "MMMM dd")
+        dateButton.setTitle(text, for: .normal)
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left

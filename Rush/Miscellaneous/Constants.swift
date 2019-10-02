@@ -165,6 +165,7 @@ struct Segues {
     static let chatContactListSegue               = "ChatContactListSegue"
     static let homeEventDetail                     = "HomeEventDetailSegue"
     static let otherProfileEventDetail            = "OtherProfileEventDetail"
+    static let eventDetailSegue                        = "EventDetailSegue"
     static let rsvpJoinEvent                      = "RSVPJoinEventSegue"
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
