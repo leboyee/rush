@@ -35,6 +35,10 @@ class Friend: Codable {
         return user?.name ?? ""
     }
     
+    var friendTypeStatus: ManageButtonType {
+        return friendType == 0 ? .none : friendType == 1 ? .requested : friendType == 2 ? .addFriend : friendType == 3 ? .requested : .none
+    }
+    
     init() {
         
     }

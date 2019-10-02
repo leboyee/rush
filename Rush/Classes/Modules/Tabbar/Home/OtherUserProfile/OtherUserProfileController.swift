@@ -22,7 +22,7 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var isShowMessageButton = false
-    var friendType: ManageButtonType = .friends
+    var friendType: ManageButtonType = .addFriend
     
     weak var delegate: OtherUserProfileProtocol?
     

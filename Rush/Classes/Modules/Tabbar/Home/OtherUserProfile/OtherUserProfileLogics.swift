@@ -33,20 +33,20 @@ extension OtherUserProfileController {
             // For test
             cell.setup(secondButtonType: .message)
             cell.setup(topConstraint: 0)
-            
-            if friendType == .none {
+            let status = userInfo?.friend?.friendTypeStatus ?? .none
+            if status == .none {
                 
-            } else if friendType == .friends {
+            } else if status == .friends {
                 cell.setup(firstButtonType: .friends)
                 isShowMessageButton = false
-            } else if friendType == .requested {
+            } else if status == .requested {
                 cell.setup(firstButtonType: .requested)
                 isShowMessageButton = false
-            } else if friendType == .accept {
+            } else if status == .accept {
                 cell.setup(firstButtonType: .accept)
                 cell.setup(secondButtonType: .reject)
                 isShowMessageButton = true
-            } else if friendType == .addFriend {
+            } else if status == .addFriend {
                 cell.setup(firstButtonType: .addFriend)
             }
         } else {
