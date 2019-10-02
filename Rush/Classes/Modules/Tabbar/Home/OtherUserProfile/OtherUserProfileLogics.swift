@@ -129,7 +129,7 @@ extension OtherUserProfileController {
         case 4:
             cell.setup(.clubs, nil, clubList)
         case 5:
-            cell.setup(.classes, nil, nil)
+            cell.setup(.classes, nil, classList)
         default:
             cell.setup(.none, nil, nil)
         }
@@ -144,6 +144,9 @@ extension OtherUserProfileController {
             } else if type == .clubs {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            } else if type == .classes {
+                let club = unsafe.classList[index]
+                unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: club)
             }
         }
     }
@@ -231,6 +234,20 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if let events = value {
                 unsafe.eventList = events
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getClassCategoryAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classList = classes
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

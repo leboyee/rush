@@ -33,6 +33,7 @@ class OtherUserProfileController: UIViewController {
     var pageNo = 1
     var clubList = [Club]()
     var eventList = [Event]()
+    var classList = [Class]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class OtherUserProfileController: UIViewController {
         getProfileAPI()
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
+        getClassCategoryAPI()
     }
     
     //MARk: - Other function
@@ -128,9 +130,12 @@ extension OtherUserProfileController {
                 vc.userInfo = userInfo
             }
         } else if segue.identifier == Segues.clubDetailSegue {
-            if let vc = segue.destination as? ClassDetailViewController {
-                vc.classInfo = sender as? Class
-            }
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.classInfo = sender as? Class
         }
     }
 }
+
