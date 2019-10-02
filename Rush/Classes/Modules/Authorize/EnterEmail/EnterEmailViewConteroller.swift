@@ -42,6 +42,7 @@ class EnterEmailViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
+       // errorButtonAction()
 
     }
     
@@ -53,8 +54,11 @@ class EnterEmailViewConteroller: CustomViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    //override func viewSafeAreaInsetsDidChange() { print(view.safeAreaInsets) }
+    
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setup() {
@@ -78,6 +82,7 @@ class EnterEmailViewConteroller: CustomViewController {
         emailErroLabel.isHidden = true
         errorButton.isHidden = true
         eduLabel.text = ".edu"
+        emailTextField.autocorrectionType = .no
 
         if loginType == .register {
             loginWithPhoneNumberButton.isHidden = true
@@ -136,6 +141,7 @@ extension EnterEmailViewConteroller {
     
     //Login with Phone Number
     @IBAction func loginWithPhoneNumberButtonAction() {
+        errorButtonAction()
         self.view.endEditing(true)
         self.performSegue(withIdentifier: Segues.loginPhoneNoSegue, sender: self)
     }

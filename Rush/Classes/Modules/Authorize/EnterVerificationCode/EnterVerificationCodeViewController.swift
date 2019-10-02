@@ -51,11 +51,11 @@ class EnterVerificationCodeViewController: CustomViewController {
         super.viewWillAppear(animated)
         digitTextField.autocorrectionType = .no
         digitTextField.keyboardType = .numberPad
-        digitTextField.becomeFirstResponder()
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
+        digitTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,8 +71,8 @@ class EnterVerificationCodeViewController: CustomViewController {
             codeLabelLeadingConstraint.constant = 16
             codeLabelWidthConstraint.constant = 280
         }
-
     }
+    
     
     // MARK: - Setup
     func setup() {

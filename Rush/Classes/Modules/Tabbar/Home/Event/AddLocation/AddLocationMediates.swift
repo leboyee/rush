@@ -44,7 +44,7 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
         self.search(self.completerResults[indexPath.row])
     }
         
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
     

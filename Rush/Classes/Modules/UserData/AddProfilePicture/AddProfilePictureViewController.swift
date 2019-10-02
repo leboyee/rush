@@ -71,7 +71,7 @@ class AddProfilePictureViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: Utils.getSystemVersion() < 13 ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
 
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
@@ -136,8 +136,8 @@ extension AddProfilePictureViewController {
         dkAsset = photos[0]
        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, _ in
             if let img = image {
-                self.userPhotoImageView.image = img.squareImage()
                 DispatchQueue.main.async {
+                    self.userPhotoImageView.image = img.squareImage()
                     self.userImageViewWidthConstraint.constant = 200
                     self.userImageViewHeightConstraint.constant = 200
                     self.userPhotoImageView.layoutIfNeeded()
@@ -164,8 +164,10 @@ extension AddProfilePictureViewController {
     }
     
     @IBAction func skipButtonAction() {
-        if userPhotoImageView.image != nil {
+        if self.bottomLabel.text == Text.changeImage {
             isSkip = true
+        } else {
+            isSkip = false
         }
         self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
     }

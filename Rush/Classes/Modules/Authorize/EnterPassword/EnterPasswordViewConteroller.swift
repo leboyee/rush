@@ -47,6 +47,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         super.viewWillAppear(animated)
         passwordTextField.autocorrectionType = .no
         passwordTextField.isSecureTextEntry = true
+        self.passwordTextField.becomeFirstResponder()
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -64,6 +65,10 @@ class EnterPasswordViewConteroller: CustomViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
     override func viewWillLayoutSubviews() {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
             if loginType == .login {
@@ -72,6 +77,10 @@ class EnterPasswordViewConteroller: CustomViewController {
         }
     }
 
+    deinit {
+          NotificationCenter.default.removeObserver(self)
+      }
+    
     func setup() {
         setupUI()
         setupMediator()
@@ -80,7 +89,6 @@ class EnterPasswordViewConteroller: CustomViewController {
     func setupUI() {
         // Navigation Bar Button
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        passwordTextField.becomeFirstResponder()
         passwordShowHideLabel.isHidden = true
         
         // Set Custom part of Class
@@ -111,10 +119,7 @@ class EnterPasswordViewConteroller: CustomViewController {
             passwordErrorView.isHidden = true
         }
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+
 }
 
 // MARK: - Actions

@@ -95,4 +95,11 @@ extension AddMinorsViewController: UITextFieldDelegate {
         self.minorCustomButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
         getMinorList(searchText: searchText)
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text?.count ?? 0 == 0 && string == " " {
+            return false
+        }
+     return true
+    }
 }
