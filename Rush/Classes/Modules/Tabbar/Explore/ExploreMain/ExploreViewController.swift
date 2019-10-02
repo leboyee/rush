@@ -186,8 +186,7 @@ extension ExploreViewController {
                     vc.type = .none
                 }
             }
-        }
-        else if segue.identifier == Segues.clubDetailSegue {
+        } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {

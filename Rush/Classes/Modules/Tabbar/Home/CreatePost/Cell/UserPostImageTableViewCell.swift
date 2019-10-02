@@ -10,11 +10,25 @@ import UIKit
 import Photos
 
 class UserPostImageTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var postImageView: UIImageView!
     var clearButtonClickEvent: (() -> Void)?
     
+    internal var aspectConstraint : NSLayoutConstraint? {
+        didSet {
+            if oldValue != nil {
+                postImageView.removeConstraint(oldValue!)
+            }
+            if aspectConstraint != nil {
+                postImageView.addConstraint(aspectConstraint!)
+            }
+        }
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        aspectConstraint = nil
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,11 +52,12 @@ extension UserPostImageTableViewCell {
         postImageView.image = nil
         if let asset = imageAsset as? PHAsset {
             let imageSize = CGSize(
-                width: screenWidth * UIScreen.main.scale,
-                height: screenWidth * UIScreen.main.scale
+                width: asset.pixelWidth,
+                height: asset.pixelHeight
+//                width: screenWidth * UIScreen.main.scale,
+//                height: screenWidth * UIScreen.main.scale
             )
-            
-            let requestOptions = PHImageRequestOptions()
+           let requestOptions = PHImageRequestOptions()
             requestOptions.resizeMode = .exact
             requestOptions.isNetworkAccessAllowed = true
             
@@ -54,14 +69,25 @@ extension UserPostImageTableViewCell {
             ) { [weak self] image, _ in
                 guard let unself = self else { return }
                 if let image = image {
-                    unself.postImageView.image = image
+                    unself.setCustomImage(image: image)
+//                    unself.postImageView.image = image
                 }
             }
         } else if let image = imageAsset as? UIImage {
-            postImageView.image = image
+            setCustomImage(image: image)
         }
     }
-    
+    func setCustomImage(image: UIImage) {
+        
+        let aspect = image.size.width / image.size.height
+        
+        let constraint = NSLayoutConstraint(item: postImageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: postImageView, attribute: NSLayoutConstraint.Attribute.height, multiplier: aspect, constant: 0.0)
+        constraint.priority = UILayoutPriority(rawValue: 999)
+        
+        aspectConstraint = constraint
+        
+        postImageView.image = image
+    }
     func setup(isCleareButtonHide: Bool) {
         cancelButton.isHidden = isCleareButtonHide
     }
