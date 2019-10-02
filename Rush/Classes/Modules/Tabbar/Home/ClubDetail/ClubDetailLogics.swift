@@ -112,17 +112,22 @@ extension ClubDetailViewController {
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
-        cell.setup(detail: "3 events")
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
-            let user = clubPostList[indexPath.section - 6].user
-            cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
+            let post = clubPostList[indexPath.section - 6]
+            cell.setup(title: post.user?.name ?? "")
             cell.setup(bottomConstraintOfImage: 0)
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
+            
+            if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd hh:mm:ss") {
+                let time = Date().timeAgoDisplay(date: date)
+                cell.setup(detail: time)
+            }
         } else {
             let user = clubInfo?.user
-            cell.setup(title: (user?.firstName ?? "") + " " + (user?.lastName ?? ""))
+            cell.setup(detail: "3 events")
+            cell.setup(title: user?.name ?? "")
             cell.setup(bottomConstraintOfImage: 18.5)
             cell.setup(bottomConstraintOfDate: 22)
             cell.setup(dotButtonConstraint: -24)
@@ -205,6 +210,16 @@ extension ClubDetailViewController {
         
         if indexPath.section == 5 && joinedClub {
             performSegue(withIdentifier: Segues.createPost, sender: nil)
+        } else if indexPath.section > 5 {
+            if indexPath.row == 0 {
+                let post = clubPostList[indexPath.section - 6]
+                if post.user?.id == Authorization.shared.profile?.id {
+                    self.tabBarController?.selectedIndex = 3
+                } else {
+                    performSegue(withIdentifier: Segues.otherUserProfile, sender: post.user)
+                }
+                
+            }
         }
     }
 }

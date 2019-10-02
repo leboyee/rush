@@ -37,6 +37,7 @@ class HomeViewController: CustomViewController {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
