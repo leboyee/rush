@@ -177,6 +177,7 @@ struct Segues {
     static let eventPostDetail                  = "EventPostDetailSegue"
     static let chooseInterestSegue                 = "ChooseInterestSegue"
     static let eventDetailShare     = "EventDetailShareSegue"
+    static let eventWithoutRSVPJoinedPopup = "EventWithoutRSVPJoinedPopupSegue"
 }
 
 struct StoryBoard {
@@ -298,6 +299,7 @@ public struct Text {
     static let education                 = "Education"
     static let majors                    = "Majors"
     static let minors                    = "Minors"
+    static let join                      = "Join"
 }
 
 public struct Message {

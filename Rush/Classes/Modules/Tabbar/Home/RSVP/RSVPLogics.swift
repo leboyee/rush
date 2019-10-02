@@ -18,7 +18,6 @@ extension RSVPViewController {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(answers)
             if let json = String(data: jsonData, encoding: String.Encoding.utf8) {
-                let escapedString = json.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
                 let params = [Keys.rsvpAns: json]
                 joinEventWithRSVP(eventId: eventId, params: params as [String: Any])
             }
