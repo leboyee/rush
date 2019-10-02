@@ -483,7 +483,7 @@ extension CreateEventViewController: AddEventLocationDelegate {
 // MARK: - Add Invities Delegate
 extension CreateEventViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
-        self.peopleList = invite
+        self.peopleList.append(contentsOf: invite)
         self.tableView.reloadData()
     }
 }
@@ -491,7 +491,7 @@ extension CreateEventViewController: EventInviteDelegate {
 // MARK: - Add Interest Delegate
 extension CreateEventViewController: EventInterestDelegate {
     func  selectedInterest(_ interest: [String]) {
-        self.interestList = interest
+        self.interestList.append(contentsOf: interest)
         self.tableView.reloadData()
     }
 }
@@ -519,7 +519,6 @@ extension CreateEventViewController {
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
-        return
         var rsvpJson: String = ""
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: array)
@@ -537,8 +536,8 @@ extension CreateEventViewController {
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
                      Keys.eventLongitude: "\(longitude)",
-                     Keys.eventStartDate: startUtcDate,
-                     Keys.eventEndDate: endUtcDate,
+                     Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
+                     Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
                      Keys.eventInterests: interests,
                      Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
                      Keys.eventInvitedUserIds: userIdArray,

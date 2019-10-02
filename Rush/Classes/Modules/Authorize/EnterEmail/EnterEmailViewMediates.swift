@@ -22,10 +22,15 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let keyboardHeight = keyboardSize.height
+            var keyboardHeight = keyboardSize.height
+            if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneX.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXR.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXSMax.rawValue {
+                if keyboardHeight < 300 {
+                                  keyboardHeight = 301
+                              }
+            }
+            
             bottomViewConstraint.constant = keyboardHeight + 10
             self.view.layoutIfNeeded()
-            
         }
     }
     
@@ -51,7 +56,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.isValidEmailAddressString == false { return false }
+        if string == "" { } else if string.isValidEmailAddressString == false { return false }
         if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) {
             return false
         }

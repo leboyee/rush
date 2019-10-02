@@ -96,6 +96,8 @@ extension Date {
         return Calendar.current.date(from: dc)!
     }
     
+
+
     public func localToUTC(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
@@ -108,9 +110,16 @@ extension Date {
             return dateFormatter.string(from: newDate)
         }
         return dateFormatter.string(from: Date())
-      
     }
     
+    static func getCurrentTimeHours(date: Date) -> String {
+        let hour = date.hour
+        let min = date.minute
+        let second = date.second
+        let time = String(format: "%02d:%02d:%02d", hour, min, second)
+        return time
+    }
+
     public func UTCToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "H:mm:ss"
