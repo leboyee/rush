@@ -24,6 +24,8 @@ class ClassDetailViewController: UIViewController {
     var isShowMore = false
     var joinedClub = false
     
+    var classInfo: Class?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

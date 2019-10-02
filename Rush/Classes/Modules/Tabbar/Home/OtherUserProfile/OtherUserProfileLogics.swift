@@ -78,12 +78,22 @@ extension OtherUserProfileController {
                  }
                  */
             } else if unself.friendType == .addFriend {
-                unself.friendType = .requested
+                // unself.friendType = .requested
+                Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "").", buttons: ["YES", "NO"], handler: { (index) in
+                    if index == 0 {
+                        unself.sendFriendRequestAPI()
+                    }
+                })
             } else if unself.friendType == .requested {
-                unself.isShowMessageButton = true
-                unself.friendType = .accept
+                //unself.isShowMessageButton = true
+                //unself.friendType = .accept
             } else if unself.friendType == .accept {
-                unself.friendType = .friends
+                // unself.friendType = .friends
+                Utils.alert(message: "Are you sure you want to accept friend request of \(unself.userInfo?.name ?? "").", buttons: ["YES", "NO"], handler: { (index) in
+                    if index == 0 {
+                        unself.moderateFriendRequestAPI(type: "accept")
+                    }
+                })
             }
             unself.tableView.reloadData()
         }
@@ -91,9 +101,16 @@ extension OtherUserProfileController {
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if unself.friendType == .accept {
+                /*
                 unself.friendType = .addFriend
                 unself.isShowMessageButton = false
                 unself.tableView.reloadData()
+                */
+                Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["YES", "NO"], handler: { (index) in
+                    if index == 0 {
+                        unself.moderateFriendRequestAPI(type: "reject")
+                    }
+                })
             } else {
                 Utils.notReadyAlert()
             }
@@ -123,7 +140,7 @@ extension OtherUserProfileController {
                 unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             } else if indexPath.section == 3 {
                 let event = unsafe.eventList[index]
-                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
+                unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
             } else if type == .clubs {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
@@ -179,46 +196,72 @@ extension OtherUserProfileController {
             self?.tableView.reloadData()
         }
     }
-        
+    
     func getClubListAPI(sortBy: String) {
-            
-            let param = [Keys.search: searchText,
-                         Keys.sortBy: sortBy,
-                         Keys.pageNo: pageNo] as [String: Any]
-            
-            if clubList.count == 0 {
-                Utils.showSpinner()
-            }
-            
-            ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
-                Utils.hideSpinner()
-                guard let unsafe = self else { return }
-                if let clubs = value {
-                    unsafe.clubList = clubs
-                    unsafe.tableView.reloadData()
-                } else {
-                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
-                }
-            }
+        
+        let param = [Keys.search: searchText,
+                     Keys.sortBy: sortBy,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        if clubList.count == 0 {
+            Utils.showSpinner()
         }
         
-    func getEventList(sortBy: GetEventType) {
-            
-            let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                         Keys.search: searchText,
-                         Keys.sortBy: sortBy.rawValue,
-                         Keys.pageNo: pageNo] as [String: Any]
-            
-            ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
-                Utils.hideSpinner()
-                guard let unsafe = self else { return }
-                if let events = value {
-                    unsafe.eventList = events
-                    unsafe.tableView.reloadData()
-                } else {
-                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
-                }
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let clubs = value {
+                unsafe.clubList = clubs
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
-
+    }
+    
+    func getEventList(sortBy: GetEventType) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
+                     Keys.sortBy: sortBy.rawValue,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let events = value {
+                unsafe.eventList = events
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func sendFriendRequestAPI() {
+        
+        let param = [Keys.otherUserId: userInfo?.id ?? "0"]
+        ServiceManager.shared.sendFriendRequest(params: param) { [weak self] (status, errorMsg) in
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.getProfileAPI()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func moderateFriendRequestAPI(type: String) {
+        
+        let param = [Keys.otherUserId: userInfo?.id ?? "0",
+                     Keys.action: type]
+        ServiceManager.shared.moderateFriendRequest(params: param) { [weak self] (status, errorMsg) in
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.getProfileAPI()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

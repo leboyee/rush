@@ -126,5 +126,6 @@ struct Keys {
 
     static let eventContact = "event_Contact"
     static let isFirstJoin  = "isFirstJoin"
-
+    static let otherUserId = "other_user_id"
+    static let action = "action"
 }
