@@ -255,8 +255,11 @@ extension EventDetailViewController {
             Utils.notReadyAlert()
         }
         
-        cell.secondButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            if unsafe.type == .joined {
+                unsafe.openGroupChat()
+            }
         }
         
     }

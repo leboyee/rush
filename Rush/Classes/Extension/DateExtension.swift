@@ -281,4 +281,26 @@ extension Date {
         timeFormatter.dateFormat = "yyyy-MM-dd"
         return timeFormatter.date(from: dateString)!
     }
+    
+    func timeAgoDisplay(date: Date) -> String {
+        let calendar = Calendar.current
+        let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
+        let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
+        let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date())!
+        let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
+        
+        if minuteAgo < date {
+            return "Now"
+        } else if hourAgo < date {
+            return date.toString(format: "hh a")
+        } else if dayAgo < date {
+            let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
+            return "\(diff) hrs ago"
+        } else if weekAgo < date {
+            let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+            return "\(diff) days ago"
+        }
+        let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
+        return "\(diff) weeks ago"
+    }
 }

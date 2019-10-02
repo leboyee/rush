@@ -154,6 +154,14 @@ extension EventDetailViewController {
         Utils.alert(message: message)
     }
     
+    func openGroupChat() {
+        let controller = ChatRoomViewController()
+        controller.isShowTempData = false
+        controller.userName = event?.title ?? ""
+        controller.isGroupChat = true
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 
 // MARK: - Navigations
