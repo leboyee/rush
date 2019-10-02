@@ -156,6 +156,11 @@ extension HomeViewController {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             vc.eventId = (sender as? Event)?.id
             vc.event = sender as? Event
+        } else if segue.identifier == Segues.eventListSeuge {
+            if let vc = segue.destination as? EventListViewController {
+                vc.eventList = (sender as? [Event] ?? [Event]())
+            }
         }
+        
     }
 }

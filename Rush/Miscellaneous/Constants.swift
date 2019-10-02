@@ -178,6 +178,11 @@ struct Segues {
     static let eventPostDetail                     = "EventPostDetailSegue"
     static let chooseInterestSegue                 = "ChooseInterestSegue"
     static let eventDetailShare     = "EventDetailShareSegue"
+    static let eventListSeuge     = "EventListSeuge"
+    static let searchEventViewSegue     = "SearchEventViewSegue"
+
+    
+
 }
 
 struct StoryBoard {

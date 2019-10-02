@@ -33,7 +33,6 @@ class UserInfoViewController: CustomViewController {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -96,7 +95,7 @@ class UserInfoViewController: CustomViewController {
 extension UserInfoViewController {
 
     func nextButtonEnabled() {
-        if dob.isEmpty == false || gender.isEmpty || false && relation.isEmpty || false || homeTown.isEmpty == false {
+        if dob.isEmpty == false || gender.isEmpty == false || relation.isEmpty == false || homeTown.isEmpty == false {
             self.nextButton.setNextButton(isEnable: true)
         } else {
             self.nextButton.setNextButton(isEnable: false)

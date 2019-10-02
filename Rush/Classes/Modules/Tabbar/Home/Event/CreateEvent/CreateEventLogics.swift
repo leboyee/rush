@@ -512,7 +512,6 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
         let startUtcDate = Date().localToUTC(date: startDateString)
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"

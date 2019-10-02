@@ -89,6 +89,12 @@
 		1A6631B6232B98E00042DE0D /* InstaWebViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631B3232B98E00042DE0D /* InstaWebViewMediates.swift */; };
 		1A6631B7232B98E00042DE0D /* InstaWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631B4232B98E00042DE0D /* InstaWebViewViewController.swift */; };
 		1A6631B8232B98E00042DE0D /* InstaWebViewViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6631B5232B98E00042DE0D /* InstaWebViewViewLogics.swift */; };
+		1A6B1EAA234517C2004A359C /* EventListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B1EA7234517C2004A359C /* EventListMediates.swift */; };
+		1A6B1EAB234517C2004A359C /* EventListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B1EA8234517C2004A359C /* EventListLogics.swift */; };
+		1A6B1EAC234517C2004A359C /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B1EA9234517C2004A359C /* EventListViewController.swift */; };
+		1A6B1EB123453422004A359C /* SearchEventLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B1EAE23453421004A359C /* SearchEventLogics.swift */; };
+		1A6B1EB223453422004A359C /* SearchEventMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B1EAF23453421004A359C /* SearchEventMediates.swift */; };
+		1A6B1EB323453422004A359C /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B1EB023453421004A359C /* SearchEventViewController.swift */; };
 		1A7402C622CCA0BD0089CDAE /* ChooseInterestViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */; };
 		1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */; };
 		1A7402C822CCA0BD0089CDAE /* ChooseInterestViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */; };
@@ -624,6 +630,12 @@
 		1A6631B3232B98E00042DE0D /* InstaWebViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaWebViewMediates.swift; sourceTree = "<group>"; };
 		1A6631B4232B98E00042DE0D /* InstaWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaWebViewViewController.swift; sourceTree = "<group>"; };
 		1A6631B5232B98E00042DE0D /* InstaWebViewViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaWebViewViewLogics.swift; sourceTree = "<group>"; };
+		1A6B1EA7234517C2004A359C /* EventListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListMediates.swift; sourceTree = "<group>"; };
+		1A6B1EA8234517C2004A359C /* EventListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListLogics.swift; sourceTree = "<group>"; };
+		1A6B1EA9234517C2004A359C /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		1A6B1EAE23453421004A359C /* SearchEventLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventLogics.swift; sourceTree = "<group>"; };
+		1A6B1EAF23453421004A359C /* SearchEventMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventMediates.swift; sourceTree = "<group>"; };
+		1A6B1EB023453421004A359C /* SearchEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		1A7402C322CCA0BD0089CDAE /* ChooseInterestViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewMediates.swift; sourceTree = "<group>"; };
 		1A7402C422CCA0BD0089CDAE /* ChooseInterestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewController.swift; sourceTree = "<group>"; };
 		1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewLogics.swift; sourceTree = "<group>"; };
@@ -1230,6 +1242,8 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				1A6B1EAD23453421004A359C /* SearchEvent */,
+				1A6B1EA6234517C2004A359C /* EventList */,
 				1AAE965D233A568D00868449 /* CreateEventInterest */,
 				1AF4420E233930E70062B4F2 /* CreateEventInvite */,
 				F9C89F5F232D2B4A00DC9C85 /* AddLocation */,
@@ -1501,6 +1515,26 @@
 				1A6631B3232B98E00042DE0D /* InstaWebViewMediates.swift */,
 			);
 			path = AddInstaWebView;
+			sourceTree = "<group>";
+		};
+		1A6B1EA6234517C2004A359C /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				1A6B1EA7234517C2004A359C /* EventListMediates.swift */,
+				1A6B1EA8234517C2004A359C /* EventListLogics.swift */,
+				1A6B1EA9234517C2004A359C /* EventListViewController.swift */,
+			);
+			path = EventList;
+			sourceTree = "<group>";
+		};
+		1A6B1EAD23453421004A359C /* SearchEvent */ = {
+			isa = PBXGroup;
+			children = (
+				1A6B1EAE23453421004A359C /* SearchEventLogics.swift */,
+				1A6B1EAF23453421004A359C /* SearchEventMediates.swift */,
+				1A6B1EB023453421004A359C /* SearchEventViewController.swift */,
+			);
+			path = SearchEvent;
 			sourceTree = "<group>";
 		};
 		1A7402C222CCA0BD0089CDAE /* ChooseInterest */ = {
@@ -3307,6 +3341,7 @@
 				1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */,
 				1A3CB09022BD3242005D3D87 /* AddMajorsViewMediates.swift in Sources */,
 				091557BD22B127600080C9AE /* UserPostImageTableViewCell.swift in Sources */,
+				1A6B1EB123453422004A359C /* SearchEventLogics.swift in Sources */,
 				793BE66622E88207005EF72D /* UIViewController+Extensions.swift in Sources */,
 				793BE68522E88207005EF72D /* MessageKit+Availability.swift in Sources */,
 				8A0345CD2322AE520065CF3C /* EventHeader.swift in Sources */,
@@ -3360,13 +3395,16 @@
 				1A0D01FC23228A08004F6279 /* CreateEventLogics.swift in Sources */,
 				1A339B4C22B3A060005509EA /* ChooseLevelViewMediates.swift in Sources */,
 				1A339B5D22B3B88A005509EA /* EnterUserNameViewController.swift in Sources */,
+				1A6B1EB223453422004A359C /* SearchEventMediates.swift in Sources */,
 				79356A4A229D761600DA54AF /* MyClubLogics.swift in Sources */,
 				79356A4B229D761600DA54AF /* MyClubMediates.swift in Sources */,
 				7982F66022C3A7F100BC8B36 /* GrowingTextView.swift in Sources */,
 				793BE68E22E88207005EF72D /* MessageReusableView.swift in Sources */,
 				793BE68D22E88207005EF72D /* TextMessageCell.swift in Sources */,
+				1A6B1EAA234517C2004A359C /* EventListMediates.swift in Sources */,
 				8A0345AF2322A6EA0065CF3C /* User.swift in Sources */,
 				1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */,
+				1A6B1EAB234517C2004A359C /* EventListLogics.swift in Sources */,
 				793BE66122E88207005EF72D /* NSAttributedString+Extensions.swift in Sources */,
 				1A44C363234265EF00A93A18 /* EventTimeCell.swift in Sources */,
 				793BE65822E88207005EF72D /* InputTextView.swift in Sources */,
@@ -3408,6 +3446,7 @@
 				797FFDB822B7BC480055A001 /* UIColor+Palette.swift in Sources */,
 				793BE67F22E88207005EF72D /* MessageCellDelegate.swift in Sources */,
 				1ACEAC1822AC294200B734D3 /* CustomCameraExtension.swift in Sources */,
+				1A6B1EAC234517C2004A359C /* EventListViewController.swift in Sources */,
 				1A2809EC22C60E6700B4E764 /* ClassesCell.swift in Sources */,
 				7903D0AD228E8CE5004E33B9 /* EventTypeCellLogics.swift in Sources */,
 				8AAA37FD233B505900423D43 /* CreateEventInviteMediates.swift in Sources */,
@@ -3556,6 +3595,7 @@
 				7995715A22895DE500EF7C3D /* Constants.swift in Sources */,
 				7995715322895A8600EF7C3D /* CustomViewController.swift in Sources */,
 				793BE65222E88207005EF72D /* NSMutableAttributedString+Extensions.swift in Sources */,
+				1A6B1EB323453422004A359C /* SearchEventViewController.swift in Sources */,
 				79CF8FCD228D9D6200DDA285 /* CustomBrownLabel.swift in Sources */,
 				1AEAC4C422D35BE5008FBB54 /* DatePickerViewController.swift in Sources */,
 				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,

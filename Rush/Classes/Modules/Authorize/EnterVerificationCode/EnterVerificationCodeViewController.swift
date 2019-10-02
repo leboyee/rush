@@ -73,7 +73,6 @@ class EnterVerificationCodeViewController: CustomViewController {
         }
     }
     
-    
     // MARK: - Setup
     func setup() {
         setupUI()
