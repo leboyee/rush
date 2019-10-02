@@ -10,8 +10,8 @@ import UIKit
 class RSVPViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var joinButtonView: UIView!
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var joinBottomSpaceConstraint: NSLayoutConstraint!
 
     var event: Event?
     var answers = [RSVPAnswer]()
@@ -29,12 +29,8 @@ class RSVPViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    override var inputAccessoryView: UIView? {
-        return joinButtonView
+    deinit {
+       removeKeyboardObservers()
     }
 }
 
@@ -50,6 +46,8 @@ extension RSVPViewController: UIGestureRecognizerDelegate {
             gesture.delegate = self
         }
         
+        addKeyboardObservers()
+        
         setupTableView()
         //loadAllData()
     }
@@ -61,6 +59,44 @@ extension RSVPViewController {
     @IBAction func joinButtonAction() {
         view.endEditing(true)
         joinEvent()
+    }
+}
+
+// MARK: - Register / Unregister Observers
+extension RSVPViewController {
+    func addKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboardDidChangeState(_:)),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+    }
+
+    func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+    }
+    
+    @objc
+    func handleKeyboardDidChangeState(_ notification: Notification) {
+        
+        guard let keyboardStartFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else { return }
+        guard !keyboardStartFrameInScreenCoords.isEmpty || UIDevice.current.userInterfaceIdiom != .pad else {
+            // WORKAROUND for what seems to be a bug in iPad's keyboard handling in iOS 11: we receive an extra spurious frame change
+            // notification when undocking the keyboard, with a zero starting frame and an incorrect end frame. The workaround is to
+            // ignore this notification.
+            return
+        }
+
+        guard let keyboardEndFrameInScreenCoords = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let keyboardEndFrame = view.convert(keyboardEndFrameInScreenCoords, from: view.window)
+        var contentInset = tableView.contentInset
+        contentInset.bottom = keyboardEndFrame.height
+        tableView.contentInset = contentInset
     }
 }
 

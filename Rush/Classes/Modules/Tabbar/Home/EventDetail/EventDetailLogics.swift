@@ -272,9 +272,19 @@ extension EventDetailViewController {
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
-        cell.setup(title: Text.joinAndRSVP)
+        guard let event = self.event else { return }
+        if event.rsvp?.count ?? 0 == 0 {
+            cell.setup(title: Text.join)
+        } else {
+            cell.setup(title: Text.joinAndRSVP)
+        }
+        
         cell.joinButtonClickEvent = { [weak self] () in
-            self?.showRSVP()
+            if event.rsvp?.count ?? 0 == 0 {
+                self?.joinEvent(eventId: event.id)
+            } else {
+                self?.showRSVP()
+            }
         }
     }
     
@@ -461,6 +471,23 @@ extension EventDetailViewController {
                 }
             } else if let message = errorMsg {
                 unsafe.showMessage(message: message)
+            }
+        }
+    }
+    
+    private func joinEvent(eventId: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.joinEvent(eventId: eventId, params: [:]) { [weak self] (data, errorMessage) in
+            if let object = data {
+                let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
+                if isFirstTime == 1 {
+                   self?.showJoinAlert()
+                }
+                self?.type = .joined
+                self?.loadAllData()
+            } else if let message = errorMessage {
+                self?.showMessage(message: message)
+                Utils.hideSpinner()
             }
         }
     }
