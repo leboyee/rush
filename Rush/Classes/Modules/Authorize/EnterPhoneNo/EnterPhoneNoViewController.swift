@@ -69,7 +69,7 @@ class EnterPhoneNoViewController: CustomViewController {
     func setupUI() {
         // Navigation Bar Button
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        setContryCodeWith()    
+        setContryCodeWith()
         phoneNoTextField.text = self.frontTextFiled
         // Set Custom part of Class
         nextButton.setNextButton(isEnable: false)

@@ -325,7 +325,7 @@ extension EventDetailViewController {
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postList?[index] {
-            cell.set(numberOfLike: post.numberOfLikes)
+            cell.set(numberOfLike: post.totalUpVote)
             cell.set(numberOfComment: post.numberOfComments)
             
             cell.likeButtonEvent = { [weak self]() in

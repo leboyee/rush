@@ -35,7 +35,7 @@ extension ListCell {
     }
     
     func setup(checkMark: Bool) {
-        self.tickImageView.isHidden = !checkMark 
+        self.tickImageView.isHidden = !checkMark
     }
     
 }

@@ -104,6 +104,14 @@ class CreatePostViewController: UIViewController {
             navigationItem.rightBarButtonItem = createBtnDisActive
         }
     }
+    
+    func close() {
+        if navigationController?.viewControllers.count == 1 {
+          dismiss(animated: true, completion: nil)
+        } else {
+          navigationController?.popViewController(animated: true)
+        }
+    }
 }
 
 // MARK: - Actions
@@ -118,15 +126,13 @@ extension CreatePostViewController {
     }
     
     @IBAction func cancelButtonAction() {
-        
-        self.navigationController?.popViewController(animated: true)
-        DispatchQueue.main.async {
+       close()
+       DispatchQueue.main.async {
             self.delegate?.showSnackBar(text: "You didn't finish your post.", buttonText: "Finish it")
         }
     }
     
     @objc func createButtonAction() {
-        //performSegue(withIdentifier: Segues.postSegue, sender: nil)
         getImagesDataList(index: 0)
     }
     
@@ -226,19 +232,6 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 self.openCameraOrLibrary(type: .photoLibrary)
             case .alreadyAuthorized:
                 self.openCameraOrLibrary(type: .photoLibrary)
-            }
-        }
-    }
-}
-
-// MARK: - Navigation
-extension CreatePostViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.postSegue {
-            if let vc = segue.destination as? PostViewController {
-                vc.imageList = imageList
-                vc.postInfo = sender as? Post
-                vc.isFromCreatePost = true
             }
         }
     }

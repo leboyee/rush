@@ -117,6 +117,7 @@ extension PostViewController {
             if let post = result {
                 uwself.postInfo = post
                 uwself.tableView.reloadData()
+                uwself.delegate?.updatedPost(post)
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

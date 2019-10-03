@@ -190,13 +190,15 @@ extension EventDetailViewController {
                 vc.event = event
             }
         } else if segue.identifier == Segues.createEventPost {
-            if let vc = segue.destination as? CreatePostViewController {
+            if let nvc = segue.destination as? UINavigationController, let vc = nvc.viewControllers.first as? CreatePostViewController {
                 vc.eventInfo = event
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.eventPostDetail {
             if let vc = segue.destination as? PostViewController {
                 vc.eventInfo = event
                 vc.postInfo = sender as? Post
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.eventDetailShare {
             if let vc = segue.destination as? SharePostViewController {

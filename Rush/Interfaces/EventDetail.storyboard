@@ -26,7 +26,23 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYv-SG-CBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2425" y="-1132"/>
+            <point key="canvasLocation" x="3171" y="-1254"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IVt-mT-obV">
+            <objects>
+                <navigationController id="OWh-an-sae" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="buM-0X-TCi">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CNg-R7-1NU" kind="relationship" relationship="rootViewController" id="CnS-XN-oJG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gz-jf-azw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="-1254"/>
         </scene>
         <!--OtherUserProfileController-->
         <scene sceneID="dqn-gt-UVk">
@@ -36,7 +52,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pj-Fz-N1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432" y="-1311"/>
+            <point key="canvasLocation" x="2417" y="-899"/>
         </scene>
         <!--SharePostViewController-->
         <scene sceneID="l5I-tQ-cBL">
@@ -44,7 +60,7 @@
                 <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SharePostViewController" id="i1V-0o-tW2" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cb3-bp-3R6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2425" y="-1246"/>
+            <point key="canvasLocation" x="2399" y="-872"/>
         </scene>
         <!--PostViewController-->
         <scene sceneID="8Up-uQ-Iqg">
@@ -54,7 +70,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKk-K7-y3I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2395" y="-1189"/>
+            <point key="canvasLocation" x="2373" y="-827"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="CPw-3U-YkD">
@@ -135,11 +151,11 @@
                         <outlet property="headerHeightConstraint" destination="bg2-F5-KGh" id="fia-72-KDt"/>
                         <outlet property="tableView" destination="677-ZA-Vck" id="vai-eb-5n3"/>
                         <segue destination="EfL-qI-UY9" kind="show" identifier="RSVPJoinEventSegue" id="Hog-Dl-lFR"/>
-                        <segue destination="CNg-R7-1NU" kind="show" identifier="CreateEventPostSegue" id="gc2-Vt-4Zh"/>
                         <segue destination="QDD-Yv-tG6" kind="show" identifier="EventPostDetailSegue" id="m7k-oW-jq0"/>
                         <segue destination="i1V-0o-tW2" kind="presentation" identifier="EventDetailShareSegue" animates="NO" modalPresentationStyle="overFullScreen" id="FUB-qK-eXh"/>
                         <segue destination="ayU-bi-RPv" kind="presentation" identifier="EventWithoutRSVPJoinedPopupSegue" modalPresentationStyle="overFullScreen" id="YxH-d2-f73"/>
                         <segue destination="JCi-zv-64X" kind="show" identifier="EventOtherUserProfileSegue" id="soa-LT-e4t"/>
+                        <segue destination="OWh-an-sae" kind="presentation" identifier="CreateEventPostSegue" modalPresentationStyle="fullScreen" id="NAe-Y8-aWm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2637.68115942029" y="-666.29464285714278"/>
+            <point key="canvasLocation" x="2567" y="-479"/>
         </scene>
         <!--Event Joined Popup View Controller-->
         <scene sceneID="IVZ-Qj-ElO">
@@ -356,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRp-L7-blQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2312" y="96"/>
+            <point key="canvasLocation" x="1835" y="246"/>
         </scene>
     </scenes>
     <resources>
