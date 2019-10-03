@@ -64,6 +64,10 @@ class User: Codable {
         return id ?? "0"
     }
     
+    var friendTypeStatus: ManageButtonType {
+        return (friend == nil || friend?.friendStatus == 0) ? .addFriend : friend?.friendStatus == 1 ? .friends : (friend?.friendType == 1 && friend?.friendUserId == Authorization.shared.profile?.userId) ? .requested : (friend?.friendType == 2 && friend?.friendUserId == Authorization.shared.profile?.userId) ? .accept : .none
+    }
+    
     private enum CodingKeys: String, CodingKey {
         
         case id = "_id"
