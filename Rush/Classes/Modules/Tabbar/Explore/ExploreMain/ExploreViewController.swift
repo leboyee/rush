@@ -41,6 +41,10 @@ class ExploreViewController: CustomViewController {
     var pageNo = 1
     var isNextPageExist = true
     
+    var clubList = [Club]()
+    var eventList = [Event]()
+    var classList = [Class]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +59,9 @@ class ExploreViewController: CustomViewController {
         if isSearch {
             searchfield.becomeFirstResponder()
         }
+        getClubListAPI(sortBy: "feed")
+        getEventList(sortBy: .upcoming)
+        getClassCategoryAPI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -179,6 +186,17 @@ extension ExploreViewController {
                     vc.type = .none
                 }
             }
+        } else if segue.identifier == Segues.clubDetailSegue {
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.classInfo = sender as? Class
+        } else if segue.identifier == Segues.eventDetailSegue {
+            guard let vc = segue.destination as? EventDetailViewController else { return }
+            vc.eventId = (sender as? Event)?.id
+            vc.event = sender as? Event
         }
+        
     }
 }

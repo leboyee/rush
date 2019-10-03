@@ -66,6 +66,7 @@
                         <segue destination="tgq-BU-5qI" kind="show" identifier="ClubDetailSegue" id="QdI-xB-jJm"/>
                         <segue destination="KEM-eO-SVs" kind="show" identifier="HomeEventDetailSegue" id="h98-X0-moE"/>
                         <segue destination="7Gr-5Z-xHy" kind="show" identifier="CreateEventSegue" id="g7q-6I-dom"/>
+                        <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="Ogb-eY-SFI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -929,6 +930,7 @@
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" modalPresentationStyle="overFullScreen" id="0IY-Pg-ID3"/>
                         <segue destination="KEM-eO-SVs" kind="show" identifier="OtherProfileEventDetail" id="Oel-AB-j6R"/>
                         <segue destination="mi6-YI-bln" kind="show" identifier="ClubDetailSegue" id="gSU-VJ-XvQ"/>
+                        <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="L5B-Xz-z9C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1650,8 +1652,9 @@
         <image name="unPlashIcon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="L5B-Xz-z9C"/>
         <segue reference="QdI-xB-jJm"/>
-        <segue reference="0IY-Pg-ID3"/>
+        <segue reference="LvJ-Dj-Yna"/>
         <segue reference="S8E-ms-kaf"/>
         <segue reference="z8H-lu-6pg"/>
         <segue reference="E7I-YA-fBT"/>

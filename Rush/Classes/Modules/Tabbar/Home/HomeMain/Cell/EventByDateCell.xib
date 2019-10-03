@@ -141,9 +141,11 @@
             <connections>
                 <outlet property="bottomConstraintOfImageView" destination="fkD-DA-gKA" id="n2d-uo-gw4"/>
                 <outlet property="bottomContraintOfDateLabel" destination="Z8I-9j-jXN" id="etl-EY-b2g"/>
+                <outlet property="dateLabel" destination="uCx-AI-Q5G" id="xqI-h5-yZE"/>
                 <outlet property="detailLabel" destination="9rE-xE-php" id="ASB-yT-NOp"/>
                 <outlet property="imgView" destination="VRF-Lx-TIn" id="UZW-1L-wUd"/>
                 <outlet property="leadingConstraintOfDateView" destination="eFS-Vg-zlj" id="sO6-xJ-cvv"/>
+                <outlet property="monthLabel" destination="9DJ-HY-vvE" id="55J-Ud-eiF"/>
                 <outlet property="separatorView" destination="bge-rT-0MG" id="edd-Fe-FRv"/>
                 <outlet property="titleLabel" destination="erI-m4-jFg" id="sj8-1a-P2M"/>
                 <outlet property="topConstraintOfImageView" destination="MLL-SD-l16" id="2zE-xQ-iEF"/>

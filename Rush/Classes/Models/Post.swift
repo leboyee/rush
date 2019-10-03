@@ -19,6 +19,8 @@ class Post: Codable {
     var numberOfComments: Int = 0
     var user: User?
     var createDate: Date?
+    var createdAt: String?
+    
     private var imageJson: String?
     private var convertedListOfImages: [Image]?
     var images: [Image]? {
@@ -39,6 +41,7 @@ class Post: Codable {
         case numberOfComments = "total_comments"
         case user
         case createDate
+        case createdAt = "created_at"
     }
     
     init() {

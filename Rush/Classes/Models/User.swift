@@ -50,6 +50,8 @@ class User: Codable {
     
     private var photoJson: String?
     private var convertJsonToPhoto: Image?
+    var friend: Friend?
+    
     var photo: Image? {
         if convertJsonToPhoto == nil {
             convertJsonToPhoto = photoJson?.photo
@@ -63,6 +65,10 @@ class User: Codable {
     
     var userId: String {
         return id ?? "0"
+    }
+    
+    var friendTypeStatus: ManageButtonType {
+        return (friend == nil || friend?.friendStatus == 0) ? .addFriend : friend?.friendStatus == 1 ? .friends : (friend?.friendType == 1 && friend?.friendUserId == Authorization.shared.profile?.userId) ? .requested : (friend?.friendType == 2 && friend?.friendUserId == Authorization.shared.profile?.userId) ? .accept : .none
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -102,6 +108,10 @@ class User: Codable {
         case instaToken = "insta_token"
         case instaUserName = "insta_username"
         case photoJson = "u_photo"
+        case friend = "friend_data"
+        //        case name
+        //var classes: [Classes]? u_edu_classes,u_university
+
         case totalEvents = "total_events"
     }
     

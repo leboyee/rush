@@ -235,6 +235,8 @@
                         <outlet property="thirsSeparator" destination="83r-Kq-QsE" id="FOs-Tr-Fsp"/>
                         <segue destination="wtT-AY-LdS" kind="show" identifier="EventCategorySegue" id="xzX-jX-aYt"/>
                         <segue destination="UuK-AW-iVw" kind="show" identifier="UniversitySegue" id="2n4-fV-eKp"/>
+                        <segue destination="jNy-Yw-m46" kind="show" identifier="ClubDetailSegue" id="Wds-tx-BBL"/>
+                        <segue destination="iCk-fS-noR" kind="show" identifier="EventDetailSegue" id="cWE-q2-all"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AV-99-LfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,11 +325,28 @@
                         <outlet property="containView" destination="QZ8-M3-2NZ" id="xbG-rP-OB8"/>
                         <outlet property="tableView" destination="xpu-5f-ceh" id="ACS-md-TXX"/>
                         <outlet property="topConstraintOfTableView" destination="d7j-3j-H6h" id="M3Y-ci-9Qg"/>
+                        <segue destination="iCk-fS-noR" kind="show" identifier="EventDetailSegue" id="o2X-dF-cRA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9o-lX-mNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="37.681159420289859" y="22.767857142857142"/>
+        </scene>
+        <!--ClubDetailViewController-->
+        <scene sceneID="OZ2-Dz-vzX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="ClubDetailViewController" id="jNy-Yw-m46" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1a-73-D0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="406"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="S0d-mE-fSY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="iCk-fS-noR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pt-Ln-eXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-569" y="406"/>
         </scene>
         <!--University View Controller-->
         <scene sceneID="xaZ-9i-CM1">
@@ -378,4 +397,7 @@
         <image name="delete-white" width="32" height="32"/>
         <image name="searchGray" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="o2X-dF-cRA"/>
+    </inferredMetricsTieBreakers>
 </document>
