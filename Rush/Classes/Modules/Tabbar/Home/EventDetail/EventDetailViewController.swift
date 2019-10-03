@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 enum EventDetailType {
     case my
@@ -160,6 +161,23 @@ extension EventDetailViewController {
     
     func showUserProfile(user: User) {
         performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
+    }
+    
+    func showLocationOnMap() {
+        if let lat = event?.latitude, let lon = event?.longitude, let latitude = Double(lat), let longitude = Double(lon) {
+            // Set the region of the map that is rendered.
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 500, longitudinalMeters: 500)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)
+            ]
+            
+            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = event?.address
+            mapItem.openInMaps(launchOptions: options)
+        }
     }
 }
 

@@ -263,6 +263,9 @@ extension EventDetailViewController {
     
     func fillLocationCell(_ cell: LocationCell) {
         cell.set(address: event?.address ?? "", lat: event?.latitude ?? "0", lon: event?.longitude ?? "0")
+        cell.showLocationOnMap = { [weak self] () in
+            self?.showLocationOnMap()
+        }
     }
     
     func fillCreatePostCell(_ cell: CreatePostCell) {
