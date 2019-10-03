@@ -50,7 +50,7 @@ class User: Codable {
     
     private var photoJson: String?
     private var convertJsonToPhoto: Image?
-    var friend: Friend?
+    var friend: [Friend]?
     
     var photo: Image? {
         if convertJsonToPhoto == nil {
@@ -68,7 +68,7 @@ class User: Codable {
     }
     
     var friendTypeStatus: ManageButtonType {
-        return (friend == nil || friend?.friendStatus == 0) ? .addFriend : friend?.friendStatus == 1 ? .friends : (friend?.friendType == 1 && friend?.friendUserId == Authorization.shared.profile?.userId) ? .requested : (friend?.friendType == 2 && friend?.friendUserId == Authorization.shared.profile?.userId) ? .accept : .none
+        return (friend == nil || friend?.first?.friendStatus == 0) ? .addFriend : friend?.first?.friendStatus == 1 ? .friends : (friend?.first?.friendType == 1 && friend?.first?.friendUserId == Authorization.shared.profile?.userId) ? .requested : (friend?.first?.friendType == 2 && friend?.first?.friendUserId == Authorization.shared.profile?.userId) ? .accept : .none
     }
     
     private enum CodingKeys: String, CodingKey {
