@@ -26,6 +26,8 @@ extension EventTypeCell {
                 let event = eventList[indexPath.item]
                 cell.setup(eventName: event.title)
                 cell.setup(eventType: event.eventType)
+                cell.setup(date: event.start)
+                cell.setup(start: event.start, end: event.end)
                 if event.photoJson.isNotEmpty {
                     cell.setup(eventImageUrl: event.photoJson.photo?.url())
                 }
@@ -40,12 +42,20 @@ extension EventTypeCell {
                 cell.setup(eventDetail: club.clubDesc ?? "")
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
-                let clubId = club.clubUserId
+                if let invitee = club.invitees {
+                    let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+                    if filter.count > 0 {
+                        cell.setup(type: .clubsJoined)
+                        cell.setup(invitee: club.invitees)
+                    }
+                }
+                
+               /* let clubUserId = club.clubUserId
                 let userId = Authorization.shared.profile?.userId ?? ""
-                if clubId == userId {
+                if clubUserId == userId {
                     cell.setup(type: .clubsJoined)
                     cell.setup(invitee: club.invitees)
-                }
+                }*/
             } else {
                 cell.setup(eventName: "Development lifehacks")
                 cell.setup(eventDetail: "Get the latest dev skills")
@@ -58,7 +68,7 @@ extension EventTypeCell {
             }
         }
     }
-    
+   
     func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)

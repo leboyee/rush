@@ -325,6 +325,7 @@
                         <outlet property="containView" destination="QZ8-M3-2NZ" id="xbG-rP-OB8"/>
                         <outlet property="tableView" destination="xpu-5f-ceh" id="ACS-md-TXX"/>
                         <outlet property="topConstraintOfTableView" destination="d7j-3j-H6h" id="M3Y-ci-9Qg"/>
+                        <segue destination="iCk-fS-noR" kind="show" identifier="EventDetailSegue" id="o2X-dF-cRA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9o-lX-mNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,8 +343,8 @@
         <!--EventDetail-->
         <scene sceneID="S0d-mE-fSY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8pt-Ln-eXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="EventDetail" id="iCk-fS-noR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pt-Ln-eXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-569" y="406"/>
         </scene>
@@ -396,4 +397,7 @@
         <image name="delete-white" width="32" height="32"/>
         <image name="searchGray" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="o2X-dF-cRA"/>
+    </inferredMetricsTieBreakers>
 </document>
