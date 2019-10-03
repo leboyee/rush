@@ -540,9 +540,9 @@ extension CreateEventViewController {
                      Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
                      Keys.eventInterests: interests,
                      Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
-                     Keys.eventInvitedUserIds: userIdArray,
+                     Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
                      Keys.eventPhoto: img,
-                     Keys.eventContact: contactNoArray] as [String: Any]
+                     Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
 
         Utils.showSpinner()
         ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in

@@ -39,7 +39,7 @@ extension AddLocationViewController {
                 self.mapItemToPresent = mapItem
                 // pass this "self.mapItemToPresent" to previous screen
                 print("selected map item is : \(String(describing: self.mapItemToPresent))")
-                self.delegate?.addEventLocationData(searchResult.title, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0)
+                self.delegate?.addEventLocationData(searchResult.title, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.longitude ?? 0.0)
                 self.dismiss(animated: true, completion: nil)
             } else if let error = error {
 //                self.view.makeToast("Failed to fetch address information: \(error.localizedDescription)")

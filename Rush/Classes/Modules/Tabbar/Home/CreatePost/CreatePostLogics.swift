@@ -116,7 +116,7 @@ extension CreatePostViewController {
                     DispatchQueue.main.async {
                         uwself.delegate?.createPostSuccess(value)
                     }
-                    uwself.navigationController?.popViewController(animated: false)
+                    uwself.close()
                 } catch {
                     
                 }
