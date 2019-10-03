@@ -182,6 +182,8 @@ extension NetworkManager {
     
     func friendRequestStatus(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPut(path: "friend", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
     // MARK: - Notification
     func getNotificationList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "notification", params: params, resultHandler: resultHandler)
