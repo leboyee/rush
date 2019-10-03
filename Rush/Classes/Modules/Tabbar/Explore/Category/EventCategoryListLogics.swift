@@ -15,7 +15,15 @@ extension EventCategoryListViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return 50
+        if type == .event {
+            return eventList.count
+        } else if type == .club {
+            return clubList.count
+        } else if type == .classes {
+            return classList.count
+        } else {
+             return 50
+        }
     }
     
     func fillCategoryCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
@@ -59,6 +67,88 @@ extension EventCategoryListViewController {
             
         } else {
             cell.setup(detail: "SOMM 24-A")
+        }
+    }
+    func fillEventCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
+        let event = eventList[indexPath.row]
+        cell.setup(title: event.title)
+        cell.setup(date: event.start)
+        cell.setup(start: event.start, end: event.end)
+        cell.setup(eventImageUrl: event.photoJson.photo?.urlThumb())
+        
+      /*  cell.cellSelected = { [weak self] (type, id, index) in
+            guard let unsafe = self else { return }
+            if unsafe.type == .event
+            {
+                let event = unsafe.eventList[index]
+                unsafe.performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+            }
+        }*/
+    }
+    func cellSelected(_ indexPath: IndexPath) {
+        if type == .event
+        {
+            let event = eventList[indexPath.row]
+            performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+        }
+    }
+}
+
+// Services
+extension EventCategoryListViewController {
+
+    func getClubListAPI(sortBy: String) {
+        
+        let param = [Keys.search: searchText,
+                     Keys.sortBy: sortBy,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        if clubList.count == 0 {
+            Utils.showSpinner()
+        }
+        
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let clubs = value {
+                unsafe.clubList = clubs
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getEventList(sortBy: GetEventType) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
+                     Keys.sortBy: sortBy.rawValue,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let events = value {
+                unsafe.eventList = events
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getClassCategoryAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
         }
     }
 }

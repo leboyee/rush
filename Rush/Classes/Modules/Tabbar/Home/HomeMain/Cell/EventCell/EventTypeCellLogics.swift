@@ -26,6 +26,8 @@ extension EventTypeCell {
                 let event = eventList[indexPath.item]
                 cell.setup(eventName: event.title)
                 cell.setup(eventType: event.eventType)
+                cell.setup(date: event.start)
+                cell.setup(start: event.start, end: event.end)
                 if event.photoJson.isNotEmpty {
                     cell.setup(eventImageUrl: event.photoJson.photo?.url())
                 }

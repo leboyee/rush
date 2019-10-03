@@ -20,6 +20,9 @@ class EventByDateCell: UITableViewCell {
     @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var dateLabel: CustomBlackLabel!
+//     var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +47,37 @@ extension EventByDateCell {
     
     func setup(detail: String) {
         detailLabel.text = detail
+    }
+    
+    func setup(eventImageUrl: URL?) {
+        imgView.sd_setImage(with: eventImageUrl, completed: nil)
+    }
+    
+    func setup(date: Date?) {
+        guard let date = date else {
+            dateLabel.isHidden = true
+            return
+        }
+        
+        dateLabel.isHidden = false
+        monthLabel.text = date.toString(format: "MMM").uppercased()
+        dateLabel.text = date.toString(format: "dd")
+//        dayLabel.text = date.toString(format: "EEEE")
+        
+    }
+    
+    func setup(start: Date?, end: Date?) {
+        
+        guard let startDate = start else {
+            detailLabel.text = ""
+            return
+        }
+        
+        var text = startDate.toString(format: "hh:mma")
+        if let endDate = end {
+            text +=  "-" +  endDate.toString(format: "hh:mma")
+        }
+        detailLabel.text = text
     }
     
     func setup(isRemoveDateView: Bool) {
