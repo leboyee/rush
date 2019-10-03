@@ -60,7 +60,7 @@ extension EnterUserNameViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.isValidNameString == false { return false }
+        if string == "" { } else if string.isValidNameString == false { return false }
         let maxLength = 40
         if textField.text?.count == 0 && string == " "{
             return false

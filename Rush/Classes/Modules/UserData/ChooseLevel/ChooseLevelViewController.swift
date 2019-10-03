@@ -73,7 +73,7 @@ class ChooseLevelViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: Utils.getSystemVersion() < 13 ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView

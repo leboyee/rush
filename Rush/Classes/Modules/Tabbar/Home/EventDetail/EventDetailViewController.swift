@@ -162,6 +162,9 @@ extension EventDetailViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func showJoinAlert() {
+        performSegue(withIdentifier: Segues.eventWithoutRSVPJoinedPopup, sender: nil)
+    }
 }
 
 // MARK: - Navigations
@@ -187,6 +190,9 @@ extension EventDetailViewController {
                 vc.type = .event
                 vc.object = sender
             }
+        } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
+            let vc = segue.destination as? EventJoinedPopupViewController
+            vc?.event = event
         }
     }
 }

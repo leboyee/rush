@@ -77,7 +77,7 @@ class UserInfoViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: Utils.getSystemVersion() < 13 ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
@@ -95,7 +95,7 @@ class UserInfoViewController: CustomViewController {
 extension UserInfoViewController {
 
     func nextButtonEnabled() {
-        if dob.isEmpty == false && gender.isEmpty == false && relation.isEmpty == false && homeTown.isEmpty == false {
+        if dob.isEmpty == false || gender.isEmpty || false && relation.isEmpty || false || homeTown.isEmpty == false {
             self.nextButton.setNextButton(isEnable: true)
         } else {
             self.nextButton.setNextButton(isEnable: false)
