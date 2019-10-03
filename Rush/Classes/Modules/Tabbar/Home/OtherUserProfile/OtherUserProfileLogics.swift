@@ -60,7 +60,13 @@ extension OtherUserProfileController {
             if unself.friendType == .none {
                 unself.friendType = .friends
             } else if unself.friendType == .friends {
-                unself.friendType = .addFriend
+                //unself.friendType = .addFriend
+                
+                Utils.alert(message: "Are you sure you want to unfriend of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
+                    if index == 0 {
+                        unself.moderateFriendRequestAPI(type: "accept")
+                    }
+                })
                 
                 let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: unself.userInfo?.name))",
                     duration: .middle,
@@ -79,7 +85,7 @@ extension OtherUserProfileController {
                  */
             } else if unself.friendType == .addFriend {
                 // unself.friendType = .requested
-                Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "").", buttons: ["YES", "NO"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.sendFriendRequestAPI()
                     }
@@ -89,7 +95,7 @@ extension OtherUserProfileController {
                 //unself.friendType = .accept
             } else if unself.friendType == .accept {
                 // unself.friendType = .friends
-                Utils.alert(message: "Are you sure you want to accept friend request of \(unself.userInfo?.name ?? "").", buttons: ["YES", "NO"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to accept friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "accept")
                     }
