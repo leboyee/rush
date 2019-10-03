@@ -28,12 +28,13 @@ extension OtherUserProfileController {
     }
     
     func fillManageCell(_ cell: ClubManageCell, _ indexPath: IndexPath) {
+        let status = userInfo?.friendTypeStatus ?? .none
+        
         if indexPath.row == 0 {
             
             // For test
             cell.setup(secondButtonType: .message)
             cell.setup(topConstraint: 0)
-            let status = userInfo?.friendTypeStatus ?? .none
             if status == .none {
                 
             } else if status == .friends {
@@ -57,9 +58,9 @@ extension OtherUserProfileController {
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             unself.isShowMessageButton = false
-            if unself.friendType == .none {
+            if status == .none {
                 unself.friendType = .friends
-            } else if unself.friendType == .friends {
+            } else if status == .friends {
                 //unself.friendType = .addFriend
                 
                 Utils.alert(message: "Are you sure you want to unfriend of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
@@ -83,17 +84,17 @@ extension OtherUserProfileController {
                  self_.delegate?.unfriendUser("Jessica O'Hara")
                  }
                  */
-            } else if unself.friendType == .addFriend {
+            } else if status == .addFriend {
                 // unself.friendType = .requested
                 Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.sendFriendRequestAPI()
                     }
                 })
-            } else if unself.friendType == .requested {
+            } else if status == .requested {
                 //unself.isShowMessageButton = true
                 //unself.friendType = .accept
-            } else if unself.friendType == .accept {
+            } else if status == .accept {
                 // unself.friendType = .friends
                 Utils.alert(message: "Are you sure you want to accept friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
@@ -106,7 +107,7 @@ extension OtherUserProfileController {
         
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            if unself.friendType == .accept {
+            if status == .accept {
                 /*
                 unself.friendType = .addFriend
                 unself.isShowMessageButton = false
