@@ -94,6 +94,11 @@ extension EventCategoryListViewController {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             vc.eventId = (sender as? Event)?.id
             vc.event = sender as? Event
-        }
-    }
+        } else if segue.identifier == Segues.clubDetailSegue {
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.classInfo = sender as? Class
+        }    }
 }

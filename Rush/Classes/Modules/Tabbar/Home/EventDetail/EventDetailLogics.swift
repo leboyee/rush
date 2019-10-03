@@ -317,7 +317,7 @@ extension EventDetailViewController {
             cell.set(numberOfLike: post.numberOfLikes)
             cell.set(numberOfComment: post.numberOfComments)
             
-            cell.likeButtonEvent = { [weak self]() in
+            cell.likeButtonEvent = { [weak self] () in
                 self?.voteAPI(id: post.id ?? "", type: Vote.up)
             }
             
