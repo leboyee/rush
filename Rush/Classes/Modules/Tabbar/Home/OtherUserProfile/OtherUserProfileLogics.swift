@@ -33,7 +33,7 @@ extension OtherUserProfileController {
             // For test
             cell.setup(secondButtonType: .message)
             cell.setup(topConstraint: 0)
-            let status = userInfo?.friend?.friendTypeStatus ?? .none
+            let status = userInfo?.friendTypeStatus ?? .none
             if status == .none {
                 
             } else if status == .friends {
@@ -106,13 +106,16 @@ extension OtherUserProfileController {
                 unself.isShowMessageButton = false
                 unself.tableView.reloadData()
                 */
-                Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["YES", "NO"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "reject")
                     }
                 })
             } else {
-                Utils.notReadyAlert()
+                let controller = ChatRoomViewController()
+                controller.isShowTempData = false
+                controller.userName = unself.userInfo?.name ?? ""
+                unself.navigationController?.pushViewController(controller, animated: true)
             }
         }
     }

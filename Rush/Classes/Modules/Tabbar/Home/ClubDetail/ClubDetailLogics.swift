@@ -206,6 +206,15 @@ extension ClubDetailViewController {
         clubHeader.set(url: img.url())
     }
     
+    func fillData() {
+        if let invitee = clubInfo?.invitees {
+            let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+            if filter.count > 0 {
+                joinedClub = true
+            }
+        }
+    }
+    
     func cellSelected(_ indexPath: IndexPath) {
         
         if indexPath.section == 5 && joinedClub {
@@ -218,7 +227,6 @@ extension ClubDetailViewController {
                 } else {
                     performSegue(withIdentifier: Segues.otherUserProfile, sender: post.user)
                 }
-                
             }
         }
     }
@@ -248,6 +256,7 @@ extension ClubDetailViewController {
                     }
                 }
                 uwself.fillImageHeader()
+                uwself.fillData()
                 uwself.getClubPostListAPI()
                 uwself.tableView.reloadData()
             } else {
