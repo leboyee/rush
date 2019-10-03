@@ -28,6 +28,16 @@
             </objects>
             <point key="canvasLocation" x="2425" y="-1132"/>
         </scene>
+        <!--OtherUserProfileController-->
+        <scene sceneID="dqn-gt-UVk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="OtherUserProfileController" id="JCi-zv-64X" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZWc-Gz-tDl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7pj-Fz-N1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2432" y="-1311"/>
+        </scene>
         <!--SharePostViewController-->
         <scene sceneID="l5I-tQ-cBL">
             <objects>
@@ -129,6 +139,7 @@
                         <segue destination="QDD-Yv-tG6" kind="show" identifier="EventPostDetailSegue" id="m7k-oW-jq0"/>
                         <segue destination="i1V-0o-tW2" kind="presentation" identifier="EventDetailShareSegue" animates="NO" modalPresentationStyle="overFullScreen" id="FUB-qK-eXh"/>
                         <segue destination="ayU-bi-RPv" kind="presentation" identifier="EventWithoutRSVPJoinedPopupSegue" modalPresentationStyle="overFullScreen" id="YxH-d2-f73"/>
+                        <segue destination="JCi-zv-64X" kind="show" identifier="EventOtherUserProfileSegue" id="soa-LT-e4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -356,6 +367,6 @@
         <image name="share" width="26" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d2P-Hw-Eph"/>
+        <segue reference="YxH-d2-f73"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -89,7 +89,9 @@ extension EventTypeCell {
     }
     
     func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
-        
+         if let image = list?[indexPath.row] as? Image {
+            cell.set(url: image.urlThumb())
+         }
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {

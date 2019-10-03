@@ -291,7 +291,8 @@ extension EventDetailViewController {
     func fillOrganizerCell(_ cell: OrganizerCell) {
         guard let user = event?.creator else { return }
         cell.set(name: user.name)
-        cell.set(detail: "3 events")
+        let text =  "\(user.totalEvents ?? 0) events"
+        cell.set(detail: text)
         cell.set(url: user.photo?.urlThumb())
     }
     
@@ -349,6 +350,9 @@ extension EventDetailViewController {
             /// check section type is create post or not, if yes, move to create post screen
             if eventSection.type == .createPost {
                 showCreatePost()
+            } else if eventSection.type == .organizer {
+                guard let user = event?.creator else { return }
+                showUserProfile(user: user)
             }
         }
     }

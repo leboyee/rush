@@ -135,7 +135,7 @@ extension EventDetailViewController {
         guard let event = event else { return }
         header.set(date: event.start)
         header.set(start: event.start, end: event.end)
-        header.set(url: event.photo?.url())
+        header.set(url: event.photo?.urlLarge())
     }
     
     func showRSVP() {
@@ -156,6 +156,10 @@ extension EventDetailViewController {
     
     func showJoinAlert() {
         performSegue(withIdentifier: Segues.eventWithoutRSVPJoinedPopup, sender: nil)
+    }
+    
+    func showUserProfile(user: User) {
+        performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
     }
 }
 
@@ -185,6 +189,11 @@ extension EventDetailViewController {
         } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
             let vc = segue.destination as? EventJoinedPopupViewController
             vc?.event = event
+        } else if segue.identifier == Segues.eventOtherUserProfile {
+            if let vc = segue.destination as? OtherUserProfileController {
+                vc.userInfo = sender as? User
+                vc.delegate = self
+            }
         }
     }
 }

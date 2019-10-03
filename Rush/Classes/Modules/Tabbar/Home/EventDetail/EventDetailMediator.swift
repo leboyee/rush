@@ -200,3 +200,8 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
         }
     }
 }
+
+// MARK: - OtherUserProfile delegate
+extension EventDetailViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) { }
+}
