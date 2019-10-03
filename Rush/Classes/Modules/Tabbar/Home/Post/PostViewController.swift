@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 
 protocol PostViewProtocol: class {
     func deletePostSuccess(_ post: Post?)
+    func updatedPost(_ post: Post)
 }
 
 class PostViewController: UIViewController {

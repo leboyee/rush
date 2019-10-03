@@ -46,6 +46,8 @@ class User: Codable {
     var status: Int = 0
     var instaUserName: String?
     var instaToken: String?
+    var totalEvents: Int?
+    
     private var photoJson: String?
     private var convertJsonToPhoto: Image?
     var friend: Friend?
@@ -60,6 +62,7 @@ class User: Codable {
     var name: String {
         return (firstName ?? "") + " " + (lastName ?? "")
     }
+    
     var userId: String {
         return id ?? "0"
     }
@@ -109,6 +112,7 @@ class User: Codable {
         //        case name
         //var classes: [Classes]? u_edu_classes,u_university
 
+        case totalEvents = "total_events"
     }
     
     init() {

@@ -76,6 +76,7 @@ class EventTypeCell: UITableViewCell {
     
     func setup(imagesList: [Image]) {
         cellType = .profileImage
+        list = imagesList
         reload()
     }
     

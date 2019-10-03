@@ -82,7 +82,7 @@ extension NetworkManager {
     }
 
     func getImageList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "profile/photo", params: params, resultHandler: resultHandler)
+        requestGet(path: "profile-images", params: params, resultHandler: resultHandler)
     }
     
     func createClub(params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -182,5 +182,8 @@ extension NetworkManager {
     
     func friendRequestStatus(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPut(path: "friend", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    // MARK: - Notification
+    func getNotificationList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "notification", params: params, resultHandler: resultHandler)
     }
 }

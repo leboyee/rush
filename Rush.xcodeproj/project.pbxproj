@@ -479,6 +479,8 @@
 		8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1076BC2306B96800512AA3 /* TextCell.xib */; };
 		8A1076C02306BC2600512AA3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BF2306BC2600512AA3 /* Tag.swift */; };
 		8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */; };
+		8A1EFDDF2345E12A00624EED /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDDE2345E12A00624EED /* NotificationService.swift */; };
+		8A1EFDE12345E1A300624EED /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDE02345E1A300624EED /* NotificationItem.swift */; };
 		8A4B325D232B99F100AC1D17 /* RSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */; };
 		8A4B325F232B9A0B00AC1D17 /* RSVPMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */; };
 		8A4B3261232B9A1B00AC1D17 /* RSVPLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */; };
@@ -1020,6 +1022,8 @@
 		8A1076BC2306B96800512AA3 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		8A1076BF2306BC2600512AA3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8A1EFDDE2345E12A00624EED /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8A1EFDE02345E1A300624EED /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
 		8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPViewController.swift; sourceTree = "<group>"; };
 		8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPMediator.swift; sourceTree = "<group>"; };
 		8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPLogics.swift; sourceTree = "<group>"; };
@@ -1632,6 +1636,7 @@
 				8AE9711F2327B4D800CB52D4 /* EventServices.swift */,
 				8A4B3267232BB7E800AC1D17 /* PostServices.swift */,
 				79257FD023447C49001C5775 /* FriendServices.swift */,
+				8A1EFDDE2345E12A00624EED /* NotificationService.swift */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -2903,6 +2908,7 @@
 				79DA00BB233219A1006B3A65 /* Post.swift */,
 				79C5811F233BA54600FD837A /* Comment.swift */,
 				8AAA38442343268500423D43 /* RSVPQuestion.swift */,
+				8A1EFDE02345E1A300624EED /* NotificationItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2952,6 +2958,7 @@
 		C05FC16622805F9D00721F3F /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				1AC635FA22AA8F6900021E03 /* CustomNavBarPageController.xib */,
 				1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */,
 				C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */,
 				C05FC16922805F9D00721F3F /* Main.storyboard */,
@@ -2963,7 +2970,6 @@
 				0918E786228444B90098AF35 /* Profile.storyboard */,
 				1A62D2312295454C001E5790 /* Authorize.storyboard */,
 				1AC635F822AA766100021E03 /* UserData.storyboard */,
-				1AC635FA22AA8F6900021E03 /* CustomNavBarPageController.xib */,
 				1AEAC49822D3194A008FBB54 /* UserInfo.storyboard */,
 				8A04B13D22FAE1180055C65F /* Calendar.storyboard */,
 				1AA9AB4122FF3D9600E0E450 /* Event.storyboard */,
@@ -3433,6 +3439,7 @@
 				79C1AC4D22A64CF9003C7790 /* ProfileInformationMediates.swift in Sources */,
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
+				8A1EFDE12345E1A300624EED /* NotificationItem.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
 				7999362C22FAEDAC001AEEEB /* ChatUserCell.swift in Sources */,
 				7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */,
@@ -3528,6 +3535,7 @@
 				7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */,
 				1A2809E322C5F43B00B4E764 /* ChooseClassesViewLogics.swift in Sources */,
 				8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */,
+				8A1EFDDF2345E12A00624EED /* NotificationService.swift in Sources */,
 				793BE68F22E88207005EF72D /* InsetLabel.swift in Sources */,
 				797FFDA622B7BC480055A001 /* LiveView.swift in Sources */,
 				7994A3BE22D76FD00057527C /* ChatsViewController.swift in Sources */,

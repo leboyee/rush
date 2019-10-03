@@ -11,7 +11,7 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) { // after stable app (remove this line)
+        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) { // after stable app (remove this line)
             return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         } else if type == .upcoming || type == .classes {
             return list?.count ?? 0
@@ -99,7 +99,10 @@ extension EventTypeCell {
     }
     
     func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
-        
+        guard list?.count ?? 0 > indexPath.row else { return }
+        if let image = list?[indexPath.row] as? Image {
+            cell.set(url: image.urlThumb())
+        }
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {

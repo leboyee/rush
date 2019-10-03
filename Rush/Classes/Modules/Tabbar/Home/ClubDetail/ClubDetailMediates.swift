@@ -193,6 +193,10 @@ extension ClubDetailViewController: PostViewProtocol {
         })
         snackbar.show()
     }
+    
+    func updatedPost(_ post: Post) {
+        
+    }
 }
 
 // MARK: - CreatePostViewController delegate

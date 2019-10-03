@@ -266,6 +266,9 @@ extension EventDetailViewController {
     
     func fillLocationCell(_ cell: LocationCell) {
         cell.set(address: event?.address ?? "", lat: event?.latitude ?? "0", lon: event?.longitude ?? "0")
+        cell.showLocationOnMap = { [weak self] () in
+            self?.showLocationOnMap()
+        }
     }
     
     func fillCreatePostCell(_ cell: CreatePostCell) {
@@ -294,7 +297,8 @@ extension EventDetailViewController {
     func fillOrganizerCell(_ cell: OrganizerCell) {
         guard let user = event?.creator else { return }
         cell.set(name: user.name)
-        cell.set(detail: "3 events")
+        let text =  "\(user.totalEvents ?? 0) events"
+        cell.set(detail: text)
         cell.set(url: user.photo?.urlThumb())
     }
     
@@ -324,7 +328,7 @@ extension EventDetailViewController {
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postList?[index] {
-            cell.set(numberOfLike: post.numberOfLikes)
+            cell.set(numberOfLike: post.totalUpVote)
             cell.set(numberOfComment: post.numberOfComments)
             
             cell.likeButtonEvent = { [weak self] () in
@@ -352,6 +356,9 @@ extension EventDetailViewController {
             /// check section type is create post or not, if yes, move to create post screen
             if eventSection.type == .createPost {
                 showCreatePost()
+            } else if eventSection.type == .organizer {
+                guard let user = event?.creator else { return }
+                showUserProfile(user: user)
             }
         }
     }

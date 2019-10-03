@@ -13,6 +13,7 @@ class Post: Codable {
     var id: String?
     var parentId: String? // Event / Club / Class
     var text: String?
+    var totalUpVote: Int = 0
     var numberOfLikes: Int = 0
     var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
@@ -34,6 +35,7 @@ class Post: Codable {
         case parentId = "data_id"
         case text = "desc"
         case imageJson = "photos"
+        case totalUpVote = "total_votes"
         case numberOfLikes = "up_votes"
         case numberOfUnLikes = "down_votes"
         case numberOfComments = "total_comments"

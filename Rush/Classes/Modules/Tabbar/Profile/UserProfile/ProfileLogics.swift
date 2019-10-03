@@ -23,6 +23,8 @@ extension ProfileViewController {
     }
     
     func loadImages() {
+        imagePageNo = 1
+        imageNextPageExist = false
         fetchImagesList()
     }
     
@@ -189,15 +191,34 @@ extension ProfileViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let userId = self.profileDetail.profile?.userId else { return }
-            /*
-            let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
+            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.imagePageNo)"]
             ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
-                if let list = data?[Keys.list] as? [[String: Any]] {
-                    
+                guard let unsafe = self else { return }
+                if let list = data?[Keys.images] as? [[String: Any]] {
+                    if list.isEmpty {
+                        unsafe.imageNextPageExist = false
+                        if unsafe.imagePageNo == 1 {
+                            unsafe.profileDetail.images?.removeAll()
+                        }
+                    } else {
+                        var items = [Image]()
+                        for item in list {
+                            if let json = item["img_data"] as? String {
+                                let image = Image(json: json)
+                                items.append(image)
+                            }
+                        }
+                        if unsafe.imagePageNo == 1 {
+                            unsafe.profileDetail.images = items
+                        } else {
+                            unsafe.profileDetail.images?.append(contentsOf: items)
+                        }
+                        unsafe.imagePageNo += 1
+                        unsafe.imageNextPageExist = true
+                    }
                 }
                 self?.downloadGroup.leave()
-            })*/
-            self.downloadGroup.leave()
+            })
         }
     }
     
@@ -208,10 +229,8 @@ extension ProfileViewController {
             self.downloadGroup.enter()
             guard let userId = self.profileDetail.profile?.userId else { return }
             let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
-            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
-//                if let list = data?[Keys.list] as? [[String: Any]] {
-//                    
-//                }
+            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (list, _) in
+                self?.profileDetail.friends = list
                 self?.downloadGroup.leave()
             }
         }
@@ -223,7 +242,12 @@ extension ProfileViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let userId = self.profileDetail.profile?.userId else { return }
-
+            /*
+            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.notificationPageNo)"]
+            ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (list, _) in
+                self?.profileDetail.notifications = list
+                self?.downloadGroup.leave()
+            }*/
             self.downloadGroup.leave()
         }
     }

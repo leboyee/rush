@@ -6,7 +6,6 @@
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
-
 import UIKit
 import IQKeyboardManagerSwift
 
@@ -47,21 +46,15 @@ class EventListViewController: CustomViewController {
     
     func setupNavigation() {
         self.view.backgroundColor = UIColor.bgBlack
-        
- 
     }
 }
 
 // MARK: - Actions
 extension EventListViewController {
-
-
 }
 
 // MARK: - Mediator / Presenter Functions
 extension EventListViewController {
-
-
 }
 
 // MARK: - Navigation
