@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventCategoryFilterHeader" id="KGk-i7-Jjw" customClass="EventCategoryFilterHeader" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGT-WJ-eTl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAs-UK-J0q">
+                                <rect key="frame" x="24" y="48" width="351" height="1"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="woy-jb-Egg"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBG-Uf-HCX">
+                                <rect key="frame" x="24" y="17" width="51" height="16"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EAs-UK-J0q" firstAttribute="leading" secondItem="xGT-WJ-eTl" secondAttribute="leading" constant="24" id="ACb-dY-bgn"/>
+                            <constraint firstItem="vBG-Uf-HCX" firstAttribute="centerY" secondItem="xGT-WJ-eTl" secondAttribute="centerY" id="NE1-nY-U3p"/>
+                            <constraint firstAttribute="bottom" secondItem="EAs-UK-J0q" secondAttribute="bottom" constant="1" id="Y6d-hZ-aNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="EAs-UK-J0q" secondAttribute="trailing" id="jmR-D8-ds1"/>
+                            <constraint firstItem="vBG-Uf-HCX" firstAttribute="leading" secondItem="xGT-WJ-eTl" secondAttribute="leading" constant="24" id="m2Y-AG-ie9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xGT-WJ-eTl" secondAttribute="bottom" id="GMQ-4a-7Gz"/>
+                    <constraint firstItem="xGT-WJ-eTl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KOM-bm-HSB"/>
+                    <constraint firstAttribute="trailing" secondItem="xGT-WJ-eTl" secondAttribute="trailing" id="Sbb-Jw-8dl"/>
+                    <constraint firstItem="xGT-WJ-eTl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kgy-FP-3vN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="titleLabel" destination="vBG-Uf-HCX" id="Jb5-h2-XJ5"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="26"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -38,4 +38,6 @@ target 'Rush' do
   pod 'FacebookCore'
   
   pod 'UnsplashPhotoPicker', '~> 1.0'
+  pod 'PanModal'
+
 end

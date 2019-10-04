@@ -95,7 +95,7 @@ class UserInfoViewController: CustomViewController {
 extension UserInfoViewController {
 
     func nextButtonEnabled() {
-        if dob.isEmpty == false || gender.isEmpty || false && relation.isEmpty || false || homeTown.isEmpty == false {
+        if dob.isEmpty == false || gender.isEmpty == false || relation.isEmpty == false || homeTown.isEmpty == false {
             self.nextButton.setNextButton(isEnable: true)
         } else {
             self.nextButton.setNextButton(isEnable: false)

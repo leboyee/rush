@@ -351,6 +351,22 @@ extension Utils {
     class func chooseUniversity() -> [String] {
         return ["University of Oxford", "Harvard University", "Stanford University", "Columbia University"]
     }
+    
+    class func upcomingFiler() -> [String] {
+          return ["All upcoming", "Today", "Tomorrow", "This week", "This weekend", "Next week"]
+      }
+      
+      class func anyTimeFilter() -> [String] {
+          return ["Morning", "Day", "Evening"]
+      }
+      
+      class func friendsFilter() -> [String] {
+             return ["Everyone", "Friends Going"]
+      }
+      
+      class func myUpcomingFileter() -> [String] {
+                return ["All Upcoming", "Managed first"]
+      }
 }
 
 // MARK: - Alert Extension

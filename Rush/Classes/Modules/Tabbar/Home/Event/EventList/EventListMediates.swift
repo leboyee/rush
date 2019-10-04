@@ -24,7 +24,7 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return self.isMyEvents == true ?  eventCategory.count + 1 : eventCategory.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,30 +32,21 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
-            if isShowTutorial {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
-                    fillTutorialCell(cell)
-                    return cell
-            } else {
-                return UITableViewCell()
-            }
+        if self.isMyEvents == true && indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+                                          
+            fillEventByDateCell(cell, indexPath)
+                                           return cell
         } else {
-            if isShowJoinEvents && indexPath.section == 1 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-                fillEventByDateCell(cell, indexPath)
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-                fillEventTypeCell(cell, indexPath)
-                return cell
-            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+                                fillEventTypeCell(cell, indexPath)
+                                return cell
         }
+   
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.cellSelected(indexPath)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -79,26 +70,9 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
     }
-}
-
-// MARK: - CreatePostViewController Delegate
-extension EventListViewController: CreatePostViewControllerDelegate {
-    func createPostSuccess(_ post: Post) {
-    }
     
-    func showSnackBar(text: String, buttonText: String) {
-        /*
-        notificationTitle = text
-        notificationButtonTitle = buttonText
-        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
-        */
-        let snackbar = TTGSnackbar(message: text,
-                                   duration: .middle,
-                                   actionText: buttonText,
-                                   actionBlock: { (_) in
-                                    Utils.notReadyAlert()
-        })
-        snackbar.show()
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
     }
 }
 
@@ -106,5 +80,24 @@ extension EventListViewController: CreatePostViewControllerDelegate {
 extension EventListViewController: NotificationAlertDelegate {
     func undoButtonClickEvent() {
         
+    }
+}
+
+extension EventListViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+       
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        performSegue(withIdentifier: Segues.searchEventViewSegue, sender: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

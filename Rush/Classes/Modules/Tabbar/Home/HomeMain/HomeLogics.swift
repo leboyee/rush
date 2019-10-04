@@ -116,8 +116,9 @@ extension HomeViewController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             // Open other user profile UI for test
-            
-            if section == 2 {
+            if section == 1 {
+                unself.performSegue(withIdentifier: Segues.eventListSeuge, sender: unself.eventList)
+            } else if section == 2 {
                 unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.club)
             } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.classes)

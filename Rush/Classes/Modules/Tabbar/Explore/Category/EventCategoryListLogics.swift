@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PanModal
 
 extension EventCategoryListViewController {
     
@@ -59,6 +60,11 @@ extension EventCategoryListViewController {
         } else if indexPath.item == 2 {
             isThirdFilter = !isThirdFilter
         }
+        
+        guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+        eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
+        let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+        presentPanModal(rowViewController)
         collectionView.reloadData()
     }
     
@@ -86,8 +92,7 @@ extension EventCategoryListViewController {
         }*/
     }
     func cellSelected(_ indexPath: IndexPath) {
-        if type == .event
-        {
+        if type == .event {
             let event = eventList[indexPath.row]
             performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
         }

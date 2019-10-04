@@ -16,7 +16,6 @@ class EventCategoryListViewController: UIViewController {
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var categoryName = ""
-    
     var isFirstFilter = false
     var isSecondFilter = false
     var isThirdFilter = false
@@ -56,12 +55,11 @@ class EventCategoryListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {        super.viewWillDisappear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.barTintColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
+        //navigationController?.navigationBar.isTranslucent = true
     }
     
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
-        
         // Setup tableview
         setupTableView()
         
@@ -100,5 +98,6 @@ extension EventCategoryListViewController {
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
             vc.classInfo = sender as? Class
-        }    }
+        }
+    }
 }

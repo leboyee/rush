@@ -74,6 +74,15 @@ extension ServiceManager {
         }
     }
     
+    func fetchEventCategoryWithEventList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
+             NetworkManager.shared.getEventCategoryWithEventList(params: params) { [weak self] (data, error, code) in
+                 guard let unsafe = self else { return }
+                 unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, errorMessage) in
+                     closer(eventCategory, errorMessage)
+                 })
+             }
+         }
+    
     // Delete Event API
     func deleteEvent(eventId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.deleteEvent(eventId: eventId) { [weak self] (data, error, code) in

@@ -1,0 +1,102 @@
+//
+//  EventCateogryFilterViewController.swift
+//  Rush
+//
+//  Created by Suresh Jagnani on 28/09/19.
+//  Copyright © 2019 Messapps. All rights reserved.
+//
+
+import UIKit
+import IQKeyboardManagerSwift
+import PanModal
+
+protocol EventCategoryFilterDelegate: class {
+    func selectedIndex(_ type: String)
+}
+
+class EventCateogryFilterViewController: CustomViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    weak var delegate: EventCategoryFilterDelegate?
+
+    var isShortFormEnabled = false
+    var dataArray = [String]()
+    var selectedIndex: Int = 0
+    var headerTitle: String = "Sort by:"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        panModalSetNeedsLayoutUpdate()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //panModalSetNeedsLayoutUpdate()
+    }
+
+    func setup() {
+        setupUI()
+    }
+    
+    func setupUI() {
+        setupTableView()
+    }
+    
+}
+
+// MARK: - Pan Model
+extension EventCateogryFilterViewController: PanModalPresentable {
+    
+    var panScrollable: UIScrollView? {
+        return tableView
+    }
+    
+      var longFormHeight: PanModalHeight {
+        return .contentHeight(CGFloat((self.dataArray.count * 64) + 50))
+    }
+
+    var backgroundAlpha: CGFloat {
+        return 0.5
+    }
+    
+    var shouldRoundTopCorners: Bool {
+        return true
+    }
+    
+    var showDragIndicator: Bool {
+        return true
+    }
+    
+    var cornerRadius: CGFloat {
+           return 24.0
+    }
+    
+    var anchorModalToLongForm: Bool {
+        return false
+    }
+    
+    var isUserInteractionEnabled: Bool {
+        return true
+    }
+    
+    var scrollIndicatorInsets: UIEdgeInsets {
+        let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
+        return UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
+    }
+
+    func shouldPrioritize(panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
+        let location = panModalGestureRecognizer.location(in: view)
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.eventCategoryFilterHeader) as? EventCategoryFilterHeader else { return false }
+
+        return headerView.frame.contains(location)
+    }
+
+    func willTransition(to state: PanModalPresentationController.PresentationState) {
+        panModalSetNeedsLayoutUpdate()
+    }
+}
