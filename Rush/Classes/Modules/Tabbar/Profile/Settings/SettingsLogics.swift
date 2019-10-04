@@ -21,8 +21,10 @@ extension SettingsViewController {
         
         var count = 0
         switch section {
-        case 0, 1, 2:
+        case 0, 2:
             count = 2
+        case 1:
+            count = 1 /// Made it 1 because we does not need dark mode in that app so in next version, we will make it 2.
         case 3:
             count = 1
         default:

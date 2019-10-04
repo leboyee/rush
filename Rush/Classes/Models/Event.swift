@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct EventAction {
+    static let join = "join"
+    static let accept = "accept"
+    static let reject = "reject"
+}
+
 struct EventGroup {
     var dateString: String
     var events: [Event]

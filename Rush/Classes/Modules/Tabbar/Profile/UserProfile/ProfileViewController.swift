@@ -140,12 +140,11 @@ extension ProfileViewController {
 
 // MARK: - Navigations
 extension ProfileViewController {
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.profileFriendProfile {
-            let vc = segue.destination as? ProfileViewController
-            vc?.profileDetail.profile = sender as? User
-            vc?.isOtherUserProfile = true
+            let vc = segue.destination as? OtherUserProfileController
+            vc?.userInfo = sender as? User
+            vc?.delegate = self
         }
     }
 }
