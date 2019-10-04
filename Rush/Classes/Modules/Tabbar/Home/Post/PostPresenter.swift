@@ -33,6 +33,7 @@ extension PostViewController {
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
         cell.setup(text: postInfo?.text ?? "", placeholder: "")
         cell.setup(font: UIFont.regular(sz: 17))
+        cell.setup(isUserInterectionEnable: false)
     }
     
     // Image cell (section 2)
@@ -52,38 +53,50 @@ extension PostViewController {
         header.setup(isDetailArrowHide: true)
     }
     
-    // Comment cell
-    func fillCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
+    // Comment parent cell
+    func fillParentCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
         
-        /*
-        if indexPath.row == 0 {
-            cell.setup(isReplayCell: false)
-        } else if indexPath.row == 1 {
-            cell.setup(isReplayCell: true)
-            cell.setup(name: "Peter Rally", attributedText: "")
-        } else {
-            cell.setup(isReplayCell: false)
-        }
-        */
         let comment = commentList[indexPath.row]
         cell.setup(username: comment.user?.name ?? "")
         cell.setup(commentText: comment.desc ?? "")
+        cell.setup(image: comment.user?.photo?.url())
+        cell.setup(date: comment.createDate ?? "")
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
             unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
         }
         
-        cell.userNameClickEvent = { [weak self] (name) in
+        cell.replyClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.username = "Peter Rally"
-            unself.textView.attributedText = Utils.setAttributedText(unself.username, ", can I bring friends?", 17, 17)
+            unself.parentComment = comment
+            if let name = comment.user?.name {
+                unself.textView.attributedText  = Utils.setAttributedText(name, "", 17, 17)
+            }
             unself.textView.becomeFirstResponder()
+        }
+    }
+    
+    // Comment child cell
+    func fillChildCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
+        
+        let comment = commentList[indexPath.section - 4].threadComment?[indexPath.row - 1]
+        cell.setup(username: comment?.user?.name ?? "")
+        cell.setup(commentText: comment?.desc ?? "")
+        cell.setup(isReplayCell: true)
+        cell.setup(image: comment?.user?.photo?.url())
+        
+        cell.userProfileClickEvent = { [weak self] () in
+            guard let unself = self else { return }
+            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
         }
         
         cell.replyClickEvent = { [weak self] () in
             guard let unself = self else { return }
             unself.parentComment = comment
+            if let name = comment?.user?.name {
+                unself.textView.attributedText  = Utils.setAttributedText(name, "", 17, 17)
+            }
             unself.textView.becomeFirstResponder()
         }
     }
@@ -104,6 +117,14 @@ extension PostViewController {
                 guard let uwself = self else { return }
                 uwself.voteClubAPI(id: post.id ?? "", type: "down")
                 
+            }
+        }
+    }
+    
+    func loadMoreCell(_ indexPath: IndexPath) {
+        if commentList.count > 2 {
+            if (indexPath.row == (commentList.count - 2) && isNextPageExistP) {
+                getAllCommentListAPI()
             }
         }
     }
@@ -143,15 +164,35 @@ extension PostViewController {
     }
     
     func getAllCommentListAPI() {
+        
+        let param = ["post_id": postInfo?.id ?? "",
+                     "parent_id": parentComment?.id ?? "",
+                     "pageNo": pageNoP] as [String: Any]
+        
         parentComment = nil
-        ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "") { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "", params: param) { [weak self] (data, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let value = data {
-                unsafe.commentList = value
+            
+            if unsafe.pageNoP == 1 {
+                unsafe.commentList.removeAll()
+            }
+            
+            if let value = data, value.count > 0 {
+                if unsafe.pageNoP == 1 {
+                    unsafe.commentList = value
+                } else {
+                    unsafe.commentList.append(contentsOf: value)
+                }
+                
+                unsafe.pageNoP += 1
+                unsafe.isNextPageExistP = true
                 unsafe.tableView.reloadData()
             } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                unsafe.isNextPageExistP = false
+                if unsafe.pageNoP == 1 {
+                    unsafe.commentList.removeAll()
+                }
             }
         }
     }

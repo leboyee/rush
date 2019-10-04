@@ -29,12 +29,13 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return (commentList.count + 4)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 4 {
-            return commentList.count
+        
+        if section > 3 {
+            return (commentList[section - 4].threadComment?.count ?? 0) + 1
         }
         return 1
     }
@@ -58,7 +59,12 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as? PostCommentCell else { return UITableViewCell() }
-            fillCommentCell(cell, indexPath)
+            
+            if indexPath.row == 0 {
+                fillParentCommentCell(cell, indexPath)
+            } else {
+                fillChildCommentCell(cell, indexPath)
+            }
             return cell
         }
     }
@@ -80,15 +86,23 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        loadMoreCell(indexPath)
+    }
 }
 
 // MARK: - Textview delegate
 extension PostViewController: GrowingTextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         
-        let text = textView.text.replacingOccurrences(of: username, with: "")
-        commentText = textView.text
-        textView.attributedText = Utils.setAttributedText(username, text, 17, 17)
+        if parentComment != nil {
+            if let name = parentComment?.user?.name {
+                let text = textView.text.replacingOccurrences(of: name, with: "")
+                commentText = textView.text
+                textView.attributedText = Utils.setAttributedText(name, text, 17, 17)
+            }
+        }
         if textView.text.count > 0 {
             sendButton.setBackgroundImage(#imageLiteral(resourceName: "send_active"), for: .normal)
         } else {
@@ -97,8 +111,12 @@ extension PostViewController: GrowingTextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        let text = textView.text.replacingOccurrences(of: username, with: "")
-        textView.attributedText = Utils.setAttributedText(username, text, 17, 17)
+        if parentComment != nil {
+            if let name = parentComment?.user?.name {
+                let text = textView.text.replacingOccurrences(of: name, with: "")
+                textView.attributedText = Utils.setAttributedText(name, text, 17, 17)
+            }
+        }
     }
     
     func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
