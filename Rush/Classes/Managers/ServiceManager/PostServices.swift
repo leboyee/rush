@@ -90,16 +90,10 @@ extension ServiceManager {
     func fetchClassGroupList(classId: String, params: [String: Any], closer: @escaping (_ params: [Class]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClassGroupList(classId: classId, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                if let object = data?[Keys.list] as? [[String: Any]] {
-                    let objclass: [Class]? = unsafe.decodeObject(fromData: object)
-                    closer(objclass, errorMessage)
-                } else {
-                    closer(nil, errorMessage)
-                }
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (classList, errorMessage) in
+                closer(classList, errorMessage)
             })
         }
-        
     }
     
     // Post Detail API
