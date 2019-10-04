@@ -189,6 +189,7 @@ struct Segues {
     static let searchEventCategoryViewSegue     = "SearchEventCategoryViewSegue"
     static let eventWithoutRSVPJoinedPopup = "EventWithoutRSVPJoinedPopupSegue"
     static let eventOtherUserProfile = "EventOtherUserProfileSegue"
+    static let eventListToEventDetailsSegue = "EventListToEventDetailsSegue"
 }
 
 struct StoryBoard {

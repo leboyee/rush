@@ -100,7 +100,7 @@ extension EventListViewController {
 // MARK: - Navigation
 extension EventListViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.homeEventDetail {
+        if segue.identifier == Segues.eventListToEventDetailsSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             vc.eventId = (sender as? Event)?.id
             vc.event = sender as? Event

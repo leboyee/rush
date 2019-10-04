@@ -550,6 +550,7 @@
                         <outlet property="noEventsView" destination="lFT-RV-Y8O" id="foO-3M-9GN"/>
                         <outlet property="tableView" destination="bxb-Ma-GYC" id="CjL-JQ-Qta"/>
                         <segue destination="sDj-7n-w1e" kind="show" identifier="SearchEventViewSegue" id="uMm-48-ITJ"/>
+                        <segue destination="me4-NK-rKo" kind="show" identifier="EventListToEventDetailsSegue" id="bB1-At-etE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2M-YE-mnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -667,6 +668,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZL-oI-rZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2837.68115942029" y="2007.5892857142856"/>
+        </scene>
+        <!--EventDetailViewController-->
+        <scene sceneID="JKJ-pE-yEh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" referencedIdentifier="EventDetailViewController" id="me4-NK-rKo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hjD-9r-19O"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="56C-C8-Sf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="1771"/>
         </scene>
     </scenes>
     <resources>

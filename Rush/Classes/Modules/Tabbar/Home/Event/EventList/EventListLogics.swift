@@ -43,6 +43,14 @@ extension EventListViewController {
         cell.setup(start: event.start, end: event.end)
         cell.setup(eventImageUrl: event.photoJson.photo?.urlThumb())
     }
+    
+    func cellSelected(_ indexPath: IndexPath) {
+        if self.isMyEvents == true && indexPath.section == 0 {
+            let event = eventList[indexPath.row]
+            performSegue(withIdentifier: Segues.eventListToEventDetailsSegue, sender: event)
+        }
+    }
+
 
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         var categoryName = ""
