@@ -68,10 +68,11 @@ class User: Codable {
     }
     
     var friendTypeStatus: ManageButtonType {
+        let loginUserRequested: Bool = friend?.first?.friendType == 1 && friend?.first?.friendUserId == Authorization.shared.profile?.userId
+        let otherUserRequested: Bool = friend?.first?.friendType == 2 && friend?.first?.friendUserId == Authorization.shared.profile?.userId
+        let isAlreadyFriend: Bool = friend?.first?.friendStatus == 1
         
-        return (friend?.first?.friendType == 1 && friend?.first?.friendUserId == Authorization.shared.profile?.userId) ? .requested :
-        (friend?.first?.friendType == 2 && friend?.first?.friendUserId == Authorization.shared.profile?.userId) ? .accept :
-        friend?.first?.friendStatus == 1 ? .friends : .addFriend
+        return isAlreadyFriend ? .friends : loginUserRequested ? .requested : otherUserRequested ? .accept :  .addFriend
     }
     
     private enum CodingKeys: String, CodingKey {

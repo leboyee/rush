@@ -65,18 +65,9 @@ extension OtherUserProfileController {
                 
                 Utils.alert(message: "Are you sure you want to unfriend of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
-                        unself.moderateFriendRequestAPI(type: "accept")
+                        unself.moderateFriendRequestAPI(type: "unfriend")
                     }
                 })
-                
-                let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: unself.userInfo?.name))",
-                    duration: .middle,
-                    actionText: "Undo",
-                    actionBlock: { (_) in
-                        unself.friendType = .friends
-                        unself.tableView.reloadData()
-                })
-                snackbar.show()
                 
                 /*
                  self_.navigationController?.popViewController(animated: true)
@@ -115,7 +106,7 @@ extension OtherUserProfileController {
                 */
                 Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
-                        unself.moderateFriendRequestAPI(type: "reject")
+                        unself.moderateFriendRequestAPI(type: "decline")
                     }
                 })
             } else {
@@ -285,6 +276,16 @@ extension OtherUserProfileController {
         ServiceManager.shared.moderateFriendRequest(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }
             if status {
+                if(type == "unfriend")
+                {
+                    let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: self?.userInfo?.name))",
+                        duration: .middle,
+                        actionText: "Undo",
+                        actionBlock: { (_) in
+                           Utils.notReadyAlert()
+                    })
+                    snackbar.show()
+                }
                 unsafe.getProfileAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
