@@ -14,6 +14,7 @@ class RSVPViewController: UIViewController {
     @IBOutlet weak var joinBottomSpaceConstraint: NSLayoutConstraint!
 
     var event: Event?
+    var action = EventAction.join
     var answers = [RSVPAnswer]()
     
     override func viewDidLoad() {

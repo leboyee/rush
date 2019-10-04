@@ -93,15 +93,6 @@ extension EventDetailViewController {
             ]
         }
     }
-    
-    func joinEvent() {
-        guard let event = self.event else { return }
-        if event.rsvp?.count ?? 0 == 0 {
-            joinEvent(eventId: event.id)
-        } else {
-            showRSVP()
-        }
-    }
 }
 
 // MARK: - Handlers
@@ -275,8 +266,13 @@ extension EventDetailViewController {
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             if unsafe.type == .invited {
-                /// Call Accept/Join API
-                unsafe.joinEvent()
+                /// Call Accept  API
+                guard let event = unsafe.event else { return }
+                if event.rsvp?.count ?? 0 == 0 {
+                    unsafe.joinEvent(eventId: event.id, action: EventAction.accept)
+                } else {
+                    unsafe.showRSVP(action: EventAction.accept)
+                }
             } else if unsafe.type == .my {
                 /// Show Edit event api
                 Utils.notReadyAlert()
@@ -289,6 +285,8 @@ extension EventDetailViewController {
                 unsafe.openGroupChat()
             } else if unsafe.type == .invited {
                 // Call Reject API
+                guard let event = unsafe.event else { return }
+                unsafe.rejectEvent(eventId: event.id)
             }
         }
         
@@ -316,7 +314,12 @@ extension EventDetailViewController {
         }
         
         cell.joinButtonClickEvent = { [weak self] () in
-            self?.joinEvent()
+            guard let unsafe = self else { return }
+            if event.rsvp?.count ?? 0 == 0 {
+                unsafe.joinEvent(eventId: event.id, action: EventAction.join)
+            } else {
+                unsafe.showRSVP(action: EventAction.join)
+            }
         }
     }
     
@@ -517,9 +520,9 @@ extension EventDetailViewController {
         }
     }
     
-    private func joinEvent(eventId: String) {
+    private func joinEvent(eventId: String, action: String) {
         Utils.showSpinner()
-        ServiceManager.shared.joinEvent(eventId: eventId, params: [:]) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.joinEvent(eventId: eventId, action: action, params: [:]) { [weak self] (data, errorMessage) in
             if let object = data {
                 let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
                 if isFirstTime == 1 {
@@ -529,6 +532,18 @@ extension EventDetailViewController {
                 DispatchQueue.main.async {
                     self?.loadAllData()
                 }
+            } else if let message = errorMessage {
+                self?.showMessage(message: message)
+                Utils.hideSpinner()
+            }
+        }
+    }
+    
+    private func rejectEvent(eventId: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.rejectEventInvitation(eventId: eventId) { [weak self] (status, errorMessage) in
+            if status {
+                self?.loadAllData()
             } else if let message = errorMessage {
                 self?.showMessage(message: message)
                 Utils.hideSpinner()

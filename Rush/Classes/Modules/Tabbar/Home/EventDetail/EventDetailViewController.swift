@@ -139,8 +139,8 @@ extension EventDetailViewController {
         header.set(url: event.photo?.urlLarge())
     }
     
-    func showRSVP() {
-        performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: nil)
+    func showRSVP(action: String) {
+        performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: action)
     }
     
     func showCreatePost() {
@@ -196,6 +196,9 @@ extension EventDetailViewController {
         if segue.identifier == Segues.rsvpJoinEvent {
             if let vc = segue.destination as? RSVPViewController {
                 vc.event = event
+                if let action = sender as? String {
+                  vc.action = action
+                }
             }
         } else if segue.identifier == Segues.createEventPost {
             if let nvc = segue.destination as? UINavigationController, let vc = nvc.viewControllers.first as? CreatePostViewController {
