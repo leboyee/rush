@@ -31,6 +31,8 @@ class PostCommentCell: UITableViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(gesture:)))
         self.detailLabel.addGestureRecognizer(tap)
         self.detailLabel.isUserInteractionEnabled = true
+        
+        imgView.layer.borderColor = UIColor.black.cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -66,8 +68,23 @@ extension PostCommentCell {
         usernameLabel.text = username
     }
     
+    func setup(image: URL?) {
+        if image != nil {
+            imgView.layer.borderWidth = 0
+            imgView.sd_setImage(with: image, placeholderImage: #imageLiteral(resourceName: "placeHolderIcon"), options: [], context: nil)
+        } else {
+            imgView.image = #imageLiteral(resourceName: "placeHolderIcon")
+            imgView.contentMode = .scaleToFill
+            imgView.layer.borderWidth = 1
+        }
+    }
+    
     func setup(commentText: String) {
         detailLabel.text = commentText
+    }
+    
+    func setup(date: String) {
+        dateLabel.text = date
     }
     
     @IBAction func replayButtonAction() {
