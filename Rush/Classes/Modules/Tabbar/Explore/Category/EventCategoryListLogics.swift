@@ -92,8 +92,7 @@ extension EventCategoryListViewController {
         }*/
     }
     func cellSelected(_ indexPath: IndexPath) {
-        if type == .event
-        {
+        if type == .event {
             let event = eventList[indexPath.row]
             performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
         }

@@ -33,7 +33,7 @@ extension EventCategoryListViewController: UITableViewDelegate, UITableViewDataS
         if type == .none {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
              return cell
-        }else if type == .event {
+        } else if type == .event {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
             fillEventCell(cell, indexPath)
             return cell

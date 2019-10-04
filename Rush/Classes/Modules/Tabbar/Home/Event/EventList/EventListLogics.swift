@@ -39,7 +39,9 @@ extension EventListViewController {
         cell.setup(cornerRadius: 24)
         cell.setup(isHideSeparator: false)
         cell.setup(title: event.title)
-    
+        cell.setup(date: event.start)
+        cell.setup(start: event.start, end: event.end)
+        cell.setup(eventImageUrl: event.photoJson.photo?.urlThumb())
     }
 
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
