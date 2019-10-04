@@ -29,7 +29,7 @@ class ClubListViewController: CustomViewController {
     var searchText = ""
     var pageNo = 1
     var myClubList = [Club]()
-    var myClassesList = [Club]()
+    var myClassesList = [Class]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class ClubListViewController: CustomViewController {
         if screenType == .club {
             getMyClubListAPI(sortBy: "my")
         } else {
-            
+            getClassCategoryAPI()
         }
     }
     
@@ -90,6 +90,8 @@ extension ClubListViewController {
     @objc func openSearchClubScreenButtonAction() {
         if screenType == .club {
             performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
+        } else if screenType == .classes {
+            performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
         }
     }
 }
@@ -117,6 +119,7 @@ extension ClubListViewController {
         } else if segue.identifier == Segues.searchClubSegue {
             guard let vc = segue.destination as? SearchClubViewController else { return }
             vc.searchType = screenType == .club ? .searchList : .classes
+            vc.classObject = sender as? Class ?? Class()
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club

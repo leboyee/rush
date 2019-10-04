@@ -47,7 +47,7 @@ class EventCategoryListViewController: UIViewController {
         case .club:
             getClubListAPI(sortBy: "feed")
         case .classes:
-              getClassCategoryAPI()
+            getClassCategoryAPI()
         default:
             break
         }

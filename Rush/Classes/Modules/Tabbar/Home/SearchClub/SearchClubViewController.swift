@@ -27,8 +27,11 @@ class SearchClubViewController: CustomViewController {
     var selectedIndex = -1
     var searchType: SearchClubType = .none
     var searchText = ""
+    var pageNo = 1
     
     var dataList = [Any]()
+    
+    var classObject = Class()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,8 @@ class SearchClubViewController: CustomViewController {
         
         if searchType == .searchList {
             getClubCategoryListAPI(isShowSpinner: true)
+        } else if searchType == .classes {
+            getClassGroupListAPI(isShowSpinner: true)
         }
     }
     

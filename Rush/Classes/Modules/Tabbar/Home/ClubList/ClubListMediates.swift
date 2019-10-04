@@ -24,7 +24,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return screenType == .club ? 4 : 3
+        return screenType == .club ? 1 : myClassesList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,7 +32,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (myClubList.count > 0 || myClassesList.count > 0) && indexPath.section == 0 {
+        if (myClubList.count > 0) && indexPath.section == 0 && screenType == .club {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
             fillMyClubCell(cell, indexPath)
             return cell

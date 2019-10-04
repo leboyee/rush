@@ -80,6 +80,9 @@ extension EventCell {
     func setup(eventImageUrl: URL?) {
         eventImageView.sd_setImage(with: eventImageUrl, completed: nil)
     }
+    func setup(classImageUrl: URL?) {
+        classImageView.sd_setImage(with: classImageUrl, completed: nil)
+    }
     
     func setup(date: Date?) {
         guard let date = date else {

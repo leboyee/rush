@@ -93,4 +93,23 @@ extension SearchClubViewController {
             }
         }
     }
+    
+    func getClassGroupListAPI(isShowSpinner: Bool) {
+        if isShowSpinner {
+            Utils.showSpinner()
+        }
+        let param = [Keys.pageNo: pageNo, Keys.classId: classObject.id, Keys.search: ""] as [String: Any]
+        
+        ServiceManager.shared.fetchClassGroupList(classId: classObject.id, params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let value = data {
+                unsafe.dataList = value
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
 }

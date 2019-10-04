@@ -65,9 +65,14 @@ extension EventTypeCell {
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
                 cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
-            }
+            } else if type == .classes {
+                if let classList = list as? [SubClass] {
+                    let value = classList[indexPath.item]
+                    cell.setup(className: value.name)
+                    cell.setup(classImageUrl: value.photo.photo?.url())
+                }
         }
-        
+        }
         cell.joinSelected = { [weak self] () in
             guard let unsafe = self else { return }
             unsafe.joinSelected?(indexPath.row)

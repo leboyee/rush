@@ -45,6 +45,7 @@ struct Keys {
     static let list                  = "list"
     
     static let matchId            = "match_id"
+    static let classId            = "class_id"
     static let matchStatus        = "match_status"
     static let friendUserId       = "frd_user_id"
     static let friendOtherUserId  = "frd_other_user_id"
