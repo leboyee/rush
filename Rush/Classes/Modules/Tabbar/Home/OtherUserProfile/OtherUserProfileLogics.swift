@@ -179,6 +179,7 @@ extension OtherUserProfileController {
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
         view.setup(userInfo: userInfo)
+        view.universtityLabel.isHidden = false
         
         view.addPhotoButtonEvent = { () in
         }
@@ -276,8 +277,7 @@ extension OtherUserProfileController {
         ServiceManager.shared.moderateFriendRequest(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }
             if status {
-                if(type == "unfriend")
-                {
+                if type == "unfriend" {
                     let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: self?.userInfo?.name))",
                         duration: .middle,
                         actionText: "Undo",

@@ -123,7 +123,7 @@ extension PostViewController {
     
     func loadMoreCell(_ indexPath: IndexPath) {
         if commentList.count > 2 {
-            if (indexPath.row == (commentList.count - 2) && isNextPageExistP) {
+            if indexPath.row == (commentList.count - 2) && isNextPageExistP {
                 getAllCommentListAPI()
             }
         }
@@ -155,6 +155,8 @@ extension PostViewController {
         ServiceManager.shared.postComment(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }
             if status {
+                unsafe.pageNoP = 1
+                unsafe.isNextPageExistP = true
                 unsafe.getAllCommentListAPI()
             } else {
                 Utils.hideSpinner()

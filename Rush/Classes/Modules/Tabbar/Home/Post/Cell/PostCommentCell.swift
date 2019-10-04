@@ -70,6 +70,7 @@ extension PostCommentCell {
     
     func setup(image: URL?) {
         if image != nil {
+            imgView.contentMode = .scaleAspectFill
             imgView.layer.borderWidth = 0
             imgView.sd_setImage(with: image, placeholderImage: #imageLiteral(resourceName: "placeHolderIcon"), options: [], context: nil)
         } else {
