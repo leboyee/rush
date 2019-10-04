@@ -7,18 +7,13 @@
 //
 
 import UIKit
+import PanModal
+typealias EventCategoryItem = (key: String, event: [Event])
 
 extension EventListViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        if section == 0 {
-            return CGFloat.leastNormalMagnitude
-        } else if section == 1 {
-            return eventList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
-        } else if section == 2 {
-            return clubList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
-        }
-        return 50
+        return 50 //CGFloat.leastNormalMagnitude
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -26,137 +21,162 @@ extension EventListViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return isShowTutorial ? UITableView.automaticDimension : CGFloat.leastNormalMagnitude
-        } else if indexPath.section == 1 && isShowJoinEvents {
-            return UITableView.automaticDimension
-        } else if indexPath.section == 1 {
-            return eventList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
-        } else if indexPath.section == 2 {
-            return clubList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
-        } else {
-            return 157
-        }
+        
+        return self.isMyEvents == true && indexPath.section == 0 ? 88 : 157 // eventList.count > 0 ? 157 : 157//CGFloat.leastNormalMagnitude
     }
     
     func cellCount(_ section: Int) -> Int {
-        if isShowJoinEvents && section == 1 {
-            return 4
-        } else {
-            return 1
-        }
+        return self.isMyEvents == true && section == 0 ? eventList.count : 1
     }
-    
-    func fillTutorialCell(_ cell: TutorialPopUpCell) {
         
-        cell.setup(text: Message.joinEventsAndClassses)
-        cell.setup(bgImage: "popup-green-left")
-        cell.setup(buttonTitle: "OK")
-        
-        cell.okButtonClickEvent = { [weak self] (text) in
-            guard let unself = self else { return }
-            if text == "OK" {
-                cell.setup(text: Text.createEventAndOpenClub)
-                cell.setup(bgImage: "popup-green-right")
-                cell.setup(buttonTitle: "Nice!")
-            } else {
-                unself.isShowTutorial = false
-                unself.tableView.reloadData()
-            }
-        }
-    }
-    
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
-        
+        cell.setup(.none, nil, eventList)
         // (type, images, data)
-        if indexPath.section == 1 {
-            cell.setup(.upcoming, nil, eventList)
-        } else if indexPath.section == 2 {
-            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
-        } else {
-            cell.setup(.classes, nil, nil)
-        }
-        
-        cell.cellSelected = { [weak self] (type, id, index) in
-            guard let unsafe = self else { return }
-            if type == .upcoming {
-                let event = unsafe.eventList[index]
-                unsafe.showEvent(event: event)
-            } else if type == .clubs {
-                let club = unsafe.clubList[index]
-                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
-            }
-        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
-        
+        let event = eventList[indexPath.row]
+        cell.setup(cornerRadius: 24)
+        cell.setup(isHideSeparator: false)
+        cell.setup(title: event.title)
+        cell.setup(date: event.start)
+        cell.setup(start: event.start, end: event.end)
+        cell.setup(eventImageUrl: event.photoJson.photo?.urlThumb())
     }
     
-    func fillTextHeader(_ header: TextHeader, _ section: Int) {
-        if section == 1 {
-            header.setup(title: Text.UpcomingEvents)
-        } else if section == 2 {
-            header.setup(title: Text.clubs)
-        } else if section == 3 {
-            header.setup(title: Text.classes)
+    func cellSelected(_ indexPath: IndexPath) {
+        if self.isMyEvents == true && indexPath.section == 0 {
+            let event = eventList[indexPath.row]
+            performSegue(withIdentifier: Segues.eventListToEventDetailsSegue, sender: event)
         }
-        
+    }
+
+
+    func fillTextHeader(_ header: TextHeader, _ section: Int) {
+        var categoryName = ""
+        if self.isMyEvents == true && section == 0 {
+            categoryName = "My upcoming events"
+            header.setup(detailArrowImage: UIImage(named: "brown_down") ?? UIImage())
+        } else {
+            let eventCategoryObject = eventCategory[self.isMyEvents == true ? section - 1 : section]
+            categoryName = eventCategoryObject.name
+            header.setup(detailArrowImage: UIImage(named: "red-arrow") ?? UIImage())
+        }
+        header.setup(title: categoryName)
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            // Open other user profile UI for test
-            
-            if section == 2 {
-                unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.club)
-            } else if section == 3 {
-                unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.classes)
-            } else {
-                unself.performSegue(withIdentifier: Segues.createPost, sender: nil)
+            if unself.isMyEvents == true && section == 0 {
+                guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+                    eventCategoryFilter.dataArray = Utils.myUpcomingFileter()
+                    eventCategoryFilter.delegate = self
+                let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
+                eventCategoryFilter.selectedIndex = filter == "All Upcoming" ? 0 : 1
+                eventCategoryFilter.headerTitle = "Sort events by:"
+                    let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+                unself.presentPanModal(rowViewController)
             }
         }
+    }
+    
+    func willDisplay(_ indexPath: IndexPath) {
+        let totalSection = tableView.numberOfSections
+        if isMyEvents == true {
+            guard totalSection > (eventCategory.count) else { return }
+            if isNextPageEvent == true, totalSection == indexPath.section, indexPath.row == 0 {
+                getEventList()
+            }
+            if isNextPageMyEvent == true && indexPath.row == eventList.count - 1 {
+                let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
+                      getMyEventList(sortBy: filter?.isEmpty == true ? .upcoming : filter == "All Upcoming" ? .upcoming : .myUpcoming )
+            }
+            
+        } else {
+            guard totalSection > 0 else { return }
+            if isNextPageEvent == true, totalSection - 1 == indexPath.section, indexPath.row == 0 {
+                getEventList()
+            }
+        }
+    }
+    
+    func showNoEventScreen() {
+        if eventList.count == 0 && eventCategory.count == 0 {
+            self.noEventsView.isHidden = false
+        } else {
+            self.noEventsView.isHidden = true
+        }
+    }
+}
+
+extension EventListViewController: EventCategoryFilterDelegate {
+    func selectedIndex(_ name: String) {
+        Utils.saveDataToUserDefault(name, UserDefaultKey.myUpcomingFilter)
+        myEventPageNo = 1
+        getMyEventList(sortBy: name == "All Upcoming" ? .upcoming : .myUpcoming )
     }
 }
 
 // MARK: - Services
 extension EventListViewController {
-    func getClubListAPI(sortBy: String) {
+    func getEventList() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
         
-        let param = [Keys.search: searchText,
-                     Keys.sortBy: sortBy,
-                     Keys.pageNo: pageNo] as [String: Any]
-        
-        if clubList.count == 0 {
-            Utils.showSpinner()
-        }
-        
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchEventCategoryWithEventList(params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let clubs = value {
-                unsafe.clubList = clubs
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            if let category = value {
+                if value?.count == 0 {
+                        unsafe.isNextPageEvent = false
+                        if unsafe.pageNo == 1 {
+                            unsafe.eventCategory.removeAll()
+                        }
+                    } else {
+                        if unsafe.pageNo == 1 {
+                            unsafe.eventCategory = category
+                        } else {
+                            unsafe.eventCategory.append(contentsOf: category)
+                        }
+                        unsafe.pageNo += 1
+                        unsafe.isNextPageEvent = true
+                    }
+                    unsafe.tableView.reloadData()
+                } else {
+                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                }
+            unsafe.showNoEventScreen()
             }
-        }
     }
     
-    func getEventList(sortBy: GetEventType) {
-        
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                     Keys.search: searchText,
-                     Keys.sortBy: sortBy.rawValue,
-                     Keys.pageNo: pageNo] as [String: Any]
-        
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
-            Utils.hideSpinner()
-            guard let unsafe = self else { return }
-            if let events = value {
-                unsafe.eventList = events
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+    func getMyEventList(sortBy: GetEventType) {
+            
+            let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                         Keys.search: searchText,
+                         Keys.sortBy: sortBy.rawValue,
+                         Keys.pageNo: myEventPageNo] as [String: Any]
+            
+            ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+                Utils.hideSpinner()
+                guard let unsafe = self else { return }
+                if let events = value {
+                    if value?.count == 0 {
+                        unsafe.isNextPageMyEvent = false
+                        if unsafe.myEventPageNo == 1 {
+                            unsafe.eventList.removeAll()
+                        }
+                    } else {
+                        if unsafe.myEventPageNo == 1 {
+                            unsafe.eventList = events
+                        } else {
+                            unsafe.eventList.append(contentsOf: events)
+                        }
+                        unsafe.myEventPageNo += 1
+                        unsafe.isNextPageMyEvent = true
+                    }
+                    unsafe.isMyEvents = unsafe.eventList.count > 0 ? true : false
+                    unsafe.tableView.reloadData()
+                } else {
+                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                }
+                unsafe.showNoEventScreen()
             }
         }
-    }
 }

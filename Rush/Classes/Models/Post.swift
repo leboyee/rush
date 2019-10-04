@@ -8,6 +8,18 @@
 
 import UIKit
 
+struct PostVote: Codable {
+    var id: String = ""
+    var status: Int = -1
+    var type: Int = 0 // 1 = up, -1 = down
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case status
+        case type
+    }
+}
+
 class Post: Codable {
 
     var id: String?
@@ -20,7 +32,8 @@ class Post: Codable {
     var user: User?
     var createDate: Date?
     var createdAt: String?
-    
+    var myVote: [PostVote]?
+
     private var imageJson: String?
     private var convertedListOfImages: [Image]?
     var images: [Image]? {
@@ -42,6 +55,7 @@ class Post: Codable {
         case user
         case createDate
         case createdAt = "created_at"
+        case myVote = "my_post_vote"
     }
     
     init() {

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jT0-nn-O1x">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jT0-nn-O1x">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,13 +98,13 @@
             </objects>
             <point key="canvasLocation" x="-600" y="12.723214285714285"/>
         </scene>
-        <!--Profile-->
+        <!--OtherUserProfileController-->
         <scene sceneID="pox-nY-OaA">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="c31-hD-7x0" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="OtherUserProfileController" id="c31-hD-7x0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWD-32-QMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-35" y="-408"/>
+            <point key="canvasLocation" x="22" y="-409"/>
         </scene>
         <!--InstaWebViewViewController-->
         <scene sceneID="hBz-Li-mPl">
@@ -121,15 +119,15 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WgC-rz-tQV" customClass="SettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rMA-vi-9rz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGH-iM-UkD" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="TcW-2N-tP4">
-                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Umj-VZ-wa5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
@@ -143,31 +141,31 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axe-oI-tnF">
-                                            <rect key="frame" x="24" y="17" width="39" height="16"/>
+                                            <rect key="frame" x="24" y="17" width="35.5" height="16"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                             <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRQ-Gq-f6Z">
-                                            <rect key="frame" x="171" y="9" width="72" height="34"/>
+                                            <rect key="frame" x="189.5" y="9" width="65.5" height="34"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KN3-jn-SBP">
-                                            <rect key="frame" x="171" y="9" width="72" height="34"/>
+                                            <rect key="frame" x="189.5" y="9" width="65.5" height="34"/>
                                             <connections>
                                                 <action selector="policyButtonAction" destination="WgC-rz-tQV" eventType="touchUpInside" id="q6y-P1-jr3"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVb-yj-c8O">
-                                            <rect key="frame" x="267" y="9" width="123" height="34"/>
+                                            <rect key="frame" x="279" y="9" width="111" height="34"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3f-DX-NPW">
-                                            <rect key="frame" x="267" y="9" width="123" height="34"/>
+                                            <rect key="frame" x="279" y="9" width="111" height="34"/>
                                             <connections>
                                                 <action selector="termsButtonAction" destination="WgC-rz-tQV" eventType="touchUpInside" id="ADl-f8-0hP"/>
                                             </connections>
@@ -228,15 +226,15 @@
             <objects>
                 <viewController storyboardIdentifier="PrivacySettingsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="baD-jv-Ic4" customClass="PrivacySettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7eN-hG-Ssj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86f-Hb-JB8" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dlp-qa-tGc">
-                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -382,13 +380,13 @@
                                 <rect key="frame" x="27" y="937" width="360" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaving already?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnW-Nh-gHt">
-                                        <rect key="frame" x="110" y="24" width="140.5" height="20"/>
+                                        <rect key="frame" x="116" y="24" width="128.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-q2-cHZ">
-                                        <rect key="frame" x="24" y="48" width="312" height="31.5"/>
+                                        <rect key="frame" x="24" y="48" width="312" height="30.5"/>
                                         <string key="text">If you logout, you won’t receive
 event updates.</string>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
@@ -396,7 +394,7 @@ event updates.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVP-Ii-apy" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="96" width="312" height="48"/>
+                                        <rect key="frame" x="24" y="95" width="312" height="48"/>
                                         <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="2Sm-yY-Kep"/>
@@ -415,7 +413,7 @@ event updates.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHS-3J-xMk" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="152" width="312" height="48"/>
+                                        <rect key="frame" x="24" y="151" width="312" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="ZZu-np-dZ5"/>
@@ -477,15 +475,15 @@ event updates.</string>
             <objects>
                 <viewController storyboardIdentifier="NotificationSettingsViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JDF-J1-pkR" customClass="NotificationSettingsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rTZ-4H-ffg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dmb-yf-A0T" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2iR-Zp-tDW">
-                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -515,15 +513,15 @@ event updates.</string>
             <objects>
                 <viewController storyboardIdentifier="WebViewFileViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SCR-Ws-le9" customClass="WebViewFileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0RT-iZ-KBl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMZ-X0-evl" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="57" width="414" height="839"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSq-HA-NYF">
-                                <rect key="frame" x="0.0" y="57" width="414" height="805"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </webView>
                         </subviews>

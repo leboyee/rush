@@ -43,7 +43,7 @@ extension EventDetailViewController {
         guard let event = self.event else { return }
         if event.creator?.id == Authorization.shared.profile?.userId {
             type = .my
-        } else if let eventInvite = event.eventInvite?.first {
+        } else if let eventInvite = event.eventInvite?.last {
             type = eventInvite.status == 1 ? .joined : .invited
         } else {
             type = .other
@@ -222,8 +222,15 @@ extension EventDetailViewController {
             cell.setup(invitees: list)
         }
         
-        cell.userSelected = { ( _, _) in
-            Utils.notReadyAlert()
+        cell.userSelected = { [weak self] ( id, index) in
+            if index == 0 {
+                // show all invitee list
+            } else if let list = self?.inviteeList {
+                let invitee = list[index - 1]
+                if let user = invitee.user {
+                    self?.showUserProfile(user: user)
+                }
+            }
         }
         
         cell.cellSelected = { (_, _, _) in
@@ -232,6 +239,8 @@ extension EventDetailViewController {
     }
     
     func fillManageCell(_ cell: ClubManageCell) {
+        cell.firstButton.isUserInteractionEnabled = true
+        cell.messageButton.isUserInteractionEnabled = true
         if type == .my {
             if event?.isChatGroup == true {
                 cell.setup(firstButtonType: .manage)
@@ -243,22 +252,41 @@ extension EventDetailViewController {
             cell.setup(firstButtonType: .accept)
             cell.setup(secondButtonType: .reject)
         } else if type == .joined {
+            /// Disable interaction with going button
             if event?.isChatGroup == true {
                cell.setup(firstButtonType: .going)
                cell.setup(secondButtonType: .groupChatClub)
+               cell.firstButton.isUserInteractionEnabled = false
             } else {
                cell.setup(onlyFirstButtonType: .going)
+               cell.messageButton.isUserInteractionEnabled = false
             }
         }
         
-        cell.firstButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.firstButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            if unsafe.type == .invited {
+                /// Call Accept  API
+                guard let event = unsafe.event else { return }
+                if event.rsvp?.count ?? 0 == 0 {
+                    unsafe.joinEvent(eventId: event.id, action: EventAction.accept)
+                } else {
+                    unsafe.showRSVP(action: EventAction.accept)
+                }
+            } else if unsafe.type == .my {
+                /// Show Edit event api
+                Utils.notReadyAlert()
+            }
         }
         
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
-            if unsafe.type == .joined {
+            if unsafe.type == .joined || unsafe.type == .my {
                 unsafe.openGroupChat()
+            } else if unsafe.type == .invited {
+                // Call Reject API
+                guard let event = unsafe.event else { return }
+                unsafe.rejectEvent(eventId: event.id)
             }
         }
         
@@ -286,10 +314,11 @@ extension EventDetailViewController {
         }
         
         cell.joinButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
             if event.rsvp?.count ?? 0 == 0 {
-                self?.joinEvent(eventId: event.id)
+                unsafe.joinEvent(eventId: event.id, action: EventAction.join)
             } else {
-                self?.showRSVP()
+                unsafe.showRSVP(action: EventAction.join)
             }
         }
     }
@@ -330,6 +359,11 @@ extension EventDetailViewController {
         if let post = postList?[index] {
             cell.set(numberOfLike: post.totalUpVote)
             cell.set(numberOfComment: post.numberOfComments)
+            if let myVote = post.myVote?.first {
+                cell.set(vote: myVote.type)
+            } else {
+               cell.set(vote: 0)
+            }
             
             cell.likeButtonEvent = { [weak self] () in
                 self?.voteAPI(id: post.id ?? "", type: Vote.up)
@@ -404,6 +438,7 @@ extension EventDetailViewController {
                 guard let unsafe = self else { return }
                 unsafe.inviteeList = invitees
                 unsafe.downloadGroup.leave()
+                unsafe.reloadTable()
             }
         }
     }
@@ -485,15 +520,29 @@ extension EventDetailViewController {
         }
     }
     
-    private func joinEvent(eventId: String) {
+    private func joinEvent(eventId: String, action: String) {
         Utils.showSpinner()
-        ServiceManager.shared.joinEvent(eventId: eventId, params: [:]) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.joinEvent(eventId: eventId, action: action, params: [:]) { [weak self] (data, errorMessage) in
             if let object = data {
                 let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
                 if isFirstTime == 1 {
                    self?.showJoinAlert()
                 }
                 self?.type = .joined
+                DispatchQueue.main.async {
+                    self?.loadAllData()
+                }
+            } else if let message = errorMessage {
+                self?.showMessage(message: message)
+                Utils.hideSpinner()
+            }
+        }
+    }
+    
+    private func rejectEvent(eventId: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.rejectEventInvitation(eventId: eventId) { [weak self] (status, errorMessage) in
+            if status {
                 self?.loadAllData()
             } else if let message = errorMessage {
                 self?.showMessage(message: message)

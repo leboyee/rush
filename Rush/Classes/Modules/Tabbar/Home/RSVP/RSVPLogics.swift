@@ -19,7 +19,7 @@ extension RSVPViewController {
             let jsonData = try jsonEncoder.encode(answers)
             if let json = String(data: jsonData, encoding: String.Encoding.utf8) {
                 let params = [Keys.rsvpAns: json]
-                joinEventWithRSVP(eventId: eventId, params: params as [String: Any])
+                joinEventWithRSVP(eventId: eventId, action: action, params: params as [String: Any])
             }
         } catch let error as NSError {
             print(error)
@@ -89,9 +89,9 @@ extension RSVPViewController {
 // MARK: - API's
 extension RSVPViewController {
 
-    private func joinEventWithRSVP(eventId: String, params: [String: Any]) {
+    private func joinEventWithRSVP(eventId: String, action: String, params: [String: Any]) {
         Utils.showSpinner()
-        ServiceManager.shared.joinEvent(eventId: eventId, params: params) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.joinEvent(eventId: eventId, action: action, params: params) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
             if let object = data {
                 let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0

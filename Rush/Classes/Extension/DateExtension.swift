@@ -95,19 +95,17 @@ extension Date {
         dc.nanosecond = 0
         return Calendar.current.date(from: dc)!
     }
-    
-
 
     public func localToUTC(date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
         dateFormatter.calendar = NSCalendar.current
         dateFormatter.timeZone = TimeZone.current
-        
         if let newDate = dateFormatter.date(from: date) {
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            return dateFormatter.string(from: newDate)
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "yyyy-MM-dd HH"
+            newDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            return newDateFormatter.string(from: newDate)
         }
         return dateFormatter.string(from: Date())
     }

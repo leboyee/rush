@@ -88,6 +88,8 @@ struct Cell {
     static let postImage           = "PostImageCell"
     static let joinRSVP            = "JoinRSVPCell"
     static let postBottom          = "PostBottomCell"
+    static let eventCategoryFilterCell          = "EventCategoryFilterCell"
+
 
 }
 
@@ -98,6 +100,8 @@ struct ReusableView {
     static let userImagesHeader = "UserImagesHeaderView"
     static let classesHeader = "ClassesHeader"
     static let inviteHeader = "InviteHeader"
+    static let eventCategoryFilterHeader = "EventCategoryFilterHeader"
+
 }
 
 struct ViewControllerId {
@@ -180,8 +184,12 @@ struct Segues {
     static let eventPostDetail                     = "EventPostDetailSegue"
     static let chooseInterestSegue                 = "ChooseInterestSegue"
     static let eventDetailShare     = "EventDetailShareSegue"
+    static let eventListSeuge     = "EventListSeuge"
+    static let searchEventViewSegue     = "SearchEventViewSegue"
+    static let searchEventCategoryViewSegue     = "SearchEventCategoryViewSegue"
     static let eventWithoutRSVPJoinedPopup = "EventWithoutRSVPJoinedPopupSegue"
     static let eventOtherUserProfile = "EventOtherUserProfileSegue"
+    static let eventListToEventDetailsSegue = "EventListToEventDetailsSegue"
 }
 
 struct StoryBoard {
@@ -259,6 +267,7 @@ public struct Text {
     static let readLess                 = "Read less..."
     static let readMore                 = "Read more..."
     static let exploreTopics            = "Explore topics:"
+    static let searchResult             = "Search results:"
     static let searchClubs              = "Search clubs"
     static let searchClasses            = "Search classes"
     static let myClasses                = "My classes"
@@ -331,7 +340,8 @@ public struct Icons {
 public struct UserDefaultKey {
     static let searchFilter = "searchFilterData"
     static let showAlertOfChatRemoved = "showAlertOfChatRemoved"
-
+    static let myUpcomingFilter = "MyUpcomingFilter"
+    static let searchEventFilter = "searchEventFilte"
 }
 
 enum EventCategoryType {
