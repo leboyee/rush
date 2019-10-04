@@ -94,6 +94,10 @@ extension HomeViewController {
                 unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classes)
             }
         }
+        
+        cell.joinSelected = { (index) in
+            
+        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {

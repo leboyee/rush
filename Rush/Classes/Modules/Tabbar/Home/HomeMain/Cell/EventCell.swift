@@ -32,7 +32,7 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var secondUserImageView: UIImageView!
     @IBOutlet weak var firstUserImageView: UIImageView!
     @IBOutlet weak var userCountLabel: UILabel!
-    
+     var joinSelected: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,6 +43,10 @@ class EventCell: UICollectionViewCell {
         firstUserImageView.layer.borderColor = UIColor.white.cgColor
         secondUserImageView.layer.borderColor = UIColor.white.cgColor
         thirdUserImageView.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @IBAction func joinButtonAction() {
+        joinSelected?()
     }
 }
 

@@ -67,6 +67,12 @@ extension EventTypeCell {
                 cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
             }
         }
+        
+        cell.joinSelected = { [weak self] () in
+            guard let unsafe = self else { return }
+            unsafe.joinSelected?(indexPath.row)
+            
+        }
     }
    
     func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
