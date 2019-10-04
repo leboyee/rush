@@ -209,6 +209,8 @@ extension EventDetailViewController: OtherUserProfileProtocol {
 // MARK: - PostVIewController delegate
 extension EventDetailViewController: PostViewProtocol {
     func deletePostSuccess(_ post: Post?) {
+        /*
+        /// Comment that part for now, will open again after discussion
         let snackbar = TTGSnackbar(message: "Your post is deleted.",
                                    duration: .middle,
                                    actionText: "Undo",
@@ -216,6 +218,7 @@ extension EventDetailViewController: PostViewProtocol {
                                    Utils.notReadyAlert()
         })
         snackbar.show()
+        */
         /// Find index of post, remove and reload list
         if let post = post, let index = postList?.firstIndex(where: { $0.id == post.id }) {
             postList?.remove(at: index)

@@ -63,7 +63,7 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info" translatesAutoresizingMaskIntoConstraints="NO" id="izS-tB-QBh">
-                    <rect key="frame" x="362" y="245" width="28" height="30"/>
+                    <rect key="frame" x="362" y="251" width="28" height="30"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,7 +71,6 @@
                 <constraint firstItem="G5b-en-NIm" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="1Ty-P4-NWc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="izS-tB-QBh" secondAttribute="trailing" constant="24" id="49E-ln-xtb"/>
                 <constraint firstItem="AKy-D4-vqR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="63j-is-EL2"/>
-                <constraint firstAttribute="bottom" secondItem="izS-tB-QBh" secondAttribute="bottom" constant="69" id="AtD-PX-nFK"/>
                 <constraint firstItem="I0K-gM-rfV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="BSm-Lw-QUV"/>
                 <constraint firstAttribute="bottom" secondItem="G5b-en-NIm" secondAttribute="bottom" id="DiE-2G-o2A"/>
                 <constraint firstItem="7Py-fQ-nSe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Le3-Rg-Ua5"/>
@@ -85,6 +84,7 @@
                 <constraint firstItem="hGU-Vz-3Cp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="hdO-uv-oMD"/>
                 <constraint firstItem="7Py-fQ-nSe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="k8X-Ag-hjm"/>
                 <constraint firstItem="hGU-Vz-3Cp" firstAttribute="top" secondItem="I0K-gM-rfV" secondAttribute="top" id="lcu-KH-NNj"/>
+                <constraint firstItem="izS-tB-QBh" firstAttribute="bottom" secondItem="I0K-gM-rfV" secondAttribute="bottom" constant="15" id="oao-4g-e1d"/>
                 <constraint firstItem="AKy-D4-vqR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="102" id="pde-Su-YqF"/>
                 <constraint firstAttribute="bottom" secondItem="7Py-fQ-nSe" secondAttribute="bottom" id="rKr-0a-vRM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uxF-T4-ADW" secondAttribute="trailing" constant="50" id="uLg-i5-Smi"/>

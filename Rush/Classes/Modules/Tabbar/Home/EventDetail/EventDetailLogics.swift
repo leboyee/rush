@@ -43,7 +43,7 @@ extension EventDetailViewController {
         guard let event = self.event else { return }
         if event.creator?.id == Authorization.shared.profile?.userId {
             type = .my
-        } else if let eventInvite = event.eventInvite?.first {
+        } else if let eventInvite = event.eventInvite?.last {
             type = eventInvite.status == 1 ? .joined : .invited
         } else {
             type = .other
@@ -91,6 +91,15 @@ extension EventDetailViewController {
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags")
             ]
+        }
+    }
+    
+    func joinEvent() {
+        guard let event = self.event else { return }
+        if event.rsvp?.count ?? 0 == 0 {
+            joinEvent(eventId: event.id)
+        } else {
+            showRSVP()
         }
     }
 }
@@ -222,8 +231,15 @@ extension EventDetailViewController {
             cell.setup(invitees: list)
         }
         
-        cell.userSelected = { ( _, _) in
-            Utils.notReadyAlert()
+        cell.userSelected = { [weak self] ( id, index) in
+            if index == 0 {
+                // show all invitee list
+            } else if let list = self?.inviteeList {
+                let invitee = list[index - 1]
+                if let user = invitee.user {
+                    self?.showUserProfile(user: user)
+                }
+            }
         }
         
         cell.cellSelected = { (_, _, _) in
@@ -232,6 +248,8 @@ extension EventDetailViewController {
     }
     
     func fillManageCell(_ cell: ClubManageCell) {
+        cell.firstButton.isUserInteractionEnabled = true
+        cell.messageButton.isUserInteractionEnabled = true
         if type == .my {
             if event?.isChatGroup == true {
                 cell.setup(firstButtonType: .manage)
@@ -243,22 +261,34 @@ extension EventDetailViewController {
             cell.setup(firstButtonType: .accept)
             cell.setup(secondButtonType: .reject)
         } else if type == .joined {
+            /// Disable interaction with going button
             if event?.isChatGroup == true {
                cell.setup(firstButtonType: .going)
                cell.setup(secondButtonType: .groupChatClub)
+               cell.firstButton.isUserInteractionEnabled = false
             } else {
                cell.setup(onlyFirstButtonType: .going)
+               cell.messageButton.isUserInteractionEnabled = false
             }
         }
         
-        cell.firstButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.firstButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            if unsafe.type == .invited {
+                /// Call Accept/Join API
+                unsafe.joinEvent()
+            } else if unsafe.type == .my {
+                /// Show Edit event api
+                Utils.notReadyAlert()
+            }
         }
         
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
-            if unsafe.type == .joined {
+            if unsafe.type == .joined || unsafe.type == .my {
                 unsafe.openGroupChat()
+            } else if unsafe.type == .invited {
+                // Call Reject API
             }
         }
         
@@ -286,11 +316,7 @@ extension EventDetailViewController {
         }
         
         cell.joinButtonClickEvent = { [weak self] () in
-            if event.rsvp?.count ?? 0 == 0 {
-                self?.joinEvent(eventId: event.id)
-            } else {
-                self?.showRSVP()
-            }
+            self?.joinEvent()
         }
     }
     
@@ -330,6 +356,11 @@ extension EventDetailViewController {
         if let post = postList?[index] {
             cell.set(numberOfLike: post.totalUpVote)
             cell.set(numberOfComment: post.numberOfComments)
+            if let myVote = post.myVote?.first {
+                cell.set(vote: myVote.type)
+            } else {
+               cell.set(vote: 0)
+            }
             
             cell.likeButtonEvent = { [weak self] () in
                 self?.voteAPI(id: post.id ?? "", type: Vote.up)
@@ -404,6 +435,7 @@ extension EventDetailViewController {
                 guard let unsafe = self else { return }
                 unsafe.inviteeList = invitees
                 unsafe.downloadGroup.leave()
+                unsafe.reloadTable()
             }
         }
     }
@@ -494,7 +526,9 @@ extension EventDetailViewController {
                    self?.showJoinAlert()
                 }
                 self?.type = .joined
-                self?.loadAllData()
+                DispatchQueue.main.async {
+                    self?.loadAllData()
+                }
             } else if let message = errorMessage {
                 self?.showMessage(message: message)
                 Utils.hideSpinner()
