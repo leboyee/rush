@@ -37,8 +37,8 @@ extension ServiceManager {
         }
     }
     
-    func fetchCommentList(postId: String, closer: @escaping (_ comments: [Comment]?, _ errorMessage: String?) -> Void) {
-        NetworkManager.shared.getCommentList(postId: postId, param: [:]) { [weak self] (data, error, code) in
+    func fetchCommentList(postId: String, params: [String: Any], closer: @escaping (_ comments: [Comment]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getCommentList(postId: postId, param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
             uwself.procesModelResponse(result: data, error: error, code: code, closer: { (comments, errorMessage) in
                 closer(comments, errorMessage)
@@ -82,6 +82,15 @@ extension ServiceManager {
         NetworkManager.shared.getCategoryClassList(params: params) { [weak self] (classList, error, code) in
             guard let unsafe = self else { return }
             unsafe.procesModelResponse(result: classList, error: error, code: code, closer: { (classList, errorMessage) in
+                closer(classList, errorMessage)
+            })
+        }
+    }
+    
+    func fetchClassGroupList(classId: String, params: [String: Any], closer: @escaping (_ params: [Class]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getClassGroupList(classId: classId, params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (classList, errorMessage) in
                 closer(classList, errorMessage)
             })
         }

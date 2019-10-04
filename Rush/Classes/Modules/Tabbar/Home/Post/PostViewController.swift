@@ -35,6 +35,10 @@ class PostViewController: UIViewController {
     var eventInfo: Event?
     var postInfo: Post?
     var isFromCreatePost = false
+    var pageNoP = 1
+    var isNextPageExistP = false
+    var pageNoC = 1
+    var isNextPageExistC = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

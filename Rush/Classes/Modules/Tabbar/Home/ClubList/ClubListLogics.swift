@@ -14,7 +14,7 @@ extension ClubListViewController {
         if section == 0 && myClubList.count > 0 {
             return 50
         } else {
-            return CGFloat.leastNormalMagnitude
+            return myClassesList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         }
     }
     
@@ -23,20 +23,21 @@ extension ClubListViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && (myClubList.count > 0 || myClassesList.count > 0) {
+        if (screenType == .club)
+        {
             return UITableView.automaticDimension
         } else {
-            return CGFloat.leastNormalMagnitude
+            return myClassesList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
         }
     }
     
     func cellCount(_ section: Int) -> Int {
         if myClubList.count > 0 && screenType == .club && section == 0 {
             return myClubList.count
-        } else if myClassesList.count > 0 && screenType == .classes && section == 0 {
-            return myClassesList.count
+        } else if myClassesList.count > 0 && screenType == .classes {
+           return myClassesList[section].classList?.count ?? 0
         } else {
-            return 1
+            return 0
         }
     }
     
@@ -50,19 +51,20 @@ extension ClubListViewController {
                 cell.setup(.clubs, nil, nil)
             }
         } else {
-            if indexPath.section == 1 {
-                cell.setup(.classes, nil, nil)
-            } else if indexPath.section == 2 {
-                cell.setup(.classes, nil, nil)
-            } else {
-                cell.setup(.classes, nil, nil)
-            }
+//            if indexPath.section == 1 {
+//                cell.setup(.classes, nil, nil)
+//            } else if indexPath.section == 2 {
+//                cell.setup(.classes, nil, nil)
+//            } else {
+                cell.setup(.classes, nil, myClassesList[indexPath.section].classList)
+//            }
         }
         
-        cell.cellSelected = { [weak self] (type, id, index) in
+        cell.cellSelected = {
+            [weak self] (type, id, index) in
             guard let unself = self else { return }
             if type == .classes {
-                unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: nil)
+                unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: unself.myClassesList[index])
             }
         }
     }
@@ -81,9 +83,9 @@ extension ClubListViewController {
             cell.setup(invitee: club.invitees)
             cell.setup(imageUrl: image.urlThumb())
         } else if myClassesList.count > 0 {
-            let classes = myClassesList[indexPath.row]
-            cell.setup(title: classes.clubName ?? "")
-            cell.setup(detail: classes.clubDesc ?? "")
+//            let classes = myClassesList[indexPath.row]
+//            cell.setup(title: classes.clubName ?? "")
+//            cell.setup(detail: classes.clubDesc ?? "")
         }
     }
     
@@ -102,14 +104,15 @@ extension ClubListViewController {
                 header.setup(title: "Technologies")
             }
         } else {
-            if section == 0 {
+            header.setup(title: myClassesList[section].name)
+            /*if section == 0 {
                 header.setup(title: Text.myClasses)
                 header.setup(isDetailArrowHide: true)
             } else if section == 1 {
                 header.setup(title: "Arts & humanities")
             } else if section == 2 {
                 header.setup(title: "Business & managment")
-            }
+            }*/
         }
         
         header.detailButtonClickEvent = { [weak self] () in
@@ -152,6 +155,19 @@ extension ClubListViewController {
             if let clubs = value {
                 uwself.myClubList = clubs
                 uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    func getClassCategoryAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.myClassesList = classes
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

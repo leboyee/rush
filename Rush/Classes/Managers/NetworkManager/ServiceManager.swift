@@ -24,15 +24,14 @@ class ServiceManager: NSObject {
      *
      */
     func decodeObject<T: Decodable>(fromData data: Any?) -> T? {
-        if let jsonData = data as? [String: Any] {
+        do {
             let jsonDecoder = JSONDecoder()
             jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
-            return try? jsonDecoder.decode(
-                    T.self, from: JSONSerialization.data(withJSONObject: jsonData, options: [])
-            ) as T?
-        } else {
-            return nil
+            return try jsonDecoder.decode(T.self, from: JSONSerialization.data(withJSONObject: data, options: []))
+        } catch let error {
+            print("ERROR DECODING: \(error)")
         }
+        return nil
     }
     /*
      *
