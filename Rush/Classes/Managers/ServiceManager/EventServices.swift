@@ -45,14 +45,24 @@ extension ServiceManager {
     }
     
     // Join Event API
-    func joinEvent(eventId: String, params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
-        NetworkManager.shared.joinEvent(eventId: eventId, params: params) { [weak self] (data, error, code) in
+    func joinEvent(eventId: String, action: String, params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.joinEvent(eventId: eventId, action: action, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
             uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
         }
     }
+    
+    func rejectEventInvitation(eventId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.joinEvent(eventId: eventId, action: EventAction.reject, params: [:]) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
     
     // Event category API
     func fetchEventCategoryList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
