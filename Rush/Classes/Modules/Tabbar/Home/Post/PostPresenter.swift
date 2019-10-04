@@ -121,7 +121,7 @@ extension PostViewController {
         }
     }
     
-    func loadMoreCel(_ indexPath: IndexPath) {
+    func loadMoreCell(_ indexPath: IndexPath) {
         if commentList.count > 2 {
             if (indexPath.row == (commentList.count - 2) && isNextPageExistP) {
                 getAllCommentListAPI()
