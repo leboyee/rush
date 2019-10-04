@@ -1,27 +1,25 @@
 //
-//  SearchEventViewMediates.swift
+//  EventCateogryFilterMediates.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 28/09/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 import UIKit
+import PanModal
 
-extension SearchEventViewController: UITableViewDelegate, UITableViewDataSource {
+extension EventCateogryFilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
-        tableView.layer.cornerRadius = 24
-        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: Cell.searchClubCell, bundle: nil), forCellReuseIdentifier: Cell.searchClubCell)
-        tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
+        tableView.register(UINib(nibName: Cell.eventCategoryFilterCell, bundle: nil), forCellReuseIdentifier: Cell.eventCategoryFilterCell)
+        tableView.register(UINib(nibName: ReusableView.eventCategoryFilterHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.eventCategoryFilterHeader)
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataList.count > 0 ? 1 : 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +27,7 @@ extension SearchEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as? SearchClubCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventCategoryFilterCell, for: indexPath) as? EventCategoryFilterCell else { return UITableViewCell() }
             fillCell(cell, indexPath)
             return cell
     }
@@ -43,7 +41,7 @@ extension SearchEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.eventCategoryFilterHeader) as? EventCategoryFilterHeader else { return UIView() }
             fillTextHeader(header, section)
             return header
     }
@@ -58,22 +56,5 @@ extension SearchEventViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
-    }
-}
-
-extension SearchEventViewController: UITextFieldDelegate {
-    @objc func textDidChange(_ textField: UITextField) {
-        searchText = textField.text ?? ""
-        getEventList(sortBy: .none)
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }

@@ -70,6 +70,10 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
 }
 
 // MARK: - Notification alert delegate
@@ -86,7 +90,6 @@ extension EventListViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         performSegue(withIdentifier: Segues.searchEventViewSegue, sender: nil)
-        self.view.endEditing(true)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

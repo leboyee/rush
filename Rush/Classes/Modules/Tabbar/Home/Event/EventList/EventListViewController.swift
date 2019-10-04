@@ -12,11 +12,17 @@ import IQKeyboardManagerSwift
 class EventListViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var isMyEvents = true
+    @IBOutlet weak var noEventsView: UIView!
+
+    var isMyEvents = false
     var isShowJoinEvents = false
+    var isNextPageEvent = false
+    var isNextPageMyEvent = false
     var searchText = ""
     var pageNo = 1
+    var myEventPageNo = 1
     var eventList = [Event]()
+    var searchTextFiled: UITextField?
     var eventCategory = [EventCategory]()
 
     override func viewDidLoad() {
@@ -28,11 +34,24 @@ class EventListViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
-        getEventList(sortBy: .upcoming)
+        getEventList()
+         let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
+        getMyEventList(sortBy: filter?.isEmpty == true ? .upcoming : filter == "All Upcoming" ? .upcoming : .myUpcoming )
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        searchTextFiled?.resignFirstResponder()
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+
     }
     
     func setup() {
@@ -42,6 +61,7 @@ class EventListViewController: CustomViewController {
     func setupUI() {
         setupTableView()
         setupNavigation()
+        self.noEventsView.isHidden = true
         definesPresentationContext = true
     }
     
@@ -49,19 +69,20 @@ class EventListViewController: CustomViewController {
         
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
-            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
-            searchTextField.font = UIFont.displayBold(sz: 24)
-            searchTextField.textColor = UIColor.white
-            searchTextField.returnKeyType = .go
-            searchTextField.autocorrectionType = .no
-            searchTextField.delegate = self
+            searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            searchTextFiled?.font = UIFont.displayBold(sz: 24)
+            searchTextFiled?.textColor = UIColor.white
+            searchTextFiled?.returnKeyType = .go
+            searchTextFiled?.autocorrectionType = .no
+            searchTextFiled?.delegate = self
             let font = UIFont.displayBold(sz: 24)
             let color = UIColor.navBarTitleWhite32
-            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search events", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
-            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-            customView.addSubview(searchTextField)
+            searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "Search events", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchTextFiled ?? UITextField())
             navigationItem.titleView = customView
             self.view.backgroundColor = UIColor.bgBlack
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus_white"), style: .plain, target: self, action: #selector(plusButtonAction))
 
         }
   
@@ -69,7 +90,9 @@ class EventListViewController: CustomViewController {
 
 // MARK: - Actions
 extension EventListViewController {
-
+    @objc func plusButtonAction() {
+        Utils.alert(message: "In Development")
+    }
 }
 // MARK: - Mediator / Presenter Functions
 extension EventListViewController {

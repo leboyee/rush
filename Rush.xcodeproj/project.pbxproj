@@ -25,6 +25,13 @@
 		0918E785228444AB0098AF35 /* Forum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0918E784228444AB0098AF35 /* Forum.storyboard */; };
 		0918E787228444B90098AF35 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0918E786228444B90098AF35 /* Profile.storyboard */; };
 		0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992539022845CF100914E7B /* CustomTabbarViewController.swift */; };
+		1A024CFD23476F8600EE7FB4 /* EventCateogryFilterLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A024CF523476F8600EE7FB4 /* EventCateogryFilterLogics.swift */; };
+		1A024CFE23476F8600EE7FB4 /* EventCateogryFilterMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A024CF623476F8600EE7FB4 /* EventCateogryFilterMediates.swift */; };
+		1A024CFF23476F8600EE7FB4 /* EventCateogryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A024CF723476F8600EE7FB4 /* EventCateogryFilterViewController.swift */; };
+		1A024D0023476F8600EE7FB4 /* EventCategoryFilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A024CF923476F8600EE7FB4 /* EventCategoryFilterHeader.xib */; };
+		1A024D0123476F8600EE7FB4 /* EventCategoryFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A024CFA23476F8600EE7FB4 /* EventCategoryFilterCell.xib */; };
+		1A024D0223476F8600EE7FB4 /* EventCategoryFilterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A024CFB23476F8600EE7FB4 /* EventCategoryFilterHeader.swift */; };
+		1A024D0323476F8600EE7FB4 /* EventCategoryFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A024CFC23476F8600EE7FB4 /* EventCategoryFilterCell.swift */; };
 		1A088E4A22FECBC800DF6004 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A088E4922FECBC800DF6004 /* ContactsManager.swift */; };
 		1A088E5322FED12700DF6004 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A088E5222FED12700DF6004 /* Contact.swift */; };
 		1A0D01FB23228A08004F6279 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D01F823228A08004F6279 /* CreateEventViewController.swift */; };
@@ -557,6 +564,13 @@
 		0918E786228444B90098AF35 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0992539022845CF100914E7B /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
 		1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.releasebeta.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.releasebeta.xcconfig"; sourceTree = "<group>"; };
+		1A024CF523476F8600EE7FB4 /* EventCateogryFilterLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCateogryFilterLogics.swift; sourceTree = "<group>"; };
+		1A024CF623476F8600EE7FB4 /* EventCateogryFilterMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCateogryFilterMediates.swift; sourceTree = "<group>"; };
+		1A024CF723476F8600EE7FB4 /* EventCateogryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCateogryFilterViewController.swift; sourceTree = "<group>"; };
+		1A024CF923476F8600EE7FB4 /* EventCategoryFilterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCategoryFilterHeader.xib; sourceTree = "<group>"; };
+		1A024CFA23476F8600EE7FB4 /* EventCategoryFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCategoryFilterCell.xib; sourceTree = "<group>"; };
+		1A024CFB23476F8600EE7FB4 /* EventCategoryFilterHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryFilterHeader.swift; sourceTree = "<group>"; };
+		1A024CFC23476F8600EE7FB4 /* EventCategoryFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategoryFilterCell.swift; sourceTree = "<group>"; };
 		1A088E4922FECBC800DF6004 /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		1A088E5222FED12700DF6004 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1A0D01F823228A08004F6279 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -1231,6 +1245,28 @@
 			path = CustomClass;
 			sourceTree = "<group>";
 		};
+		1A024CF423476F8600EE7FB4 /* EventCateogryFilter */ = {
+			isa = PBXGroup;
+			children = (
+				1A024CF523476F8600EE7FB4 /* EventCateogryFilterLogics.swift */,
+				1A024CF623476F8600EE7FB4 /* EventCateogryFilterMediates.swift */,
+				1A024CF723476F8600EE7FB4 /* EventCateogryFilterViewController.swift */,
+				1A024CF823476F8600EE7FB4 /* Cell+Header */,
+			);
+			path = EventCateogryFilter;
+			sourceTree = "<group>";
+		};
+		1A024CF823476F8600EE7FB4 /* Cell+Header */ = {
+			isa = PBXGroup;
+			children = (
+				1A024CF923476F8600EE7FB4 /* EventCategoryFilterHeader.xib */,
+				1A024CFA23476F8600EE7FB4 /* EventCategoryFilterCell.xib */,
+				1A024CFB23476F8600EE7FB4 /* EventCategoryFilterHeader.swift */,
+				1A024CFC23476F8600EE7FB4 /* EventCategoryFilterCell.swift */,
+			);
+			path = "Cell+Header";
+			sourceTree = "<group>";
+		};
 		1A088E4822FECBC800DF6004 /* ContactsManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1242,6 +1278,7 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				1A024CF423476F8600EE7FB4 /* EventCateogryFilter */,
 				1A6B1EAD23453421004A359C /* SearchEvent */,
 				1A6B1EA6234517C2004A359C /* EventList */,
 				1AAE965D233A568D00868449 /* CreateEventInterest */,
@@ -3106,6 +3143,8 @@
 				794183AF228960C7009AB12C /* SF-Pro-Display-Medium.otf in Resources */,
 				7903D0B4228E8CE5004E33B9 /* TextHeader.xib in Resources */,
 				799190A522C9E9BD0044602E /* SingleButtonCell.xib in Resources */,
+				1A024D0023476F8600EE7FB4 /* EventCategoryFilterHeader.xib in Resources */,
+				1A024D0123476F8600EE7FB4 /* EventCategoryFilterCell.xib in Resources */,
 				8A4B3285232F5A5B00AC1D17 /* PostImagesCell.xib in Resources */,
 				1AB43B352327EE0C00C2FBCE /* RSVPCell.xib in Resources */,
 				0918E785228444AB0098AF35 /* Forum.storyboard in Resources */,
@@ -3430,6 +3469,7 @@
 				8A04B188230152960055C65F /* LogoutLogics.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
+				1A024CFE23476F8600EE7FB4 /* EventCateogryFilterMediates.swift in Sources */,
 				793BE67722E88207005EF72D /* MessageKitError.swift in Sources */,
 				797FFDAF22B7BC480055A001 /* PhotoGalleryHintLabel.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
@@ -3478,6 +3518,7 @@
 				1A353AC222BD05B60069752D /* ChooseUniversityViewMediates.swift in Sources */,
 				79DF74212292BAB80012DCB7 /* CreateClubViewController.swift in Sources */,
 				8A1076C02306BC2600512AA3 /* Tag.swift in Sources */,
+				1A024D0323476F8600EE7FB4 /* EventCategoryFilterCell.swift in Sources */,
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
 				7905CDBE230D63120011C83B /* ChatServices.swift in Sources */,
@@ -3558,6 +3599,7 @@
 				8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */,
 				793BE68F22E88207005EF72D /* InsetLabel.swift in Sources */,
 				797FFDA622B7BC480055A001 /* LiveView.swift in Sources */,
+				1A024CFD23476F8600EE7FB4 /* EventCateogryFilterLogics.swift in Sources */,
 				7994A3BE22D76FD00057527C /* ChatsViewController.swift in Sources */,
 				79BE868722A946C20056529E /* FriendListCell.swift in Sources */,
 				1AAE9663233A568D00868449 /* CreateEventInterestViewMediates.swift in Sources */,
@@ -3652,8 +3694,10 @@
 				8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */,
 				79D29CA122CF2C74008C6ED0 /* ExploreViewController.swift in Sources */,
 				1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */,
+				1A024CFF23476F8600EE7FB4 /* EventCateogryFilterViewController.swift in Sources */,
 				8A04B16E22FD8B680055C65F /* PrivacySettingsViewController.swift in Sources */,
 				1AB43B342327EE0C00C2FBCE /* AddRSVPMediates.swift in Sources */,
+				1A024D0223476F8600EE7FB4 /* EventCategoryFilterHeader.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				793BE69122E88207005EF72D /* MessageLabel.swift in Sources */,
 				8A04B15922FC446B0055C65F /* RSeparatorLine.swift in Sources */,

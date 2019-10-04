@@ -9,11 +9,11 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 class SearchEventViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var noEventsView: UIView!
+
     var selectedIndex = -1
     var searchText = ""
     var pageNo = 1
@@ -21,20 +21,27 @@ class SearchEventViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+
         navigationController?.navigationBar.isTranslucent = false
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+         navigationController?.navigationBar.backgroundColor = UIColor.clear
+         navigationController?.navigationBar.barTintColor = UIColor.clear
+     }
+    
     func setup() {
         setupUI()
+        noEventsView.isHidden = true
         getEventList(sortBy: .none)
     }
     
@@ -77,5 +84,13 @@ extension SearchEventViewController {
 // MARK: - Navigation
 extension SearchEventViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.searchEventCategoryViewSegue {
+            guard let indexPath = sender as? IndexPath else { return }
+            guard let vc = segue.destination as?
+                EventCategoryListViewController else { return }
+            let category = self.dataList[indexPath.row] as? EventCategory
+            vc.categoryName = category?.name ?? ""
+            vc.type = .event
+        }
     }
 }
