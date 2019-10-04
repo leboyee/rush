@@ -96,10 +96,11 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
 extension PostViewController: GrowingTextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         
+        commentText = textView.text
+        
         if parentComment != nil {
             if let name = parentComment?.user?.name {
                 let text = textView.text.replacingOccurrences(of: name, with: "")
-                commentText = textView.text
                 textView.attributedText = Utils.setAttributedText(name, text, 17, 17)
             }
         }
