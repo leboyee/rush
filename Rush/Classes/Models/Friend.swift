@@ -34,7 +34,7 @@ class Friend: Codable {
         }
         return user?.name ?? ""
     }
-    
+        
     init() {
         
     }

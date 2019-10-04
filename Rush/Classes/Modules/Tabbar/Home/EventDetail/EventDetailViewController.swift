@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 enum EventDetailType {
     case my
@@ -135,7 +136,7 @@ extension EventDetailViewController {
         guard let event = event else { return }
         header.set(date: event.start)
         header.set(start: event.start, end: event.end)
-        header.set(url: event.photo?.url())
+        header.set(url: event.photo?.urlLarge())
     }
     
     func showRSVP() {
@@ -154,6 +155,38 @@ extension EventDetailViewController {
         Utils.alert(message: message)
     }
     
+    func openGroupChat() {
+        let controller = ChatRoomViewController()
+        controller.isShowTempData = false
+        controller.userName = event?.title ?? ""
+        controller.isGroupChat = true
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func showJoinAlert() {
+        performSegue(withIdentifier: Segues.eventWithoutRSVPJoinedPopup, sender: nil)
+    }
+    
+    func showUserProfile(user: User) {
+        performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
+    }
+    
+    func showLocationOnMap() {
+        if let lat = event?.latitude, let lon = event?.longitude, let latitude = Double(lat), let longitude = Double(lon) {
+            // Set the region of the map that is rendered.
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 500, longitudinalMeters: 500)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)
+            ]
+            
+            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = event?.address
+            mapItem.openInMaps(launchOptions: options)
+        }
+    }
 }
 
 // MARK: - Navigations
@@ -165,19 +198,29 @@ extension EventDetailViewController {
                 vc.event = event
             }
         } else if segue.identifier == Segues.createEventPost {
-            if let vc = segue.destination as? CreatePostViewController {
+            if let nvc = segue.destination as? UINavigationController, let vc = nvc.viewControllers.first as? CreatePostViewController {
                 vc.eventInfo = event
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.eventPostDetail {
             if let vc = segue.destination as? PostViewController {
                 vc.eventInfo = event
                 vc.postInfo = sender as? Post
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.eventDetailShare {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
                 vc.type = .event
                 vc.object = sender
+            }
+        } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
+            let vc = segue.destination as? EventJoinedPopupViewController
+            vc?.event = event
+        } else if segue.identifier == Segues.eventOtherUserProfile {
+            if let vc = segue.destination as? OtherUserProfileController {
+                vc.userInfo = sender as? User
+                vc.delegate = self
             }
         }
     }

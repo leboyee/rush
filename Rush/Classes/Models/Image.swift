@@ -13,7 +13,9 @@ class Image: Codable {
     var id: String = ""
     var main: String = ""
     var thumb: String = ""
-    
+    var medium: String = ""
+    var large: String = ""
+
     init() {
     }
     
@@ -29,6 +31,8 @@ class Image: Codable {
         case id
         case main
         case thumb
+        case medium
+        case large
     }
     
     // TODO: - Development Function
@@ -51,6 +55,16 @@ extension Image {
         return URL(string: thumb)
     }
     
+    func urlLarge() -> URL? {
+        guard large.count > 0 else { return nil }
+        return URL(string: large)
+    }
+    
+    func urlMedium() -> URL? {
+        guard medium.count > 0 else { return nil }
+        return URL(string: medium)
+    }
+    
     func setData(data: [String: Any]) {
         if let values = data[Keys.main] as? [String: Any], let url = values[Keys.url] as? String {
             main = url
@@ -58,6 +72,14 @@ extension Image {
         
         if let values = data[Keys.thumb] as? [String: Any], let url = values[Keys.url] as? String {
             thumb = url
+        }
+        
+        if let values = data[Keys.medium] as? [String: Any], let url = values[Keys.url] as? String {
+            medium = url
+        }
+        
+        if let values = data[Keys.large] as? [String: Any], let url = values[Keys.url] as? String {
+            large = url
         }
     }
     

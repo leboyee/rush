@@ -89,7 +89,14 @@ extension HomeViewController {
             } else if type == .clubs {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            } else if type == .classes {
+                let classes = unsafe.classList[index]
+                unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classes)
             }
+        }
+        
+        cell.joinSelected = { (index) in
+            
         }
     }
     
@@ -116,7 +123,7 @@ extension HomeViewController {
             } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.classes)
             } else {
-                unself.performSegue(withIdentifier: Segues.createPost, sender: nil)
+                
             }
         }
     }

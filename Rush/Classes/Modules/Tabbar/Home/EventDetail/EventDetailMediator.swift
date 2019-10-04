@@ -200,3 +200,44 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
         }
     }
 }
+
+// MARK: - OtherUserProfile delegate
+extension EventDetailViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) { }
+}
+
+// MARK: - PostVIewController delegate
+extension EventDetailViewController: PostViewProtocol {
+    func deletePostSuccess(_ post: Post?) {
+        let snackbar = TTGSnackbar(message: "Your post is deleted.",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (_) in
+                                   Utils.notReadyAlert()
+        })
+        snackbar.show()
+        /// Find index of post, remove and reload list
+        if let post = post, let index = postList?.firstIndex(where: { $0.id == post.id }) {
+            postList?.remove(at: index)
+            reloadTable()
+        }
+    }
+    
+    func updatedPost(_ post: Post) {
+        /// Find index of post and replace with updated post
+        if let index = postList?.firstIndex(where: { $0.id == post.id }) {
+            postList?[index] = post
+            reloadTable()
+        }
+    }
+
+}
+
+// MARK: - CreatePostViewController delegate
+extension EventDetailViewController: CreatePostViewControllerDelegate {
+    func showSnackBar(text: String, buttonText: String) { }
+
+    func createPostSuccess(_ post: Post) {
+        loadPosts()
+    }
+}

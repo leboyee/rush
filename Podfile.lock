@@ -43,26 +43,26 @@ PODS:
     - FacebookCore (~> 0.9.0)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKShareKit (~> 5.0)
-  - FBSDKCoreKit (5.6.0):
-    - FBSDKCoreKit/Basics (= 5.6.0)
-    - FBSDKCoreKit/Core (= 5.6.0)
-  - FBSDKCoreKit/Basics (5.6.0)
-  - FBSDKCoreKit/Core (5.6.0):
+  - FBSDKCoreKit (5.7.0):
+    - FBSDKCoreKit/Basics (= 5.7.0)
+    - FBSDKCoreKit/Core (= 5.7.0)
+  - FBSDKCoreKit/Basics (5.7.0)
+  - FBSDKCoreKit/Core (5.7.0):
     - FBSDKCoreKit/Basics
-  - FBSDKShareKit (5.6.0):
-    - FBSDKShareKit/Share (= 5.6.0)
-  - FBSDKShareKit/Share (5.6.0):
+  - FBSDKShareKit (5.7.0):
+    - FBSDKShareKit/Share (= 5.7.0)
+  - FBSDKShareKit/Share (5.7.0):
     - FBSDKCoreKit (~> 5.0)
   - FLAnimatedImage (1.0.12)
   - GoogleMaps/Base (3.4.0)
   - GooglePlaces (3.4.0):
     - GoogleMaps/Base (= 3.4.0)
-  - IQKeyboardManagerSwift (6.4.2)
+  - IQKeyboardManagerSwift (6.5.1)
   - MGSwipeTableCell (1.6.9)
   - ReachabilitySwift (4.3.1)
-  - SDWebImage (5.2.0):
-    - SDWebImage/Core (= 5.2.0)
-  - SDWebImage/Core (5.2.0)
+  - SDWebImage (5.2.2):
+    - SDWebImage/Core (= 5.2.2)
+  - SDWebImage/Core (5.2.2)
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
@@ -78,7 +78,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookShare
   - GooglePlaces
-  - IQKeyboardManagerSwift (= 6.4.2)
+  - IQKeyboardManagerSwift
   - MGSwipeTableCell
   - ReachabilitySwift
   - SDWebImage
@@ -88,7 +88,7 @@ DEPENDENCIES:
   - UnsplashPhotoPicker (~> 1.0)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
@@ -115,21 +115,21 @@ SPEC CHECKSUMS:
   DKPhotoGallery: 0290d32343574f06eaa4c26f8f2f8a1035e916be
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
-  FBSDKCoreKit: d6655a343868d4bb5c29a60859bab07c3be14a0b
-  FBSDKShareKit: 0d8c4cfd5c1f185d5f9c26d79758b141086e1251
+  FBSDKCoreKit: 0d2d450fe9447e204fa6e912e0df76dd36693699
+  FBSDKShareKit: 0dc4bd06e11eb2ad30d165132c6c879b8d449ae3
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
   GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
-  IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
+  IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
   MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
-  SDWebImage: 609192dcf3898c910a2848032372ead951e66364
+  SDWebImage: 5fcdb02cc35e05fc35791ec514b191d27189f872
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
   SendBirdSDK: 9afafc0b44bb3ccbaf437cc83a7aeaf39c25ad8d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   UnsplashPhotoPicker: 3669aef6d3cd8bc45f19d681eef0af5920325c79
 
-PODFILE CHECKSUM: 1d2f7dc4a4d1df4da7a73d494c017c6a93ef585e
+PODFILE CHECKSUM: 2924629320d47447834d5c3e2031269f827e517a
 
-COCOAPODS: 1.8.1
+COCOAPODS: 1.7.1

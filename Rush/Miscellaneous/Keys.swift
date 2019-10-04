@@ -39,6 +39,8 @@ struct Keys {
     static let photo                 = "photo"
     static let main                  = "main"
     static let thumb                 = "thumb"
+    static let medium                = "medium"
+    static let large                 = "large"
     static let url                   = "url"
     static let list                  = "list"
     
@@ -126,5 +128,6 @@ struct Keys {
 
     static let eventContact = "event_Contact"
     static let isFirstJoin  = "isFirstJoin"
-
+    static let otherUserId = "other_user_id"
+    static let action = "action"
 }

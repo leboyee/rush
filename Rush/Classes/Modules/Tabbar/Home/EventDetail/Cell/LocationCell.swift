@@ -15,6 +15,10 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var locationLabel: CustomBlackLabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
+    let downloadQueue = DispatchQueue(label: "com.messapps.locationImage")
+    let downloadGroup = DispatchGroup()
+    var showLocationOnMap: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,11 +34,9 @@ class LocationCell: UITableViewCell {
 
 // MARK: - Actions
 extension LocationCell {
-    
     @IBAction func showLocation() {
-        Utils.notReadyAlert()
+       showLocationOnMap?()
     }
-    
 }
 
 // MARK: - Data Functions
@@ -42,17 +44,50 @@ extension LocationCell {
     
     func set(address: String, lat: String, lon: String) {
         locationLabel.text = address
-        
-        spinner.startAnimating()
-        if let latitude = Double(lat), let longitude = Double(lon) {
-        imageFromLocation(lat: latitude, lon: longitude) { image in
-              DispatchQueue.main.async {
-                self.locationImageView.image = image
-                self.spinner.stopAnimating()
-              }
-            }
+        let key = lat + lon
+        if Utils.isFileExist(key) {
+            let path = Utils.getPathForFileName(key)
+            loadImage(path: path)
         } else {
-            self.locationImageView.image = nil
+            spinner.startAnimating()
+            if let latitude = Double(lat), let longitude = Double(lon) {
+                downloadQueue.async {
+                    let time = DispatchTime.now() + (2 * 60)
+                    _ = self.downloadGroup.wait(timeout: time)
+                    self.downloadGroup.enter()
+                    if Utils.isFileExist(key) {
+                        DispatchQueue.main.async {
+                            let path = Utils.getPathForFileName(key)
+                            self.loadImage(path: path)
+                            self.spinner.stopAnimating()
+                        }
+                    } else {
+                        self.imageFromLocation(lat: latitude, lon: longitude) { image in
+                            DispatchQueue.main.async {
+                                self.locationImageView.image = image
+                                self.spinner.stopAnimating()
+                            }
+                            
+                            if let createdImage = image {
+                               _ = Utils.saveImageInApp(key, createdImage)
+                            }
+                            self.downloadGroup.leave()
+                        }
+                    }
+                }
+            } else {
+                self.locationImageView.image = nil
+            }
+        }
+    }
+    
+    func loadImage(path: String) {
+        do {
+            let filePath = URL(fileURLWithPath: path)
+            let imageData = try Data(contentsOf: filePath)
+            locationImageView.image = UIImage(data: imageData)
+        } catch {
+            print("Error loading image : \(error)")
         }
     }
 }

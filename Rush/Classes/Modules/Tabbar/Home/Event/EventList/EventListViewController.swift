@@ -96,7 +96,6 @@ extension EventListViewController {
 }
 // MARK: - Mediator / Presenter Functions
 extension EventListViewController {
-
 }
 // MARK: - Navigation
 extension EventListViewController {
@@ -105,10 +104,6 @@ extension EventListViewController {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             vc.eventId = (sender as? Event)?.id
             vc.event = sender as? Event
-        }
-        
-        if segue.identifier == Segues.searchEventViewSegue {
-            guard let vc = segue.destination as? SearchEventViewController else { return }
         }
     }
 }

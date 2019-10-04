@@ -35,6 +35,7 @@ struct Cell {
     static let textView             = "TextViewCell"
     static let clubName             = "ClubNameCell"
     static let clubManage           = "ClubManageCell"
+    static let question             = "QuestionCell"
     static let createUserPost       = "CreateUserPostCell"
     static let tag                  = "TagCell"
     static let user                 = "UserCell"
@@ -169,6 +170,7 @@ struct Segues {
     static let chatContactListSegue               = "ChatContactListSegue"
     static let homeEventDetail                     = "HomeEventDetailSegue"
     static let otherProfileEventDetail            = "OtherProfileEventDetail"
+    static let eventDetailSegue                        = "EventDetailSegue"
     static let rsvpJoinEvent                      = "RSVPJoinEventSegue"
     static let createEvent                         = "CreateEventSegue"
     static let selectEventPhoto                    = "SelectEventTypeViewSegue"
@@ -185,7 +187,8 @@ struct Segues {
     static let eventListSeuge     = "EventListSeuge"
     static let searchEventViewSegue     = "SearchEventViewSegue"
     static let searchEventCategoryViewSegue     = "SearchEventCategoryViewSegue"
-
+    static let eventWithoutRSVPJoinedPopup = "EventWithoutRSVPJoinedPopupSegue"
+    static let eventOtherUserProfile = "EventOtherUserProfileSegue"
 }
 
 struct StoryBoard {
@@ -308,6 +311,7 @@ public struct Text {
     static let education                 = "Education"
     static let majors                    = "Majors"
     static let minors                    = "Minors"
+    static let join                      = "Join"
 }
 
 public struct Message {

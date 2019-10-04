@@ -32,7 +32,7 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var secondUserImageView: UIImageView!
     @IBOutlet weak var firstUserImageView: UIImageView!
     @IBOutlet weak var userCountLabel: UILabel!
-    
+     var joinSelected: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,6 +43,10 @@ class EventCell: UICollectionViewCell {
         firstUserImageView.layer.borderColor = UIColor.white.cgColor
         secondUserImageView.layer.borderColor = UIColor.white.cgColor
         thirdUserImageView.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    @IBAction func joinButtonAction() {
+        joinSelected?()
     }
 }
 
@@ -77,6 +81,32 @@ extension EventCell {
         eventImageView.sd_setImage(with: eventImageUrl, completed: nil)
     }
     
+    func setup(date: Date?) {
+        guard let date = date else {
+            dateLabel.isHidden = true
+            return
+        }
+        
+        dateLabel.isHidden = false
+        dateLabel.text = date.toString(format: "MMM").uppercased()
+        dateNumericLabel.text = date.toString(format: "dd")
+        //        dayLabel.text = date.toString(format: "EEEE")
+        
+    }
+    
+    func setup(start: Date?, end: Date?) {
+        
+        guard let startDate = start else {
+            timeLabel.text = ""
+            return
+        }
+        
+        var text = startDate.toString(format: "hh:mma")
+        if let endDate = end {
+            text +=  "-" +  endDate.toString(format: "hh:mma")
+        }
+        timeLabel.text = text
+    }
     func setup(isHideDateView: Bool) {
         if isHideDateView {
             widthConstraintOfDateView.constant = 0

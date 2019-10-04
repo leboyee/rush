@@ -11,7 +11,7 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) { // after stable app (remove this line)
+        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) { // after stable app (remove this line)
             return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         } else if type == .upcoming || type == .classes {
             return list?.count ?? 0
@@ -26,6 +26,8 @@ extension EventTypeCell {
                 let event = eventList[indexPath.item]
                 cell.setup(eventName: event.title)
                 cell.setup(eventType: event.eventType)
+                cell.setup(date: event.start)
+                cell.setup(start: event.start, end: event.end)
                 if event.photoJson.isNotEmpty {
                     cell.setup(eventImageUrl: event.photoJson.photo?.url())
                 }
@@ -40,12 +42,20 @@ extension EventTypeCell {
                 cell.setup(eventDetail: club.clubDesc ?? "")
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
-                let clubId = club.clubUserId
+                if let invitee = club.invitees {
+                    let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+                    if filter.count > 0 {
+                        cell.setup(type: .clubsJoined)
+                        cell.setup(invitee: club.invitees)
+                    }
+                }
+                
+               /* let clubUserId = club.clubUserId
                 let userId = Authorization.shared.profile?.userId ?? ""
-                if clubId == userId {
+                if clubUserId == userId {
                     cell.setup(type: .clubsJoined)
                     cell.setup(invitee: club.invitees)
-                }
+                }*/
             } else {
                 cell.setup(eventName: "Development lifehacks")
                 cell.setup(eventDetail: "Get the latest dev skills")
@@ -57,8 +67,14 @@ extension EventTypeCell {
                 cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
             }
         }
+        
+        cell.joinSelected = { [weak self] () in
+            guard let unsafe = self else { return }
+            unsafe.joinSelected?(indexPath.row)
+            
+        }
     }
-    
+   
     func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
@@ -89,7 +105,10 @@ extension EventTypeCell {
     }
     
     func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
-        
+        guard list?.count ?? 0 > indexPath.row else { return }
+        if let image = list?[indexPath.row] as? Image {
+            cell.set(url: image.urlThumb())
+        }
     }
     
     func cellSelectedEvent(_ indexPath: IndexPath) {

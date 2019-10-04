@@ -22,6 +22,12 @@ class EventCategoryListViewController: UIViewController {
     
     var type: ScreenType = .none
     
+    var searchText = ""
+    var pageNo = 1
+    var clubList = [Club]()
+    var eventList = [Event]()
+    var classList = [Class]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,11 +39,20 @@ class EventCategoryListViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-        //navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = false
+        switch type {
+        case .event:
+            getEventList(sortBy: .upcoming)
+        case .club:
+            getClubListAPI(sortBy: "feed")
+        case .classes:
+              getClassCategoryAPI()
+        default:
+            break
+        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {        super.viewWillDisappear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.barTintColor = UIColor.clear
         //navigationController?.navigationBar.isTranslucent = true
@@ -56,7 +71,6 @@ class EventCategoryListViewController: UIViewController {
         categoryName = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : categoryName
         
         navigationItem.titleView = Utils.getNavigationBarTitle(title: categoryName, textColor: type == .none ? UIColor.white : UIColor.navBarTitleWhite32)
-        
     }
     
     @objc func backButtonAction() {
@@ -71,8 +85,19 @@ extension EventCategoryListViewController {
 
 // MARK: - Navigation
 extension EventCategoryListViewController {
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     }
-     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segues.eventDetailSegue {
+            guard let vc = segue.destination as? EventDetailViewController else { return }
+            vc.eventId = (sender as? Event)?.id
+            vc.event = sender as? Event
+        } else if segue.identifier == Segues.clubDetailSegue {
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.classInfo = sender as? Class
+        }
+    }
 }

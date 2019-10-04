@@ -51,6 +51,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
             fillImageCell(cell, indexPath)
+//            cell.setNeedsLayout()
             return cell
         }
     }

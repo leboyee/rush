@@ -13,7 +13,7 @@ struct ProfileDetail {
     var images: [Image]?
     var friends: [Friend]?
     var interests: [Tag]?
-    var notifications: [Any]?
+    var notifications: [NotificationItem]?
 }
 
 class ProfileViewController: UIViewController {
@@ -30,6 +30,9 @@ class ProfileViewController: UIViewController {
     var isOtherUserProfile: Bool = false
     var notificationPageNo: Int = 1
     var notificationNextPageExist = false
+    
+    var imagePageNo: Int = 1
+    var imageNextPageExist = false
     
     let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
     let downloadGroup = DispatchGroup()
@@ -76,7 +79,7 @@ extension ProfileViewController {
         /// setup HeaderData
         setupHeaderData()
         setupView()
-    }    
+    }
 }
 
 // MARK: - Actions
@@ -110,7 +113,7 @@ extension ProfileViewController {
         header.set(name: name)
         let university = (profileDetail.profile?.university ?? "").isEmpty ? "" : (profileDetail.profile?.university ?? "")
         header.set(university: university)
-        header.set(url: profileDetail.profile?.photo?.url())
+        header.set(url: profileDetail.profile?.photo?.urlLarge())
     }
     
     func showEditProfile() {

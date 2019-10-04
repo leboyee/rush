@@ -82,11 +82,7 @@ extension NetworkManager {
     }
 
     func getImageList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "profile/photo", params: params, resultHandler: resultHandler)
-    }
-    
-    func getFriendList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "friend", params: params, resultHandler: resultHandler)
+        requestGet(path: "profile-images", params: params, resultHandler: resultHandler)
     }
     
     func createClub(params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -174,8 +170,26 @@ extension NetworkManager {
         requestDelete(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
     }
     
-    //MARK: - Post API
+    // MARK: - Post API
     func getPostDetail(postId: String, resultHandler: @escaping ResultClosure) {
         requestGet(path: "post/\(postId)", params: [:], resultHandler: resultHandler)
+    }
+    
+    // MARK: - Friend
+    func getFriendList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "friend", params: params, resultHandler: resultHandler)
+    }
+    
+    func sendFriendRequest(param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "friend", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
+    func friendRequestStatus(param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPut(path: "friend", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
+    // MARK: - Notification
+    func getNotificationList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "notification", params: params, resultHandler: resultHandler)
     }
 }

@@ -24,6 +24,8 @@ class ClassDetailViewController: UIViewController {
     var isShowMore = false
     var joinedClub = false
     
+    var classInfo: Class?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +38,10 @@ class ClassDetailViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.barTintColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     // MARK: - Other function

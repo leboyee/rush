@@ -207,6 +207,7 @@
 		79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79173F3A229E6FA10003FD9B /* ClubNameCell.xib */; };
 		79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79173F45229EB39A0003FD9B /* ClubManageCell.swift */; };
 		79173F48229EB39A0003FD9B /* ClubManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79173F46229EB39A0003FD9B /* ClubManageCell.xib */; };
+		79257FD123447C49001C5775 /* FriendServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79257FD023447C49001C5775 /* FriendServices.swift */; };
 		7929DA4F22C24ADB00700B42 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7929DA4E22C24ADB00700B42 /* PostViewController.swift */; };
 		7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7929DA5022C24AEB00700B42 /* PostMediates.swift */; };
 		7929DA5322C24AFD00700B42 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7929DA5222C24AFD00700B42 /* PostPresenter.swift */; };
@@ -491,6 +492,8 @@
 		8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1076BC2306B96800512AA3 /* TextCell.xib */; };
 		8A1076C02306BC2600512AA3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BF2306BC2600512AA3 /* Tag.swift */; };
 		8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */; };
+		8A1EFDDF2345E12A00624EED /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDDE2345E12A00624EED /* NotificationService.swift */; };
+		8A1EFDE12345E1A300624EED /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDE02345E1A300624EED /* NotificationItem.swift */; };
 		8A4B325D232B99F100AC1D17 /* RSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */; };
 		8A4B325F232B9A0B00AC1D17 /* RSVPMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */; };
 		8A4B3261232B9A1B00AC1D17 /* RSVPLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */; };
@@ -537,6 +540,8 @@
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
 		C05FC17022805FAE00721F3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC16F22805FAE00721F3F /* Utils.swift */; };
 		C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */; };
+		D98B99602344D75C00BB9B12 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B995E2344D75C00BB9B12 /* QuestionCell.swift */; };
+		D98B99612344D75C00BB9B12 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B995F2344D75C00BB9B12 /* QuestionCell.xib */; };
 		F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */; };
 		F9C89F6C232D2DD900DC9C85 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */; };
 		F9C89F6D232D2DD900DC9C85 /* AddLocationLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */; };
@@ -757,6 +762,7 @@
 		79173F3A229E6FA10003FD9B /* ClubNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubNameCell.xib; sourceTree = "<group>"; };
 		79173F45229EB39A0003FD9B /* ClubManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubManageCell.swift; sourceTree = "<group>"; };
 		79173F46229EB39A0003FD9B /* ClubManageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubManageCell.xib; sourceTree = "<group>"; };
+		79257FD023447C49001C5775 /* FriendServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendServices.swift; sourceTree = "<group>"; };
 		7929DA4E22C24ADB00700B42 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		7929DA5022C24AEB00700B42 /* PostMediates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMediates.swift; sourceTree = "<group>"; };
 		7929DA5222C24AFD00700B42 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
@@ -1042,6 +1048,8 @@
 		8A1076BC2306B96800512AA3 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		8A1076BF2306BC2600512AA3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8A1EFDDE2345E12A00624EED /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8A1EFDE02345E1A300624EED /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
 		8A4B325C232B99F100AC1D17 /* RSVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPViewController.swift; sourceTree = "<group>"; };
 		8A4B325E232B9A0B00AC1D17 /* RSVPMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPMediator.swift; sourceTree = "<group>"; };
 		8A4B3260232B9A1B00AC1D17 /* RSVPLogics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPLogics.swift; sourceTree = "<group>"; };
@@ -1095,6 +1103,8 @@
 		C05FC16F22805FAE00721F3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdParty.swift; sourceTree = "<group>"; };
 		C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
+		D98B995E2344D75C00BB9B12 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		D98B995F2344D75C00BB9B12 /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationMediates.swift; sourceTree = "<group>"; };
 		F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationLogics.swift; sourceTree = "<group>"; };
@@ -1696,6 +1706,8 @@
 				79FA26F4230EC5AF0007F0ED /* HomeServices.swift */,
 				8AE9711F2327B4D800CB52D4 /* EventServices.swift */,
 				8A4B3267232BB7E800AC1D17 /* PostServices.swift */,
+				79257FD023447C49001C5775 /* FriendServices.swift */,
+				8A1EFDDE2345E12A00624EED /* NotificationService.swift */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -1952,6 +1964,8 @@
 			children = (
 				7912570F22A16DA100BDE3EC /* ProfileImageCell.swift */,
 				7912571022A16DA100BDE3EC /* ProfileImageCell.xib */,
+				D98B995E2344D75C00BB9B12 /* QuestionCell.swift */,
+				D98B995F2344D75C00BB9B12 /* QuestionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2965,6 +2979,7 @@
 				79DA00BB233219A1006B3A65 /* Post.swift */,
 				79C5811F233BA54600FD837A /* Comment.swift */,
 				8AAA38442343268500423D43 /* RSVPQuestion.swift */,
+				8A1EFDE02345E1A300624EED /* NotificationItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3014,6 +3029,7 @@
 		C05FC16622805F9D00721F3F /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				1AC635FA22AA8F6900021E03 /* CustomNavBarPageController.xib */,
 				1A142EC0229EC1A0002C1AFE /* CustomPicker.storyboard */,
 				C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */,
 				C05FC16922805F9D00721F3F /* Main.storyboard */,
@@ -3025,7 +3041,6 @@
 				0918E786228444B90098AF35 /* Profile.storyboard */,
 				1A62D2312295454C001E5790 /* Authorize.storyboard */,
 				1AC635F822AA766100021E03 /* UserData.storyboard */,
-				1AC635FA22AA8F6900021E03 /* CustomNavBarPageController.xib */,
 				1AEAC49822D3194A008FBB54 /* UserInfo.storyboard */,
 				8A04B13D22FAE1180055C65F /* Calendar.storyboard */,
 				1AA9AB4122FF3D9600E0E450 /* Event.storyboard */,
@@ -3154,6 +3169,7 @@
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
 				7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */,
 				79A9377422B2288B00A602CD /* UserImagesHeaderView.xib in Resources */,
+				D98B99612344D75C00BB9B12 /* QuestionCell.xib in Resources */,
 				79D29CA522CF339B008C6ED0 /* ExploreCell.xib in Resources */,
 				8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */,
 				1A2809ED22C60E6700B4E764 /* ClassesCell.xib in Resources */,
@@ -3502,6 +3518,7 @@
 				79C1AC4D22A64CF9003C7790 /* ProfileInformationMediates.swift in Sources */,
 				796E9298229FDCD600F91DB1 /* TagCell.swift in Sources */,
 				C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */,
+				8A1EFDE12345E1A300624EED /* NotificationItem.swift in Sources */,
 				1AA97B8B228979D100C4550C /* TapGestureExtension.swift in Sources */,
 				7999362C22FAEDAC001AEEEB /* ChatUserCell.swift in Sources */,
 				7958B7F722C4DBEB00A66BDC /* SharePostViewController.swift in Sources */,
@@ -3528,6 +3545,7 @@
 				8A04B17722FD8C530055C65F /* NotificationSettingsMediator.swift in Sources */,
 				793BE67022E88207005EF72D /* AvatarPosition.swift in Sources */,
 				1ACEAC1422AC040A00B734D3 /* AddProfilePictureViewLogics.swift in Sources */,
+				79257FD123447C49001C5775 /* FriendServices.swift in Sources */,
 				1A339B6522B3CEA9005509EA /* ChooseYearViewMediates.swift in Sources */,
 				793BE68C22E88207005EF72D /* TableViewCells.swift in Sources */,
 				0918E77B228436C70098AF35 /* ProfileViewController.swift in Sources */,
@@ -3597,6 +3615,7 @@
 				7929DA5122C24AEB00700B42 /* PostMediates.swift in Sources */,
 				1A2809E322C5F43B00B4E764 /* ChooseClassesViewLogics.swift in Sources */,
 				8A04B17D22FD96720055C65F /* CheckMarkCell.swift in Sources */,
+				8A1EFDDF2345E12A00624EED /* NotificationService.swift in Sources */,
 				793BE68F22E88207005EF72D /* InsetLabel.swift in Sources */,
 				797FFDA622B7BC480055A001 /* LiveView.swift in Sources */,
 				1A024CFD23476F8600EE7FB4 /* EventCateogryFilterLogics.swift in Sources */,
@@ -3611,6 +3630,7 @@
 				1AEAC4A322D31BE4008FBB54 /* UserInfoViewController.swift in Sources */,
 				1AC635F722AA6E9500021E03 /* AkiraTextField.swift in Sources */,
 				1AAE9661233A568D00868449 /* CreateEventInterestViewLogics.swift in Sources */,
+				D98B99602344D75C00BB9B12 /* QuestionCell.swift in Sources */,
 				79C1AC4F22A64D09003C7790 /* ProfileInformationLogics.swift in Sources */,
 				79DF741D2292BA9F0012DCB7 /* SelectEventTypeLogics.swift in Sources */,
 				797FFDA422B7BC480055A001 /* ImagePickerController.swift in Sources */,

@@ -255,14 +255,20 @@ extension EventDetailViewController {
             Utils.notReadyAlert()
         }
         
-        cell.secondButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            if unsafe.type == .joined {
+                unsafe.openGroupChat()
+            }
         }
         
     }
     
     func fillLocationCell(_ cell: LocationCell) {
         cell.set(address: event?.address ?? "", lat: event?.latitude ?? "0", lon: event?.longitude ?? "0")
+        cell.showLocationOnMap = { [weak self] () in
+            self?.showLocationOnMap()
+        }
     }
     
     func fillCreatePostCell(_ cell: CreatePostCell) {
@@ -272,16 +278,27 @@ extension EventDetailViewController {
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
-        cell.setup(title: Text.joinAndRSVP)
+        guard let event = self.event else { return }
+        if event.rsvp?.count ?? 0 == 0 {
+            cell.setup(title: Text.join)
+        } else {
+            cell.setup(title: Text.joinAndRSVP)
+        }
+        
         cell.joinButtonClickEvent = { [weak self] () in
-            self?.showRSVP()
+            if event.rsvp?.count ?? 0 == 0 {
+                self?.joinEvent(eventId: event.id)
+            } else {
+                self?.showRSVP()
+            }
         }
     }
     
     func fillOrganizerCell(_ cell: OrganizerCell) {
         guard let user = event?.creator else { return }
         cell.set(name: user.name)
-        cell.set(detail: "3 events")
+        let text =  "\(user.totalEvents ?? 0) events"
+        cell.set(detail: text)
         cell.set(url: user.photo?.urlThumb())
     }
     
@@ -311,10 +328,10 @@ extension EventDetailViewController {
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postList?[index] {
-            cell.set(numberOfLike: post.numberOfLikes)
+            cell.set(numberOfLike: post.totalUpVote)
             cell.set(numberOfComment: post.numberOfComments)
             
-            cell.likeButtonEvent = { [weak self]() in
+            cell.likeButtonEvent = { [weak self] () in
                 self?.voteAPI(id: post.id ?? "", type: Vote.up)
             }
             
@@ -339,6 +356,9 @@ extension EventDetailViewController {
             /// check section type is create post or not, if yes, move to create post screen
             if eventSection.type == .createPost {
                 showCreatePost()
+            } else if eventSection.type == .organizer {
+                guard let user = event?.creator else { return }
+                showUserProfile(user: user)
             }
         }
     }
@@ -461,6 +481,23 @@ extension EventDetailViewController {
                 }
             } else if let message = errorMsg {
                 unsafe.showMessage(message: message)
+            }
+        }
+    }
+    
+    private func joinEvent(eventId: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.joinEvent(eventId: eventId, params: [:]) { [weak self] (data, errorMessage) in
+            if let object = data {
+                let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
+                if isFirstTime == 1 {
+                   self?.showJoinAlert()
+                }
+                self?.type = .joined
+                self?.loadAllData()
+            } else if let message = errorMessage {
+                self?.showMessage(message: message)
+                Utils.hideSpinner()
             }
         }
     }

@@ -37,7 +37,12 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell else { return UITableViewCell() }
             fillManageCell(cell, indexPath)
             return cell
-        } else {
+        }
+//        else if indexPath.section == 1 {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
+//            return cell
+//        }
+        else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillEventCell(cell, indexPath)
             return cell

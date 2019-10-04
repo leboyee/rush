@@ -16,7 +16,7 @@ class HomeViewController: CustomViewController {
     var isShowTutorial = true
     var isShowJoinEvents = false
     
-    var date = "January 24"
+    var date = Date()
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
@@ -37,6 +37,7 @@ class HomeViewController: CustomViewController {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
@@ -83,7 +84,8 @@ class HomeViewController: CustomViewController {
         // Set navigation title (date)
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
         let dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        dateButton.setTitle(date, for: .normal)
+        let text = date.toString(format: "MMMM dd")
+        dateButton.setTitle(text, for: .normal)
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left
@@ -160,6 +162,9 @@ extension HomeViewController {
             if let vc = segue.destination as? EventListViewController {
                 vc.eventList = (sender as? [Event] ?? [Event]())
             }
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.classInfo = sender as? Class
         }
         
     }

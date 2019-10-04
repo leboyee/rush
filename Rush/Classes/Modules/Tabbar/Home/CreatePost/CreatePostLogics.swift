@@ -13,7 +13,7 @@ extension CreatePostViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            return screenWidth
+            return UITableView.automaticDimension
         } else {
             return UITableView.automaticDimension
         }
@@ -116,7 +116,7 @@ extension CreatePostViewController {
                     DispatchQueue.main.async {
                         uwself.delegate?.createPostSuccess(value)
                     }
-                    uwself.navigationController?.popViewController(animated: false)
+                    uwself.close()
                 } catch {
                     
                 }

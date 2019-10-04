@@ -22,7 +22,7 @@ class OtherUserProfileController: UIViewController {
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var isShowMessageButton = false
-    var friendType: ManageButtonType = .friends
+    var friendType: ManageButtonType = .addFriend
     
     weak var delegate: OtherUserProfileProtocol?
     
@@ -33,6 +33,7 @@ class OtherUserProfileController: UIViewController {
     var pageNo = 1
     var clubList = [Club]()
     var eventList = [Event]()
+    var classList = [Class]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class OtherUserProfileController: UIViewController {
         getProfileAPI()
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
+        getClassCategoryAPI()
     }
     
     //MARk: - Other function
@@ -127,6 +129,16 @@ extension OtherUserProfileController {
             if let vc = segue.destination as? ProfileInformationViewController {
                 vc.userInfo = userInfo
             }
+        } else if segue.identifier == Segues.clubDetailSegue {
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.classInfo = sender as? Class
+        } else if segue.identifier == Segues.otherProfileEventDetail {
+            guard let vc = segue.destination as? EventDetailViewController else { return }
+            vc.eventId = (sender as? Event)?.id
+            vc.event = sender as? Event
         }
     }
 }
