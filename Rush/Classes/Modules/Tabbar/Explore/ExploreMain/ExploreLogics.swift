@@ -197,7 +197,7 @@ extension ExploreViewController {
         
         let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: 1] as [String: Any]
         
         if clubList.count == 0 {
             Utils.showSpinner()
@@ -221,7 +221,8 @@ extension ExploreViewController {
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.fromStartDate: Date().toString(),
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.toStartDate: Date().toString(),
+                     Keys.pageNo: 1] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
@@ -236,7 +237,7 @@ extension ExploreViewController {
     }
     
     func getClassCategoryAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+        let param = [Keys.pageNo: 1] as [String: Any]
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
