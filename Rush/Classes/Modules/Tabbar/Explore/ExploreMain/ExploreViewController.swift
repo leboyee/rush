@@ -61,7 +61,7 @@ class ExploreViewController: CustomViewController {
         }
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
-        getClassCategoryAPI()
+        getClassListAPI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

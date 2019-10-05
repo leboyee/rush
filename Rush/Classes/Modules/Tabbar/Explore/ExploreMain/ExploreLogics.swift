@@ -279,10 +279,10 @@ extension ExploreViewController {
         }
     }
     
-    func getClassCategoryAPI() {
+    func getClassListAPI() {
         let param = [Keys.pageNo: 1] as [String: Any]
         
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classList = classes

@@ -166,6 +166,10 @@ extension NetworkManager {
         requestGet(path: "category/class/list", params: params, resultHandler: resultHandler)
     }
 
+    func getClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "class/list", params: params, resultHandler: resultHandler)
+    }
+
     func getClassGroupList(classId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "class/\(classId)/groups", params: params, resultHandler: resultHandler)
     }
