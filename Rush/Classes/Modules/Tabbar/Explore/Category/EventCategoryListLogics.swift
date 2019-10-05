@@ -70,7 +70,12 @@ extension EventCategoryListViewController {
     
     func fillClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         if type == .club {
-            
+            let club = clubList[indexPath.row]
+            let image = Image(json: club.clubPhoto ?? "")
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "")
+            cell.setup(invitee: club.invitees)
+            cell.setup(imageUrl: image.urlThumb())
         } else {
             cell.setup(detail: "SOMM 24-A")
         }

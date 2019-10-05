@@ -46,7 +46,6 @@ extension FriendClubCell {
     func setup(detail: String) {
        detailLabel.text = detail
     }
-    
     func setup(topConstraint: CGFloat) {
         topConstraintOfContentView.constant = topConstraint
     }
@@ -62,16 +61,26 @@ extension FriendClubCell {
         secondUserImageView.isHidden = false
         thirdUserImageView.isHidden = false
         
-        if invitee?.count ?? 0 == 0 {
+        if invitee?.count == 0 {
             userView.isHidden = true
-        } else if invitee?.count ?? 0 == 1 || invitee?.count ?? 0 > 2 {
+        } else if invitee?.count == 1 {
             firstUserImageView.isHidden = true
             secondUserImageView.isHidden = true
-        } else if invitee?.count ?? 0 == 2 || invitee?.count ?? 0 > 2 {
+            let clubInvitee = invitee?[0]
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+        } else if invitee?.count == 2 {
             firstUserImageView.isHidden = true
-        }
-        
-        if invitee?.count ?? 0 > 3 {
+            var clubInvitee = invitee?[0]
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            clubInvitee = invitee?[1]
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+        } else if invitee?.count ?? 0 > 2 {
+            var clubInvitee = invitee?[0]
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            clubInvitee = invitee?[1]
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            clubInvitee = invitee?[2]
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
             userCountLabel.isHidden = false
             let count = invitee?.count ?? 0
             userCountLabel.text = "\(count - 3)+"
