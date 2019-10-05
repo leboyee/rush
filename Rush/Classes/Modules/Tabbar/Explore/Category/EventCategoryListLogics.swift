@@ -76,6 +76,13 @@ extension EventCategoryListViewController {
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
             cell.setup(imageUrl: image.urlThumb())
+        } else if type == .classes {
+            let myclass = classList[indexPath.row]
+//            let image = Image(json: myclass.clubPhoto ?? "")
+            cell.setup(title: myclass.name ?? "")
+//            cell.setup(detail: club.clubDesc ?? "")
+//            cell.setup(invitee: club.invitees)
+//            cell.setup(imageUrl: image.urlThumb())
         } else {
             cell.setup(detail: "SOMM 24-A")
         }
@@ -100,6 +107,12 @@ extension EventCategoryListViewController {
         if type == .event {
             let event = eventList[indexPath.row]
             performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+        } else if type == .club {
+            let club = clubList[indexPath.row]
+            performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+        } else if type == .classes {
+//            let myclass = classList[indexPath.row]
+//            performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
         }
     }
 }

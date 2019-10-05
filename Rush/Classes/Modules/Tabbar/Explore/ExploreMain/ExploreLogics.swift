@@ -72,6 +72,49 @@ extension ExploreViewController {
         let keepTrack = "Keep track of your \nacademics"
         let detail = indexPath.row == 0 ? findEvent : indexPath.row == 1 ? sharePeople : indexPath.row == 2 ? keepTrack : ""
         cell.setup(detail: detail)
+        var img1: String = ""
+        var img2: String = ""
+        var img3: String = ""
+        
+        switch indexPath.row {
+        case 0:
+            if eventList.count > 0 {
+                img1 = eventList[0].photoJson
+            }
+            if eventList.count > 1 {
+                img2 = eventList[1].photoJson
+            }
+            if eventList.count > 2 {
+                img3 = eventList[2].photoJson
+            }
+        case 1:
+            if clubList.count > 0 {
+                img1 = clubList[0].clubPhoto ?? ""
+            }
+            if eventList.count > 1 {
+                img2 = clubList[1].clubPhoto ?? ""
+            }
+            if eventList.count > 2 {
+                img3 = clubList[2].clubPhoto ?? ""
+            }
+        case 2:
+//            if classList.count > 0
+//            {
+//                img1 = classList[0].photoJson
+//            }
+//            if classList.count > 1
+//            {
+//                img2 = classList[1].photoJson
+//            }
+//            if classList.count > 2
+//            {
+//                img3 = classList[2].photoJson
+//            }
+            break
+        default:
+            break
+        }
+       cell.setup(img1Url: img1, img2Url: img2, img3Url: img3)
     }
     
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
@@ -220,8 +263,8 @@ extension ExploreViewController {
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
-                     Keys.fromStartDate: Date().toString(),
-                     Keys.toStartDate: Date().toString(),
+//                     Keys.fromStartDate: Date().toString(),
+//                     Keys.toStartDate: Date().toString(),
                      Keys.pageNo: 1] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
