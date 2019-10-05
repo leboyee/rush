@@ -120,7 +120,7 @@ extension EventTypeCell {
          if cellType == .invitees {
              userSelected?(0, indexPath.item)
          } else {
-             cellSelected?(self.type, 0, indexPath.item)
+             cellSelected?(self.type, indexPath.section, indexPath.item)
          }
     }
     

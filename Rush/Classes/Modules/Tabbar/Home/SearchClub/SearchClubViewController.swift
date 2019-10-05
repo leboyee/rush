@@ -31,7 +31,7 @@ class SearchClubViewController: CustomViewController {
     
     var dataList = [Any]()
     
-    var classObject = Class()
+    var classObject = SubClass()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +55,8 @@ class SearchClubViewController: CustomViewController {
         if searchType == .searchList {
             getClubCategoryListAPI(isShowSpinner: true)
         } else if searchType == .classes {
+            let titleText = " " + classObject.name + " classes"
+            navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: UIColor.navBarTitleWhite32)
             getClassGroupListAPI(isShowSpinner: true)
         }
     }
