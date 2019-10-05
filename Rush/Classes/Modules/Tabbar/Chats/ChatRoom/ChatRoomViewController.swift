@@ -64,6 +64,7 @@ class ChatRoomViewController: MessagesViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -398,8 +399,23 @@ extension ChatRoomViewController {
             }
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+//        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 88, width: 88, height: 88)
+//        timeLabel.frame = CGRect(x: 16, y: 100, width: screenWidth - 32, height: 22)
+        
+    }
+    
+    @objc func keyboardDidHide(notification: NSNotification) {
+        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: (screenHeight/2) - 44, width: 88, height: 88)
+        timeLabel.frame = CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22)
+
     }
     
     func updateChannelNameAndImagesOnNav() {
@@ -467,8 +483,6 @@ extension ChatRoomViewController {
         emptyUserImageView = UIImageView(frame: CGRect((screenWidth/2) - 44, (screenHeight/2) - 44, 88, 88))
         emptyUserImageView.clipsToBounds = true
         emptyUserImageView.image = #imageLiteral(resourceName: "grayChat")
-        
-
         emptyUserImageView.contentMode = .scaleAspectFill
         emptyUserImageView.layer.cornerRadius = 44
         emptyMessageView.addSubview(emptyUserImageView)
