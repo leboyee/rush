@@ -42,6 +42,7 @@ class AddProfilePictureViewController: CustomViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        pageControl.updateDots()
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,7 +72,7 @@ class AddProfilePictureViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
 
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
@@ -95,7 +96,7 @@ extension AddProfilePictureViewController {
                     unsafe.cameraPermissionCheck()
             } else {
                 if status != .justDenied {
-                    Utils.photoLibraryPermissionAlert()
+                    Utils.alertCameraAccessNeeded()
                 }
             }
         })
@@ -121,7 +122,6 @@ extension AddProfilePictureViewController {
         pickerController.singleSelect = true
         pickerController.showsCancelButton = true
         pickerController.autoCloseOnSingleSelect = true
-        pickerController.sourceType = .photo
         pickerController.assetType = .allPhotos
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             if assets.count > 0 {

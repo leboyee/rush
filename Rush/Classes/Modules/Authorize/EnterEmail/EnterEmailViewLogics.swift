@@ -23,7 +23,7 @@ extension EnterEmailViewConteroller {
             if data != nil {
                 if (data![Keys.isEmailExist] as? Bool) == true {
                     if unsafe.loginType == .register {
-                        Utils.alert(message: "Email already register.")
+                        Utils.alert(message: "Email is already in use.")
                     } else {
                          unsafe.emailSuccess()
                     }

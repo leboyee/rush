@@ -35,7 +35,7 @@ class EnterUserNameViewController: CustomViewController {
         super.viewWillAppear(animated)
         firstNameTextField.autocorrectionType = .yes
         lastNameTextField.autocorrectionType = .yes
-
+        pageControl.updateDots()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
@@ -44,7 +44,6 @@ class EnterUserNameViewController: CustomViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-
     }
     
     override func viewWillLayoutSubviews() {
@@ -79,17 +78,17 @@ class EnterUserNameViewController: CustomViewController {
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
+        if Utils.systemVersionEqualToOrGreterThen(version: "13") {
+            print("13")
+        } else {
+            print("below 13")
+
+        }
         
         let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
-        pageControl.updateDots()
-        if Utils.getSystemVersion() < 13 {
-            print("done")
-        } else {
-            print("false")
-        }
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
         
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView

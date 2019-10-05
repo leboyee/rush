@@ -62,7 +62,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         navigationController?.navigationBar.isHidden = true
-        
+        passwordShowHideLabel.text = Text.show
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -183,7 +183,8 @@ extension EnterPasswordViewConteroller {
 extension EnterPasswordViewConteroller {
     
     func profileUpdateSuccess() {
-        AppDelegate.shared?.setupStoryboard()
+        //AppDelegate.shared?.setupStoryboard()
+        self.performSegue(withIdentifier: "UserData", sender: self)
     }
     
     func passwordNotSuccess() {

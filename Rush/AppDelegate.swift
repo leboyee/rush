@@ -8,6 +8,7 @@
 
 import UIKit
 import SendBirdSDK
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Add Third Party SDK
         addThirdPartySDK()
-        setupStoryboard()
+       // setupStoryboard()
         
         //Add Observer For Force logout
         NotificationCenter.default.addObserver(self, selector: #selector(forceLogout), name: Notification.Name.badAccess, object: nil)
@@ -55,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupAppearance() {
         setupTopBar()
         setupBarButton()
+        photoLibraryPermissionCheck()
     }
     
     func setupTopBar() {
@@ -114,5 +116,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
             self.window?.rootViewController = tabbarVC
     }
-
+    
+    func photoLibraryPermissionCheck() {
+        Utils.authorizePhoto(completion: { [weak self] (status) in
+            guard let unsafe = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
+                    //unsafe.cameraPermissionCheck()
+            } else {
+                if status != .justDenied {
+                    Utils.photoLibraryPermissionAlert()
+                }
+            }
+            unsafe.cameraPermissionCheck()
+        })
+    }
+    
+    func cameraPermissionCheck() {
+        Utils.authorizeVideo(completion: { [weak self] (status) in
+            guard let unsafe = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
+                    //unsafe.openCameraOrLibrary()
+            } else {
+                if status != .justDenied {
+                    Utils.alertCameraAccessNeeded()
+                }
+            }
+            unsafe.locationPermission()
+        })
+    }
+    
+    func locationPermission() {
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        if authorizationStatus == CLAuthorizationStatus.notDetermined {
+              CLLocationManager().requestWhenInUseAuthorization()
+          } else {
+            if authorizationStatus == CLAuthorizationStatus.denied || authorizationStatus == CLAuthorizationStatus.restricted {
+                Utils.locationPermissionAlert()
+            }
+          }
+    }
 }
