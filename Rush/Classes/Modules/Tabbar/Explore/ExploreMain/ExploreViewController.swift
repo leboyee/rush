@@ -181,9 +181,9 @@ extension ExploreViewController {
             if let vc = segue.destination as? EventCategoryListViewController {
                 if let type = sender as? ScreenType {
                     vc.type = type
-                } else {
-                    vc.categoryName = sender as? String ?? ""
-                    vc.type = .none
+                } else if let category = sender as? EventCategory {
+                    vc.eventCategory = category
+                    vc.type = .event
                 }
             }
         } else if segue.identifier == Segues.clubDetailSegue {

@@ -111,6 +111,7 @@ struct Keys {
     static let totalPhotos = "total_photos"
 
     static let createEventType = "event_type"
+    static let eventCateId = "event_cat_id"
     static let eventName = "event_name"
     static let eventDesc = "event_desc"
     static let eventRsvpList = "event_rsvp_list"

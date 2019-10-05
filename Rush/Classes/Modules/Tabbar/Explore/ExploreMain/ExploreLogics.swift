@@ -47,6 +47,7 @@ extension ExploreViewController {
         } else if indexPath.section == 3 {
             cell.setup(.classes, nil, classList)
         }
+        // MARK: - CollectionItem Selected
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
            if indexPath.section == 1 {
@@ -97,23 +98,22 @@ extension ExploreViewController {
             header.setup(title: Text.classesYouMightLike)
         }
         
-        header.detailButtonClickEvent = { () in
+        // MARK: - HeaderArrow Selected
+        header.detailButtonClickEvent = { [weak self] in
             // Open other user profile UI for test
+            guard let unself = self else { return }
+
+            let type = section == 1 ? ScreenType.event : section == 2 ? ScreenType.club : section == 3 ? .classes : .none
+            unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
             
-            Utils.notReadyAlert()
-            /*
-             if section == 2 {
-             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
-             } else if section == 3 {
-             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
-             }
-             */
         }
     }
-    
+    // MARK: - Category selected
     func cellSelected(_ indexPath: IndexPath) {
         if isSearch && searchType == .event {
-            performSegue(withIdentifier: Segues.eventCategorySegue, sender: dataList[indexPath.row])
+            if let category = dataList[indexPath.row] as? EventCategory {
+                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+            }
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)

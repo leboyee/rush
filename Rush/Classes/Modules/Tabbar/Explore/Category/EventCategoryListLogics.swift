@@ -124,11 +124,12 @@ extension EventCategoryListViewController {
         }
     }
     
-    func getEventList(sortBy: GetEventType) {
+    func getEventList(sortBy: GetEventType, eventCategory: EventCategory?) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
+                     Keys.eventCateId: eventCategory?.id ?? "",
                      Keys.pageNo: pageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in

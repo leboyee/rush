@@ -955,7 +955,7 @@
 		79CF8FCC228D9D6200DDA285 /* CustomBrownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBrownLabel.swift; sourceTree = "<group>"; };
 		79CF8FCE228DA37400DDA285 /* CustomBlackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackLabel.swift; sourceTree = "<group>"; };
 		79CF8FD0228DA47F00DDA285 /* CustomBlackBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlackBackgroundView.swift; sourceTree = "<group>"; };
-		79D29C9C22CF2C74008C6ED0 /* ExploreLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreLogics.swift; sourceTree = "<group>"; };
+		79D29C9C22CF2C74008C6ED0 /* ExploreLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreLogics.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		79D29C9D22CF2C74008C6ED0 /* ExploreMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreMediates.swift; sourceTree = "<group>"; };
 		79D29C9E22CF2C74008C6ED0 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		79D29CA222CF339A008C6ED0 /* ExploreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };

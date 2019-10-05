@@ -81,6 +81,8 @@ extension HomeViewController {
             cell.setup(.classes, nil, classList)
         }
         
+        // MARK: - CollectionItem Selected
+
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
@@ -113,6 +115,7 @@ extension HomeViewController {
             header.setup(title: Text.classes)
         }
         
+        // MARK: - HeaderArrow Selected
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             // Open other user profile UI for test

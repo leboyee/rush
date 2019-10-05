@@ -17,7 +17,7 @@ target 'Rush' do
   pod 'ReachabilitySwift'
 
   #SDWebImage
-  pod 'SDWebImage'
+  pod 'SDWebImage', '5.2.1'
   
   #Custom Photo Library
   pod 'DKImagePickerController', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']

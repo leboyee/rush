@@ -125,7 +125,11 @@ extension CustomTabbarViewController {
 extension CustomTabbarViewController {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
+        if tabBarController.selectedIndex == 1 {
+            if let navController = viewController as? UINavigationController {
+                navController.popToRootViewController(animated: false)
+            }
+        }
     }
 }
 
