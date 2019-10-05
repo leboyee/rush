@@ -64,6 +64,7 @@ struct Keys {
     static let pageNo             = "pageNo"
     static let search             = "search"
     static let sortBy            = "sort_by"
+    static let fromStartDate      = "from_start"
 
     static let clubName = "club_name"
     static let clubDesc = "club_desc"

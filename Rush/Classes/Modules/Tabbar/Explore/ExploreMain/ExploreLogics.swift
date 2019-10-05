@@ -220,6 +220,7 @@ extension ExploreViewController {
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
+                     Keys.fromStartDate: Date().toString(),
                      Keys.pageNo: pageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
