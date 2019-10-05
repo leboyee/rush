@@ -40,7 +40,7 @@ class ChatRoomViewController: MessagesViewController {
 
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
-    var emptyMessageFriendTitle = "This is a beginning of you chat history."
+    var emptyMessageFriendTitle = "This is a beginning of your chat history."
     var userName = ""
     let refreshControl = UIRefreshControl()
     
@@ -434,7 +434,8 @@ extension ChatRoomViewController {
         let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
         
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
-        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
+//        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
+        userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill
@@ -466,6 +467,8 @@ extension ChatRoomViewController {
         emptyUserImageView = UIImageView(frame: CGRect((screenWidth/2) - 44, (screenHeight/2) - 44, 88, 88))
         emptyUserImageView.clipsToBounds = true
         emptyUserImageView.image = #imageLiteral(resourceName: "grayChat")
+        
+
         emptyUserImageView.contentMode = .scaleAspectFill
         emptyUserImageView.layer.cornerRadius = 44
         emptyMessageView.addSubview(emptyUserImageView)
