@@ -35,7 +35,6 @@ class ChooseClassesViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,6 +50,8 @@ class ChooseClassesViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
+        getClassesList()
+
     }
     
     func setupUI() {
