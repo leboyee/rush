@@ -23,7 +23,8 @@ class AddMajorsViewController: CustomViewController {
     var selectedArray = [String]()
     var selectedIndex = -1
     var majorArray = [[String: Any]]()
-    
+    var isEditProfile: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -68,8 +69,8 @@ class AddMajorsViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
-        
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
@@ -79,6 +80,11 @@ class AddMajorsViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        
+//            if(isEditProfile == true) {
+//                pageControl.isHidden = true
+//                self.navigationItem.rightBarButtonItem = nil
+//            }
         
     }
 }
@@ -110,6 +116,10 @@ extension AddMajorsViewController {
 // MARK: - Preseneter
 extension AddMajorsViewController {
     func profileUpdateSuccess() {
-        self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+        //if isEditProfile == true {
+            self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+        //} else {
+         //   self.navigationController?.popViewController(animated: true)
+        //}
     }
 }

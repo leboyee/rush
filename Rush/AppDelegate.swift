@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Add Third Party SDK
         addThirdPartySDK()
-       // setupStoryboard()
+        setupStoryboard()
         
         //Add Observer For Force logout
         NotificationCenter.default.addObserver(self, selector: #selector(forceLogout), name: Notification.Name.badAccess, object: nil)
@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     Utils.alertCameraAccessNeeded()
                 }
             }
-            unsafe.locationPermission()
+//unsafe.locationPermission()
         })
     }
     

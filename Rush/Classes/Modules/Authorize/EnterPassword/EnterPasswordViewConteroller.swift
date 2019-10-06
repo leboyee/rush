@@ -52,6 +52,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isTranslucent = true
 
     }
     

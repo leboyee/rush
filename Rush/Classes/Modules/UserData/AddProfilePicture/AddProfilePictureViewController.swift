@@ -25,9 +25,12 @@ class AddProfilePictureViewController: CustomViewController {
     @IBOutlet weak var pageControllerView: UIView!
     @IBOutlet weak var pageControl: CustomImagePageControl!
     @IBOutlet weak var pageControllerLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pageControllerWidthConstrinat: NSLayoutConstraint!
 
     var loginType: LoginType = .register
     var isSkip: Bool = false
+    var isEditProfile: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -47,6 +50,12 @@ class AddProfilePictureViewController: CustomViewController {
     
     override func viewWillLayoutSubviews() {
         if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {
+//            pageControllerWidthConstrinat.constant = 130
+//            pageControl.layoutIfNeeded()
+//            var frame = pageControl.frame
+//            frame.siz = 130
+//            pageControl.frame = frame
+            
         }
     }
 
@@ -67,12 +76,11 @@ class AddProfilePictureViewController: CustomViewController {
     
     // Custom navigation Title View
     func setCustomNavigationBarView() {
-
         let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
 
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
@@ -83,6 +91,11 @@ class AddProfilePictureViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        /*
+            if(isEditProfile == true) {
+                pageControl.isHidden = true
+                self.navigationItem.rightBarButtonItem = nil
+            }*/
     }
 }
 
@@ -96,7 +109,7 @@ extension AddProfilePictureViewController {
                     unsafe.cameraPermissionCheck()
             } else {
                 if status != .justDenied {
-                    Utils.alertCameraAccessNeeded()
+                    Utils.photoLibraryPermissionAlert()
                 }
             }
         })
@@ -109,7 +122,7 @@ extension AddProfilePictureViewController {
                     unsafe.openCameraOrLibrary()
             } else {
                 if status != .justDenied {
-                    Utils.photoLibraryPermissionAlert()
+                    Utils.alertCameraAccessNeeded()
                 }
             }
         })
@@ -191,6 +204,10 @@ extension AddProfilePictureViewController {
 // MARK: - Preseneter
 extension AddProfilePictureViewController {
     func profileUpdateSuccess() {
-        self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
+      //  if isEditProfile == true {
+            self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
+        /*} else {
+            self.navigationController?.popViewController(animated: true)
+        }*/
     }
 }

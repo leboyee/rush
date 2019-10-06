@@ -521,5 +521,9 @@ extension Utils {
     class func systemVersionEqualToOrGreterThen(version: String) -> Bool {
         return UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) != ComparisonResult.orderedAscending
     }
+    
+    class func isiPhone5() -> Bool {
+        return UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue
+    }
   
 }

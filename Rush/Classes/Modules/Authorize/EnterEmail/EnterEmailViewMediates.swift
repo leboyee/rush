@@ -15,6 +15,8 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWFrameChange(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+
         emailTextField.delegate = self
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
@@ -24,11 +26,11 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             var keyboardHeight = keyboardSize.height
             print("keyboardHeight",keyboardHeight)
-            if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneX.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXR.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXSMax.rawValue {
-                if keyboardHeight < 300 {
-                                  keyboardHeight = 301
-                              }
-            }
+//            if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneX.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXR.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXSMax.rawValue {
+//                if keyboardHeight < 300 {
+//                                  keyboardHeight = 301
+//                              }
+//            }
             
             bottomViewConstraint.constant = keyboardHeight + 10
             self.view.layoutIfNeeded()
@@ -38,6 +40,13 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     @objc func keyboardWillHide(notification: NSNotification) {
         bottomViewConstraint.constant = 30
         self.view.layoutIfNeeded()
+    }
+    
+    @objc func keyboardWFrameChange(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print("keyboardHeight",keyboardSize.height)
+        }
+
     }
 
     // MARK: - UITextFieldDelegate

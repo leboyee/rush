@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileImageCell" rowHeight="200" id="KGk-i7-Jjw" customClass="EditProfileImageCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qz9-Gb-kDP">
+                        <rect key="frame" x="108" y="28" width="104" height="104"/>
+                        <color key="backgroundColor" red="0.11394595354795456" green="0.11367911845445633" blue="0.12200600653886795" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="104" id="Z64-FB-ck2"/>
+                            <constraint firstAttribute="width" constant="104" id="gNS-1u-3no"/>
+                        </constraints>
+                        <color key="tintColor" red="0.22397810220718384" green="0.22343283891677856" blue="0.24009144306182861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="imageEdgeInsets" minX="28" minY="30" maxX="28" maxY="30"/>
+                        <state key="normal" image="camera-add">
+                            <color key="titleColor" red="0.11394595354795456" green="0.11367911845445633" blue="0.12200600653886795" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="52"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="addPhotoButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Yx2-jU-BO8"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change profile image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-Ma-uEG">
+                        <rect key="frame" x="81.5" y="146" width="157" height="18"/>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcx-dv-mLp" userLabel="sepratorVw">
+                        <rect key="frame" x="0.0" y="199.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="7Hv-NI-iM7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.95320373773574829" green="0.95291346311569214" blue="0.96528750658035278" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="X5E-Ma-uEG" firstAttribute="top" secondItem="Qz9-Gb-kDP" secondAttribute="bottom" constant="14" id="2vi-3b-LBb"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="X5E-Ma-uEG" secondAttribute="bottom" constant="28.5" id="4TF-ac-Tuf"/>
+                    <constraint firstItem="Qz9-Gb-kDP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="8Ej-SI-e5p"/>
+                    <constraint firstItem="Qz9-Gb-kDP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-20" id="Dha-le-QNQ"/>
+                    <constraint firstAttribute="bottom" secondItem="xcx-dv-mLp" secondAttribute="bottom" id="MQm-9n-tsO"/>
+                    <constraint firstItem="X5E-Ma-uEG" firstAttribute="centerX" secondItem="Qz9-Gb-kDP" secondAttribute="centerX" id="ZUq-d1-69x"/>
+                    <constraint firstItem="xcx-dv-mLp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tqw-QD-n0F"/>
+                    <constraint firstAttribute="trailing" secondItem="xcx-dv-mLp" secondAttribute="trailing" id="zj3-dr-nge"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cameraBtn" destination="Qz9-Gb-kDP" id="qE1-s5-IrQ"/>
+                <outlet property="titleLbl" destination="X5E-Ma-uEG" id="l5s-mz-tQ1"/>
+            </connections>
+            <point key="canvasLocation" x="127.53623188405798" y="170.75892857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="camera-add" width="94" height="78"/>
+    </resources>
+</document>

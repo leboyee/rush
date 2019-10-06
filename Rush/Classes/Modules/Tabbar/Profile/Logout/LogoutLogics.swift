@@ -24,9 +24,10 @@ extension LogoutViewController {
         ServiceManager.shared.logout { (_, _) in
             Utils.hideSpinner()
             DispatchQueue.main.async {
+                self.tabBarController?.tabBar.isTranslucent = true
+                self.navigationController?.navigationBar.isTranslucent = true
                 AppDelegate.shared?.forceLogout()
             }
         }
     }
-    
 }
