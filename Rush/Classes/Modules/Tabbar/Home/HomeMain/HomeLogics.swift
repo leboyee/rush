@@ -175,10 +175,23 @@ extension HomeViewController {
         }
     }
     
-    func getClassCategoryAPI() {
+  /*  func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
 
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }*/
+    func getClassListAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classList = classes
