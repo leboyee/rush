@@ -97,6 +97,14 @@ extension TextViewCell {
         bottomLine.isHidden = isHiddenBottomLine
     }
     
+    func setupButtonImage(image: UIImage) {
+        clearButton.setImage(image, for: .normal)
+    }
+    
+    func setupButtonDisable(isDisable: Bool) {
+        clearButton.isUserInteractionEnabled = isDisable
+    }
+    
     func setup(placeholder: String) {
         
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.regular(sz: 17.0)]
@@ -108,9 +116,27 @@ extension TextViewCell {
         textView.returnKeyType = keyboardReturnKeyType
     }
     
+    func setup(textViewColor: UIColor) {
+          textView.textColor = textViewColor
+    }
+    
     @IBAction func clearButtonAction() {
         clearButtonClickEvent?()
     }
+    
+    func setEventType(type: EventType) {
+        placeHolderLabel.text = ""
+          if type == .closed {
+              imgView.image = #imageLiteral(resourceName: "ic_closed.pdf")
+              textView.text = "Closed Event"
+          } else if type == .publik {
+              imgView.image = #imageLiteral(resourceName: "ic_public.pdf")
+              textView.text = "Public Event"
+          } else {
+              imgView.image = #imageLiteral(resourceName: "ic_inviteonly.pdf")
+              textView.text = "Invite Only Event"
+          }
+      }
 }
 
 extension TextViewCell: UITextViewDelegate {
@@ -149,4 +175,6 @@ extension TextViewCell: UITextViewDelegate {
         textDidChanged?(textView.text)
         updateTableView?(textView)
     }
+    
+
 }

@@ -194,6 +194,8 @@ struct Segues {
     static let eventListToEventDetailsSegue = "EventListToEventDetailsSegue"
     static let editProfileSegue                   = "EditProfileSegue"
     static let settingViewControllerSegue                   = "SettingViewControllerSegue"
+    static let editEventSegue                   = "EditEventSegue"
+
 
 }
 

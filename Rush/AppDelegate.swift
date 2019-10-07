@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupStoryboard() {
         if Authorization.shared.authorized == true {
-            let tabbarStoryboard = UIStoryboard(name: "UserData", bundle: nil)
+            let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
             let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
             self.window?.rootViewController = tabbarVC
         } else {

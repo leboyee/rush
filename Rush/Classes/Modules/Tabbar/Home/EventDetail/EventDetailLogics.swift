@@ -275,7 +275,7 @@ extension EventDetailViewController {
                 }
             } else if unsafe.type == .my {
                 /// Show Edit event api
-                Utils.notReadyAlert()
+                unsafe.performSegue(withIdentifier: Segues.editEventSegue, sender: self)
             }
         }
         
