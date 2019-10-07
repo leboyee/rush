@@ -191,6 +191,38 @@ extension CreateEventViewController {
                 //cell.topConstraintOfBgView.constant = -16
             }
         }
+        cell.textDidChanged = {  [weak self] (text) in
+                   guard let unsafe = self else { return }
+                   
+            if indexPath.section == 0 && unsafe.isEditEvent == false {
+                unsafe.nameEvent = text
+            } else  {
+                unsafe.nameEvent = text
+            }
+            unsafe.validateAllFields()
+        }
+               
+               cell.textDidEndEditing = { [weak self] (text) in
+                   guard let unsafe = self else { return }
+                   var txt = text
+                   if txt.last == "\n" {
+                       txt = String(txt.dropLast())
+                   }
+                   if text.isNotEmpty {
+
+                   }
+                   unsafe.validateAllFields()
+        }
+               
+               cell.clearButtonClickEvent = { [weak self] () in
+                   guard let unsafe = self else { return }
+                   
+                if indexPath.section == 0 && unsafe.isEditEvent == true {
+                    
+                }
+                 
+               }
+               
     }
 
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
