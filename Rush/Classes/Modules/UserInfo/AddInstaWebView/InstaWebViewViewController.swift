@@ -74,7 +74,7 @@ extension InstaWebViewViewController {
         let when = DispatchTime.now() + 3
         DispatchQueue.main.asyncAfter(deadline: when) {
             alert.dismiss(animated: true, completion: nil)
-            AppDelegate.shared?.moveToTabbarWithoutRegister()
+            AppDelegate.shared?.setupStoryboard()
         }
     }
 

@@ -51,8 +51,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@university" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kha-UD-gSG" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email@university" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kha-UD-gSG" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="40" width="368" height="43"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="Y3f-s2-yUM"/>
                                         </constraints>
@@ -571,6 +572,7 @@
                         <outlet property="symbolDotView" destination="pST-Zm-Vue" id="dV0-ux-OPL"/>
                         <outlet property="symbolLabel" destination="ReE-Yp-ssQ" id="7O2-p3-ycS"/>
                         <segue destination="DWt-eV-rW3" kind="show" identifier="EnterPhoneSegue" id="Xon-BR-uWp"/>
+                        <segue destination="UYj-li-40Z" kind="show" identifier="UserData" id="GVq-92-Uyi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rt-05-5SU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,7 +634,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1-(541)-754-3010" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-R1-XVp" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1-(541)-754-3010" adjustsFontForContentSizeCategory="YES" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-R1-XVp" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="84" y="40" width="310" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="UIl-1D-Lz7"/>
@@ -827,7 +829,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5B-KR-KyK">
-                                        <rect key="frame" x="42" y="40" width="330" height="63"/>
+                                        <rect key="frame" x="24" y="40" width="330" height="63"/>
                                         <subviews>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Wm-Mx-yA6" customClass="NoCopyPastTextField" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="6" width="70" height="50"/>
@@ -900,11 +902,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="tbS-Yk-Zqj" firstAttribute="top" secondItem="HAE-zO-ehh" secondAttribute="top" constant="16" id="2Ek-oc-vR5"/>
-                                    <constraint firstItem="u5B-KR-KyK" firstAttribute="centerX" secondItem="HAE-zO-ehh" secondAttribute="centerX" id="NJy-qX-Cac"/>
                                     <constraint firstAttribute="bottom" secondItem="u5B-KR-KyK" secondAttribute="bottom" id="ax2-kC-hHs"/>
                                     <constraint firstItem="u5B-KR-KyK" firstAttribute="top" secondItem="tbS-Yk-Zqj" secondAttribute="bottom" constant="8" id="c5f-HE-xEJ"/>
                                     <constraint firstAttribute="trailing" secondItem="tbS-Yk-Zqj" secondAttribute="trailing" constant="8" id="ka2-ny-m1W"/>
                                     <constraint firstItem="tbS-Yk-Zqj" firstAttribute="leading" secondItem="HAE-zO-ehh" secondAttribute="leading" constant="24" id="ltz-xM-bZl"/>
+                                    <constraint firstItem="u5B-KR-KyK" firstAttribute="leading" secondItem="HAE-zO-ehh" secondAttribute="leading" constant="24" id="nNu-Rp-OJZ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UY-C0-eMq" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
@@ -1026,10 +1028,12 @@
         <!--UserData-->
         <scene sceneID="Pi8-1T-YAk">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserData" id="UYj-li-40Z" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="UserData" id="UYj-li-40Z" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wke-Nz-ViI"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sro-XT-NNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696" y="-226"/>
+            <point key="canvasLocation" x="11" y="301"/>
         </scene>
     </scenes>
     <resources>
@@ -1042,6 +1046,7 @@
         <image name="resoteButton" width="146" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="GVq-92-Uyi"/>
         <segue reference="omQ-De-aFE"/>
     </inferredMetricsTieBreakers>
 </document>

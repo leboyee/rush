@@ -12,20 +12,19 @@ extension EnterPhoneNoViewController {
     
     func setPlaceHolder() {
 
-        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
-        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)]
+        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.clear, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 28)]
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 28)]
         
         let partOne = NSMutableAttributedString(string: "\(self.countryCode)-(", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
-        let partThree = NSMutableAttributedString(string: ")", attributes: yourAttributes)
+        let partThree = NSMutableAttributedString(string: ")", attributes: yourOtherAttributes)
         let partFour = NSMutableAttributedString(string: "-754-3010", attributes: yourOtherAttributes)
         
         partOne.append(partTwo)
         partOne.append(partThree)
         partOne.append(partFour)
         placeHolderTextField.attributedPlaceholder = partOne
-        
-        phoneNoTextField.font = UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 22 : 28)
+        phoneNoTextField.font = UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 28)
     }
     
     func setContryCodeWith() {
@@ -46,6 +45,7 @@ extension EnterPhoneNoViewController: CustomPickerDelegate {
         self.flagImage.image = UIImage(named: "\(countryName.replacingOccurrences(of: " ", with: ""))")
         setContryCodeWith()
         self.phoneNoTextField.text = "\(self.frontTextFiled)\(phoneNoTextField.text ?? "")"
+
         if phoneNoTextField.text?.count == frontTextFiled.count {
             setPlaceHolder()
         }

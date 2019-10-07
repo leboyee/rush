@@ -20,7 +20,8 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var deleteButton: UIButton!
 
     var selectedIndex = -1
-    
+    var isEditProfile: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -64,8 +65,8 @@ class ChooseUniversityViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
-        
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
@@ -76,6 +77,10 @@ class ChooseUniversityViewController: CustomViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
         
+//            if(isEditProfile == true) {
+//                pageControl.isHidden = true
+//                self.navigationItem.rightBarButtonItem = nil
+//            }
     }
 }
 
@@ -83,7 +88,11 @@ class ChooseUniversityViewController: CustomViewController {
 extension ChooseUniversityViewController {
     func moveToNext() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
+//if self.isEditProfile == true {
+                self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
+          //  } else {
+          //      self.navigationController?.popViewController(animated: true)
+          //  }
             //AppDelegate.getInstance().setupStoryboard()
         }
     }
@@ -101,5 +110,6 @@ extension ChooseUniversityViewController {
     }
     
     @IBAction func addImageViewButtonAction() {
+        
     }
 }

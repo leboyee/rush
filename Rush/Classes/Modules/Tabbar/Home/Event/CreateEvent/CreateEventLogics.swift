@@ -38,7 +38,9 @@ extension CreateEventViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        if section == 2 {
+        if section == 0 {
+            return isEditEvent == true ? 2 : 1
+        } else if section == 2 {
             return rsvpArray.count + 1
         } else if section == 4 {
             return isStartDate == true ? 2 : isStartTime == true ? 2 : 1
@@ -163,17 +165,73 @@ extension CreateEventViewController {
         }
     }
     
-    func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
+    func fillTextViewFirstSection(_ cell: TextViewCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
-        if indexPath.section == 0 {
+        if isEditEvent == false {
             cell.setup(iconImage: "nameEvent")
             cell.setup(placeholder: Text.nameEvent, text: nameEvent)
             cell.setup(isEnabled: true)
             cell.topConstraintOfBgView.constant = -16
-        } else if indexPath.section == 1 {
+        } else {
+            if indexPath.row == 0 {
+                cell.setEventType(type: event?.eventType ?? .publik)
+                cell.setup(isEnabled: true)
+                cell.setupButtonImage(image: UIImage(named: "downArrow") ?? UIImage())
+                cell.setupButtonDisable(isDisable: true)
+                cell.setup(isHideClearButton: false)
+                
+                cell.topConstraintOfBgView.constant = -16
+                cell.topTextViewConstraint.constant = 20
+            } else {
+                cell.setup(iconImage: "nameEvent")
+                cell.setup(placeholder: Text.nameEvent, text: self.event?.title ?? "")
+                cell.setup(isEnabled: false)
+                cell.setup(textViewColor: UIColor.lightGrayColor)
+                //cell.topConstraintOfBgView.constant = -16
+            }
+        }
+        cell.textDidChanged = {  [weak self] (text) in
+                   guard let unsafe = self else { return }
+                   
+            if indexPath.section == 0 && unsafe.isEditEvent == false {
+                unsafe.nameEvent = text
+            } else  {
+                unsafe.nameEvent = text
+            }
+            unsafe.validateAllFields()
+        }
+               
+               cell.textDidEndEditing = { [weak self] (text) in
+                   guard let unsafe = self else { return }
+                   var txt = text
+                   if txt.last == "\n" {
+                       txt = String(txt.dropLast())
+                   }
+                   if text.isNotEmpty {
+
+                   }
+                   unsafe.validateAllFields()
+        }
+               
+               cell.clearButtonClickEvent = { [weak self] () in
+                   guard let unsafe = self else { return }
+                   
+                if indexPath.section == 0 && unsafe.isEditEvent == true {
+                    
+                }
+                 
+               }
+               
+    }
+
+    func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
+        cell.resetAllField()
+        cell.setup(keyboardReturnKeyType: .done)
+        if indexPath.section == 1 {
             cell.setup(placeholder: Text.addDesc, text: eventDescription)
-            cell.setup(isEnabled: true)
+            cell.setup(isEnabled: isEditEvent == true ? false : true)
+            cell.setup(textViewColor: isEditEvent == true ? UIColor.lightGrayColor : UIColor.bgBlack)
         } else if indexPath.section == 2 {
             if indexPath.row == rsvpArray.count {
                 cell.setup(placeholder: "", text: "")
@@ -554,4 +612,62 @@ extension CreateEventViewController {
             }
         }
     }
+    
+    func updateEventApi(eventId: String) {
+        
+        let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
+        let interests = interestList.joined(separator: ",")
+        let friendArray = self.peopleList.filter { ($0.isFriend == true) }
+        let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
+
+        var array = rsvpArray
+        if array.last?.isEmpty == true {
+            array.remove(at: array.count - 1)
+        }
+        let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
+        let startUtcDate = Date().localToUTC(date: startDateString)
+        let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
+        let endUtcDate = Date().localToUTC(date: endDateString)
+        print(startUtcDate)
+        print(endUtcDate)
+        var rsvpJson: String = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: array)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                rsvpJson = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        let param = [Keys.eventId: eventId,
+                     Keys.createEventType: "public",
+                     Keys.eventName: self.nameEvent,
+                     Keys.eventDesc: self.eventDescription,
+                     Keys.eventRsvpList: rsvpJson,
+                     Keys.eventAddress: address,
+                     Keys.eventLatitude: "\(latitude)",
+                     Keys.eventLongitude: "\(longitude)",
+                     Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
+                     Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+                     Keys.eventInterests: interests,
+                     Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
+                     Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
+                     Keys.eventPhoto: img,
+                     Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
+
+        Utils.showSpinner()
+        ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.navigationController?.popViewController(animated: true)
+            } else {
+                Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+
 }

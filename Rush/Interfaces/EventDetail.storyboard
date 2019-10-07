@@ -156,6 +156,7 @@
                         <segue destination="ayU-bi-RPv" kind="presentation" identifier="EventWithoutRSVPJoinedPopupSegue" modalPresentationStyle="overFullScreen" id="YxH-d2-f73"/>
                         <segue destination="JCi-zv-64X" kind="show" identifier="EventOtherUserProfileSegue" id="soa-LT-e4t"/>
                         <segue destination="OWh-an-sae" kind="presentation" identifier="CreateEventPostSegue" modalPresentationStyle="fullScreen" id="NAe-Y8-aWm"/>
+                        <segue destination="2Xf-Dh-pus" kind="show" identifier="EditEventSegue" id="Ok0-T9-mHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -373,6 +374,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRp-L7-blQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1835" y="246"/>
+        </scene>
+        <!--CreateEventViewController-->
+        <scene sceneID="Dvh-62-wyz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Event" referencedIdentifier="CreateEventViewController" id="2Xf-Dh-pus" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jJ8-8r-lFe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3E-YS-AbK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="-228"/>
         </scene>
     </scenes>
     <resources>

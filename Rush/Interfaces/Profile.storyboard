@@ -92,6 +92,7 @@
                         <outlet property="settingsButton" destination="WwP-H1-UCw" id="efJ-fP-dgl"/>
                         <outlet property="tableView" destination="sLR-sx-qn9" id="OPq-rx-JRP"/>
                         <segue destination="c31-hD-7x0" kind="show" identifier="ProfileFriendProfileSegue" id="3dt-pp-mnp"/>
+                        <segue destination="KSN-HZ-4n3" kind="show" identifier="EditProfileSegue" id="TzM-tw-RWf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqU-TN-DgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,7 +110,9 @@
         <!--InstaWebViewViewController-->
         <scene sceneID="hBz-Li-mPl">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserInfo" referencedIdentifier="InstaWebViewViewController" id="ej9-Qv-XoJ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="UserInfo" referencedIdentifier="InstaWebViewViewController" id="ej9-Qv-XoJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SMP-TX-3y1"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydb-HA-wyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="798" y="-524"/>
@@ -141,31 +144,31 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axe-oI-tnF">
-                                            <rect key="frame" x="24" y="17" width="35.5" height="16"/>
+                                            <rect key="frame" x="24" y="17" width="39" height="16"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                             <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRQ-Gq-f6Z">
-                                            <rect key="frame" x="189.5" y="9" width="65.5" height="34"/>
+                                            <rect key="frame" x="171.5" y="9" width="71.5" height="34"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KN3-jn-SBP">
-                                            <rect key="frame" x="189.5" y="9" width="65.5" height="34"/>
+                                            <rect key="frame" x="171.5" y="9" width="71.5" height="34"/>
                                             <connections>
                                                 <action selector="policyButtonAction" destination="WgC-rz-tQV" eventType="touchUpInside" id="q6y-P1-jr3"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVb-yj-c8O">
-                                            <rect key="frame" x="279" y="9" width="111" height="34"/>
+                                            <rect key="frame" x="267" y="9" width="123" height="34"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3f-DX-NPW">
-                                            <rect key="frame" x="279" y="9" width="111" height="34"/>
+                                            <rect key="frame" x="267" y="9" width="123" height="34"/>
                                             <connections>
                                                 <action selector="termsButtonAction" destination="WgC-rz-tQV" eventType="touchUpInside" id="ADl-f8-0hP"/>
                                             </connections>
@@ -207,6 +210,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yyz-Zn-Nwh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1Ku-8o-VrO"/>
                     <connections>
                         <outlet property="tableView" destination="TcW-2N-tP4" id="X0H-ae-oYU"/>
                         <segue destination="SCR-Ws-le9" kind="show" identifier="WebViewFileSegue" id="pb6-SO-yzi"/>
@@ -251,6 +255,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P7F-Jh-rSn"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dAR-o7-5CO"/>
                     <connections>
                         <outlet property="tableView" destination="Dlp-qa-tGc" id="C2O-Wt-bPN"/>
                     </connections>
@@ -380,13 +385,13 @@
                                 <rect key="frame" x="27" y="937" width="360" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaving already?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnW-Nh-gHt">
-                                        <rect key="frame" x="116" y="24" width="128.5" height="20"/>
+                                        <rect key="frame" x="110" y="24" width="140.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-q2-cHZ">
-                                        <rect key="frame" x="24" y="48" width="312" height="30.5"/>
+                                        <rect key="frame" x="24" y="48" width="312" height="31.5"/>
                                         <string key="text">If you logout, you won’t receive
 event updates.</string>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
@@ -394,7 +399,7 @@ event updates.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVP-Ii-apy" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="95" width="312" height="48"/>
+                                        <rect key="frame" x="24" y="96" width="312" height="48"/>
                                         <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="2Sm-yY-Kep"/>
@@ -413,7 +418,7 @@ event updates.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHS-3J-xMk" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="151" width="312" height="48"/>
+                                        <rect key="frame" x="24" y="152" width="312" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="ZZu-np-dZ5"/>
@@ -500,6 +505,7 @@ event updates.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CY3-zH-ZaY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EQL-h7-EK4"/>
                     <connections>
                         <outlet property="tableView" destination="2iR-Zp-tDW" id="W0o-5x-1e1"/>
                     </connections>
@@ -538,6 +544,7 @@ event updates.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QsQ-VY-7Bs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7pT-4R-Bkf"/>
                     <connections>
                         <outlet property="webview" destination="qSq-HA-NYF" id="0MI-BL-1EV"/>
                     </connections>
@@ -546,9 +553,145 @@ event updates.</string>
             </objects>
             <point key="canvasLocation" x="1457" y="-875"/>
         </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="Fy8-bs-Dbv">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KSN-HZ-4n3" customClass="EditProfileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aa3-iN-hT4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOs-l9-PiE" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-HS-X7Z" userLabel="Bottom View">
+                                <rect key="frame" x="0.0" y="723" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-6e-Z73" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="7" width="366" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="SGE-Yq-XQm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <state key="normal" title="Finish registration">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="a4G-6e-Z73" secondAttribute="trailing" constant="24" id="1a8-SV-jjU"/>
+                                    <constraint firstAttribute="height" constant="60" id="Ffc-Pv-arm"/>
+                                    <constraint firstAttribute="bottom" secondItem="a4G-6e-Z73" secondAttribute="bottom" constant="5" id="Iwt-uU-EiR"/>
+                                    <constraint firstItem="a4G-6e-Z73" firstAttribute="leading" secondItem="ddB-HS-X7Z" secondAttribute="leading" constant="24" id="wu8-rj-66i"/>
+                                    <constraint firstItem="a4G-6e-Z73" firstAttribute="top" secondItem="ddB-HS-X7Z" secondAttribute="top" constant="7" id="wzr-aQ-yhC"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Kfu-dN-zpj">
+                                <rect key="frame" x="0.0" y="13" width="414" height="795"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kfu-dN-zpj" firstAttribute="leading" secondItem="ElZ-wk-IHC" secondAttribute="leading" id="FGI-9d-IbC"/>
+                            <constraint firstItem="Kfu-dN-zpj" firstAttribute="bottom" secondItem="ElZ-wk-IHC" secondAttribute="bottom" id="WoA-Ip-ClT"/>
+                            <constraint firstItem="uOs-l9-PiE" firstAttribute="leading" secondItem="ElZ-wk-IHC" secondAttribute="leading" id="iLq-oI-Y8w"/>
+                            <constraint firstItem="Kfu-dN-zpj" firstAttribute="top" secondItem="ElZ-wk-IHC" secondAttribute="top" constant="13" id="kaQ-Re-OkB"/>
+                            <constraint firstAttribute="bottom" secondItem="uOs-l9-PiE" secondAttribute="bottom" id="ljK-pI-hSf"/>
+                            <constraint firstAttribute="bottom" secondItem="ddB-HS-X7Z" secondAttribute="bottom" constant="59" id="n5J-TM-tcH"/>
+                            <constraint firstItem="uOs-l9-PiE" firstAttribute="top" secondItem="ElZ-wk-IHC" secondAttribute="top" constant="13" id="nAM-iQ-Lvm"/>
+                            <constraint firstItem="uOs-l9-PiE" firstAttribute="trailing" secondItem="ElZ-wk-IHC" secondAttribute="trailing" id="t1A-Eo-ugj"/>
+                            <constraint firstItem="Kfu-dN-zpj" firstAttribute="trailing" secondItem="ElZ-wk-IHC" secondAttribute="trailing" id="tVY-kx-ABT"/>
+                            <constraint firstItem="ddB-HS-X7Z" firstAttribute="leading" secondItem="ElZ-wk-IHC" secondAttribute="leading" id="yw5-cs-VFG"/>
+                            <constraint firstAttribute="trailing" secondItem="ddB-HS-X7Z" secondAttribute="trailing" id="zql-9M-YYS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ElZ-wk-IHC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hy5-zH-BZ1"/>
+                    <connections>
+                        <outlet property="tableView" destination="Kfu-dN-zpj" id="lYL-Ho-4Zg"/>
+                        <segue destination="qZ5-OT-RPv" kind="show" identifier="AddMajorViewSegue" id="C0S-zW-xET"/>
+                        <segue destination="oPc-ru-K8R" kind="show" identifier="AddMinorViewSegue" id="AaY-ok-jqS"/>
+                        <segue destination="WV1-tI-plw" kind="show" identifier="SelectEventTypeViewSegue" id="aMf-We-P7V"/>
+                        <segue destination="NFf-gG-pdA" kind="show" identifier="ChooseLevelSegue" id="P5r-zT-ZRU"/>
+                        <segue destination="20a-rY-aA4" kind="show" identifier="ChooseYearSegue" id="qNc-a3-QnT"/>
+                        <segue destination="PCz-yf-Ehx" kind="show" identifier="ChooseUniversitySegue" id="qiJ-KZ-KcA"/>
+                        <segue destination="WgC-rz-tQV" kind="show" identifier="SettingViewControllerSegue" id="pui-SY-u4M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TOy-LS-BwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-600" y="-829"/>
+        </scene>
+        <!--AddMajorsViewController-->
+        <scene sceneID="Gnc-o6-jom">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="AddMajorsViewController" id="qZ5-OT-RPv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6I2-Rk-pnj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XFH-bp-Ov9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="-1032"/>
+        </scene>
+        <!--AddMinorsViewController-->
+        <scene sceneID="584-5r-3Ug">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="AddMinorsViewController" id="oPc-ru-K8R" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ece-uK-fMQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9tO-cs-PuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="291" y="-983"/>
+        </scene>
+        <!--SelectEventTypeViewController-->
+        <scene sceneID="r1C-Tw-jCc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SelectEventTypeViewController" id="WV1-tI-plw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cpc-Im-MA1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1bj-GL-Q58" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="301" y="-941"/>
+        </scene>
+        <!--ChooseLevelViewController-->
+        <scene sceneID="shd-AA-vok">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseLevelViewController" id="NFf-gG-pdA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="S8R-eA-wrj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pNg-kS-tji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="301" y="-891"/>
+        </scene>
+        <!--ChooseYearViewController-->
+        <scene sceneID="Fb2-9z-TxE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseYearViewController" id="20a-rY-aA4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LEp-sd-i3B"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7gE-05-zhw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="-844"/>
+        </scene>
+        <!--ChooseUniversityViewController-->
+        <scene sceneID="bQr-be-KqO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseUniversityViewController" id="PCz-yf-Ehx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vLu-LA-ZpZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YVS-LC-0FJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="337" y="-785"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back-arrow" width="24" height="28"/>
         <image name="instagram64px" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pui-SY-u4M"/>
+    </inferredMetricsTieBreakers>
 </document>

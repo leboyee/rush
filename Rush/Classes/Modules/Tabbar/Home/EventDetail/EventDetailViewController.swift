@@ -225,6 +225,11 @@ extension EventDetailViewController {
                 vc.userInfo = sender as? User
                 vc.delegate = self
             }
+        } else if segue.identifier == Segues.editEventSegue {
+            if let vc = segue.destination as? CreateEventViewController {
+                vc.event = event
+                vc.isEditEvent = true
+            }
         }
     }
 }

@@ -234,6 +234,27 @@ extension  Utils {
         }))
         alert.show()
     }
+    
+    class func locationPermissionAlert() {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+        
+        let alert = UIAlertController(
+            title: "Location",
+            message: "Permission is required to add location.",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(
+            UIAlertAction(
+                title: "Settings",
+                style: .cancel,
+                handler: { (_) -> Void in
+                  UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+        }))
+        alert.show()
+    }
+
 }
 
 // MARK: - UserDefault Functions
@@ -501,7 +522,16 @@ extension Utils {
     
     class func getSystemVersion() -> Int {
         let systemVersion = UIDevice.current.systemVersion
+        
         return Int(systemVersion) ?? 0
+    }
+    
+    class func systemVersionEqualToOrGreterThen(version: String) -> Bool {
+        return UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) != ComparisonResult.orderedAscending
+    }
+    
+    class func isiPhone5() -> Bool {
+        return UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue
     }
   
 }

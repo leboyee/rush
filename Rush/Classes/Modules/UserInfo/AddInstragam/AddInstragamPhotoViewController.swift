@@ -75,7 +75,7 @@ extension AddInstragamPhotoViewController {
     }
     
      @objc func gotProfileButtonAction() {
-        AppDelegate.shared?.moveToTabbarWithoutRegister()
+        AppDelegate.shared?.setupStoryboard()
         //Utils.alert(message: "In Development")
     }
 
