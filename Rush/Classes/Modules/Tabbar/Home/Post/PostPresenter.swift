@@ -60,7 +60,11 @@ extension PostViewController {
         cell.setup(username: comment.user?.name ?? "")
         cell.setup(commentText: comment.desc ?? "")
         cell.setup(image: comment.user?.photo?.url())
-        cell.setup(date: comment.createDate ?? "")
+        
+        if let date = Date.parse(dateString: comment.createDate ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+            let time = Date().timeAgoDisplay(date: date)
+            cell.setup(date: time)
+        }
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
@@ -82,9 +86,23 @@ extension PostViewController {
         
         let comment = commentList[indexPath.section - 4].threadComment?[indexPath.row - 1]
         cell.setup(username: comment?.user?.name ?? "")
-        cell.setup(commentText: comment?.desc ?? "")
+        
+        var desc = comment?.desc ?? ""
+        desc = desc.replacingOccurrences(of: "[@|{}]", with: "", options: .regularExpression, range: nil)
+        let mensionId = comment?.mentionedUser?.first?.id ?? ""
+        if desc.contains(mensionId) {
+            desc = desc.replacingOccurrences(of: mensionId, with: "")
+            cell.setup(name: comment?.mentionedUser?.first?.name ?? "", attributedText: desc)
+        } else {
+            cell.setup(commentText: comment?.desc ?? "")
+        }
         cell.setup(isReplayCell: true)
         cell.setup(image: comment?.user?.photo?.url())
+        
+        if let date = Date.parse(dateString: comment?.createDate ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+            let time = Date().timeAgoDisplay(date: date)
+            cell.setup(date: time)
+        }
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
@@ -147,9 +165,19 @@ extension PostViewController {
     
     func addCommentAPI() {
         
-        let param = [Keys.desc: textView.text ?? "",
-                     Keys.postId: postInfo?.id ?? "",
-                     Keys.parentId: parentComment != nil ? (parentComment?.id ?? "0") : ""] as [String: Any]
+        var param = [String: Any]()
+        param[Keys.postId] = postInfo?.id ?? ""
+        
+        if let id = parentComment?.id, var desc = textView.text, let name = parentComment?.user?.name, let userId = parentComment?.userId {
+            desc = desc.replacingOccurrences(of: name, with: "")
+            param[Keys.parentId] = id
+            param[Keys.desc] = "{{||@\(userId)||}}\(desc)"
+            param[Keys.menstionUserId] = parentComment?.userId ?? ""
+        } else {
+            param[Keys.desc] = textView.text ?? ""
+        }
+        username = ""
+        textView.text = ""
         
         Utils.showSpinner()
         ServiceManager.shared.postComment(params: param) { [weak self] (status, errorMsg) in
@@ -166,12 +194,12 @@ extension PostViewController {
     }
     
     func getAllCommentListAPI() {
+        parentComment = nil
         
         let param = ["post_id": postInfo?.id ?? "",
                      "parent_id": parentComment?.id ?? "",
                      "pageNo": pageNoP] as [String: Any]
         
-        parentComment = nil
         ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "", params: param) { [weak self] (data, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -181,11 +209,14 @@ extension PostViewController {
             }
             
             if let value = data, value.count > 0 {
+                unsafe.updateCommentCount = value.count
                 if unsafe.pageNoP == 1 {
                     unsafe.commentList = value
                 } else {
                     unsafe.commentList.append(contentsOf: value)
                 }
+                
+                unsafe.getAllChildComment()
                 
                 unsafe.pageNoP += 1
                 unsafe.isNextPageExistP = true
@@ -195,6 +226,38 @@ extension PostViewController {
                 if unsafe.pageNoP == 1 {
                     unsafe.commentList.removeAll()
                 }
+            }
+        }
+    }
+    
+    func getAllChildComment() {
+        getChildCommentListAPI(index: finishCommentCount) { (_) in
+            if self.finishCommentCount < self.updateCommentCount {
+                self.getAllChildComment()
+            }
+        }
+    }
+    
+    func getChildCommentListAPI(index: Int, complition: @escaping(_ isSuccess: Bool) -> Void) {
+        
+        guard commentList.count > index else { return }
+        let comment = commentList[index]
+        if comment.threadComment?.count == 0 {
+            self.finishCommentCount += 1
+            complition(true)
+        } else {
+            let param = ["post_id": postInfo?.id ?? "",
+                         "parent_id": comment.id ?? "",
+                         "pageNo": pageNoP] as [String: Any]
+            
+            parentComment = nil
+            ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "", params: param) { [weak self] (data, _) in
+                guard let unsafe = self else { return }
+                if let value = data, value.count > 0 {
+                    unsafe.commentList[index].threadComment = value
+                }
+                unsafe.finishCommentCount += 1
+                complition(true)
             }
         }
     }

@@ -39,6 +39,8 @@ class PostViewController: UIViewController {
     var isNextPageExistP = false
     var pageNoC = 1
     var isNextPageExistC = false
+    var updateCommentCount = 0
+    var finishCommentCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +95,6 @@ extension PostViewController {
     @IBAction func sendButtonAction() {
         if commentText.count > 0 {
             addCommentAPI()
-            username = ""
-            textView.text = ""
             textView.resignFirstResponder()
         }
     }
