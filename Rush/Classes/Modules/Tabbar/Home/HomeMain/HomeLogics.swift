@@ -81,6 +81,8 @@ extension HomeViewController {
             cell.setup(.classes, nil, classList)
         }
         
+        // MARK: - CollectionItem Selected
+
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
@@ -113,6 +115,7 @@ extension HomeViewController {
             header.setup(title: Text.classes)
         }
         
+        // MARK: - HeaderArrow Selected
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             // Open other user profile UI for test
@@ -172,10 +175,23 @@ extension HomeViewController {
         }
     }
     
-    func getClassCategoryAPI() {
+  /*  func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
 
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }*/
+    func getClassListAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classList = classes

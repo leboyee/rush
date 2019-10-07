@@ -120,12 +120,12 @@ extension Date {
 
     public func UTCToLocal(date: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "H:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         let newDate = dateFormatter.date(from: date)
         dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         return dateFormatter.string(from: newDate ?? Date())
     }

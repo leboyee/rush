@@ -60,7 +60,7 @@ extension PostCommentCell {
     
     func setup(name: String, attributedText: String) {
         username = name
-        let text = Utils.setAttributedText(name, ", Yes, me too!", 17, 17)
+        let text = Utils.setAttributedText(name, attributedText, 17, 17)
         detailLabel.attributedText = text
     }
     

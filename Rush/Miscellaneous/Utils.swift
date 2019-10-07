@@ -382,12 +382,20 @@ extension Utils {
       }
       
       class func friendsFilter() -> [String] {
-             return ["Everyone", "Friends Going"]
+            return ["Everyone", "Friends Going"]
       }
       
       class func myUpcomingFileter() -> [String] {
-                return ["All Upcoming", "Managed first"]
+            return ["All Upcoming", "Managed first"]
       }
+    
+    class func popularFilter() -> [String] {
+        return ["Popular First", "Newest first"]
+    }
+    
+    class func peopleFilter() -> [String] {
+        return ["All people", "Friends only"]
+    }
 }
 
 // MARK: - Alert Extension

@@ -18,8 +18,9 @@ class Comment: Codable {
     var totalThreadCount: Int = 0
     var user: User?
     var threadComment: [Comment]?
-    var mentionedUser: [User]?
+    var mentionedUser: [MentionedUser]?
     var createDate: String?
+    var mentionedUserIds: [String]?
 
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -32,6 +33,7 @@ class Comment: Codable {
         case createDate = "created_at"
         case threadComment = "thread_comment"
         case mentionedUser = "mentioned_users"
+        case mentionedUserIds = "mentioned_user_ids"
     }
     
     init() {

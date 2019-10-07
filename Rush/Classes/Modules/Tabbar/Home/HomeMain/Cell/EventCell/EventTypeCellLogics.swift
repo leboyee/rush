@@ -42,6 +42,8 @@ extension EventTypeCell {
                 cell.setup(eventDetail: club.clubDesc ?? "")
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
+                cell.joinButton.isHidden = false
+                cell.joinButton.isUserInteractionEnabled = false
                 if let invitee = club.invitees {
                     let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
                     if filter.count > 0 {
@@ -64,14 +66,15 @@ extension EventTypeCell {
             if let classList = list as? [Class] {
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
-                cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
-            } else if type == .classes {
-                if let classList = list as? [SubClass] {
-                    let value = classList[indexPath.item]
-                    cell.setup(className: value.name)
-                    cell.setup(classImageUrl: value.photo.photo?.url())
-                }
-        }
+                //                cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
+            } else if let classList = list as? [SubClass] {
+                let value = classList[indexPath.item]
+                cell.setup(className: value.name)
+                cell.setup(classImageUrl: value.photo.photo?.url())
+                cell.setup(classCount: "\(value.classTotalGroups) classes")
+                
+            }
+        
         }
         cell.joinSelected = { [weak self] () in
             guard let unsafe = self else { return }
@@ -120,7 +123,7 @@ extension EventTypeCell {
          if cellType == .invitees {
              userSelected?(0, indexPath.item)
          } else {
-             cellSelected?(self.type, 0, indexPath.item)
+             cellSelected?(self.type, indexPath.section, indexPath.item)
          }
     }
     

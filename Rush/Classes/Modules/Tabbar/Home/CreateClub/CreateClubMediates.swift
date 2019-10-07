@@ -125,6 +125,7 @@ extension CreateClubViewController: ClubHeaderDelegate {
 extension CreateClubViewController: EventInterestDelegate {
     func  selectedInterest(_ interest: [String]) {
         self.interestList = interest
+        validateAllFields()
         self.tableView.reloadData()
     }
 }
@@ -133,6 +134,7 @@ extension CreateClubViewController: EventInterestDelegate {
 extension CreateClubViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
         self.peopleList = invite
+        validateAllFields()
         self.tableView.reloadData()
     }
 }

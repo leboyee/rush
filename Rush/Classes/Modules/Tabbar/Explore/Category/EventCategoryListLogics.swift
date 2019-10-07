@@ -61,20 +61,43 @@ extension EventCategoryListViewController {
             isThirdFilter = !isThirdFilter
         }
         
-        guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
-        eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
-        let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
-        presentPanModal(rowViewController)
-        collectionView.reloadData()
+        if type == .event {
+            guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
+            let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+            presentPanModal(rowViewController)
+            collectionView.reloadData()
+        } else if type == .club || type == .classes {
+            guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+            //Show all categories for the screen.
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? [String]() : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+            presentPanModal(rowViewController)
+            collectionView.reloadData()
+        }
+        
     }
     
     func fillClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         if type == .club {
-            
+            let club = clubList[indexPath.row]
+            let image = Image(json: club.clubPhoto ?? "")
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "")
+            cell.setup(invitee: club.invitees)
+            cell.setup(imageUrl: image.urlThumb())
+        } else if type == .classes {
+            let myclass = classList[indexPath.row]
+//            let image = Image(json: myclass.clubPhoto ?? "")
+            cell.setup(title: myclass.name ?? "")
+//            cell.setup(detail: club.clubDesc ?? "")
+//            cell.setup(invitee: club.invitees)
+//            cell.setup(imageUrl: image.urlThumb())
         } else {
             cell.setup(detail: "SOMM 24-A")
         }
     }
+    
     func fillEventCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         let event = eventList[indexPath.row]
         cell.setup(title: event.title)
@@ -95,6 +118,12 @@ extension EventCategoryListViewController {
         if type == .event {
             let event = eventList[indexPath.row]
             performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+        } else if type == .club {
+            let club = clubList[indexPath.row]
+            performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+        } else if type == .classes {
+//            let myclass = classList[indexPath.row]
+//            performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
         }
     }
 }
@@ -124,11 +153,12 @@ extension EventCategoryListViewController {
         }
     }
     
-    func getEventList(sortBy: GetEventType) {
+    func getEventList(sortBy: GetEventType, eventCategory: EventCategory?) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
+                     Keys.eventCateId: eventCategory?.id ?? "",
                      Keys.pageNo: pageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in

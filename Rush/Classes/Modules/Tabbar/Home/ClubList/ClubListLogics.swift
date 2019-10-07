@@ -35,7 +35,7 @@ extension ClubListViewController {
         if myClubList.count > 0 && screenType == .club && section == 0 {
             return myClubList.count
         } else if myClassesList.count > 0 && screenType == .classes {
-           return myClassesList[section].classList?.count ?? 0
+           return myClassesList.count
         } else {
             return 0
         }
@@ -56,15 +56,21 @@ extension ClubListViewController {
 //            } else if indexPath.section == 2 {
 //                cell.setup(.classes, nil, nil)
 //            } else {
+            
                 cell.setup(.classes, nil, myClassesList[indexPath.section].classList)
 //            }
         }
         
         cell.cellSelected = {
-            [weak self] (type, id, index) in
+            [weak self] (type, section, index) in
             guard let unself = self else { return }
             if type == .classes {
-                unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: unself.myClassesList[index])
+                let classObj = unself.myClassesList[section]
+                let subClassesObj = classObj.classList
+                
+                if subClassesObj?.count ?? 0 > 0 {
+                    unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: subClassesObj?[index])
+                }
             }
         }
     }

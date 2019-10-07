@@ -23,7 +23,7 @@ class EventTypeCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var separator: UIView!
 
-    var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
+    var cellSelected: ((_ type: EventCategoryType, _ section: Int, _ index: Int) -> Void)?
     var userSelected: ((_ id: Int, _ index: Int) -> Void)?
     var joinSelected: ((_ index: Int) -> Void)?
     

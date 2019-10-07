@@ -124,3 +124,20 @@ class User: Codable {
     }
     
 }
+
+class MentionedUser: Codable {
+    
+    var id: String?
+    var firstName: String?
+    var lastName: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case firstName = "first_name"
+        case lastName = "last_name"
+    }
+    
+    var name: String {
+        return (firstName ?? "") + " " + (lastName ?? "")
+    }
+}

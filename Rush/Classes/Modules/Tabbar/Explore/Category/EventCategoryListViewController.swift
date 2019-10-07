@@ -15,7 +15,6 @@ class EventCategoryListViewController: UIViewController {
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
-    var categoryName = ""
     var isFirstFilter = false
     var isSecondFilter = false
     var isThirdFilter = false
@@ -27,6 +26,7 @@ class EventCategoryListViewController: UIViewController {
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [Class]()
+    var eventCategory: EventCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +40,18 @@ class EventCategoryListViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         navigationController?.navigationBar.isTranslucent = false
+        
         switch type {
         case .event:
-            getEventList(sortBy: .upcoming)
+            getEventList(sortBy: .upcoming, eventCategory: eventCategory)
         case .club:
             getClubListAPI(sortBy: "feed")
-        case .classes:
-            getClassCategoryAPI()
+        case .classes: break
+           // getClassCategoryAPI()
         default:
             break
         }
+        getClassCategoryAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {        super.viewWillDisappear(animated)
@@ -68,9 +70,15 @@ class EventCategoryListViewController: UIViewController {
         
         // Set navigation title
         
-        categoryName = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : categoryName
+        var titleText = ""
+        if eventCategory == nil {//open non category list screen
+            titleText = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
+        } else {
+            titleText = eventCategory?.name ?? ""
+        }
         
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: categoryName, textColor: type == .none ? UIColor.white : UIColor.navBarTitleWhite32)
+        navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white)
+
     }
     
     @objc func backButtonAction() {

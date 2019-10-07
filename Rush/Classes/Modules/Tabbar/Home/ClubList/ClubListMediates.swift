@@ -32,15 +32,17 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (myClubList.count > 0) && indexPath.section == 0 && screenType == .club {
+        if(screenType == .club){
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
-            fillMyClubCell(cell, indexPath)
-            return cell
-        } else {
+                fillMyClubCell(cell, indexPath)
+                return cell
+        }else if(screenType == .classes){
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillEventTypeCell(cell, indexPath)
             return cell
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

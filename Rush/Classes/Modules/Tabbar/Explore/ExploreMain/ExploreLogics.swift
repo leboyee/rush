@@ -47,6 +47,7 @@ extension ExploreViewController {
         } else if indexPath.section == 3 {
             cell.setup(.classes, nil, classList)
         }
+        // MARK: - CollectionItem Selected
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
            if indexPath.section == 1 {
@@ -71,6 +72,49 @@ extension ExploreViewController {
         let keepTrack = "Keep track of your \nacademics"
         let detail = indexPath.row == 0 ? findEvent : indexPath.row == 1 ? sharePeople : indexPath.row == 2 ? keepTrack : ""
         cell.setup(detail: detail)
+        var img1: String = ""
+        var img2: String = ""
+        var img3: String = ""
+        
+        switch indexPath.row {
+        case 0:
+            if eventList.count > 0 {
+                img1 = eventList[0].photoJson
+            }
+            if eventList.count > 1 {
+                img2 = eventList[1].photoJson
+            }
+            if eventList.count > 2 {
+                img3 = eventList[2].photoJson
+            }
+        case 1:
+            if clubList.count > 0 {
+                img1 = clubList[0].clubPhoto ?? ""
+            }
+            if clubList.count > 1 {
+                img2 = clubList[1].clubPhoto ?? ""
+            }
+            if clubList.count > 2 {
+                img3 = clubList[2].clubPhoto ?? ""
+            }
+        case 2:
+//            if classList.count > 0
+//            {
+//                img1 = classList[0].photoJson
+//            }
+//            if classList.count > 1
+//            {
+//                img2 = classList[1].photoJson
+//            }
+//            if classList.count > 2
+//            {
+//                img3 = classList[2].photoJson
+//            }
+            break
+        default:
+            break
+        }
+       cell.setup(img1Url: img1, img2Url: img2, img3Url: img3)
     }
     
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
@@ -97,23 +141,22 @@ extension ExploreViewController {
             header.setup(title: Text.classesYouMightLike)
         }
         
-        header.detailButtonClickEvent = { () in
+        // MARK: - HeaderArrow Selected
+        header.detailButtonClickEvent = { [weak self] in
             // Open other user profile UI for test
+            guard let unself = self else { return }
+
+            let type = section == 1 ? ScreenType.event : section == 2 ? ScreenType.club : section == 3 ? .classes : .none
+            unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
             
-            Utils.notReadyAlert()
-            /*
-             if section == 2 {
-             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.club)
-             } else if section == 3 {
-             self_.performSegue(withIdentifier: Segues.clubListSegue , sender: ClubListType.classes)
-             }
-             */
         }
     }
-    
+    // MARK: - Category selected
     func cellSelected(_ indexPath: IndexPath) {
         if isSearch && searchType == .event {
-            performSegue(withIdentifier: Segues.eventCategorySegue, sender: dataList[indexPath.row])
+            if let category = dataList[indexPath.row] as? EventCategory {
+                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+            }
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
@@ -197,7 +240,7 @@ extension ExploreViewController {
         
         let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: 1] as [String: Any]
         
         if clubList.count == 0 {
             Utils.showSpinner()
@@ -220,7 +263,9 @@ extension ExploreViewController {
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
-                     Keys.pageNo: pageNo] as [String: Any]
+//                     Keys.fromStartDate: Date().toString(),
+//                     Keys.toStartDate: Date().toString(),
+                     Keys.pageNo: 1] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
@@ -234,10 +279,11 @@ extension ExploreViewController {
         }
     }
     
-    func getClassCategoryAPI() {
+    
+    func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classList = classes
