@@ -60,8 +60,10 @@ extension PostViewController {
         cell.setup(username: comment.user?.name ?? "")
         cell.setup(commentText: comment.desc ?? "")
         cell.setup(image: comment.user?.photo?.url())
+        cell.setup(isReplayCell: false)
         
-        if let date = Date.parse(dateString: comment.createDate ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+        let local = Date().UTCToLocal(date: comment.createDate ?? "")
+        if let date = Date.parse(dateString: local) {
             let time = Date().timeAgoDisplay(date: date)
             cell.setup(date: time)
         }
@@ -99,7 +101,8 @@ extension PostViewController {
         cell.setup(isReplayCell: true)
         cell.setup(image: comment?.user?.photo?.url())
         
-        if let date = Date.parse(dateString: comment?.createDate ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+        let local = Date().UTCToLocal(date: comment?.createDate ?? "")
+        if let date = Date.parse(dateString: local) {
             let time = Date().timeAgoDisplay(date: date)
             cell.setup(date: time)
         }
