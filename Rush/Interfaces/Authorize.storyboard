@@ -633,7 +633,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1-(541)-754-3010" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-R1-XVp" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1-(541)-754-3010" adjustsFontForContentSizeCategory="YES" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-R1-XVp" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="84" y="40" width="310" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="UIl-1D-Lz7"/>
