@@ -46,11 +46,12 @@ class CreateEventViewController: UIViewController {
     var isEndTime: Bool = false
     var isCreateGroupChat = true
     var peopleList = [Invite]()
-    
+    var isEditEvent: Bool = false
+    var eventId: String = ""
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
-    
+    var event: Event?
     var interestList = [String]()
     var rsvpArray = [String]()
     
@@ -83,6 +84,9 @@ class CreateEventViewController: UIViewController {
         setupTableView()
         
         fillImageHeader()
+        if isEditEvent == true {
+            setupEventEdit()
+        }
     }
 }
 
@@ -101,6 +105,45 @@ extension CreateEventViewController {
     }
 }
 
+// MARK: - Other Function
+extension CreateEventViewController {
+    func setupEventEdit() {
+        cancelButton.setImage(#imageLiteral(resourceName: "back-arrow"), for: .normal)
+        saveButton.setImage(#imageLiteral(resourceName: "deleteWhite"), for: .normal)
+        cancelButton.setTitle("", for: .normal)
+        saveButton.setTitle("", for: .normal)
+        saveButton.backgroundColor = .clear
+        eventDescription = event?.desc ?? ""
+        address = event?.address ?? ""
+        if let eventLat = event?.latitude, let lat = Double(eventLat) {
+            latitude = lat
+        }
+        if let eventLong = event?.longitude, let long = Double(eventLong) {
+            longitude = long
+        }
+        
+        //eventImage = event?.photo?.main
+        startDate = event?.start ?? Date()
+        endDate = event?.end ?? Date()
+        startTime = "01:00 PM"
+         endTime = "02:00 PM"
+         startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
+        endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
+        isCreateGroupChat = event?.isChatGroup ?? true
+        eventId = event?.id ?? "1"
+//        for invites in event?.invitee ?? [Invitee]() {
+//            let invite = Invite()
+//            invite.profile = invites.user
+//        }
+        interestList = event?.interests?.components(separatedBy: ",") ?? [String]()
+        for rsvpQuestion in event?.rsvp ?? [RSVPQuestion]() {
+            guard let question = rsvpQuestion.que else { return }
+            rsvpArray.append(question)
+        }
+        guard let url = event?.photo?.main else { return }
+        clubHeader.setup(url: URL(string: url))
+    }
+}
 // MARK: - Mediator
 extension CreateEventViewController {
     func selectedCell(_ indexPath: IndexPath) {

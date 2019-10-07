@@ -22,11 +22,10 @@ class AddMinorsViewController: CustomViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var minorCustomButton: UIButton!
     @IBOutlet weak var minorButtonConstraint: NSLayoutConstraint!
-
+    var isEditProfile: Bool = false
     var selectedArray = [String]()
     var minorArray = [[String: Any]]()
     var selectedIndex = -1
-    var customMinorArray = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +40,6 @@ class AddMinorsViewController: CustomViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +47,6 @@ class AddMinorsViewController: CustomViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
-
     }
     
     override func viewWillLayoutSubviews() {
@@ -84,8 +81,8 @@ class AddMinorsViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
-        
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
@@ -95,6 +92,11 @@ class AddMinorsViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        
+//        if(isEditProfile == true) {
+//            pageControl.isHidden = true
+//            self.navigationItem.rightBarButtonItem = nil
+//        }
     }
 }
 
@@ -127,7 +129,6 @@ extension AddMinorsViewController {
             var dict = [String: Any]()
                  dict["name"] = searchTextField.text
                  selectedArray.append(searchTextField.text ?? "")
-                 customMinorArray.append(dict)
                  searchTextField.text = ""
                  getMinorList(searchText: "")
                  self.minorCustomButton.isHidden = true
@@ -148,6 +149,10 @@ extension AddMinorsViewController {
 extension AddMinorsViewController {
     
     func profileUpdateSuccess() {
-        self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
+        //if isEditProfile == true {
+            self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
+       // } else {
+        //    self.navigationController?.popViewController(animated: true)
+        //}
     }
 }

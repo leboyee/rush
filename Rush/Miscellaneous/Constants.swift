@@ -89,7 +89,9 @@ struct Cell {
     static let joinRSVP            = "JoinRSVPCell"
     static let postBottom          = "PostBottomCell"
     static let eventCategoryFilterCell          = "EventCategoryFilterCell"
-
+    static let editProfileImage     =  "EditProfileImageCell"
+    static let editProfileInfo      = "EditProfileInfoCell"
+    static let editProfileMinorCell = "EditProfileMinorCell"
 
 }
 
@@ -190,6 +192,11 @@ struct Segues {
     static let eventWithoutRSVPJoinedPopup = "EventWithoutRSVPJoinedPopupSegue"
     static let eventOtherUserProfile = "EventOtherUserProfileSegue"
     static let eventListToEventDetailsSegue = "EventListToEventDetailsSegue"
+    static let editProfileSegue                   = "EditProfileSegue"
+    static let settingViewControllerSegue                   = "SettingViewControllerSegue"
+    static let editEventSegue                   = "EditEventSegue"
+
+
 }
 
 struct StoryBoard {
@@ -313,6 +320,11 @@ public struct Text {
     static let majors                    = "Majors"
     static let minors                    = "Minors"
     static let join                      = "Join"
+    static let fullName                  = "Full name"
+    static let addMajor                  = "Add major"
+    static let addMinor                  = "Add minor"
+    static let addAnotherMajor           = "Add another major"
+    static let addAnotherMinor           = "Add another minor"
 }
 
 public struct Message {

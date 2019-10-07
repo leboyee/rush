@@ -20,20 +20,7 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
         
         tableView.register(UINib(nibName: ReusableView.classesHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.classesHeader)
 
-        for index in 1...5 {
-            let classes = Classes()
-            classes.id = index
-            classes.category = "Accounting \(index)"
-            for subIndex in 1...5 {
-                let subClasses = SubClasses()
-                subClasses.id = subIndex + (index * 10)
-                subClasses.name = "\(index) Sample Data \(subIndex)"
-                classes.subClasses.append(subClasses)
-            }
-            classesArray.append(classes)
-        }
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
-
         tableView.reloadData()
     }
     
@@ -77,10 +64,10 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let classies = classesArray[indexPath.section]
-        let subClassies = classies.subClasses[indexPath.row]
-        self.selectedArray["\(indexPath.section)"] = subClassies
-        selectedIndex = -1
-        moveToNext()
+       // let subClassies = classies.subClasses[indexPath.row]
+      //  self.selectedArray["\(indexPath.section)"] = subClassies
+      //  selectedIndex = -1
+     //   moveToNext()
         tableView.reloadData()
     }
     

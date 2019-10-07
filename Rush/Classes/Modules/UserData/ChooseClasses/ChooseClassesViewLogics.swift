@@ -20,28 +20,28 @@ extension ChooseClassesViewController {
     
     func cellCount(_ section: Int) -> Int {
         if selectedIndex == section {
-            let classies = classesArray[selectedIndex]
-            return classies.subClasses.count
+            return subClassArray.count
         } else {
             return 0
         }
-       
     }
     
     func fillClassesCell(_ cell: ClassesCell, _ indexPath: IndexPath) {
-        let classies = classesArray[indexPath.section]
-        let subclassies = classies.subClasses[indexPath.row]
+        let subclassies = subClassArray[indexPath.row]
         cell.titleLabel.text = subclassies.name
     }
     
     func fillClassesHeader(_ header: ClassesHeader, _ section: Int) {
         let classies = classesArray[section]
-        if selectedArray["\(section)"] != nil {
-            let subClass = selectedArray["\(section)"] as? SubClasses ?? SubClasses()
+        if selectedArray.contains(where: { $0.categoryId == classies.id }) {
+            guard let index = selectedArray.firstIndex(where: { $0.categoryId == classies.id }) else { return }
+            let subClass = selectedArray[index]
             header.setup(detailsLableText: subClass.name)
+        } else {
+            header.setup(detailsLableText: "")
         }
-
-        header.titleLabel.text = classies.category
+       
+        header.titleLabel.text = classies.name
         header.headerButton.tag = section
         header.headerButton.addTarget(self, action: #selector(headerSelectionAction), for: .touchUpInside)
         header.arrowImageView.isHighlighted = section == selectedIndex ? true : false
@@ -52,6 +52,8 @@ extension ChooseClassesViewController {
             selectedIndex = -1
         } else {
             selectedIndex = sender.tag
+            let classies = classesArray[sender.tag]
+            getSubClassList(classId: classies.id)
         }
         tableView.reloadData()
     }
@@ -60,5 +62,46 @@ extension ChooseClassesViewController {
 
 // MARK: - Manage Interator or API's Calling
 extension ChooseClassesViewController {
+    func getClassesList() {
+        //Utils.showSpinner()
+        ServiceManager.shared.getClassCategory(params: [:]) { [weak self] (data, errorMessage) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classesArray = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+            unsafe.tableView.reloadData()
+        }
+    }
     
+    func getSubClassList(classId: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.getSubClass(classId: classId, params: [Keys.pageNo: pageNo]) { [weak self] (data, errorMessage) in
+               guard let unsafe = self else { return }
+            Utils.hideSpinner()
+               if let classes = data {
+                   unsafe.subClassArray = classes
+                   unsafe.tableView.reloadData()
+               } else {
+                   Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+               }
+            unsafe.tableView.reloadData()
+           }
+       }
+    
+    func updateProfileAPI() {
+        let param = [Keys.uEduMinors: selectedArray]  as [String: Any]
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if data != nil {
+                //unsafe.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

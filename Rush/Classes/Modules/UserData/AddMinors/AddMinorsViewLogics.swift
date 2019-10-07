@@ -32,11 +32,6 @@ extension AddMinorsViewController {
             guard let unsafe = self else { return }
             guard let list = data?["list"] as? [[String: Any]] else { return }
             unsafe.minorArray = list
-            if unsafe.customMinorArray.count > 0 {
-                for object in unsafe.customMinorArray {
-                    unsafe.minorArray.append(object)
-                }
-            }
             if unsafe.searchTextField.text?.isEmpty == false {
                 if unsafe.minorArray.contains(where: { $0["name"] as? String == unsafe.searchTextField.text }) {
                     unsafe.minorCustomButton.isHidden = true

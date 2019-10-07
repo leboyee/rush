@@ -80,6 +80,14 @@ extension NetworkManager {
     func getInterestList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "interest", params: params, resultHandler: resultHandler)
     }
+    
+    func getClassCategory(params: [String: Any], resultHandler: @escaping ResultClosure) {
+          requestGet(path: "category/class", params: params, resultHandler: resultHandler)
+      }
+    
+    func getSubClass(classId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "class/\(classId)/groups", params: params, resultHandler: resultHandler)
+    }
 
     func getImageList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "profile-images", params: params, resultHandler: resultHandler)

@@ -224,7 +224,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8Z-qq-POT" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="L8Z-qq-POT" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
                             <rect key="frame" x="25" y="434.5" width="151" height="37"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -415,6 +415,7 @@
                         <outlet property="pageControl" destination="Ghf-3h-q60" id="00b-2h-rL6"/>
                         <outlet property="pageControllerLeadingConstraint" destination="BlF-kj-iB3" id="oa2-YE-RsV"/>
                         <outlet property="pageControllerView" destination="Dny-qz-lQc" id="bC3-q1-tDJ"/>
+                        <outlet property="pageControllerWidthConstrinat" destination="hFf-Ku-hcd" id="NJc-OU-da1"/>
                         <outlet property="userImageViewHeightConstraint" destination="08I-Yz-fX4" id="G3W-qb-T7f"/>
                         <outlet property="userImageViewWidthConstraint" destination="NqK-Qo-wbG" id="h4C-WT-XlO"/>
                         <outlet property="userPhotoImageView" destination="qDE-5W-qGQ" id="oFt-7s-xNu"/>
@@ -426,7 +427,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ghf-3h-q60" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
+                        <pageControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ghf-3h-q60" customClass="CustomImagePageControl" customModule="Rush" customModuleProvider="target">
                             <rect key="frame" x="25" y="434.5" width="151" height="37"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -448,7 +449,7 @@
         <!--Choose Level View Controller-->
         <scene sceneID="Nuv-1D-bvi">
             <objects>
-                <viewController id="ekq-AC-bZR" customClass="ChooseLevelViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseLevelViewController" id="ekq-AC-bZR" customClass="ChooseLevelViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zdN-EG-9yJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -593,7 +594,7 @@
         <!--Choose Year View Controller-->
         <scene sceneID="PKC-hR-V9c">
             <objects>
-                <viewController id="SaU-hy-7Rt" customClass="ChooseYearViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseYearViewController" id="SaU-hy-7Rt" customClass="ChooseYearViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NA4-A4-g4H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -713,7 +714,7 @@
         <!--Choose University View Controller-->
         <scene sceneID="Flc-SQ-4Tg">
             <objects>
-                <viewController id="qZM-7i-FD0" customClass="ChooseUniversityViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseUniversityViewController" id="qZM-7i-FD0" customClass="ChooseUniversityViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7EO-KQ-zeU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -850,7 +851,7 @@
         <!--Add Majors View Controller-->
         <scene sceneID="A0n-Ww-qTT">
             <objects>
-                <viewController id="T0c-Ag-wfC" customClass="AddMajorsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMajorsViewController" id="T0c-Ag-wfC" customClass="AddMajorsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JaP-BQ-YJj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1003,7 +1004,7 @@
         <!--Add Minors View Controller-->
         <scene sceneID="olx-qe-hrV">
             <objects>
-                <viewController id="jiR-Nh-Qjh" customClass="AddMinorsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMinorsViewController" id="jiR-Nh-Qjh" customClass="AddMinorsViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ApN-g5-Y7n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1161,7 +1162,7 @@
                         <outlet property="pageControllerView" destination="zqk-j0-7br" id="V7M-of-hPt"/>
                         <outlet property="searchTextField" destination="Gxj-B0-XZZ" id="1wN-1E-J6e"/>
                         <outlet property="tableView" destination="ykc-S3-uaY" id="ls5-4V-RLf"/>
-                        <segue destination="CQl-Ia-9Fz" kind="show" identifier="ChooseClassesViewSegue" id="3Oo-I1-CYa"/>
+                        <segue destination="CQl-Ia-9Fz" kind="show" identifier="ChooseClassesViewSegue" animates="NO" id="3Oo-I1-CYa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAY-fE-CDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1315,7 +1316,7 @@
                         <outlet property="pageControllerView" destination="pvS-MQ-J3h" id="cfj-Rr-lSa"/>
                         <outlet property="searchTextField" destination="EYQ-KS-3tf" id="qcI-nN-hvi"/>
                         <outlet property="tableView" destination="O6D-9j-sxY" id="gCl-Sh-DTe"/>
-                        <segue destination="wMH-Ho-NUy" kind="show" identifier="ChooseInterestViewSegue" id="8oI-FX-x1l"/>
+                        <segue destination="wMH-Ho-NUy" kind="show" identifier="ChooseInterestViewSegue" animates="NO" id="8oI-FX-x1l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6k-d0-fi8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1474,7 +1475,7 @@
                         <outlet property="pageControllerLeadingConstraint" destination="XYk-va-ejJ" id="VRx-eI-4fK"/>
                         <outlet property="pageControllerView" destination="TfU-Bd-Loh" id="aEk-Ny-EtL"/>
                         <outlet property="tableView" destination="ibg-l7-aKX" id="ynE-QO-acu"/>
-                        <segue destination="P1C-g5-gPF" kind="show" identifier="UserInfoViewSegue" id="q1I-Ca-f81"/>
+                        <segue destination="P1C-g5-gPF" kind="show" identifier="UserInfoViewSegue" animates="NO" id="q1I-Ca-f81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xff-YE-Txr" userLabel="First Responder" sceneMemberID="firstResponder"/>
