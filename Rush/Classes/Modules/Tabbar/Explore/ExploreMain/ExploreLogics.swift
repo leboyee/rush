@@ -91,10 +91,10 @@ extension ExploreViewController {
             if clubList.count > 0 {
                 img1 = clubList[0].clubPhoto ?? ""
             }
-            if eventList.count > 1 {
+            if clubList.count > 1 {
                 img2 = clubList[1].clubPhoto ?? ""
             }
-            if eventList.count > 2 {
+            if clubList.count > 2 {
                 img3 = clubList[2].clubPhoto ?? ""
             }
         case 2:

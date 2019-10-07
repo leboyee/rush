@@ -40,16 +40,18 @@ class EventCategoryListViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         navigationController?.navigationBar.isTranslucent = false
+        
         switch type {
         case .event:
             getEventList(sortBy: .upcoming, eventCategory: eventCategory)
         case .club:
             getClubListAPI(sortBy: "feed")
-        case .classes:
-            getClassCategoryAPI()
+        case .classes: break
+           // getClassCategoryAPI()
         default:
             break
         }
+        getClassCategoryAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {        super.viewWillDisappear(animated)

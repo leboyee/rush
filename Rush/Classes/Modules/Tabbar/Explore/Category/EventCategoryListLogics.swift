@@ -61,11 +61,21 @@ extension EventCategoryListViewController {
             isThirdFilter = !isThirdFilter
         }
         
-        guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
-        eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
-        let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
-        presentPanModal(rowViewController)
-        collectionView.reloadData()
+        if type == .event {
+            guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
+            let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+            presentPanModal(rowViewController)
+            collectionView.reloadData()
+        } else if type == .club || type == .classes {
+            guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+            //Show all categories for the screen.
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? [String]() : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+            presentPanModal(rowViewController)
+            collectionView.reloadData()
+        }
+        
     }
     
     func fillClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
@@ -87,6 +97,7 @@ extension EventCategoryListViewController {
             cell.setup(detail: "SOMM 24-A")
         }
     }
+    
     func fillEventCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         let event = eventList[indexPath.row]
         cell.setup(title: event.title)
