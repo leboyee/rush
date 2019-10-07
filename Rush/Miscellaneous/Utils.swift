@@ -210,8 +210,8 @@ extension  Utils {
                 title: "Settings",
                 style: .cancel,
                 handler: { (_) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
+                    UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            }))
         alert.show()
     }
     
@@ -230,8 +230,8 @@ extension  Utils {
                 title: "Settings",
                 style: .cancel,
                 handler: { (_) -> Void in
-                  UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
+                    UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            }))
         alert.show()
     }
     
@@ -250,11 +250,11 @@ extension  Utils {
                 title: "Settings",
                 style: .cancel,
                 handler: { (_) -> Void in
-                  UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
+                    UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            }))
         alert.show()
     }
-
+    
 }
 
 // MARK: - UserDefault Functions
@@ -374,20 +374,28 @@ extension Utils {
     }
     
     class func upcomingFiler() -> [String] {
-          return ["All upcoming", "Today", "Tomorrow", "This week", "This weekend", "Next week"]
-      }
-      
-      class func anyTimeFilter() -> [String] {
-          return ["Morning", "Day", "Evening"]
-      }
-      
-      class func friendsFilter() -> [String] {
-             return ["Everyone", "Friends Going"]
-      }
-      
-      class func myUpcomingFileter() -> [String] {
-                return ["All Upcoming", "Managed first"]
-      }
+        return ["All upcoming", "Today", "Tomorrow", "This week", "This weekend", "Next week"]
+    }
+    
+    class func anyTimeFilter() -> [String] {
+        return ["Morning", "Day", "Evening"]
+    }
+    
+    class func friendsFilter() -> [String] {
+        return ["Everyone", "Friends Going"]
+    }
+    
+    class func myUpcomingFileter() -> [String] {
+        return ["All Upcoming", "Managed first"]
+    }
+    
+    class func eventTypeArray() -> [String] {
+        return ["Public", "Closed", "Invite only"]
+    }
+    
+    class func eventTypDetailsArray() -> [String] {
+        return ["Anyone within your college or university can see the flyer, the attendees, and the event information.", "Anyone within your college or university can see the flyer. Non-invited users must submit request to see event information.", "Only members can see the flyer, who’s is invited, and the event information."]
+    }
 }
 
 // MARK: - Alert Extension
@@ -525,5 +533,5 @@ extension Utils {
     class func isiPhone5() -> Bool {
         return UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue
     }
-  
+    
 }

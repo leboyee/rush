@@ -30,6 +30,7 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
             detailsLable.font = UIFont.regular(sz: 15)
             topDetailLableContraint.constant = 10
         } else if UIDevice.current.screenType.rawValue ==  UIDevice.ScreenType.iPhones6Plus.rawValue {
+        
         } else {
         
         }

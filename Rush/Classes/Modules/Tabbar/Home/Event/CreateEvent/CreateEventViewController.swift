@@ -20,6 +20,8 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var saveButtonConstraint: NSLayoutConstraint!
 
     var imageDataTask: URLSessionDataTask?
     static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
@@ -82,8 +84,8 @@ class CreateEventViewController: UIViewController {
                 
         // Setup tableview
         setupTableView()
-        
         fillImageHeader()
+        deleteButton.isHidden = true
         if isEditEvent == true {
             setupEventEdit()
         }
@@ -108,11 +110,11 @@ extension CreateEventViewController {
 // MARK: - Other Function
 extension CreateEventViewController {
     func setupEventEdit() {
+        nameEvent = event?.title ?? ""
         cancelButton.setImage(#imageLiteral(resourceName: "back-arrow"), for: .normal)
-        saveButton.setImage(#imageLiteral(resourceName: "deleteWhite"), for: .normal)
+        saveButtonConstraint.constant = 60
+        deleteButton.isHidden = false
         cancelButton.setTitle("", for: .normal)
-        saveButton.setTitle("", for: .normal)
-        saveButton.backgroundColor = .clear
         eventDescription = event?.desc ?? ""
         address = event?.address ?? ""
         if let eventLat = event?.latitude, let lat = Double(eventLat) {

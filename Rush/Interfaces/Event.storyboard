@@ -79,12 +79,21 @@
                                             <action selector="saveButtonAction" destination="0js-ko-496" eventType="touchUpInside" id="dRq-0P-f4V"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-Gi-xDT">
+                                        <rect key="frame" x="353" y="40" width="48" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="SMn-LY-CqR"/>
+                                            <constraint firstAttribute="height" constant="56" id="mTH-C7-cGk"/>
+                                        </constraints>
+                                        <state key="normal" image="deleteWhite"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CCc-ad-488" firstAttribute="top" secondItem="bb6-eH-9QW" secondAttribute="top" id="0Ry-7j-u2o"/>
                                     <constraint firstItem="wWA-rJ-qR1" firstAttribute="trailing" secondItem="d7B-jh-CWz" secondAttribute="trailing" constant="16" id="88t-4k-ZSb"/>
                                     <constraint firstItem="qjJ-hT-WRN" firstAttribute="top" secondItem="CCc-ad-488" secondAttribute="bottom" constant="-63" id="AGi-Hx-BZZ"/>
                                     <constraint firstItem="3Xc-Dh-bhs" firstAttribute="top" secondItem="wWA-rJ-qR1" secondAttribute="top" constant="6" id="Dep-YA-Z8I"/>
+                                    <constraint firstItem="krZ-Gi-xDT" firstAttribute="centerY" secondItem="d7B-jh-CWz" secondAttribute="centerY" id="N9E-K1-msT"/>
                                     <constraint firstItem="qjJ-hT-WRN" firstAttribute="leading" secondItem="wWA-rJ-qR1" secondAttribute="leading" id="Nr3-Ze-Tb4"/>
                                     <constraint firstItem="CCc-ad-488" firstAttribute="leading" secondItem="wWA-rJ-qR1" secondAttribute="leading" id="XPc-Vk-wTo"/>
                                     <constraint firstItem="qjJ-hT-WRN" firstAttribute="trailing" secondItem="wWA-rJ-qR1" secondAttribute="trailing" id="Z32-5Q-vUc"/>
@@ -92,6 +101,7 @@
                                     <constraint firstItem="3Xc-Dh-bhs" firstAttribute="leading" secondItem="wWA-rJ-qR1" secondAttribute="leading" constant="16" id="gq2-EG-KzK"/>
                                     <constraint firstItem="d7B-jh-CWz" firstAttribute="top" secondItem="wWA-rJ-qR1" secondAttribute="top" constant="6" id="n4w-pv-FeD"/>
                                     <constraint firstItem="CCc-ad-488" firstAttribute="trailing" secondItem="wWA-rJ-qR1" secondAttribute="trailing" id="rOr-4w-oMd"/>
+                                    <constraint firstItem="wWA-rJ-qR1" firstAttribute="trailing" secondItem="krZ-Gi-xDT" secondAttribute="trailing" constant="13" id="we4-MU-ZcT"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="wWA-rJ-qR1"/>
                             </view>
@@ -115,8 +125,10 @@
                         <outlet property="backgroundView" destination="qjJ-hT-WRN" id="7O6-8b-Yf9"/>
                         <outlet property="cancelButton" destination="3Xc-Dh-bhs" id="PDr-nQ-B6r"/>
                         <outlet property="clubHeader" destination="CCc-ad-488" id="Lua-Fd-CNL"/>
+                        <outlet property="deleteButton" destination="krZ-Gi-xDT" id="etf-dC-XgX"/>
                         <outlet property="heightConstraintOfHeader" destination="35c-5M-CM4" id="m9h-Gm-yU5"/>
                         <outlet property="saveButton" destination="d7B-jh-CWz" id="WIp-UH-cb2"/>
+                        <outlet property="saveButtonConstraint" destination="88t-4k-ZSb" id="Yq2-um-NOr"/>
                         <outlet property="tableView" destination="esK-uQ-eYi" id="Dfi-wz-mu0"/>
                         <segue destination="Sc4-IO-QLc" kind="presentation" identifier="SelectEventTypeViewSegue" animates="NO" modalPresentationStyle="overFullScreen" id="vC1-tG-MY8"/>
                         <segue destination="FDc-47-a8H" kind="presentation" identifier="AddRSVPSegue" modalPresentationStyle="overFullScreen" id="IUX-G9-vGa"/>
@@ -684,6 +696,7 @@
         <image name="addLocation" width="24" height="24"/>
         <image name="cancel-active" width="78" height="36"/>
         <image name="deleteRSVP" width="24" height="24"/>
+        <image name="deleteWhite" width="24" height="28"/>
         <image name="handlerRSVP" width="41" height="6"/>
         <image name="icon-noEvents" width="84" height="88"/>
         <image name="save-dark" width="78" height="36"/>
