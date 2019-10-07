@@ -134,4 +134,5 @@ struct Keys {
     static let isFirstJoin  = "isFirstJoin"
     static let otherUserId = "other_user_id"
     static let action = "action"
+    static let menstionUserId = "mentioned_user_ids"
 }
