@@ -35,7 +35,7 @@ extension ClubListViewController {
         if myClubList.count > 0 && screenType == .club && section == 0 {
             return myClubList.count
         } else if myClassesList.count > 0 && screenType == .classes {
-           return myClassesList[section].classList?.count ?? 0
+           return myClassesList.count
         } else {
             return 0
         }
@@ -56,6 +56,7 @@ extension ClubListViewController {
 //            } else if indexPath.section == 2 {
 //                cell.setup(.classes, nil, nil)
 //            } else {
+            
                 cell.setup(.classes, nil, myClassesList[indexPath.section].classList)
 //            }
         }

@@ -43,7 +43,7 @@ class ExploreViewController: CustomViewController {
     
     var clubList = [Club]()
     var eventList = [Event]()
-    var classList = [Class]()
+    var classList = [SubClass]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

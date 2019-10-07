@@ -71,15 +71,18 @@ class SubClass: Codable {
     var name: String = ""
     var photo: String = ""
     var categoryId: String = ""
+    var classTotalGroups: Int = 0
+    
     var classGroups: [ClassGroup]?
     init() { }
     
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name = "class_name"
-        case location = "calss_location"
+        case location = "class_location"
         case photo = "class_photo"
         case categoryId = "class_cat_id"
+        case classTotalGroups = "class_total_groups"
         case classGroups = "class_groups"
     }
 }
@@ -90,13 +93,16 @@ class ClassGroup: Codable {
     var classId: String = ""
     var name: String = ""
     var totalRosters: Int = 0
-
+    var myJoinedGroup: [String]?
+    
     init() { }
 
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case classId = "class_id"
         case name = "name"
-        case totalRoasters = "total_roasters"
+        case totalRosters = "total_rosters"
+        case myJoinedGroup = "my_joined_group"
+        
     }
 }
