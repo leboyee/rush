@@ -25,6 +25,7 @@ class ChatRoomViewController: MessagesViewController {
     
     let outgoingAvatarOverlap: CGFloat = 17.5
     var userNavImageView = UIImageView()
+    var userNavImage: UIImage?
     var userNameNavLabel = UILabel()
     var timeLabel = UILabel()
     var messageList: [MockMessage] = []
@@ -450,8 +451,11 @@ extension ChatRoomViewController {
         let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
         
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
-//        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
-        userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        if friendProfile != nil {
+            userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        } else if userNavImage != nil {
+            userNavImageView.image = userNavImage
+        }
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill

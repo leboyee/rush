@@ -29,13 +29,11 @@ extension ChatsViewController {
     }
     
     func cellSelected(_ indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ChatListCell else { return }
         let controller = ChatRoomViewController()
-        controller.isShowTempData = true
-        if indexPath.row == 0 {
-            controller.isGroupChat = true
-        } else {
-            controller.isGroupChat = false
-        }
+        controller.isGroupChat = false
+        controller.userName = cell.titleLabel.text ?? ""
+        controller.userNavImage = cell.imgView.image
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -47,10 +45,9 @@ extension ChatsViewController {
             var updateName = ""
             for nm in names {
                 if !nm.contains(loggedInUserName) {
-                    updateName = nm
+                    updateName = nm.trimmingCharacters(in: .whitespacesAndNewlines)
                     return updateName
                 }
-                break
             }
          }
         return name
