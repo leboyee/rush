@@ -25,55 +25,56 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKe-h3-2DT">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBa-sL-Blr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="public-green" translatesAutoresizingMaskIntoConstraints="NO" id="BNI-Bz-lkP">
-                                <rect key="frame" x="24" y="16" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="L9k-4y-I89"/>
-                                    <constraint firstAttribute="height" constant="24" id="TNm-c5-hRU"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0I-Lz-PK7">
-                                <rect key="frame" x="64" y="18" width="46.5" height="20"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gs3-8X-mXq">
-                                <rect key="frame" x="64" y="122" width="256" height="1"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Co9-qt-VDe">
+                                <rect key="frame" x="63" y="122" width="257" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="0YN-ox-43j"/>
+                                    <constraint firstAttribute="height" constant="1" id="UXm-P4-puJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer, the attendees, and the event information." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmG-H5-XDU">
-                                <rect key="frame" x="64" y="38" width="216" height="76"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="public-green" translatesAutoresizingMaskIntoConstraints="NO" id="Jzy-oJ-8W8">
+                                <rect key="frame" x="24" y="16" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="AAR-HK-Kp5"/>
+                                    <constraint firstAttribute="height" constant="24" id="BIF-ut-VGS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer, the attendees, and the event information." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMD-GD-aT2">
+                                <rect key="frame" x="64" y="45" width="203" height="62.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
-                                <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNz-ZR-Mew">
+                                <rect key="frame" x="63" y="17" width="46.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Eg1-X6-cCp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fmG-H5-XDU" secondAttribute="trailing" constant="40" id="4T1-Su-hlZ"/>
-                            <constraint firstItem="BNI-Bz-lkP" firstAttribute="leading" secondItem="KKe-h3-2DT" secondAttribute="leading" constant="24" id="933-9T-8Qd"/>
-                            <constraint firstItem="Gs3-8X-mXq" firstAttribute="leading" secondItem="fmG-H5-XDU" secondAttribute="leading" id="CnG-iK-5jx"/>
-                            <constraint firstItem="fmG-H5-XDU" firstAttribute="top" secondItem="D0I-Lz-PK7" secondAttribute="bottom" id="E8D-VT-KrH"/>
-                            <constraint firstAttribute="height" constant="123" id="IfE-Ur-WhO"/>
-                            <constraint firstItem="BNI-Bz-lkP" firstAttribute="top" secondItem="KKe-h3-2DT" secondAttribute="top" constant="16" id="J1x-k0-Ind"/>
-                            <constraint firstItem="D0I-Lz-PK7" firstAttribute="top" secondItem="KKe-h3-2DT" secondAttribute="top" constant="18" id="b3Y-Jb-Z8z"/>
-                            <constraint firstItem="D0I-Lz-PK7" firstAttribute="leading" secondItem="BNI-Bz-lkP" secondAttribute="trailing" constant="16" id="f7W-BL-Wmc"/>
-                            <constraint firstItem="Gs3-8X-mXq" firstAttribute="top" secondItem="fmG-H5-XDU" secondAttribute="bottom" constant="8" id="jXb-cC-fSe"/>
-                            <constraint firstItem="D0I-Lz-PK7" firstAttribute="centerY" secondItem="BNI-Bz-lkP" secondAttribute="centerY" id="mWE-CU-C6H"/>
-                            <constraint firstAttribute="trailing" secondItem="Gs3-8X-mXq" secondAttribute="trailing" id="rOw-3u-5FQ"/>
-                            <constraint firstAttribute="bottom" secondItem="Gs3-8X-mXq" secondAttribute="bottom" id="rve-NS-XSY"/>
-                            <constraint firstItem="fmG-H5-XDU" firstAttribute="leading" secondItem="D0I-Lz-PK7" secondAttribute="leading" id="wBI-UR-NZC"/>
+                            <constraint firstItem="mMD-GD-aT2" firstAttribute="leading" secondItem="HNz-ZR-Mew" secondAttribute="leading" constant="1" id="1JN-3q-9FA"/>
+                            <constraint firstAttribute="trailing" secondItem="mMD-GD-aT2" secondAttribute="trailing" constant="53" id="4ev-no-aQH"/>
+                            <constraint firstAttribute="trailing" secondItem="Co9-qt-VDe" secondAttribute="trailing" id="8Zv-iP-4oz"/>
+                            <constraint firstItem="HNz-ZR-Mew" firstAttribute="top" secondItem="NBa-sL-Blr" secondAttribute="top" constant="17" id="FVG-QC-nKa"/>
+                            <constraint firstItem="mMD-GD-aT2" firstAttribute="top" secondItem="HNz-ZR-Mew" secondAttribute="bottom" constant="8" id="fAk-ZB-etd"/>
+                            <constraint firstItem="Jzy-oJ-8W8" firstAttribute="top" secondItem="NBa-sL-Blr" secondAttribute="top" constant="16" id="jvl-nZ-lsN"/>
+                            <constraint firstItem="Co9-qt-VDe" firstAttribute="top" secondItem="mMD-GD-aT2" secondAttribute="bottom" constant="14.5" id="oHs-2f-Tqq"/>
+                            <constraint firstAttribute="bottom" secondItem="Co9-qt-VDe" secondAttribute="bottom" id="ozF-9h-NHq"/>
+                            <constraint firstItem="Jzy-oJ-8W8" firstAttribute="leading" secondItem="NBa-sL-Blr" secondAttribute="leading" constant="24" id="rF4-I6-qaC"/>
+                            <constraint firstItem="Co9-qt-VDe" firstAttribute="leading" secondItem="HNz-ZR-Mew" secondAttribute="leading" id="uHk-m6-2pL"/>
+                            <constraint firstItem="HNz-ZR-Mew" firstAttribute="leading" secondItem="Jzy-oJ-8W8" secondAttribute="trailing" constant="15" id="wWQ-m0-Rxf"/>
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark-red" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-iN-1oK">
-                        <rect key="frame" x="289" y="53.5" width="16" height="16"/>
+                        <rect key="frame" x="284" y="53.5" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="eVs-hh-sXt"/>
                             <constraint firstAttribute="width" constant="16" id="jPc-0i-Up8"/>
@@ -82,26 +83,24 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="KKe-h3-2DT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1An-gu-LeR"/>
-                    <constraint firstItem="KKe-h3-2DT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FKh-99-tEp"/>
-                    <constraint firstAttribute="trailing" secondItem="2ZU-iN-1oK" secondAttribute="trailing" constant="15" id="GCt-Yp-Uip"/>
-                    <constraint firstItem="2ZU-iN-1oK" firstAttribute="centerY" secondItem="KKe-h3-2DT" secondAttribute="centerY" id="NoQ-cY-vrP"/>
-                    <constraint firstAttribute="bottom" secondItem="KKe-h3-2DT" secondAttribute="bottom" id="PIm-VL-itA"/>
-                    <constraint firstItem="KKe-h3-2DT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Q5L-38-ppR"/>
-                    <constraint firstItem="KKe-h3-2DT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TGb-GC-zsq"/>
-                    <constraint firstAttribute="trailing" secondItem="KKe-h3-2DT" secondAttribute="trailing" id="sM8-A9-xm0"/>
-                    <constraint firstAttribute="bottom" secondItem="KKe-h3-2DT" secondAttribute="bottom" id="svo-8h-4FP"/>
-                    <constraint firstAttribute="trailing" secondItem="KKe-h3-2DT" secondAttribute="trailing" id="xvf-Lw-niM"/>
+                    <constraint firstAttribute="trailing" secondItem="NBa-sL-Blr" secondAttribute="trailing" id="C5I-mF-9V1"/>
+                    <constraint firstAttribute="trailing" secondItem="2ZU-iN-1oK" secondAttribute="trailing" constant="20" id="GCt-Yp-Uip"/>
+                    <constraint firstItem="NBa-sL-Blr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="akS-Fk-PMU"/>
+                    <constraint firstItem="NBa-sL-Blr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nrV-Rd-zgf"/>
+                    <constraint firstAttribute="bottom" secondItem="NBa-sL-Blr" secondAttribute="bottom" id="pt9-3T-gPI"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="2ZU-iN-1oK" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="Cnr-Sv-YwO"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="backgroundView" destination="KKe-h3-2DT" id="yDo-GE-vHG"/>
-                <outlet property="cellBackgroundView" destination="KKe-h3-2DT" id="SOL-Cp-MYh"/>
+                <outlet property="cellBackgroundView" destination="NBa-sL-Blr" id="M2L-zw-4vU"/>
                 <outlet property="checkMarkImageView" destination="2ZU-iN-1oK" id="q8r-X4-2Hd"/>
-                <outlet property="eventDetailLabel" destination="fmG-H5-XDU" id="9ng-gD-EaZ"/>
-                <outlet property="nameLabel" destination="D0I-Lz-PK7" id="if2-Sh-ghH"/>
+                <outlet property="eventDetailLabel" destination="mMD-GD-aT2" id="dIb-xn-D3y"/>
+                <outlet property="eventTypeImageView" destination="Jzy-oJ-8W8" id="b1o-Xv-XWh"/>
+                <outlet property="nameLabel" destination="HNz-ZR-Mew" id="ftu-vD-QtT"/>
             </connections>
             <point key="canvasLocation" x="-49.275362318840585" y="79.352678571428569"/>
         </tableViewCell>

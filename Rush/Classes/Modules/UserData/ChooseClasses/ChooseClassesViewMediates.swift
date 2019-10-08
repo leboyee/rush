@@ -63,7 +63,7 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let classies = classesArray[indexPath.section]
+        //let classies = classesArray[indexPath.section]
        // let subClassies = classies.subClasses[indexPath.row]
       //  self.selectedArray["\(indexPath.section)"] = subClassies
       //  selectedIndex = -1

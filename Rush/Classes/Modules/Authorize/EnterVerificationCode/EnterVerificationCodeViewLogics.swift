@@ -93,7 +93,7 @@ extension EnterVerificationCodeViewController {
 extension EnterVerificationCodeViewController {
     
     func signupApiCalled(code: String) {
-        let param = [Keys.email: profile.email, Keys.password: profile.password, Keys.countryCode: profile.countryCode, Keys.phone: profile.phone, Keys.phoneToken: code] as [String: Any]
+        let param = [Keys.email: profile.email ?? "", Keys.password: profile.password ?? "", Keys.countryCode: profile.countryCode ?? "", Keys.phone: profile.phone ?? "", Keys.phoneToken: code ?? ""] as [String: Any]
 
         ServiceManager.shared.singup(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
@@ -146,7 +146,7 @@ extension EnterVerificationCodeViewController {
         let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = profile.countryCode
         let phoneString = profile.phone
-        let param = [Keys.countryCode: countryCodeString, Keys.phone: phoneString, Keys.verifyType: verifyTye] as [String: Any]
+        let param = [Keys.countryCode: countryCodeString ?? "", Keys.phone: phoneString ?? "", Keys.verifyType: verifyTye] as [String: Any]
         ServiceManager.shared.authPhone(params: param) { [weak self] (status, errorMessage) in
             //Utils.hideSpinner()
            

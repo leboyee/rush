@@ -181,7 +181,7 @@ extension CreateEventViewController {
                 cell.setupButtonImage(image: UIImage(named: "downArrow") ?? UIImage())
                 cell.setupButtonDisable(isDisable: true)
                 cell.setup(isHideClearButton: false)
-                
+                cell.setup(isEnabled: false)
                 cell.topConstraintOfBgView.constant = -16
                 cell.topTextViewConstraint.constant = 20
             } else {
@@ -215,19 +215,8 @@ extension CreateEventViewController {
             unsafe.validateAllFields()
         }
         
-        cell.clearButtonClickEvent = { [weak self] () in
-            guard let unsafe = self else { return }
-            if indexPath.section == 0 && unsafe.isEditEvent == true {
-                guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
-                eventCategoryFilter.dataArray = Utils.eventTypeArray()
-                eventCategoryFilter.delegate = self
-                eventCategoryFilter.isEventTypeModel = true
-                eventCategoryFilter.selectedIndex = unsafe.event?.eventType == .publik ? 0 : unsafe.event?.eventType == .closed ? 1 : 2
-                eventCategoryFilter.headerTitle = "Choose event type:"
-                let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
-                unsafe.presentPanModal(rowViewController)
-            }
-            
+        cell.clearButtonClickEvent = { //[weak self] () in
+            //guard let unsafe = self else { return }
         }
         
     }
@@ -384,7 +373,7 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty {
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && interestList.count > 0 {
             
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
@@ -487,7 +476,7 @@ extension CreateEventViewController: CalendarViewDelegate {
 // MARK: - SelectEventTypeController Delegate
 extension CreateEventViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-        
+        self.eventType = type
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
@@ -549,7 +538,18 @@ extension CreateEventViewController: AddEventLocationDelegate {
 // MARK: - EventPanModel
 extension CreateEventViewController: EventCategoryFilterDelegate {
     func selectedIndex(_ type: String) {
-        
+        if type == "0" {
+            self.event?.eventType = .publik
+            self.eventType = .publik
+        } else if type == "1" {
+            self.event?.eventType = .closed
+            self.eventType = .closed
+        } else if type == "2" {
+            self.event?.eventType = .inviteOnly
+            self.eventType = .inviteOnly
+        }
+        self.tableView.reloadData()
+        self.validateAllFields()
     }
 }
 
@@ -573,9 +573,6 @@ extension CreateEventViewController: EventInterestDelegate {
 extension CreateEventViewController {
     
     func createEventAPI() {
-        if eventImage == nil {
-            eventImage = clubHeader.userImageView.image
-        }
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interests = interestList.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
@@ -589,10 +586,12 @@ extension CreateEventViewController {
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
         let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDateString = Date().localToUTCDate(date: startUtcDate)
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
+        print(startUtcDateString)
         var rsvpJson: String = ""
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: array)
@@ -603,7 +602,9 @@ extension CreateEventViewController {
             print(error.localizedDescription)
         }
         
-        let param = [Keys.createEventType: "public",
+        let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
+
+        let param = [Keys.createEventType: eventTypeString,
                      Keys.eventName: self.nameEvent,
                      Keys.eventDesc: self.eventDescription,
                      Keys.eventRsvpList: rsvpJson,
@@ -631,7 +632,12 @@ extension CreateEventViewController {
     }
     
     func updateEventApi(eventId: String) {
-        
+        if eventImage == nil {
+            eventImage = clubHeader.userImageView.image
+        }
+
+        let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
+            
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interests = interestList.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
@@ -660,7 +666,7 @@ extension CreateEventViewController {
         }
         
         let param = [Keys.eventId: eventId,
-                     Keys.createEventType: "public",
+                     Keys.createEventType: eventTypeString,
                      Keys.eventName: self.nameEvent,
                      Keys.eventDesc: self.eventDescription,
                      Keys.eventRsvpList: rsvpJson,
@@ -687,4 +693,16 @@ extension CreateEventViewController {
         }
     }
     
+    func deleteEventAPI(id: String) {
+       Utils.showSpinner()
+       ServiceManager.shared.deleteEvent(eventId: id) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.navigationController?.popToRootViewController(animated: true)
+            } else if let message = errorMsg {
+                Utils.alert(message: message)
+            }
+        }
+    }
 }

@@ -25,6 +25,8 @@ class EventCateogryFilterViewController: CustomViewController {
     var selectedIndex: Int = 0
     var headerTitle: String = "Sort by:"
     var isEventTypeModel = false
+    var isEventType: EventType = .publik
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,7 +36,6 @@ class EventCateogryFilterViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         panModalSetNeedsLayoutUpdate()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {

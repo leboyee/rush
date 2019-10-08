@@ -196,8 +196,6 @@ struct Segues {
     static let editProfileSegue                   = "EditProfileSegue"
     static let settingViewControllerSegue                   = "SettingViewControllerSegue"
     static let editEventSegue                   = "EditEventSegue"
-
-
 }
 
 struct StoryBoard {

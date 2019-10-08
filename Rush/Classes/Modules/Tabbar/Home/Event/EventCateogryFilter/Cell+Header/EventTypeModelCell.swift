@@ -14,6 +14,8 @@ class EventTypeModelCell: UITableViewCell {
     @IBOutlet weak var checkMarkImageView: UIImageView!
     @IBOutlet weak var eventDetailLabel: UILabel!
     @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var eventTypeImageView: UIImageView!
+    var evenType: EventType = .publik
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,9 +30,20 @@ class EventTypeModelCell: UITableViewCell {
 }
 
 extension EventTypeModelCell {
-    
-    func setup(name: String) {
-        nameLabel.text = name
+    func set(type: EventType) {
+        if type == .closed {
+            eventTypeImageView.image = #imageLiteral(resourceName: "ic_closed.pdf")
+            nameLabel.text = "Closed"
+            eventDetailLabel.text = "Anyone within your college or university can see the flyer. Non-invited users must submit request to see event information."
+        } else if type == .publik {
+            eventTypeImageView.image = #imageLiteral(resourceName: "ic_public.pdf")
+            nameLabel.text = "Public"
+            eventDetailLabel.text = "Anyone within your college or university can see the flyer, the attendees, and the event information."
+        } else {
+            eventTypeImageView.image = #imageLiteral(resourceName: "ic_inviteonly.pdf")
+            nameLabel.text = "Invite only"
+            eventDetailLabel.text = "Only members can see the flyer, who’s is invited, and the event information."
+        }
     }
     
     func setup(checkMarkHidden: Bool) {

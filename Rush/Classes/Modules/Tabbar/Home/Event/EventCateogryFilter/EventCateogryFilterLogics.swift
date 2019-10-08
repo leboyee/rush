@@ -11,7 +11,7 @@ import UIKit
 extension EventCateogryFilterViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return isEventTypeModel == true ? 123 : 64//UITableView.automaticDimension
+        return isEventTypeModel == true ? UITableView.automaticDimension : 64//UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -25,11 +25,8 @@ extension EventCateogryFilterViewController {
     }
     
     func fillModelCell(_ cell: EventTypeModelCell, _ indexPath: IndexPath) {
-        let name = dataArray[indexPath.row]
-        let details = Utils.eventTypDetailsArray()[indexPath.row]
-        cell.setup(name: name)
+        cell.set(type: indexPath.row == 0 ? .publik : indexPath.row == 1 ? .closed : .inviteOnly)
         cell.setup(checkMarkHidden: indexPath.row == selectedIndex ? false : true)
-        cell.setup(detail: details)
         cell.setup(isSelected: indexPath.row == selectedIndex ? true : false)
     }
     
@@ -38,9 +35,15 @@ extension EventCateogryFilterViewController {
     }
     
     func cellSelected(_ indexPath: IndexPath) {
-        let name = dataArray[indexPath.row]
-        delegate?.selectedIndex(name)
-        dismiss(animated: true, completion: nil)
+        if isEventTypeModel == true {
+            delegate?.selectedIndex("\(indexPath.row)")
+            dismiss(animated: true, completion: nil)
+        } else {
+            let name = dataArray[indexPath.row]
+                   delegate?.selectedIndex(name)
+                   dismiss(animated: true, completion: nil)
+        }
+       
     }
 }
 
