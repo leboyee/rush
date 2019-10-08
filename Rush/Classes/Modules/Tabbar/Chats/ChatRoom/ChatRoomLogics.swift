@@ -15,8 +15,8 @@ extension ChatRoomViewController {
         
         var grpName = ""
         let loggedInUserId = Authorization.shared.profile?.userId ?? ""
-        var otherUserId = ""
-        var imgUrl = ""
+        var otherUserId = friendProfile?.user?.userId ?? ""
+        var imgUrl = friendProfile?.user?.photo?.thumb ?? ""
         let loggedInUserName = Authorization.shared.profile?.name ?? ""
         let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
         
@@ -48,16 +48,16 @@ extension ChatRoomViewController {
             emptyPlaceholderView(isHide: true)
         }
         
-//        messagesCollectionView.performBatchUpdates({
-//            messagesCollectionView.insertSections([messageList.count - 1])
-//            if messageList.count >= 2 {
-//                messagesCollectionView.reloadSections([messageList.count - 2])
-//            }
-//        }, completion: { [weak self] _ in
-//            if self?.isLastSectionVisible() == true {
-//                self?.messagesCollectionView.scrollToBottom(animated: true)
-//            }
-//        })
+        //        messagesCollectionView.performBatchUpdates({
+        //            messagesCollectionView.insertSections([messageList.count - 1])
+        //            if messageList.count >= 2 {
+        //                messagesCollectionView.reloadSections([messageList.count - 2])
+        //            }
+        //        }, completion: { [weak self] _ in
+        //            if self?.isLastSectionVisible() == true {
+        //                self?.messagesCollectionView.scrollToBottom(animated: true)
+        //            }
+        //        })
     }
     
     func showAddParticipateToast(_ friends: [Friend]) {

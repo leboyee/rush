@@ -100,10 +100,10 @@ extension OtherUserProfileController {
             guard let unself = self else { return }
             if status == .accept {
                 /*
-                unself.friendType = .addFriend
-                unself.isShowMessageButton = false
-                unself.tableView.reloadData()
-                */
+                 unself.friendType = .addFriend
+                 unself.isShowMessageButton = false
+                 unself.tableView.reloadData()
+                 */
                 Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "decline")
@@ -278,11 +278,11 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if status {
                 if type == "unfriend" {
-                    let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: self?.userInfo?.name))",
+                    let snackbar = TTGSnackbar(message: "You unfriended \(unsafe.userInfo?.name ?? "")",
                         duration: .middle,
                         actionText: "Undo",
                         actionBlock: { (_) in
-                           Utils.notReadyAlert()
+                            Utils.notReadyAlert()
                     })
                     snackbar.show()
                 }

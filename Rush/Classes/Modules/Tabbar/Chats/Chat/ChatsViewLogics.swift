@@ -20,9 +20,12 @@ extension ChatsViewController {
     }
     
     func fillCell(_ cell: ChatListCell, _ indexPath: IndexPath) {
-//        let channel = channels[indexPath.row]
-//        cell.setup(title: channel.name)
-//        cell.setup(detail: channel.lastMessage?.data ?? "")
+        let channel = channels[indexPath.row]
+        cell.setup(title: getSingleChatName(channel: channel))
+        cell.setup(lastMessage: channel.lastMessage)
+        cell.setup(onlineUser: channel.members)
+        cell.setup(chatImage: channel.members)
+        cell.setup(channel: channel)
     }
     
     func cellSelected(_ indexPath: IndexPath) {
@@ -34,6 +37,23 @@ extension ChatsViewController {
             controller.isGroupChat = false
         }
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func getSingleChatName(channel: SBDGroupChannel) -> String {
+        let name = channel.name
+        let names = name.components(separatedBy: ",")
+        if names.count > 1 {
+            let loggedInUserName = Authorization.shared.profile?.name ?? ""
+            var updateName = ""
+            for nm in names {
+                if !nm.contains(loggedInUserName) {
+                    updateName = nm
+                    return updateName
+                }
+                break
+            }
+         }
+        return name
     }
 }
 
