@@ -22,10 +22,12 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
 
-    var selectedArray = [String: Any]()
+    var selectedArray = [SubClass]()
     var selectedIndex = -1
-    var classesArray = [Classes]()
-    
+    var classesArray = [Class]()
+    var subClassArray = [SubClass]()
+    var pageNo = 1
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,7 +37,6 @@ class ChooseClassesViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,6 +52,8 @@ class ChooseClassesViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
+        getClassesList()
+
     }
     
     func setupUI() {
@@ -69,8 +72,8 @@ class ChooseClassesViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
-        
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         

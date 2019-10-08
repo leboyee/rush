@@ -21,7 +21,8 @@ class ChooseLevelViewController: CustomViewController {
     
     var isSkip: Bool = false
     var selectedIndex = -1
-    
+    var isEditProfile: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -73,8 +74,8 @@ class ChooseLevelViewController: CustomViewController {
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
         pageControl.updateDots()
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
-        
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
@@ -84,6 +85,11 @@ class ChooseLevelViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        
+//            if(isEditProfile == true) {
+//                pageControl.isHidden = true
+//                self.navigationItem.rightBarButtonItem = nil
+//            }
     }
 }
 

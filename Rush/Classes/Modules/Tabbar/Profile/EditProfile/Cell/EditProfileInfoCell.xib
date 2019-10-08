@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditProfileInfoCell" id="7BO-1B-t2z" customClass="EditProfileInfoCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7BO-1B-t2z" id="go4-bJ-yx7">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-4U-vfR" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="24" y="12" width="327" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="km@messapps.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcA-Uw-eva" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="24" y="32" width="327" height="20.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WF7-Ia-g1m">
+                        <rect key="frame" x="302" y="18" width="49" height="28"/>
+                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
+                        <state key="normal" title="Change">
+                            <color key="titleColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="rightButtonAction" destination="7BO-1B-t2z" eventType="touchUpInside" id="noC-OH-imL"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="wOG-dc-JUe">
+                        <rect key="frame" x="345" y="27.5" width="6" height="9"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXZ-gM-KQP" customClass="RSeparatorLine" customModule="Rush" customModuleProvider="target">
+                        <rect key="frame" x="24" y="63" width="351" height="1"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="EWG-Ya-v00"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QcA-Uw-eva" firstAttribute="leading" secondItem="Z5w-4U-vfR" secondAttribute="leading" id="88j-Vi-IEt"/>
+                    <constraint firstItem="WF7-Ia-g1m" firstAttribute="centerY" secondItem="go4-bJ-yx7" secondAttribute="centerY" id="ETy-ps-F8D"/>
+                    <constraint firstItem="Z5w-4U-vfR" firstAttribute="top" secondItem="go4-bJ-yx7" secondAttribute="top" constant="12" id="GvF-9l-MA6"/>
+                    <constraint firstItem="wOG-dc-JUe" firstAttribute="centerY" secondItem="go4-bJ-yx7" secondAttribute="centerY" id="Iqw-oe-DFX"/>
+                    <constraint firstItem="YXZ-gM-KQP" firstAttribute="leading" secondItem="go4-bJ-yx7" secondAttribute="leading" constant="24" id="Kt7-2e-0hY"/>
+                    <constraint firstItem="Z5w-4U-vfR" firstAttribute="leading" secondItem="go4-bJ-yx7" secondAttribute="leading" constant="24" id="NUN-C0-VKU"/>
+                    <constraint firstAttribute="bottom" secondItem="QcA-Uw-eva" secondAttribute="bottom" constant="11" id="ON6-OB-fQM"/>
+                    <constraint firstAttribute="bottom" secondItem="YXZ-gM-KQP" secondAttribute="bottom" id="PmH-Gz-QWg"/>
+                    <constraint firstItem="QcA-Uw-eva" firstAttribute="trailing" secondItem="Z5w-4U-vfR" secondAttribute="trailing" id="SGc-ze-Y6l"/>
+                    <constraint firstItem="QcA-Uw-eva" firstAttribute="top" secondItem="Z5w-4U-vfR" secondAttribute="bottom" constant="4" id="TZH-9Y-dGh"/>
+                    <constraint firstAttribute="trailing" secondItem="WF7-Ia-g1m" secondAttribute="trailing" constant="24" id="ae2-qc-bt1"/>
+                    <constraint firstAttribute="trailing" secondItem="wOG-dc-JUe" secondAttribute="trailing" constant="24" id="fXG-T6-8ie"/>
+                    <constraint firstAttribute="trailing" secondItem="YXZ-gM-KQP" secondAttribute="trailing" id="imH-Bc-3UZ"/>
+                    <constraint firstAttribute="trailing" secondItem="Z5w-4U-vfR" secondAttribute="trailing" constant="24" id="pHJ-uT-bJm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="52X-nB-A3u"/>
+            <connections>
+                <outlet property="arrowImageView" destination="wOG-dc-JUe" id="pdf-zg-UVT"/>
+                <outlet property="detailLabel" destination="QcA-Uw-eva" id="NgY-hV-hvZ"/>
+                <outlet property="rightButton" destination="WF7-Ia-g1m" id="yVV-Zo-2As"/>
+                <outlet property="titleLabel" destination="Z5w-4U-vfR" id="Ccb-wU-DwV"/>
+            </connections>
+            <point key="canvasLocation" x="136.95652173913044" y="34.821428571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_leftArrow" width="6" height="9"/>
+    </resources>
+</document>

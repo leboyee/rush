@@ -50,6 +50,11 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scroll")
+        self.view.endEditing(true)
+    }
 }
 
 extension ChooseUniversityViewController: UITextFieldDelegate {

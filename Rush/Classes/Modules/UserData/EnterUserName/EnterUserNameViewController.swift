@@ -25,6 +25,8 @@ class EnterUserNameViewController: CustomViewController {
 
     var loginType: LoginType = .register
     var profile = User()
+    var isEditProfile: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,7 +37,7 @@ class EnterUserNameViewController: CustomViewController {
         super.viewWillAppear(animated)
         firstNameTextField.autocorrectionType = .yes
         lastNameTextField.autocorrectionType = .yes
-
+        pageControl.updateDots()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true
@@ -44,7 +46,6 @@ class EnterUserNameViewController: CustomViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-
     }
     
     override func viewWillLayoutSubviews() {
@@ -83,14 +84,8 @@ class EnterUserNameViewController: CustomViewController {
         let frame = CGRect(x: 0, y: 0, width: screenWidth, height: 50)
         let customView = UIView(frame: frame)
         pageControl.isSteps = true
-        pageControl.updateDots()
-        if Utils.getSystemVersion() < 13 {
-            print("done")
-        } else {
-            print("false")
-        }
-        pageControllerView.frame = CGRect(x: 0, y: 0, width: screenWidth - 50, height: 50)
-        
+        pageControllerView.frame = CGRect(x: Utils.systemVersionEqualToOrGreterThen(version: "13") ? Utils.isiPhone5() ? -30 : 0 : -112, y: 0, width: screenWidth - 50, height: 50)
+
         customView.addSubview(pageControllerView)
         self.navigationItem.titleView = customView
         
@@ -99,6 +94,11 @@ class EnterUserNameViewController: CustomViewController {
         skipButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
+        /*
+            if(isEditProfile == true) {
+                pageControl.isHidden = true
+                self.navigationItem.rightBarButtonItem = nil
+            }*/
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
     }
 }

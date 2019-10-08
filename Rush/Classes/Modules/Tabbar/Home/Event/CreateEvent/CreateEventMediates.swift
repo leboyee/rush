@@ -70,7 +70,11 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
          
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell {
-                fillTextViewCell(cell, indexPath)
+                if indexPath.section == 0 {
+                    fillTextViewFirstSection(cell, indexPath)
+                } else {
+                    fillTextViewCell(cell, indexPath)
+                }
                 return cell
             }
         }
