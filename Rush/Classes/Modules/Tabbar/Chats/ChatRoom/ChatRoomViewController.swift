@@ -475,6 +475,7 @@ extension ChatRoomViewController {
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
+        viewCalender.addTarget(self, action: #selector(openUserProfileScreen), for: .touchUpInside)
         titleView.addSubview(dateLabel)
         titleView.addSubview(viewCalender)
         
@@ -517,5 +518,11 @@ extension ChatRoomViewController {
         if messageList.count > 0 {
             messagesCollectionView.scrollToBottom(animated: animated)
         }
+    }
+    
+    @objc func openUserProfileScreen() {
+        let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
