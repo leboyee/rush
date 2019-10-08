@@ -405,6 +405,9 @@ extension ChatRoomViewController {
         
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
+        
+        //Load data
+        loadPrevisouMessages()
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
