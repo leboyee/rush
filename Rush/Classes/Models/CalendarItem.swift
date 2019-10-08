@@ -8,6 +8,26 @@
 
 import UIKit
 
+class GroupClassSchedule: Codable {
+    var id = ""
+    var classId = ""
+    var groupId = ""
+    var day = ""
+    var start = ""
+    var end = ""
+    var timezone = ""
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case classId = "class_id"
+        case groupId = "group_id"
+        case day = "day"
+        case start = "start_time"
+        case end = "end_time"
+        case timezone
+    }
+}
+
 class CalendarItem: Decodable {
     var id = ""
     var type = ""
@@ -22,7 +42,8 @@ class CalendarItem: Decodable {
     }
     var start: Date?
     var end: Date?
-
+    var classSchedule: [GroupClassSchedule]?
+    
     private enum CodingKeys: String, CodingKey {
        case id = "data_id"
        case type = "data_type"
@@ -30,6 +51,7 @@ class CalendarItem: Decodable {
        case photoJson = "data_photo"
        case start = "data_start_date"
        case end = "data_end_date"
+       case classSchedule = "data_group_schedule"
     }
     
     required init(from decoder: Decoder) {
@@ -43,14 +65,16 @@ class CalendarItem: Decodable {
             if let date = Date.parseUTC(dateString: startDate) {
                start = date
             }
-            print(start)
         }
         
         if let endDate = try? container?.decode(String.self, forKey: .end) {
             if let date = Date.parseUTC(dateString: endDate) {
                end = date
             }
-            print(end)
+        }
+        
+        if let list = try? container?.decode([GroupClassSchedule].self, forKey: .classSchedule) {
+            classSchedule = list
         }
     }
 }

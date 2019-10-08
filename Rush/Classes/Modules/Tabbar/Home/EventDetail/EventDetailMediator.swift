@@ -251,4 +251,3 @@ extension EventDetailViewController: EventHeaderDelegate {
         showCalendar()
     }
 }
-

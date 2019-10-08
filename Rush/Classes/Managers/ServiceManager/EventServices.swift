@@ -93,17 +93,26 @@ extension ServiceManager {
     }
     
     // Calendar List API
-    func fetchCalendarList(params: [String: Any], closer: @escaping (_ items: [CalendarItem]?, _ errorMessage: String?) -> Void) {
+    func fetchCalendarList(params: [String: Any], closer: @escaping (_ events: [CalendarItem]?, _ classes: [CalendarItem]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getCalendarList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                var events: [CalendarItem]?
+                var classes: [CalendarItem]?
+
                 if let items = data?[Keys.events] as? [[String: Any]] {
                     if let list: [CalendarItem] = unsafe.decodeObject(fromData: items) {
-                       closer(list, nil)
-                    } else {
-                        closer(nil, errorMessage)
+                       events = list
                     }
                 }
+                
+                if let items = data?[Keys.classes] as? [[String: Any]] {
+                    if let list: [CalendarItem] = unsafe.decodeObject(fromData: items) {
+                       classes = list
+                    }
+                }
+                
+                closer(events, classes, errorMessage)
             })
         }
     }

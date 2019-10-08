@@ -23,8 +23,7 @@ extension ClubListViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if (screenType == .club)
-        {
+        if screenType == .club {
             return UITableView.automaticDimension
         } else {
             return myClassesList.count > 0 ? 157 : CGFloat.leastNormalMagnitude

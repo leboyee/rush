@@ -196,7 +196,7 @@ extension CreateEventViewController {
                    
             if indexPath.section == 0 && unsafe.isEditEvent == false {
                 unsafe.nameEvent = text
-            } else  {
+            } else {
                 unsafe.nameEvent = text
             }
             unsafe.validateAllFields()

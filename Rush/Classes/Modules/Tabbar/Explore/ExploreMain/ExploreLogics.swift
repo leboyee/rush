@@ -280,7 +280,6 @@ extension ExploreViewController {
         }
     }
     
-    
     func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         

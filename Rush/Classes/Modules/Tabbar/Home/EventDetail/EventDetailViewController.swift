@@ -105,6 +105,7 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
         
         /// Set Header Delegate
         header.delegate = self
+        updateHeaderInfo()
         
         setupTableView()
         loadAllData()
@@ -136,7 +137,10 @@ extension EventDetailViewController {
     }
     
     func updateHeaderInfo() {
-        guard let event = event else { return }
+        guard let event = event else {
+            header.set(date: nil)
+            return
+        }
         header.set(date: event.start)
         header.set(start: event.start, end: event.end)
         header.set(url: event.photo?.urlLarge())
@@ -236,6 +240,10 @@ extension EventDetailViewController {
             if let vc = segue.destination as? CreateEventViewController {
                 vc.event = event
                 vc.isEditEvent = true
+            }
+        } else if segue.identifier == Segues.eventDetailCalendar {
+            if let vc = segue.destination as? CalendarViewController {
+                vc.selectedDate = event?.start ?? Date()
             }
         }
     }

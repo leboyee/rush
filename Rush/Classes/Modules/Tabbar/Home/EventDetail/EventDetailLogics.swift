@@ -420,10 +420,10 @@ extension EventDetailViewController {
                   guard let unsafe = self else { return }
                   unsafe.event = event
                   unsafe.loadEventSection()
+                  unsafe.updateHeaderInfo()
                   unsafe.downloadGroup.leave()
               }
         }
-        updateHeaderInfo()
     }
     
     private func fetchInvitees() {

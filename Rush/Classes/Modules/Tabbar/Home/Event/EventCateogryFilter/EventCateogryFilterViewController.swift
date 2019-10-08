@@ -85,7 +85,7 @@ extension EventCateogryFilterViewController: PanModalPresentable {
     }
     
     var scrollIndicatorInsets: UIEdgeInsets {
-        let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
+        //let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
         return UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
     }
 

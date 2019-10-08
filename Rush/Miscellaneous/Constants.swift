@@ -197,6 +197,9 @@ struct Segues {
     static let editEventSegue                     = "EditEventSegue"
     static let exploreEvents                      = "ExploreEventsSegue"
     static let eventDetailCalendar                = "EventDetailCalendarSegue"
+    static let calendarClassDetail                = "CalendarClassDetailSegue"
+    static let calendarEventDetail                = "CalendarEventDetailSegue"
+
 }
 
 struct StoryBoard {

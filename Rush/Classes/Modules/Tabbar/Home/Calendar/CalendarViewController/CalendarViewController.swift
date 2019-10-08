@@ -29,7 +29,7 @@ class CalendarViewController: CustomViewController {
     
     var dateButton: UIButton!
     var isCalendarOpen = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,13 +65,7 @@ extension CalendarViewController {
             }
         }
         
-        let month = Date().month
-        let year = Date().year
-        let days = Date().daysInMonth
-        
-        let start = String(format: "%d-%02d-01", year, month)
-        let end = String(format: "%d-%02d-%02d", year, month, days)
-        fetchEvents(startDate: start, endDate: end)
+        loadEvents(date: Date())
     }
     
     private func setTitleDate(date: Date) {
@@ -83,6 +77,17 @@ extension CalendarViewController {
             dateButton.setTitle(text, for: .normal)
         }
     }
+    
+    private func loadEvents(date: Date) {
+        let month = Date().month
+        let year = Date().year
+        let days = Date().daysInMonth
+        
+        let start = String(format: "%d-%02d-01", year, month)
+        let end = String(format: "%d-%02d-%02d", year, month, days)
+        fetchEvents(startDate: start, endDate: end)
+    }
+    
 }
 
 // MARK: - Actions
@@ -112,6 +117,7 @@ extension CalendarViewController {
     func monthChange(date: Date) {
         selectedDate = date
         setTitleDate(date: date)
+        loadEvents(date: date)
     }
     
     func dateChanged(date: Date) {
