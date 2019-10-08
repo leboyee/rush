@@ -77,15 +77,16 @@ extension ExploreViewController {
         var img3: String = ""
         
         switch indexPath.row {
+            
         case 0:
             if eventList.count > 0 {
-                img1 = eventList[0].photoJson
+                img1 = eventList[0].photoJson /// Need to update that with photo
             }
             if eventList.count > 1 {
-                img2 = eventList[1].photoJson
+                img2 = eventList[1].photoJson  /// Need to update that with photo
             }
             if eventList.count > 2 {
-                img3 = eventList[2].photoJson
+                img3 = eventList[2].photoJson  /// Need to update that with photo
             }
         case 1:
             if clubList.count > 0 {

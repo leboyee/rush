@@ -10,7 +10,7 @@ import UIKit
 
 extension CalendarViewController {
 
-    private func restuctureEventGroup(events: [Event]) {
+    private func restuctureEventGroup(events: [CalendarItem]) {
         
         events.forEach { (event) in
             let dateString = event.start?.toString(format: "yyyy-MM-dd")
@@ -24,27 +24,22 @@ extension CalendarViewController {
                 groups[index] = group
             }
         }
+        
         /// load list of events in child view controller
-        child?.loadEvents(groups: groups)
-
+        loadChildList()
     }
 }
 
 // MARK: - API's
 extension CalendarViewController {
     
-    func fetchEvents() {
-        if let path = Bundle.main.path(forResource: "event", ofType: "json") {
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .iso8601
-                do {
-                    if let list = try jsonDecoder.decode([Event].self, from: data) as [Event]? {
-                        restuctureEventGroup(events: list)
-                    }
-                } catch {
-                    print("Unexpected error: \(error).")
-                }
+    func fetchEvents(startDate: String, endDate: String) {
+        Utils.showSpinner()
+        let params = [Keys.startDate: startDate, Keys.endDate: endDate]
+        ServiceManager.shared.fetchCalendarList(params: params) { [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            if let list = data {
+                self?.restuctureEventGroup(events: list)
             }
         }
     }

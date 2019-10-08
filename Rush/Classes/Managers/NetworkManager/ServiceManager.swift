@@ -24,6 +24,7 @@ class ServiceManager: NSObject {
      *
      */
     func decodeObject<T: Decodable>(fromData data: Any?) -> T? {
+        guard let data = data else { return nil }
         do {
             let jsonDecoder = JSONDecoder()
             jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)

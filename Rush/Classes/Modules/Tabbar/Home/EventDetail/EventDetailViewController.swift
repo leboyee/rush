@@ -103,6 +103,9 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
             gesture.delegate = self
         }
         
+        /// Set Header Delegate
+        header.delegate = self
+        
         setupTableView()
         loadAllData()
         tableView.isHidden = true
@@ -169,6 +172,10 @@ extension EventDetailViewController {
     
     func showUserProfile(user: User) {
         performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
+    }
+    
+    func showCalendar() {
+        performSegue(withIdentifier: Segues.eventDetailCalendar, sender: nil)
     }
     
     func showLocationOnMap() {

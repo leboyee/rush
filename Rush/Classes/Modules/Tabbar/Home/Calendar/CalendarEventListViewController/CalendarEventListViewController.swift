@@ -37,7 +37,7 @@ extension CalendarEventListViewController {
 extension CalendarEventListViewController {
 
     @IBAction func exploreEvents() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.exploreEvents, sender: nil)
     }
     
 }

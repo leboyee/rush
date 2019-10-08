@@ -14,11 +14,6 @@ struct EventAction {
     static let reject = "reject"
 }
 
-struct EventGroup {
-    var dateString: String
-    var events: [Event]
-}
-
 struct RSVPAnswer: Codable {
     var index: Int
     var ans: String
@@ -47,7 +42,6 @@ class Event: Codable {
     var userId: String = ""
     var title: String = ""
     var desc: String = ""
-    var photoJson: String = ""
     var eventType: EventType = .none
     var start: Date?
     var end: Date?
@@ -59,11 +53,15 @@ class Event: Codable {
     var creator: User?
     var rsvp: [RSVPQuestion]?
     var eventInvite: [EventInvite]?
-    //var invitee: [Invitee]?
+    var photoJson: String = ""
+    private var convertJsonToPhoto: Image?
     var photo: Image? {
-        return photoJson.photo
+       if convertJsonToPhoto == nil {
+         convertJsonToPhoto = photoJson.photo
+       }
+       return convertJsonToPhoto
     }
-
+    
     private var isChatGroupInEvent: String?
     var isChatGroup: Bool {
         return isChatGroupInEvent == "1" ? true : false
@@ -87,8 +85,6 @@ class Event: Codable {
         case interests = "event_interests"
         case rsvp = "event_rsvp_list"
         case eventInvite = "my_event_invite"
-       // case invitee = "invitees"
-
     }
 }
 

@@ -65,7 +65,7 @@ struct Keys {
     static let search             = "search"
     static let sortBy            = "sort_by"
     static let fromStartDate      = "from_start"
-    static let toStartDate      = "to_start"
+    static let toStartDate        = "to_start"
 
     static let clubName = "club_name"
     static let clubDesc = "club_desc"
@@ -136,4 +136,8 @@ struct Keys {
     static let otherUserId = "other_user_id"
     static let action = "action"
     static let menstionUserId = "mentioned_user_ids"
+    
+    static let startDate        = "startDate"
+    static let endDate          = "endDate"
+
 }

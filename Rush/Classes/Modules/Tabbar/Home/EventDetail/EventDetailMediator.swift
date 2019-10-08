@@ -244,3 +244,11 @@ extension EventDetailViewController: CreatePostViewControllerDelegate {
         loadPosts()
     }
 }
+
+// MARK: - EventHeader delegate
+extension EventDetailViewController: EventHeaderDelegate {
+    func didTappedCalendar() {
+        showCalendar()
+    }
+}
+

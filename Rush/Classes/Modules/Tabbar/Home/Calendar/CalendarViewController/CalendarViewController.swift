@@ -7,10 +7,14 @@
 //
 
 import UIKit
+struct EventGroup {
+    var dateString: String
+    var events: [CalendarItem]
+}
 
 class CalendarViewController: CustomViewController {
 
-    let selectedDate = Date()
+    var selectedDate = Date()
     let titleHeight: CGFloat = 44
     let titleWidth: CGFloat = screenWidth - 110
     let topListPadding: CGFloat = 13.0
@@ -53,17 +57,7 @@ extension CalendarViewController {
         customTitleView.addSubview(dateButton)
         navigationItem.titleView = customTitleView
         
-        let imageView = UIImageView(image: UIImage(named: "calendar"))
-        let calendar = UIBarButtonItem(customView: imageView)
-        navigationItem.rightBarButtonItem = calendar
-
         setupCalender()
-        
-        /*
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
-        listView.addGestureRecognizer(panGesture)
-        panGesture.cancelsTouchesInView = true
-        */
         
         self.children.forEach { (vc) in
             if vc is CalendarEventListViewController {
@@ -71,9 +65,24 @@ extension CalendarViewController {
             }
         }
         
-        fetchEvents()
+        let month = Date().month
+        let year = Date().year
+        let days = Date().daysInMonth
+        
+        let start = String(format: "%d-%02d-01", year, month)
+        let end = String(format: "%d-%02d-%02d", year, month, days)
+        fetchEvents(startDate: start, endDate: end)
     }
     
+    private func setTitleDate(date: Date) {
+        if date.toString(format: "yyyy") == Date().toString(format: "yyyy") {
+            let text = date.toString(format: "MMMM dd") + " ▴"
+            dateButton.setTitle(text, for: .normal)
+        } else {
+            let text = date.toString(format: "MMMM dd, yyyy") + " ▴"
+            dateButton.setTitle(text, for: .normal)
+        }
+    }
 }
 
 // MARK: - Actions
@@ -100,8 +109,19 @@ extension CalendarViewController {
 // MARK: - Mediator/Presenter Functions
 extension CalendarViewController {
  
-    func monthChange(text: String) {
-        dateButton.setTitle(text, for: .normal)
+    func monthChange(date: Date) {
+        selectedDate = date
+        setTitleDate(date: date)
     }
     
+    func dateChanged(date: Date) {
+        selectedDate = date
+        setTitleDate(date: date)
+        loadChildList()
+    }
+    
+    func loadChildList() {
+        let subGroup = groups.filter({ $0.dateString == selectedDate.toString(format: "yyyy-MM-dd") })
+        child?.loadEvents(groups: subGroup)
+    }
 }
