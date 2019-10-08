@@ -302,7 +302,11 @@ extension Date {
         if minuteAgo < date {
             return "Now"
         } else if hourAgo < date {
-            return date.toString(format: "hh a")
+            let formatter = DateFormatter()
+            formatter.dateFormat = "h a"
+            formatter.amSymbol = "am"
+            formatter.pmSymbol = "pm"
+            return formatter.string(from: date)
         } else if dayAgo < date {
             let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour ?? 0
             return "\(diff) hrs ago"

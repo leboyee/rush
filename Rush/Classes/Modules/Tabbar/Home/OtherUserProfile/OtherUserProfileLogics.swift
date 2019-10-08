@@ -112,7 +112,11 @@ extension OtherUserProfileController {
             } else {
                 let controller = ChatRoomViewController()
                 controller.isShowTempData = false
+                controller.isGroupChat = false
                 controller.userName = unself.userInfo?.name ?? ""
+                let friend = Friend()
+                friend.user = unself.userInfo
+                controller.friendProfile = friend
                 unself.navigationController?.pushViewController(controller, animated: true)
             }
         }
