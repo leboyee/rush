@@ -94,6 +94,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Textview delegate
 extension PostViewController: GrowingTextViewDelegate {
+    
     func textViewDidChange(_ textView: UITextView) {
         
         commentText = textView.text
@@ -103,7 +104,10 @@ extension PostViewController: GrowingTextViewDelegate {
                 let text = textView.text.replacingOccurrences(of: name, with: "")
                 textView.attributedText = Utils.setAttributedText(name, text, 17, 17)
             }
+        } else {
+            textView.attributedText = Utils.setAttributedText("", textView.text, 17, 17)
         }
+        
         if textView.text.count > 0 {
             sendButton.setBackgroundImage(#imageLiteral(resourceName: "send_active"), for: .normal)
         } else {
