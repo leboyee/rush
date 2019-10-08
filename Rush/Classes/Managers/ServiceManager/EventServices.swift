@@ -96,8 +96,14 @@ extension ServiceManager {
     func fetchCalendarList(params: [String: Any], closer: @escaping (_ items: [CalendarItem]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getCalendarList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (list, errorMessage) in
-                closer(list, errorMessage)
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                if let items = data?[Keys.events] as? [[String: Any]] {
+                    if let list: [CalendarItem] = unsafe.decodeObject(fromData: items) {
+                       closer(list, nil)
+                    } else {
+                        closer(nil, errorMessage)
+                    }
+                }
             })
         }
     }

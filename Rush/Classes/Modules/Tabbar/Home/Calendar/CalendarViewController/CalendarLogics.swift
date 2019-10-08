@@ -36,7 +36,7 @@ extension CalendarViewController {
     func fetchEvents(startDate: String, endDate: String) {
         Utils.showSpinner()
         let params = [Keys.startDate: startDate, Keys.endDate: endDate]
-        ServiceManager.shared.fetchCalendarList(params: params) { [weak self] (data, errorMessage) in
+        ServiceManager.shared.fetchCalendarList(params: params) { [weak self] (data, _) in
             Utils.hideSpinner()
             if let list = data {
                 self?.restuctureEventGroup(events: list)

@@ -139,5 +139,7 @@ struct Keys {
     
     static let startDate        = "startDate"
     static let endDate          = "endDate"
+    static let events           = "events"
+    static let classes           = "classes"
 
 }
