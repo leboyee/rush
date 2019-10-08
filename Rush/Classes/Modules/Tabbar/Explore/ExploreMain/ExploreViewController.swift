@@ -43,7 +43,7 @@ class ExploreViewController: CustomViewController {
     
     var clubList = [Club]()
     var eventList = [Event]()
-    var classList = [Class]()
+    var classList = [SubClass]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class ExploreViewController: CustomViewController {
         }
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
-        getClassCategoryAPI()
+        getClassListAPI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -181,9 +181,9 @@ extension ExploreViewController {
             if let vc = segue.destination as? EventCategoryListViewController {
                 if let type = sender as? ScreenType {
                     vc.type = type
-                } else {
-                    vc.categoryName = sender as? String ?? ""
-                    vc.type = .none
+                } else if let category = sender as? EventCategory {
+                    vc.eventCategory = category
+                    vc.type = .event
                 }
             }
         } else if segue.identifier == Segues.clubDetailSegue {

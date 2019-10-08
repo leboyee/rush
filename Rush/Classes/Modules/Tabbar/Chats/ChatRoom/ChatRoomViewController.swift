@@ -40,7 +40,7 @@ class ChatRoomViewController: MessagesViewController {
 
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
-    var emptyMessageFriendTitle = "This is a beginning of you chat history."
+    var emptyMessageFriendTitle = "This is a beginning of your chat history."
     var userName = ""
     let refreshControl = UIRefreshControl()
     
@@ -64,6 +64,7 @@ class ChatRoomViewController: MessagesViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -398,8 +399,23 @@ extension ChatRoomViewController {
             }
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+//        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 88, width: 88, height: 88)
+//        timeLabel.frame = CGRect(x: 16, y: 100, width: screenWidth - 32, height: 22)
+        
+    }
+    
+    @objc func keyboardDidHide(notification: NSNotification) {
+        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: (screenHeight/2) - 44, width: 88, height: 88)
+        timeLabel.frame = CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22)
+
     }
     
     func updateChannelNameAndImagesOnNav() {
@@ -434,7 +450,8 @@ extension ChatRoomViewController {
         let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
         
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
-        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
+//        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
+        userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill

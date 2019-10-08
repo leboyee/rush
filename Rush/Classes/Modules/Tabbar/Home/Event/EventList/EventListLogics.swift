@@ -50,8 +50,7 @@ extension EventListViewController {
             performSegue(withIdentifier: Segues.eventListToEventDetailsSegue, sender: event)
         }
     }
-
-
+    
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         var categoryName = ""
         if self.isMyEvents == true && section == 0 {

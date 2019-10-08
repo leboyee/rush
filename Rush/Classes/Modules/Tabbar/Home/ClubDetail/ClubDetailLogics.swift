@@ -120,7 +120,7 @@ extension ClubDetailViewController {
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
             
-            if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd hh:mm:ss") {
+            if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
                 let time = Date().timeAgoDisplay(date: date)
                 cell.setup(detail: time)
             }

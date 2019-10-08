@@ -13,6 +13,8 @@ class ExploreCell: UITableViewCell {
     @IBOutlet weak var widthConstraintOfDateView: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfImageView: NSLayoutConstraint!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var imgView2: UIImageView!
+    @IBOutlet weak var imgView3: UIImageView!
     @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
@@ -44,4 +46,11 @@ extension ExploreCell {
     func setup(isHideSeparator: Bool) {
         separatorView.isHidden = isHideSeparator
     }
+    func setup(img1Url: String, img2Url: String, img3Url: String){
+        imgView?.sd_setImage(with: img1Url.photo?.url(), completed: nil)
+        imgView2?.sd_setImage(with: img2Url.photo?.url(), completed: nil)
+        imgView3?.sd_setImage(with: img3Url.photo?.url(), completed: nil)
+        
+    }
+    
 }

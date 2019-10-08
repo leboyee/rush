@@ -395,6 +395,15 @@ extension Utils {
     
     class func eventTypDetailsArray() -> [String] {
         return ["Anyone within your college or university can see the flyer, the attendees, and the event information.", "Anyone within your college or university can see the flyer. Non-invited users must submit request to see event information.", "Only members can see the flyer, who’s is invited, and the event information."]
+          return ["All upcoming", "Today", "Tomorrow", "This week", "This weekend", "Next week"]
+      }
+      
+    class func popularFilter() -> [String] {
+        return ["Popular First", "Newest first"]
+    }
+    
+    class func peopleFilter() -> [String] {
+        return ["All people", "Friends only"]
     }
 }
 
