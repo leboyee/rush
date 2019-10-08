@@ -44,8 +44,9 @@ extension SearchClubViewController {
                 vc.searchText = (dataList[indexPath.row] as? ClubCategory)?.name ?? ""
                 navigationController?.pushViewController(vc, animated: true)
             }
-        } else {
-            
+        } else if searchType == .classes {
+            let classGroup = classObject.classGroups?[indexPath.row]
+            self.performSegue(withIdentifier: Segues.classDetailSegue, sender: classGroup)
         }
     }
 }

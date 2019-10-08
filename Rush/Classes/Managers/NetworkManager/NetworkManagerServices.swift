@@ -124,7 +124,10 @@ extension NetworkManager {
     func joinClub(clubId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "club/\(clubId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
-    
+    func joinClassGroup(classId: String, groupId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "class/\(classId)/group/\(groupId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+
     // MARK: - Events
     func getEventDetail(eventId: String, resultHandler: @escaping ResultClosure) {
         requestGet(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
