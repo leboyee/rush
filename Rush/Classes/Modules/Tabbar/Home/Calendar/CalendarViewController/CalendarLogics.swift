@@ -61,6 +61,7 @@ extension CalendarViewController {
         let params = [Keys.startDate: startDate, Keys.endDate: endDate]
         ServiceManager.shared.fetchCalendarList(params: params) { [weak self] (events, classes, _) in
             Utils.hideSpinner()
+            self?.groups.removeAll()
             self?.restuctureEventInGroup(events: events)
             self?.restuctureClassesInGroup(classes: classes, startDate: startDate, endDate: endDate)
             /// load list of events in child view controller

@@ -56,6 +56,7 @@ class EventDetailViewController: UIViewController {
     var event: Event?
     var postList: [Post]?
     var inviteeList: [Invitee]?
+    var totalInvitee: Int = 0
 
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182

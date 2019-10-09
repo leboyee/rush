@@ -50,7 +50,7 @@ class ServiceManager: NSObject {
     /*
      *
      */
-    func procesModelResponse<T: Codable>(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: T?, _ errorMessage: String?) -> Void) {
+    func procesModelResponse<T: Codable>(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: T?, _ total: Int, _ errorMessage: String?) -> Void) {
         guard code != 200 else {
             guard let resultDict = result as? [String: Any] else {
                 return
@@ -64,20 +64,25 @@ class ServiceManager: NSObject {
                 return
             }
             
+            var total = 0
+            if let count = data[Keys.count] as? Int {
+                total = count
+            }
+            
             do {
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
                 let decodedObject = try jsonDecoder.decode(T.self, from: JSONSerialization.data(withJSONObject: list, options: []))
-                closer(decodedObject, "")
+                closer(decodedObject, total, "")
             } catch let error {
                 print("ERROR DECODING: \(error)")
-                closer(nil, error.localizedDescription)
+                closer(nil, total, error.localizedDescription)
             }
             return
         }
         
         errorHandler(result: result, error: error) { (errorMessage) in
-            closer(nil, errorMessage)
+            closer(nil, 0, errorMessage)
         }
     }
     

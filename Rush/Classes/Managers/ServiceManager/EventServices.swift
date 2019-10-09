@@ -13,7 +13,7 @@ extension ServiceManager {
     func fetchEventList(sortBy: String, params: [String: Any], closer: @escaping (_ events: [Event]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventList(sortBy: sortBy, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, errorMessage) in
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, _, errorMessage) in
                 closer(events, errorMessage)
             })
         }
@@ -35,11 +35,11 @@ extension ServiceManager {
     }
     
     // Event Detail API
-    func fetchInviteeList(eventId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ errorMessage: String?) -> Void) {
+    func fetchInviteeList(eventId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ count: Int, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getInviteeList(eventId: eventId, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, errorMessage) in
-                closer(invitees, errorMessage)
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, total, errorMessage) in
+                closer(invitees, total, errorMessage)
             })
         }
     }
@@ -67,7 +67,7 @@ extension ServiceManager {
     func fetchEventCategoryList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventCategoryList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, errorMessage) in
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, _, errorMessage) in
                 closer(eventCategory, errorMessage)
             })
         }
@@ -76,7 +76,7 @@ extension ServiceManager {
     func fetchEventCategoryWithEventList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
              NetworkManager.shared.getEventCategoryWithEventList(params: params) { [weak self] (data, error, code) in
                  guard let unsafe = self else { return }
-                 unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, errorMessage) in
+                 unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, _, errorMessage) in
                      closer(eventCategory, errorMessage)
                  })
              }

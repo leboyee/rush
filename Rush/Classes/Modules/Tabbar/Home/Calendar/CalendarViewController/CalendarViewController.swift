@@ -79,9 +79,9 @@ extension CalendarViewController {
     }
     
     private func loadEvents(date: Date) {
-        let month = Date().month
-        let year = Date().year
-        let days = Date().daysInMonth
+        let month = date.month
+        let year = date.year
+        let days = date.daysInMonth
         
         let start = String(format: "%d-%02d-01", year, month)
         let end = String(format: "%d-%02d-%02d", year, month, days)

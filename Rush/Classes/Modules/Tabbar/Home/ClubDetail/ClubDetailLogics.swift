@@ -94,7 +94,7 @@ extension ClubDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: clubInfo?.invitees)
+        cell.setup(invitees: clubInfo?.invitees, total: 0)
         
         cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
