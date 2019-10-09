@@ -93,6 +93,7 @@
                         <outlet property="tableView" destination="sLR-sx-qn9" id="OPq-rx-JRP"/>
                         <segue destination="c31-hD-7x0" kind="show" identifier="ProfileFriendProfileSegue" id="3dt-pp-mnp"/>
                         <segue destination="KSN-HZ-4n3" kind="show" identifier="EditProfileSegue" id="TzM-tw-RWf"/>
+                        <segue destination="5gp-qZ-wkB" kind="show" identifier="UserFriendListSegue" id="na3-Jf-Y3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqU-TN-DgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,6 +373,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eix-Nr-X0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-600" y="751"/>
+        </scene>
+        <!--User Friends List View Controller-->
+        <scene sceneID="xsx-9k-Rcc">
+            <objects>
+                <viewController id="5gp-qZ-wkB" customClass="UserFriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qcH-Yf-J4t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-FE-TIX" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="s0q-8L-7Py">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcR-uP-PsI">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results were found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ft-Og-Kcj">
+                                        <rect key="frame" x="137" y="24" width="140" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="C5d-hl-3Fv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5ft-Og-Kcj" firstAttribute="top" secondItem="YcR-uP-PsI" secondAttribute="top" constant="24" id="5jC-2u-YhL"/>
+                                    <constraint firstItem="5ft-Og-Kcj" firstAttribute="centerX" secondItem="YcR-uP-PsI" secondAttribute="centerX" id="e57-yc-BUe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ano-FE-TIX" firstAttribute="trailing" secondItem="QNm-gW-dOc" secondAttribute="trailing" id="BCG-Fj-zyy"/>
+                            <constraint firstItem="YcR-uP-PsI" firstAttribute="trailing" secondItem="QNm-gW-dOc" secondAttribute="trailing" id="CDd-iT-Kqc"/>
+                            <constraint firstAttribute="bottom" secondItem="s0q-8L-7Py" secondAttribute="bottom" id="JgW-kC-JQY"/>
+                            <constraint firstItem="YcR-uP-PsI" firstAttribute="leading" secondItem="QNm-gW-dOc" secondAttribute="leading" id="OtV-ko-7pt"/>
+                            <constraint firstItem="s0q-8L-7Py" firstAttribute="leading" secondItem="QNm-gW-dOc" secondAttribute="leading" id="VK3-SS-sxa"/>
+                            <constraint firstItem="s0q-8L-7Py" firstAttribute="top" secondItem="QNm-gW-dOc" secondAttribute="top" constant="13" id="aVP-h6-hiH"/>
+                            <constraint firstAttribute="bottom" secondItem="Ano-FE-TIX" secondAttribute="bottom" id="d2G-40-aKs"/>
+                            <constraint firstItem="Ano-FE-TIX" firstAttribute="top" secondItem="QNm-gW-dOc" secondAttribute="top" constant="13" id="hUk-Af-BYn"/>
+                            <constraint firstAttribute="bottom" secondItem="YcR-uP-PsI" secondAttribute="bottom" id="i9o-sk-0TI"/>
+                            <constraint firstItem="Ano-FE-TIX" firstAttribute="leading" secondItem="QNm-gW-dOc" secondAttribute="leading" id="niA-E2-76Z"/>
+                            <constraint firstItem="YcR-uP-PsI" firstAttribute="top" secondItem="QNm-gW-dOc" secondAttribute="top" constant="13" id="oAP-QG-iQF"/>
+                            <constraint firstItem="s0q-8L-7Py" firstAttribute="trailing" secondItem="QNm-gW-dOc" secondAttribute="trailing" id="s1U-02-aeP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QNm-gW-dOc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gcE-U8-nlv"/>
+                    <connections>
+                        <outlet property="noSearchResultView" destination="YcR-uP-PsI" id="wGJ-ql-ws7"/>
+                        <outlet property="tableView" destination="s0q-8L-7Py" id="8vj-Tq-UMP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9V-Na-vRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-543" y="1507"/>
         </scene>
         <!--Logout View Controller-->
         <scene sceneID="DNL-Gm-or3">

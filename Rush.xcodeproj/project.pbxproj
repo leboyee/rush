@@ -123,6 +123,9 @@
 		1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */; };
 		1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95C3622323FDB70066798D /* DateAndTimeCell.swift */; };
 		1A95C3652323FDB70066798D /* DateAndTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A95C3632323FDB70066798D /* DateAndTimeCell.xib */; };
+		1AA5BE5F234E34EE00EEF68F /* UserFriendsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */; };
+		1AA5BE60234E34EE00EEF68F /* UserFriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */; };
+		1AA5BE61234E34EE00EEF68F /* UserFriendsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */; };
 		1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7A2289519400C4550C /* CustomLabel.swift */; };
 		1AA97B7D2289520900C4550C /* CustomOnboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */; };
 		1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7F228979D100C4550C /* DeviceExtension.swift */; };
@@ -687,6 +690,9 @@
 		1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewMediates.swift; sourceTree = "<group>"; };
 		1A95C3622323FDB70066798D /* DateAndTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTimeCell.swift; sourceTree = "<group>"; };
 		1A95C3632323FDB70066798D /* DateAndTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateAndTimeCell.xib; sourceTree = "<group>"; };
+		1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListLogics.swift; sourceTree = "<group>"; };
+		1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListViewController.swift; sourceTree = "<group>"; };
+		1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListMediates.swift; sourceTree = "<group>"; };
 		1AA97B7A2289519400C4550C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardImageView.swift; sourceTree = "<group>"; };
 		1AA97B7F228979D100C4550C /* DeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
@@ -1241,6 +1247,7 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1AA5BE5B234E34EE00EEF68F /* UserFriendsListView */,
 				1A0EDEE7234892C800502959 /* EditProfile */,
 				8A04B180230149100055C65F /* Logout */,
 				8A04B17F230149000055C65F /* DisconnectInstagram */,
@@ -1674,6 +1681,16 @@
 				1A95C3632323FDB70066798D /* DateAndTimeCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1AA5BE5B234E34EE00EEF68F /* UserFriendsListView */ = {
+			isa = PBXGroup;
+			children = (
+				1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */,
+				1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */,
+				1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */,
+			);
+			path = UserFriendsListView;
 			sourceTree = "<group>";
 		};
 		1AA97B7E228979D100C4550C /* Extension */ = {
@@ -3629,6 +3646,7 @@
 				79F377A722CB5D69003FC33E /* SearchClubMediates.swift in Sources */,
 				79C1AC4B22A64CE0003C7790 /* ProfileInformationViewController.swift in Sources */,
 				797FFDB222B7BC480055A001 /* PhotoGalleryViewController+UIViewControllerPreviewing.swift in Sources */,
+				1AA5BE61234E34EE00EEF68F /* UserFriendsListMediates.swift in Sources */,
 				1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */,
 				8A4B3297232F5A5B00AC1D17 /* EventDetailMediator.swift in Sources */,
 				1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */,
@@ -3802,7 +3820,9 @@
 				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
 				F9C89F72232D38F700DC9C85 /* AddEventLocationCell.swift in Sources */,
 				793BE67922E88207005EF72D /* MockMessage.swift in Sources */,
+				1AA5BE5F234E34EE00EEF68F /* UserFriendsListLogics.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,
+				1AA5BE60234E34EE00EEF68F /* UserFriendsListViewController.swift in Sources */,
 				796A6F2822CDEEAD00916D79 /* ClassDetailController.swift in Sources */,
 				8AAA3801233B506200423D43 /* InviteHeader.swift in Sources */,
 				793BE67322E88207005EF72D /* LabelAlignment.swift in Sources */,

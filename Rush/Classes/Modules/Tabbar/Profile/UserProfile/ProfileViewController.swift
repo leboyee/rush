@@ -122,7 +122,7 @@ extension ProfileViewController {
     }
     
     func showAllFriends() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.userFriendListSegue, sender: self)
     }
     
     func showAllInterests() {
@@ -150,6 +150,10 @@ extension ProfileViewController {
                    let vc = segue.destination as? ProfileViewController
                    vc?.profileDetail.profile = sender as? User
                    vc?.isOtherUserProfile = true
+        } else if segue.identifier == Segues.userFriendListSegue {
+            let vc = segue.destination as? UserFriendsListViewController
+            vc?.userId = Authorization.shared.profile?.userId ?? ""
         }
+
     }
 }
