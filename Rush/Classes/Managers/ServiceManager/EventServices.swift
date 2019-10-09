@@ -100,4 +100,13 @@ extension ServiceManager {
             })
         }
     }
+    
+    func updateEvent(eventId: String, params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.updateEvent(eventId: eventId, params: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
 }
