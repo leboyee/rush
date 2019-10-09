@@ -58,6 +58,9 @@ class ChatRoomViewController: MessagesViewController {
         
         super.viewDidLoad()
         setup()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +78,8 @@ class ChatRoomViewController: MessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         MockSocket.shared.disconnect()
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -399,10 +404,7 @@ extension ChatRoomViewController {
                 isGroupChat = true
             }
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        
+    
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
         
@@ -411,15 +413,17 @@ extension ChatRoomViewController {
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
-//        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 88, width: 88, height: 88)
-//        timeLabel.frame = CGRect(x: 16, y: 100, width: screenWidth - 32, height: 22)
-        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, keyboardSize.height > 0, keyboardSize.height < 150 {
+            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 152, width: 88, height: 88)
+            timeLabel.frame = CGRect(x: 16, y: 256, width: screenWidth - 32, height: 22)
+        }
     }
     
     @objc func keyboardDidHide(notification: NSNotification) {
-        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: (screenHeight/2) - 44, width: 88, height: 88)
-        timeLabel.frame = CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22)
-
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, keyboardSize.height > 0 {
+            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: (screenHeight/2) - 44, width: 88, height: 88)
+            timeLabel.frame = CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22)
+        }
     }
     
     func updateChannelNameAndImagesOnNav() {
