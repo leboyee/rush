@@ -195,7 +195,11 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 }
                 
                 camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
-                    if let img = image { self.imageList.append(img) }
+                    if var img = image {
+                        img = Utils.fixOrientation(img: img)
+                        self.imageList.append(img)
+                        
+                    }
                     self.tableView.reloadData()
                     self.dismiss(animated: true, completion: nil)
                 }

@@ -372,7 +372,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // cancel button
         let cancelButton: UIButton = {
-            let cancelButton = UIButton(frame: CGRect(x: 16, y: 15, width: 24, height: 24))
+            let cancelButton = UIButton(frame: CGRect(x: 16, y: 15, width: 24, height: 30))
             cancelButton.addTarget(self, action: #selector(DKCamera.dismissCamera), for: .touchUpInside)
             cancelButton.setImage(cameraResource.cameraCancelImage(), for: .normal)
             return cancelButton
