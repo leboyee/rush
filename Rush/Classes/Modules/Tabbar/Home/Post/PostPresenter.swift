@@ -56,7 +56,7 @@ extension PostViewController {
     // Comment parent cell
     func fillParentCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
         
-        let comment = commentList[indexPath.row]
+        let comment = commentList[indexPath.section - 4]
         cell.setup(username: comment.user?.name ?? "")
         cell.setup(commentText: comment.desc ?? "")
         cell.setup(image: comment.user?.photo?.url())
@@ -193,6 +193,7 @@ extension PostViewController {
                 unsafe.username = ""
                 unsafe.textView.text = ""
                 unsafe.textView.attributedText = nil
+                unsafe.commentList.removeAll()
                 unsafe.getAllCommentListAPI()
             } else {
                 Utils.hideSpinner()

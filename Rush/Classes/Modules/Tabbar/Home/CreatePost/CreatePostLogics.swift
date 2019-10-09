@@ -136,8 +136,12 @@ extension CreatePostViewController {
                 manager.requestImageData(for: value, options: option) { [weak self] (data, _, _, _) in
                     guard let uwself = self else { return }
                     if let data = data {
-                        uwself.imagedataList["photo_\(index + 1)"] = data
-                        uwself.getImagesDataList(index: index + 1)
+                        if var img = UIImage(data: data) {
+                            img = Utils.fixOrientation(img: img)
+                            let dataN = img.jpegData(compressionQuality: 0.8)
+                            uwself.imagedataList["photo_\(index + 1)"] = dataN
+                            uwself.getImagesDataList(index: index + 1)
+                        }
                     }
                 }
             } else if let value = image as? UIImage {
