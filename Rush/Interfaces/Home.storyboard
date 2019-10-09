@@ -792,21 +792,16 @@
         <scene sceneID="iLc-RM-4KG">
             <objects>
                 <viewController storyboardIdentifier="CreatePostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GDB-hs-lng" customClass="CreatePostViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ytd-xK-HTG">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="ytd-xK-HTG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kag-AY-KAJ" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="13" width="414" height="819"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="24"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="23H-aQ-r9v">
-                                <rect key="frame" x="0.0" y="13" width="414" height="686.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="23H-aQ-r9v">
+                                <rect key="frame" x="0.0" y="12" width="414" height="687.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-ck-daz" customClass="CustomView" customModule="Rush" customModuleProvider="target">
@@ -892,7 +887,7 @@
                             <constraint firstAttribute="bottom" secondItem="Kag-AY-KAJ" secondAttribute="bottom" constant="-24" id="18W-54-ZRa"/>
                             <constraint firstItem="23H-aQ-r9v" firstAttribute="leading" secondItem="Ujm-Mj-2Th" secondAttribute="leading" id="Fgq-Wl-RuD"/>
                             <constraint firstItem="Ujm-Mj-2Th" firstAttribute="bottom" secondItem="Pyo-ck-daz" secondAttribute="bottom" id="HsU-c2-nuj"/>
-                            <constraint firstItem="23H-aQ-r9v" firstAttribute="top" secondItem="Kag-AY-KAJ" secondAttribute="top" id="RZS-us-WbT"/>
+                            <constraint firstItem="23H-aQ-r9v" firstAttribute="top" secondItem="Kag-AY-KAJ" secondAttribute="top" constant="-1" id="RZS-us-WbT"/>
                             <constraint firstItem="Pyo-ck-daz" firstAttribute="leading" secondItem="Ujm-Mj-2Th" secondAttribute="leading" id="bjm-vR-M0v"/>
                             <constraint firstItem="Kag-AY-KAJ" firstAttribute="top" secondItem="Ujm-Mj-2Th" secondAttribute="top" constant="13" id="eHQ-X7-5IL"/>
                             <constraint firstItem="Pyo-ck-daz" firstAttribute="trailing" secondItem="Ujm-Mj-2Th" secondAttribute="trailing" id="hM7-nL-VJe"/>
@@ -1012,14 +1007,14 @@
             <objects>
                 <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-ny-c5L" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdy-yw-FIA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-Fn-OZe">
                                         <rect key="frame" x="16" y="16" width="382" height="32"/>
@@ -1067,7 +1062,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Yl-Xqs">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="796"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -1672,17 +1667,16 @@
         <image name="unPlashIcon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rRs-cY-38f"/>
+        <segue reference="L5B-Xz-z9C"/>
         <segue reference="zl1-35-Qwj"/>
         <segue reference="QdI-xB-jJm"/>
-        <segue reference="0IY-Pg-ID3"/>
-        <segue reference="Bwe-EL-S9s"/>
+        <segue reference="yEd-FR-LAH"/>
         <segue reference="YgH-R3-42x"/>
-        <segue reference="2qn-kC-bGH"/>
-        <segue reference="bqe-q0-s4j"/>
+        <segue reference="z8H-lu-6pg"/>
+        <segue reference="E7I-YA-fBT"/>
         <segue reference="90w-At-CBu"/>
         <segue reference="rad-wA-dQ6"/>
-        <segue reference="p5t-Td-KDq"/>
-        <segue reference="h98-X0-moE"/>
+        <segue reference="gSU-VJ-XvQ"/>
+        <segue reference="Oel-AB-j6R"/>
     </inferredMetricsTieBreakers>
 </document>

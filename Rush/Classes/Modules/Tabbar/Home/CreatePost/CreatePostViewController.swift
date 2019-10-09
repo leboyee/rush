@@ -109,9 +109,9 @@ class CreatePostViewController: UIViewController {
     
     func close() {
         if navigationController?.viewControllers.count == 1 {
-          dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         } else {
-          navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
 }
