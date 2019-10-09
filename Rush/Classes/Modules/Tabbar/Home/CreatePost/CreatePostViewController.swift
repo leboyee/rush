@@ -185,6 +185,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                     if let value = img as? PHAsset { assets.append(value) }
                 }
                 self.picker.updateSelectedAssets(with: assets)
+                self.picker.modalPresentationStyle = .overFullScreen
                 self.present(self.picker, animated: false, completion: nil)
             } else {
                 // Camera
@@ -198,6 +199,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                     self.tableView.reloadData()
                     self.dismiss(animated: true, completion: nil)
                 }
+                camera.modalPresentationStyle = .fullScreen
                 self.present(camera, animated: true, completion: nil)
             }
         }
