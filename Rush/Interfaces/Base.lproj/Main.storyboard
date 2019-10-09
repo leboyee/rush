@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-FW-Joo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-FW-Joo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AI4-kR-RtD">
@@ -157,7 +157,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg-onboarding" width="375" height="812"/>
+        <image name="bgOnboarding" width="375" height="812"/>
         <image name="onboard-bg-button-main" width="327" height="48"/>
     </resources>
 </document>

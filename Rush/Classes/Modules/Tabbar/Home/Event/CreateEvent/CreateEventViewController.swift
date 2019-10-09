@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 import UnsplashPhotoPicker
+import PanModal
 
 class CreateEventViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var saveButtonConstraint: NSLayoutConstraint!
 
     var imageDataTask: URLSessionDataTask?
     static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
@@ -54,7 +57,7 @@ class CreateEventViewController: UIViewController {
     var event: Event?
     var interestList = [String]()
     var rsvpArray = [String]()
-    
+    var eventType: EventType = .publik
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,7 +73,6 @@ class CreateEventViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
     }
 
 // MARK: - Other function
@@ -82,8 +84,8 @@ class CreateEventViewController: UIViewController {
                 
         // Setup tableview
         setupTableView()
-        
         fillImageHeader()
+        deleteButton.isHidden = true
         if isEditEvent == true {
             setupEventEdit()
         }
@@ -97,7 +99,15 @@ extension CreateEventViewController {
     }
     
     @IBAction func saveButtonAction() {
-        createEventAPI()
+        if isEditEvent == true {
+            updateEventApi(eventId: event?.id ?? "")
+        } else {
+            createEventAPI()
+        }
+    }
+    
+    @IBAction func deleteEventButtonAction() {
+        deleteEventAPI(id: event?.id ?? "")
     }
     
     @IBAction func addImageButtonAction() {
@@ -108,11 +118,11 @@ extension CreateEventViewController {
 // MARK: - Other Function
 extension CreateEventViewController {
     func setupEventEdit() {
+        nameEvent = event?.title ?? ""
         cancelButton.setImage(#imageLiteral(resourceName: "back-arrow"), for: .normal)
-        saveButton.setImage(#imageLiteral(resourceName: "deleteWhite"), for: .normal)
+        saveButtonConstraint.constant = 60
+        deleteButton.isHidden = false
         cancelButton.setTitle("", for: .normal)
-        saveButton.setTitle("", for: .normal)
-        saveButton.backgroundColor = .clear
         eventDescription = event?.desc ?? ""
         address = event?.address ?? ""
         if let eventLat = event?.latitude, let lat = Double(eventLat) {
@@ -147,8 +157,16 @@ extension CreateEventViewController {
 // MARK: - Mediator
 extension CreateEventViewController {
     func selectedCell(_ indexPath: IndexPath) {
-        
-        if indexPath.section == 0  || indexPath.section == 1 {
+        if indexPath.section == 0 && self.isEditEvent == true {
+                    guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+                    eventCategoryFilter.dataArray = Utils.eventTypeArray()
+                    eventCategoryFilter.delegate = self
+                    eventCategoryFilter.isEventTypeModel = true
+                    eventCategoryFilter.selectedIndex = self.event?.eventType == .publik ? 0 : self.event?.eventType == .closed ? 1 : 2
+                    eventCategoryFilter.headerTitle = "Choose event type:"
+                    let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+                    self.presentPanModal(rowViewController)
+        } else if indexPath.section == 0 || indexPath.section == 1 {
             
         } else if indexPath.section == 2 {
                DispatchQueue.main.async {

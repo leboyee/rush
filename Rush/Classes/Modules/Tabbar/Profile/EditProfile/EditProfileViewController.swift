@@ -40,8 +40,6 @@ class EditProfileViewController: UIViewController {
         tableView.reloadData()
     }
 }
-
-
 // MARK: - Setup
 extension EditProfileViewController {
     

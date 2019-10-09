@@ -108,10 +108,10 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
                header.setup(title: Text.personal)
            case 2:
                header.setup(title: Text.education)
-           case 3:
-               header.setup(title: Text.majors)
-           case 4:
-               header.setup(title: Text.minors)
+            case 3:
+                header.setup(title: Text.majors)
+            case 4:
+                header.setup(title: Text.minors)
            default:
                header.setup(title: "")
            }
