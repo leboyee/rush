@@ -6,7 +6,6 @@
 //  Copyright © 2019 Messapps. All rights reserved.
 //
 
-
 import UIKit
 
 extension EditProfileViewController {
@@ -111,9 +110,9 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
            case 2:
                header.setup(title: Text.education)
             case 3:
-            header.setup(title: Text.majors)
+                header.setup(title: Text.majors)
             case 4:
-            header.setup(title: Text.minors)
+                header.setup(title: Text.minors)
            default:
                header.setup(title: "")
            }
@@ -127,8 +126,4 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-    
-    
 }
-
-

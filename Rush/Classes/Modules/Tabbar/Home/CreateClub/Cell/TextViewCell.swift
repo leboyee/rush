@@ -175,6 +175,4 @@ extension TextViewCell: UITextViewDelegate {
         textDidChanged?(textView.text)
         updateTableView?(textView)
     }
-    
-
 }

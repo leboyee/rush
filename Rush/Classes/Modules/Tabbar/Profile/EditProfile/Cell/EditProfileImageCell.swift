@@ -33,7 +33,7 @@ class EditProfileImageCell: UITableViewCell {
 extension EditProfileImageCell {
     
     func setup(image: UIImage?) {
-        DispatchQueue.main.async{
+        DispatchQueue.main.async {
             self.cameraBtn.backgroundColor=UIColor.clear
             self.cameraBtn.tintColor=UIColor.clear
             self.cameraBtn.imageView?.image = image

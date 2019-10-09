@@ -38,6 +38,8 @@ class HomeViewController: CustomViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
+
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getClubListAPI(sortBy: "feed")
@@ -165,6 +167,11 @@ extension HomeViewController {
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
             vc.classInfo = sender as? Class
+        } else if segue.identifier == Segues.searchClubSegue {
+            guard let vc = segue.destination as? SearchClubViewController else { return }
+            //            vc.searchType = screenType == .club ? .searchList : .classes
+            vc.searchType = .classes
+            vc.classObject = sender as? SubClass ?? SubClass()
         }
         
     }

@@ -9,7 +9,6 @@
 import UIKit
 import Photos
 
-
 // MARK: - Header delegate
 extension EditProfileViewController: AddImageDelegate {
     

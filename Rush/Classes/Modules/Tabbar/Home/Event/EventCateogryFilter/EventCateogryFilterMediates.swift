@@ -13,6 +13,8 @@ extension EventCateogryFilterViewController: UITableViewDelegate, UITableViewDat
     func setupTableView() {
         
         tableView.register(UINib(nibName: Cell.eventCategoryFilterCell, bundle: nil), forCellReuseIdentifier: Cell.eventCategoryFilterCell)
+        tableView.register(UINib(nibName: Cell.eventTypeModelCell, bundle: nil), forCellReuseIdentifier: Cell.eventTypeModelCell)
+
         tableView.register(UINib(nibName: ReusableView.eventCategoryFilterHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.eventCategoryFilterHeader)
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.reloadData()
@@ -27,9 +29,15 @@ extension EventCateogryFilterViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isEventTypeModel == true {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventTypeModelCell, for: indexPath) as? EventTypeModelCell else { return UITableViewCell() }
+                     fillModelCell(cell, indexPath)
+                     return cell
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventCategoryFilterCell, for: indexPath) as? EventCategoryFilterCell else { return UITableViewCell() }
-            fillCell(cell, indexPath)
-            return cell
+                     fillCell(cell, indexPath)
+                     return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

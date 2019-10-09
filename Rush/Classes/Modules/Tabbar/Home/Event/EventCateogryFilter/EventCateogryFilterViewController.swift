@@ -21,8 +21,12 @@ class EventCateogryFilterViewController: CustomViewController {
 
     var isShortFormEnabled = false
     var dataArray = [String]()
+    var detailArray = [String]()
     var selectedIndex: Int = 0
     var headerTitle: String = "Sort by:"
+    var isEventTypeModel = false
+    var isEventType: EventType = .publik
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,7 +36,6 @@ class EventCateogryFilterViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         panModalSetNeedsLayoutUpdate()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +60,11 @@ extension EventCateogryFilterViewController: PanModalPresentable {
     }
     
       var longFormHeight: PanModalHeight {
-        return .contentHeight(CGFloat((self.dataArray.count * 64) + 50))
+        if isEventTypeModel == true {
+            return .contentHeight(CGFloat((self.dataArray.count * 123) + 50))
+        } else {
+            return .contentHeight(CGFloat((self.dataArray.count * 64) + 50))
+        }
     }
 
     var backgroundAlpha: CGFloat {
@@ -85,7 +92,6 @@ extension EventCateogryFilterViewController: PanModalPresentable {
     }
     
     var scrollIndicatorInsets: UIEdgeInsets {
-        let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
         return UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
     }
 

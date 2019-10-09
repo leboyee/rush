@@ -92,6 +92,7 @@ struct Cell {
     static let editProfileImage     =  "EditProfileImageCell"
     static let editProfileInfo      = "EditProfileInfoCell"
     static let editProfileMinorCell = "EditProfileMinorCell"
+    static let eventTypeModelCell = "EventTypeModelCell"
 
 }
 
