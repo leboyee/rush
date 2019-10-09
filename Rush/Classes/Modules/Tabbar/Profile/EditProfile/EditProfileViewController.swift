@@ -8,15 +8,15 @@
 
 import UIKit
 import Photos
+import DKImagePickerController
+import DKPhotoGallery
+import DKCamera
 
 class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var imageList = [Any]()
-    var imagePicker = UIImagePickerController()
-    var picker = ImagePickerController()
-    var eventImage: UIImage?
+    var photoImage: UIImage?
     var selectedGender: Int = 0
     var selectedRelation: Int = 0
     var selectedDate = Date().minus(years: 19)
@@ -78,43 +78,78 @@ extension EditProfileViewController {
     }
 }
 
+// MARK: - Image Picker
+extension EditProfileViewController {
+    
+    func photoLibraryPermissionCheck() {
+        Utils.authorizePhoto(completion: { [weak self] (status) in
+            guard let unsafe = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
+                    unsafe.cameraPermissionCheck()
+            } else {
+                if status != .justDenied {
+                    Utils.photoLibraryPermissionAlert()
+                }
+            }
+        })
+    }
+    
+    func cameraPermissionCheck() {
+        Utils.authorizeVideo(completion: { [weak self] (status) in
+            guard let unsafe = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
+                    unsafe.openCameraOrLibrary()
+            } else {
+                if status != .justDenied {
+                    Utils.alertCameraAccessNeeded()
+                }
+            }
+        })
+    }
+
+    func openCameraOrLibrary() {
+
+        let pickerController = DKImagePickerController()
+        DKImageExtensionController.registerExtension(extensionClass: CustomCameraExtension.self, for: .camera)
+        pickerController.singleSelect = true
+        pickerController.showsCancelButton = true
+        pickerController.autoCloseOnSingleSelect = true
+        pickerController.assetType = .allPhotos
+        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            if assets.count > 0 {
+                self.assignSelectedImages(photos: assets)
+            }
+        }
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    func assignSelectedImages(photos: [DKAsset]) {
+        var dkAsset: DKAsset!
+        dkAsset = photos[0]
+       dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, _ in
+            if let img = image {
+                DispatchQueue.main.async {
+                    self.userPhotoImageView.image = img.squareImage()
+                    self.userImageViewWidthConstraint.constant = 200
+                    self.userImageViewHeightConstraint.constant = 200
+                    self.userPhotoImageView.layoutIfNeeded()
+                    self.view.layoutIfNeeded()
+                    self.userPhotoImageView.layer.cornerRadius = 100
+                    self.userPhotoImageView.clipsToBounds = true
+                    self.bottomLabel.text = Text.changeImage
+                    self.nextButton.setNextButton(isEnable: true)
+                }
+            }
+        })
+    }
+}
+
 // MARK: - Medaitor
 extension EditProfileViewController {
     
-    func addImageFunction() {
-        self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: self)
-    }
 }
 
-// MARK: - Imagepicker fuctions
-extension EditProfileViewController: ImagePickerControllerDelegate {
-    
-    func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
-        return true
-    }
-    
-    func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
-        imageList = assets
-        picker.dismiss(animated: false, completion: nil)
-        DispatchQueue.main.async {
-            //self.setEventImage(imageAsset: self.imageList[0])
-            
-            self.tableView.reloadData()
-        }
-        tableView.reloadData()
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
-        picker.dismiss(animated: false, completion: nil)
-    }
-    
-    // MARK: - Capture Image
-    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
-        
-    }
-}
-
-// MARK: - TableView
+// MARK: - Navigation
 extension EditProfileViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.selectEventPhoto {
