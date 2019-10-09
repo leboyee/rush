@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6L-8a-WyD">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6L-8a-WyD">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -131,11 +129,38 @@ like!</string>
                                     <constraint firstItem="Myr-NA-Dfi" firstAttribute="top" secondItem="ydw-l1-d5M" secondAttribute="bottom" constant="24.5" id="tdt-Bd-vkS"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caE-62-K2K">
+                                <rect key="frame" x="0.0" y="245" width="414" height="315"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Qz8-Lj-tg6">
+                                        <rect key="frame" x="165" y="113.5" width="84" height="88"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have anything scheduled for today" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-gR-3UB">
+                                        <rect key="frame" x="24" y="217.5" width="366" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Qz8-Lj-tg6" firstAttribute="centerX" secondItem="caE-62-K2K" secondAttribute="centerX" id="0SM-G6-Ddk"/>
+                                    <constraint firstItem="Qz8-Lj-tg6" firstAttribute="centerY" secondItem="caE-62-K2K" secondAttribute="centerY" id="1uB-o8-B7H"/>
+                                    <constraint firstAttribute="height" constant="315" id="VLc-zh-DpZ"/>
+                                    <constraint firstItem="LOk-gR-3UB" firstAttribute="top" secondItem="Qz8-Lj-tg6" secondAttribute="bottom" constant="16" id="Wtz-IQ-Wzv"/>
+                                    <constraint firstAttribute="trailing" secondItem="LOk-gR-3UB" secondAttribute="trailing" constant="24" id="XAd-Jf-VIU"/>
+                                    <constraint firstItem="LOk-gR-3UB" firstAttribute="leading" secondItem="caE-62-K2K" secondAttribute="leading" constant="24" id="hgs-pr-tY4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="K0H-Sa-sRg" firstAttribute="trailing" secondItem="05b-RP-UQ0" secondAttribute="trailing" id="9L0-u0-jOp"/>
+                            <constraint firstItem="caE-62-K2K" firstAttribute="centerY" secondItem="ANz-JA-7iQ" secondAttribute="centerY" id="JS0-co-vIv"/>
+                            <constraint firstItem="caE-62-K2K" firstAttribute="centerX" secondItem="ANz-JA-7iQ" secondAttribute="centerX" id="MIk-3Z-WEI"/>
+                            <constraint firstItem="caE-62-K2K" firstAttribute="leading" secondItem="05b-RP-UQ0" secondAttribute="leading" id="Mlg-Jw-e8s"/>
                             <constraint firstItem="K0H-Sa-sRg" firstAttribute="leading" secondItem="05b-RP-UQ0" secondAttribute="leading" id="NIr-yK-sOd"/>
+                            <constraint firstItem="05b-RP-UQ0" firstAttribute="trailing" secondItem="caE-62-K2K" secondAttribute="trailing" id="bYM-xe-9Rs"/>
                             <constraint firstItem="K0H-Sa-sRg" firstAttribute="centerY" secondItem="ANz-JA-7iQ" secondAttribute="centerY" id="dun-1Y-57e"/>
                             <constraint firstItem="9yw-V8-Tef" firstAttribute="top" secondItem="ANz-JA-7iQ" secondAttribute="top" id="eTW-Ok-m0t"/>
                             <constraint firstItem="9yw-V8-Tef" firstAttribute="leading" secondItem="ANz-JA-7iQ" secondAttribute="leading" id="kcM-vp-vMq"/>
@@ -145,16 +170,51 @@ like!</string>
                         <viewLayoutGuide key="safeArea" id="05b-RP-UQ0"/>
                     </view>
                     <connections>
+                        <outlet property="emptyTodayView" destination="caE-62-K2K" id="lGs-mC-Hdk"/>
                         <outlet property="emptyView" destination="K0H-Sa-sRg" id="KeZ-Q5-Hle"/>
                         <outlet property="tableView" destination="9yw-V8-Tef" id="qGH-8L-ee9"/>
+                        <segue destination="CZb-CZ-VLU" kind="show" identifier="ExploreEventsSegue" id="wXp-bz-NWQ"/>
+                        <segue destination="jgZ-Ip-kcO" kind="show" identifier="CalendarEventDetailSegue" id="iT9-2C-vb2"/>
+                        <segue destination="eZB-TL-St6" kind="show" identifier="CalendarClassDetailSegue" id="86B-Wv-Znb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chE-gh-xsm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="869.56521739130437" y="92.745535714285708"/>
         </scene>
+        <!--EventDetail-->
+        <scene sceneID="XSq-9k-ndR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="jgZ-Ip-kcO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hgG-0m-P2E"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aOo-wZ-Xra" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1435" y="-59"/>
+        </scene>
+        <!--ClassDetailViewController-->
+        <scene sceneID="UWQ-po-grd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="ClassDetailViewController" id="eZB-TL-St6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="w6a-Gn-ZNf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGk-NV-wDn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1491" y="15"/>
+        </scene>
+        <!--EventListViewController-->
+        <scene sceneID="Vqm-0b-SwB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Event" referencedIdentifier="EventListViewController" id="CZb-CZ-VLU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sJf-yX-ZcB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="txF-Zd-IUs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1491" y="92"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar_empty_image" width="130" height="96"/>
+        <image name="ic_gray_calendar" width="84" height="88"/>
     </resources>
 </document>

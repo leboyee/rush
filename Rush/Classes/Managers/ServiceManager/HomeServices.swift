@@ -23,7 +23,7 @@ extension ServiceManager {
     func fetchClubList(sortBy: String, params: [String: Any], closer: @escaping (_ params: [Club]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClubList(sortBy: sortBy, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
-            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (clubs, errorMessage) in
+            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (clubs, _, errorMessage) in
                 closer(clubs, errorMessage)
             })
         }

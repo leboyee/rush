@@ -245,3 +245,10 @@ extension EventDetailViewController: CreatePostViewControllerDelegate {
         performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
     }
 }
+
+// MARK: - EventHeader delegate
+extension EventDetailViewController: EventHeaderDelegate {
+    func didTappedCalendar() {
+        showCalendar()
+    }
+}

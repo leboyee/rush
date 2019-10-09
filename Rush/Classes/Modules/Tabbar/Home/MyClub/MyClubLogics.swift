@@ -44,7 +44,7 @@ extension MyClubViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: [])
+        cell.setup(invitees: [], total: 0)
         
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unself = self else { return }

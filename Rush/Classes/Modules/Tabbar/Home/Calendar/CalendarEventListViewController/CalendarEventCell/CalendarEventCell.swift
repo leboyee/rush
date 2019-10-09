@@ -15,8 +15,6 @@ class CalendarEventCell: UITableViewCell {
     @IBOutlet weak var titleLabel: CustomBlackLabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var dateLabel: CustomBlackLabel!
     @IBOutlet weak var separator: UIView!
     @IBOutlet weak var leadingSeparatorConstraint: NSLayoutConstraint!
 
@@ -46,27 +44,11 @@ extension CalendarEventCell {
         typeLabel.text = type
     }
     
-    func set(path: String?) {
-        if let url = path {
-            eventImageView.sd_setImage(with: URL(string: url), placeholderImage: nil)
-        } else {
-            eventImageView.image = nil
-        }
-    }
-    
-    func set(date: Date?) {
-        if let date = date {
-            monthLabel.text = date.toString(format: "MMM").uppercased()
-            dateLabel.text = date.toString(format: "dd")
-        } else {
-            monthLabel.text = ""
-            dateLabel.text = ""
-        }
-        
+    func set(url: URL?) {
+        eventImageView.sd_setImage(with: url, placeholderImage: nil)
     }
     
     func set(start: Date?, end: Date?) {
-        
         if let startDate = start {
             var text = startDate.toString(format: "hh:mm a")
             if let endDate = end {

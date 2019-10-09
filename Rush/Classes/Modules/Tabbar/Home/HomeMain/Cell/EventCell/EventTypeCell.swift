@@ -30,6 +30,7 @@ class EventTypeCell: UITableViewCell {
     var type: EventCategoryType = .upcoming
     var cellType: CellType = .none
     var list: [Any]?
+    var total: Int = 0
     let padding: CGFloat = 16.0
     
     override func awakeFromNib() {
@@ -57,9 +58,10 @@ class EventTypeCell: UITableViewCell {
         reload()
     }
     
-    func setup(invitees: [Invitee]?) {
+    func setup(invitees: [Invitee]?, total: Int) {
         cellType = .invitees
         list = invitees
+        self.total = total
         reload()
     }
     

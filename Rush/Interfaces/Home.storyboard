@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1121,6 +1119,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
                                 <rect key="frame" x="0.0" y="13" width="414" height="708.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1605,7 +1604,7 @@
         <!--Class Detail View Controller-->
         <scene sceneID="Y4t-E7-Z3N">
             <objects>
-                <viewController storyboardIdentifier="ClassDetailViewController" id="5cK-WW-kO9" customClass="ClassDetailViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClassDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5cK-WW-kO9" customClass="ClassDetailViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lhW-sB-GCy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1667,6 +1666,8 @@
         <image name="unPlashIcon" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ogb-eY-SFI"/>
+        <segue reference="rRs-cY-38f"/>
         <segue reference="L5B-Xz-z9C"/>
         <segue reference="zl1-35-Qwj"/>
         <segue reference="QdI-xB-jJm"/>
@@ -1677,6 +1678,8 @@
         <segue reference="90w-At-CBu"/>
         <segue reference="rad-wA-dQ6"/>
         <segue reference="gSU-VJ-XvQ"/>
+        <segue reference="p5t-Td-KDq"/>
+        <segue reference="h98-X0-moE"/>
         <segue reference="Oel-AB-j6R"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -117,8 +117,7 @@ extension ProfileViewController {
     }
     
     func showEditProfile() {
-        Utils.alert(message: "In Development")
-        //performSegue(withIdentifier: Segues.editProfileSegue, sender: nil)
+        Utils.notReadyAlert()
     }
     
     func showAllFriends() {
@@ -146,10 +145,6 @@ extension ProfileViewController {
             let vc = segue.destination as? OtherUserProfileController
             vc?.userInfo = sender as? User
             vc?.delegate = self
-        } else if segue.identifier == Segues.profileFriendProfile {
-                   let vc = segue.destination as? ProfileViewController
-                   vc?.profileDetail.profile = sender as? User
-                   vc?.isOtherUserProfile = true
         }
     }
 }
