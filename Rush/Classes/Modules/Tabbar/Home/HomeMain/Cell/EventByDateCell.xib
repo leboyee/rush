@@ -74,10 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VR Meetup" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erI-m4-jFg" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="144" y="29.5" width="112" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="Bh8-UM-la4"/>
-                                </constraints>
+                                <rect key="frame" x="144" y="25" width="112" height="20.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

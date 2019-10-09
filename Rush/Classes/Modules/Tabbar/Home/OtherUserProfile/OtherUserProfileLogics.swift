@@ -100,10 +100,10 @@ extension OtherUserProfileController {
             guard let unself = self else { return }
             if status == .accept {
                 /*
-                unself.friendType = .addFriend
-                unself.isShowMessageButton = false
-                unself.tableView.reloadData()
-                */
+                 unself.friendType = .addFriend
+                 unself.isShowMessageButton = false
+                 unself.tableView.reloadData()
+                 */
                 Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "decline")
@@ -112,7 +112,11 @@ extension OtherUserProfileController {
             } else {
                 let controller = ChatRoomViewController()
                 controller.isShowTempData = false
+                controller.isGroupChat = false
                 controller.userName = unself.userInfo?.name ?? ""
+                let friend = Friend()
+                friend.user = unself.userInfo
+                controller.friendProfile = friend
                 unself.navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -282,7 +286,7 @@ extension OtherUserProfileController {
                         duration: .middle,
                         actionText: "Undo",
                         actionBlock: { (_) in
-                           Utils.notReadyAlert()
+                            Utils.notReadyAlert()
                     })
                     snackbar.show()
                 }
