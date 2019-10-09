@@ -15,8 +15,8 @@ protocol AddImageDelegate: class {
 class EditProfileImageCell: UITableViewCell {
 
     weak var delegate: AddImageDelegate?
-    @IBOutlet weak var cameraBtn: UIButton!
-    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,38 +34,34 @@ extension EditProfileImageCell {
     
     func setup(image: UIImage?) {
         DispatchQueue.main.async {
-            self.cameraBtn.backgroundColor=UIColor.clear
-            self.cameraBtn.tintColor=UIColor.clear
-            self.cameraBtn.imageView?.image = image
+            self.cameraButton.backgroundColor=UIColor.clear
+            self.cameraButton.tintColor=UIColor.clear
+            self.cameraButton.imageView?.image = image
         }
     }
     
-    func setup(url: URL?) {
-        cameraBtn.imageView?.sd_setImage(with: url, completed: nil)
+    func setup(url: URL) {
+        cameraButton?.sd_setBackgroundImage(with: url, for: .normal, completed: { (image, _, _, _) in
+            if image != nil {
+                self.titleLabel.text = "Change profile image"
+                self.setup(image: UIImage())
+            } else {
+                self.titleLabel.text = "Add profile image"
+                self.setup(image: #imageLiteral(resourceName: "addProfile"))
+            }
+        })
     }
     
-    func setup(imageUrl: URL?) {
-        cameraBtn.imageView?.sd_setImage(with: imageUrl, completed: nil)
+    func setup(image: UIImage) {
+        cameraButton.setImage(image, for: .normal)
     }
 
 }
 
 // MARK: - Actions
 extension EditProfileImageCell {
-
-//    @IBAction func changePhotoButtonAction(_ sender: Any) {
-//        delegate?.addPhotoOfClub()
-//    }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
         delegate?.addPhotoOfProfile()
     }
-    
-//    @IBAction func infoButtonAction() {
-//        delegate?.infoOfClub()
-//    }
-//
-//    @IBAction func nameTapButtonAction() {
-//        delegate?.infoOfClub()
-//    }
 }

@@ -84,6 +84,11 @@ struct Keys {
     static let userHomeTown            = "u_hometown"
     static let userLatitude            = "u_latitude"
     static let userLongitude           = "u_longitude"
+    static let userBirthDate           = "u_birth_date"
+    static let userGender              = "u_gender"
+    static let userRelation             = "u_relationship"
+
+    
 
     static let phone           = "phone"
     static let phoneToken           = "phone_token"

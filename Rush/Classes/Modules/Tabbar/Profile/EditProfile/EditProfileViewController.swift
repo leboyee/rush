@@ -27,7 +27,7 @@ class EditProfileViewController: UIViewController {
     var homeTown = ""
     var address = ""
     var profile = Authorization.shared.profile
-    
+    var updateImage = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -35,6 +35,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        profile = Authorization.shared.profile
         tabBarController?.tabBar.isHidden = false
         title = ""
         tableView.reloadData()
@@ -98,6 +99,7 @@ extension EditProfileViewController {
         Utils.authorizeVideo(completion: { [weak self] (status) in
             guard let unsafe = self else { return }
             if status == .alreadyAuthorized || status == .justAuthorized {
+                    unsafe.updateImage = false
                     unsafe.openCameraOrLibrary()
             } else {
                 if status != .justDenied {
@@ -126,19 +128,22 @@ extension EditProfileViewController {
     func assignSelectedImages(photos: [DKAsset]) {
         var dkAsset: DKAsset!
         dkAsset = photos[0]
-       dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { image, _ in
-            if let img = image {
-                DispatchQueue.main.async {
-                    self.userPhotoImageView.image = img.squareImage()
-                    self.userImageViewWidthConstraint.constant = 200
-                    self.userImageViewHeightConstraint.constant = 200
-                    self.userPhotoImageView.layoutIfNeeded()
-                    self.view.layoutIfNeeded()
-                    self.userPhotoImageView.layer.cornerRadius = 100
-                    self.userPhotoImageView.clipsToBounds = true
-                    self.bottomLabel.text = Text.changeImage
-                    self.nextButton.setNextButton(isEnable: true)
+        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { [weak self] (image, _ ) in
+            guard let unsafe = self else { return }
+            if image != nil {
+                if unsafe.updateImage == false {
+                    unsafe.updateImage = true
+                    DispatchQueue.main.async {
+                        unsafe.photoImage = image
+                        var photoData = Data()
+                        if (unsafe.photoImage ?? UIImage()).size.width > 0 {
+                            photoData = unsafe.photoImage?.jpegData(compressionQuality: 0.8) ?? Data()
+                            let param = ["u_photo": photoData] as [String: Any]
+                            unsafe.updateProfileImageAPI(param: param)
+                        }
+                    }
                 }
+                
             }
         })
     }
@@ -146,35 +151,37 @@ extension EditProfileViewController {
 
 // MARK: - Medaitor
 extension EditProfileViewController {
-    
+
 }
 
 // MARK: - Navigation
 extension EditProfileViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.selectEventPhoto {
-            if let vc = segue.destination as? SelectEventTypeViewController {
-                vc.type = .photo
-            }
-        } else if segue.identifier == Segues.chooseUniversitySegue {
+       if segue.identifier == Segues.chooseUniversitySegue {
             if let vc = segue.destination as? ChooseUniversityViewController {
-                vc.isEditProfile = true
+                vc.isEditUserProfile = true
             }
         } else if segue.identifier == Segues.chooseLevelSegue {
             if let vc = segue.destination as? ChooseLevelViewController {
-                vc.isEditProfile = true
+                vc.isEditUserProfile = true
+                guard let index = Utils.chooseLevelArray().firstIndex(where: { $0 == profile?.educationLevel ?? "" }) else { return }
+                vc.selectedIndex = index
             }
         } else if segue.identifier == Segues.chooseYearSegue {
             if let vc = segue.destination as? ChooseYearViewController {
-                vc.isEditProfile = true
+                guard let index = Utils.chooseYearArray().firstIndex(where: { $0 == profile?.educationYear ?? "" }) else { return }
+                vc.selectedIndex = index
+                vc.isEditUserProfile = true
             }
         } else if segue.identifier == Segues.addMajorViewSegue {
             if let vc = segue.destination as? AddMajorsViewController {
-                vc.isEditProfile = true
+                vc.selectedArray = profile?.majors ?? [String]()
+                vc.isEditUserProfile = true
             }
         } else if segue.identifier == Segues.addMinorViewSegue {
             if let vc = segue.destination as? AddMinorsViewController {
-                vc.isEditProfile = true
+                vc.selectedArray = profile?.minors ?? [String]()
+                vc.isEditUserProfile = true
             }
         }
         

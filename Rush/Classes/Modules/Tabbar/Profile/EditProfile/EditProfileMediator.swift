@@ -47,39 +47,22 @@ extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource 
             if let cell = tableView.dequeueReusableCell(
                 withIdentifier: Cell.editProfileImage,
                 for: indexPath) as? EditProfileImageCell {
-                cell.delegate=self
+                fillProfileImageCell(cell, indexPath)
                 return cell
             }
-        }
-        if indexPath.section == 1 {
+        } else if indexPath.section == 1 || indexPath.section == 2 {
             if let cell = tableView.dequeueReusableCell(
                 withIdentifier: Cell.editProfileInfo,
                 for: indexPath) as? EditProfileInfoCell {
                 fillProfileInfoCell(cell, indexPath)
                 return cell
             }
-        }
-        if indexPath.section == 2 {
-                 if let cell = tableView.dequeueReusableCell(
-                     withIdentifier: Cell.editProfileInfo,
-                     for: indexPath) as? EditProfileInfoCell {
-                     fillProfileInfoCell(cell, indexPath)
-                     return cell
-            }
-        }
-        if indexPath.section == 3 {
+        } else if indexPath.section == 3 ||  indexPath.section == 4 {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.editProfileMinorCell, for: indexPath) as? EditProfileMinorCell else { return UITableViewCell() }
                     fillProfileMajorCell(cell, indexPath)
                     return cell
         }
-        if indexPath.section == 4 {
-                   
-           guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.editProfileMinorCell, for: indexPath) as? EditProfileMinorCell else { return UITableViewCell() }
-                   fillProfileMinorCell(cell, indexPath)
-                   return cell
-       }
-        
          return UITableViewCell()
     }
     

@@ -23,7 +23,7 @@ class AddMajorsViewController: CustomViewController {
     var selectedArray = [String]()
     var selectedIndex = -1
     var majorArray = [[String: Any]]()
-    var isEditProfile: Bool = false
+    var isEditUserProfile: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,11 @@ class AddMajorsViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
+        if isEditUserProfile == true {
+            pageControl.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
+        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,10 +120,10 @@ extension AddMajorsViewController {
 // MARK: - Preseneter
 extension AddMajorsViewController {
     func profileUpdateSuccess() {
-        //if isEditProfile == true {
+        if isEditUserProfile == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
             self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
-        //} else {
-         //   self.navigationController?.popViewController(animated: true)
-        //}
+        }
     }
 }

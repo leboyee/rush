@@ -138,7 +138,7 @@ extension UserInfoViewController: AddEventLocationDelegate {
 extension UserInfoViewController {
     func updateProfileAPI() {
         
-        let param = [Keys.userHomeTown: homeTown, Keys.userLatitude: "\(latitude)", Keys.userLongitude: "\(longitude)"]  as [String: Any]
+        let param = [Keys.userHomeTown: homeTown, Keys.userLatitude: "\(latitude)", Keys.userLongitude: "\(longitude)", Keys.userBirthDate: dob, Keys.userGender: gender, Keys.userRelation: relation]  as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()

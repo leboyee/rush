@@ -22,7 +22,7 @@ class AddMinorsViewController: CustomViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var minorCustomButton: UIButton!
     @IBOutlet weak var minorButtonConstraint: NSLayoutConstraint!
-    var isEditProfile: Bool = false
+    var isEditUserProfile: Bool = false
     var selectedArray = [String]()
     var minorArray = [[String: Any]]()
     var selectedIndex = -1
@@ -40,6 +40,11 @@ class AddMinorsViewController: CustomViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+        if isEditUserProfile == true {
+            pageControl.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
+        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -149,10 +154,10 @@ extension AddMinorsViewController {
 extension AddMinorsViewController {
     
     func profileUpdateSuccess() {
-        //if isEditProfile == true {
-            self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
-       // } else {
-        //    self.navigationController?.popViewController(animated: true)
-        //}
+        if isEditUserProfile == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+        }
     }
 }

@@ -1351,11 +1351,11 @@
 			isa = PBXGroup;
 			children = (
 				1A0EDEEA234892C800502959 /* EditProfileMinorCell.swift */,
-				1A0EDEEB234892C800502959 /* EditProfileImageCell.swift */,
-				1A0EDEEC234892C800502959 /* EditProfileInfoCell.xib */,
-				1A0EDEED234892C800502959 /* EditProfileInfoCell.swift */,
 				1A0EDEEE234892C800502959 /* EditProfileMinorCell.xib */,
+				1A0EDEEB234892C800502959 /* EditProfileImageCell.swift */,
 				1A0EDEEF234892C800502959 /* EditProfileImageCell.xib */,
+				1A0EDEED234892C800502959 /* EditProfileInfoCell.swift */,
+				1A0EDEEC234892C800502959 /* EditProfileInfoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

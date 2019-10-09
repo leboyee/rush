@@ -29,7 +29,7 @@
                                 <rect key="frame" x="24" y="0.0" width="335" height="126"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" text="sdsdsd" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Q9-ii-lA6">
-                                        <rect key="frame" x="0.0" y="13.5" width="310" height="90"/>
+                                        <rect key="frame" x="-5" y="13.5" width="315" height="90"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" red="0.14901960780000001" green="0.039215686270000001" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
@@ -53,7 +53,7 @@
                                     <constraint firstItem="2Q9-ii-lA6" firstAttribute="top" secondItem="5KW-O9-qD9" secondAttribute="top" constant="13.5" id="Y7D-Wi-Io4"/>
                                     <constraint firstItem="1AT-0q-j52" firstAttribute="top" secondItem="5KW-O9-qD9" secondAttribute="top" constant="21.5" id="ehF-Yi-xdn"/>
                                     <constraint firstAttribute="bottom" secondItem="1AT-0q-j52" secondAttribute="bottom" constant="20.5" id="jkk-pS-tvW"/>
-                                    <constraint firstItem="2Q9-ii-lA6" firstAttribute="leading" secondItem="5KW-O9-qD9" secondAttribute="leading" id="yzE-xi-IUW"/>
+                                    <constraint firstItem="2Q9-ii-lA6" firstAttribute="leading" secondItem="5KW-O9-qD9" secondAttribute="leading" constant="-5" id="yzE-xi-IUW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPc-M8-fXs">
