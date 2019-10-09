@@ -111,6 +111,12 @@ extension CalendarViewController {
    
 }
 
+extension CalendarViewController {
+    func reloadEvents() {
+       loadEvents(date: selectedDate)
+    }
+}
+
 // MARK: - Mediator/Presenter Functions
 extension CalendarViewController {
  

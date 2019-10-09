@@ -153,6 +153,7 @@ extension CreateEventViewController {
         guard let url = event?.photo?.main else { return }
         clubHeader.setup(url: URL(string: url))
     }
+    
 }
 // MARK: - Mediator
 extension CreateEventViewController {
@@ -192,6 +193,15 @@ extension CreateEventViewController {
     
     func addImageFunction() {
         self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: self)
+    }
+    
+    func updatedEventSuccesssully() {
+        navigationController?.viewControllers.forEach({ (vc) in
+            if vc.isKind(of: EventDetailViewController.self) {
+                (vc as? EventDetailViewController)?.loadAllData()
+            }
+        })
+        navigationController?.popViewController(animated: true)
     }
 }
 

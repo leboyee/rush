@@ -686,7 +686,7 @@ extension CreateEventViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {
-                unsafe.navigationController?.popViewController(animated: true)
+                unsafe.updatedEventSuccesssully()
             } else {
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }

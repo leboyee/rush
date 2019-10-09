@@ -498,7 +498,7 @@ extension EventDetailViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {
-                unsafe.backButtoAction()
+                unsafe.deleteEventSuccessfully()
             } else if let message = errorMsg {
                 unsafe.showMessage(message: message)
             }

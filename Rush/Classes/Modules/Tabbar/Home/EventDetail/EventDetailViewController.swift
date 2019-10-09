@@ -199,6 +199,15 @@ extension EventDetailViewController {
             mapItem.openInMaps(launchOptions: options)
         }
     }
+    
+    func deleteEventSuccessfully() {
+        navigationController?.viewControllers.forEach({ (vc) in
+            if vc.isKind(of: CalendarViewController.self) {
+                (vc as? CalendarViewController)?.reloadEvents()
+            }
+        })
+        backButtoAction()
+    }
 }
 
 // MARK: - Navigations
