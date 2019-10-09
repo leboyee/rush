@@ -43,6 +43,8 @@ class SearchClubViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         navigationController?.navigationBar.isTranslucent = false
         
         IQKeyboardManager.shared.enable = false

@@ -55,6 +55,8 @@ class CreatePostViewController: UIViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         tabBarController?.tabBar.isHidden = true
         tabBarController?.tabBar.isTranslucent = true
     }
