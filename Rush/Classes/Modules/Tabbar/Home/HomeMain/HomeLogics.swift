@@ -93,7 +93,8 @@ extension HomeViewController {
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
                 let classes = unsafe.classList[index]
-                unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classes)
+                //unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classes) //unmark if already joined
+               unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classes)
             }
         }
         
