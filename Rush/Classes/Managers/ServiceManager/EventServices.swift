@@ -61,9 +61,7 @@ extension ServiceManager {
                 closer(status, errorMessage)
             })
         }
-    }
-    
-    
+    }    
     // Event category API
     func fetchEventCategoryList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventCategoryList(params: params) { [weak self] (data, error, code) in

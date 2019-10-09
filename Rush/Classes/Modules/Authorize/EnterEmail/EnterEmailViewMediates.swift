@@ -24,8 +24,8 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     // MARK: - Keyboard functions
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            var keyboardHeight = keyboardSize.height
-            print("keyboardHeight",keyboardHeight)
+            let keyboardHeight = keyboardSize.height
+            print("keyboardHeight", keyboardHeight)
 //            if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneX.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXR.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXSMax.rawValue {
 //                if keyboardHeight < 300 {
 //                                  keyboardHeight = 301
@@ -44,7 +44,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     
     @objc func keyboardWFrameChange(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print("keyboardHeight",keyboardSize.height)
+            print("keyboardHeight", keyboardSize.height)
         }
 
     }
@@ -67,7 +67,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string == "" { } else if string.isValidEmailAddressString == false { return false }
-        if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) {
+        if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) || (string == "" && range.location >= ((textField.text?.count ?? 0) - 4)) {
             return false
         }
         let currentString: NSString = textField.text! as NSString

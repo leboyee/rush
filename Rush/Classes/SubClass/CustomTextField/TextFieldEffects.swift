@@ -117,10 +117,13 @@ open class TextFieldEffects: UITextField {
                 object: self)
 
         } else {
-            NotificationCenter.default.removeObserver(self)
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     /**
     The textfield has started an editing session.
     */

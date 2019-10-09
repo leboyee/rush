@@ -13,11 +13,14 @@ extension EnterPhoneNoViewController {
     func setPlaceHolder() {
 
         let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.clear, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 28)]
+        
+        let blackArrtibutes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 28)]
+
         let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 28)]
         
         let partOne = NSMutableAttributedString(string: "\(self.countryCode)-(", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
-        let partThree = NSMutableAttributedString(string: ")", attributes: yourOtherAttributes)
+        let partThree = NSMutableAttributedString(string: ")", attributes: blackArrtibutes)
         let partFour = NSMutableAttributedString(string: "-754-3010", attributes: yourOtherAttributes)
         
         partOne.append(partTwo)

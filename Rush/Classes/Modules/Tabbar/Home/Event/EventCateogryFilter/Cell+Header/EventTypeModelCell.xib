@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventTypeModelCell" id="KGk-i7-Jjw" customClass="EventTypeModelCell" customModule="Rush" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBa-sL-Blr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Co9-qt-VDe">
+                                <rect key="frame" x="63" y="122" width="257" height="1"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="UXm-P4-puJ"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="public-green" translatesAutoresizingMaskIntoConstraints="NO" id="Jzy-oJ-8W8">
+                                <rect key="frame" x="24" y="16" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="AAR-HK-Kp5"/>
+                                    <constraint firstAttribute="height" constant="24" id="BIF-ut-VGS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer, the attendees, and the event information." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMD-GD-aT2">
+                                <rect key="frame" x="64" y="45" width="203" height="62.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNz-ZR-Mew">
+                                <rect key="frame" x="63" y="17" width="46.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Eg1-X6-cCp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mMD-GD-aT2" firstAttribute="leading" secondItem="HNz-ZR-Mew" secondAttribute="leading" constant="1" id="1JN-3q-9FA"/>
+                            <constraint firstAttribute="trailing" secondItem="mMD-GD-aT2" secondAttribute="trailing" constant="53" id="4ev-no-aQH"/>
+                            <constraint firstAttribute="trailing" secondItem="Co9-qt-VDe" secondAttribute="trailing" id="8Zv-iP-4oz"/>
+                            <constraint firstItem="HNz-ZR-Mew" firstAttribute="top" secondItem="NBa-sL-Blr" secondAttribute="top" constant="17" id="FVG-QC-nKa"/>
+                            <constraint firstItem="mMD-GD-aT2" firstAttribute="top" secondItem="HNz-ZR-Mew" secondAttribute="bottom" constant="8" id="fAk-ZB-etd"/>
+                            <constraint firstItem="Jzy-oJ-8W8" firstAttribute="top" secondItem="NBa-sL-Blr" secondAttribute="top" constant="16" id="jvl-nZ-lsN"/>
+                            <constraint firstItem="Co9-qt-VDe" firstAttribute="top" secondItem="mMD-GD-aT2" secondAttribute="bottom" constant="14.5" id="oHs-2f-Tqq"/>
+                            <constraint firstAttribute="bottom" secondItem="Co9-qt-VDe" secondAttribute="bottom" id="ozF-9h-NHq"/>
+                            <constraint firstItem="Jzy-oJ-8W8" firstAttribute="leading" secondItem="NBa-sL-Blr" secondAttribute="leading" constant="24" id="rF4-I6-qaC"/>
+                            <constraint firstItem="Co9-qt-VDe" firstAttribute="leading" secondItem="HNz-ZR-Mew" secondAttribute="leading" id="uHk-m6-2pL"/>
+                            <constraint firstItem="HNz-ZR-Mew" firstAttribute="leading" secondItem="Jzy-oJ-8W8" secondAttribute="trailing" constant="15" id="wWQ-m0-Rxf"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark-red" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-iN-1oK">
+                        <rect key="frame" x="284" y="53.5" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="eVs-hh-sXt"/>
+                            <constraint firstAttribute="width" constant="16" id="jPc-0i-Up8"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="NBa-sL-Blr" secondAttribute="trailing" id="C5I-mF-9V1"/>
+                    <constraint firstAttribute="trailing" secondItem="2ZU-iN-1oK" secondAttribute="trailing" constant="20" id="GCt-Yp-Uip"/>
+                    <constraint firstItem="NBa-sL-Blr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="akS-Fk-PMU"/>
+                    <constraint firstItem="NBa-sL-Blr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nrV-Rd-zgf"/>
+                    <constraint firstAttribute="bottom" secondItem="NBa-sL-Blr" secondAttribute="bottom" id="pt9-3T-gPI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="2ZU-iN-1oK" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="Cnr-Sv-YwO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellBackgroundView" destination="NBa-sL-Blr" id="M2L-zw-4vU"/>
+                <outlet property="checkMarkImageView" destination="2ZU-iN-1oK" id="q8r-X4-2Hd"/>
+                <outlet property="eventDetailLabel" destination="mMD-GD-aT2" id="dIb-xn-D3y"/>
+                <outlet property="eventTypeImageView" destination="Jzy-oJ-8W8" id="b1o-Xv-XWh"/>
+                <outlet property="nameLabel" destination="HNz-ZR-Mew" id="ftu-vD-QtT"/>
+            </connections>
+            <point key="canvasLocation" x="-49.275362318840585" y="79.352678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark-red" width="16" height="16"/>
+        <image name="public-green" width="24" height="24"/>
+    </resources>
+</document>

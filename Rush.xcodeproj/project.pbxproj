@@ -89,6 +89,8 @@
 		1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */; };
 		1A44C363234265EF00A93A18 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44C361234265EF00A93A18 /* EventTimeCell.swift */; };
 		1A44C364234265EF00A93A18 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A44C362234265EF00A93A18 /* EventTimeCell.xib */; };
+		1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */; };
+		1A572B88234B96A6003E2824 /* EventTypeModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */; };
 		1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */; };
 		1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */; };
 		1A62D23022954216001E5790 /* EnterEmailViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */; };
@@ -642,6 +644,8 @@
 		1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnBoardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		1A44C361234265EF00A93A18 /* EventTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
 		1A44C362234265EF00A93A18 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
+		1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeModelCell.xib; sourceTree = "<group>"; };
+		1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeModelCell.swift; sourceTree = "<group>"; };
 		1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewConteroller.swift; sourceTree = "<group>"; };
 		1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterEmailViewMediates.swift; sourceTree = "<group>"; };
 		1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterEmailViewLogics.swift; sourceTree = "<group>"; };
@@ -1288,9 +1292,11 @@
 		1A024CF823476F8600EE7FB4 /* Cell+Header */ = {
 			isa = PBXGroup;
 			children = (
+				1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */,
+				1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */,
+				1A024CFB23476F8600EE7FB4 /* EventCategoryFilterHeader.swift */,
 				1A024CF923476F8600EE7FB4 /* EventCategoryFilterHeader.xib */,
 				1A024CFA23476F8600EE7FB4 /* EventCategoryFilterCell.xib */,
-				1A024CFB23476F8600EE7FB4 /* EventCategoryFilterHeader.swift */,
 				1A024CFC23476F8600EE7FB4 /* EventCategoryFilterCell.swift */,
 			);
 			path = "Cell+Header";
@@ -3192,6 +3198,7 @@
 				794183B0228960C7009AB12C /* SF-Pro-Display-Semibold.otf in Resources */,
 				1AB43B2A2327E75600C2FBCE /* RSVP.storyboard in Resources */,
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
+				1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */,
 				7903D0B2228E8CE5004E33B9 /* TutorialPopUpCell.xib in Resources */,
 				79F377AD22CB6297003FC33E /* SearchClubCell.xib in Resources */,
 				79D456EE232FAC86001FFDA0 /* ClubHeader.xib in Resources */,
@@ -3466,6 +3473,7 @@
 				79F27165229D3A99008C4926 /* TextViewCell.swift in Sources */,
 				1A649E1C2297F55A00B2E9E7 /* EnterPasswordlViewLogics.swift in Sources */,
 				1AB0C16022C1247F000D016E /* ServiceManager.swift in Sources */,
+				1A572B88234B96A6003E2824 /* EventTypeModelCell.swift in Sources */,
 				793BE69222E88207005EF72D /* MessagesCollectionView.swift in Sources */,
 				79C7DA6622A7987300EA7759 /* FriendsListLogics.swift in Sources */,
 				8A04B13A22FADFAC0055C65F /* CalendarEventListMediator.swift in Sources */,

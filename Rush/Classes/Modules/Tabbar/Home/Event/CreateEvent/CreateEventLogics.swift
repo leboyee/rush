@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 import UnsplashPhotoPicker
+import PanModal
 
 extension CreateEventViewController {
     
@@ -83,26 +84,26 @@ extension CreateEventViewController {
             if indexPath.section == 4 {
                 unsafe.startTimeDate = date
                 /*if unsafe.startDate.isSameDate(unsafe.endDate) && unsafe.startTimeDate > unsafe.endTimeDate {
-                    Utils.alert(message: "Start time not allow greter then end event Time")
-                    return
-                }*/
+                 Utils.alert(message: "Start time not allow greter then end event Time")
+                 return
+                 }*/
                 unsafe.startTime = date.toString(format: "hh:mm a")
                 unsafe.tableView.reloadData()
-
+                
             } else {
                 unsafe.endTimeDate = date
                 /*if unsafe.startDate.isSameDate(unsafe.endDate) &&
-                    unsafe.startTimeDate > unsafe.endTimeDate {
-                    Utils.alert(message: "End time not allow smaller then start event Time")
-                    return
-                }*/
+                 unsafe.startTimeDate > unsafe.endTimeDate {
+                 Utils.alert(message: "End time not allow smaller then start event Time")
+                 return
+                 }*/
                 unsafe.endTimeDate = date
                 unsafe.endTime = date.toString(format: "hh:mm a")
                 unsafe.tableView.reloadData()
             }
         }
     }
-
+    
     func fillDateAndTimeEvent(_ cell: DateAndTimeCell, _ indexPath: IndexPath) {
         
         if indexPath.section == 4 {
@@ -180,7 +181,7 @@ extension CreateEventViewController {
                 cell.setupButtonImage(image: UIImage(named: "downArrow") ?? UIImage())
                 cell.setupButtonDisable(isDisable: true)
                 cell.setup(isHideClearButton: false)
-                
+                cell.setup(isEnabled: false)
                 cell.topConstraintOfBgView.constant = -16
                 cell.topTextViewConstraint.constant = 20
             } else {
@@ -192,39 +193,34 @@ extension CreateEventViewController {
             }
         }
         cell.textDidChanged = {  [weak self] (text) in
-                   guard let unsafe = self else { return }
-                   
+            guard let unsafe = self else { return }
+            
             if indexPath.section == 0 && unsafe.isEditEvent == false {
                 unsafe.nameEvent = text
-            } else  {
+            } else {
                 unsafe.nameEvent = text
             }
             unsafe.validateAllFields()
         }
-               
-               cell.textDidEndEditing = { [weak self] (text) in
-                   guard let unsafe = self else { return }
-                   var txt = text
-                   if txt.last == "\n" {
-                       txt = String(txt.dropLast())
-                   }
-                   if text.isNotEmpty {
-
-                   }
-                   unsafe.validateAllFields()
+        
+        cell.textDidEndEditing = { [weak self] (text) in
+            guard let unsafe = self else { return }
+            var txt = text
+            if txt.last == "\n" {
+                txt = String(txt.dropLast())
+            }
+            if text.isNotEmpty {
+                
+            }
+            unsafe.validateAllFields()
         }
-               
-               cell.clearButtonClickEvent = { [weak self] () in
-                   guard let unsafe = self else { return }
-                   
-                if indexPath.section == 0 && unsafe.isEditEvent == true {
-                    
-                }
-                 
-               }
-               
+        
+        cell.clearButtonClickEvent = { //[weak self] () in
+            //guard let unsafe = self else { return }
+        }
+        
     }
-
+    
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
@@ -296,7 +292,7 @@ extension CreateEventViewController {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
-
+                
             }
             unsafe.validateAllFields()
         }
@@ -344,7 +340,7 @@ extension CreateEventViewController {
             }
         }
     }
-        
+    
     func fillImageHeader(_ view: UserImagesHeaderView) {
         view.setup(image: eventImage)
         view.addPhotoButtonEvent = { [weak self] () in
@@ -363,12 +359,12 @@ extension CreateEventViewController {
             title: "Permission Requires",
             buttons: ["Cancel", "Settings"],
             handler: { (index) in
-            if index == 1 {
-                //Open settings
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                if index == 1 {
+                    //Open settings
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
                 }
-            }
         })
     }
     
@@ -377,13 +373,14 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if eventImage != nil && nameEvent.isNotEmpty {
-                        saveButton.isEnabled = true
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && interestList.count > 0 {
+            
+            saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
-
+            
         } else {
-               saveButton.isEnabled = false
-                     saveButton.setImage(#imageLiteral(resourceName: "save-dark"), for: .normal)
+            saveButton.isEnabled = false
+            saveButton.setImage(#imageLiteral(resourceName: "save-dark"), for: .normal)
         }
     }
     
@@ -425,11 +422,11 @@ extension CreateEventViewController {
         
         imageDataTask?.resume()
     }
-
-       func fillImageHeader() {
-            clubHeader.setup(image: eventImage)
-           clubHeader.delegate = self
-       }
+    
+    func fillImageHeader() {
+        clubHeader.setup(image: eventImage)
+        clubHeader.delegate = self
+    }
 }
 
 extension CreateEventViewController: CalendarViewDelegate {
@@ -445,7 +442,7 @@ extension CreateEventViewController: CalendarViewDelegate {
         cell.layoutIfNeeded()
         self.tableView.reloadData()
         //}
-
+        
     }
     
     func isEventExist(date: Date) -> Bool {
@@ -479,7 +476,7 @@ extension CreateEventViewController: CalendarViewDelegate {
 // MARK: - SelectEventTypeController Delegate
 extension CreateEventViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-        
+        self.eventType = type
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
@@ -512,7 +509,7 @@ extension CreateEventViewController: UnsplashPhotoPickerDelegate {
         
         self.tableView.reloadData()
     }
-
+    
     func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
         print("Unsplash photo picker did cancel")
     }
@@ -538,6 +535,24 @@ extension CreateEventViewController: AddEventLocationDelegate {
     }
 }
 
+// MARK: - EventPanModel
+extension CreateEventViewController: EventCategoryFilterDelegate {
+    func selectedIndex(_ type: String) {
+        if type == "0" {
+            self.event?.eventType = .publik
+            self.eventType = .publik
+        } else if type == "1" {
+            self.event?.eventType = .closed
+            self.eventType = .closed
+        } else if type == "2" {
+            self.event?.eventType = .inviteOnly
+            self.eventType = .inviteOnly
+        }
+        self.tableView.reloadData()
+        self.validateAllFields()
+    }
+}
+
 // MARK: - Add Invities Delegate
 extension CreateEventViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
@@ -558,24 +573,25 @@ extension CreateEventViewController: EventInterestDelegate {
 extension CreateEventViewController {
     
     func createEventAPI() {
-        
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interests = interestList.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
         let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
-
+        
         var array = rsvpArray
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
         let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDateString = Date().localToUTCDate(date: startUtcDate)
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
+        print(startUtcDateString)
         var rsvpJson: String = ""
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: array)
@@ -586,21 +602,23 @@ extension CreateEventViewController {
             print(error.localizedDescription)
         }
         
-        let param = [Keys.createEventType: "public",
+        let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
+
+        let param = [Keys.createEventType: eventTypeString,
                      Keys.eventName: self.nameEvent,
                      Keys.eventDesc: self.eventDescription,
                      Keys.eventRsvpList: rsvpJson,
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
-                     Keys.eventLongitude: "\(longitude)",
-                     Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
-                     Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
-                     Keys.eventInterests: interests,
-                     Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
-                     Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
-                     Keys.eventPhoto: img,
-                     Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
-
+            Keys.eventLongitude: "\(longitude)",
+            Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventInterests: interests,
+            Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
+            Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
+            Keys.eventPhoto: img,
+            Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
+        
         Utils.showSpinner()
         ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
             Utils.hideSpinner()
@@ -614,14 +632,19 @@ extension CreateEventViewController {
     }
     
     func updateEventApi(eventId: String) {
-        
+        if eventImage == nil {
+            eventImage = clubHeader.userImageView.image
+        }
+
+        let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
+            
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interests = interestList.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
         let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
-
+        
         var array = rsvpArray
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
@@ -643,21 +666,21 @@ extension CreateEventViewController {
         }
         
         let param = [Keys.eventId: eventId,
-                     Keys.createEventType: "public",
+                     Keys.createEventType: eventTypeString,
                      Keys.eventName: self.nameEvent,
                      Keys.eventDesc: self.eventDescription,
                      Keys.eventRsvpList: rsvpJson,
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
-                     Keys.eventLongitude: "\(longitude)",
-                     Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
-                     Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
-                     Keys.eventInterests: interests,
-                     Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
-                     Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
-                     Keys.eventPhoto: img,
-                     Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
-
+            Keys.eventLongitude: "\(longitude)",
+            Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventInterests: interests,
+            Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
+            Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
+            Keys.eventPhoto: img,
+            Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
+        
         Utils.showSpinner()
         ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
             Utils.hideSpinner()
@@ -669,5 +692,17 @@ extension CreateEventViewController {
             }
         }
     }
-
+    
+    func deleteEventAPI(id: String) {
+       Utils.showSpinner()
+       ServiceManager.shared.deleteEvent(eventId: id) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.navigationController?.popToRootViewController(animated: true)
+            } else if let message = errorMsg {
+                Utils.alert(message: message)
+            }
+        }
+    }
 }
