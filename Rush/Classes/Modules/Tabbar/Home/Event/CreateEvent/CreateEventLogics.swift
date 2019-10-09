@@ -682,7 +682,7 @@ extension CreateEventViewController {
             Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
+        ServiceManager.shared.updateEvent(eventId: eventId, params: param) { [weak self] (status, errMessage) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {

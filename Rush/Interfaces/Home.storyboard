@@ -71,6 +71,7 @@
                         <segue destination="7Gr-5Z-xHy" kind="show" identifier="CreateEventSegue" id="g7q-6I-dom"/>
                         <segue destination="24E-dK-adz" kind="show" identifier="EventListSeuge" id="iR9-HT-ltw"/>
                         <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="Ogb-eY-SFI"/>
+                        <segue destination="lXY-6N-AZ5" kind="show" identifier="SearchClubSegue" id="zl1-35-Qwj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1597,6 +1598,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="dxR-jp-mgw" id="YWv-Xw-nhT"/>
+                        <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="rRs-cY-38f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8v-Vt-G3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1669,6 +1671,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ogb-eY-SFI"/>
+        <segue reference="rRs-cY-38f"/>
+        <segue reference="zl1-35-Qwj"/>
         <segue reference="QdI-xB-jJm"/>
         <segue reference="Bwe-EL-S9s"/>
         <segue reference="YgH-R3-42x"/>
@@ -1677,6 +1681,7 @@
         <segue reference="90w-At-CBu"/>
         <segue reference="rad-wA-dQ6"/>
         <segue reference="gSU-VJ-XvQ"/>
+        <segue reference="p5t-Td-KDq"/>
         <segue reference="h98-X0-moE"/>
     </inferredMetricsTieBreakers>
 </document>

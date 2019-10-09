@@ -278,7 +278,7 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if status {
                 if type == "unfriend" {
-                    let snackbar = TTGSnackbar(message: "You unfriended \(String(describing: self?.userInfo?.name))",
+                    let snackbar = TTGSnackbar(message: "You unfriended \(unsafe.userInfo?.name ?? "")",
                         duration: .middle,
                         actionText: "Undo",
                         actionBlock: { (_) in

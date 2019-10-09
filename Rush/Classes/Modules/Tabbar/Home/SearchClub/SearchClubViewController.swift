@@ -105,5 +105,10 @@ extension SearchClubViewController {
 // MARK: - Navigation
 extension SearchClubViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.subclassInfo = classObject
+            vc.selectedGroup = sender as? ClassGroup
+        }
     }
 }

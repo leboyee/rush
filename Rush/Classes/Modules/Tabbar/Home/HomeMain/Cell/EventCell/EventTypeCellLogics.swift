@@ -43,7 +43,6 @@ extension EventTypeCell {
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
                 cell.joinButton.isHidden = false
-                cell.joinButton.isUserInteractionEnabled = false
                 if let invitee = club.invitees {
                     let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
                     if filter.count > 0 {

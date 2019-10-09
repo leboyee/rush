@@ -25,6 +25,8 @@ class ClassDetailViewController: UIViewController {
     var joinedClub = false
     
     var classInfo: Class?
+    var subclassInfo: SubClass?
+    var selectedGroup: ClassGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class ClassDetailViewController: UIViewController {
     
     // MARK: - Other function
     func setup() {
+        
         setupUI()
     }
     

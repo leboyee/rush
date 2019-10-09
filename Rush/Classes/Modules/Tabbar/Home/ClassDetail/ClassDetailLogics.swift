@@ -42,8 +42,9 @@ extension ClassDetailViewController {
     
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
-        cell.setup(title: "Development lifehacks")
-        cell.setup(detail: "FINA 140", numberOfLines: 0)
+        
+        cell.setup(title: subclassInfo?.name ?? "Development lifehacks")
+        cell.setup(detail: selectedGroup?.name ?? "FINA 40", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
         cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
     }
@@ -71,7 +72,7 @@ extension ClassDetailViewController {
         cell.resetAllField()
         cell.setup(isUserInterfaceEnable: false)
         if indexPath.section == 3 {
-            cell.setup(placeholder: "", title: "Harvard main campus")
+            cell.setup(placeholder: "", title: subclassInfo?.location ?? "Harvard main campus")
             cell.setup(iconImage: "location-gray")
         } else {
             cell.setup(iconImage: "calender-gray")
@@ -116,11 +117,17 @@ extension ClassDetailViewController {
         cell.setup(title: "Join class")
         cell.joinButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.joinedClub = true
-            unself.tableView.reloadData()
+            unself.joinClassAPI()
         }
     }
-    
+    func checkIsJoined() {
+//        if let user = selectedGroup?.myJoinedGroup.userId {
+//            let filter = user.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+//            if filter.count > 0 {
+//                joinedClub = true
+//            }
+//        }
+    }
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
         
@@ -148,7 +155,8 @@ extension ClassDetailViewController {
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(image: #imageLiteral(resourceName: "bound-add-img"))
+        let img = Image(json: subclassInfo?.photo ?? "")
+        view.setup(imageUrl: img.url())
         view.setup(isHideHoverView: true)
     }
     
@@ -163,5 +171,18 @@ extension ClassDetailViewController {
 }
 
 extension ClassDetailViewController {
-    
+    func joinClassAPI() {
+        Utils.showSpinner()
+        ServiceManager.shared.joinClassGroup(classId: selectedGroup?.classId ?? "0", groupId: selectedGroup?.id ?? "0", params: [:]) { [weak self] (status, errorMsg) in
+            guard let uwself = self else { return }
+            if status {
+                Utils.hideSpinner()
+                uwself.joinedClub = true
+                uwself.tableView.reloadData()
+            } else {
+                Utils.hideSpinner()
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }
