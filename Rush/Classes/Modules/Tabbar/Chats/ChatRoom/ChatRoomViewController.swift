@@ -25,6 +25,7 @@ class ChatRoomViewController: MessagesViewController {
     
     let outgoingAvatarOverlap: CGFloat = 17.5
     var userNavImageView = UIImageView()
+    var userNavImage: UIImage?
     var userNameNavLabel = UILabel()
     var timeLabel = UILabel()
     var messageList: [MockMessage] = []
@@ -57,6 +58,9 @@ class ChatRoomViewController: MessagesViewController {
         
         super.viewDidLoad()
         setup()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +78,8 @@ class ChatRoomViewController: MessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         MockSocket.shared.disconnect()
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -398,24 +404,26 @@ extension ChatRoomViewController {
                 isGroupChat = true
             }
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        
+    
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
+        
+        //Load data
+        loadPrevisouMessages()
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
-//        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 88, width: 88, height: 88)
-//        timeLabel.frame = CGRect(x: 16, y: 100, width: screenWidth - 32, height: 22)
-        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, keyboardSize.height > 0, keyboardSize.height < 150 {
+            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 152, width: 88, height: 88)
+            timeLabel.frame = CGRect(x: 16, y: 256, width: screenWidth - 32, height: 22)
+        }
     }
     
     @objc func keyboardDidHide(notification: NSNotification) {
-        emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: (screenHeight/2) - 44, width: 88, height: 88)
-        timeLabel.frame = CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22)
-
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, keyboardSize.height > 0 {
+            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: (screenHeight/2) - 44, width: 88, height: 88)
+            timeLabel.frame = CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22)
+        }
     }
     
     func updateChannelNameAndImagesOnNav() {
@@ -450,8 +458,11 @@ extension ChatRoomViewController {
         let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
         
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
-//        userNavImageView.image = #imageLiteral(resourceName: "bound-add-img")
-        userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        if friendProfile != nil {
+            userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        } else if userNavImage != nil {
+            userNavImageView.image = userNavImage
+        }
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill
@@ -468,6 +479,7 @@ extension ChatRoomViewController {
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
+        viewCalender.addTarget(self, action: #selector(openUserProfileScreen), for: .touchUpInside)
         titleView.addSubview(dateLabel)
         titleView.addSubview(viewCalender)
         
@@ -510,5 +522,11 @@ extension ChatRoomViewController {
         if messageList.count > 0 {
             messagesCollectionView.scrollToBottom(animated: animated)
         }
+    }
+    
+    @objc func openUserProfileScreen() {
+        let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

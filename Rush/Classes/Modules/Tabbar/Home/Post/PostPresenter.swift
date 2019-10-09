@@ -77,7 +77,8 @@ extension PostViewController {
             guard let unself = self else { return }
             unself.parentComment = comment
             if let name = comment.user?.name {
-                unself.textView.attributedText  = Utils.setAttributedText(name, "", 17, 17)
+                unself.textView.placeHolder = ""
+                unself.textView.attributedText  = Utils.setAttributedText(name, ", ", 17, 17)
             }
             unself.textView.becomeFirstResponder()
         }
@@ -116,7 +117,8 @@ extension PostViewController {
             guard let unself = self else { return }
             unself.parentComment = comment
             if let name = comment?.user?.name {
-                unself.textView.attributedText  = Utils.setAttributedText(name, "", 17, 17)
+                unself.textView.placeHolder = ""
+                unself.textView.attributedText  = Utils.setAttributedText(name, ", ", 17, 17)
             }
             unself.textView.becomeFirstResponder()
         }
@@ -188,6 +190,9 @@ extension PostViewController {
             if status {
                 unsafe.pageNoP = 1
                 unsafe.isNextPageExistP = true
+                unsafe.username = ""
+                unsafe.textView.text = ""
+                unsafe.textView.attributedText = nil
                 unsafe.getAllCommentListAPI()
             } else {
                 Utils.hideSpinner()

@@ -42,8 +42,8 @@ class ClassDetailViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - Other function

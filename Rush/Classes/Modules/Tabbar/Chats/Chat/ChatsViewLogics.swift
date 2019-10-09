@@ -20,20 +20,39 @@ extension ChatsViewController {
     }
     
     func fillCell(_ cell: ChatListCell, _ indexPath: IndexPath) {
-//        let channel = channels[indexPath.row]
-//        cell.setup(title: channel.name)
-//        cell.setup(detail: channel.lastMessage?.data ?? "")
+        let channel = channels[indexPath.row]
+        cell.setup(title: getSingleChatName(channel: channel))
+        cell.setup(lastMessage: channel.lastMessage)
+        cell.setup(onlineUser: channel.members)
+        cell.setup(chatImage: channel.members)
+        cell.setup(channel: channel)
     }
     
     func cellSelected(_ indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ChatListCell else { return }
         let controller = ChatRoomViewController()
-        controller.isShowTempData = true
-        if indexPath.row == 0 {
-            controller.isGroupChat = true
-        } else {
-            controller.isGroupChat = false
-        }
+        controller.hidesBottomBarWhenPushed = true
+        controller.isGroupChat = false
+        controller.userName = cell.titleLabel.text ?? ""
+        controller.userNavImage = cell.imgView.image
+        controller.channel = channels[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func getSingleChatName(channel: SBDGroupChannel) -> String {
+        let name = channel.name
+        let names = name.components(separatedBy: ",")
+        if names.count > 1 {
+            let loggedInUserName = Authorization.shared.profile?.name ?? ""
+            var updateName = ""
+            for nm in names {
+                if !nm.contains(loggedInUserName) {
+                    updateName = nm.trimmingCharacters(in: .whitespacesAndNewlines)
+                    return updateName
+                }
+            }
+         }
+        return name
     }
 }
 

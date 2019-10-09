@@ -37,6 +37,7 @@ class ChatsViewController: CustomViewController {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+        getListOfGroups()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -45,7 +46,6 @@ class ChatsViewController: CustomViewController {
     
     func setup() {
         setupUI()
-        getListOfGroups()
     }
     
     func setupUI() {

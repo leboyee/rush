@@ -28,7 +28,6 @@ class SearchEventViewController: CustomViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-
         navigationController?.navigationBar.isTranslucent = false
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
