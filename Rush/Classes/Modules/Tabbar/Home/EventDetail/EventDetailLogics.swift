@@ -34,9 +34,7 @@ extension EventDetailViewController {
     }
     
     func deletePost(post: Post) {
-        if let id = post.id {
-          deletePostAPI(id: id)
-        }
+        deletePostAPI(id: post.postId)
     }
     
     func loadEventSection() {
@@ -366,11 +364,11 @@ extension EventDetailViewController {
             }
             
             cell.likeButtonEvent = { [weak self] () in
-                self?.voteAPI(id: post.id ?? "", type: Vote.up)
+                self?.voteAPI(id: post.postId, type: Vote.up)
             }
             
             cell.unlikeButtonEvent = { [weak self] () in
-                self?.voteAPI(id: post.id ?? "", type: Vote.down)
+                self?.voteAPI(id: post.postId, type: Vote.down)
             }
             
             cell.commentButtonEvent = { [weak self] () in
@@ -481,7 +479,7 @@ extension EventDetailViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let post = result {
-                let index = unsafe.postList?.firstIndex(where: { ( $0.id == post.id ) })
+                let index = unsafe.postList?.firstIndex(where: { ( $0.postId == post.postId ) })
                 if let position = index, unsafe.postList?.count ?? 0 > position {
                         unsafe.postList?[position] = post
                         unsafe.reloadTable()
@@ -511,7 +509,7 @@ extension EventDetailViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {
-                if let index = unsafe.postList?.firstIndex(where: { $0.id == id }) {
+                if let index = unsafe.postList?.firstIndex(where: { $0.postId == id }) {
                     unsafe.postList?.remove(at: index)
                     unsafe.reloadTable()
                 }

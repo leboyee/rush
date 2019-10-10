@@ -22,8 +22,8 @@ struct PostVote: Codable {
 
 class Post: Codable {
 
-    var id: String?
-    var parentId: String? // Event / Club / Class
+    private var id: Int64 = 0
+    var parentId: Int64? // Event / Club / Class
     var text: String?
     var totalUpVote: Int = 0
     var numberOfLikes: Int = 0
@@ -42,11 +42,15 @@ class Post: Codable {
         }
         return convertedListOfImages
     }
-
+    
+    var postId: String {
+        return String(id)
+    }
+    
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "post_id"
         case parentId = "data_id"
-        case text = "desc"
+        case text = "post_desc"
         case imageJson = "photos"
         case totalUpVote = "total_votes"
         case numberOfLikes = "up_votes"
