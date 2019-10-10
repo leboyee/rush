@@ -133,12 +133,12 @@ extension PostViewController {
             
             cell.likeButtonEvent = { [weak self] () in
                 guard let uwself = self else { return }
-                uwself.voteClubAPI(id: post.id ?? "", type: "up")
+                uwself.voteClubAPI(id: post.postId ?? "", type: "up")
             }
             
             cell.unlikeButtonEvent = { [weak self] () in
                 guard let uwself = self else { return }
-                uwself.voteClubAPI(id: post.id ?? "", type: "down")
+                uwself.voteClubAPI(id: post.postId ?? "", type: "down")
                 
             }
         }
@@ -171,7 +171,7 @@ extension PostViewController {
     func addCommentAPI() {
         
         var param = [String: Any]()
-        param[Keys.postId] = postInfo?.id ?? ""
+        param[Keys.postId] = postInfo?.postId ?? ""
         
         if let id = parentComment?.id, var desc = textView.text, let name = parentComment?.user?.name, let userId = parentComment?.userId {
             desc = desc.replacingOccurrences(of: name, with: "")
@@ -205,11 +205,11 @@ extension PostViewController {
     func getAllCommentListAPI() {
         parentComment = nil
         
-        let param = ["post_id": postInfo?.id ?? "",
+        let param = ["post_id": postInfo?.postId ?? "",
                      "parent_id": parentComment?.id ?? "",
                      "pageNo": pageNoP] as [String: Any]
         
-        ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "", params: param) { [weak self] (data, _) in
+        ServiceManager.shared.fetchCommentList(postId: postInfo?.postId ?? "", params: param) { [weak self] (data, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             
@@ -255,12 +255,12 @@ extension PostViewController {
             self.finishCommentCount += 1
             complition(true)
         } else {
-            let param = ["post_id": postInfo?.id ?? "",
+            let param = ["post_id": postInfo?.postId ?? "",
                          "parent_id": comment.id ?? "",
                          "pageNo": pageNoP] as [String: Any]
             
             parentComment = nil
-            ServiceManager.shared.fetchCommentList(postId: postInfo?.id ?? "", params: param) { [weak self] (data, _) in
+            ServiceManager.shared.fetchCommentList(postId: postInfo?.postId ?? "", params: param) { [weak self] (data, _) in
                 guard let unsafe = self else { return }
                 if let value = data, value.count > 0 {
                     unsafe.commentList[index].threadComment = value
@@ -273,7 +273,7 @@ extension PostViewController {
     
     func deletePostAPI() {
         
-        let id = postInfo?.id ?? "0"
+        let id = postInfo?.postId ?? "0"
         Utils.showSpinner()
         ServiceManager.shared.deletePost(postId: id, params: [Keys.postId: id]) { [weak self] (status, errorMsg) in
             Utils.hideSpinner()

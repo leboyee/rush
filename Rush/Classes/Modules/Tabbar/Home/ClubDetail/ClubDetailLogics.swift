@@ -174,12 +174,12 @@ extension ClubDetailViewController {
         
         cell.likeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.id ?? "", type: "up")
+            uwself.voteClubAPI(id: post.postId, type: "up")
         }
         
         cell.unlikeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.id ?? "", type: "down")
+            uwself.voteClubAPI(id: post.postId, type: "down")
             
         }
         
@@ -306,7 +306,7 @@ extension ClubDetailViewController {
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let post = result {
-                    let index = uwself.clubPostList.firstIndex(where: { ( $0.id == post.id ) })
+                    let index = uwself.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
                     if let position = index, uwself.clubPostList.count > position {
                         uwself.clubPostList[position] = post
                         

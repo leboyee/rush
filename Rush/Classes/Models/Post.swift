@@ -9,12 +9,12 @@
 import UIKit
 
 struct PostVote: Codable {
-    var id: String = ""
+    var id: Int64 = 0
     var status: Int = -1
     var type: Int = 0 // 1 = up, -1 = down
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "post_vote_id"
         case status
         case type
     }
@@ -22,8 +22,9 @@ struct PostVote: Codable {
 
 class Post: Codable {
 
-    var id: String?
+    private var id: Int64 = 0
     private var parentIdP: Int64 = 0 // Event / Club / Class
+
     var text: String?
     var totalUpVote: Int = 0
     var numberOfLikes: Int = 0
@@ -42,11 +43,15 @@ class Post: Codable {
         }
         return convertedListOfImages
     }
-
+    
+    var postId: String {
+        return String(id)
+    }
+    
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "post_id"
         case parentIdP = "data_id"
-        case text = "desc"
+        case text = "post_desc"
         case imageJson = "photos"
         case totalUpVote = "total_votes"
         case numberOfLikes = "up_votes"

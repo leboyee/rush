@@ -113,7 +113,7 @@ extension ProfileViewController {
         header.set(name: name)
         let university = (profileDetail.profile?.university ?? "").isEmpty ? "" : (profileDetail.profile?.university ?? "")
         header.set(university: university)
-        header.set(url: profileDetail.profile?.photo?.urlLarge())
+        header.set(url: profileDetail.profile?.photo?.url())
     }
     
     func showEditProfile() {

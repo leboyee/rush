@@ -90,7 +90,7 @@ extension EventTypeCell {
             cell.setup(isShowCount: true)
         } else {
             if let invitee = list?[indexPath.item - 1] as? Invitee {
-                cell.setup(text: (invitee.user?.firstName ?? "") + " " + (invitee.user?.lastName ?? ""))
+                cell.setup(text: (invitee.user?.firstName ?? ""))
                 cell.setup(isShowCount: false)
                 cell.setup(url: invitee.user?.photo?.urlThumb())
             }
