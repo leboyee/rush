@@ -75,7 +75,7 @@ extension EventDetailViewController {
                 EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags"),
-                EventSection(type: .createPost, title: "Popular posts")
+                EventSection(type: .createPost, title: "Posts")
             ]
             
             /// Need to call post list here
