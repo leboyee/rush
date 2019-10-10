@@ -9,12 +9,12 @@
 import UIKit
 
 struct PostVote: Codable {
-    var id: String = ""
+    var id: Int64 = 0
     var status: Int = -1
     var type: Int = 0 // 1 = up, -1 = down
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "post_vote_id"
         case status
         case type
     }
