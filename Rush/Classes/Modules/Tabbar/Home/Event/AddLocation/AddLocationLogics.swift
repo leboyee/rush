@@ -14,7 +14,7 @@ import CoreLocation
 extension AddLocationViewController {
         
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return 56
+        return UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -22,7 +22,7 @@ extension AddLocationViewController {
     }
     
     func fillLocationCell(_ cell: AddEventLocationCell, _ indexPath: IndexPath) {
-        cell.setup(titleText: self.completerResults[indexPath.row].title)
+        cell.setup(titleText: self.completerResults[indexPath.row].title + " " + self.completerResults[indexPath.row].subtitle)
 //        cell.setup(titleText: self.completerResults[indexPath.row].subtitle)
     }
 }
@@ -32,6 +32,11 @@ extension AddLocationViewController {
     func search(_ searchResult: MKLocalSearchCompletion) {
 //        self.view.makeToast("Started fetching information...")
         let request = MKLocalSearch.Request(completion: searchResult)
+        if #available(iOS 13.0, *) {
+            request.resultTypes = .address
+        } else {
+            // Fallback on earlier versions
+        }
         let search = MKLocalSearch(request: request)
         search.start { result, error in
 //            self.view.hideAllToasts()
@@ -39,7 +44,7 @@ extension AddLocationViewController {
                 self.mapItemToPresent = mapItem
                 // pass this "self.mapItemToPresent" to previous screen
                 print("selected map item is : \(String(describing: self.mapItemToPresent))")
-                self.delegate?.addEventLocationData(searchResult.title, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.longitude ?? 0.0)
+                self.delegate?.addEventLocationData(searchResult.title + " " + searchResult.subtitle, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.longitude ?? 0.0)
                 self.dismiss(animated: true, completion: nil)
             } else if let error = error {
 //                self.view.makeToast("Failed to fetch address information: \(error.localizedDescription)")

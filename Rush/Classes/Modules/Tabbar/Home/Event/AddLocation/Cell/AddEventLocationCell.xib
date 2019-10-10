@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,26 +16,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddEventLocationCell" rowHeight="55" id="KGk-i7-Jjw" customClass="AddEventLocationCell" customModule="Rush" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7Y-bf-pAa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York, U.S.A." lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-X3-4by">
-                                <rect key="frame" x="24" y="0.0" width="284" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="bFr-dI-vEk"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York, U.S.A." lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-X3-4by">
+                                <rect key="frame" x="24" y="10" width="284" height="29"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltO-s8-1gc">
-                                <rect key="frame" x="24" y="54.5" width="296" height="1"/>
+                                <rect key="frame" x="24" y="49" width="296" height="1"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="JL7-Oe-Cou"/>
@@ -51,9 +46,10 @@
                         <constraints>
                             <constraint firstItem="ltO-s8-1gc" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="6bN-Pw-g55"/>
                             <constraint firstAttribute="trailing" secondItem="ltO-s8-1gc" secondAttribute="trailing" id="AOy-hi-GHI"/>
-                            <constraint firstAttribute="trailing" secondItem="Vq2-X3-4by" secondAttribute="trailing" constant="12" id="CVj-fZ-U6L"/>
+                            <constraint firstAttribute="trailing" secondItem="Vq2-X3-4by" secondAttribute="trailing" constant="12" id="GFK-Vd-fQS"/>
                             <constraint firstAttribute="bottom" secondItem="ltO-s8-1gc" secondAttribute="bottom" id="NCe-so-8cT"/>
-                            <constraint firstItem="Vq2-X3-4by" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" id="gR6-rF-oex"/>
+                            <constraint firstItem="ltO-s8-1gc" firstAttribute="top" secondItem="Vq2-X3-4by" secondAttribute="bottom" constant="10" id="fYU-wM-3bD"/>
+                            <constraint firstItem="Vq2-X3-4by" firstAttribute="top" secondItem="E7Y-bf-pAa" secondAttribute="top" constant="10" id="gR6-rF-oex"/>
                             <constraint firstItem="Vq2-X3-4by" firstAttribute="leading" secondItem="E7Y-bf-pAa" secondAttribute="leading" constant="24" id="kcQ-ar-Cnn"/>
                         </constraints>
                     </view>
@@ -71,7 +67,7 @@
             <connections>
                 <outlet property="titleLabel" destination="Vq2-X3-4by" id="7SX-kf-c3i"/>
             </connections>
-            <point key="canvasLocation" x="128.98550724637681" y="95.758928571428569"/>
+            <point key="canvasLocation" x="128.98550724637681" y="95.089285714285708"/>
         </tableViewCell>
     </objects>
 </document>
