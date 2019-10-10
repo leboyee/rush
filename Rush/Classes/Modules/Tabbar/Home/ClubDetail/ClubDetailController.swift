@@ -69,7 +69,7 @@ class ClubDetailViewController: UIViewController {
     func setupUI() {
         
         // Check this club is created by me(logged in user)
-        let clubId = clubInfo?.clubUserId ?? "id"
+        let clubId = clubInfo?.clubUId ?? "id"
         let userId = Authorization.shared.profile?.userId ?? ""
         if userId == clubId {
             joinedClub = true

@@ -58,7 +58,7 @@ extension ClubDetailViewController {
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
-        if clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+        if clubInfo?.clubUId == Authorization.shared.profile?.userId {
             cell.setup(firstButtonType: .manage)
         } else {
             cell.setup(firstButtonType: .joined)
@@ -70,7 +70,7 @@ extension ClubDetailViewController {
             guard let unself = self else { return }
             
             // Manage
-            if unself.clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+            if unself.clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
                     controller.clubInfo = unself.clubInfo
                     let nav = UINavigationController(rootViewController: controller)
@@ -237,7 +237,7 @@ extension ClubDetailViewController {
     
     func getClubDetailAPI() {
         
-        let id = clubInfo?.id ?? ""
+        let id = clubInfo?.clubId ?? ""
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
@@ -268,7 +268,7 @@ extension ClubDetailViewController {
     
     func joinClubAPI() {
         
-        let id = clubInfo?.id ?? "0"
+        let id = clubInfo?.clubId ?? "0"
         
         Utils.showSpinner()
         ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id]) { [weak self] (status, errorMsg) in
@@ -284,12 +284,12 @@ extension ClubDetailViewController {
     
     func getClubPostListAPI() {
         
-        let param = [Keys.dataId: clubInfo?.id ?? "",
+        let param = [Keys.dataId: clubInfo?.clubId ?? "",
                      Keys.dataType: Text.club,
                      Keys.search: "",
                      Keys.pageNo: 1] as [String: Any]
         
-        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
+        ServiceManager.shared.getPostList(dataId: clubInfo?.clubId ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let value = post {

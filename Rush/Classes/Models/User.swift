@@ -88,8 +88,8 @@ class User: Codable {
         case educationYear = "u_edu_year"
         case socialId = "social_id"
         case password
-        case majors = "u_edu_majors"
-        case minors = "u_edu_minors"
+//        case majors = "u_edu_majors"
+//        case minors = "u_edu_minors"
         case interest = "u_interests"
         case university = "u_university"
         case birthDate = "u_birth_date"
