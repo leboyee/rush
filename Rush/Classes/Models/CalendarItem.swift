@@ -9,9 +9,9 @@
 import UIKit
 
 class GroupClassSchedule: Codable {
-    var id = ""
-    var classId = ""
-    var groupId = ""
+    var id: Int64 = 0
+    var classId: Int64 = 0
+    var groupId: Int64 = 0
     var day = ""
     var start = ""
     var end = ""
@@ -30,6 +30,7 @@ class GroupClassSchedule: Codable {
 
 class CalendarItem: Decodable {
     private var id: Int64 = 0
+    private var groupId: Int64?
     var type = ""
     var title = ""
     private var photoJson: String = ""
@@ -50,6 +51,7 @@ class CalendarItem: Decodable {
     
     private enum CodingKeys: String, CodingKey {
        case id = "data_id"
+       case groupId = "data_group_id"
        case type = "data_type"
        case title = "data_name"
        case photoJson = "data_photo"
@@ -61,6 +63,7 @@ class CalendarItem: Decodable {
     required init(from decoder: Decoder) {
         let container = try? decoder.container(keyedBy: CodingKeys.self)
         id = (try? container?.decode(Int64.self, forKey: .id)) ?? 0
+        groupId = (try? container?.decode(Int64.self, forKey: .groupId))
         type = (try? container?.decode(String.self, forKey: .type)) ?? ""
         title = (try? container?.decode(String.self, forKey: .title)) ?? ""
         photoJson = (try? container?.decode(String.self, forKey: .photoJson)) ?? ""
