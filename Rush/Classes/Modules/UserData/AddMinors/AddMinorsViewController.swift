@@ -157,7 +157,7 @@ extension AddMinorsViewController {
         if isEditUserProfile == true {
             self.navigationController?.popViewController(animated: true)
         } else {
-            self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
+            self.performSegue(withIdentifier: Segues.chooseClassesViewSegue, sender: self)
         }
     }
 }

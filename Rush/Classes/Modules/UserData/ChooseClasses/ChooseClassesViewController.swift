@@ -52,7 +52,7 @@ class ChooseClassesViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
-        getClassesList()
+        getClassListAPI()
 
     }
     
