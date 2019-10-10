@@ -41,7 +41,7 @@ extension EventListViewController {
         cell.setup(title: event.title)
         cell.setup(date: event.start)
         cell.setup(start: event.start, end: event.end)
-        cell.setup(eventImageUrl: event.photoJson.photo?.urlThumb())
+        cell.setup(eventImageUrl: event.photo?.urlThumb())
     }
     
     func cellSelected(_ indexPath: IndexPath) {

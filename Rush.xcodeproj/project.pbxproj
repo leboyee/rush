@@ -462,7 +462,6 @@
 		8A04B14222FAF4EE0055C65F /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14022FAF4EE0055C65F /* CalendarEventCell.swift */; };
 		8A04B14322FAF4EE0055C65F /* CalendarEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B14122FAF4EE0055C65F /* CalendarEventCell.xib */; };
 		8A04B14522FB042E0055C65F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14422FB042E0055C65F /* Event.swift */; };
-		8A04B14822FB0C4E0055C65F /* event.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B14722FB0C4E0055C65F /* event.json */; };
 		8A04B14C22FC2B5B0055C65F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14B22FC2B5B0055C65F /* SettingsViewController.swift */; };
 		8A04B14E22FC2FC00055C65F /* RBackgoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14D22FC2FC00055C65F /* RBackgoundView.swift */; };
 		8A04B15022FC37E20055C65F /* SettingsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B14F22FC37E20055C65F /* SettingsMediator.swift */; };
@@ -547,6 +546,7 @@
 		8AAA3801233B506200423D43 /* InviteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37FF233B506200423D43 /* InviteHeader.swift */; };
 		8AAA3843233CA8AC00423D43 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */; };
 		8AAA38452343268600423D43 /* RSVPQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA38442343268500423D43 /* RSVPQuestion.swift */; };
+		8AE7A253234C662B001F2EC0 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A252234C662B001F2EC0 /* CalendarItem.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
@@ -1032,7 +1032,6 @@
 		8A04B14022FAF4EE0055C65F /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		8A04B14122FAF4EE0055C65F /* CalendarEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarEventCell.xib; sourceTree = "<group>"; };
 		8A04B14422FB042E0055C65F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		8A04B14722FB0C4E0055C65F /* event.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event.json; sourceTree = "<group>"; };
 		8A04B14B22FC2B5B0055C65F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8A04B14D22FC2FC00055C65F /* RBackgoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBackgoundView.swift; sourceTree = "<group>"; };
 		8A04B14F22FC37E20055C65F /* SettingsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMediator.swift; sourceTree = "<group>"; };
@@ -1120,6 +1119,7 @@
 		8AAA37FF233B506200423D43 /* InviteHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteHeader.swift; sourceTree = "<group>"; };
 		8AAA3842233CA8AC00423D43 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		8AAA38442343268500423D43 /* RSVPQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPQuestion.swift; sourceTree = "<group>"; };
+		8AE7A252234C662B001F2EC0 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2753,7 +2753,6 @@
 			isa = PBXGroup;
 			children = (
 				8A04B16522FD5F1C0055C65F /* terms.html */,
-				8A04B14722FB0C4E0055C65F /* event.json */,
 			);
 			path = TempFiles;
 			sourceTree = "<group>";
@@ -3046,6 +3045,7 @@
 				79C5811F233BA54600FD837A /* Comment.swift */,
 				8AAA38442343268500423D43 /* RSVPQuestion.swift */,
 				8A1EFDE02345E1A300624EED /* NotificationItem.swift */,
+				8AE7A252234C662B001F2EC0 /* CalendarItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3307,7 +3307,6 @@
 				794183AD228960C7009AB12C /* SF-Pro-Display-Bold.otf in Resources */,
 				794183AE228960C7009AB12C /* SF-Pro-Display-Light.otf in Resources */,
 				793B64F022D5BC1700D9BD6D /* SortingCell.xib in Resources */,
-				8A04B14822FB0C4E0055C65F /* event.json in Resources */,
 				7965E428229ECF22004E3CA2 /* CreateUserPostCell.xib in Resources */,
 				1A95C3652323FDB70066798D /* DateAndTimeCell.xib in Resources */,
 				8A0345CC2322AE520065CF3C /* EventHeader.xib in Resources */,
@@ -3481,6 +3480,7 @@
 				8A04B184230149470055C65F /* LogoutViewController.swift in Sources */,
 				8AAA3843233CA8AC00423D43 /* DateFormatterExtension.swift in Sources */,
 				1A0EDEF9234892C800502959 /* EditProfileMediator.swift in Sources */,
+				8AE7A253234C662B001F2EC0 /* CalendarItem.swift in Sources */,
 				8A02C1E32313EC4600258227 /* TableViewExtension.swift in Sources */,
 				1AA97B8E228979D100C4550C /* ColorExtension.swift in Sources */,
 				79F377A822CB5D69003FC33E /* SearchClubViewController.swift in Sources */,
@@ -3999,7 +3999,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
-				APIKEY = rush123;
+				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -4096,7 +4096,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
-				APIKEY = rush123;
+				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -4249,7 +4249,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
-				APIKEY = rush123;
+				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;

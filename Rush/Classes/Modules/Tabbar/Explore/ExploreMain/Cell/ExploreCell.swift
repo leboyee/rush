@@ -46,11 +46,9 @@ extension ExploreCell {
     func setup(isHideSeparator: Bool) {
         separatorView.isHidden = isHideSeparator
     }
-    func setup(img1Url: String, img2Url: String, img3Url: String){
+    func setup(img1Url: String, img2Url: String, img3Url: String) {
         imgView?.sd_setImage(with: img1Url.photo?.url(), completed: nil)
         imgView2?.sd_setImage(with: img2Url.photo?.url(), completed: nil)
         imgView3?.sd_setImage(with: img3Url.photo?.url(), completed: nil)
-        
     }
-    
 }

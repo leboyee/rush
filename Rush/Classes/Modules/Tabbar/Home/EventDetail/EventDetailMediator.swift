@@ -241,6 +241,14 @@ extension EventDetailViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) { }
 
     func createPostSuccess(_ post: Post) {
-        loadPosts()
+        //loadPosts()
+        performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
+    }
+}
+
+// MARK: - EventHeader delegate
+extension EventDetailViewController: EventHeaderDelegate {
+    func didTappedCalendar() {
+        showCalendar()
     }
 }

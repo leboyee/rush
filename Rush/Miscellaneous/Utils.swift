@@ -360,6 +360,21 @@ extension Utils {
         return mainString
     }
     
+    class func fixOrientation(img:UIImage) -> UIImage {
+        
+        if (img.imageOrientation == UIImage.Orientation.up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return normalizedImage
+    }
+    
     // Static Arrays
     class func chooseLevelArray() -> [String] {
         return ["High school", "Undergraduate", "Graduate", "Alumni", "Professor"]

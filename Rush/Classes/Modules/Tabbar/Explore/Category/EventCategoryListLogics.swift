@@ -89,7 +89,7 @@ extension EventCategoryListViewController {
         } else if type == .classes {
             let myclass = classList[indexPath.row]
 //            let image = Image(json: myclass.clubPhoto ?? "")
-            cell.setup(title: myclass.name ?? "")
+            cell.setup(title: myclass.name )
 //            cell.setup(detail: club.clubDesc ?? "")
 //            cell.setup(invitee: club.invitees)
 //            cell.setup(imageUrl: image.urlThumb())
@@ -103,7 +103,7 @@ extension EventCategoryListViewController {
         cell.setup(title: event.title)
         cell.setup(date: event.start)
         cell.setup(start: event.start, end: event.end)
-        cell.setup(eventImageUrl: event.photoJson.photo?.urlThumb())
+        cell.setup(eventImageUrl: event.photo?.urlThumb())
         
       /*  cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }

@@ -117,7 +117,6 @@ extension ProfileViewController {
     }
     
     func showEditProfile() {
-        //Utils.alert(message: "In Development")
         performSegue(withIdentifier: Segues.editProfileSegue, sender: nil)
     }
     

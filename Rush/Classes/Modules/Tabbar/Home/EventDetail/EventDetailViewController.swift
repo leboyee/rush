@@ -56,6 +56,7 @@ class EventDetailViewController: UIViewController {
     var event: Event?
     var postList: [Post]?
     var inviteeList: [Invitee]?
+    var totalInvitee: Int = 0
 
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
@@ -103,6 +104,10 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
             gesture.delegate = self
         }
         
+        /// Set Header Delegate
+        header.delegate = self
+        updateHeaderInfo()
+        
         setupTableView()
         loadAllData()
         tableView.isHidden = true
@@ -133,7 +138,10 @@ extension EventDetailViewController {
     }
     
     func updateHeaderInfo() {
-        guard let event = event else { return }
+        guard let event = event else {
+            header.set(date: nil)
+            return
+        }
         header.set(date: event.start)
         header.set(start: event.start, end: event.end)
         header.set(url: event.photo?.urlLarge())
@@ -171,6 +179,10 @@ extension EventDetailViewController {
         performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
     }
     
+    func showCalendar() {
+        performSegue(withIdentifier: Segues.eventDetailCalendar, sender: nil)
+    }
+    
     func showLocationOnMap() {
         if let lat = event?.latitude, let lon = event?.longitude, let latitude = Double(lat), let longitude = Double(lon) {
             // Set the region of the map that is rendered.
@@ -186,6 +198,15 @@ extension EventDetailViewController {
             mapItem.name = event?.address
             mapItem.openInMaps(launchOptions: options)
         }
+    }
+    
+    func deleteEventSuccessfully() {
+        navigationController?.viewControllers.forEach({ (vc) in
+            if vc.isKind(of: CalendarViewController.self) {
+                (vc as? CalendarViewController)?.reloadEvents()
+            }
+        })
+        backButtoAction()
     }
 }
 
@@ -229,6 +250,10 @@ extension EventDetailViewController {
             if let vc = segue.destination as? CreateEventViewController {
                 vc.event = event
                 vc.isEditEvent = true
+            }
+        } else if segue.identifier == Segues.eventDetailCalendar {
+            if let vc = segue.destination as? CalendarViewController {
+                vc.selectedDate = event?.start ?? Date()
             }
         }
     }

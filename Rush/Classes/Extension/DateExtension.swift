@@ -275,6 +275,15 @@ extension Date {
         return formatter.date(from: dateString)
     }
     
+    static func parseUTC(dateString: String, format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter.date(from: dateString)
+    }
+    
     public func convertDateToDate(date: Date) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -315,7 +324,11 @@ extension Date {
         if minuteAgo < date {
             return "Now"
         } else if hourAgo < date {
-            return date.toString(format: "hh a")
+            let formatter = DateFormatter()
+            formatter.dateFormat = "h a"
+            formatter.amSymbol = "am"
+            formatter.pmSymbol = "pm"
+            return formatter.string(from: date)
         } else if dayAgo < date {
             let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour ?? 0
             return "\(diff) hrs ago"

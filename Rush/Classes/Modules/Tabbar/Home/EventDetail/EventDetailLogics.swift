@@ -219,7 +219,7 @@ extension EventDetailViewController {
         if eventSection.type == .tags {
             cell.setup(interests: event?.interests?.tags ?? [])
         } else if eventSection.type == .invitee, let list = inviteeList {
-            cell.setup(invitees: list)
+            cell.setup(invitees: list, total: self.totalInvitee)
         }
         
         cell.userSelected = { [weak self] ( id, index) in
@@ -420,10 +420,10 @@ extension EventDetailViewController {
                   guard let unsafe = self else { return }
                   unsafe.event = event
                   unsafe.loadEventSection()
+                  unsafe.updateHeaderInfo()
                   unsafe.downloadGroup.leave()
               }
         }
-        updateHeaderInfo()
     }
     
     private func fetchInvitees() {
@@ -434,9 +434,10 @@ extension EventDetailViewController {
             guard let id = self.eventId, id.isNotEmpty else { return }
             
             let param = [Keys.pageNo: 1]
-            ServiceManager.shared.fetchInviteeList(eventId: id, params: param) { [weak self] (invitees, _) in
+            ServiceManager.shared.fetchInviteeList(eventId: id, params: param) { [weak self] (invitees, total, _) in
                 guard let unsafe = self else { return }
                 unsafe.inviteeList = invitees
+                unsafe.totalInvitee = total
                 unsafe.downloadGroup.leave()
                 unsafe.reloadTable()
             }
@@ -497,7 +498,7 @@ extension EventDetailViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {
-                unsafe.backButtoAction()
+                unsafe.deleteEventSuccessfully()
             } else if let message = errorMsg {
                 unsafe.showMessage(message: message)
             }

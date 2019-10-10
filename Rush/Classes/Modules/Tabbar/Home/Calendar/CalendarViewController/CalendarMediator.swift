@@ -19,14 +19,7 @@ extension CalendarViewController {
 extension CalendarViewController: CalendarViewDelegate {
    
     func changeMonth(date: Date) {
-        if date.toString(format: "yyyy") == Date().toString(format: "yyyy") {
-            let text = date.toString(format: "MMMM dd") + " ▴"
-            monthChange(text: text)
-        } else {
-            let text = date.toString(format: "MMMM dd, yyyy") + " ▴"
-            monthChange(text: text)
-        }
-        
+        monthChange(date: date)
         DispatchQueue.main.async {
             self.calenderView.setSelectedDate(date: date)
         }
@@ -51,7 +44,7 @@ extension CalendarViewController: CalendarViewDelegate {
     }
     
     func selectedDate(date: Date) {
-        print(date)
+        dateChanged(date: date)
     }
     
 }

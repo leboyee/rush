@@ -43,7 +43,6 @@ extension EventTypeCell {
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(eventImageUrl: img.url())
                 cell.joinButton.isHidden = false
-                cell.joinButton.isUserInteractionEnabled = false
                 if let invitee = club.invitees {
                     let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
                     if filter.count > 0 {
@@ -87,7 +86,7 @@ extension EventTypeCell {
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
-            cell.setup(count: list?.count ?? 0)
+            cell.setup(count: total)
             cell.setup(isShowCount: true)
         } else {
             if let invitee = list?[indexPath.item - 1] as? Invitee {

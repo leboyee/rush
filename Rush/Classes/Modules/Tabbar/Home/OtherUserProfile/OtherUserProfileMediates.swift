@@ -42,7 +42,7 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
 //            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
 //            return cell
 //        }
-        else{
+        else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillEventCell(cell, indexPath)
             return cell

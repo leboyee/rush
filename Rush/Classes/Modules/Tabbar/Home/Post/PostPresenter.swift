@@ -56,7 +56,7 @@ extension PostViewController {
     // Comment parent cell
     func fillParentCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
         
-        let comment = commentList[indexPath.row]
+        let comment = commentList[indexPath.section - 4]
         cell.setup(username: comment.user?.name ?? "")
         cell.setup(commentText: comment.desc ?? "")
         cell.setup(image: comment.user?.photo?.url())
@@ -77,7 +77,8 @@ extension PostViewController {
             guard let unself = self else { return }
             unself.parentComment = comment
             if let name = comment.user?.name {
-                unself.textView.attributedText  = Utils.setAttributedText(name, "", 17, 17)
+                unself.textView.placeHolder = ""
+                unself.textView.attributedText  = Utils.setAttributedText(name, ", ", 17, 17)
             }
             unself.textView.becomeFirstResponder()
         }
@@ -116,7 +117,8 @@ extension PostViewController {
             guard let unself = self else { return }
             unself.parentComment = comment
             if let name = comment?.user?.name {
-                unself.textView.attributedText  = Utils.setAttributedText(name, "", 17, 17)
+                unself.textView.placeHolder = ""
+                unself.textView.attributedText  = Utils.setAttributedText(name, ", ", 17, 17)
             }
             unself.textView.becomeFirstResponder()
         }
@@ -188,6 +190,10 @@ extension PostViewController {
             if status {
                 unsafe.pageNoP = 1
                 unsafe.isNextPageExistP = true
+                unsafe.username = ""
+                unsafe.textView.text = ""
+                unsafe.textView.attributedText = nil
+                unsafe.commentList.removeAll()
                 unsafe.getAllCommentListAPI()
             } else {
                 Utils.hideSpinner()

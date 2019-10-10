@@ -13,6 +13,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     func setupTableView() {
         
         tableView.layer.cornerRadius = 24
+        tableView.layer.borderWidth = CGFloat.leastNormalMagnitude
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         tableView.delegate = self

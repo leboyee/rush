@@ -55,6 +55,8 @@ class CreatePostViewController: UIViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         tabBarController?.tabBar.isHidden = true
         tabBarController?.tabBar.isTranslucent = true
     }
@@ -107,9 +109,9 @@ class CreatePostViewController: UIViewController {
     
     func close() {
         if navigationController?.viewControllers.count == 1 {
-          dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         } else {
-          navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
 }
@@ -183,6 +185,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                     if let value = img as? PHAsset { assets.append(value) }
                 }
                 self.picker.updateSelectedAssets(with: assets)
+                self.picker.modalPresentationStyle = .overFullScreen
                 self.present(self.picker, animated: false, completion: nil)
             } else {
                 // Camera
@@ -192,10 +195,15 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 }
                 
                 camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
-                    if let img = image { self.imageList.append(img) }
+                    if var img = image {
+                        img = Utils.fixOrientation(img: img)
+                        self.imageList.append(img)
+                        
+                    }
                     self.tableView.reloadData()
                     self.dismiss(animated: true, completion: nil)
                 }
+                camera.modalPresentationStyle = .fullScreen
                 self.present(camera, animated: true, completion: nil)
             }
         }

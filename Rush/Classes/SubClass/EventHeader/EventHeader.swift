@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EventHeaderDelegate: class {
-
+    func didTappedCalendar()
 }
 
 class EventHeader: UIView {
@@ -95,6 +95,6 @@ extension EventHeader {
 extension EventHeader {
     
     @IBAction func calendarButtonAction() {
-        Utils.notReadyAlert()
+        delegate?.didTappedCalendar()
     }
 }

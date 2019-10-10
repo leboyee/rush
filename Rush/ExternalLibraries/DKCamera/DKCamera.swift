@@ -272,14 +272,16 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if #available(iOS 9.0, *) {
             var constraints = [
                 self.contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                self.contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                self.contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+                self.contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
             ]
             
             if #available(iOS 11.0, *) {
                 constraints.append(self.contentView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor))
+                let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+                constraints.append(self.contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: bottomPadding))
             } else {
                 constraints.append(self.contentView.topAnchor.constraint(equalTo: self.view.topAnchor))
+                constraints.append(self.contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor))
             }
             
             NSLayoutConstraint.activate(constraints)
@@ -370,9 +372,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // cancel button
         let cancelButton: UIButton = {
-            
-            let navHeight = Utils.navigationHeigh
-            let cancelButton = UIButton(frame: CGRect(x: 16, y: navHeight - 21 - 24, width: 24, height: 24))
+            let cancelButton = UIButton(frame: CGRect(x: 16, y: 15, width: 24, height: 30))
             cancelButton.addTarget(self, action: #selector(DKCamera.dismissCamera), for: .touchUpInside)
             cancelButton.setImage(cameraResource.cameraCancelImage(), for: .normal)
             return cancelButton

@@ -208,7 +208,7 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
     func createPostSuccess(_ post: Post) {
         isCallAPI = false
         
-        getClubDetailAPI()
-//        performSegue(withIdentifier: Segues.postSegue, sender: post)
+        // getClubDetailAPI()
+        performSegue(withIdentifier: Segues.postSegue, sender: post)
     }
 }
