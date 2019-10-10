@@ -22,7 +22,7 @@ extension SearchClubViewController {
         if searchType == .searchList, let data = dataList[indexPath.row] as? ClubCategory {
             cell.setup(title: data.name)
         } else {
-            let data = dataList[indexPath.row] as? Class
+            let data = dataList[indexPath.row] as? ClassGroup
             cell.setup(title: data?.name ?? "")
         }
         cell.setup(isHideTopSeparator: indexPath.row == 0 ? false : true)

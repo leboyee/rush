@@ -1,6 +1,6 @@
 //
 //  ServiceManager.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.

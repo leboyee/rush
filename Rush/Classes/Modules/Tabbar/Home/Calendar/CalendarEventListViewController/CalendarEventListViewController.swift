@@ -76,6 +76,7 @@ extension CalendarEventListViewController {
             vc.eventId = sender as? String
         } else if segue.identifier == Segues.calendarClassDetail {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
+            vc.cl
         }
     }
 }

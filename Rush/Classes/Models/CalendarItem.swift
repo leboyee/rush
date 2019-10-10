@@ -9,16 +9,16 @@
 import UIKit
 
 class GroupClassSchedule: Codable {
-    var id = ""
-    var classId = ""
-    var groupId = ""
+    var id: Int64 = 0
+    var classId: Int64 = 0
+    var groupId: Int64 = 0
     var day = ""
     var start = ""
     var end = ""
     var timezone = ""
 
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "class_grp_sch_id"
         case classId = "class_id"
         case groupId = "group_id"
         case day = "day"
@@ -29,9 +29,11 @@ class GroupClassSchedule: Codable {
 }
 
 class CalendarItem: Decodable {
-    var id = ""
+    private var id: Int64 = 0
+    var groupId: Int64?
     var type = ""
     var title = ""
+    var groupName: Int64?
     private var photoJson: String = ""
     private var convertJsonToPhoto: Image?
     var photo: Image? {
@@ -44,10 +46,16 @@ class CalendarItem: Decodable {
     var end: Date?
     var classSchedule: [GroupClassSchedule]?
     
+    var itemId: String {
+        return String(id)
+    }
+    
     private enum CodingKeys: String, CodingKey {
        case id = "data_id"
+       case groupId = "data_group_id"
        case type = "data_type"
        case title = "data_name"
+       case groupName = "data_group_name"
        case photoJson = "data_photo"
        case start = "data_start_date"
        case end = "data_end_date"
@@ -56,7 +64,8 @@ class CalendarItem: Decodable {
     
     required init(from decoder: Decoder) {
         let container = try? decoder.container(keyedBy: CodingKeys.self)
-        id = (try? container?.decode(String.self, forKey: .id)) ?? ""
+        id = (try? container?.decode(Int64.self, forKey: .id)) ?? 0
+        groupId = (try? container?.decode(Int64.self, forKey: .groupId))
         type = (try? container?.decode(String.self, forKey: .type)) ?? ""
         title = (try? container?.decode(String.self, forKey: .title)) ?? ""
         photoJson = (try? container?.decode(String.self, forKey: .photoJson)) ?? ""

@@ -1,6 +1,6 @@
 //
 //  OnBoardingCollectionViewCell.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 11/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.

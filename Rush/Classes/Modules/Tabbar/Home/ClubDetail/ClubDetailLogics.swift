@@ -58,7 +58,7 @@ extension ClubDetailViewController {
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
-        if clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+        if clubInfo?.clubUId == Authorization.shared.profile?.userId {
             cell.setup(firstButtonType: .manage)
         } else {
             cell.setup(firstButtonType: .joined)
@@ -70,7 +70,7 @@ extension ClubDetailViewController {
             guard let unself = self else { return }
             
             // Manage
-            if unself.clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+            if unself.clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
                     controller.clubInfo = unself.clubInfo
                     let nav = UINavigationController(rootViewController: controller)
@@ -100,7 +100,7 @@ extension ClubDetailViewController {
             guard let unself = self else { return }
             if index != 0 {
                 let invitee = unself.clubInfo?.invitees?[index - 1] // -1 of ViewAll Cell item
-                if invitee?.user?.id == Authorization.shared.profile?.id {
+                if invitee?.user?.userId == Authorization.shared.profile?.userId {
                     self?.tabBarController?.selectedIndex = 3
                 } else {
                     unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
@@ -174,12 +174,12 @@ extension ClubDetailViewController {
         
         cell.likeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.id ?? "", type: "up")
+            uwself.voteClubAPI(id: post.postId, type: "up")
         }
         
         cell.unlikeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.id ?? "", type: "down")
+            uwself.voteClubAPI(id: post.postId, type: "down")
             
         }
         
@@ -208,7 +208,7 @@ extension ClubDetailViewController {
     
     func fillData() {
         if let invitee = clubInfo?.invitees {
-            let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+            let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
             if filter.count > 0 {
                 joinedClub = true
             }
@@ -222,7 +222,7 @@ extension ClubDetailViewController {
         } else if indexPath.section > 5 {
             if indexPath.row == 0 {
                 let post = clubPostList[indexPath.section - 6]
-                if post.user?.id == Authorization.shared.profile?.id {
+                if post.user?.userId == Authorization.shared.profile?.userId {
                     self.tabBarController?.selectedIndex = 3
                 } else {
                     performSegue(withIdentifier: Segues.otherUserProfile, sender: post.user)
@@ -237,7 +237,7 @@ extension ClubDetailViewController {
     
     func getClubDetailAPI() {
         
-        let id = clubInfo?.id ?? ""
+        let id = clubInfo?.clubId ?? ""
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
@@ -268,7 +268,7 @@ extension ClubDetailViewController {
     
     func joinClubAPI() {
         
-        let id = clubInfo?.id ?? "0"
+        let id = clubInfo?.clubId ?? "0"
         
         Utils.showSpinner()
         ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id]) { [weak self] (status, errorMsg) in
@@ -284,12 +284,12 @@ extension ClubDetailViewController {
     
     func getClubPostListAPI() {
         
-        let param = [Keys.dataId: clubInfo?.id ?? "",
+        let param = [Keys.dataId: clubInfo?.clubId ?? "",
                      Keys.dataType: Text.club,
                      Keys.search: "",
                      Keys.pageNo: 1] as [String: Any]
         
-        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
+        ServiceManager.shared.getPostList(dataId: clubInfo?.clubId ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let value = post {
@@ -306,7 +306,7 @@ extension ClubDetailViewController {
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let post = result {
-                    let index = uwself.clubPostList.firstIndex(where: { ( $0.id == post.id ) })
+                    let index = uwself.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
                     if let position = index, uwself.clubPostList.count > position {
                         uwself.clubPostList[position] = post
                         

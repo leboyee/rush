@@ -61,7 +61,7 @@ class PostViewController: UIViewController {
         self.view.backgroundColor = UIColor.bgBlack
         
         // share button
-        if postInfo?.user?.id == Authorization.shared.profile?.userId {
+        if postInfo?.user?.userId == Authorization.shared.profile?.userId {
             let share = UIBarButtonItem(image: #imageLiteral(resourceName: "whiteMore"), style: .plain, target: self, action: #selector(shareButtonAction))
             navigationItem.rightBarButtonItem = share
         } else {

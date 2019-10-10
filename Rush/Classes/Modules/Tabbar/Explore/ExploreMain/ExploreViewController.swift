@@ -194,8 +194,10 @@ extension ExploreViewController {
             vc.classInfo = sender as? Class
         } else if segue.identifier == Segues.eventDetailSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.eventId = (sender as? Event)?.id
-            vc.event = sender as? Event
+            if let event = sender as? Event {
+               vc.eventId = String(event.id)
+               vc.event = event
+            }
         }
         
     }

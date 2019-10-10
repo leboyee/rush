@@ -75,7 +75,7 @@ class CreateClubViewController: UIViewController {
         if let club = clubInfo {
             nameClub = club.clubName ?? ""
             clubDescription = club.clubDesc ?? ""
-            isCreateGroupChat = (club.clubIsChatGroup ?? "0") == "1" ? true : false
+            isCreateGroupChat = (club.clubIsChatGroup) == 1 ? true : false
             
             let interests = (club.clubInterests ?? "").components(separatedBy: ",")
             interestList = interests

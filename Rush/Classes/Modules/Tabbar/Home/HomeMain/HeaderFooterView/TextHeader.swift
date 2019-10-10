@@ -1,6 +1,6 @@
 //
 //  TextHeader.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by kamal on 11/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.

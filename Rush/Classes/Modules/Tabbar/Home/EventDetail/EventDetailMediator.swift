@@ -220,7 +220,7 @@ extension EventDetailViewController: PostViewProtocol {
         snackbar.show()
         */
         /// Find index of post, remove and reload list
-        if let post = post, let index = postList?.firstIndex(where: { $0.id == post.id }) {
+        if let post = post, let index = postList?.firstIndex(where: { $0.postId == post.postId }) {
             postList?.remove(at: index)
             reloadTable()
         }
@@ -228,7 +228,7 @@ extension EventDetailViewController: PostViewProtocol {
     
     func updatedPost(_ post: Post) {
         /// Find index of post and replace with updated post
-        if let index = postList?.firstIndex(where: { $0.id == post.id }) {
+        if let index = postList?.firstIndex(where: { $0.postId == post.postId }) {
             postList?[index] = post
             reloadTable()
         }

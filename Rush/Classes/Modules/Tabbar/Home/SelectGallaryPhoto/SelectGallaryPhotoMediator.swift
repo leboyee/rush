@@ -1,6 +1,6 @@
 //
 //  ContributeMediator.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by iChirag on 20/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.

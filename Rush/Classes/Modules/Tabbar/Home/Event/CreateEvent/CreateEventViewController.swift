@@ -100,14 +100,14 @@ extension CreateEventViewController {
     
     @IBAction func saveButtonAction() {
         if isEditEvent == true {
-            updateEventApi(eventId: event?.id ?? "")
+            updateEventApi(eventId: String(event?.id ?? 0))
         } else {
             createEventAPI()
         }
     }
     
     @IBAction func deleteEventButtonAction() {
-        deleteEventAPI(id: event?.id ?? "")
+        deleteEventAPI(id: String(event?.id ?? 0))
     }
     
     @IBAction func addImageButtonAction() {
@@ -140,7 +140,7 @@ extension CreateEventViewController {
          startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
         endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
-        eventId = event?.id ?? "1"
+        eventId = String(event?.id ?? 1)
 //        for invites in event?.invitee ?? [Invitee]() {
 //            let invite = Invite()
 //            invite.profile = invites.user

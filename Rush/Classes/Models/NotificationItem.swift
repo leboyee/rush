@@ -9,7 +9,7 @@
 import UIKit
 
 class NotificationItem: Codable {
-    var id: Int
+    var id: Int64
     
     private enum CodingKeys: String, CodingKey {
         case id = "_id"

@@ -94,7 +94,7 @@ extension CreatePostViewController {
     func createPostAPI() {
         if let club = clubInfo {
             imagedataList[Keys.desc] = postText
-            imagedataList[Keys.dataId] = club.id ?? ""
+            imagedataList[Keys.dataId] = club.clubId
             imagedataList[Keys.dataType] = Text.club
         } else if let event = eventInfo {
             imagedataList[Keys.desc] = postText

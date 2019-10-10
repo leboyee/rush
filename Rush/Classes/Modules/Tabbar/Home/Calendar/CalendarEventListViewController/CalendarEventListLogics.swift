@@ -52,9 +52,9 @@ extension CalendarEventListViewController {
         if let group = groups?[indexPath.section] {
            let event = group.events[indexPath.row]
             if event.type.lowercased() == "event" {
-                showEvent(eventId: event.id)
+                showEvent(eventId: event.itemId)
             } else {
-                showClass(classId: event.id)
+                showClass(classId: event.itemId)
             }
         }
     }

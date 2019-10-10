@@ -10,13 +10,13 @@ import UIKit
 
 class Club: Codable {
 
-    var id: String?
-    var clubUserId: String?
+    private var id: Int64 = 0
+    private var clubUserId: Int64 = 0
     var clubName: String?
     var clubDesc: String?
     var clubInterests: String?
     var clubPhoto: String?
-    var clubIsChatGroup: String?
+    var clubIsChatGroup: Int = 0
     var clubStatus: Int = 0
     var clubCreatedAt: String?
     var clubUpdatedAt: String?
@@ -24,7 +24,7 @@ class Club: Codable {
     var invitees: [Invitee]?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "club_id"
         case clubUserId = "club_user_id"
         case clubName = "club_name"
         case clubDesc = "club_desc"
@@ -37,7 +37,12 @@ class Club: Codable {
         case user
         case invitees
     }
-    
+    var clubUId: String {
+        return String(clubUserId)
+    }
+    var clubId: String {
+        return String(id)
+    }
     init() {
         // default empty init
     }
