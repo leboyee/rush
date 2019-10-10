@@ -30,7 +30,7 @@ extension EventDetailViewController {
     }
     
     func deleteEvent(event: Event) {
-        deleteEventAPI(id: event.id)
+        deleteEventAPI(id: String(event.id))
     }
     
     func deletePost(post: Post) {
@@ -269,7 +269,7 @@ extension EventDetailViewController {
                 /// Call Accept  API
                 guard let event = unsafe.event else { return }
                 if event.rsvp?.count ?? 0 == 0 {
-                    unsafe.joinEvent(eventId: event.id, action: EventAction.accept)
+                    unsafe.joinEvent(eventId: String(event.id), action: EventAction.accept)
                 } else {
                     unsafe.showRSVP(action: EventAction.accept)
                 }
@@ -286,7 +286,7 @@ extension EventDetailViewController {
             } else if unsafe.type == .invited {
                 // Call Reject API
                 guard let event = unsafe.event else { return }
-                unsafe.rejectEvent(eventId: event.id)
+                unsafe.rejectEvent(eventId: String(event.id))
             }
         }
         
@@ -316,7 +316,7 @@ extension EventDetailViewController {
         cell.joinButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             if event.rsvp?.count ?? 0 == 0 {
-                unsafe.joinEvent(eventId: event.id, action: EventAction.join)
+                unsafe.joinEvent(eventId: String(event.id), action: EventAction.join)
             } else {
                 unsafe.showRSVP(action: EventAction.join)
             }

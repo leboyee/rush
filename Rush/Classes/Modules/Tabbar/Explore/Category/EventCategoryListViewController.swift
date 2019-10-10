@@ -98,8 +98,10 @@ extension EventCategoryListViewController {
         
         if segue.identifier == Segues.eventDetailSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.eventId = (sender as? Event)?.id
-            vc.event = sender as? Event
+            if let event = sender as? Event {
+               vc.eventId = String(event.id)
+               vc.event = event
+            }
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
