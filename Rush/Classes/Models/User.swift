@@ -10,7 +10,7 @@ import UIKit
 
 class User: Codable {
     
-    var id: String?
+    private var id: Int64 = 0
     var firstName: String?
     var lastName: String?
     var email: String?
@@ -64,7 +64,7 @@ class User: Codable {
     }
     
     var userId: String {
-        return id ?? "0"
+        return String(id)
     }
     
     var friendTypeStatus: ManageButtonType {
@@ -77,7 +77,7 @@ class User: Codable {
     
     private enum CodingKeys: String, CodingKey {
         
-        case id = "_id"
+        case id = "user_id"
         case firstName = "first_name"
         case lastName = "last_name"
         case email

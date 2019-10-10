@@ -263,7 +263,7 @@ extension OtherUserProfileController {
     
     func sendFriendRequestAPI() {
         
-        let param = [Keys.otherUserId: userInfo?.id ?? "0"]
+        let param = [Keys.otherUserId: userInfo?.userId ?? "0"]
         ServiceManager.shared.sendFriendRequest(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }
             if status {
@@ -276,7 +276,7 @@ extension OtherUserProfileController {
     
     func moderateFriendRequestAPI(type: String) {
         
-        let param = [Keys.otherUserId: userInfo?.id ?? "0",
+        let param = [Keys.otherUserId: userInfo?.userId ?? "0",
                      Keys.action: type]
         ServiceManager.shared.moderateFriendRequest(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }

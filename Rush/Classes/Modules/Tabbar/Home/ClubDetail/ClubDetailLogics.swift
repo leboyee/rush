@@ -100,7 +100,7 @@ extension ClubDetailViewController {
             guard let unself = self else { return }
             if index != 0 {
                 let invitee = unself.clubInfo?.invitees?[index - 1] // -1 of ViewAll Cell item
-                if invitee?.user?.id == Authorization.shared.profile?.id {
+                if invitee?.user?.userId == Authorization.shared.profile?.userId {
                     self?.tabBarController?.selectedIndex = 3
                 } else {
                     unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
@@ -208,7 +208,7 @@ extension ClubDetailViewController {
     
     func fillData() {
         if let invitee = clubInfo?.invitees {
-            let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+            let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
             if filter.count > 0 {
                 joinedClub = true
             }
@@ -222,7 +222,7 @@ extension ClubDetailViewController {
         } else if indexPath.section > 5 {
             if indexPath.row == 0 {
                 let post = clubPostList[indexPath.section - 6]
-                if post.user?.id == Authorization.shared.profile?.id {
+                if post.user?.userId == Authorization.shared.profile?.userId {
                     self.tabBarController?.selectedIndex = 3
                 } else {
                     performSegue(withIdentifier: Segues.otherUserProfile, sender: post.user)

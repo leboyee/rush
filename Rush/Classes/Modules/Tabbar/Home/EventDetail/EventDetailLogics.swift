@@ -41,7 +41,7 @@ extension EventDetailViewController {
     
     func loadEventSection() {
         guard let event = self.event else { return }
-        if event.creator?.id == Authorization.shared.profile?.userId {
+        if event.creator?.userId == Authorization.shared.profile?.userId {
             type = .my
         } else if let eventInvite = event.eventInvite?.last {
             type = eventInvite.status == 1 ? .joined : .invited

@@ -23,7 +23,7 @@ extension ChatRoomViewController {
         if let friend = friendProfile {
             grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
             imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
-            otherUserId = friend.user?.id ?? "0"
+            otherUserId = friend.user?.userId ?? "0"
         }
         
         ChatManager().createGroupChannelwithUsers(userIds: [otherUserId, loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: "", completionHandler: { (channel) in
@@ -189,9 +189,9 @@ extension ChatRoomViewController {
         
         if let friendList = friends {
             for friend in friendList {
-                if !userIds.contains(friend.user?.id ?? "0") && !ChatManager().isMemberExistInChannel(channel: self.channel, userid: (friend.user?.id ?? "0")) {
+                if !userIds.contains(friend.user?.userId ?? "0") && !ChatManager().isMemberExistInChannel(channel: self.channel, userid: (friend.user?.userId ?? "0")) {
                     urls.append(friend.user?.photo?.thumb ?? "")
-                    userIds.append((friend.user?.id ?? "0"))
+                    userIds.append((friend.user?.userId ?? "0"))
                     nickNames.append(friend.user?.name ?? "")
                 }
             }
