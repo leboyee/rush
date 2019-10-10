@@ -1,6 +1,6 @@
 //
 //  Keys.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
@@ -22,10 +22,10 @@ let kSavedIsNewUser             = "kSavedNewUser"
 let kAppOpenFirstTime           = "kAppOpenFirstTime"
 
 // MARK: - User Default
-let kLastLocation               = "com.paidmeals.lastlocation"
-let kDeviceTokenPushKey         = "com.friends.devicetokenpush"
-let kDeviceTokenPushDataKey     = "com.friends.devicetokenpushdata"
-let kUpdateUnreadcount          = "com.friends.updateunreadcount"
+let kLastLocation               = "com.rush.lastlocation"
+let kDeviceTokenPushKey         = "com.rush.devicetokenpush"
+let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
+let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 
 // MARK: - API's Keys
 struct Keys {
