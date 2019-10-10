@@ -17,9 +17,9 @@ enum FriendStatus {
 
 class Friend: Codable {
     
-    var friendId: String = "0"
-    var friendUserId: String = "0"
-    var friendOtherUserId: String = "0"
+    var friendId: Int64 = 0
+    var friendUserId: Int64 = 0
+    var friendOtherUserId: Int64 = 0
     var friendStatus: Int = 0
     var friendType: Int = 0
     var user: User?
@@ -41,7 +41,7 @@ class Friend: Codable {
     
     private enum CodingKeys: String, CodingKey {
         
-        case friendId = "_id"
+        case friendId = "frd_id"
         case friendUserId = "frd_user_id"
         case friendOtherUserId = "frd_other_user_id"
         case friendType = "frd_type"

@@ -68,8 +68,8 @@ class User: Codable {
     }
     
     var friendTypeStatus: ManageButtonType {
-        let loginUserRequested: Bool = friend?.first?.friendType == 1 && friend?.first?.friendUserId == Authorization.shared.profile?.userId
-        let otherUserRequested: Bool = friend?.first?.friendType == 2 && friend?.first?.friendUserId == Authorization.shared.profile?.userId
+        let loginUserRequested: Bool = friend?.first?.friendType == 1 && "\(friend?.first?.friendUserId ?? 0)" == Authorization.shared.profile?.userId
+        let otherUserRequested: Bool = friend?.first?.friendType == 2 && "\(friend?.first?.friendUserId ?? 0)" == Authorization.shared.profile?.userId
         let isAlreadyFriend: Bool = friend?.first?.friendStatus == 1
         
         return isAlreadyFriend ? .friends : loginUserRequested ? .requested : otherUserRequested ? .accept :  .addFriend
