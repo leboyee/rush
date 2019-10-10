@@ -142,5 +142,6 @@ struct Keys {
     static let events           = "events"
     static let classes          = "classes"
     static let count            = "count"
+    static let isScheduledAnything = "isScheduledAnything"
 
 }

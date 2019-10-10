@@ -44,10 +44,15 @@ extension CalendarEventListViewController {
 // MARK: - Other functions
 extension CalendarEventListViewController {
 
-    func loadEvents(groups: [EventGroup]?) {
+    func loadEvents(groups: [EventGroup]?, isSchedule: Bool) {
         guard groups != nil, (groups?.count ?? 0) > 0 else {
-            emptyTodayView.isHidden = false
-            emptyView.isHidden = true
+            if isSchedule {
+                emptyTodayView.isHidden = false
+                emptyView.isHidden = true
+            } else {
+                emptyTodayView.isHidden = true
+                emptyView.isHidden = false
+            }
             tableView.isHidden = true
             return
         }

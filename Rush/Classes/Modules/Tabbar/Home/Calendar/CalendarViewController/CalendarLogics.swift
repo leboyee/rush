@@ -59,11 +59,12 @@ extension CalendarViewController {
     func fetchEvents(startDate: String, endDate: String) {
         Utils.showSpinner()
         let params = [Keys.startDate: startDate, Keys.endDate: endDate]
-        ServiceManager.shared.fetchCalendarList(params: params) { [weak self] (events, classes, _) in
+        ServiceManager.shared.fetchCalendarList(params: params) { [weak self] (events, classes, isScheduledAnything, _) in
             Utils.hideSpinner()
             self?.groups.removeAll()
             self?.restuctureEventInGroup(events: events)
             self?.restuctureClassesInGroup(classes: classes, startDate: startDate, endDate: endDate)
+            self?.isScheduledAnything = isScheduledAnything
             /// load list of events in child view controller
             self?.loadChildList()
             /// load month calendar

@@ -51,10 +51,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOI-Hl-tL2" customClass="RSeparatorLine" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="24" y="87" width="351" height="1"/>
+                                <rect key="frame" x="24" y="0.0" width="351" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="2bd-gw-6pB"/>
+                                </constraints>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAT-B9-nYx" customClass="RSeparatorLine" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="24" y="87" width="351" height="1"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Gv9-Dp-4CI"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-12 pm" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5VN-mP-tR8">
@@ -66,13 +73,25 @@
                                 <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline" translatesAutoresizingMaskIntoConstraints="NO" id="ZcA-4a-5RD">
+                                <rect key="frame" x="24" y="0.0" width="351" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="v5x-86-pxW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NQ0-2C-OR5" secondAttribute="trailing" constant="90" id="5Rf-xI-AL0"/>
                             <constraint firstAttribute="trailing" secondItem="tOI-Hl-tL2" secondAttribute="trailing" id="6fd-qb-7di"/>
+                            <constraint firstItem="ZcA-4a-5RD" firstAttribute="top" secondItem="wc1-sd-fjn" secondAttribute="top" id="CAK-R8-CTA"/>
+                            <constraint firstAttribute="trailing" secondItem="yAT-B9-nYx" secondAttribute="trailing" id="EQY-oM-NoR"/>
                             <constraint firstItem="NQ0-2C-OR5" firstAttribute="leading" secondItem="f8o-7a-6oR" secondAttribute="trailing" constant="16" id="FvD-L9-5fp"/>
+                            <constraint firstItem="ZcA-4a-5RD" firstAttribute="leading" secondItem="wc1-sd-fjn" secondAttribute="leading" constant="24" id="HCh-ef-xUk"/>
                             <constraint firstAttribute="trailing" secondItem="5VN-mP-tR8" secondAttribute="trailing" constant="24.5" id="La9-HP-eR6"/>
+                            <constraint firstAttribute="bottom" secondItem="yAT-B9-nYx" secondAttribute="bottom" id="Lda-0e-tcR"/>
+                            <constraint firstItem="tOI-Hl-tL2" firstAttribute="top" secondItem="wc1-sd-fjn" secondAttribute="top" id="MLR-ty-Nbi"/>
+                            <constraint firstAttribute="trailing" secondItem="ZcA-4a-5RD" secondAttribute="trailing" id="NtJ-Sw-WSQ"/>
                             <constraint firstItem="f8o-7a-6oR" firstAttribute="top" secondItem="wc1-sd-fjn" secondAttribute="top" constant="20" id="NzJ-6G-6ws"/>
                             <constraint firstItem="ftr-0T-XbO" firstAttribute="trailing" secondItem="NQ0-2C-OR5" secondAttribute="trailing" id="PtX-SW-OaN"/>
                             <constraint firstItem="ftr-0T-XbO" firstAttribute="leading" secondItem="f8o-7a-6oR" secondAttribute="trailing" constant="16" id="RJ8-oC-jcb"/>
@@ -80,8 +99,8 @@
                             <constraint firstItem="tOI-Hl-tL2" firstAttribute="leading" secondItem="wc1-sd-fjn" secondAttribute="leading" constant="24" id="S4j-Jd-awV"/>
                             <constraint firstItem="ftr-0T-XbO" firstAttribute="top" secondItem="NQ0-2C-OR5" secondAttribute="bottom" constant="3" id="ge7-J8-Jsl"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f8o-7a-6oR" secondAttribute="bottom" constant="19.5" id="grj-5M-vRg"/>
-                            <constraint firstAttribute="bottom" secondItem="tOI-Hl-tL2" secondAttribute="bottom" id="qoV-Eh-KPl"/>
                             <constraint firstAttribute="bottom" secondItem="ftr-0T-XbO" secondAttribute="bottom" constant="23" id="r5n-dE-0HS"/>
+                            <constraint firstItem="yAT-B9-nYx" firstAttribute="leading" secondItem="wc1-sd-fjn" secondAttribute="leading" constant="24" id="vAh-p0-PiW"/>
                             <constraint firstItem="5VN-mP-tR8" firstAttribute="centerY" secondItem="wc1-sd-fjn" secondAttribute="centerY" id="vRf-3E-1h1"/>
                         </constraints>
                     </view>
@@ -99,15 +118,18 @@
             <connections>
                 <outlet property="eventImageView" destination="f8o-7a-6oR" id="o6Z-UM-KHs"/>
                 <outlet property="leadingSeparatorConstraint" destination="S4j-Jd-awV" id="CqT-bs-NM0"/>
-                <outlet property="separator" destination="tOI-Hl-tL2" id="oQN-NP-cnY"/>
+                <outlet property="separatorBottom" destination="yAT-B9-nYx" id="vqX-cc-Ete"/>
+                <outlet property="separatorTop" destination="tOI-Hl-tL2" id="QHB-ai-KvT"/>
                 <outlet property="timeLabel" destination="5VN-mP-tR8" id="O1e-rv-lcw"/>
+                <outlet property="timeRedLineImageView" destination="ZcA-4a-5RD" id="z5q-5u-NQd"/>
                 <outlet property="titleLabel" destination="NQ0-2C-OR5" id="O2u-We-U1V"/>
                 <outlet property="typeLabel" destination="ftr-0T-XbO" id="kna-93-VUP"/>
             </connections>
-            <point key="canvasLocation" x="275" y="22"/>
+            <point key="canvasLocation" x="274.63768115942031" y="21.428571428571427"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="img-event" width="48" height="48"/>
+        <image name="timeline" width="351" height="8"/>
     </resources>
 </document>
