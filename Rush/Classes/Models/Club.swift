@@ -24,7 +24,7 @@ class Club: Codable {
     var invitees: [Invitee]?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "club_id"
         case clubUserId = "club_user_id"
         case clubName = "club_name"
         case clubDesc = "club_desc"
