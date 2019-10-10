@@ -18,7 +18,7 @@ class GroupClassSchedule: Codable {
     var timezone = ""
 
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "class_grp_sch_id"
         case classId = "class_id"
         case groupId = "group_id"
         case day = "day"
@@ -30,9 +30,10 @@ class GroupClassSchedule: Codable {
 
 class CalendarItem: Decodable {
     private var id: Int64 = 0
-    private var groupId: Int64?
+    var groupId: Int64?
     var type = ""
     var title = ""
+    var groupName: Int64?
     private var photoJson: String = ""
     private var convertJsonToPhoto: Image?
     var photo: Image? {
@@ -54,6 +55,7 @@ class CalendarItem: Decodable {
        case groupId = "data_group_id"
        case type = "data_type"
        case title = "data_name"
+       case groupName = "data_group_name"
        case photoJson = "data_photo"
        case start = "data_start_date"
        case end = "data_end_date"

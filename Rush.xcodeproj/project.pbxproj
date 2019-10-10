@@ -3162,7 +3162,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Messapps;
 				TargetAttributes = {
 					C05FC14822805F3D00721F3F = {
@@ -3256,7 +3256,6 @@
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
 				8A4B3287232F5A5B00AC1D17 /* PostUserCell.xib in Resources */,
-				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				8A04B15D22FC6C3A0055C65F /* SwitchCell.xib in Resources */,
 				8A4B328E232F5A5B00AC1D17 /* PostImageCell.xib in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
@@ -3275,7 +3274,6 @@
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
 				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
 				1AEAC49922D3194A008FBB54 /* UserInfo.storyboard in Resources */,
-				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				8A4B3290232F5A5B00AC1D17 /* OrganizerCell.xib in Resources */,
 				794183B1228960C7009AB12C /* SF-Pro-Text-Bold.otf in Resources */,
 				8A04B16622FD5F1C0055C65F /* terms.html in Resources */,
