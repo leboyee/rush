@@ -3979,7 +3979,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */;
 			buildSettings = {
-				APIKEY = rush123;
+				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -4076,7 +4076,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */;
 			buildSettings = {
-				APIKEY = rush123;
+				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -4229,7 +4229,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */;
 			buildSettings = {
-				APIKEY = rush123;
+				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
