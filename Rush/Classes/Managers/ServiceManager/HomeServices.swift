@@ -55,6 +55,15 @@ extension ServiceManager {
         }
     }
     
+    func getClassDetail(classId: String, groupId: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getClassDetail(classId: classId, groupId: groupId, param: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
     func createEvent(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createEvent(params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }

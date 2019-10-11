@@ -43,6 +43,7 @@ struct Keys {
     static let large                 = "large"
     static let url                   = "url"
     static let list                  = "list"
+    static let kclass                = "class"
     
     static let matchId            = "match_id"
     static let classId            = "class_id"

@@ -101,8 +101,18 @@ extension ClassDetailViewController {
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
-        cell.setup(title: "Marta Keller")
-        cell.setup(detail: "10 pm")
+        if indexPath.section > 5 {
+            let post = classesPostList[indexPath.section - 6]
+            cell.setup(title: post.user?.name ?? "")
+            cell.setup(bottomConstraintOfImage: 0)
+            cell.setup(bottomConstraintOfDate: 4)
+            cell.setup(dotButtonConstraint: 24)
+            
+            if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+                let time = Date().timeAgoDisplay(date: date)
+                cell.setup(detail: time)
+            }
+        }
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
             cell.setup(bottomConstraintOfImage: 0)
@@ -166,8 +176,16 @@ extension ClassDetailViewController {
             tableView.reloadData()
         } else if indexPath.section == 3 {
             Utils.notReadyAlert()
+        } else if indexPath.section == 5 {
+            if joinedClub {
+                showCreatePost()
+            }
         }
     }
+    func showCreatePost() {
+        performSegue(withIdentifier: Segues.createPost, sender: nil)
+    }
+    
 }
 
 extension ClassDetailViewController {
@@ -185,4 +203,49 @@ extension ClassDetailViewController {
             }
         }
     }
+    func getClassDetailAPI(classId: String, groupId: String) {
+        Utils.showSpinner()
+        
+        ServiceManager.shared.getClassDetail(classId: classId, groupId: groupId, params: [:]) { [weak self] (data, errorMsg) in
+            guard let uwself = self else { return }
+            Utils.hideSpinner()
+            if let value = data?[Keys.kclass] as? [String: Any] {
+                do {
+                    let dataClass = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value1 = try decoder.decode(SubClass.self, from: dataClass)
+                    uwself.subclassInfo = value1
+                    if(uwself.subclassInfo?.classGroups?.count ?? 0 > 0){
+                        uwself.selectedGroup = uwself.subclassInfo?.classGroups?[0]
+                    }
+                    self?.tableView.reloadData()
+                } catch {
+                    
+                }
+            } else {
+                Utils.hideSpinner()
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func getClassPostListAPI() {
+        
+        let param = [Keys.dataId: subclassInfo?.id ?? "",
+                     Keys.dataType: Text.classKey,
+                     Keys.search: "",
+                     Keys.pageNo: 1] as [String: Any]
+        
+        ServiceManager.shared.getPostList(dataId: subclassInfo?.id ?? "", type: Text.classKey, params: param) { [weak self] (post, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let value = post {
+                uwself.classesPostList = value
+                uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
 }

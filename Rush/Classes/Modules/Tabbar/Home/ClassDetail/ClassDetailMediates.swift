@@ -156,3 +156,23 @@ extension ClassDetailViewController: OtherUserProfileProtocol {
         snackbar.show()
     }
 }
+// MARK: - CreatePostViewController Delegate
+extension ClassDetailViewController: CreatePostViewControllerDelegate {
+    func createPostSuccess(_ post: Post) {
+    }
+    
+    func showSnackBar(text: String, buttonText: String) {
+        /*
+         notificationTitle = text
+         notificationButtonTitle = buttonText
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
+        let snackbar = TTGSnackbar(message: text,
+                                   duration: .middle,
+                                   actionText: buttonText,
+                                   actionBlock: { (_) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+}

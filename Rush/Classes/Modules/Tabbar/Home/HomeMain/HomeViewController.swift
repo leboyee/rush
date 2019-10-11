@@ -167,8 +167,10 @@ extension HomeViewController {
                 vc.eventList = (sender as? [Event] ?? [Event]())
             }
         } else if segue.identifier == Segues.classDetailSegue {
-            guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+            guard let vc = segue.destination as? ClassDetailViewController
+                else { return }
+            vc.subclassInfo = sender as? SubClass
+            vc.joinedClub = true
         } else if segue.identifier == Segues.searchClubSegue {
             guard let vc = segue.destination as? SearchClubViewController else { return }
             //            vc.searchType = screenType == .club ? .searchList : .classes
