@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,18 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="53.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="53.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUf-30-4Yh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="53.5"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAn-Tb-G1H">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAn-Tb-G1H">
                                 <rect key="frame" x="24" y="16" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IFP-r3-Ikf"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="upvote"/>
+                                <state key="selected" image="ic_up"/>
                                 <connections>
                                     <action selector="likeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ful-cA-edb"/>
                                 </connections>
@@ -43,12 +42,13 @@
                                 <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqM-9B-62n">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqM-9B-62n">
                                 <rect key="frame" x="76.5" y="16" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ZPS-gY-Voj"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="downvote"/>
+                                <state key="selected" image="ic_down"/>
                                 <connections>
                                     <action selector="unlikeButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xet-Sd-VPB"/>
                                 </connections>
@@ -89,7 +89,7 @@
                             <constraint firstAttribute="trailing" secondItem="p0S-I4-6ZV" secondAttribute="trailing" constant="24" id="8NV-Bc-Dvs"/>
                             <constraint firstAttribute="trailing" secondItem="mIP-Tq-0hh" secondAttribute="trailing" id="FcI-Bi-in2"/>
                             <constraint firstItem="qAn-Tb-G1H" firstAttribute="leading" secondItem="xUf-30-4Yh" secondAttribute="leading" constant="24" id="RFd-S0-ZrR"/>
-                            <constraint firstAttribute="bottom" secondItem="mIP-Tq-0hh" secondAttribute="bottom" id="Rpd-SG-RTq"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mIP-Tq-0hh" secondAttribute="bottom" id="Rpd-SG-RTq"/>
                             <constraint firstItem="p0S-I4-6ZV" firstAttribute="centerY" secondItem="qAn-Tb-G1H" secondAttribute="centerY" id="a4n-X6-CRk"/>
                             <constraint firstItem="9sN-4n-s7r" firstAttribute="leading" secondItem="BqM-9B-62n" secondAttribute="trailing" constant="8" id="b0f-8J-WVf"/>
                             <constraint firstItem="mIP-Tq-0hh" firstAttribute="leading" secondItem="xUf-30-4Yh" secondAttribute="leading" id="dgF-mT-l6c"/>
@@ -115,8 +115,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentLabel" destination="p0S-I4-6ZV" id="TC6-og-sSO"/>
+                <outlet property="downButton" destination="BqM-9B-62n" id="vMN-9e-uVz"/>
                 <outlet property="likeLabel" destination="Dk2-TI-rBB" id="8es-MW-qac"/>
                 <outlet property="unlikeLabel" destination="9sN-4n-s7r" id="IzA-V1-SIG"/>
+                <outlet property="upButton" destination="qAn-Tb-G1H" id="i7i-4z-7qt"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="81.696428571428569"/>
         </tableViewCell>
@@ -124,6 +126,8 @@
     <resources>
         <image name="comment_inactive" width="20" height="20"/>
         <image name="downvote" width="20" height="20"/>
+        <image name="ic_down" width="17" height="20"/>
+        <image name="ic_up" width="17" height="20"/>
         <image name="upvote" width="20" height="20"/>
     </resources>
 </document>
