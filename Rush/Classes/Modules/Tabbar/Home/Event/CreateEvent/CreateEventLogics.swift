@@ -48,7 +48,7 @@ extension CreateEventViewController {
         } else if section == 5 {
             return isEndDate == true ? 2 : isEndTime == true ? 2 : 1
         } else if section == 6 {
-            return (interestList?.count ?? 0) + 1
+            return (interestList.count ?? 0) + 1
         } else if section == 7 {
             return peopleList.count + 1
         }
@@ -250,16 +250,17 @@ extension CreateEventViewController {
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
         } else if indexPath.section == 6 {
-            if indexPath.row == (interestList?.count ?? 0) {
+            if indexPath.row == (interestList.count ?? 0) {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
                 cell.setup(keyboardReturnKeyType: .done)
                 cell.setup(isEnabled: false)
             } else {
+                let interest = self.interestList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
                 cell.setup(isEnabled: false)
                 // S*
-                //cell.setup(placeholder: "", text: interestList[indexPath.row])
+                cell.setup(placeholder: "", text: interest.interestName)
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 7 {
@@ -311,11 +312,11 @@ extension CreateEventViewController {
                 unsafe.tableView.reloadData()
             } else if indexPath.section == 6 {
                 // S*
-                /*
-                if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
+                let interest = unsafe.interestList[indexPath.row] 
+                if let index = unsafe.interestList.firstIndex(where: { $0.interestName == interest.interestName }) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
-                } */
+                }
             } else if indexPath.section == 7 {
                 if let index = unsafe.peopleList.firstIndex(of: (unsafe.peopleList[indexPath.row])) {
                     unsafe.peopleList.remove(at: index)
@@ -376,7 +377,7 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList?.count ?? 0) > 0 {
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList.count ?? 0) > 0 {
             
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
@@ -568,15 +569,15 @@ extension CreateEventViewController: EventInviteDelegate {
 
 // MARK: - Add Interest Delegate
 extension CreateEventViewController: EventInterestDelegate {
-    func  selectedInterest(_ interest: [String]) {
+    func  selectedInterest(_ interest: [Interest]) {
         // S*
-        //self.interestList.append(contentsOf: interest)
+        self.interestList.append(contentsOf: interest)
+        //self.interestList = interestList.uniqueElements
         validateAllFields()
         self.tableView.reloadData()
         
     }
 }
-
 // MARK: - Services
 extension CreateEventViewController {
     

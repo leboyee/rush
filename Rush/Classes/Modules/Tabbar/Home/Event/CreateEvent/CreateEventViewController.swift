@@ -55,7 +55,7 @@ class CreateEventViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
     var event: Event?
-    var interestList: [Interest]?
+    var interestList = [Interest]()
     var rsvpArray = [String]()
     var eventType: EventType = .publik
     override func viewDidLoad() {
@@ -145,7 +145,7 @@ extension CreateEventViewController {
 //            let invite = Invite()
 //            invite.profile = invites.user
 //        }
-        interestList = event?.interests
+        interestList = event?.interests ?? [Interest]()
         for rsvpQuestion in event?.rsvp ?? [RSVPQuestion]() {
             guard let question = rsvpQuestion.que else { return }
             rsvpArray.append(question)
@@ -229,6 +229,7 @@ extension CreateEventViewController {
         } else if segue.identifier == Segues.createEventInterestSegue {
             if let vc = segue.destination as? CreateEventInterestViewController {
                 vc.delegate = self
+                vc.selectedArray = interestList ?? [Interest]()
             }
         }
         

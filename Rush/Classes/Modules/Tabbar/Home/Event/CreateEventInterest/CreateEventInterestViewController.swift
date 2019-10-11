@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 protocol EventInterestDelegate: class {
-    func selectedInterest(_ interest: [String])
+    func selectedInterest(_ interest: [Interest])
 }
 
 class CreateEventInterestViewController: CustomViewController {
@@ -20,7 +20,7 @@ class CreateEventInterestViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var nextButton: CustomButton!
     var interestArray = [Interest]()
-    var selectedArray = [String]()
+    var selectedArray = [Interest]()
     weak var delegate: EventInterestDelegate?
 
     override func viewDidLoad() {

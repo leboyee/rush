@@ -21,7 +21,7 @@ extension CreateEventInterestViewController {
     func fillTagCell(_ cell: ChooseTagCell, indexPath: IndexPath) {
         if Authorization.shared.profile?.interest?.count ?? 0 > 0 && indexPath.section == 0 {
             let interestProfileArray = Authorization.shared.profile?.interest ?? [Interest]()
-            let tagarray = interestProfileArray.map({$0.interestName})
+            let tagarray = interestProfileArray.map({ $0.interestName })
             cell.setupInterest(tagList: tagarray)
             cell.tagListView.delegate = self
         } else {
@@ -42,12 +42,23 @@ extension CreateEventInterestViewController: TagListViewDelegate {
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         //print("Tag pressed: \(title), \(sender)")
         tagView.isSelected = !tagView.isSelected
-        if tagView.isSelected == true {
-            selectedArray.append(title)
-        } else {
-            if selectedArray.contains(title) {
-                let index = selectedArray.firstIndex(of: title)
-                selectedArray.remove(at: index ?? 0)
+        let interestProfileArray = Authorization.shared.profile?.interest ?? [Interest]()
+        if interestArray.contains(where: { $0.interestName == title }) {
+            if tagView.isSelected == true {
+                guard let index = interestArray.firstIndex(where: { $0.interestName == title }) else { return }
+                selectedArray.append(interestArray[index])
+            } else {
+                guard let index = selectedArray.firstIndex(where: { $0.interestName == title }) else { return }
+                selectedArray.remove(at: index)
+            }
+            
+        } else if interestProfileArray.contains(where: { $0.interestName == title }) {
+            if tagView.isSelected == true {
+                guard let index = interestProfileArray.firstIndex(where: { $0.interestName == title }) else { return }
+                selectedArray.append(interestArray[index])
+            } else {
+                guard let index = selectedArray.firstIndex(where: { $0.interestName == title }) else { return }
+                selectedArray.remove(at: index)
             }
         }
         self.interestButtonVisiable()
@@ -73,7 +84,7 @@ extension CreateEventInterestViewController {
             if myInterestArray?.count ?? 0 > 0 {
                 if unsafe.interestArray.count > 0 {
                     for interest in unsafe.interestArray {
-                        if myInterestArray?.contains(where: {$0.interestName == interest.interestName}) ?? false {
+                        if myInterestArray?.contains(where: { $0.interestName == interest.interestName }) ?? false {
                             guard let index = unsafe.interestArray.firstIndex(where: { $0.interestName == interest.interestName }) else { return }
                             unsafe.interestArray.remove(at: index)
                         }
