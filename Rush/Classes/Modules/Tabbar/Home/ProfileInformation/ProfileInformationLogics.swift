@@ -49,11 +49,11 @@ extension ProfileInformationViewController {
                 cell.setup(text: userInfo?.educationYear ?? "", placeholder: Text.year)
             }
         } else if indexPath.section == 2 {
-            let major = userInfo?.majors?[indexPath.row] ?? ""
-            cell.setup(text: major, placeholder: "")
+           //K* let major = userInfo?.majors?[indexPath.row] ?? ""
+           //K* cell.setup(text: major, placeholder: "")
         } else if indexPath.section == 3 {
-            let minor = userInfo?.minors?[indexPath.row] ?? ""
-            cell.setup(text: minor, placeholder: "")
+            //K*let minor = userInfo?.minors?[indexPath.row] ?? ""
+            //K*cell.setup(text: minor, placeholder: "")
         }
     }
     

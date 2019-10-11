@@ -21,8 +21,8 @@ class Interest: Codable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case interestId
-        case interestName
+        case interestId = "interest_id"
+        case interestName = "name"
     }
     
     // MARK: - Private Functions

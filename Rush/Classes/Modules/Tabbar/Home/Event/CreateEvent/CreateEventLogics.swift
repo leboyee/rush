@@ -48,7 +48,7 @@ extension CreateEventViewController {
         } else if section == 5 {
             return isEndDate == true ? 2 : isEndTime == true ? 2 : 1
         } else if section == 6 {
-            return interestList.count + 1
+            return (interestList?.count ?? 0) + 1
         } else if section == 7 {
             return peopleList.count + 1
         }
@@ -250,7 +250,7 @@ extension CreateEventViewController {
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
         } else if indexPath.section == 6 {
-            if indexPath.row == interestList.count {
+            if indexPath.row == (interestList?.count ?? 0) {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
                 cell.setup(keyboardReturnKeyType: .done)
@@ -258,7 +258,8 @@ extension CreateEventViewController {
             } else {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(isEnabled: false)
-                cell.setup(placeholder: "", text: interestList[indexPath.row])
+                // S*
+                //cell.setup(placeholder: "", text: interestList[indexPath.row])
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 7 {
@@ -309,10 +310,12 @@ extension CreateEventViewController {
                 unsafe.address = ""
                 unsafe.tableView.reloadData()
             } else if indexPath.section == 6 {
+                // S*
+                /*
                 if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
-                }
+                } */
             } else if indexPath.section == 7 {
                 if let index = unsafe.peopleList.firstIndex(of: (unsafe.peopleList[indexPath.row])) {
                     unsafe.peopleList.remove(at: index)
@@ -373,7 +376,7 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && interestList.count > 0 {
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList?.count ?? 0) > 0 {
             
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
@@ -566,7 +569,8 @@ extension CreateEventViewController: EventInviteDelegate {
 // MARK: - Add Interest Delegate
 extension CreateEventViewController: EventInterestDelegate {
     func  selectedInterest(_ interest: [String]) {
-        self.interestList.append(contentsOf: interest)
+        // S*
+        //self.interestList.append(contentsOf: interest)
         validateAllFields()
         self.tableView.reloadData()
         
@@ -578,7 +582,9 @@ extension CreateEventViewController {
     
     func createEventAPI() {
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        let interests = interestList.joined(separator: ",")
+        // S*
+        //let interests = interestList.joined(separator: ",")
+        let interests = ""
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
@@ -613,8 +619,8 @@ extension CreateEventViewController {
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
             Keys.eventLongitude: "\(longitude)",
-            Keys.eventStartDate: startUtcDate,//"2019-10-12 07:30:00", //startUtcDate,
-            Keys.eventEndDate: endUtcDate,//"2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventStartDate: startUtcDate, //"2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: endUtcDate, //"2019-10-12 08:30:00", //endUtcDate,
             Keys.eventInterests: interests,
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
@@ -641,7 +647,9 @@ extension CreateEventViewController {
         let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
             
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        let interests = interestList.joined(separator: ",")
+        // S*
+        //let interests = interestList.joined(separator: ",")
+        let interests = ""
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
