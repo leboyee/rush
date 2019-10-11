@@ -88,8 +88,6 @@ struct Keys {
     static let userGender              = "u_gender"
     static let userRelation             = "u_relationship"
 
-    
-
     static let phone           = "phone"
     static let phoneToken           = "phone_token"
     static let countryCode           = "country_code"

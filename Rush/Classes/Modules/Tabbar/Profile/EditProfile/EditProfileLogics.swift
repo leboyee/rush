@@ -32,8 +32,8 @@ extension EditProfileViewController {
         case 0: return 1
         case 1: return 3
         case 2: return 3
-        case 3: return (profile?.majors?.count ?? 0) + 1
-        case 4: return (profile?.minors?.count ?? 0) + 1
+        case 3: return (majorArray.count) + 1
+        case 4: return (minorArray.count) + 1
         default: return 0
         }
     }
@@ -88,24 +88,24 @@ extension EditProfileViewController {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
         if indexPath.section == 3 {
-            if indexPath.row == profile?.majors?.count {
+            if indexPath.row == majorArray.count {
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addMajor : Text.addAnotherMajor, text: "")
                 cell.setup(isEnabled: false)
             } else {
-                guard let major = profile?.majors?[indexPath.row] else { return }
+                let majorObject = majorArray[indexPath.row]
                 cell.setup(isHideCleareButton: false)
                 cell.setup(isEnabled: false)
-                cell.setup(placeholder: "", text: major)
+                cell.setup(placeholder: "", text: majorObject)
             }
         } else if indexPath.section == 4 {
-            if indexPath.row == Authorization.shared.profile?.minors?.count {
+            if indexPath.row == minorArray.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addMinor : Text.addAnotherMinor)
                 cell.setup(isEnabled: false)
             } else {
-                guard let minor = Authorization.shared.profile?.minors?[indexPath.row] else { return }
+                let minorObject = minorArray[indexPath.row]
                 cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", text: minor)
+                cell.setup(placeholder: "", text: minorObject)
                 cell.setup(isEnabled: false)
             }
         }
@@ -121,15 +121,15 @@ extension EditProfileViewController {
             guard let unself = self else { return }
             
             if indexPath.section == 3 {
-                if let index = unself.profile?.majors?.firstIndex(of: (unself.profile?.majors?[indexPath.row] ?? "")) {
-                    unself.profile?.majors?.remove(at: index)
-                    let param = [Keys.uEduMajors: unself.profile?.majors ?? [String]()]  as [String: Any]
+                if let index = unself.majorArray.firstIndex(of: (unself.majorArray[indexPath.row])) {
+                    unself.majorArray.remove(at: index)
+                    let param = [Keys.uEduMajors: unself.majorArray]  as [String: Any]
                     unself.updateProfileAPI(param: param)
                 }
             } else   if indexPath.section == 4 {
-                if let index = unself.profile?.minors?.firstIndex(of: (unself.profile?.minors?[indexPath.row] ?? "")) {
+                if let index = unself.minorArray.firstIndex(of: (unself.minorArray[indexPath.row])) {
                     unself.profile?.minors?.remove(at: index)
-                    let param = [Keys.uEduMinors: unself.profile?.majors ?? [String]()]  as [String: Any]
+                    let param = [Keys.uEduMinors: unself.minorArray]  as [String: Any]
                     unself.updateProfileAPI(param: param)
                 }
             }
