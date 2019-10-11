@@ -85,8 +85,9 @@ extension NotificationCell {
 // MARK: - Private Functions
 extension NotificationCell {
     private func getFormattedString(string: String) -> NSAttributedString {
+        let text = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         ranges.removeAll()
-        let scanner = Scanner(string: string)
+        let scanner = Scanner(string: text)
         var strings = [String]()
         
         while !scanner.isAtEnd {
