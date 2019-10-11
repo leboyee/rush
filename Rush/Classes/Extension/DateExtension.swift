@@ -103,7 +103,7 @@ extension Date {
         dateFormatter.timeZone = TimeZone.current
         if let newDate = dateFormatter.date(from: date) {
             let newDateFormatter = DateFormatter()
-            newDateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+            newDateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             newDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             return newDateFormatter.string(from: newDate)
         }

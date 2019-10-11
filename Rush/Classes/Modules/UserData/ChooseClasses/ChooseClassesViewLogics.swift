@@ -33,8 +33,8 @@ extension ChooseClassesViewController {
     
     func fillClassesHeader(_ header: ClassesHeader, _ section: Int) {
         let classies = classesArray[section]
-        if selectedArray.contains(where: { $0.categoryId == classies.id }) {
-            guard let index = selectedArray.firstIndex(where: { $0.categoryId == classies.id }) else { return }
+        if selectedArray.contains(where: { $0.classId == classies.id }) {
+            guard let index = selectedArray.firstIndex(where: { $0.classId == classies.id }) else { return }
             let subClass = selectedArray[index]
             header.setup(detailsLableText: subClass.name)
         } else {
@@ -50,12 +50,14 @@ extension ChooseClassesViewController {
     @objc func headerSelectionAction(_ sender: UIButton) {
         if selectedIndex == sender.tag {
             selectedIndex = -1
+            tableView.reloadData()
         } else {
             selectedIndex = sender.tag
             let classies = classesArray[sender.tag]
-            getSubClassList(classId: classies.id)
+            subClassArray.removeAll()
+            tableView.reloadData()
+            getClassGroupListAPI(classId: classies.id)
         }
-        tableView.reloadData()
     }
 
 }
@@ -69,7 +71,7 @@ extension ChooseClassesViewController {
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.subClassArray = classes
+                unsafe.classesArray = classes
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
@@ -77,6 +79,7 @@ extension ChooseClassesViewController {
         }
     }
 
+    /*
     func getClassesList() {
         //Utils.showSpinner()
         ServiceManager.shared.getClassCategory(params: [:]) { [weak self] (data, errorMessage) in
@@ -90,7 +93,26 @@ extension ChooseClassesViewController {
             unsafe.tableView.reloadData()
         }
     }
+    */
     
+        func getClassGroupListAPI(classId: String) {
+
+            Utils.showSpinner()
+            let param = [Keys.pageNo: pageNo, Keys.classId: classId, Keys.search: ""] as [String: Any]
+            
+            ServiceManager.shared.fetchClassGroupList(classId: classId, params: param) { [weak self] (data, errorMsg) in
+                Utils.hideSpinner()
+                guard let unsafe = self else { return }
+                if let value = data {
+                    unsafe.subClassArray = value
+                    unsafe.tableView.reloadData()
+                } else {
+                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                }
+            }
+        }
+
+    /*
     func getSubClassList(classId: String) {
         Utils.showSpinner()
         ServiceManager.shared.getSubClass(classId: classId, params: [Keys.pageNo: pageNo]) { [weak self] (data, errorMessage) in
@@ -105,7 +127,7 @@ extension ChooseClassesViewController {
             unsafe.tableView.reloadData()
            }
        }
-    
+    */
     func updateProfileAPI() {
         let param = [Keys.uEduMinors: selectedArray]  as [String: Any]
         Utils.showSpinner()

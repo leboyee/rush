@@ -22,10 +22,10 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
 
-    var selectedArray = [SubClass]()
+    var selectedArray = [ClassGroup]()
     var selectedIndex = -1
-    var classesArray = [Class]()
-    var subClassArray = [SubClass]()
+    var classesArray = [SubClass]()
+    var subClassArray = [ClassGroup]()
     var pageNo = 1
 
     override func viewDidLoad() {
