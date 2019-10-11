@@ -77,6 +77,7 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
             selectedArray.append(subClassies)
         }
         selectedIndex = -1
+        nextButtonVisiable()
         tableView.reloadData()
     }
     

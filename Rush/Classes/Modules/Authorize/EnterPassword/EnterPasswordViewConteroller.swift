@@ -185,8 +185,8 @@ extension EnterPasswordViewConteroller {
     
     func profileUpdateSuccess() {
         AppDelegate.shared?.connectSendbird()
-        AppDelegate.shared?.setupStoryboard()
-        //self.performSegue(withIdentifier: "UserData", sender: self)
+        //AppDelegate.shared?.setupStoryboard()
+        self.performSegue(withIdentifier: "UserData", sender: self)
     }
     
     func passwordNotSuccess() {

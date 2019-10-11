@@ -46,6 +46,7 @@ struct Keys {
     
     static let matchId            = "match_id"
     static let classId            = "class_id"
+    static let groupId            = "group_id"
     static let matchStatus        = "match_status"
     static let friendUserId       = "frd_user_id"
     static let friendOtherUserId  = "frd_other_user_id"
@@ -106,6 +107,7 @@ struct Keys {
     static let uEduYear           = "u_edu_year"
     static let uEduMajors           = "u_edu_majors"
     static let uEduMinors           = "u_edu_minors"
+    static let uEduClasses           = "u_edu_classes"
     static let instagramToken           = "insta_token"
     static let images           = "images"
     static let rsvpAns         = "rsvp_ans"
