@@ -49,7 +49,7 @@ class Event: Codable {
     var address: String?
     var latitude: String?
     var longitude: String?
-    var interests: String?
+    var interests: [Interest]?
     var creator: User?
     var rsvp: [RSVPQuestion]?
     var eventInvite: [EventInvite]?

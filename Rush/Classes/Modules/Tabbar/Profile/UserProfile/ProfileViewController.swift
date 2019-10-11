@@ -12,7 +12,7 @@ struct ProfileDetail {
     var profile: User?
     var images: [Image]?
     var friends: [Friend]?
-    var interests: [Tag]?
+    var interests: [Interest]?
     var notifications: [NotificationItem]?
 }
 

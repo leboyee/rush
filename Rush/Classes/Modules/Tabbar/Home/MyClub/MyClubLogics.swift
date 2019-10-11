@@ -32,7 +32,7 @@ extension MyClubViewController {
     
     func cellCount(_ section: Int) -> Int {
         if section == 2 {
-            return interestList.count + 1
+            return (interestList?.count ?? 0) + 1
         } else if section == 3 {
             return peopleList.count + 1
         }

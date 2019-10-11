@@ -19,7 +19,7 @@ class Tag: Codable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id
-        case text
+        case id = "interest_id"
+        case text = "name"
     }
 }

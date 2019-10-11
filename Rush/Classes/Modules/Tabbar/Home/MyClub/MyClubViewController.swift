@@ -14,7 +14,7 @@ class MyClubViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
-    var interestList = [String]()
+    var interestList: [Interest]?
     var peopleList = [String]()
     
     var clubImage: UIImage?
