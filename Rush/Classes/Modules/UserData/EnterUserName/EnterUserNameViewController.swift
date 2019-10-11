@@ -66,7 +66,8 @@ class EnterUserNameViewController: CustomViewController {
     func setupUI() {
         // Navigation Bar Button
         //self.navigationItem.titleView = CustomNavBarPageController.instanceFromNib()
-
+        firstNameTextField.autocapitalizationType = .words
+        lastNameTextField.autocapitalizationType = .words
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Change `2.0` to the desired number of seconds.
             self.firstNameTextField.becomeFirstResponder()
         }
@@ -106,7 +107,7 @@ class EnterUserNameViewController: CustomViewController {
 // MARK: - Actions
 extension EnterUserNameViewController {
     @objc func backButtonAction() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func nextButtonAction() {
