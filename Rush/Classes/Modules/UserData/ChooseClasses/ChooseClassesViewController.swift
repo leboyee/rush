@@ -21,6 +21,7 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
+    //@IBOutlet weak var deleteButton: UIButton!
 
     var selectedArray = [ClassGroup]()
     var selectedIndex = -1
@@ -52,7 +53,7 @@ class ChooseClassesViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
-        getClassListAPI()
+        getClassListAPI(search: "")
 
     }
     
@@ -94,7 +95,7 @@ extension ChooseClassesViewController {
     }
     
     func nextButtonVisiable() {
-        nextButton.isHidden = self.selectedArray.count > 0 ? false : true
+        bottomView.isHidden = self.selectedArray.count > 0 ? false : true
     }
 
 }
