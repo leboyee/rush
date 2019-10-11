@@ -58,24 +58,12 @@
                                     <action selector="backButtonAction" destination="jT0-nn-O1x" eventType="touchUpInside" id="lHa-48-Cun"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwP-H1-UCw">
-                                <rect key="frame" x="360" y="56" width="30" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="⚙︎">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="WgC-rz-tQV" kind="show" id="JpC-61-lJ7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kFX-4p-a17" firstAttribute="top" secondItem="KKO-jb-Bmc" secondAttribute="bottom" constant="-40" id="20V-yY-Af0"/>
-                            <constraint firstItem="WwP-H1-UCw" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="12" id="64M-jI-bV1"/>
                             <constraint firstAttribute="bottom" secondItem="kFX-4p-a17" secondAttribute="bottom" id="6f4-n8-gW5"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="top" secondItem="BgX-Be-3HI" secondAttribute="top" id="Lgc-DV-gAh"/>
-                            <constraint firstItem="LP0-4Y-hab" firstAttribute="trailing" secondItem="WwP-H1-UCw" secondAttribute="trailing" constant="24" id="Mgf-c2-3Xl"/>
                             <constraint firstItem="kFX-4p-a17" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="SqE-iP-m0a"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="T5Z-WW-UiJ"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="adj-fA-m9T"/>
@@ -89,7 +77,6 @@
                         <outlet property="backButton" destination="s3p-gb-PRf" id="QUA-5r-mv6"/>
                         <outlet property="header" destination="KKO-jb-Bmc" id="9gr-3g-uKd"/>
                         <outlet property="headerHeightConstraint" destination="yDQ-wg-Qf0" id="2yO-hN-wp9"/>
-                        <outlet property="settingsButton" destination="WwP-H1-UCw" id="efJ-fP-dgl"/>
                         <outlet property="tableView" destination="sLR-sx-qn9" id="OPq-rx-JRP"/>
                         <segue destination="c31-hD-7x0" kind="show" identifier="ProfileFriendProfileSegue" id="3dt-pp-mnp"/>
                         <segue destination="KSN-HZ-4n3" kind="show" identifier="EditProfileSegue" id="TzM-tw-RWf"/>
@@ -759,7 +746,4 @@ event updates.</string>
         <image name="back-arrow" width="24" height="28"/>
         <image name="instagram64px" width="64" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="pui-SY-u4M"/>
-    </inferredMetricsTieBreakers>
 </document>

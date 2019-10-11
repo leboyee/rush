@@ -217,6 +217,6 @@ extension NetworkManager {
     
     // MARK: - Notification
     func getNotificationList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "notification", params: params, resultHandler: resultHandler)
+        requestGet(path: "notification/histories", params: params, resultHandler: resultHandler)
     }
 }

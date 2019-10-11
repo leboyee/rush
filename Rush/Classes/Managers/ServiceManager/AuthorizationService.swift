@@ -188,11 +188,12 @@ extension ServiceManager {
         }
     }
     
-    func getInterestList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func getInterestList(params: [String: Any], closer: @escaping (_ interest: [Interest]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getInterestList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                closer(data, errorMessage)
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (interest, _, errorMessage) in
+                               closer(interest, errorMessage)
+                          
             })
         }
     }

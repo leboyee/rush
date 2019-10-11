@@ -65,8 +65,8 @@ extension ChooseClassesViewController {
 // MARK: - Manage Interator or API's Calling
 extension ChooseClassesViewController {
     
-    func getClassListAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+    func getClassListAPI(search: String) {
+        let param = [Keys.pageNo: pageNo, Keys.search: search] as [String: Any]
         
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
@@ -129,13 +129,26 @@ extension ChooseClassesViewController {
        }
     */
     func updateProfileAPI() {
-        let param = [Keys.uEduMinors: selectedArray]  as [String: Any]
+        var selectedClass = [[String: Any]]()
+        for classGropObject in selectedArray {
+            selectedClass.append([Keys.classId: classGropObject.classId, Keys.groupId: classGropObject.id])
+        }
+        var classJson: String = ""
+               do {
+                   let jsonData = try JSONSerialization.data(withJSONObject: selectedClass)
+                   if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                       classJson = JSONString
+                   }
+               } catch {
+                   print(error.localizedDescription)
+               }
+        let param = [Keys.uEduClasses: classJson]  as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let _ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                //unsafe.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }

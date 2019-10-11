@@ -60,11 +60,11 @@ extension ChooseInterestViewController {
         //Utils.showSpinner()
         ServiceManager.shared.getInterestList(params: [:]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
-            guard let list = data?["list"] as? [[String: Any]] else { return }
-            unsafe.interestArray = list.map { (interest) -> Interest in
-                return Interest(data: interest)
+            if let list = data {
+                unsafe.interestArray = list
+                unsafe.tableView.reloadData()
             }
-            unsafe.tableView.reloadData()
+        
         }
     }
     

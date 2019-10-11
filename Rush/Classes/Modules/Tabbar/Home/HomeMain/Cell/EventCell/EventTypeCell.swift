@@ -71,7 +71,7 @@ class EventTypeCell: UITableViewCell {
         reload()
     }
     
-    func setup(interests: [Tag]) {
+    func setup(interests: [Interest]) {
         cellType = .interests
         list = interests
         reload()

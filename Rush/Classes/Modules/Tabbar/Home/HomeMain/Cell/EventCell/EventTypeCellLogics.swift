@@ -106,8 +106,8 @@ extension EventTypeCell {
     }
     
     func fillInterestCell(_ cell: TextCell, _ indexPath: IndexPath) {
-        if let tag = list?[indexPath.row] as? Tag {
-            cell.setup(text: tag.text)
+        if let interest = list?[indexPath.row] as? Interest {
+            cell.setup(text: interest.interestName)
         }
     }
     
@@ -129,8 +129,8 @@ extension EventTypeCell {
     func cellSize(indexPath: IndexPath) -> CGSize {
         if cellType == .interests {
             guard list?.count ?? 0 > indexPath.row else { return CGSize.zero }
-            if let tag = list?[indexPath.row] as? Tag {
-                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
+            if let tag = list?[indexPath.row] as? Interest {
+                var textWidth =  ceil(tag.interestName.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
                 //Add Padding
                 textWidth += (padding*2)
                 let height: CGFloat = 28.0

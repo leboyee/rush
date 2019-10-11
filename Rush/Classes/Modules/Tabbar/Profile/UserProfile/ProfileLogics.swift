@@ -95,7 +95,21 @@ extension ProfileViewController {
     }
     
     func fillNotificationCell(_ cell: NotificationCell, _ indexPath: IndexPath) {
-        cell.setup()
+        if let notification = profileDetail.notifications?[indexPath.row] {
+            switch notification.ntType {
+            case .acceptFriendRequest, .friendRequest:
+                cell.set(friend: notification.friend?.last, text: notification.ntText)
+            case .eventInvite:
+                cell.set(user: notification.generatedBy, event: notification.event?.last, text: notification.ntText)
+            case .clubInvite:
+                print("")
+            case .upVoted, .downVoted:
+                print("")
+            case .newComment:
+                print("")
+            default: break
+            }
+        }
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
@@ -159,6 +173,10 @@ extension ProfileViewController {
     func selectedRow(_ indexPath: IndexPath) {
         
     }
+    
+    func willDisplay(_ indexPath: IndexPath) {
+        
+    }
 }
 
 // MARK: - API's
@@ -175,10 +193,8 @@ extension ProfileViewController {
             let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
             ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
                 self?.profileDetail.profile = user
-                if let list = user?.interest {
-                  let string = list.joined(separator: ",")
-                    self?.profileDetail.interests = string.tags
-                }
+                self?.profileDetail.interests = user?.interest
+
                 self?.setupHeaderData()
                 self?.downloadGroup.leave()
             }
@@ -241,14 +257,12 @@ extension ProfileViewController {
             let time = DispatchTime.now() + (2 * 60)
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
-            //guard let userId = self.profileDetail.profile?.userId else { return }
-            /*
-            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.notificationPageNo)"]
+            let params = [Keys.pageNo: "\(self.notificationPageNo)"]
             ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (list, _) in
                 self?.profileDetail.notifications = list
                 self?.downloadGroup.leave()
-            }*/
-            self.downloadGroup.leave()
+                self?.tableView.reloadData()
+            }
         }
     }
 }

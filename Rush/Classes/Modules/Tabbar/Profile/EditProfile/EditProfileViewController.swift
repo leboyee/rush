@@ -28,6 +28,9 @@ class EditProfileViewController: UIViewController {
     var address = ""
     var profile = Authorization.shared.profile
     var updateImage = false
+    var majorArray = [String]()
+    var minorArray = [String]()
+    var interest = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -35,6 +38,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         profile = Authorization.shared.profile
         tabBarController?.tabBar.isHidden = false
         title = ""
@@ -46,7 +50,10 @@ extension EditProfileViewController {
     
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
-        
+        let majArray = profile?.majors ?? [Major]()
+        let minArray = profile?.minors ?? [Minor]()
+        majorArray = majArray.map({($0.majorName ?? "")})
+        minorArray = minArray.map({($0.minorName ?? "")})
         setupTableView()
         setupNavigation()
         
@@ -175,12 +182,12 @@ extension EditProfileViewController {
             }
         } else if segue.identifier == Segues.addMajorViewSegue {
             if let vc = segue.destination as? AddMajorsViewController {
-                vc.selectedArray = profile?.majors ?? [String]()
+                vc.selectedArray = minorArray
                 vc.isEditUserProfile = true
             }
         } else if segue.identifier == Segues.addMinorViewSegue {
             if let vc = segue.destination as? AddMinorsViewController {
-                vc.selectedArray = profile?.minors ?? [String]()
+                vc.selectedArray = majorArray
                 vc.isEditUserProfile = true
             }
         }

@@ -97,7 +97,7 @@ extension ClubManageCell {
             secondButton.backgroundColor = UIColor.bgBlack
         } else if secondButtonType == .message {
             secondButton.setImage(#imageLiteral(resourceName: "message-profile"), for: .normal)
-            secondButton.setTitle(Text.messages, for: .normal)
+            secondButton.setTitle(Text.message, for: .normal)
             secondButton.setTitleColor(UIColor.bgBlack, for: .normal)
             secondButton.backgroundColor = UIColor.lightGray93
         } else if secondButtonType == .reject {
