@@ -65,8 +65,8 @@ extension ChooseClassesViewController {
 // MARK: - Manage Interator or API's Calling
 extension ChooseClassesViewController {
     
-    func getClassListAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+    func getClassListAPI(search: String) {
+        let param = [Keys.pageNo: pageNo, Keys.search: search] as [String: Any]
         
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
@@ -146,7 +146,7 @@ extension ChooseClassesViewController {
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let _ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
                 unsafe.profileUpdateSuccess()
             } else {

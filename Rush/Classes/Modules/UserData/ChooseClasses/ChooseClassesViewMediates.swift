@@ -19,8 +19,11 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.register(UINib(nibName: Cell.classesCell, bundle: nil), forCellReuseIdentifier: Cell.classesCell)
         
         tableView.register(UINib(nibName: ReusableView.classesHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.classesHeader)
+        
+        searchTextField.delegate = self
+        searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
 
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         tableView.reloadData()
     }
     
@@ -83,5 +86,37 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
+    }
+}
+
+extension ChooseClassesViewController: UITextFieldDelegate {
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @objc func textDidChanged(_ textField: UITextField) {
+      //  deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+        let searchText = textField.text ?? ""
+        pageNo = 1
+        getClassListAPI(search: searchText)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text?.count ?? 0 == 0 && string == " " {
+            return false
+        }
+     return true
     }
 }
