@@ -64,13 +64,19 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subClassies = subClassArray[indexPath.row]
-        if selectedArray.contains(where: { $0.id == subClassies.id }) {
-            guard let index = selectedArray.firstIndex(where: { $0.id == subClassies.id }) else { return }
-        
-            selectedArray.remove(at: index)
+        if selectedArray.contains(where: { $0.classId == subClassies.classId }) {
+            if selectedArray.contains(where: { $0.classId == subClassies.classId && $0.id == subClassies.id }) {
+                      guard let index = selectedArray.firstIndex(where: { $0.id == subClassies.id }) else { return }
+                      selectedArray.remove(at: index)
+                  } else {
+                    guard let index = selectedArray.firstIndex(where: { $0.classId == subClassies.classId }) else { return }
+                    selectedArray.remove(at: index)
+                      selectedArray.append(subClassies)
+                  }
         } else {
             selectedArray.append(subClassies)
-        }    
+        }
+        selectedIndex = -1
         tableView.reloadData()
     }
     

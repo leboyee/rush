@@ -558,6 +558,8 @@ extension CreateEventViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
         self.peopleList.append(contentsOf: invite)
         self.tableView.reloadData()
+        self.validateAllFields()
+
     }
 }
 
@@ -565,7 +567,9 @@ extension CreateEventViewController: EventInviteDelegate {
 extension CreateEventViewController: EventInterestDelegate {
     func  selectedInterest(_ interest: [String]) {
         self.interestList.append(contentsOf: interest)
+        validateAllFields()
         self.tableView.reloadData()
+        
     }
 }
 
@@ -586,12 +590,10 @@ extension CreateEventViewController {
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
         let startUtcDate = Date().localToUTC(date: startDateString)
-        let startUtcDateString = Date().localToUTCDate(date: startUtcDate)
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
         let endUtcDate = Date().localToUTC(date: endDateString)
         print(startUtcDate)
         print(endUtcDate)
-        print(startUtcDateString)
         var rsvpJson: String = ""
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: array)
@@ -611,8 +613,8 @@ extension CreateEventViewController {
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
             Keys.eventLongitude: "\(longitude)",
-            Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
-            Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventStartDate: startUtcDate,//"2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: endUtcDate,//"2019-10-12 08:30:00", //endUtcDate,
             Keys.eventInterests: interests,
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
