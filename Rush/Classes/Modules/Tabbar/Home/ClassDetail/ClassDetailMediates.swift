@@ -68,6 +68,8 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         } else if indexPath.section == 5 {
             if joinedClub {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
+                cell.setup(font: UIFont.semibold(sz: 13))
+                cell.setup(titleColor: UIColor.lightGrayColor)
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell else { return UITableViewCell() }

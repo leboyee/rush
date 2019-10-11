@@ -102,7 +102,7 @@ extension ClassDetailViewController {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(title: "Marta Keller")
-        cell.setup(detail: "3 events")
+        cell.setup(detail: "10 pm")
         cell.setup(isHideSeparator: true)
         if indexPath.section > 5 {
             cell.setup(bottomConstraintOfImage: 0)
