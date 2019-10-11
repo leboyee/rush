@@ -79,6 +79,7 @@ class SubClass: Codable {
     var classTotalGroups: Int64 = 0
     
     var classGroups: [ClassGroup]?
+    var myJoinedClass: [ClassJoined]?
     init() { }
     
     private enum CodingKeys: String, CodingKey {
@@ -89,6 +90,7 @@ class SubClass: Codable {
         case classCatId = "class_cat_id"
         case classTotalGroups = "class_total_groups"
         case classGroups = "class_groups"
+        case myJoinedClass = "my_joined_classes"
     }
     var id: String {
         return String(classId)
@@ -123,5 +125,36 @@ class ClassGroup: Codable {
     }
     var classId: String {
         return String(classIdP)
+    }
+}
+
+//my_joined_classes
+class ClassJoined: Codable {
+    
+    private var classGroupRosterIdP: Int = 0
+    private var classIdP: Int = 0
+    private var groupIdP: Int = 0
+    private var userIdP: Int = 0
+    
+    init() { }
+    
+    private enum CodingKeys: String, CodingKey {
+        case classGroupRosterIdP = "class_grp_roster_id"
+        case classIdP = "class_id"
+        case groupIdP = "group_id"
+        case userIdP = "user_id"
+    }
+    
+    var classGroupRosterId: String {
+        return String(classGroupRosterIdP)
+    }
+    var classId: String {
+        return String(classIdP)
+    }
+    var groupId: String {
+        return String(groupIdP)
+    }
+    var userId: String {
+        return String(userIdP)
     }
 }

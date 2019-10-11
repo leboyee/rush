@@ -34,6 +34,7 @@ class CreatePostViewController: UIViewController {
     
     var clubInfo: Club?
     var eventInfo: Event?
+    var subclassInfo: SubClass?
     
     var createBtnActive: UIBarButtonItem {
         return UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))

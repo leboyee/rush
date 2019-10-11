@@ -121,6 +121,7 @@ extension ClubDetailViewController {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(isHideSeparator: true)
+        cell.clipsToBounds = true
         if indexPath.section > 5 {
             let post = clubPostList[indexPath.section - 6]
             cell.setup(title: post.user?.name ?? "")
@@ -143,8 +144,8 @@ extension ClubDetailViewController {
     }
     
     func fillTagCell(_ cell: TagCell) {
-        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
-        cell.setup(tagList: tags)
+//        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
+//        cell.setup(tagList: tags)
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
@@ -180,6 +181,12 @@ extension ClubDetailViewController {
         cell.set(numberOfComment: post.numberOfComments)
         cell.set(ishideUnlikeLabel: false)
         
+        if let myVote = post.myVote?.first {
+            cell.set(vote: myVote.type)
+        } else {
+           cell.set(vote: 0)
+        }
+        
         cell.likeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
             uwself.voteClubAPI(id: post.postId, type: "up")
@@ -188,7 +195,6 @@ extension ClubDetailViewController {
         cell.unlikeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
             uwself.voteClubAPI(id: post.postId, type: "down")
-            
         }
         
         cell.commentButtonEvent = { [weak self] () in

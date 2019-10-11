@@ -320,6 +320,7 @@ public struct Text {
     static let club                      = "club"
     static let post                      = "post"
     static let event                     = "event"
+    static let classKey                    = "class"
     static let education                 = "Education"
     static let majors                    = "Majors"
     static let minors                    = "Minors"

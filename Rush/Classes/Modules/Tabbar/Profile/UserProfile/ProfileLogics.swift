@@ -29,6 +29,8 @@ extension ProfileViewController {
     }
     
     func loadFriends() {
+        friendPageNo = 1
+        friendNextPageExist = false
         fetchFriendList()
     }
     
@@ -141,6 +143,17 @@ extension ProfileViewController {
                 }
             }
         }
+        
+        cell.cellWillDisplay = { [weak self] (index) in
+            guard let unsafe = self else { return }
+            if indexPath.section == 0, unsafe.imageNextPageExist, (unsafe.profileDetail.images?.count ?? 0) - 1 == index {
+                unsafe.imageNextPageExist = false
+                unsafe.fetchImagesList()
+            } else if indexPath.section == 1, unsafe.friendNextPageExist, (unsafe.profileDetail.friends?.count ?? 0) - 1 == index {
+                unsafe.friendNextPageExist = false
+                unsafe.fetchFriendList()
+            }
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -175,7 +188,10 @@ extension ProfileViewController {
     }
     
     func willDisplay(_ indexPath: IndexPath) {
-        
+        if indexPath.section == 3, notificationNextPageExist, (profileDetail.notifications?.count ?? 0) - 1 == indexPath.row {
+            notificationNextPageExist = false
+            fetchNotificationList()
+        }
     }
 }
 
@@ -183,7 +199,6 @@ extension ProfileViewController {
 extension ProfileViewController {
 
     private func fetchUserProfile() {
-
         downloadQueue.async {
             let time = DispatchTime.now() + (2 * 60)
             _ = self.downloadGroup.wait(timeout: time)
@@ -244,10 +259,27 @@ extension ProfileViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let userId = self.profileDetail.profile?.userId else { return }
-            let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
-            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (list, _) in
-                self?.profileDetail.friends = list
+            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.friendPageNo)"]
+            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (friends, _) in
+                guard let unsafe = self else { return }
+                if let list = friends {
+                    if list.isEmpty {
+                        unsafe.friendNextPageExist = false
+                        if unsafe.friendPageNo == 1 {
+                            unsafe.profileDetail.notifications?.removeAll()
+                        }
+                    } else {
+                        if unsafe.friendPageNo == 1 {
+                            unsafe.profileDetail.friends = list
+                        } else {
+                            unsafe.profileDetail.friends?.append(contentsOf: list)
+                        }
+                        unsafe.friendPageNo += 1
+                        unsafe.friendNextPageExist = true
+                    }
+                }
                 self?.downloadGroup.leave()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -258,8 +290,24 @@ extension ProfileViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             let params = [Keys.pageNo: "\(self.notificationPageNo)"]
-            ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (list, _) in
-                self?.profileDetail.notifications = list
+            ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (notifications, _) in
+                guard let unsafe = self else { return }
+                if let list = notifications {
+                    if list.isEmpty {
+                        unsafe.notificationNextPageExist = false
+                        if unsafe.notificationPageNo == 1 {
+                            unsafe.profileDetail.notifications?.removeAll()
+                        }
+                    } else {
+                        if unsafe.notificationPageNo == 1 {
+                            unsafe.profileDetail.notifications = list
+                        } else {
+                            unsafe.profileDetail.notifications?.append(contentsOf: list)
+                        }
+                        unsafe.notificationPageNo += 1
+                        unsafe.notificationNextPageExist = true
+                    }
+                }
                 self?.downloadGroup.leave()
                 self?.tableView.reloadData()
             }
