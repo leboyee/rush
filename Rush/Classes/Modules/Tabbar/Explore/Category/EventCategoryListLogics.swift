@@ -39,7 +39,7 @@ extension EventCategoryListViewController {
         } else if type == .event {
             title = indexPath.item == 0 ? "All upcoming" : indexPath.item == 1 ? "Any time" : "All people"
         } else if type == .club || type == .classes {
-            title = indexPath.item == 0 ? "All categories" : indexPath.item == 1 ? "Popular first" : "All people"
+            title = indexPath.item == 0 ? firstSortText : indexPath.item == 1 ? secondSortText : thirdSortText
         }
         cell.setup(text: title)
         
@@ -70,7 +70,8 @@ extension EventCategoryListViewController {
         } else if type == .club || type == .classes {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             //Show all categories for the screen.
-            eventCategoryFilter.dataArray = indexPath.item == 0 ? [String]() : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            eventCategoryFilter.delegate = self
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.tempCategoryFilter() : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
@@ -124,6 +125,28 @@ extension EventCategoryListViewController {
         } else if type == .classes {
 //            let myclass = classList[indexPath.row]
 //            performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
+        }
+    }
+}
+
+// MARK: - EventCategoryFilterDelegate
+extension EventCategoryListViewController: EventCategoryFilterDelegate {
+    
+    func selectedIndex(_ type: String) {
+        if self.type == .event {
+            
+        } else if self.type == .club || self.type == .classes {
+            if isFirstFilter {
+                firstSortText = type
+            } else if isSecondFilter {
+                secondSortText = type
+            } else if isThirdFilter {
+                thirdSortText = type
+            }
+            isFirstFilter = false
+            isSecondFilter = false
+            isThirdFilter = false
+            collectionView.reloadData()
         }
     }
 }

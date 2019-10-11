@@ -121,6 +121,7 @@ extension ClubDetailViewController {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(isHideSeparator: true)
+        cell.clipsToBounds = true
         if indexPath.section > 5 {
             let post = clubPostList[indexPath.section - 6]
             cell.setup(title: post.user?.name ?? "")

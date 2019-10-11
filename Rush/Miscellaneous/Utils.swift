@@ -370,7 +370,7 @@ extension Utils {
         let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
         img.draw(in: rect)
         
-        let normalizedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return normalizedImage
     }
@@ -419,6 +419,10 @@ extension Utils {
     
     class func peopleFilter() -> [String] {
         return ["All people", "Friends only"]
+    }
+    
+    class func tempCategoryFilter() -> [String] {
+        return ["Sports", "Technology"]
     }
 }
 

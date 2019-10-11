@@ -28,6 +28,10 @@ class EventCategoryListViewController: UIViewController {
     var classList = [Class]()
     var eventCategory: EventCategory?
     
+    var firstSortText = "All categories"
+    var secondSortText = "Popular first"
+    var thirdSortText = "All people"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
