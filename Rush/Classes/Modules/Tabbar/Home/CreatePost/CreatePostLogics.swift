@@ -29,6 +29,10 @@ extension CreatePostViewController {
             cell.setup(title: event.creator?.name ?? "")
             cell.setup(detail: "Posting in " + (event.title))
             cell.setup(url: event.creator?.photo?.url())
+        } else if let subclass = subclassInfo { // Subclass
+            cell.setup(title: Authorization.shared.profile?.name ?? "")
+            cell.setup(detail: "Posting in " + (subclass.name))
+            cell.setup(url: Authorization.shared.profile?.photo?.url())
         }
     }
     
@@ -102,6 +106,12 @@ extension CreatePostViewController {
             imagedataList[Keys.desc] = postText
             imagedataList[Keys.dataId] = event.id
             imagedataList[Keys.dataType] = Text.event
+        } else if let subclass = subclassInfo {
+            imagedataList[Keys.desc] = postText
+            imagedataList[Keys.dataId] = subclass.id
+            imagedataList[Keys.dataType] = Text.classKey
+        } else {
+            
         }
         imagedataList[Keys.totalPhotos] = imageList.count
         Utils.showSpinner()

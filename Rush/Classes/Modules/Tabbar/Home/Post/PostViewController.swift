@@ -33,6 +33,7 @@ class PostViewController: UIViewController {
     
     var clubInfo: Club?
     var eventInfo: Event?
+    var subclassInfo: SubClass?
     var postInfo: Post?
     var isFromCreatePost = false
     var pageNoP = 1

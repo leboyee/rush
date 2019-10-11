@@ -60,4 +60,9 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
         }
         return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 8)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cellWillDisplay?(indexPath.row)
+    }
+
 }
