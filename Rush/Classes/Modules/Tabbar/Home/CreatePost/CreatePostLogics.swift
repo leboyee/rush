@@ -30,10 +30,9 @@ extension CreatePostViewController {
             cell.setup(detail: "Posting in " + (event.title))
             cell.setup(url: event.creator?.photo?.url())
         } else if let subclass = subclassInfo { // Subclass
-            cell.setup(title: Authorization.shared.profile?.firstName ?? "")
+            cell.setup(title: Authorization.shared.profile?.name ?? "")
             cell.setup(detail: "Posting in " + (subclass.name))
             cell.setup(url: Authorization.shared.profile?.photo?.url())
-            
         }
     }
     

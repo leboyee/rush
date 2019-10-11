@@ -139,16 +139,23 @@ extension ClassDetailViewController {
 //        }
     }
     // Textview cell (section 6 row 1)
-    func fillTextViewCell(_ cell: UserPostTextTableViewCell) {
-        
-        cell.setup(text: "It’s so great to see you guys! I hope we’ll have a great day :)", placeholder: "")
+    func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
+        if indexPath.section > 5 {
+            let post = classesPostList[indexPath.section - 6]
+            cell.setup(text: post.text ?? "", placeholder: "")
+        }
         cell.setup(font: UIFont.regular(sz: 17))
         cell.setup(isUserInterectionEnable: false)
     }
     
     // Image cell (section 6 row 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        cell.postImageView?.image = #imageLiteral(resourceName: "bound-add-img")
+        if indexPath.section > 5 {
+            let post = classesPostList[indexPath.section - 6]
+            if let list = post.images {
+                cell.set(url: list.first?.url())
+            }
+        }
         cell.setup(isCleareButtonHide: true)
     }
     
@@ -168,6 +175,35 @@ extension ClassDetailViewController {
         let img = Image(json: subclassInfo?.photo ?? "")
         view.setup(imageUrl: img.url())
         view.setup(isHideHoverView: true)
+    }
+   
+    func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+        let post = classesPostList[indexPath.section - 6]
+        cell.set(numberOfLike: post.numberOfLikes)
+        cell.set(numberOfUnLike: post.numberOfUnLikes)
+        cell.set(numberOfComment: post.numberOfComments)
+        cell.set(ishideUnlikeLabel: false)
+        
+        if let myVote = post.myVote?.first {
+            cell.set(vote: myVote.type)
+        } else {
+            cell.set(vote: 0)
+        }
+        
+        cell.likeButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.voteClubAPI(id: post.postId, type: "up")
+        }
+        
+        cell.unlikeButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+            uwself.voteClubAPI(id: post.postId, type: "down")
+        }
+        
+        cell.commentButtonEvent = { [weak self] () in
+            guard let uwself = self else { return }
+//            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
+        }
     }
     
     func cellSelected(_ indexPath: IndexPath) {
@@ -242,6 +278,29 @@ extension ClassDetailViewController {
             if let value = post {
                 uwself.classesPostList = value
                 uwself.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func voteClubAPI(id: String, type: String) {
+        ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if let post = result {
+                let index = uwself.classesPostList.firstIndex(where: { ( $0.postId == post.postId ) })
+                if let position = index, uwself.classesPostList.count > position {
+                    uwself.classesPostList[position] = post
+                    
+                    let oldOffset = uwself.tableView.contentOffset
+                    UIView.setAnimationsEnabled(false)
+                    uwself.tableView.beginUpdates()
+                    uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
+                    uwself.tableView.endUpdates()
+                    uwself.tableView.setContentOffset(oldOffset, animated: false)
+                }
+                uwself.getClassPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

@@ -83,7 +83,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 return cell
             } else if indexPath.row == 1 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
-                fillTextViewCell(cell)
+                fillTextViewCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 2 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
@@ -91,6 +91,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 return cell
             } else if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
+                fillLikeCell(cell, indexPath)
                 return cell
             } else {
                 return UITableViewCell()

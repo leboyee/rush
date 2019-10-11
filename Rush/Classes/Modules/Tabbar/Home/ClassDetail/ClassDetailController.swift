@@ -123,9 +123,15 @@ extension ClassDetailViewController {
                 vc.type = .classes
             }
         } else if segue.identifier == Segues.createPost {
-            if let nvc = segue.destination as? UINavigationController, let vc = nvc.viewControllers.first as? CreatePostViewController {
+            if let vc = segue.destination as? CreatePostViewController {
                 vc.subclassInfo = subclassInfo
                 vc.delegate = self
+            }
+        } else if segue.identifier == Segues.postSegue {
+            if let vc = segue.destination as? PostViewController {
+//                vc.postInfo = sender as? Post
+//                vc.subclassInfo = subClass
+//                vc.delegate = self
             }
         }
     }
