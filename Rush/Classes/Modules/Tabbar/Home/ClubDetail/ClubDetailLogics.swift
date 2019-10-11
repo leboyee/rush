@@ -12,7 +12,11 @@ import Photos
 extension ClubDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat.leastNormalMagnitude : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
+        if section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return section == 0 ? CGFloat.leastNormalMagnitude : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
+        }
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -27,8 +31,12 @@ extension ClubDetailViewController {
             }
             return UITableView.automaticDimension
         } else {
-            let auto = UITableView.automaticDimension
-            return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
+            if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+                return CGFloat.leastNormalMagnitude
+            } else {
+                let auto = UITableView.automaticDimension
+                return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
+            }
         }
     }
     
@@ -60,11 +68,11 @@ extension ClubDetailViewController {
     func fillClubManageCell(_ cell: ClubManageCell) {
         if clubInfo?.clubUId == Authorization.shared.profile?.userId {
             cell.setup(firstButtonType: .manage)
+            cell.setup(secondButtonType: .groupChat)
         } else {
             cell.setup(firstButtonType: .joined)
+            cell.setup(secondButtonType: .groupChatClub)
         }
-        
-        cell.setup(secondButtonType: .groupChatClub)
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
@@ -192,7 +200,7 @@ extension ClubDetailViewController {
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         
-        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? Text.popularPost : ""
+        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? (clubInfo?.clubUId == Authorization.shared.profile?.userId ? Text.posts : Text.popularPost) : ""
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
         if section == 5 {
@@ -306,17 +314,17 @@ extension ClubDetailViewController {
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let post = result {
-                    let index = uwself.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
-                    if let position = index, uwself.clubPostList.count > position {
-                        uwself.clubPostList[position] = post
-                        
-                        let oldOffset = uwself.tableView.contentOffset
-                        UIView.setAnimationsEnabled(false)
-                        uwself.tableView.beginUpdates()
-                        uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
-                        uwself.tableView.endUpdates()
-                        uwself.tableView.setContentOffset(oldOffset, animated: false)
-                    }
+                let index = uwself.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
+                if let position = index, uwself.clubPostList.count > position {
+                    uwself.clubPostList[position] = post
+                    
+                    let oldOffset = uwself.tableView.contentOffset
+                    UIView.setAnimationsEnabled(false)
+                    uwself.tableView.beginUpdates()
+                    uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
+                    uwself.tableView.endUpdates()
+                    uwself.tableView.setContentOffset(oldOffset, animated: false)
+                }
                 uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

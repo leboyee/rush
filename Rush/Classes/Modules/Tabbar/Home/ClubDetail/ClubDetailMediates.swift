@@ -204,7 +204,7 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
         
     }
-
+    
     func createPostSuccess(_ post: Post) {
         isCallAPI = false
         
