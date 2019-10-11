@@ -83,7 +83,7 @@ extension FriendClubCell {
             thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
             userCountLabel.isHidden = false
             let count = invitee?.count ?? 0
-            userCountLabel.text = "\(count - 3)+"
+            userCountLabel.text = "\(count)+"
         }
     }
 }
