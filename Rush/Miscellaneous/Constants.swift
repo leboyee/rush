@@ -257,7 +257,7 @@ public struct Text {
     static let classes                  = "Classes"
     static let manage                   = "Manage"
     static let groupChat                = "Group chat"
-    static let messages                 = "Messages"
+    static let message                  = "Message"
     static let friend                   = "Friend"
     static let viewAll                  = "View all"
     static let accept                   = "Accept "

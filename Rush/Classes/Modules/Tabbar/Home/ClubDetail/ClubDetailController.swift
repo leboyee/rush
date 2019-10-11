@@ -105,6 +105,7 @@ extension ClubDetailViewController {
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .club
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.createPost {
             guard let vc = segue.destination as? CreatePostViewController else { return }
