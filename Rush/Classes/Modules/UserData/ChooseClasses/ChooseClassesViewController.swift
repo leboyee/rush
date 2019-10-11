@@ -92,6 +92,11 @@ extension ChooseClassesViewController {
         bottomView.isHidden = self.selectedArray.count > 0 ? false : true
         self.tableView.reloadData()
     }
+    
+    func nextButtonVisiable() {
+        nextButton.isHidden = self.selectedArray.count > 0 ? false : true
+    }
+
 }
 
 // MARK: - Actions
@@ -106,6 +111,15 @@ extension ChooseClassesViewController {
     }
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
+    }
+}
+
+// MARK: - Preseneter
+extension ChooseClassesViewController {
+    
+    func profileUpdateSuccess() {
+            self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
     }
 }
