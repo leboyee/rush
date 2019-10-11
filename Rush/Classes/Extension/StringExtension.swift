@@ -258,5 +258,5 @@ extension String {
             }
         }
         return nil
-    }    
+    }
 }

@@ -146,7 +146,7 @@ extension ChooseClassesViewController {
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let _ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
                 unsafe.profileUpdateSuccess()
             } else {
