@@ -135,6 +135,9 @@ extension NetworkManager {
     func joinClassGroup(classId: String, groupId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "class/\(classId)/group/\(groupId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
+    func getClassDetail(classId: String, groupId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "class/\(classId)/group/\(groupId)", params: param, resultHandler: resultHandler)
+    }
 
     // MARK: - Events
     func getEventDetail(eventId: String, resultHandler: @escaping ResultClosure) {

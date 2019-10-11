@@ -77,8 +77,8 @@ class CreateClubViewController: UIViewController {
             clubDescription = club.clubDesc ?? ""
             isCreateGroupChat = (club.clubIsChatGroup) == 1 ? true : false
             
-            let interests = (club.clubInterests ?? "").components(separatedBy: ",")
-            interestList = interests
+//            let interests = (club.clubInterests ?? "").components(separatedBy: ",")
+//            interestList = interests
         }
     }
 }
