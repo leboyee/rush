@@ -46,10 +46,20 @@ class OtherUserProfileController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
         getProfileAPI()
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
         getClassCategoryAPI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     //MARk: - Other function
@@ -58,9 +68,6 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
-        
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
         
         /*
          scrollView.delegate = self

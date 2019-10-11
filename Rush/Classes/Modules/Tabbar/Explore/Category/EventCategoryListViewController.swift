@@ -53,13 +53,7 @@ class EventCategoryListViewController: UIViewController {
         }
         getClassCategoryAPI()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.barTintColor = UIColor.clear
-        //navigationController?.navigationBar.isTranslucent = true
-    }
-    
+        
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
         // Setup tableview
