@@ -114,6 +114,7 @@ extension OtherUserProfileController {
                 controller.isShowTempData = false
                 controller.isGroupChat = false
                 controller.userName = unself.userInfo?.name ?? ""
+                controller.hidesBottomBarWhenPushed = true
                 let friend = Friend()
                 friend.user = unself.userInfo
                 controller.friendProfile = friend

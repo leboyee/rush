@@ -97,6 +97,7 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
             let controller = ChatRoomViewController()
             controller.isShowTempData = false
             controller.isGroupChat = false
+            controller.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(controller, animated: true)
         }
         

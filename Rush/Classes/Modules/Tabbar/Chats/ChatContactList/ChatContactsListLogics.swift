@@ -35,6 +35,7 @@ extension ChatContactsListViewController {
         controller.friendProfile = friend
         controller.userName = friend?.user?.name ?? ""
         controller.isGroupChat = false
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     

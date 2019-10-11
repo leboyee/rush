@@ -65,6 +65,7 @@ class ChatRoomViewController: MessagesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -281,7 +282,7 @@ extension ChatRoomViewController {
         galleryButton.isHighlighted = true
         galleryButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: 0, bottom: 6, right: 0)
         
-        // MARK: - AddImage button
+        // MARK: - AddGallryImage button
         galleryButton.onTouchUpInside { (_) in
             if self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
@@ -414,8 +415,8 @@ extension ChatRoomViewController {
     
     @objc func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, keyboardSize.height > 0, keyboardSize.height < 150 {
-            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 152, width: 88, height: 88)
-            timeLabel.frame = CGRect(x: 16, y: 256, width: screenWidth - 32, height: 22)
+            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: isGroupChat ? 200 : 152, width: 88, height: 88)
+            timeLabel.frame = CGRect(x: 16, y: isGroupChat ? 300 : 256, width: screenWidth - 32, height: 22)
         }
     }
     

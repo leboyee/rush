@@ -36,6 +36,7 @@ extension ChatsViewController {
         controller.userName = cell.titleLabel.text ?? ""
         controller.userNavImage = cell.imgView.image
         controller.channel = channels[indexPath.row]
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     

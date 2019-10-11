@@ -168,6 +168,7 @@ extension EventDetailViewController {
         controller.isShowTempData = false
         controller.userName = event?.title ?? ""
         controller.isGroupChat = true
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     
