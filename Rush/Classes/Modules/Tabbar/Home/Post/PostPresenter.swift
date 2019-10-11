@@ -133,12 +133,12 @@ extension PostViewController {
             
             cell.likeButtonEvent = { [weak self] () in
                 guard let uwself = self else { return }
-                uwself.voteClubAPI(id: post.postId ?? "", type: "up")
+                uwself.voteClubAPI(id: post.postId, type: "up")
             }
             
             cell.unlikeButtonEvent = { [weak self] () in
                 guard let uwself = self else { return }
-                uwself.voteClubAPI(id: post.postId ?? "", type: "down")
+                uwself.voteClubAPI(id: post.postId, type: "down")
                 
             }
         }

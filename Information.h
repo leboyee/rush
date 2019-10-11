@@ -33,4 +33,8 @@
  Instagram login details as below:
  dev@messapps.com
  Mbasilio!12
+ 
+ DB MYSQL
+ user: rush_common  / AdTGkSH%WZV6hMzLR
+ https://api.rushapp.io/pma
  */

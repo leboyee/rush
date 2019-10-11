@@ -241,7 +241,7 @@ extension ProfileViewController {
             let time = DispatchTime.now() + (2 * 60)
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
-            guard let userId = self.profileDetail.profile?.userId else { return }
+            //guard let userId = self.profileDetail.profile?.userId else { return }
             /*
             let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.notificationPageNo)"]
             ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (list, _) in

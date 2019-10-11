@@ -21,6 +21,7 @@ class CalendarViewController: CustomViewController {
 
     var groups = [EventGroup]()
     var child: CalendarEventListViewController?
+    var isScheduledAnything: Bool = false
     
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var listTopConstraint: NSLayoutConstraint!
@@ -95,7 +96,7 @@ extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
         
-        guard groups.count > 0 else { return }
+        guard isScheduledAnything else { return }
         
         var text = dateButton.title(for: .normal)
         if isCalendarOpen {
@@ -134,6 +135,6 @@ extension CalendarViewController {
     
     func loadChildList() {
         let subGroup = groups.filter({ $0.dateString == selectedDate.toString(format: "yyyy-MM-dd") })
-        child?.loadEvents(groups: subGroup)
+        child?.loadEvents(groups: subGroup, isSchedule: isScheduledAnything)
     }
 }
