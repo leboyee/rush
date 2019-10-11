@@ -212,3 +212,10 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
         performSegue(withIdentifier: Segues.postSegue, sender: post)
     }
 }
+
+// MARK: - SharePostViewControllerDelegate
+extension ClubDetailViewController: SharePostViewControllerDelegate {
+    func delete(type: SharePostType, object: Any?) {
+        deleteClubAPI()
+    }
+}

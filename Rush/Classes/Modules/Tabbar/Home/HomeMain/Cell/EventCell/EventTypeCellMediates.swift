@@ -55,6 +55,8 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if cellType == .interests {
             return UIEdgeInsets(top: 0, left: 24, bottom: 16, right: 8)
+        } else if cellType == .friends || cellType == .invitees {
+            return UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 13)
         }
         return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 8)
     }

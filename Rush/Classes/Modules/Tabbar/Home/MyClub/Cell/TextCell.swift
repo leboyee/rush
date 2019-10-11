@@ -13,8 +13,8 @@ class TextCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //backgroundColor = isDarkModeOn ? UIColor.separatorColorDark : UIColor.white
-        //label.textColor = isDarkModeOn ? UIColor.white : UIColor.bgBlack
+        backgroundColor = isDarkModeOn ? UIColor.separatorColorDark : UIColor.white
+        label.textColor = isDarkModeOn ? UIColor.white : UIColor.bgBlack
         clipsToBounds = true
         layer.cornerRadius = 8.0
     }

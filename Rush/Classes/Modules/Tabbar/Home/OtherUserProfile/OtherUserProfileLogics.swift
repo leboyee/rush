@@ -32,17 +32,15 @@ extension OtherUserProfileController {
         
         if indexPath.row == 0 {
             
-            // For test
             cell.setup(secondButtonType: .message)
             cell.setup(topConstraint: 0)
+            isShowMessageButton = false
             if status == .none {
                 
             } else if status == .friends {
                 cell.setup(firstButtonType: .friends)
-                isShowMessageButton = false
             } else if status == .requested {
                 cell.setup(firstButtonType: .requested)
-                isShowMessageButton = false
             } else if status == .accept {
                 cell.setup(firstButtonType: .accept)
                 cell.setup(secondButtonType: .reject)
@@ -202,8 +200,10 @@ extension OtherUserProfileController {
     func getProfileAPI() {
         let param = [Keys.profileUserId: userInfo?.userId ?? "0"]
         ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
-            self?.userInfo = user
-            self?.tableView.reloadData()
+            guard let unsafe = self else { return }
+            unsafe.userInfo = user
+            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? false : true
+            unsafe.tableView.reloadData()
         }
     }
     

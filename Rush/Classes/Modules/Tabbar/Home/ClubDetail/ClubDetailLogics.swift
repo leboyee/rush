@@ -331,4 +331,8 @@ extension ClubDetailViewController {
             }
         }
     }
+    
+    func deleteClubAPI() {
+        Utils.notReadyAlert()
+    }
 }
