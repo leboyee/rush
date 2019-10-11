@@ -258,17 +258,5 @@ extension String {
             }
         }
         return nil
-    }
-    
-    var tags: [Tag] {
-        guard self.isNotEmpty else { return [] }
-        var list = [Tag]()
-        let items = self.components(separatedBy: ",")
-            for item in items {
-                let tag = Tag(id: 0, text: item)
-                list.append(tag)
-            }
-        return list
-    }
-    
+    }    
 }

@@ -503,7 +503,6 @@
 		8A04B1A62304126A0055C65F /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B1A42304126A0055C65F /* NotificationCell.xib */; };
 		8A1076BD2306B96800512AA3 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BB2306B96800512AA3 /* TextCell.swift */; };
 		8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1076BC2306B96800512AA3 /* TextCell.xib */; };
-		8A1076C02306BC2600512AA3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BF2306BC2600512AA3 /* Tag.swift */; };
 		8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */; };
 		8A1EFDDF2345E12A00624EED /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDDE2345E12A00624EED /* NotificationService.swift */; };
 		8A1EFDE12345E1A300624EED /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDE02345E1A300624EED /* NotificationItem.swift */; };
@@ -1073,7 +1072,6 @@
 		8A04B1A42304126A0055C65F /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		8A1076BB2306B96800512AA3 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		8A1076BC2306B96800512AA3 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
-		8A1076BF2306BC2600512AA3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8A1EFDDE2345E12A00624EED /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8A1EFDE02345E1A300624EED /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
@@ -3040,7 +3038,6 @@
 				7983D22B228982B500DE054E /* Image.swift */,
 				793BE5FB22E87F5E005EF72D /* Friend.swift */,
 				8A04B14422FB042E0055C65F /* Event.swift */,
-				8A1076BF2306BC2600512AA3 /* Tag.swift */,
 				79DA00BB233219A1006B3A65 /* Post.swift */,
 				79C5811F233BA54600FD837A /* Comment.swift */,
 				8AAA38442343268500423D43 /* RSVPQuestion.swift */,
@@ -3605,7 +3602,6 @@
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
 				1A353AC222BD05B60069752D /* ChooseUniversityViewMediates.swift in Sources */,
 				79DF74212292BAB80012DCB7 /* CreateClubViewController.swift in Sources */,
-				8A1076C02306BC2600512AA3 /* Tag.swift in Sources */,
 				1A024D0323476F8600EE7FB4 /* EventCategoryFilterCell.swift in Sources */,
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
