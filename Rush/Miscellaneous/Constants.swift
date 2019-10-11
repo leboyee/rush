@@ -408,9 +408,15 @@ enum GetEventType: String {
     case attending = "attending"
 }
 
-struct Vote {
-    static let up = "up"
-    static let down = "down"
+enum NotificationType: String, Codable {
+    case none = ""
+    case eventInvite = "eventInvite"
+    case clubInvite = "clubInvite"
+    case friendRequest = "friendRequest"
+    case acceptFriendRequest = "acceptFriendRequest"
+    case upVoted = "upVoted"
+    case downVoted = "downVoted"
+    case newComment = "newComment"
 }
 
 enum UserProfileDetailType {
@@ -419,4 +425,9 @@ enum UserProfileDetailType {
     case events
     case clubs
     case classes
+}
+
+struct Vote {
+    static let up = "up"
+    static let down = "down"
 }
