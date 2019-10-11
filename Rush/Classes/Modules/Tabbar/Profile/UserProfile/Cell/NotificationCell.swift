@@ -75,8 +75,8 @@ extension NotificationCell {
     @objc func handleTapGesture(gesture: UITapGestureRecognizer) {
            for range in ranges {
             if gesture.didTapAttributedTextInLabel(label: label, targetRange: range) {
-                   labelTapEvent?(label.text ?? "", range)
-                   return
+                labelTapEvent?(label.text ?? "", range)
+                return
             }
         }
     }

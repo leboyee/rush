@@ -28,11 +28,15 @@ class ProfileViewController: UIViewController {
     var headerFullHeight: CGFloat = 344
     let headerSmallHeight: CGFloat = 170
     var isOtherUserProfile: Bool = false
-    var notificationPageNo: Int = 1
-    var notificationNextPageExist = false
     
     var imagePageNo: Int = 1
     var imageNextPageExist = false
+    
+    var notificationPageNo: Int = 1
+    var notificationNextPageExist = false
+    
+    var friendPageNo: Int = 1
+    var friendNextPageExist = false
     
     let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
     let downloadGroup = DispatchGroup()

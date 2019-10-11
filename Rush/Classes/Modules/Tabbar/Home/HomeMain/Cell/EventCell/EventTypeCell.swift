@@ -26,7 +26,8 @@ class EventTypeCell: UITableViewCell {
     var cellSelected: ((_ type: EventCategoryType, _ section: Int, _ index: Int) -> Void)?
     var userSelected: ((_ id: Int, _ index: Int) -> Void)?
     var joinSelected: ((_ index: Int) -> Void)?
-    
+    var cellWillDisplay: ((_ index: Int) -> Void)?
+
     var type: EventCategoryType = .upcoming
     var cellType: CellType = .none
     var list: [Any]?
