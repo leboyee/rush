@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -304,12 +302,12 @@
                 <outlet property="eventImageView" destination="fFR-34-lPB" id="S4c-MA-WA2"/>
                 <outlet property="eventNameLabel" destination="n5o-sI-q0f" id="diE-6S-QP6"/>
                 <outlet property="eventView" destination="Jj3-gv-xPP" id="t2a-x4-Tpq"/>
-                <outlet property="firstUserImageView" destination="Lpc-cd-dfT" id="eZY-ym-d4I"/>
+                <outlet property="firstUserImageView" destination="83h-El-BXM" id="ZUK-tI-rxc"/>
                 <outlet property="joinButton" destination="mTJ-Vb-agq" id="ldj-5K-b9t"/>
                 <outlet property="leadingConstraintOfDateView" destination="zsa-sz-IFt" id="iMl-fx-uPj"/>
                 <outlet property="privacyImageView" destination="nnq-Sa-kzM" id="VRa-tW-V9l"/>
-                <outlet property="secondUserImageView" destination="noL-pe-h6i" id="Zpc-FA-99F"/>
-                <outlet property="thirdUserImageView" destination="83h-El-BXM" id="acW-gZ-Z8l"/>
+                <outlet property="secondUserImageView" destination="noL-pe-h6i" id="cP3-gb-KRo"/>
+                <outlet property="thirdUserImageView" destination="Lpc-cd-dfT" id="dY7-7p-LjQ"/>
                 <outlet property="timeLabel" destination="v8m-YS-Lbf" id="kIE-2J-JfH"/>
                 <outlet property="userCountLabel" destination="t66-9a-Tub" id="kz1-je-J8a"/>
                 <outlet property="userView" destination="8k5-OT-7GQ" id="7fE-bY-eha"/>
