@@ -192,11 +192,9 @@ extension ProfileViewController {
             guard userId.isNotEmpty else { return }
             let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
             ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
-                self?.profileDetail.profile = user/* //K*
-                if let list = user?.interest {
-                  let string = list.joined(separator: ",")
-                    self?.profileDetail.interests = string.tags
-                }*/
+                self?.profileDetail.profile = user
+                self?.profileDetail.interests = user?.interest
+
                 self?.setupHeaderData()
                 self?.downloadGroup.leave()
             }

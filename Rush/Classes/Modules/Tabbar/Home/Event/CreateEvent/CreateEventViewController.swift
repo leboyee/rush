@@ -55,7 +55,7 @@ class CreateEventViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
     var event: Event?
-    var interestList = [String]()
+    var interestList: [Interest]?
     var rsvpArray = [String]()
     var eventType: EventType = .publik
     override func viewDidLoad() {
@@ -145,7 +145,7 @@ extension CreateEventViewController {
 //            let invite = Invite()
 //            invite.profile = invites.user
 //        }
-        interestList = event?.interests?.components(separatedBy: ",") ?? [String]()
+        interestList = event?.interests
         for rsvpQuestion in event?.rsvp ?? [RSVPQuestion]() {
             guard let question = rsvpQuestion.que else { return }
             rsvpArray.append(question)

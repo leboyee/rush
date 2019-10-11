@@ -189,7 +189,7 @@ extension EventDetailViewController {
             case .about, .joinRsvp, .location, .manage, .organizer, .createPost:
                 count = 1
             case .tags:
-                if event?.interests?.isNotEmpty ?? false {
+                if (event?.interests?.count ?? 0) > 0 {
                     count = 1
                 }
             case .invitee:
@@ -215,7 +215,7 @@ extension EventDetailViewController {
         guard let eventSection = sections?[indexPath.section] else { return }
         cell.setup(isSeparatorHide: true)
         if eventSection.type == .tags {
-            cell.setup(interests: event?.interests?.tags ?? [])
+            cell.setup(interests: event?.interests ?? [])
         } else if eventSection.type == .invitee, let list = inviteeList {
             cell.setup(invitees: list, total: self.totalInvitee)
         }
