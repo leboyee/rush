@@ -31,11 +31,12 @@ extension ChatContactsListViewController {
         let alpha = alphabet[indexPath.section]
         let users = friendsList[alpha.lowercased()] as? [Friend]
         let friend = users?[indexPath.row]
+        
         let controller = ChatRoomViewController()
-        controller.isShowTempData = false
         controller.friendProfile = friend
         controller.userName = friend?.user?.name ?? ""
         controller.isGroupChat = false
+        controller.chatDetailType = .single
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }

@@ -109,8 +109,8 @@ extension OtherUserProfileController {
                 })
             } else {
                 let controller = ChatRoomViewController()
-                controller.isShowTempData = false
                 controller.isGroupChat = false
+                controller.chatDetailType = .single
                 controller.userName = unself.userInfo?.name ?? ""
                 controller.hidesBottomBarWhenPushed = true
                 let friend = Friend()

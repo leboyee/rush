@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SendBirdSDK
 
 class ChatUserView: UIView {
     
@@ -14,6 +15,7 @@ class ChatUserView: UIView {
     @IBOutlet var contentView: UIView!
     
     var isShowAll = false
+    var users = [SBDUser]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,15 +56,29 @@ class ChatUserView: UIView {
 extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isShowAll ? 10 : 7
+        if users.count > 6 {
+            return isShowAll ? users.count : 7
+        } else {
+            return users.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.chatUserCell, for: indexPath) as? ChatUserCell else { return UICollectionViewCell() }
+        
         if indexPath.item == 6 && isShowAll == false {
             cell.setup(isHideArrowView: false)
         } else {
             cell.setup(isHideArrowView: true)
+        }
+        
+        let user = users[indexPath.item]
+        cell.setup(img: user.profileUrl)
+        
+        if user.connectionStatus == .online {
+            cell.setup(isHideOnlineView: false)
+        } else {
+            cell.setup(isHideOnlineView: true)
         }
         return cell
     }

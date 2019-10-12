@@ -29,7 +29,7 @@ class CreateClubViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
     
-    var interestList = [String]()
+    var interestList = [Interest]()
     var peopleList = [Invite]()
     
     var clubInfo: Club?

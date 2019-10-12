@@ -64,7 +64,7 @@ extension CreateClubViewController {
                 cell.setup(isUserInterfaceEnable: false)
             } else {
                 cell.setup(isHideCleareButton: false)
-                cell.setup(placeholder: "", text: interestList[indexPath.row])
+                cell.setup(placeholder: "", text: interestList[indexPath.row].interestName)
             }
             cell.textView.isUserInteractionEnabled = false
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
@@ -100,16 +100,19 @@ extension CreateClubViewController {
             }
             if text.isNotEmpty {
                 if indexPath.section == 2 {
+                    /*
                     if !unself.interestList.contains(txt) {
                         unself.interestList.append(txt)
                         unself.tableView.reloadData()
                     }
+                    */
                 } else if indexPath.section == 3 {
-                    
-                    //                    if !self_.peopleList.contains(txt) {
-                    //                        self_.peopleList.append(txt)
-                    //                        self_.tableView.reloadData()
-                    //                    }
+                    /*
+                    if !self_.peopleList.contains(txt) {
+                        self_.peopleList.append(txt)
+                        self_.tableView.reloadData()
+                    }
+                    */
                 }
             }
             unself.validateAllFields()
@@ -119,10 +122,8 @@ extension CreateClubViewController {
             guard let unself = self else { return }
             
             if indexPath.section == 2 {
-                if let index = unself.interestList.firstIndex(of: (unself.interestList[indexPath.row])) {
-                    unself.interestList.remove(at: index)
-                    unself.tableView.reloadData()
-                }
+                unself.interestList.remove(at: indexPath.row)
+                unself.tableView.reloadData()
             } else if indexPath.section == 3 {
                 if let index = unself.peopleList.firstIndex(of: (unself.peopleList[indexPath.row])) {
                     unself.peopleList.remove(at: index)
@@ -273,14 +274,19 @@ extension CreateClubViewController {
     
     func createClubAPI() {
         
+        let friendArray = self.peopleList.filter { ($0.isFriend == true) }
+        let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
+        
         let img = clubImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        let interests = interestList.joined(separator: ",")
-        let userIds = "3,5"
+        let interests = interestList.compactMap({ $0.interestName }).joined(separator: ",")
         
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,
-                     Keys.clubInvitedUserIds: userIds,
+                     Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
+                     Keys.clubContact: contactNoArray.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
                      Keys.clubPhoto: img] as [String: Any]
         
