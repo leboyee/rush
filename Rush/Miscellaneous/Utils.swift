@@ -420,10 +420,6 @@ extension Utils {
     class func peopleFilter() -> [String] {
         return ["All people", "Friends only"]
     }
-    
-    class func tempCategoryFilter() -> [String] {
-        return ["Sports", "Technology"]
-    }
 }
 
 // MARK: - Alert Extension

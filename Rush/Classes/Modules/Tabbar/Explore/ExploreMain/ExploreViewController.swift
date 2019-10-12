@@ -191,7 +191,7 @@ extension ExploreViewController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+            vc.subclassInfo = sender as? SubClass
         } else if segue.identifier == Segues.eventDetailSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
