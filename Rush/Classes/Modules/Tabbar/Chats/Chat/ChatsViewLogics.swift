@@ -35,12 +35,15 @@ extension ChatsViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ChatListCell else { return }
+        
+        let channel = channels[indexPath.row]
+        
         let controller = ChatRoomViewController()
         controller.hidesBottomBarWhenPushed = true
-        controller.isGroupChat = false
+        controller.isGroupChat = channel.customType == "single" ? false : true
         controller.userName = cell.titleLabel.text ?? ""
         controller.userNavImage = cell.imgView.image
-        controller.channel = channels[indexPath.row]
+        controller.channel = channel
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }

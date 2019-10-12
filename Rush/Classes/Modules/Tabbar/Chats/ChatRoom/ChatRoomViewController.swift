@@ -401,14 +401,13 @@ extension ChatRoomViewController {
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
         
-        if let members = channel?.members {
-            if members.count == 2 && channel?.data != "Group" {
-                chatType = .single
-            } else if members.count == 1 {
-                chatType = .single
-            } else {
-                chatType = .group
-                isGroupChat = true
+        if channel?.customType == "single" {
+            chatType = .single
+        } else {
+            chatType = .group
+            
+            if let members = channel?.members as? [SBDUser] {
+                userChatView.users = members
             }
         }
     
