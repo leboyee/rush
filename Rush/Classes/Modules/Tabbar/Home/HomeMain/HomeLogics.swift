@@ -100,7 +100,6 @@ extension HomeViewController {
                     // not joined yet, so show groups
                     let classGroup = classObject.classGroups?[indexPath.row]
                     unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
-                    
                 }
             }
         }

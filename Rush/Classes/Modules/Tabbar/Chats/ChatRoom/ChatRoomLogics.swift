@@ -337,9 +337,10 @@ extension ChatRoomViewController {
              Cover image url,
              Group name
              */
-            
-            imageName = channel?.coverUrl ?? ""
-            userName = channel?.name ?? ""
+            if channel != nil {
+                imageName = channel?.coverUrl ?? ""
+                userName = channel?.name ?? ""
+            }
         }
         return imageName
     }
