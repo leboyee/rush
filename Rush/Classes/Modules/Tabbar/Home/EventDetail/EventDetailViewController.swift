@@ -165,9 +165,9 @@ extension EventDetailViewController {
     
     func openGroupChat() {
         let controller = ChatRoomViewController()
-        controller.isShowTempData = false
         controller.userName = event?.title ?? ""
         controller.isGroupChat = true
+        controller.chatDetailType = .event
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }

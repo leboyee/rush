@@ -93,14 +93,13 @@ extension HomeViewController {
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
                 let classObject = unsafe.classList[index]
-                if (classObject.myJoinedClass?.count ?? 0 > 0) {
+                if classObject.myJoinedClass?.count ?? 0 > 0 {
                     //already joined - so dont show groups
                     unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
                 } else {
                     // not joined yet, so show groups
                     let classGroup = classObject.classGroups?[indexPath.row]
                     unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
-                    
                 }
             }
         }

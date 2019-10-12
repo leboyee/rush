@@ -88,7 +88,7 @@ extension ChatManager {
 // MARK: - Get channel and group list
 extension ChatManager {
     /*
-     Get list of all chat groups
+     Get list of all chat groups of logged in user
      */
     
     func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
@@ -104,12 +104,6 @@ extension ChatManager {
         let list = [AnyHashable]()
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
-            /*
-             var sortedList: [Any]? = nil
-             if let channelList = channels as? [SBDGroupChannel] {
-             sortedList = self_.sortChannelList((channelList))
-             }
-             */
             completionHandler(channels)
         }, errorHandler: { (_) in
             
@@ -117,7 +111,7 @@ extension ChatManager {
     }
     
     /*
-     Load list of all chat groups
+     Load list of all chat groups of logged in user
      */
     
     func loadListOfChannels(query: SBDGroupChannelListQuery?,
@@ -138,6 +132,55 @@ extension ChatManager {
                 }
                 if query?.hasNext ?? false {
                     self.loadListOfChannels(query: query, channels: channels, completionHandler: completionHandler, errorHandler: errorHandler)
+                } else {
+                    if let value = channelsList {
+                        completionHandler(value)
+                    }
+                }
+            }
+        })
+    }
+    
+    /*
+     Get list of all chat groups of all public channels
+     */
+    
+    func getListOfAllPublicChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        let query: SBDPublicGroupChannelListQuery? = SBDGroupChannel.createPublicGroupChannelListQuery()
+        
+        // Include empty group channels.
+        query?.includeEmptyChannel = true
+                
+        query?.limit = 100
+        
+        let list = [AnyHashable]()
+        loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
+            //We can not use direct because new created group come at bottom of list.
+            completionHandler(channels)
+        }, errorHandler: { (_) in
+            
+        })
+    }
+    
+    /*
+     Load list of all chat groups of logged in user
+     */
+    
+    func loadListOfAllPublicGroupChannels(query: SBDPublicGroupChannelListQuery?, channels: [AnyHashable]?, completionHandler: @escaping ([Any]?) -> Void, errorHandler: @escaping (Error?) -> Void) {
+        var channelsList = channels
+        query?.loadNextPage(completionHandler: { (channels, error) in
+            
+            if error != nil {
+                if let error = error {
+                    print("Error: \(error)")
+                    errorHandler(error)
+                }
+            } else {
+                if let channel = channels {
+                    channelsList?.append(contentsOf: channel)
+                }
+                if query?.hasNext ?? false {
+                    self.loadListOfAllPublicGroupChannels(query: query, channels: channels, completionHandler: completionHandler, errorHandler: errorHandler)
                 } else {
                     if let value = channelsList {
                         completionHandler(value)
@@ -182,34 +225,19 @@ extension ChatManager {
      Create Group channel for one user
      */
     
-    func createGroupChannel(userId: String?, name: String?, photoUrl: String?, completionHandler: @escaping(_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping(_ error: Error?) -> Void) {
+    func createGroupChannel(userId: String?, name: String?, photoUrl: String?, data: String?, type: String?, completionHandler: @escaping(_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping(_ error: Error?) -> Void) {
         
         if userId == nil && (userId?.count ?? 0) == 0 {
             return
         }
         
-        /*
-         SBDGroupChannel.createChannel(withUserIds: [userId!], isDistinct: true, completionHandler: { channel, error in
-         if error != nil {
-         if let domain = error?.domain {
-         Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-         }
-         if let err = error {
-         errorHandler(err)
-         }
-         } else {
-         if let value = channel {
-         completionHandler(value)
-         }
-         }
-         })*/
         var groupFriendsList = [String]()
         groupFriendsList.append(userId ?? "")
         groupFriendsList.append(Authorization.shared.profile?.userId ?? "")
         let grpName = "\(Authorization.shared.profile?.name ?? ""), \(name ?? "")"
         let strUrl = "\(Authorization.shared.profile?.photo?.thumb ?? ""), \(photoUrl ?? "")"
         
-        createGroupChannelwithUsers(userIds: groupFriendsList, groupName: grpName, coverImageUrl: strUrl, data: "", completionHandler: completionHandler, errorHandler: errorHandler)
+        createGroupChannelwithUsers(userIds: groupFriendsList, groupName: grpName, coverImageUrl: strUrl, data: data, type: type, completionHandler: completionHandler, errorHandler: errorHandler)
     }
     
     /*
@@ -221,15 +249,20 @@ extension ChatManager {
         groupName: String?,
         coverImageUrl: String?,
         data: String?,
+        type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
-        sbdGroupChannelParams.isDistinct = (userIds?.count == 2) ? true: false
+        sbdGroupChannelParams.isDistinct = type == "single" ? ((userIds?.count == 2) ? true: false) : false
         sbdGroupChannelParams.addUserIds(userIds as? [String] ?? [])
         sbdGroupChannelParams.coverUrl = coverImageUrl
         sbdGroupChannelParams.data = data
-        
+        sbdGroupChannelParams.customType = type
+        if type != "single" {
+            sbdGroupChannelParams.isPublic = true
+        }
+                
         SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
             if error != nil {
                 if let domain = error?.domain {
@@ -321,6 +354,7 @@ extension ChatManager {
         groupName: String?,
         coverImageUrl: String?,
         data: String?,
+        type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
         if let ids = userIds {
@@ -338,6 +372,10 @@ extension ChatManager {
                     
                     if data != nil {
                         params.data = data
+                    }
+                    
+                    if type != nil {
+                        params.customType = type
                     }
                     
                     params.isDistinct = false
@@ -370,6 +408,45 @@ extension ChatManager {
     
     func isMemberExistInChannel(channel: SBDGroupChannel?, userid: String) -> Bool {
         return channel?.hasMember(userid) ?? false
+    }
+    
+    func addNewMember(type: String, data: String, userId: String) {
+        
+        getListOfAllPublicChatGroups({ (value) in
+            if let list = value as? [SBDGroupChannel], list.count > 0 {
+                
+                let channels = list.filter({ $0.customType == type })
+                if channels.count > 0 {
+                    let filteredChannels = channels.filter({ $0.data == data })
+                    
+                    if filteredChannels.count > 0, let channel = filteredChannels.first {
+                        
+                        var userIds = [String]()
+                        
+                        if let members = channel.members {
+                            for member in members {
+                                if let user = member as? SBDUser {
+                                    userIds.append(user.userId)
+                                }
+                            }
+                            userIds.append(userId)
+                        }
+                        
+                        let ids = userIds.joined(separator: ",")
+                                                
+                        self.updateChannel(channel: channel, userIds: [ids], groupName: channel.name, coverImageUrl: channel.coverUrl, data: channel.data, type: channel.customType, completionHandler: { (_) in
+                            
+                            print("************ User added successfully  *************")
+                            
+                        }, errorHandler: { (error) in
+                            print(error?.localizedDescription ?? "")
+                        })
+                    }
+                }
+            }
+        }, errorHandler: { (error) in
+            print(error?.localizedDescription ?? "")
+        })
     }
 }
 
@@ -535,6 +612,7 @@ extension ChatManager {
                                groupName: groupNameString,
                                coverImageUrl: coverUrl,
                                data: "Group",
+                               type: "",
                                completionHandler: { (_) in
                                 self.leave(channel) { (status) in
                                     if status {

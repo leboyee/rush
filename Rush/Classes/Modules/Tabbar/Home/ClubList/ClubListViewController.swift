@@ -123,6 +123,11 @@ extension ClubListViewController {
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
-        }
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController
+                else { return }
+            vc.subclassInfo = sender as? SubClass
+            vc.joinedClub = true
+        } 
     }
 }

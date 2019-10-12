@@ -28,7 +28,8 @@ class EventCategoryListViewController: UIViewController {
     var isOnlyFriendGoing: Int = 0
     var clubList = [Club]()
     var eventList = [Event]()
-    var classList = [Class]()
+    var classList = [SubClass]()
+    var classCategoryList = [Class]()
     var eventCategory: EventCategory?
     var interest: Interest?
     var firstSortText = "All categories"
@@ -58,12 +59,13 @@ class EventCategoryListViewController: UIViewController {
             getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
         case .club:
             getClubListAPI(sortBy: "feed")
-        case .classes: break
-           // getClassCategoryAPI()
+        case .classes:
+            getClassCategoryAPI()
+            getClassListAPI()
         default:
             break
         }
-        getClassCategoryAPI()
+        
     }
         
     func setupUI() {
@@ -117,8 +119,15 @@ extension EventCategoryListViewController {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
-            guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+            guard let vc = segue.destination as? ClassDetailViewController
+                else { return }
+            vc.subclassInfo = sender as? SubClass
+            vc.joinedClub = true
+        } else if segue.identifier == Segues.searchClubSegue {
+            guard let vc = segue.destination as? SearchClubViewController else { return }
+            //            vc.searchType = screenType == .club ? .searchList : .classes
+            vc.searchType = .classes
+            vc.classObject = sender as? SubClass ?? SubClass()
         }
     }
 }

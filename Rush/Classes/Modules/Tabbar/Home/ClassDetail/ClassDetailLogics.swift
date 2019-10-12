@@ -21,11 +21,33 @@ extension ClassDetailViewController {
         return (isShowMore && section == 2) ? 16 :  1
     }
     
+    
+    
+    
+//    if indexPath.section > 5 {
+//    let photos = clubPostList[indexPath.section - 6].images
+//    if indexPath.row == 2 {
+//    return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
+//    }
+//    return UITableView.automaticDimension
+//    } else {
+//    if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+//    return CGFloat.leastNormalMagnitude
+//    } else {
+//    let auto = UITableView.automaticDimension
+//    return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
+//    }
+//    }
+    
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && joinedClub == false {
             return CGFloat.leastNormalMagnitude
         } else if indexPath.section > 5 {
-            return indexPath.row == 2 ? (indexPath.section == 6 ? CGFloat.leastNormalMagnitude :  screenWidth) : UITableView.automaticDimension
+            let photos = classesPostList[indexPath.section - 6].images
+            if indexPath.row == 2 {
+                return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
+            }
+            return UITableView.automaticDimension
         } else {
             return indexPath.section == 4 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : UITableView.automaticDimension
         }
@@ -104,10 +126,19 @@ extension ClassDetailViewController {
         if indexPath.section > 5 {
             let post = classesPostList[indexPath.section - 6]
             cell.setup(title: post.user?.name ?? "")
+            cell.setup(eventImageUrl: post.user?.photo?.url())
             cell.setup(bottomConstraintOfImage: 0)
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
-            
+            if post.user?.userId == Authorization.shared.profile?.userId {
+                cell.threeDots.isHidden = false
+            } else {
+                cell.threeDots.isHidden = true
+            }
+            cell.shareClickEvent = { [weak self] () in
+                guard self != nil else { return }
+                self?.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
+            }
             if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
                 let time = Date().timeAgoDisplay(date: date)
                 cell.setup(detail: time)
@@ -131,12 +162,12 @@ extension ClassDetailViewController {
         }
     }
     func checkIsJoined() {
-//        if let user = selectedGroup?.myJoinedGroup.userId {
-//            let filter = user.filter({ $0.user?.id == Authorization.shared.profile?.userId })
-//            if filter.count > 0 {
-//                joinedClub = true
-//            }
-//        }
+        if subclassInfo?.myJoinedClass?.count ?? 0 > 0 {
+            joinedClub = true
+        }
+        else{
+            joinedClub = false
+        }
     }
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
@@ -202,7 +233,7 @@ extension ClassDetailViewController {
         
         cell.commentButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-//            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
+            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
         }
     }
     
@@ -251,7 +282,8 @@ extension ClassDetailViewController {
                     let decoder = JSONDecoder()
                     let value1 = try decoder.decode(SubClass.self, from: dataClass)
                     uwself.subclassInfo = value1
-                    if(uwself.subclassInfo?.classGroups?.count ?? 0 > 0){
+                    uwself.checkIsJoined()
+                    if uwself.subclassInfo?.classGroups?.count ?? 0 > 0 {
                         uwself.selectedGroup = uwself.subclassInfo?.classGroups?[0]
                     }
                     self?.tableView.reloadData()

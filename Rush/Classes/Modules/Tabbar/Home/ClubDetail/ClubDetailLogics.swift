@@ -96,8 +96,15 @@ extension ClubDetailViewController {
             }
         }
         
-        cell.secondButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            let controller = ChatRoomViewController()
+            controller.userName = unsafe.clubInfo?.clubName ?? ""
+            controller.isGroupChat = true
+            controller.chatDetailType = .club
+            controller.clubInfo = unsafe.clubInfo
+            controller.hidesBottomBarWhenPushed = true
+            unsafe.navigationController?.pushViewController(controller, animated: true)
         }
     }
     
@@ -257,16 +264,14 @@ extension ClubDetailViewController {
         ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
             guard let uwself = self else { return }
             if let list = data {
-                if let value = list[Keys.data] as? [String: Any] {
-                    if let club = value[Keys.club] as? [String: Any] {
-                        do {
-                            let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
-                            let decoder = JSONDecoder()
-                            let value = try decoder.decode(Club.self, from: dataClub)
-                            uwself.clubInfo = value
-                        } catch {
-                            
-                        }
+                if let club = list[Keys.club] as? [String: Any] {
+                    do {
+                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(Club.self, from: dataClub)
+                        uwself.clubInfo = value
+                    } catch {
+                        
                     }
                 }
                 uwself.fillImageHeader()
@@ -285,10 +290,11 @@ extension ClubDetailViewController {
         let id = clubInfo?.clubId ?? "0"
         
         Utils.showSpinner()
-        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id]) { [weak self] (status, errorMsg) in
+        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id, Keys.action: "join"]) { [weak self] (status, errorMsg) in
             guard let uwself = self else { return }
             if status {
                 uwself.getClubDetailAPI()
+                ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
             } else {
                 Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

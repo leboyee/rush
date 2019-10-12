@@ -34,9 +34,15 @@ class ChatRoomViewController: MessagesViewController {
     var hasPrev = false
     var isShowTempData = false
     var isAllowTestMessage = false
-    var friendProfile: Friend?
+    
     var channel: SBDGroupChannel?
     var chatType: ChatType = .single
+    var chatDetailType: ChatDetailType = .single
+    
+    var friendProfile: Friend?
+    var clubInfo: Club?
+    var eventInfo: Event?
+    
     open var previousMessageQuery: SBDPreviousMessageListQuery?
 
     var emptyMessageView = UIView()
@@ -395,14 +401,13 @@ extension ChatRoomViewController {
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
         
-        if let members = channel?.members {
-            if members.count == 2 && channel?.data != "Group" {
-                chatType = .single
-            } else if members.count == 1 {
-                chatType = .single
-            } else {
-                chatType = .group
-                isGroupChat = true
+        if channel?.customType == "single" {
+            chatType = .single
+        } else {
+            chatType = .group
+            
+            if let members = channel?.members as? [SBDUser] {
+                userChatView.users = members
             }
         }
     
@@ -461,9 +466,14 @@ extension ChatRoomViewController {
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
         if friendProfile != nil {
             userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        } else if clubInfo != nil {
+            userNavImageView.sd_setImage(with: clubInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        } else if eventInfo != nil {
+            userNavImageView.sd_setImage(with: eventInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
         } else if userNavImage != nil {
             userNavImageView.image = userNavImage
         }
+        
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill

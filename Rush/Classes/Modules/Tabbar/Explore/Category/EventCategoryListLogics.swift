@@ -99,7 +99,8 @@ extension EventCategoryListViewController {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             //Show all categories for the screen.
             eventCategoryFilter.delegate = self
-            eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.tempCategoryFilter() : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            let cat = classCategoryList.compactMap({ $0.name })
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
@@ -121,8 +122,8 @@ extension EventCategoryListViewController {
             cell.setup(title: myclass.name )
 //            cell.setup(detail: club.clubDesc ?? "")
 //            cell.setup(invitee: club.invitees)
-//            cell.setup(imageUrl: image.urlThumb())
-        } else {
+            cell.setup(imageUrl: myclass.photo.photo?.url())
+            } else {
             cell.setup(detail: "SOMM 24-A")
         }
     }
@@ -151,8 +152,15 @@ extension EventCategoryListViewController {
             let club = clubList[indexPath.row]
             performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
         } else if type == .classes {
-//            let myclass = classList[indexPath.row]
-//            performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
+            let classObject = classList[indexPath.row]
+            if classObject.myJoinedClass?.count ?? 0 > 0 {
+                //already joined - so dont show groups
+                performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
+            } else {
+                // not joined yet, so show groups
+                let classGroup = classObject.classGroups?[indexPath.row]
+                performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
+            }
         }
     }
     
@@ -358,15 +366,27 @@ extension EventCategoryListViewController {
             }
         }
     }
-    
+    func getClassListAPI() {
+        let param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+
     func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.classList = classes
-                unsafe.tableView.reloadData()
+                unsafe.classCategoryList = classes
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
