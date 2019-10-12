@@ -94,7 +94,7 @@ struct Cell {
     static let editProfileInfo      = "EditProfileInfoCell"
     static let editProfileMinorCell = "EditProfileMinorCell"
     static let eventTypeModelCell = "EventTypeModelCell"
-
+    static let galleryCell = "GalleryCell"
 }
 
 struct ReusableView {
@@ -202,6 +202,8 @@ struct Segues {
     static let eventDetailCalendar                = "EventDetailCalendarSegue"
     static let calendarClassDetail                = "CalendarClassDetailSegue"
     static let calendarEventDetail                = "CalendarEventDetailSegue"
+    static let userProfileGallerySegue                         = "UserProfileGallerySegue"
+
 }
 
 struct StoryBoard {

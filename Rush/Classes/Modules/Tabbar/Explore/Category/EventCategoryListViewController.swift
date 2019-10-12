@@ -79,10 +79,10 @@ class EventCategoryListViewController: UIViewController {
         // Set navigation title
         
         var titleText = ""
-        if eventCategory == nil {//open non category list screen
+        if interest == nil {//open non category list screen
             titleText = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
         } else {
-            titleText = eventCategory?.name ?? ""
+            titleText = interest?.interestName ?? ""
         }
         
         if type == .event {

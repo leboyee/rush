@@ -29,7 +29,7 @@ extension CreateEventInterestViewController {
             cell.setupInterest(tagList: interestNameArray)
             cell.tagListView.delegate = self
         }
-        cell.selectedTag(tagList: selectedArray.map({$0.interestName}))
+        cell.selectedTag(tagList: selectedArray.map({ $0.interestName }))
 
     }
 }
@@ -54,10 +54,11 @@ extension CreateEventInterestViewController: TagListViewDelegate {
                 selectedArray.remove(at: index)
             }
             
-        } else if interestProfileArray.contains(where: { $0.interestName == title }) {
+        }
+        if interestProfileArray.contains(where: { $0.interestName == title }) {
             if tagView.isSelected == true {
                 guard let index = interestProfileArray.firstIndex(where: { $0.interestName == title }) else { return }
-                selectedArray.append(interestArray[index])
+                selectedArray.append(interestProfileArray[index])
             } else {
                 guard let index = selectedArray.firstIndex(where: { $0.interestName == title }) else { return }
                 selectedArray.remove(at: index)
@@ -77,9 +78,9 @@ extension CreateEventInterestViewController: TagListViewDelegate {
 // MARK: - Manage Interator or API's Calling
 extension CreateEventInterestViewController {
     
-    func getInterestList() {
+    func getInterestList(search: String) {
         //Utils.showSpinner()
-        ServiceManager.shared.getInterestList(params: [:]) { [weak self] (data, _) in
+        ServiceManager.shared.getInterestList(params: [Keys.search: search]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let interest = data {
                 unsafe.interestArray = interest

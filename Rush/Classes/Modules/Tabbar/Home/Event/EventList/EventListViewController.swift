@@ -125,16 +125,19 @@ extension EventListViewController {
         if segue.identifier == Segues.eventListToEventDetailsSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
-               vc.eventId = String(event.id)
-               vc.event = event
+                vc.eventId = String(event.id)
+                vc.event = event
             }
         } else if segue.identifier == Segues.rsvpJoinEvent {
-                   if let vc = segue.destination as? RSVPViewController {
-                       if let event = sender as? Event {
-                         vc.event = event
-                        vc.action = EventAction.join
-                       }
-                   }
-               }
+            if let vc = segue.destination as? RSVPViewController {
+                if let event = sender as? Event {
+                    vc.event = event
+                    vc.action = EventAction.join
+                }
+            }
+        } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
+            let vc = segue.destination as? EventJoinedPopupViewController
+            //vc?.event = event
+        }
     }
 }

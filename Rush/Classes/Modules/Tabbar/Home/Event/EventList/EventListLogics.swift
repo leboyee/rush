@@ -85,7 +85,6 @@ extension EventListViewController {
                 guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
                     eventCategoryFilter.dataArray = Utils.myUpcomingFileter()
                     eventCategoryFilter.delegate = self
-                let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
                 eventCategoryFilter.selectedIndex = unself.eventFilterType == .myUpcoming ? 0 : 1
                 eventCategoryFilter.headerTitle = "Sort events by:"
                     let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
