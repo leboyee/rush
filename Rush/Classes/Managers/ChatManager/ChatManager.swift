@@ -88,7 +88,7 @@ extension ChatManager {
 // MARK: - Get channel and group list
 extension ChatManager {
     /*
-     Get list of all chat groups
+     Get list of all chat groups of logged in user
      */
     
     func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
@@ -104,12 +104,6 @@ extension ChatManager {
         let list = [AnyHashable]()
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
-            /*
-             var sortedList: [Any]? = nil
-             if let channelList = channels as? [SBDGroupChannel] {
-             sortedList = self_.sortChannelList((channelList))
-             }
-             */
             completionHandler(channels)
         }, errorHandler: { (_) in
             
@@ -117,7 +111,7 @@ extension ChatManager {
     }
     
     /*
-     Load list of all chat groups
+     Load list of all chat groups of logged in user
      */
     
     func loadListOfChannels(query: SBDGroupChannelListQuery?,
@@ -138,6 +132,55 @@ extension ChatManager {
                 }
                 if query?.hasNext ?? false {
                     self.loadListOfChannels(query: query, channels: channels, completionHandler: completionHandler, errorHandler: errorHandler)
+                } else {
+                    if let value = channelsList {
+                        completionHandler(value)
+                    }
+                }
+            }
+        })
+    }
+    
+    /*
+     Get list of all chat groups of all public channels
+     */
+    
+    func getListOfAllPublicChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        let query: SBDPublicGroupChannelListQuery? = SBDGroupChannel.createPublicGroupChannelListQuery()
+        
+        // Include empty group channels.
+        query?.includeEmptyChannel = true
+                
+        query?.limit = 100
+        
+        let list = [AnyHashable]()
+        loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
+            //We can not use direct because new created group come at bottom of list.
+            completionHandler(channels)
+        }, errorHandler: { (_) in
+            
+        })
+    }
+    
+    /*
+     Load list of all chat groups of logged in user
+     */
+    
+    func loadListOfAllPublicGroupChannels(query: SBDPublicGroupChannelListQuery?, channels: [AnyHashable]?, completionHandler: @escaping ([Any]?) -> Void, errorHandler: @escaping (Error?) -> Void) {
+        var channelsList = channels
+        query?.loadNextPage(completionHandler: { (channels, error) in
+            
+            if error != nil {
+                if let error = error {
+                    print("Error: \(error)")
+                    errorHandler(error)
+                }
+            } else {
+                if let channel = channels {
+                    channelsList?.append(contentsOf: channel)
+                }
+                if query?.hasNext ?? false {
+                    self.loadListOfAllPublicGroupChannels(query: query, channels: channels, completionHandler: completionHandler, errorHandler: errorHandler)
                 } else {
                     if let value = channelsList {
                         completionHandler(value)
@@ -366,8 +409,8 @@ extension ChatManager {
     
     func addNewMember(type: String, data: String, userId: String) {
         
-        getListOfAllChatGroups({ (value) in
-            if let list = value as? [SBDGroupChannel] {
+        getListOfAllPublicChatGroups({ (value) in
+            if let list = value as? [SBDGroupChannel], list.count > 0 {
                 
                 let channels = list.filter({ $0.customType == type })
                 if channels.count > 0 {
@@ -392,15 +435,15 @@ extension ChatManager {
                             
                             print("************ User added successfully  *************")
                             
-                        }) { (error) in
+                        }, errorHandler: { (error) in
                             print(error?.localizedDescription ?? "")
-                        }
+                        })
                     }
                 }
             }
-        }) { (error) in
+        }, errorHandler: { (error) in
             print(error?.localizedDescription ?? "")
-        }
+        })
     }
 }
 
