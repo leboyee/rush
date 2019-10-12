@@ -20,18 +20,26 @@ class EventCategoryListViewController: UIViewController {
     var isThirdFilter = false
     
     var type: ScreenType = .none
-    
+    var firstFilterIndex = 0
+    var secondFilterIndex = 0
+    var thirdFilterIndex = 0
     var searchText = ""
     var pageNo = 1
+    var isOnlyFriendGoing: Int = 0
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [Class]()
     var eventCategory: EventCategory?
-    
+    var interest: Interest?
     var firstSortText = "All categories"
     var secondSortText = "Popular first"
     var thirdSortText = "All people"
-    
+    var eventDayFilter: EventCategoryDayFilter = .none
+    var eventTimeFilter: EventCategoryTimeFilter = .allTime
+    var startDate = ""
+    var endDate = ""
+    var startTime = ""
+    var endTime = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +55,7 @@ class EventCategoryListViewController: UIViewController {
         
         switch type {
         case .event:
-            getEventList(sortBy: .upcoming, eventCategory: eventCategory)
+            getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
         case .club:
             getClubListAPI(sortBy: "feed")
         case .classes: break
@@ -75,6 +83,11 @@ class EventCategoryListViewController: UIViewController {
             titleText = eventCategory?.name ?? ""
         }
         
+        if type == .event {
+            firstSortText = "All upcoming"
+            secondSortText = "Any time"
+            thirdSortText = "All people"
+        }
         navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white)
 
     }

@@ -571,8 +571,7 @@ extension CreateEventViewController: EventInviteDelegate {
 extension CreateEventViewController: EventInterestDelegate {
     func  selectedInterest(_ interest: [Interest]) {
         // S*
-        self.interestList.append(contentsOf: interest)
-        //self.interestList = interestList.uniqueElements
+        self.interestList = interest
         validateAllFields()
         self.tableView.reloadData()
         
@@ -596,9 +595,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
-        let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDate = Date().localToUTC(date: startDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
-        let endUtcDate = Date().localToUTC(date: endDateString)
+        let endUtcDate = Date().localToUTC(date: endDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         print(startUtcDate)
         print(endUtcDate)
         var rsvpJson: String = ""
@@ -661,9 +660,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
-        let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDate = Date().localToUTC(date: startDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
-        let endUtcDate = Date().localToUTC(date: endDateString)
+        let endUtcDate = Date().localToUTC(date: endDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         print(startUtcDate)
         print(endUtcDate)
         var rsvpJson: String = ""

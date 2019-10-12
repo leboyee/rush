@@ -29,6 +29,8 @@ extension CreateEventInterestViewController {
             cell.setupInterest(tagList: interestNameArray)
             cell.tagListView.delegate = self
         }
+        cell.selectedTag(tagList: selectedArray.map({$0.interestName}))
+
     }
 }
 
@@ -61,6 +63,7 @@ extension CreateEventInterestViewController: TagListViewDelegate {
                 selectedArray.remove(at: index)
             }
         }
+        self.tableView.reloadData()
         self.interestButtonVisiable()
     }
     
@@ -68,6 +71,7 @@ extension CreateEventInterestViewController: TagListViewDelegate {
         //print("Tag Remove pressed: \(title), \(sender)")
         sender.removeTagView(tagView)
     }
+    
 }
 
 // MARK: - Manage Interator or API's Calling

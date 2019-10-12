@@ -33,7 +33,7 @@ class EventTypeCell: UITableViewCell {
     var list: [Any]?
     var total: Int = 0
     let padding: CGFloat = 16.0
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -87,4 +87,6 @@ class EventTypeCell: UITableViewCell {
     func setup(isSeparatorHide: Bool) {
         separator.isHidden = isSeparatorHide
     }
+    
+    
 }

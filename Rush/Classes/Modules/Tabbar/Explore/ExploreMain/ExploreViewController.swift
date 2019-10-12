@@ -153,6 +153,7 @@ extension ExploreViewController {
             
             if btn.tag == 0 { // Event
                 searchType = .event
+                // C*
                 getEventCategoryListAPI()
             } else if btn.tag == 1 { // Club
                 searchType = .club

@@ -12,6 +12,7 @@ class Interest: Codable {
     
     var interestId: Int64 = 0
     var interestName: String = ""
+    var eventList: [Event]?
     
     init(data: [String: Any]) {
         setValue(data: data)
@@ -23,6 +24,7 @@ class Interest: Codable {
     private enum CodingKeys: String, CodingKey {
         case interestId = "interest_id"
         case interestName = "name"
+         case eventList = "event"
     }
     
     // MARK: - Private Functions
@@ -35,6 +37,8 @@ class Interest: Codable {
         if let value = data[Keys.interestName] as? String {
             interestName = value
         }
+        
+        
     }
     
 }

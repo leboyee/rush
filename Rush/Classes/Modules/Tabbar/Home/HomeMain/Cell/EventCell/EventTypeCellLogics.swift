@@ -78,7 +78,6 @@ extension EventTypeCell {
         cell.joinSelected = { [weak self] () in
             guard let unsafe = self else { return }
             unsafe.joinSelected?(indexPath.row)
-            
         }
     }
    

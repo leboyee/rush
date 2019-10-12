@@ -30,8 +30,25 @@ extension EventListViewController {
     }
         
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
-        cell.setup(.none, nil, eventList)
+        let interest = eventCategory[isMyEvents == true ?  indexPath.section - 1 : indexPath.section]
+        cell.setup(.upcoming, nil, interest.eventList)
         // (type, images, data)
+        cell.cellSelected = { [weak self] (type, id, index) in
+            guard let unsafe = self else { return }
+            let event = interest.eventList?[index]
+            unsafe.showEvent(event: event)
+        }
+        cell.joinSelected = { [weak self] (index) in
+            guard let unsafe = self else { return }
+            let event = interest.eventList?[index]
+            if event?.rsvp?.count ?? 0 == 0 {
+                unsafe.joinEvent(eventId: "\(event?.id ?? 0)", action: EventAction.join)
+            } else {
+                unsafe.showRSVP(event: event ?? Event())
+            }
+
+        }
+
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
@@ -58,7 +75,7 @@ extension EventListViewController {
             header.setup(detailArrowImage: UIImage(named: "brown_down") ?? UIImage())
         } else {
             let eventCategoryObject = eventCategory[self.isMyEvents == true ? section - 1 : section]
-            categoryName = eventCategoryObject.name
+            categoryName = eventCategoryObject.interestName
             header.setup(detailArrowImage: UIImage(named: "red-arrow") ?? UIImage())
         }
         header.setup(title: categoryName)
@@ -69,7 +86,7 @@ extension EventListViewController {
                     eventCategoryFilter.dataArray = Utils.myUpcomingFileter()
                     eventCategoryFilter.delegate = self
                 let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
-                eventCategoryFilter.selectedIndex = filter == "All Upcoming" ? 0 : 1
+                eventCategoryFilter.selectedIndex = unself.eventFilterType == .myUpcoming ? 0 : 1
                 eventCategoryFilter.headerTitle = "Sort events by:"
                     let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
                 unself.presentPanModal(rowViewController)
@@ -85,8 +102,7 @@ extension EventListViewController {
                 getEventList()
             }
             if isNextPageMyEvent == true && indexPath.row == eventList.count - 1 {
-                let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
-                      getMyEventList(sortBy: filter?.isEmpty == true ? .upcoming : filter == "All Upcoming" ? .upcoming : .myUpcoming )
+                getMyEventList(sortBy: eventFilterType)
             }
             
         } else {
@@ -109,8 +125,9 @@ extension EventListViewController {
 extension EventListViewController: EventCategoryFilterDelegate {
     func selectedIndex(_ name: String) {
         Utils.saveDataToUserDefault(name, UserDefaultKey.myUpcomingFilter)
+        eventFilterType = name == "All Upcoming" ? .myUpcoming : .managedFirst
         myEventPageNo = 1
-        getMyEventList(sortBy: name == "All Upcoming" ? .upcoming : .myUpcoming )
+        getMyEventList(sortBy: eventFilterType)
     }
 }
 
@@ -141,8 +158,10 @@ extension EventListViewController {
                 } else {
                     Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
                 }
+            unsafe.tableView.reloadData()
             unsafe.showNoEventScreen()
-            }
+            
+        }
     }
     
     func getMyEventList(sortBy: GetEventType) {
@@ -171,6 +190,7 @@ extension EventListViewController {
                         unsafe.isNextPageMyEvent = true
                     }
                     unsafe.isMyEvents = unsafe.eventList.count > 0 ? true : false
+                    print(unsafe.eventList)
                     unsafe.tableView.reloadData()
                 } else {
                     Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
@@ -178,4 +198,23 @@ extension EventListViewController {
                 unsafe.showNoEventScreen()
             }
         }
+    
+    func joinEvent(eventId: String, action: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.joinEvent(eventId: eventId, action: action, params: [:]) { [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            if let object = data {
+                let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
+                if isFirstTime == 1 {
+                   self?.showJoinAlert()
+                }
+                DispatchQueue.main.async {
+                    //self?.loadAllData()
+                }
+            } else if let message = errorMessage {
+                self?.showMessage(message: message)
+                Utils.hideSpinner()
+            }
+        }
+    }
 }
