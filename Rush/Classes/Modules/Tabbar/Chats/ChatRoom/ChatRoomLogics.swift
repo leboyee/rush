@@ -15,18 +15,37 @@ extension ChatRoomViewController {
         
         var grpName = ""
         let loggedInUserId = Authorization.shared.profile?.userId ?? ""
-        var otherUserId = friendProfile?.user?.userId ?? ""
-        var imgUrl = friendProfile?.user?.photo?.thumb ?? ""
+        var otherUserId = ""
+        var imgUrl = ""
+        var type = ""
+        var data = ""
+        
         let loggedInUserName = Authorization.shared.profile?.name ?? ""
         let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
         
         if let friend = friendProfile {
-            grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
+            otherUserId = friend.user?.userId ?? "0" + loggedInUserId
             imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
-            otherUserId = friend.user?.userId ?? "0"
+            grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
+            type = "single"
+            data = friend.user?.userId ?? "0"
+        } else if let club = clubInfo {
+            otherUserId = club.invitees?.compactMap({ $0.user?.userId }).joined(separator: ",") ?? "0"
+            let createdUserId = club.user?.userId ?? "0"
+            otherUserId += ("," + createdUserId)
+            imgUrl = club.photo?.thumb ?? ""
+            grpName = club.clubName ?? ""
+            type = "club"
+            data = "\(club.clubId)"
+        } else if let event = eventInfo {
+            otherUserId = ""
+            imgUrl = event.photo?.thumb ?? ""
+            grpName = event.title
+            type = "event"
+            data = "\(event.id)"
         }
         
-        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId, loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: "", completionHandler: { (channel) in
+        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId], groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel) in
             DispatchQueue.main
                 .async(execute: {
                     // Move on Chat detail screen

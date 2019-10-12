@@ -96,8 +96,15 @@ extension ClubDetailViewController {
             }
         }
         
-        cell.secondButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            let controller = ChatRoomViewController()
+            controller.userName = unsafe.clubInfo?.clubName ?? ""
+            controller.isGroupChat = true
+            controller.chatDetailType = .club
+            controller.clubInfo = unsafe.clubInfo
+            controller.hidesBottomBarWhenPushed = true
+            unsafe.navigationController?.pushViewController(controller, animated: true)
         }
     }
     

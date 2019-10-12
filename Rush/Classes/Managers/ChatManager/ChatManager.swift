@@ -182,34 +182,19 @@ extension ChatManager {
      Create Group channel for one user
      */
     
-    func createGroupChannel(userId: String?, name: String?, photoUrl: String?, completionHandler: @escaping(_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping(_ error: Error?) -> Void) {
+    func createGroupChannel(userId: String?, name: String?, photoUrl: String?, data: String?, type: String?, completionHandler: @escaping(_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping(_ error: Error?) -> Void) {
         
         if userId == nil && (userId?.count ?? 0) == 0 {
             return
         }
         
-        /*
-         SBDGroupChannel.createChannel(withUserIds: [userId!], isDistinct: true, completionHandler: { channel, error in
-         if error != nil {
-         if let domain = error?.domain {
-         Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-         }
-         if let err = error {
-         errorHandler(err)
-         }
-         } else {
-         if let value = channel {
-         completionHandler(value)
-         }
-         }
-         })*/
         var groupFriendsList = [String]()
         groupFriendsList.append(userId ?? "")
         groupFriendsList.append(Authorization.shared.profile?.userId ?? "")
         let grpName = "\(Authorization.shared.profile?.name ?? ""), \(name ?? "")"
         let strUrl = "\(Authorization.shared.profile?.photo?.thumb ?? ""), \(photoUrl ?? "")"
         
-        createGroupChannelwithUsers(userIds: groupFriendsList, groupName: grpName, coverImageUrl: strUrl, data: "", completionHandler: completionHandler, errorHandler: errorHandler)
+        createGroupChannelwithUsers(userIds: groupFriendsList, groupName: grpName, coverImageUrl: strUrl, data: data, type: type, completionHandler: completionHandler, errorHandler: errorHandler)
     }
     
     /*
@@ -221,6 +206,7 @@ extension ChatManager {
         groupName: String?,
         coverImageUrl: String?,
         data: String?,
+        type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
         let sbdGroupChannelParams = SBDGroupChannelParams()
@@ -229,6 +215,7 @@ extension ChatManager {
         sbdGroupChannelParams.addUserIds(userIds as? [String] ?? [])
         sbdGroupChannelParams.coverUrl = coverImageUrl
         sbdGroupChannelParams.data = data
+        sbdGroupChannelParams.customType = type
         
         SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
             if error != nil {

@@ -71,7 +71,7 @@ class Class: Codable {
 //actual class e.g Fine Arts
 class SubClass: Codable {
     
-    private var classId: Int64 = 0
+    var classId: Int64 = 0
     var location: String = ""
     var name: String = ""
     var photo: String = ""

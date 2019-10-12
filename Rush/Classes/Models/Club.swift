@@ -10,7 +10,7 @@ import UIKit
 
 class Club: Codable {
 
-    private var id: Int64 = 0
+    var id: Int64 = 0
     private var clubUserId: Int64 = 0
     var clubName: String?
     var clubDesc: String?
