@@ -432,3 +432,10 @@ struct Vote {
     static let up = "up"
     static let down = "down"
 }
+
+enum ChatDetailType: String {
+    case single = ""
+    case club = "club"
+    case event = "event"
+    case classes = "classes"
+}
