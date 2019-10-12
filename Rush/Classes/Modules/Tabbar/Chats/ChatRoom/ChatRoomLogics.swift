@@ -228,7 +228,7 @@ extension ChatRoomViewController {
                 userIds: userIds,
                 groupName: groupNameString,
                 coverImageUrl: coverUrl,
-                data: "Group",
+                data: self.channel?.data, type: self.channel?.customType,
                 completionHandler: { [weak self] (channel) in
                     guard let unself = self else { return }
                     unself.channel = channel

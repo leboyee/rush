@@ -296,6 +296,7 @@ extension ClubDetailViewController {
             guard let uwself = self else { return }
             if status {
                 uwself.getClubDetailAPI()
+                ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
             } else {
                 Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

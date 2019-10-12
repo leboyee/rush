@@ -308,6 +308,7 @@ extension ChatManager {
         groupName: String?,
         coverImageUrl: String?,
         data: String?,
+        type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
         if let ids = userIds {
@@ -325,6 +326,10 @@ extension ChatManager {
                     
                     if data != nil {
                         params.data = data
+                    }
+                    
+                    if type != nil {
+                        params.customType = type
                     }
                     
                     params.isDistinct = false
@@ -357,6 +362,45 @@ extension ChatManager {
     
     func isMemberExistInChannel(channel: SBDGroupChannel?, userid: String) -> Bool {
         return channel?.hasMember(userid) ?? false
+    }
+    
+    func addNewMember(type: String, data: String, userId: String) {
+        
+        getListOfAllChatGroups({ (value) in
+            if let list = value as? [SBDGroupChannel] {
+                
+                let channels = list.filter({ $0.customType == type })
+                if channels.count > 0 {
+                    let filteredChannels = channels.filter({ $0.data == data })
+                    
+                    if filteredChannels.count > 0, let channel = filteredChannels.first {
+                        
+                        var userIds = [String]()
+                        
+                        if let members = channel.members {
+                            for member in members {
+                                if let user = member as? SBDUser {
+                                    userIds.append(user.userId)
+                                }
+                            }
+                            userIds.append(userId)
+                        }
+                        
+                        let ids = userIds.joined(separator: ",")
+                                                
+                        self.updateChannel(channel: channel, userIds: [ids], groupName: channel.name, coverImageUrl: channel.coverUrl, data: channel.data, type: channel.customType, completionHandler: { (_) in
+                            
+                            print("************ User added successfully  *************")
+                            
+                        }) { (error) in
+                            print(error?.localizedDescription ?? "")
+                        }
+                    }
+                }
+            }
+        }) { (error) in
+            print(error?.localizedDescription ?? "")
+        }
     }
 }
 
@@ -522,6 +566,7 @@ extension ChatManager {
                                groupName: groupNameString,
                                coverImageUrl: coverUrl,
                                data: "Group",
+                               type: "",
                                completionHandler: { (_) in
                                 self.leave(channel) { (status) in
                                     if status {
