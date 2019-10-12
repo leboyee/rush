@@ -293,7 +293,6 @@ extension ChatRoomViewController {
         var imageName = ""
         
         if self.channel?.customType == "single" {
-            
             if self.channel != nil {
                 if let members = self.channel?.members {
                     // _ = Array<NSURL>()
@@ -315,25 +314,15 @@ extension ChatRoomViewController {
                             for image in images {
                                 if image != Authorization.shared.profile?.photo?.thumb {
                                     imageName = image
-                                } else {
-                                    
                                 }
                             }
                         }
                     } else {
-                        
                         var chatName = ChatManager().getChatName(self.channel)
                         chatName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(chatName)
                         self.userName = chatName
                         
                         if let url = self.channel?.coverUrl {
-                            /*
-                             let images = url.components(separatedBy: ",")
-                             
-                             for image in images {
-                             urls.append(NSURL(string: image)!)
-                             }
-                             */
                             imageName = url
                         }
                     }
@@ -343,6 +332,12 @@ extension ChatRoomViewController {
                 userName = frnd.user?.name ?? ""
             }
         } else {
+            /*
+             Setup for club, event, class group chat
+             Cover image url,
+             Group name
+             */
+            
             imageName = channel?.coverUrl ?? ""
             userName = channel?.name ?? ""
         }
@@ -369,13 +364,11 @@ extension ChatRoomViewController {
     
     func setTypingIndicatorHidden(_ isHidden: Bool, performUpdates updates: (() -> Void)? = nil) {
         /*
-         updateTitleView(title: "MessageKit", subtitle: isHidden ? "2 Online" : "Typing...")
-         setTypingBubbleHidden(isHidden, animated: true, whilePerforming: updates) { [weak self] (_) in
-         if self?.isLastSectionVisible() == true {
-         self?.messagesCollectionView.scrollToBottom(animated: true)
-         }
-         }
-         messagesCollectionView.scrollToBottom(animated: true)
-         */
+        //updateTitleView(title: "MessageKit", subtitle: isHidden ? "2 Online" : "Typing...")
+        if self.isLastSectionVisible() == true {
+            self.messagesCollectionView.scrollToBottom(animated: true)
+        }
+        messagesCollectionView.scrollToBottom(animated: true)
+        */
     }
 }
