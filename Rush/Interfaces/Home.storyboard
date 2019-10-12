@@ -1268,7 +1268,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUM-uP-zP2">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQb-6s-Xat">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQb-6s-Xat">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share_gray" translatesAutoresizingMaskIntoConstraints="NO" id="hTU-OH-lsc">
@@ -1304,7 +1304,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="IiO-pg-er8" secondAttribute="trailing" id="tTV-Sz-DCd"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-YA-j23">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-YA-j23">
                                                         <rect key="frame" x="0.0" y="64" width="414" height="64"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qwx-Xi-zRH">
@@ -1394,6 +1394,7 @@
                         <outlet property="containerView" destination="lSb-D1-eJe" id="EOe-O4-z80"/>
                         <outlet property="deleteLabel" destination="8uu-J4-GOP" id="LbE-aV-qGd"/>
                         <outlet property="heightConstraintOfContainerView" destination="BKE-cA-eHz" id="TWc-BU-ewm"/>
+                        <outlet property="heightConstraintOfDeletePost" destination="OnD-uZ-m1h" id="Usv-Kl-hOr"/>
                         <outlet property="radiusView" destination="1S9-Eu-JkI" id="lnd-Eb-gQC"/>
                         <outlet property="shareLabel" destination="k7h-If-Bta" id="8ft-pC-XcE"/>
                     </connections>
@@ -1642,6 +1643,7 @@
                         <outlet property="topConstraintOfTableView" destination="Ye5-DR-Jj5" id="BPd-s5-JJJ"/>
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Bwe-EL-S9s"/>
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="WIx-LH-4TQ"/>
+                        <segue destination="KY7-jJ-Aaf" kind="show" identifier="PostSegue" id="bD5-sy-JMX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6D-HR-Kbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1672,7 +1674,7 @@
         <segue reference="zl1-35-Qwj"/>
         <segue reference="QdI-xB-jJm"/>
         <segue reference="Bwe-EL-S9s"/>
-        <segue reference="YgH-R3-42x"/>
+        <segue reference="bD5-sy-JMX"/>
         <segue reference="2qn-kC-bGH"/>
         <segue reference="bqe-q0-s4j"/>
         <segue reference="90w-At-CBu"/>

@@ -33,7 +33,7 @@ extension AddLocationViewController {
 //        self.view.makeToast("Started fetching information...")
         let request = MKLocalSearch.Request(completion: searchResult)
         if #available(iOS 13.0, *) {
-            request.resultTypes = .address
+//            request.resultTypes = .address
         } else {
             // Fallback on earlier versions
         }
