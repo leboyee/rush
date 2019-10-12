@@ -157,6 +157,23 @@ extension ClassDetailViewController: OtherUserProfileProtocol {
         snackbar.show()
     }
 }
+// MARK: - PostVIewController delegate
+extension ClassDetailViewController: PostViewProtocol {
+    func deletePostSuccess(_ post: Post?) {
+        let snackbar = TTGSnackbar(message: "Your post is deleted.",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (_) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+    
+    func updatedPost(_ post: Post) {
+        
+    }
+}
+
 // MARK: - CreatePostViewController Delegate
 extension ClassDetailViewController: CreatePostViewControllerDelegate {
     func createPostSuccess(_ post: Post) {

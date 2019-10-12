@@ -65,10 +65,20 @@ extension ClubListViewController {
             guard let unself = self else { return }
             if type == .classes {
                 let classObj = unself.myClassesList[section]
-                let subClassesObj = classObj.classList
+                let subClassesList = classObj.classList
                 
-                if subClassesObj?.count ?? 0 > 0 {
-                    unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: subClassesObj?[index])
+                if subClassesList?.count ?? 0 > 0 {
+                    let selSubClass = subClassesList?[index]
+                    if (selSubClass?.myJoinedClass?.count ?? 0 > 0) {
+                        //already joined - so dont show groups
+                        unself.performSegue(withIdentifier: Segues.classDetailSegue, sender: selSubClass)
+                    } else {
+                        // not joined yet, so show groups
+                         unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: selSubClass )
+                        
+                    }
+                    
+                   
                 }
             }
         }
