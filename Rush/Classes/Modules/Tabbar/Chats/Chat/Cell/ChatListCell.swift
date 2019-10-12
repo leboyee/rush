@@ -112,6 +112,10 @@ extension ChatListCell {
         }
     }
     
+    func setup(img: String?) {
+        imgView.sd_setImage(with: URL(string: img ?? ""), placeholderImage: #imageLiteral(resourceName: "img-event"), options: [], context: nil)
+    }
+    
     func setup(channel: SBDGroupChannel) {
         // Set last time
         if let message = channel.lastMessage {

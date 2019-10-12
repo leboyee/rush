@@ -24,8 +24,13 @@ extension ChatsViewController {
         cell.setup(title: getSingleChatName(channel: channel))
         cell.setup(lastMessage: channel.lastMessage)
         cell.setup(onlineUser: channel.members)
-        cell.setup(chatImage: channel.members)
         cell.setup(channel: channel)
+        
+        if channel.customType == "single" {
+            cell.setup(chatImage: channel.members)
+        } else {
+            cell.setup(img: channel.coverUrl)
+        }
     }
     
     func cellSelected(_ indexPath: IndexPath) {

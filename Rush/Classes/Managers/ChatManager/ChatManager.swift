@@ -211,7 +211,7 @@ extension ChatManager {
         
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
-        sbdGroupChannelParams.isDistinct = (userIds?.count == 2) ? true: false
+        sbdGroupChannelParams.isDistinct = type == "single" ? ((userIds?.count == 2) ? true: false) : false
         sbdGroupChannelParams.addUserIds(userIds as? [String] ?? [])
         sbdGroupChannelParams.coverUrl = coverImageUrl
         sbdGroupChannelParams.data = data

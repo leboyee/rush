@@ -14,7 +14,7 @@ extension ChatRoomViewController {
     func createNewChatGroup(handler: @escaping (_ channel: SBDGroupChannel?) -> Void) {
         
         var grpName = ""
-        let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+        var loggedInUserId = Authorization.shared.profile?.userId ?? ""
         var otherUserId = ""
         var imgUrl = ""
         var type = ""
@@ -24,15 +24,14 @@ extension ChatRoomViewController {
         let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
         
         if let friend = friendProfile {
-            otherUserId = friend.user?.userId ?? "0" + loggedInUserId
+            otherUserId = friend.user?.userId ?? "0"
             imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
             grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
             type = "single"
             data = friend.user?.userId ?? "0"
         } else if let club = clubInfo {
             otherUserId = club.invitees?.compactMap({ $0.user?.userId }).joined(separator: ",") ?? "0"
-            let createdUserId = club.user?.userId ?? "0"
-            otherUserId += ("," + createdUserId)
+            loggedInUserId = club.user?.userId ?? "0"
             imgUrl = club.photo?.thumb ?? ""
             grpName = club.clubName ?? ""
             type = "club"
@@ -45,7 +44,7 @@ extension ChatRoomViewController {
             data = "\(event.id)"
         }
         
-        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId], groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel) in
+        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId, loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel) in
             DispatchQueue.main
                 .async(execute: {
                     // Move on Chat detail screen
@@ -292,53 +291,60 @@ extension ChatRoomViewController {
     func updateChatUserImage() -> String {
         
         var imageName = ""
-        if self.channel != nil {
-            if let members = self.channel?.members {
-                // _ = Array<NSURL>()
-                if members.count == 2 && self.channel?.data != "Group" {
-                    for member in members {
-                        if let user = member as? SBDUser {
-                            let loggedInUserId = Authorization.shared.profile?.userId ?? ""
-                            if loggedInUserId != user.userId {
-                                imageName = user.profileUrl ?? ""
-                                self.userName = user.nickname ?? ""
+        
+        if self.channel?.customType == "single" {
+            
+            if self.channel != nil {
+                if let members = self.channel?.members {
+                    // _ = Array<NSURL>()
+                    if members.count == 2 && self.channel?.data != "Group" {
+                        for member in members {
+                            if let user = member as? SBDUser {
+                                let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+                                if loggedInUserId != user.userId {
+                                    imageName = user.profileUrl ?? ""
+                                    self.userName = user.nickname ?? ""
+                                }
                             }
                         }
-                    }
-                } else if members.count == 1 {
-                    self.userName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(Utils.removeLoginUserNameFromChannel(channelName: self.channel?.name ?? ""))
-                    
-                    if let url = self.channel?.coverUrl, url.isNotEmpty {
-                        let images = url.components(separatedBy: ",")
-                        for image in images {
-                            if image != Authorization.shared.profile?.photo?.thumb {
-                                imageName = image
-                            } else {
-                                
+                    } else if members.count == 1 {
+                        self.userName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(Utils.removeLoginUserNameFromChannel(channelName: self.channel?.name ?? ""))
+                        
+                        if let url = self.channel?.coverUrl, url.isNotEmpty {
+                            let images = url.components(separatedBy: ",")
+                            for image in images {
+                                if image != Authorization.shared.profile?.photo?.thumb {
+                                    imageName = image
+                                } else {
+                                    
+                                }
                             }
                         }
-                    }
-                } else {
-                    
-                    var chatName = ChatManager().getChatName(self.channel)
-                    chatName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(chatName)
-                    self.userName = chatName
-                    
-                    if let url = self.channel?.coverUrl {
-                        /*
-                         let images = url.components(separatedBy: ",")
-                         
-                         for image in images {
-                         urls.append(NSURL(string: image)!)
-                         }
-                         */
-                        imageName = url
+                    } else {
+                        
+                        var chatName = ChatManager().getChatName(self.channel)
+                        chatName = Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(chatName)
+                        self.userName = chatName
+                        
+                        if let url = self.channel?.coverUrl {
+                            /*
+                             let images = url.components(separatedBy: ",")
+                             
+                             for image in images {
+                             urls.append(NSURL(string: image)!)
+                             }
+                             */
+                            imageName = url
+                        }
                     }
                 }
+            } else if let frnd = friendProfile {
+                imageName = frnd.user?.photo?.thumb ?? ""
+                userName = frnd.user?.name ?? ""
             }
-        } else if let frnd = friendProfile {
-            imageName = frnd.user?.photo?.thumb ?? ""
-            userName = frnd.user?.name ?? ""
+        } else {
+            imageName = channel?.coverUrl ?? ""
+            userName = channel?.name ?? ""
         }
         return imageName
     }
