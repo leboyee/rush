@@ -78,11 +78,13 @@ extension CreateEventViewController {
     }
     
     func fillEventTimeCell(_ cell: EventTimeCell, _ indexPath: IndexPath) {
+        cell.datePicker.date = indexPath.section == 4 ? startTimeDate : endTimeDate
         cell.timeSelected = {
             [weak self] (date) in
             guard let unsafe = self else { return }
             if indexPath.section == 4 {
                 unsafe.startTimeDate = date
+                cell.datePicker.date = date
                 /*if unsafe.startDate.isSameDate(unsafe.endDate) && unsafe.startTimeDate > unsafe.endTimeDate {
                  Utils.alert(message: "Start time not allow greter then end event Time")
                  return
@@ -250,7 +252,7 @@ extension CreateEventViewController {
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
         } else if indexPath.section == 6 {
-            if indexPath.row == (interestList.count ?? 0) {
+            if indexPath.row == (interestList.count) {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
                 cell.setup(keyboardReturnKeyType: .done)
@@ -377,7 +379,7 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList.count ?? 0) > 0 {
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList.count ) > 0 {
             
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
