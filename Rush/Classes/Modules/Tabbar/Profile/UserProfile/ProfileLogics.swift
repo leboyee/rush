@@ -39,6 +39,43 @@ extension ProfileViewController {
         notificationNextPageExist = false
         fetchNotificationList()
     }
+    
+    private func handleTapOnLabel(notification: NotificationItem, text: String) {
+        switch notification.ntType {
+        case .acceptFriendRequest, .friendRequest:
+            if let friend = notification.friend?.last, (friend.user?.name ?? "") == text, let user = friend.user {
+                showFriend(user: user)
+            }
+        case .eventInvite:
+            if let user = notification.generatedBy, user.name == text {
+                showFriend(user: user)
+            } else if let event = notification.event?.last {
+                showEvent(event: event)
+            }
+        case .clubInvite:
+            if let user = notification.generatedBy, user.name == text {
+                showFriend(user: user)
+            } else if let club = notification.club?.last {
+                showClub(club: club)
+            }
+        case .upVoted, .downVoted, .newComment:
+            if let user = notification.generatedBy, user.name == text {
+                showFriend(user: user)
+            } else if let post = notification.post?.last {
+                var object: Any?
+                if post.type.lowercased() == Text.event.lowercased() {
+                    object = notification.event?.last
+                } else if post.type.lowercased() == Text.club.lowercased() {
+                    object = notification.club?.last
+                } else {
+                    object = notification.classObject?.last
+                }
+                showPost(post: post, object: object)
+            }
+        default:
+        break
+        }
+    }
 }
 
 // MARK: - Handlers
@@ -102,14 +139,41 @@ extension ProfileViewController {
             case .acceptFriendRequest, .friendRequest:
                 cell.set(friend: notification.friend?.last, text: notification.ntText)
             case .eventInvite:
-                cell.set(user: notification.generatedBy, event: notification.event?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
             case .clubInvite:
-                print("")
-            case .upVoted, .downVoted:
-                print("")
-            case .newComment:
-                print("")
-            default: break
+                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+            case .upVoted, .downVoted, .newComment:
+                if let post = notification.post?.last {
+                    if post.type.lowercased() == Text.event.lowercased() {
+                        cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+                    } else if post.type.lowercased() == Text.club.lowercased() {
+                        cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+                    } else {
+                        cell.set(user: notification.generatedBy, object: notification.classObject?.last, text: notification.ntText)
+                    }
+                }
+            default:
+                cell.label.text = ""
+            }
+            
+            cell.labelTapEvent = { [weak self] (text, range) in
+                guard let unsafe = self else { return }
+                let name = (text as NSString).substring(with: range)
+                unsafe.handleTapOnLabel(notification: notification, text: name)
+            }
+            
+            cell.userImageTapEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                if let friend = notification.friend?.last, let name = friend.user?.name {
+                    unsafe.handleTapOnLabel(notification: notification, text: name)
+                } else if let user = notification.generatedBy {
+                    unsafe.handleTapOnLabel(notification: notification, text: user.name)
+                }
+            }
+            
+            cell.eventImageTapEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                unsafe.handleTapOnLabel(notification: notification, text: "")
             }
         }
     }
@@ -139,7 +203,9 @@ extension ProfileViewController {
             } else if indexPath.section == 1 {
                 if let friends = self?.profileDetail.friends {
                     let friend = friends[index] as Friend
-                    self?.showFriend(user: friend)
+                    if let user = friend.user {
+                       self?.showFriend(user: user)
+                    }
                 }
             }
         }
@@ -209,7 +275,6 @@ extension ProfileViewController {
             ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
                 self?.profileDetail.profile = user
                 self?.profileDetail.interests = user?.interest
-
                 self?.setupHeaderData()
                 self?.downloadGroup.leave()
             }
@@ -266,7 +331,7 @@ extension ProfileViewController {
                     if list.isEmpty {
                         unsafe.friendNextPageExist = false
                         if unsafe.friendPageNo == 1 {
-                            unsafe.profileDetail.notifications?.removeAll()
+                            unsafe.profileDetail.friends?.removeAll()
                         }
                     } else {
                         if unsafe.friendPageNo == 1 {

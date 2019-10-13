@@ -137,10 +137,25 @@ extension ProfileViewController {
         Utils.notReadyAlert()
     }
     
-    func showFriend(user: Friend) {
+    func showFriend(user: User) {
         performSegue(withIdentifier: Segues.profileFriendProfile, sender: user)
     }
     
+    func showEvent(event: Event) {
+        performSegue(withIdentifier: Segues.notificationEventDetail, sender: event)
+    }
+    
+    func showClub(club: Club) {
+        performSegue(withIdentifier: Segues.notificationClubDetail, sender: club)
+    }
+    
+    func showClass(classObject: Class) {
+        performSegue(withIdentifier: Segues.notificationClassDetail, sender: classObject)
+    }
+    
+    func showPost(post: Post, object: Any?) {
+        performSegue(withIdentifier: Segues.notificationPostDetail, sender: (post, object))
+    }
 }
 
 // MARK: - Navigations
@@ -150,14 +165,28 @@ extension ProfileViewController {
             let vc = segue.destination as? OtherUserProfileController
             vc?.userInfo = sender as? User
             vc?.delegate = self
-        } else if segue.identifier == Segues.profileFriendProfile {
-                   let vc = segue.destination as? ProfileViewController
-                   vc?.profileDetail.profile = sender as? User
-                   vc?.isOtherUserProfile = true
         } else if segue.identifier == Segues.userFriendListSegue {
             let vc = segue.destination as? UserFriendsListViewController
             vc?.userId = Authorization.shared.profile?.userId ?? ""
+        } else if segue.identifier == Segues.notificationEventDetail {
+            let vc = segue.destination as? EventDetailViewController
+            if let event = sender as? Event {
+                vc?.event = event
+                vc?.eventId = String(event.id)
+            }
+        } else if segue.identifier == Segues.notificationClubDetail {
+            let vc = segue.destination as? ClubDetailViewController
+            vc?.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.notificationPostDetail {
+            let vc = segue.destination as? PostViewController
+            if let (post, object) = sender as? (Post, Any?) {
+                vc?.postInfo = post
+                if let event = object as? Event {
+                    vc?.eventInfo = event
+                } else if let club = object as? Club {
+                    vc?.clubInfo = club
+                }
+            }
         }
-
     }
 }
