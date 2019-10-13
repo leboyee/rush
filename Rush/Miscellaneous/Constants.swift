@@ -195,14 +195,18 @@ struct Segues {
     static let eventOtherUserProfile              = "EventOtherUserProfileSegue"
     static let eventListToEventDetailsSegue       = "EventListToEventDetailsSegue"
     static let editProfileSegue                   = "EditProfileSegue"
-    static let settingViewControllerSegue                   = "SettingViewControllerSegue"
-    static let editEventSegue                   = "EditEventSegue"
-    static let userFriendListSegue                   = "UserFriendListSegue"
+    static let settingViewControllerSegue         = "SettingViewControllerSegue"
+    static let editEventSegue                     = "EditEventSegue"
+    static let userFriendListSegue                = "UserFriendListSegue"
     static let exploreEvents                      = "ExploreEventsSegue"
     static let eventDetailCalendar                = "EventDetailCalendarSegue"
     static let calendarClassDetail                = "CalendarClassDetailSegue"
     static let calendarEventDetail                = "CalendarEventDetailSegue"
-    static let userProfileGallerySegue                         = "UserProfileGallerySegue"
+    static let userProfileGallerySegue            = "UserProfileGallerySegue"
+    static let notificationEventDetail            = "NotificationEventDetailSegue"
+    static let notificationClubDetail             = "NotificationClubDetailSegue"
+    static let notificationClassDetail            = "NotificationClassDetailSegue"
+    static let notificationPostDetail             = "NotificationPostDetailSegue"
 
 }
 

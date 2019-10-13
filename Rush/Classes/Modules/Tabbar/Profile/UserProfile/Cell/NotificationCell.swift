@@ -19,6 +19,8 @@ class NotificationCell: UITableViewCell {
     var ranges = [NSRange]()
     
     var labelTapEvent:((_ text: String, _ range: NSRange) -> Void)?
+    var userImageTapEvent:(() -> Void)?
+    var eventImageTapEvent:(() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,11 +42,6 @@ class NotificationCell: UITableViewCell {
 }
 
 extension NotificationCell {
-    
-    func setup() {
-        let detailText = "⌠Marta Keller⌡ invites you to join ⌠VR Meetips⌡"
-        label.attributedText = getFormattedString(string: detailText)
-    }
     
     func set(friend: Friend?, text: String) {
         let friendNameText = "{friend_user_name}"
@@ -95,6 +92,14 @@ extension NotificationCell {
                 return
             }
         }
+    }
+    
+    @IBAction func eventImageButtonAction() {
+        eventImageTapEvent?()
+    }
+    
+    @IBAction func userImageButtonAction() {
+        userImageTapEvent?()
     }
 }
 

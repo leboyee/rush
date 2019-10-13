@@ -81,11 +81,55 @@
                         <segue destination="c31-hD-7x0" kind="show" identifier="ProfileFriendProfileSegue" id="3dt-pp-mnp"/>
                         <segue destination="KSN-HZ-4n3" kind="show" identifier="EditProfileSegue" id="TzM-tw-RWf"/>
                         <segue destination="5gp-qZ-wkB" kind="show" identifier="UserFriendListSegue" id="na3-Jf-Y3O"/>
+                        <segue destination="5V3-5S-qhK" kind="show" identifier="NotificationEventDetailSegue" id="Yvm-yr-Vqh"/>
+                        <segue destination="Se2-YI-KJb" kind="show" identifier="NotificationClubDetailSegue" id="mVW-Nk-rg2"/>
+                        <segue destination="QQo-sG-keX" kind="show" identifier="NotificationClassDetailSegue" id="78A-IE-Y1M"/>
+                        <segue destination="VBD-zJ-xaO" kind="show" identifier="NotificationPostDetailSegue" id="5Eg-G4-NS4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqU-TN-DgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-600" y="12.723214285714285"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="t6m-U0-HKF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="5V3-5S-qhK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5rM-WC-3f4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Y6-9N-Nh3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46" y="-356"/>
+        </scene>
+        <!--PostViewController-->
+        <scene sceneID="pkl-Z0-0m1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="PostViewController" id="VBD-zJ-xaO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2su-Ht-kFp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ok2-91-8UA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12" y="-577"/>
+        </scene>
+        <!--ClassDetailViewController-->
+        <scene sceneID="FFX-nw-bbw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="ClassDetailViewController" id="QQo-sG-keX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vLk-bu-acM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wr5-bD-jyP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="-520"/>
+        </scene>
+        <!--ClubDetailViewController-->
+        <scene sceneID="W9r-4l-jzp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="ClubDetailViewController" id="Se2-YI-KJb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kG2-Nf-4Is"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oRb-Oi-FTr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14" y="-465"/>
         </scene>
         <!--OtherUserProfileController-->
         <scene sceneID="pox-nY-OaA">
@@ -103,7 +147,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydb-HA-wyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798" y="-524"/>
+            <point key="canvasLocation" x="1862" y="425"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Cco-VF-uMf">
@@ -211,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="12.723214285714285"/>
+            <point key="canvasLocation" x="1854" y="13"/>
         </scene>
         <!--Privacy Settings View Controller-->
         <scene sceneID="9fs-Ab-LU0">
@@ -250,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="-202"/>
+            <point key="canvasLocation" x="2983" y="1215"/>
         </scene>
         <!--Disconnect Instagram View Controller-->
         <scene sceneID="2vv-fq-i3i">
@@ -359,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eix-Nr-X0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-600" y="751"/>
+            <point key="canvasLocation" x="2983" y="510"/>
         </scene>
         <!--User Friends List View Controller-->
         <scene sceneID="xsx-9k-Rcc">
@@ -426,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9V-Na-vRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543" y="1507"/>
+            <point key="canvasLocation" x="-600" y="717"/>
         </scene>
         <!--Logout View Controller-->
         <scene sceneID="DNL-Gm-or3">
@@ -528,7 +572,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilh-gn-sYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="750.66964285714278"/>
+            <point key="canvasLocation" x="2983" y="-1614"/>
         </scene>
         <!--Notification Settings View Controller-->
         <scene sceneID="oW5-HU-yyQ">
@@ -567,7 +611,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBL-Dr-Ojk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="466"/>
+            <point key="canvasLocation" x="2984" y="-903"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
@@ -606,7 +650,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-bh-tKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="-875"/>
+            <point key="canvasLocation" x="2983" y="-198"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="Fy8-bs-Dbv">
@@ -679,7 +723,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOy-LS-BwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-600" y="-829"/>
+            <point key="canvasLocation" x="284" y="13"/>
         </scene>
         <!--AddMajorsViewController-->
         <scene sceneID="Gnc-o6-jom">
@@ -689,7 +733,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFH-bp-Ov9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292" y="-1032"/>
+            <point key="canvasLocation" x="993" y="-299"/>
         </scene>
         <!--AddMinorsViewController-->
         <scene sceneID="584-5r-3Ug">
@@ -699,7 +743,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tO-cs-PuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="-983"/>
+            <point key="canvasLocation" x="993" y="-253"/>
         </scene>
         <!--SelectEventTypeViewController-->
         <scene sceneID="r1C-Tw-jCc">
@@ -709,7 +753,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bj-GL-Q58" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301" y="-941"/>
+            <point key="canvasLocation" x="1020" y="-147"/>
         </scene>
         <!--ChooseLevelViewController-->
         <scene sceneID="shd-AA-vok">
@@ -719,7 +763,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNg-kS-tji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301" y="-891"/>
+            <point key="canvasLocation" x="1002" y="-22"/>
         </scene>
         <!--ChooseYearViewController-->
         <scene sceneID="Fb2-9z-TxE">
@@ -729,7 +773,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gE-05-zhw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="-844"/>
+            <point key="canvasLocation" x="999" y="-198"/>
         </scene>
         <!--ChooseUniversityViewController-->
         <scene sceneID="bQr-be-KqO">
@@ -739,7 +783,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVS-LC-0FJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="337" y="-785"/>
+            <point key="canvasLocation" x="1024" y="-86"/>
         </scene>
     </scenes>
     <resources>
