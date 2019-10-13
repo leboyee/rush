@@ -15,6 +15,14 @@
         </array>
     </customFonts>
     <scenes>
+        <!--SearchClubViewController-->
+        <scene sceneID="Gmh-tz-Mnn">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Home" referencedIdentifier="SearchClubViewController" id="21M-Sg-QSo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6EL-pf-dFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1465" y="470"/>
+        </scene>
         <!--Explore View Controller-->
         <scene sceneID="g47-vi-1wt">
             <objects>
@@ -238,6 +246,7 @@
                         <segue destination="jNy-Yw-m46" kind="show" identifier="ClubDetailSegue" id="Wds-tx-BBL"/>
                         <segue destination="iCk-fS-noR" kind="show" identifier="EventDetailSegue" id="cWE-q2-all"/>
                         <segue destination="ylK-2Z-jar" kind="show" identifier="ClassDetailSegue" id="IFX-2f-5cP"/>
+                        <segue destination="21M-Sg-QSo" kind="show" identifier="SearchClubSegue" id="wXm-sJ-WwY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AV-99-LfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,6 +336,8 @@
                         <outlet property="tableView" destination="xpu-5f-ceh" id="ACS-md-TXX"/>
                         <outlet property="topConstraintOfTableView" destination="d7j-3j-H6h" id="M3Y-ci-9Qg"/>
                         <segue destination="iCk-fS-noR" kind="show" identifier="EventDetailSegue" id="o2X-dF-cRA"/>
+                        <segue destination="21M-Sg-QSo" kind="show" identifier="SearchClubSegue" id="qV3-W3-t83"/>
+                        <segue destination="ylK-2Z-jar" kind="show" identifier="ClassDetailSegue" id="zIx-dy-pNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9o-lX-mNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,6 +418,8 @@
         <image name="searchGray" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cWE-q2-all"/>
+        <segue reference="o2X-dF-cRA"/>
+        <segue reference="zIx-dy-pNk"/>
+        <segue reference="qV3-W3-t83"/>
     </inferredMetricsTieBreakers>
 </document>

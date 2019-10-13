@@ -259,7 +259,10 @@ extension ChatManager {
         sbdGroupChannelParams.coverUrl = coverImageUrl
         sbdGroupChannelParams.data = data
         sbdGroupChannelParams.customType = type
-        
+        if type != "single" {
+            sbdGroupChannelParams.isPublic = true
+        }
+                
         SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
             if error != nil {
                 if let domain = error?.domain {

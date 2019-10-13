@@ -40,4 +40,8 @@ extension ChooseTagCell {
         tagListView.tagSelectedBackgroundColor = UIColor.black
         self.layoutIfNeeded()
     }
+    
+    func selectedTag(tagList: [String]) {
+        tagListView.selectedTag(tagList)
+    }
 }

@@ -13,6 +13,7 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 
 let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
+let serverDateFormate = "yyyy:MM:dd HH:mm:ss"
 // MARK: - Production Build
 var isProductionBuild: Bool = true
 
@@ -93,7 +94,7 @@ struct Cell {
     static let editProfileInfo      = "EditProfileInfoCell"
     static let editProfileMinorCell = "EditProfileMinorCell"
     static let eventTypeModelCell = "EventTypeModelCell"
-
+    static let galleryCell = "GalleryCell"
 }
 
 struct ReusableView {
@@ -201,6 +202,8 @@ struct Segues {
     static let eventDetailCalendar                = "EventDetailCalendarSegue"
     static let calendarClassDetail                = "CalendarClassDetailSegue"
     static let calendarEventDetail                = "CalendarEventDetailSegue"
+    static let userProfileGallerySegue                         = "UserProfileGallerySegue"
+
 }
 
 struct StoryBoard {
@@ -407,6 +410,7 @@ enum GetEventType: String {
     case my = "my"
     case myUpcoming = "my-upcoming"
     case attending = "attending"
+    case managedFirst = "managed-first"
 }
 
 enum NotificationType: String, Codable {

@@ -481,6 +481,7 @@ extension CreateEventViewController: CalendarViewDelegate {
 extension CreateEventViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
         self.eventType = type
+        validateAllFields()
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
@@ -571,8 +572,7 @@ extension CreateEventViewController: EventInviteDelegate {
 extension CreateEventViewController: EventInterestDelegate {
     func  selectedInterest(_ interest: [Interest]) {
         // S*
-        self.interestList.append(contentsOf: interest)
-        //self.interestList = interestList.uniqueElements
+        self.interestList = interest
         validateAllFields()
         self.tableView.reloadData()
         
@@ -596,9 +596,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
-        let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDate = Date().localToUTC(date: startDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
-        let endUtcDate = Date().localToUTC(date: endDateString)
+        let endUtcDate = Date().localToUTC(date: endDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         print(startUtcDate)
         print(endUtcDate)
         var rsvpJson: String = ""
@@ -649,8 +649,9 @@ extension CreateEventViewController {
             
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         // S*
-        //let interests = interestList.joined(separator: ",")
-        let interests = ""
+        let interestsNameArry = interestList.map({ $0.interestName })
+        //interestList.joined(separator: ",")
+        let interests = interestsNameArry.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
@@ -661,9 +662,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
-        let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDate = Date().localToUTC(date: startDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
-        let endUtcDate = Date().localToUTC(date: endDateString)
+        let endUtcDate = Date().localToUTC(date: endDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         print(startUtcDate)
         print(endUtcDate)
         var rsvpJson: String = ""
@@ -684,8 +685,8 @@ extension CreateEventViewController {
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
             Keys.eventLongitude: "\(longitude)",
-            Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
-            Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventStartDate: startUtcDate, //"2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: endUtcDate, //"2019-10-12 08:30:00", //endUtcDate,
             Keys.eventInterests: interests,
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),

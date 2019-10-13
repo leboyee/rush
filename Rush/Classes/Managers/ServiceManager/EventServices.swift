@@ -73,7 +73,7 @@ extension ServiceManager {
         }
     }
     
-    func fetchEventCategoryWithEventList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
+    func fetchEventCategoryWithEventList(params: [String: Any], closer: @escaping (_ eventCategory: [Interest]?, _ errorMessage: String?) -> Void) {
              NetworkManager.shared.getEventCategoryWithEventList(params: params) { [weak self] (data, error, code) in
                  guard let unsafe = self else { return }
                  unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, _, errorMessage) in

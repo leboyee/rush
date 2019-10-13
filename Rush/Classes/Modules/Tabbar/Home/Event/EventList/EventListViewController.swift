@@ -23,8 +23,8 @@ class EventListViewController: CustomViewController {
     var myEventPageNo = 1
     var eventList = [Event]()
     var searchTextFiled: UITextField?
-    var eventCategory = [EventCategory]()
-
+    var eventCategory = [Interest]()
+    var eventFilterType: GetEventType = .myUpcoming
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +36,21 @@ class EventListViewController: CustomViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
+        pageNo = 1
+        myEventPageNo = 1
         getEventList()
-         let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String
-        getMyEventList(sortBy: filter?.isEmpty == true ? .upcoming : filter == "All Upcoming" ? .upcoming : .myUpcoming )
+        if let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String {
+            eventFilterType = filter == "All Upcoming" ? .myUpcoming : .managedFirst
+            getMyEventList(sortBy: eventFilterType)
+        } else {
+            getMyEventList(sortBy: eventFilterType)
+        }
 
     }
     
@@ -83,8 +90,11 @@ class EventListViewController: CustomViewController {
             navigationItem.titleView = customView
             self.view.backgroundColor = UIColor.bgBlack
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus_white"), style: .plain, target: self, action: #selector(plusButtonAction))
-
         }
+    
+    func showMessage(message: String) {
+          Utils.alert(message: message)
+      }
   
 }
 
@@ -96,6 +106,18 @@ extension EventListViewController {
 }
 // MARK: - Mediator / Presenter Functions
 extension EventListViewController {
+    func showEvent(event: Event?) {
+        performSegue(withIdentifier: Segues.eventListToEventDetailsSegue, sender: event)
+    }
+    
+    func showRSVP(event: Event) {
+        performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: event)
+    }
+    
+    func showJoinAlert() {
+        performSegue(withIdentifier: Segues.eventWithoutRSVPJoinedPopup, sender: nil)
+    }
+
 }
 // MARK: - Navigation
 extension EventListViewController {
@@ -103,9 +125,19 @@ extension EventListViewController {
         if segue.identifier == Segues.eventListToEventDetailsSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
-               vc.eventId = String(event.id)
-               vc.event = event
+                vc.eventId = String(event.id)
+                vc.event = event
             }
+        } else if segue.identifier == Segues.rsvpJoinEvent {
+            if let vc = segue.destination as? RSVPViewController {
+                if let event = sender as? Event {
+                    vc.event = event
+                    vc.action = EventAction.join
+                }
+            }
+        } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
+            let vc = segue.destination as? EventJoinedPopupViewController
+            //vc?.event = event
         }
     }
 }

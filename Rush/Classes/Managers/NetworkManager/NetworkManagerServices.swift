@@ -149,7 +149,7 @@ extension NetworkManager {
     }
     
     func getEventCategoryWithEventList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-             requestGet(path: "category/event/list", params: params, resultHandler: resultHandler)
+             requestGet(path: "interest/event/list", params: params, resultHandler: resultHandler)
     }
   
     func joinEvent(eventId: String, action: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -159,12 +159,10 @@ extension NetworkManager {
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
-    
     func updateEvent(eventId: String,params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event/\(eventId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
 
-    
     func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "category/event", params: params, resultHandler: resultHandler)
     }

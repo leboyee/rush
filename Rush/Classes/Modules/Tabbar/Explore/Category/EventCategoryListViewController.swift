@@ -20,18 +20,27 @@ class EventCategoryListViewController: UIViewController {
     var isThirdFilter = false
     
     var type: ScreenType = .none
-    
+    var firstFilterIndex = 0
+    var secondFilterIndex = 0
+    var thirdFilterIndex = 0
     var searchText = ""
     var pageNo = 1
+    var isOnlyFriendGoing: Int = 0
     var clubList = [Club]()
     var eventList = [Event]()
-    var classList = [Class]()
+    var classList = [SubClass]()
+    var classCategoryList = [Class]()
     var eventCategory: EventCategory?
-    
+    var interest: Interest?
     var firstSortText = "All categories"
     var secondSortText = "Popular first"
     var thirdSortText = "All people"
-    
+    var eventDayFilter: EventCategoryDayFilter = .none
+    var eventTimeFilter: EventCategoryTimeFilter = .allTime
+    var startDate = ""
+    var endDate = ""
+    var startTime = ""
+    var endTime = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,15 +56,16 @@ class EventCategoryListViewController: UIViewController {
         
         switch type {
         case .event:
-            getEventList(sortBy: .upcoming, eventCategory: eventCategory)
+            getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
         case .club:
             getClubListAPI(sortBy: "feed")
-        case .classes: break
-           // getClassCategoryAPI()
+        case .classes:
+            getClassCategoryAPI()
+            getClassListAPI()
         default:
             break
         }
-        getClassCategoryAPI()
+        
     }
         
     func setupUI() {
@@ -69,12 +79,17 @@ class EventCategoryListViewController: UIViewController {
         // Set navigation title
         
         var titleText = ""
-        if eventCategory == nil {//open non category list screen
+        if interest == nil {//open non category list screen
             titleText = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
         } else {
-            titleText = eventCategory?.name ?? ""
+            titleText = interest?.interestName ?? ""
         }
         
+        if type == .event {
+            firstSortText = "All upcoming"
+            secondSortText = "Any time"
+            thirdSortText = "All people"
+        }
         navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white)
 
     }
@@ -104,8 +119,15 @@ extension EventCategoryListViewController {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
-            guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+            guard let vc = segue.destination as? ClassDetailViewController
+                else { return }
+            vc.subclassInfo = sender as? SubClass
+            vc.joinedClub = true
+        } else if segue.identifier == Segues.searchClubSegue {
+            guard let vc = segue.destination as? SearchClubViewController else { return }
+            //            vc.searchType = screenType == .club ? .searchList : .classes
+            vc.searchType = .classes
+            vc.classObject = sender as? SubClass ?? SubClass()
         }
     }
 }

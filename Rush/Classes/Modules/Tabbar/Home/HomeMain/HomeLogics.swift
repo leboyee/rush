@@ -93,14 +93,13 @@ extension HomeViewController {
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
                 let classObject = unsafe.classList[index]
-                if (classObject.myJoinedClass?.count ?? 0 > 0) {
+                if classObject.myJoinedClass?.count ?? 0 > 0 {
                     //already joined - so dont show groups
                     unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
                 } else {
                     // not joined yet, so show groups
                     let classGroup = classObject.classGroups?[indexPath.row]
                     unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
-                    
                 }
             }
         }
@@ -130,7 +129,7 @@ extension HomeViewController {
             if section == 1 {
                 unself.performSegue(withIdentifier: Segues.eventListSeuge, sender: unself.eventList)
             } else if section == 2 {
-                unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.club)
+                unself.performSegue(withIdentifier: Segues.eventListSeuge, sender: ClubListType.club)
             } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.clubListSegue, sender: ClubListType.classes)
             } else {

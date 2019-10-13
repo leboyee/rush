@@ -393,7 +393,7 @@ extension Utils {
     }
     
     class func anyTimeFilter() -> [String] {
-        return ["Morning", "Day", "Evening"]
+        return ["Any time", "Morning", "Day", "Evening"]
     }
     
     class func friendsFilter() -> [String] {
@@ -419,10 +419,6 @@ extension Utils {
     
     class func peopleFilter() -> [String] {
         return ["All people", "Friends only"]
-    }
-    
-    class func tempCategoryFilter() -> [String] {
-        return ["Sports", "Technology"]
     }
 }
 
@@ -561,5 +557,9 @@ extension Utils {
     class func isiPhone5() -> Bool {
         return UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue
     }
+    
+}
+// MARK: - Filter Function
+extension Utils {
     
 }
