@@ -34,7 +34,8 @@ class Post: Codable {
     var createDate: Date?
     var createdAt: String?
     var myVote: [PostVote]?
-
+    var type: String = ""
+    
     private var imageJson: String?
     private var convertedListOfImages: [Image]?
     var images: [Image]? {
@@ -61,6 +62,7 @@ class Post: Codable {
         case createDate
         case createdAt = "created_at"
         case myVote = "my_post_vote"
+        case type = "data_type"
     }
     
     var parentId: String {

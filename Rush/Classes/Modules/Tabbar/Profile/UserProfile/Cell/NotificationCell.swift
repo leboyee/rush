@@ -55,19 +55,35 @@ extension NotificationCell {
         eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: nil)
     }
     
-    func set(user: User?, event: Event?, text: String) {
+    func set(user: User?, object: Any?, text: String) {
         let userName = "{user_name}"
-        let eventName = "{event_name}"
         let name = startSeparator + (user?.name ?? "") + endSeparator
-        let event = startSeparator + (event?.title ?? "") + endSeparator
-
+        
+        var key = ""
+        var value = ""
+        var photo: Image?
+        if let club = object as? Club {
+            key = "{club_name}"
+            value = startSeparator + (club.clubName ?? "") + endSeparator
+            photo = club.photo
+        } else if let event = object as? Event {
+            key = "{event_name}"
+            value = startSeparator + event.title + endSeparator
+            photo = event.photo
+        } else if let classObject = object as? Class {
+            key = "{class_name}"
+            value = startSeparator + classObject.name + endSeparator
+            //photo = classObject.classList?.last?.photo
+        }
+        
         var detailText = text.replacingOccurrences(of: userName, with: name)
-        detailText = detailText.replacingOccurrences(of: eventName, with: event)
+        detailText = detailText.replacingOccurrences(of: key, with: value)
         
         label.attributedText = getFormattedString(string: detailText)
         userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: nil)
-        eventImageView.sd_setImage(with: event.photo?.urlThumb(), placeholderImage: nil)
+        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: nil)
     }
+   
 }
 
 // MARK: - Actions

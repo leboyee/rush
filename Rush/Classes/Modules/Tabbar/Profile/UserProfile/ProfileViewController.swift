@@ -148,12 +148,8 @@ extension ProfileViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.profileFriendProfile {
             let vc = segue.destination as? OtherUserProfileController
-            vc?.userInfo = sender as? User
+            vc?.userInfo = (sender as? Friend)?.user
             vc?.delegate = self
-        } else if segue.identifier == Segues.profileFriendProfile {
-                   let vc = segue.destination as? ProfileViewController
-                   vc?.profileDetail.profile = sender as? User
-                   vc?.isOtherUserProfile = true
         } else if segue.identifier == Segues.userFriendListSegue {
             let vc = segue.destination as? UserFriendsListViewController
             vc?.userId = Authorization.shared.profile?.userId ?? ""

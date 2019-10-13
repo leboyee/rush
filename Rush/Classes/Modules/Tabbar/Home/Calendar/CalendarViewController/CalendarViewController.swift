@@ -37,6 +37,11 @@ class CalendarViewController: CustomViewController {
         // Do any additional setup after loading the view.
         setup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
 
 }
 

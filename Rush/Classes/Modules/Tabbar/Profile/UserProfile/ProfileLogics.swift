@@ -39,6 +39,16 @@ extension ProfileViewController {
         notificationNextPageExist = false
         fetchNotificationList()
     }
+    
+    private func handleTapOnLabel(notification: NotificationItem, text: String) {
+        switch notification.ntType {
+            case .acceptFriendRequest, .friendRequest: break
+            case .eventInvite: break
+            case .clubInvite: break
+            case .upVoted, .downVoted, .newComment: break
+            default: break
+            }
+    }
 }
 
 // MARK: - Handlers
@@ -102,14 +112,27 @@ extension ProfileViewController {
             case .acceptFriendRequest, .friendRequest:
                 cell.set(friend: notification.friend?.last, text: notification.ntText)
             case .eventInvite:
-                cell.set(user: notification.generatedBy, event: notification.event?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
             case .clubInvite:
-                print("")
-            case .upVoted, .downVoted:
-                print("")
-            case .newComment:
-                print("")
-            default: break
+                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+            case .upVoted, .downVoted, .newComment:
+                if let post = notification.post?.last {
+                    if post.type.lowercased() == Text.event.lowercased() {
+                        cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+                    } else if post.type.lowercased() == Text.club.lowercased() {
+                        cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+                    } else {
+                        cell.set(user: notification.generatedBy, object: notification.classObject?.last, text: notification.ntText)
+                    }
+                }
+            default:
+                cell.label.text = ""
+            }
+            
+            cell.labelTapEvent = { [weak self] (text, range) in
+                guard let unsafe = self else { return }
+                let name = (text as NSString).substring(with: range)
+                unsafe.handleTapOnLabel(notification: notification, text: name)
             }
         }
     }
