@@ -139,6 +139,16 @@
             </objects>
             <point key="canvasLocation" x="22" y="-409"/>
         </scene>
+        <!--EnterPasswordViewConteroller-->
+        <scene sceneID="S7z-RS-oi0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorize" referencedIdentifier="EnterPasswordViewConteroller" id="EI7-Yc-sVb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kYc-Sa-Vdx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dck-ed-W5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1311" y="414"/>
+        </scene>
         <!--InstaWebViewViewController-->
         <scene sceneID="hBz-Li-mPl">
             <objects>
@@ -251,6 +261,7 @@
                         <segue destination="lSf-6x-Jg6" kind="presentation" identifier="DisconnectInstagramSegue" animates="NO" modalPresentationStyle="overFullScreen" id="2cS-pu-J6g"/>
                         <segue destination="eCx-fz-AbD" kind="presentation" identifier="LogoutPopupSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Qbh-H5-b15"/>
                         <segue destination="ej9-Qv-XoJ" kind="show" identifier="SettingsInstagramConnectSegue" id="kOV-2K-PIx"/>
+                        <segue destination="EI7-Yc-sVb" kind="show" identifier="ChangePasswordSegue" id="sio-PQ-tux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
