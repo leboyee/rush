@@ -105,7 +105,7 @@ extension NetworkManager {
         requestGet(path: "club/\(clubId)", params: params, resultHandler: resultHandler)
     }
     
-    func deleteClub(clubId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+    func deleteClub(clubId: Int64, param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestDelete(path: "club/\(clubId)", params: param, resultHandler: resultHandler)
     }
     

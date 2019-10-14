@@ -110,3 +110,14 @@ extension ClubListViewController: NotificationAlertDelegate {
         
     }
 }
+
+// MARK: - ClubDetailProtocol delegate
+extension ClubListViewController: ClubDetailProtocol {
+    func deleteClubSuccess(_ club: Club?) {
+        let snackbar = TTGSnackbar(message: "\(club?.clubName ?? "") is deleted.",
+                                   duration: .middle,
+                                   actionText: "",
+                                   actionBlock: { (_) in })
+        snackbar.show()
+    }
+}
