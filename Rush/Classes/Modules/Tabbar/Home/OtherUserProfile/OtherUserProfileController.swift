@@ -49,6 +49,7 @@ class OtherUserProfileController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.isNavigationBarHidden = false
         getProfileAPI()
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
