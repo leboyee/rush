@@ -320,7 +320,7 @@ extension ChatManager {
         
         if userId == nil || (userId?.count ?? 0) == 0 {
             //if errorHandler
-            errorHandler(NSError(domain: "com.mobile.friends", code: -11111, userInfo: [
+            errorHandler(NSError(domain: "com.messapps.rush", code: -11111, userInfo: [
                 NSLocalizedDescriptionKey: "user id is nil or blank"
                 ]))
             return
