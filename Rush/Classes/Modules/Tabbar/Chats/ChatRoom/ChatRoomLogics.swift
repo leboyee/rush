@@ -340,6 +340,8 @@ extension ChatRoomViewController {
             if channel != nil {
                 imageName = channel?.coverUrl ?? ""
                 userName = channel?.name ?? ""
+            } else if let event = eventInfo {
+                imageName = event.photo?.thumb ?? ""
             }
         }
         return imageName

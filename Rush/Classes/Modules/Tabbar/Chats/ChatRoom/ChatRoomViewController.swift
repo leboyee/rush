@@ -436,16 +436,19 @@ extension ChatRoomViewController {
         
         // Show navigation image
         let imageName = updateChatUserImage()
+        userNavImageView.sd_setImage(with: URL(string: imageName), completed: nil)
         
+        // Show name
+        userNameNavLabel.text = self.userName
+        
+        /*
         if (self.channel?.members?.count ?? 0) <= 2 {
             showSingleOrGroupPhotos(photoURL: imageName)
         } else {
             //group photo
             showSingleOrGroupPhotos(photoURL: nil)
         }
-        
-        // Show name
-        userNameNavLabel.text = self.userName
+        */
         
         if (channel?.members?.count ?? 0) == 1 {
             Utils.saveDataToUserDefault(self.userName, UserDefaultKey.showAlertOfChatRemoved)
