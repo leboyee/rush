@@ -95,6 +95,7 @@ struct Cell {
     static let editProfileMinorCell = "EditProfileMinorCell"
     static let eventTypeModelCell = "EventTypeModelCell"
     static let galleryCell = "GalleryCell"
+    static let profileTileCell = "ProfileTileCell"
 }
 
 struct ReusableView {
@@ -169,7 +170,7 @@ struct Segues {
     static let disconnectInstagram                = "DisconnectInstagramSegue"
     static let settingsInstagramConnect           = "SettingsInstagramConnectSegue"
     static let logoutPopup                        = "LogoutPopupSegue"
-
+    static let changePasswordSegue                        = "ChangePasswordSegue"
     static let profileFriendProfile               = "ProfileFriendProfileSegue"
     static let chatContactListSegue               = "ChatContactListSegue"
     static let homeEventDetail                    = "HomeEventDetailSegue"
@@ -207,7 +208,7 @@ struct Segues {
     static let notificationClubDetail             = "NotificationClubDetailSegue"
     static let notificationClassDetail            = "NotificationClassDetailSegue"
     static let notificationPostDetail             = "NotificationPostDetailSegue"
-
+    static let profileImageViewSegue             = "ProfileImageViewSegue"
 }
 
 struct StoryBoard {
@@ -234,6 +235,7 @@ public struct Text {
     static let passwordTitleLogin  = "What is your password?"
     static let phoneNoTitleRegister  = "Add phone number to increase security"
     static let verificationTitleRegister  = "Enter confirmation code"
+    static let passwordTitleChangePassword  = "Enter current password to create a new one"
 
     static let phoneNoTitleLogin  = "Enter your phone number"
     static let userNameTitleRegister  = "Profile setup"
@@ -241,6 +243,7 @@ public struct Text {
     static let hide  = "hide"
     static let next  = "Next"
     static let login = "Login"
+    static let continueText = "Continue"
     static let logout = "Logout"
     static let receiveCodeButtonTitle = "Receive confirmation code"
     static let createAccount = "Create account"
@@ -354,6 +357,7 @@ public struct Message {
     static let instagramTitle = "Instagram connected"
     static let instagramMessage =
     "Your photos will be automatically uploaded to Rush. It might take a few minutes."
+    static let deleteChat = "Are you sure you want to delete this chat?"
 }
 
 public struct Icons {
@@ -387,6 +391,9 @@ enum EventType: String, Codable {
 enum LoginType {
     case register
     case login
+    case changePassword
+    case newPassword
+    case restoreEmail
 }
 
 enum PhotoFrom {

@@ -57,7 +57,6 @@ class ClassDetailViewController: UIViewController {
         }
         if classId != "0" && groupId != "0" {
             getClassDetailAPI(classId: classId, groupId: groupId)
-            getClassPostListAPI()
         }
     }
     

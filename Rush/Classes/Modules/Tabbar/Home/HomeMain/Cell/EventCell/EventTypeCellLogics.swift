@@ -28,6 +28,13 @@ extension EventTypeCell {
                 cell.setup(eventType: event.eventType)
                 cell.setup(date: event.start)
                 cell.setup(start: event.start, end: event.end)
+                let filter = event.invitees?.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
+                if filter?.count ?? 0 > 0 {
+                    cell.setup(invitee: event.invitees)
+                    cell.setup(isHideInvitee: false)
+                } else {
+                    cell.setup(isHideInvitee: true)
+                }
                 if event.photoJson.isNotEmpty {
                     cell.setup(eventImageUrl: event.photoJson.photo?.url())
                 }

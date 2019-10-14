@@ -37,8 +37,5 @@ class Interest: Codable {
         if let value = data[Keys.interestName] as? String {
             interestName = value
         }
-        
-        
     }
-    
 }

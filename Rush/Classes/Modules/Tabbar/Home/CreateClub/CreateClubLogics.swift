@@ -279,7 +279,9 @@ extension CreateClubViewController {
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
         let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
         
-        let img = clubImage?.jpegData(compressionQuality: 0.8) ?? Data()
+        let img = clubImage?.wxCompress()
+        let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
+        
         let interests = interestList.compactMap({ $0.interestName }).joined(separator: ",")
         
         let param = [Keys.clubName: nameClub,
@@ -288,7 +290,7 @@ extension CreateClubViewController {
                      Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
                      Keys.clubContact: contactNoArray.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
-                     Keys.clubPhoto: img] as [String: Any]
+                     Keys.clubPhoto: dataN] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.createClub(params: param) { [weak self] (data, errMessage) in

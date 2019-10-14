@@ -87,6 +87,4 @@ class EventTypeCell: UITableViewCell {
     func setup(isSeparatorHide: Bool) {
         separator.isHidden = isSeparatorHide
     }
-    
-    
 }

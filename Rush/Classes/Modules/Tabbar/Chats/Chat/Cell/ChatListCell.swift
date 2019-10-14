@@ -87,15 +87,18 @@ extension ChatListCell {
     func setup(onlineUser: NSMutableArray?) {
         onlineView.isHidden = true
         if let members = onlineUser {
+            var isOnline = false
             for member in members {
                 if let user = member as? SBDUser {
                     let loggedInUserId = Authorization.shared.profile?.userId ?? ""
                     if loggedInUserId != user.userId {
-                        onlineView.isHidden = user.connectionStatus == .online
-                        break
+                        if user.connectionStatus == .online {
+                            isOnline = true
+                        }
                     }
                 }
             }
+            onlineView.isHidden = !(isOnline)
         }
     }
     
@@ -124,6 +127,12 @@ extension ChatListCell {
         } else {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: channel.createdAt)!)
             timeLabel.text = " ⋅ " + Date().timeAgoDisplay(date: date)
+        }
+        
+        if Int(channel.unreadMessageCount) > 0 {
+            detailLabel.textColor = UIColor.bgBlack17
+        } else {
+            detailLabel.textColor = UIColor.lightGrayColor
         }
     }
 }
