@@ -1705,8 +1705,8 @@
 			children = (
 				1A8A5A9023543B19007487C5 /* Cell */,
 				1A8A5A8E23543B19007487C5 /* ProfileTileViewController.swift */,
-				1A8A5A8D23543B19007487C5 /* ProfileTileMediates.swift */,
 				1A8A5A8F23543B19007487C5 /* ProfileTileLogics.swift */,
+				1A8A5A8D23543B19007487C5 /* ProfileTileMediates.swift */,
 			);
 			path = ProfileTileViewController;
 			sourceTree = "<group>";
