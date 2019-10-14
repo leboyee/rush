@@ -45,8 +45,8 @@ class ClassDetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
         
-        if (classId == "0" && groupId == "0") {
-            if (subclassInfo?.myJoinedClass?.count ?? 0 > 0) {
+        if classId == "0" && groupId == "0" {
+            if subclassInfo?.myJoinedClass?.count ?? 0 > 0 {
                 let joinedClass = subclassInfo?.myJoinedClass?[0]
                 classId = joinedClass?.classId ?? "0"
                 groupId = joinedClass?.groupId ?? "0"
@@ -55,7 +55,7 @@ class ClassDetailViewController: UIViewController {
                 groupId = selectedGroup?.id ?? "0"
             }
         }
-        if (classId != "0" && groupId != "0") {
+        if classId != "0" && groupId != "0" {
             getClassDetailAPI(classId: classId, groupId: groupId)
             getClassPostListAPI()
         }
