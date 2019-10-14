@@ -29,6 +29,9 @@ class ClassDetailViewController: UIViewController {
     var subclassInfo: SubClass?
     var selectedGroup: ClassGroup?
     
+    var classId = "0"
+    var groupId = "0"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,15 +45,15 @@ class ClassDetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
         
-        var classId = "0"
-        var groupId = "0"
-        if (subclassInfo?.myJoinedClass?.count ?? 0 > 0) {
-            let joinedClass = subclassInfo?.myJoinedClass?[0]
-            classId = joinedClass?.classId ?? "0"
-            groupId = joinedClass?.groupId ?? "0"
-        } else {
-            classId = selectedGroup?.classId ?? "0"
-            groupId = selectedGroup?.id ?? "0"
+        if (classId == "0" && groupId == "0") {
+            if (subclassInfo?.myJoinedClass?.count ?? 0 > 0) {
+                let joinedClass = subclassInfo?.myJoinedClass?[0]
+                classId = joinedClass?.classId ?? "0"
+                groupId = joinedClass?.groupId ?? "0"
+            } else {
+                classId = selectedGroup?.classId ?? "0"
+                groupId = selectedGroup?.id ?? "0"
+            }
         }
         if (classId != "0" && groupId != "0") {
             getClassDetailAPI(classId: classId, groupId: groupId)
