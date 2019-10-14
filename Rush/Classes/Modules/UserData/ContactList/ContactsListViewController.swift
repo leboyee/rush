@@ -19,12 +19,12 @@ class ContactsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inviteButton: UIButton!
     
-    var isFromRegister = false
     var items = [ContactsPresenterItem]()
-    let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var itemsDictionary = [String: [Contact]]()
     var selectedItem = [Contact]()
-    
+    var searchTextFiled: UITextField?
+    var isSearch = false
+    var searchItem = [ContactsPresenterItem]()
     weak var delegate: ContactsListProtocol?
     
     override func viewDidLoad() {
@@ -61,7 +61,7 @@ extension ContactsListViewController {
                 self.delegate?.selectedContacts(self.selectedItem)
             }
         } else {
-            Utils.alert(message: "Api in development")
+            self.navigationController?.popViewController(animated: true)
         }
         
     }

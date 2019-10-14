@@ -50,7 +50,7 @@ open class TagView: UIButton {
             titleEdgeInsets.bottom = paddingY
         }
     }
-    @IBInspectable open var paddingX: CGFloat = 5 {
+    @IBInspectable open var paddingX: CGFloat = 0 {
         didSet {
             titleEdgeInsets.left = paddingX
             updateRightInsets()
@@ -167,7 +167,8 @@ open class TagView: UIButton {
     
     private func setupView() {
         titleLabel?.lineBreakMode = titleLineBreakMode
-
+        titleLabel?.textAlignment = .center
+      //  titleLabel?.backgroundColor = .red
         frame.size = intrinsicContentSize
         addSubview(removeButton)
         removeButton.tagView = self
@@ -184,20 +185,20 @@ open class TagView: UIButton {
 
     override open var intrinsicContentSize: CGSize {
         var size = titleLabel?.text?.size(withAttributes: [NSAttributedString.Key.font: textFont]) ?? CGSize.zero
-        size.height = textFont.pointSize + paddingY * 2
+        size.height = (textFont.pointSize + paddingY * 2 ) + 10
         size.width += paddingX * 2
         if size.width < size.height {
             size.width = size.height
         }
         if enableRemoveButton {
-            size.width += removeButtonIconSize + paddingX
+            size.width += (removeButtonIconSize - 5) + paddingX
         }
         return size
     }
     
     private func updateRightInsets() {
         if enableRemoveButton {
-            titleEdgeInsets.right = paddingX  + removeButtonIconSize + paddingX
+            titleEdgeInsets.right = paddingX  + (removeButtonIconSize - 20) + paddingX
         } else {
             titleEdgeInsets.right = paddingX
         }
@@ -206,10 +207,12 @@ open class TagView: UIButton {
     open override func layoutSubviews() {
         super.layoutSubviews()
         if enableRemoveButton {
-            removeButton.frame.size.width = paddingX + removeButtonIconSize + paddingX
-            removeButton.frame.origin.x = self.frame.width - removeButton.frame.width
-            removeButton.frame.size.height = self.frame.height
+            removeButton.setImage(#imageLiteral(resourceName: "deleteFriendsIcon"), for: .normal)
+            removeButton.frame.size.width = 30
+            removeButton.frame.origin.x = self.frame.width - (removeButton.frame.width)
+            removeButton.frame.size.height = 30//self.frame.height
             removeButton.frame.origin.y = 0
+//            removeButton.backgroundColor = .yellow
         }
     }
 }

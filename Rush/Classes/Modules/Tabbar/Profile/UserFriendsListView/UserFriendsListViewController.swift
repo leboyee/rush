@@ -80,11 +80,12 @@ extension UserFriendsListViewController {
             pageNo = 1
             getFriendListAPI()
         } else {
-            
+            self.performSegue(withIdentifier: Segues.inviteContactListSegue, sender: self)
         }
     }
 
     @objc func backButtonAction() {
+        self.view.endEditing(true)
           navigationController?.popViewController(animated: true)
       }
 
@@ -92,8 +93,12 @@ extension UserFriendsListViewController {
 
 // MARK: - Navigation
 extension UserFriendsListViewController {
-    /*
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == Segues.friendProfileSegue {
+            if let vc = segue.destination as? OtherUserProfileController {
+                vc.userInfo = sender as? User
+                vc.delegate = self
+            }
+        }
      }
-     */
 }

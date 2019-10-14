@@ -51,6 +51,8 @@ extension EditProfileViewController {
                 cell.set(detail: profile?.name ?? "")
             } else if indexPath.row == 1 {
                 cell.set(title: Text.dateOfBirth)
+                let birthDate = Date.parse(dateString: profile?.birthDate ?? "", format: "yyyy-MM-dd")
+                let birthDateString = birthDate?.toString(format: "MM.dd.yyyy")
                 cell.set(detail: profile?.birthDate ?? "")
                 cell.set(isDetails: profile?.birthDate?.isNotEmpty ?? false)
             } else if indexPath.row == 2 {
@@ -215,7 +217,7 @@ extension EditProfileViewController: DatePickerDelegate {
         selectedDate = date
         dob = date.toString(format: "dd.MM.yyyy")
         profile?.birthDate = dob
-        let param = [Keys.userBirthDate: dob]  as [String: Any]
+        let param = [Keys.userBirthDate: selectedDate.toString(format: "yyyy.MM.dd")]  as [String: Any]
         updateProfileAPI(param: param)
         //self.tableView.reloadData()
     }

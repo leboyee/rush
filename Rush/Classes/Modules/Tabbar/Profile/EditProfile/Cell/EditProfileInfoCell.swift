@@ -16,7 +16,6 @@ class EditProfileInfoCell: UITableViewCell {
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var titleLabelHeightConstraint: NSLayoutConstraint!
 
-
     var rightEvent: (() -> Void)?
     
     override func awakeFromNib() {

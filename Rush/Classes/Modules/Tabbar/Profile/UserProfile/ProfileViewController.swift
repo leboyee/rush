@@ -132,8 +132,8 @@ extension ProfileViewController {
     }
     
     func showAllInterests() {
-        //performSegue(withIdentifier: Segues.profileImageViewSegue, sender: self)
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.userInterestSegue, sender: self)
+        //Utils.notReadyAlert()
     }
     
     func showAllImages(with index: Int) {
@@ -193,7 +193,7 @@ extension ProfileViewController {
             }
         } else if segue.identifier == Segues.profileImageViewSegue {
             let vc = segue.destination as? ProfileTileViewController
-            vc.imageArray = profileDetail.images
+            vc?.imageArray = profileDetail.images ?? [Image]()
         }
     }
 }

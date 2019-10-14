@@ -230,7 +230,7 @@ extension CreateEventViewController {
         } else if segue.identifier == Segues.createEventInterestSegue {
             if let vc = segue.destination as? CreateEventInterestViewController {
                 vc.delegate = self
-                vc.selectedArray = interestList ?? [Interest]()
+                vc.selectedArray = interestList
             }
         }
         

@@ -26,6 +26,11 @@ extension UserFriendsListViewController {
         }
     }
     
+    func selectedCell(_ indexPath: IndexPath) {
+        let friend = friendsList[indexPath.row]
+        self.performSegue(withIdentifier: Segues.friendProfileSegue , sender: friend.user)
+    }
+    
     func willDisplay(_ indexPath: IndexPath) {
         if isNextPageExist == true, indexPath.row == friendsList.count - 1 {
             getFriendListAPI()

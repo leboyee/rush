@@ -194,7 +194,6 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
                 camera.didCancel = {
                     self.dismiss(animated: true, completion: nil)
                 }
-                
                 camera.didFinishCapturingImage = { (image: UIImage?, metadata: [AnyHashable: Any]?) in
                     if var img = image {
                         img = Utils.fixOrientation(img: img)
