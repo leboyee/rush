@@ -159,7 +159,7 @@ extension NetworkManager {
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
-    func updateEvent(eventId: String,params: [String: Any], resultHandler: @escaping ResultClosure) {
+    func updateEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event/\(eventId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
 

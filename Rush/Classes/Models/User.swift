@@ -141,7 +141,6 @@ class MentionedUser: Codable {
     }
 }
 
-
 class Major: Codable {
     
     var id: Int64 = 0

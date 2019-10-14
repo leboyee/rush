@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ProfileTileViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProfileTileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
      func setupCollectionView() {
         collectionView.delegate = self

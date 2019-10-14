@@ -360,9 +360,9 @@ extension Utils {
         return mainString
     }
     
-    class func fixOrientation(img:UIImage) -> UIImage {
+    class func fixOrientation(img: UIImage) -> UIImage {
         
-        if (img.imageOrientation == UIImage.Orientation.up) {
+        if img.imageOrientation == UIImage.Orientation.up {
             return img
         }
         
@@ -410,7 +410,7 @@ extension Utils {
     
     class func eventTypDetailsArray() -> [String] {
         return ["Anyone within your college or university can see the flyer, the attendees, and the event information.", "Anyone within your college or university can see the flyer. Non-invited users must submit request to see event information.", "Only members can see the flyer, who’s is invited, and the event information."]
-          return ["All upcoming", "Today", "Tomorrow", "This week", "This weekend", "Next week"]
+          //return ["All upcoming", "Today", "Tomorrow", "This week", "This weekend", "Next week"]
       }
       
     class func popularFilter() -> [String] {

@@ -128,6 +128,6 @@ extension ClubListViewController {
                 else { return }
             vc.subclassInfo = sender as? SubClass
             vc.joinedClub = true
-        } 
+        }
     }
 }
