@@ -53,6 +53,12 @@ class ChatUserView: UIView {
         
         collectionView.reloadData()
     }
+    
+    func reloadData(users: [SBDUser]) {
+        self.users = users
+        noDataLabel.isHidden = users.count > 0
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - CollectionView delegate methods

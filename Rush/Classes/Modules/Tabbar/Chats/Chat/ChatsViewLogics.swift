@@ -67,13 +67,13 @@ extension ChatsViewController {
 
 extension ChatsViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
-        let text = textField.text ?? ""
+        let text = textField.text?.lowercased() ?? ""
         if text.isEmpty {
             channels = filterList
             
         } else {
-//            let filter = channels.filter { ( $0.lowercased().contains(text.lowercased())) }
-//            channels = filter
+            let filter = filterList.filter { ( $0.name.lowercased().contains(text) ) }
+            channels = filter
         }
         tableView.reloadData()
     }
@@ -98,6 +98,7 @@ extension ChatsViewController {
             guard let unself = self else { return }
             if let list = list as? [SBDGroupChannel] {
                 unself.channels = list
+                unself.filterList = list
             }
             DispatchQueue.main.async {
                 unself.tableView.reloadData()
