@@ -125,5 +125,11 @@ extension ChatListCell {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: channel.createdAt)!)
             timeLabel.text = " ⋅ " + Date().timeAgoDisplay(date: date)
         }
+        
+        if Int(channel.unreadMessageCount) > 0 {
+            detailLabel.textColor = UIColor.bgBlack17
+        } else {
+            detailLabel.textColor = UIColor.lightGrayColor
+        }
     }
 }

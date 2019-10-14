@@ -95,11 +95,13 @@ extension ChatManager {
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
-        query?.includeEmptyChannel = false
+        query?.includeEmptyChannel = true
         
         query?.order = SBDGroupChannelListOrder.latestLastMessage
         
         query?.limit = 100
+        
+        query?.publicChannelFilter = .all
         
         let list = [AnyHashable]()
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
@@ -145,13 +147,16 @@ extension ChatManager {
      Get list of all chat groups of all public channels
      */
     
-    func getListOfAllPublicChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+    func getListOfAllPublicChatGroups(type: String, data: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         let query: SBDPublicGroupChannelListQuery? = SBDGroupChannel.createPublicGroupChannelListQuery()
-        
-        // Include empty group channels.
-        query?.includeEmptyChannel = true
-                
+         
         query?.limit = 100
+        
+        query?.includeEmptyChannel = true
+        
+        query?.publicMembershipFilter = .all
+        
+        query?.customTypesFilter = [type]
         
         let list = [AnyHashable]()
         loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
@@ -412,7 +417,7 @@ extension ChatManager {
     
     func addNewMember(type: String, data: String, userId: String) {
         
-        getListOfAllPublicChatGroups({ (value) in
+        getListOfAllPublicChatGroups(type: type, data: data, { (value) in
             if let list = value as? [SBDGroupChannel], list.count > 0 {
                 
                 let channels = list.filter({ $0.customType == type })
@@ -421,6 +426,13 @@ extension ChatManager {
                     
                     if filteredChannels.count > 0, let channel = filteredChannels.first {
                         
+                        channel.join { (error) in
+                            guard error == nil else {   // Error.
+                                print(error?.localizedDescription ?? "")
+                                return
+                            }
+                        }
+                        /*
                         var userIds = [String]()
                         
                         if let members = channel.members {
@@ -441,6 +453,7 @@ extension ChatManager {
                         }, errorHandler: { (error) in
                             print(error?.localizedDescription ?? "")
                         })
+                        */
                     }
                 }
             }
