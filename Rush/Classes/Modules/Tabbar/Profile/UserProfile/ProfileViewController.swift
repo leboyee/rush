@@ -49,7 +49,9 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        navigationController?.isNavigationBarHidden = true
+//        navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
         title = ""
         
         /// Load All data of screen
@@ -130,11 +132,13 @@ extension ProfileViewController {
     }
     
     func showAllInterests() {
+        //performSegue(withIdentifier: Segues.profileImageViewSegue, sender: self)
         Utils.notReadyAlert()
     }
     
     func showAllImages(with index: Int) {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.profileImageViewSegue, sender: self)
+//        Utils.notReadyAlert()
     }
     
     func showFriend(user: User) {
@@ -187,6 +191,9 @@ extension ProfileViewController {
                     vc?.clubInfo = club
                 }
             }
+        } else if segue.identifier == Segues.profileImageViewSegue {
+            let vc = segue.destination as? ProfileTileViewController
+            vc.imageArray = profileDetail.images
         }
     }
 }

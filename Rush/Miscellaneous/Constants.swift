@@ -208,7 +208,7 @@ struct Segues {
     static let notificationClubDetail             = "NotificationClubDetailSegue"
     static let notificationClassDetail            = "NotificationClassDetailSegue"
     static let notificationPostDetail             = "NotificationPostDetailSegue"
-
+    static let profileImageViewSegue             = "ProfileImageViewSegue"
 }
 
 struct StoryBoard {
