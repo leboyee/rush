@@ -112,6 +112,13 @@ class EnterPasswordViewConteroller: CustomViewController {
             hintView.isHidden = false
             passwordErrorView.isHidden = true
             passwordTextField.placeholder = "Create password"
+        } else if loginType == .changePassword {
+            passwordTitleLabel.text = Text.passwordTitleChangePassword
+            nextButton.setTitle(Text.continueText, for: .normal)
+            hintView.isHidden = true
+            resortPasswordButton.isHidden = false
+            passwordErrorView.isHidden = true
+            passwordTextField.placeholder = "Current password"
         } else {
             passwordTitleLabel.text = Text.passwordTitleLogin
             nextButton.setTitle(Text.login, for: .normal)

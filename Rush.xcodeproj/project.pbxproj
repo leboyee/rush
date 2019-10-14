@@ -123,6 +123,11 @@
 		1A7402C822CCA0BD0089CDAE /* ChooseInterestViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */; };
 		1A7402CC22CD029F0089CDAE /* ChooseTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7402CA22CD029F0089CDAE /* ChooseTagCell.xib */; };
 		1A7402CD22CD029F0089CDAE /* ChooseTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7402CB22CD029F0089CDAE /* ChooseTagCell.swift */; };
+		1A8A5A9323543B19007487C5 /* ProfileTileMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A5A8D23543B19007487C5 /* ProfileTileMediates.swift */; };
+		1A8A5A9423543B19007487C5 /* ProfileTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A5A8E23543B19007487C5 /* ProfileTileViewController.swift */; };
+		1A8A5A9523543B19007487C5 /* ProfileTileLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A5A8F23543B19007487C5 /* ProfileTileLogics.swift */; };
+		1A8A5A9623543B19007487C5 /* ProfileTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A5A9123543B19007487C5 /* ProfileTileCell.swift */; };
+		1A8A5A9723543B19007487C5 /* ProfileTileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A5A9223543B19007487C5 /* ProfileTileCell.xib */; };
 		1A93E1A2229E44BE00724A6C /* EnterPhoneNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E19F229E44BE00724A6C /* EnterPhoneNoViewController.swift */; };
 		1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A0229E44BE00724A6C /* EnterPhoneNoViewLogics.swift */; };
 		1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */; };
@@ -694,6 +699,11 @@
 		1A7402C522CCA0BD0089CDAE /* ChooseInterestViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseInterestViewLogics.swift; sourceTree = "<group>"; };
 		1A7402CA22CD029F0089CDAE /* ChooseTagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseTagCell.xib; sourceTree = "<group>"; };
 		1A7402CB22CD029F0089CDAE /* ChooseTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTagCell.swift; sourceTree = "<group>"; };
+		1A8A5A8D23543B19007487C5 /* ProfileTileMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTileMediates.swift; sourceTree = "<group>"; };
+		1A8A5A8E23543B19007487C5 /* ProfileTileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTileViewController.swift; sourceTree = "<group>"; };
+		1A8A5A8F23543B19007487C5 /* ProfileTileLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTileLogics.swift; sourceTree = "<group>"; };
+		1A8A5A9123543B19007487C5 /* ProfileTileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTileCell.swift; sourceTree = "<group>"; };
+		1A8A5A9223543B19007487C5 /* ProfileTileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTileCell.xib; sourceTree = "<group>"; };
 		1A93E19F229E44BE00724A6C /* EnterPhoneNoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewController.swift; sourceTree = "<group>"; };
 		1A93E1A0229E44BE00724A6C /* EnterPhoneNoViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewLogics.swift; sourceTree = "<group>"; };
 		1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewMediates.swift; sourceTree = "<group>"; };
@@ -1255,6 +1265,7 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1A8A5A8C23543B19007487C5 /* ProfileTileViewController */,
 				1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */,
 				1AA5BE5B234E34EE00EEF68F /* UserFriendsListView */,
 				1A0EDEE7234892C800502959 /* EditProfile */,
@@ -1685,6 +1696,26 @@
 			children = (
 				1A7402CB22CD029F0089CDAE /* ChooseTagCell.swift */,
 				1A7402CA22CD029F0089CDAE /* ChooseTagCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1A8A5A8C23543B19007487C5 /* ProfileTileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A8A5A9023543B19007487C5 /* Cell */,
+				1A8A5A8E23543B19007487C5 /* ProfileTileViewController.swift */,
+				1A8A5A8D23543B19007487C5 /* ProfileTileMediates.swift */,
+				1A8A5A8F23543B19007487C5 /* ProfileTileLogics.swift */,
+			);
+			path = ProfileTileViewController;
+			sourceTree = "<group>";
+		};
+		1A8A5A9023543B19007487C5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A8A5A9123543B19007487C5 /* ProfileTileCell.swift */,
+				1A8A5A9223543B19007487C5 /* ProfileTileCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3258,6 +3289,7 @@
 				8A4B3285232F5A5B00AC1D17 /* PostImagesCell.xib in Resources */,
 				1AB43B352327EE0C00C2FBCE /* RSVPCell.xib in Resources */,
 				0918E785228444AB0098AF35 /* Forum.storyboard in Resources */,
+				1A8A5A9723543B19007487C5 /* ProfileTileCell.xib in Resources */,
 				79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */,
 				79BE868822A946C20056529E /* FriendListCell.xib in Resources */,
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
@@ -3584,6 +3616,7 @@
 				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
 				8A04B188230152960055C65F /* LogoutLogics.swift in Sources */,
+				1A8A5A9323543B19007487C5 /* ProfileTileMediates.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
 				1A024CFE23476F8600EE7FB4 /* EventCateogryFilterMediates.swift in Sources */,
@@ -3600,6 +3633,7 @@
 				7982F66222C3B04000BC8B36 /* CustomBlackTextView.swift in Sources */,
 				7912570C22A157C200BDE3EC /* OtherUserProfileLogics.swift in Sources */,
 				8A4B3295232F5A5B00AC1D17 /* EventAboutCell.swift in Sources */,
+				1A8A5A9623543B19007487C5 /* ProfileTileCell.swift in Sources */,
 				8A4B328D232F5A5B00AC1D17 /* PostTextCell.swift in Sources */,
 				797FFDB822B7BC480055A001 /* UIColor+Palette.swift in Sources */,
 				793BE67F22E88207005EF72D /* MessageCellDelegate.swift in Sources */,
@@ -3735,6 +3769,7 @@
 				1AC635F722AA6E9500021E03 /* AkiraTextField.swift in Sources */,
 				1AAE9661233A568D00868449 /* CreateEventInterestViewLogics.swift in Sources */,
 				D98B99602344D75C00BB9B12 /* QuestionCell.swift in Sources */,
+				1A8A5A9423543B19007487C5 /* ProfileTileViewController.swift in Sources */,
 				79C1AC4F22A64D09003C7790 /* ProfileInformationLogics.swift in Sources */,
 				79DF741D2292BA9F0012DCB7 /* SelectEventTypeLogics.swift in Sources */,
 				797FFDA422B7BC480055A001 /* ImagePickerController.swift in Sources */,
@@ -3869,6 +3904,7 @@
 				793BE66B22E88207005EF72D /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				793BE66222E88207005EF72D /* Settings+UserDefaults.swift in Sources */,
 				7905CDB5230D5E170011C83B /* ChatContactsListViewController.swift in Sources */,
+				1A8A5A9523543B19007487C5 /* ProfileTileLogics.swift in Sources */,
 				79C38326231FF8B5003E26EC /* DKCamera+Delegate.swift in Sources */,
 				1AC635FD22AA907900021E03 /* CustomNavBarPageController.swift in Sources */,
 				7903D0A9228E8CE5004E33B9 /* EventByDateCell.swift in Sources */,

@@ -75,8 +75,7 @@ extension CalendarEventListViewController {
             if event.type.lowercased() == "event" {
                 showEvent(eventId: event.itemId)
             } else {
-                let classId = Int64(event.itemId) ?? 0
-                showClass(classId: classId, groupId: event.groupId)
+                showClass(classId: event.itemId, groupId: String(event.groupId))
             }
         }
     }
