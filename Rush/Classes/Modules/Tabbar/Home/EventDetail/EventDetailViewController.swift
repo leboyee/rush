@@ -167,6 +167,7 @@ extension EventDetailViewController {
         let controller = ChatRoomViewController()
         controller.userName = event?.title ?? ""
         controller.isGroupChat = true
+        controller.eventInfo = event
         controller.chatDetailType = .event
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)

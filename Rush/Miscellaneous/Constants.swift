@@ -358,6 +358,7 @@ public struct Message {
     static let instagramTitle = "Instagram connected"
     static let instagramMessage =
     "Your photos will be automatically uploaded to Rush. It might take a few minutes."
+    static let deleteChat = "Are you sure you want to delete this chat?"
 }
 
 public struct Icons {

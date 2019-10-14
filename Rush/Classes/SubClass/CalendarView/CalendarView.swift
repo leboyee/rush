@@ -238,7 +238,11 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
             currentIndex = page
             setMonthTitle()
             let date = minDateOfCalendar.plus(months: UInt(self.currentIndex))
-            self.delegate?.changeMonth(date: date)
+            if date.month == Date().month {
+                self.delegate?.changeMonth(date: Date())
+            } else {
+                self.delegate?.changeMonth(date: date)
+            }
             DispatchQueue.main.async {
                 collectionView.reloadData()
             }
