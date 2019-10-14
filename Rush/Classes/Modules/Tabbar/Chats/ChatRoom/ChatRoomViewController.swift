@@ -407,7 +407,7 @@ extension ChatRoomViewController {
             chatType = .group
             
             if let members = channel?.members as? [SBDUser] {
-                userChatView.users = members
+                userChatView.reloadData(users: members)
             }
         }
     
