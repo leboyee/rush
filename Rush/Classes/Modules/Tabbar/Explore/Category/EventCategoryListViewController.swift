@@ -30,6 +30,7 @@ class EventCategoryListViewController: UIViewController {
     var eventList = [Event]()
     var classList = [SubClass]()
     var classCategoryList = [Class]()
+    var clubCategoryList = [ClubCategory]()
     var eventCategory: EventCategory?
     var clubCategory: ClubCategory?
     var classCategory: Class?
@@ -58,12 +59,21 @@ class EventCategoryListViewController: UIViewController {
         
         switch type {
         case .event:
+            if (eventCategory) != nil {
+                firstSortText = eventCategory?.name ?? "All categories"
+            }
             getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
         case .club:
+            if (clubCategory) != nil {
+                firstSortText = clubCategory?.name ?? "All categories"
+            }
             getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
         case .classes:
+            if (classCategory) != nil {
+                firstSortText = classCategory?.name ?? "All categories"
+            }
             getClassCategoryAPI()
-            getClassListAPI()
+//            getClassListAPI()
         default:
             break
         }
