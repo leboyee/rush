@@ -68,7 +68,7 @@ extension CalendarEventListViewController {
         performSegue(withIdentifier: Segues.calendarEventDetail, sender: eventId)
     }
     
-    func showClass(classId: Int64, groupId: Int64) {
+    func showClass(classId: String, groupId: String) {
         performSegue(withIdentifier: Segues.calendarClassDetail, sender: (classId, groupId))
     }
 }
@@ -81,8 +81,9 @@ extension CalendarEventListViewController {
             vc.eventId = sender as? String
         } else if segue.identifier == Segues.calendarClassDetail {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
-            if let (classId, groupId) = sender as? (Int64, Int64) {
-                vc.selectedGroup = ClassGroup(classId: classId, groupId: groupId)
+            if let (classId, groupId) = sender as? (String, String) {
+                vc.classId = classId
+                vc.groupId = groupId
             }
         }
     }
