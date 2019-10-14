@@ -69,7 +69,7 @@ class ClubDetailViewController: UIViewController {
     func setupUI() {
         
         // Check this club is created by me(logged in user)
-        let clubId = clubInfo?.clubUserId ?? "id"
+        let clubId = clubInfo?.clubUId ?? "id"
         let userId = Authorization.shared.profile?.userId ?? ""
         if userId == clubId {
             joinedClub = true
@@ -105,6 +105,7 @@ extension ClubDetailViewController {
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .club
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.createPost {
             guard let vc = segue.destination as? CreatePostViewController else { return }

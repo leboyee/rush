@@ -1,6 +1,6 @@
 //
 //  StringExtension.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
@@ -259,16 +259,4 @@ extension String {
         }
         return nil
     }
-    
-    var tags: [Tag] {
-        guard self.isNotEmpty else { return [] }
-        var list = [Tag]()
-        let items = self.components(separatedBy: ",")
-            for item in items {
-                let tag = Tag(id: 0, text: item)
-                list.append(tag)
-            }
-        return list
-    }
-    
 }

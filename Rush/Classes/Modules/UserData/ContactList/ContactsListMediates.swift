@@ -95,8 +95,9 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
             inviteButtonVisiable()
         } else {
             let controller = ChatRoomViewController()
-            controller.isShowTempData = false
             controller.isGroupChat = false
+            controller.chatDetailType = .single
+            controller.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(controller, animated: true)
         }
         

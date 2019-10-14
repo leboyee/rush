@@ -33,6 +33,7 @@ class PostViewController: UIViewController {
     
     var clubInfo: Club?
     var eventInfo: Event?
+    var subclassInfo: SubClass?
     var postInfo: Post?
     var isFromCreatePost = false
     var pageNoP = 1
@@ -51,6 +52,7 @@ class PostViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
         IQKeyboardManager.shared.enable = true
     }
     
@@ -61,7 +63,7 @@ class PostViewController: UIViewController {
         self.view.backgroundColor = UIColor.bgBlack
         
         // share button
-        if postInfo?.user?.id == Authorization.shared.profile?.userId {
+        if postInfo?.user?.userId == Authorization.shared.profile?.userId {
             let share = UIBarButtonItem(image: #imageLiteral(resourceName: "whiteMore"), style: .plain, target: self, action: #selector(shareButtonAction))
             navigationItem.rightBarButtonItem = share
         } else {
@@ -107,6 +109,7 @@ extension PostViewController {
         if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
+                vc.post = postInfo ?? Post()
             }
         } else if segue.identifier == Segues.otherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {

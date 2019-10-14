@@ -22,7 +22,9 @@ class EventByDateCell: UITableViewCell {
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dateLabel: CustomBlackLabel!
-//     var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
+    @IBOutlet weak var threeDots: UIButton!
+    //     var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
+    var shareClickEvent: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +38,9 @@ class EventByDateCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func shareAction(_ sender: Any) {
+        shareClickEvent?()
+    }
 }
 
 // MARK: - Other functions

@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 protocol EventInterestDelegate: class {
-    func selectedInterest(_ interest: [String])
+    func selectedInterest(_ interest: [Interest])
 }
 
 class CreateEventInterestViewController: CustomViewController {
@@ -20,7 +20,7 @@ class CreateEventInterestViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var nextButton: CustomButton!
     var interestArray = [Interest]()
-    var selectedArray = [String]()
+    var selectedArray = [Interest]()
     weak var delegate: EventInterestDelegate?
 
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class CreateEventInterestViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
         
     }
     
@@ -48,7 +49,7 @@ class CreateEventInterestViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
-        getInterestList()
+        getInterestList(search: "")
     }
     
     func setupUI() {
@@ -62,13 +63,20 @@ class CreateEventInterestViewController: CustomViewController {
     
     // Custom navigation
     func setCustomNavigationBarView() {
-        let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
-        let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 72, height: 30))
-        label.text = "Search interests"
-        label.font = UIFont.displayBold(sz: 24)
-        label.textColor = UIColor.navBarTitleWhite32
-        customView.addSubview(label)
-        navigationItem.titleView = customView
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        
+            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            searchTextField.font = UIFont.displayBold(sz: 24)
+            searchTextField.textColor = UIColor.white
+            searchTextField.returnKeyType = .go
+            searchTextField.autocorrectionType = .no
+            searchTextField.delegate = self
+            let font = UIFont.displayBold(sz: 24)
+            let color = UIColor.navBarTitleWhite32
+            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search event", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+            customView.addSubview(searchTextField)
+            navigationItem.titleView = customView
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
     }

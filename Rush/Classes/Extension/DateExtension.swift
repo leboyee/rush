@@ -1,6 +1,6 @@
 //
 //  DateExtension.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
@@ -96,33 +96,20 @@ extension Date {
         return Calendar.current.date(from: dc)!
     }
 
-    public func localToUTC(date: String) -> String {
+    public func localToUTC(date: String, toForamte: String, getFormate: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+        dateFormatter.dateFormat = toForamte//"yyyy-MM-dd hh:mm a"
         dateFormatter.calendar = NSCalendar.current
         dateFormatter.timeZone = TimeZone.current
         if let newDate = dateFormatter.date(from: date) {
             let newDateFormatter = DateFormatter()
-            newDateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+            newDateFormatter.dateFormat = getFormate//"yyyy-MM-dd HH:mm"
             newDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             return newDateFormatter.string(from: newDate)
         }
         return dateFormatter.string(from: Date())
     }
-    
-    public func localToUTCDate(date: String) -> String {
-           let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
-           dateFormatter.calendar = NSCalendar.current
-           dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-           if let newDate = dateFormatter.date(from: date) {
-               let newDateFormatter = DateFormatter()
-               newDateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-               return newDateFormatter.string(from: newDate)
-           }
-           return dateFormatter.string(from: Date())
-       }
-    
+        
     static func getCurrentTimeHours(date: Date) -> String {
         let hour = date.hour
         let min = date.minute
@@ -339,4 +326,38 @@ extension Date {
         let diff = Calendar.current.dateComponents([.weekOfYear], from: date, to: Date()).weekOfYear ?? 0
         return "\(diff) weeks ago"
     }
+    
+    func getWeekDates() -> (thisWeek: [Date], nextWeek: [Date]) {
+        var tuple: (thisWeek: [Date], nextWeek: [Date])
+        var arrThisWeek: [Date] = []
+        for i in 0..<7 {
+            arrThisWeek.append(Calendar.current.date(byAdding: .day, value: i, to: startOfWeek)!)
+        }
+        var arrNextWeek: [Date] = []
+        for i in 1...7 {
+            arrNextWeek.append(Calendar.current.date(byAdding: .day, value: i, to: arrThisWeek.last!)!)
+        }
+        tuple = (thisWeek: arrThisWeek, nextWeek: arrNextWeek)
+        return tuple
+    }
+
+    var tomorrow: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+
+    var startOfWeek: Date {
+        let gregorian = Calendar(identifier: .gregorian)
+        let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
+        return gregorian.date(byAdding: .day, value: 1, to: sunday!)!
+    }
+
+    func toDate(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
 }

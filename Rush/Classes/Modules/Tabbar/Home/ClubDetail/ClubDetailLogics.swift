@@ -12,7 +12,11 @@ import Photos
 extension ClubDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? CGFloat.leastNormalMagnitude : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
+        if section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return section == 0 ? CGFloat.leastNormalMagnitude : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
+        }
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -27,8 +31,12 @@ extension ClubDetailViewController {
             }
             return UITableView.automaticDimension
         } else {
-            let auto = UITableView.automaticDimension
-            return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
+            if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+                return CGFloat.leastNormalMagnitude
+            } else {
+                let auto = UITableView.automaticDimension
+                return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
+            }
         }
     }
     
@@ -58,19 +66,19 @@ extension ClubDetailViewController {
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
-        if clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+        if clubInfo?.clubUId == Authorization.shared.profile?.userId {
             cell.setup(firstButtonType: .manage)
+            cell.setup(secondButtonType: .groupChat)
         } else {
             cell.setup(firstButtonType: .joined)
+            cell.setup(secondButtonType: .groupChatClub)
         }
-        
-        cell.setup(secondButtonType: .groupChatClub)
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             
             // Manage
-            if unself.clubInfo?.clubUserId == Authorization.shared.profile?.userId {
+            if unself.clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
                     controller.clubInfo = unself.clubInfo
                     let nav = UINavigationController(rootViewController: controller)
@@ -88,8 +96,15 @@ extension ClubDetailViewController {
             }
         }
         
-        cell.secondButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.secondButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            let controller = ChatRoomViewController()
+            controller.userName = unsafe.clubInfo?.clubName ?? ""
+            controller.isGroupChat = true
+            controller.chatDetailType = .club
+            controller.clubInfo = unsafe.clubInfo
+            controller.hidesBottomBarWhenPushed = true
+            unsafe.navigationController?.pushViewController(controller, animated: true)
         }
     }
     
@@ -100,7 +115,7 @@ extension ClubDetailViewController {
             guard let unself = self else { return }
             if index != 0 {
                 let invitee = unself.clubInfo?.invitees?[index - 1] // -1 of ViewAll Cell item
-                if invitee?.user?.id == Authorization.shared.profile?.id {
+                if invitee?.user?.userId == Authorization.shared.profile?.userId {
                     self?.tabBarController?.selectedIndex = 3
                 } else {
                     unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
@@ -113,6 +128,7 @@ extension ClubDetailViewController {
         cell.setup(isRemoveDateView: true)
         cell.setup(cornerRadius: 24)
         cell.setup(isHideSeparator: true)
+        cell.clipsToBounds = true
         if indexPath.section > 5 {
             let post = clubPostList[indexPath.section - 6]
             cell.setup(title: post.user?.name ?? "")
@@ -135,8 +151,8 @@ extension ClubDetailViewController {
     }
     
     func fillTagCell(_ cell: TagCell) {
-        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
-        cell.setup(tagList: tags)
+//        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
+//        cell.setup(tagList: tags)
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
@@ -172,15 +188,20 @@ extension ClubDetailViewController {
         cell.set(numberOfComment: post.numberOfComments)
         cell.set(ishideUnlikeLabel: false)
         
+        if let myVote = post.myVote?.first {
+            cell.set(vote: myVote.type)
+        } else {
+           cell.set(vote: 0)
+        }
+        
         cell.likeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.id ?? "", type: "up")
+            uwself.voteClubAPI(id: post.postId, type: "up")
         }
         
         cell.unlikeButtonEvent = { [weak self] () in
             guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.id ?? "", type: "down")
-            
+            uwself.voteClubAPI(id: post.postId, type: "down")
         }
         
         cell.commentButtonEvent = { [weak self] () in
@@ -192,7 +213,7 @@ extension ClubDetailViewController {
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         
-        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? Text.popularPost : ""
+        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? (clubInfo?.clubUId == Authorization.shared.profile?.userId ? Text.posts : Text.popularPost) : ""
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
         if section == 5 {
@@ -208,7 +229,7 @@ extension ClubDetailViewController {
     
     func fillData() {
         if let invitee = clubInfo?.invitees {
-            let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+            let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
             if filter.count > 0 {
                 joinedClub = true
             }
@@ -222,7 +243,7 @@ extension ClubDetailViewController {
         } else if indexPath.section > 5 {
             if indexPath.row == 0 {
                 let post = clubPostList[indexPath.section - 6]
-                if post.user?.id == Authorization.shared.profile?.id {
+                if post.user?.userId == Authorization.shared.profile?.userId {
                     self.tabBarController?.selectedIndex = 3
                 } else {
                     performSegue(withIdentifier: Segues.otherUserProfile, sender: post.user)
@@ -237,22 +258,20 @@ extension ClubDetailViewController {
     
     func getClubDetailAPI() {
         
-        let id = clubInfo?.id ?? ""
+        let id = clubInfo?.clubId ?? ""
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
             guard let uwself = self else { return }
             if let list = data {
-                if let value = list[Keys.data] as? [String: Any] {
-                    if let club = value[Keys.club] as? [String: Any] {
-                        do {
-                            let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
-                            let decoder = JSONDecoder()
-                            let value = try decoder.decode(Club.self, from: dataClub)
-                            uwself.clubInfo = value
-                        } catch {
-                            
-                        }
+                if let club = list[Keys.club] as? [String: Any] {
+                    do {
+                        let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(Club.self, from: dataClub)
+                        uwself.clubInfo = value
+                    } catch {
+                        
                     }
                 }
                 uwself.fillImageHeader()
@@ -268,13 +287,14 @@ extension ClubDetailViewController {
     
     func joinClubAPI() {
         
-        let id = clubInfo?.id ?? "0"
+        let id = clubInfo?.clubId ?? "0"
         
         Utils.showSpinner()
-        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id]) { [weak self] (status, errorMsg) in
+        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id, Keys.action: "join"]) { [weak self] (status, errorMsg) in
             guard let uwself = self else { return }
             if status {
                 uwself.getClubDetailAPI()
+                ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
             } else {
                 Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
@@ -284,12 +304,12 @@ extension ClubDetailViewController {
     
     func getClubPostListAPI() {
         
-        let param = [Keys.dataId: clubInfo?.id ?? "",
+        let param = [Keys.dataId: clubInfo?.clubId ?? "",
                      Keys.dataType: Text.club,
                      Keys.search: "",
                      Keys.pageNo: 1] as [String: Any]
         
-        ServiceManager.shared.getPostList(dataId: clubInfo?.id ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
+        ServiceManager.shared.getPostList(dataId: clubInfo?.clubId ?? "", type: Text.club, params: param) { [weak self] (post, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let value = post {
@@ -306,21 +326,25 @@ extension ClubDetailViewController {
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let post = result {
-                    let index = uwself.clubPostList.firstIndex(where: { ( $0.id == post.id ) })
-                    if let position = index, uwself.clubPostList.count > position {
-                        uwself.clubPostList[position] = post
-                        
-                        let oldOffset = uwself.tableView.contentOffset
-                        UIView.setAnimationsEnabled(false)
-                        uwself.tableView.beginUpdates()
-                        uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
-                        uwself.tableView.endUpdates()
-                        uwself.tableView.setContentOffset(oldOffset, animated: false)
-                    }
+                let index = uwself.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
+                if let position = index, uwself.clubPostList.count > position {
+                    uwself.clubPostList[position] = post
+                    
+                    let oldOffset = uwself.tableView.contentOffset
+                    UIView.setAnimationsEnabled(false)
+                    uwself.tableView.beginUpdates()
+                    uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
+                    uwself.tableView.endUpdates()
+                    uwself.tableView.setContentOffset(oldOffset, animated: false)
+                }
                 uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
+    }
+    
+    func deleteClubAPI() {
+        Utils.notReadyAlert()
     }
 }

@@ -95,6 +95,9 @@
                                     <constraint firstAttribute="height" constant="24" id="Qs9-GX-Aug"/>
                                 </constraints>
                                 <state key="normal" image="graydot"/>
+                                <connections>
+                                    <action selector="shareAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2hs-vh-gHl"/>
+                                </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bge-rT-0MG">
                                 <rect key="frame" x="24" y="86.5" width="296" height="1"/>
@@ -144,6 +147,7 @@
                 <outlet property="leadingConstraintOfDateView" destination="eFS-Vg-zlj" id="sO6-xJ-cvv"/>
                 <outlet property="monthLabel" destination="9DJ-HY-vvE" id="55J-Ud-eiF"/>
                 <outlet property="separatorView" destination="bge-rT-0MG" id="edd-Fe-FRv"/>
+                <outlet property="threeDots" destination="yC1-xW-jb6" id="lqW-A6-mCT"/>
                 <outlet property="titleLabel" destination="erI-m4-jFg" id="sj8-1a-P2M"/>
                 <outlet property="topConstraintOfImageView" destination="MLL-SD-l16" id="2zE-xQ-iEF"/>
                 <outlet property="trailingConstraintOfDot" destination="zew-mX-g2E" id="IoF-8W-E6j"/>

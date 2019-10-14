@@ -32,17 +32,15 @@ extension OtherUserProfileController {
         
         if indexPath.row == 0 {
             
-            // For test
             cell.setup(secondButtonType: .message)
             cell.setup(topConstraint: 0)
+            isShowMessageButton = false
             if status == .none {
                 
             } else if status == .friends {
                 cell.setup(firstButtonType: .friends)
-                isShowMessageButton = false
             } else if status == .requested {
                 cell.setup(firstButtonType: .requested)
-                isShowMessageButton = false
             } else if status == .accept {
                 cell.setup(firstButtonType: .accept)
                 cell.setup(secondButtonType: .reject)
@@ -111,9 +109,10 @@ extension OtherUserProfileController {
                 })
             } else {
                 let controller = ChatRoomViewController()
-                controller.isShowTempData = false
                 controller.isGroupChat = false
+                controller.chatDetailType = .single
                 controller.userName = unself.userInfo?.name ?? ""
+                controller.hidesBottomBarWhenPushed = true
                 let friend = Friend()
                 friend.user = unself.userInfo
                 controller.friendProfile = friend
@@ -141,7 +140,9 @@ extension OtherUserProfileController {
         
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
-            if indexPath.section == 2 {
+            if indexPath.section == 1 {
+                unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
+            } else if indexPath.section == 2 {
                 unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             } else if indexPath.section == 3 {
                 let event = unsafe.eventList[index]
@@ -201,8 +202,10 @@ extension OtherUserProfileController {
     func getProfileAPI() {
         let param = [Keys.profileUserId: userInfo?.userId ?? "0"]
         ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
-            self?.userInfo = user
-            self?.tableView.reloadData()
+            guard let unsafe = self else { return }
+            unsafe.userInfo = user
+            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? false : true
+            unsafe.tableView.reloadData()
         }
     }
     
@@ -263,7 +266,7 @@ extension OtherUserProfileController {
     
     func sendFriendRequestAPI() {
         
-        let param = [Keys.otherUserId: userInfo?.id ?? "0"]
+        let param = [Keys.otherUserId: userInfo?.userId ?? "0"]
         ServiceManager.shared.sendFriendRequest(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }
             if status {
@@ -276,7 +279,7 @@ extension OtherUserProfileController {
     
     func moderateFriendRequestAPI(type: String) {
         
-        let param = [Keys.otherUserId: userInfo?.id ?? "0",
+        let param = [Keys.otherUserId: userInfo?.userId ?? "0",
                      Keys.action: type]
         ServiceManager.shared.moderateFriendRequest(params: param) { [weak self] (status, errorMsg) in
             guard let unsafe = self else { return }

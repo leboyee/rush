@@ -48,7 +48,7 @@ extension CreateEventViewController {
         } else if section == 5 {
             return isEndDate == true ? 2 : isEndTime == true ? 2 : 1
         } else if section == 6 {
-            return interestList.count + 1
+            return (interestList.count ?? 0) + 1
         } else if section == 7 {
             return peopleList.count + 1
         }
@@ -78,11 +78,13 @@ extension CreateEventViewController {
     }
     
     func fillEventTimeCell(_ cell: EventTimeCell, _ indexPath: IndexPath) {
+        cell.datePicker.date = indexPath.section == 4 ? startTimeDate : endTimeDate
         cell.timeSelected = {
             [weak self] (date) in
             guard let unsafe = self else { return }
             if indexPath.section == 4 {
                 unsafe.startTimeDate = date
+                cell.datePicker.date = date
                 /*if unsafe.startDate.isSameDate(unsafe.endDate) && unsafe.startTimeDate > unsafe.endTimeDate {
                  Utils.alert(message: "Start time not allow greter then end event Time")
                  return
@@ -250,15 +252,17 @@ extension CreateEventViewController {
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
         } else if indexPath.section == 6 {
-            if indexPath.row == interestList.count {
+            if indexPath.row == (interestList.count) {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
                 cell.setup(keyboardReturnKeyType: .done)
                 cell.setup(isEnabled: false)
             } else {
+                let interest = self.interestList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
                 cell.setup(isEnabled: false)
-                cell.setup(placeholder: "", text: interestList[indexPath.row])
+                // S*
+                cell.setup(placeholder: "", text: interest.interestName)
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 7 {
@@ -309,7 +313,9 @@ extension CreateEventViewController {
                 unsafe.address = ""
                 unsafe.tableView.reloadData()
             } else if indexPath.section == 6 {
-                if let index = unsafe.interestList.firstIndex(of: (unsafe.interestList[indexPath.row])) {
+                // S*
+                let interest = unsafe.interestList[indexPath.row] 
+                if let index = unsafe.interestList.firstIndex(where: { $0.interestName == interest.interestName }) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
                 }
@@ -373,7 +379,7 @@ extension CreateEventViewController {
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && interestList.count > 0 {
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList.count ) > 0 {
             
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
@@ -477,6 +483,7 @@ extension CreateEventViewController: CalendarViewDelegate {
 extension CreateEventViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
         self.eventType = type
+        validateAllFields()
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
@@ -558,23 +565,29 @@ extension CreateEventViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
         self.peopleList.append(contentsOf: invite)
         self.tableView.reloadData()
+        self.validateAllFields()
+
     }
 }
 
 // MARK: - Add Interest Delegate
 extension CreateEventViewController: EventInterestDelegate {
-    func  selectedInterest(_ interest: [String]) {
-        self.interestList.append(contentsOf: interest)
+    func  selectedInterest(_ interest: [Interest]) {
+        // S*
+        self.interestList = interest
+        validateAllFields()
         self.tableView.reloadData()
+        
     }
 }
-
 // MARK: - Services
 extension CreateEventViewController {
     
     func createEventAPI() {
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        let interests = interestList.joined(separator: ",")
+        // S*
+        //let interests = interestList.joined(separator: ",")
+        let interests = ""
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
@@ -585,13 +598,11 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
-        let startUtcDate = Date().localToUTC(date: startDateString)
-        let startUtcDateString = Date().localToUTCDate(date: startUtcDate)
+        let startUtcDate = Date().localToUTC(date: startDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
-        let endUtcDate = Date().localToUTC(date: endDateString)
+        let endUtcDate = Date().localToUTC(date: endDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         print(startUtcDate)
         print(endUtcDate)
-        print(startUtcDateString)
         var rsvpJson: String = ""
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: array)
@@ -611,8 +622,8 @@ extension CreateEventViewController {
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
             Keys.eventLongitude: "\(longitude)",
-            Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
-            Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventStartDate: startUtcDate, //"2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: endUtcDate, //"2019-10-12 08:30:00", //endUtcDate,
             Keys.eventInterests: interests,
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
@@ -639,7 +650,10 @@ extension CreateEventViewController {
         let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
             
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        let interests = interestList.joined(separator: ",")
+        // S*
+        let interestsNameArry = interestList.map({ $0.interestName })
+        //interestList.joined(separator: ",")
+        let interests = interestsNameArry.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
@@ -650,9 +664,9 @@ extension CreateEventViewController {
             array.remove(at: array.count - 1)
         }
         let startDateString = self.startDate.toString(format: "yyyy-MM-dd") + " \(startTime)"
-        let startUtcDate = Date().localToUTC(date: startDateString)
+        let startUtcDate = Date().localToUTC(date: startDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         let endDateString = self.endDate.toString(format: "yyyy-MM-dd") + " \(endTime)"
-        let endUtcDate = Date().localToUTC(date: endDateString)
+        let endUtcDate = Date().localToUTC(date: endDateString, toForamte: "yyyy-MM-dd hh:mm a", getFormate: "yyyy-MM-dd HH:mm")
         print(startUtcDate)
         print(endUtcDate)
         var rsvpJson: String = ""
@@ -673,8 +687,8 @@ extension CreateEventViewController {
                      Keys.eventAddress: address,
                      Keys.eventLatitude: "\(latitude)",
             Keys.eventLongitude: "\(longitude)",
-            Keys.eventStartDate: "2019-10-12 07:30:00", //startUtcDate,
-            Keys.eventEndDate: "2019-10-12 08:30:00", //endUtcDate,
+            Keys.eventStartDate: startUtcDate, //"2019-10-12 07:30:00", //startUtcDate,
+            Keys.eventEndDate: endUtcDate, //"2019-10-12 08:30:00", //endUtcDate,
             Keys.eventInterests: interests,
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),

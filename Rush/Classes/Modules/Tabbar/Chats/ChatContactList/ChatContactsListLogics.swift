@@ -24,17 +24,20 @@ extension ChatContactsListViewController {
         let users = friendsList[alpha.lowercased()] as? [Friend]
         let friend = users?[indexPath.row]
         cell.setup(title: friend?.user?.name ?? "")
+        cell.setup(url: friend?.user?.photo?.url())
     }
     
     func cellSelected(_ indexPath: IndexPath) {
         let alpha = alphabet[indexPath.section]
         let users = friendsList[alpha.lowercased()] as? [Friend]
         let friend = users?[indexPath.row]
+        
         let controller = ChatRoomViewController()
-        controller.isShowTempData = false
         controller.friendProfile = friend
         controller.userName = friend?.user?.name ?? ""
         controller.isGroupChat = false
+        controller.chatDetailType = .single
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -71,7 +74,7 @@ extension ChatContactsListViewController {
                         users.append(object)
                         if let first = object.user?.firstName?.first {
                             if let value = unsafe.friendsList[first.description.lowercased()]  as? [Friend] {
-                                let filter = value.filter { $0.user?.id == object.user?.id }
+                                let filter = value.filter { $0.user?.userId == object.user?.userId }
                                 if filter.count == 0 {
                                     var tempUser = [Friend]()
                                     tempUser.append(contentsOf: value)

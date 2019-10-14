@@ -10,6 +10,8 @@ import UIKit
 
 class FriendListCell: UITableViewCell {
 
+    @IBOutlet weak var friendNameLabel: UILabel!
+    @IBOutlet weak var friendImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +21,15 @@ class FriendListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+}
+
+extension FriendListCell {
+    func setup(name: String) {
+        friendNameLabel.text = name
+    }
+    
+    func setup(url: URL) {
+        friendImageView.sd_setImage(with: url, completed: nil)
     }
 }

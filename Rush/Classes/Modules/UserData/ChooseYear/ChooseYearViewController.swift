@@ -18,7 +18,7 @@ class ChooseYearViewController: CustomViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedIndex = -1
-    var isEditProfile: Bool = false
+    var isEditUserProfile: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,10 @@ class ChooseYearViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
+        if isEditUserProfile == true {
+            pageControl.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,11 +75,6 @@ class ChooseYearViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
-        
-//            if(isEditProfile == true) {
-//                pageControl.isHidden = true
-//                self.navigationItem.rightBarButtonItem = nil
-//            }
     }
 }
 
@@ -109,10 +107,10 @@ extension ChooseYearViewController {
 extension ChooseYearViewController {
     
     func profileUpdateSuccess() {
-      //  if isEditProfile == true {
+        if isEditUserProfile == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
             self.performSegue(withIdentifier: Segues.chooseUniversitySegue, sender: self)
-       // } else {
-           // self.navigationController?.popViewController(animated: true)
-       // }
+        }
     }
 }

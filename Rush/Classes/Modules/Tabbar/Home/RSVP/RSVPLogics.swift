@@ -19,7 +19,7 @@ extension RSVPViewController {
             let jsonData = try jsonEncoder.encode(answers)
             if let json = String(data: jsonData, encoding: String.Encoding.utf8) {
                 let params = [Keys.rsvpAns: json]
-                joinEventWithRSVP(eventId: eventId, action: action, params: params as [String: Any])
+                joinEventWithRSVP(eventId: String(eventId), action: action, params: params as [String: Any])
             }
         } catch let error as NSError {
             print(error)

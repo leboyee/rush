@@ -43,20 +43,20 @@ PODS:
     - FacebookCore (~> 0.9.0)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKShareKit (~> 5.0)
-  - FBSDKCoreKit (5.7.0):
-    - FBSDKCoreKit/Basics (= 5.7.0)
-    - FBSDKCoreKit/Core (= 5.7.0)
-  - FBSDKCoreKit/Basics (5.7.0)
-  - FBSDKCoreKit/Core (5.7.0):
+  - FBSDKCoreKit (5.8.0):
+    - FBSDKCoreKit/Basics (= 5.8.0)
+    - FBSDKCoreKit/Core (= 5.8.0)
+  - FBSDKCoreKit/Basics (5.8.0)
+  - FBSDKCoreKit/Core (5.8.0):
     - FBSDKCoreKit/Basics
-  - FBSDKShareKit (5.7.0):
-    - FBSDKShareKit/Share (= 5.7.0)
-  - FBSDKShareKit/Share (5.7.0):
+  - FBSDKShareKit (5.8.0):
+    - FBSDKShareKit/Share (= 5.8.0)
+  - FBSDKShareKit/Share (5.8.0):
     - FBSDKCoreKit (~> 5.0)
   - FLAnimatedImage (1.0.12)
-  - GoogleMaps/Base (3.4.0)
-  - GooglePlaces (3.4.0):
-    - GoogleMaps/Base (= 3.4.0)
+  - GoogleMaps/Base (3.5.0)
+  - GooglePlaces (3.5.0):
+    - GoogleMaps/Base (= 3.5.0)
   - IQKeyboardManagerSwift (6.5.1)
   - MGSwipeTableCell (1.6.9)
   - PanModal (1.2.4)
@@ -70,7 +70,7 @@ PODS:
   - SendBirdSDK (3.0.149)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.35.0)
-  - UnsplashPhotoPicker (1.0.1)
+  - UnsplashPhotoPicker (1.1.0)
 
 DEPENDENCIES:
   - DKImagePickerController/Camera
@@ -118,11 +118,11 @@ SPEC CHECKSUMS:
   DKPhotoGallery: 0290d32343574f06eaa4c26f8f2f8a1035e916be
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
-  FBSDKCoreKit: 0d2d450fe9447e204fa6e912e0df76dd36693699
-  FBSDKShareKit: 0dc4bd06e11eb2ad30d165132c6c879b8d449ae3
+  FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
+  FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
-  GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
+  GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
+  GooglePlaces: be6f19fe8aa6ff0b5bcccfa1b8805cc977ea1450
   IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
   MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
   PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
@@ -132,7 +132,7 @@ SPEC CHECKSUMS:
   SendBirdSDK: 9afafc0b44bb3ccbaf437cc83a7aeaf39c25ad8d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
-  UnsplashPhotoPicker: 3669aef6d3cd8bc45f19d681eef0af5920325c79
+  UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
 PODFILE CHECKSUM: b46776daf201b8da67f8ef7f2d7aeb554cdb876c
 

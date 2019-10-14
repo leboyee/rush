@@ -26,13 +26,14 @@ class EventTypeCell: UITableViewCell {
     var cellSelected: ((_ type: EventCategoryType, _ section: Int, _ index: Int) -> Void)?
     var userSelected: ((_ id: Int, _ index: Int) -> Void)?
     var joinSelected: ((_ index: Int) -> Void)?
-    
+    var cellWillDisplay: ((_ index: Int) -> Void)?
+
     var type: EventCategoryType = .upcoming
     var cellType: CellType = .none
     var list: [Any]?
     var total: Int = 0
     let padding: CGFloat = 16.0
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -71,7 +72,7 @@ class EventTypeCell: UITableViewCell {
         reload()
     }
     
-    func setup(interests: [Tag]) {
+    func setup(interests: [Interest]) {
         cellType = .interests
         list = interests
         reload()
@@ -86,4 +87,6 @@ class EventTypeCell: UITableViewCell {
     func setup(isSeparatorHide: Bool) {
         separator.isHidden = isSeparatorHide
     }
+    
+    
 }

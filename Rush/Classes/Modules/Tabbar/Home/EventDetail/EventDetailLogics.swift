@@ -30,18 +30,16 @@ extension EventDetailViewController {
     }
     
     func deleteEvent(event: Event) {
-        deleteEventAPI(id: event.id)
+        deleteEventAPI(id: String(event.id))
     }
     
     func deletePost(post: Post) {
-        if let id = post.id {
-          deletePostAPI(id: id)
-        }
+        deletePostAPI(id: post.postId)
     }
     
     func loadEventSection() {
         guard let event = self.event else { return }
-        if event.creator?.id == Authorization.shared.profile?.userId {
+        if event.creator?.userId == Authorization.shared.profile?.userId {
             type = .my
         } else if let eventInvite = event.eventInvite?.last {
             type = eventInvite.status == 1 ? .joined : .invited
@@ -77,7 +75,7 @@ extension EventDetailViewController {
                 EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags"),
-                EventSection(type: .createPost, title: "Popular posts")
+                EventSection(type: .createPost, title: "Posts")
             ]
             
             /// Need to call post list here
@@ -191,7 +189,7 @@ extension EventDetailViewController {
             case .about, .joinRsvp, .location, .manage, .organizer, .createPost:
                 count = 1
             case .tags:
-                if event?.interests?.isNotEmpty ?? false {
+                if (event?.interests?.count ?? 0) > 0 {
                     count = 1
                 }
             case .invitee:
@@ -217,7 +215,7 @@ extension EventDetailViewController {
         guard let eventSection = sections?[indexPath.section] else { return }
         cell.setup(isSeparatorHide: true)
         if eventSection.type == .tags {
-            cell.setup(interests: event?.interests?.tags ?? [])
+            cell.setup(interests: event?.interests ?? [])
         } else if eventSection.type == .invitee, let list = inviteeList {
             cell.setup(invitees: list, total: self.totalInvitee)
         }
@@ -269,7 +267,7 @@ extension EventDetailViewController {
                 /// Call Accept  API
                 guard let event = unsafe.event else { return }
                 if event.rsvp?.count ?? 0 == 0 {
-                    unsafe.joinEvent(eventId: event.id, action: EventAction.accept)
+                    unsafe.joinEvent(eventId: String(event.id), action: EventAction.accept)
                 } else {
                     unsafe.showRSVP(action: EventAction.accept)
                 }
@@ -286,7 +284,7 @@ extension EventDetailViewController {
             } else if unsafe.type == .invited {
                 // Call Reject API
                 guard let event = unsafe.event else { return }
-                unsafe.rejectEvent(eventId: event.id)
+                unsafe.rejectEvent(eventId: String(event.id))
             }
         }
         
@@ -316,7 +314,7 @@ extension EventDetailViewController {
         cell.joinButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             if event.rsvp?.count ?? 0 == 0 {
-                unsafe.joinEvent(eventId: event.id, action: EventAction.join)
+                unsafe.joinEvent(eventId: String(event.id), action: EventAction.join)
             } else {
                 unsafe.showRSVP(action: EventAction.join)
             }
@@ -366,11 +364,11 @@ extension EventDetailViewController {
             }
             
             cell.likeButtonEvent = { [weak self] () in
-                self?.voteAPI(id: post.id ?? "", type: Vote.up)
+                self?.voteAPI(id: post.postId, type: Vote.up)
             }
             
             cell.unlikeButtonEvent = { [weak self] () in
-                self?.voteAPI(id: post.id ?? "", type: Vote.down)
+                self?.voteAPI(id: post.postId, type: Vote.down)
             }
             
             cell.commentButtonEvent = { [weak self] () in
@@ -481,7 +479,7 @@ extension EventDetailViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let post = result {
-                let index = unsafe.postList?.firstIndex(where: { ( $0.id == post.id ) })
+                let index = unsafe.postList?.firstIndex(where: { ( $0.postId == post.postId ) })
                 if let position = index, unsafe.postList?.count ?? 0 > position {
                         unsafe.postList?[position] = post
                         unsafe.reloadTable()
@@ -511,7 +509,7 @@ extension EventDetailViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {
-                if let index = unsafe.postList?.firstIndex(where: { $0.id == id }) {
+                if let index = unsafe.postList?.firstIndex(where: { $0.postId == id }) {
                     unsafe.postList?.remove(at: index)
                     unsafe.reloadTable()
                 }

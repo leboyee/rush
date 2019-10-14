@@ -91,6 +91,11 @@
 		1A44C364234265EF00A93A18 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A44C362234265EF00A93A18 /* EventTimeCell.xib */; };
 		1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */; };
 		1A572B88234B96A6003E2824 /* EventTypeModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */; };
+		1A5DA6AC235241FF0090D8E2 /* UserProfileGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */; };
+		1A5DA6AD235241FF0090D8E2 /* GalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A8235241FE0090D8E2 /* GalleryCell.xib */; };
+		1A5DA6AE235241FF0090D8E2 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A9235241FE0090D8E2 /* GalleryCell.swift */; };
+		1A5DA6AF235241FF0090D8E2 /* UserProfileGalleryMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6AA235241FE0090D8E2 /* UserProfileGalleryMediates.swift */; };
+		1A5DA6B0235241FF0090D8E2 /* UserProfileGalleryLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6AB235241FE0090D8E2 /* UserProfileGalleryLogics.swift */; };
 		1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */; };
 		1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */; };
 		1A62D23022954216001E5790 /* EnterEmailViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */; };
@@ -123,6 +128,9 @@
 		1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */; };
 		1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95C3622323FDB70066798D /* DateAndTimeCell.swift */; };
 		1A95C3652323FDB70066798D /* DateAndTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A95C3632323FDB70066798D /* DateAndTimeCell.xib */; };
+		1AA5BE5F234E34EE00EEF68F /* UserFriendsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */; };
+		1AA5BE60234E34EE00EEF68F /* UserFriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */; };
+		1AA5BE61234E34EE00EEF68F /* UserFriendsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */; };
 		1AA97B7B2289519400C4550C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7A2289519400C4550C /* CustomLabel.swift */; };
 		1AA97B7D2289520900C4550C /* CustomOnboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */; };
 		1AA97B89228979D100C4550C /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA97B7F228979D100C4550C /* DeviceExtension.swift */; };
@@ -500,7 +508,6 @@
 		8A04B1A62304126A0055C65F /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A04B1A42304126A0055C65F /* NotificationCell.xib */; };
 		8A1076BD2306B96800512AA3 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BB2306B96800512AA3 /* TextCell.swift */; };
 		8A1076BE2306B96800512AA3 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1076BC2306B96800512AA3 /* TextCell.xib */; };
-		8A1076C02306BC2600512AA3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076BF2306BC2600512AA3 /* Tag.swift */; };
 		8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */; };
 		8A1EFDDF2345E12A00624EED /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDDE2345E12A00624EED /* NotificationService.swift */; };
 		8A1EFDE12345E1A300624EED /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EFDE02345E1A300624EED /* NotificationItem.swift */; };
@@ -646,6 +653,11 @@
 		1A44C362234265EF00A93A18 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
 		1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeModelCell.xib; sourceTree = "<group>"; };
 		1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeModelCell.swift; sourceTree = "<group>"; };
+		1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryViewController.swift; sourceTree = "<group>"; };
+		1A5DA6A8235241FE0090D8E2 /* GalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCell.xib; sourceTree = "<group>"; };
+		1A5DA6A9235241FE0090D8E2 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		1A5DA6AA235241FE0090D8E2 /* UserProfileGalleryMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryMediates.swift; sourceTree = "<group>"; };
+		1A5DA6AB235241FE0090D8E2 /* UserProfileGalleryLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryLogics.swift; sourceTree = "<group>"; };
 		1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewConteroller.swift; sourceTree = "<group>"; };
 		1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterEmailViewMediates.swift; sourceTree = "<group>"; };
 		1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterEmailViewLogics.swift; sourceTree = "<group>"; };
@@ -687,6 +699,9 @@
 		1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewMediates.swift; sourceTree = "<group>"; };
 		1A95C3622323FDB70066798D /* DateAndTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTimeCell.swift; sourceTree = "<group>"; };
 		1A95C3632323FDB70066798D /* DateAndTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateAndTimeCell.xib; sourceTree = "<group>"; };
+		1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListLogics.swift; sourceTree = "<group>"; };
+		1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListViewController.swift; sourceTree = "<group>"; };
+		1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListMediates.swift; sourceTree = "<group>"; };
 		1AA97B7A2289519400C4550C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		1AA97B7C2289520900C4550C /* CustomOnboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardImageView.swift; sourceTree = "<group>"; };
 		1AA97B7F228979D100C4550C /* DeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
@@ -1067,7 +1082,6 @@
 		8A04B1A42304126A0055C65F /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		8A1076BB2306B96800512AA3 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		8A1076BC2306B96800512AA3 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
-		8A1076BF2306BC2600512AA3 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8A1076C12306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8A1EFDDE2345E12A00624EED /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8A1EFDE02345E1A300624EED /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
@@ -1241,6 +1255,8 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */,
+				1AA5BE5B234E34EE00EEF68F /* UserFriendsListView */,
 				1A0EDEE7234892C800502959 /* EditProfile */,
 				8A04B180230149100055C65F /* Logout */,
 				8A04B17F230149000055C65F /* DisconnectInstagram */,
@@ -1351,11 +1367,11 @@
 			isa = PBXGroup;
 			children = (
 				1A0EDEEA234892C800502959 /* EditProfileMinorCell.swift */,
-				1A0EDEEB234892C800502959 /* EditProfileImageCell.swift */,
-				1A0EDEEC234892C800502959 /* EditProfileInfoCell.xib */,
-				1A0EDEED234892C800502959 /* EditProfileInfoCell.swift */,
 				1A0EDEEE234892C800502959 /* EditProfileMinorCell.xib */,
+				1A0EDEEB234892C800502959 /* EditProfileImageCell.swift */,
 				1A0EDEEF234892C800502959 /* EditProfileImageCell.xib */,
+				1A0EDEED234892C800502959 /* EditProfileInfoCell.swift */,
+				1A0EDEEC234892C800502959 /* EditProfileInfoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1543,6 +1559,26 @@
 			path = CellView;
 			sourceTree = "<group>";
 		};
+		1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */ = {
+			isa = PBXGroup;
+			children = (
+				1A5DA6A7235241FE0090D8E2 /* Cell */,
+				1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */,
+				1A5DA6AA235241FE0090D8E2 /* UserProfileGalleryMediates.swift */,
+				1A5DA6AB235241FE0090D8E2 /* UserProfileGalleryLogics.swift */,
+			);
+			path = UserProfileGallery;
+			sourceTree = "<group>";
+		};
+		1A5DA6A7235241FE0090D8E2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A5DA6A8235241FE0090D8E2 /* GalleryCell.xib */,
+				1A5DA6A9235241FE0090D8E2 /* GalleryCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		1A62D227229540CC001E5790 /* Authorize */ = {
 			isa = PBXGroup;
 			children = (
@@ -1674,6 +1710,16 @@
 				1A95C3632323FDB70066798D /* DateAndTimeCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1AA5BE5B234E34EE00EEF68F /* UserFriendsListView */ = {
+			isa = PBXGroup;
+			children = (
+				1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */,
+				1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */,
+				1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */,
+			);
+			path = UserFriendsListView;
 			sourceTree = "<group>";
 		};
 		1AA97B7E228979D100C4550C /* Extension */ = {
@@ -3023,7 +3069,6 @@
 				7983D22B228982B500DE054E /* Image.swift */,
 				793BE5FB22E87F5E005EF72D /* Friend.swift */,
 				8A04B14422FB042E0055C65F /* Event.swift */,
-				8A1076BF2306BC2600512AA3 /* Tag.swift */,
 				79DA00BB233219A1006B3A65 /* Post.swift */,
 				79C5811F233BA54600FD837A /* Comment.swift */,
 				8AAA38442343268500423D43 /* RSVPQuestion.swift */,
@@ -3162,7 +3207,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Messapps;
 				TargetAttributes = {
 					C05FC14822805F3D00721F3F = {
@@ -3241,6 +3286,7 @@
 				8A04B19E230409220055C65F /* ParallaxHeader.xib in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */,
+				1A5DA6AD235241FF0090D8E2 /* GalleryCell.xib in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
 				8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */,
 				8A04B1902301796A0055C65F /* CalendarView.xib in Resources */,
@@ -3256,7 +3302,6 @@
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
 				8A4B3287232F5A5B00AC1D17 /* PostUserCell.xib in Resources */,
-				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
 				8A04B15D22FC6C3A0055C65F /* SwitchCell.xib in Resources */,
 				8A4B328E232F5A5B00AC1D17 /* PostImageCell.xib in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
@@ -3275,7 +3320,6 @@
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
 				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
 				1AEAC49922D3194A008FBB54 /* UserInfo.storyboard in Resources */,
-				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				8A4B3290232F5A5B00AC1D17 /* OrganizerCell.xib in Resources */,
 				794183B1228960C7009AB12C /* SF-Pro-Text-Bold.otf in Resources */,
 				8A04B16622FD5F1C0055C65F /* terms.html in Resources */,
@@ -3428,11 +3472,13 @@
 				1AB0C15A22C1203E000D016E /* NetworkManagerServices.swift in Sources */,
 				793BE65322E88207005EF72D /* MessageInputBar.swift in Sources */,
 				1AA9AB4022FF31C200E0E450 /* AddInstragamPhotoMediates.swift in Sources */,
+				1A5DA6AE235241FF0090D8E2 /* GalleryCell.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				1AB43B332327EE0C00C2FBCE /* AddRSVPViewController.swift in Sources */,
+				1A5DA6AF235241FF0090D8E2 /* UserProfileGalleryMediates.swift in Sources */,
 				793BE65A22E88207005EF72D /* MessagesViewController+Keyboard.swift in Sources */,
 				793BE68022E88207005EF72D /* MessageLabelDelegate.swift in Sources */,
 				7905CDBA230D5E730011C83B /* ContactsListLogics.swift in Sources */,
@@ -3542,6 +3588,7 @@
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
 				1A024CFE23476F8600EE7FB4 /* EventCateogryFilterMediates.swift in Sources */,
 				793BE67722E88207005EF72D /* MessageKitError.swift in Sources */,
+				1A5DA6B0235241FF0090D8E2 /* UserProfileGalleryLogics.swift in Sources */,
 				797FFDAF22B7BC480055A001 /* PhotoGalleryHintLabel.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
 				1A6631A8232B8C3F0042DE0D /* UIViewHelper.swift in Sources */,
@@ -3590,7 +3637,6 @@
 				0992539122845CF100914E7B /* CustomTabbarViewController.swift in Sources */,
 				1A353AC222BD05B60069752D /* ChooseUniversityViewMediates.swift in Sources */,
 				79DF74212292BAB80012DCB7 /* CreateClubViewController.swift in Sources */,
-				8A1076C02306BC2600512AA3 /* Tag.swift in Sources */,
 				1A024D0323476F8600EE7FB4 /* EventCategoryFilterCell.swift in Sources */,
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
@@ -3629,6 +3675,7 @@
 				79F377A722CB5D69003FC33E /* SearchClubMediates.swift in Sources */,
 				79C1AC4B22A64CE0003C7790 /* ProfileInformationViewController.swift in Sources */,
 				797FFDB222B7BC480055A001 /* PhotoGalleryViewController+UIViewControllerPreviewing.swift in Sources */,
+				1AA5BE61234E34EE00EEF68F /* UserFriendsListMediates.swift in Sources */,
 				1A93E1A3229E44BE00724A6C /* EnterPhoneNoViewLogics.swift in Sources */,
 				8A4B3297232F5A5B00AC1D17 /* EventDetailMediator.swift in Sources */,
 				1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */,
@@ -3720,6 +3767,7 @@
 				1AEAC4C422D35BE5008FBB54 /* DatePickerViewController.swift in Sources */,
 				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,
 				1A0D01FD23228A08004F6279 /* CreateEventMediates.swift in Sources */,
+				1A5DA6AC235241FF0090D8E2 /* UserProfileGalleryViewController.swift in Sources */,
 				1A339B6422B3CEA9005509EA /* ChooseYearViewController.swift in Sources */,
 				8A4B3286232F5A5B00AC1D17 /* PostUserCell.swift in Sources */,
 				793BE68322E88207005EF72D /* MessagesLayoutDelegate.swift in Sources */,
@@ -3802,7 +3850,9 @@
 				79CF8FCB228D953A00DDA285 /* CustomBackgoundImageView.swift in Sources */,
 				F9C89F72232D38F700DC9C85 /* AddEventLocationCell.swift in Sources */,
 				793BE67922E88207005EF72D /* MockMessage.swift in Sources */,
+				1AA5BE5F234E34EE00EEF68F /* UserFriendsListLogics.swift in Sources */,
 				79DF74252292C68E0012DCB7 /* CreateClubLogics.swift in Sources */,
+				1AA5BE60234E34EE00EEF68F /* UserFriendsListViewController.swift in Sources */,
 				796A6F2822CDEEAD00916D79 /* ClassDetailController.swift in Sources */,
 				8AAA3801233B506200423D43 /* InviteHeader.swift in Sources */,
 				793BE67322E88207005EF72D /* LabelAlignment.swift in Sources */,

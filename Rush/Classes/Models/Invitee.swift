@@ -10,21 +10,18 @@ import UIKit
 
 class Invitee: Codable {
 
-    var id: String = ""
+    //private var inviteeId: Int64 = 0
     var user: User?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        //case inviteeId = "invite_id"
         case user
     }
+    //var id: String {
+    //    return String(inviteeId)
+    //}
     
     init() {
         // default empty init
-    }
-    
-    init(name: String) {
-        id = UUID().uuidString
-        self.user = User()
-        self.user?.firstName = name
     }
 }

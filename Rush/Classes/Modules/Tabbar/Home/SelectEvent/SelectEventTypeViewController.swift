@@ -91,7 +91,7 @@ extension SelectEventTypeViewController {
     }
     
     func dismiss() {
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
             DispatchQueue.main.async {
                 self.delegate?.createEventClub(self.eventType, self.screenType)
             }

@@ -33,7 +33,7 @@ extension ClassesHeader {
     }
     
     func setup(detailsLableText: String) {
-        titleLabelHightConstraint.constant = 24
+        titleLabelHightConstraint.constant = detailsLableText.isNotEmpty ? 24 : 47
         detailsLabel.isHidden = false
         detailsLabel.text = detailsLableText
         titleLabel.font = UIFont.semibold(sz: 14)

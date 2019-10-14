@@ -204,11 +204,18 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) {
         
     }
-
+    
     func createPostSuccess(_ post: Post) {
         isCallAPI = false
         
         // getClubDetailAPI()
         performSegue(withIdentifier: Segues.postSegue, sender: post)
+    }
+}
+
+// MARK: - SharePostViewControllerDelegate
+extension ClubDetailViewController: SharePostViewControllerDelegate {
+    func delete(type: SharePostType, object: Any?) {
+        deleteClubAPI()
     }
 }

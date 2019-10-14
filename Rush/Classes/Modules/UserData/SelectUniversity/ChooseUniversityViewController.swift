@@ -20,7 +20,7 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var deleteButton: UIButton!
 
     var selectedIndex = -1
-    var isEditProfile: Bool = false
+    var isEditUserProfile: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +31,15 @@ class ChooseUniversityViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
+        if isEditUserProfile == true {
+            pageControl.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+       
     }
     
     override func viewWillLayoutSubviews() {
@@ -88,12 +92,11 @@ class ChooseUniversityViewController: CustomViewController {
 extension ChooseUniversityViewController {
     func moveToNext() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//if self.isEditProfile == true {
+            if self.isEditUserProfile == true {
+                self.navigationController?.popViewController(animated: true)
+            } else {
                 self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
-          //  } else {
-          //      self.navigationController?.popViewController(animated: true)
-          //  }
-            //AppDelegate.getInstance().setupStoryboard()
+            }
         }
     }
 }

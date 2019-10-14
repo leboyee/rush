@@ -68,6 +68,8 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         } else if indexPath.section == 5 {
             if joinedClub {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
+                cell.setup(font: UIFont.semibold(sz: 13))
+                cell.setup(titleColor: UIColor.lightGrayColor)
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell else { return UITableViewCell() }
@@ -81,7 +83,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 return cell
             } else if indexPath.row == 1 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
-                fillTextViewCell(cell)
+                fillTextViewCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 2 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
@@ -89,6 +91,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 return cell
             } else if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
+                fillLikeCell(cell, indexPath)
                 return cell
             } else {
                 return UITableViewCell()
@@ -150,6 +153,43 @@ extension ClassDetailViewController: OtherUserProfileProtocol {
             actionText: "Undo",
             actionBlock: { (_) in
                 Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+}
+// MARK: - PostVIewController delegate
+extension ClassDetailViewController: PostViewProtocol {
+    func deletePostSuccess(_ post: Post?) {
+        let snackbar = TTGSnackbar(message: "Your post is deleted.",
+                                   duration: .middle,
+                                   actionText: "Undo",
+                                   actionBlock: { (_) in
+                                    Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+    
+    func updatedPost(_ post: Post) {
+        
+    }
+}
+
+// MARK: - CreatePostViewController Delegate
+extension ClassDetailViewController: CreatePostViewControllerDelegate {
+    func createPostSuccess(_ post: Post) {
+    }
+    
+    func showSnackBar(text: String, buttonText: String) {
+        /*
+         notificationTitle = text
+         notificationButtonTitle = buttonText
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
+        let snackbar = TTGSnackbar(message: text,
+                                   duration: .middle,
+                                   actionText: buttonText,
+                                   actionBlock: { (_) in
+                                    Utils.notReadyAlert()
         })
         snackbar.show()
     }

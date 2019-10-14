@@ -31,7 +31,7 @@ class NetworkManager: NSObject {
     
     static let shared = NetworkManager()
     
-    let errorDomain = "com.messapps.paidmeals"
+    let errorDomain = "com.messapps.testing.Rush"
     static var userAgent: String!
     var xAPIKey: String {
         return Bundle.main.infoDictionary?["APIKey"] as? String ?? ""
@@ -318,7 +318,7 @@ class NetworkManager: NSObject {
             request.setValue("application/json; charset=\(charset)", forHTTPHeaderField: "Content-Type")
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         case ContentType.formData:
-            let POSTBoundary = "paidmeals-boundary"
+            let POSTBoundary = "rush-boundary"
             request.setValue("multipart/form-data; charset=\(charset); boundary=\(POSTBoundary)", forHTTPHeaderField: "Content-Type")
             request.httpBody = self.buildMultipartFormData(postBody: POSTBoundary, params: parameters as? [[String: AnyObject]])
         case ContentType.formUrlencoded:

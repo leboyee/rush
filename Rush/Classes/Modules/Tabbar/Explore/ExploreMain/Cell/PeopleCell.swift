@@ -40,6 +40,10 @@ extension PeopleCell {
         profileImage.image = image
     }
     
+    func setup(url: URL?) {
+        profileImage.sd_setImage(with: url, completed: nil)
+    }
+    
     func setup(checkMark: Bool) {
         self.accessoryType = checkMark == true ? .checkmark : .none
     }

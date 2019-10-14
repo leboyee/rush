@@ -21,11 +21,12 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
+    //@IBOutlet weak var deleteButton: UIButton!
 
-    var selectedArray = [SubClass]()
+    var selectedArray = [ClassGroup]()
     var selectedIndex = -1
-    var classesArray = [Class]()
-    var subClassArray = [SubClass]()
+    var classesArray = [SubClass]()
+    var subClassArray = [ClassGroup]()
     var pageNo = 1
 
     override func viewDidLoad() {
@@ -52,7 +53,7 @@ class ChooseClassesViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
-        getClassesList()
+        getClassListAPI(search: "")
 
     }
     
@@ -92,6 +93,11 @@ extension ChooseClassesViewController {
         bottomView.isHidden = self.selectedArray.count > 0 ? false : true
         self.tableView.reloadData()
     }
+    
+    func nextButtonVisiable() {
+        bottomView.isHidden = self.selectedArray.count > 0 ? false : true
+    }
+
 }
 
 // MARK: - Actions
@@ -106,6 +112,15 @@ extension ChooseClassesViewController {
     }
     
     @IBAction func nextButtonAction() {
-        self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
+        updateProfileAPI()
+        //self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
+    }
+}
+
+// MARK: - Preseneter
+extension ChooseClassesViewController {
+    
+    func profileUpdateSuccess() {
+            self.performSegue(withIdentifier: Segues.chooseInterestViewSegue, sender: self)
     }
 }

@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         setupAppearance()
         
         //Add Third Party SDK
@@ -99,15 +98,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupStoryboard() {
         if Authorization.shared.authorized == true {
-            let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
-            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
-            self.window?.rootViewController = tabbarVC
-        } else {
-            let tabbarStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
-            self.window?.rootViewController = tabbarVC
-        }
-        ThemeManager.shared.loadTheme()
+              let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+              let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+              self.window?.rootViewController = tabbarVC
+             self.window?.makeKeyAndVisible()
+          } else {
+              let tabbarStoryboard = UIStoryboard(name: "Main", bundle: nil)
+              let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+              self.window?.rootViewController = tabbarVC
+             self.window?.makeKeyAndVisible()
+          }
+        
+        //ThemeManager.shared.loadTheme()
+
+        /*let storyBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: storyboardString )
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()*/
+        //ThemeManager.shared.loadTheme()
     }
 
     //Temporary used for Registraiont

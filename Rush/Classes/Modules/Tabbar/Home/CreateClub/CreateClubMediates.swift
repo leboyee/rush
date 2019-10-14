@@ -123,7 +123,7 @@ extension CreateClubViewController: ClubHeaderDelegate {
 
 // MARK: - Add Interest Delegate
 extension CreateClubViewController: EventInterestDelegate {
-    func  selectedInterest(_ interest: [String]) {
+    func  selectedInterest(_ interest: [Interest]) {
         self.interestList = interest
         validateAllFields()
         self.tableView.reloadData()

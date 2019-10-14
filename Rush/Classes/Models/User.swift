@@ -10,7 +10,7 @@ import UIKit
 
 class User: Codable {
     
-    var id: String?
+    private var id: Int64 = 0
     var firstName: String?
     var lastName: String?
     var email: String?
@@ -23,9 +23,9 @@ class User: Codable {
     var password: String?
     var educationLevel: String?
     var educationYear: String?
-    var majors: [String]?
-    var minors: [String]?
-    var interest: [String]?
+    var majors: [Major]?
+    var minors: [Minor]?
+    var interest: [Interest]?
     var university: String?
     var birthDate: String?
     var gender: String?
@@ -64,12 +64,12 @@ class User: Codable {
     }
     
     var userId: String {
-        return id ?? "0"
+        return String(id)
     }
     
     var friendTypeStatus: ManageButtonType {
-        let loginUserRequested: Bool = friend?.first?.friendType == 1 && friend?.first?.friendUserId == Authorization.shared.profile?.userId
-        let otherUserRequested: Bool = friend?.first?.friendType == 2 && friend?.first?.friendUserId == Authorization.shared.profile?.userId
+        let loginUserRequested: Bool = friend?.first?.friendType == 1 && "\(friend?.first?.friendUserId ?? 0)" == Authorization.shared.profile?.userId
+        let otherUserRequested: Bool = friend?.first?.friendType == 2 && "\(friend?.first?.friendUserId ?? 0)" == Authorization.shared.profile?.userId
         let isAlreadyFriend: Bool = friend?.first?.friendStatus == 1
         
         return isAlreadyFriend ? .friends : loginUserRequested ? .requested : otherUserRequested ? .accept :  .addFriend
@@ -77,7 +77,7 @@ class User: Codable {
     
     private enum CodingKeys: String, CodingKey {
         
-        case id = "_id"
+        case id = "user_id"
         case firstName = "first_name"
         case lastName = "last_name"
         case email
@@ -88,9 +88,9 @@ class User: Codable {
         case educationYear = "u_edu_year"
         case socialId = "social_id"
         case password
-        case majors = "u_edu_majors"
-        case minors = "u_edu_minors"
-        case interest = "u_interests"
+        case majors = "user_majors"
+        case minors = "user_minors"
+        case interest = "user_interests"
         case university = "u_university"
         case birthDate = "u_birth_date"
         case gender = "u_gender"
@@ -126,7 +126,6 @@ class User: Codable {
 }
 
 class MentionedUser: Codable {
-    
     var id: String?
     var firstName: String?
     var lastName: String?
@@ -140,4 +139,36 @@ class MentionedUser: Codable {
     var name: String {
         return (firstName ?? "") + " " + (lastName ?? "")
     }
+}
+
+
+class Major: Codable {
+    
+    var id: Int64 = 0
+    var majorName: String?
+    var userId: Int64 = 0
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "major_id"
+        case majorName = "name"
+        case userId = "user_id"
+    }
+    init() {
+         
+     }
+}
+
+class Minor: Codable {
+    var id: Int64 = 0
+    var minorName: String?
+    var userId: Int64 = 0
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "minor_id"
+        case minorName = "name"
+        case userId = "user_id"
+    }
+    init() {
+         
+     }
 }

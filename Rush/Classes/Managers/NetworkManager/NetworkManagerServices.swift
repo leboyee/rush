@@ -135,6 +135,9 @@ extension NetworkManager {
     func joinClassGroup(classId: String, groupId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "class/\(classId)/group/\(groupId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
+    func getClassDetail(classId: String, groupId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "class/\(classId)/group/\(groupId)", params: param, resultHandler: resultHandler)
+    }
 
     // MARK: - Events
     func getEventDetail(eventId: String, resultHandler: @escaping ResultClosure) {
@@ -146,7 +149,7 @@ extension NetworkManager {
     }
     
     func getEventCategoryWithEventList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-             requestGet(path: "category/event/list", params: params, resultHandler: resultHandler)
+             requestGet(path: "interest/event/list", params: params, resultHandler: resultHandler)
     }
   
     func joinEvent(eventId: String, action: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -156,12 +159,10 @@ extension NetworkManager {
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
-    
     func updateEvent(eventId: String,params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event/\(eventId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
 
-    
     func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "category/event", params: params, resultHandler: resultHandler)
     }
@@ -214,6 +215,6 @@ extension NetworkManager {
     
     // MARK: - Notification
     func getNotificationList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "notification", params: params, resultHandler: resultHandler)
+        requestGet(path: "notification/histories", params: params, resultHandler: resultHandler)
     }
 }

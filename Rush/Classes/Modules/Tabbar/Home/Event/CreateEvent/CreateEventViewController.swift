@@ -55,7 +55,7 @@ class CreateEventViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
     var event: Event?
-    var interestList = [String]()
+    var interestList = [Interest]()
     var rsvpArray = [String]()
     var eventType: EventType = .publik
     override func viewDidLoad() {
@@ -73,6 +73,7 @@ class CreateEventViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
     }
 
 // MARK: - Other function
@@ -100,14 +101,14 @@ extension CreateEventViewController {
     
     @IBAction func saveButtonAction() {
         if isEditEvent == true {
-            updateEventApi(eventId: event?.id ?? "")
+            updateEventApi(eventId: String(event?.id ?? 0))
         } else {
             createEventAPI()
         }
     }
     
     @IBAction func deleteEventButtonAction() {
-        deleteEventAPI(id: event?.id ?? "")
+        deleteEventAPI(id: String(event?.id ?? 0))
     }
     
     @IBAction func addImageButtonAction() {
@@ -140,12 +141,12 @@ extension CreateEventViewController {
          startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
         endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
-        eventId = event?.id ?? "1"
+        eventId = String(event?.id ?? 1)
 //        for invites in event?.invitee ?? [Invitee]() {
 //            let invite = Invite()
 //            invite.profile = invites.user
 //        }
-        interestList = event?.interests?.components(separatedBy: ",") ?? [String]()
+        interestList = event?.interests ?? [Interest]()
         for rsvpQuestion in event?.rsvp ?? [RSVPQuestion]() {
             guard let question = rsvpQuestion.que else { return }
             rsvpArray.append(question)
@@ -229,6 +230,7 @@ extension CreateEventViewController {
         } else if segue.identifier == Segues.createEventInterestSegue {
             if let vc = segue.destination as? CreateEventInterestViewController {
                 vc.delegate = self
+                vc.selectedArray = interestList ?? [Interest]()
             }
         }
         

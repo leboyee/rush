@@ -33,8 +33,8 @@ extension ChooseClassesViewController {
     
     func fillClassesHeader(_ header: ClassesHeader, _ section: Int) {
         let classies = classesArray[section]
-        if selectedArray.contains(where: { $0.categoryId == classies.id }) {
-            guard let index = selectedArray.firstIndex(where: { $0.categoryId == classies.id }) else { return }
+        if selectedArray.contains(where: { $0.classId == classies.id }) {
+            guard let index = selectedArray.firstIndex(where: { $0.classId == classies.id }) else { return }
             let subClass = selectedArray[index]
             header.setup(detailsLableText: subClass.name)
         } else {
@@ -50,18 +50,36 @@ extension ChooseClassesViewController {
     @objc func headerSelectionAction(_ sender: UIButton) {
         if selectedIndex == sender.tag {
             selectedIndex = -1
+            tableView.reloadData()
         } else {
             selectedIndex = sender.tag
             let classies = classesArray[sender.tag]
-            getSubClassList(classId: classies.id)
+            subClassArray.removeAll()
+            tableView.reloadData()
+            getClassGroupListAPI(classId: classies.id)
         }
-        tableView.reloadData()
     }
 
 }
 
 // MARK: - Manage Interator or API's Calling
 extension ChooseClassesViewController {
+    
+    func getClassListAPI(search: String) {
+        let param = [Keys.pageNo: pageNo, Keys.search: search] as [String: Any]
+        
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.classesArray = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+
+    /*
     func getClassesList() {
         //Utils.showSpinner()
         ServiceManager.shared.getClassCategory(params: [:]) { [weak self] (data, errorMessage) in
@@ -75,7 +93,26 @@ extension ChooseClassesViewController {
             unsafe.tableView.reloadData()
         }
     }
+    */
     
+        func getClassGroupListAPI(classId: String) {
+
+            Utils.showSpinner()
+            let param = [Keys.pageNo: pageNo, Keys.classId: classId, Keys.search: ""] as [String: Any]
+            
+            ServiceManager.shared.fetchClassGroupList(classId: classId, params: param) { [weak self] (data, errorMsg) in
+                Utils.hideSpinner()
+                guard let unsafe = self else { return }
+                if let value = data {
+                    unsafe.subClassArray = value
+                    unsafe.tableView.reloadData()
+                } else {
+                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                }
+            }
+        }
+
+    /*
     func getSubClassList(classId: String) {
         Utils.showSpinner()
         ServiceManager.shared.getSubClass(classId: classId, params: [Keys.pageNo: pageNo]) { [weak self] (data, errorMessage) in
@@ -90,15 +127,28 @@ extension ChooseClassesViewController {
             unsafe.tableView.reloadData()
            }
        }
-    
+    */
     func updateProfileAPI() {
-        let param = [Keys.uEduMinors: selectedArray]  as [String: Any]
+        var selectedClass = [[String: Any]]()
+        for classGropObject in selectedArray {
+            selectedClass.append([Keys.classId: classGropObject.classId, Keys.groupId: classGropObject.id])
+        }
+        var classJson: String = ""
+               do {
+                   let jsonData = try JSONSerialization.data(withJSONObject: selectedClass)
+                   if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                       classJson = JSONString
+                   }
+               } catch {
+                   print(error.localizedDescription)
+               }
+        let param = [Keys.uEduClasses: classJson]  as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
-            guard let _ = self else { return }
+            guard let unsafe = self else { return }
             if data != nil {
-                //unsafe.profileUpdateSuccess()
+                unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }

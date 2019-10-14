@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
@@ -13,6 +13,7 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 
 let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
+let serverDateFormate = "yyyy:MM:dd HH:mm:ss"
 // MARK: - Production Build
 var isProductionBuild: Bool = true
 
@@ -93,7 +94,7 @@ struct Cell {
     static let editProfileInfo      = "EditProfileInfoCell"
     static let editProfileMinorCell = "EditProfileMinorCell"
     static let eventTypeModelCell = "EventTypeModelCell"
-
+    static let galleryCell = "GalleryCell"
 }
 
 struct ReusableView {
@@ -196,10 +197,17 @@ struct Segues {
     static let editProfileSegue                   = "EditProfileSegue"
     static let settingViewControllerSegue         = "SettingViewControllerSegue"
     static let editEventSegue                     = "EditEventSegue"
+    static let userFriendListSegue                = "UserFriendListSegue"
     static let exploreEvents                      = "ExploreEventsSegue"
     static let eventDetailCalendar                = "EventDetailCalendarSegue"
     static let calendarClassDetail                = "CalendarClassDetailSegue"
     static let calendarEventDetail                = "CalendarEventDetailSegue"
+    static let userProfileGallerySegue            = "UserProfileGallerySegue"
+    static let notificationEventDetail            = "NotificationEventDetailSegue"
+    static let notificationClubDetail             = "NotificationClubDetailSegue"
+    static let notificationClassDetail            = "NotificationClassDetailSegue"
+    static let notificationPostDetail             = "NotificationPostDetailSegue"
+
 }
 
 struct StoryBoard {
@@ -256,7 +264,7 @@ public struct Text {
     static let classes                  = "Classes"
     static let manage                   = "Manage"
     static let groupChat                = "Group chat"
-    static let messages                 = "Messages"
+    static let message                  = "Message"
     static let friend                   = "Friend"
     static let viewAll                  = "View all"
     static let accept                   = "Accept "
@@ -319,6 +327,7 @@ public struct Text {
     static let club                      = "club"
     static let post                      = "post"
     static let event                     = "event"
+    static let classKey                  = "class"
     static let education                 = "Education"
     static let majors                    = "Majors"
     static let minors                    = "Minors"
@@ -405,11 +414,18 @@ enum GetEventType: String {
     case my = "my"
     case myUpcoming = "my-upcoming"
     case attending = "attending"
+    case managedFirst = "managed-first"
 }
 
-struct Vote {
-    static let up = "up"
-    static let down = "down"
+enum NotificationType: String, Codable {
+    case none = ""
+    case eventInvite = "eventInvite"
+    case clubInvite = "clubInvite"
+    case friendRequest = "friendRequest"
+    case acceptFriendRequest = "acceptFriendRequest"
+    case upVoted = "upVoted"
+    case downVoted = "downVoted"
+    case newComment = "newComment"
 }
 
 enum UserProfileDetailType {
@@ -418,4 +434,16 @@ enum UserProfileDetailType {
     case events
     case clubs
     case classes
+}
+
+struct Vote {
+    static let up = "up"
+    static let down = "down"
+}
+
+enum ChatDetailType: String {
+    case single = ""
+    case club = "club"
+    case event = "event"
+    case classes = "classes"
 }

@@ -28,12 +28,13 @@ class SharePostViewController: UIViewController {
     @IBOutlet weak var radiusView: UIView!
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
+    @IBOutlet weak var heightConstraintOfDeletePost: NSLayoutConstraint!
     
     weak var delegate: SharePostViewControllerDelegate?
     
     var type: SharePostType = .post
     var object: Any?
-
+    var post: Post?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +65,10 @@ class SharePostViewController: UIViewController {
             deleteLabel.text = Text.report
         } else {
             deleteLabel.text = Text.deletePost
+        }
+        if post?.user?.userId != Authorization.shared.profile?.userId {
+            heightConstraintOfContainerView.constant -= heightConstraintOfDeletePost.constant
+            heightConstraintOfDeletePost.constant = 0
         }
     }
 

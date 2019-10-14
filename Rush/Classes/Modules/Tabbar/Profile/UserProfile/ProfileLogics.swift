@@ -29,6 +29,8 @@ extension ProfileViewController {
     }
     
     func loadFriends() {
+        friendPageNo = 1
+        friendNextPageExist = false
         fetchFriendList()
     }
     
@@ -36,6 +38,43 @@ extension ProfileViewController {
         notificationPageNo = 1
         notificationNextPageExist = false
         fetchNotificationList()
+    }
+    
+    private func handleTapOnLabel(notification: NotificationItem, text: String) {
+        switch notification.ntType {
+        case .acceptFriendRequest, .friendRequest:
+            if let friend = notification.friend?.last, (friend.user?.name ?? "") == text, let user = friend.user {
+                showFriend(user: user)
+            }
+        case .eventInvite:
+            if let user = notification.generatedBy, user.name == text {
+                showFriend(user: user)
+            } else if let event = notification.event?.last {
+                showEvent(event: event)
+            }
+        case .clubInvite:
+            if let user = notification.generatedBy, user.name == text {
+                showFriend(user: user)
+            } else if let club = notification.club?.last {
+                showClub(club: club)
+            }
+        case .upVoted, .downVoted, .newComment:
+            if let user = notification.generatedBy, user.name == text {
+                showFriend(user: user)
+            } else if let post = notification.post?.last {
+                var object: Any?
+                if post.type.lowercased() == Text.event.lowercased() {
+                    object = notification.event?.last
+                } else if post.type.lowercased() == Text.club.lowercased() {
+                    object = notification.club?.last
+                } else {
+                    object = notification.classObject?.last
+                }
+                showPost(post: post, object: object)
+            }
+        default:
+        break
+        }
     }
 }
 
@@ -95,7 +134,48 @@ extension ProfileViewController {
     }
     
     func fillNotificationCell(_ cell: NotificationCell, _ indexPath: IndexPath) {
-        cell.setup()
+        if let notification = profileDetail.notifications?[indexPath.row] {
+            switch notification.ntType {
+            case .acceptFriendRequest, .friendRequest:
+                cell.set(friend: notification.friend?.last, text: notification.ntText)
+            case .eventInvite:
+                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+            case .clubInvite:
+                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+            case .upVoted, .downVoted, .newComment:
+                if let post = notification.post?.last {
+                    if post.type.lowercased() == Text.event.lowercased() {
+                        cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+                    } else if post.type.lowercased() == Text.club.lowercased() {
+                        cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+                    } else {
+                        cell.set(user: notification.generatedBy, object: notification.classObject?.last, text: notification.ntText)
+                    }
+                }
+            default:
+                cell.label.text = ""
+            }
+            
+            cell.labelTapEvent = { [weak self] (text, range) in
+                guard let unsafe = self else { return }
+                let name = (text as NSString).substring(with: range)
+                unsafe.handleTapOnLabel(notification: notification, text: name)
+            }
+            
+            cell.userImageTapEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                if let friend = notification.friend?.last, let name = friend.user?.name {
+                    unsafe.handleTapOnLabel(notification: notification, text: name)
+                } else if let user = notification.generatedBy {
+                    unsafe.handleTapOnLabel(notification: notification, text: user.name)
+                }
+            }
+            
+            cell.eventImageTapEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                unsafe.handleTapOnLabel(notification: notification, text: "")
+            }
+        }
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
@@ -123,8 +203,21 @@ extension ProfileViewController {
             } else if indexPath.section == 1 {
                 if let friends = self?.profileDetail.friends {
                     let friend = friends[index] as Friend
-                    self?.showFriend(user: friend)
+                    if let user = friend.user {
+                       self?.showFriend(user: user)
+                    }
                 }
+            }
+        }
+        
+        cell.cellWillDisplay = { [weak self] (index) in
+            guard let unsafe = self else { return }
+            if indexPath.section == 0, unsafe.imageNextPageExist, (unsafe.profileDetail.images?.count ?? 0) - 1 == index {
+                unsafe.imageNextPageExist = false
+                unsafe.fetchImagesList()
+            } else if indexPath.section == 1, unsafe.friendNextPageExist, (unsafe.profileDetail.friends?.count ?? 0) - 1 == index {
+                unsafe.friendNextPageExist = false
+                unsafe.fetchFriendList()
             }
         }
     }
@@ -159,13 +252,19 @@ extension ProfileViewController {
     func selectedRow(_ indexPath: IndexPath) {
         
     }
+    
+    func willDisplay(_ indexPath: IndexPath) {
+        if indexPath.section == 3, notificationNextPageExist, (profileDetail.notifications?.count ?? 0) - 1 == indexPath.row {
+            notificationNextPageExist = false
+            fetchNotificationList()
+        }
+    }
 }
 
 // MARK: - API's
 extension ProfileViewController {
 
     private func fetchUserProfile() {
-
         downloadQueue.async {
             let time = DispatchTime.now() + (2 * 60)
             _ = self.downloadGroup.wait(timeout: time)
@@ -175,10 +274,7 @@ extension ProfileViewController {
             let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
             ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
                 self?.profileDetail.profile = user
-                if let list = user?.interest {
-                  let string = list.joined(separator: ",")
-                    self?.profileDetail.interests = string.tags
-                }
+                self?.profileDetail.interests = user?.interest
                 self?.setupHeaderData()
                 self?.downloadGroup.leave()
             }
@@ -228,10 +324,27 @@ extension ProfileViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let userId = self.profileDetail.profile?.userId else { return }
-            let params = [Keys.profileUserId: userId, Keys.pageNo: "1"]
-            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (list, _) in
-                self?.profileDetail.friends = list
+            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.friendPageNo)"]
+            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (friends, _) in
+                guard let unsafe = self else { return }
+                if let list = friends {
+                    if list.isEmpty {
+                        unsafe.friendNextPageExist = false
+                        if unsafe.friendPageNo == 1 {
+                            unsafe.profileDetail.friends?.removeAll()
+                        }
+                    } else {
+                        if unsafe.friendPageNo == 1 {
+                            unsafe.profileDetail.friends = list
+                        } else {
+                            unsafe.profileDetail.friends?.append(contentsOf: list)
+                        }
+                        unsafe.friendPageNo += 1
+                        unsafe.friendNextPageExist = true
+                    }
+                }
                 self?.downloadGroup.leave()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -241,14 +354,28 @@ extension ProfileViewController {
             let time = DispatchTime.now() + (2 * 60)
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
-            guard let userId = self.profileDetail.profile?.userId else { return }
-            /*
-            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.notificationPageNo)"]
-            ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (list, _) in
-                self?.profileDetail.notifications = list
+            let params = [Keys.pageNo: "\(self.notificationPageNo)"]
+            ServiceManager.shared.fetchNotificationList(params: params) { [weak self] (notifications, _) in
+                guard let unsafe = self else { return }
+                if let list = notifications {
+                    if list.isEmpty {
+                        unsafe.notificationNextPageExist = false
+                        if unsafe.notificationPageNo == 1 {
+                            unsafe.profileDetail.notifications?.removeAll()
+                        }
+                    } else {
+                        if unsafe.notificationPageNo == 1 {
+                            unsafe.profileDetail.notifications = list
+                        } else {
+                            unsafe.profileDetail.notifications?.append(contentsOf: list)
+                        }
+                        unsafe.notificationPageNo += 1
+                        unsafe.notificationNextPageExist = true
+                    }
+                }
                 self?.downloadGroup.leave()
-            }*/
-            self.downloadGroup.leave()
+                self?.tableView.reloadData()
+            }
         }
     }
 }

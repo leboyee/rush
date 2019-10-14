@@ -25,12 +25,12 @@ struct RSVPAnswer: Codable {
 }
 
 struct EventInvite: Codable {
-    var id: String = ""
+    var id: Int64 = 0
     var status: Int = -1 // 0 = invited, 1 = joined
     var rsvpAns: [RSVPAnswer]?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "event_invite_id"
         case status
         case rsvpAns = "rsvp_ans"
     }
@@ -38,8 +38,8 @@ struct EventInvite: Codable {
 
 class Event: Codable {
     
-    var id: String = ""
-    var userId: String = ""
+    var id: Int64 = 0
+    var userId: Int64 = 0
     var title: String = ""
     var desc: String = ""
     var eventType: EventType = .none
@@ -49,7 +49,7 @@ class Event: Codable {
     var address: String?
     var latitude: String?
     var longitude: String?
-    var interests: String?
+    var interests: [Interest]?
     var creator: User?
     var rsvp: [RSVPQuestion]?
     var eventInvite: [EventInvite]?
@@ -62,13 +62,13 @@ class Event: Codable {
        return convertJsonToPhoto
     }
     
-    private var isChatGroupInEvent: String?
+    private var isChatGroupInEvent: Int = 0
     var isChatGroup: Bool {
-        return isChatGroupInEvent == "1" ? true : false
+        return isChatGroupInEvent == 1 ? true : false
     }
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "event_id"
         case userId = "event_user_id"
         case eventType = "event_type"
         case photoJson = "event_photo"

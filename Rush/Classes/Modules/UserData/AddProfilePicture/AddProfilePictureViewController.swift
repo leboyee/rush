@@ -136,6 +136,7 @@ extension AddProfilePictureViewController {
         pickerController.showsCancelButton = true
         pickerController.autoCloseOnSingleSelect = true
         pickerController.assetType = .allPhotos
+        
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             if assets.count > 0 {
                 self.assignSelectedImages(photos: assets)
@@ -196,6 +197,7 @@ extension AddProfilePictureViewController {
         if segue.identifier == Segues.chooseLevelSegue {
             if let vc = segue.destination as? ChooseLevelViewController {
                 vc.isSkip = isSkip
+                vc.isEditUserProfile = false
             }
         }
     }

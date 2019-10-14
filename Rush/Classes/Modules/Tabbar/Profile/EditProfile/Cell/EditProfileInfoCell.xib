@@ -28,13 +28,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-4U-vfR" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-4U-vfR" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
                         <rect key="frame" x="24" y="12" width="327" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="iMz-Kr-sGK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="km@messapps.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcA-Uw-eva" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km@messapps.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcA-Uw-eva" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
                         <rect key="frame" x="24" y="32" width="327" height="20.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
@@ -62,16 +65,15 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QcA-Uw-eva" firstAttribute="leading" secondItem="Z5w-4U-vfR" secondAttribute="leading" id="88j-Vi-IEt"/>
+                    <constraint firstItem="YXZ-gM-KQP" firstAttribute="top" secondItem="QcA-Uw-eva" secondAttribute="bottom" constant="10.5" id="3DU-TI-UnX"/>
                     <constraint firstItem="WF7-Ia-g1m" firstAttribute="centerY" secondItem="go4-bJ-yx7" secondAttribute="centerY" id="ETy-ps-F8D"/>
                     <constraint firstItem="Z5w-4U-vfR" firstAttribute="top" secondItem="go4-bJ-yx7" secondAttribute="top" constant="12" id="GvF-9l-MA6"/>
                     <constraint firstItem="wOG-dc-JUe" firstAttribute="centerY" secondItem="go4-bJ-yx7" secondAttribute="centerY" id="Iqw-oe-DFX"/>
+                    <constraint firstItem="QcA-Uw-eva" firstAttribute="leading" secondItem="YXZ-gM-KQP" secondAttribute="leading" id="Jxv-FF-3uE"/>
                     <constraint firstItem="YXZ-gM-KQP" firstAttribute="leading" secondItem="go4-bJ-yx7" secondAttribute="leading" constant="24" id="Kt7-2e-0hY"/>
                     <constraint firstItem="Z5w-4U-vfR" firstAttribute="leading" secondItem="go4-bJ-yx7" secondAttribute="leading" constant="24" id="NUN-C0-VKU"/>
-                    <constraint firstAttribute="bottom" secondItem="QcA-Uw-eva" secondAttribute="bottom" constant="11" id="ON6-OB-fQM"/>
                     <constraint firstAttribute="bottom" secondItem="YXZ-gM-KQP" secondAttribute="bottom" id="PmH-Gz-QWg"/>
-                    <constraint firstItem="QcA-Uw-eva" firstAttribute="trailing" secondItem="Z5w-4U-vfR" secondAttribute="trailing" id="SGc-ze-Y6l"/>
-                    <constraint firstItem="QcA-Uw-eva" firstAttribute="top" secondItem="Z5w-4U-vfR" secondAttribute="bottom" constant="4" id="TZH-9Y-dGh"/>
+                    <constraint firstItem="QcA-Uw-eva" firstAttribute="trailing" secondItem="wOG-dc-JUe" secondAttribute="trailing" id="TWP-f8-jAR"/>
                     <constraint firstAttribute="trailing" secondItem="WF7-Ia-g1m" secondAttribute="trailing" constant="24" id="ae2-qc-bt1"/>
                     <constraint firstAttribute="trailing" secondItem="wOG-dc-JUe" secondAttribute="trailing" constant="24" id="fXG-T6-8ie"/>
                     <constraint firstAttribute="trailing" secondItem="YXZ-gM-KQP" secondAttribute="trailing" id="imH-Bc-3UZ"/>
@@ -85,6 +87,7 @@
                 <outlet property="detailLabel" destination="QcA-Uw-eva" id="NgY-hV-hvZ"/>
                 <outlet property="rightButton" destination="WF7-Ia-g1m" id="yVV-Zo-2As"/>
                 <outlet property="titleLabel" destination="Z5w-4U-vfR" id="Ccb-wU-DwV"/>
+                <outlet property="titleLabelHeightConstraint" destination="iMz-Kr-sGK" id="jXa-ed-AIK"/>
             </connections>
             <point key="canvasLocation" x="136.95652173913044" y="34.821428571428569"/>
         </tableViewCell>

@@ -44,10 +44,15 @@ extension CalendarEventListViewController {
 // MARK: - Other functions
 extension CalendarEventListViewController {
 
-    func loadEvents(groups: [EventGroup]?) {
+    func loadEvents(groups: [EventGroup]?, isSchedule: Bool) {
         guard groups != nil, (groups?.count ?? 0) > 0 else {
-            emptyTodayView.isHidden = false
-            emptyView.isHidden = true
+            if isSchedule {
+                emptyTodayView.isHidden = false
+                emptyView.isHidden = true
+            } else {
+                emptyTodayView.isHidden = true
+                emptyView.isHidden = false
+            }
             tableView.isHidden = true
             return
         }
@@ -63,8 +68,8 @@ extension CalendarEventListViewController {
         performSegue(withIdentifier: Segues.calendarEventDetail, sender: eventId)
     }
     
-    func showClass(classId: String) {
-        performSegue(withIdentifier: Segues.calendarClassDetail, sender: classId)
+    func showClass(classId: String, groupId: String) {
+        performSegue(withIdentifier: Segues.calendarClassDetail, sender: (classId, groupId))
     }
 }
 
@@ -76,6 +81,10 @@ extension CalendarEventListViewController {
             vc.eventId = sender as? String
         } else if segue.identifier == Segues.calendarClassDetail {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
+            if let (classId, groupId) = sender as? (String, String) {
+                vc.classId = classId
+                vc.groupId = groupId
+            }
         }
     }
 }

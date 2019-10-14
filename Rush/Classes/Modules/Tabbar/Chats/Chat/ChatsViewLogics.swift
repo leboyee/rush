@@ -24,18 +24,27 @@ extension ChatsViewController {
         cell.setup(title: getSingleChatName(channel: channel))
         cell.setup(lastMessage: channel.lastMessage)
         cell.setup(onlineUser: channel.members)
-        cell.setup(chatImage: channel.members)
         cell.setup(channel: channel)
+        
+        if channel.customType == "single" {
+            cell.setup(chatImage: channel.members)
+        } else {
+            cell.setup(img: channel.coverUrl)
+        }
     }
     
     func cellSelected(_ indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ChatListCell else { return }
+        
+        let channel = channels[indexPath.row]
+        
         let controller = ChatRoomViewController()
         controller.hidesBottomBarWhenPushed = true
-        controller.isGroupChat = false
+        controller.isGroupChat = channel.customType == "single" ? false : true
         controller.userName = cell.titleLabel.text ?? ""
         controller.userNavImage = cell.imgView.image
-        controller.channel = channels[indexPath.row]
+        controller.channel = channel
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     

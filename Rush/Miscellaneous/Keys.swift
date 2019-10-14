@@ -1,6 +1,6 @@
 //
 //  Keys.swift
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
@@ -22,10 +22,10 @@ let kSavedIsNewUser             = "kSavedNewUser"
 let kAppOpenFirstTime           = "kAppOpenFirstTime"
 
 // MARK: - User Default
-let kLastLocation               = "com.paidmeals.lastlocation"
-let kDeviceTokenPushKey         = "com.friends.devicetokenpush"
-let kDeviceTokenPushDataKey     = "com.friends.devicetokenpushdata"
-let kUpdateUnreadcount          = "com.friends.updateunreadcount"
+let kLastLocation               = "com.rush.lastlocation"
+let kDeviceTokenPushKey         = "com.rush.devicetokenpush"
+let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
+let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 
 // MARK: - API's Keys
 struct Keys {
@@ -43,9 +43,11 @@ struct Keys {
     static let large                 = "large"
     static let url                   = "url"
     static let list                  = "list"
+    static let kclass                = "class"
     
     static let matchId            = "match_id"
     static let classId            = "class_id"
+    static let groupId            = "group_id"
     static let matchStatus        = "match_status"
     static let friendUserId       = "frd_user_id"
     static let friendOtherUserId  = "frd_other_user_id"
@@ -72,6 +74,7 @@ struct Keys {
     static let clubInterests = "club_interests"
     static let clubInvitedUserIds = "club_invited_user_ids"
     static let clubIsChatGroup = "club_is_chat_group"
+    static let clubContact = "club_contact"
     static let clubPhoto = "club_photo"
     static let clubId = "club_id"
     static let club = "club"
@@ -84,6 +87,9 @@ struct Keys {
     static let userHomeTown            = "u_hometown"
     static let userLatitude            = "u_latitude"
     static let userLongitude           = "u_longitude"
+    static let userBirthDate           = "u_birth_date"
+    static let userGender              = "u_gender"
+    static let userRelation             = "u_relationship"
 
     static let phone           = "phone"
     static let phoneToken           = "phone_token"
@@ -103,6 +109,7 @@ struct Keys {
     static let uEduYear           = "u_edu_year"
     static let uEduMajors           = "u_edu_majors"
     static let uEduMinors           = "u_edu_minors"
+    static let uEduClasses           = "u_edu_classes"
     static let instagramToken           = "insta_token"
     static let images           = "images"
     static let rsvpAns         = "rsvp_ans"
@@ -127,6 +134,11 @@ struct Keys {
     static let eventInvitedUserIds = "event_invited_user_ids"
     static let eventPhoto = "event_photo"
     static let eventId = "event_id"
+    static let isOnlyFriendGoing = "is_only_friend_going"
+    static let fromStart = "from_start"
+    static let toStart = "to_start"
+    static let fromTime = "from_time"
+    static let toTime = "to_time"
 
     static let postId = "post_id"
     static let parentId = "parent_id"
@@ -142,5 +154,6 @@ struct Keys {
     static let events           = "events"
     static let classes          = "classes"
     static let count            = "count"
+    static let isScheduledAnything = "isScheduledAnything"
 
 }

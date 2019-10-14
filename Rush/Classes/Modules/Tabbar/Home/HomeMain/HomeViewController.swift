@@ -28,8 +28,6 @@ class HomeViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setup()
     }
     
@@ -158,15 +156,19 @@ extension HomeViewController {
             vc.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Segues.homeEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.eventId = (sender as? Event)?.id
-            vc.event = sender as? Event
+            if let event = sender as? Event {
+               vc.eventId = String(event.id)
+               vc.event = event
+            }
         } else if segue.identifier == Segues.eventListSeuge {
             if let vc = segue.destination as? EventListViewController {
                 vc.eventList = (sender as? [Event] ?? [Event]())
             }
         } else if segue.identifier == Segues.classDetailSegue {
-            guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+            guard let vc = segue.destination as? ClassDetailViewController
+                else { return }
+            vc.subclassInfo = sender as? SubClass
+            vc.joinedClub = true
         } else if segue.identifier == Segues.searchClubSegue {
             guard let vc = segue.destination as? SearchClubViewController else { return }
             //            vc.searchType = screenType == .club ? .searchList : .classes

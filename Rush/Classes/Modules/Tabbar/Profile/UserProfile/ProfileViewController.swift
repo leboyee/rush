@@ -12,7 +12,7 @@ struct ProfileDetail {
     var profile: User?
     var images: [Image]?
     var friends: [Friend]?
-    var interests: [Tag]?
+    var interests: [Interest]?
     var notifications: [NotificationItem]?
 }
 
@@ -28,11 +28,15 @@ class ProfileViewController: UIViewController {
     var headerFullHeight: CGFloat = 344
     let headerSmallHeight: CGFloat = 170
     var isOtherUserProfile: Bool = false
-    var notificationPageNo: Int = 1
-    var notificationNextPageExist = false
     
     var imagePageNo: Int = 1
     var imageNextPageExist = false
+    
+    var notificationPageNo: Int = 1
+    var notificationNextPageExist = false
+    
+    var friendPageNo: Int = 1
+    var friendNextPageExist = false
     
     let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
     let downloadGroup = DispatchGroup()
@@ -64,7 +68,8 @@ class ProfileViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        //navigationController?.isNavigationBarHidden = false
     }
 }
 
@@ -113,15 +118,15 @@ extension ProfileViewController {
         header.set(name: name)
         let university = (profileDetail.profile?.university ?? "").isEmpty ? "" : (profileDetail.profile?.university ?? "")
         header.set(university: university)
-        header.set(url: profileDetail.profile?.photo?.urlLarge())
+        header.set(url: profileDetail.profile?.photo?.url())
     }
     
     func showEditProfile() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.editProfileSegue, sender: nil)
     }
     
     func showAllFriends() {
-        Utils.notReadyAlert()
+        performSegue(withIdentifier: Segues.userFriendListSegue, sender: self)
     }
     
     func showAllInterests() {
@@ -132,10 +137,25 @@ extension ProfileViewController {
         Utils.notReadyAlert()
     }
     
-    func showFriend(user: Friend) {
+    func showFriend(user: User) {
         performSegue(withIdentifier: Segues.profileFriendProfile, sender: user)
     }
     
+    func showEvent(event: Event) {
+        performSegue(withIdentifier: Segues.notificationEventDetail, sender: event)
+    }
+    
+    func showClub(club: Club) {
+        performSegue(withIdentifier: Segues.notificationClubDetail, sender: club)
+    }
+    
+    func showClass(classObject: Class) {
+        performSegue(withIdentifier: Segues.notificationClassDetail, sender: classObject)
+    }
+    
+    func showPost(post: Post, object: Any?) {
+        performSegue(withIdentifier: Segues.notificationPostDetail, sender: (post, object))
+    }
 }
 
 // MARK: - Navigations
@@ -145,6 +165,28 @@ extension ProfileViewController {
             let vc = segue.destination as? OtherUserProfileController
             vc?.userInfo = sender as? User
             vc?.delegate = self
+        } else if segue.identifier == Segues.userFriendListSegue {
+            let vc = segue.destination as? UserFriendsListViewController
+            vc?.userId = Authorization.shared.profile?.userId ?? ""
+        } else if segue.identifier == Segues.notificationEventDetail {
+            let vc = segue.destination as? EventDetailViewController
+            if let event = sender as? Event {
+                vc?.event = event
+                vc?.eventId = String(event.id)
+            }
+        } else if segue.identifier == Segues.notificationClubDetail {
+            let vc = segue.destination as? ClubDetailViewController
+            vc?.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.notificationPostDetail {
+            let vc = segue.destination as? PostViewController
+            if let (post, object) = sender as? (Post, Any?) {
+                vc?.postInfo = post
+                if let event = object as? Event {
+                    vc?.eventInfo = event
+                } else if let club = object as? Club {
+                    vc?.clubInfo = club
+                }
+            }
         }
     }
 }

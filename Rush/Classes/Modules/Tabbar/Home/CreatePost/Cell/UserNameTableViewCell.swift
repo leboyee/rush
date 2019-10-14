@@ -34,4 +34,8 @@ extension UserNameTableViewCell {
     func setup(detail: String) {
         postUserDescripation.text = detail
     }
+    
+    func setup(url: URL?) {
+        postImageView.sd_setImage(with: url, completed: nil)
+    }
 }

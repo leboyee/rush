@@ -34,9 +34,15 @@ class ChatRoomViewController: MessagesViewController {
     var hasPrev = false
     var isShowTempData = false
     var isAllowTestMessage = false
-    var friendProfile: Friend?
+    
     var channel: SBDGroupChannel?
     var chatType: ChatType = .single
+    var chatDetailType: ChatDetailType = .single
+    
+    var friendProfile: Friend?
+    var clubInfo: Club?
+    var eventInfo: Event?
+    
     open var previousMessageQuery: SBDPreviousMessageListQuery?
 
     var emptyMessageView = UIView()
@@ -65,6 +71,7 @@ class ChatRoomViewController: MessagesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -281,7 +288,7 @@ extension ChatRoomViewController {
         galleryButton.isHighlighted = true
         galleryButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: 0, bottom: 6, right: 0)
         
-        // MARK: - AddImage button
+        // MARK: - AddGallryImage button
         galleryButton.onTouchUpInside { (_) in
             if self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
@@ -394,14 +401,13 @@ extension ChatRoomViewController {
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
         
-        if let members = channel?.members {
-            if members.count == 2 && channel?.data != "Group" {
-                chatType = .single
-            } else if members.count == 1 {
-                chatType = .single
-            } else {
-                chatType = .group
-                isGroupChat = true
+        if channel?.customType == "single" {
+            chatType = .single
+        } else {
+            chatType = .group
+            
+            if let members = channel?.members as? [SBDUser] {
+                userChatView.users = members
             }
         }
     
@@ -414,8 +420,8 @@ extension ChatRoomViewController {
     
     @objc func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue, keyboardSize.height > 0, keyboardSize.height < 150 {
-            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: 152, width: 88, height: 88)
-            timeLabel.frame = CGRect(x: 16, y: 256, width: screenWidth - 32, height: 22)
+            emptyUserImageView.frame =  CGRect(x: (screenWidth/2) - 44, y: isGroupChat ? 200 : 152, width: 88, height: 88)
+            timeLabel.frame = CGRect(x: 16, y: isGroupChat ? 300 : 256, width: screenWidth - 32, height: 22)
         }
     }
     
@@ -460,9 +466,14 @@ extension ChatRoomViewController {
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
         if friendProfile != nil {
             userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        } else if clubInfo != nil {
+            userNavImageView.sd_setImage(with: clubInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+        } else if eventInfo != nil {
+            userNavImageView.sd_setImage(with: eventInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
         } else if userNavImage != nil {
             userNavImageView.image = userNavImage
         }
+        
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill

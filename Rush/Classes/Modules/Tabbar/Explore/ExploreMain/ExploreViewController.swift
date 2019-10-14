@@ -153,6 +153,7 @@ extension ExploreViewController {
             
             if btn.tag == 0 { // Event
                 searchType = .event
+                // C*
                 getEventCategoryListAPI()
             } else if btn.tag == 1 { // Club
                 searchType = .club
@@ -191,11 +192,13 @@ extension ExploreViewController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+            vc.subclassInfo = sender as? SubClass
         } else if segue.identifier == Segues.eventDetailSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.eventId = (sender as? Event)?.id
-            vc.event = sender as? Event
+            if let event = sender as? Event {
+               vc.eventId = String(event.id)
+               vc.event = event
+            }
         }
         
     }

@@ -58,24 +58,12 @@
                                     <action selector="backButtonAction" destination="jT0-nn-O1x" eventType="touchUpInside" id="lHa-48-Cun"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwP-H1-UCw">
-                                <rect key="frame" x="360" y="56" width="30" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="⚙︎">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="WgC-rz-tQV" kind="show" id="JpC-61-lJ7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kFX-4p-a17" firstAttribute="top" secondItem="KKO-jb-Bmc" secondAttribute="bottom" constant="-40" id="20V-yY-Af0"/>
-                            <constraint firstItem="WwP-H1-UCw" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="12" id="64M-jI-bV1"/>
                             <constraint firstAttribute="bottom" secondItem="kFX-4p-a17" secondAttribute="bottom" id="6f4-n8-gW5"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="top" secondItem="BgX-Be-3HI" secondAttribute="top" id="Lgc-DV-gAh"/>
-                            <constraint firstItem="LP0-4Y-hab" firstAttribute="trailing" secondItem="WwP-H1-UCw" secondAttribute="trailing" constant="24" id="Mgf-c2-3Xl"/>
                             <constraint firstItem="kFX-4p-a17" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="SqE-iP-m0a"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="T5Z-WW-UiJ"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="adj-fA-m9T"/>
@@ -89,15 +77,59 @@
                         <outlet property="backButton" destination="s3p-gb-PRf" id="QUA-5r-mv6"/>
                         <outlet property="header" destination="KKO-jb-Bmc" id="9gr-3g-uKd"/>
                         <outlet property="headerHeightConstraint" destination="yDQ-wg-Qf0" id="2yO-hN-wp9"/>
-                        <outlet property="settingsButton" destination="WwP-H1-UCw" id="efJ-fP-dgl"/>
                         <outlet property="tableView" destination="sLR-sx-qn9" id="OPq-rx-JRP"/>
                         <segue destination="c31-hD-7x0" kind="show" identifier="ProfileFriendProfileSegue" id="3dt-pp-mnp"/>
                         <segue destination="KSN-HZ-4n3" kind="show" identifier="EditProfileSegue" id="TzM-tw-RWf"/>
+                        <segue destination="5gp-qZ-wkB" kind="show" identifier="UserFriendListSegue" id="na3-Jf-Y3O"/>
+                        <segue destination="5V3-5S-qhK" kind="show" identifier="NotificationEventDetailSegue" id="Yvm-yr-Vqh"/>
+                        <segue destination="Se2-YI-KJb" kind="show" identifier="NotificationClubDetailSegue" id="mVW-Nk-rg2"/>
+                        <segue destination="QQo-sG-keX" kind="show" identifier="NotificationClassDetailSegue" id="78A-IE-Y1M"/>
+                        <segue destination="VBD-zJ-xaO" kind="show" identifier="NotificationPostDetailSegue" id="5Eg-G4-NS4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqU-TN-DgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-600" y="12.723214285714285"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="t6m-U0-HKF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="5V3-5S-qhK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5rM-WC-3f4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Y6-9N-Nh3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46" y="-356"/>
+        </scene>
+        <!--PostViewController-->
+        <scene sceneID="pkl-Z0-0m1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="PostViewController" id="VBD-zJ-xaO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2su-Ht-kFp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ok2-91-8UA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12" y="-577"/>
+        </scene>
+        <!--ClassDetailViewController-->
+        <scene sceneID="FFX-nw-bbw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="ClassDetailViewController" id="QQo-sG-keX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vLk-bu-acM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wr5-bD-jyP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="-520"/>
+        </scene>
+        <!--ClubDetailViewController-->
+        <scene sceneID="W9r-4l-jzp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="ClubDetailViewController" id="Se2-YI-KJb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kG2-Nf-4Is"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oRb-Oi-FTr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14" y="-465"/>
         </scene>
         <!--OtherUserProfileController-->
         <scene sceneID="pox-nY-OaA">
@@ -115,7 +147,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydb-HA-wyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798" y="-524"/>
+            <point key="canvasLocation" x="1862" y="425"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Cco-VF-uMf">
@@ -223,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="12.723214285714285"/>
+            <point key="canvasLocation" x="1854" y="13"/>
         </scene>
         <!--Privacy Settings View Controller-->
         <scene sceneID="9fs-Ab-LU0">
@@ -262,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83f-rQ-vzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="-202"/>
+            <point key="canvasLocation" x="2983" y="1215"/>
         </scene>
         <!--Disconnect Instagram View Controller-->
         <scene sceneID="2vv-fq-i3i">
@@ -371,7 +403,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eix-Nr-X0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-600" y="751"/>
+            <point key="canvasLocation" x="2983" y="510"/>
+        </scene>
+        <!--User Friends List View Controller-->
+        <scene sceneID="xsx-9k-Rcc">
+            <objects>
+                <viewController id="5gp-qZ-wkB" customClass="UserFriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qcH-Yf-J4t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-FE-TIX" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="s0q-8L-7Py">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcR-uP-PsI">
+                                <rect key="frame" x="0.0" y="13" width="414" height="829"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results were found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ft-Og-Kcj">
+                                        <rect key="frame" x="137" y="24" width="140" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="C5d-hl-3Fv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5ft-Og-Kcj" firstAttribute="top" secondItem="YcR-uP-PsI" secondAttribute="top" constant="24" id="5jC-2u-YhL"/>
+                                    <constraint firstItem="5ft-Og-Kcj" firstAttribute="centerX" secondItem="YcR-uP-PsI" secondAttribute="centerX" id="e57-yc-BUe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ano-FE-TIX" firstAttribute="trailing" secondItem="QNm-gW-dOc" secondAttribute="trailing" id="BCG-Fj-zyy"/>
+                            <constraint firstItem="YcR-uP-PsI" firstAttribute="trailing" secondItem="QNm-gW-dOc" secondAttribute="trailing" id="CDd-iT-Kqc"/>
+                            <constraint firstAttribute="bottom" secondItem="s0q-8L-7Py" secondAttribute="bottom" id="JgW-kC-JQY"/>
+                            <constraint firstItem="YcR-uP-PsI" firstAttribute="leading" secondItem="QNm-gW-dOc" secondAttribute="leading" id="OtV-ko-7pt"/>
+                            <constraint firstItem="s0q-8L-7Py" firstAttribute="leading" secondItem="QNm-gW-dOc" secondAttribute="leading" id="VK3-SS-sxa"/>
+                            <constraint firstItem="s0q-8L-7Py" firstAttribute="top" secondItem="QNm-gW-dOc" secondAttribute="top" constant="13" id="aVP-h6-hiH"/>
+                            <constraint firstAttribute="bottom" secondItem="Ano-FE-TIX" secondAttribute="bottom" id="d2G-40-aKs"/>
+                            <constraint firstItem="Ano-FE-TIX" firstAttribute="top" secondItem="QNm-gW-dOc" secondAttribute="top" constant="13" id="hUk-Af-BYn"/>
+                            <constraint firstAttribute="bottom" secondItem="YcR-uP-PsI" secondAttribute="bottom" id="i9o-sk-0TI"/>
+                            <constraint firstItem="Ano-FE-TIX" firstAttribute="leading" secondItem="QNm-gW-dOc" secondAttribute="leading" id="niA-E2-76Z"/>
+                            <constraint firstItem="YcR-uP-PsI" firstAttribute="top" secondItem="QNm-gW-dOc" secondAttribute="top" constant="13" id="oAP-QG-iQF"/>
+                            <constraint firstItem="s0q-8L-7Py" firstAttribute="trailing" secondItem="QNm-gW-dOc" secondAttribute="trailing" id="s1U-02-aeP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QNm-gW-dOc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gcE-U8-nlv"/>
+                    <connections>
+                        <outlet property="noSearchResultView" destination="YcR-uP-PsI" id="wGJ-ql-ws7"/>
+                        <outlet property="tableView" destination="s0q-8L-7Py" id="8vj-Tq-UMP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9V-Na-vRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-600" y="717"/>
         </scene>
         <!--Logout View Controller-->
         <scene sceneID="DNL-Gm-or3">
@@ -473,7 +572,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilh-gn-sYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="750.66964285714278"/>
+            <point key="canvasLocation" x="2983" y="-1614"/>
         </scene>
         <!--Notification Settings View Controller-->
         <scene sceneID="oW5-HU-yyQ">
@@ -512,7 +611,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBL-Dr-Ojk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="466"/>
+            <point key="canvasLocation" x="2984" y="-903"/>
         </scene>
         <!--Web View File View Controller-->
         <scene sceneID="GN2-LK-T7f">
@@ -551,7 +650,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-bh-tKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="-875"/>
+            <point key="canvasLocation" x="2983" y="-198"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="Fy8-bs-Dbv">
@@ -624,7 +723,7 @@ event updates.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOy-LS-BwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-600" y="-829"/>
+            <point key="canvasLocation" x="284" y="13"/>
         </scene>
         <!--AddMajorsViewController-->
         <scene sceneID="Gnc-o6-jom">
@@ -634,7 +733,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFH-bp-Ov9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292" y="-1032"/>
+            <point key="canvasLocation" x="993" y="-299"/>
         </scene>
         <!--AddMinorsViewController-->
         <scene sceneID="584-5r-3Ug">
@@ -644,7 +743,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tO-cs-PuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="-983"/>
+            <point key="canvasLocation" x="993" y="-253"/>
         </scene>
         <!--SelectEventTypeViewController-->
         <scene sceneID="r1C-Tw-jCc">
@@ -654,7 +753,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bj-GL-Q58" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301" y="-941"/>
+            <point key="canvasLocation" x="1020" y="-147"/>
         </scene>
         <!--ChooseLevelViewController-->
         <scene sceneID="shd-AA-vok">
@@ -664,7 +763,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNg-kS-tji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301" y="-891"/>
+            <point key="canvasLocation" x="1002" y="-22"/>
         </scene>
         <!--ChooseYearViewController-->
         <scene sceneID="Fb2-9z-TxE">
@@ -674,7 +773,7 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gE-05-zhw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="-844"/>
+            <point key="canvasLocation" x="999" y="-198"/>
         </scene>
         <!--ChooseUniversityViewController-->
         <scene sceneID="bQr-be-KqO">
@@ -684,14 +783,11 @@ event updates.</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVS-LC-0FJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="337" y="-785"/>
+            <point key="canvasLocation" x="1024" y="-86"/>
         </scene>
     </scenes>
     <resources>
         <image name="back-arrow" width="24" height="28"/>
         <image name="instagram64px" width="64" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="pui-SY-u4M"/>
-    </inferredMetricsTieBreakers>
 </document>

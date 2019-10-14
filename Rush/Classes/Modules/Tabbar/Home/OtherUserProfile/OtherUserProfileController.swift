@@ -46,10 +46,20 @@ class OtherUserProfileController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
         getProfileAPI()
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
         getClassCategoryAPI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     //MARk: - Other function
@@ -58,9 +68,6 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
-        
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
         
         /*
          scrollView.delegate = self
@@ -137,8 +144,16 @@ extension OtherUserProfileController {
             vc.classInfo = sender as? Class
         } else if segue.identifier == Segues.otherProfileEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
-            vc.eventId = (sender as? Event)?.id
-            vc.event = sender as? Event
+            if let event = sender as? Event {
+               vc.eventId = String(event.id)
+               vc.event = event
+            }
+        } else if segue.identifier == Segues.userProfileGallerySegue {
+            if let vc = segue.destination as? UserProfileGalleryViewController {
+                vc.hidesBottomBarWhenPushed = true
+                vc.imageArray = ["https://tineye.com/images/widgets/mona.jpg", "https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg"]
+                //                vc.selectedIndex = 1
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 //
 //  Information.h
-//  PaidMeals
+//  Rush
 //
 //  Created by Suresh Jagnani on 09/02/19.
 //  Copyright © 2019 Suresh Jagnani. All rights reserved.
@@ -33,4 +33,8 @@
  Instagram login details as below:
  dev@messapps.com
  Mbasilio!12
+ 
+ DB MYSQL
+ user: rush_common  / AdTGkSH%WZV6hMzLR
+ https://api.rushapp.io/pma
  */

@@ -29,7 +29,7 @@ class CreateClubViewController: UIViewController {
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
     
-    var interestList = [String]()
+    var interestList = [Interest]()
     var peopleList = [Invite]()
     
     var clubInfo: Club?
@@ -75,10 +75,10 @@ class CreateClubViewController: UIViewController {
         if let club = clubInfo {
             nameClub = club.clubName ?? ""
             clubDescription = club.clubDesc ?? ""
-            isCreateGroupChat = (club.clubIsChatGroup ?? "0") == "1" ? true : false
+            isCreateGroupChat = (club.clubIsChatGroup) == 1 ? true : false
             
-            let interests = (club.clubInterests ?? "").components(separatedBy: ",")
-            interestList = interests
+//            let interests = (club.clubInterests ?? "").components(separatedBy: ",")
+//            interestList = interests
         }
     }
 }
@@ -129,7 +129,8 @@ extension CreateClubViewController {
         } else if segue.identifier == Segues.createEventInterestSegue {
             if let vc = segue.destination as? CreateEventInterestViewController {
                 vc.delegate = self
-                vc.selectedArray = interestList
+                // *C
+                //vc.selectedArray = interestList
             }
         } else if segue.identifier == Segues.createEventInviteSegue {
             if let vc = segue.destination as? CreateEventInviteViewController {

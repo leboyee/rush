@@ -44,7 +44,7 @@ extension EventTypeCell {
                 cell.setup(eventImageUrl: img.url())
                 cell.joinButton.isHidden = false
                 if let invitee = club.invitees {
-                    let filter = invitee.filter({ $0.user?.id == Authorization.shared.profile?.userId })
+                    let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
                     if filter.count > 0 {
                         cell.setup(type: .clubsJoined)
                         cell.setup(invitee: club.invitees)
@@ -78,7 +78,6 @@ extension EventTypeCell {
         cell.joinSelected = { [weak self] () in
             guard let unsafe = self else { return }
             unsafe.joinSelected?(indexPath.row)
-            
         }
     }
    
@@ -90,7 +89,7 @@ extension EventTypeCell {
             cell.setup(isShowCount: true)
         } else {
             if let invitee = list?[indexPath.item - 1] as? Invitee {
-                cell.setup(text: (invitee.user?.firstName ?? "") + " " + (invitee.user?.lastName ?? ""))
+                cell.setup(text: (invitee.user?.firstName ?? ""))
                 cell.setup(isShowCount: false)
                 cell.setup(url: invitee.user?.photo?.urlThumb())
             }
@@ -106,8 +105,8 @@ extension EventTypeCell {
     }
     
     func fillInterestCell(_ cell: TextCell, _ indexPath: IndexPath) {
-        if let tag = list?[indexPath.row] as? Tag {
-            cell.setup(text: tag.text)
+        if let interest = list?[indexPath.row] as? Interest {
+            cell.setup(text: interest.interestName)
         }
     }
     
@@ -129,8 +128,8 @@ extension EventTypeCell {
     func cellSize(indexPath: IndexPath) -> CGSize {
         if cellType == .interests {
             guard list?.count ?? 0 > indexPath.row else { return CGSize.zero }
-            if let tag = list?[indexPath.row] as? Tag {
-                var textWidth =  ceil(tag.text.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
+            if let tag = list?[indexPath.row] as? Interest {
+                var textWidth =  ceil(tag.interestName.widthOfString(usingFont: UIFont.semibold(sz: 13.0)))
                 //Add Padding
                 textWidth += (padding*2)
                 let height: CGFloat = 28.0

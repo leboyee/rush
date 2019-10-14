@@ -29,7 +29,12 @@ extension ChooseLevelViewController {
     
     func updateProfileAPI() {
         
-        let param = [Keys.uEduLevel: Utils.chooseLevelArray()[selectedIndex]] as [String: Any]
+        var param = [Keys.uEduLevel: Utils.chooseLevelArray()[selectedIndex]] as [String: Any]
+        if isEditUserProfile == true {
+            if self.selectedIndex <= 2 {
+                param[Keys.uEduYear] = ""
+            }
+        }
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()

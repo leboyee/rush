@@ -370,7 +370,7 @@ extension Utils {
         let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
         img.draw(in: rect)
         
-        let normalizedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return normalizedImage
     }
@@ -393,7 +393,7 @@ extension Utils {
     }
     
     class func anyTimeFilter() -> [String] {
-        return ["Morning", "Day", "Evening"]
+        return ["Any time", "Morning", "Day", "Evening"]
     }
     
     class func friendsFilter() -> [String] {
@@ -557,5 +557,9 @@ extension Utils {
     class func isiPhone5() -> Bool {
         return UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue
     }
+    
+}
+// MARK: - Filter Function
+extension Utils {
     
 }

@@ -16,7 +16,8 @@ class ClassDetailViewController: UIViewController {
     
     var interestList = [String]()
     var peopleList = [String]()
-    var classesPostList: [String] = ["1", "2"]
+    var classesPostList = [Post]()
+
     var timeList: [String] = ["Thursday", "Friday", "Sunday", "Tuesday", "Wednesday"]
     
     var clubImage: UIImage?
@@ -27,6 +28,9 @@ class ClassDetailViewController: UIViewController {
     var classInfo: Class?
     var subclassInfo: SubClass?
     var selectedGroup: ClassGroup?
+    
+    var classId = "0"
+    var groupId = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +44,28 @@ class ClassDetailViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.barTintColor = UIColor.clear
         navigationController?.navigationBar.isTranslucent = true
+        
+        if (classId == "0" && groupId == "0") {
+            if (subclassInfo?.myJoinedClass?.count ?? 0 > 0) {
+                let joinedClass = subclassInfo?.myJoinedClass?[0]
+                classId = joinedClass?.classId ?? "0"
+                groupId = joinedClass?.groupId ?? "0"
+            } else {
+                classId = selectedGroup?.classId ?? "0"
+                groupId = selectedGroup?.id ?? "0"
+            }
+        }
+        if (classId != "0" && groupId != "0") {
+            getClassDetailAPI(classId: classId, groupId: groupId)
+            getClassPostListAPI()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     // MARK: - Other function
@@ -102,6 +124,18 @@ extension ClassDetailViewController {
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .classes
+                vc.post = sender as? Post
+            }
+        } else if segue.identifier == Segues.createPost {
+            if let vc = segue.destination as? CreatePostViewController {
+                vc.subclassInfo = subclassInfo
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.postSegue {
+            if let vc = segue.destination as? PostViewController {
+                vc.postInfo = sender as? Post
+                vc.subclassInfo = subclassInfo
+                vc.delegate = self
             }
         }
     }

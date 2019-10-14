@@ -30,21 +30,42 @@ extension CalendarEventListViewController {
             cell.set(type: event.type)
             cell.set(url: event.photo?.urlThumb())
             
+            //var eventDate: Date?
+            var startTime: Date?
+            var endTime: Date?
             if event.type.lowercased() == "event" {
                 cell.set(start: event.start, end: event.end)
+                //eventDate = event.start
+                startTime = event.start
+                endTime = event.end
             } else if let date = Date.parse(dateString: group.dateString, format: "yyyy-MM-dd") {
+                //eventDate = date
                 if let schedule = event.classSchedule?.filter({ $0.day == date.toString(format: "EEEE").lowercased() }).last {
-                    let startTime = Date.parseUTC(dateString: schedule.start, format: "HH:mm:ss")
-                    let endTime = Date.parseUTC(dateString: schedule.end, format: "HH:mm:ss")
+                    startTime = Date.parseUTC(dateString: schedule.start, format: "HH:mm:ss")
+                    endTime = Date.parseUTC(dateString: schedule.end, format: "HH:mm:ss")
                     cell.set(start: startTime, end: endTime)
                 }
             }
-
-            if group.events.count - 1 == indexPath.row {
-                cell.set(isNormal: true)
+            
+            cell.set(isHideRedTimeline: true)
+            if indexPath.row == 0 || tableView.numberOfRows(inSection: indexPath.section) - 1 == indexPath.row {
+               cell.set(isHideTop: true)
+               cell.set(isHideBottom: false)
             } else {
-                cell.set(isNormal: false)
+                cell.set(isHideTop: false)
+                cell.set(isHideBottom: true)
             }
+            /*
+            if eventDate?.isToday() ?? false {
+                let date = Date()
+                if let start = startTime, let end = endTime {
+                    if date.isGreaterThan(start), date.isLessThan(end) {
+                        cell.set(isHideRedTimeline: false)
+                        cell.set(isHideTop: false)
+                        cell.set(isHideBottom: true)
+                    }
+                }
+            }*/
         }
     }
     
@@ -52,9 +73,9 @@ extension CalendarEventListViewController {
         if let group = groups?[indexPath.section] {
            let event = group.events[indexPath.row]
             if event.type.lowercased() == "event" {
-                showEvent(eventId: event.id)
+                showEvent(eventId: event.itemId)
             } else {
-                showClass(classId: event.id)
+                showClass(classId: event.itemId, groupId: String(event.groupId))
             }
         }
     }

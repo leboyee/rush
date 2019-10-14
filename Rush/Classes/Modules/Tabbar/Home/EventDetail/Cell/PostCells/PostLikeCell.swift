@@ -13,6 +13,9 @@ class PostLikeCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var unlikeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var upButton: UIButton!
+    @IBOutlet weak var downButton: UIButton!
+    
     var likeButtonEvent: (() -> Void)?
     var unlikeButtonEvent: (() -> Void)?
     var commentButtonEvent: (() -> Void)?
@@ -61,5 +64,18 @@ extension PostLikeCell {
     
     func set(ishideUnlikeLabel: Bool) {
         unlikeLabel.isHidden = ishideUnlikeLabel
+    }
+    
+    func set(vote: Int) {
+        if vote == 1 {
+            upButton.isSelected = true
+            downButton.isSelected = false
+        } else if vote == -1 {
+            upButton.isSelected = false
+            downButton.isSelected = true
+        } else {
+            upButton.isSelected = false
+            downButton.isSelected = false
+        }
     }
 }

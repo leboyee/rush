@@ -14,16 +14,23 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var eventImageView: UIImageView!
 
-    let  startSeparator = "⌠"
-    let  endSeparator = "⌡"
+    let startSeparator = "⌠"
+    let endSeparator = "⌡"
     var ranges = [NSRange]()
     
+    var labelTapEvent:((_ text: String, _ range: NSRange) -> Void)?
+    var userImageTapEvent:(() -> Void)?
+    var eventImageTapEvent:(() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         eventImageView.layer.borderWidth = 3.0
         eventImageView.layer.borderColor = UIColor.gray96.cgColor
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(gesture:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,18 +43,72 @@ class NotificationCell: UITableViewCell {
 
 extension NotificationCell {
     
-    func setup() {
-        let detailText = "⌠Marta Keller⌡ invites you to join ⌠VR Meetips⌡"
+    func set(friend: Friend?, text: String) {
+        let friendNameText = "{friend_user_name}"
+        let name = startSeparator + (friend?.user?.name ?? "") + endSeparator
+        let detailText = text.replacingOccurrences(of: friendNameText, with: name)
         label.attributedText = getFormattedString(string: detailText)
+        userImageView.sd_setImage(with: friend?.user?.photo?.urlThumb(), placeholderImage: nil)
+        eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: nil)
     }
     
+    func set(user: User?, object: Any?, text: String) {
+        let userName = "{user_name}"
+        let name = startSeparator + (user?.name ?? "") + endSeparator
+        
+        var key = ""
+        var value = ""
+        var photo: Image?
+        if let club = object as? Club {
+            key = "{club_name}"
+            value = startSeparator + (club.clubName ?? "") + endSeparator
+            photo = club.photo
+        } else if let event = object as? Event {
+            key = "{event_name}"
+            value = startSeparator + event.title + endSeparator
+            photo = event.photo
+        } else if let classObject = object as? Class {
+            key = "{class_name}"
+            value = startSeparator + classObject.name + endSeparator
+            //photo = classObject.classList?.last?.photo
+        }
+        
+        var detailText = text.replacingOccurrences(of: userName, with: name)
+        detailText = detailText.replacingOccurrences(of: key, with: value)
+        
+        label.attributedText = getFormattedString(string: detailText)
+        userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: nil)
+        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: nil)
+    }
+   
+}
+
+// MARK: - Actions
+extension NotificationCell {
+    @objc func handleTapGesture(gesture: UITapGestureRecognizer) {
+           for range in ranges {
+            if gesture.didTapAttributedTextInLabel(label: label, targetRange: range) {
+                labelTapEvent?(label.text ?? "", range)
+                return
+            }
+        }
+    }
+    
+    @IBAction func eventImageButtonAction() {
+        eventImageTapEvent?()
+    }
+    
+    @IBAction func userImageButtonAction() {
+        userImageTapEvent?()
+    }
 }
 
 // MARK: - Private Functions
 extension NotificationCell {
     private func getFormattedString(string: String) -> NSAttributedString {
+        let text = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         ranges.removeAll()
-        let scanner = Scanner(string: string)
+        let scanner = Scanner(string: text)
         var strings = [String]()
         
         while !scanner.isAtEnd {

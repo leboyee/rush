@@ -10,21 +10,22 @@ import UIKit
 
 class Club: Codable {
 
-    var id: String?
-    var clubUserId: String?
+    var id: Int64 = 0
+    private var clubUserId: Int64 = 0
     var clubName: String?
     var clubDesc: String?
-    var clubInterests: String?
+    var clubInterests: [Interest]?
     var clubPhoto: String?
-    var clubIsChatGroup: String?
+    var clubIsChatGroup: Int = 0
     var clubStatus: Int = 0
     var clubCreatedAt: String?
     var clubUpdatedAt: String?
     var user: User?
     var invitees: [Invitee]?
+    private var convertJsonToPhoto: Image?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "club_id"
         case clubUserId = "club_user_id"
         case clubName = "club_name"
         case clubDesc = "club_desc"
@@ -36,6 +37,18 @@ class Club: Codable {
         case clubUpdatedAt = "club_updated_at"
         case user
         case invitees
+    }
+    var clubUId: String {
+        return String(clubUserId)
+    }
+    var clubId: String {
+        return String(id)
+    }
+    var photo: Image? {
+       if convertJsonToPhoto == nil {
+        convertJsonToPhoto = clubPhoto?.photo
+       }
+       return convertJsonToPhoto
     }
     
     init() {
