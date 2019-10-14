@@ -31,6 +31,8 @@ class EventCategoryListViewController: UIViewController {
     var classList = [SubClass]()
     var classCategoryList = [Class]()
     var eventCategory: EventCategory?
+    var clubCategory: ClubCategory?
+    var classCategory: Class?
     var interest: Interest?
     var firstSortText = "All categories"
     var secondSortText = "Popular first"
@@ -58,7 +60,7 @@ class EventCategoryListViewController: UIViewController {
         case .event:
             getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
         case .club:
-            getClubListAPI(sortBy: "feed")
+            getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
         case .classes:
             getClassCategoryAPI()
             getClassListAPI()

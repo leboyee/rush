@@ -282,8 +282,7 @@ extension CreateClubViewController {
         let img = clubImage?.wxCompress()
         let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
         
-        let interests = interestList.compactMap({ $0.interestName }).joined(separator: ",")
-        
+        let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,

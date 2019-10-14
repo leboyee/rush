@@ -313,11 +313,14 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 // Services
 extension EventCategoryListViewController {
 
-    func getClubListAPI(sortBy: String) {
+    func getClubListAPI(sortBy: String, clubCategory: ClubCategory?) {
         
-        let param = [Keys.search: searchText,
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
                      Keys.sortBy: sortBy,
+                     Keys.clubCatId: clubCategory?.id ?? "",
                      Keys.pageNo: pageNo] as [String: Any]
+        
         
         if clubList.count == 0 {
             Utils.showSpinner()

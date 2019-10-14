@@ -106,20 +106,16 @@ extension ExploreViewController {
                 img3 = clubList[2].clubPhoto ?? ""
             }
         case 2:
-//            if classList.count > 0
-//            {
-//                img1 = classList[0].photoJson
-//            }
-//            if classList.count > 1
-//            {
-//                img2 = classList[1].photoJson
-//            }
-//            if classList.count > 2
-//            {
-//                img3 = classList[2].photoJson
-//            }
-            break
-        default:
+            if classList.count > 0 {
+                img1 = classList[0].photo
+            }
+            if classList.count > 1 {
+                img2 = classList[1].photo
+            }
+            if classList.count > 2 {
+                img3 = classList[2].photo
+            }
+         default:
             break
         }
        cell.setup(img1Url: img1, img2Url: img2, img3Url: img3)
@@ -165,6 +161,18 @@ extension ExploreViewController {
             if let category = dataList[indexPath.row] as? EventCategory {
                 performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
             }
+        } else if isSearch && searchType == .club {
+            if let category = dataList[indexPath.row] as? ClubCategory {
+                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+            }
+        } else if isSearch && searchType == .classes {
+            if let category = dataList[indexPath.row] as? Class {
+                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+            }
+        } else if isSearch && searchType == .people {
+            if let category = dataList[indexPath.row] as? Friend {
+                performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+            }
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
@@ -177,8 +185,9 @@ extension ExploreViewController {
     
     func getEventCategoryListAPI() {
         //Utils.showSpinner()
-        let param = [Keys.search: searchText] as [String: Any]
-        ServiceManager.shared.fetchEventCategoryList(params: param) { [weak self] (data, _) in
+        var params = [Keys.pageNo: "1"]
+        params[Keys.search] = searchText
+        ServiceManager.shared.fetchEventCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = data {
@@ -190,22 +199,15 @@ extension ExploreViewController {
     
     func getClubCategoryListAPI() {
         //Utils.showSpinner()
-        let param = [Keys.search: searchText] as [String: Any]
-        ServiceManager.shared.fetchClubCategoryList(params: param) { [weak self] (data, _) in
+        var params = [Keys.pageNo: "1"]
+        params[Keys.search] = searchText
+        ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let value = data?[Keys.list] as? [[String: Any]] {
-                do {
-                    let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
-                    let decoder = JSONDecoder()
-                    if let value = try? decoder.decode([ClubCategory].self, from: dataClub) {
-                        unsafe.dataList = value
-                    }
-                    unsafe.tableView.reloadData()
-                } catch {
-                    
-                }
+            if let category = data {
+                unsafe.dataList = category
             }
+            unsafe.tableView.reloadData()
         }
     }
     
@@ -213,7 +215,7 @@ extension ExploreViewController {
         
         if pageNo == 1 { dataList.removeAll() }
         
-        var params = [Keys.pageNo: "\(pageNo)"]
+        var params = [Keys.pageNo: "1"]//\(pageNo)
         params[Keys.search] = searchText
         params[Keys.profileUserId] = Authorization.shared.profile?.userId
         
@@ -294,6 +296,19 @@ extension ExploreViewController {
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    func getClassCategoryAPI() {
+        let param = [Keys.pageNo: "1"] as [String: Any]
+        
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.dataList = classes
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
