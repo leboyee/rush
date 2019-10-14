@@ -30,7 +30,7 @@ class GroupClassSchedule: Codable {
 
 class CalendarItem: Decodable {
     private var id: Int64 = 0
-    var groupId: Int64?
+    var groupId: Int64 = 0
     var type = ""
     var title = ""
     var groupName: Int64?
@@ -65,7 +65,7 @@ class CalendarItem: Decodable {
     required init(from decoder: Decoder) {
         let container = try? decoder.container(keyedBy: CodingKeys.self)
         id = (try? container?.decode(Int64.self, forKey: .id)) ?? 0
-        groupId = (try? container?.decode(Int64.self, forKey: .groupId))
+        groupId = (try? container?.decode(Int64.self, forKey: .groupId)) ?? 0
         type = (try? container?.decode(String.self, forKey: .type)) ?? ""
         title = (try? container?.decode(String.self, forKey: .title)) ?? ""
         photoJson = (try? container?.decode(String.self, forKey: .photoJson)) ?? ""

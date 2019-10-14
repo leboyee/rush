@@ -44,7 +44,7 @@ class EventCell: UICollectionViewCell {
         secondUserImageView.layer.borderColor = UIColor.white.cgColor
         thirdUserImageView.layer.borderColor = UIColor.white.cgColor
     }
-    
+        
     @IBAction func joinButtonAction() {
         joinSelected?()
     }
@@ -55,7 +55,7 @@ extension EventCell {
     func setup(type: EventCategoryType) {
         userView.isHidden = true
         if type == .upcoming {
-            
+            //self.joinButton.isUserInteractionEnabled = true
         } else if type == .clubs || type == .clubsJoined {
             setup(isHideDateView: true)
             setup(isHidePrivacyView: true)

@@ -17,6 +17,7 @@ class NotificationItem: Codable {
     var event: [Event]?
     var club: [Club]?
     var classObject: [Class]?
+    var post: [Post]?
 
     private enum CodingKeys: String, CodingKey {
         case id = "nt_id"
@@ -27,5 +28,6 @@ class NotificationItem: Codable {
         case event = "event"
         case club = "club"
         case classObject = "class"
+        case post = "post"
     }
 }

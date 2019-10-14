@@ -38,7 +38,6 @@ extension UserFriendsListViewController {
     func getFriendListAPI() {
         
         if pageNo == 1 { friendsList.removeAll() }
-        
         var params = [Keys.pageNo: "\(pageNo)"]
         params[Keys.search] = searchTextFiled?.text
         params[Keys.profileUserId] = userId

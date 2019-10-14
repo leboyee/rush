@@ -93,6 +93,7 @@ extension ExploreViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         isSearch = true
         heightConstraintOfFilter.constant = 67
+        // C*
         getEventCategoryListAPI()
     }
     
@@ -120,6 +121,7 @@ extension ExploreViewController: UITextFieldDelegate {
         }
         
         if searchType == .event {
+            // C*
             getEventCategoryListAPI()
         } else if searchType == .club {
             getClubCategoryListAPI()

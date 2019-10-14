@@ -344,6 +344,14 @@ open class TagListView: UIView {
         return addTagViews(titles.map(createNewTagView))
     }
     
+    open func selectedTag(_ titles: [String]) {
+        for tag in tagViews {
+            if titles.contains(tag.titleLabel?.text ?? "") {
+                tag.isSelected = true
+            }
+        }
+    }
+    
     @discardableResult
     open func addTagView(_ tagView: TagView) -> TagView {
         defer { rearrangeViews() }

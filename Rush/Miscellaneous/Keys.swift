@@ -134,6 +134,11 @@ struct Keys {
     static let eventInvitedUserIds = "event_invited_user_ids"
     static let eventPhoto = "event_photo"
     static let eventId = "event_id"
+    static let isOnlyFriendGoing = "is_only_friend_going"
+    static let fromStart = "from_start"
+    static let toStart = "to_start"
+    static let fromTime = "from_time"
+    static let toTime = "to_time"
 
     static let postId = "post_id"
     static let parentId = "parent_id"

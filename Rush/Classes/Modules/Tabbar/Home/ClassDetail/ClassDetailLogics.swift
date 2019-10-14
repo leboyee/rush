@@ -162,12 +162,12 @@ extension ClassDetailViewController {
         }
     }
     func checkIsJoined() {
-//        if let user = selectedGroup?.myJoinedGroup.userId {
-//            let filter = user.filter({ $0.user?.id == Authorization.shared.profile?.userId })
-//            if filter.count > 0 {
-//                joinedClub = true
-//            }
-//        }
+        if subclassInfo?.myJoinedClass?.count ?? 0 > 0 {
+            joinedClub = true
+        }
+        else{
+            joinedClub = false
+        }
     }
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
@@ -282,6 +282,7 @@ extension ClassDetailViewController {
                     let decoder = JSONDecoder()
                     let value1 = try decoder.decode(SubClass.self, from: dataClass)
                     uwself.subclassInfo = value1
+                    uwself.checkIsJoined()
                     if uwself.subclassInfo?.classGroups?.count ?? 0 > 0 {
                         uwself.selectedGroup = uwself.subclassInfo?.classGroups?[0]
                     }

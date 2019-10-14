@@ -91,6 +91,11 @@
 		1A44C364234265EF00A93A18 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A44C362234265EF00A93A18 /* EventTimeCell.xib */; };
 		1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */; };
 		1A572B88234B96A6003E2824 /* EventTypeModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */; };
+		1A5DA6AC235241FF0090D8E2 /* UserProfileGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */; };
+		1A5DA6AD235241FF0090D8E2 /* GalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A8235241FE0090D8E2 /* GalleryCell.xib */; };
+		1A5DA6AE235241FF0090D8E2 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A9235241FE0090D8E2 /* GalleryCell.swift */; };
+		1A5DA6AF235241FF0090D8E2 /* UserProfileGalleryMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6AA235241FE0090D8E2 /* UserProfileGalleryMediates.swift */; };
+		1A5DA6B0235241FF0090D8E2 /* UserProfileGalleryLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6AB235241FE0090D8E2 /* UserProfileGalleryLogics.swift */; };
 		1A62D22C229541E9001E5790 /* EnterEmailViewConteroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */; };
 		1A62D22F22954216001E5790 /* EnterEmailViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */; };
 		1A62D23022954216001E5790 /* EnterEmailViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */; };
@@ -648,6 +653,11 @@
 		1A44C362234265EF00A93A18 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
 		1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeModelCell.xib; sourceTree = "<group>"; };
 		1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeModelCell.swift; sourceTree = "<group>"; };
+		1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryViewController.swift; sourceTree = "<group>"; };
+		1A5DA6A8235241FE0090D8E2 /* GalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCell.xib; sourceTree = "<group>"; };
+		1A5DA6A9235241FE0090D8E2 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		1A5DA6AA235241FE0090D8E2 /* UserProfileGalleryMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryMediates.swift; sourceTree = "<group>"; };
+		1A5DA6AB235241FE0090D8E2 /* UserProfileGalleryLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryLogics.swift; sourceTree = "<group>"; };
 		1A62D22B229541E9001E5790 /* EnterEmailViewConteroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewConteroller.swift; sourceTree = "<group>"; };
 		1A62D22D22954216001E5790 /* EnterEmailViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterEmailViewMediates.swift; sourceTree = "<group>"; };
 		1A62D22E22954216001E5790 /* EnterEmailViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterEmailViewLogics.swift; sourceTree = "<group>"; };
@@ -1245,6 +1255,7 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */,
 				1AA5BE5B234E34EE00EEF68F /* UserFriendsListView */,
 				1A0EDEE7234892C800502959 /* EditProfile */,
 				8A04B180230149100055C65F /* Logout */,
@@ -1546,6 +1557,26 @@
 				1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */,
 			);
 			path = CellView;
+			sourceTree = "<group>";
+		};
+		1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */ = {
+			isa = PBXGroup;
+			children = (
+				1A5DA6A7235241FE0090D8E2 /* Cell */,
+				1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */,
+				1A5DA6AA235241FE0090D8E2 /* UserProfileGalleryMediates.swift */,
+				1A5DA6AB235241FE0090D8E2 /* UserProfileGalleryLogics.swift */,
+			);
+			path = UserProfileGallery;
+			sourceTree = "<group>";
+		};
+		1A5DA6A7235241FE0090D8E2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A5DA6A8235241FE0090D8E2 /* GalleryCell.xib */,
+				1A5DA6A9235241FE0090D8E2 /* GalleryCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1A62D227229540CC001E5790 /* Authorize */ = {
@@ -3255,6 +3286,7 @@
 				8A04B19E230409220055C65F /* ParallaxHeader.xib in Resources */,
 				0918E783228444A20098AF35 /* Chats.storyboard in Resources */,
 				8A04B17E22FD96720055C65F /* CheckMarkCell.xib in Resources */,
+				1A5DA6AD235241FF0090D8E2 /* GalleryCell.xib in Resources */,
 				1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */,
 				8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */,
 				8A04B1902301796A0055C65F /* CalendarView.xib in Resources */,
@@ -3440,11 +3472,13 @@
 				1AB0C15A22C1203E000D016E /* NetworkManagerServices.swift in Sources */,
 				793BE65322E88207005EF72D /* MessageInputBar.swift in Sources */,
 				1AA9AB4022FF31C200E0E450 /* AddInstragamPhotoMediates.swift in Sources */,
+				1A5DA6AE235241FF0090D8E2 /* GalleryCell.swift in Sources */,
 				1AAE42C32296CC7C00BDD7C5 /* CustomButton.swift in Sources */,
 				8A1076C22306CBE200512AA3 /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				8A04B17522FD8C3E0055C65F /* NotificationSettingsViewController.swift in Sources */,
 				79173F47229EB39A0003FD9B /* ClubManageCell.swift in Sources */,
 				1AB43B332327EE0C00C2FBCE /* AddRSVPViewController.swift in Sources */,
+				1A5DA6AF235241FF0090D8E2 /* UserProfileGalleryMediates.swift in Sources */,
 				793BE65A22E88207005EF72D /* MessagesViewController+Keyboard.swift in Sources */,
 				793BE68022E88207005EF72D /* MessageLabelDelegate.swift in Sources */,
 				7905CDBA230D5E730011C83B /* ContactsListLogics.swift in Sources */,
@@ -3554,6 +3588,7 @@
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
 				1A024CFE23476F8600EE7FB4 /* EventCateogryFilterMediates.swift in Sources */,
 				793BE67722E88207005EF72D /* MessageKitError.swift in Sources */,
+				1A5DA6B0235241FF0090D8E2 /* UserProfileGalleryLogics.swift in Sources */,
 				797FFDAF22B7BC480055A001 /* PhotoGalleryHintLabel.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
 				1A6631A8232B8C3F0042DE0D /* UIViewHelper.swift in Sources */,
@@ -3732,6 +3767,7 @@
 				1AEAC4C422D35BE5008FBB54 /* DatePickerViewController.swift in Sources */,
 				091557B522B126F00080C9AE /* UserNameTableViewCell.swift in Sources */,
 				1A0D01FD23228A08004F6279 /* CreateEventMediates.swift in Sources */,
+				1A5DA6AC235241FF0090D8E2 /* UserProfileGalleryViewController.swift in Sources */,
 				1A339B6422B3CEA9005509EA /* ChooseYearViewController.swift in Sources */,
 				8A4B3286232F5A5B00AC1D17 /* PostUserCell.swift in Sources */,
 				793BE68322E88207005EF72D /* MessagesLayoutDelegate.swift in Sources */,

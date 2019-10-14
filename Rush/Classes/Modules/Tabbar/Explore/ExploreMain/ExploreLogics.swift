@@ -50,15 +50,22 @@ extension ExploreViewController {
         // MARK: - CollectionItem Selected
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
-           if indexPath.section == 1 {
+            if indexPath.section == 1 {
                 let event = unsafe.eventList[index]
                 unsafe.performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
             } else if type == .clubs {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
-                let club = unsafe.classList[index]
-                unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: club)
+                let classObject = unsafe.classList[index]
+                if classObject.myJoinedClass?.count ?? 0 > 0 {
+                    //already joined - so dont show groups
+                    unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
+                } else {
+                    // not joined yet, so show groups
+                    let classGroup = classObject.classGroups?[indexPath.row]
+                    unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
+                }
             }
         }
     }

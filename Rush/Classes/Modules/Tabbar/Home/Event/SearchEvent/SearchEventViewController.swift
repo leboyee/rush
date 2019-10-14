@@ -87,8 +87,8 @@ extension SearchEventViewController {
             guard let indexPath = sender as? IndexPath else { return }
             guard let vc = segue.destination as?
                 EventCategoryListViewController else { return }
-            let category = self.dataList[indexPath.row] as? EventCategory
-            vc.eventCategory = category
+            let interest = self.dataList[indexPath.row] as? Interest
+            vc.interest = interest
             vc.type = .event
         }
     }

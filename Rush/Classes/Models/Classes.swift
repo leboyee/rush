@@ -111,6 +111,10 @@ class ClassGroup: Codable {
     var myJoinedGroup: [String]?
     
     init() { }
+    init(classId: Int64, groupId: Int64) {
+        classIdP = classId
+        classGroupId = groupId
+    }
 
     private enum CodingKeys: String, CodingKey {
         case classGroupId = "class_grp_id"

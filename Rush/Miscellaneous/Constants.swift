@@ -13,6 +13,7 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 
 let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
+let serverDateFormate = "yyyy:MM:dd HH:mm:ss"
 // MARK: - Production Build
 var isProductionBuild: Bool = true
 
@@ -93,7 +94,7 @@ struct Cell {
     static let editProfileInfo      = "EditProfileInfoCell"
     static let editProfileMinorCell = "EditProfileMinorCell"
     static let eventTypeModelCell = "EventTypeModelCell"
-
+    static let galleryCell = "GalleryCell"
 }
 
 struct ReusableView {
@@ -194,13 +195,19 @@ struct Segues {
     static let eventOtherUserProfile              = "EventOtherUserProfileSegue"
     static let eventListToEventDetailsSegue       = "EventListToEventDetailsSegue"
     static let editProfileSegue                   = "EditProfileSegue"
-    static let settingViewControllerSegue                   = "SettingViewControllerSegue"
-    static let editEventSegue                   = "EditEventSegue"
-    static let userFriendListSegue                   = "UserFriendListSegue"
+    static let settingViewControllerSegue         = "SettingViewControllerSegue"
+    static let editEventSegue                     = "EditEventSegue"
+    static let userFriendListSegue                = "UserFriendListSegue"
     static let exploreEvents                      = "ExploreEventsSegue"
     static let eventDetailCalendar                = "EventDetailCalendarSegue"
     static let calendarClassDetail                = "CalendarClassDetailSegue"
     static let calendarEventDetail                = "CalendarEventDetailSegue"
+    static let userProfileGallerySegue            = "UserProfileGallerySegue"
+    static let notificationEventDetail            = "NotificationEventDetailSegue"
+    static let notificationClubDetail             = "NotificationClubDetailSegue"
+    static let notificationClassDetail            = "NotificationClassDetailSegue"
+    static let notificationPostDetail             = "NotificationPostDetailSegue"
+
 }
 
 struct StoryBoard {
@@ -320,7 +327,7 @@ public struct Text {
     static let club                      = "club"
     static let post                      = "post"
     static let event                     = "event"
-    static let classKey                    = "class"
+    static let classKey                  = "class"
     static let education                 = "Education"
     static let majors                    = "Majors"
     static let minors                    = "Minors"
@@ -407,6 +414,7 @@ enum GetEventType: String {
     case my = "my"
     case myUpcoming = "my-upcoming"
     case attending = "attending"
+    case managedFirst = "managed-first"
 }
 
 enum NotificationType: String, Codable {

@@ -64,3 +64,19 @@ extension CreateEventInterestViewController: UITableViewDelegate, UITableViewDat
     }
 
 }
+
+extension CreateEventInterestViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+        getInterestList(search: textField.text ?? "")
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
