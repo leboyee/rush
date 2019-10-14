@@ -58,14 +58,16 @@ class Club: Codable {
 
 class ClubCategory: Codable {
     
-    var id: String = ""
+    private var idP: Int64 = 0
     var name: String = ""
-    
-    init() {
-    }
+    var clubArray: [Club]?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case idP = "interest_id"
         case name = "name"
+        case clubArray = "club"
+    }
+    var id: String {
+        return String(idP)
     }
 }

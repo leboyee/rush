@@ -261,6 +261,9 @@ extension ChatRoomViewController: MessageInputBarDelegate {
                         if let chnl = channel {
                             self.channel = chnl
                             self.sendMessage(text: str)
+                            if let user = chnl.members as? [SBDUser] {
+                                self.userChatView.reloadData(users: user)
+                            }
                         }
                     }
                 } else {

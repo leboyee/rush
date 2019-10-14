@@ -66,10 +66,20 @@ class SharePostViewController: UIViewController {
         } else {
             deleteLabel.text = Text.deletePost
         }
-        if post?.user?.userId != Authorization.shared.profile?.userId {
-            heightConstraintOfContainerView.constant -= heightConstraintOfDeletePost.constant
-            heightConstraintOfDeletePost.constant = 0
+        if post != nil {
+            if post?.user?.userId != Authorization.shared.profile?.userId {
+                hideDeleteOption()
+            }
+        } else if object != nil, let club = object as? Club {
+            if club.user?.userId != Authorization.shared.profile?.userId {
+                hideDeleteOption()
+            }
         }
+    }
+    
+    func hideDeleteOption() {
+        heightConstraintOfContainerView.constant -= heightConstraintOfDeletePost.constant
+        heightConstraintOfDeletePost.constant = 0
     }
 
 }

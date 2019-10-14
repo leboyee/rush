@@ -105,6 +105,10 @@ extension NetworkManager {
         requestGet(path: "club/\(clubId)", params: params, resultHandler: resultHandler)
     }
     
+    func deleteClub(clubId: Int64, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "club/\(clubId)", params: param, resultHandler: resultHandler)
+    }
+    
     func createPost(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
     }
@@ -159,12 +163,12 @@ extension NetworkManager {
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
-    func updateEvent(eventId: String,params: [String: Any], resultHandler: @escaping ResultClosure) {
+    func updateEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event/\(eventId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
 
     func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "category/event", params: params, resultHandler: resultHandler)
+        requestGet(path: "interest/event/list", params: params, resultHandler: resultHandler)
     }
     
     func getCalendarList(params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -176,7 +180,7 @@ extension NetworkManager {
     }
     
     func getClubCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "category/club", params: params, resultHandler: resultHandler)
+        requestGet(path: "interest/club/list", params: params, resultHandler: resultHandler)
     }
     
     func getCategoryClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {

@@ -9,12 +9,18 @@
 import UIKit
 import Photos
 
+protocol ClubDetailProtocol: class {
+    func deleteClubSuccess(_ club: Club?)
+}
+
 class ClubDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundView: RBackgoundView!
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var clubHeader: ClubHeader!
+    
+    var delegate: ClubDetailProtocol?
     
     var interestList = [String]()
     var peopleList = [String]()
@@ -105,6 +111,7 @@ extension ClubDetailViewController {
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .club
+                vc.object = clubInfo
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.createPost {

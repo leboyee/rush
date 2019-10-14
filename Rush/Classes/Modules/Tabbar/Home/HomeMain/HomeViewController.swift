@@ -50,6 +50,11 @@ class HomeViewController: CustomViewController {
     }
     
     func setupUI() {
+        
+        if Utils.getDataFromUserDefault(kHomeTutorialKey) != nil {
+            isShowTutorial = false
+        }
+        
         setupTableView()
         setupNavigation()
         definesPresentationContext = true

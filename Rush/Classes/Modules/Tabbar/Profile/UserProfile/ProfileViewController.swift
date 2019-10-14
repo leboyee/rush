@@ -193,7 +193,7 @@ extension ProfileViewController {
             }
         } else if segue.identifier == Segues.profileImageViewSegue {
             let vc = segue.destination as? ProfileTileViewController
-            vc?.imageArray = profileDetail.images ?? [Image]()
+//            vc.imageArray = profileDetail.images
         }
     }
 }

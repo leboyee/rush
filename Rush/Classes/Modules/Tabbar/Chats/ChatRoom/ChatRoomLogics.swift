@@ -37,7 +37,8 @@ extension ChatRoomViewController {
             type = "club"
             data = "\(club.clubId)"
         } else if let event = eventInfo {
-            otherUserId = ""
+            otherUserId = event.invitees?.compactMap({ $0.user?.userId }).joined(separator: ",") ?? "0"
+            loggedInUserId = event.creator?.userId ?? "0"
             imgUrl = event.photo?.thumb ?? ""
             grpName = event.title
             type = "event"
@@ -340,6 +341,8 @@ extension ChatRoomViewController {
             if channel != nil {
                 imageName = channel?.coverUrl ?? ""
                 userName = channel?.name ?? ""
+            } else if let event = eventInfo {
+                imageName = event.photo?.thumb ?? ""
             }
         }
         return imageName

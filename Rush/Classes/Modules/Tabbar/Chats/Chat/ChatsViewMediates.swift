@@ -52,8 +52,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
             if index == 0 {
                 let channel = unsafe.channels[index]
                 
-                ChatManager().leave(channel, completionHandler: {
-                    [weak unsafe] (status) in
+                ChatManager().leave(channel, completionHandler: { [weak unsafe] (status) in
                     guard let unowned = unsafe else { return }
                     if status {
                         let snackbar = TTGSnackbar(message: "\(channel.name) chat was deleted",

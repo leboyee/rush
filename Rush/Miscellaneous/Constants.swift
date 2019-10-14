@@ -243,7 +243,6 @@ public struct Text {
     static let verificationTitleRegister  = "Enter confirmation code"
     static let passwordTitleChangePassword  = "Enter current password to create a new one"
 
-    
     static let phoneNoTitleLogin  = "Enter your phone number"
     static let userNameTitleRegister  = "Profile setup"
     static let show  = "show"

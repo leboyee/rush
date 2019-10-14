@@ -247,6 +247,7 @@
                         <segue destination="iCk-fS-noR" kind="show" identifier="EventDetailSegue" id="cWE-q2-all"/>
                         <segue destination="ylK-2Z-jar" kind="show" identifier="ClassDetailSegue" id="IFX-2f-5cP"/>
                         <segue destination="21M-Sg-QSo" kind="show" identifier="SearchClubSegue" id="wXm-sJ-WwY"/>
+                        <segue destination="XXP-6r-jq8" kind="show" identifier="OtherUserProfileSegue" id="9wf-fD-bmQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AV-99-LfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,6 +361,14 @@
             </objects>
             <point key="canvasLocation" x="-1051" y="449"/>
         </scene>
+        <!--OtherUserProfileController-->
+        <scene sceneID="OXZ-uM-d1X">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="OtherUserProfileController" id="XXP-6r-jq8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyR-bh-tu5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-889" y="551"/>
+        </scene>
         <!--EventDetail-->
         <scene sceneID="S0d-mE-fSY">
             <objects>
@@ -418,8 +427,8 @@
         <image name="searchGray" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o2X-dF-cRA"/>
-        <segue reference="zIx-dy-pNk"/>
-        <segue reference="qV3-W3-t83"/>
+        <segue reference="cWE-q2-all"/>
+        <segue reference="IFX-2f-5cP"/>
+        <segue reference="wXm-sJ-WwY"/>
     </inferredMetricsTieBreakers>
 </document>
