@@ -46,6 +46,16 @@ extension ServiceManager {
             })
         }
     }
+    
+    func deleteClub(clubId: String, params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.deletePost(postId: postId, param: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
     func joinClassGroup(classId: String, groupId: String, params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.joinClassGroup(classId: classId, groupId: groupId, param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }

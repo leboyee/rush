@@ -26,6 +26,7 @@ let kLastLocation               = "com.rush.lastlocation"
 let kDeviceTokenPushKey         = "com.rush.devicetokenpush"
 let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
 let kUpdateUnreadcount          = "com.rush.updateunreadcount"
+let kHomeTutorialKey            = "com.rush.hometutorial"
 
 // MARK: - API's Keys
 struct Keys {

@@ -105,6 +105,10 @@ extension NetworkManager {
         requestGet(path: "club/\(clubId)", params: params, resultHandler: resultHandler)
     }
     
+    func deleteClub(clubId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "club/\(clubId)", params: param, resultHandler: resultHandler)
+    }
+    
     func createPost(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "post", params: param, contentType: ContentType.formData, resultHandler: resultHandler)
     }
