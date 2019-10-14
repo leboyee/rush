@@ -17,6 +17,7 @@
             <connections>
                 <outlet property="collectionView" destination="zVn-y4-g5L" id="23i-F6-o13"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="t1F-Qa-bQE"/>
+                <outlet property="noDataLabel" destination="Rsz-0F-05T" id="Hur-b3-hb0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -44,7 +45,7 @@
                         <constraint firstAttribute="height" constant="1" id="U1r-zv-H9M"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat not created yest." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsz-0F-05T">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat not created yest." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsz-0F-05T">
                     <rect key="frame" x="86" y="32" width="136.5" height="16"/>
                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                     <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>

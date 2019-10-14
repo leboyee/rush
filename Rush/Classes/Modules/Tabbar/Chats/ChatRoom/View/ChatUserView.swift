@@ -13,6 +13,7 @@ class ChatUserView: UIView {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     var isShowAll = false
     var users = [SBDUser]()
@@ -43,6 +44,8 @@ class ChatUserView: UIView {
         // bottom padding 62 and + (34 bottom safearea height)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        noDataLabel.isHidden = users.count > 0
         
         self.contentView.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
         
