@@ -66,8 +66,9 @@ struct Keys {
     static let instaUsername      = "insta_username"
     static let pageNo             = "pageNo"
     static let search             = "search"
-    static let sortBy            = "sort_by"
-    static let fromStartDate      = "from_start"
+    static let sortBy             = "sort_by"
+    static let orderBy            = "order_by"
+    static let isOnlyFriendJoined = "is_only_friend_joined"
     static let toStartDate        = "to_start"
 
     static let clubName = "club_name"
@@ -82,7 +83,8 @@ struct Keys {
     static let club = "club"
     static let post = "post"
     static let event = "event"
-    
+   
+    static let classCatId = "class_cat_id"
     static let intId = "interest_id"
     static let interestId           = "_id"
     static let interestName           = "name"

@@ -58,15 +58,21 @@ class EventCategoryListViewController: UIViewController {
         case .club:
             if (clubCategory) != nil {
                 firstSortText = clubCategory?.name ?? "All categories"
+                let value = clubCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
+            } else {
+                getClubCategoryListAPI()
             }
-            getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
-        //            getClubCategoryAPI()
         case .classes:
             if (classCategory) != nil {
                 firstSortText = classCategory?.name ?? "All categories"
+                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClassListAPI()
+            } else {
+                getClassCategoryAPI()
             }
-            //            getClassCategoryAPI()
-            getClassListAPI()
         default:
             break
         }
