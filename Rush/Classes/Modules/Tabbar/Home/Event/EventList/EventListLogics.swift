@@ -198,7 +198,12 @@ extension EventListViewController {
                     unsafe.isMyEvents = unsafe.eventList.count > 0 ? true : false
                     print(unsafe.eventList)
                     unsafe.tableView.reloadData()
+                    unsafe.pageNo = 1
+                    unsafe.getEventList()
+
                 } else {
+                    unsafe.pageNo = 1
+                    unsafe.getEventList()
                     Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
                 }
                 unsafe.showNoEventScreen()

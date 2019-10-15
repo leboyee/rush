@@ -360,4 +360,20 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func setCurrentTimeWithAddingTimeInterval(additionalSeconds: Int) -> Date {
+        let totalSecond = Int(((self.hour * 60) * 60) + (self.minute * 60) + self.second)
+        var mainSeconds = totalSecond + additionalSeconds
+        if mainSeconds % 300 != 0 {
+            mainSeconds = Int(mainSeconds / 300) + 1
+        } else {
+            mainSeconds = Int(mainSeconds / 300)
+        }
+        let totalMainSecond = mainSeconds * 300
+        let currentSecond = ((self.hour * 60) * 60) + (self.minute * 60) + self.second
+        let secondDif = Int(totalMainSecond) - Int(currentSecond)
+        return Date.init(timeIntervalSinceNow: (TimeInterval(secondDif)))
+        //return Date.init(timeIntervalSince1970: (Double(mainSeconds * 300) / 1000.0))
+        
+    }
+    
 }

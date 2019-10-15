@@ -24,8 +24,10 @@ class UserProfileGalleryViewController: UIViewController {
     var currentIndex: Int = 1
     let layout = UICollectionViewFlowLayout()
     var selectedImage: UIImage? = UIImage(contentsOfFile: "")
-    
     var imageArray = [String]()
+    var userPhoto = ""
+    var userName = ""
+    var timeString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

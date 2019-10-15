@@ -20,8 +20,7 @@ class ChooseInterestViewController: CustomViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
     var interestArray = [Interest]()
-    
-    var selectedArray = [String]()
+    var selectedArray = [Interest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
