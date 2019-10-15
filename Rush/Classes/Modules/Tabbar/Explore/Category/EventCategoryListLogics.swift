@@ -103,6 +103,9 @@ extension EventCategoryListViewController {
             eventCategoryFilter.delegate = self
             let cat = clubCategoryList.compactMap({ $0.name })
             eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            eventCategoryFilter.delegate = self
+            eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
+            
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
@@ -281,7 +284,7 @@ extension EventCategoryListViewController {
 // MARK: - EventCategoryFilterDelegate
 extension EventCategoryListViewController: EventCategoryFilterDelegate {
     
-    func selectedIndex(_ type: String) {
+    func selectedIndex(_ type: String, _ indexPath: IndexPath) {
         
         if self.type == .event {
             if isFirstFilter {
@@ -305,10 +308,13 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
             isThirdFilter = false
             collectionView.reloadData()
             getEventList(sortBy: .myUpcoming, eventCategory: nil)
-        } else if self.type == .club || self.type == .classes {
+        } else if self.type == .club {
             if isFirstFilter {
+                firstFilterIndex = indexPath.row
                 firstSortText = type
-            } else if isSecondFilter {
+                clubCategory = clubCategoryList[indexPath.row]
+                getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
+             } else if isSecondFilter {
                 secondSortText = type
             } else if isThirdFilter {
                 thirdSortText = type
@@ -329,7 +335,7 @@ extension EventCategoryListViewController {
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.clubCatId: clubCategory?.id ?? "",
+                     Keys.intId: clubCategory?.id ?? "",
                      Keys.pageNo: pageNo] as [String: Any]
        
         if clubList.count == 0 {

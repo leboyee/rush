@@ -122,12 +122,19 @@ extension EventListViewController {
 }
 
 extension EventListViewController: EventCategoryFilterDelegate {
-    func selectedIndex(_ name: String) {
+    func selectedIndex(_ type: String, _ selectedIndex: IndexPath) {
+        Utils.saveDataToUserDefault(type, UserDefaultKey.myUpcomingFilter)
+        eventFilterType = type == "All Upcoming" ? .myUpcoming : .managedFirst
+        myEventPageNo = 1
+        getMyEventList(sortBy: eventFilterType)
+    }
+    
+    /*func selectedIndex(_ name: String) {
         Utils.saveDataToUserDefault(name, UserDefaultKey.myUpcomingFilter)
         eventFilterType = name == "All Upcoming" ? .myUpcoming : .managedFirst
         myEventPageNo = 1
         getMyEventList(sortBy: eventFilterType)
-    }
+    }*/
 }
 
 // MARK: - Services

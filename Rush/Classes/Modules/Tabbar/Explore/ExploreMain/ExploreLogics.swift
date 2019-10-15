@@ -28,7 +28,17 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            return dataList.count
+            
+            if searchType == .event {
+                return eventInterestList.count
+            } else if searchType == .club {
+                return clubInterestList.count
+            } else if searchType == .classes {
+                return classCategoryList.count
+            } else if searchType == .people {
+                return peopleList.count
+            }
+           
         } else {
             if section == 0 {
                 return 3
@@ -36,6 +46,7 @@ extension ExploreViewController {
                 return 1
             }
         }
+        return 0
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
@@ -122,18 +133,20 @@ extension ExploreViewController {
     }
     
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
-        if let data = dataList[indexPath.row] as? EventCategory {
-            cell.setup(title: data.name)
-        } else if let data = dataList[indexPath.row] as? ClubCategory {
-            cell.setup(title: data.name)
+        
+        if searchType == .event {
+            cell.setup(title: eventInterestList[indexPath.row].name)
+        } else if searchType == .club {
+            cell.setup(title: clubInterestList[indexPath.row].name)
+        } else if searchType == .classes {
+            cell.setup(title: classCategoryList[indexPath.row].name)
         }
-        cell.setup(isHideTopSeparator: true)
+         cell.setup(isHideTopSeparator: true)
     }
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
-        if let people = dataList[indexPath.row] as? Friend {
-            cell.setup(title: people.user?.name ?? "")
-        }
+        let people = peopleList[indexPath.row]
+        cell.setup(title: people.user?.name ?? "")
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -158,21 +171,17 @@ extension ExploreViewController {
     // MARK: - Category selected
     func cellSelected(_ indexPath: IndexPath) {
         if isSearch && searchType == .event {
-            if let category = dataList[indexPath.row] as? EventCategory {
-                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
-            }
+            let category = eventInterestList[indexPath.row]
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
         } else if isSearch && searchType == .club {
-            if let category = dataList[indexPath.row] as? ClubCategory {
-                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
-            }
+            let category = clubInterestList[indexPath.row]
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
         } else if isSearch && searchType == .classes {
-            if let category = dataList[indexPath.row] as? Class {
-                performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
-            }
+            let category = classCategoryList[indexPath.row]
+            performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
         } else if isSearch && searchType == .people {
-            if let category = dataList[indexPath.row] as? Friend {
-                performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
-            }
+            let category = peopleList[indexPath.row]
+            performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
@@ -191,7 +200,7 @@ extension ExploreViewController {
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = data {
-                unsafe.dataList = category
+                unsafe.eventInterestList = category
             }
             unsafe.tableView.reloadData()
         }
@@ -205,7 +214,7 @@ extension ExploreViewController {
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = data {
-                unsafe.dataList = category
+                unsafe.clubInterestList = category
             }
             unsafe.tableView.reloadData()
         }
@@ -213,7 +222,7 @@ extension ExploreViewController {
     
     func getFriendListAPI() {
         
-        if pageNo == 1 { dataList.removeAll() }
+        if pageNo == 1 { peopleList.removeAll() }
         
         var params = [Keys.pageNo: "1"]//\(pageNo)
         params[Keys.search] = searchText
@@ -224,22 +233,22 @@ extension ExploreViewController {
             Utils.hideSpinner()
             
             if unsafe.pageNo == 1 {
-                unsafe.dataList.removeAll()
+                unsafe.peopleList.removeAll()
             }
             
             if let list = data {
                 if list.count > 0 {
                     if unsafe.pageNo == 1 {
-                        unsafe.dataList = list
+                        unsafe.peopleList = list
                     } else {
-                        unsafe.dataList.append(contentsOf: list)
+                        unsafe.peopleList.append(contentsOf: list)
                     }
                     unsafe.pageNo += 1
                     unsafe.isNextPageExist = true
                 } else {
                     unsafe.isNextPageExist = false
                     if unsafe.pageNo == 1 {
-                        unsafe.dataList.removeAll()
+                        unsafe.peopleList.removeAll()
                     }
                 }
             }
@@ -308,7 +317,7 @@ extension ExploreViewController {
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.dataList = classes
+                unsafe.classCategoryList = classes
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

@@ -37,13 +37,18 @@ class ExploreViewController: CustomViewController {
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
-    var dataList = [Any]()
+   // var dataList = [Any]()
     var pageNo = 1
     var isNextPageExist = true
     
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [SubClass]()
+    
+    var clubInterestList = [ClubCategory]()
+    var eventInterestList = [EventCategory]()
+    var classCategoryList = [Class]()
+    var peopleList = [Friend]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +151,7 @@ extension ExploreViewController {
     @IBAction func eventButtonAction(_ sender: Any) {
         if let btn = sender as? UIButton {
             
-            dataList.removeAll()
+            //dataList.removeAll()
             
             if btn.tag == 0 { // Event
                 searchType = .event
@@ -184,9 +189,11 @@ extension ExploreViewController {
                     vc.type = .event
                 } else if let category = sender as? ClubCategory {
                     vc.clubCategory = category
+                    vc.clubCategoryList = clubInterestList
                     vc.type = .club
                 } else if let category = sender as? Class {
                     vc.classCategory = category
+                    vc.classCategoryList = classCategoryList
                     vc.type = .classes
                 }
             }
