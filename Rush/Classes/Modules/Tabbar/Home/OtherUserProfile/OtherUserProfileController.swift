@@ -52,9 +52,6 @@ class OtherUserProfileController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.isNavigationBarHidden = false
         getProfileAPI()
-        getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
-        getClassCategoryAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -246,10 +246,10 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if let clubs = value {
                 unsafe.clubList = clubs
-                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.getClassCategoryAPI()
         }
     }
     
@@ -269,6 +269,7 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.getClubListAPI(sortBy: "feed")
         }
     }
     
@@ -297,7 +298,7 @@ extension OtherUserProfileController {
             if let list = data {
                 unsafe.userInfo?.friend = list
             }
-            unsafe.tableView.reloadData()
+            unsafe.fetchImagesList()
         }
     }
     
@@ -335,5 +336,24 @@ extension OtherUserProfileController {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
+    }
+    
+    private func fetchImagesList() {
+        guard let userId = self.userInfo?.userId else { return }
+        let params = [Keys.profileUserId: userId, Keys.pageNo: 1] as [String: Any]
+        ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
+            guard let unsafe = self else { return }
+            if let list = data?[Keys.images] as? [[String: Any]] {
+                var items = [Image]()
+                for item in list {
+                    if let json = item["img_data"] as? String {
+                        let image = Image(json: json)
+                        items.append(image)
+                    }
+                }
+                unsafe.imagesList = items
+            }
+            unsafe.getEventList(sortBy: .upcoming)
+        })
     }
 }
