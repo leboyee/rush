@@ -81,7 +81,9 @@ extension ClubDetailViewController {
             if unself.clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
                     controller.clubInfo = unself.clubInfo
+                    controller.modalPresentationStyle = .overFullScreen
                     let nav = UINavigationController(rootViewController: controller)
+                    nav.modalPresentationStyle = .overFullScreen
                     unself.navigationController?.present(nav, animated: false, completion: nil)
                 }
             } else { // Joined
