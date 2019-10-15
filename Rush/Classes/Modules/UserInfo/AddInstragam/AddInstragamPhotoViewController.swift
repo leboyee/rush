@@ -90,7 +90,6 @@ extension AddInstragamPhotoViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.inviteContactSegue {
             if let vc = segue.destination as? ContactsListViewController {
-                vc.isFromRegister = true
             }
         }
     }

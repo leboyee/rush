@@ -48,7 +48,7 @@ extension CreateEventViewController {
         } else if section == 5 {
             return isEndDate == true ? 2 : isEndTime == true ? 2 : 1
         } else if section == 6 {
-            return (interestList.count ?? 0) + 1
+            return interestList.count + 1
         } else if section == 7 {
             return peopleList.count + 1
         }
@@ -314,7 +314,7 @@ extension CreateEventViewController {
                 unsafe.tableView.reloadData()
             } else if indexPath.section == 6 {
                 // S*
-                let interest = unsafe.interestList[indexPath.row] 
+                let interest = unsafe.interestList[indexPath.row]
                 if let index = unsafe.interestList.firstIndex(where: { $0.interestName == interest.interestName }) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()

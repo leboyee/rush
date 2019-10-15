@@ -32,4 +32,5 @@ extension AddProfilePictureViewController {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
             }
         }
-    }}
+    }
+}

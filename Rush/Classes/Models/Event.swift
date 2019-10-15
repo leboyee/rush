@@ -92,16 +92,17 @@ class Event: Codable {
 
 class EventCategory: Codable {
     
-    var id: String = ""
+    private var idP: Int64 = 0
     var name: String = ""
-    var sortOrder = 0
-    
-    init() {
-    }
+    var eventArray: [Event]?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case idP = "interest_id"
         case name = "name"
-        case sortOrder = "sort_order"
+        case eventArray = "event"
     }
+    var id: String {
+        return String(idP)
+    }
+    
 }

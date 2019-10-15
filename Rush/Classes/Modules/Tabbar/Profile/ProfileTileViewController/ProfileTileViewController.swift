@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import Photos
 
 class ProfileTileViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBOutlet weak var titleLable: UILabel!
-
+    var imageList = [Any]()
+    var picker = ImagePickerController()
     let layout = UICollectionViewFlowLayout()
     var selectedImage: UIImage? = UIImage(contentsOfFile: "")
-    
-    var imageArray =  ["https://tineye.com/images/widgets/mona.jpg","https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg","https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg","https://tineye.com/images/widgets/mona.jpg","https://tineye.com/images/widgets/mona.jpg","https://tineye.com/images/widgets/mona.jpg","https://tineye.com/images/widgets/mona.jpg","https://tineye.com/images/widgets/mona.jpg","https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg"]
+    var imagedataList = [String: Any]()
+    var imageArray = [Image]()
+    let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
+    let downloadGroup = DispatchGroup()
+    var imagePageNo: Int = 1
+    var imageNextPageExist = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +32,13 @@ class ProfileTileViewController: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
-        
+        let addImageButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 78, height: 36))
+        addImageButton.setBackgroundImage(UIImage(named: "addImagesProfile"), for: .normal)
+//        addImageButton.setTitle("Add", for: .normal)
+//        addImageButton.setTitleColor(.white, for: .normal)
+        addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addImageButton)
+
         // Setup tableview
         setupCollectionView()
     }
@@ -36,10 +47,60 @@ class ProfileTileViewController: UIViewController {
     @IBAction func backButtonAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func addImageButtonAction(_ sender: Any) {
+        //Utils.notReadyAlert()
+        photoLibraryPermissionCheck()
+        
+     }
  
     // MARK: - Setup Title
     func setTitle(titleStr: String) {
         titleLable.text = titleStr
     }
     
+    func photoLibraryPermissionCheck() {
+        Utils.authorizePhoto(completion: { [weak self] (status) in
+            guard let unsafe = self else { return }
+            if status == .alreadyAuthorized || status == .justAuthorized {
+                DispatchQueue.main.async {
+                    unsafe.picker = ImagePickerController()
+                    unsafe.picker.delegate = self
+                    unsafe.picker.navigationBar.isTranslucent = false
+                    var assets = [PHAsset]()
+                    for img in unsafe.imageList {
+                        if let value = img as? PHAsset { assets.append(value) }
+                    }
+                    //unsafe.picker.
+                    unsafe.picker.updateSelectedAssets(with: assets)
+                    unsafe.present(unsafe.picker, animated: false, completion: nil)
+                }
+            } else {
+                if status != .justDenied {
+                    Utils.photoLibraryPermissionAlert()
+                }
+            }
+        })
+    }
+}
+
+// MARK: - Imagepicker fuctions
+extension ProfileTileViewController: ImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
+        return true
+    }
+    
+    func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
+        imageList = assets
+        picker.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
+            self.getImagesDataList()
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
+        picker.dismiss(animated: false, completion: nil)
+    }
+
 }

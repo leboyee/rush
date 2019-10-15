@@ -168,7 +168,7 @@ extension NetworkManager {
     }
 
     func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "category/event", params: params, resultHandler: resultHandler)
+        requestGet(path: "interest/event/list", params: params, resultHandler: resultHandler)
     }
     
     func getCalendarList(params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -180,7 +180,7 @@ extension NetworkManager {
     }
     
     func getClubCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "category/club", params: params, resultHandler: resultHandler)
+        requestGet(path: "interest/club/list", params: params, resultHandler: resultHandler)
     }
     
     func getCategoryClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {

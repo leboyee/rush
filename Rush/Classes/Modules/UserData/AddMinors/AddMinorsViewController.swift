@@ -138,7 +138,9 @@ extension AddMinorsViewController {
                  getMinorList(searchText: "")
                  self.minorCustomButton.isHidden = true
                  self.view.endEditing(true)
+                self.moveToNext()
                  self.tableView.reloadData()
+            
         }
      
     }

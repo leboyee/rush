@@ -8,7 +8,7 @@
 
 import Foundation
 import Contacts
-
+import UIKit
 class ContactsManager: NSObject {
     
     var store = CNContactStore()
@@ -89,6 +89,13 @@ class ContactsManager: NSObject {
                 
                 if contact.phoneNumbers.count > 0 {
                     contactModel.phone = (contact.phoneNumbers[0].value).value(forKey: "digits") as? String ?? ""
+                }
+                if contact.isKeyAvailable(CNContactImageDataKey) {
+                        if let contactImageData = contact.imageData {
+                            contactModel.contactImage = UIImage(data: contactImageData)
+                    }
+                } else {
+            
                 }
                 
                 /*if let email = contact.emailAddresses.first?.value as String?, ValidatorManager.shared.isValid(email: email) {

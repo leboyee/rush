@@ -35,6 +35,7 @@ extension UserFriendsListViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCell(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -55,6 +56,7 @@ extension UserFriendsListViewController: UITextFieldDelegate {
             isSearch = false
             rightBarButton?.image = #imageLiteral(resourceName: "plus_white")
         }
+        pageNo = 1
         getFriendListAPI()
 
     }
@@ -70,5 +72,13 @@ extension UserFriendsListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+// MARK: - OtherUserProfile delegate
+extension UserFriendsListViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        pageNo = 1
+        getFriendListAPI()
     }
 }
