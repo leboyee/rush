@@ -11,7 +11,7 @@ import IQKeyboardManagerSwift
 import PanModal
 
 protocol EventCategoryFilterDelegate: class {
-    func selectedIndex(_ type: String)
+    func selectedIndex(_ type: String, _ selectedIndex: IndexPath)
 }
 
 class EventCateogryFilterViewController: CustomViewController {

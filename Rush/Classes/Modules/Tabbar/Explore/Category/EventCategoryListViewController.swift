@@ -49,14 +49,6 @@ class EventCategoryListViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-        navigationController?.navigationBar.isTranslucent = false
-        
         switch type {
         case .event:
             if (eventCategory) != nil {
@@ -68,16 +60,24 @@ class EventCategoryListViewController: UIViewController {
                 firstSortText = clubCategory?.name ?? "All categories"
             }
             getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
+        //            getClubCategoryAPI()
         case .classes:
             if (classCategory) != nil {
                 firstSortText = classCategory?.name ?? "All categories"
             }
-            getClassCategoryAPI()
-//            getClassListAPI()
+            //            getClassCategoryAPI()
+            getClassListAPI()
         default:
             break
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        navigationController?.navigationBar.isTranslucent = false
     }
         
     func setupUI() {

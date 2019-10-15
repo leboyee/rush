@@ -79,11 +79,11 @@ struct Keys {
     static let clubContact = "club_contact"
     static let clubPhoto = "club_photo"
     static let clubId = "club_id"
-    static let clubCatId = "club_cat_id"
     static let club = "club"
     static let post = "post"
     static let event = "event"
     
+    static let intId = "interest_id"
     static let interestId           = "_id"
     static let interestName           = "name"
     static let userInterests           = "u_interests"

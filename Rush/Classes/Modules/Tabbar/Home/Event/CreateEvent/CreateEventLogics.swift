@@ -544,7 +544,7 @@ extension CreateEventViewController: AddEventLocationDelegate {
 
 // MARK: - EventPanModel
 extension CreateEventViewController: EventCategoryFilterDelegate {
-    func selectedIndex(_ type: String) {
+    func selectedIndex(_ type: String, _ selectedIndex: IndexPath) {
         if type == "0" {
             self.event?.eventType = .publik
             self.eventType = .publik
