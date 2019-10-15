@@ -76,7 +76,6 @@ struct Cell {
     static let createPost           = "CreatePostCell"
     static let userTagCell           = "UserTagCell"
 
-
     static let dateAndTimeEvent     = "DateAndTimeCell"
     static let rsvpCell              = "RSVPCell"
     static let addEventLocationCell              = "AddEventLocationCell"
@@ -210,11 +209,12 @@ struct Segues {
     static let notificationClubDetail             = "NotificationClubDetailSegue"
     static let notificationClassDetail            = "NotificationClassDetailSegue"
     static let notificationPostDetail             = "NotificationPostDetailSegue"
-    static let profileImageViewSegue             = "ProfileImageViewSegue"
+    static let profileImageViewSegue              = "ProfileImageViewSegue"
     static let inviteContactListSegue             = "InviteContactListSegue"
-    static let friendProfileSegue             = "FriendProfileSegue"
-    static let userInterestSegue             = "UserInterestSegue"
-
+    static let friendProfileSegue                 = "FriendProfileSegue"
+    static let userInterestSegue                  = "UserInterestSegue"
+    static let eventPostImages                    = "EventPostImagesSegue"
+    static let eventInvitedPeople                 = "EventInvitedPeopleSegue"
 }
 
 struct StoryBoard {

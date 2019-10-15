@@ -223,6 +223,7 @@ extension EventDetailViewController {
         cell.userSelected = { [weak self] ( id, index) in
             if index == 0 {
                 // show all invitee list
+                self?.showInvitedPeopleList()
             } else if let list = self?.inviteeList {
                 let invitee = list[index - 1]
                 if let user = invitee.user {
@@ -349,6 +350,10 @@ extension EventDetailViewController {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postList?[index] {
             cell.set(images: post.images)
+            cell.showImages = { [weak self] (index) in
+                guard let unsafe = self else { return }
+                unsafe.showPostImages(post: post, index: index)
+            }
         }
     }
     

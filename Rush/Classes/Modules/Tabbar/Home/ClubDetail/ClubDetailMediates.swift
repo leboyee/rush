@@ -219,3 +219,11 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
         deleteClubAPI()
     }
 }
+
+// MARK: - CreateClubDelegate
+extension ClubDetailViewController: CreateClubProtocol {
+    func updateClubSuccess() {
+        isCallAPI = true
+        getClubDetailAPI()
+    }
+}

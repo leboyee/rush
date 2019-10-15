@@ -46,7 +46,6 @@ extension CreateClubViewController {
     }
     
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
-        
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
         if indexPath.section == 0 {
@@ -232,7 +231,7 @@ extension CreateClubViewController {
     }
     
     func validateAllFields() {
-        if (clubImage != nil || (clubInfo != nil && clubHeader.userImageView.image != nil)) && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+        if ((clubImage != nil && clubInfo == nil) || clubInfo != nil) && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
         } else {
@@ -346,10 +345,9 @@ extension CreateClubViewController {
                      Keys.clubContact: contactNoArray.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0] as [String: Any]
         
-        if clubImage != nil {
-            let img = clubImage?.wxCompress()
+        if clubHeader.userImageView.image != nil {
+            let img = clubHeader.userImageView.image
             let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
-            
             param[Keys.clubPhoto] = dataN
         }
         
@@ -358,15 +356,9 @@ extension CreateClubViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             
-            if let club = data?[Keys.club] as? [String: Any] {
-                do {
-                    let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
-                    let decoder = JSONDecoder()
-                    let value = try decoder.decode(Club.self, from: dataClub)
-                    unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: value)
-                } catch {
-                    
-                }
+            if data != nil {
+                unsafe.delegate?.updateClubSuccess()
+                unsafe.dismiss(animated: false, completion: nil)
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

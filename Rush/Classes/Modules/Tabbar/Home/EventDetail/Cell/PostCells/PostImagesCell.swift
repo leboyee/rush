@@ -14,7 +14,8 @@ class PostImagesCell: UITableViewCell {
 
     var list: [Image]?
     let padding: CGFloat = 1.0
-    
+    var showImages: ((_ index: Int) -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -46,7 +47,13 @@ extension PostImagesCell {
 
 // MARK: - Delegates
 extension PostImagesCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == collectionView.numberOfItems(inSection: 0) - 1 {
+            showImages?(0)
+        } else {
+            showImages?(indexPath.row)
+        }
+    }
 }
 
 extension PostImagesCell: UICollectionViewDataSource {

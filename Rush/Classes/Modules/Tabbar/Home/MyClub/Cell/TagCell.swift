@@ -35,6 +35,10 @@ extension TagCell {
         tagListView.addTags(tagList)
         tagListView.textFont = UIFont.regular(sz: 17)
     }
+    
+    func set(interest: [Interest]) {
+        
+    }
 }
 
 extension TagCell: TagListViewDelegate {

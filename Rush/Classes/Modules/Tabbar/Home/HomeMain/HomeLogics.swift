@@ -152,15 +152,14 @@ extension HomeViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
                 unsafe.clubList = clubs
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.tableView.reloadData()
+            unsafe.getClassListAPI()
         }
     }
     
@@ -171,15 +170,14 @@ extension HomeViewController {
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
                 unsafe.eventList = events
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.tableView.reloadData()
+            unsafe.getClubListAPI(sortBy: "feed")
         }
     }
     
@@ -199,14 +197,12 @@ extension HomeViewController {
     func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classList = classes
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.tableView.reloadData()
         }
     }
 }
