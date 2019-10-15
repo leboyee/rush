@@ -42,9 +42,7 @@ class EventListViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
-        pageNo = 1
         myEventPageNo = 1
-        getEventList()
         if let filter = Utils.getDataFromUserDefault(UserDefaultKey.myUpcomingFilter) as? String {
             eventFilterType = filter == "All Upcoming" ? .myUpcoming : .managedFirst
             getMyEventList(sortBy: eventFilterType)

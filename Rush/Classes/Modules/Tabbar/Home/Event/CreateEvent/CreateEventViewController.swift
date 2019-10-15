@@ -40,8 +40,8 @@ class CreateEventViewController: UIViewController {
     var endDate = Date()
     var startTime = "01:00 PM"
     var endTime = "02:00 PM"
-    var startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
-    var endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
+    var startTimeDate =  Date()//.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
+    var endTimeDate =  Date()//.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
     var calendarHeight: CGFloat = 352.0
     var isStartDate: Bool = false
     var isEndDate: Bool = false
@@ -87,6 +87,11 @@ class CreateEventViewController: UIViewController {
         setupTableView()
         fillImageHeader()
         deleteButton.isHidden = true
+        self.startTimeDate = Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900)
+        self.endTimeDate = Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 4500)
+        self.startTime = self.startTimeDate.toString(format: "hh:mm a")
+        self.endTime = self.endTimeDate.toString(format: "hh:mm a")
+
         if isEditEvent == true {
             setupEventEdit()
         }
@@ -138,7 +143,7 @@ extension CreateEventViewController {
         endDate = event?.end ?? Date()
         startTime = "01:00 PM"
          endTime = "02:00 PM"
-         startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
+        startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
         endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
         eventId = String(event?.id ?? 1)

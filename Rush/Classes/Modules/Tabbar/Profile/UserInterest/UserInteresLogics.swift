@@ -63,8 +63,8 @@ extension UserInterestViewController: TagListViewDelegate {
 extension UserInterestViewController {
     
     func updateProfileAPI() {
-        let interestNameArray = interestArray.map({ $0.interestName })
-        let param = [Keys.userInterests: interestNameArray]  as [String: Any]
+        let interestIdArray = interestArray.map({ String($0.interestId) })
+        let param = [Keys.userInterests: interestIdArray]  as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
