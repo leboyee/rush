@@ -147,7 +147,7 @@ extension OtherUserProfileController {
         cell.setup(.none, nil, nil)
         switch indexPath.section {
         case 1:
-            cell.setup(imagesList: [])
+            cell.setup(imagesList: imagesList)
         case 2:
             cell.setup(friends: userInfo?.friend ?? [])
         case 3:
@@ -226,7 +226,7 @@ extension OtherUserProfileController {
         ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
             guard let unsafe = self else { return }
             unsafe.userInfo = user
-            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? true : false
+            unsafe.isShowMessageButton = unsafe.userInfo?.friendTypeStatus == .accept ? true : false
             unsafe.getFriendListAPI()
         }
     }
@@ -340,7 +340,7 @@ extension OtherUserProfileController {
     
     private func fetchImagesList() {
         guard let userId = self.userInfo?.userId else { return }
-        let params = [Keys.profileUserId: userId, Keys.pageNo: 1] as [String: Any]
+        let params = [Keys.profileUserId: userId, Keys.pageNo: "1"] as [String: Any]
         ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let list = data?[Keys.images] as? [[String: Any]] {

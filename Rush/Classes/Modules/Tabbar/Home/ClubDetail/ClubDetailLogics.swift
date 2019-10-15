@@ -81,6 +81,7 @@ extension ClubDetailViewController {
             if unself.clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
                     controller.clubInfo = unself.clubInfo
+                    controller.delegate = self
                     controller.modalPresentationStyle = .overFullScreen
                     let nav = UINavigationController(rootViewController: controller)
                     nav.modalPresentationStyle = .overFullScreen
@@ -111,7 +112,7 @@ extension ClubDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: clubInfo?.invitees, total: 0)
+        cell.setup(invitees: clubInfo?.invitees, total: clubInfo?.invitees?.count ?? 0)
         
         cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
@@ -153,8 +154,10 @@ extension ClubDetailViewController {
     }
     
     func fillTagCell(_ cell: TagCell) {
-//        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
-//        cell.setup(tagList: tags)
+        if let tags = clubInfo?.clubInterests {
+            let tag = tags.compactMap({ $0.interestName })
+            cell.setup(tagList: tag)
+        }
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {

@@ -20,7 +20,7 @@ class ClubDetailViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var clubHeader: ClubHeader!
     
-    var delegate: ClubDetailProtocol?
+    weak var delegate: ClubDetailProtocol?
     
     var interestList = [String]()
     var peopleList = [String]()
