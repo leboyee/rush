@@ -36,10 +36,12 @@ class CreateClubViewController: UIViewController {
     var interestList = [Interest]()
     var peopleList = [Invite]()
     var removePeopleIds = [String]()
+    var newPeopleIds = [String]()
+    var newContacts = [String]()
     
     var clubInfo: Club?
     
-    var delegate: CreateClubProtocol?
+    weak var delegate: CreateClubProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

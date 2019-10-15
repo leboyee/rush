@@ -328,11 +328,6 @@ extension CreateClubViewController {
     
     func updateClubAPI() {
         
-        let friendArray = self.peopleList.filter { ($0.isFriend == true) }
-        let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
-        let contactList = self.peopleList.filter { ($0.isFriend == false) }
-        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
-        
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
         let removeIds = removePeopleIds.joined(separator: ",")
         
@@ -340,9 +335,9 @@ extension CreateClubViewController {
                      Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,
-                     Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
+                     Keys.clubInvitedUserIds: newPeopleIds.joined(separator: ","),
                      Keys.removedClubInvitedUserIds: removeIds,
-                     Keys.clubContact: contactNoArray.joined(separator: ","),
+                     Keys.clubContact: newContacts.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0] as [String: Any]
         
         if clubHeader.userImageView.image != nil {
