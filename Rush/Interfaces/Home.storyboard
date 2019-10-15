@@ -1004,7 +1004,7 @@
         <!--Friends List View Controller-->
         <scene sceneID="NcX-rj-wI2">
             <objects>
-                <viewController id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendsListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N8P-N3-1qI" customClass="FriendsListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ftc-MF-NtD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
