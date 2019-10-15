@@ -52,8 +52,8 @@ extension EditProfileViewController {
         view.backgroundColor = UIColor.bgBlack
         let majArray = profile?.majors ?? [Major]()
         let minArray = profile?.minors ?? [Minor]()
-        majorArray = majArray.map({($0.majorName ?? "")})
-        minorArray = minArray.map({($0.minorName ?? "")})
+        majorArray = majArray.map({ $0.majorName ?? "" })
+        minorArray = minArray.map({ $0.minorName ?? "" })
         setupTableView()
         setupNavigation()
         
@@ -65,10 +65,9 @@ extension EditProfileViewController {
     
     func setupNavigation() {
         self.view.backgroundColor = UIColor.bgBlack
-        
-        let rightBar =  UIBarButtonItem(title: "⚙︎", style: .plain, target: self, action: #selector(settingButtonAction))
+        let rightBar = UIBarButtonItem(image: #imageLiteral(resourceName: "whiteSettingIcon"), style: .plain, target: self, action: #selector(settingButtonAction))
         navigationItem.rightBarButtonItem = rightBar
-        
+
         let leftBar = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftBar
     }

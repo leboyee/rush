@@ -10,6 +10,7 @@ import UIKit
 
 enum ClubListType {
     case none
+    case event
     case club
     case classes
 }
@@ -38,6 +39,16 @@ class ClubListViewController: CustomViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if screenType == .club {
+            getMyClubListAPI(sortBy: "my")
+        } else {
+            getClassCategoryAPI()
+        }
+    }
+    
     func setup() {
         setupUI()
     }
@@ -45,11 +56,6 @@ class ClubListViewController: CustomViewController {
     func setupUI() {
         setupTableView()
         setupNavigation()
-        if screenType == .club {
-            getMyClubListAPI(sortBy: "my")
-        } else {
-            getClassCategoryAPI()
-        }
     }
     
     func setupNavigation() {
@@ -123,11 +129,12 @@ extension ClubListViewController {
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
             vc.clubInfo = sender as? Club
+            vc.delegate = self
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController
                 else { return }
             vc.subclassInfo = sender as? SubClass
             vc.joinedClub = true
-        } 
+        }
     }
 }

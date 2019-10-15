@@ -24,7 +24,7 @@ class Interest: Codable {
     private enum CodingKeys: String, CodingKey {
         case interestId = "interest_id"
         case interestName = "name"
-         case eventList = "event"
+//         case eventList = "event"
     }
     
     // MARK: - Private Functions
@@ -37,8 +37,5 @@ class Interest: Codable {
         if let value = data[Keys.interestName] as? String {
             interestName = value
         }
-        
-        
     }
-    
 }

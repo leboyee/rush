@@ -54,7 +54,9 @@ extension EventCategoryListViewController {
             title = indexPath.item == 0 ? "All upcoming" : indexPath.item == 1 ? "Any time" : "Friends"
         } else if type == .event {
             title = indexPath.item == 0 ? firstSortText : indexPath.item == 1 ? secondSortText : thirdSortText
-        } else if type == .club || type == .classes {
+        } else if type == .club {
+            title = indexPath.item == 0 ? firstSortText : indexPath.item == 1 ? secondSortText : thirdSortText
+        } else if type == .classes {
             title = indexPath.item == 0 ? firstSortText : indexPath.item == 1 ? secondSortText : thirdSortText
         }
         cell.setup(text: title)
@@ -95,7 +97,16 @@ extension EventCategoryListViewController {
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
-        } else if type == .club || type == .classes {
+        } else if type == .club {
+            guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+            //Show all categories for the screen.
+            eventCategoryFilter.delegate = self
+            let cat = clubCategoryList.compactMap({ $0.name })
+            eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+            presentPanModal(rowViewController)
+            collectionView.reloadData()
+        } else if type == .classes {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             //Show all categories for the screen.
             eventCategoryFilter.delegate = self
@@ -313,12 +324,14 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 // Services
 extension EventCategoryListViewController {
 
-    func getClubListAPI(sortBy: String) {
+    func getClubListAPI(sortBy: String, clubCategory: ClubCategory?) {
         
-        let param = [Keys.search: searchText,
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
                      Keys.sortBy: sortBy,
+                     Keys.clubCatId: clubCategory?.id ?? "",
                      Keys.pageNo: pageNo] as [String: Any]
-        
+       
         if clubList.count == 0 {
             Utils.showSpinner()
         }
@@ -387,9 +400,24 @@ extension EventCategoryListViewController {
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classCategoryList = classes
+                  unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
+    func getClubCategoryListAPI() {
+        //Utils.showSpinner()
+        var params = [Keys.pageNo: "1"]
+        params[Keys.search] = searchText
+        ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
+            //Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let category = data {
+                unsafe.clubCategoryList = category
+                  unsafe.tableView.reloadData()
+            }
+        }
+    }
+    
 }

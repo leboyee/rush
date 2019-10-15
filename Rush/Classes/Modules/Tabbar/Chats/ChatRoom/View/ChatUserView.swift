@@ -13,6 +13,7 @@ class ChatUserView: UIView {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     var isShowAll = false
     var users = [SBDUser]()
@@ -44,10 +45,18 @@ class ChatUserView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        noDataLabel.isHidden = users.count > 0
+        
         self.contentView.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
         
         collectionView.register(UINib(nibName: Cell.chatUserCell, bundle: nil), forCellWithReuseIdentifier: Cell.chatUserCell)
         
+        collectionView.reloadData()
+    }
+    
+    func reloadData(users: [SBDUser]) {
+        self.users = users
+        noDataLabel.isHidden = users.count > 0
         collectionView.reloadData()
     }
 }

@@ -53,6 +53,7 @@ class Event: Codable {
     var creator: User?
     var rsvp: [RSVPQuestion]?
     var eventInvite: [EventInvite]?
+    var invitees: [Invitee]?
     var photoJson: String = ""
     private var convertJsonToPhoto: Image?
     var photo: Image? {
@@ -85,21 +86,23 @@ class Event: Codable {
         case interests = "event_interests"
         case rsvp = "event_rsvp_list"
         case eventInvite = "my_event_invite"
+        case invitees = "invitees"
     }
 }
 
 class EventCategory: Codable {
     
-    var id: String = ""
+    private var idP: Int64 = 0
     var name: String = ""
-    var sortOrder = 0
-    
-    init() {
-    }
+    var eventArray: [Event]?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case idP = "interest_id"
         case name = "name"
-        case sortOrder = "sort_order"
+        case eventArray = "event"
     }
+    var id: String {
+        return String(idP)
+    }
+    
 }

@@ -50,18 +50,20 @@ class ExploreViewController: CustomViewController {
         
         // Do any additional setup after loading the view.
         setup()
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        
+        getClubListAPI(sortBy: "feed")
+        getEventList(sortBy: .upcoming)
+        getClassListAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        if isSearch {
+       /* if isSearch {
             searchfield.becomeFirstResponder()
-        }
-        getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
-        getClassListAPI()
+        } */
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -146,20 +148,15 @@ extension ExploreViewController {
             
             dataList.removeAll()
             
-            if btn.tag == 2 {
-                Utils.notReadyAlert()
-                return
-            }
-            
             if btn.tag == 0 { // Event
                 searchType = .event
-                // C*
                 getEventCategoryListAPI()
             } else if btn.tag == 1 { // Club
                 searchType = .club
                 getClubCategoryListAPI()
             } else if btn.tag == 2 { // Classes
                 searchType = .classes
+                getClassCategoryAPI()
             } else if btn.tag == 3 { // People
                 searchType = .people
                 getFriendListAPI()
@@ -185,6 +182,12 @@ extension ExploreViewController {
                 } else if let category = sender as? EventCategory {
                     vc.eventCategory = category
                     vc.type = .event
+                } else if let category = sender as? ClubCategory {
+                    vc.clubCategory = category
+                    vc.type = .club
+                } else if let category = sender as? Class {
+                    vc.classCategory = category
+                    vc.type = .classes
                 }
             }
         } else if segue.identifier == Segues.clubDetailSegue {
@@ -199,7 +202,11 @@ extension ExploreViewController {
                vc.eventId = String(event.id)
                vc.event = event
             }
+        } else if segue.identifier == Segues.otherUserProfile {
+            let vc = segue.destination as? OtherUserProfileController
+            let friend = sender as? Friend
+            vc?.userInfo = friend?.user
+            vc?.delegate = self
         }
-        
     }
 }

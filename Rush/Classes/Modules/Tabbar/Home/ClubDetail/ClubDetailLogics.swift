@@ -345,6 +345,20 @@ extension ClubDetailViewController {
     }
     
     func deleteClubAPI() {
-        Utils.notReadyAlert()
+        
+        let id = clubInfo?.id ?? 0
+        Utils.showSpinner()
+        ServiceManager.shared.deleteClub(clubId: id, params: [Keys.clubId: id]) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.delegate?.deleteClubSuccess(unsafe.clubInfo)
+                DispatchQueue.main.async {
+                    unsafe.navigationController?.popViewController(animated: true)
+                }
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
     }
 }

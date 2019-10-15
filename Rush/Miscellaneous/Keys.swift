@@ -26,6 +26,7 @@ let kLastLocation               = "com.rush.lastlocation"
 let kDeviceTokenPushKey         = "com.rush.devicetokenpush"
 let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
 let kUpdateUnreadcount          = "com.rush.updateunreadcount"
+let kHomeTutorialKey            = "com.rush.hometutorial"
 
 // MARK: - API's Keys
 struct Keys {
@@ -77,6 +78,7 @@ struct Keys {
     static let clubContact = "club_contact"
     static let clubPhoto = "club_photo"
     static let clubId = "club_id"
+    static let clubCatId = "club_cat_id"
     static let club = "club"
     static let post = "post"
     static let event = "event"

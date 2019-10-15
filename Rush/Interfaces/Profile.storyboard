@@ -85,6 +85,8 @@
                         <segue destination="Se2-YI-KJb" kind="show" identifier="NotificationClubDetailSegue" id="mVW-Nk-rg2"/>
                         <segue destination="QQo-sG-keX" kind="show" identifier="NotificationClassDetailSegue" id="78A-IE-Y1M"/>
                         <segue destination="VBD-zJ-xaO" kind="show" identifier="NotificationPostDetailSegue" id="5Eg-G4-NS4"/>
+                        <segue destination="Ark-68-rss" kind="show" identifier="ProfileImageViewSegue" id="xuZ-RT-uoB"/>
+                        <segue destination="UeD-st-jZl" kind="show" identifier="UserInterestSegue" id="VdX-MI-YIM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqU-TN-DgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -134,10 +136,22 @@
         <!--OtherUserProfileController-->
         <scene sceneID="pox-nY-OaA">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="OtherUserProfileController" id="c31-hD-7x0" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="OtherUserProfileController" id="c31-hD-7x0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fea-MD-9jw"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWD-32-QMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="-409"/>
+        </scene>
+        <!--EnterPasswordViewConteroller-->
+        <scene sceneID="S7z-RS-oi0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorize" referencedIdentifier="EnterPasswordViewConteroller" id="EI7-Yc-sVb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kYc-Sa-Vdx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dck-ed-W5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1311" y="414"/>
         </scene>
         <!--InstaWebViewViewController-->
         <scene sceneID="hBz-Li-mPl">
@@ -251,6 +265,7 @@
                         <segue destination="lSf-6x-Jg6" kind="presentation" identifier="DisconnectInstagramSegue" animates="NO" modalPresentationStyle="overFullScreen" id="2cS-pu-J6g"/>
                         <segue destination="eCx-fz-AbD" kind="presentation" identifier="LogoutPopupSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Qbh-H5-b15"/>
                         <segue destination="ej9-Qv-XoJ" kind="show" identifier="SettingsInstagramConnectSegue" id="kOV-2K-PIx"/>
+                        <segue destination="EI7-Yc-sVb" kind="show" identifier="ChangePasswordSegue" id="sio-PQ-tux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00C-Oc-pRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,6 +420,57 @@
             </objects>
             <point key="canvasLocation" x="2983" y="510"/>
         </scene>
+        <!--Profile Tile View Controller-->
+        <scene sceneID="aF9-gb-GdL">
+            <objects>
+                <viewController id="Ark-68-rss" customClass="ProfileTileViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MEy-mC-YXM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="94F-xP-Em7" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="773"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fqD-Op-HLM">
+                                <rect key="frame" x="0.0" y="13" width="414" height="773"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EMw-j6-rrv">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="94F-xP-Em7" firstAttribute="trailing" secondItem="IG7-QJ-gaI" secondAttribute="trailing" id="0Cg-gq-GyD"/>
+                            <constraint firstItem="94F-xP-Em7" firstAttribute="top" secondItem="IG7-QJ-gaI" secondAttribute="top" constant="13" id="BW7-vy-GbE"/>
+                            <constraint firstAttribute="bottom" secondItem="94F-xP-Em7" secondAttribute="bottom" id="DTf-f4-Y9W"/>
+                            <constraint firstItem="94F-xP-Em7" firstAttribute="leading" secondItem="IG7-QJ-gaI" secondAttribute="leading" id="JdT-ne-POT"/>
+                            <constraint firstItem="fqD-Op-HLM" firstAttribute="top" secondItem="IG7-QJ-gaI" secondAttribute="top" constant="13" id="kzn-4k-QBA"/>
+                            <constraint firstItem="fqD-Op-HLM" firstAttribute="trailing" secondItem="IG7-QJ-gaI" secondAttribute="trailing" id="lMb-M3-vIJ"/>
+                            <constraint firstAttribute="bottom" secondItem="fqD-Op-HLM" secondAttribute="bottom" id="uWi-P8-RcW"/>
+                            <constraint firstItem="fqD-Op-HLM" firstAttribute="leading" secondItem="IG7-QJ-gaI" secondAttribute="leading" id="zR1-eW-SQB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IG7-QJ-gaI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6fr-Ow-Tpi"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="fqD-Op-HLM" id="ieg-0R-P3k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7A-Uf-aab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1326.0869565217392" y="725.89285714285711"/>
+        </scene>
         <!--User Friends List View Controller-->
         <scene sceneID="xsx-9k-Rcc">
             <objects>
@@ -466,6 +532,8 @@
                     <connections>
                         <outlet property="noSearchResultView" destination="YcR-uP-PsI" id="wGJ-ql-ws7"/>
                         <outlet property="tableView" destination="s0q-8L-7Py" id="8vj-Tq-UMP"/>
+                        <segue destination="cv2-jF-KOY" kind="show" identifier="InviteContactListSegue" id="YcM-XV-1Id"/>
+                        <segue destination="c31-hD-7x0" kind="show" identifier="FriendProfileSegue" id="CnQ-2G-2dH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9V-Na-vRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -785,9 +853,84 @@ event updates.</string>
             </objects>
             <point key="canvasLocation" x="1024" y="-86"/>
         </scene>
+        <!--ContactsListViewController-->
+        <scene sceneID="QMu-vA-7zt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserInfo" referencedIdentifier="ContactsListViewController" id="cv2-jF-KOY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9z8-g8-bcr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u7J-ca-Je3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-599" y="1104"/>
+        </scene>
+        <!--User Interest View Controller-->
+        <scene sceneID="AYe-Ws-H3M">
+            <objects>
+                <viewController storyboardIdentifier="UserInterestViewController" id="UeD-st-jZl" customClass="UserInterestViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tUZ-Vi-JUI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-8x-zNb" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="13" width="414" height="797"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="g8Q-MA-H8U">
+                                <rect key="frame" x="0.0" y="13" width="414" height="773"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGh-Ri-rIJ" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="24" y="732" width="366" height="48"/>
+                                <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="5E2-SV-65J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="Save interests">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonAction" destination="UeD-st-jZl" eventType="touchUpInside" id="nBe-8F-qnM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="L4G-8x-zNb" secondAttribute="bottom" constant="-24" id="2qk-AE-UEd"/>
+                            <constraint firstItem="L4G-8x-zNb" firstAttribute="top" secondItem="NRq-aP-Qi6" secondAttribute="top" constant="13" id="G9W-xO-oMM"/>
+                            <constraint firstItem="g8Q-MA-H8U" firstAttribute="top" secondItem="L4G-8x-zNb" secondAttribute="top" id="Nty-qZ-Qz5"/>
+                            <constraint firstItem="NRq-aP-Qi6" firstAttribute="bottom" secondItem="pGh-Ri-rIJ" secondAttribute="bottom" constant="6" id="RBn-Av-J1g"/>
+                            <constraint firstAttribute="bottom" secondItem="g8Q-MA-H8U" secondAttribute="bottom" id="bFp-D3-LT1"/>
+                            <constraint firstItem="g8Q-MA-H8U" firstAttribute="leading" secondItem="NRq-aP-Qi6" secondAttribute="leading" id="c3h-Lm-Hsm"/>
+                            <constraint firstItem="g8Q-MA-H8U" firstAttribute="trailing" secondItem="NRq-aP-Qi6" secondAttribute="trailing" id="dRo-Ti-QVY"/>
+                            <constraint firstItem="L4G-8x-zNb" firstAttribute="leading" secondItem="NRq-aP-Qi6" secondAttribute="leading" id="njU-Gp-yIk"/>
+                            <constraint firstItem="NRq-aP-Qi6" firstAttribute="trailing" secondItem="pGh-Ri-rIJ" secondAttribute="trailing" constant="24" id="prf-UV-S0r"/>
+                            <constraint firstItem="L4G-8x-zNb" firstAttribute="trailing" secondItem="NRq-aP-Qi6" secondAttribute="trailing" id="sGN-m7-RhH"/>
+                            <constraint firstItem="pGh-Ri-rIJ" firstAttribute="leading" secondItem="NRq-aP-Qi6" secondAttribute="leading" constant="24" id="u4b-9q-ctt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NRq-aP-Qi6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="42o-5i-2VM"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="nextButton" destination="pGh-Ri-rIJ" id="Gpj-b7-XvH"/>
+                        <outlet property="tableView" destination="g8Q-MA-H8U" id="wA1-S4-o17"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r2d-Vk-KZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2109" y="726"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back-arrow" width="24" height="28"/>
         <image name="instagram64px" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3dt-pp-mnp"/>
+    </inferredMetricsTieBreakers>
 </document>

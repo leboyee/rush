@@ -87,15 +87,18 @@ extension ChatListCell {
     func setup(onlineUser: NSMutableArray?) {
         onlineView.isHidden = true
         if let members = onlineUser {
+            var isOnline = false
             for member in members {
                 if let user = member as? SBDUser {
                     let loggedInUserId = Authorization.shared.profile?.userId ?? ""
                     if loggedInUserId != user.userId {
-                        onlineView.isHidden = user.connectionStatus == .online
-                        break
+                        if user.connectionStatus == .online {
+                            isOnline = true
+                        }
                     }
                 }
             }
+            onlineView.isHidden = !(isOnline)
         }
     }
     

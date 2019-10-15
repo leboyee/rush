@@ -79,20 +79,10 @@ extension SearchClubViewController {
         ServiceManager.shared.fetchClubCategoryList(params: param) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let value = data?[Keys.list] as? [[String: Any]] {
-                do {
-                    let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
-                    let decoder = JSONDecoder()
-                    if let value = try? decoder.decode([ClubCategory].self, from: dataClub) {
-                        unsafe.dataList = value
-                    }
-                    unsafe.tableView.reloadData()
-                } catch {
-                    
-                }
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            if let category = data {
+                unsafe.dataList = category
             }
+            unsafe.tableView.reloadData()
         }
     }
     

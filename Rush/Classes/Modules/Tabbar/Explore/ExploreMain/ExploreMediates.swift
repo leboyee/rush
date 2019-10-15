@@ -121,7 +121,6 @@ extension ExploreViewController: UITextFieldDelegate {
         }
         
         if searchType == .event {
-            // C*
             getEventCategoryListAPI()
         } else if searchType == .club {
             getClubCategoryListAPI()
@@ -158,6 +157,18 @@ extension ExploreViewController: CreatePostViewControllerDelegate {
                                    actionText: buttonText,
                                    actionBlock: { (_) in
                                     Utils.notReadyAlert()
+        })
+        snackbar.show()
+    }
+}
+// MARK: - OtherUserProfile delegate
+extension ExploreViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+            duration: .middle,
+            actionText: "Undo",
+            actionBlock: { (_) in
+                Utils.notReadyAlert()
         })
         snackbar.show()
     }

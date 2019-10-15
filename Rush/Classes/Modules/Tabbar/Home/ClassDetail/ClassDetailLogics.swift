@@ -21,23 +21,22 @@ extension ClassDetailViewController {
         return (isShowMore && section == 2) ? 16 :  1
     }
     
-    
-    
-    
-//    if indexPath.section > 5 {
-//    let photos = clubPostList[indexPath.section - 6].images
-//    if indexPath.row == 2 {
-//    return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
-//    }
-//    return UITableView.automaticDimension
-//    } else {
-//    if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
-//    return CGFloat.leastNormalMagnitude
-//    } else {
-//    let auto = UITableView.automaticDimension
-//    return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
-//    }
-//    }
+    /*
+    if indexPath.section > 5 {
+    let photos = clubPostList[indexPath.section - 6].images
+    if indexPath.row == 2 {
+    return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
+    }
+    return UITableView.automaticDimension
+    } else {
+    if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+    return CGFloat.leastNormalMagnitude
+    } else {
+    let auto = UITableView.automaticDimension
+    return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
+    }
+    }
+    */
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && joinedClub == false {
@@ -164,8 +163,7 @@ extension ClassDetailViewController {
     func checkIsJoined() {
         if subclassInfo?.myJoinedClass?.count ?? 0 > 0 {
             joinedClub = true
-        }
-        else{
+        } else {
             joinedClub = false
         }
     }
@@ -286,7 +284,8 @@ extension ClassDetailViewController {
                     if uwself.subclassInfo?.classGroups?.count ?? 0 > 0 {
                         uwself.selectedGroup = uwself.subclassInfo?.classGroups?[0]
                     }
-                    self?.tableView.reloadData()
+                    uwself.getClassPostListAPI()
+                    uwself.tableView.reloadData()
                 } catch {
                     
                 }

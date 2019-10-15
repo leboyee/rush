@@ -104,7 +104,7 @@ extension MyClubViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
         let snackbar = TTGSnackbar(message: "You unfriended \(name)",
             duration: .middle,
-            actionText: "Undo",
+            actionText: "",
             actionBlock: { (_) in
                 Utils.notReadyAlert()
         })
