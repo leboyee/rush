@@ -125,10 +125,26 @@ extension CreateClubViewController {
                 unself.interestList.remove(at: indexPath.row)
                 unself.tableView.reloadData()
             } else if indexPath.section == 3 {
+                
+                if unself.clubInfo != nil {
+                    if let invitee = unself.clubInfo?.invitees {
+                        let people = unself.peopleList[indexPath.row]
+                        let filter = invitee.filter({ $0.user?.userId == people.profile?.userId })
+                        if filter.count > 0 {
+                            if let id = people.profile?.userId {
+                                if unself.removePeopleIds.contains(id) == false {
+                                    unself.removePeopleIds.append(id)
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 if let index = unself.peopleList.firstIndex(of: (unself.peopleList[indexPath.row])) {
                     unself.peopleList.remove(at: index)
                     unself.tableView.reloadData()
                 }
+                
             }
             unself.validateAllFields()
         }
@@ -283,6 +299,7 @@ extension CreateClubViewController {
         let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
+        
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,
@@ -311,6 +328,48 @@ extension CreateClubViewController {
     }
     
     func updateClubAPI() {
-        Utils.notReadyAlert()
+        
+        let friendArray = self.peopleList.filter { ($0.isFriend == true) }
+        let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
+        
+        let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
+        let removeIds = removePeopleIds.joined(separator: ",")
+        
+        var param = [Keys.clubId: clubInfo?.id ?? 0,
+                     Keys.clubName: nameClub,
+                     Keys.clubDesc: clubDescription,
+                     Keys.clubInterests: interests,
+                     Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
+                     Keys.removedClubInvitedUserIds: removeIds,
+                     Keys.clubContact: contactNoArray.joined(separator: ","),
+                     Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0] as [String: Any]
+        
+        if clubImage != nil {
+            let img = clubImage?.wxCompress()
+            let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
+            
+            param[Keys.clubPhoto] = dataN
+        }
+        
+        Utils.showSpinner()
+        ServiceManager.shared.updateClub(clubId: clubInfo?.clubId ?? "0", params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            
+            if let club = data?[Keys.club] as? [String: Any] {
+                do {
+                    let dataClub = try JSONSerialization.data(withJSONObject: club, options: .prettyPrinted)
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(Club.self, from: dataClub)
+                    unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: value)
+                } catch {
+                    
+                }
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
     }
 }

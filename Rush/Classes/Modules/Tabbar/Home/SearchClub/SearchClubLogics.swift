@@ -81,6 +81,8 @@ extension SearchClubViewController {
             guard let unsafe = self else { return }
             if let category = data {
                 unsafe.dataList = category
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
             unsafe.tableView.reloadData()
         }

@@ -96,6 +96,10 @@ extension NetworkManager {
     func createClub(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "club", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
+    
+    func updateClub(clubId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestUploadImage(path: "club/\(clubId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
    
     func getClubList(sortBy: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "club/\(sortBy)/list", params: params, resultHandler: resultHandler)

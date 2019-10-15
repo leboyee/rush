@@ -12,15 +12,37 @@ import Photos
 extension OtherUserProfileController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        return section == 0 ? ((Utils.navigationHeigh*2) + 24 + 216) : 44
+        if section == 0 {
+            return ((Utils.navigationHeigh*2) + 24 + 216)
+        } else if (section == 1 && imagesList.count > 0) || (section == 2 && (userInfo?.friend?.count ?? 0) > 0) || (section == 3 && eventList.count > 0) || (section == 4 && clubList.count > 0) || (section == 5 && classList.count > 0) {
+            return 44
+        }
+        return CGFloat.leastNormalMagnitude
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
-        return (section == 0 || section == 1 || section == 2) ? 1 : CGFloat.leastNormalMagnitude
+        
+        if section == 0 || (section == 1 && imagesList.count > 0) || (section == 2 && (userInfo?.friend?.count ?? 0) > 0) {
+            return 1
+        } else if section == 5 {
+            return 50
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? (indexPath.row == 1 ? 56 : UITableView.automaticDimension) : indexPath.section == 1 ? 112 : indexPath.section == 2 ? 88 : 157
+        if indexPath.section == 0 {
+            return indexPath.row == 1 ? 56 : UITableView.automaticDimension
+        } else if indexPath.section == 1 {
+            return imagesList.count > 0 ? 112 : CGFloat.leastNormalMagnitude
+        } else if indexPath.section == 2 {
+            return (userInfo?.friend?.count ?? 0) > 0 ? 88 : CGFloat.leastNormalMagnitude
+        } else if (indexPath.section == 3 && eventList.count > 0) || (indexPath.section == 4 && clubList.count > 0) || (indexPath.section == 5 && classList.count > 0) {
+            return 157
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -127,7 +149,7 @@ extension OtherUserProfileController {
         case 1:
             cell.setup(imagesList: [])
         case 2:
-            cell.setup(invitees: [], total: 0)
+            cell.setup(friends: userInfo?.friend ?? [])
         case 3:
             cell.setup(.upcoming, nil, eventList)
         case 4:
@@ -204,8 +226,8 @@ extension OtherUserProfileController {
         ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
             guard let unsafe = self else { return }
             unsafe.userInfo = user
-            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? false : true
-            unsafe.tableView.reloadData()
+            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? true : false
+            unsafe.getFriendListAPI()
         }
     }
     
@@ -224,10 +246,10 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if let clubs = value {
                 unsafe.clubList = clubs
-                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.getClassCategoryAPI()
         }
     }
     
@@ -247,6 +269,7 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.getClubListAPI(sortBy: "feed")
         }
     }
     
@@ -261,6 +284,21 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+        }
+    }
+    
+    func getFriendListAPI() {
+        
+        let params = [Keys.pageNo: 1,
+                      Keys.search: "",
+                      Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
+        
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+            guard let unsafe = self else { return }
+            if let list = data {
+                unsafe.userInfo?.friend = list
+            }
+            unsafe.fetchImagesList()
         }
     }
     
@@ -298,5 +336,24 @@ extension OtherUserProfileController {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
+    }
+    
+    private func fetchImagesList() {
+        guard let userId = self.userInfo?.userId else { return }
+        let params = [Keys.profileUserId: userId, Keys.pageNo: 1] as [String: Any]
+        ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
+            guard let unsafe = self else { return }
+            if let list = data?[Keys.images] as? [[String: Any]] {
+                var items = [Image]()
+                for item in list {
+                    if let json = item["img_data"] as? String {
+                        let image = Image(json: json)
+                        items.append(image)
+                    }
+                }
+                unsafe.imagesList = items
+            }
+            unsafe.getEventList(sortBy: .upcoming)
+        })
     }
 }

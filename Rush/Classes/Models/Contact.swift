@@ -15,6 +15,7 @@ class Contact: NSObject {
     var email: String = ""
     var birthday: Date?
     var avatarBaseString: String = ""
+    var contactImage: UIImage?
 
     init(data: [String: Any]) {
         super.init()

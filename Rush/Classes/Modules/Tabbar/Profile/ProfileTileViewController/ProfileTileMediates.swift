@@ -9,7 +9,6 @@
 import UIKit
 
 extension ProfileTileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
      func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -39,6 +38,11 @@ extension ProfileTileViewController: UICollectionViewDelegate, UICollectionViewD
         cell.layoutIfNeeded()
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
+
 }
 
 extension ProfileTileViewController: UICollectionViewDelegateFlowLayout {

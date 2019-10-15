@@ -57,7 +57,10 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
         
         let footer = UIView()
         let separator = UIView(frame: CGRect(x: section == 0 ?  0 : 24, y: 0, width: screenWidth, height: 1))
-        footer.addSubview(separator)
+        if section != 5 {
+            footer.addSubview(separator)
+        }
+        footer.clipsToBounds = true
         separator.backgroundColor = UIColor.separatorColor
         return footer
     }
