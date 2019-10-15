@@ -34,6 +34,7 @@ class OtherUserProfileController: UIViewController {
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [Class]()
+    var imagesList = [Image]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
