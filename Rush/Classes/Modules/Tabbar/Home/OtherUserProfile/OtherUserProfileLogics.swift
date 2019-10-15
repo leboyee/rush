@@ -204,7 +204,7 @@ extension OtherUserProfileController {
         ServiceManager.shared.getProfile(params: param) { [weak self] (user, _) in
             guard let unsafe = self else { return }
             unsafe.userInfo = user
-            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? false : true
+            unsafe.isShowMessageButton = self?.userInfo?.friendTypeStatus == .accept ? true : false
             unsafe.tableView.reloadData()
         }
     }
