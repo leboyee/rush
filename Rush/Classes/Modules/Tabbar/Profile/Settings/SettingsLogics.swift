@@ -110,7 +110,7 @@ extension SettingsViewController {
         
         cell.rightEvent = { () in
             //Utils.notReadyAlert()
-            //self.performSegue(withIdentifier: Segues.changePasswordSegue, sender: self)
+            self.performSegue(withIdentifier: Segues.changePasswordSegue, sender: self)
         }
     }
     

@@ -41,4 +41,31 @@ extension EnterEmailViewConteroller {
         }
     }
     
+    func restorePassword() {
+           Utils.showSpinner()
+           ServiceManager.shared.restorePassword(params: [Keys.email: emailTextField.text ?? ""]) { [weak self] (data, errorMessage) in
+               Utils.hideSpinner()
+               
+               guard let unsafe = self else { return }
+               if data != nil {
+                   if (data![Keys.isEmailExist] as? Bool) == true {
+                       if unsafe.loginType == .register {
+                           Utils.alert(message: "Email is already in use.")
+                       } else {
+                            unsafe.emailSuccess()
+                       }
+                   } else {
+                       if unsafe.loginType == .register {
+                               unsafe.emailSuccess()
+                       } else {
+                             unsafe.emailErrorHideShow(isHide: false)
+                       }
+                   }
+               } else {
+                   Utils.alert(message: errorMessage ?? "Please contact Admin")
+               }
+               
+           }
+       }
+    
 }

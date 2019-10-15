@@ -14,6 +14,18 @@ extension NetworkManager {
         requestGet(path: "email/check", params: params, resultHandler: resultHandler)
     }
     
+    func restorePassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+         requestGet(path: "auth/resetpwd", params: params, resultHandler: resultHandler)
+     }
+    
+    func verifyPassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "verify/pwd", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+       }
+    
+    func changePassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "change/pwd", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
     func login(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "auth/login", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }

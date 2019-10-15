@@ -109,7 +109,10 @@ struct Keys {
     static let password           = "password"
     static let firstName           = "first_name"
     static let lastName           = "last_name"
+    static let currentPassword     = "current_password"
+    static let newPassword         = "new_password"
 
+    
     static let uEduLevel           = "u_edu_level"
     static let uEduYear           = "u_edu_year"
     static let uEduMajors           = "u_edu_majors"
