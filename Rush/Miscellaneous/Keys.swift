@@ -11,7 +11,7 @@ import UIKit
 let kUserInfo  = "userInfo"
 let kSessionId = "sessionIdKey"
 let kDeviceId  = "deviceIdKey"
-let kPushToken = "pushToken"
+let kPushToken = "X-Push-Token"
 let kTimezoneOffset = "timezoneOffset"
 let kPushTokenUpdateOnServer = "pushTokenUpdateOnServer"
 
@@ -27,6 +27,8 @@ let kDeviceTokenPushKey         = "com.rush.devicetokenpush"
 let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
 let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 let kHomeTutorialKey            = "com.rush.hometutorial"
+let kOpenFromPushNotification   = "com.rush.openfrompushnotification"
+
 
 // MARK: - API's Keys
 struct Keys {
@@ -112,7 +114,6 @@ struct Keys {
     static let currentPassword     = "current_password"
     static let newPassword         = "new_password"
 
-    
     static let uEduLevel           = "u_edu_level"
     static let uEduYear           = "u_edu_year"
     static let uEduMajors           = "u_edu_majors"

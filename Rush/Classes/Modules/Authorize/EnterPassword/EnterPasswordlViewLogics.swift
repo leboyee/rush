@@ -58,6 +58,16 @@ extension EnterPasswordViewConteroller {
                Utils.hideSpinner()
                guard let unsafe = self else { return }
                if status == true {
+                if Authorization.shared.authorized {
+                    //Update token of user if token is changed.
+                    if let oldPushToken = Utils.getDataFromUserDefault(kPushToken) {
+                        //API call and when success
+                        ServiceManager.shared.updatePushToken(closer: { (status, _) in
+                            if status {
+                            }
+                        })
+                    }
+                }
                    unsafe.profileUpdateSuccess()
                } else {
                   // unsafe.passwordNotSuccess()
