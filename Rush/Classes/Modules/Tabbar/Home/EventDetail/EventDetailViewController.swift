@@ -181,6 +181,10 @@ extension EventDetailViewController {
         performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
     }
     
+    func showInviteeUserProfile(invitee: Invitee) {
+        performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: invitee)
+    }
+    
     func showInvitedPeopleList() {
         performSegue(withIdentifier: Segues.eventInvitedPeople, sender: nil)
     }
@@ -253,8 +257,16 @@ extension EventDetailViewController {
             vc?.event = event
         } else if segue.identifier == Segues.eventOtherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {
-                vc.userInfo = sender as? User
                 vc.delegate = self
+                if let user = sender as? User {
+                   vc.userInfo = user
+                } else if let invitee = sender as? Invitee {
+                    vc.userInfo = invitee.user
+                    if type == .my {
+                        vc.rsvpQuestion = event?.rsvp
+                        vc.rsvpAnswer = invitee.rsvpAns
+                    }
+                }
             }
         } else if segue.identifier == Segues.editEventSegue {
             if let vc = segue.destination as? CreateEventViewController {

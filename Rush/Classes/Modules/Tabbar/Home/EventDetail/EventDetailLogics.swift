@@ -228,9 +228,7 @@ extension EventDetailViewController {
                 self?.showInvitedPeopleList()
             } else if let list = self?.inviteeList {
                 let invitee = list[index - 1]
-                if let user = invitee.user {
-                    self?.showUserProfile(user: user)
-                }
+                self?.showInviteeUserProfile(invitee: invitee)
             }
         }
         
