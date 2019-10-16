@@ -250,7 +250,9 @@ extension ClubDetailViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         
-        if indexPath.section == 5 && joinedClub {
+        if indexPath.section == 3 { // Club organizer detail
+            performSegue(withIdentifier: Segues.otherUserProfile, sender: clubInfo?.user)
+        } else if indexPath.section == 5 && joinedClub { // Create post
             performSegue(withIdentifier: Segues.createPost, sender: nil)
         } else if indexPath.section > 5 {
             if indexPath.row == 0 {

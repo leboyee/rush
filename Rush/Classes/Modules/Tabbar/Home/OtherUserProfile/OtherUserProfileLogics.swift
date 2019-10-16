@@ -235,7 +235,8 @@ extension OtherUserProfileController {
         
         let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: pageNo,
+                     Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
         if clubList.count == 0 {
             Utils.showSpinner()
@@ -255,7 +256,7 @@ extension OtherUserProfileController {
     
     func getEventList(sortBy: GetEventType) {
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+        let param = [Keys.profileUserId: userInfo?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
