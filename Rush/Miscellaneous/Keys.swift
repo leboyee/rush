@@ -47,7 +47,8 @@ struct Keys {
     static let url                   = "url"
     static let list                  = "list"
     static let kclass                = "class"
-    
+    static let inviteType            = "invite_type"
+
     static let matchId            = "match_id"
     static let classId            = "class_id"
     static let groupId            = "group_id"

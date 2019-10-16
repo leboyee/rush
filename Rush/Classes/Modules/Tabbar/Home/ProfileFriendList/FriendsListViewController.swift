@@ -17,9 +17,16 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     @IBOutlet weak var segmentContainView: UIView!
-    
+    var exploreType: ExploreSearchType = .none
+    var inviteeList = [Invitee]()
+    var eventId: Int64 = 0
     var userName = "Jessica"
-    
+    var pageNo = 1
+    var isNextPageExist = false
+    var isAttendace: Bool = false
+    var inviteType: InviteType = .going
+    var searchTextFiled: UITextField?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +52,27 @@ class FriendsListViewController: UIViewController {
         
         // Set navigation title
         let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+        //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+        
+        if exploreType == .event {
+            fetchInvitees(search: "")
+        }
+        
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+            searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            searchTextFiled?.font = UIFont.displayBold(sz: 24)
+            searchTextFiled?.textColor = UIColor.white
+            searchTextFiled?.returnKeyType = .go
+            searchTextFiled?.autocorrectionType = .no
+            searchTextFiled?.delegate = self
+            let font = UIFont.displayBold(sz: 24)
+            let color = UIColor.navBarTitleWhite32
+            searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "Search attendees", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchTextFiled ?? UITextField())
+            navigationItem.titleView = customView
+            self.view.backgroundColor = UIColor.bgBlack
+
     }
     
     func selectedSegment(tag: Int) {
@@ -57,6 +84,7 @@ class FriendsListViewController: UIViewController {
             firstSegmentButton.backgroundColor = UIColor.white
             firstSegmentButton.isSelected = false
             secondSegmentButton.isSelected = true
+            inviteType = .notGoing
         } else {
             secondSegmentButton.setTitleColor(UIColor.buttonDisableTextColor, for: .normal)
             secondSegmentButton.backgroundColor = UIColor.white
@@ -65,6 +93,7 @@ class FriendsListViewController: UIViewController {
             firstSegmentButton.backgroundColor = UIColor.bgBlack
             firstSegmentButton.isSelected = true
             secondSegmentButton.isSelected = false
+            inviteType = .going
         }
         
         // Testind values for tester :)
@@ -80,10 +109,16 @@ class FriendsListViewController: UIViewController {
             firstTitle = "3 joined"
             secondTitle = "0 managed"
         }
-        
+               
+        if exploreType == .event {
+            firstTitle = "0 going"
+            secondTitle = "0 not going"
+            pageNo = 1
+            fetchInvitees(search: searchTextFiled?.text ?? "")
+        }
         firstSegmentButton.setTitle(firstTitle, for: .normal)
         secondSegmentButton.setTitle(secondTitle, for: .normal)
-        
+
         let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftbarButton
     }
@@ -112,8 +147,13 @@ extension FriendsListViewController {
 
 // MARK: - Navigation
 extension FriendsListViewController {
-    /*
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == Segues.friendProfileSegue {
+            if let vc = segue.destination as? OtherUserProfileController {
+                vc.userInfo = sender as? User
+                //vc.delegate = self
+            }
+        }
      }
-     */
 }
+

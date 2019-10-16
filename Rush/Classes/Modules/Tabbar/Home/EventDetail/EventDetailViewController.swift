@@ -278,18 +278,19 @@ extension EventDetailViewController {
                 vc.selectedDate = event?.start ?? Date()
             }
         } else if segue.identifier == Segues.eventInvitedPeople {
-            //if let vc = segue.destination as? FriendsListViewController {
-                //vc.type = ExploreSearchType.event
-                //vc.id = event?.id
-            //}
+            if let vc = segue.destination as? FriendsListViewController {
+                vc.exploreType = ExploreSearchType.event
+                vc.eventId = event?.id ?? 0
+                vc.isAttendace = true
+            }
         } else if segue.identifier == Segues.eventPostImages {
-//              if let vc = segue.destination as? UserProfileGalleryViewController {
-//                if let (post, index) = sender as? (Post, Int) {
-//                    vc.list = post.images
-//                    vc.user = post.user
-//                    vc.index = index
-//                }
-//              }
+              if let vc = segue.destination as? UserProfileGalleryViewController {
+                if let (post, index) = sender as? (Post, Int) {
+                    vc.list = post.images ?? [Image]()
+                    vc.user = post.user ?? User()
+                    vc.currentIndex = index + 1
+                }
+              }
         }
     }
 }
