@@ -26,7 +26,7 @@ class User: Codable {
     var majors: [Major]?
     var minors: [Minor]?
     var interest: [Interest]?
-    var university: String?
+    var universityId: Int64?
     var birthDate: String?
     var gender: String?
     var relationship: String?
@@ -91,7 +91,7 @@ class User: Codable {
         case majors = "user_majors"
         case minors = "user_minors"
         case interest = "user_interests"
-        case university = "u_university"
+        case universityId = "u_university"
         case birthDate = "u_birth_date"
         case gender = "u_gender"
         case relationship = "u_relationship"

@@ -71,9 +71,9 @@ extension UserImagesHeaderView {
         setup(imageUrl: userInfo?.photo?.url())
         setup(isHideUsernameView: false)
         userNameLabel.text = userInfo?.name
-        if let university = userInfo?.university, university.isNotEmpty {
-            universtityLabel.text = university
-        }
+//        if let university = userInfo?.university, university.isNotEmpty {
+//            universtityLabel.text = university
+//        }
     }
 }
 
