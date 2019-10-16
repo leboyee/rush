@@ -98,6 +98,13 @@ extension EnterVerificationCodeViewController {
         ServiceManager.shared.singup(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
+                if let oldPushToken = Utils.getDataFromUserDefault(kPushToken) {
+                                       //API call and when success
+                                       ServiceManager.shared.updatePushToken(closer: { (status, _) in
+                                           if status {
+                                           }
+                                       })
+                                   }
                 unsafe.singupSuccess()
                 //self_.updateViewStage?(.verified)
                 /*
