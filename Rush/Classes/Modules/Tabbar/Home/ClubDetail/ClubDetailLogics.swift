@@ -138,6 +138,7 @@ extension ClubDetailViewController {
             cell.setup(bottomConstraintOfImage: 0)
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
+            cell.setup(eventImageUrl: post.user?.photo?.url())
             
             if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
                 let time = Date().timeAgoDisplay(date: date)
@@ -145,11 +146,17 @@ extension ClubDetailViewController {
             }
         } else {
             let user = clubInfo?.user
-            cell.setup(detail: "3 events")
+            if let count = clubInfo?.user?.totalEvents, count > 0 {
+                let text = count == 1 ? "event" : "events"
+                cell.setup(detail: "\(count) \(text)")
+            } else {
+                cell.setup(detail: "No event")
+            }
             cell.setup(title: user?.name ?? "")
             cell.setup(bottomConstraintOfImage: 18.5)
             cell.setup(bottomConstraintOfDate: 22)
             cell.setup(dotButtonConstraint: -24)
+            cell.setup(eventImageUrl: clubInfo?.user?.photo?.url())
         }
     }
     

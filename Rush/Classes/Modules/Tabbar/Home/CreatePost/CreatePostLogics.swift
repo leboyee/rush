@@ -22,18 +22,20 @@ extension CreatePostViewController {
     // Username cell (section 0)
     func userDetailCell(_ cell: UserNameTableViewCell) {
         if let club = clubInfo { // Club
-            cell.setup(title: club.user?.name ?? "")
+            //cell.setup(title: club.user?.name ?? "")
             cell.setup(detail: "Posting in " + (club.clubName ?? ""))
-            cell.setup(url: club.user?.photo?.url())
+            //cell.setup(url: club.user?.photo?.url())
         } else if let event = eventInfo { // Event
-            cell.setup(title: event.creator?.name ?? "")
+            //cell.setup(title: event.creator?.name ?? "")
             cell.setup(detail: "Posting in " + (event.title))
-            cell.setup(url: event.creator?.photo?.url())
+            //cell.setup(url: event.creator?.photo?.url())
         } else if let subclass = subclassInfo { // Subclass
-            cell.setup(title: Authorization.shared.profile?.name ?? "")
+            //cell.setup(title: Authorization.shared.profile?.name ?? "")
             cell.setup(detail: "Posting in " + (subclass.name))
-            cell.setup(url: Authorization.shared.profile?.photo?.url())
+            //cell.setup(url: Authorization.shared.profile?.photo?.url())
         }
+        cell.setup(title: Authorization.shared.profile?.name ?? "")
+        cell.setup(url: Authorization.shared.profile?.photo?.url())
     }
     
     // Textview cell (section 1)
