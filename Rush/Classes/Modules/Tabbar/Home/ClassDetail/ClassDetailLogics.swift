@@ -254,6 +254,22 @@ extension ClassDetailViewController {
 }
 
 extension ClassDetailViewController {
+    func deletePostAPI(id: String) {
+             Utils.showSpinner()
+             ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+                  Utils.hideSpinner()
+                  guard let unsafe = self else { return }
+                  if status {
+                   if let index = unsafe.classesPostList.firstIndex(where: { $0.postId == id }) {
+                       unsafe.classesPostList.remove(at: index)
+                       unsafe.tableView.reloadData()
+                      }
+                  } else {
+                       Utils.alert(message: errorMsg.debugDescription)
+                  }
+              }
+          }
+      
     func joinClassAPI() {
         Utils.showSpinner()
         ServiceManager.shared.joinClassGroup(classId: selectedGroup?.classId ?? "0", groupId: selectedGroup?.id ?? "0", params: [:]) { [weak self] (status, errorMsg) in

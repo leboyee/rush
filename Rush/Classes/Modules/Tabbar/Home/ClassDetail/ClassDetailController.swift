@@ -122,8 +122,10 @@ extension ClassDetailViewController {
             }
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
-                vc.type = .classes
+                vc.type = .post
+                vc.object = sender as? Post
                 vc.post = sender as? Post
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.createPost {
             if let vc = segue.destination as? CreatePostViewController {

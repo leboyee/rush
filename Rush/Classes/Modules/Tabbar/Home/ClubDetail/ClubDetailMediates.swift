@@ -216,7 +216,11 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
 // MARK: - SharePostViewControllerDelegate
 extension ClubDetailViewController: SharePostViewControllerDelegate {
     func delete(type: SharePostType, object: Any?) {
-        deleteClubAPI()
+        if type == .club {
+                  deleteClubAPI()
+        } else if type == .post, let post = object as? Post {
+            deletePostAPI(id: post.postId)
+        }
     }
 }
 
