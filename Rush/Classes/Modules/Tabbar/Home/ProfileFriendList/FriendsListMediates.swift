@@ -31,24 +31,60 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if type == .friends {
+        if exploreType == .event {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
             fillCell(cell, indexPath)
             return cell
-        } else if type == .events {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
-            fillFriendClubCell(cell, indexPath)
-            return cell
+        }  else {
+            if type == .friends {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
+                fillCell(cell, indexPath)
+                return cell
+            } else if type == .events {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
+                fillFriendClubCell(cell, indexPath)
+                return cell
+            }
         }
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if exploreType == .event {
+          selectedCell(indexPath)
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
+}
+
+extension FriendsListViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
+        pageNo = 1
+        fetchInvitees(search: searchText)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

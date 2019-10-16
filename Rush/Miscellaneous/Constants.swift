@@ -393,6 +393,13 @@ enum EventCategoryType {
     
 }
 
+enum InviteType {
+    case none
+    case going
+    case notGoing
+}
+
+
 enum EventType: String, Codable {
     case none = "none"
     case publik = "public"

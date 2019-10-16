@@ -95,7 +95,7 @@ extension UserInfoViewController: DatePickerDelegate {
     func selectedDate(_ date: Date) {
         nextButton.isHidden = false
         selectedDate = date
-        dob = date.toString(format: "dd.MM.yyyy")
+        dob = date.toString(format: "MM.dd.yyyy")
         nextButtonEnabled()
         self.tableView.reloadData()
     }

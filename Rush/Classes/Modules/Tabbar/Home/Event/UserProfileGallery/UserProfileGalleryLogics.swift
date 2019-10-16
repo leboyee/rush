@@ -18,18 +18,19 @@ extension UserProfileGalleryViewController {
     }
     
     func cellCount() -> Int {
-        return imageArray.count
+        return list.count
     }
     
     func fillCell(_ cell: GalleryCell, _ indexPath: IndexPath) {
-        let urlStr: String = imageArray[indexPath.row]
+        let image = list[indexPath.row]
+        let urlStr: String = image.main 
         guard let url: URL = URL(string: urlStr) else { return }
         
-        Utils.showSpinner()
+       // Utils.showSpinner()
         SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, data, error, true) in
             cell.imageView.image=image
             self.selectedImage = image
-            Utils.hideSpinner()
+            //Utils.hideSpinner()
         }
 
     }
@@ -43,31 +44,31 @@ extension UserProfileGalleryViewController {
     
     // MARK: - Action Sheet
     func openShareSheet() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-
-        let shareAction = UIAlertAction(title: "Share", style: .default, handler: {(alert: UIAlertAction!) in print("share")
-            self.dismissShareSheet()
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(alert: UIAlertAction!) in print("cancel")
-            self.dismissShareSheet()
-        })
-
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: {(alert: UIAlertAction!) in
-            if let image = self.selectedImage {
-                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
-            } else {
-                let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
-                          ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated: true)
-                return
+        
+        let buttons = ["Share", "Save"]
+        Utils.alert(message: nil, title: nil, buttons: buttons, cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
+            guard let uwself = self else { return }
+            if index == 0 {
+                let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [uwself.selectedImage ?? UIImage()], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = uwself.view
+                activityViewController.completionWithItemsHandler = { [weak self] (type, completed, items,error) in
+                    //uwself.dismissShareSheet()
+                }
+                uwself.present(activityViewController, animated: true)
+            } else if index == 1 {
+                if let image = uwself.selectedImage {
+                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(uwself.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                } else {
+                    let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    uwself.present(ac, animated: true)
+                    return
+                }
+                
             }
             
-        })
-        alertController.addAction(shareAction)
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-
-        self.present(alertController, animated: true, completion: {})
+        }
+    
     }
         
     func dismissShareSheet() {
