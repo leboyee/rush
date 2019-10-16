@@ -25,7 +25,7 @@
         <!--Enter Email View Conteroller-->
         <scene sceneID="2si-PH-Q3C">
             <objects>
-                <viewController id="0cf-VN-0pj" customClass="EnterEmailViewConteroller" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterEmailViewConteroller" id="0cf-VN-0pj" customClass="EnterEmailViewConteroller" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N7F-dm-J8r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1047,6 +1047,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GVq-92-Uyi"/>
-        <segue reference="Xon-BR-uWp"/>
+        <segue reference="omQ-De-aFE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,6 +36,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     var isError: Bool = false
     var loginType: LoginType = .register
     var profile = User()
+    var oldPassword = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,6 @@ class EnterPasswordViewConteroller: CustomViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.isTranslucent = true
 
     }
     
@@ -119,6 +119,13 @@ class EnterPasswordViewConteroller: CustomViewController {
             resortPasswordButton.isHidden = false
             passwordErrorView.isHidden = true
             passwordTextField.placeholder = "Current password"
+        } else if loginType == .newPassword {
+            passwordTitleLabel.text = "Create new password"
+            nextButton.setTitle(Text.continueText, for: .normal)
+            hintView.isHidden = false
+            resortPasswordButton.isHidden = true
+            passwordErrorView.isHidden = true
+            passwordTextField.placeholder = "New password"
         } else {
             passwordTitleLabel.text = Text.passwordTitleLogin
             nextButton.setTitle(Text.login, for: .normal)
@@ -142,6 +149,10 @@ extension EnterPasswordViewConteroller {
         if loginType == .login {
             Authorization.shared.session = ""
             loginApiCalled()
+        } else if loginType == .changePassword {
+            currentPasswordApi(password: self.passwordTextField.text ?? "")
+        } else if loginType == .newPassword {
+            changePasswordApi(currentPassword: self.oldPassword, newPassword: self.passwordTextField.text ?? "")
         } else {
             self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
         }
@@ -168,7 +179,12 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func restoreButtonAction() {
-        Utils.alert(message: "In Development.")
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.enterEmailViewConteroller) as? EnterEmailViewConteroller {
+                       vc.loginType = .restoreEmail
+        
+                       navigationController?.pushViewController(vc, animated: true)
+                   }
+        //Utils.alert(message: "In Development.")
     }
 }
 
@@ -191,8 +207,26 @@ extension EnterPasswordViewConteroller {
 extension EnterPasswordViewConteroller {
     
     func profileUpdateSuccess() {
-        AppDelegate.shared?.connectSendbird()
-        AppDelegate.shared?.setupStoryboard()
+        
+        if loginType == .newPassword {
+            guard let viewControllers = self.navigationController?.viewControllers else { return }
+            for aViewController: UIViewController in viewControllers {
+                if aViewController.isKind(of: SettingsViewController.self) {
+                    _ = self.navigationController?.popToViewController(aViewController, animated: true)
+                }
+            }
+        } else if loginType == .changePassword {
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.enterPasswordViewConteroller) as? EnterPasswordViewConteroller {
+                vc.loginType = .newPassword
+                vc.oldPassword = passwordTextField.text ?? ""
+                navigationController?.pushViewController(vc, animated: true)
+            }
+
+        } else {
+            AppDelegate.shared?.connectSendbird()
+            AppDelegate.shared?.setupStoryboard()
+        }
+    
         //self.performSegue(withIdentifier: "UserData", sender: self)
     }
     
@@ -201,7 +235,7 @@ extension EnterPasswordViewConteroller {
     }
     
     func passwordErrorHideShow(isHide: Bool) {
-        if loginType == .login {
+        if loginType == .login || loginType == .changePassword {
             if isHide == true {
                 restorePasswordButtonConstraint.constant = 16
                 if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue {

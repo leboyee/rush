@@ -50,17 +50,19 @@ extension ChatsViewController {
     
     func getSingleChatName(channel: SBDGroupChannel) -> String {
         let name = channel.name
-        let names = name.components(separatedBy: ",")
-        if names.count > 1 {
-            let loggedInUserName = Authorization.shared.profile?.name ?? ""
-            var updateName = ""
-            for nm in names {
-                if !nm.contains(loggedInUserName) {
-                    updateName = nm.trimmingCharacters(in: .whitespacesAndNewlines)
-                    return updateName
+        
+        if let members = channel.members {
+            if members.count == 2 && channel.customType == "single" {
+                for member in members {
+                    if let user = member as? SBDUser {
+                        let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+                        if loggedInUserId != user.userId {
+                            return user.nickname ?? ""
+                        }
+                    }
                 }
             }
-         }
+        }
         return name
     }
 }
@@ -70,12 +72,18 @@ extension ChatsViewController: UITextFieldDelegate {
         let text = textField.text?.lowercased() ?? ""
         if text.isEmpty {
             channels = filterList
-            
+            // Right item button
+            navigationItem.rightBarButtonItem = nil
         } else {
             let filter = filterList.filter { ( $0.name.lowercased().contains(text) ) }
             channels = filter
+            navigationItem.rightBarButtonItem = clearBarButton
         }
         tableView.reloadData()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        navigationItem.rightBarButtonItem = nil
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -100,10 +108,8 @@ extension ChatsViewController {
                 unself.channels = list
                 unself.filterList = list
             }
-            DispatchQueue.main.async {
-                unself.tableView.reloadData()
-                Utils.hideSpinner()
-            }
+            unself.tableView.reloadData()
+            Utils.hideSpinner()
             
             if unself.channels.count > 0 {
                 unself.blankView.isHidden = true

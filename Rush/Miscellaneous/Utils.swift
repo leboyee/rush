@@ -472,13 +472,6 @@ extension Utils {
             name = name.replacingOccurrences(of: ", , ", with: ", ")
             name = name.trimmingCharacters(in: CharacterSet.init(charactersIn: ","))
             name = name.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            
-            if let lastCh = name.last?.description {
-                if lastCh == "," {
-                    name.removeLast()
-                }
-            }
-            
             return name
         } else {
             return channelName!

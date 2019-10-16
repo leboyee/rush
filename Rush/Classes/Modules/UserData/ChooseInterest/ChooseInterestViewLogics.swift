@@ -37,12 +37,11 @@ extension ChooseInterestViewController: TagListViewDelegate {
         //print("Tag pressed: \(title), \(sender)")
         tagView.isSelected = !tagView.isSelected
         if tagView.isSelected == true {
-            selectedArray.append(title)
+            guard let index = interestArray.firstIndex(where: { $0.interestName == title }) else { return }
+            selectedArray.append(interestArray[index])
         } else {
-            if selectedArray.contains(title) {
-                let index = selectedArray.firstIndex(of: title)
-                selectedArray.remove(at: index ?? 0)
-            }
+            guard let index = selectedArray.firstIndex(where: { $0.interestName == title }) else { return }
+                selectedArray.remove(at: index)
         }
         self.bottomView.isHidden = selectedArray.count > 2 ? false : true
     }
@@ -70,7 +69,10 @@ extension ChooseInterestViewController {
     
     func updateProfileAPI() {
         
-        let param = [Keys.userInterests: selectedArray]  as [String: Any]
+        let interestIdArray = selectedArray.map({ String($0.interestId) })
+        let selectedIdArray = interestIdArray.joined(separator: ",")
+        let param = [Keys.userInterests: selectedIdArray
+            ]  as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()

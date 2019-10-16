@@ -20,7 +20,7 @@ class ClubDetailViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var clubHeader: ClubHeader!
     
-    var delegate: ClubDetailProtocol?
+    weak var delegate: ClubDetailProtocol?
     
     var interestList = [String]()
     var peopleList = [String]()
@@ -75,10 +75,15 @@ class ClubDetailViewController: UIViewController {
     func setupUI() {
         
         // Check this club is created by me(logged in user)
-        let clubId = clubInfo?.clubUId ?? "id"
+        let clubOwnerId = clubInfo?.clubUId ?? "id"
         let userId = Authorization.shared.profile?.userId ?? ""
-        if userId == clubId {
+        if userId == clubOwnerId {
             joinedClub = true
+        } else {
+            let filter = clubInfo?.invitees?.filter({ $0.user?.userId == userId })
+            if filter?.count ?? 0 > 0 {
+                joinedClub = true
+            }
         }
         
         // setup tableview
@@ -93,7 +98,7 @@ extension ClubDetailViewController {
     }
     
     @IBAction func shareButtonAction() {
-        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: SharePostType.club)
     }
 }
 
@@ -110,9 +115,18 @@ extension ClubDetailViewController {
             }
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
-                vc.type = .club
-                vc.object = clubInfo
-                vc.delegate = self
+                if let type = sender as? SharePostType {
+                    if type == .club {
+                        vc.type = .club
+                        vc.object = clubInfo
+                        vc.delegate = self
+                    }
+                } else {
+                    vc.type = .post
+                    vc.object = sender as? Post
+                    vc.post = sender as? Post
+                    vc.delegate = self
+                }
             }
         } else if segue.identifier == Segues.createPost {
             guard let vc = segue.destination as? CreatePostViewController else { return }

@@ -89,7 +89,7 @@ class EventDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
@@ -181,6 +181,14 @@ extension EventDetailViewController {
         performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
     }
     
+    func showInvitedPeopleList() {
+        performSegue(withIdentifier: Segues.eventInvitedPeople, sender: nil)
+    }
+    
+    func showPostImages(post: Post, index: Int) {
+        performSegue(withIdentifier: Segues.eventPostImages, sender: (post, index))
+    }
+    
     func showCalendar() {
         performSegue(withIdentifier: Segues.eventDetailCalendar, sender: nil)
     }
@@ -257,6 +265,19 @@ extension EventDetailViewController {
             if let vc = segue.destination as? CalendarViewController {
                 vc.selectedDate = event?.start ?? Date()
             }
+        } else if segue.identifier == Segues.eventInvitedPeople {
+            //if let vc = segue.destination as? FriendsListViewController {
+                //vc.type = ExploreSearchType.event
+                //vc.id = event?.id
+            //}
+        } else if segue.identifier == Segues.eventPostImages {
+//              if let vc = segue.destination as? UserProfileGalleryViewController {
+//                if let (post, index) = sender as? (Post, Int) {
+//                    vc.list = post.images
+//                    vc.user = post.user
+//                    vc.index = index
+//                }
+//              }
         }
     }
 }

@@ -15,16 +15,66 @@ extension ChooseUniversityViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return Utils.chooseUniversity().count
+        return universityArray.count
     }
     
     func fillChooseUniversityCell(_ cell: UniversityCell, _ indexPath: IndexPath) {
-        cell.setup(title: Utils.chooseUniversity()[indexPath.row])
+        let university = universityArray[indexPath.row]
+        cell.setup(title: university.universityName)
+        if let url = URL(string: university.logo ?? "") {
+                   cell.setup(url: url)
+        }
         cell.setup(checkMark: selectedIndex == indexPath.row ? true : false)
     }
+    
+    func willDisplay(_ indexPath: IndexPath) {
+           if isNextPageExist == true, indexPath.row == universityArray.count - 1 {
+            getUniversity(searchText: searchTextField.text ?? "")
+           }
+       }
 }
 
 // MARK: - Manage Interator or API's Calling
-extension ChooseLevelViewController {
+extension ChooseUniversityViewController {
     
+    func getUniversity(searchText: String) {
+        //Utils.showSpinner()
+        ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
+            guard let unsafe = self else { return }
+            if unsafe.pageNo == 1 {
+                unsafe.universityArray.removeAll()
+            }
+                
+            if value?.count ?? 0 > 0 {
+                if unsafe.pageNo == 1 {
+                    unsafe.universityArray = value ?? [University]()
+                } else {
+                    unsafe.universityArray.append(contentsOf: value ?? [University]())
+                }
+                unsafe.pageNo += 1
+                unsafe.isNextPageExist = true
+            } else {
+                unsafe.isNextPageExist = false
+                if unsafe.pageNo == 1 {
+                    unsafe.universityArray.removeAll()
+                }
+            }
+            unsafe.tableView.reloadData()
+        }
+    }
+    
+    func updateProfileAPI() {
+        let university = universityArray[selectedIndex]
+        let param = [Keys.uUniversity: "\(university.universtiyId)"]  as [String: Any]
+        Utils.showSpinner()
+        ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if data != nil {
+                unsafe.profileUpdateSuccess()
+            } else {
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

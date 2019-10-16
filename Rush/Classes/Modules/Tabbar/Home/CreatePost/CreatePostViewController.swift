@@ -101,7 +101,7 @@ class CreatePostViewController: UIViewController {
     }
     
     func createButtonValidation() {
-        if postText.isNotEmpty {
+        if postText.isNotEmpty || imageList.count > 0 {
             navigationItem.rightBarButtonItem = createBtnActive
         } else {
             navigationItem.rightBarButtonItem = createBtnDisActive

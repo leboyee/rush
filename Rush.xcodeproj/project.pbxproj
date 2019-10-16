@@ -77,6 +77,8 @@
 		1A353AC422BD05B60069752D /* ChooseUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A353AC122BD05B60069752D /* ChooseUniversityViewController.swift */; };
 		1A353AC822BD130E0069752D /* UniversityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A353AC622BD130E0069752D /* UniversityCell.swift */; };
 		1A353AC922BD130E0069752D /* UniversityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A353AC722BD130E0069752D /* UniversityCell.xib */; };
+		1A370B1E2356E4E00086652B /* AppDelegatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */; };
+		1A370B21235719E20086652B /* University.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A370B20235719E20086652B /* University.swift */; };
 		1A3CB08C22BD3242005D3D87 /* AddMajorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08622BD3242005D3D87 /* AddMajorsViewController.swift */; };
 		1A3CB08D22BD3242005D3D87 /* AddMajorsViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08722BD3242005D3D87 /* AddMajorsViewLogics.swift */; };
 		1A3CB08E22BD3242005D3D87 /* AddMajorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08922BD3242005D3D87 /* AddMajorsCell.swift */; };
@@ -649,6 +651,9 @@
 		1A353AC122BD05B60069752D /* ChooseUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUniversityViewController.swift; sourceTree = "<group>"; };
 		1A353AC622BD130E0069752D /* UniversityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversityCell.swift; sourceTree = "<group>"; };
 		1A353AC722BD130E0069752D /* UniversityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UniversityCell.xib; sourceTree = "<group>"; };
+		1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegatePush.swift; sourceTree = "<group>"; };
+		1A370B1F2356EEC80086652B /* Rush.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rush.entitlements; sourceTree = "<group>"; };
+		1A370B20235719E20086652B /* University.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = University.swift; sourceTree = "<group>"; };
 		1A3CB08622BD3242005D3D87 /* AddMajorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsViewController.swift; sourceTree = "<group>"; };
 		1A3CB08722BD3242005D3D87 /* AddMajorsViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsViewLogics.swift; sourceTree = "<group>"; };
 		1A3CB08922BD3242005D3D87 /* AddMajorsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsCell.swift; sourceTree = "<group>"; };
@@ -3092,8 +3097,10 @@
 		C05FC14B22805F3D00721F3F /* Rush */ = {
 			isa = PBXGroup;
 			children = (
+				1A370B1F2356EEC80086652B /* Rush.entitlements */,
 				C05FC14C22805F3D00721F3F /* AppDelegate.swift */,
 				C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */,
+				1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */,
 				C05FC16222805F9D00721F3F /* Miscellaneous */,
 				C05FC15E22805F9C00721F3F /* Classes */,
 				C05FC16622805F9D00721F3F /* Interfaces */,
@@ -3120,6 +3127,7 @@
 		C05FC15F22805F9C00721F3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A370B20235719E20086652B /* University.swift */,
 				1AAE965B233A47CB00868449 /* Invite.swift */,
 				8A0345A92322A6E90065CF3C /* Address.swift */,
 				8A0345AC2322A6EA0065CF3C /* Club.swift */,
@@ -3268,6 +3276,9 @@
 		C05FC14122805F3D00721F3F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Messapps;
@@ -3658,6 +3669,7 @@
 				1A5DA6B0235241FF0090D8E2 /* UserProfileGalleryLogics.swift in Sources */,
 				797FFDAF22B7BC480055A001 /* PhotoGalleryHintLabel.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
+				1A370B1E2356E4E00086652B /* AppDelegatePush.swift in Sources */,
 				1A6631A8232B8C3F0042DE0D /* UIViewHelper.swift in Sources */,
 				1AEAC4A722D31BE4008FBB54 /* UserInfoViewMediates.swift in Sources */,
 				797FFDAA22B7BC480055A001 /* PhotoAlbumsViewController.swift in Sources */,
@@ -3710,6 +3722,7 @@
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
 				7905CDBE230D63120011C83B /* ChatServices.swift in Sources */,
+				1A370B21235719E20086652B /* University.swift in Sources */,
 				1AAE965C233A47CB00868449 /* Invite.swift in Sources */,
 				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				1A0EDEF2234892C800502959 /* EditProfileViewController.swift in Sources */,
@@ -4103,8 +4116,9 @@
 			buildSettings = {
 				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				ENABLE_BITCODE = YES;
@@ -4187,7 +4201,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4200,6 +4214,7 @@
 			buildSettings = {
 				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
@@ -4353,6 +4368,7 @@
 			buildSettings = {
 				APIKEY = rush456;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;

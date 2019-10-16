@@ -181,12 +181,12 @@ extension EditProfileViewController {
             }
         } else if segue.identifier == Segues.addMajorViewSegue {
             if let vc = segue.destination as? AddMajorsViewController {
-                vc.selectedArray = minorArray
+                vc.selectedArray = majorArray
                 vc.isEditUserProfile = true
             }
         } else if segue.identifier == Segues.addMinorViewSegue {
             if let vc = segue.destination as? AddMinorsViewController {
-                vc.selectedArray = majorArray
+                vc.selectedArray = minorArray
                 vc.isEditUserProfile = true
             }
         }

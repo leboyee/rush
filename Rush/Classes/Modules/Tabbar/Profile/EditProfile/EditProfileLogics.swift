@@ -66,8 +66,10 @@ extension EditProfileViewController {
             cell.set(isHideRightButton: true)
             if indexPath.row == 0 {
                 cell.set(title: Text.university)
-                cell.set(detail: profile?.university ?? "")
-                cell.set(isDetails: profile?.university?.isNotEmpty ?? false)
+                // profile?.university ??
+                cell.set(detail: "")
+                // profile?.university?.isNotEmpty ??
+                cell.set(isDetails: false)
             } else if indexPath.row == 1 {
                 cell.set(title: Text.level)
                 cell.set(detail: profile?.educationLevel ?? "")

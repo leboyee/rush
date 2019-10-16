@@ -34,6 +34,7 @@ class OtherUserProfileController: UIViewController {
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [Class]()
+    var imagesList = [Image]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +52,6 @@ class OtherUserProfileController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.isNavigationBarHidden = false
         getProfileAPI()
-        getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
-        getClassCategoryAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

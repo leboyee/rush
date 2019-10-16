@@ -72,6 +72,26 @@
             </objects>
             <point key="canvasLocation" x="2408" y="-861"/>
         </scene>
+        <!--UserProfileGalleryViewController-->
+        <scene sceneID="8KS-n4-lUb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="UserProfileGalleryViewController" id="qIu-mv-feI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="chS-Lb-y2N"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lez-QU-WQS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2434" y="-788"/>
+        </scene>
+        <!--FriendsListViewController-->
+        <scene sceneID="qCg-in-UHu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="FriendsListViewController" id="Xxw-PA-vc0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6lU-qr-app"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HrQ-Im-ueo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2412" y="-745"/>
+        </scene>
         <!--PostViewController-->
         <scene sceneID="8Up-uQ-Iqg">
             <objects>
@@ -168,6 +188,8 @@
                         <segue destination="OWh-an-sae" kind="presentation" identifier="CreateEventPostSegue" modalPresentationStyle="fullScreen" id="NAe-Y8-aWm"/>
                         <segue destination="2Xf-Dh-pus" kind="show" identifier="EditEventSegue" id="Ok0-T9-mHO"/>
                         <segue destination="8w5-JG-CYh" kind="show" identifier="EventDetailCalendarSegue" id="tta-hH-Pgn"/>
+                        <segue destination="qIu-mv-feI" kind="presentation" identifier="EventPostImagesSegue" modalPresentationStyle="fullScreen" id="kFC-CM-4ml"/>
+                        <segue destination="Xxw-PA-vc0" kind="show" identifier="EventInvitedPeopleSegue" id="Fkq-9x-32g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk2-7f-ih4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="-479"/>
+            <point key="canvasLocation" x="2567" y="-292"/>
         </scene>
         <!--Event Joined Popup View Controller-->
         <scene sceneID="IVZ-Qj-ElO">
@@ -296,19 +318,19 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yay! You joined your first event." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-zt-syk">
-                                        <rect key="frame" x="61.5" y="104" width="237.5" height="20"/>
+                                        <rect key="frame" x="48.5" y="104" width="263.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn on notifications to never miss out on updates." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vet-ua-le7">
-                                        <rect key="frame" x="32" y="128" width="296" height="15.5"/>
+                                        <rect key="frame" x="32" y="128" width="296" height="31.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                         <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-zm-e0Y" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="160" width="312" height="48"/>
+                                        <rect key="frame" x="24" y="176" width="312" height="48"/>
                                         <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Dk9-1o-P4c"/>
@@ -327,7 +349,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyD-f4-461" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="216" width="312" height="48"/>
+                                        <rect key="frame" x="24" y="232" width="312" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="K76-FX-UjK"/>

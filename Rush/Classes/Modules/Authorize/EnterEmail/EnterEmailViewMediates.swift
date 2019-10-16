@@ -26,13 +26,6 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 
             let keyboardHeight = keyboardSize.height
-            print("keyboardHeight", keyboardHeight)
-//            if UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneX.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXR.rawValue || UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhoneXSMax.rawValue {
-//                if keyboardHeight < 300 {
-//                                  keyboardHeight = 301
-//                              }
-//            }
-            
             bottomViewConstraint.constant = keyboardHeight + 10
             self.view.layoutIfNeeded()
         }
@@ -45,7 +38,6 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     
     @objc func keyboardWFrameChange(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print("keyboardHeight", keyboardSize.height)
         }
 
     }

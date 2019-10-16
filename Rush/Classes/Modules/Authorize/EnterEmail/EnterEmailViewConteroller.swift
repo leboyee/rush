@@ -88,6 +88,11 @@ class EnterEmailViewConteroller: CustomViewController {
             loginWithPhoneNumberButton.isHidden = true
             loginLineLable.isHidden = true
             emailTitleLable.text = Text.emailTitleRegister
+        } else if loginType == .restoreEmail {
+            loginWithPhoneNumberButton.isHidden = true
+            loginLineLable.isHidden = true
+            emailTitleLable.text = "Enter email to recieve restore link"
+            nextButton.setTitle("Receive restore link", for: .normal)
         } else {
             termLabel.isHidden = true
             bottomLineLabel.isHidden = true
@@ -117,7 +122,11 @@ extension EnterEmailViewConteroller {
             errorButton.isHidden = true
             self.view.endEditing(true)
             profile.email = emailText
-            checkUserAvailable()
+            if loginType == .restoreEmail {
+                restorePassword()
+            } else {
+                checkUserAvailable()
+            }
         } else {
             if loginType == .login {
                 loginNumberButtonConstraint.constant = 76
@@ -173,7 +182,11 @@ extension EnterEmailViewConteroller {
 extension EnterEmailViewConteroller {
     
     func  emailSuccess() {
+        if loginType == .restoreEmail {
+            
+        } else {
             self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
+        }
     }
     
     func emailErrorHideShow(isHide: Bool) {

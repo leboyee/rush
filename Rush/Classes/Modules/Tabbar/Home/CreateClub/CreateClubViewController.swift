@@ -10,6 +10,10 @@ import UIKit
 import Photos
 import IQKeyboardManagerSwift
 
+protocol CreateClubProtocol: class {
+    func updateClubSuccess()
+}
+
 class CreateClubViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -31,8 +35,13 @@ class CreateClubViewController: UIViewController {
     
     var interestList = [Interest]()
     var peopleList = [Invite]()
+    var removePeopleIds = [String]()
+    var newPeopleIds = [String]()
+    var newContacts = [String]()
     
     var clubInfo: Club?
+    
+    weak var delegate: CreateClubProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,9 +85,23 @@ class CreateClubViewController: UIViewController {
             nameClub = club.clubName ?? ""
             clubDescription = club.clubDesc ?? ""
             isCreateGroupChat = (club.clubIsChatGroup) == 1 ? true : false
+                        
+            if let invitees = club.invitees {
+                var peoples = [Invite]()
+                for invitee in invitees {
+                    let invite = Invite()
+                    invite.profile = invitee.user
+                    invite.isFriend = true
+                    peoples.append(invite)
+                }
+                peopleList = peoples
+            }
             
-//            let interests = (club.clubInterests ?? "").components(separatedBy: ",")
-//            interestList = interests
+            if let interests = club.clubInterests {
+                interestList = interests
+            }
+            
+            validateAllFields()
         }
     }
 }

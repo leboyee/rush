@@ -36,12 +36,12 @@ extension EventCateogryFilterViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         if isEventTypeModel == true {
-            delegate?.selectedIndex("\(indexPath.row)")
+            delegate?.selectedIndex("\(indexPath.row)", indexPath)
             dismiss(animated: true, completion: nil)
         } else {
             let name = dataArray[indexPath.row]
-                   delegate?.selectedIndex(name)
-                   dismiss(animated: true, completion: nil)
+            delegate?.selectedIndex(name, indexPath)
+            dismiss(animated: true, completion: nil)
         }
        
     }

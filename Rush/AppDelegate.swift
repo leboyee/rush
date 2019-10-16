@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Add Third Party SDK
         addThirdPartySDK()
         setupStoryboard()
-        
+        setupPush()
         //Add Observer For Force logout
         NotificationCenter.default.addObserver(self, selector: #selector(forceLogout), name: Notification.Name.badAccess, object: nil)
         return true
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupAppearance() {
         setupTopBar()
         setupBarButton()
-        photoLibraryPermissionCheck()
+       // photoLibraryPermissionCheck()
     }
     
     func setupTopBar() {

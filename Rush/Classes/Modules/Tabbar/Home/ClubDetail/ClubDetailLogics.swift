@@ -81,7 +81,10 @@ extension ClubDetailViewController {
             if unself.clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 if let controller = unself.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.createClubViewController) as? CreateClubViewController {
                     controller.clubInfo = unself.clubInfo
+                    controller.delegate = self
+                    controller.modalPresentationStyle = .overFullScreen
                     let nav = UINavigationController(rootViewController: controller)
+                    nav.modalPresentationStyle = .overFullScreen
                     unself.navigationController?.present(nav, animated: false, completion: nil)
                 }
             } else { // Joined
@@ -109,7 +112,7 @@ extension ClubDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: clubInfo?.invitees, total: 0)
+        cell.setup(invitees: clubInfo?.invitees, total: clubInfo?.invitees?.count ?? 0)
         
         cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
@@ -135,24 +138,41 @@ extension ClubDetailViewController {
             cell.setup(bottomConstraintOfImage: 0)
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
-            
+            cell.setup(eventImageUrl: post.user?.photo?.url())
+            if post.user?.userId == Authorization.shared.profile?.userId {
+                cell.threeDots.isHidden = false
+            } else {
+                cell.threeDots.isHidden = true
+            }
+            cell.shareClickEvent = { [weak self] () in
+                guard self != nil else { return }
+                self?.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
+            }
             if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
                 let time = Date().timeAgoDisplay(date: date)
                 cell.setup(detail: time)
             }
         } else {
             let user = clubInfo?.user
-            cell.setup(detail: "3 events")
+            if let count = clubInfo?.user?.totalEvents, count > 0 {
+                let text = count == 1 ? "event" : "events"
+                cell.setup(detail: "\(count) \(text)")
+            } else {
+                cell.setup(detail: "No event")
+            }
             cell.setup(title: user?.name ?? "")
             cell.setup(bottomConstraintOfImage: 18.5)
             cell.setup(bottomConstraintOfDate: 22)
             cell.setup(dotButtonConstraint: -24)
+            cell.setup(eventImageUrl: clubInfo?.user?.photo?.url())
         }
     }
     
     func fillTagCell(_ cell: TagCell) {
-//        let tags = (clubInfo?.clubInterests ?? "").components(separatedBy: ",")
-//        cell.setup(tagList: tags)
+        if let tags = clubInfo?.clubInterests {
+            let tag = tags.compactMap({ $0.interestName })
+            cell.setup(tagList: tag)
+        }
     }
     
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
@@ -213,13 +233,15 @@ extension ClubDetailViewController {
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         
-        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? (clubInfo?.clubUId == Authorization.shared.profile?.userId ? Text.posts : Text.popularPost) : ""
+        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? (clubInfo?.clubUId == Authorization.shared.profile?.userId ? Text.posts : Text.posts) : ""
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
+        /*
         if section == 5 {
             header.setup(isDetailArrowHide: false)
             header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
         }
+        */
     }
     
     func fillImageHeader() {
@@ -238,7 +260,9 @@ extension ClubDetailViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         
-        if indexPath.section == 5 && joinedClub {
+        if indexPath.section == 3 { // Club organizer detail
+            performSegue(withIdentifier: Segues.otherUserProfile, sender: clubInfo?.user)
+        } else if indexPath.section == 5 && joinedClub { // Create post
             performSegue(withIdentifier: Segues.createPost, sender: nil)
         } else if indexPath.section > 5 {
             if indexPath.row == 0 {
@@ -255,6 +279,22 @@ extension ClubDetailViewController {
 
 // MARK: - Services
 extension ClubDetailViewController {
+    
+    func deletePostAPI(id: String) {
+          Utils.showSpinner()
+          ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+               Utils.hideSpinner()
+               guard let unsafe = self else { return }
+               if status {
+                if let index = unsafe.clubPostList.firstIndex(where: { $0.postId == id }) {
+                    unsafe.clubPostList.remove(at: index)
+                    unsafe.tableView.reloadData()
+                   }
+               } else {
+                    Utils.alert(message: errorMsg.debugDescription)
+               }
+           }
+       }
     
     func getClubDetailAPI() {
         

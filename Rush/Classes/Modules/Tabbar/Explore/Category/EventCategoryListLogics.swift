@@ -78,18 +78,18 @@ extension EventCategoryListViewController {
         } else if indexPath.item == 2 {
             isThirdFilter = !isThirdFilter
         }
-        
+        isFirstFilter = false
+                         isSecondFilter = false
+                         isThirdFilter = false
+                   if indexPath.item == 0 {
+                             isFirstFilter = true
+                         } else if indexPath.item == 1 {
+                             isSecondFilter = true
+                         } else if indexPath.item == 2 {
+                             isThirdFilter = true
+                         }
         if type == .event {
-                  isFirstFilter = false
-                  isSecondFilter = false
-                  isThirdFilter = false
-            if indexPath.item == 0 {
-                      isFirstFilter = true
-                  } else if indexPath.item == 1 {
-                      isSecondFilter = true
-                  } else if indexPath.item == 2 {
-                      isThirdFilter = true
-                  }
+                 
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
             eventCategoryFilter.delegate = self
@@ -103,6 +103,9 @@ extension EventCategoryListViewController {
             eventCategoryFilter.delegate = self
             let cat = clubCategoryList.compactMap({ $0.name })
             eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            eventCategoryFilter.delegate = self
+            eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
+            
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
@@ -112,6 +115,8 @@ extension EventCategoryListViewController {
             eventCategoryFilter.delegate = self
             let cat = classCategoryList.compactMap({ $0.name })
             eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+            eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
+                    
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
@@ -281,7 +286,7 @@ extension EventCategoryListViewController {
 // MARK: - EventCategoryFilterDelegate
 extension EventCategoryListViewController: EventCategoryFilterDelegate {
     
-    func selectedIndex(_ type: String) {
+    func selectedIndex(_ type: String, _ indexPath: IndexPath) {
         
         if self.type == .event {
             if isFirstFilter {
@@ -305,14 +310,36 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
             isThirdFilter = false
             collectionView.reloadData()
             getEventList(sortBy: .myUpcoming, eventCategory: nil)
-        } else if self.type == .club || self.type == .classes {
+        } else if self.type == .club {
             if isFirstFilter {
+                firstFilterIndex = indexPath.row
                 firstSortText = type
-            } else if isSecondFilter {
+                clubCategory = clubCategoryList[indexPath.row]
+             } else if isSecondFilter {
                 secondSortText = type
+                secondFilterIndex = indexPath.row
             } else if isThirdFilter {
                 thirdSortText = type
+                thirdFilterIndex = indexPath.row
             }
+            getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
+            isFirstFilter = false
+            isSecondFilter = false
+            isThirdFilter = false
+            collectionView.reloadData()
+        } else if self.type == .classes {
+            if isFirstFilter {
+                firstFilterIndex = indexPath.row
+                firstSortText = type
+                classCategory = classCategoryList[indexPath.row]
+             } else if isSecondFilter {
+                secondSortText = type
+                secondFilterIndex = indexPath.row
+            } else if isThirdFilter {
+                thirdSortText = type
+                thirdFilterIndex = indexPath.row
+            }
+            getClassListAPI()
             isFirstFilter = false
             isSecondFilter = false
             isThirdFilter = false
@@ -326,10 +353,12 @@ extension EventCategoryListViewController {
 
     func getClubListAPI(sortBy: String, clubCategory: ClubCategory?) {
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                     Keys.search: searchText,
+        let order = secondFilterIndex == 0 ? "popular" : "newest"
+        let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.clubCatId: clubCategory?.id ?? "",
+                     Keys.intId: clubCategory?.id ?? "",
+                     Keys.orderBy: order,
+                     Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
        
         if clubList.count == 0 {
@@ -350,8 +379,7 @@ extension EventCategoryListViewController {
     
     func getEventList(sortBy: GetEventType, eventCategory: EventCategory?) {
         
-        var param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                     Keys.search: searchText,
+        var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.eventCateId: eventCategory?.id ?? "",
                      Keys.pageNo: pageNo,
@@ -392,15 +420,20 @@ extension EventCategoryListViewController {
             }
         }
     }
-
+    
     func getClassCategoryAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+        let order = secondFilterIndex == 0 ? "popular" : "newest"
+        let param = [Keys.search: searchText,
+                     Keys.classCatId: classCategory?.id ?? "",
+                     Keys.orderBy: order,
+                     Keys.isOnlyFriendJoined: thirdFilterIndex,
+                     Keys.pageNo: pageNo] as [String: Any]
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
                 unsafe.classCategoryList = classes
-                  unsafe.tableView.reloadData()
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

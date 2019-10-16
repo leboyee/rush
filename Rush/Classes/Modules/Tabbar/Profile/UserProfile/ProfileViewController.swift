@@ -118,7 +118,7 @@ extension ProfileViewController {
     func setupHeaderData() {
         let name = profileDetail.profile?.name ?? ""
         header.set(name: name)
-        let university = (profileDetail.profile?.university ?? "").isEmpty ? "" : (profileDetail.profile?.university ?? "")
+        let university = "" //(profileDetail.profile?.university ?? "")
         header.set(university: university)
         header.set(url: profileDetail.profile?.photo?.url())
     }

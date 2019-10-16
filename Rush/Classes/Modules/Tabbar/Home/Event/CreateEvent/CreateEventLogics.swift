@@ -78,7 +78,13 @@ extension CreateEventViewController {
     }
     
     func fillEventTimeCell(_ cell: EventTimeCell, _ indexPath: IndexPath) {
+        
         cell.datePicker.date = indexPath.section == 4 ? startTimeDate : endTimeDate
+        if indexPath.section == 4  && startDate.isSameDate(Date()) {
+            cell.setMinimumTime(date: Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900))
+        } else if indexPath.section == 5  && endDate.isSameDate(Date()) {
+            cell.setMinimumTime(date: Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900))
+        }
         cell.timeSelected = {
             [weak self] (date) in
             guard let unsafe = self else { return }
@@ -544,7 +550,7 @@ extension CreateEventViewController: AddEventLocationDelegate {
 
 // MARK: - EventPanModel
 extension CreateEventViewController: EventCategoryFilterDelegate {
-    func selectedIndex(_ type: String) {
+    func selectedIndex(_ type: String, _ selectedIndex: IndexPath) {
         if type == "0" {
             self.event?.eventType = .publik
             self.eventType = .publik
@@ -587,7 +593,8 @@ extension CreateEventViewController {
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         // S*
         //let interests = interestList.joined(separator: ",")
-        let interests = ""
+         let interestsNameArry = interestList.map({ String($0.interestId) })
+        let interests = interestsNameArry.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
@@ -650,9 +657,7 @@ extension CreateEventViewController {
         let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
             
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
-        // S*
-        let interestsNameArry = interestList.map({ $0.interestName })
-        //interestList.joined(separator: ",")
+        let interestsNameArry = interestList.map({ String($0.interestId) })
         let interests = interestsNameArry.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }

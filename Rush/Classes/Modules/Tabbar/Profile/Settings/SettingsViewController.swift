@@ -110,6 +110,10 @@ extension SettingsViewController {
         } else if segue.identifier == Segues.disconnectInstagram {
             let vc = segue.destination as? DisconnectInstagramViewController
             vc?.delegate = self
+        } else if segue.identifier == Segues.changePasswordSegue {
+            let vc = segue.destination as? EnterPasswordViewConteroller
+            vc?.hidesBottomBarWhenPushed = true
+            vc?.loginType = .changePassword
         }
     }
 }

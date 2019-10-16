@@ -14,6 +14,18 @@ extension NetworkManager {
         requestGet(path: "email/check", params: params, resultHandler: resultHandler)
     }
     
+    func restorePassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+         requestGet(path: "auth/resetpwd", params: params, resultHandler: resultHandler)
+     }
+    
+    func verifyPassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "verify/pwd", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+       }
+    
+    func changePassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "change/pwd", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
     func login(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "auth/login", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
@@ -68,6 +80,9 @@ extension NetworkManager {
         requestPost(path: "pushtoken", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     
+    func getUniversity(params: [String: Any], resultHandler: @escaping ResultClosure) {
+          requestGet(path: "university", params: params, resultHandler: resultHandler)
+      }
     // MARK: - Major and Minor list
     func getMajorList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "major", params: params, resultHandler: resultHandler)
@@ -95,6 +110,10 @@ extension NetworkManager {
     
     func createClub(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "club", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
+    }
+    
+    func updateClub(clubId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestUploadImage(path: "club/\(clubId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
    
     func getClubList(sortBy: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -189,6 +208,9 @@ extension NetworkManager {
 
     func getClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "class/list", params: params, resultHandler: resultHandler)
+    }
+    func getMyJoinedClassList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "profile/class/list", params: params, resultHandler: resultHandler)
     }
 
     func getClassGroupList(classId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {

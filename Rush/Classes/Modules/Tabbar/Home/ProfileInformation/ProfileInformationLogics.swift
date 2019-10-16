@@ -42,7 +42,8 @@ extension ProfileInformationViewController {
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                cell.setup(text: userInfo?.university ?? "", placeholder: Text.university)
+                // userInfo?.university ?? 
+                cell.setup(text:"", placeholder: Text.university)
             } else if indexPath.row == 1 {
                 cell.setup(text: userInfo?.educationLevel ?? "", placeholder: Text.level)
             } else if indexPath.row == 2 {

@@ -26,3 +26,12 @@ extension FriendsListViewController {
         cell.setup(detail: "SOMM 24-A")
     }
 }
+
+// MARK: - Services
+extension FriendsListViewController {
+    
+    func getEventList() {
+        
+    }
+}
+

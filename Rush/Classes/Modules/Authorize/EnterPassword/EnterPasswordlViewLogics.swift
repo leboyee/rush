@@ -23,6 +23,13 @@ extension EnterPasswordViewConteroller {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status == true {
+                if Utils.getDataFromUserDefault(kPushToken) != nil {
+                    //API call and when success
+                    ServiceManager.shared.updatePushToken(closer: { (status, _) in
+                        if status {
+                        }
+                    })
+                }
                 unsafe.profileUpdateSuccess()
             } else {
                 unsafe.passwordNotSuccess()
@@ -30,4 +37,40 @@ extension EnterPasswordViewConteroller {
             }
         }
     }
+    
+    func currentPasswordApi(password: String) {
+        let param = [
+                     Keys.currentPassword: password] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.verifyCurrentPassword(params: param) { [weak self] (status, _) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status == true {
+                unsafe.profileUpdateSuccess()
+            } else {
+                unsafe.passwordNotSuccess()
+                //Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    func changePasswordApi(currentPassword: String, newPassword: String) {
+           let param = [
+                        Keys.currentPassword: currentPassword,
+                        Keys.newPassword: newPassword] as [String: Any]
+           
+           Utils.showSpinner()
+           ServiceManager.shared.changePassword(params: param) { [weak self] (status, errorMessage) in
+               Utils.hideSpinner()
+               guard let unsafe = self else { return }
+               if status == true {
+              
+                   unsafe.profileUpdateSuccess()
+               } else {
+                  // unsafe.passwordNotSuccess()
+                   Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+               }
+           }
+       }
 }

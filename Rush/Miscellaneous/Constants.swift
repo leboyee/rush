@@ -76,7 +76,6 @@ struct Cell {
     static let createPost           = "CreatePostCell"
     static let userTagCell           = "UserTagCell"
 
-
     static let dateAndTimeEvent     = "DateAndTimeCell"
     static let rsvpCell              = "RSVPCell"
     static let addEventLocationCell              = "AddEventLocationCell"
@@ -120,6 +119,11 @@ struct ViewControllerId {
     static let addRSVPViewController             = "AddRSVPViewController"
     static let chatRoomViewController            = "ChatRoomViewController"
     static let createClubViewController          = "CreateClubViewController"
+    static let enterPasswordViewConteroller          = "EnterPasswordViewConteroller"
+    static let enterEmailViewConteroller          = "EnterEmailViewConteroller"
+
+
+    
 }
 
 /* Create the struct for Section wise */
@@ -131,6 +135,7 @@ struct Segues {
     static let enterEmail                         = "EnterEmailViewSegue"
     static let enterPassword                      = "EnterPasswordSegue"
     static let enterPhoneNo                       = "EnterPhoneSegue"
+    static let enterNewPasswordSegue              = "EnterNewPasswordSegue"
     static let enterPhoneVerification             = "EnterVerificationSegue"
     static let myClub                             = "MyClubSegue"
     static let otherUserProfile                   = "OtherUserProfileSegue"
@@ -210,11 +215,12 @@ struct Segues {
     static let notificationClubDetail             = "NotificationClubDetailSegue"
     static let notificationClassDetail            = "NotificationClassDetailSegue"
     static let notificationPostDetail             = "NotificationPostDetailSegue"
-    static let profileImageViewSegue             = "ProfileImageViewSegue"
+    static let profileImageViewSegue              = "ProfileImageViewSegue"
     static let inviteContactListSegue             = "InviteContactListSegue"
-    static let friendProfileSegue             = "FriendProfileSegue"
-    static let userInterestSegue             = "UserInterestSegue"
-
+    static let friendProfileSegue                 = "FriendProfileSegue"
+    static let userInterestSegue                  = "UserInterestSegue"
+    static let eventPostImages                    = "EventPostImagesSegue"
+    static let eventInvitedPeople                 = "EventInvitedPeopleSegue"
 }
 
 struct StoryBoard {

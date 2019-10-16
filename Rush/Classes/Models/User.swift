@@ -10,7 +10,7 @@ import UIKit
 
 class User: Codable {
     
-    private var id: Int64 = 0
+    var id: Int64 = 0
     var firstName: String?
     var lastName: String?
     var email: String?
@@ -26,7 +26,7 @@ class User: Codable {
     var majors: [Major]?
     var minors: [Minor]?
     var interest: [Interest]?
-    var university: String?
+    var university: [University]?
     var birthDate: String?
     var gender: String?
     var relationship: String?
@@ -91,7 +91,6 @@ class User: Codable {
         case majors = "user_majors"
         case minors = "user_minors"
         case interest = "user_interests"
-        case university = "u_university"
         case birthDate = "u_birth_date"
         case gender = "u_gender"
         case relationship = "u_relationship"
@@ -113,6 +112,7 @@ class User: Codable {
         case instaUserName = "insta_username"
         case photoJson = "u_photo"
         case friend = "friend_data"
+        case university = "university"
         //        case name
         //var classes: [Classes]? u_edu_classes,u_university
 

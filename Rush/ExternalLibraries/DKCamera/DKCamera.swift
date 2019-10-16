@@ -216,7 +216,8 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         if self.originalOrientation == nil {
             self.view.backgroundColor = UIColor.bgBlack
-            self.previewLayer.frame = CGRect(x: 0, y: Utils.navigationHeigh + 13, width: screenWidth, height: screenHeight - Utils.navigationHeigh - 13 - 97)
+            
+            self.previewLayer.frame = CGRect(x: 0, y: Utils.navigationHeigh + 13, width: screenWidth, height: screenHeight - Utils.navigationHeigh - 13 - 130)
         }
     }
     
@@ -292,10 +293,11 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[contentView]-0-|", options: [], metrics: nil, views: viewsDict))
         }
         
-        let bottomViewHeight: CGFloat = 97
+        let bottomViewHeight: CGFloat = 130
         bottomView.backgroundColor = UIColor.bgBlack
         bottomView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: bottomViewHeight)
         bottomView.autoresizingMask = [.flexibleWidth]
+        bottomView.clipsToBounds = true
         bottomViewContainer.addSubview(bottomView)
         
         bottomViewContainer.backgroundColor = UIColor(white: 0, alpha: 0.4)
@@ -314,7 +316,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // switch button
         let cameraSwitchButton: UIButton = {
-            let cameraSwitchButton = UIButton(frame: CGRect(x: screenWidth - 24 - 56, y: 17, width: 56, height: 56))
+            let cameraSwitchButton = UIButton(frame: CGRect(x: screenWidth - 24 - 56, y: 31, width: 56, height: 56))
             cameraSwitchButton.addTarget(self, action: #selector(DKCamera.switchCamera), for: .touchUpInside)
             cameraSwitchButton.setImage(cameraResource.cameraSwitchImage(), for: .normal)
             return cameraSwitchButton
@@ -350,7 +352,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 }
             }
             
-            let captureButton = UIButton(frame: CGRect(x: (screenWidth/2) - 32.5, y: 16, width: 65, height: 65))
+            let captureButton = UIButton(frame: CGRect(x: (screenWidth/2) - 32.5, y: 0, width: 65, height: 65))
             captureButton.setBackgroundImage(#imageLiteral(resourceName: "camera_capture"), for: .normal)
             captureButton.addTarget(self, action: #selector(DKCamera.takePicture), for: .touchUpInside)
             /*
@@ -372,14 +374,14 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // cancel button
         let cancelButton: UIButton = {
-            let cancelButton = UIButton(frame: CGRect(x: 16, y: 15, width: 24, height: 30))
+            let cancelButton = UIButton(frame: CGRect(x: 16, y: 30, width: 24, height: 30))
             cancelButton.addTarget(self, action: #selector(DKCamera.dismissCamera), for: .touchUpInside)
             cancelButton.setImage(cameraResource.cameraCancelImage(), for: .normal)
             return cancelButton
         }()
         
         let saveImageButton: UIButton = {
-            let button = UIButton(frame: CGRect(x: 26, y: 24, width: 31, height: 42))
+            let button = UIButton(frame: CGRect(x: 26, y: 40, width: 31, height: 42))
             button.addTarget(self, action: #selector(DKCamera.saveCamera), for: .touchUpInside)
             button.setImage(#imageLiteral(resourceName: "camera_save"), for: .normal)
             return button
