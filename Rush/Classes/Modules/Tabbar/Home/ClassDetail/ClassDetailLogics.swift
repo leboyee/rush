@@ -74,7 +74,7 @@ extension ClassDetailViewController {
         cell.setup(firstButtonType: .joined)
         cell.setup(secondButtonType: .groupChatClub)
         
-        cell.firstButtonClickEvent = { [weak self] () in
+/*      cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             Utils.alert(title: "Are you sure you want to leave this class?", buttons: ["Yes", "No"], handler: { (index) in
                 if index == 0 {
@@ -82,7 +82,7 @@ extension ClassDetailViewController {
                     unself.tableView.reloadData()
                 }
             })
-        }
+        }*/
         
         cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
