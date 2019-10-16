@@ -233,13 +233,15 @@ extension ClubDetailViewController {
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         
-        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? (clubInfo?.clubUId == Authorization.shared.profile?.userId ? Text.posts : Text.popularPost) : ""
+        let title = section == 2 ? Text.joined : section == 3 ? Text.organizer : section == 4 ? Text.interestTag : section == 5 ? (clubInfo?.clubUId == Authorization.shared.profile?.userId ? Text.posts : Text.posts) : ""
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
+        /*
         if section == 5 {
             header.setup(isDetailArrowHide: false)
             header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
         }
+        */
     }
     
     func fillImageHeader() {
@@ -258,7 +260,9 @@ extension ClubDetailViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         
-        if indexPath.section == 5 && joinedClub {
+        if indexPath.section == 3 { // Club organizer detail
+            performSegue(withIdentifier: Segues.otherUserProfile, sender: clubInfo?.user)
+        } else if indexPath.section == 5 && joinedClub { // Create post
             performSegue(withIdentifier: Segues.createPost, sender: nil)
         } else if indexPath.section > 5 {
             if indexPath.row == 0 {

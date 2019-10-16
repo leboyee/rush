@@ -191,13 +191,15 @@ extension ClassDetailViewController {
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         
-        let title = section == 2 ? Text.rosters : section == 3 ? Text.organizer : section == 4 ? Text.rosters : section == 5 ? Text.popularPost : ""
+        let title = section == 2 ? Text.rosters : section == 3 ? Text.organizer : section == 4 ? Text.rosters : section == 5 ? Text.posts : ""
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
+        /*
         if section == 5 {
             header.setup(isDetailArrowHide: false)
             header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
         }
+        */
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
