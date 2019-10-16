@@ -139,7 +139,15 @@ extension ClubDetailViewController {
             cell.setup(bottomConstraintOfDate: 4)
             cell.setup(dotButtonConstraint: 24)
             cell.setup(eventImageUrl: post.user?.photo?.url())
-            
+            if post.user?.userId == Authorization.shared.profile?.userId {
+                cell.threeDots.isHidden = false
+            } else {
+                cell.threeDots.isHidden = true
+            }
+            cell.shareClickEvent = { [weak self] () in
+                guard self != nil else { return }
+                self?.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
+            }
             if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
                 let time = Date().timeAgoDisplay(date: date)
                 cell.setup(detail: time)
@@ -267,6 +275,22 @@ extension ClubDetailViewController {
 
 // MARK: - Services
 extension ClubDetailViewController {
+    
+    func deletePostAPI(id: String) {
+          Utils.showSpinner()
+          ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+               Utils.hideSpinner()
+               guard let unsafe = self else { return }
+               if status {
+                if let index = unsafe.clubPostList.firstIndex(where: { $0.postId == id }) {
+                    unsafe.clubPostList.remove(at: index)
+                    unsafe.tableView.reloadData()
+                   }
+               } else {
+                    Utils.alert(message: errorMsg.debugDescription)
+               }
+           }
+       }
     
     func getClubDetailAPI() {
         

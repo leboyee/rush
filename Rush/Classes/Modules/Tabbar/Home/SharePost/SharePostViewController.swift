@@ -70,11 +70,11 @@ class SharePostViewController: UIViewController {
             if post?.user?.userId != Authorization.shared.profile?.userId {
                 hideDeleteOption()
             }
-        } else if object != nil, let club = object as? Club {
+        } /*else if object != nil, let club = object as? Club {
             if club.user?.userId != Authorization.shared.profile?.userId {
                 hideDeleteOption()
             }
-        }
+        }*/
     }
     
     func hideDeleteOption() {

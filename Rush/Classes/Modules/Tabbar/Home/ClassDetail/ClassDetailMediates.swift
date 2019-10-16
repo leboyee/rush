@@ -144,7 +144,14 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return cellHeight(indexPath)
     }
 }
-
+// MARK: - SharePostViewControllerDelegate
+extension ClassDetailViewController: SharePostViewControllerDelegate {
+    func delete(type: SharePostType, object: Any?) {
+         if type == .post, let post = object as? Post {
+            deletePostAPI(id: post.postId)
+        }
+    }
+}
 // MARK: - OtherUserProfile delegate
 extension ClassDetailViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
