@@ -26,6 +26,10 @@ class ChatsViewController: CustomViewController {
         }
     }
     
+    var clearBarButton: UIBarButtonItem {
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "grayDelete"), style: .plain, target: self, action: #selector(clearButtonAction))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +84,9 @@ class ChatsViewController: CustomViewController {
         
         navigationItem.titleView = customView
         navigationItem.leftBarButtonItem = nil
+        
+        channels = filterList
+        tableView.reloadData()
     }
     
     func setupSearchChatNavigation() {
@@ -101,9 +108,6 @@ class ChatsViewController: CustomViewController {
         searchField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         customView.addSubview(searchField)
         navigationItem.titleView = customView
-        
-        // Right item button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "grayDelete"), style: .plain, target: self, action: #selector(clearButtonAction))
     }
 }
 

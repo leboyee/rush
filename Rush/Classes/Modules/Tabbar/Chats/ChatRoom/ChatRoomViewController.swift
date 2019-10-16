@@ -47,7 +47,7 @@ class ChatRoomViewController: MessagesViewController {
 
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
-    var emptyMessageFriendTitle = "This is a beginning of your chat history."
+    var emptyMessageFriendTitle = "This is a beginning of your chat history"
     var userName = ""
     let refreshControl = UIRefreshControl()
     
