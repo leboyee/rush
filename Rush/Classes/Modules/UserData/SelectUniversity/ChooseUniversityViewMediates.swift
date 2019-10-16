@@ -51,8 +51,11 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
         return cellHeight(indexPath)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scroll")
         self.view.endEditing(true)
     }
 }
@@ -76,5 +79,8 @@ extension ChooseUniversityViewController: UITextFieldDelegate {
     
     @objc func textDidChanged(_ textField: UITextField) {
         deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+        let searchText = textField.text ?? ""
+        pageNo = 1
+        getUniversity(searchText: searchText)
     }
 }

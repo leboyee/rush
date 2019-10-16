@@ -91,7 +91,7 @@ class User: Codable {
         case majors = "user_majors"
         case minors = "user_minors"
         case interest = "user_interests"
-        case university = "u_university"
+        case university = "university_id"
         case birthDate = "u_birth_date"
         case gender = "u_gender"
         case relationship = "u_relationship"

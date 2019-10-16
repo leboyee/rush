@@ -23,7 +23,7 @@ extension EnterPasswordViewConteroller {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status == true {
-                if (Utils.getDataFromUserDefault(kPushToken) != nil) {
+                if Utils.getDataFromUserDefault(kPushToken) != nil {
                     //API call and when success
                     ServiceManager.shared.updatePushToken(closer: { (status, _) in
                         if status {
