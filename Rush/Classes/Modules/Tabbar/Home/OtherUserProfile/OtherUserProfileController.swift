@@ -23,19 +23,18 @@ class OtherUserProfileController: UIViewController {
     
     var isShowMessageButton = false
     var friendType: ManageButtonType = .addFriend
-    
     weak var delegate: OtherUserProfileProtocol?
-    
     var clubImage: UIImage?
     var userInfo: User?
-    
     var searchText = ""
     var pageNo = 1
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [Class]()
     var imagesList = [Image]()
-    
+    var rsvpQuestion: [RSVPQuestion]?
+    var rsvpAnswer: [RSVPAnswer]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

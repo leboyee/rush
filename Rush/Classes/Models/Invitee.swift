@@ -10,16 +10,14 @@ import UIKit
 
 class Invitee: Codable {
 
-    //private var inviteeId: Int64 = 0
     var user: User?
-    
+    var rsvpAns: [RSVPAnswer]?
+
     private enum CodingKeys: String, CodingKey {
         //case inviteeId = "invite_id"
         case user
+        case rsvpAns = "rsvp_ans"
     }
-    //var id: String {
-    //    return String(inviteeId)
-    //}
     
     init() {
         // default empty init
