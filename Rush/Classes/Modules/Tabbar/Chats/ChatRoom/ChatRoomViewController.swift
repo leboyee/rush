@@ -43,7 +43,7 @@ class ChatRoomViewController: MessagesViewController {
     var clubInfo: Club?
     var eventInfo: Event?
     
-    var profileUserId: Int?
+    var profileUserId = ""
     
     open var previousMessageQuery: SBDPreviousMessageListQuery?
 
@@ -545,6 +545,10 @@ extension ChatRoomViewController {
         guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController) as? OtherUserProfileController else { return }
         if let friend = friendProfile {
             controller.userInfo = friend.user
+        } else if profileUserId.isNotEmpty {
+            let user = User()
+            user.id = Int64(profileUserId) ?? 0
+            controller.userInfo = user
         }
         self.navigationController?.pushViewController(controller, animated: true)
     }
