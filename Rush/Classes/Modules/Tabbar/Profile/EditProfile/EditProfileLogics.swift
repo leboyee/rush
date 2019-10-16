@@ -53,7 +53,7 @@ extension EditProfileViewController {
                 cell.set(title: Text.dateOfBirth)
                 let birthDate = Date.parse(dateString: profile?.birthDate ?? "", format: "yyyy-MM-dd")
                 let birthDateString = birthDate?.toString(format: "MM.dd.yyyy")
-                cell.set(detail: profile?.birthDate ?? "")
+                cell.set(detail: birthDateString ?? "")
                 cell.set(isDetails: profile?.birthDate?.isNotEmpty ?? false)
             } else if indexPath.row == 2 {
                 cell.set(title: Text.relationship)
@@ -65,11 +65,10 @@ extension EditProfileViewController {
             cell.set(arrowImage: #imageLiteral(resourceName: "ic_leftArrow"))
             cell.set(isHideRightButton: true)
             if indexPath.row == 0 {
+                let universityArray = profile?.university
                 cell.set(title: Text.university)
-                // profile?.university ??
-                cell.set(detail: "")
-                // profile?.university?.isNotEmpty ??
-                cell.set(isDetails: false)
+                cell.set(detail: universityArray?.first?.universityName ?? "")
+                cell.set(isDetails: universityArray?.first?.universityName.isNotEmpty ?? false)
             } else if indexPath.row == 1 {
                 cell.set(title: Text.level)
                 cell.set(detail: profile?.educationLevel ?? "")
@@ -132,7 +131,7 @@ extension EditProfileViewController {
                 }
             } else   if indexPath.section == 4 {
                 if let index = unself.minorArray.firstIndex(of: (unself.minorArray[indexPath.row])) {
-                    unself.profile?.minors?.remove(at: index)
+                    unself.minorArray.remove(at: index)
                     let param = [Keys.uEduMinors: unself.minorArray]  as [String: Any]
                     unself.updateProfileAPI(param: param)
                 }
@@ -285,6 +284,7 @@ extension EditProfileViewController {
             guard let unsafe = self else { return }
             if data != nil {
                 unsafe.profile = Authorization.shared.profile
+                unsafe.majorMinorData()
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)

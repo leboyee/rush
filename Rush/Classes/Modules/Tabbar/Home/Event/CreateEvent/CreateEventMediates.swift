@@ -27,6 +27,8 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
           tableView.register(UINib(nibName: Cell.addEventCalendarCell, bundle: nil), forCellReuseIdentifier: Cell.addEventCalendarCell)
         
         tableView.register(UINib(nibName: Cell.eventTimeCell, bundle: nil), forCellReuseIdentifier: Cell.eventTimeCell)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+
         tableView.reloadData()
     }
     
