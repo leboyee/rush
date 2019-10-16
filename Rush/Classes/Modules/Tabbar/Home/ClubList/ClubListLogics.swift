@@ -185,4 +185,17 @@ extension ClubListViewController {
             }
         }
     }
+    func getMyJoinedClasses(search: String) {
+        let param = [Keys.pageNo: pageNo, Keys.search: search] as [String: Any]
+        
+        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, errorMsg) in
+            guard let unsafe = self else { return }
+            if let classes = data {
+                unsafe.myJoinedClassesList = classes
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

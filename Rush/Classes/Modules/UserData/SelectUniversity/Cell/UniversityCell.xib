@@ -85,6 +85,7 @@
             <connections>
                 <outlet property="tickImageView" destination="99M-Ca-nGV" id="Btx-7x-uKM"/>
                 <outlet property="titleLabel" destination="Mr7-TO-QxM" id="v4j-pq-bpI"/>
+                <outlet property="universityImageView" destination="6nW-1u-rHA" id="4xc-rB-Kug"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="86.71875"/>
         </tableViewCell>

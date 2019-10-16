@@ -11,7 +11,7 @@ import UIKit
 let kUserInfo  = "userInfo"
 let kSessionId = "sessionIdKey"
 let kDeviceId  = "deviceIdKey"
-let kPushToken = "X-Push-Token"
+let kPushToken = "pushToken"
 let kTimezoneOffset = "timezoneOffset"
 let kPushTokenUpdateOnServer = "pushTokenUpdateOnServer"
 
@@ -118,6 +118,7 @@ struct Keys {
     static let uEduYear           = "u_edu_year"
     static let uEduMajors           = "u_edu_majors"
     static let uEduMinors           = "u_edu_minors"
+    static let uUniversity           = "u_university"
     static let uEduClasses           = "u_edu_classes"
     static let instagramToken           = "insta_token"
     static let images           = "images"

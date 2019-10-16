@@ -21,7 +21,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             } else {
                 print("Push registration FAILED.")
             }
-
+            self.photoLibraryPermissionCheck()
         }
         UNUserNotificationCenter.current().delegate = self
     }
@@ -60,15 +60,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     
                     Utils.saveDataToUserDefault(true, kOpenFromPushNotification)
                     if let viewcontroller = window?.rootViewController as? UITabBarController {
-                        //let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
+                        let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
                         //Check current tab is 2 and navigation controller has first view is NotificationListViewController, so we need to update list
-                        /*if viewcontroller.selectedIndex == 2, let vc = selectedNavigationController?.viewControllers.first as? NotificationListViewController {
-                            vc.presenter.loadList()
+                        if viewcontroller.selectedIndex == 2, let vc = selectedNavigationController?.viewControllers.first as? ChatsViewController {
+                            vc.getListOfGroups()
                         } else {
                             selectedNavigationController?.dismiss(animated: false, completion: nil)
                             selectedNavigationController?.popToRootViewController (animated: false)
                             viewcontroller.selectedIndex = 2
-                        }*/
+                        }
                     }
                 }
             }

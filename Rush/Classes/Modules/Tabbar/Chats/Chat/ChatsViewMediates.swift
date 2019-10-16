@@ -32,6 +32,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as? ChatListCell else { return UITableViewCell() }
         cell.delegate = self
+        cell.tag = indexPath.row
         cell.rightButtons = [MGSwipeButton(title: "", icon: #imageLiteral(resourceName: "chat-delete"), backgroundColor: nil)]
         fillCell(cell, indexPath)
         return cell
@@ -47,26 +48,20 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
     
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
         
-        Utils.alert(message: Message.deleteChat, title: nil, buttons: ["Yes", "No"], cancel: nil, destructive: nil, type: .alert, handler: { [weak self] (index) in
-            guard let unsafe = self else { return }
-            if index == 0 {
-                let channel = unsafe.channels[index]
-                
-                ChatManager().leave(channel, completionHandler: { [weak unsafe] (status) in
-                    guard let unowned = unsafe else { return }
-                    if status {
-                        let snackbar = TTGSnackbar(message: "\(channel.name) chat was deleted",
-                                                   duration: .middle,
-                                                   actionText: "",
-                                                   actionBlock: { (_) in
-                                                    // Utils.notReadyAlert()
-                        })
-                        snackbar.show()
-                        unowned.getListOfGroups()
-                    } else {
-                        Utils.alert(message: Message.tryAgainErrorMessage)
-                    }
+        let channel = channels[cell.tag]
+        ChatManager().leave(channel, completionHandler: { [weak self] (status) in
+            guard let unowned = self else { return }
+            if status {
+                let snackbar = TTGSnackbar(message: "\(channel.name) chat was deleted",
+                                           duration: .middle,
+                                           actionText: "",
+                                           actionBlock: { (_) in
+                                            // Utils.notReadyAlert()
                 })
+                snackbar.show()
+                unowned.getListOfGroups()
+            } else {
+                Utils.alert(message: Message.tryAgainErrorMessage)
             }
         })
         return true

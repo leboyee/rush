@@ -96,6 +96,15 @@ extension ServiceManager {
         }
     }
     
+    func fetchMyJoinedClassList(params: [String: Any], closer: @escaping (_ params: [SubClass]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getMyJoinedClassList(params: params) { [weak self] (classList, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.procesModelResponse(result: classList, error: error, code: code, closer: { (classList, _, errorMessage) in
+                closer(classList, errorMessage)
+            })
+        }
+    }
+    
     func fetchClassGroupList(classId: String, params: [String: Any], closer: @escaping (_ params: [ClassGroup]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClassGroupList(classId: classId, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }

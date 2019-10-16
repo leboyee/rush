@@ -31,6 +31,7 @@ class ClubListViewController: CustomViewController {
     var pageNo = 1
     var myClubList = [Club]()
     var myClassesList = [Class]()
+    var myJoinedClassesList = [SubClass]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class ClubListViewController: CustomViewController {
             getMyClubListAPI(sortBy: "my")
         } else {
             getClassCategoryAPI()
+            getMyJoinedClasses(search: "")
         }
     }
     
