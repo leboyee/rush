@@ -83,7 +83,7 @@ extension OtherUserProfileController {
             } else if status == .friends {
                 //unself.friendType = .addFriend
                 
-                Utils.alert(message: "Are you sure you want to unfriend of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to unfriend  \(unself.userInfo?.name ?? "")?", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "unfriend")
                     }
@@ -97,7 +97,7 @@ extension OtherUserProfileController {
                  */
             } else if status == .addFriend {
                 // unself.friendType = .requested
-                Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "")?", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.sendFriendRequestAPI()
                     }
@@ -107,7 +107,7 @@ extension OtherUserProfileController {
                 //unself.friendType = .accept
             } else if status == .accept {
                 // unself.friendType = .friends
-                Utils.alert(message: "Are you sure you want to accept friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to accept friend request of \(unself.userInfo?.name ?? "")?", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "accept")
                     }
@@ -124,7 +124,7 @@ extension OtherUserProfileController {
                  unself.isShowMessageButton = false
                  unself.tableView.reloadData()
                  */
-                Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "").", buttons: ["Yes", "No"], handler: { (index) in
+                Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "")?", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "decline")
                     }
@@ -235,7 +235,8 @@ extension OtherUserProfileController {
         
         let param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: pageNo,
+                     Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
         if clubList.count == 0 {
             Utils.showSpinner()
@@ -255,7 +256,7 @@ extension OtherUserProfileController {
     
     func getEventList(sortBy: GetEventType) {
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+        let param = [Keys.profileUserId: userInfo?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]

@@ -74,7 +74,7 @@ extension ClassDetailViewController {
         cell.setup(firstButtonType: .joined)
         cell.setup(secondButtonType: .groupChatClub)
         
-        cell.firstButtonClickEvent = { [weak self] () in
+/*      cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             Utils.alert(title: "Are you sure you want to leave this class?", buttons: ["Yes", "No"], handler: { (index) in
                 if index == 0 {
@@ -82,7 +82,7 @@ extension ClassDetailViewController {
                     unself.tableView.reloadData()
                 }
             })
-        }
+        }*/
         
         cell.secondButtonClickEvent = { () in
             Utils.notReadyAlert()
@@ -191,13 +191,15 @@ extension ClassDetailViewController {
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: true)
         
-        let title = section == 2 ? Text.rosters : section == 3 ? Text.organizer : section == 4 ? Text.rosters : section == 5 ? Text.popularPost : ""
+        let title = section == 2 ? Text.rosters : section == 3 ? Text.organizer : section == 4 ? Text.rosters : section == 5 ? Text.posts : ""
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
+        /*
         if section == 5 {
             header.setup(isDetailArrowHide: false)
             header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
         }
+        */
     }
     
     func fillImageHeader(_ view: UserImagesHeaderView) {
@@ -254,6 +256,22 @@ extension ClassDetailViewController {
 }
 
 extension ClassDetailViewController {
+    func deletePostAPI(id: String) {
+             Utils.showSpinner()
+             ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+                  Utils.hideSpinner()
+                  guard let unsafe = self else { return }
+                  if status {
+                   if let index = unsafe.classesPostList.firstIndex(where: { $0.postId == id }) {
+                       unsafe.classesPostList.remove(at: index)
+                       unsafe.tableView.reloadData()
+                      }
+                  } else {
+                       Utils.alert(message: errorMsg.debugDescription)
+                  }
+              }
+          }
+      
     func joinClassAPI() {
         Utils.showSpinner()
         ServiceManager.shared.joinClassGroup(classId: selectedGroup?.classId ?? "0", groupId: selectedGroup?.id ?? "0", params: [:]) { [weak self] (status, errorMsg) in

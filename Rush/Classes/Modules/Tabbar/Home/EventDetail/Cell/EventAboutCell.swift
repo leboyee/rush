@@ -17,10 +17,16 @@ class EventAboutCell: UITableViewCell {
     @IBOutlet var eventDetailLabel: CustomBlackLabel!
     @IBOutlet var readMoreView: UIView!
     @IBOutlet var readMoreButtonViewHeight: NSLayoutConstraint!
+    @IBOutlet var readMoreButton: UIButton!
+
+    let padding: CGFloat = 24.0
+    var readMoreEvent: (() -> Void)?
+    var isReadMoreTapped = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        eventDetailLabel.numberOfLines = 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,6 +54,13 @@ extension EventAboutCell {
     
     func set(detail: String) {
         eventDetailLabel.text = detail
+        let font = eventDetailLabel.font
+        let textTextHeight: CGFloat = detail.boundingRect(with: CGSize(width: (screenWidth - 2*padding), height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font as Any], context: nil).height
+        if textTextHeight.isLess(than: 50.0) {
+            set(isHideReadMore: true)
+        } else {
+            set(isHideReadMore: false)
+        }
     }
     
     func set(type: EventType) {
@@ -61,5 +74,18 @@ extension EventAboutCell {
             eventTypeIconImageView.image = #imageLiteral(resourceName: "ic_inviteonly.pdf")
             eventTypeLabel.text = "Invite Only Event"
         }
+    }
+}
+
+// MARK: - Actions
+extension EventAboutCell {
+    @IBAction func handleReadMore() {
+        readMoreButton.isSelected = !readMoreButton.isSelected
+        if readMoreButton.isSelected {
+            eventDetailLabel.numberOfLines = 0
+        } else {
+            eventDetailLabel.numberOfLines = 2
+        }
+        readMoreEvent?()
     }
 }

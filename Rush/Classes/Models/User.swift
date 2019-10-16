@@ -10,7 +10,7 @@ import UIKit
 
 class User: Codable {
     
-    private var id: Int64 = 0
+    var id: Int64 = 0
     var firstName: String?
     var lastName: String?
     var email: String?
@@ -26,7 +26,7 @@ class User: Codable {
     var majors: [Major]?
     var minors: [Minor]?
     var interest: [Interest]?
-    var university: String?
+    var universityId: Int64?
     var birthDate: String?
     var gender: String?
     var relationship: String?

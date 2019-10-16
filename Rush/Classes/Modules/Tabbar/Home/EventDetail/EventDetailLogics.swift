@@ -207,7 +207,9 @@ extension EventDetailViewController {
         cell.set(title: event.title)
         cell.set(type: event.eventType)
         cell.set(detail: event.desc)
-        cell.set(isHideReadMore: true)
+        cell.readMoreEvent = { [weak self] () in
+            self?.reloadTable()
+        }
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
