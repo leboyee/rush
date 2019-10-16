@@ -51,9 +51,9 @@ class EventCategoryListViewController: UIViewController {
         setupUI()
         switch type {
         case .event:
-            if (eventCategory) != nil {
-                firstSortText = eventCategory?.name ?? "All categories"
-            }
+//            if (eventCategory) != nil {
+//                firstSortText = eventCategory?.name ?? "All categories"
+//            }
             getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
         case .club:
             if (clubCategory) != nil {
@@ -98,7 +98,11 @@ class EventCategoryListViewController: UIViewController {
         
         var titleText = ""
         if interest == nil {//open non category list screen
-            titleText = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
+            var header = "Search classes"
+            if (eventCategory) != nil {
+                            header = eventCategory?.name ?? "Search events"
+                        }
+            titleText = type == .event ? header : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
         } else {
             titleText = interest?.interestName ?? ""
         }
