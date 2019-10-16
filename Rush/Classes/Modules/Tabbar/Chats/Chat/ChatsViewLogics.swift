@@ -70,12 +70,18 @@ extension ChatsViewController: UITextFieldDelegate {
         let text = textField.text?.lowercased() ?? ""
         if text.isEmpty {
             channels = filterList
-            
+            // Right item button
+            navigationItem.rightBarButtonItem = nil
         } else {
             let filter = filterList.filter { ( $0.name.lowercased().contains(text) ) }
             channels = filter
+            navigationItem.rightBarButtonItem = clearBarButton
         }
         tableView.reloadData()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        navigationItem.rightBarButtonItem = nil
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
