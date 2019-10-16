@@ -106,10 +106,8 @@ extension ChatsViewController {
                 unself.channels = list
                 unself.filterList = list
             }
-            DispatchQueue.main.async {
-                unself.tableView.reloadData()
-                Utils.hideSpinner()
-            }
+            unself.tableView.reloadData()
+            Utils.hideSpinner()
             
             if unself.channels.count > 0 {
                 unself.blankView.isHidden = true

@@ -143,7 +143,6 @@ extension CreateClubViewController {
                     unself.peopleList.remove(at: index)
                     unself.tableView.reloadData()
                 }
-                
             }
             unself.validateAllFields()
         }
