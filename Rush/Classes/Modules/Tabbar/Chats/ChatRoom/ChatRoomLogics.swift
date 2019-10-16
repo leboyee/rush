@@ -304,6 +304,7 @@ extension ChatRoomViewController {
                                 if loggedInUserId != user.userId {
                                     imageName = user.profileUrl ?? ""
                                     self.userName = user.nickname ?? ""
+                                    self.profileUserId = user.userId
                                 }
                             }
                         }
