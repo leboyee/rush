@@ -11,7 +11,7 @@ import UIKit
 let kUserInfo  = "userInfo"
 let kSessionId = "sessionIdKey"
 let kDeviceId  = "deviceIdKey"
-let kPushToken = "X-Push-Token"
+let kPushToken = "pushToken"
 let kTimezoneOffset = "timezoneOffset"
 let kPushTokenUpdateOnServer = "pushTokenUpdateOnServer"
 
