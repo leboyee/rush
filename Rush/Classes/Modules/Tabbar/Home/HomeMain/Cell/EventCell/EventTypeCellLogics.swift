@@ -77,8 +77,13 @@ extension EventTypeCell {
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
                 cell.setup(classImageUrl: value.photo.photo?.url())
-                cell.setup(classCount: "\(value.classTotalGroups) classes")
-                
+                if value.myJoinedClass?.count ?? 0 > 0 {
+                    let groupid = value.myJoinedClass?[0].groupId
+                    let group = value.classGroups?.filter { $0.id == groupid }.first
+                    cell.setup(classCount: group?.name ?? "")
+                } else {
+                    cell.setup(classCount: "\(value.classTotalGroups) classes")
+                }
             }
         
         }
