@@ -293,8 +293,8 @@ extension ChatRoomViewController {
         
         var imageName = ""
         
-        if self.channel?.customType == "single" {
-            if self.channel != nil {
+        if self.channel != nil {
+            if self.channel?.customType == "single" {
                 if let members = self.channel?.members {
                     // _ = Array<NSURL>()
                     if members.count == 2 && self.channel?.data != "Group" {
@@ -328,10 +328,10 @@ extension ChatRoomViewController {
                         }
                     }
                 }
-            } else if let frnd = friendProfile {
-                imageName = frnd.user?.photo?.thumb ?? ""
-                userName = frnd.user?.name ?? ""
             }
+        } else if let frnd = friendProfile {
+            imageName = frnd.user?.photo?.thumb ?? ""
+            userName = frnd.user?.name ?? ""
         } else {
             /*
              Setup for club, event, class group chat

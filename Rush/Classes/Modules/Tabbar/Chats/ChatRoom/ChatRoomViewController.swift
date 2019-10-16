@@ -43,6 +43,8 @@ class ChatRoomViewController: MessagesViewController {
     var clubInfo: Club?
     var eventInfo: Event?
     
+    var profileUserId: Int?
+    
     open var previousMessageQuery: SBDPreviousMessageListQuery?
 
     var emptyMessageView = UIView()
@@ -540,7 +542,10 @@ extension ChatRoomViewController {
     
     @objc func openUserProfileScreen() {
         let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController) as? OtherUserProfileController else { return }
+        if let friend = friendProfile {
+            controller.userInfo = friend.user
+        }
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
