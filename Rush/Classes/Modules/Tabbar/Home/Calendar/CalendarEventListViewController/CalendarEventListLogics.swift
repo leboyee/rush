@@ -48,22 +48,12 @@ extension CalendarEventListViewController {
             }
             
             cell.set(isHideRedTimeline: true)
-            if indexPath.row == 0 || tableView.numberOfRows(inSection: indexPath.section) - 1 == indexPath.row {
-               cell.set(isHideTop: true)
-               cell.set(isHideBottom: false)
-            } else {
-                cell.set(isHideTop: false)
-                cell.set(isHideBottom: true)
-            }
-            
+            cell.set(isHideTop: true)
+            cell.set(isHideBottom: false)
             let date = Date()
             if let start = startTime, let end = endTime {
                 if date.isGreaterThan(start), date.isLessThan(end) {
                     cell.set(isHideRedTimeline: false)
-                    if indexPath.row != 0, tableView.numberOfRows(inSection: indexPath.section) - 1 == indexPath.row {
-                        cell.set(isHideTop: true)
-                        cell.set(isHideBottom: true)
-                    }
                 }
             }
         }
