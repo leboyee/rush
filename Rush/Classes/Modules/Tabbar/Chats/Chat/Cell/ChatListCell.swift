@@ -130,9 +130,9 @@ extension ChatListCell {
         }
         
         if Int(channel.unreadMessageCount) > 0 {
-            detailLabel.textColor = UIColor.bgBlack17
+            onlineView.isHidden = false
         } else {
-            detailLabel.textColor = UIColor.lightGrayColor
+            onlineView.isHidden = true
         }
     }
 }
