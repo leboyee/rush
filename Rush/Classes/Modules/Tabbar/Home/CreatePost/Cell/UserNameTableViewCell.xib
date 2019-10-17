@@ -39,7 +39,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Lotter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rek-Bl-c6t" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                        <rect key="frame" x="88" y="29" width="86" height="20"/>
+                        <rect key="frame" x="88" y="29" width="208" height="20"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                         <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -57,6 +57,7 @@
                     <constraint firstItem="WHF-Jj-ZC2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="DST-gh-qnK"/>
                     <constraint firstItem="rek-Bl-c6t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="29" id="Dqa-bF-Qxx"/>
                     <constraint firstItem="FXs-qE-fPM" firstAttribute="leading" secondItem="rek-Bl-c6t" secondAttribute="leading" id="QpX-qU-8kz"/>
+                    <constraint firstAttribute="trailing" secondItem="rek-Bl-c6t" secondAttribute="trailing" constant="24" id="TOm-kX-ddT"/>
                     <constraint firstItem="WHF-Jj-ZC2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="djY-v0-S70"/>
                     <constraint firstItem="FXs-qE-fPM" firstAttribute="top" secondItem="rek-Bl-c6t" secondAttribute="bottom" constant="1" id="gL4-Ej-UJb"/>
                     <constraint firstItem="rek-Bl-c6t" firstAttribute="leading" secondItem="WHF-Jj-ZC2" secondAttribute="trailing" constant="16" id="uIq-lm-5ab"/>

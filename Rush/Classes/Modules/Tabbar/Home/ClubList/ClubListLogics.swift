@@ -250,10 +250,10 @@ extension ClubListViewController {
     }
     
     func getClubCategoryListAPI() {
-        //Utils.showSpinner()
+        
         let params = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
         ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
-            //Utils.hideSpinner()
+            Utils.hideSpinner()
             guard let uwself = self else { return }
             if uwself.pageNoO == 1 {
                 uwself.clubInterestList.removeAll()
