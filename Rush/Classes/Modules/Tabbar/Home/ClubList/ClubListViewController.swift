@@ -141,7 +141,12 @@ extension ClubListViewController {
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController
                 else { return }
-            vc.subclassInfo = sender as? SubClass
+            if let sn = sender as? ClassJoined {
+                vc.selectedGroup = sn.classGroup
+                vc.subclassInfo = sn.classes
+            } else if let sn = sender as? SubClass {
+                vc.subclassInfo = sn
+            }
             vc.joinedClub = true
         }
     }

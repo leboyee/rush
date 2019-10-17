@@ -69,17 +69,15 @@ extension ClubListViewController {
         if screenType == .club {
             cell.setup(.clubs, nil, clubInterestList[indexPath.section - 1].clubArray)
         } else {
-            if myClassesList.count > 0
-            {
+            /*if myClassesList.count > 0 {
                 if indexPath.section == 0 {
                     cell.setup(.classes, nil, myClassesList)
-                } else {
+                } else { */
+            cell.setup(.classes, nil, classesList[indexPath.row].classList)
+              /*  }
+            } else {
                     cell.setup(.classes, nil, classesList)
-                }
-            }
-            else{
-                cell.setup(.classes, nil, classesList)
-            }
+            }*/
        }
         
         cell.cellSelected = {
@@ -90,7 +88,7 @@ extension ClubListViewController {
                 let club = unself.clubInterestList[indexPath.section - 1].clubArray?[index]
                 unself.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
-                let classObj = unself.classesList[section]
+                let classObj = unself.classesList[indexPath.section - 1]
                 let subClassesList = classObj.classList
                 
                 if subClassesList?.count ?? 0 > 0 {
@@ -100,7 +98,7 @@ extension ClubListViewController {
                         unself.performSegue(withIdentifier: Segues.classDetailSegue, sender: selSubClass)
                     } else {
                         // not joined yet, so show groups
-                         unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: selSubClass)
+                        unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: selSubClass)
                     }
                 }
             }
@@ -120,7 +118,7 @@ extension ClubListViewController {
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
             cell.setup(imageUrl: image.urlThumb())
-        }  else if myClassesList.count > 0 {
+        } else if myClassesList.count > 0 {
             let joinedClass = myClassesList[indexPath.row]
             cell.setup(title: joinedClass.classes?.name ?? "VR Meet")
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
@@ -181,7 +179,8 @@ extension ClubListViewController {
                 let club = myClubsList[indexPath.row]
                 performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else {
-                performSegue(withIdentifier: Segues.classDetailSegue, sender: nil)
+                let classGroup = myClassesList[indexPath.row]
+                performSegue(withIdentifier: Segues.classDetailSegue, sender: classGroup)
             }
         }
     }
