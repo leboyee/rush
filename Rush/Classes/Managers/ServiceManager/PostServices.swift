@@ -96,7 +96,7 @@ extension ServiceManager {
         }
     }
     
-    func fetchMyJoinedClassList(params: [String: Any], closer: @escaping (_ params: [SubClass]?, _ errorMessage: String?) -> Void) {
+    func fetchMyJoinedClassList(params: [String: Any], closer: @escaping (_ params: [ClassJoined]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getMyJoinedClassList(params: params) { [weak self] (classList, error, code) in
             guard let unsafe = self else { return }
             unsafe.procesModelResponse(result: classList, error: error, code: code, closer: { (classList, _, errorMessage) in

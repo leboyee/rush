@@ -27,7 +27,12 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
         if screenType == .club {
             return clubInterestList.count + 1
         } else {
-            return classesList.count + 1
+            if myClassesList.count > 0 {
+                 return classesList.count + 1
+            } else {
+                  return classesList.count
+            }
+           
         }
     }
     
@@ -40,7 +45,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
                 fillMyClubCell(cell, indexPath)
                 return cell
-        } else if screenType == .classes && indexPath.section == 0 {
+        } else if screenType == .classes && indexPath.section == 0 && myClassesList.count > 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
                 fillMyClubCell(cell, indexPath)
                 return cell

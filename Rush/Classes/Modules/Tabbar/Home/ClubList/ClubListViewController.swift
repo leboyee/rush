@@ -36,7 +36,7 @@ class ClubListViewController: CustomViewController {
     var clubList = [Club]()
     var classesList = [Class]()
     var myClubsList = [Club]()
-    var myClassesList = [SubClass]()
+    var myClassesList = [ClassJoined]()
     
     var clubInterestList = [ClubCategory]()
     
