@@ -75,7 +75,11 @@ extension ClubListViewController {
         cell.cellSelected = {
             [weak self] (type, section, index) in
             guard let unself = self else { return }
-            if type == .classes {
+            
+            if type == .clubs {
+                let club = unself.clubInterestList[indexPath.section - 1].clubArray?[index]
+                unself.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            } else if type == .classes {
                 let classObj = unself.classesList[section]
                 let subClassesList = classObj.classList
                 
@@ -86,7 +90,7 @@ extension ClubListViewController {
                         unself.performSegue(withIdentifier: Segues.classDetailSegue, sender: selSubClass)
                     } else {
                         // not joined yet, so show groups
-                         unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: selSubClass )
+                         unself.performSegue(withIdentifier: Segues.searchClubSegue, sender: selSubClass)
                     }
                 }
             }
@@ -194,7 +198,6 @@ extension ClubListViewController {
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _) in
-            Utils.hideSpinner()
             guard let uwself = self else { return }
             
             if uwself.pageNoM == 1 {
