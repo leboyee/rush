@@ -28,10 +28,17 @@ class ClubListViewController: CustomViewController {
     var screenType: ClubListType = .none
     
     var searchText = ""
-    var pageNo = 1
-    var myClubList = [Club]()
-    var myClassesList = [Class]()
-    var myJoinedClassesList = [SubClass]()
+    var pageNoM = 1
+    var pageNoO = 1
+    var isNextPageM = false
+    var isNextPageO = false
+    
+    var clubList = [Club]()
+    var classesList = [Class]()
+    var myClubsList = [Club]()
+    var myClassesList = [SubClass]()
+    
+    var clubInterestList = [ClubCategory]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +53,6 @@ class ClubListViewController: CustomViewController {
         if screenType == .club {
             getMyClubListAPI(sortBy: "my")
         } else {
-            getClassCategoryAPI()
             getMyJoinedClasses(search: "")
         }
     }

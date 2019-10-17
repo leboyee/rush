@@ -37,10 +37,15 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
                 fillMyClubCell(cell, indexPath)
                 return cell
         } else if screenType == .classes {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-            fillEventTypeCell(cell, indexPath)
-            return cell
+            if indexPath.section == 0 && myClassesList.count > 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
+                fillMyClubCell(cell, indexPath)
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+                fillEventTypeCell(cell, indexPath)
+                return cell
+            }
         }
         return UITableViewCell()
     }
@@ -69,6 +74,10 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        loadMoreCell(indexPath)
     }
 }
 

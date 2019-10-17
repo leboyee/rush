@@ -11,10 +11,16 @@ import UIKit
 extension ClubListViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        if section == 0 && myClubList.count > 0 {
-            return 50
+        if screenType == .club {
+            if (section == 0 && myClubsList.count > 0) || section > 0 {
+                return 50
+            }
+            return CGFloat.leastNormalMagnitude
         } else {
-            return myClassesList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
+            if (section == 0 && myClassesList.count > 0) || section > 0 {
+                return 50
+            }
+            return CGFloat.leastNormalMagnitude
         }
     }
     
@@ -23,18 +29,23 @@ extension ClubListViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if screenType == .club {
-            return UITableView.automaticDimension
-        } else {
-            return myClassesList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
+        if indexPath.section > 0 {
+            return 157
         }
+        return UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {
-        if myClubList.count > 0 && screenType == .club && section == 0 {
-            return myClubList.count
-        } else if myClassesList.count > 0 && screenType == .classes {
-           return myClassesList.count
+        if screenType == .club {
+            if myClubsList.count > 0 && section == 0 {
+                return myClubsList.count
+            }
+            return clubList.count
+        } else if screenType == .classes {
+            if myClassesList.count > 0 && section == 0 {
+                return myClassesList.count
+            }
+            return classesList.count
         } else {
             return 0
         }
@@ -42,29 +53,16 @@ extension ClubListViewController {
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         if screenType == .club {
-            if indexPath.section == 1 {
-                cell.setup(.clubs, nil, nil)
-            } else if indexPath.section == 2 {
-                cell.setup(.clubs, nil, nil)
-            } else {
-                cell.setup(.clubs, nil, nil)
-            }
+            cell.setup(.clubs, nil, myClubsList)
         } else {
-//            if indexPath.section == 1 {
-//                cell.setup(.classes, nil, nil)
-//            } else if indexPath.section == 2 {
-//                cell.setup(.classes, nil, nil)
-//            } else {
-            
-                cell.setup(.classes, nil, myClassesList[indexPath.section].classList)
-//            }
+            cell.setup(.classes, nil, myClassesList[indexPath.section].myJoinedClass)
         }
         
         cell.cellSelected = {
             [weak self] (type, section, index) in
             guard let unself = self else { return }
             if type == .classes {
-                let classObj = unself.myClassesList[section]
+                let classObj = unself.classesList[section]
                 let subClassesList = classObj.classList
                 
                 if subClassesList?.count ?? 0 > 0 {
@@ -87,17 +85,21 @@ extension ClubListViewController {
         } else {
             cell.setup(topConstraint: 0)
         }
-        if myClubList.count > 0 {
-            let club = myClubList[indexPath.row]
+        if myClubsList.count > 0 {
+            let club = myClubsList[indexPath.row]
             let image = Image(json: club.clubPhoto ?? "")
             cell.setup(title: club.clubName ?? "")
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
             cell.setup(imageUrl: image.urlThumb())
         } else if myClassesList.count > 0 {
-//            let classes = myClassesList[indexPath.row]
-//            cell.setup(title: classes.clubName ?? "")
-//            cell.setup(detail: classes.clubDesc ?? "")
+            let classes = myClassesList[indexPath.row]
+            cell.setup(title: classes.name)
+            let grpId = classes.myJoinedClass?.first?.groupId
+            let nm = classes.classGroups?.filter({ $0.id == grpId })
+            if (nm?.count ?? 0) > 0 {
+                cell.setup(detail: nm?.first?.name ?? "")
+            }
         }
     }
     
@@ -116,15 +118,16 @@ extension ClubListViewController {
                 header.setup(title: "Technologies")
             }
         } else {
-            header.setup(title: myClassesList[section].name)
-            /*if section == 0 {
-                header.setup(title: Text.myClasses)
-                header.setup(isDetailArrowHide: true)
-            } else if section == 1 {
-                header.setup(title: "Arts & humanities")
-            } else if section == 2 {
-                header.setup(title: "Business & managment")
-            }*/
+            if myClassesList.count > 0 {
+                if section == 0 {
+                    header.setup(title: Text.myClasses)
+                    header.setup(isDetailArrowHide: true)
+                } else {
+                    header.setup(title: myClassesList[section - 1].name)
+                }
+            } else {
+                header.setup(title: myClassesList[section].name)
+            }
         }
         
         header.detailButtonClickEvent = { [weak self] () in
@@ -142,10 +145,27 @@ extension ClubListViewController {
     func cellSelected(_ indexPath: IndexPath) {
         if indexPath.section == 0 {
             if screenType == .club {
-                let club = myClubList[indexPath.row]
+                let club = clubList[indexPath.row]
                 performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else {
                 performSegue(withIdentifier: Segues.classDetailSegue, sender: nil)
+            }
+        }
+    }
+    
+    func loadMoreCell(_ indexPath: IndexPath) {
+        
+        if screenType == .club {
+            if indexPath.section == 0 && isNextPageM == true {
+                if indexPath.row == myClubsList.count - 2 {
+                    pageNoM += 1
+                    getMyClubListAPI(sortBy: "my")
+                }
+            } else if indexPath.section > 0 && isNextPageO == true {
+                if indexPath.section == clubInterestList.count - 2 {
+                    pageNoO += 1
+                    getClubCategoryListAPI()
+                }
             }
         }
     }
@@ -158,27 +178,41 @@ extension ClubListViewController {
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: pageNoM] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if let clubs = value {
-                uwself.myClubList = clubs
-                uwself.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            
+            if uwself.pageNoM == 1 {
+                uwself.myClubsList.removeAll()
             }
+                        
+            if let clubs = value, clubs.count > 0 {
+                if uwself.pageNoM == 1 {
+                    uwself.myClubsList = clubs
+                } else {
+                    uwself.myClubsList.append(contentsOf: clubs)
+                }
+                uwself.pageNoM += 1
+                uwself.isNextPageM = true
+            } else {
+                if uwself.pageNoM == 1 || (uwself.pageNoM > 1 && value == nil) {
+                    uwself.getClubCategoryListAPI()
+                }
+            }
+            uwself.tableView.reloadData()
         }
     }
+    
     func getClassCategoryAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+        let param = [Keys.pageNo: pageNoO] as [String: Any]
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.myClassesList = classes
+                unsafe.classesList = classes
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
@@ -186,16 +220,31 @@ extension ClubListViewController {
         }
     }
     func getMyJoinedClasses(search: String) {
-        let param = [Keys.pageNo: pageNo, Keys.search: search] as [String: Any]
+        let param = [Keys.pageNo: pageNoM, Keys.search: search] as [String: Any]
         
         ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.myJoinedClassesList = classes
+                unsafe.myClassesList = classes
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.getClassCategoryAPI()
+        }
+    }
+    
+    func getClubCategoryListAPI() {
+        //Utils.showSpinner()
+        var params = [Keys.pageNo: "1"]
+        params[Keys.search] = searchText
+        ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
+            //Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let category = data {
+                unsafe.clubInterestList = category
+            }
+            unsafe.tableView.reloadData()
         }
     }
 }
