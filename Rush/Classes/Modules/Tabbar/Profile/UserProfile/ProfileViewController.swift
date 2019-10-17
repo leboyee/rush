@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+       // self.navigationController?.setNavigationBarHidden(false, animated: false)
         //navigationController?.isNavigationBarHidden = false
     }
 }
@@ -193,7 +193,7 @@ extension ProfileViewController {
             }
         } else if segue.identifier == Segues.profileImageViewSegue {
             let vc = segue.destination as? ProfileTileViewController
-//            vc.imageArray = profileDetail.images
+            vc?.imageArray = profileDetail.images ?? [Image]()
         }
     }
 }
