@@ -30,21 +30,21 @@ extension CalendarEventListViewController {
             cell.set(type: event.type)
             cell.set(url: event.photo?.urlThumb())
             
-            //var eventDate: Date?
             var startTime: Date?
             var endTime: Date?
             if event.type.lowercased() == "event" {
                 cell.set(start: event.start, end: event.end)
-                //eventDate = event.start
                 startTime = event.start
                 endTime = event.end
             } else if let date = Date.parse(dateString: group.dateString, format: "yyyy-MM-dd") {
-                //eventDate = date
                 if let schedule = event.classSchedule?.filter({ $0.day == date.toString(format: "EEEE").lowercased() }).last {
-                    startTime = Date.parseUTC(dateString: schedule.start, format: "HH:mm:ss")
-                    endTime = Date.parseUTC(dateString: schedule.end, format: "HH:mm:ss")
+                    let startDateStr = group.dateString + " " + schedule.start
+                    let endDateStr = group.dateString + " " + schedule.end
+                    startTime = Date.parseUTC(dateString: startDateStr, format: "HH:mm:ss")
+                    endTime = Date.parseUTC(dateString: endDateStr, format: "HH:mm:ss")
                     cell.set(start: startTime, end: endTime)
                 }
+
             }
             
             cell.set(isHideRedTimeline: true)
@@ -55,17 +55,17 @@ extension CalendarEventListViewController {
                 cell.set(isHideTop: false)
                 cell.set(isHideBottom: true)
             }
-            /*
-            if eventDate?.isToday() ?? false {
-                let date = Date()
-                if let start = startTime, let end = endTime {
-                    if date.isGreaterThan(start), date.isLessThan(end) {
-                        cell.set(isHideRedTimeline: false)
-                        cell.set(isHideTop: false)
+            
+            let date = Date()
+            if let start = startTime, let end = endTime {
+                if date.isGreaterThan(start), date.isLessThan(end) {
+                    cell.set(isHideRedTimeline: false)
+                    if indexPath.row != 0, tableView.numberOfRows(inSection: indexPath.section) - 1 == indexPath.row {
+                        cell.set(isHideTop: true)
                         cell.set(isHideBottom: true)
                     }
                 }
-            }*/
+            }
         }
     }
     
