@@ -21,6 +21,7 @@ extension EventTypeCell {
     
     func fillEventCell(_ cell: EventCell, _ indexPath: IndexPath) {
         cell.setup(type: type)
+        
         if type == .upcoming {
             if let eventList = list as? [Event] {
                 let event = eventList[indexPath.item]

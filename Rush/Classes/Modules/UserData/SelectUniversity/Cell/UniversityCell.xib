@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-ec-y42">
-                                <rect key="frame" x="25" y="62" width="394" height="1"/>
+                                <rect key="frame" x="25" y="62" width="350" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="WNm-ez-W4T"/>
@@ -35,8 +35,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="68" y="4" width="287" height="54.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54.5" id="MpI-BT-JAV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,7 +64,7 @@
                             <constraint firstItem="HTb-ec-y42" firstAttribute="top" secondItem="Mr7-TO-QxM" secondAttribute="bottom" constant="3.5" id="32F-ag-hjv"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="leading" secondItem="6nW-1u-rHA" secondAttribute="trailing" constant="12" id="FfD-kf-38H"/>
                             <constraint firstAttribute="bottom" secondItem="HTb-ec-y42" secondAttribute="bottom" id="N0H-PI-xX0"/>
-                            <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" constant="-44" id="X7Q-C9-lbu"/>
+                            <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" id="X7Q-C9-lbu"/>
                             <constraint firstItem="6nW-1u-rHA" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="24" id="Z0e-xN-Efc"/>
                             <constraint firstItem="6nW-1u-rHA" firstAttribute="centerY" secondItem="rMd-Ih-XZ7" secondAttribute="centerY" id="eqh-Hp-A7U"/>
                             <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="20" id="hTI-GU-6lj"/>

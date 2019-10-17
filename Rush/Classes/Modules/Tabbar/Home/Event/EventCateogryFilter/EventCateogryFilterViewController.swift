@@ -38,6 +38,17 @@ class EventCateogryFilterViewController: CustomViewController {
         panModalSetNeedsLayoutUpdate()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if isEventTypeModel == true {
+            delegate?.selectedIndex("\(selectedIndex)", IndexPath(row: selectedIndex, section: 0))
+            dismiss(animated: true, completion: nil)
+        } else {
+            let name = dataArray[selectedIndex]
+            delegate?.selectedIndex(name, IndexPath(row: selectedIndex, section: 0))
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         //panModalSetNeedsLayoutUpdate()
     }
@@ -48,6 +59,11 @@ class EventCateogryFilterViewController: CustomViewController {
     
     func setupUI() {
         setupTableView()
+    }
+    
+    @IBAction func handleTapGesture(gesture: UITapGestureRecognizer) {
+       
+        panModalWillDismiss()
     }
     
 }

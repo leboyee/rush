@@ -158,6 +158,10 @@ extension HomeViewController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.createEvent {
             guard let vc = segue.destination as? CreateEventViewController else { return }
+            if let evenType = sender as? EventType {
+               vc.eventType = evenType
+            }
+
             vc.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Segues.homeEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }

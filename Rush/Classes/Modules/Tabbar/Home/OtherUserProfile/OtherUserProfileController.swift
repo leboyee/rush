@@ -149,8 +149,9 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.userProfileGallerySegue {
             if let vc = segue.destination as? UserProfileGalleryViewController {
                 vc.hidesBottomBarWhenPushed = true
-               // vc.imageArray = ["https://tineye.com/images/widgets/mona.jpg", "https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg"]
-                //                vc.selectedIndex = 1
+                vc.list = imagesList
+                vc.user = userInfo ?? User()
+                vc.currentIndex = 1
             }
         }
     }

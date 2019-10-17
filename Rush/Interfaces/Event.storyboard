@@ -706,12 +706,20 @@
                             <constraint firstItem="d25-qB-Ms4" firstAttribute="bottom" secondItem="2cq-xa-wjL" secondAttribute="bottom" id="xCl-MP-GZK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d25-qB-Ms4"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="XoW-5A-4bb" appends="YES" id="zL5-4t-BqD"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="2cq-xa-wjL" id="S6j-eB-NxR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZL-oI-rZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="XoW-5A-4bb">
+                    <connections>
+                        <action selector="handleTapGestureWithGesture:" destination="4vP-QJ-eeM" id="Jyf-6x-G6p"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2837.68115942029" y="2007.5892857142856"/>
         </scene>
