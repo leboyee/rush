@@ -12,8 +12,12 @@ extension ClubListViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
         if screenType == .club {
-            if (section == 0 && myClubsList.count > 0) || section > 0 {
-                return 50
+            if section == 0 {
+                return myClubsList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
+            } else {
+                if (clubInterestList[section - 1].clubArray?.count ?? 0) > 0 {
+                    return 50
+                }
             }
             return CGFloat.leastNormalMagnitude
         } else {
@@ -30,7 +34,17 @@ extension ClubListViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 0 {
-            return 157
+            if screenType == .club {
+                if (clubInterestList[indexPath.section - 1].clubArray?.count ?? 0) > 0 {
+                    return 157
+                } else {
+                    return CGFloat.leastNormalMagnitude
+                }
+            } else {
+                if indexPath.section > 0 {
+                    return 157
+                }
+            }
         }
         return UITableView.automaticDimension
     }
@@ -40,12 +54,12 @@ extension ClubListViewController {
             if myClubsList.count > 0 && section == 0 {
                 return myClubsList.count
             }
-            return clubList.count
+            return 1
         } else if screenType == .classes {
             if myClassesList.count > 0 && section == 0 {
                 return myClassesList.count
             }
-            return classesList.count
+            return 1
         } else {
             return 0
         }
@@ -53,7 +67,7 @@ extension ClubListViewController {
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         if screenType == .club {
-            cell.setup(.clubs, nil, myClubsList)
+            cell.setup(.clubs, nil, clubInterestList[indexPath.section - 1].clubArray)
         } else {
             cell.setup(.classes, nil, myClassesList[indexPath.section].myJoinedClass)
         }
@@ -110,12 +124,10 @@ extension ClubListViewController {
             if section == 0 {
                 header.setup(title: Text.myClubs)
                 header.setup(isDetailArrowHide: true)
-            } else if section == 1 {
-                header.setup(title: "Sports")
-            } else if section == 2 {
-                header.setup(title: "Art")
-            } else if section == 3 {
-                header.setup(title: "Technologies")
+            } else {
+                let value = clubInterestList[section - 1].name
+                header.setup(title: value)
+                header.setup(isDetailArrowHide: true)
             }
         } else {
             if myClassesList.count > 0 {
@@ -145,7 +157,7 @@ extension ClubListViewController {
     func cellSelected(_ indexPath: IndexPath) {
         if indexPath.section == 0 {
             if screenType == .club {
-                let club = clubList[indexPath.row]
+                let club = myClubsList[indexPath.row]
                 performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else {
                 performSegue(withIdentifier: Segues.classDetailSegue, sender: nil)
@@ -181,7 +193,7 @@ extension ClubListViewController {
                      Keys.pageNo: pageNoM] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
             
@@ -195,10 +207,10 @@ extension ClubListViewController {
                 } else {
                     uwself.myClubsList.append(contentsOf: clubs)
                 }
-                uwself.pageNoM += 1
                 uwself.isNextPageM = true
             } else {
-                if uwself.pageNoM == 1 || (uwself.pageNoM > 1 && value == nil) {
+                if uwself.pageNoM == 1 || (uwself.pageNoM > 1 && value?.count == 0) {
+                    uwself.isNextPageM = false
                     uwself.getClubCategoryListAPI()
                 }
             }
@@ -236,15 +248,27 @@ extension ClubListViewController {
     
     func getClubCategoryListAPI() {
         //Utils.showSpinner()
-        var params = [Keys.pageNo: "1"]
-        params[Keys.search] = searchText
+        let params = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
         ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
-            guard let unsafe = self else { return }
-            if let category = data {
-                unsafe.clubInterestList = category
+            guard let uwself = self else { return }
+            if uwself.pageNoO == 1 {
+                uwself.clubInterestList.removeAll()
             }
-            unsafe.tableView.reloadData()
+                        
+            if let clubs = data, clubs.count > 0 {
+                if uwself.pageNoO == 1 {
+                    uwself.clubInterestList = clubs
+                } else {
+                    uwself.clubInterestList.append(contentsOf: clubs)
+                }
+                uwself.isNextPageO = true
+            } else {
+                if uwself.pageNoO == 1 || (uwself.pageNoO > 1 && data?.count == 0) {
+                    uwself.isNextPageO = false
+                }
+            }
+            uwself.tableView.reloadData()
         }
     }
 }

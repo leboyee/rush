@@ -24,7 +24,11 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return screenType == .club ? 1 : myClassesList.count
+        if screenType == .club {
+            return clubInterestList.count + 1
+        } else {
+            return classesList.count + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,22 +36,19 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if screenType == .club {
+        if screenType == .club && indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
                 fillMyClubCell(cell, indexPath)
                 return cell
-        } else if screenType == .classes {
-            if indexPath.section == 0 && myClassesList.count > 0 {
+        } else if screenType == .classes && indexPath.section == 0 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
                 fillMyClubCell(cell, indexPath)
                 return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-                fillEventTypeCell(cell, indexPath)
-                return cell
-            }
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+            fillEventTypeCell(cell, indexPath)
+            return cell
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
