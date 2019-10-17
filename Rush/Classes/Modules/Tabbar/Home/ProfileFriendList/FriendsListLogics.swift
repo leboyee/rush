@@ -61,4 +61,24 @@ extension FriendsListViewController {
                 unsafe.tableView.reloadData()
             }
         }
+//    func getEventList(sortBy: GetEventType) {
+//        
+//        let param = [Keys.profileUserId: userInfo?.userId ?? "0",
+//                     Keys.search: "",
+//                     Keys.sortBy: sortBy.rawValue,
+//                     Keys.pageNo: pageNo] as [String: Any]
+//        
+//        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+//            Utils.hideSpinner()
+//            guard let unsafe = self else { return }
+//            if let events = value {
+//                unsafe.eventList = events
+//                unsafe.tableView.reloadData()
+//            } else {
+//                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+//            }
+//            unsafe.getClubListAPI(sortBy: "joined")
+//        }
+//    }
+//    
 }

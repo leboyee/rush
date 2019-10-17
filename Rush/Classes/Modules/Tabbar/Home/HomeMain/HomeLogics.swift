@@ -45,7 +45,7 @@ extension HomeViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isShowJoinEvents && section == 1 {
-            return 4
+            return eventList.count
         } else {
             return 1
         }
@@ -111,7 +111,11 @@ extension HomeViewController {
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
-        
+        let event = eventList[indexPath.row]
+        cell.setup(title: event.title)
+        cell.setup(eventImageUrl: event.photo?.urlThumb())
+        cell.setup(start: event.start, end: event.end)
+        cell.setup(date: event.start)
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -176,8 +180,15 @@ extension HomeViewController {
             if let events = value {
                 unsafe.eventList = events
             }
-            unsafe.tableView.reloadData()
-            unsafe.getClubListAPI(sortBy: "feed")
+            if unsafe.eventList.count > 0 {
+                unsafe.isShowJoinEvents = true
+                unsafe.tableView.reloadData()
+                unsafe.getClubListAPI(sortBy: "feed")
+            } else {
+                unsafe.isShowJoinEvents = false
+                unsafe.getEventList(sortBy: .upcoming)
+            }
+           
         }
     }
     

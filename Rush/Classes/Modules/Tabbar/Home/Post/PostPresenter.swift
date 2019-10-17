@@ -135,7 +135,11 @@ extension PostViewController {
             cell.set(numberOfUnLike: post.numberOfUnLikes)
             cell.set(numberOfComment: post.numberOfComments)
             cell.set(ishideUnlikeLabel: false)
-            
+            if let myVote = post.myVote?.first {
+                cell.set(vote: myVote.type)
+            } else {
+                cell.set(vote: 0)
+            }
             cell.likeButtonEvent = { [weak self] () in
                 guard let uwself = self else { return }
                 uwself.voteClubAPI(id: post.postId, type: "up")

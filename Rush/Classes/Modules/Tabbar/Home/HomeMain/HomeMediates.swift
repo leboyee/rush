@@ -56,7 +56,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+         if isShowJoinEvents && indexPath.section == 1 {
+            let event = eventList[indexPath.row]
+             showEvent(event: event)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

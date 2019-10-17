@@ -34,7 +34,7 @@ class OtherUserProfileController: UIViewController {
     var imagesList = [Image]()
     var rsvpQuestion: [RSVPQuestion]?
     var rsvpAnswer: [RSVPAnswer]?
-
+    var friendList = [Friend]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,6 +124,7 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.friendList {
             if let vc = segue.destination as? FriendsListViewController {
                 vc.hidesBottomBarWhenPushed = false
+                vc.userInfo = userInfo
                 vc.type = sender as? UserProfileDetailType ?? .none
             }
         } else if segue.identifier == Segues.sharePostSegue {

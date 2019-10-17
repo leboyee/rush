@@ -26,7 +26,7 @@ class FriendsListViewController: UIViewController {
     var isAttendace: Bool = false
     var inviteType: InviteType = .going
     var searchTextFiled: UITextField?
-
+    var userInfo: User?
     override func viewDidLoad() {
         super.viewDidLoad()
 

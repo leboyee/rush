@@ -41,7 +41,7 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         
-        getEventList(sortBy: .upcoming)
+        getEventList(sortBy: .attending)
         
     }
     
