@@ -135,30 +135,39 @@ class ClassGroup: Codable {
 //my_joined_classes
 class ClassJoined: Codable {
     
-    private var classGroupRosterIdP: Int = 0
-    private var classIdP: Int = 0
-    private var groupIdP: Int = 0
-    private var userIdP: Int = 0
-    
-    init() { }
-    
+    let classGroupRosterIdP: Int?
+    let classIdP: Int?
+    let groupIdP: Int?
+    let userIdP: Int?
+    let classGroup: ClassGroup?
+    let classes: SubClass?
+        
+    init(classGrpRosterID: Int?, userID: Int?, classID: Int?, groupID: Int?, classGroup: ClassGroup?, classes: SubClass?) {
+        self.classGroupRosterIdP = classGrpRosterID
+        self.userIdP = userID
+        self.classIdP = classID
+        self.groupIdP = groupID
+        self.classGroup = classGroup
+        self.classes = classes
+    }
     private enum CodingKeys: String, CodingKey {
         case classGroupRosterIdP = "class_grp_roster_id"
         case classIdP = "class_id"
         case groupIdP = "group_id"
         case userIdP = "user_id"
+        case classes
+        case classGroup = "class_group"
     }
-    
-    var classGroupRosterId: String {
-        return String(classGroupRosterIdP)
+     var classGroupRosterId: String? {
+        return String(classGroupRosterIdP ?? 0)
     }
-    var classId: String {
-        return String(classIdP)
+    var classId: String? {
+        return String(classIdP ?? 0)
     }
-    var groupId: String {
-        return String(groupIdP)
+    var groupId: String? {
+        return String(groupIdP ?? 0)
     }
-    var userId: String {
-        return String(userIdP)
+    var userId: String? {
+        return String(userIdP ?? 0)
     }
 }

@@ -23,9 +23,11 @@ extension PostViewController {
     
     // Username cell (section 0)
     func userDetailCell(_ cell: UserNameTableViewCell) {
-        if let club = clubInfo { // Club
-            cell.setup(title: club.user?.name ?? "")
-            cell.setup(detail: "Posting in " + (club.clubName ?? ""))
+        
+        if let post = postInfo {
+            cell.setup(title: post.user?.name ?? "")
+            cell.setup(detail: "Posting in " + (clubInfo?.clubName ?? ""))
+            cell.setup(url: post.user?.photo?.url())
         } else if let subclass = subclassInfo { // Subclass
             cell.setup(title: Authorization.shared.profile?.name ?? "")
             cell.setup(detail: "Posting in " + (subclass.name))

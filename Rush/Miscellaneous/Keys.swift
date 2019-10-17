@@ -29,7 +29,6 @@ let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 let kHomeTutorialKey            = "com.rush.hometutorial"
 let kOpenFromPushNotification   = "com.rush.openfrompushnotification"
 
-
 // MARK: - API's Keys
 struct Keys {
 
@@ -37,7 +36,7 @@ struct Keys {
     static let user                  = "user"
     static let session               = "session"
     static let userId                = "user_id"
-    static let profileUserId         = "profileUserId"
+    static let profileUserId         = "profile_user_id"
 
     static let photo                 = "photo"
     static let main                  = "main"
@@ -67,7 +66,7 @@ struct Keys {
     static let uWhoCanInvite      = "u_who_can_invite"
     static let uIsDarkMode        = "u_is_dark_mode"
     static let instaUsername      = "insta_username"
-    static let pageNo             = "pageNo"
+    static let pageNo             = "page_no"
     static let search             = "search"
     static let sortBy             = "sort_by"
     static let orderBy            = "order_by"
@@ -160,8 +159,8 @@ struct Keys {
     static let action = "action"
     static let menstionUserId = "mentioned_user_ids"
     
-    static let startDate        = "startDate"
-    static let endDate          = "endDate"
+    static let startDate        = "start_date"
+    static let endDate          = "end_date"
     static let events           = "events"
     static let classes          = "classes"
     static let count            = "count"
