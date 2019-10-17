@@ -207,8 +207,6 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
     
     func createPostSuccess(_ post: Post) {
         isCallAPI = false
-        
-        // getClubDetailAPI()
         performSegue(withIdentifier: Segues.postSegue, sender: post)
     }
 }
@@ -217,7 +215,7 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
 extension ClubDetailViewController: SharePostViewControllerDelegate {
     func delete(type: SharePostType, object: Any?) {
         if type == .club {
-                  deleteClubAPI()
+            deleteClubAPI()
         } else if type == .post, let post = object as? Post {
             deletePostAPI(id: post.postId)
         }

@@ -23,7 +23,7 @@ extension ChatsViewController {
         let channel = channels[indexPath.row]
         cell.setup(title: getSingleChatName(channel: channel))
         cell.setup(lastMessage: channel.lastMessage)
-        cell.setup(onlineUser: channel.members)
+        //cell.setup(onlineUser: channel.members)
         cell.setup(channel: channel)
         
         if channel.customType == "single" {

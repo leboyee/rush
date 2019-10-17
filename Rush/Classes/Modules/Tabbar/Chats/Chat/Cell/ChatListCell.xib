@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
         <array key="SF-Pro-Text-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -21,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="349" height="88"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="349" height="87.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="349" height="88"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5if-oU-dmR">
@@ -62,12 +63,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am fine. What about you? " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rE-xE-php">
-                                <rect key="frame" x="104" y="48.5" width="173.5" height="16"/>
+                                <rect key="frame" x="104" y="48.5" width="167" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="PGx-wL-fQS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                                <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bge-rT-0MG">
@@ -78,12 +79,12 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅ 5 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOs-FR-scy">
-                                <rect key="frame" x="278.5" y="48.5" width="40" height="16"/>
+                                <rect key="frame" x="272" y="48.5" width="40.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="04v-2W-reO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                                <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -108,7 +109,7 @@
                         </constraints>
                     </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCh-ot-tho">
-                        <rect key="frame" x="24" y="86.5" width="425" height="1"/>
+                        <rect key="frame" x="24" y="87" width="425" height="1"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="WPU-g9-ubl"/>
@@ -120,7 +121,7 @@
                     <constraint firstAttribute="trailing" secondItem="5if-oU-dmR" secondAttribute="trailing" id="70t-pj-LCS"/>
                     <constraint firstItem="5if-oU-dmR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="D5f-qq-Jyt"/>
                     <constraint firstItem="PCh-ot-tho" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="KAw-i6-jZf"/>
-                    <constraint firstAttribute="bottom" secondItem="5if-oU-dmR" secondAttribute="bottom" id="Lh0-Nb-YFX"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5if-oU-dmR" secondAttribute="bottom" id="Lh0-Nb-YFX"/>
                     <constraint firstAttribute="bottom" secondItem="PCh-ot-tho" secondAttribute="bottom" id="e7O-gT-2m2"/>
                     <constraint firstAttribute="trailing" secondItem="PCh-ot-tho" secondAttribute="trailing" constant="-100" id="mun-Ro-4fT"/>
                     <constraint firstItem="5if-oU-dmR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xCq-SA-l0u"/>
