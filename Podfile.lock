@@ -1,19 +1,19 @@
 PODS:
   - DKCamera (1.6.4)
-  - DKImagePickerController/Camera (4.1.7):
+  - DKImagePickerController/Camera (4.2.0):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/Core (4.1.7):
+  - DKImagePickerController/Core (4.2.0):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.1.7)
-  - DKImagePickerController/InlineCamera (4.1.7):
+  - DKImagePickerController/ImageDataManager (4.2.0)
+  - DKImagePickerController/InlineCamera (4.2.0):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/PhotoGallery (4.1.7):
+  - DKImagePickerController/PhotoGallery (4.2.0):
     - DKImagePickerController/Core
     - DKPhotoGallery
-  - DKImagePickerController/Resource (4.1.7)
+  - DKImagePickerController/Resource (4.2.0)
   - DKPhotoGallery (0.0.14):
     - DKPhotoGallery/Core (= 0.0.14)
     - DKPhotoGallery/Model (= 0.0.14)
@@ -58,9 +58,9 @@ PODS:
   - GooglePlaces (3.5.0):
     - GoogleMaps/Base (= 3.5.0)
   - IQKeyboardManagerSwift (6.5.1)
-  - MGSwipeTableCell (1.6.9)
+  - MGSwipeTableCell (1.6.11)
   - PanModal (1.2.4)
-  - ReachabilitySwift (4.3.1)
+  - ReachabilitySwift (5.0.0)
   - SDWebImage (5.2.1):
     - SDWebImage/Core (= 5.2.1)
   - SDWebImage/Core (5.2.1)
@@ -114,7 +114,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
-  DKImagePickerController: 6ffad961c212b0debf644f3d1aa72d0a2ee03d5f
+  DKImagePickerController: d5bfc4c8696a5d00f9ce24d42d223503546ed6c3
   DKPhotoGallery: 0290d32343574f06eaa4c26f8f2f8a1035e916be
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
@@ -124,9 +124,9 @@ SPEC CHECKSUMS:
   GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
   GooglePlaces: be6f19fe8aa6ff0b5bcccfa1b8805cc977ea1450
   IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
-  MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
+  MGSwipeTableCell: b804e4e450dee439c42250be90bd50458bf67fce
   PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
-  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
   SendBirdSDK: 9afafc0b44bb3ccbaf437cc83a7aeaf39c25ad8d
@@ -134,6 +134,6 @@ SPEC CHECKSUMS:
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: b46776daf201b8da67f8ef7f2d7aeb554cdb876c
+PODFILE CHECKSUM: 0b92b6ada37f037319777c63e157cc14a03c0cbc
 
 COCOAPODS: 1.7.1
