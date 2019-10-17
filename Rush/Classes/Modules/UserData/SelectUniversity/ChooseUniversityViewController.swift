@@ -18,9 +18,11 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
-
+    var universityArray = [University]()
     var selectedIndex = -1
     var isEditUserProfile: Bool = false
+    var pageNo: Int = 1
+    var isNextPageExist: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,7 @@ class ChooseUniversityViewController: CustomViewController {
     func setup() {
         setupUI()
         setupMediator()
+        getUniversity(searchText: "")
     }
     
     func setupUI() {
@@ -92,11 +95,7 @@ class ChooseUniversityViewController: CustomViewController {
 extension ChooseUniversityViewController {
     func moveToNext() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if self.isEditUserProfile == true {
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
-            }
+            self.updateProfileAPI()
         }
     }
 }
@@ -114,5 +113,17 @@ extension ChooseUniversityViewController {
     
     @IBAction func addImageViewButtonAction() {
         
+    }
+}
+
+// MARK: - Preseneter
+extension ChooseUniversityViewController {
+    func profileUpdateSuccess() {
+        if self.isEditUserProfile == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            
+            self.performSegue(withIdentifier: Segues.addMajorViewSegue, sender: self)
+        }
     }
 }

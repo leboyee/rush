@@ -78,6 +78,7 @@
 		1A353AC822BD130E0069752D /* UniversityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A353AC622BD130E0069752D /* UniversityCell.swift */; };
 		1A353AC922BD130E0069752D /* UniversityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A353AC722BD130E0069752D /* UniversityCell.xib */; };
 		1A370B1E2356E4E00086652B /* AppDelegatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */; };
+		1A370B21235719E20086652B /* University.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A370B20235719E20086652B /* University.swift */; };
 		1A3CB08C22BD3242005D3D87 /* AddMajorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08622BD3242005D3D87 /* AddMajorsViewController.swift */; };
 		1A3CB08D22BD3242005D3D87 /* AddMajorsViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08722BD3242005D3D87 /* AddMajorsViewLogics.swift */; };
 		1A3CB08E22BD3242005D3D87 /* AddMajorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08922BD3242005D3D87 /* AddMajorsCell.swift */; };
@@ -652,6 +653,7 @@
 		1A353AC722BD130E0069752D /* UniversityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UniversityCell.xib; sourceTree = "<group>"; };
 		1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegatePush.swift; sourceTree = "<group>"; };
 		1A370B1F2356EEC80086652B /* Rush.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rush.entitlements; sourceTree = "<group>"; };
+		1A370B20235719E20086652B /* University.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = University.swift; sourceTree = "<group>"; };
 		1A3CB08622BD3242005D3D87 /* AddMajorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsViewController.swift; sourceTree = "<group>"; };
 		1A3CB08722BD3242005D3D87 /* AddMajorsViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsViewLogics.swift; sourceTree = "<group>"; };
 		1A3CB08922BD3242005D3D87 /* AddMajorsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsCell.swift; sourceTree = "<group>"; };
@@ -3125,6 +3127,7 @@
 		C05FC15F22805F9C00721F3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A370B20235719E20086652B /* University.swift */,
 				1AAE965B233A47CB00868449 /* Invite.swift */,
 				8A0345A92322A6E90065CF3C /* Address.swift */,
 				8A0345AC2322A6EA0065CF3C /* Club.swift */,
@@ -3719,6 +3722,7 @@
 				793BE67A22E88207005EF72D /* MockSocket.swift in Sources */,
 				797FFDAD22B7BC480055A001 /* PhotoGalleryCameraCell.swift in Sources */,
 				7905CDBE230D63120011C83B /* ChatServices.swift in Sources */,
+				1A370B21235719E20086652B /* University.swift in Sources */,
 				1AAE965C233A47CB00868449 /* Invite.swift in Sources */,
 				79650C0122C1099B0004BCB9 /* DKCameraResource.swift in Sources */,
 				1A0EDEF2234892C800502959 /* EditProfileViewController.swift in Sources */,

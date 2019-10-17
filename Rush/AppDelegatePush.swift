@@ -21,7 +21,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             } else {
                 print("Push registration FAILED.")
             }
-
+            self.photoLibraryPermissionCheck()
         }
         UNUserNotificationCenter.current().delegate = self
     }

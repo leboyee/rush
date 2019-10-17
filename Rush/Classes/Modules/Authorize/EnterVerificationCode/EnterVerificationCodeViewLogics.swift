@@ -98,21 +98,15 @@ extension EnterVerificationCodeViewController {
         ServiceManager.shared.singup(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
-                if let oldPushToken = Utils.getDataFromUserDefault(kPushToken) {
-                                       //API call and when success
-                                       ServiceManager.shared.updatePushToken(closer: { (status, _) in
-                                           if status {
-                                           }
-                                       })
-                                   }
+                if (Utils.getDataFromUserDefault(kPushToken) != nil) {
+                    //API call and when success
+                    ServiceManager.shared.updatePushToken(closer: { (status, _) in
+                        if status {
+                        }
+                    })
+                }
                 unsafe.singupSuccess()
-                //self_.updateViewStage?(.verified)
-                /*
-                 //Comment due to push is not exist in app
-                 //Update Push Token when user is verified successully
-                 if let pushToken = Utils.getDataFromUserDefault(kPushToken) as? String {
-                 AppDelegate.getInstance().updateToken(deviceTokenString: pushToken, oldPushToken: "")
-                 } */
+                
             } else {
                 unsafe.digitTextField.becomeFirstResponder()
                 unsafe.isCodeVerifing = false

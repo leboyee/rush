@@ -28,7 +28,7 @@ extension UserFriendsListViewController {
     
     func selectedCell(_ indexPath: IndexPath) {
         let friend = friendsList[indexPath.row]
-        self.performSegue(withIdentifier: Segues.friendProfileSegue , sender: friend.user)
+        self.performSegue(withIdentifier: Segues.friendProfileSegue, sender: friend.user)
     }
     
     func willDisplay(_ indexPath: IndexPath) {

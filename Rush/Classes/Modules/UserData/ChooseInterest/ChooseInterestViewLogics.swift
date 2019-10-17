@@ -70,7 +70,7 @@ extension ChooseInterestViewController {
     func updateProfileAPI() {
         
         let interestIdArray = selectedArray.map({ String($0.interestId) })
-        let selectedIdArray = interestIdArray.split(separator: ",")
+        let selectedIdArray = interestIdArray.joined(separator: ",")
         let param = [Keys.userInterests: selectedIdArray
             ]  as [String: Any]
         Utils.showSpinner()

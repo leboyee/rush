@@ -15,23 +15,50 @@ extension FriendsListViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return 50
+        return inviteeList.count
     }
     
     func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
-        
+        let invitee = inviteeList[indexPath.row]
+        cell.setup(name: invitee.user?.name ?? "")
+        if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+            cell.setup(url: url)
+        }
+
     }
 
     func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         cell.setup(detail: "SOMM 24-A")
     }
-}
+    
+    func willDisplay(_ indexPath: IndexPath) {
+        if isNextPageExist == true, indexPath.row == inviteeList.count - 1 {
+            fetchInvitees(search: searchTextFiled?.text ?? "")
+        }
+    }
+    
+    func selectedCell(_ indexPath: IndexPath) {
+        let invitee = inviteeList[indexPath.row]
+        self.performSegue(withIdentifier: Segues.friendProfileSegue, sender: invitee.user)
+    }
 
+}
 // MARK: - Services
 extension FriendsListViewController {
     
-    func getEventList() {
-        
-    }
-}
+    func fetchInvitees(search: String) {
+        if pageNo == 1 {
+            inviteeList.removeAll()
+        }
+        let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: inviteType ==  .going ? "going" : "not_going"] as [String : Any]
+        ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, total, _) in
+                guard let unsafe = self else { return }
+                unsafe.inviteeList = invitees ?? [Invitee]()
+                //unsafe.totalInvitee = total
+            unsafe.firstSegmentButton.setTitle("\(unsafe.inviteeList.count) going", for: .normal)
+            unsafe.secondSegmentButton.setTitle("0 not going", for: .normal)
 
+                unsafe.tableView.reloadData()
+            }
+        }
+}

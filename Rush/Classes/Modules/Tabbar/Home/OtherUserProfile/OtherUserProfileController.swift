@@ -23,19 +23,18 @@ class OtherUserProfileController: UIViewController {
     
     var isShowMessageButton = false
     var friendType: ManageButtonType = .addFriend
-    
     weak var delegate: OtherUserProfileProtocol?
-    
     var clubImage: UIImage?
     var userInfo: User?
-    
     var searchText = ""
     var pageNo = 1
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [Class]()
     var imagesList = [Image]()
-    
+    var rsvpQuestion: [RSVPQuestion]?
+    var rsvpAnswer: [RSVPAnswer]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -150,7 +149,7 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.userProfileGallerySegue {
             if let vc = segue.destination as? UserProfileGalleryViewController {
                 vc.hidesBottomBarWhenPushed = true
-                vc.imageArray = ["https://tineye.com/images/widgets/mona.jpg", "https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg"]
+               // vc.imageArray = ["https://tineye.com/images/widgets/mona.jpg", "https://cdn1.epicgames.com/ue/product/Screenshot/UE4Editor2019-01-1606-56-33-1920x1080-b727b2460d08c22d7d4a6d5b3e8ca4d4.jpg"]
                 //                vc.selectedIndex = 1
             }
         }

@@ -12,10 +12,13 @@ class UniversityCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: CustomLabel!
     @IBOutlet weak var tickImageView: UIImageView!
+    @IBOutlet weak var universityImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        universityImageView.clipsToBounds = true
+        universityImageView.layer.cornerRadius = 16
         
     }
 
@@ -35,6 +38,10 @@ extension UniversityCell {
     
     func setup(checkMark: Bool) {
         self.tickImageView.isHidden = !checkMark
+    }
+    
+    func setup(url: URL) {
+        universityImageView.sd_setImage(with: url, completed: nil)
     }
     
 }

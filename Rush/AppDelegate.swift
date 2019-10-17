@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupAppearance() {
         setupTopBar()
         setupBarButton()
-        photoLibraryPermissionCheck()
+       // photoLibraryPermissionCheck()
     }
     
     func setupTopBar() {

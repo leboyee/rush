@@ -80,6 +80,9 @@ extension NetworkManager {
         requestPost(path: "pushtoken", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     
+    func getUniversity(params: [String: Any], resultHandler: @escaping ResultClosure) {
+          requestGet(path: "university", params: params, resultHandler: resultHandler)
+      }
     // MARK: - Major and Minor list
     func getMajorList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "major", params: params, resultHandler: resultHandler)
