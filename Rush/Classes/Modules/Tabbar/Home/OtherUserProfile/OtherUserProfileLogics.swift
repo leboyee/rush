@@ -149,7 +149,7 @@ extension OtherUserProfileController {
         case 1:
             cell.setup(imagesList: imagesList)
         case 2:
-            cell.setup(friends: userInfo?.friend ?? [])
+            cell.setup(friends: friendList)
         case 3:
             cell.setup(.upcoming, nil, eventList)
         case 4:
@@ -227,6 +227,7 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             unsafe.userInfo = user
             unsafe.isShowMessageButton = unsafe.userInfo?.friendTypeStatus == .accept ? true : false
+            unsafe.tableView.reloadData()
             unsafe.getFriendListAPI()
         }
     }
@@ -270,7 +271,7 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-            unsafe.getClubListAPI(sortBy: "feed")
+            unsafe.getClubListAPI(sortBy: "joined")
         }
     }
     
@@ -297,7 +298,7 @@ extension OtherUserProfileController {
         ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let list = data {
-                unsafe.userInfo?.friend = list
+                unsafe.friendList = list
             }
             unsafe.fetchImagesList()
         }
@@ -354,7 +355,7 @@ extension OtherUserProfileController {
                 }
                 unsafe.imagesList = items
             }
-            unsafe.getEventList(sortBy: .upcoming)
+            unsafe.getEventList(sortBy: .myUpcoming)
         })
     }
 }

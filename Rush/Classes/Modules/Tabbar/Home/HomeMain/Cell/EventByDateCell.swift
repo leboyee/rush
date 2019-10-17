@@ -23,7 +23,7 @@ class EventByDateCell: UITableViewCell {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dateLabel: CustomBlackLabel!
     @IBOutlet weak var threeDots: UIButton!
-    //     var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
+ //   var cellSelected: ((_ type: EventCategoryType, _ id: Int, _ index: Int) -> Void)?
     var shareClickEvent: (() -> Void)?
     
     override func awakeFromNib() {
