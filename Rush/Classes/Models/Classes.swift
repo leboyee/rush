@@ -141,7 +141,8 @@ class ClassJoined: Codable {
     let userIdP: Int?
     let classGroup: ClassGroup?
     let classes: SubClass?
-        
+
+    
     init(classGrpRosterID: Int?, userID: Int?, classID: Int?, groupID: Int?, classGroup: ClassGroup?, classes: SubClass?) {
         self.classGroupRosterIdP = classGrpRosterID
         self.userIdP = userID

@@ -35,13 +35,14 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
             fillCell(cell, indexPath)
             return cell
-        }  else {
+        } else {
             if type == .friends {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
                 fillCell(cell, indexPath)
                 return cell
             } else if type == .events {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+                 fillEventByDateCell(cell, indexPath)
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
@@ -53,7 +54,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if exploreType == .event {
+        if type == .events {
           selectedCell(indexPath)
         }
 
@@ -86,5 +87,16 @@ extension FriendsListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+// MARK: - OtherUserProfile delegate
+extension FriendsListViewController: OtherUserProfileProtocol {
+    func unfriendUser(_ name: String) {
+        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
+            duration: .middle,
+            actionText: "",
+            actionBlock: { (_) in
+        })
+        snackbar.show()
     }
 }

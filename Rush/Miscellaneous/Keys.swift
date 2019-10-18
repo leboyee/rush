@@ -72,6 +72,7 @@ struct Keys {
     static let orderBy            = "order_by"
     static let isOnlyFriendJoined = "is_only_friend_joined"
     static let toStartDate        = "to_start"
+    static let isMutual           = "is_mutual"
 
     static let clubName = "club_name"
     static let clubDesc = "club_desc"
