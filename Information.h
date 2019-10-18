@@ -13,12 +13,9 @@
 #endif /* Information_h */
 
 /*
-
  Documents:
 //https://3.15.70.78/api/documentation
- 
 //https://3.15.70.78/api
- 
  */
 
 

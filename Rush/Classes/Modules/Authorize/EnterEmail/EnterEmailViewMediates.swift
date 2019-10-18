@@ -39,7 +39,6 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     @objc func keyboardWFrameChange(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
         }
-
     }
 
     // MARK: - UITextFieldDelegate
