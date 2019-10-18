@@ -15,14 +15,22 @@ extension FriendsListViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return inviteeList.count
+        return inviteType == .going ? goingInviteeList.count : notGoingInviteeList.count
     }
     
     func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
-        let invitee = inviteeList[indexPath.row]
-        cell.setup(name: invitee.user?.name ?? "")
-        if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-            cell.setup(url: url)
+        if inviteType == .going {
+            let invitee = goingInviteeList[indexPath.row]
+            cell.setup(name: invitee.user?.name ?? "")
+            if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                cell.setup(url: url)
+            }
+        } else {
+            let invitee = notGoingInviteeList[indexPath.row]
+            cell.setup(name: invitee.user?.name ?? "")
+            if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                cell.setup(url: url)
+            }
         }
 
     }
@@ -32,8 +40,8 @@ extension FriendsListViewController {
     }
     
     func willDisplay(_ indexPath: IndexPath) {
-        if isNextPageExist == true, indexPath.row == inviteeList.count - 1 {
-            fetchInvitees(search: searchTextFiled?.text ?? "")
+        if isNextPageExist == true, indexPath.row == (inviteType == .going ? goingInviteeList.count - 1 : notGoingInviteeList.count - 1) {
+            fetchInvitees(search: searchTextFiled?.text ?? "", type: inviteType)
         }
     }
     
@@ -46,39 +54,26 @@ extension FriendsListViewController {
 // MARK: - Services
 extension FriendsListViewController {
     
-    func fetchInvitees(search: String) {
-        if pageNo == 1 {
-            inviteeList.removeAll()
-        }
-        let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: inviteType ==  .going ? "going" : "not_going"] as [String : Any]
-        ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, total, _) in
-                guard let unsafe = self else { return }
-                unsafe.inviteeList = invitees ?? [Invitee]()
-                //unsafe.totalInvitee = total
-            unsafe.firstSegmentButton.setTitle("\(unsafe.inviteeList.count) going", for: .normal)
-            unsafe.secondSegmentButton.setTitle("0 not going", for: .normal)
-
-                unsafe.tableView.reloadData()
+    func fetchInvitees(search: String, type: InviteType) {
+        Utils.showSpinner()
+        let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: type ==  .going ? "going" : "not_going"] as [String: Any]
+        ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
+            guard let unsafe = self else { return }
+            Utils.hideSpinner()
+            if unsafe.isFirstTime == false {
+                unsafe.isFirstTime = true
+                unsafe.fetchInvitees(search: "", type: .notGoing)
             }
+            if type == .going {
+                unsafe.goingInviteeList = invitees ?? [Invitee]()
+            } else {
+                unsafe.notGoingInviteeList = invitees ?? [Invitee]()
+            }
+            //unsafe.totalInvitee = total
+            unsafe.firstSegmentButton.setTitle("\(unsafe.goingInviteeList.count) going", for: .normal)
+            unsafe.secondSegmentButton.setTitle("\(unsafe.notGoingInviteeList.count) not going", for: .normal)
+            
+            unsafe.tableView.reloadData()
         }
-//    func getEventList(sortBy: GetEventType) {
-//        
-//        let param = [Keys.profileUserId: userInfo?.userId ?? "0",
-//                     Keys.search: "",
-//                     Keys.sortBy: sortBy.rawValue,
-//                     Keys.pageNo: pageNo] as [String: Any]
-//        
-//        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
-//            Utils.hideSpinner()
-//            guard let unsafe = self else { return }
-//            if let events = value {
-//                unsafe.eventList = events
-//                unsafe.tableView.reloadData()
-//            } else {
-//                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
-//            }
-//            unsafe.getClubListAPI(sortBy: "joined")
-//        }
-//    }
-//    
+    }
 }

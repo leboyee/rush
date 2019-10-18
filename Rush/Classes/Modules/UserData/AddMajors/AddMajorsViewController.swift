@@ -19,6 +19,7 @@ class AddMajorsViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var nextButton: CustomButton!
+    @IBOutlet weak var deleteButton: UIButton!
 
     var selectedArray = [String]()
     var selectedIndex = -1
@@ -64,6 +65,8 @@ class AddMajorsViewController: CustomViewController {
         setCustomNavigationBarView()
         self.nextButton.setNextButton(isEnable: true)
         bottomView.isHidden = true
+        deleteButton.isHidden = true
+
     }
 
     // Custom navigation Title View
@@ -115,6 +118,13 @@ extension AddMajorsViewController {
         updateProfileAPI()
         //self.performSegue(withIdentifier: Segues.addMinorViewSegue, sender: self)
     }
+    @IBAction func deleteButtonAction() {
+        searchTextField.text = ""
+        deleteButton.isHidden = true
+        getMajorList(searchText: "")
+
+    }
+
 }
 
 // MARK: - Preseneter

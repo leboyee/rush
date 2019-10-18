@@ -29,10 +29,11 @@ class UserFriendsListViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+       override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
         // Setup tableview

@@ -75,6 +75,7 @@ extension AddMajorsViewController: UITextFieldDelegate {
     }
     
     @objc func textDidChanged(_ textField: UITextField) {
+        deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
         let searchText = textField.text ?? ""
         getMajorList(searchText: searchText)
     }

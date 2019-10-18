@@ -18,6 +18,8 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var noResultView: UIView!
+
     var universityArray = [University]()
     var selectedIndex = -1
     var isEditUserProfile: Bool = false
@@ -62,7 +64,7 @@ class ChooseUniversityViewController: CustomViewController {
         self.bgImageView.setBgForLoginSignup()
         setCustomNavigationBarView()
         deleteButton.isHidden = true
-
+        noResultView.isHidden = true
     }
     
     // Custom navigation Title View
@@ -114,6 +116,13 @@ extension ChooseUniversityViewController {
     @IBAction func addImageViewButtonAction() {
         
     }
+    
+    @IBAction func deleteButtonAction() {
+        searchTextField.text = ""
+        deleteButton.isHidden = true
+        getUniversity(searchText: "")
+    }
+
 }
 
 // MARK: - Preseneter

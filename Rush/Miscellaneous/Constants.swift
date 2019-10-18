@@ -399,7 +399,6 @@ enum InviteType {
     case notGoing
 }
 
-
 enum EventType: String, Codable {
     case none = "none"
     case publik = "public"

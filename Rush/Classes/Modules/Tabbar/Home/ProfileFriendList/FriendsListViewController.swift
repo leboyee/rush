@@ -19,6 +19,9 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var segmentContainView: UIView!
     var exploreType: ExploreSearchType = .none
     var inviteeList = [Invitee]()
+    var goingInviteeList = [Invitee]()
+    var notGoingInviteeList = [Invitee]()
+    var isFirstTime = false
     var eventId: Int64 = 0
     var userName = "Jessica"
     var pageNo = 1
@@ -55,7 +58,8 @@ class FriendsListViewController: UIViewController {
         //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
         
         if exploreType == .event {
-            fetchInvitees(search: "")
+           fetchInvitees(search: "", type: .going)
+           fetchInvitees(search: "", type: .notGoing)
         }
         
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
@@ -113,8 +117,10 @@ class FriendsListViewController: UIViewController {
         if exploreType == .event {
             firstTitle = "0 going"
             secondTitle = "0 not going"
+            searchTextFiled?.text = ""
             pageNo = 1
-            fetchInvitees(search: searchTextFiled?.text ?? "")
+            fetchInvitees(search: "", type: inviteType)
+
         }
         firstSegmentButton.setTitle(firstTitle, for: .normal)
         secondSegmentButton.setTitle(secondTitle, for: .normal)
