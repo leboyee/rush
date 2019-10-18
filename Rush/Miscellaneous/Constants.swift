@@ -121,9 +121,6 @@ struct ViewControllerId {
     static let createClubViewController          = "CreateClubViewController"
     static let enterPasswordViewConteroller          = "EnterPasswordViewConteroller"
     static let enterEmailViewConteroller          = "EnterEmailViewConteroller"
-
-
-    
 }
 
 /* Create the struct for Section wise */
@@ -398,7 +395,6 @@ enum InviteType {
     case going
     case notGoing
 }
-
 
 enum EventType: String, Codable {
     case none = "none"
