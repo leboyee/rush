@@ -149,6 +149,34 @@ extension HomeViewController {
 
 // MARK: - Services
 extension HomeViewController {
+    
+    func getEventList(sortBy: GetEventType) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
+                     Keys.sortBy: sortBy.rawValue,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let events = value {
+                unsafe.eventList = events
+            }
+            if unsafe.eventList.count > 0 {
+                unsafe.isShowJoinEvents = true
+                unsafe.tableView.reloadData()
+            } else {
+                unsafe.isShowJoinEvents = false
+                if sortBy != .interestedFeed {
+                    unsafe.getEventList(sortBy: .interestedFeed)
+                }
+            }
+            unsafe.getClubListAPI(sortBy: "feed")
+           
+        }
+    }
+    
     func getClubListAPI(sortBy: String) {
         
         let param = [Keys.search: searchText,
@@ -169,32 +197,7 @@ extension HomeViewController {
             unsafe.getClassListAPI()
         }
     }
-    
-    func getEventList(sortBy: GetEventType) {
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                     Keys.search: searchText,
-                     Keys.sortBy: sortBy.rawValue,
-                     Keys.pageNo: pageNo] as [String: Any]
-        
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _) in
-            Utils.hideSpinner()
-            guard let unsafe = self else { return }
-            if let events = value {
-                unsafe.eventList = events
-            }
-            if unsafe.eventList.count > 0 {
-                unsafe.isShowJoinEvents = true
-                unsafe.tableView.reloadData()
-                unsafe.getClubListAPI(sortBy: "feed")
-            } else {
-                unsafe.isShowJoinEvents = false
-                unsafe.getEventList(sortBy: .interestedFeed)
-            }
-           
-        }
-    }
-    
   /*  func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
 

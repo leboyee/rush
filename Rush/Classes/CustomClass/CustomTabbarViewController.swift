@@ -25,6 +25,8 @@ class CustomTabbarViewController: UITabBarController, UITabBarControllerDelegate
         super.viewDidLoad()
         setupUI()
         setupTabbar()
+        updateLoginUserPhotoOnLastTab()
+
     }
 }
 
@@ -87,15 +89,24 @@ extension CustomTabbarViewController {
         let customTabBarItem = UITabBarItem(title: nil, image: getImage("profile_tab_inactive"), selectedImage: getImage("profile_tab_active"))
         fourthNavigationViewController.tabBarItem = customTabBarItem
         
-        /*
-        fourthNavigationViewController.tabBarItem.image = getImage("forum_tab_inactive")
-        fourthNavigationViewController.tabBarItem.selectedImage = getImage("forum_tab_active")
-        
-        let customTabBarItem = UITabBarItem(title: nil, image:getImage("profile_tab_inactive") , selectedImage: getImage("profile_tab_active"))
-        fifthNavigationController.tabBarItem = customTabBarItem
-        */
     }
 
+    /*
+        Show login user photo on last tab
+    */
+    func updateLoginUserPhotoOnLastTab() {
+        if let url = Authorization.shared.profile?.photo?.urlThumb() {
+            if let imageData =  try? Data(contentsOf: url) {
+                let img =  UIImage(data: imageData)?.squareImage()?.resizedImage(newWidth: 30).roundedImage
+                if let tabbarItem = tabBar.items?.last {
+                    tabbarItem.image = img
+                    tabbarItem.selectedImage = img
+                }
+
+            }
+        }
+    }
+    
     /*
         Set all view controller to tabbar controllers
     */
@@ -112,7 +123,7 @@ extension CustomTabbarViewController {
         
         for tabBarItem in tabBar.items! {
             tabBarItem.title = ""
-            tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+            tabBarItem.imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
         }
     }
     
