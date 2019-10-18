@@ -11,12 +11,12 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs) || cellType == .event { // after stable app (remove this line)
+        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs)  || type == .clubsJoined || cellType == .event {
             return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         } else if type == .upcoming || type == .classes {
             return list?.count ?? 0
         }
-        return 10
+        return 5
     }
     
     func fillEventCell(_ cell: EventCell, _ indexPath: IndexPath) {
@@ -85,8 +85,12 @@ extension EventTypeCell {
                 } else {
                     cell.setup(classCount: "\(value.classTotalGroups) classes")
                 }
+            } else if let classList = list as? [ClassJoined] {
+                let joinedClass = classList[indexPath.item]
+                cell.setup(className: joinedClass.classes?.name ?? "")
+                cell.setup(classImageUrl: joinedClass.classes?.photo.photo?.url())
+                cell.setup(classCount: joinedClass.classGroup?.name ?? "")
             }
-        
         }
         cell.joinSelected = { [weak self] () in
             guard let unsafe = self else { return }

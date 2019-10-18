@@ -38,7 +38,7 @@ extension ExploreViewController {
             } else if searchType == .people {
                 return peopleList.count
             }
-           
+            
         } else {
             if section == 0 {
                 return 3
@@ -126,10 +126,10 @@ extension ExploreViewController {
             if classList.count > 2 {
                 img3 = classList[2].photo
             }
-         default:
+        default:
             break
         }
-       cell.setup(img1Url: img1, img2Url: img2, img3Url: img3)
+        cell.setup(img1Url: img1, img2Url: img2, img3Url: img3)
     }
     
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
@@ -141,7 +141,7 @@ extension ExploreViewController {
         } else if searchType == .classes {
             cell.setup(title: classCategoryList[indexPath.row].name)
         }
-         cell.setup(isHideTopSeparator: true)
+        cell.setup(isHideTopSeparator: true)
     }
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
@@ -162,7 +162,7 @@ extension ExploreViewController {
         header.detailButtonClickEvent = { [weak self] in
             // Open other user profile UI for test
             guard let unself = self else { return }
-
+            
             let type = section == 1 ? ScreenType.event : section == 2 ? ScreenType.club : section == 3 ? .classes : .none
             unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
             
@@ -194,28 +194,63 @@ extension ExploreViewController {
     
     func getEventCategoryListAPI() {
         //Utils.showSpinner()
-        var params = [Keys.pageNo: "1"]
+        
+        var params = [Keys.pageNo: eventCatPageNo] as [String: Any]
         params[Keys.search] = searchText
         ServiceManager.shared.fetchEventCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let category = data {
-                unsafe.eventInterestList = category
+            if unsafe.eventCatPageNo == 1 {
+                unsafe.eventInterestList.removeAll()
             }
+            if let category = data {
+                if category.count > 0 {
+                    if unsafe.eventCatPageNo == 1 {
+                        unsafe.eventInterestList = category
+                    } else {
+                        unsafe.eventInterestList.append(contentsOf: category)
+                    }
+                    unsafe.eventCatPageNo += 1
+                    unsafe.isEventCatIsNextPageExist = true
+                } else {
+                    unsafe.isEventCatIsNextPageExist = false
+                    if unsafe.eventCatPageNo == 1 {
+                        unsafe.eventInterestList.removeAll()
+                    }
+                }
+            }
+            
             unsafe.tableView.reloadData()
         }
     }
     
     func getClubCategoryListAPI() {
         //Utils.showSpinner()
-        var params = [Keys.pageNo: "1"]
+        var params = [Keys.pageNo: clubCatPageNo] as [String: Any]
         params[Keys.search] = searchText
         ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let category = data {
-                unsafe.clubInterestList = category
+            if unsafe.clubCatPageNo == 1 {
+                unsafe.clubInterestList.removeAll()
             }
+            if let category = data {
+                if category.count > 0 {
+                    if unsafe.clubCatPageNo == 1 {
+                        unsafe.clubInterestList = category
+                    } else {
+                        unsafe.clubInterestList.append(contentsOf: category)
+                    }
+                    unsafe.clubCatPageNo += 1
+                    unsafe.isClubCatIsNextPageExist = true
+                } else {
+                    unsafe.isClubCatIsNextPageExist = false
+                    if unsafe.clubCatPageNo == 1 {
+                        unsafe.clubInterestList.removeAll()
+                    }
+                }
+            }
+            
             unsafe.tableView.reloadData()
         }
     }
@@ -224,7 +259,7 @@ extension ExploreViewController {
         
         if pageNo == 1 { peopleList.removeAll() }
         
-        var params = [Keys.pageNo: "1"]//\(pageNo)
+        var params = [Keys.pageNo: pageNo] as [String: Any]
         params[Keys.search] = searchText
         params[Keys.profileUserId] = Authorization.shared.profile?.userId
         
@@ -282,7 +317,7 @@ extension ExploreViewController {
         let dateFormat = "yyyy:MM:dd" // Date format
         let startDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "00:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate)
         let endDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate)
-                  
+        
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
@@ -318,14 +353,29 @@ extension ExploreViewController {
     func getClassCategoryAPI() {
         let param = [Keys.pageNo: "1"] as [String: Any]
         
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
+            //Utils.hideSpinner()
             guard let unsafe = self else { return }
-            if let classes = data {
-                unsafe.classCategoryList = classes
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            if unsafe.classCatPageNo == 1 {
+                unsafe.classCategoryList.removeAll()
             }
+            if let category = data {
+                if category.count > 0 {
+                    if unsafe.classCatPageNo == 1 {
+                        unsafe.classCategoryList = category
+                    } else {
+                        unsafe.classCategoryList.append(contentsOf: category)
+                    }
+                    unsafe.classCatPageNo += 1
+                    unsafe.isClassCatIsNextPageExist = true
+                } else {
+                    unsafe.isClassCatIsNextPageExist = false
+                    if unsafe.classCatPageNo == 1 {
+                        unsafe.classCategoryList.removeAll()
+                    }
+                }
+            }
+            unsafe.tableView.reloadData()
         }
     }
 }

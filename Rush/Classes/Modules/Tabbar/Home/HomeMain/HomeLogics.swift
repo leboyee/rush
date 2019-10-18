@@ -77,7 +77,7 @@ extension HomeViewController {
         if indexPath.section == 1 {
             cell.setup(.upcoming, nil, eventList)
         } else if indexPath.section == 2 {
-            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
+            cell.setup(.clubs, nil, clubList)
         } else {
             cell.setup(.classes, nil, classList)
         }
@@ -92,6 +92,9 @@ extension HomeViewController {
             } else if type == .clubs {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            } else if type == .clubsJoined {
+                let club = unsafe.clubList[index]
+                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
                 let classObject = unsafe.classList[index]
                 if classObject.myJoinedClass?.count ?? 0 > 0 {
@@ -99,8 +102,7 @@ extension HomeViewController {
                     unsafe.performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
                 } else {
                     // not joined yet, so show groups
-                    let classGroup = classObject.classGroups?[indexPath.row]
-                    unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
+                    unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
                 }
             }
         }
@@ -146,6 +148,34 @@ extension HomeViewController {
 
 // MARK: - Services
 extension HomeViewController {
+    
+    func getEventList(sortBy: GetEventType) {
+        
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
+                     Keys.sortBy: sortBy.rawValue,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let events = value {
+                unsafe.eventList = events
+            }
+            if unsafe.eventList.count > 0 {
+                unsafe.isShowJoinEvents = true
+                unsafe.tableView.reloadData()
+            } else {
+                unsafe.isShowJoinEvents = false
+                if sortBy != .interestedFeed {
+                    unsafe.getEventList(sortBy: .interestedFeed)
+                }
+            }
+            unsafe.getClubListAPI(sortBy: "feed")
+           
+        }
+    }
+    
     func getClubListAPI(sortBy: String) {
         
         let param = [Keys.search: searchText,
@@ -166,32 +196,7 @@ extension HomeViewController {
             unsafe.getClassListAPI()
         }
     }
-    
-    func getEventList(sortBy: GetEventType) {
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                     Keys.search: searchText,
-                     Keys.sortBy: sortBy.rawValue,
-                     Keys.pageNo: pageNo] as [String: Any]
-        
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _) in
-            Utils.hideSpinner()
-            guard let unsafe = self else { return }
-            if let events = value {
-                unsafe.eventList = events
-            }
-            if unsafe.eventList.count > 0 {
-                unsafe.isShowJoinEvents = true
-                unsafe.tableView.reloadData()
-                unsafe.getClubListAPI(sortBy: "feed")
-            } else {
-                unsafe.isShowJoinEvents = false
-                unsafe.getEventList(sortBy: .upcoming)
-            }
-           
-        }
-    }
-    
   /*  func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
 

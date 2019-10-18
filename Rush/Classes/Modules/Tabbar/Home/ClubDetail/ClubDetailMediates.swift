@@ -187,9 +187,8 @@ extension ClubDetailViewController: PostViewProtocol {
     func deletePostSuccess(_ post: Post?) {
         let snackbar = TTGSnackbar(message: "Your post is deleted.",
                                    duration: .middle,
-                                   actionText: "Undo",
+                                   actionText: "",
                                    actionBlock: { (_) in
-                                    Utils.notReadyAlert()
         })
         snackbar.show()
     }

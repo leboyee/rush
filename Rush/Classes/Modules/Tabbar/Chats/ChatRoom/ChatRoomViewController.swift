@@ -491,7 +491,13 @@ extension ChatRoomViewController {
         
         // View calender button setup
         let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
-        viewCalender.setTitle("View profile", for: .normal)
+        if clubInfo != nil {
+            viewCalender.setTitle("View club details", for: .normal)
+        } else  if eventInfo != nil {
+            viewCalender.setTitle("View event details", for: .normal)
+        } else {
+            viewCalender.setTitle("View profile", for: .normal)
+        }
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
