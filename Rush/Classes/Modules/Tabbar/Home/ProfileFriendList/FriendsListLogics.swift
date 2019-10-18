@@ -52,16 +52,16 @@ extension FriendsListViewController {
         //                   cell.setup(topConstraint: 0)
         //               }
         if type == .clubs {
-            var club = Club()
+            let club: Club?
             if firstSegmentButton.isSelected {
-                club = firstTabList[indexPath.row] as? Club ?? club
+                club = firstTabList[indexPath.row] as? Club
             } else {
-                club = secondTabList[indexPath.row] as? Club ?? club
+                club = secondTabList[indexPath.row] as? Club
             }
-            let image = Image(json: club.clubPhoto ?? "")
-            cell.setup(title: club.clubName ?? "")
-            cell.setup(detail: club.clubDesc ?? "")
-            cell.setup(invitee: club.invitees)
+            let image = Image(json: club?.clubPhoto ?? "")
+            cell.setup(title: club?.clubName ?? "")
+            cell.setup(detail: club?.clubDesc ?? "")
+            cell.setup(invitee: club?.invitees)
             cell.setup(imageUrl: image.urlThumb())
             
         } else if type == .classes {
@@ -88,8 +88,7 @@ extension FriendsListViewController {
         cell.setup(eventImageUrl: event.photo?.urlThumb())
     }
     func willDisplay(_ indexPath: IndexPath) {
-        if(type == .classes && indexPath.row == myClassesList.count - 3 && isNextPageExist == true)
-        {
+        if type == .classes && indexPath.row == myClassesList.count - 3 && isNextPageExist == true {
             pageNo += 1
             getMyJoinedClasses()
         } else if isNextPageExist == true, indexPath.row == inviteeList.count - 3 {
@@ -119,33 +118,33 @@ extension FriendsListViewController {
         if type == .events {
             var event: Event?
             if firstSegmentButton.isSelected {
-                event = firstTabList[indexPath.row] as? Event ?? event
+                event = firstTabList[indexPath.row] as? Event
             } else {
-                event = secondTabList[indexPath.row] as? Event ?? event
+                event = secondTabList[indexPath.row] as? Event
             }
             performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
         } else if type == .clubs {
             var club: Club?
             if firstSegmentButton.isSelected {
-                club = firstTabList[indexPath.row] as? Club ?? club
+                club = firstTabList[indexPath.row] as? Club
             } else {
-                club = secondTabList[indexPath.row] as? Club ?? club
+                club = secondTabList[indexPath.row] as? Club
             }
             performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
         } else  if type == .friends {
             var friend: Friend?
             if firstSegmentButton.isSelected {
-                friend = firstTabList[indexPath.row] as? Friend ?? friend
+                friend = firstTabList[indexPath.row] as? Friend
             } else {
-                friend = secondTabList[indexPath.row] as? Friend ?? friend
+                friend = secondTabList[indexPath.row] as? Friend
             }
             performSegue(withIdentifier: Segues.friendProfileSegue, sender: friend)
         } else  if type == .classes {
             var myclass: ClassJoined?
             if firstSegmentButton.isSelected {
-                myclass = firstTabList[indexPath.row] as? ClassJoined ?? myclass
+                myclass = firstTabList[indexPath.row] as? ClassJoined
             } else {
-                myclass = secondTabList[indexPath.row] as? ClassJoined ?? myclass
+                myclass = secondTabList[indexPath.row] as? ClassJoined
             }
             performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
         } else {
@@ -154,14 +153,15 @@ extension FriendsListViewController {
         }
     }
 }
-//MARK: - Services
+
+// MARK: - Services
 extension FriendsListViewController {
     func fetchInvitees(search: String) {
         if pageNo == 1 {
             inviteeList.removeAll()
         }
-        let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: inviteType ==  .going ? "going" : "not_going"] as [String : Any]
-        ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, total, _) in
+        let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: inviteType ==  .going ? "going" : "not_going"] as [String: Any]
+        ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
             guard let unsafe = self else { return }
             unsafe.inviteeList = invitees ?? [Invitee]()
             //unsafe.totalInvitee = total
