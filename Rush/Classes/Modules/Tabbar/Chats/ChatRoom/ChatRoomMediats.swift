@@ -146,12 +146,13 @@ extension ChatRoomViewController: UIImagePickerControllerDelegate, UINavigationC
     func openCameraOrLibrary() {
         DispatchQueue.main.async {
             let imagPickerController  = UIImagePickerController()
-            if imagPickerController.sourceType == .camera {
+            //Need to check why iphone camera not detected so commented code
+//            if imagPickerController.sourceType == .camera {
                 imagPickerController.delegate = self
                 imagPickerController.sourceType = .camera
                 imagPickerController.allowsEditing = false
                 self.navigationController?.present(imagPickerController, animated: true, completion: nil)
-            }
+//            }
         }
     }
     
