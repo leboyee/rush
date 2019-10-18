@@ -51,12 +51,12 @@ extension ClubListViewController {
     
     func cellCount(_ section: Int) -> Int {
         if screenType == .club {
-            if myClubsList.count > 0 && section == 0 {
+            if section == 0 {
                 return myClubsList.count
             }
             return 1
         } else if screenType == .classes {
-            if myClassesList.count > 0 && section == 0 {
+            if section == 0 {
                 return myClassesList.count
             }
             return 1
