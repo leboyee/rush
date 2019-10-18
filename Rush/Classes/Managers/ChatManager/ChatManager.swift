@@ -13,6 +13,7 @@ class ChatManager: NSObject {
     
     static let manager = ChatManager()
     var channel: SBDGroupChannel?
+    var firstTry : Bool = true
     
     override init() {
         super.init()
@@ -55,16 +56,22 @@ extension ChatManager {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
                 })
             } else {
-                if let domain = error?.domain {
-                    if Int(error?.code ?? 0) == 800120 {
-                        let msg = "We are not able to connect to chat server."
-                        Utils.alert(message: msg, title: "", buttons: ["Connect again"], cancel: "Cancel", destructive: nil, type: .alert, handler: { (index) in
-                            if index == 0 {
-                                self.connectToChatServer(userId: userId, username: username, profileImageUrl: profileImageUrl)
-                            }
-                        })
-                    } else {
-                        Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                
+                if self.firstTry { //try to connect one more time.
+                    self.connectToChatServer(userId: userId, username: username, profileImageUrl: profileImageUrl)
+                    self.firstTry = false
+                } else {//if second time fail then show message
+                    if let domain = error?.domain {
+                        if Int(error?.code ?? 0) == 800120 {
+                            let msg = "We are not able to connect to chat server."
+                            Utils.alert(message: msg, title: "", buttons: ["Connect again"], cancel: "Cancel", destructive: nil, type: .alert, handler: { (index) in
+                                if index == 0 {
+                                    self.connectToChatServer(userId: userId, username: username, profileImageUrl: profileImageUrl)
+                                }
+                            })
+                        } else {
+                            Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                        }
                     }
                 }
             }
