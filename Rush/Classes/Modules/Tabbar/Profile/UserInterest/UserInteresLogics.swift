@@ -64,7 +64,8 @@ extension UserInterestViewController {
     
     func updateProfileAPI() {
         let interestIdArray = interestArray.map({ String($0.interestId) })
-        let param = [Keys.userInterests: interestIdArray]  as [String: Any]
+        let selectedIdArray = interestIdArray.joined(separator: ",")
+        let param = [Keys.userInterests: selectedIdArray]  as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()

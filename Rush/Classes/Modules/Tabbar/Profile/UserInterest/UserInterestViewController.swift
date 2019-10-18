@@ -70,7 +70,7 @@ class UserInterestViewController: CustomViewController {
             searchTextField.delegate = self
             let font = UIFont.displayBold(sz: 24)
             let color = UIColor.navBarTitleWhite32
-            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search event", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search interests", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
             customView.addSubview(searchTextField)
         

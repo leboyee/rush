@@ -30,6 +30,11 @@ class ProfileTileViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
         let addImageButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 78, height: 36))

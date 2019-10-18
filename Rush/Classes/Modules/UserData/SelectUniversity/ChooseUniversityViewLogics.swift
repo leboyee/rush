@@ -11,7 +11,7 @@ import UIKit
 extension ChooseUniversityViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-            return 56
+            return UITableView.automaticDimension
     }
     
     func cellCount(_ section: Int) -> Int {

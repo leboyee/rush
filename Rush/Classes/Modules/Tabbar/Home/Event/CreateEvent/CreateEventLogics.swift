@@ -620,7 +620,7 @@ extension CreateEventViewController {
             print(error.localizedDescription)
         }
         
-        let eventTypeString = event?.eventType == .closed ? "closed" : event?.eventType == .publik ? "public" : "invite_only"
+        let eventTypeString = eventType == .closed ? "closed" : eventType == .publik ? "public" : "invite_only"
 
         let param = [Keys.createEventType: eventTypeString,
                      Keys.eventName: self.nameEvent,

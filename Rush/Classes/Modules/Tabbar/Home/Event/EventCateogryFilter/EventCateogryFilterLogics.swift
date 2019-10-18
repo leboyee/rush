@@ -35,6 +35,7 @@ extension EventCateogryFilterViewController {
     }
     
     func cellSelected(_ indexPath: IndexPath) {
+        selectedIndex = indexPath.row
         if isEventTypeModel == true {
             delegate?.selectedIndex("\(indexPath.row)", indexPath)
             dismiss(animated: true, completion: nil)

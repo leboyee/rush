@@ -42,7 +42,15 @@ class EditProfileViewController: UIViewController {
         profile = Authorization.shared.profile
         tabBarController?.tabBar.isHidden = false
         title = ""
+        majorMinorData()
         tableView.reloadData()
+    }
+    
+    func majorMinorData() {
+        let majArray = profile?.majors ?? [Major]()
+        let minArray = profile?.minors ?? [Minor]()
+        majorArray = majArray.map({ $0.majorName ?? "" })
+        minorArray = minArray.map({ $0.minorName ?? "" })
     }
 }
 // MARK: - Setup
@@ -50,10 +58,6 @@ extension EditProfileViewController {
     
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
-        let majArray = profile?.majors ?? [Major]()
-        let minArray = profile?.minors ?? [Minor]()
-        majorArray = majArray.map({ $0.majorName ?? "" })
-        minorArray = minArray.map({ $0.minorName ?? "" })
         setupTableView()
         setupNavigation()
         
@@ -134,24 +138,41 @@ extension EditProfileViewController {
     func assignSelectedImages(photos: [DKAsset]) {
         var dkAsset: DKAsset!
         dkAsset = photos[0]
-        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { [weak self] (image, _ ) in
-            guard let unsafe = self else { return }
+        dkAsset.fetchFullScreenImage { image, info in
             if image != nil {
-                if unsafe.updateImage == false {
-                    unsafe.updateImage = true
+                if self.updateImage == false {
+                    self.updateImage = true
                     DispatchQueue.main.async {
-                        unsafe.photoImage = image
+                        self.photoImage = image
                         var photoData = Data()
-                        if (unsafe.photoImage ?? UIImage()).size.width > 0 {
-                            photoData = unsafe.photoImage?.jpegData(compressionQuality: 0.8) ?? Data()
+                        if (self.photoImage ?? UIImage()).size.width > 0 {
+                            photoData = self.photoImage?.jpegData(compressionQuality: 1.0) ?? Data()
                             let param = ["u_photo": photoData] as [String: Any]
-                            unsafe.updateProfileImageAPI(param: param)
+                            self.updateProfileImageAPI(param: param)
                         }
                     }
                 }
                 
             }
-        })
+        }
+//        dkAsset.fetchImage(with: CGSize(width: 740, height: 740), completeBlock: { [weak self] (image, _ ) in
+//            guard let unsafe = self else { return }
+//            if image != nil {
+//                if unsafe.updateImage == false {
+//                    unsafe.updateImage = true
+//                    DispatchQueue.main.async {
+//                        unsafe.photoImage = image
+//                        var photoData = Data()
+//                        if (unsafe.photoImage ?? UIImage()).size.width > 0 {
+//                            photoData = unsafe.photoImage?.jpegData(compressionQuality: 1.0) ?? Data()
+//                            let param = ["u_photo": photoData] as [String: Any]
+//                            unsafe.updateProfileImageAPI(param: param)
+//                        }
+//                    }
+//                }
+//
+//            }
+//        })
     }
 }
 

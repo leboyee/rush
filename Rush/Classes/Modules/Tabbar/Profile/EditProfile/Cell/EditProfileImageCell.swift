@@ -43,6 +43,7 @@ extension EditProfileImageCell {
     func setup(url: URL) {
         cameraButton?.sd_setBackgroundImage(with: url, for: .normal, completed: { (image, _, _, _) in
             if image != nil {
+                self.cameraButton.setBackgroundImage(image?.squareImage(), for: .normal)
                 self.titleLabel.text = "Change profile image"
                 self.setup(image: UIImage())
             } else {

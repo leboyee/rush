@@ -11,7 +11,7 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs)  || type == .clubsJoined {
+        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs)  || type == .clubsJoined || cellType == .event {
             return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         } else if type == .upcoming || type == .classes {
             return list?.count ?? 0
@@ -21,6 +21,7 @@ extension EventTypeCell {
     
     func fillEventCell(_ cell: EventCell, _ indexPath: IndexPath) {
         cell.setup(type: type)
+        
         if type == .upcoming {
             if let eventList = list as? [Event] {
                 let event = eventList[indexPath.item]
