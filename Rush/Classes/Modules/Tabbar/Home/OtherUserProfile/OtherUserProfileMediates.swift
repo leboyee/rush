@@ -38,10 +38,11 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
             fillManageCell(cell, indexPath)
             return cell
         }
-//        else if indexPath.section == 1 {
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
-//            return cell
-//        }
+       /*   // for RSVP section
+             else if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
+            return cell
+        } */
         else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillEventCell(cell, indexPath)
