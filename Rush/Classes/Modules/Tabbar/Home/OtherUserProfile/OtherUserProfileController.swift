@@ -28,9 +28,11 @@ class OtherUserProfileController: UIViewController {
     var userInfo: User?
     var searchText = ""
     var pageNo = 1
+    var pageNoClass = 1
+    var isNextPageClass = true
     var clubList = [Club]()
     var eventList = [Event]()
-    var classList = [Class]()
+    var classList = [ClassJoined]()
     var imagesList = [Image]()
     var rsvpQuestion: [RSVPQuestion]?
     var rsvpAnswer: [RSVPAnswer]?

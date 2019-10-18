@@ -251,7 +251,7 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-            unsafe.getClassListAPI()
+            unsafe.getMyJoinedClasses(search: "")
         }
     }
     
@@ -275,20 +275,33 @@ extension OtherUserProfileController {
         }
     }
     
-    func getClassListAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+     func getMyJoinedClasses(search: String) {
+        //pagination not done
+        let param = [Keys.pageNo: pageNoClass, Keys.search: "", Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
-        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
-            if let classes = data {
-             //   unsafe.classList = classes
-             //   unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            if unsafe.pageNoClass == 1 {
+                unsafe.classList.removeAll()
             }
-        }
-    }
-    
+            if let classes = data, classes.count > 0 {
+                if unsafe.pageNoClass == 1 {
+                    unsafe.classList = classes
+                } else {
+                    unsafe.classList += classes
+                }
+                unsafe.isNextPageClass = true
+            } else {
+                if unsafe.pageNoClass == 1 || (unsafe.pageNoClass > 1 && data?.count == 0) {
+                    unsafe.isNextPageClass = false
+//                    unsafe.getMyJoinedClasses(search: "")
+                }
+            }
+               unsafe.tableView.reloadData()
+           }
+           
+       }
+
     func getFriendListAPI() {
         
         let params = [Keys.pageNo: 1,
@@ -328,9 +341,8 @@ extension OtherUserProfileController {
                 if type == "unfriend" {
                     let snackbar = TTGSnackbar(message: "You unfriended \(unsafe.userInfo?.name ?? "")",
                         duration: .middle,
-                        actionText: "Undo",
+                        actionText: "",
                         actionBlock: { (_) in
-                            Utils.notReadyAlert()
                     })
                     snackbar.show()
                 }

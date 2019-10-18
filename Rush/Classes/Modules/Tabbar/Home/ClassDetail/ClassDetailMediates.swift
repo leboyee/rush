@@ -157,10 +157,8 @@ extension ClassDetailViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
         let snackbar = TTGSnackbar(message: "You unfriended \(name)",
             duration: .middle,
-            actionText: "Undo",
-            actionBlock: { (_) in
-                Utils.notReadyAlert()
-        })
+            actionText: "",
+            actionBlock: { (_) in        })
         snackbar.show()
     }
 }
@@ -169,9 +167,8 @@ extension ClassDetailViewController: PostViewProtocol {
     func deletePostSuccess(_ post: Post?) {
         let snackbar = TTGSnackbar(message: "Your post is deleted.",
                                    duration: .middle,
-                                   actionText: "Undo",
+                                   actionText: "",
                                    actionBlock: { (_) in
-                                    Utils.notReadyAlert()
         })
         snackbar.show()
     }

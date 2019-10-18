@@ -84,8 +84,12 @@ extension EventTypeCell {
                 } else {
                     cell.setup(classCount: "\(value.classTotalGroups) classes")
                 }
+            } else if let classList = list as? [ClassJoined] {
+                let joinedClass = classList[indexPath.item]
+                cell.setup(className: joinedClass.classes?.name ?? "")
+                cell.setup(classImageUrl: joinedClass.classes?.photo.photo?.url())
+                cell.setup(classCount: joinedClass.classGroup?.name ?? "")
             }
-        
         }
         cell.joinSelected = { [weak self] () in
             guard let unsafe = self else { return }
