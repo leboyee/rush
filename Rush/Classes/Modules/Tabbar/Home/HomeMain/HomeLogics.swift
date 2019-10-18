@@ -77,7 +77,7 @@ extension HomeViewController {
         if indexPath.section == 1 {
             cell.setup(.upcoming, nil, eventList)
         } else if indexPath.section == 2 {
-            cell.setup(isShowJoinEvents ? .clubsJoined : .clubs, nil, clubList)
+            cell.setup(.clubs, nil, clubList)
         } else {
             cell.setup(.classes, nil, classList)
         }
@@ -90,6 +90,9 @@ extension HomeViewController {
                 let event = unsafe.eventList[index]
                 unsafe.showEvent(event: event)
             } else if type == .clubs {
+                let club = unsafe.clubList[index]
+                unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            } else if type == .clubsJoined {
                 let club = unsafe.clubList[index]
                 unsafe.performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
             } else if type == .classes {
@@ -186,7 +189,7 @@ extension HomeViewController {
                 unsafe.getClubListAPI(sortBy: "feed")
             } else {
                 unsafe.isShowJoinEvents = false
-                unsafe.getEventList(sortBy: .upcoming)
+                unsafe.getEventList(sortBy: .interestedFeed)
             }
            
         }

@@ -40,7 +40,13 @@ class ExploreViewController: CustomViewController {
    // var dataList = [Any]()
     var pageNo = 1
     var isNextPageExist = true
-    
+    var classCatPageNo = 1
+    var isClassCatIsNextPageExist = true
+    var clubCatPageNo = 1
+    var isClubCatIsNextPageExist = true
+    var eventCatPageNo = 1
+    var isEventCatIsNextPageExist = true
+
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [SubClass]()
@@ -57,6 +63,7 @@ class ExploreViewController: CustomViewController {
         setup()
         IQKeyboardManager.shared.enableAutoToolbar = false
         
+        searchType = .event
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
         getClassListAPI()

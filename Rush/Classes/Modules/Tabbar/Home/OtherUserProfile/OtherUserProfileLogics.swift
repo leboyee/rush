@@ -14,7 +14,7 @@ extension OtherUserProfileController {
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
             return ((Utils.navigationHeigh*2) + 24 + 216)
-        } else if (section == 1 && imagesList.count > 0) || (section == 2 && (userInfo?.friend?.count ?? 0) > 0) || (section == 3 && eventList.count > 0) || (section == 4 && clubList.count > 0) || (section == 5 && classList.count > 0) {
+        } else if (section == 1 && imagesList.count > 0) || (section == 2 && friendList.count > 0) || (section == 3 && eventList.count > 0) || (section == 4 && clubList.count > 0) || (section == 5 && classList.count > 0) {
             return 44
         }
         return CGFloat.leastNormalMagnitude
@@ -22,7 +22,7 @@ extension OtherUserProfileController {
     
     func heightOfFooter(_ section: Int) -> CGFloat {
         
-        if section == 0 || (section == 1 && imagesList.count > 0) || (section == 2 && (userInfo?.friend?.count ?? 0) > 0) {
+        if section == 0 || (section == 1 && imagesList.count > 0) || (section == 2 && friendList.count > 0) {
             return 1
         } else if section == 5 {
             return 50
@@ -37,7 +37,7 @@ extension OtherUserProfileController {
         } else if indexPath.section == 1 {
             return imagesList.count > 0 ? 112 : CGFloat.leastNormalMagnitude
         } else if indexPath.section == 2 {
-            return (userInfo?.friend?.count ?? 0) > 0 ? 88 : CGFloat.leastNormalMagnitude
+            return friendList.count > 0 ? 88 : CGFloat.leastNormalMagnitude
         } else if (indexPath.section == 3 && eventList.count > 0) || (indexPath.section == 4 && clubList.count > 0) || (indexPath.section == 5 && classList.count > 0) {
             return 157
         } else {
@@ -251,7 +251,7 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-            unsafe.getClassCategoryAPI()
+            unsafe.getClassListAPI()
         }
     }
     
@@ -275,14 +275,14 @@ extension OtherUserProfileController {
         }
     }
     
-    func getClassCategoryAPI() {
+    func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.classList = classes
-                unsafe.tableView.reloadData()
+             //   unsafe.classList = classes
+             //   unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
@@ -299,6 +299,7 @@ extension OtherUserProfileController {
             guard let unsafe = self else { return }
             if let list = data {
                 unsafe.friendList = list
+                unsafe.tableView.reloadData()
             }
             unsafe.fetchImagesList()
         }

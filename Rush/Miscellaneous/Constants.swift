@@ -441,6 +441,7 @@ enum GetEventType: String {
     case myUpcoming = "my-upcoming"
     case attending = "attending"
     case managedFirst = "managed-first"
+    case interestedFeed = "interested-feed"
 }
 
 enum NotificationType: String, Codable {
