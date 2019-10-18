@@ -449,6 +449,9 @@ enum NotificationType: String, Codable {
     case upVoted = "upVoted"
     case downVoted = "downVoted"
     case newComment = "newComment"
+    case updateEvent = "updateEvent"
+    case updateClub = "updateClub"
+    case updateClass = "updateClass"
 }
 
 enum UserProfileDetailType {
