@@ -121,9 +121,6 @@ struct ViewControllerId {
     static let createClubViewController          = "CreateClubViewController"
     static let enterPasswordViewConteroller          = "EnterPasswordViewConteroller"
     static let enterEmailViewConteroller          = "EnterEmailViewConteroller"
-
-
-    
 }
 
 /* Create the struct for Section wise */
@@ -399,7 +396,6 @@ enum InviteType {
     case notGoing
 }
 
-
 enum EventType: String, Codable {
     case none = "none"
     case publik = "public"
@@ -453,6 +449,9 @@ enum NotificationType: String, Codable {
     case upVoted = "upVoted"
     case downVoted = "downVoted"
     case newComment = "newComment"
+    case updateEvent = "updateEvent"
+    case updateClub = "updateClub"
+    case updateClass = "updateClass"
 }
 
 enum UserProfileDetailType {

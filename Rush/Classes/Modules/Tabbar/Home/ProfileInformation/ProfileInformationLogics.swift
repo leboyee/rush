@@ -41,9 +41,8 @@ extension ProfileInformationViewController {
                 cell.setup(text: userInfo?.relationship ?? "", placeholder: Text.relationship)
             }
         } else if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                // userInfo?.university ?? 
-                cell.setup(text:"", placeholder: Text.university)
+            if indexPath.row == 0, let university = userInfo?.university?.last {
+                cell.setup(text: university.universityName, placeholder: Text.university)
             } else if indexPath.row == 1 {
                 cell.setup(text: userInfo?.educationLevel ?? "", placeholder: Text.level)
             } else if indexPath.row == 2 {
