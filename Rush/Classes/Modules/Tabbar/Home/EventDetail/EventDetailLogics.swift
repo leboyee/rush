@@ -527,11 +527,14 @@ extension EventDetailViewController {
     private func joinEvent(eventId: String, action: String) {
         Utils.showSpinner()
         ServiceManager.shared.joinEvent(eventId: eventId, action: action, params: [:]) { [weak self] (data, errorMessage) in
-            if let object = data {
+            if data != nil {
+                /*
+                /// Comment due to task https://www.wrike.com/open.htm?id=411254195
+                if let object = data {
                 let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
                 if isFirstTime == 1 {
                    self?.showJoinAlert()
-                }
+                } */
                 self?.type = .joined
                 DispatchQueue.main.async {
                     self?.loadAllData()
