@@ -46,17 +46,21 @@ extension ProfileViewController {
             if let friend = notification.friend?.last, (friend.user?.name ?? "") == text, let user = friend.user {
                 showFriend(user: user)
             }
-        case .eventInvite:
+        case .eventInvite, .updateEvent:
             if let user = notification.generatedBy, user.name == text {
                 showFriend(user: user)
             } else if let event = notification.event?.last {
                 showEvent(event: event)
             }
-        case .clubInvite:
+        case .clubInvite, .updateClub:
             if let user = notification.generatedBy, user.name == text {
                 showFriend(user: user)
             } else if let club = notification.club?.last {
                 showClub(club: club)
+            }
+        case .updateClass:
+            if let classObject = notification.classObject?.last {
+                showClass(classObject: classObject)
             }
         case .upVoted, .downVoted, .newComment:
             if let user = notification.generatedBy, user.name == text {
@@ -137,7 +141,7 @@ extension ProfileViewController {
         if let notification = profileDetail.notifications?[indexPath.row] {
             switch notification.ntType {
             case .acceptFriendRequest, .friendRequest:
-                cell.set(friend: notification.friend?.last, text: notification.ntText)
+                cell.set(object: notification.friend?.last, text: notification.ntText)
             case .eventInvite:
                 cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
             case .clubInvite:
@@ -152,6 +156,12 @@ extension ProfileViewController {
                         cell.set(user: notification.generatedBy, object: notification.classObject?.last, text: notification.ntText)
                     }
                 }
+            case .updateEvent:
+                cell.set(object: notification.event?.last, text: notification.ntText)
+            case .updateClass:
+                cell.set(object: notification.classObject?.last, text: notification.ntText)
+            case .updateClub:
+                cell.set(object: notification.club?.last, text: notification.ntText)
             default:
                 cell.label.text = ""
             }

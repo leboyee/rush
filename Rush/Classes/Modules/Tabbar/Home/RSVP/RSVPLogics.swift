@@ -69,19 +69,20 @@ extension RSVPViewController {
     }
     
     func fillCell(_ cell: JoinRSVPCell, _ indexPath: IndexPath) {
-        let question = event?.rsvp?[indexPath.row]
-        cell.setup(placeholder: question?.que ?? "")
-        let answer = answers.first(where: { $0.index == indexPath.row })
+        if let question = event?.rsvp?[indexPath.row] {
+        cell.setup(placeholder: question.que ?? "")
+        let answer = answers.first(where: { $0.index == question.index })
         cell.setup(answer: answer?.ans ?? "")
         
         cell.textDidChanged = { [weak self] (text) in
-            self?.addRSVPAnswer(text: text, index: question?.index ?? 0)
+            self?.addRSVPAnswer(text: text, index: question.index)
             self?.updateTable(textView: cell.textView)
         }
         
         cell.textDidEndEditing = { [weak self] (text) in
-            self?.addRSVPAnswer(text: text, index: question?.index ?? 0)
+            self?.addRSVPAnswer(text: text, index: question.index)
             self?.updateTable(textView: cell.textView)
+        }
         }
     }
 }
