@@ -67,6 +67,7 @@ struct Keys {
     static let instaUsername      = "insta_username"
     static let pageNo             = "page_no"
     static let search             = "search"
+    static let universityId             = "university_id"
     static let sortBy             = "sort_by"
     static let orderBy            = "order_by"
     static let isOnlyFriendJoined = "is_only_friend_joined"

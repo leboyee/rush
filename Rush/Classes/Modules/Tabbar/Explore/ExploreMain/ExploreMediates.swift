@@ -181,3 +181,16 @@ extension ExploreViewController: NotificationAlertDelegate {
         
     }
 }
+// MARK: - University delegate
+extension ExploreViewController: UniversityViewControllerDelegate {
+    func setSelectedUniversity(university: University) {
+        selUniversity = university
+        var uname = ""
+        if selUniversity.universityName != "" {
+             uname = selUniversity.universityName
+        } else {
+            uname = Authorization.shared.profile?.university?.first?.universityName ?? ""
+        }
+        self.universityButton.setTitle(uname, for: .normal)
+    }
+}

@@ -55,7 +55,7 @@ class ExploreViewController: CustomViewController {
     var eventInterestList = [EventCategory]()
     var classCategoryList = [Class]()
     var peopleList = [Friend]()
-    
+    var universityButton = UIButton()
     var selUniversity = University()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,18 +65,18 @@ class ExploreViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         
         searchType = .event
-        getClubListAPI(sortBy: "feed")
-        getEventList(sortBy: .upcoming)
-        getClassListAPI()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       /* if isSearch {
-            searchfield.becomeFirstResponder()
-        } */
-
+        /* if isSearch {
+         searchfield.becomeFirstResponder()
+         } */
+        getClubListAPI(sortBy: "feed")
+        getEventList(sortBy: .upcoming)
+        getClassListAPI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -113,7 +113,12 @@ class ExploreViewController: CustomViewController {
         explore.textColor = UIColor.white
         
         // University button setup
-        let universityButton = UIButton(frame: CGRect(x: 0, y: 26, width: screenWidth - 130, height: 18))
+         universityButton = UIButton(frame: CGRect(x: 0, y: 26, width: screenWidth - 130, height: 18))
+        if selUniversity.universityName != "" {
+            university = selUniversity.universityName
+        } else {
+            university = Authorization.shared.profile?.university?.first?.universityName ?? ""
+        }
         universityButton.setTitle(university, for: .normal)
         universityButton.contentHorizontalAlignment = .left
         universityButton.setTitleColor(UIColor.gray47, for: .normal)
@@ -222,6 +227,10 @@ extension ExploreViewController {
             let friend = sender as? Friend
             vc?.userInfo = friend?.user
             vc?.delegate = self
+        } else if segue.identifier == Segues.universitySegue {
+            let vc = segue.destination as? UniversityViewController
+            vc?.delegate = self
         }
+        
     }
 }
