@@ -103,7 +103,7 @@ extension FriendsListViewController {
                 getFriendsListAPI()
             }
         } else if secondTabNextPageExist == true, indexPath.row == secondTabList.count - 3 {
-            secondTabPageNo += 1
+           secondTabPageNo += 1
             if type == .events {
                 getManagedEventList()
             } else if type == .clubs {
@@ -142,9 +142,9 @@ extension FriendsListViewController {
         } else  if type == .classes {
             var myclass: ClassJoined?
             if firstSegmentButton.isSelected {
-                myclass = firstTabList[indexPath.row] as? ClassJoined
+                myclass = myClassesList[indexPath.row]
             } else {
-                myclass = secondTabList[indexPath.row] as? ClassJoined
+                myclass = myClassesList[indexPath.row]
             }
             performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
         } else {
@@ -211,7 +211,7 @@ extension FriendsListViewController {
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
                      Keys.sortBy: GetEventType.managedFirst.rawValue,
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: secondTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: GetEventType.managedFirst.rawValue, params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
@@ -224,7 +224,6 @@ extension FriendsListViewController {
                     } else {
                         unsafe.secondTabList.append(contentsOf: list)
                     }
-                    unsafe.secondTabPageNo += 1
                     unsafe.secondTabNextPageExist = true
                 } else {
                     unsafe.secondTabNextPageExist = false
@@ -274,7 +273,7 @@ extension FriendsListViewController {
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
                      Keys.sortBy: "my",
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: secondTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchClubList(sortBy: "my", params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
@@ -287,7 +286,6 @@ extension FriendsListViewController {
                     } else {
                         unsafe.secondTabList.append(contentsOf: list)
                     }
-                    unsafe.secondTabPageNo += 1
                     unsafe.secondTabNextPageExist = true
                 } else {
                     unsafe.secondTabNextPageExist = false
@@ -306,7 +304,7 @@ extension FriendsListViewController {
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
                      Keys.isMutual: "0",
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: firstTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchFriendsList(params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
@@ -337,7 +335,7 @@ extension FriendsListViewController {
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
                      Keys.isMutual: "1",
-                     Keys.pageNo: pageNo] as [String: Any]
+                     Keys.pageNo: secondTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchFriendsList(params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
