@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SendBirdSDK
 
 extension ClubDetailViewController {
     
@@ -101,14 +102,30 @@ extension ClubDetailViewController {
         
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
+            unsafe.checkIsChatExistOrNot()
+        }
+    }
+    
+    func checkIsChatExistOrNot() {
+        Utils.showSpinner()
+        ChatManager().getListOfFilterGroups(name: clubInfo?.clubName ?? "", type: "club", { [weak self] (data) in
+            guard let unsafe = self else { return }
+            Utils.hideSpinner()
             let controller = ChatRoomViewController()
-            controller.userName = unsafe.clubInfo?.clubName ?? ""
             controller.isGroupChat = true
             controller.chatDetailType = .club
             controller.clubInfo = unsafe.clubInfo
+            controller.userName = unsafe.clubInfo?.clubName ?? ""
             controller.hidesBottomBarWhenPushed = true
+            
+            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
+                let filterChannel = channels.filter({ $0.data == unsafe.clubInfo?.clubId })
+                controller.channel = filterChannel.first
+            }
             unsafe.navigationController?.pushViewController(controller, animated: true)
-        }
+        }, errorHandler: { (error) in
+            print(error?.localizedDescription ?? "")
+        })
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {

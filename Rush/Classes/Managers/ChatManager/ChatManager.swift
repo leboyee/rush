@@ -201,6 +201,31 @@ extension ChatManager {
             }
         })
     }
+    
+    func getListOfFilterGroups(name: String, type: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
+        
+        // Include empty group channels.
+        query?.includeEmptyChannel = true
+        
+        query?.order = SBDGroupChannelListOrder.latestLastMessage
+        
+        query?.limit = 100
+        
+        query?.customTypesFilter = [type]
+        
+        query?.channelNameContainsFilter = name
+        
+        query?.publicChannelFilter = .all
+        
+        let list = [AnyHashable]()
+        loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
+            //We can not use direct because new created group come at bottom of list.
+            completionHandler(channels)
+        }, errorHandler: { (_) in
+            
+        })
+    }
 }
 
 // MARK: - Read and unread message count
