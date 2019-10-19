@@ -13,6 +13,8 @@ let tabbarItemTintColor = UIColor(red: 0.56, green: 0.24, blue: 0.33, alpha: 1)
 
 class CustomTabbarViewController: UITabBarController, UITabBarControllerDelegate {
     
+    static let shared = CustomTabbarViewController()
+    
     var firstNavigationController: UINavigationController!
     var secondNavigationController: UINavigationController!
     var thirdNavigationController: UINavigationController!
@@ -97,14 +99,15 @@ extension CustomTabbarViewController {
     func updateLoginUserPhotoOnLastTab() {
         if let url = Authorization.shared.profile?.photo?.urlThumb() {
             if let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.squareImage()?.resizedImage(newWidth: 30).roundedImage
+                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 2, color: UIColor.brown24)
                 if let tabbarItem = tabBar.items?.last {
-                    tabbarItem.image = img
-                    tabbarItem.selectedImage = img
+                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                    tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                 }
-
             }
         }
+        
     }
     
     /*
@@ -124,6 +127,21 @@ extension CustomTabbarViewController {
         for tabBarItem in tabBar.items! {
             tabBarItem.title = ""
             tabBarItem.imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
+        }
+    }
+    
+    func refreshTab() {
+        if let url = Authorization.shared.profile?.photo?.urlThumb() {
+            if let imageData =  try? Data(contentsOf: url) {
+                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 2, color: UIColor.brown24)
+                
+                let customTabBarItem = UITabBarItem(title: nil, image: img, selectedImage: selectedImg)
+                fourthNavigationViewController.tabBarItem = customTabBarItem
+                
+                let controllers = [firstNavigationController, secondNavigationController, thirdNavigationController, fourthNavigationViewController]
+                setViewControllers(controllers as? [UIViewController], animated: true)
+            }
         }
     }
     
