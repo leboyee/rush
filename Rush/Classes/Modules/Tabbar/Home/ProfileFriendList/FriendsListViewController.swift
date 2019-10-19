@@ -76,30 +76,31 @@ class FriendsListViewController: UIViewController {
         }
         // Setup tableview
         setupTableView()
-        
-        // Set navigation title
-        let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
-        //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
-        
+        if type == .classes || type == .friends || type == .clubs || type == .events {
+            // Set navigation title
+                   userName = userInfo?.name ?? "User"
+                   let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
+                   navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+        } else {
+            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+                  searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+                  searchTextFiled?.font = UIFont.displayBold(sz: 24)
+                  searchTextFiled?.textColor = UIColor.white
+                  searchTextFiled?.returnKeyType = .go
+                  searchTextFiled?.autocorrectionType = .no
+                  searchTextFiled?.delegate = self
+                  let font = UIFont.displayBold(sz: 24)
+                  let color = UIColor.navBarTitleWhite32
+                  var title = "Search attendees"
+                  searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "Search attendees", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+                  searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+                  customView.addSubview(searchTextFiled ?? UITextField())
+                  navigationItem.titleView = customView
+                  self.view.backgroundColor = UIColor.bgBlack
+        }
         if exploreType == .event {
             fetchInvitees(search: "")
         }
-        
-        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
-        searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
-        searchTextFiled?.font = UIFont.displayBold(sz: 24)
-        searchTextFiled?.textColor = UIColor.white
-        searchTextFiled?.returnKeyType = .go
-        searchTextFiled?.autocorrectionType = .no
-        searchTextFiled?.delegate = self
-        let font = UIFont.displayBold(sz: 24)
-        let color = UIColor.navBarTitleWhite32
-        searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "Search attendees", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
-        searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-        customView.addSubview(searchTextFiled ?? UITextField())
-        navigationItem.titleView = customView
-        self.view.backgroundColor = UIColor.bgBlack
-        
     }
     
     func selectedSegment(tag: Int) {
