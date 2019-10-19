@@ -79,6 +79,9 @@
 		1A353AC922BD130E0069752D /* UniversityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A353AC722BD130E0069752D /* UniversityCell.xib */; };
 		1A370B1E2356E4E00086652B /* AppDelegatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */; };
 		1A370B21235719E20086652B /* University.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A370B20235719E20086652B /* University.swift */; };
+		1A3C6D11235B3ED100F8339B /* EventGoingFriendsMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3C6D0E235B3ED100F8339B /* EventGoingFriendsMediates.swift */; };
+		1A3C6D12235B3ED100F8339B /* EventGoingFriendsViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3C6D0F235B3ED100F8339B /* EventGoingFriendsViewLogics.swift */; };
+		1A3C6D13235B3ED100F8339B /* EventGoingFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3C6D10235B3ED100F8339B /* EventGoingFriendsViewController.swift */; };
 		1A3CB08C22BD3242005D3D87 /* AddMajorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08622BD3242005D3D87 /* AddMajorsViewController.swift */; };
 		1A3CB08D22BD3242005D3D87 /* AddMajorsViewLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08722BD3242005D3D87 /* AddMajorsViewLogics.swift */; };
 		1A3CB08E22BD3242005D3D87 /* AddMajorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3CB08922BD3242005D3D87 /* AddMajorsCell.swift */; };
@@ -654,6 +657,9 @@
 		1A370B1D2356E4DF0086652B /* AppDelegatePush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegatePush.swift; sourceTree = "<group>"; };
 		1A370B1F2356EEC80086652B /* Rush.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rush.entitlements; sourceTree = "<group>"; };
 		1A370B20235719E20086652B /* University.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = University.swift; sourceTree = "<group>"; };
+		1A3C6D0E235B3ED100F8339B /* EventGoingFriendsMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventGoingFriendsMediates.swift; sourceTree = "<group>"; };
+		1A3C6D0F235B3ED100F8339B /* EventGoingFriendsViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventGoingFriendsViewLogics.swift; sourceTree = "<group>"; };
+		1A3C6D10235B3ED100F8339B /* EventGoingFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventGoingFriendsViewController.swift; sourceTree = "<group>"; };
 		1A3CB08622BD3242005D3D87 /* AddMajorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsViewController.swift; sourceTree = "<group>"; };
 		1A3CB08722BD3242005D3D87 /* AddMajorsViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsViewLogics.swift; sourceTree = "<group>"; };
 		1A3CB08922BD3242005D3D87 /* AddMajorsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMajorsCell.swift; sourceTree = "<group>"; };
@@ -1253,6 +1259,7 @@
 		0918E770228436820098AF35 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1A3C6D0D235B3ED100F8339B /* EventGoingFriendsViewController */,
 				8A4B326C232F5A5B00AC1D17 /* EventDetail */,
 				8A4B3262232BADFA00AC1D17 /* EventJoinedPopup */,
 				8A4B325B232B99D400AC1D17 /* RSVP */,
@@ -1544,6 +1551,16 @@
 				1A353AC722BD130E0069752D /* UniversityCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1A3C6D0D235B3ED100F8339B /* EventGoingFriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A3C6D0E235B3ED100F8339B /* EventGoingFriendsMediates.swift */,
+				1A3C6D0F235B3ED100F8339B /* EventGoingFriendsViewLogics.swift */,
+				1A3C6D10235B3ED100F8339B /* EventGoingFriendsViewController.swift */,
+			);
+			path = EventGoingFriendsViewController;
 			sourceTree = "<group>";
 		};
 		1A3CB08522BD3242005D3D87 /* AddMajors */ = {
@@ -3660,6 +3677,7 @@
 				7999363122FAF01F001AEEEB /* EventMessageCell.swift in Sources */,
 				7903D0AE228E8CE5004E33B9 /* EventTypeCellMediates.swift in Sources */,
 				8A04B188230152960055C65F /* LogoutLogics.swift in Sources */,
+				1A3C6D13235B3ED100F8339B /* EventGoingFriendsViewController.swift in Sources */,
 				1A8A5A9323543B19007487C5 /* ProfileTileMediates.swift in Sources */,
 				7903D0B6228E8CE5004E33B9 /* HomeMediates.swift in Sources */,
 				799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */,
@@ -3908,6 +3926,7 @@
 				1A024CFF23476F8600EE7FB4 /* EventCateogryFilterViewController.swift in Sources */,
 				8A04B16E22FD8B680055C65F /* PrivacySettingsViewController.swift in Sources */,
 				1AB43B342327EE0C00C2FBCE /* AddRSVPMediates.swift in Sources */,
+				1A3C6D12235B3ED100F8339B /* EventGoingFriendsViewLogics.swift in Sources */,
 				1A024D0223476F8600EE7FB4 /* EventCategoryFilterHeader.swift in Sources */,
 				1A649E1B2297F55A00B2E9E7 /* EnterPasswordViewConteroller.swift in Sources */,
 				793BE69122E88207005EF72D /* MessageLabel.swift in Sources */,
@@ -3926,6 +3945,7 @@
 				7938D06122D75D74002D1537 /* UniversityLogics.swift in Sources */,
 				8A04B13C22FADFBD0055C65F /* CalendarEventListLogics.swift in Sources */,
 				797FFDB322B7BC480055A001 /* PhotoGalleryViewController.swift in Sources */,
+				1A3C6D11235B3ED100F8339B /* EventGoingFriendsMediates.swift in Sources */,
 				79D29C9F22CF2C74008C6ED0 /* ExploreLogics.swift in Sources */,
 				1ACEAC1622AC040A00B734D3 /* AddProfilePictureViewMediates.swift in Sources */,
 				79CF8FCF228DA37400DDA285 /* CustomBlackLabel.swift in Sources */,

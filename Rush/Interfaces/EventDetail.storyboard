@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="2434" y="-788"/>
         </scene>
-        <!--FriendsListViewController-->
+        <!--EventGoingFriendsViewController-->
         <scene sceneID="qCg-in-UHu">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="FriendsListViewController" id="Xxw-PA-vc0" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="EventGoingFriendsViewController" id="Xxw-PA-vc0" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6lU-qr-app"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HrQ-Im-ueo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
