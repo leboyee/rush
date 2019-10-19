@@ -85,6 +85,7 @@ struct Keys {
     static let club = "club"
     static let post = "post"
     static let event = "event"
+    static let clubUniversityId = "club_university_id"
    
     static let classCatId = "class_cat_id"
     static let intId = "interest_id"

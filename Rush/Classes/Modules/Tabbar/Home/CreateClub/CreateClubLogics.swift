@@ -79,6 +79,17 @@ extension CreateClubViewController {
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
             cell.textView.isUserInteractionEnabled = false
+        } else if indexPath.section == 4 {
+            if selectedUniversity != nil {
+                cell.setup(placeholder: "", text: "")
+                cell.setup(placeholder: Text.addUniversity)
+            } else {
+                let university = selectedUniversity?.universityName ?? ""
+                cell.setup(isHideCleareButton: false)
+                cell.setup(placeholder: "", text: university)
+            }
+            cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
+            cell.textView.isUserInteractionEnabled = false
         }
         
         cell.textDidChanged = {  [weak self] (text) in
@@ -304,6 +315,7 @@ extension CreateClubViewController {
                      Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
                      Keys.clubContact: contactNoArray.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
+                     Keys.clubUniversityId: "",
                      Keys.clubPhoto: dataN] as [String: Any]
         
         Utils.showSpinner()

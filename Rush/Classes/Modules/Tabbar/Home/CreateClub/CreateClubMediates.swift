@@ -25,7 +25,7 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,7 +33,7 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 4 {
+        if indexPath.section == 5 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell else { return UITableViewCell() }
             fillTextIconCell(cell, indexPath)
             return cell
@@ -52,6 +52,10 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 2 {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            }
+        } else if indexPath.section == 4 {
+            DispatchQueue.main.async {
+                //self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
             }
         }
     }

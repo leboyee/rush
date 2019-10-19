@@ -38,6 +38,7 @@ class CreateClubViewController: UIViewController {
     var removePeopleIds = [String]()
     var newPeopleIds = [String]()
     var newContacts = [String]()
+    var selectedUniversity: University?
     
     var clubInfo: Club?
     
