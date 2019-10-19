@@ -108,7 +108,7 @@ extension ClubDetailViewController {
     
     func checkIsChatExistOrNot() {
         Utils.showSpinner()
-        ChatManager().getListOfFilterGroups(name: clubInfo?.clubName ?? "", type: "club", { [weak self] (data) in
+        ChatManager().getListOfFilterGroups(name: clubInfo?.clubName ?? "", type: "club", userId: "", { [weak self] (data) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             let controller = ChatRoomViewController()

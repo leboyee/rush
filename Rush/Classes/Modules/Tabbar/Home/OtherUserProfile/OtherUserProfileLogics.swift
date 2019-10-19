@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SendBirdSDK
 
 extension OtherUserProfileController {
     
@@ -88,13 +89,6 @@ extension OtherUserProfileController {
                         unself.moderateFriendRequestAPI(type: "unfriend")
                     }
                 })
-                
-                /*
-                 self_.navigationController?.popViewController(animated: true)
-                 DispatchQueue.main.async {
-                 self_.delegate?.unfriendUser("Jessica O'Hara")
-                 }
-                 */
             } else if status == .addFriend {
                 // unself.friendType = .requested
                 Utils.alert(message: "Are you sure you want to send friend request to \(unself.userInfo?.name ?? "")?", buttons: ["Yes", "No"], handler: { (index) in
@@ -119,28 +113,39 @@ extension OtherUserProfileController {
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if status == .accept {
-                /*
-                 unself.friendType = .addFriend
-                 unself.isShowMessageButton = false
-                 unself.tableView.reloadData()
-                 */
                 Utils.alert(message: "Are you sure you want to reject friend request of \(unself.userInfo?.name ?? "")?", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.moderateFriendRequestAPI(type: "decline")
                     }
                 })
             } else {
-                let controller = ChatRoomViewController()
-                controller.isGroupChat = false
-                controller.chatDetailType = .single
-                controller.userName = unself.userInfo?.name ?? ""
-                controller.hidesBottomBarWhenPushed = true
-                let friend = Friend()
-                friend.user = unself.userInfo
-                controller.friendProfile = friend
-                unself.navigationController?.pushViewController(controller, animated: true)
+                unself.checkIsChatExistOrNot()
             }
         }
+    }
+    
+    func checkIsChatExistOrNot() {
+        Utils.showSpinner()
+        ChatManager().getListOfFilterGroups(name: "", type: "single", userId: userInfo?.userId ?? "", { [weak self] (data) in
+            guard let unsafe = self else { return }
+            Utils.hideSpinner()
+            let controller = ChatRoomViewController()
+            controller.isGroupChat = false
+            controller.chatDetailType = .single
+            controller.userName = unsafe.userInfo?.name ?? ""
+            controller.hidesBottomBarWhenPushed = true
+            let friend = Friend()
+            friend.user = unsafe.userInfo
+            controller.friendProfile = friend
+            controller.hidesBottomBarWhenPushed = true
+            
+            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
+                controller.channel = channels.first
+            }
+            unsafe.navigationController?.pushViewController(controller, animated: true)
+        }, errorHandler: { (error) in
+            print(error?.localizedDescription ?? "")
+        })
     }
     
     func fillEventCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
@@ -279,7 +284,7 @@ extension OtherUserProfileController {
         //pagination not done
         let param = [Keys.pageNo: pageNoClass, Keys.search: "", Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
-        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if unsafe.pageNoClass == 1 {
                 unsafe.classList.removeAll()
@@ -294,7 +299,6 @@ extension OtherUserProfileController {
             } else {
                 if unsafe.pageNoClass == 1 || (unsafe.pageNoClass > 1 && data?.count == 0) {
                     unsafe.isNextPageClass = false
-//                    unsafe.getMyJoinedClasses(search: "")
                 }
             }
                unsafe.tableView.reloadData()

@@ -202,7 +202,7 @@ extension ChatManager {
         })
     }
     
-    func getListOfFilterGroups(name: String, type: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+    func getListOfFilterGroups(name: String, type: String, userId: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
@@ -221,7 +221,20 @@ extension ChatManager {
         let list = [AnyHashable]()
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
-            completionHandler(channels)
+            
+            if type == "single" {
+                
+                //Filter for member Id
+                let predicateUserId = NSPredicate(format: "ANY members.userId = '\(userId)'")
+                let userchannel = (channels as NSArray?)?.filtered(using: predicateUserId)
+                
+                //Filter for loggedIn user Id
+                let predicateId = NSPredicate(format: "ANY members.userId = '\(Authorization.shared.profile?.userId ?? "0")'")
+                let channels = (userchannel as NSArray?)?.filtered(using: predicateId)
+                completionHandler(channels)
+            } else {
+                completionHandler(channels)
+            }
         }, errorHandler: { (_) in
             
         })
@@ -380,6 +393,7 @@ extension ChatManager {
             errorHandler(error)
         })
     }
+
 }
 
 // MARK: - Update channel
