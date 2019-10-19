@@ -119,11 +119,10 @@ struct ViewControllerId {
     static let addRSVPViewController             = "AddRSVPViewController"
     static let chatRoomViewController            = "ChatRoomViewController"
     static let createClubViewController          = "CreateClubViewController"
-    static let enterPasswordViewConteroller          = "EnterPasswordViewConteroller"
-    static let enterEmailViewConteroller          = "EnterEmailViewConteroller"
-
-
-    
+    static let enterPasswordViewConteroller      = "EnterPasswordViewConteroller"
+    static let enterEmailViewConteroller         = "EnterEmailViewConteroller"
+    static let clubDetailViewController          = "ClubDetailViewController"
+    static let eventDetailViewController         = "EventDetailViewController"
 }
 
 /* Create the struct for Section wise */
@@ -221,8 +220,8 @@ struct Segues {
     static let userInterestSegue                  = "UserInterestSegue"
     static let eventPostImages                    = "EventPostImagesSegue"
     static let eventInvitedPeople                 = "EventInvitedPeopleSegue"
+    static let eventInterest                      = "EventInterestSegue"
     static let addUniversitySegue                 = "AddUniversitySegue"
-
 }
 
 struct StoryBoard {
@@ -231,6 +230,7 @@ struct StoryBoard {
     static let tabbar                    =     "Tabbar"
     static let home                      =     "Home"
     static let rsvp                      =     "RSVP"
+    static let eventDetail               =     "EventDetail"
 }
 
 public struct Text {
@@ -456,6 +456,9 @@ enum NotificationType: String, Codable {
     case upVoted = "upVoted"
     case downVoted = "downVoted"
     case newComment = "newComment"
+    case updateEvent = "updateEvent"
+    case updateClub = "updateClub"
+    case updateClass = "updateClass"
 }
 
 enum UserProfileDetailType {

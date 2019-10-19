@@ -43,12 +43,33 @@ class NotificationCell: UITableViewCell {
 
 extension NotificationCell {
     
-    func set(friend: Friend?, text: String) {
-        let friendNameText = "{friend_user_name}"
-        let name = startSeparator + (friend?.user?.name ?? "") + endSeparator
-        let detailText = text.replacingOccurrences(of: friendNameText, with: name)
+    func set(object: Any?, text: String) {
+        
+        var key = ""
+        var value = ""
+        var photo: Image?
+
+        if let club = object as? Club {
+            key = "{club_name}"
+            value = startSeparator + (club.clubName ?? "") + endSeparator
+            photo = club.photo
+        } else if let event = object as? Event {
+            key = "{event_name}"
+            value = startSeparator + event.title + endSeparator
+            photo = event.photo
+        } else if let classObject = object as? Class {
+            key = "{class_name}"
+            value = startSeparator + classObject.name + endSeparator
+            //photo = classObject.classList?.last?.photo
+        } else if let friend = object as? Friend {
+            key = "{friend_user_name}"
+            value = startSeparator + (friend.user?.name ?? "") + endSeparator
+            photo = friend.user?.photo
+        }
+        
+        let detailText = text.replacingOccurrences(of: key, with: value)
         label.attributedText = getFormattedString(string: detailText)
-        userImageView.sd_setImage(with: friend?.user?.photo?.urlThumb(), placeholderImage: nil)
+        userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: nil)
         eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: nil)
     }
     

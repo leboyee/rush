@@ -197,6 +197,10 @@ extension EventDetailViewController {
         performSegue(withIdentifier: Segues.eventDetailCalendar, sender: nil)
     }
     
+    func showInterestBasedEvent(_ interest: Interest) {
+        performSegue(withIdentifier: Segues.eventInterest, sender: interest)
+    }
+    
     func showLocationOnMap() {
         if let lat = event?.latitude, let lon = event?.longitude, let latitude = Double(lat), let longitude = Double(lon) {
             // Set the region of the map that is rendered.
@@ -291,6 +295,11 @@ extension EventDetailViewController {
                     vc.currentIndex = index + 1
                 }
               }
+        } else if segue.identifier == Segues.eventInterest {
+            if let vc = segue.destination as? EventCategoryListViewController {
+                vc.interest = sender as? Interest
+                vc.type = .event
+            }
         }
     }
 }

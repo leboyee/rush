@@ -92,6 +92,16 @@
             </objects>
             <point key="canvasLocation" x="2412" y="-745"/>
         </scene>
+        <!--EventCategoryListViewController-->
+        <scene sceneID="zcy-qK-TG5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="EventCategoryListViewController" id="rai-06-iF1" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jgC-gC-Wto"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4jV-7A-TeT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2443" y="-709"/>
+        </scene>
         <!--PostViewController-->
         <scene sceneID="8Up-uQ-Iqg">
             <objects>
@@ -190,6 +200,7 @@
                         <segue destination="8w5-JG-CYh" kind="show" identifier="EventDetailCalendarSegue" id="tta-hH-Pgn"/>
                         <segue destination="qIu-mv-feI" kind="presentation" identifier="EventPostImagesSegue" modalPresentationStyle="fullScreen" id="kFC-CM-4ml"/>
                         <segue destination="Xxw-PA-vc0" kind="show" identifier="EventInvitedPeopleSegue" id="Fkq-9x-32g"/>
+                        <segue destination="rai-06-iF1" kind="show" identifier="EventInterestSegue" id="9Sh-ng-zFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -33,6 +33,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         let oldPushToken = Utils.getDataFromUserDefault(kPushToken) as? String ?? ""
         updateToken(deviceTokenString: deviceTokenString, oldPushToken: oldPushToken)
+        Utils.saveDataToUserDefault(deviceToken, kDeviceTokenPushDataKey)
+
+        registerPushTokenWithSendBird()
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -56,20 +59,32 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func handlePush(_ userInfo: [String: Any]) {
         if Authorization.shared.authorized {
             if UIApplication.shared.applicationState != .active {
-                if let aps = userInfo["aps"] as? [String: Any], let _ = aps["type"] as? String {
-                    
-                    Utils.saveDataToUserDefault(true, kOpenFromPushNotification)
-                    if let viewcontroller = window?.rootViewController as? UITabBarController {
-                        let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
-                        //Check current tab is 2 and navigation controller has first view is NotificationListViewController, so we need to update list
-                        if viewcontroller.selectedIndex == 2, let vc = selectedNavigationController?.viewControllers.first as? ChatsViewController {
-                            vc.getListOfGroups()
-                        } else {
-                            selectedNavigationController?.dismiss(animated: false, completion: nil)
-                            selectedNavigationController?.popToRootViewController (animated: false)
-                            viewcontroller.selectedIndex = 2
+                if let data = userInfo["sendbird"] as? [String: Any] {
+                    //Show Message Screen
+                    if let channel = data["channel"] as? [String: Any] {
+                        if let url = channel["channel_url"] as? String {
+                            print("Chat channel url: \(url)")
+                            Utils.saveDataToUserDefault(true, kOpenFromPushNotification)
+                            if let viewcontroller = window?.rootViewController as? UITabBarController {
+                                let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
+                                //Check current tab is 2 and navigation controller has first view is NotificationListViewController, so we need to update list
+                                if viewcontroller.selectedIndex == 2, let vc = selectedNavigationController?.viewControllers.first as? ChatsViewController {
+                                    vc.getListOfGroups()
+                                } else {
+                                    selectedNavigationController?.dismiss(animated: false, completion: nil)
+                                    selectedNavigationController?.popToRootViewController(animated: false)
+                                    viewcontroller.selectedIndex = 2
+                                }
+                            }
+                            
                         }
                     }
+                } else if let aps = userInfo["aps"] as? [String: Any], let _ = aps["type"] as? String {
+                    
+                    if let viewcontroller = window?.rootViewController as? UITabBarController {
+                        viewcontroller.selectedIndex = 3
+                    }
+                    
                 }
             }
         }

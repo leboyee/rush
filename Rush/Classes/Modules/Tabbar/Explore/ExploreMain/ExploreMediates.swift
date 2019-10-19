@@ -126,7 +126,7 @@ extension ExploreViewController: UITextFieldDelegate {
             getClubCategoryListAPI()
         } else if searchType == .classes {
             getClassCategoryAPI()
-        }else if searchType == .people {
+        } else if searchType == .people {
             getFriendListAPI()
         }
     }

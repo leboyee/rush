@@ -130,6 +130,20 @@ extension Date {
         return dateFormatter.string(from: newDate ?? Date())
     }
     
+    // Convert local time to UTC (or GMT)
+       func toGlobalTime() -> Date {
+           let timezone = TimeZone.current
+           let seconds = -TimeInterval(timezone.secondsFromGMT(for: self))
+           return Date(timeInterval: seconds, since: self)
+       }
+
+       // Convert UTC (or GMT) to local time
+       func toLocalTime() -> Date {
+           let timezone = TimeZone.current
+           let seconds = TimeInterval(timezone.secondsFromGMT(for: self))
+           return Date(timeInterval: seconds, since: self)
+       }
+    
     public static func secondsBetween(date1 d1: Date, date2 d2: Date) -> Int {
         let dc = Calendar.current.dateComponents([.second], from: d1, to: d2)
         return dc.second!

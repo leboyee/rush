@@ -491,9 +491,9 @@ extension ChatRoomViewController {
         
         // View calender button setup
         let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
-        if clubInfo != nil {
+        if clubInfo != nil || channel?.customType == "club" {
             viewCalender.setTitle("View club details", for: .normal)
-        } else  if eventInfo != nil {
+        } else  if eventInfo != nil || channel?.customType == "event" {
             viewCalender.setTitle("View event details", for: .normal)
         } else {
             viewCalender.setTitle("View profile", for: .normal)
@@ -547,15 +547,34 @@ extension ChatRoomViewController {
     }
     
     @objc func openUserProfileScreen() {
-        let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController) as? OtherUserProfileController else { return }
-        if let friend = friendProfile {
-            controller.userInfo = friend.user
-        } else if profileUserId.isNotEmpty {
-            let user = User()
-            user.id = Int64(profileUserId) ?? 0
-            controller.userInfo = user
+        
+        if clubInfo != nil || channel?.customType == "club" {
+            let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+            guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.clubDetailViewController) as? ClubDetailViewController else { return }
+            if clubInfo != nil {
+                controller.clubInfo = clubInfo
+            } else {
+                let club = Club()
+                club.id = Int64(channel?.data ?? "0") ?? 0
+                controller.clubInfo = club
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else if eventInfo != nil || channel?.customType == "event" {
+            let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
+            guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
+            controller.eventId = channel?.data ?? "0"
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+            guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController) as? OtherUserProfileController else { return }
+            if let friend = friendProfile {
+                controller.userInfo = friend.user
+            } else if profileUserId.isNotEmpty {
+                let user = User()
+                user.id = Int64(profileUserId) ?? 0
+                controller.userInfo = user
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
         }
-        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

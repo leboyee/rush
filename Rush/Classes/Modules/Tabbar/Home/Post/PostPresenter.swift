@@ -25,12 +25,19 @@ extension PostViewController {
     func userDetailCell(_ cell: UserNameTableViewCell) {
         
         if let post = postInfo {
-            cell.setup(title: post.user?.name ?? "")
-            cell.setup(detail: "Posting in " + (clubInfo?.clubName ?? ""))
-            cell.setup(url: post.user?.photo?.url())
-        } else if let subclass = subclassInfo { // Subclass
-            cell.setup(title: Authorization.shared.profile?.name ?? "")
+            if post.userId == Int(Authorization.shared.profile?.userId ?? "-1") {
+                cell.setup(title: Authorization.shared.profile?.name ?? "")
+                cell.setup(url: Authorization.shared.profile?.photo?.urlThumb())
+            } else {
+                cell.setup(title: post.user?.name ?? "")
+                cell.setup(url: post.user?.photo?.url())
+            }
+        }
+        
+        if let subclass = subclassInfo { // Subclass
             cell.setup(detail: "Posting in " + (subclass.name))
+        } else if let club = clubInfo {
+            cell.setup(detail: "Posting in " + (club.clubName ?? ""))
         }
     }
     
@@ -97,7 +104,7 @@ extension PostViewController {
         
         var desc = comment?.desc ?? ""
         desc = desc.replacingOccurrences(of: "[@|{}]", with: "", options: .regularExpression, range: nil)
-        let mensionId = comment?.mentionedUser?.first?.id ?? ""
+        let mensionId = "\(comment?.mentionedUser?.first?.id ?? 0)"
         if desc.contains(mensionId) {
             desc = desc.replacingOccurrences(of: mensionId, with: "")
             cell.setup(name: comment?.mentionedUser?.first?.name ?? "", attributedText: desc)

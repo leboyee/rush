@@ -69,21 +69,6 @@ class OtherUserProfileController: UIViewController {
     
     func setupUI() {
         
-        /*
-         scrollView.delegate = self
-         
-         tableView.layer.cornerRadius = 24
-         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-         
-         let total = (screenWidth * 0.85) + Utils.navigationHeigh + 18
-         heightConstraintOfImageView.constant = total
-         
-         scrollView.contentInset = UIEdgeInsets(top: (total * 0.5223), left: 0, bottom: 0, right: 0)
-         //        topConstraintOfScrollViw.constant = (total * 0.5223) + Utils.navigationHeigh + 18
-         
-         topConstraintOfLabel.constant = (total * 0.6)
-         */
-        
         topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         // share button
@@ -142,7 +127,9 @@ extension OtherUserProfileController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+          let classjoined = sender as? ClassJoined
+            vc.selectedGroup = classjoined?.classGroup
+            vc.subclassInfo = classjoined?.classes
         } else if segue.identifier == Segues.otherProfileEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {

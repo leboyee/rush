@@ -89,7 +89,9 @@
         <!--EventDetail-->
         <scene sceneID="PCa-G5-pyl">
             <objects>
-                <viewControllerPlaceholder storyboardName="EventDetail" id="KEM-eO-SVs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="KEM-eO-SVs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WJy-99-9zU"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLh-hr-j2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="549" y="295"/>
@@ -748,7 +750,9 @@
         <!--ClubDetailViewController-->
         <scene sceneID="cec-TL-oMS">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="ClubDetailViewController" id="mi6-YI-bln" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder referencedIdentifier="ClubDetailViewController" id="mi6-YI-bln" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jXf-fe-Qnq"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cO-9k-nvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2020" y="1270"/>
@@ -1090,6 +1094,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rSF-iG-oyc"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fKG-cy-MJP"/>
                     <connections>
                         <outlet property="containView" destination="vdy-yw-FIA" id="zsc-jm-oAu"/>
                         <outlet property="firstSegmentButton" destination="kuC-it-jon" id="zqI-kB-fC3"/>
@@ -1097,6 +1102,10 @@
                         <outlet property="segmentContainView" destination="mGf-Fn-OZe" id="FHe-xr-2W4"/>
                         <outlet property="tableView" destination="hOi-Yl-Xqs" id="wMX-jI-uFK"/>
                         <outlet property="topConstraintOfTableView" destination="pO8-eb-BTD" id="rkl-5V-UG8"/>
+                        <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfile" id="wCm-Cn-4f5"/>
+                        <segue destination="tgq-BU-5qI" kind="show" identifier="ClubDetailSegue" id="Z2T-Ex-vst"/>
+                        <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="GeF-AR-VOr"/>
+                        <segue destination="KEM-eO-SVs" kind="show" identifier="EventDetailSegue" id="CaI-qS-W91"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaI-BF-S47" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1120,12 +1129,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
-                                <rect key="frame" x="0.0" y="57" width="414" height="752.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
+                                <rect key="frame" x="0.0" y="57" width="414" height="786"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="809.5" width="414" height="52.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-cp-dBF">
@@ -1135,10 +1144,10 @@
                                             <constraint firstAttribute="height" constant="1" id="lgu-4k-bNO"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
                                         <rect key="frame" x="16" y="8" width="342" height="36.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="310" height="36.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -1154,7 +1163,7 @@
                                             <constraint firstItem="oh8-FT-Rgh" firstAttribute="top" secondItem="Gar-6h-cWt" secondAttribute="top" id="ufI-IH-qnS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
                                         <rect key="frame" x="374" y="14.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="2OE-ZK-g2l"/>
@@ -1168,10 +1177,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="gHo-cp-dBF" firstAttribute="top" secondItem="bRg-Fz-ojJ" secondAttribute="top" id="V4h-yR-htg"/>
                                     <constraint firstAttribute="trailing" secondItem="pRr-GQ-Oev" secondAttribute="trailing" constant="16" id="aXQ-9r-ALZ"/>
                                     <constraint firstItem="Gar-6h-cWt" firstAttribute="leading" secondItem="bRg-Fz-ojJ" secondAttribute="leading" constant="16" id="d7w-qE-oOR"/>
                                     <constraint firstItem="gHo-cp-dBF" firstAttribute="leading" secondItem="bRg-Fz-ojJ" secondAttribute="leading" id="ldi-1I-lWg"/>
-                                    <constraint firstItem="gHo-cp-dBF" firstAttribute="top" secondItem="bRg-Fz-ojJ" secondAttribute="top" id="mXs-B0-sQ3"/>
                                     <constraint firstAttribute="trailing" secondItem="gHo-cp-dBF" secondAttribute="trailing" id="q8v-J6-qrM"/>
                                     <constraint firstAttribute="bottom" secondItem="Gar-6h-cWt" secondAttribute="bottom" constant="8" id="swM-Vk-0ab"/>
                                     <constraint firstItem="pRr-GQ-Oev" firstAttribute="centerY" secondItem="bRg-Fz-ojJ" secondAttribute="centerY" id="trK-9o-d6p"/>
@@ -1183,10 +1192,10 @@
                         <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="CAi-QB-nk1" secondAttribute="bottom" constant="-24" id="1YE-Zw-DCP"/>
+                            <constraint firstAttribute="bottom" secondItem="DLh-Vm-q6n" secondAttribute="bottom" constant="53" id="Q52-6o-MFG"/>
                             <constraint firstItem="CAi-QB-nk1" firstAttribute="leading" secondItem="EKr-N6-Jz5" secondAttribute="leading" id="T2a-er-dUj"/>
-                            <constraint firstItem="EKr-N6-Jz5" firstAttribute="bottom" secondItem="bRg-Fz-ojJ" secondAttribute="bottom" id="aUS-ec-GE3"/>
+                            <constraint firstItem="EKr-N6-Jz5" firstAttribute="bottom" secondItem="bRg-Fz-ojJ" secondAttribute="bottom" id="bqL-sZ-c1h"/>
                             <constraint firstItem="DLh-Vm-q6n" firstAttribute="top" secondItem="EKr-N6-Jz5" secondAttribute="top" constant="13" id="cLN-pZ-ykX"/>
-                            <constraint firstItem="bRg-Fz-ojJ" firstAttribute="top" secondItem="DLh-Vm-q6n" secondAttribute="bottom" id="ccX-j4-skK"/>
                             <constraint firstItem="bRg-Fz-ojJ" firstAttribute="leading" secondItem="EKr-N6-Jz5" secondAttribute="leading" id="mCH-KY-oTC"/>
                             <constraint firstItem="DLh-Vm-q6n" firstAttribute="leading" secondItem="EKr-N6-Jz5" secondAttribute="leading" id="mo2-KL-vUy"/>
                             <constraint firstItem="CAi-QB-nk1" firstAttribute="trailing" secondItem="EKr-N6-Jz5" secondAttribute="trailing" id="nwk-SP-akC"/>
@@ -1203,6 +1212,7 @@
                         <outlet property="tableView" destination="DLh-Vm-q6n" id="3EI-N7-qWL"/>
                         <outlet property="textBgView" destination="Gar-6h-cWt" id="XBw-jV-N0T"/>
                         <outlet property="textView" destination="oh8-FT-Rgh" id="18C-g3-sJW"/>
+                        <outlet property="viewBottamConstraint" destination="bqL-sZ-c1h" id="Wgi-8r-hbg"/>
                         <segue destination="0uI-5Q-VQI" kind="show" identifier="OtherUserProfileSegue" id="BAj-kr-2kr"/>
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" animates="NO" modalPresentationStyle="overFullScreen" id="yEd-FR-LAH"/>
                         <segue destination="DQ2-gS-zaw" kind="presentation" identifier="NotificationAlertSegue" modalPresentationStyle="overFullScreen" id="2TP-dH-Htm"/>
@@ -1215,7 +1225,9 @@
         <!--OtherUserProfileController-->
         <scene sceneID="0nT-rf-7QM">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="OtherUserProfileController" id="0uI-5Q-VQI" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder referencedIdentifier="OtherUserProfileController" id="0uI-5Q-VQI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uH7-Db-jxW"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNr-Ha-G1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2367" y="510"/>
@@ -1814,16 +1826,16 @@
         <image name="whiteMore" width="32" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L5B-Xz-z9C"/>
+        <segue reference="GeF-AR-VOr"/>
         <segue reference="yk0-VO-M9j"/>
-        <segue reference="Wms-RB-fEB"/>
-        <segue reference="0IY-Pg-ID3"/>
-        <segue reference="YgH-R3-42x"/>
+        <segue reference="Z2T-Ex-vst"/>
+        <segue reference="yEd-FR-LAH"/>
+        <segue reference="S8E-ms-kaf"/>
         <segue reference="z8H-lu-6pg"/>
         <segue reference="E7I-YA-fBT"/>
-        <segue reference="6WS-Tq-lcO"/>
+        <segue reference="90w-At-CBu"/>
         <segue reference="g4h-St-bby"/>
         <segue reference="gSU-VJ-XvQ"/>
-        <segue reference="Oel-AB-j6R"/>
+        <segue reference="CaI-qS-W91"/>
     </inferredMetricsTieBreakers>
 </document>

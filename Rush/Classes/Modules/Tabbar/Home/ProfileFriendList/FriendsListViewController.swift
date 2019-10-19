@@ -9,7 +9,7 @@
 import UIKit
 
 class FriendsListViewController: UIViewController {
-
+    
     var type: UserProfileDetailType = .clubs
     @IBOutlet weak var firstSegmentButton: UIButton!
     @IBOutlet weak var secondSegmentButton: UIButton!
@@ -19,6 +19,13 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var segmentContainView: UIView!
     var exploreType: ExploreSearchType = .none
     var inviteeList = [Invitee]()
+    var myClassesList = [ClassJoined]()
+    var firstTabList = [Any]()
+    var firstTabPageNo = 1
+    var firstTabNextPageExist = false
+    var secondTabList = [Any]()
+    var secondTabPageNo = 1
+    var secondTabNextPageExist = false
     var goingInviteeList = [Invitee]()
     var notGoingInviteeList = [Invitee]()
     var isFirstTime = false
@@ -32,14 +39,34 @@ class FriendsListViewController: UIViewController {
     var userInfo: User?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        /*if type == .events {
+         if firstSegmentButton.isSelected && firstTabList.count == 0 {
+         getAttendingEventList()
+         } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+         getManagedEventList()
+         }
+         } else  if type == .clubs {
+         if firstSegmentButton.isSelected && firstTabList.count == 0 {
+         getJoinedClubListAPI()
+         } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+         getManagedClubList()
+         }
+         } else  if type == .friends {
+         if firstSegmentButton.isSelected && firstTabList.count == 0 {
+         getFriendsListAPI()
+         } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+         getMutualFriendsListAPI()}
+         } else  */
+        if type == .classes {
+            getMyJoinedClasses()
+        }
     }
     
     func setupUI() {
@@ -52,9 +79,15 @@ class FriendsListViewController: UIViewController {
         }
         // Setup tableview
         setupTableView()
+        if type == .classes || type == .friends || type == .clubs || type == .events {
+            // Set navigation title
+            userName = userInfo?.name ?? "User"
+            let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
+            navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+        } else {
         
         // Set navigation title
-        let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
+       // let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
         //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
         
         if exploreType == .event {
@@ -62,7 +95,7 @@ class FriendsListViewController: UIViewController {
            fetchInvitees(search: "", type: .notGoing)
         }
         
-        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+           let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
             searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
             searchTextFiled?.font = UIFont.displayBold(sz: 24)
             searchTextFiled?.textColor = UIColor.white
@@ -71,12 +104,16 @@ class FriendsListViewController: UIViewController {
             searchTextFiled?.delegate = self
             let font = UIFont.displayBold(sz: 24)
             let color = UIColor.navBarTitleWhite32
-            searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "Search attendees", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            let title = "Search attendees"
+            searchTextFiled?.attributedPlaceholder = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
             searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-        customView.addSubview(searchTextFiled ?? UITextField())
+            customView.addSubview(searchTextFiled ?? UITextField())
             navigationItem.titleView = customView
             self.view.backgroundColor = UIColor.bgBlack
-
+        }
+        if exploreType == .event {
+            fetchInvitees(search: "")
+        }
     }
     
     func selectedSegment(tag: Int) {
@@ -104,17 +141,32 @@ class FriendsListViewController: UIViewController {
         var firstTitle = ""
         var secondTitle = ""
         if type == .friends {
-            firstTitle = "122 friends"
-            secondTitle = "20 mutual"
+            firstTitle = "Friends"
+            secondTitle = "Mutual"
+            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+                getFriendsListAPI()
+            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+                getMutualFriendsListAPI()
+            }
         } else if type == .events {
-            firstTitle = "4 attending"
-            secondTitle = "3 managed"
+            firstTitle = "Attending"
+            secondTitle = "Managed"
+            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+                getAttendingEventList()
+            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+                getManagedEventList()
+            }
         } else if type == .clubs {
-            firstTitle = "3 joined"
-            secondTitle = "0 managed"
-        }
-               
-        if exploreType == .event {
+            firstTitle = "Joined"
+            secondTitle = "Managed"
+            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+                getJoinedClubListAPI()
+            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+                getManagedClubList()
+            }
+        } else if type == .classes {
+            getMyJoinedClasses()
+        } else if exploreType == .event {
             firstTitle = "0 going"
             secondTitle = "0 not going"
             searchTextFiled?.text = ""
@@ -124,7 +176,7 @@ class FriendsListViewController: UIViewController {
         }
         firstSegmentButton.setTitle(firstTitle, for: .normal)
         secondSegmentButton.setTitle(secondTitle, for: .normal)
-
+        
         let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftbarButton
     }
@@ -153,13 +205,32 @@ extension FriendsListViewController {
 
 // MARK: - Navigation
 extension FriendsListViewController {
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == Segues.friendProfileSegue {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.friendProfileSegue {
             if let vc = segue.destination as? OtherUserProfileController {
                 vc.userInfo = sender as? User
                 //vc.delegate = self
             }
+        } else if segue.identifier == Segues.eventDetailSegue {
+            if let vc = segue.destination as? EventDetailViewController {
+                if let event = sender as? Event {
+                    vc.eventId = String(event.id)
+                    vc.event = event
+                }
+            }
+        } else if segue.identifier == Segues.classDetailSegue {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            let classjoined = sender as? ClassJoined
+            vc.selectedGroup = classjoined?.classGroup
+            vc.subclassInfo = classjoined?.classes
+        } else if segue.identifier == Segues.clubDetailSegue {
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+        } else if segue.identifier == Segues.otherUserProfile {
+            let vc = segue.destination as? OtherUserProfileController
+            let friend = sender as? Friend
+            vc?.userInfo = friend?.user
+            //        vc?.delegate = self
         }
-     }
+    }
 }
-

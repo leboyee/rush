@@ -23,7 +23,6 @@ let kAppOpenFirstTime           = "kAppOpenFirstTime"
 
 // MARK: - User Default
 let kLastLocation               = "com.rush.lastlocation"
-let kDeviceTokenPushKey         = "com.rush.devicetokenpush"
 let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
 let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 let kHomeTutorialKey            = "com.rush.hometutorial"
@@ -72,6 +71,7 @@ struct Keys {
     static let orderBy            = "order_by"
     static let isOnlyFriendJoined = "is_only_friend_joined"
     static let toStartDate        = "to_start"
+    static let isMutual           = "is_mutual"
 
     static let clubName = "club_name"
     static let clubDesc = "club_desc"

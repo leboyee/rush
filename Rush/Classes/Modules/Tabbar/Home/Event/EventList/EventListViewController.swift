@@ -134,7 +134,7 @@ extension EventListViewController {
                 }
             }
         } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
-            let vc = segue.destination as? EventJoinedPopupViewController
+            //let vc = segue.destination as? EventJoinedPopupViewController
             //vc?.event = event
         }
     }
