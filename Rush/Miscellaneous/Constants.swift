@@ -221,6 +221,7 @@ struct Segues {
     static let eventPostImages                    = "EventPostImagesSegue"
     static let eventInvitedPeople                 = "EventInvitedPeopleSegue"
     static let eventInterest                      = "EventInterestSegue"
+    static let addUniversitySegue                 = "AddUniversitySegue"
 }
 
 struct StoryBoard {
@@ -353,6 +354,8 @@ public struct Text {
     static let addMinor                  = "Add minor"
     static let addAnotherMajor           = "Add another major"
     static let addAnotherMinor           = "Add another minor"
+    static let addUniversity               = "Add university"
+
 }
 
 public struct Message {
@@ -476,4 +479,11 @@ enum ChatDetailType: String {
     case club = "club"
     case event = "event"
     case classes = "classes"
+}
+
+enum AddUniversityType {
+    case register
+    case editProfile
+    case createEvent
+    case createClub
 }

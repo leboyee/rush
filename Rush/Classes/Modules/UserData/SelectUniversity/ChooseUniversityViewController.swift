@@ -9,6 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol ChooseUnivesityDelegate: class {
+    func selectedUniversity(_ university: University)
+}
+
 class ChooseUniversityViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
@@ -18,11 +22,14 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var noResultView: UIView!
+
     var universityArray = [University]()
     var selectedIndex = -1
-    var isEditUserProfile: Bool = false
+    var addUniversityType: AddUniversityType = .register
     var pageNo: Int = 1
     var isNextPageExist: Bool = false
+    weak var delegate: ChooseUnivesityDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +40,8 @@ class ChooseUniversityViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        if isEditUserProfile == true {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        if addUniversityType == .editProfile || addUniversityType == .createEvent {
             pageControl.isHidden = true
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -62,7 +70,7 @@ class ChooseUniversityViewController: CustomViewController {
         self.bgImageView.setBgForLoginSignup()
         setCustomNavigationBarView()
         deleteButton.isHidden = true
-
+        noResultView.isHidden = true
     }
     
     // Custom navigation Title View
@@ -94,8 +102,14 @@ class ChooseUniversityViewController: CustomViewController {
 // MARK: - Other Function
 extension ChooseUniversityViewController {
     func moveToNext() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.updateProfileAPI()
+        if self.addUniversityType == .createEvent {
+            let university = universityArray[selectedIndex]
+            self.delegate?.selectedUniversity(university)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.updateProfileAPI()
+            }
         }
     }
 }
@@ -114,12 +128,19 @@ extension ChooseUniversityViewController {
     @IBAction func addImageViewButtonAction() {
         
     }
+    
+    @IBAction func deleteButtonAction() {
+        searchTextField.text = ""
+        deleteButton.isHidden = true
+        getUniversity(searchText: "")
+    }
+
 }
 
 // MARK: - Preseneter
 extension ChooseUniversityViewController {
     func profileUpdateSuccess() {
-        if self.isEditUserProfile == true {
+        if self.addUniversityType == .editProfile {
             self.navigationController?.popViewController(animated: true)
         } else {
             

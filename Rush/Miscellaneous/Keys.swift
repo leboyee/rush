@@ -144,6 +144,7 @@ struct Keys {
     static let eventIsChatGroup = "event_is_chat_group"
     static let eventInvitedUserIds = "event_invited_user_ids"
     static let eventPhoto = "event_photo"
+    static let eventUniversityId = "event_university_id"
     static let eventId = "event_id"
     static let isOnlyFriendGoing = "is_only_friend_going"
     static let fromStart = "from_start"
@@ -154,7 +155,7 @@ struct Keys {
     static let postId = "post_id"
     static let parentId = "parent_id"
 
-    static let eventContact = "event_Contact"
+    static let eventContact = "event_invited_contacts"
     static let isFirstJoin  = "isFirstJoin"
     static let otherUserId = "other_user_id"
     static let action = "action"
