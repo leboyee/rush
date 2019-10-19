@@ -181,6 +181,7 @@ extension ClassDetailViewController: PostViewProtocol {
 // MARK: - CreatePostViewController Delegate
 extension ClassDetailViewController: CreatePostViewControllerDelegate {
     func createPostSuccess(_ post: Post) {
+        performSegue(withIdentifier: Segues.postSegue, sender: post)
     }
     
     func showSnackBar(text: String, buttonText: String) {

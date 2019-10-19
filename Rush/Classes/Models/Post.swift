@@ -26,6 +26,7 @@ class Post: Codable {
     private var parentIdP: Int64 = 0 // Event / Club / Class
 
     var text: String?
+    var userId: Int = 0
     var totalUpVote: Int = 0
     var numberOfLikes: Int = 0
     var numberOfUnLikes: Int = 0
@@ -52,6 +53,7 @@ class Post: Codable {
     private enum CodingKeys: String, CodingKey {
         case id = "post_id"
         case parentIdP = "data_id"
+        case userId = "user_id"
         case text = "post_desc"
         case imageJson = "photos"
         case totalUpVote = "total_votes"

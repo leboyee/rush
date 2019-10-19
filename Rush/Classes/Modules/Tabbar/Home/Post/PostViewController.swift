@@ -21,6 +21,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var textBgView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var bottomView: CustomView!
+    @IBOutlet weak var viewBottamConstraint: NSLayoutConstraint!
     
     weak var delegate: PostViewProtocol?
     
@@ -53,7 +54,11 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enable = false
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func setupUI() {
@@ -84,6 +89,14 @@ class PostViewController: UIViewController {
             imageList.append(UIImage(named: "bound-add-img")!)
         }
         
+        // Notification's of keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if UIDevice.current.hasNotch {
+            let bottomPadding = self.view?.safeAreaInsets.bottom
+            viewBottamConstraint.constant = -(bottomPadding ?? 0)
+        }
         getAllCommentListAPI()
     }
 }
@@ -99,6 +112,28 @@ extension PostViewController {
             addCommentAPI()
             textView.resignFirstResponder()
         }
+    }
+}
+
+// MARK: - Keyboard delegates
+extension PostViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            var keyboardHeight = keyboardRectangle.height
+            if tabBarController?.tabBar.isHidden == false {
+                keyboardHeight -= tabBarController?.tabBar.frame.height ?? 0
+            }
+            
+            UIView.animate(withDuration: 0.8) {
+                self.viewBottamConstraint.constant = keyboardHeight
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        viewBottamConstraint.constant = 8
     }
 }
 
