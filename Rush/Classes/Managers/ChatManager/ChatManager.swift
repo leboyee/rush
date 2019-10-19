@@ -201,6 +201,44 @@ extension ChatManager {
             }
         })
     }
+    
+    func getListOfFilterGroups(name: String, type: String, userId: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
+        
+        // Include empty group channels.
+        query?.includeEmptyChannel = true
+        
+        query?.order = SBDGroupChannelListOrder.latestLastMessage
+        
+        query?.limit = 100
+        
+        query?.customTypesFilter = [type]
+        
+        query?.channelNameContainsFilter = name
+        
+        query?.publicChannelFilter = .all
+        
+        let list = [AnyHashable]()
+        loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
+            //We can not use direct because new created group come at bottom of list.
+            
+            if type == "single" {
+                
+                //Filter for member Id
+                let predicateUserId = NSPredicate(format: "ANY members.userId = '\(userId)'")
+                let userchannel = (channels as NSArray?)?.filtered(using: predicateUserId)
+                
+                //Filter for loggedIn user Id
+                let predicateId = NSPredicate(format: "ANY members.userId = '\(Authorization.shared.profile?.userId ?? "0")'")
+                let channels = (userchannel as NSArray?)?.filtered(using: predicateId)
+                completionHandler(channels)
+            } else {
+                completionHandler(channels)
+            }
+        }, errorHandler: { (_) in
+            
+        })
+    }
 }
 
 // MARK: - Read and unread message count
@@ -355,6 +393,7 @@ extension ChatManager {
             errorHandler(error)
         })
     }
+
 }
 
 // MARK: - Update channel
