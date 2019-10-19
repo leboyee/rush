@@ -43,7 +43,7 @@ class FriendsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if type == .events {
+        /*if type == .events {
             if firstSegmentButton.isSelected && firstTabList.count == 0 {
                 getAttendingEventList()
             } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
@@ -60,7 +60,8 @@ class FriendsListViewController: UIViewController {
                 getFriendsListAPI()
             } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
                 getMutualFriendsListAPI()}
-        } else  if type == .classes {
+        } else  */
+        if type == .classes {
             getMyJoinedClasses()
         }
     }

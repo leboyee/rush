@@ -232,8 +232,10 @@ extension EventDetailViewController {
             }
         }
         
-        cell.cellSelected = { (_, _, _) in
-            Utils.notReadyAlert()
+        cell.cellSelected = { [weak self] (_, _, index) in
+            if cell.cellType == .interests, let interest = self?.event?.interests?[index] {
+                self?.showInterestBasedEvent(interest)
+            }
         }
     }
     

@@ -254,7 +254,7 @@
         <!--Event Category List View Controller-->
         <scene sceneID="Woa-0f-gpl">
             <objects>
-                <viewController storyboardIdentifier="EventCategoryListViewController" id="wtT-AY-LdS" customClass="EventCategoryListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventCategoryListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wtT-AY-LdS" customClass="EventCategoryListViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="BG3-ZF-O7p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

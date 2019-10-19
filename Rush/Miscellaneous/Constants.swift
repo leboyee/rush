@@ -218,6 +218,7 @@ struct Segues {
     static let userInterestSegue                  = "UserInterestSegue"
     static let eventPostImages                    = "EventPostImagesSegue"
     static let eventInvitedPeople                 = "EventInvitedPeopleSegue"
+    static let eventInterest                      = "EventInterestSegue"
 }
 
 struct StoryBoard {
