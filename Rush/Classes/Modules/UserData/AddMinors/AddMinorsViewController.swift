@@ -149,6 +149,8 @@ extension AddMinorsViewController {
         searchTextField.text = ""
         deleteButton.isHidden = true
         self.minorCustomButton.isHidden = true
+        getMinorList(searchText: "")
+
     }
 }
 

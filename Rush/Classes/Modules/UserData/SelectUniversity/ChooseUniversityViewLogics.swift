@@ -59,6 +59,8 @@ extension ChooseUniversityViewController {
                     unsafe.universityArray.removeAll()
                 }
             }
+            
+            unsafe.noResultView.isHidden = unsafe.universityArray.count > 0 ? true : false
             unsafe.tableView.reloadData()
         }
     }

@@ -24,7 +24,7 @@ extension CreateEventViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 4 || indexPath.section == 5 {
+        if indexPath.section == 5 || indexPath.section == 6 {
             if indexPath.row == 0 {
                 return 64
             } else {
@@ -43,13 +43,13 @@ extension CreateEventViewController {
             return isEditEvent == true ? 2 : 1
         } else if section == 2 {
             return rsvpArray.count + 1
-        } else if section == 4 {
+        } else if section == 5 {
             return isStartDate == true ? 2 : isStartTime == true ? 2 : 1
         } else if section == 5 {
             return isEndDate == true ? 2 : isEndTime == true ? 2 : 1
-        } else if section == 6 {
-            return interestList.count + 1
         } else if section == 7 {
+            return interestList.count + 1
+        } else if section == 8 {
             return peopleList.count + 1
         }
         return 1
@@ -68,10 +68,10 @@ extension CreateEventViewController {
     }
     
     func fillAddCalendarCell(_ cell: AddEventCalendarCell, _ indexPath: IndexPath) {
-        if indexPath.section == 4 {
+        if indexPath.section == 5 {
             cell.calendarView.delegate = self
             cell.calendarView.minimumSelectedDate = Date()
-        } else if indexPath.section == 5 {
+        } else if indexPath.section == 6 {
             cell.calendarView.delegate = self
             cell.calendarView.minimumSelectedDate = Date()
         }
@@ -79,16 +79,16 @@ extension CreateEventViewController {
     
     func fillEventTimeCell(_ cell: EventTimeCell, _ indexPath: IndexPath) {
         
-        cell.datePicker.date = indexPath.section == 4 ? startTimeDate : endTimeDate
-        if indexPath.section == 4  && startDate.isSameDate(Date()) {
+        cell.datePicker.date = indexPath.section == 5 ? startTimeDate : endTimeDate
+        if indexPath.section == 5  && startDate.isSameDate(Date()) {
             cell.setMinimumTime(date: Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900))
-        } else if indexPath.section == 5  && endDate.isSameDate(Date()) {
+        } else if indexPath.section == 6  && endDate.isSameDate(Date()) {
             cell.setMinimumTime(date: Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900))
         }
         cell.timeSelected = {
             [weak self] (date) in
             guard let unsafe = self else { return }
-            if indexPath.section == 4 {
+            if indexPath.section == 5 {
                 unsafe.startTimeDate = date
                 cell.datePicker.date = date
                 /*if unsafe.startDate.isSameDate(unsafe.endDate) && unsafe.startTimeDate > unsafe.endTimeDate {
@@ -114,7 +114,7 @@ extension CreateEventViewController {
     
     func fillDateAndTimeEvent(_ cell: DateAndTimeCell, _ indexPath: IndexPath) {
         
-        if indexPath.section == 4 {
+        if indexPath.section == 5 {
             cell.setup(dateButtonText: self.startDate.toString(format: "EEE, dd MMM"))
             cell.setup(timeButtonText: startTime.isEmpty == true ? "01:00 PM" : startTime)
             cell.separatorView.isHidden = true
@@ -257,7 +257,13 @@ extension CreateEventViewController {
             cell.setup(placeholder: Text.addLocation)
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
-        } else if indexPath.section == 6 {
+        } else if indexPath.section == 4 {
+            cell.setup(iconImage: "addLocation")
+            cell.setup(placeholder: Text.addUniversity, text: university?.universityName ?? "")
+            cell.setup(placeholder: Text.addUniversity)
+            cell.setup(isHideClearButton: true)
+            cell.setup(isEnabled: false)
+        } else if indexPath.section == 7 {
             if indexPath.row == (interestList.count) {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
@@ -271,7 +277,7 @@ extension CreateEventViewController {
                 cell.setup(placeholder: "", text: interest.interestName)
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
-        } else if indexPath.section == 7 {
+        } else if indexPath.section == 8 {
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
@@ -318,14 +324,14 @@ extension CreateEventViewController {
             } else if indexPath.section == 3 {
                 unsafe.address = ""
                 unsafe.tableView.reloadData()
-            } else if indexPath.section == 6 {
+            } else if indexPath.section == 7 {
                 // S*
                 let interest = unsafe.interestList[indexPath.row]
                 if let index = unsafe.interestList.firstIndex(where: { $0.interestName == interest.interestName }) {
                     unsafe.interestList.remove(at: index)
                     unsafe.tableView.reloadData()
                 }
-            } else if indexPath.section == 7 {
+            } else if indexPath.section == 8 {
                 if let index = unsafe.peopleList.firstIndex(of: (unsafe.peopleList[indexPath.row])) {
                     unsafe.peopleList.remove(at: index)
                     unsafe.tableView.reloadData()
@@ -381,11 +387,12 @@ extension CreateEventViewController {
     }
     
     func validateAllFields() {
+        let universityName = self.university?.universityName ?? ""
         var array = rsvpArray
         if array.last?.isEmpty == true {
             array.remove(at: array.count - 1)
         }
-        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList.count ) > 0 {
+        if (eventImage != nil || self.clubHeader.userImageView.image != nil) && nameEvent.isNotEmpty && (interestList.count ) > 0 && universityName.isNotEmpty {
             
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
@@ -501,6 +508,14 @@ extension CreateEventViewController: SelectEventTypeDelegate {
     }
 }
 
+// MARK: - Choose University delegate
+extension CreateEventViewController: ChooseUnivesityDelegate {
+    func selectedUniversity(_ university: University) {
+        self.university = university
+        self.validateAllFields()
+        self.tableView.reloadData()
+    }
+}
 // MARK: - Club header delegate
 extension CreateEventViewController: ClubHeaderDelegate {
     func infoOfClub() {
@@ -635,6 +650,7 @@ extension CreateEventViewController {
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
             Keys.eventPhoto: img,
+            Keys.eventUniversityId: university?.universtiyId ?? 0,
             Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
         
         Utils.showSpinner()
@@ -698,6 +714,7 @@ extension CreateEventViewController {
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
             Keys.eventPhoto: img,
+            Keys.eventUniversityId: university?.universtiyId ?? 0,
             Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
         
         Utils.showSpinner()

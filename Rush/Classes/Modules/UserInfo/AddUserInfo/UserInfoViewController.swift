@@ -135,6 +135,7 @@ extension UserInfoViewController {
         if segue.identifier == Segues.addLocationSegue {
             if let vc = segue.destination as? AddLocationViewController {
                 vc.delegate = self
+                vc.isRegister = true
             }
         }
     }

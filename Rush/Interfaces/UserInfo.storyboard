@@ -155,7 +155,7 @@
                         <outlet property="titleLabelOne" destination="VAq-eN-2eS" id="JTg-ck-DME"/>
                         <outlet property="titleLableTwo" destination="h65-2G-Uf0" id="yfG-D2-NS9"/>
                         <segue destination="h9X-yK-yho" kind="show" identifier="AddInviteViewSegue" animates="NO" id="GUW-jX-25t"/>
-                        <segue destination="4dC-DX-a2Y" kind="presentation" identifier="RegAddLocationSegue" id="c2P-4e-jrt"/>
+                        <segue destination="4dC-DX-a2Y" kind="show" identifier="RegAddLocationSegue" id="c2P-4e-jrt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcZ-Te-nBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
