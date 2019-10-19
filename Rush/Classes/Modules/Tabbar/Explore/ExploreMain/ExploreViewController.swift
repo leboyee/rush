@@ -56,6 +56,7 @@ class ExploreViewController: CustomViewController {
     var classCategoryList = [Class]()
     var peopleList = [Friend]()
     
+    var selUniversity = University()
     override func viewDidLoad() {
         super.viewDidLoad()
         
