@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource {
+extension EventGoingFriendsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         
@@ -30,27 +30,14 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if type == .friends {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
-            fillCell(cell, indexPath)
-            return cell
-        } else if type == .events {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-            fillEventByDateCell(cell, indexPath)
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
-            fillFriendClubCell(cell, indexPath)
-            return cell
-        }
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
+                 fillCell(cell, indexPath)
+                 return cell
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if type == .events || type == .clubs || type == .friends || type == .classes {
           selectedCell(indexPath)
-        }
-
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -62,9 +49,11 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-extension FriendsListViewController: UITextFieldDelegate {
+extension EventGoingFriendsViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
-
+        let searchText = textField.text ?? ""
+        pageNo = 1
+        fetchInvitees(search: searchText,type: inviteType)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -78,16 +67,5 @@ extension FriendsListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-}
-// MARK: - OtherUserProfile delegate
-extension FriendsListViewController: OtherUserProfileProtocol {
-    func unfriendUser(_ name: String) {
-        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
-            duration: .middle,
-            actionText: "",
-            actionBlock: { (_) in
-        })
-        snackbar.show()
     }
 }

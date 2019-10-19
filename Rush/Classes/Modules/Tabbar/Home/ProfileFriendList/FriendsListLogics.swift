@@ -29,39 +29,22 @@ extension FriendsListViewController {
     
     func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
         if type == .friends {
-                       var friend = Friend()
+            var friend = Friend()
             if firstSegmentButton.isSelected {
                 friend = firstTabList[indexPath.row] as? Friend ?? friend
             } else {
                 friend = secondTabList[indexPath.row] as? Friend ?? friend
             }
-        return inviteType == .going ? goingInviteeList.count : notGoingInviteeList.count
-    }
-    
-    func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
-        if inviteType == .going {
-            let invitee = goingInviteeList[indexPath.row]
-            cell.setup(name: invitee.user?.name ?? "")
-            if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                cell.setup(url: url)
-            }
-        } else {
-            let invitee = notGoingInviteeList[indexPath.row]
-            cell.setup(name: invitee.user?.name ?? "")
-            if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                cell.setup(url: url)
-            }
-        }
-
+            
         } else {
             let invitee = inviteeList[indexPath.row]
-                   cell.setup(name: invitee.user?.name ?? "")
-                   if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                       cell.setup(url: url)
-                   }
+            cell.setup(name: invitee.user?.name ?? "")
+            if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                cell.setup(url: url)
+            }
         }
     }
-    
+        
     func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         //               if indexPath.row == 0 {
         //                   cell.setup(topConstraint: -16)
@@ -87,8 +70,8 @@ extension FriendsListViewController {
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
             cell.setup(imageUrl: joinedClass.classes?.photo.photo?.urlThumb())
         }
-        
     }
+    
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
         var event = Event()
         if firstSegmentButton.isSelected {
@@ -104,7 +87,9 @@ extension FriendsListViewController {
         cell.setup(start: event.start, end: event.end)
         cell.setup(eventImageUrl: event.photo?.urlThumb())
     }
+    
     func willDisplay(_ indexPath: IndexPath) {
+        
         if type == .classes && indexPath.row == myClassesList.count - 3 && isNextPageExist == true {
             pageNo += 1
             getMyJoinedClasses()
@@ -120,7 +105,7 @@ extension FriendsListViewController {
                 getFriendsListAPI()
             }
         } else if secondTabNextPageExist == true, indexPath.row == secondTabList.count - 3 {
-           secondTabPageNo += 1
+            secondTabPageNo += 1
             if type == .events {
                 getManagedEventList()
             } else if type == .clubs {
@@ -128,8 +113,6 @@ extension FriendsListViewController {
             } else if type == .friends {
                 getMutualFriendsListAPI()
             }
-        if isNextPageExist == true, indexPath.row == (inviteType == .going ? goingInviteeList.count - 1 : notGoingInviteeList.count - 1) {
-            fetchInvitees(search: searchTextFiled?.text ?? "", type: inviteType)
         }
     }
     
@@ -175,6 +158,7 @@ extension FriendsListViewController {
 
 // MARK: - Services
 extension FriendsListViewController {
+    
     func fetchInvitees(search: String) {
         if pageNo == 1 {
             inviteeList.removeAll()
@@ -402,6 +386,7 @@ extension FriendsListViewController {
             unsafe.tableView.reloadData()
             
         }
+    }
             
     func fetchInvitees(search: String, type: InviteType) {
         Utils.showSpinner()

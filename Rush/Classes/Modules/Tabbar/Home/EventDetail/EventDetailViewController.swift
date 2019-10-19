@@ -282,10 +282,8 @@ extension EventDetailViewController {
                 vc.selectedDate = event?.start ?? Date()
             }
         } else if segue.identifier == Segues.eventInvitedPeople {
-            if let vc = segue.destination as? FriendsListViewController {
-                vc.exploreType = ExploreSearchType.event
+            if let vc = segue.destination as? EventGoingFriendsViewController {
                 vc.eventId = event?.id ?? 0
-                vc.isAttendace = true
             }
         } else if segue.identifier == Segues.eventPostImages {
               if let vc = segue.destination as? UserProfileGalleryViewController {
