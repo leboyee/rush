@@ -167,6 +167,7 @@
                         <segue destination="WXk-Wr-F2K" kind="show" identifier="CreateEventInviteSegue" id="17T-p5-hva"/>
                         <segue destination="eFl-xf-c2X" kind="show" identifier="CreateEventInterestSegue" id="5my-nz-HtT"/>
                         <segue destination="pb6-xY-cwN" kind="show" identifier="ClubDetailSegue" id="3Or-8N-wZ3"/>
+                        <segue destination="xlE-J6-kaC" kind="show" identifier="AddUniversitySegue" id="j7u-xg-ziq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2d-t1-Ohx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -380,8 +381,11 @@
                     <connections>
                         <outlet property="curentAdressLabel" destination="85U-9L-kqi" id="TD3-So-SFH"/>
                         <outlet property="gestureView" destination="z1T-Ir-8Tg" id="Wnh-7J-Tw0"/>
+                        <outlet property="handlerImageView" destination="oFC-AD-GFD" id="kp7-ys-nbh"/>
                         <outlet property="locationEntryTextField" destination="Oal-uh-x7m" id="B5G-K4-9ro"/>
                         <outlet property="tableView" destination="zxa-oF-C9n" id="gi3-6q-Y0n"/>
+                        <outlet property="topLayoutConstraint" destination="Y0q-im-Pnm" id="o2q-kk-rNU"/>
+                        <outlet property="topSearchTextLayoutConstraint" destination="1Lh-rh-3if" id="rEZ-Zc-2QY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQb-9R-OFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -544,7 +548,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, there are no events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-s8-HCd">
-                                                <rect key="frame" x="124.5" y="104" width="165" height="16"/>
+                                                <rect key="frame" x="132.5" y="104" width="149" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="8V9-M7-5sm"/>
                                                 </constraints>
@@ -732,6 +736,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56C-C8-Sf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1454" y="1742"/>
+        </scene>
+        <!--ChooseUniversityViewController-->
+        <scene sceneID="X9N-iK-wrM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserData" referencedIdentifier="ChooseUniversityViewController" id="xlE-J6-kaC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8pN-rN-hOg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bqX-59-VQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1214" y="1298"/>
         </scene>
     </scenes>
     <resources>

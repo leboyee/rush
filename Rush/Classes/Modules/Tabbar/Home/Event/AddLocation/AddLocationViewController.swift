@@ -19,12 +19,16 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var gestureView: UIView!
     @IBOutlet weak var locationEntryTextField: UITextField!
     @IBOutlet weak var curentAdressLabel: UILabel!
-    
+    @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var handlerImageView: UIImageView!
+    @IBOutlet weak var topSearchTextLayoutConstraint: NSLayoutConstraint!
+
     var completerResults: [MKLocalSearchCompletion] = []
     var mapItemToPresent: MKMapItem?
     let searchCompleter = MKLocalSearchCompleter()
     let locationManager = CLLocationManager()
     var usersCurrentLocation: CLLocation?
+    var isRegister = false
     weak var delegate: AddEventLocationDelegate?
 
     // MARK: - View-Life Cycle
@@ -63,6 +67,12 @@ class AddLocationViewController: UIViewController {
     func setup() {
         
         self.searchCompleter.delegate = self
+        if isRegister == true {
+            self.searchCompleter.filterType = .locationsOnly
+            self.topLayoutConstraint.constant = 0
+            self.topSearchTextLayoutConstraint.constant = 0
+            self.handlerImageView.isHidden = true
+        }
         self.locationEntryTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         // Ask for Authorisation from the User.
@@ -124,8 +134,11 @@ extension AddLocationViewController {
     func selectedCell() {
         self.view.endEditing(true)
         self.delegate?.addEventLocationData(curentAdressLabel.text ?? "", latitude: self.usersCurrentLocation?.coordinate.latitude ?? 0.0, longitude: self.usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        self.dismiss(animated: true, completion: nil)
-
+        if isRegister == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

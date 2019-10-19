@@ -45,7 +45,11 @@ extension AddLocationViewController {
                 // pass this "self.mapItemToPresent" to previous screen
                 print("selected map item is : \(String(describing: self.mapItemToPresent))")
                 self.delegate?.addEventLocationData(searchResult.title + " " + searchResult.subtitle, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.longitude ?? 0.0)
-                self.dismiss(animated: true, completion: nil)
+                if self.isRegister == true {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
             } else if let error = error {
 //                self.view.makeToast("Failed to fetch address information: \(error.localizedDescription)")
                 print("Failed to fetch address information: \(error.localizedDescription)")
@@ -135,3 +139,34 @@ extension AddLocationViewController {
         
     }
 }
+/*
+   func cellCount(_ section: Int) -> Int {
+         let array = self.completerResults.map({ $0.subtitle })
+         print("count",array.count)
+         return array.count
+     }
+     
+     func fillLocationCell(_ cell: AddEventLocationCell, _ indexPath: IndexPath) {
+         let array = self.completerResults.map({ $0.subtitle })
+         print("count\n",array)
+         cell.setup(titleText: array[indexPath.row])
+ //        cell.setup(titleText: self.completerResults[indexPath.row].subtitle)
+     }
+ 
+ self.searchResults = completer.results.filter { result in
+           if !result.title.contains(",") {
+               return false
+           }
+
+           if result.title.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
+               return false
+           }
+
+           if result.subtitle.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
+               return false
+           }
+
+           return true
+       }
+
+ */
