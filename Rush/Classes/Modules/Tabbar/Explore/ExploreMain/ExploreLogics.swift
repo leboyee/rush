@@ -197,6 +197,8 @@ extension ExploreViewController {
         
         var params = [Keys.pageNo: eventCatPageNo] as [String: Any]
         params[Keys.search] = searchText
+        params[Keys.universityId] = selUniversity.universtiyId
+                      
         ServiceManager.shared.fetchEventCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -228,6 +230,7 @@ extension ExploreViewController {
         //Utils.showSpinner()
         var params = [Keys.pageNo: clubCatPageNo] as [String: Any]
         params[Keys.search] = searchText
+        params[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -262,7 +265,8 @@ extension ExploreViewController {
         var params = [Keys.pageNo: pageNo] as [String: Any]
         params[Keys.search] = searchText
         params[Keys.profileUserId] = Authorization.shared.profile?.userId
-        
+        params[Keys.universityId] = selUniversity.universtiyId
+              
         ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
@@ -292,10 +296,11 @@ extension ExploreViewController {
     }
     func getClubListAPI(sortBy: String) {
         
-        let param = [Keys.search: searchText,
+        var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
                      Keys.pageNo: 1] as [String: Any]
-        
+        param[Keys.universityId] = selUniversity.universtiyId
+              
         if clubList.count == 0 {
             Utils.showSpinner()
         }
@@ -318,13 +323,14 @@ extension ExploreViewController {
         let startDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "00:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate)
         let endDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate)
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+        var param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.fromStart: startDate,
                      Keys.toStart: endDate,
                      Keys.pageNo: 1] as [String: Any]
-        
+        param[Keys.universityId] = selUniversity.universtiyId
+              
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -338,8 +344,9 @@ extension ExploreViewController {
     }
     
     func getClassListAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
-        
+        var param = [Keys.pageNo: pageNo] as [String: Any]
+        param[Keys.universityId] = selUniversity.universtiyId
+              
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
@@ -351,8 +358,9 @@ extension ExploreViewController {
         }
     }
     func getClassCategoryAPI() {
-        let param = [Keys.pageNo: "1"] as [String: Any]
-        
+        var param = [Keys.pageNo: "1"] as [String: Any]
+        param[Keys.universityId] = selUniversity.universtiyId
+              
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }

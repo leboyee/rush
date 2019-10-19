@@ -205,7 +205,8 @@ extension ClassDetailViewController {
     func fillImageHeader(_ view: UserImagesHeaderView) {
         let img = Image(json: subclassInfo?.photo ?? "")
         view.setup(imageUrl: img.url())
-        view.setup(isHideHoverView: true)
+        view.setup(isHideHoverView: false)
+        view.setup(isHidePhotoButton: true)
     }
    
     func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
