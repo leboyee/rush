@@ -329,6 +329,9 @@ extension ChatRoomViewController {
                         }
                     }
                 }
+            } else {
+                imageName = channel?.coverUrl ?? ""
+                userName = channel?.name ?? ""
             }
         } else if let frnd = friendProfile {
             imageName = frnd.user?.photo?.thumb ?? ""

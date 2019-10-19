@@ -315,7 +315,7 @@ extension ClubDetailViewController {
     
     func getClubDetailAPI() {
         
-        let id = clubInfo?.clubId ?? ""
+        let id = String(clubInfo?.id ?? 0)
         
         Utils.showSpinner()
         ServiceManager.shared.fetchClubDetail(clubId: id, params: [Keys.clubId: id]) { [weak self] (data, errorMsg) in
