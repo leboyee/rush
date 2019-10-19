@@ -33,7 +33,7 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 10
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,12 +41,12 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 8 {
+        if indexPath.section == 9 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell {
                 fillTextIconCell(cell, indexPath)
                 return cell
             }
-        } else if indexPath.section == 4 || indexPath.section == 5 {
+        } else if indexPath.section == 5 || indexPath.section == 6 {
             if indexPath.row == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
                     fillDateAndTimeEvent(cell, indexPath)

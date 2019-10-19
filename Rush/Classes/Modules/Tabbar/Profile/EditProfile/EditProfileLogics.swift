@@ -22,7 +22,11 @@ extension EditProfileViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 || indexPath.section == 2 {
-            return 64
+            if indexPath.section == 2 && indexPath.row == 0 {
+                return UITableView.automaticDimension
+            } else {
+                return 64
+            }
         }
         return UITableView.automaticDimension
     }
@@ -66,9 +70,10 @@ extension EditProfileViewController {
             cell.set(isHideRightButton: true)
             if indexPath.row == 0 {
                 let universityArray = profile?.university
+                let university = universityArray?.first
                 cell.set(title: Text.university)
-                cell.set(detail: universityArray?.first?.universityName ?? "")
-                cell.set(isDetails: universityArray?.first?.universityName.isNotEmpty ?? false)
+                cell.set(detail: university?.universityName ?? "")
+                cell.set(isDetails: university?.universityName.isNotEmpty ?? false)
             } else if indexPath.row == 1 {
                 cell.set(title: Text.level)
                 cell.set(detail: profile?.educationLevel ?? "")

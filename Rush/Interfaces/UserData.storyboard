@@ -768,6 +768,7 @@
                                         </constraints>
                                         <state key="normal" image="crossDelete"/>
                                         <connections>
+                                            <action selector="deleteButtonAction" destination="qZM-7i-FD0" eventType="touchUpInside" id="DV0-vW-4TP"/>
                                             <action selector="deleteButtonAction" destination="jiR-Nh-Qjh" eventType="touchUpInside" id="xqI-aI-bXy"/>
                                         </connections>
                                     </button>
@@ -794,9 +795,30 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-Yn-am5">
+                                <rect key="frame" x="0.0" y="191" width="414" height="705"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-R0-QPo" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="16" width="63" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Jq1-aa-SZu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Uqh-R0-QPo" firstAttribute="top" secondItem="7I1-Yn-am5" secondAttribute="top" constant="16" id="8xU-fX-Cfl"/>
+                                    <constraint firstItem="Uqh-R0-QPo" firstAttribute="centerX" secondItem="7I1-Yn-am5" secondAttribute="centerX" constant="2" id="9Xz-P8-HPO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7I1-Yn-am5" secondAttribute="bottom" id="6Z8-62-2KP"/>
+                            <constraint firstItem="7I1-Yn-am5" firstAttribute="leading" secondItem="F9U-KB-8yj" secondAttribute="leading" id="CJv-uC-2AB"/>
                             <constraint firstItem="0Cl-yW-OQs" firstAttribute="top" secondItem="6dK-at-E3g" secondAttribute="bottom" id="GW3-KM-L7A"/>
                             <constraint firstItem="6dK-at-E3g" firstAttribute="top" secondItem="F9U-KB-8yj" secondAttribute="top" constant="13" id="HhC-ZH-apT"/>
                             <constraint firstAttribute="bottom" secondItem="FYk-C8-OPY" secondAttribute="bottom" constant="-22" id="Pdi-VD-7dq"/>
@@ -804,9 +826,11 @@
                             <constraint firstItem="6dK-at-E3g" firstAttribute="trailing" secondItem="F9U-KB-8yj" secondAttribute="trailing" id="Ulr-Gf-f1S"/>
                             <constraint firstItem="FYk-C8-OPY" firstAttribute="leading" secondItem="F9U-KB-8yj" secondAttribute="leading" id="Xjl-M5-Z0S"/>
                             <constraint firstItem="6dK-at-E3g" firstAttribute="leading" secondItem="F9U-KB-8yj" secondAttribute="leading" id="ZIA-Ik-MVe"/>
+                            <constraint firstItem="7I1-Yn-am5" firstAttribute="top" secondItem="6dK-at-E3g" secondAttribute="bottom" id="fMu-KD-90o"/>
                             <constraint firstItem="0Cl-yW-OQs" firstAttribute="leading" secondItem="F9U-KB-8yj" secondAttribute="leading" id="g0n-lP-C5h"/>
                             <constraint firstItem="0Cl-yW-OQs" firstAttribute="trailing" secondItem="F9U-KB-8yj" secondAttribute="trailing" id="ga2-pc-DYy"/>
                             <constraint firstItem="FYk-C8-OPY" firstAttribute="trailing" secondItem="F9U-KB-8yj" secondAttribute="trailing" id="hrz-vZ-Rtv"/>
+                            <constraint firstItem="7I1-Yn-am5" firstAttribute="trailing" secondItem="F9U-KB-8yj" secondAttribute="trailing" id="rQD-Ii-dFm"/>
                             <constraint firstAttribute="bottom" secondItem="0Cl-yW-OQs" secondAttribute="bottom" id="y6v-94-igK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F9U-KB-8yj"/>
@@ -816,6 +840,7 @@
                     <connections>
                         <outlet property="bgImageView" destination="FYk-C8-OPY" id="u2C-De-k9R"/>
                         <outlet property="deleteButton" destination="p1P-L4-ssT" id="hVx-Le-7e3"/>
+                        <outlet property="noResultView" destination="7I1-Yn-am5" id="gMG-Vr-8b3"/>
                         <outlet property="pageControl" destination="Edv-SY-mbT" id="WKm-z6-M5s"/>
                         <outlet property="pageControllerLeadingConstraint" destination="9WQ-Ql-iLk" id="mae-II-eA5"/>
                         <outlet property="pageControllerView" destination="XcZ-YK-Xwt" id="RM3-QX-MVz"/>
@@ -846,7 +871,7 @@
                     <viewLayoutGuide key="safeArea" id="Mcm-qN-Ykx"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4571" y="-214"/>
+            <point key="canvasLocation" x="4569.5652173913049" y="-214.28571428571428"/>
         </scene>
         <!--Add Majors View Controller-->
         <scene sceneID="A0n-Ww-qTT">
@@ -896,6 +921,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edo-xS-h0U">
+                                        <rect key="frame" x="363" y="37" width="40" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="R4e-tp-Y1d"/>
+                                            <constraint firstAttribute="height" constant="40" id="vu7-fP-RGN"/>
+                                        </constraints>
+                                        <state key="normal" image="crossDelete"/>
+                                        <connections>
+                                            <action selector="deleteButtonAction" destination="jiR-Nh-Qjh" eventType="touchUpInside" id="39i-Gf-rey"/>
+                                            <action selector="deleteButtonAction" destination="T0c-Ag-wfC" eventType="touchUpInside" id="EgB-Ne-vBl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -903,10 +941,12 @@
                                     <constraint firstItem="chd-38-Ww8" firstAttribute="top" secondItem="jEV-z1-h7J" secondAttribute="bottom" constant="7" id="Bzf-Hr-9Oi"/>
                                     <constraint firstAttribute="height" constant="90" id="CLT-6N-wKo"/>
                                     <constraint firstItem="yJa-Ll-48X" firstAttribute="leading" secondItem="40N-P7-FGF" secondAttribute="leading" constant="24" id="Dri-j2-1fq"/>
+                                    <constraint firstItem="edo-xS-h0U" firstAttribute="centerY" secondItem="jEV-z1-h7J" secondAttribute="centerY" id="ZLi-MQ-nDF"/>
                                     <constraint firstItem="yJa-Ll-48X" firstAttribute="top" secondItem="40N-P7-FGF" secondAttribute="top" constant="16" id="aCE-Xq-oIh"/>
                                     <constraint firstItem="jEV-z1-h7J" firstAttribute="top" secondItem="yJa-Ll-48X" secondAttribute="bottom" constant="5" id="eA0-xq-k3A"/>
                                     <constraint firstItem="chd-38-Ww8" firstAttribute="leading" secondItem="40N-P7-FGF" secondAttribute="leading" id="fDd-ae-8jO"/>
                                     <constraint firstAttribute="trailing" secondItem="chd-38-Ww8" secondAttribute="trailing" id="kIm-gw-izK"/>
+                                    <constraint firstAttribute="trailing" secondItem="edo-xS-h0U" secondAttribute="trailing" constant="11" id="m1n-f1-cQl"/>
                                     <constraint firstAttribute="trailing" secondItem="yJa-Ll-48X" secondAttribute="trailing" constant="8" id="oXw-c6-3hb"/>
                                     <constraint firstAttribute="trailing" secondItem="jEV-z1-h7J" secondAttribute="trailing" constant="23" id="z0I-NN-Zgk"/>
                                 </constraints>
@@ -968,6 +1008,7 @@
                     <connections>
                         <outlet property="bgImageView" destination="KBf-Sq-Dmh" id="p5O-lX-VzQ"/>
                         <outlet property="bottomView" destination="g1f-Au-Lob" id="b6P-2d-JpV"/>
+                        <outlet property="deleteButton" destination="edo-xS-h0U" id="cQ0-v1-AOy"/>
                         <outlet property="nextButton" destination="c4j-pv-r0r" id="PAZ-S7-25I"/>
                         <outlet property="pageControl" destination="4SZ-bm-M2G" id="7Mc-Xr-Cb1"/>
                         <outlet property="pageControllerLeadingConstraint" destination="W3M-tI-CDg" id="Io1-E6-F8W"/>
@@ -1364,13 +1405,13 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="121"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interests" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCV-EN-tIv" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="70" width="367" height="33.5"/>
+                                        <rect key="frame" x="24" y="69.5" width="367" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose minimum 3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5li-tl-1sw" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="36" width="367" height="33.5"/>
+                                        <rect key="frame" x="24" y="36" width="367" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1385,7 +1426,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3Z-Hk-kdz">
-                                        <rect key="frame" x="0.0" y="119.5" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="118.5" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="JAG-YJ-Hey"/>

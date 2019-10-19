@@ -18,7 +18,6 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
                 
         tableView.register(UINib(nibName: Cell.addEventLocationCell, bundle: nil), forCellReuseIdentifier: Cell.addEventLocationCell)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 325, right: 0)
-
         tableView.reloadData()
     }
     

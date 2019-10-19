@@ -26,6 +26,9 @@ class FriendsListViewController: UIViewController {
     var secondTabList = [Any]()
     var secondTabPageNo = 1
     var secondTabNextPageExist = false
+    var goingInviteeList = [Invitee]()
+    var notGoingInviteeList = [Invitee]()
+    var isFirstTime = false
     var eventId: Int64 = 0
     var userName = "Jessica"
     var pageNo = 1
@@ -82,7 +85,17 @@ class FriendsListViewController: UIViewController {
             let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
         } else {
-            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        
+        // Set navigation title
+       // let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
+        //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+        
+        if exploreType == .event {
+           fetchInvitees(search: "", type: .going)
+           fetchInvitees(search: "", type: .notGoing)
+        }
+        
+           let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
             searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
             searchTextFiled?.font = UIFont.displayBold(sz: 24)
             searchTextFiled?.textColor = UIColor.white
@@ -156,8 +169,10 @@ class FriendsListViewController: UIViewController {
         } else if exploreType == .event {
             firstTitle = "0 going"
             secondTitle = "0 not going"
+            searchTextFiled?.text = ""
             pageNo = 1
-            fetchInvitees(search: searchTextFiled?.text ?? "")
+            fetchInvitees(search: "", type: inviteType)
+
         }
         firstSegmentButton.setTitle(firstTitle, for: .normal)
         secondSegmentButton.setTitle(secondTitle, for: .normal)

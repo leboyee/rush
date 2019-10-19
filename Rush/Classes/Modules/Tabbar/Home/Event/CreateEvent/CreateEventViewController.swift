@@ -33,6 +33,7 @@ class CreateEventViewController: UIViewController {
     var nameEvent = ""
     var eventDescription = ""
     var address = ""
+    var university: University?
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var eventImage: UIImage?
@@ -147,6 +148,7 @@ extension CreateEventViewController {
         endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
         eventId = String(event?.id ?? 1)
+        //self.university = event.un
 //        for invites in event?.invitee ?? [Invitee]() {
 //            let invite = Invite()
 //            invite.profile = invites.user
@@ -183,16 +185,18 @@ extension CreateEventViewController {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.addLocation, sender: self)
             }
-        } else if indexPath.section == 6 {
+        } else if indexPath.section == 4 {
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+                self.performSegue(withIdentifier: Segues.addUniversitySegue, sender: self)
             }
         } else if indexPath.section == 7 {
             DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+            }
+        } else if indexPath.section == 8 {
+            DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.createEventInviteSegue, sender: self)
             }
-        } else {
-            Utils.alert(message: "In Development")
         }
         
     }
@@ -227,6 +231,11 @@ extension CreateEventViewController {
         } else if segue.identifier == Segues.addLocation {
             if let vc = segue.destination as? AddLocationViewController {
                 vc.delegate = self
+            }
+        } else if segue.identifier == Segues.addUniversitySegue {
+            if let vc = segue.destination as? ChooseUniversityViewController {
+                vc.delegate = self
+                vc.addUniversityType = .createEvent
             }
         } else if segue.identifier == Segues.createEventInviteSegue {
             if let vc = segue.destination as? CreateEventInviteViewController {

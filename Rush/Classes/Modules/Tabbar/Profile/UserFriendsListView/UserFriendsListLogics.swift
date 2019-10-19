@@ -20,7 +20,7 @@ extension UserFriendsListViewController {
     
     func fillCell(_ cell: FriendListCell, _ indexPath: IndexPath) {
         let friend = friendsList[indexPath.row]
-        cell.setup(name: friend.friendName)
+        cell.setup(name: friend.user?.name ?? "")
         if let url = URL(string: friend.user?.photo?.thumb ?? "") {
             cell.setup(url: url)
         }

@@ -186,7 +186,7 @@ extension EditProfileViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == Segues.chooseUniversitySegue {
             if let vc = segue.destination as? ChooseUniversityViewController {
-                vc.isEditUserProfile = true
+                vc.addUniversityType = .editProfile
             }
         } else if segue.identifier == Segues.chooseLevelSegue {
             if let vc = segue.destination as? ChooseLevelViewController {
