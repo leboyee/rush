@@ -104,7 +104,7 @@ extension PostViewController {
         
         var desc = comment?.desc ?? ""
         desc = desc.replacingOccurrences(of: "[@|{}]", with: "", options: .regularExpression, range: nil)
-        let mensionId = comment?.mentionedUser?.first?.id ?? ""
+        let mensionId = "\(comment?.mentionedUser?.first?.id ?? 0)"
         if desc.contains(mensionId) {
             desc = desc.replacingOccurrences(of: mensionId, with: "")
             cell.setup(name: comment?.mentionedUser?.first?.name ?? "", attributedText: desc)

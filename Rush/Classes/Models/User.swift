@@ -133,12 +133,12 @@ class User: Codable {
 }
 
 class MentionedUser: Codable {
-    var id: String?
+    var id: Int64?
     var firstName: String?
     var lastName: String?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "user_id"
         case firstName = "first_name"
         case lastName = "last_name"
     }
