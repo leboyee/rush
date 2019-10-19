@@ -10,11 +10,11 @@ import UIKit
 
 class Comment: Codable {
 
-    var id: String?
-    var userId: String?
-    var parentId: String? // Event / Club / Class
+    var id: Int64?
+    var userId: Int64?
+    var parentId: Int64? // Event / Club / Class
     var desc: String?
-    var postId: String?
+    var postId: Int64?
     var totalThreadCount: Int = 0
     var user: User?
     var threadComment: [Comment]?
@@ -23,10 +23,10 @@ class Comment: Codable {
     var mentionedUserIds: [String]?
 
     private enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "cmt_id"
         case userId = "user_id"
         case parentId = "parent_id"
-        case desc = "desc"
+        case desc = "cmt_desc"
         case postId = "post_id"
         case totalThreadCount = "total_thread_count"
         case user

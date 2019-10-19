@@ -33,7 +33,13 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as? ChatListCell else { return UITableViewCell() }
         cell.delegate = self
         cell.tag = indexPath.row
+        /*
+         https://www.wrike.com/open.htm?id=410229719
+         */
         cell.rightButtons = [MGSwipeButton(title: "", icon: #imageLiteral(resourceName: "chat-delete"), backgroundColor: nil)]
+        cell.rightSwipeSettings.transition = .border
+        cell.rightExpansion.buttonIndex = 0
+        cell.rightExpansion.fillOnTrigger = true
         fillCell(cell, indexPath)
         return cell
     }
