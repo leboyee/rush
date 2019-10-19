@@ -14,6 +14,7 @@ class Club: Codable {
     private var clubUserId: Int64 = 0
     var clubName: String?
     var clubDesc: String?
+    var clubUniversityId: Int = 0
     var clubInterests: [Interest]?
     var clubPhoto: String?
     var clubIsChatGroup: Int = 0
@@ -29,6 +30,7 @@ class Club: Codable {
         case clubUserId = "club_user_id"
         case clubName = "club_name"
         case clubDesc = "club_desc"
+        case clubUniversityId = "club_university_id"
         case clubInterests = "club_interests"
         case clubPhoto = "club_photo"
         case clubIsChatGroup = "club_is_chat_group"

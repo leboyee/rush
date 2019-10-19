@@ -161,6 +161,11 @@ extension CreateClubViewController {
                 vc.delegate = self
                 vc.selectedInvitee = peopleList
             }
+        } else if segue.identifier == Segues.addUniversitySegue {
+            if let vc = segue.destination as? ChooseUniversityViewController {
+                vc.delegate = self
+                vc.addUniversityType = .createEvent
+            }
         }
     }
 }
