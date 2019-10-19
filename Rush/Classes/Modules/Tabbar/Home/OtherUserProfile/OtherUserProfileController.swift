@@ -142,7 +142,9 @@ extension OtherUserProfileController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
-            vc.classInfo = sender as? Class
+          let classjoined = sender as? ClassJoined
+            vc.selectedGroup = classjoined?.classGroup
+            vc.subclassInfo = classjoined?.classes
         } else if segue.identifier == Segues.otherProfileEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
