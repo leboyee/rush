@@ -338,6 +338,10 @@ extension EventDetailViewController {
             cell.set(name: post.user?.name ?? "")
             cell.set(time: post.createDate)
             cell.set(url: post.user?.photo?.urlThumb())
+            cell.moreEvent = { [weak self] () in
+                guard let unsafe = self else { return }
+                unsafe.sharePost(post: post)
+            }
         }
     }
     
