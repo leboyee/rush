@@ -26,7 +26,8 @@ class ContactsListViewController: UIViewController {
     var isSearch = false
     var searchItem = [ContactsPresenterItem]()
     weak var delegate: ContactsListProtocol?
-    
+    var countryCode: [[String: Any]] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
             setupUI()
@@ -42,6 +43,7 @@ class ContactsListViewController: UIViewController {
         self.view.backgroundColor = UIColor.bgBlack
         setupTableView()
         setupNavigation()
+        loadCountryJson()
         inviteButton.layer.cornerRadius = 8.0
         inviteButton.clipsToBounds = true
     }
@@ -61,7 +63,8 @@ extension ContactsListViewController {
                 self.delegate?.selectedContacts(self.selectedItem)
             }
         } else {
-            self.navigationController?.popViewController(animated: true)
+            contactInviteApi()
+            //self.navigationController?.popViewController(animated: true)
         }
         
     }

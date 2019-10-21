@@ -10,6 +10,8 @@ import UIKit
 import IQKeyboardManagerSwift
 import MapKit
 import CoreLocation
+import GooglePlaces
+import GoogleMapsBase
 
 extension AddLocationViewController {
         
@@ -18,12 +20,15 @@ extension AddLocationViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return self.completerResults.count
+        return self.isRegister == true ? self.searchList.count : self.completerResults.count
     }
     
     func fillLocationCell(_ cell: AddEventLocationCell, _ indexPath: IndexPath) {
-        cell.setup(titleText: self.completerResults[indexPath.row].title + " " + self.completerResults[indexPath.row].subtitle)
-//        cell.setup(titleText: self.completerResults[indexPath.row].subtitle)
+        if self.isRegister == true {
+            cell.setup(titleText: self.searchList[indexPath.row])
+        } else {
+             cell.setup(titleText: self.completerResults[indexPath.row].title + " " + self.completerResults[indexPath.row].subtitle)
+        }
     }
 }
 // Search location based on user search.
@@ -45,15 +50,31 @@ extension AddLocationViewController {
                 // pass this "self.mapItemToPresent" to previous screen
                 print("selected map item is : \(String(describing: self.mapItemToPresent))")
                 self.delegate?.addEventLocationData(searchResult.title + " " + searchResult.subtitle, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.longitude ?? 0.0)
-                if self.isRegister == true {
-                    self.navigationController?.popViewController(animated: true)
-                } else {
                     self.dismiss(animated: true, completion: nil)
-                }
             } else if let error = error {
 //                self.view.makeToast("Failed to fetch address information: \(error.localizedDescription)")
                 print("Failed to fetch address information: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func searchLatLong(address: String) {
+        Utils.showSpinner()
+
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, _) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+            else {
+                // handle no location found
+                Utils.hideSpinner()
+                return
+            }
+            self.delegate?.addEventLocationData(address, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            Utils.hideSpinner()
+            self.navigationController?.popViewController(animated: true)
+            // Use your location
         }
     }
     
@@ -170,3 +191,23 @@ extension AddLocationViewController {
        }
 
  */
+
+extension AddLocationViewController {
+
+    func searchPlaces(text: String) {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .city
+        placesClient.autocompleteQuery(text, bounds: nil, filter: filter, callback: { [weak self] (results, error) -> Void in
+            guard let uwself = self else { return }
+            if let error = error {
+                print("Autocomplete error \(error)")
+                return
+            }
+            if let results = results {
+                uwself.searchList = results.map({ $0.attributedFullText.string })
+            }
+            uwself.tableView.reloadData()
+        })
+    }
+    
+}

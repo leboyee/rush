@@ -33,6 +33,7 @@ extension UserFriendsListViewController {
     
     func willDisplay(_ indexPath: IndexPath) {
         if isNextPageExist == true, indexPath.row == friendsList.count - 1 {
+            print("counter:", friendsList.count)
             getFriendListAPI()
         }
     }
@@ -61,6 +62,7 @@ extension UserFriendsListViewController {
                         unsafe.friendsList = list
                     } else {
                         unsafe.friendsList.append(contentsOf: list)
+                        print("counter:", unsafe.friendsList.count)
                     }
                     unsafe.pageNo += 1
                     unsafe.isNextPageExist = true

@@ -246,7 +246,22 @@ extension CreateClubViewController {
         }
     }
 }
-
+// MARK: - SelectEventTypeController Delegate
+extension CreateClubViewController: SelectEventTypeDelegate {
+    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
+//        self.eventType = type
+        validateAllFields()
+    }
+    
+    func addPhotoEvent(_ type: PhotoFrom) {
+         self.openCameraOrLibrary(type: .photoLibrary)
+      /*  if type == .cameraRoll {
+            self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: false)
+        } else {
+            self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: true)
+        }*/
+    }
+}
 // MARK: - UIImagePickerControllerDelegate methods
 extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

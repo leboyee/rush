@@ -28,7 +28,7 @@ extension AppDelegate {
     
     // MARK: - Setup Google
     func setupGoogle() {
-        GMSPlacesClient.provideAPIKey("AIzaSyBa9T2HvCONOPsh73oB3AvCu0UDKOH8REM")
+        GMSPlacesClient.provideAPIKey("AIzaSyC45csdcctsz7um93P8Z4ui2yr68jtjmVE")
     }
     
 }
