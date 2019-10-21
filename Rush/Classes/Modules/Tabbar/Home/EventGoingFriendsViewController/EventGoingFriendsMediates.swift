@@ -53,7 +53,6 @@ extension EventGoingFriendsViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         let searchText = textField.text ?? ""
         pageNo = 1
-        
         fetchInvitees(search: searchText, type: inviteType)
     }
     

@@ -205,6 +205,17 @@ extension ServiceManager {
 
            }
        }
+    
+    func getUniversityListWithSession(params: [String: Any], closer: @escaping (_ university: [University]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
+             NetworkManager.shared.getUniversityWithSession(params: params) { [weak self] (data, error, code) in
+                 guard let unsafe = self else { return }
+              unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (university, _, errorMessage) in
+                  closer(university, errorMessage)
+              })
+
+             }
+         }
+
 
     // MARK: - Major Minor
     func getMajorList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {

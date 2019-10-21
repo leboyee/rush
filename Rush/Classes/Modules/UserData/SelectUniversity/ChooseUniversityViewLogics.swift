@@ -39,7 +39,8 @@ extension ChooseUniversityViewController {
     
     func getUniversity(searchText: String) {
         //Utils.showSpinner()
-        ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
+        task?.cancel()
+        task = ServiceManager.shared.getUniversityListWithSession(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
             guard let unsafe = self else { return }
             if unsafe.pageNo == 1 {
                 unsafe.universityArray.removeAll()

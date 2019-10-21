@@ -83,6 +83,11 @@ extension NetworkManager {
     func getUniversity(params: [String: Any], resultHandler: @escaping ResultClosure) {
           requestGet(path: "university", params: params, resultHandler: resultHandler)
       }
+    
+    func getUniversityWithSession(params: [String: Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
+        return getRequestGet(path: "university", params: params, resultHandler: resultHandler)
+       }
+
     // MARK: - Major and Minor list
     func getMajorList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "major", params: params, resultHandler: resultHandler)
@@ -198,6 +203,10 @@ extension NetworkManager {
         requestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
     }
     
+    func getInviteeListWithSession(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
+        return getRequestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
+       }
+    
     func getClubCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "interest/club/list", params: params, resultHandler: resultHandler)
     }
@@ -233,6 +242,10 @@ extension NetworkManager {
     // MARK: - Friend
     func getFriendList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "friend", params: params, resultHandler: resultHandler)
+    }
+    
+    func getFriendListWithSession(params : [String : Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
+        return getRequestGet(path: "friend", params: params, resultHandler: resultHandler)
     }
     
     func sendFriendRequest(param: [String: Any], resultHandler: @escaping ResultClosure) {
