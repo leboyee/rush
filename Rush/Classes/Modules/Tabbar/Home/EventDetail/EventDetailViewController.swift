@@ -257,7 +257,7 @@ extension EventDetailViewController {
         } else if segue.identifier == Segues.eventDetailShare {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
-                if let _ = sender as? Post {
+                if (sender as? Post) != nil {
                     vc.type = .post
                 } else {
                     vc.type = .event

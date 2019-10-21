@@ -52,7 +52,7 @@ class UserProfileGalleryViewController: UIViewController {
     func fillBottomProfile() {
         userNameLable.text = user.name
         timeLable.text = "5 AM"
-        guard let imageStr = user.photo?.thumb else { return  } //"https://tineye.com/images/widgets/mona.jpg"
+        guard let imageStr = user.photo?.thumb else { return } //"https://tineye.com/images/widgets/mona.jpg"
         profilePicImageView.sd_setImage(with: URL(string: imageStr), completed: nil)
     }
     

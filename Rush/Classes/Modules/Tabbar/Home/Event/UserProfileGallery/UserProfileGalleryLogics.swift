@@ -23,12 +23,12 @@ extension UserProfileGalleryViewController {
     
     func fillCell(_ cell: GalleryCell, _ indexPath: IndexPath) {
         let image = list[indexPath.row]
-        let urlStr: String = image.main 
+        let urlStr: String = image.main
         guard let url: URL = URL(string: urlStr) else { return }
         
        // Utils.showSpinner()
-        SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, data, error, true) in
-            cell.imageView.image=image
+        SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, _, _, _) in
+            cell.imageView.image = image
             self.selectedImage = image
             //Utils.hideSpinner()
         }
@@ -51,7 +51,7 @@ extension UserProfileGalleryViewController {
             if index == 0 {
                 let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [uwself.selectedImage ?? UIImage()], applicationActivities: nil)
                 activityViewController.popoverPresentationController?.sourceView = uwself.view
-                activityViewController.completionWithItemsHandler = { [weak self] (type, completed, items,error) in
+                activityViewController.completionWithItemsHandler = { (type, completed, items, error) in
                     //uwself.dismissShareSheet()
                 }
                 uwself.present(activityViewController, animated: true)

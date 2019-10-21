@@ -93,12 +93,12 @@ extension EnterVerificationCodeViewController {
 extension EnterVerificationCodeViewController {
     
     func signupApiCalled(code: String) {
-        let param = [Keys.email: profile.email ?? "", Keys.password: profile.password ?? "", Keys.countryCode: profile.countryCode ?? "", Keys.phone: profile.phone ?? "", Keys.phoneToken: code ?? ""] as [String: Any]
+        let param = [Keys.email: profile.email ?? "", Keys.password: profile.password ?? "", Keys.countryCode: profile.countryCode ?? "", Keys.phone: profile.phone ?? "", Keys.phoneToken: code] as [String: Any]
 
         ServiceManager.shared.singup(params: param) { [weak self] (status, _) in
             guard let unsafe = self else { return }
             if status {
-                if (Utils.getDataFromUserDefault(kPushToken) != nil) {
+                if Utils.getDataFromUserDefault(kPushToken) != nil {
                     //API call and when success
                     ServiceManager.shared.updatePushToken(closer: { (status, _) in
                         if status {
