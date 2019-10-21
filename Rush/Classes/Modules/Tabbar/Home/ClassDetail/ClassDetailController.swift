@@ -32,6 +32,11 @@ class ClassDetailViewController: UIViewController {
     var classId = "0"
     var groupId = "0"
     
+    let headerFullHeight: CGFloat = 367
+      let headerSmallWithDateHeight: CGFloat = 182
+      let headerSmallWithoutDateHeight: CGFloat = 114
+        @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
