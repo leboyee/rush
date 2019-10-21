@@ -39,5 +39,9 @@ target 'Rush' do
   
   pod 'UnsplashPhotoPicker', '~> 1.0'
   pod 'PanModal'
+  
+  #Google Places - Not use now
+  pod 'GooglePlaces'
+
 
 end

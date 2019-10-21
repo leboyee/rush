@@ -157,6 +157,7 @@ struct Keys {
     static let parentId = "parent_id"
 
     static let eventContact = "event_invited_contacts"
+    static let contactListInvite = "contact_list"
     static let isFirstJoin  = "isFirstJoin"
     static let otherUserId = "other_user_id"
     static let action = "action"

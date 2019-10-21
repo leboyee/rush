@@ -9,6 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import MapKit
+import GooglePlaces
+import GoogleMapsBase
 
 protocol AddEventLocationDelegate: class {
     func addEventLocationData(_ address: String, latitude: Double, longitude: Double)
@@ -29,6 +31,9 @@ class AddLocationViewController: UIViewController {
     let locationManager = CLLocationManager()
     var usersCurrentLocation: CLLocation?
     var isRegister = false
+    var searchList = [String]()
+    var placesClient = GMSPlacesClient.shared()
+
     weak var delegate: AddEventLocationDelegate?
 
     // MARK: - View-Life Cycle

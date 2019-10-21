@@ -57,6 +57,7 @@ class CreateEventViewController: UIViewController {
     let headerSmallWithoutDateHeight: CGFloat = 114
     var event: Event?
     var interestList = [Interest]()
+    var countryCode = [[String: Any]]()
     var rsvpArray = [String]()
     var eventType: EventType = .publik
     override func viewDidLoad() {
@@ -87,6 +88,7 @@ class CreateEventViewController: UIViewController {
         // Setup tableview
         setupTableView()
         fillImageHeader()
+        loadCountryJson()
         deleteButton.isHidden = true
         self.startTimeDate = Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900)
         self.endTimeDate = Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 4500)

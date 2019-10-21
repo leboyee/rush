@@ -57,6 +57,7 @@ extension UserFriendsListViewController: UITextFieldDelegate {
             rightBarButton?.image = #imageLiteral(resourceName: "plus_white")
         }
         pageNo = 1
+        friendsList.removeAll()
         getFriendListAPI()
 
     }

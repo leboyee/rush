@@ -221,6 +221,10 @@ extension NetworkManager {
         requestDelete(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
     }
     
+    func inviteContact(params: [String: Any], resultHandler: @escaping ResultClosure) {
+          requestPost(path: "contacts/invite", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+      }
+    
     // MARK: - Post API
     func getPostDetail(postId: String, resultHandler: @escaping ResultClosure) {
         requestGet(path: "post/\(postId)", params: [:], resultHandler: resultHandler)

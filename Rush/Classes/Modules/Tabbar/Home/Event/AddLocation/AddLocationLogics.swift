@@ -11,7 +11,7 @@ import IQKeyboardManagerSwift
 import MapKit
 import CoreLocation
 import GooglePlaces
-
+import GoogleMapsBase
 
 extension AddLocationViewController {
         
@@ -20,12 +20,15 @@ extension AddLocationViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return self.completerResults.count
+        return self.isRegister == true ? self.searchList.count : self.completerResults.count
     }
     
     func fillLocationCell(_ cell: AddEventLocationCell, _ indexPath: IndexPath) {
-        cell.setup(titleText: self.completerResults[indexPath.row].title + " " + self.completerResults[indexPath.row].subtitle)
-//        cell.setup(titleText: self.completerResults[indexPath.row].subtitle)
+        if self.isRegister == true {
+            cell.setup(titleText: self.searchList[indexPath.row])
+        } else {
+             cell.setup(titleText: self.completerResults[indexPath.row].title + " " + self.completerResults[indexPath.row].subtitle)
+        }
     }
 }
 // Search location based on user search.
@@ -47,15 +50,31 @@ extension AddLocationViewController {
                 // pass this "self.mapItemToPresent" to previous screen
                 print("selected map item is : \(String(describing: self.mapItemToPresent))")
                 self.delegate?.addEventLocationData(searchResult.title + " " + searchResult.subtitle, latitude: self.mapItemToPresent?.placemark.location?.coordinate.latitude ?? 0.0, longitude: self.mapItemToPresent?.placemark.location?.coordinate.longitude ?? 0.0)
-                if self.isRegister == true {
-                    self.navigationController?.popViewController(animated: true)
-                } else {
                     self.dismiss(animated: true, completion: nil)
-                }
             } else if let error = error {
 //                self.view.makeToast("Failed to fetch address information: \(error.localizedDescription)")
                 print("Failed to fetch address information: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func searchLatLong(address: String) {
+        Utils.showSpinner()
+
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, _) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+            else {
+                // handle no location found
+                Utils.hideSpinner()
+                return
+            }
+            self.delegate?.addEventLocationData(address, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            Utils.hideSpinner()
+            self.navigationController?.popViewController(animated: true)
+            // Use your location
         }
     }
     
@@ -174,48 +193,21 @@ extension AddLocationViewController {
  */
 
 extension AddLocationViewController {
-    /*
+
     func searchPlaces(text: String) {
         let filter = GMSAutocompleteFilter()
-        filter.type = .region
-        GMSPlacesClient.shared().autocompleteQuery(text, bounds: nil, filter: filter, callback: {
-            [weak self] (results, error) -> Void in
-            guard let self_ = self else { return }
+        filter.type = .city
+        placesClient.autocompleteQuery(text, bounds: nil, filter: filter, callback: { [weak self] (results, error) -> Void in
+            guard let uwself = self else { return }
             if let error = error {
                 print("Autocomplete error \(error)")
                 return
             }
             if let results = results {
-                
-                if self_.type == .city_state {
-                    let list = results.filter({ $0.attributedPrimaryText.string.count > 2})
-                    //get unique values
-                    self_.searchList = list.map({ $0.attributedFullText.string })
-                } else {
-                    
-                    var list: [GMSAutocompletePrediction]!
-                    if self_.type == .country {
-                        list = results.filter({ $0.types.contains("country")})
-                        for short in self_.shortCountryNames {
-                            if let index = list.index(where: { $0.attributedPrimaryText.string == short}) {
-                                list.remove(at: index)
-                            }
-                        }
-                    } else if self_.type == .city {
-                        list = results.filter({ $0.attributedPrimaryText.string.count > 2})
-                    } else if self_.type == .state {
-                        list = results.filter({ $0.types.contains("administrative_area_level_1") && $0.attributedPrimaryText.string.count > 2})
-                    } else {
-                        list = results.filter({ $0.types.contains("postal_code")})
-                    }
-                    
-                    self_.searchList = list.map({ $0.attributedPrimaryText.string })
-                }
-                //get unique values
-                self_.searchList = Array(Set(self_.searchList))
+                uwself.searchList = results.map({ $0.attributedFullText.string })
             }
-            self_.mediator?.reload()
+            uwself.tableView.reloadData()
         })
-    }*/
+    }
     
 }

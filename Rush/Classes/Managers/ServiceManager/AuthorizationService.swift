@@ -270,6 +270,17 @@ extension ServiceManager {
            }
        }
     
+    
+      func inviteContactList(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+          NetworkManager.shared.inviteContact(params: params) { [weak self] (data, error, code) in
+              guard let uwself = self else { return }
+              uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                  closer(status, errorMessage)
+              })
+          }
+      }
+      
+    
     /*
     // MARK: - Profile
     func updateProfile(params : [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {

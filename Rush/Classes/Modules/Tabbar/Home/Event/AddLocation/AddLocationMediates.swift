@@ -40,7 +40,11 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
-        self.search(self.completerResults[indexPath.row])
+        if isRegister == true {
+            self.searchLatLong(address: self.searchList[indexPath.row])
+        } else {
+            self.search(self.completerResults[indexPath.row])
+        }
     }
         
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -58,11 +62,16 @@ extension AddLocationViewController: UITextFieldDelegate {
         // Search for locations for user's entry & reload table.
     }
     @objc func textFieldDidChange(_ sender: UITextField) {
-        self.searchCompleter.queryFragment = sender.text ?? ""
-       // searchPlaces(text: sender.text ?? "")
+        if self.isRegister == true {
+            searchPlaces(text: sender.text ?? "")
+        } else {
+            self.searchCompleter.queryFragment = sender.text ?? ""
+        }
+        
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.searchList.removeAll()
         self.completerResults.removeAll()
         self.tableView.reloadData()
         return true
