@@ -10,6 +10,8 @@ import UIKit
 import IQKeyboardManagerSwift
 import MapKit
 import CoreLocation
+import GooglePlaces
+
 
 extension AddLocationViewController {
         
@@ -170,3 +172,50 @@ extension AddLocationViewController {
        }
 
  */
+
+extension AddLocationViewController {
+    /*
+    func searchPlaces(text: String) {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .region
+        GMSPlacesClient.shared().autocompleteQuery(text, bounds: nil, filter: filter, callback: {
+            [weak self] (results, error) -> Void in
+            guard let self_ = self else { return }
+            if let error = error {
+                print("Autocomplete error \(error)")
+                return
+            }
+            if let results = results {
+                
+                if self_.type == .city_state {
+                    let list = results.filter({ $0.attributedPrimaryText.string.count > 2})
+                    //get unique values
+                    self_.searchList = list.map({ $0.attributedFullText.string })
+                } else {
+                    
+                    var list: [GMSAutocompletePrediction]!
+                    if self_.type == .country {
+                        list = results.filter({ $0.types.contains("country")})
+                        for short in self_.shortCountryNames {
+                            if let index = list.index(where: { $0.attributedPrimaryText.string == short}) {
+                                list.remove(at: index)
+                            }
+                        }
+                    } else if self_.type == .city {
+                        list = results.filter({ $0.attributedPrimaryText.string.count > 2})
+                    } else if self_.type == .state {
+                        list = results.filter({ $0.types.contains("administrative_area_level_1") && $0.attributedPrimaryText.string.count > 2})
+                    } else {
+                        list = results.filter({ $0.types.contains("postal_code")})
+                    }
+                    
+                    self_.searchList = list.map({ $0.attributedPrimaryText.string })
+                }
+                //get unique values
+                self_.searchList = Array(Set(self_.searchList))
+            }
+            self_.mediator?.reload()
+        })
+    }*/
+    
+}
