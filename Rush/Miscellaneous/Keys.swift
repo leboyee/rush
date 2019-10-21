@@ -169,5 +169,6 @@ struct Keys {
     static let classes          = "classes"
     static let count            = "count"
     static let isScheduledAnything = "isScheduledAnything"
+    static let date             = "date"
 
 }

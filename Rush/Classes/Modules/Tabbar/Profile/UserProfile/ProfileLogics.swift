@@ -324,6 +324,7 @@ extension ProfileViewController {
                     }
                 }
                 self?.downloadGroup.leave()
+                self?.tableView.reloadData()
             })
         }
     }
