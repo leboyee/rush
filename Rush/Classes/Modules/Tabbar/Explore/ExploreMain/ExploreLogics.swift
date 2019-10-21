@@ -4,7 +4,7 @@
 //
 //  Created by ideveloper2 on 09/05/19.
 //  Copyright © 2019 Messapps. All rights reserved.
-//
+
 
 import UIKit
 
@@ -146,7 +146,8 @@ extension ExploreViewController {
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         let people = peopleList[indexPath.row]
-        cell.setup(title: people.user?.name ?? "")
+        cell.setup(title: people.name)
+        cell.setup(url: people.photo?.urlThumb())
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -253,12 +254,11 @@ extension ExploreViewController {
                     }
                 }
             }
-            
             unsafe.tableView.reloadData()
         }
     }
     
-    func getFriendListAPI() {
+    func getPeopleListAPI() {
         
         if pageNo == 1 { peopleList.removeAll() }
         
@@ -267,7 +267,7 @@ extension ExploreViewController {
         params[Keys.profileUserId] = Authorization.shared.profile?.userId
         params[Keys.universityId] = selUniversity.universtiyId
               
-        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+        ServiceManager.shared.fetchPeopleList(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             
@@ -344,7 +344,7 @@ extension ExploreViewController {
     }
     
     func getClassListAPI() {
-        var param = [Keys.pageNo: pageNo] as [String: Any]
+        var param = [Keys.pageNo: "1"] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
               
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
@@ -358,7 +358,7 @@ extension ExploreViewController {
         }
     }
     func getClassCategoryAPI() {
-        var param = [Keys.pageNo: "1"] as [String: Any]
+        var param = [Keys.pageNo: classCatPageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
               
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in

@@ -217,6 +217,14 @@ extension ServiceManager {
          }
 
 
+    func fetchPeopleList(params: [String: Any], closer: @escaping (_ params: [User]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getPeopleList(params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, _, errorMessage) in
+                closer(friends, errorMessage)
+            })
+        }
+    }
     // MARK: - Major Minor
     func getMajorList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getMajorList(params: params) { [weak self] (data, error, code) in

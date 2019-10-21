@@ -12,9 +12,9 @@ import Photos
 extension ClassDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        let photoHeight = (Utils.navigationHeigh*2) + 24 + 216
+     //   let photoHeight = (Utils.navigationHeigh*2) + 24 + 216
         let least = CGFloat.leastNormalMagnitude
-        return section == 0 ? photoHeight : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
+        return section == 0 ? 0 : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
@@ -68,6 +68,7 @@ extension ClassDetailViewController {
         cell.setup(detail: selectedGroup?.name ?? "FINA 40", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
         cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
+        cell.setup(topHeight: 0)
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
@@ -116,7 +117,7 @@ extension ClassDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: [], total: 0)
+        cell.setup(invitees: [], total: selectedGroup?.totalRosters ?? 0)
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
@@ -201,13 +202,16 @@ extension ClassDetailViewController {
         }
         */
     }
-    
-    func fillImageHeader(_ view: UserImagesHeaderView) {
+    func fillImageHeader() {
+          let img = Image(json: subclassInfo?.photo ?? "")
+          clubHeader.set(url: img.url())
+      }
+    /*func fillImageHeader(_ view: UserImagesHeaderView) {
         let img = Image(json: subclassInfo?.photo ?? "")
         view.setup(imageUrl: img.url())
         view.setup(isHideHoverView: false)
         view.setup(isHidePhotoButton: true)
-    }
+    } */
    
     func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
         let post = classesPostList[indexPath.section - 6]
@@ -303,6 +307,7 @@ extension ClassDetailViewController {
                     if uwself.subclassInfo?.classGroups?.count ?? 0 > 0 {
                         uwself.selectedGroup = uwself.subclassInfo?.classGroups?[0]
                     }
+                    uwself.fillImageHeader()
                     uwself.getClassPostListAPI()
                     uwself.tableView.reloadData()
                 } catch {
