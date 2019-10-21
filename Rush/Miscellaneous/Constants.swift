@@ -77,6 +77,8 @@ struct Cell {
     static let userTagCell           = "UserTagCell"
 
     static let dateAndTimeEvent     = "DateAndTimeCell"
+    static let eventDateCell     = "EventDateCell"
+
     static let rsvpCell              = "RSVPCell"
     static let addEventLocationCell              = "AddEventLocationCell"
     static let addEventCalendarCell              = "AddEventCalendarCell"

@@ -143,6 +143,8 @@
 		1A93E1A4229E44BE00724A6C /* EnterPhoneNoViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */; };
 		1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95C3622323FDB70066798D /* DateAndTimeCell.swift */; };
 		1A95C3652323FDB70066798D /* DateAndTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A95C3632323FDB70066798D /* DateAndTimeCell.xib */; };
+		1A96ADA4235D849B00DC5DF8 /* EventDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96ADA2235D849B00DC5DF8 /* EventDateCell.swift */; };
+		1A96ADA5235D849B00DC5DF8 /* EventDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A96ADA3235D849B00DC5DF8 /* EventDateCell.xib */; };
 		1AA5BE5F234E34EE00EEF68F /* UserFriendsListLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */; };
 		1AA5BE60234E34EE00EEF68F /* UserFriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */; };
 		1AA5BE61234E34EE00EEF68F /* UserFriendsListMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */; };
@@ -730,6 +732,8 @@
 		1A93E1A1229E44BE00724A6C /* EnterPhoneNoViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPhoneNoViewMediates.swift; sourceTree = "<group>"; };
 		1A95C3622323FDB70066798D /* DateAndTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTimeCell.swift; sourceTree = "<group>"; };
 		1A95C3632323FDB70066798D /* DateAndTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateAndTimeCell.xib; sourceTree = "<group>"; };
+		1A96ADA2235D849B00DC5DF8 /* EventDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDateCell.swift; sourceTree = "<group>"; };
+		1A96ADA3235D849B00DC5DF8 /* EventDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDateCell.xib; sourceTree = "<group>"; };
 		1AA5BE5C234E34EE00EEF68F /* UserFriendsListLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListLogics.swift; sourceTree = "<group>"; };
 		1AA5BE5D234E34EE00EEF68F /* UserFriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListViewController.swift; sourceTree = "<group>"; };
 		1AA5BE5E234E34EE00EEF68F /* UserFriendsListMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsListMediates.swift; sourceTree = "<group>"; };
@@ -1786,6 +1790,8 @@
 		1A95C3612323FDB70066798D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1A96ADA2235D849B00DC5DF8 /* EventDateCell.swift */,
+				1A96ADA3235D849B00DC5DF8 /* EventDateCell.xib */,
 				1A44C361234265EF00A93A18 /* EventTimeCell.swift */,
 				1A44C362234265EF00A93A18 /* EventTimeCell.xib */,
 				1AD7CFC0232D647500DA3E54 /* AddEventCalendarCell.swift */,
@@ -3331,6 +3337,7 @@
 			files = (
 				8A4B3299232F5D2100AC1D17 /* Main.storyboard in Resources */,
 				794183B0228960C7009AB12C /* SF-Pro-Display-Semibold.otf in Resources */,
+				1A96ADA5235D849B00DC5DF8 /* EventDateCell.xib in Resources */,
 				1AB43B2A2327E75600C2FBCE /* RSVP.storyboard in Resources */,
 				794183B6228960C7009AB12C /* SF-Pro-Text-Semibold.otf in Resources */,
 				1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */,
@@ -3630,6 +3637,7 @@
 				1AA97B91228979D100C4550C /* StringExtension.swift in Sources */,
 				7912570D22A157C200BDE3EC /* OtherUserProfileMediates.swift in Sources */,
 				8A1076BD2306B96800512AA3 /* TextCell.swift in Sources */,
+				1A96ADA4235D849B00DC5DF8 /* EventDateCell.swift in Sources */,
 				79EF134A22D3588D00E260D9 /* EventCategoryListMediates.swift in Sources */,
 				1A89061A2354A77D00976610 /* UserInteresViewMediates.swift in Sources */,
 				797FFDBA22B7BC480055A001 /* UINavigationController+ImagePickerConfigurable.swift in Sources */,
