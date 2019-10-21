@@ -67,7 +67,7 @@ extension UserInterestViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         if textField.text?.count ?? 0 > 0 {
             let searchText = textField.text ?? ""
-            let filtered = interestArray.filter( { $0.interestName.contains(searchText) })
+            let filtered = interestArray.filter({ $0.interestName.contains(searchText) })
             searchArray = filtered
             isSearch = true
         } else {

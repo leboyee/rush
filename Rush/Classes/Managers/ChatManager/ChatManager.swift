@@ -13,7 +13,7 @@ class ChatManager: NSObject {
     
     static let manager = ChatManager()
     var channel: SBDGroupChannel?
-    var firstTry : Bool = true
+    var firstTry: Bool = true
     
     override init() {
         super.init()

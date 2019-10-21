@@ -34,7 +34,6 @@ class SharePostViewController: UIViewController {
     
     var type: SharePostType = .post
     var object: Any?
-    var post: Post?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,12 +65,17 @@ class SharePostViewController: UIViewController {
         } else {
             deleteLabel.text = Text.deletePost
         }
-        if post != nil {
-            if post?.user?.userId != Authorization.shared.profile?.userId {
+        
+        if object != nil, let post = object as? Post {
+            if post.user?.userId != Authorization.shared.profile?.userId {
                 hideDeleteOption()
             }
         } else if object != nil, let club = object as? Club {
             if club.user?.userId != Authorization.shared.profile?.userId {
+                hideDeleteOption()
+            }
+        } else if object != nil, let event = object as? Event {
+            if event.creator?.userId != Authorization.shared.profile?.userId {
                 hideDeleteOption()
             }
         }

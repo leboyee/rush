@@ -79,12 +79,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                             
                         }
                     }
-                } else if let aps = userInfo["aps"] as? [String: Any], let _ = aps["type"] as? String {
-                    
+                } else if let aps = userInfo["aps"] as? [String: Any], let type = aps["type"] as? String {
+                    print(type)
                     if let viewcontroller = window?.rootViewController as? UITabBarController {
                         viewcontroller.selectedIndex = 3
                     }
-                    
                 }
             }
         }
@@ -92,10 +91,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func handlePushInActiveState(userInfo: [String: Any]) {
         if Authorization.shared.authorized {
-            if let aps = userInfo["aps"] as? [String: Any], let _ = aps["type"] as? String {
-                if let tabbar = window?.rootViewController as? UITabBarController {
-        
-                }
+            if let aps = userInfo["aps"] as? [String: Any], let type = aps["type"] as? String {
+               print(type)
+//               if let tabbar = window?.rootViewController as? UITabBarController {
+//
+//               }
             }
         }
     }

@@ -313,10 +313,8 @@ extension ChatRoomViewController {
                         
                         if let url = self.channel?.coverUrl, url.isNotEmpty {
                             let images = url.components(separatedBy: ",")
-                            for image in images {
-                                if image != Authorization.shared.profile?.photo?.thumb {
-                                    imageName = image
-                                }
+                            for image in images where image != Authorization.shared.profile?.photo?.thumb {
+                                imageName = image
                             }
                         }
                     } else {
