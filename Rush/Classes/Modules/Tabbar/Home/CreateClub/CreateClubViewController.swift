@@ -22,6 +22,11 @@ class CreateClubViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+//    @IBOutlet weak var containerView: UIView!
+//    @IBOutlet weak var photoSelectionView: UIView!
+//    @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
+//    @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
+//    @IBOutlet weak var radiusView: UIView!
     
     var selectedContactList = [Contact]()
     var nameClub = ""
@@ -130,12 +135,14 @@ extension CreateClubViewController {
     }
     
     @IBAction func addImageButtonAction() {
-        Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
+        
+        self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: nil)
+      /*  Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
             guard let unself = self else { return }
             if index != 2 {
                 unself.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
             }
-        }
+        } */
     }
 }
 
@@ -160,6 +167,11 @@ extension CreateClubViewController {
             if let vc = segue.destination as? CreateEventInviteViewController {
                 vc.delegate = self
                 vc.selectedInvitee = peopleList
+            }
+        } else if segue.identifier == Segues.selectEventPhoto {
+            if let vc = segue.destination as? SelectEventTypeViewController {
+                vc.type = .photo
+                vc.delegate = self
             }
         }
     }
