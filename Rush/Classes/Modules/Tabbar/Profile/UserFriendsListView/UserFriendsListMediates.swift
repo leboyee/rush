@@ -56,10 +56,10 @@ extension UserFriendsListViewController: UITextFieldDelegate {
             isSearch = false
             rightBarButton?.image = #imageLiteral(resourceName: "plus_white")
         }
+        
+        searchText = textField.text ?? ""
         pageNo = 1
-        friendsList.removeAll()
         getFriendListAPI()
-
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

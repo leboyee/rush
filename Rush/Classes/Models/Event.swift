@@ -43,8 +43,8 @@ class Event: Codable {
     var title: String = ""
     var desc: String = ""
     var eventType: EventType = .none
-    private var startP: Date?
-    private var endP: Date?
+    var start: Date?
+    var end: Date?
     var created: String = ""
     var address: String?
     var latitude: String?
@@ -63,12 +63,7 @@ class Event: Codable {
        }
        return convertJsonToPhoto
     }
-    var start: Date? {
-        return self.startP?.toLocalTime()
-    }
-    var end: Date? {
-        return self.endP?.toLocalTime()
-    }
+    
     private var isChatGroupInEvent: Int = 0
     var isChatGroup: Bool {
         return isChatGroupInEvent == 1 ? true : false
@@ -81,8 +76,8 @@ class Event: Codable {
         case photoJson = "event_photo"
         case title = "event_name"
         case desc = "event_desc"
-        case startP = "event_start_date"
-        case endP = "event_end_date"
+        case start = "event_start_date"
+        case end = "event_end_date"
         case address = "event_address"
         case latitude = "event_latitude"
         case longitude = "event_longitude"

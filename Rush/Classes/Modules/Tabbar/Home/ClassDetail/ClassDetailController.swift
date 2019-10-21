@@ -10,13 +10,13 @@ import UIKit
 import Photos
 
 class ClassDetailViewController: UIViewController {
-   
-//    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
+    
+    //    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     
     var interestList = [String]()
     var peopleList = [String]()
     var classesPostList = [Post]()
-
+    
     var timeList: [String] = ["Thursday", "Friday", "Sunday", "Tuesday", "Wednesday"]
     
     var clubImage: UIImage?
@@ -32,12 +32,12 @@ class ClassDetailViewController: UIViewController {
     var groupId = "0"
     
     let headerFullHeight: CGFloat = 367
-      let headerSmallWithDateHeight: CGFloat = 182
-      let headerSmallWithoutDateHeight: CGFloat = 114
-        @IBOutlet weak var tableView: UITableView!
-           @IBOutlet weak var backgroundView: RBackgoundView!
-           @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
-           @IBOutlet weak var clubHeader: ClubHeader!
+    let headerSmallWithDateHeight: CGFloat = 182
+    let headerSmallWithoutDateHeight: CGFloat = 114
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundView: RBackgoundView!
+    @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
+    @IBOutlet weak var clubHeader: ClubHeader!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,11 +47,11 @@ class ClassDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.backgroundColor = UIColor.clear
-//        navigationController?.navigationBar.barTintColor = UIColor.clear
-//        navigationController?.navigationBar.isTranslucent = true
+        //        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        //        navigationController?.navigationBar.barTintColor = UIColor.clear
+        //        navigationController?.navigationBar.isTranslucent = true
         navigationController?.isNavigationBarHidden = true
-            
+        
         if classId == "0" && groupId == "0" {
             if subclassInfo?.myJoinedClass?.count ?? 0 > 0 {
                 let joinedClass = subclassInfo?.myJoinedClass?[0]
@@ -69,11 +69,11 @@ class ClassDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-//        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-//        navigationController?.navigationBar.isTranslucent = false
+        //        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
+        //        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
+        //        navigationController?.navigationBar.isTranslucent = false
         navigationController?.isNavigationBarHidden = false
-            
+        
     }
     
     // MARK: - Other function
@@ -91,7 +91,7 @@ class ClassDetailViewController: UIViewController {
          scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
          */
         
-//        topConstraintOfTableView.constant = -Utils.navigationHeigh
+        //        topConstraintOfTableView.constant = -Utils.navigationHeigh
         
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
@@ -114,9 +114,9 @@ extension ClassDetailViewController {
         dismiss(animated: true, completion: nil)
     }
     
-//    @objc func shareButtonAction() {
-//        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
-//    }
+    //    @objc func shareButtonAction() {
+    //        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
+    //    }
 }
 // MARK: - Actions
 extension ClassDetailViewController {
@@ -125,8 +125,8 @@ extension ClassDetailViewController {
     }
     
     @IBAction func shareButtonAction() {
-         performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
-//        performSegue(withIdentifier: Segues.sharePostSegue, sender: SharePostType.club)
+        performSegue(withIdentifier: Segues.sharePostSegue, sender: subclassInfo)
+        //        performSegue(withIdentifier: Segues.sharePostSegue, sender: SharePostType.club)
     }
 }
 // MARK: - Navigation
@@ -140,22 +140,30 @@ extension ClassDetailViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.sharePostSegue {
+            
             if let vc = segue.destination as? SharePostViewController {
-                vc.type = .post
-                vc.object = sender
-                vc.delegate = self
+                if let send = sender as? SubClass {
+                    vc.type = .classes
+                    vc.object = sender
+                    vc.delegate = self
+                }
+                else {
+                    vc.type = .post
+                    vc.object = sender
+                    vc.delegate = self
+                }
             }
         } else if segue.identifier == Segues.createPost {
-            if let vc = segue.destination as? CreatePostViewController {
-                vc.subclassInfo = subclassInfo
-                vc.delegate = self
-            }
-        } else if segue.identifier == Segues.postSegue {
-            if let vc = segue.destination as? PostViewController {
-                vc.postInfo = sender as? Post
-                vc.subclassInfo = subclassInfo
-                vc.delegate = self
+                if let vc = segue.destination as? CreatePostViewController {
+                    vc.subclassInfo = subclassInfo
+                    vc.delegate = self
+                }
+            } else if segue.identifier == Segues.postSegue {
+                if let vc = segue.destination as? PostViewController {
+                    vc.postInfo = sender as? Post
+                    vc.subclassInfo = subclassInfo
+                    vc.delegate = self
+                }
             }
         }
-    }
 }

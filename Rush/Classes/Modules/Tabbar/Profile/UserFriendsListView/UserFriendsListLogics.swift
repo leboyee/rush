@@ -33,7 +33,6 @@ extension UserFriendsListViewController {
     
     func willDisplay(_ indexPath: IndexPath) {
         if isNextPageExist == true, indexPath.row == friendsList.count - 1 {
-            print("counter:", friendsList.count)
             getFriendListAPI()
         }
     }
@@ -42,13 +41,12 @@ extension UserFriendsListViewController {
 // MARK: - Services
 extension UserFriendsListViewController {
     func getFriendListAPI() {
-        
+
+        //NetworkManager.shared.lastSessionTask?.cancel()
+        task?.cancel()
         if pageNo == 1 { friendsList.removeAll() }
-        var params = [Keys.pageNo: "\(pageNo)"]
-        params[Keys.search] = searchTextFiled?.text
-        params[Keys.profileUserId] = userId
-        
-        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+        let params = [Keys.pageNo: "\(pageNo)", Keys.search: searchText, Keys.profileUserId: userId] as [String: Any]
+        task = ServiceManager.shared.fetchFriendsListWithSession(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             
@@ -62,7 +60,6 @@ extension UserFriendsListViewController {
                         unsafe.friendsList = list
                     } else {
                         unsafe.friendsList.append(contentsOf: list)
-                        print("counter:", unsafe.friendsList.count)
                     }
                     unsafe.pageNo += 1
                     unsafe.isNextPageExist = true
@@ -76,7 +73,6 @@ extension UserFriendsListViewController {
                 unsafe.noSearchResultView.isHidden = unsafe.friendsList.count == 0 ? false : true
                 unsafe.tableView.reloadData()
             }
-            
         }
     }
 }

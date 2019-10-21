@@ -205,6 +205,17 @@ extension ServiceManager {
 
            }
        }
+    
+    func getUniversityListWithSession(params: [String: Any], closer: @escaping (_ university: [University]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
+             NetworkManager.shared.getUniversityWithSession(params: params) { [weak self] (data, error, code) in
+                 guard let unsafe = self else { return }
+              unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (university, _, errorMessage) in
+                  closer(university, errorMessage)
+              })
+
+             }
+         }
+
 
     func fetchPeopleList(params: [String: Any], closer: @escaping (_ params: [User]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getPeopleList(params: params) { [weak self] (data, error, code) in

@@ -101,6 +101,7 @@
                 <outlet property="heightConstraintOfReadmoreButton" destination="y8Q-Sp-9Od" id="mUe-gT-v2y"/>
                 <outlet property="readMoreButton" destination="sWR-3c-teB" id="fcn-7J-Uqn"/>
                 <outlet property="titleLabel" destination="yS8-tv-SXT" id="ErP-xV-x1X"/>
+                <outlet property="topConstraintOfName" destination="h7a-ZC-wTU" id="uBB-cE-VdO"/>
             </connections>
             <point key="canvasLocation" x="-28.985507246376812" y="90.401785714285708"/>
         </tableViewCell>

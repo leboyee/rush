@@ -30,6 +30,7 @@ class ChooseUniversityViewController: CustomViewController {
     var pageNo: Int = 1
     var isNextPageExist: Bool = false
     weak var delegate: ChooseUnivesityDelegate?
+    var task: URLSessionDataTask?
 
     override func viewDidLoad() {
         super.viewDidLoad()

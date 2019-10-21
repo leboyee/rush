@@ -78,6 +78,8 @@ class SharePostViewController: UIViewController {
             if event.creator?.userId != Authorization.shared.profile?.userId {
                 hideDeleteOption()
             }
+        } else if object != nil, let classes = object as? SubClass {
+               hideDeleteOption()
         }
     }
     

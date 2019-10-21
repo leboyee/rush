@@ -52,10 +52,12 @@ extension EventGoingFriendsViewController {
     
     func fetchInvitees(search: String, type: InviteType) {
         
-        Utils.showSpinner()
-        NetworkManager.shared.lastSessionTask?.cancel()
+//        Utils.showSpinner()
+        if search.count > 0 {
+            task?.cancel()
+        }
         let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: type ==  .going ? "going" : "not_going"] as [String: Any]
-        ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
+        task = ServiceManager.shared.fetchInviteeListWithSession(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             if unsafe.isFirstTime == false {

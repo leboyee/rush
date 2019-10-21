@@ -22,6 +22,9 @@ class UserFriendsListViewController: UIViewController {
     var userId: String = ""
     var isNextPageExist: Bool = false
     var isSearch: Bool = false
+    var searchText: String = ""
+    var task: URLSessionDataTask?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

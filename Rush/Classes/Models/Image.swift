@@ -15,6 +15,7 @@ class Image: Codable {
     var thumb: String = ""
     var medium: String = ""
     var large: String = ""
+    var date: Date?
 
     init() {
     }
@@ -68,6 +69,10 @@ extension Image {
     func setData(data: [String: Any]) {
         if let values = data[Keys.main] as? [String: Any], let url = values[Keys.url] as? String {
             main = url
+        }
+        
+        if let values = data[Keys.main] as? [String: Any], let dateStr = values[Keys.date] as? String {
+            date = DateFormatter.serverDate.date(from: dateStr)
         }
         
         if let values = data[Keys.thumb] as? [String: Any], let url = values[Keys.url] as? String {

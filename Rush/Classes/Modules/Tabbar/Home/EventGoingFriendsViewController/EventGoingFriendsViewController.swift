@@ -32,7 +32,8 @@ class EventGoingFriendsViewController: UIViewController {
     var inviteType: InviteType = .going
     var searchTextFiled: UITextField?
     var userInfo: User?
-    
+    var task: URLSessionDataTask?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

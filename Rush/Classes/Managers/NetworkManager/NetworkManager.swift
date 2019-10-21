@@ -62,7 +62,7 @@ class NetworkManager: NSObject {
     private let sessionConfigurator = URLSessionConfiguration.default
     private let operationQueue = OperationQueue()
     private var networkRequestNumber = 0
-    var lastSessionTask: URLSessionDataTask?
+    //var lastSessionTask: URLSessionDataTask?
     
     var defaultHeaders: [String: String] {
         var dict = [String: String]()
@@ -269,7 +269,6 @@ class NetworkManager: NSObject {
             }
         }
         
-        lastSessionTask = task
         return task
     }
     
