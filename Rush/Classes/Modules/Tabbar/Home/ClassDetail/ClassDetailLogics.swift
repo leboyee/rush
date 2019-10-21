@@ -68,6 +68,7 @@ extension ClassDetailViewController {
         cell.setup(detail: selectedGroup?.name ?? "FINA 40", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
         cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
+        cell.setup(topHeight: 0)
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
@@ -116,7 +117,7 @@ extension ClassDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: [], total: 0)
+        cell.setup(invitees: [], total: selectedGroup?.totalRosters ?? 0)
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
