@@ -1633,28 +1633,84 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rf7-HB-GRj">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hve-na-lQ0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22S-YF-meA" customClass="ClubHeader" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="367"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="367" id="BYg-Ac-3wL"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8G-eT-wwL" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="304" width="414" height="592"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4zi-Cg-tIo">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="592"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="4zi-Cg-tIo" secondAttribute="trailing" id="0MA-oh-8Az"/>
+                                            <constraint firstItem="4zi-Cg-tIo" firstAttribute="top" secondItem="d8G-eT-wwL" secondAttribute="top" id="6fg-oJ-aCO"/>
+                                            <constraint firstItem="4zi-Cg-tIo" firstAttribute="leading" secondItem="d8G-eT-wwL" secondAttribute="leading" id="9CO-Wz-Sfz"/>
+                                            <constraint firstAttribute="bottom" secondItem="4zi-Cg-tIo" secondAttribute="bottom" id="CKi-Bm-409"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAB-ko-giT">
+                                        <rect key="frame" x="8" y="46" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="X5l-IT-Nis"/>
+                                            <constraint firstAttribute="width" constant="40" id="wOY-sd-OeM"/>
+                                        </constraints>
+                                        <state key="normal" image="back-arrow"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n38-gf-pZK">
+                                        <rect key="frame" x="366" y="50" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3o2-5U-Zdg"/>
+                                            <constraint firstAttribute="width" constant="40" id="lXR-BC-uKc"/>
+                                        </constraints>
+                                        <state key="normal" image="share"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="d8G-eT-wwL" secondAttribute="bottom" id="70l-MW-zuo"/>
+                                    <constraint firstItem="kAB-ko-giT" firstAttribute="leading" secondItem="Q0q-NE-X2w" secondAttribute="leading" constant="8" id="8Ew-ks-gtI"/>
+                                    <constraint firstItem="22S-YF-meA" firstAttribute="trailing" secondItem="Q0q-NE-X2w" secondAttribute="trailing" id="8J3-IL-su1"/>
+                                    <constraint firstItem="22S-YF-meA" firstAttribute="leading" secondItem="Q0q-NE-X2w" secondAttribute="leading" id="8w0-R3-MkN"/>
+                                    <constraint firstItem="22S-YF-meA" firstAttribute="top" secondItem="hve-na-lQ0" secondAttribute="top" id="IaR-W6-BQk"/>
+                                    <constraint firstItem="n38-gf-pZK" firstAttribute="top" secondItem="Q0q-NE-X2w" secondAttribute="top" constant="6" id="Yac-qk-AOh"/>
+                                    <constraint firstItem="d8G-eT-wwL" firstAttribute="trailing" secondItem="Q0q-NE-X2w" secondAttribute="trailing" id="eok-ST-f8v"/>
+                                    <constraint firstItem="d8G-eT-wwL" firstAttribute="top" secondItem="22S-YF-meA" secondAttribute="bottom" constant="-63" id="fxo-XS-dK1"/>
+                                    <constraint firstItem="d8G-eT-wwL" firstAttribute="leading" secondItem="Q0q-NE-X2w" secondAttribute="leading" id="hpf-bL-5fd"/>
+                                    <constraint firstItem="kAB-ko-giT" firstAttribute="top" secondItem="Q0q-NE-X2w" secondAttribute="top" constant="2" id="mwP-IC-joY"/>
+                                    <constraint firstItem="Q0q-NE-X2w" firstAttribute="trailing" secondItem="n38-gf-pZK" secondAttribute="trailing" constant="8" id="yP4-Cr-7pM"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Q0q-NE-X2w"/>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="rf7-HB-GRj" firstAttribute="leading" secondItem="YD4-kc-77J" secondAttribute="leading" id="Bd4-Y8-c3x"/>
+                            <constraint firstItem="hve-na-lQ0" firstAttribute="trailing" secondItem="YD4-kc-77J" secondAttribute="trailing" id="3h7-wN-Rhf"/>
                             <constraint firstItem="tXR-Ef-ctq" firstAttribute="trailing" secondItem="YD4-kc-77J" secondAttribute="trailing" id="CqQ-yD-vag"/>
+                            <constraint firstAttribute="bottom" secondItem="hve-na-lQ0" secondAttribute="bottom" id="GiT-Ir-TKP"/>
                             <constraint firstItem="tXR-Ef-ctq" firstAttribute="top" secondItem="lhW-sB-GCy" secondAttribute="top" id="GnA-Pn-YVM"/>
                             <constraint firstItem="tXR-Ef-ctq" firstAttribute="leading" secondItem="YD4-kc-77J" secondAttribute="leading" id="LN1-AE-HkP"/>
-                            <constraint firstItem="rf7-HB-GRj" firstAttribute="trailing" secondItem="YD4-kc-77J" secondAttribute="trailing" id="VOG-Zi-r7s"/>
-                            <constraint firstItem="rf7-HB-GRj" firstAttribute="top" secondItem="lhW-sB-GCy" secondAttribute="top" id="Ye5-DR-Jj5"/>
-                            <constraint firstAttribute="bottom" secondItem="rf7-HB-GRj" secondAttribute="bottom" id="Z9Q-RY-rSG"/>
                             <constraint firstAttribute="bottom" secondItem="tXR-Ef-ctq" secondAttribute="bottom" id="f41-XX-Pwa"/>
+                            <constraint firstItem="hve-na-lQ0" firstAttribute="leading" secondItem="YD4-kc-77J" secondAttribute="leading" id="lRC-t3-qt3"/>
+                            <constraint firstItem="hve-na-lQ0" firstAttribute="top" secondItem="lhW-sB-GCy" secondAttribute="top" id="sp7-Ee-vNo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YD4-kc-77J"/>
                     </view>
                     <navigationItem key="navigationItem" id="hv7-N4-iaP"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="rf7-HB-GRj" id="VIK-04-MF9"/>
-                        <outlet property="topConstraintOfTableView" destination="Ye5-DR-Jj5" id="BPd-s5-JJJ"/>
+                        <outlet property="backgroundView" destination="d8G-eT-wwL" id="L2o-ep-ekp"/>
+                        <outlet property="clubHeader" destination="22S-YF-meA" id="dwF-O3-F1V"/>
+                        <outlet property="heightConstraintOfHeader" destination="BYg-Ac-3wL" id="OYq-pl-Sg6"/>
+                        <outlet property="tableView" destination="4zi-Cg-tIo" id="dGm-WT-sof"/>
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Bwe-EL-S9s"/>
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="WIx-LH-4TQ"/>
                         <segue destination="KY7-jJ-Aaf" kind="show" identifier="PostSegue" id="bD5-sy-JMX"/>

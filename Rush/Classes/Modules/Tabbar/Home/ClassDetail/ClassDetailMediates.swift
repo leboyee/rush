@@ -122,9 +122,10 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
-            fillImageHeader(view)
-            return view
+                     return UIView()
+//            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
+//            fillImageHeader(view)
+//            return view
         } else {
             if section == 2 || section == 3 || section == 1 {
                 return UIView()
