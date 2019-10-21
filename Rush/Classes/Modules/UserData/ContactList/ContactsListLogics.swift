@@ -35,9 +35,9 @@ extension ContactsListViewController {
                             
                             unself.items = unself.itemsDictionary.map { (key, value) -> ContactsPresenterItem in
                                 return (key, value)
-                                }.sorted(by: {
-                                    return $0.key < $1.key
-                                })
+                            }.sorted(by: {
+                                return $0.key < $1.key
+                            })
                             Utils.hideSpinner()
                             unself.tableView.reloadData()
                         } else {
@@ -50,7 +50,7 @@ extension ContactsListViewController {
                 }
             } else {
                 Utils.hideSpinner()
-             let message = "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?."
+                let message = "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?."
                 unself.alertContactAccess(message: message)
             }
         }
@@ -73,4 +73,65 @@ extension ContactsListViewController {
             }))
         alert.show()
     }
+    
+    func loadCountryJson() {
+        if let path = Bundle.main.path(forResource: "CountryPhoneCode", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? [[String: Any]] {
+                    countryCode = jsonResult
+                }
+            } catch { }
+        }
+    }
+
+}
+
+// MARK: - Services
+extension ContactsListViewController {
+    
+    func contactInviteApi() {
+        if let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
+            print(countryCodeString)
+            let contactArray: [String] = self.selectedItem.map{ $0.phone }
+            var contactDict = [String: Any]()
+            var newContactArray = [[String: Any]]()
+            for contact in contactArray {
+                guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+                let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+                var contactString = contact.replacingOccurrences(of: "+\(countryNumberCodeString)", with: "")
+                contactString = contactString.replacingOccurrences(of: "+", with: "")
+                if contactString.count >= 10 {
+                        contactDict["cc"] = countryNumberCodeString
+                        contactDict["phone"] = contactString
+                        newContactArray.append(contactDict)
+                    }
+                }
+            
+            var jsonString = ""
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+                if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                    jsonString = JSONString
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+           let param = [Keys.contactListInvite: jsonString] as [String: Any]
+            
+            Utils.showSpinner()
+            ServiceManager.shared.inviteContactList(params: param) { [weak self] (status, errMessage) in
+                Utils.hideSpinner()
+                guard let unsafe = self else { return }
+                if status {
+                    unsafe.navigationController?.popViewController(animated: true)
+                } else {
+                    Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
+                }
+            }
+        }
+    }
+    
 }

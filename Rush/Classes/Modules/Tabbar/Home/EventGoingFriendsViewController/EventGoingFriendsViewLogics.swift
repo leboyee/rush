@@ -51,7 +51,9 @@ extension EventGoingFriendsViewController {
 extension EventGoingFriendsViewController {
     
     func fetchInvitees(search: String, type: InviteType) {
+        
         Utils.showSpinner()
+        NetworkManager.shared.lastSessionTask?.cancel()
         let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: type ==  .going ? "going" : "not_going"] as [String: Any]
         ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
             guard let unsafe = self else { return }
@@ -61,9 +63,27 @@ extension EventGoingFriendsViewController {
                 unsafe.fetchInvitees(search: "", type: .notGoing)
             }
             if type == .going {
-                unsafe.goingInviteeList = invitees ?? [Invitee]()
+                if unsafe.pageNo == 1 {
+                    unsafe.goingInviteeList.removeAll()
+                }
+                if invitees?.count ?? 0 > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.goingInviteeList = invitees ?? [Invitee]()
+                    } else {
+                        unsafe.goingInviteeList.append(contentsOf: invitees ??  [Invitee]())
+                    }
+                }
             } else {
-                unsafe.notGoingInviteeList = invitees ?? [Invitee]()
+                if unsafe.pageNo == 1 {
+                    unsafe.notGoingInviteeList.removeAll()
+                }
+                if invitees?.count ?? 0 > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.notGoingInviteeList = invitees ?? [Invitee]()
+                    } else {
+                        unsafe.notGoingInviteeList.append(contentsOf: invitees ??  [Invitee]())
+                    }
+                }
             }
             //unsafe.totalInvitee = total
             unsafe.firstSegmentButton.setTitle("\(unsafe.goingInviteeList.count) going", for: .normal)

@@ -99,6 +99,8 @@ extension CreateEventViewController {
             cell.setMinimumTime(date: Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900))
         } else if indexPath.section == 7  && endDate.isSameDate(Date()) {
             cell.setMinimumTime(date: Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900))
+        } else {
+            cell.setMinimumTime(date: Date.parse(dateString: Date().toString(format: "yyyy-MM-dd") + " 00:00:00") ?? Date())
         }
         cell.timeSelected = {
             [weak self] (date) in
@@ -427,6 +429,19 @@ extension CreateEventViewController {
         clubHeader.setup(image: eventImage)
         clubHeader.delegate = self
     }
+    
+    func loadCountryJson() {
+        if let path = Bundle.main.path(forResource: "CountryPhoneCode", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? [[String: Any]] {
+                    countryCode = jsonResult
+                }
+            } catch { }
+        }
+    }
+
 }
 
 extension CreateEventViewController: CalendarViewDelegate {
@@ -443,7 +458,6 @@ extension CreateEventViewController: CalendarViewDelegate {
         cell.layoutIfNeeded()
         self.tableView.reloadData()
         //}
-        
     }
     
     func isEventExist(date: Date) -> Bool {
@@ -580,6 +594,36 @@ extension CreateEventViewController: EventInterestDelegate {
 extension CreateEventViewController {
     
     func createEventAPI() {
+        
+        guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
+            return }
+        print(countryCodeString)
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactArray = contactList.compactMap { ($0.contact?.phone) }
+        var contactDict = [String: Any]()
+        var newContactArray = [[String: Any]]()
+        for contact in contactArray {
+            guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+            let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+            var contactString = contact.replacingOccurrences(of: "+\(countryNumberCodeString)", with: "")
+            contactString = contactString.replacingOccurrences(of: "+", with: "")
+            if contactString.count >= 10 {
+                contactDict["cc"] = countryNumberCodeString
+                contactDict["phone"] = contactString
+                newContactArray.append(contactDict)
+            }
+        }
+        
+        var jsonString = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                jsonString = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         // S*
         //let interests = interestList.joined(separator: ",")
@@ -587,8 +631,6 @@ extension CreateEventViewController {
         let interests = interestsNameArry.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
-        let contactList = self.peopleList.filter { ($0.isFriend == false) }
-        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
         
         var array = rsvpArray
         if array.last?.isEmpty == true {
@@ -626,7 +668,7 @@ extension CreateEventViewController {
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
             Keys.eventPhoto: img,
             Keys.eventUniversityId: university?.universtiyId ?? 0,
-            Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
+            Keys.eventContact: jsonString] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.createEvent(params: param) { [weak self] (status, errMessage) in
@@ -641,6 +683,36 @@ extension CreateEventViewController {
     }
     
     func updateEventApi(eventId: String) {
+        
+        guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
+            return }
+        print(countryCodeString)
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactArray = contactList.compactMap { ($0.contact?.phone) }
+        var contactDict = [String: Any]()
+        var newContactArray = [[String: Any]]()
+        for contact in contactArray {
+            guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+            let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+            var contactString = contact.replacingOccurrences(of: "+\(countryNumberCodeString)", with: "")
+            contactString = contactString.replacingOccurrences(of: "+", with: "")
+            if contactString.count >= 10 {
+                contactDict["cc"] = countryNumberCodeString
+                contactDict["phone"] = contactString
+                newContactArray.append(contactDict)
+            }
+        }
+        
+        var jsonString = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                jsonString = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         if eventImage == nil {
             eventImage = clubHeader.userImageView.image
         }
@@ -652,8 +724,6 @@ extension CreateEventViewController {
         let interests = interestsNameArry.joined(separator: ",")
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
-        let contactList = self.peopleList.filter { ($0.isFriend == false) }
-        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
         
         var array = rsvpArray
         if array.last?.isEmpty == true {
@@ -690,7 +760,7 @@ extension CreateEventViewController {
             Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
             Keys.eventPhoto: img,
             Keys.eventUniversityId: university?.universtiyId ?? 0,
-            Keys.eventContact: contactNoArray.joined(separator: ",")] as [String: Any]
+            Keys.eventContact: jsonString] as [String: Any]
         
         Utils.showSpinner()
         ServiceManager.shared.updateEvent(eventId: eventId, params: param) { [weak self] (status, errMessage) in
