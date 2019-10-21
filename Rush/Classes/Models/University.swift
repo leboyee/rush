@@ -21,9 +21,7 @@ class University: Codable {
     var location: String?
     var mainUrl: String?
     
-
     init() {
-        
     }
     
     private enum CodingKeys: String, CodingKey {

@@ -79,6 +79,12 @@ extension CreateClubViewController {
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
             cell.textView.isUserInteractionEnabled = false
+        } else if indexPath.section == 4 {
+            cell.setup(iconImage: "addLocation")
+            cell.setup(placeholder: Text.addUniversity, text: selectedUniversity?.universityName ?? "")
+            cell.setup(placeholder: Text.addUniversity)
+            cell.setup(isHideClearButton: true)
+            cell.setup(isEnabled: false)
         }
         
         cell.textDidChanged = {  [weak self] (text) in
@@ -230,7 +236,7 @@ extension CreateClubViewController {
     }
     
     func validateAllFields() {
-        if ((clubImage != nil && clubInfo == nil) || clubInfo != nil) && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 {
+        if ((clubImage != nil && clubInfo == nil) || clubInfo != nil) && nameClub.isNotEmpty && clubDescription.isNotEmpty && interestList.count > 0 && peopleList.count > 0 && selectedUniversity != nil {
             saveButton.isEnabled = true
             saveButton.setImage(#imageLiteral(resourceName: "save-active"), for: .normal)
         } else {
@@ -304,6 +310,7 @@ extension CreateClubViewController {
                      Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
                      Keys.clubContact: contactNoArray.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
+                     Keys.clubUniversityId: selectedUniversity?.universtiyId ?? 0,
                      Keys.clubPhoto: dataN] as [String: Any]
         
         Utils.showSpinner()
@@ -336,6 +343,7 @@ extension CreateClubViewController {
                      Keys.clubInterests: interests,
                      Keys.clubInvitedUserIds: newPeopleIds.joined(separator: ","),
                      Keys.removedClubInvitedUserIds: removeIds,
+                     Keys.clubUniversityId: selectedUniversity?.universtiyId ?? 0,
                      Keys.clubContact: newContacts.joined(separator: ","),
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0] as [String: Any]
         

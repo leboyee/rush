@@ -123,8 +123,7 @@ extension ClubDetailViewController {
                     }
                 } else {
                     vc.type = .post
-                    vc.object = sender as? Post
-                    vc.post = sender as? Post
+                    vc.object = sender
                     vc.delegate = self
                 }
             }

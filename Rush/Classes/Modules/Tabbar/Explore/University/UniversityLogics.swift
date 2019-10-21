@@ -25,6 +25,7 @@ extension UniversityViewController {
     
     func cellSelected(_ indexPath: IndexPath) {
         selectedIndex = indexPath.row
+        self.delegate?.setSelectedUniversity(university: universityArray[selectedIndex])
         tableView.reloadData()
     }
     

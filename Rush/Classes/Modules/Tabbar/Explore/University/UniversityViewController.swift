@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UniversityViewControllerDelegate: class {
+    func setSelectedUniversity(university: University)
+}
+
 class UniversityViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -16,7 +20,8 @@ class UniversityViewController: UIViewController {
     var universityArray = [University]()
     var pageNo: Int = 1
     var isNextPageExist: Bool = false
-    
+    weak var delegate: UniversityViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

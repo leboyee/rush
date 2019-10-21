@@ -38,6 +38,7 @@ class CreateClubViewController: UIViewController {
     var removePeopleIds = [String]()
     var newPeopleIds = [String]()
     var newContacts = [String]()
+    var selectedUniversity: University?
     
     var clubInfo: Club?
     
@@ -159,6 +160,11 @@ extension CreateClubViewController {
             if let vc = segue.destination as? CreateEventInviteViewController {
                 vc.delegate = self
                 vc.selectedInvitee = peopleList
+            }
+        } else if segue.identifier == Segues.addUniversitySegue {
+            if let vc = segue.destination as? ChooseUniversityViewController {
+                vc.delegate = self
+                vc.addUniversityType = .createEvent
             }
         }
     }

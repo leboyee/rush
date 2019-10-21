@@ -53,7 +53,9 @@ extension UserImagesHeaderView {
     func setup(isHideHoverView: Bool) {
         hoverView.isHidden = isHideHoverView
     }
-    
+    func setup(isHidePhotoButton: Bool) {
+        changePhotoButton.isHidden = isHidePhotoButton
+    }
     func setup(isHideUsernameView: Bool) {
         usernameView.isHidden = isHideUsernameView
         if isHideUsernameView == false {

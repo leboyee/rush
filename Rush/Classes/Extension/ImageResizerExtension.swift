@@ -89,15 +89,21 @@ extension UIImage {
         return newImage!
     }
     
-    var roundedImage: UIImage {
-        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: self.size)
-        UIGraphicsBeginImageContextWithOptions(self.size, false, 1)
-        UIBezierPath(
-            roundedRect: rect,
-            cornerRadius: self.size.height
-            ).addClip()
-        self.draw(in: rect)
-        return UIGraphicsGetImageFromCurrentImageContext()!
+    func roundedImageWithBorder(width: CGFloat, borderWidth: CGFloat, color: UIColor) -> UIImage? {
+        let square = CGSize(width: width, height: width)
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = self
+        imageView.layer.cornerRadius = square.width/2
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = borderWidth
+        imageView.layer.borderColor = color.cgColor
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
 }
 

@@ -26,6 +26,8 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         
           tableView.register(UINib(nibName: Cell.addEventCalendarCell, bundle: nil), forCellReuseIdentifier: Cell.addEventCalendarCell)
         
+        tableView.register(UINib(nibName: Cell.eventDateCell, bundle: nil), forCellReuseIdentifier: Cell.eventDateCell)
+        
         tableView.register(UINib(nibName: Cell.eventTimeCell, bundle: nil), forCellReuseIdentifier: Cell.eventTimeCell)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 
@@ -33,7 +35,7 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 11
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,12 +43,23 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 9 {
+        if indexPath.section == 10 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell {
                 fillTextIconCell(cell, indexPath)
                 return cell
             }
-        } else if indexPath.section == 5 || indexPath.section == 6 {
+        } else if indexPath.section == 5 {
+            if indexPath.row == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventDateCell, for: indexPath) as? EventDateCell else { return UITableViewCell() }
+                    fillEventDateCell(cell, indexPath)
+                    return cell
+            } else {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.addEventCalendarCell, for: indexPath) as? AddEventCalendarCell {
+                    fillAddCalendarCell(cell, indexPath)
+                    return cell
+                }
+            }
+        } else if indexPath.section == 6 || indexPath.section == 7 {
             if indexPath.row == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: Cell.dateAndTimeEvent, for: indexPath) as? DateAndTimeCell {
                     fillDateAndTimeEvent(cell, indexPath)
@@ -63,7 +76,6 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
                         fillEventTimeCell(cell, indexPath)
                         return cell
                     }
-
                 } else {
                    return UITableViewCell()
                 }

@@ -138,7 +138,7 @@ extension EditProfileViewController {
     func assignSelectedImages(photos: [DKAsset]) {
         var dkAsset: DKAsset!
         dkAsset = photos[0]
-        dkAsset.fetchFullScreenImage { image, info in
+        dkAsset.fetchFullScreenImage { image, _ in
             if image != nil {
                 if self.updateImage == false {
                     self.updateImage = true
