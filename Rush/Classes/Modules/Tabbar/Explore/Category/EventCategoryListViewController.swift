@@ -62,6 +62,7 @@ class EventCategoryListViewController: UIViewController {
                 firstFilterIndex = value
                 getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
             } else {
+                getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
                 getClubCategoryListAPI()
             }
         case .classes:
@@ -71,6 +72,7 @@ class EventCategoryListViewController: UIViewController {
                 firstFilterIndex = value
                 getClassListAPI()
             } else {
+                getClassListAPI()
                 getClassCategoryAPI()
             }
         default:

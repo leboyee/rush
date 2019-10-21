@@ -54,7 +54,7 @@ class ExploreViewController: CustomViewController {
     var clubInterestList = [ClubCategory]()
     var eventInterestList = [EventCategory]()
     var classCategoryList = [Class]()
-    var peopleList = [Friend]()
+    var peopleList = [User]()
     var universityButton = UIButton()
     var selUniversity = University()
     override func viewDidLoad() {
@@ -177,7 +177,7 @@ extension ExploreViewController {
                 getClassCategoryAPI()
             } else if btn.tag == 3 { // People
                 searchType = .people
-                getFriendListAPI()
+                getPeopleListAPI()
             } else {
                 searchType = .none
             }
@@ -224,8 +224,8 @@ extension ExploreViewController {
             }
         } else if segue.identifier == Segues.otherUserProfile {
             let vc = segue.destination as? OtherUserProfileController
-            let friend = sender as? Friend
-            vc?.userInfo = friend?.user
+            let user = sender as? User
+            vc?.userInfo = user
             vc?.delegate = self
         } else if segue.identifier == Segues.universitySegue {
             let vc = segue.destination as? UniversityViewController

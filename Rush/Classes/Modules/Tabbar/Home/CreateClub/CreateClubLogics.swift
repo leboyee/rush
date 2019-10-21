@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import IQKeyboardManagerSwift
+import UnsplashPhotoPicker
+import PanModal
 
 extension CreateClubViewController {
     
@@ -181,6 +183,38 @@ extension CreateClubViewController {
         }
         clubHeader.delegate = self
     }
+    func downloadPhoto(_ photo: UnsplashPhoto) {
+          guard let url = photo.urls[.regular] else { return }
+          
+          if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
+              let image = UIImage(data: cachedResponse.data) {
+              clubImage = image
+              clubHeader.setup(image: clubImage)
+              self.tableView.reloadData()
+              self.validateAllFields()
+              return
+          }
+          
+          imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+              guard let strongSelf = self else { return }
+              
+              strongSelf.imageDataTask = nil
+              
+              guard let data = data, let image = UIImage(data: data), error == nil else { return }
+              let imageView = UIImageView()
+              DispatchQueue.main.async {
+                UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    strongSelf.clubImage = image
+                    strongSelf.clubHeader.setup(image: image)
+                    strongSelf.tableView.reloadData()
+                    strongSelf.validateAllFields()
+                }, completion: nil)
+              }
+          }
+          
+          imageDataTask?.resume()
+      }
+     
 }
 
 // MARK: - Other functions
@@ -246,6 +280,22 @@ extension CreateClubViewController {
         }
     }
 }
+
+// MARK: - UnsplashPhotoPickerDelegate
+extension CreateClubViewController: UnsplashPhotoPickerDelegate {
+    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print("Unsplash photo picker did select \(photos.count) photo(s)")
+        if let photo = photos.first {
+            self.downloadPhoto(photo)
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
+        print("Unsplash photo picker did cancel")
+    }
+}
 // MARK: - SelectEventTypeController Delegate
 extension CreateClubViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
@@ -254,14 +304,15 @@ extension CreateClubViewController: SelectEventTypeDelegate {
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
-         self.openCameraOrLibrary(type: .photoLibrary)
-      /*  if type == .cameraRoll {
+//         self.openCameraOrLibrary(type: .photoLibrary)
+      if type == .cameraRoll {
             self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: false)
         } else {
             self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: true)
-        }*/
+        }
     }
 }
+
 // MARK: - UIImagePickerControllerDelegate methods
 extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
