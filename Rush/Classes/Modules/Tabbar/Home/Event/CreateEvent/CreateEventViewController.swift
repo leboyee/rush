@@ -189,11 +189,11 @@ extension CreateEventViewController {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.addUniversitySegue, sender: self)
             }
-        } else if indexPath.section == 7 {
+        } else if indexPath.section == 8 {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
             }
-        } else if indexPath.section == 8 {
+        } else if indexPath.section == 9 {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: Segues.createEventInviteSegue, sender: self)
             }

@@ -366,7 +366,7 @@ extension FriendsListViewController {
         }
         let param = [Keys.pageNo: pageNo, Keys.search: ""] as [String: Any]
         
-        ServiceManager.shared.fetchMyJoinedClassList(params:param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }

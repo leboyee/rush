@@ -158,10 +158,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus == CLAuthorizationStatus.notDetermined {
               CLLocationManager().requestWhenInUseAuthorization()
-          } else {
+        } else {
             if authorizationStatus == CLAuthorizationStatus.denied || authorizationStatus == CLAuthorizationStatus.restricted {
                 Utils.locationPermissionAlert()
             }
-          }
+        }
     }
 }

@@ -172,7 +172,12 @@ extension CreateClubViewController {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .photo
                 vc.delegate = self
+        } else if segue.identifier == Segues.addUniversitySegue {
+            if let vc = segue.destination as? ChooseUniversityViewController {
+                vc.delegate = self
+                vc.addUniversityType = .createEvent
             }
         }
     }
+}
 }

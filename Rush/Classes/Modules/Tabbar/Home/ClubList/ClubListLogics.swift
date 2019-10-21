@@ -278,7 +278,7 @@ extension ClubListViewController {
     func getMyJoinedClasses(search: String) {
         let param = [Keys.pageNo: pageNoM, Keys.search: search] as [String: Any]
         
-        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if unsafe.pageNoM == 1 {
                 unsafe.myClassesList.removeAll()
@@ -304,7 +304,7 @@ extension ClubListViewController {
     func getClassCategoryAPI() {
         let param = [Keys.pageNo: pageNoO] as [String: Any]
         
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             guard let uwself = self else { return }
             
             if uwself.pageNoO == 1 {
@@ -326,6 +326,4 @@ extension ClubListViewController {
             uwself.tableView.reloadData()
         }
     }
-    
-      
 }

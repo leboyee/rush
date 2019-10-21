@@ -147,6 +147,10 @@ extension EventDetailViewController {
         header.set(url: event.photo?.urlLarge())
     }
     
+    func sharePost(post: Post) {
+        performSegue(withIdentifier: Segues.eventDetailShare, sender: post)
+    }
+    
     func showRSVP(action: String) {
         performSegue(withIdentifier: Segues.rsvpJoinEvent, sender: action)
     }
@@ -253,7 +257,11 @@ extension EventDetailViewController {
         } else if segue.identifier == Segues.eventDetailShare {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
-                vc.type = .event
+                if (sender as? Post) != nil {
+                    vc.type = .post
+                } else {
+                    vc.type = .event
+                }
                 vc.object = sender
             }
         } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {

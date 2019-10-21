@@ -59,6 +59,7 @@ extension AddLocationViewController: UITextFieldDelegate {
     }
     @objc func textFieldDidChange(_ sender: UITextField) {
         self.searchCompleter.queryFragment = sender.text ?? ""
+       // searchPlaces(text: sender.text ?? "")
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {

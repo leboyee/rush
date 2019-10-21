@@ -144,7 +144,7 @@ extension PostViewController {
         if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.delegate = self
-                vc.post = postInfo ?? Post()
+                vc.object = postInfo
             }
         } else if segue.identifier == Segues.otherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {

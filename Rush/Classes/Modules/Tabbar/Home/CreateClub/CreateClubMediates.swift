@@ -55,7 +55,7 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else if indexPath.section == 4 {
             DispatchQueue.main.async {
-                //self.performSegue(withIdentifier: Segues.createEventInterestSegue, sender: self)
+                self.performSegue(withIdentifier: Segues.addUniversitySegue, sender: self)
             }
         }
     }
@@ -169,5 +169,14 @@ extension CreateClubViewController: EventInviteDelegate {
                 }
             }
         }
+    }
+}
+
+// MARK: - Choose University delegate
+extension CreateClubViewController: ChooseUnivesityDelegate {
+    func selectedUniversity(_ university: University) {
+        self.selectedUniversity = university
+        self.validateAllFields()
+        self.tableView.reloadData()
     }
 }
