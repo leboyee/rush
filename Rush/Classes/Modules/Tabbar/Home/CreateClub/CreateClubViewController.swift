@@ -22,11 +22,11 @@ class CreateClubViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-//    @IBOutlet weak var containerView: UIView!
-//    @IBOutlet weak var photoSelectionView: UIView!
-//    @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
-//    @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
-//    @IBOutlet weak var radiusView: UIView!
+    //    @IBOutlet weak var containerView: UIView!
+    //    @IBOutlet weak var photoSelectionView: UIView!
+    //    @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
+    //    @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
+    //    @IBOutlet weak var radiusView: UIView!
     
     var selectedContactList = [Contact]()
     var nameClub = ""
@@ -91,7 +91,7 @@ class CreateClubViewController: UIViewController {
             nameClub = club.clubName ?? ""
             clubDescription = club.clubDesc ?? ""
             isCreateGroupChat = (club.clubIsChatGroup) == 1 ? true : false
-                        
+            
             if let invitees = club.invitees {
                 var peoples = [Invite]()
                 for invitee in invitees {
@@ -134,16 +134,16 @@ extension CreateClubViewController {
         }
     }
     
-    @IBAction func addImageButtonAction() {
+  /*  @IBAction func addImageButtonAction() {
         
         self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: nil)
-      /*  Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
-            guard let unself = self else { return }
-            if index != 2 {
-                unself.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
-            }
-        } */
-    }
+        /*  Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
+         guard let unself = self else { return }
+         if index != 2 {
+         unself.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
+         }
+         } */
+    }*/
 }
 
 // MARK: - Navigation
@@ -172,6 +172,7 @@ extension CreateClubViewController {
             if let vc = segue.destination as? SelectEventTypeViewController {
                 vc.type = .photo
                 vc.delegate = self
+            }
         } else if segue.identifier == Segues.addUniversitySegue {
             if let vc = segue.destination as? ChooseUniversityViewController {
                 vc.delegate = self
@@ -179,5 +180,4 @@ extension CreateClubViewController {
             }
         }
     }
-}
 }
