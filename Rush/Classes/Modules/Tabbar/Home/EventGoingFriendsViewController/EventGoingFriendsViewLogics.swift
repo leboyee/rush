@@ -34,7 +34,6 @@ extension EventGoingFriendsViewController {
         }
     }
         
-    
     func willDisplay(_ indexPath: IndexPath) {
         if isNextPageExist == true, indexPath.row == (inviteType == .going ? goingInviteeList.count - 1 : notGoingInviteeList.count - 1) {
             fetchInvitees(search: searchTextFiled?.text ?? "", type: inviteType)
