@@ -17,6 +17,7 @@ class ClubNameCell: UITableViewCell {
     @IBOutlet weak var heightConstraintOfReadmoreButton: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfReadmoreButton: NSLayoutConstraint!
     
+    @IBOutlet weak var topConstraintOfName: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,6 +36,9 @@ class ClubNameCell: UITableViewCell {
 extension ClubNameCell {
     func setup(title: String) {
         titleLabel.text = title
+    }
+    func setup(topHeight : CGFloat) {
+        topConstraintOfName.constant = topHeight
     }
     
     func setupReadMoreButton() {

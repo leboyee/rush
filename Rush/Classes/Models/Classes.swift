@@ -109,6 +109,8 @@ class ClassGroup: Codable {
     var name: String = ""
     var totalRosters: Int = 0
     var myJoinedGroup: [String]?
+    var classGroupRosters: [ClassJoined]?
+//    var classGroupSchedule: [ClassGroupSchedule]?
     
     init() { }
     init(classId: Int64, groupId: Int64) {
@@ -122,7 +124,8 @@ class ClassGroup: Codable {
         case name = "name"
         case totalRosters = "total_rosters"
         case myJoinedGroup = "my_joined_group"
-        
+        case classGroupRosters = "class_group_rosters"
+//        case classGroupSchedule = "class_group_schedule"
     }
     var id: String {
         return String(classGroupId)
@@ -141,14 +144,17 @@ class ClassJoined: Codable {
     let userIdP: Int?
     let classGroup: ClassGroup?
     let classes: SubClass?
+    let user: User?
     
-    init(classGrpRosterID: Int?, userID: Int?, classID: Int?, groupID: Int?, classGroup: ClassGroup?, classes: SubClass?) {
+    init(classGrpRosterID: Int?, userID: Int?, classID: Int?, groupID: Int?, classGroup: ClassGroup?, classes: SubClass?, user: User?) {
         self.classGroupRosterIdP = classGrpRosterID
         self.userIdP = userID
         self.classIdP = classID
         self.groupIdP = groupID
         self.classGroup = classGroup
         self.classes = classes
+        self.user = user
+        
     }
     private enum CodingKeys: String, CodingKey {
         case classGroupRosterIdP = "class_grp_roster_id"
@@ -157,6 +163,7 @@ class ClassJoined: Codable {
         case userIdP = "user_id"
         case classes
         case classGroup = "class_group"
+        case user
     }
      var classGroupRosterId: String? {
         return String(classGroupRosterIdP ?? 0)

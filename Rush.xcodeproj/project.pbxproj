@@ -4157,6 +4157,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"icucore\"",
@@ -4225,7 +4226,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"WebKit\"",
-					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4255,6 +4255,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"icucore\"",
@@ -4323,7 +4324,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"WebKit\"",
-					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4409,6 +4409,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-l\"c++\"",
 					"-l\"icucore\"",
@@ -4477,7 +4478,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"WebKit\"",
-					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
