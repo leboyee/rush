@@ -370,11 +370,18 @@ extension CreateClubViewController {
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
         
+        var contacts = ""
+        if let json = try? JSONSerialization.data(withJSONObject: contactNoArray, options: []) {
+            if let content = String(data: json, encoding: .utf8) {
+                contacts = content
+            }
+        }
+        
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,
                      Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
-                     Keys.clubContact: contactNoArray.joined(separator: ","),
+                     Keys.clubContact: contacts,
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
                      Keys.clubUniversityId: selectedUniversity?.universtiyId ?? 0,
                      Keys.clubPhoto: dataN] as [String: Any]

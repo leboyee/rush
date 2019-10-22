@@ -345,6 +345,8 @@ extension ChatRoomViewController {
                 userName = channel?.name ?? ""
             } else if let event = eventInfo {
                 imageName = event.photo?.thumb ?? ""
+            } else if let club = clubInfo {
+                imageName = club.photo?.thumb ?? ""
             }
         }
         return imageName
