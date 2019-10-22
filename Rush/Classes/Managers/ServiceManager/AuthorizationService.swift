@@ -36,12 +36,13 @@ extension ServiceManager {
         }
     }
     
-    func restorePassword(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
+    func restorePassword(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
           NetworkManager.shared.restorePassword(params: params) { [weak self] (data, error, code) in
               guard let unsafe = self else { return }
-              unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                  closer(data, errorMessage)
-              })
+            unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+                        
           }
       }
     

@@ -117,8 +117,12 @@ extension AddLocationViewController {
         mapItem.name = curentAdressLabel.text
         self.mapItemToPresent = mapItem
         self.delegate?.addEventLocationData(curentAdressLabel.text ?? "", latitude: self.usersCurrentLocation?.coordinate.latitude ?? 0.0, longitude: self.usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        self.dismiss(animated: true, completion: nil)
-        print("selected map item is : \(String(describing: self.mapItemToPresent))")
+        if isRegister == true {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+      //  print("selected map item is : \(String(describing: self.mapItemToPresent))")
     }
 }
 

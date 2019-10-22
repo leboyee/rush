@@ -51,7 +51,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        print("url", url)
+        if url.absoluteString.contains("rushapp://fp?") {
+            let tokenMailComponents = url.absoluteString.components(separatedBy: "tkn=")
+            let tokenComponents = tokenMailComponents.last?.components(separatedBy: "&email=")
+            guard let token = tokenComponents?.first else { return true }
+            DispatchQueue.main.async {
+                self.setRootOfNewPassword(token: token)
+            }
+        }
+        return true
+    }
 
+    func setRootOfNewPassword(token: String) {
+        if let viewController = self.getTopViewController() {
+            let storyboardName = UIStoryboard(name: StoryBoard.authorize, bundle: nil)
+            guard let controller = storyboardName.instantiateViewController(withIdentifier: "EnterPasswordViewConteroller") as? EnterPasswordViewConteroller else { return }
+            controller.token = token
+            controller.loginType = .restorePassword
+            viewController.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func getTopViewController() -> UIViewController? {
+          var topViewController = UIApplication.shared.keyWindow?.rootViewController
+          while (topViewController?.presentedViewController != nil) {
+              topViewController = topViewController?.presentedViewController;
+          }
+          return topViewController
+      }
+
+    
     func setupAppearance() {
         setupTopBar()
         setupBarButton()
