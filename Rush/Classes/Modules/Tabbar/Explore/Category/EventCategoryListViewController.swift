@@ -100,11 +100,11 @@ class EventCategoryListViewController: UIViewController {
         
         var titleText = ""
         if interest == nil {//open non category list screen
-            var header = "Search classes"
+            /*var header = "Search classes"
             if (eventCategory) != nil {
                             header = eventCategory?.name ?? "Search events"
-                        }
-            titleText = type == .event ? header : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
+                        } */
+            titleText = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
         } else {
             titleText = interest?.interestName ?? ""
         }

@@ -34,6 +34,8 @@ class ContactsListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+
         DispatchQueue.main.async {
             self.getContacts()
         }

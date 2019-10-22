@@ -17,8 +17,6 @@ class ClassDetailViewController: UIViewController {
     var peopleList = [String]()
     var classesPostList = [Post]()
     
-    var timeList: [String] = ["Thursday", "Friday", "Sunday", "Tuesday", "Wednesday"]
-    
     var clubImage: UIImage?
     
     var isShowMore = false
@@ -135,6 +133,9 @@ extension ClassDetailViewController {
         
         if segue.identifier == Segues.otherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {
+                if let user = sender as? User {
+                    vc.userInfo = user
+                }
                 // image for test
                 vc.clubImage = clubImage
                 vc.delegate = self
@@ -146,8 +147,7 @@ extension ClassDetailViewController {
                     vc.type = .classes
                     vc.object = sender
                     vc.delegate = self
-                }
-                else {
+                } else {
                     vc.type = .post
                     vc.object = sender
                     vc.delegate = self

@@ -118,13 +118,13 @@ extension ExploreViewController {
             }
         case 2:
             if classList.count > 0 {
-                img1 = classList[0].photo
+                img1 = classList[0].photoJson
             }
             if classList.count > 1 {
-                img2 = classList[1].photo
+                img2 = classList[1].photoJson
             }
             if classList.count > 2 {
-                img3 = classList[2].photo
+                img3 = classList[2].photoJson
             }
         default:
             break
@@ -135,11 +135,18 @@ extension ExploreViewController {
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
         
         if searchType == .event {
-            cell.setup(title: eventInterestList[indexPath.row].name)
+            if eventInterestList.count > indexPath.row {
+                cell.setup(title: eventInterestList[indexPath.row].name)
+            }
         } else if searchType == .club {
-            cell.setup(title: clubInterestList[indexPath.row].name)
+            if clubInterestList.count > indexPath.row {
+                cell.setup(title: clubInterestList[indexPath.row].name)
+                
+            }
         } else if searchType == .classes {
-            cell.setup(title: classCategoryList[indexPath.row].name)
+            if classCategoryList.count > indexPath.row {
+                cell.setup(title: classCategoryList[indexPath.row].name)
+            }
         }
         cell.setup(isHideTopSeparator: true)
     }

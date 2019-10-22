@@ -67,7 +67,7 @@ PODS:
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
-  - SendBirdSDK (3.0.149)
+  - SendBirdSDK (3.0.156)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.35.0)
   - UnsplashPhotoPicker (1.1.0)
@@ -84,13 +84,13 @@ DEPENDENCIES:
   - PanModal
   - ReachabilitySwift
   - SDWebImage (= 5.2.1)
-  - SendBirdSDK (= 3.0.149)
+  - SendBirdSDK
   - SVProgressHUD
   - SwiftLint
   - UnsplashPhotoPicker (~> 1.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
@@ -129,11 +129,11 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
-  SendBirdSDK: 9afafc0b44bb3ccbaf437cc83a7aeaf39c25ad8d
+  SendBirdSDK: b4e71ac4926dd58ff0d0c6c41de60e033db3f3fa
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: 0b92b6ada37f037319777c63e157cc14a03c0cbc
+PODFILE CHECKSUM: 4995f60c8b913ddb247110bfa02d815efad0db15
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.8.3

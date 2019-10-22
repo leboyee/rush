@@ -75,6 +75,14 @@ extension ClubDetailViewController {
             cell.setup(secondButtonType: .groupChatClub)
         }
         
+        if (clubInfo?.clubIsChatGroup ?? 0) == 0 {
+            cell.secondButton.isHidden = true
+            cell.trailingConstraintOfSecondButton.constant = -(screenWidth - 48 - 7)
+        } else {
+            cell.secondButton.isHidden = false
+            cell.trailingConstraintOfSecondButton.constant = 24
+        }
+        
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             
@@ -149,39 +157,39 @@ extension ClubDetailViewController {
         cell.setup(cornerRadius: 24)
         cell.setup(isHideSeparator: true)
         cell.clipsToBounds = true
-        if indexPath.section > 5 {
-            let post = clubPostList[indexPath.section - 6]
-            cell.setup(title: post.user?.name ?? "")
-            cell.setup(bottomConstraintOfImage: 0)
-            cell.setup(bottomConstraintOfDate: 4)
-            cell.setup(dotButtonConstraint: 24)
-            cell.setup(eventImageUrl: post.user?.photo?.url())
-            if post.user?.userId == Authorization.shared.profile?.userId {
-                cell.threeDots.isHidden = false
-            } else {
-                cell.threeDots.isHidden = true
-            }
-            cell.shareClickEvent = { [weak self] () in
-                guard self != nil else { return }
-                self?.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
-            }
-            if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
-                let time = Date().timeAgoDisplay(date: date)
-                cell.setup(detail: time)
-            }
+        
+        let user = clubInfo?.user
+        if let count = clubInfo?.user?.totalEvents, count > 0 {
+            let text = count == 1 ? "event" : "events"
+            cell.setup(detail: "\(count) \(text)")
         } else {
-            let user = clubInfo?.user
-            if let count = clubInfo?.user?.totalEvents, count > 0 {
-                let text = count == 1 ? "event" : "events"
-                cell.setup(detail: "\(count) \(text)")
-            } else {
-                cell.setup(detail: "No event")
-            }
-            cell.setup(title: user?.name ?? "")
-            cell.setup(bottomConstraintOfImage: 18.5)
-            cell.setup(bottomConstraintOfDate: 22)
-            cell.setup(dotButtonConstraint: -24)
-            cell.setup(eventImageUrl: clubInfo?.user?.photo?.url())
+            cell.setup(detail: "No event")
+        }
+        cell.setup(title: user?.name ?? "")
+        cell.setup(bottomConstraintOfImage: 18.5)
+        cell.setup(bottomConstraintOfDate: 22)
+        cell.setup(dotButtonConstraint: -24)
+        cell.setup(eventImageUrl: clubInfo?.user?.photo?.url())
+    }
+    
+    func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
+        let post = clubPostList[indexPath.section - 6]
+        cell.set(name: post.user?.name ?? "")
+        cell.set(url: post.user?.photo?.urlThumb())
+        cell.moreEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            unsafe.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
+        }
+        
+        if post.user?.userId == Authorization.shared.profile?.userId {
+            cell.moreButton.isHidden = false
+        } else {
+            cell.moreButton.isHidden = true
+        }
+        
+        if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+            let time = Date().timeAgoDisplay(date: date)
+            cell.set(timeStr: time)
         }
     }
     

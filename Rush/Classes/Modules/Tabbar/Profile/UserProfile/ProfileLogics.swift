@@ -60,7 +60,7 @@ extension ProfileViewController {
             }
         case .updateClass:
             if let classObject = notification.classObject?.last {
-                showClass(classObject: classObject)
+                showClass(classId: classObject.classId, groupId: notification.classGroupId)
             }
         case .upVoted, .downVoted, .newComment:
             if let user = notification.generatedBy, user.name == text {
@@ -157,11 +157,11 @@ extension ProfileViewController {
                     }
                 }
             case .updateEvent:
-                cell.set(object: notification.event?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
             case .updateClass:
                 cell.set(object: notification.classObject?.last, text: notification.ntText)
             case .updateClub:
-                cell.set(object: notification.club?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
             default:
                 cell.label.text = ""
             }

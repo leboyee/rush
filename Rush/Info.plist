@@ -40,6 +40,16 @@
 				<string>fb2145163872255784</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.messapps.testing.rush</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>rushapp://</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>

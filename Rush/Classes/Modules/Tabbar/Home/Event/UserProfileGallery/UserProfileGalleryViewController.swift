@@ -45,13 +45,13 @@ class UserProfileGalleryViewController: UIViewController {
         // Setup tableview
         setupCollectionView()
         fillBottomProfile()
-        setTitle(titleStr: "\(currentIndex) of \(list.count)")
+        setTitle(titleStr: "\(currentIndex + 1) of \(list.count)")
+        setupDateAndTimeOfPhoto(index: currentIndex)
     }
     
     // MARK: - Set Profile Data
     func fillBottomProfile() {
         userNameLable.text = user.name
-        timeLable.text = "5 AM"
         guard let imageStr = user.photo?.thumb else { return } //"https://tineye.com/images/widgets/mona.jpg"
         profilePicImageView.sd_setImage(with: URL(string: imageStr), completed: nil)
     }
@@ -73,6 +73,18 @@ class UserProfileGalleryViewController: UIViewController {
     // MARK: - Setup Title
     func setTitle(titleStr: String) {
         titleLable.text = titleStr
+    }
+    
+    func setupDateAndTimeOfPhoto(index: Int) {
+         let image = list[index]
+        print(image.date)
+        if let date = image.date {
+            if date.isSameDate(Date()) {
+                timeLable.text = date.toString(format: "hh:mm a")
+            } else {
+                timeLable.text = date.toString()
+            }
+        }
     }
     
 }

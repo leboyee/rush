@@ -39,8 +39,18 @@ extension TimeSlotCell {
         dayLabel.text = day
     }
     
-    func setup(time: String) {
-        timeLabel.text = time
+    func setup(start: String, end: String) {
+     /*   guard let startDate = start else {
+                   timeLabel.text = ""
+                   return
+               }
+               
+               var text = startDate.toString(format: "hh:mm a")
+               if let endDate = end {
+                   text +=  "-" +  endDate.toString(format: "hh:mm a")
+               }*/
+               timeLabel.text = start + "-" + end
+        
     }
     
     func setup(isHideDropDown: Bool) {

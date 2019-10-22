@@ -141,7 +141,7 @@ extension OtherUserProfileController {
                 vc.hidesBottomBarWhenPushed = true
                 vc.list = imagesList
                 vc.user = userInfo ?? User()
-                vc.currentIndex = 1
+                vc.currentIndex = 0
             }
         }
     }
