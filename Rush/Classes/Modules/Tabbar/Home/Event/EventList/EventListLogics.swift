@@ -61,6 +61,8 @@ extension EventListViewController {
         cell.setup(eventImageUrl: event.photo?.urlThumb())
     }
     
+    
+    
     func cellSelected(_ indexPath: IndexPath) {
         if self.isMyEvents == true && indexPath.section == 0 {
             let event = eventList[indexPath.row]

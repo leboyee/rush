@@ -249,9 +249,9 @@ extension ClassDetailViewController {
         */
     }
     func fillImageHeader() {
-          let img = Image(json: subclassInfo?.photo ?? "")
-          clubHeader.set(url: img.url())
-      }
+          let img = subclassInfo?.photo
+          clubHeader.set(url: img?.url())
+    }
     /*func fillImageHeader(_ view: UserImagesHeaderView) {
         let img = Image(json: subclassInfo?.photo ?? "")
         view.setup(imageUrl: img.url())

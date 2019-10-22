@@ -100,8 +100,12 @@ extension ContactsListViewController {
             for contact in contactArray {
                 guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
                 let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
-                var contactString = contact.replacingOccurrences(of: "+\(countryNumberCodeString)", with: "")
-                contactString = contactString.replacingOccurrences(of: "+", with: "")
+                var contactString = ""
+                if contact.contains("+") {
+                    contactString = contact
+                } else {
+                    contactString = "\(countryNumberCodeString)\(contact)"
+                }
                 if contactString.count >= 10 {
                         contactDict["cc"] = countryNumberCodeString
                         contactDict["phone"] = contactString

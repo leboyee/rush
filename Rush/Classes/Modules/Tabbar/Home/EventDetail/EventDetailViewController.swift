@@ -298,7 +298,7 @@ extension EventDetailViewController {
                 if let (post, index) = sender as? (Post, Int) {
                     vc.list = post.images ?? [Image]()
                     vc.user = post.user ?? User()
-                    vc.currentIndex = index + 1
+                    vc.currentIndex = index
                 }
               }
         } else if segue.identifier == Segues.eventInterest {

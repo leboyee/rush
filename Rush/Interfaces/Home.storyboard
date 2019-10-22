@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -717,7 +717,7 @@
                         <segue destination="mi6-YI-bln" kind="show" identifier="ClubDetailSegue" id="p5t-Td-KDq"/>
                         <segue destination="L1f-77-01p" kind="show" identifier="CreateEventInterestSegue" animates="NO" id="VDC-kF-V0P"/>
                         <segue destination="Qzh-AU-fAG" kind="show" identifier="AddUniversitySegue" id="Bsb-aJ-wVA"/>
-                        <segue destination="qj4-LD-huY" kind="presentation" identifier="SelectEventTypeViewSegue" modalPresentationStyle="overFullScreen" id="Ixy-09-J7m"/>
+                        <segue destination="qj4-LD-huY" kind="presentation" identifier="SelectEventTypeViewSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Ixy-09-J7m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbw-4h-B29" userLabel="First Responder" sceneMemberID="firstResponder"/>

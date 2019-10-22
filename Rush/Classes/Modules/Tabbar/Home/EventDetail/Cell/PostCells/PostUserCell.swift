@@ -13,6 +13,7 @@ class PostUserCell: UITableViewCell {
     @IBOutlet weak var nameLabel: CustomBlackLabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var moreButton: UIButton!
     var moreEvent: (() -> Void)?
 
     override func awakeFromNib() {
@@ -47,5 +48,9 @@ extension PostUserCell {
     
     func set(url: URL?) {
         profileImageView.sd_setImage(with: url, placeholderImage: nil)
+    }
+    
+    func set(timeStr: String) {
+        timeLabel.text = timeStr
     }
 }

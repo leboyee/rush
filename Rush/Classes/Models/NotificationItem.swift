@@ -16,8 +16,9 @@ class NotificationItem: Codable {
     var friend: [Friend]?
     var event: [Event]?
     var club: [Club]?
-    var classObject: [Class]?
+    var classObject: [SubClass]?
     var post: [Post]?
+    var classGroupId: Int64 = 0
 
     private enum CodingKeys: String, CodingKey {
         case id = "nt_id"
@@ -27,7 +28,8 @@ class NotificationItem: Codable {
         case friend = "friend"
         case event = "event"
         case club = "club"
-        case classObject = "class"
+        case classObject = "classes"
         case post = "post"
+        case classGroupId = "nt_class_grp_id"
     }
 }

@@ -233,6 +233,8 @@ struct StoryBoard {
     static let home                      =     "Home"
     static let rsvp                      =     "RSVP"
     static let eventDetail               =     "EventDetail"
+    static let authorize               =     "Authorize"
+
 }
 
 public struct Text {
@@ -418,6 +420,7 @@ enum LoginType {
     case changePassword
     case newPassword
     case restoreEmail
+    case restorePassword
 }
 
 enum PhotoFrom {

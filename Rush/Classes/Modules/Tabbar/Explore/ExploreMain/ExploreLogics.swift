@@ -118,13 +118,13 @@ extension ExploreViewController {
             }
         case 2:
             if classList.count > 0 {
-                img1 = classList[0].photo
+                img1 = classList[0].photoJson
             }
             if classList.count > 1 {
-                img2 = classList[1].photo
+                img2 = classList[1].photoJson
             }
             if classList.count > 2 {
-                img3 = classList[2].photo
+                img3 = classList[2].photoJson
             }
         default:
             break
