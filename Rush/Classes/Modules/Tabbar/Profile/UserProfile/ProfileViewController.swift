@@ -155,8 +155,8 @@ extension ProfileViewController {
         performSegue(withIdentifier: Segues.notificationClubDetail, sender: club)
     }
     
-    func showClass(classObject: Class) {
-        performSegue(withIdentifier: Segues.notificationClassDetail, sender: classObject)
+    func showClass(classId: Int64, groupId: Int64) {
+        performSegue(withIdentifier: Segues.notificationClassDetail, sender: (classId, groupId))
     }
     
     func showPost(post: Post, object: Any?) {
@@ -196,6 +196,12 @@ extension ProfileViewController {
         } else if segue.identifier == Segues.profileImageViewSegue {
             let vc = segue.destination as? ProfileTileViewController
             vc?.imageArray = profileDetail.images ?? [Image]()
+        } else if segue.identifier == Segues.notificationClassDetail {
+            guard let vc = segue.destination as? ClassDetailViewController else { return }
+            if let (classId, groupId) = sender as? (Int64, Int64) {
+                vc.classId = String(classId)
+                vc.groupId = String(groupId)
+            }
         }
     }
 }

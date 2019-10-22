@@ -74,19 +74,27 @@ class SubClass: Codable {
     var classId: Int64 = 0
     var location: String = ""
     var name: String = ""
-    var photo: String = ""
     private var classCatId: Int64 = 0
     var classTotalGroups: Int64 = 0
+    var photoJson: String = ""
+    private var convertJsonToPhoto: Image?
+    var photo: Image? {
+       if convertJsonToPhoto == nil {
+          convertJsonToPhoto = photoJson.photo
+       }
+       return convertJsonToPhoto
+    }
     
     var classGroups: [ClassGroup]?
     var myJoinedClass: [ClassJoined]?
+    
     init() { }
     
     private enum CodingKeys: String, CodingKey {
         case classId = "class_id"
         case name = "class_name"
         case location = "class_location"
-        case photo = "class_photo"
+        case photoJson = "class_photo"
         case classCatId = "class_cat_id"
         case classTotalGroups = "class_total_groups"
         case classGroups = "class_groups"

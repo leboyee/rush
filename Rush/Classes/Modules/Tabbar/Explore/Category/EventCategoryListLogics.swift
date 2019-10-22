@@ -138,7 +138,7 @@ extension EventCategoryListViewController {
             cell.setup(title: myclass.name )
 //            cell.setup(detail: club.clubDesc ?? "")
 //            cell.setup(invitee: club.invitees)
-            cell.setup(imageUrl: myclass.photo.photo?.url())
+            cell.setup(imageUrl: myclass.photo?.url())
             } else {
             cell.setup(detail: "SOMM 24-A")
         }

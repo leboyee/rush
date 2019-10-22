@@ -57,10 +57,10 @@ extension NotificationCell {
             key = "{event_name}"
             value = startSeparator + event.title + endSeparator
             photo = event.photo
-        } else if let classObject = object as? Class {
+        } else if let classObject = object as? SubClass {
             key = "{class_name}"
             value = startSeparator + classObject.name + endSeparator
-            //photo = classObject.classList?.last?.photo
+            photo = classObject.photo
         } else if let friend = object as? Friend {
             key = "{friend_user_name}"
             value = startSeparator + (friend.user?.name ?? "") + endSeparator
@@ -88,10 +88,10 @@ extension NotificationCell {
             key = "{event_name}"
             value = startSeparator + event.title + endSeparator
             photo = event.photo
-        } else if let classObject = object as? Class {
+        } else if let classObject = object as? SubClass {
             key = "{class_name}"
             value = startSeparator + classObject.name + endSeparator
-            //photo = classObject.classList?.last?.photo
+            photo = classObject.photo
         }
         
         var detailText = text.replacingOccurrences(of: userName, with: name)
