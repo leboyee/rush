@@ -1720,6 +1720,7 @@
                         <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" animates="NO" modalPresentationStyle="overFullScreen" id="Bwe-EL-S9s"/>
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="WIx-LH-4TQ"/>
                         <segue destination="KY7-jJ-Aaf" kind="show" identifier="PostSegue" id="bD5-sy-JMX"/>
+                        <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="JB1-Ex-Ue7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6D-HR-Kbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1734,8 +1735,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLR-qM-GMS">
+                                <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="2Mb-C5-kTC">
+                                        <barButtonItem key="leftBarButtonItem" image="back-arrow" style="plain" id="uRB-ES-BFQ">
+                                            <inset key="imageInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kdc-bb-aE4">
+                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" image="crossDeletewhite"/>
+                                                <connections>
+                                                    <action selector="backButtonAction:" destination="MIq-9i-pDq" eventType="touchUpInside" id="Eh4-uq-psa"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Kfy-wU-bG6">
+                                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q29-Bm-M1A">
+                                                <rect key="frame" x="330" y="0.0" width="64" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" image="whiteMore"/>
+                                                <connections>
+                                                    <action selector="moreButtonAction:" destination="MIq-9i-pDq" eventType="touchUpInside" id="3Ci-ie-FD8"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VtW-6V-QAm">
-                                <rect key="frame" x="0.0" y="57" width="414" height="729"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="702"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Wt-eG-tFm">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1789,37 +1821,8 @@
                                     <constraint firstAttribute="height" constant="110" id="z5E-MB-o3a"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLR-qM-GMS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="2Mb-C5-kTC">
-                                        <barButtonItem key="leftBarButtonItem" image="back-arrow" style="plain" id="uRB-ES-BFQ">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kdc-bb-aE4">
-                                                <rect key="frame" x="20" y="0.0" width="48" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" image="crossDeletewhite"/>
-                                                <connections>
-                                                    <action selector="backButtonAction:" destination="MIq-9i-pDq" eventType="touchUpInside" id="Eh4-uq-psa"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Kfy-wU-bG6">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q29-Bm-M1A">
-                                                <rect key="frame" x="330" y="0.0" width="64" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" image="whiteMore"/>
-                                                <connections>
-                                                    <action selector="moreButtonAction:" destination="MIq-9i-pDq" eventType="touchUpInside" id="3Ci-ie-FD8"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4of12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtV-kh-xhf">
-                                <rect key="frame" x="157" y="56" width="100" height="20"/>
+                                <rect key="frame" x="157" y="47" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="GIf-LV-fCR"/>
                                 </constraints>
@@ -1840,11 +1843,10 @@
                             <constraint firstItem="PtV-kh-xhf" firstAttribute="centerX" secondItem="QLR-qM-GMS" secondAttribute="centerX" id="bih-MJ-lRx"/>
                             <constraint firstAttribute="bottom" secondItem="27L-aR-dbX" secondAttribute="bottom" id="br5-tY-BBL"/>
                             <constraint firstItem="KTO-bu-aff" firstAttribute="trailing" secondItem="VtW-6V-QAm" secondAttribute="trailing" id="cu9-MB-Cat"/>
-                            <constraint firstItem="VtW-6V-QAm" firstAttribute="top" secondItem="KTO-bu-aff" secondAttribute="top" constant="13" id="jkB-HC-ZAi"/>
-                            <constraint firstItem="VtW-6V-QAm" firstAttribute="top" secondItem="KTO-bu-aff" secondAttribute="top" constant="13" id="kce-f9-teV"/>
                             <constraint firstItem="KTO-bu-aff" firstAttribute="trailing" secondItem="27L-aR-dbX" secondAttribute="trailing" id="m1H-NY-eSR"/>
                             <constraint firstItem="PtV-kh-xhf" firstAttribute="centerY" secondItem="QLR-qM-GMS" secondAttribute="centerY" id="q9y-b8-NZT"/>
-                            <constraint firstItem="QLR-qM-GMS" firstAttribute="top" secondItem="N6Y-cq-o0N" secondAttribute="top" constant="44" id="qiZ-v0-nAr"/>
+                            <constraint firstItem="QLR-qM-GMS" firstAttribute="top" secondItem="N6Y-cq-o0N" secondAttribute="top" constant="35" id="qiZ-v0-nAr"/>
+                            <constraint firstItem="VtW-6V-QAm" firstAttribute="top" secondItem="QLR-qM-GMS" secondAttribute="bottom" constant="5" id="tsv-nQ-Hao"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KTO-bu-aff"/>
                     </view>
@@ -1867,7 +1869,7 @@
                     <inset key="imageEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
                 </button>
             </objects>
-            <point key="canvasLocation" x="-2770" y="871"/>
+            <point key="canvasLocation" x="-2771.0144927536235" y="870.53571428571422"/>
         </scene>
         <!--Event Going Friends View Controller-->
         <scene sceneID="Geh-JL-638">
@@ -2005,7 +2007,7 @@
         <image name="whiteMore" width="32" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GeF-AR-VOr"/>
+        <segue reference="L5B-Xz-z9C"/>
         <segue reference="yk0-VO-M9j"/>
         <segue reference="Z2T-Ex-vst"/>
         <segue reference="Bwe-EL-S9s"/>
@@ -2013,10 +2015,10 @@
         <segue reference="bD5-sy-JMX"/>
         <segue reference="z8H-lu-6pg"/>
         <segue reference="E7I-YA-fBT"/>
-        <segue reference="90w-At-CBu"/>
+        <segue reference="JB1-Ex-Ue7"/>
         <segue reference="WIx-LH-4TQ"/>
-        <segue reference="p5t-Td-KDq"/>
+        <segue reference="gSU-VJ-XvQ"/>
         <segue reference="Ixy-09-J7m"/>
-        <segue reference="CaI-qS-W91"/>
+        <segue reference="Oel-AB-j6R"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -54,7 +54,7 @@ extension ClassDetailViewController {
     
     func cellCount(_ section: Int) -> Int {
         if section == 2 && isShowMore {
-            return timeList.count
+            return selectedGroup?.classGroupSchedule?.count ?? 0
         } else if section > 5 {
             return 4
         }
@@ -98,8 +98,22 @@ extension ClassDetailViewController {
             cell.setup(iconImage: "location-gray")
         } else {
             cell.setup(iconImage: "calender-gray")
-            cell.setup(placeholder: "", title: "Today ⋅ 4:30 pm - 5:55 pm")
-            cell.setup(isSetDropDown: true)
+            if selectedGroup?.classGroupSchedule?.count ?? 0 > 0 {
+                let classSchedule = selectedGroup?.classGroupSchedule
+                let dateFormatter = DateFormatter()
+                       dateFormatter.dateFormat = "HH:mm:ss"
+                let sdate = dateFormatter.date(from: classSchedule?[0].startTime ?? "12:12:12")
+                       dateFormatter.dateFormat = "h:mm a"
+                       let startTime = dateFormatter.string(from: sdate!.toLocalTime())
+                       dateFormatter.dateFormat = "HH:mm:ss"
+                let edate = dateFormatter.date(from: classSchedule?[0].endTime ?? "12:12:12")
+                       dateFormatter.dateFormat = "h:mm a"
+                       let endTime = dateFormatter.string(from: edate!.toLocalTime())
+                      let day = classSchedule?[0].day.capitalized ?? ""
+                let title = startTime + " - " + endTime
+                cell.setup(placeholder: "", title: day + " " + title)
+            }
+             cell.setup(isSetDropDown: true)
             cell.setup(isHideCleareButton: false)
             
             cell.clearButtonClickEvent = { [weak self] () in
@@ -112,7 +126,19 @@ extension ClassDetailViewController {
     }
     
     func fillTimeSlotCell(_ cell: TimeSlotCell, _ indexPath: IndexPath) {
-        cell.setup(day: timeList[indexPath.row])
+        let classSchedule = selectedGroup?.classGroupSchedule
+        cell.setup(day: classSchedule?[indexPath.row].day.capitalized ?? "")
+       
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let sdate = dateFormatter.date(from: classSchedule?[indexPath.row].startTime ?? "12:12:12")
+        dateFormatter.dateFormat = "h:mm a"
+        let startTime = dateFormatter.string(from: sdate!.toLocalTime())
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let edate = dateFormatter.date(from: classSchedule?[indexPath.row].endTime ?? "12:12:12")
+        dateFormatter.dateFormat = "h:mm a"
+        let endTime = dateFormatter.string(from: edate!.toLocalTime())
+        cell.setup(start: startTime, end: endTime)
         cell.setup(isHideDropDown: indexPath.row == 0 ? false : true)
     }
     

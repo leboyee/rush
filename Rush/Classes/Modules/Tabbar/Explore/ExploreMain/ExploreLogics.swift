@@ -135,11 +135,18 @@ extension ExploreViewController {
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
         
         if searchType == .event {
-            cell.setup(title: eventInterestList[indexPath.row].name)
+            if eventInterestList.count > indexPath.row {
+                cell.setup(title: eventInterestList[indexPath.row].name)
+            }
         } else if searchType == .club {
-            cell.setup(title: clubInterestList[indexPath.row].name)
+            if clubInterestList.count > indexPath.row {
+                cell.setup(title: clubInterestList[indexPath.row].name)
+                
+            }
         } else if searchType == .classes {
-            cell.setup(title: classCategoryList[indexPath.row].name)
+            if classCategoryList.count > indexPath.row {
+                cell.setup(title: classCategoryList[indexPath.row].name)
+            }
         }
         cell.setup(isHideTopSeparator: true)
     }
