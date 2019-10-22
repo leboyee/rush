@@ -117,7 +117,27 @@ extension ClassDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: [], total: selectedGroup?.totalRosters ?? 0)
+        var rosterArray = [Invitee]()
+        for rs in selectedGroup?.classGroupRosters ?? [ClassJoined]() {
+            if let user = rs.user {
+                let inv = Invitee()
+                inv.user = user
+                rosterArray.append(inv)
+            }
+           
+        }
+        cell.setup(invitees: rosterArray, total: rosterArray.count)
+        cell.userSelected = { [weak self] (id, index) in
+                 guard let unself = self else { return }
+                 if index != 0 {
+                     let invitee = rosterArray[index - 1] // -1 of ViewAll Cell item
+                    if invitee.user?.userId == Authorization.shared.profile?.userId {
+                         self?.tabBarController?.selectedIndex = 3
+                     } else {
+                        unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee.user)
+                     }
+                 }
+             }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {

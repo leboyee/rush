@@ -80,7 +80,7 @@ struct Keys {
     static let clubInvitedUserIds = "club_invited_user_ids"
     static let removedClubInvitedUserIds = "removed_club_invited_user_ids"
     static let clubIsChatGroup = "club_is_chat_group"
-    static let clubContact = "club_contact"
+    static let clubContact = "club_invited_contacts"
     static let clubPhoto = "club_photo"
     static let clubId = "club_id"
     static let club = "club"
