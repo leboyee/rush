@@ -118,7 +118,7 @@ class ClassGroup: Codable {
     var totalRosters: Int = 0
     var myJoinedGroup: [String]?
     var classGroupRosters: [ClassJoined]?
-//    var classGroupSchedule: [ClassGroupSchedule]?
+    var classGroupSchedule: [ClassGroupSchedule]?
     
     init() { }
     init(classId: Int64, groupId: Int64) {
@@ -133,7 +133,7 @@ class ClassGroup: Codable {
         case totalRosters = "total_rosters"
         case myJoinedGroup = "my_joined_group"
         case classGroupRosters = "class_group_rosters"
-//        case classGroupSchedule = "class_group_schedule"
+        case classGroupSchedule = "class_group_schedule"
     }
     var id: String {
         return String(classGroupId)
@@ -184,5 +184,29 @@ class ClassJoined: Codable {
     }
     var userId: String? {
         return String(userIdP ?? 0)
+    }
+}
+
+//class group schedule
+class ClassGroupSchedule: Codable {
+    
+    var classGroupScheduleId: Int64 = 0
+    var classId: Int64 = 0
+    var groupId: Int64 = 0
+    var day: String = ""
+    var startTime: String = ""
+    var endTime: String = ""
+    var timezone: String = ""
+    
+    init() { }
+
+    private enum CodingKeys: String, CodingKey {
+        case classGroupScheduleId = "class_grp_sch_id"
+        case classId = "class_id"
+        case groupId = "group_id"
+        case day = "day"
+        case startTime = "gmt_start_time"
+        case endTime = "gmt_end_time"
+        case timezone = "timezone"
     }
 }

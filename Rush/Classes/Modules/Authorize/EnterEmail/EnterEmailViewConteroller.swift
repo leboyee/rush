@@ -183,7 +183,7 @@ extension EnterEmailViewConteroller {
     
     func  emailSuccess() {
         if loginType == .restoreEmail {
-            
+            self.navigationController?.popToRootViewController(animated: true)
         } else {
             self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
         }

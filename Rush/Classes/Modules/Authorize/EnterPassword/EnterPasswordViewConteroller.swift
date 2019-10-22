@@ -35,6 +35,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     @IBOutlet weak var errorButton: CustomButton!
     var isError: Bool = false
     var loginType: LoginType = .register
+    var token = ""
     var profile = User()
     var oldPassword = ""
 

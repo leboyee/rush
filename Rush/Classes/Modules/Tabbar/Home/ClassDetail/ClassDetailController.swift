@@ -17,8 +17,6 @@ class ClassDetailViewController: UIViewController {
     var peopleList = [String]()
     var classesPostList = [Post]()
     
-    var timeList: [String] = ["Thursday", "Friday", "Sunday", "Tuesday", "Wednesday"]
-    
     var clubImage: UIImage?
     
     var isShowMore = false

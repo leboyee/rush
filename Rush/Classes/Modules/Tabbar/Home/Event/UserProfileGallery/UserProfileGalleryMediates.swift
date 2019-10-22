@@ -53,6 +53,7 @@ extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollecti
         currentIndex = Int(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
         let titleString = ("\((currentIndex+1)) of \(cellCount())")
         setTitle(titleStr: titleString)
+        setupDateAndTimeOfPhoto(index: currentIndex)
         print(currentIndex)
     }
     
