@@ -52,6 +52,7 @@ class CreateClubViewController: UIViewController {
     var removePeopleIds = [String]()
     var newPeopleIds = [String]()
     var newContacts = [String]()
+    var countryCode = [[String: Any]]()
     var selectedUniversity: University?
     
     var clubInfo: Club?
@@ -93,6 +94,7 @@ class CreateClubViewController: UIViewController {
         
         // Setup header
         fillImageHeader()
+        loadCountryJson()
     }
     
     func setupData() {
