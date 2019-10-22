@@ -75,6 +75,15 @@ extension ClubDetailViewController {
             cell.setup(secondButtonType: .groupChatClub)
         }
         
+        if (clubInfo?.clubIsChatGroup ?? 0) == 0 {
+            cell.secondButton.isHidden = true
+            cell.secondButtonWidthConstraint.constant = 0
+            cell.trailingConstraintOfSecondButton.constant = -(screenWidth/2) - 100
+        } else {
+            cell.secondButton.isHidden = false
+            cell.trailingConstraintOfSecondButton.constant = 24
+        }
+        
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             

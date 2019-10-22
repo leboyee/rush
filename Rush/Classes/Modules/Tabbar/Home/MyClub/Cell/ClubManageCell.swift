@@ -30,7 +30,9 @@ class ClubManageCell: UITableViewCell {
     @IBOutlet weak var secondButton: UIButton!
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageButton: UIButton!
-
+    @IBOutlet weak var secondButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraintOfSecondButton: NSLayoutConstraint!
+    
     var firstButtonClickEvent: (() -> Void)?
     var secondButtonClickEvent: (() -> Void)?
     @IBOutlet weak var topConstraintOfButton: NSLayoutConstraint!

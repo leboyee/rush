@@ -130,8 +130,10 @@
                 <outlet property="messageButton" destination="h5a-LF-S4O" id="V12-Qm-3PF"/>
                 <outlet property="messageView" destination="S6c-tY-R4E" id="euy-PD-9jH"/>
                 <outlet property="secondButton" destination="cqi-bs-Vfs" id="TXS-Vg-UWH"/>
+                <outlet property="secondButtonWidthConstraint" destination="9eB-SZ-486" id="0Nm-5K-lvK"/>
                 <outlet property="topConstraintOfButton" destination="lK1-yp-lHB" id="k53-cD-hhW"/>
                 <outlet property="topConstraintOfMessageButton" destination="1F3-vP-kOD" id="47c-lN-KvS"/>
+                <outlet property="trailingConstraintOfSecondButton" destination="0PE-RE-mkv" id="FM5-QJ-cZ5"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="74.330357142857139"/>
         </tableViewCell>
