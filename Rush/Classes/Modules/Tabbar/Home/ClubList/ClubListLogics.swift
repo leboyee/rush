@@ -120,9 +120,9 @@ extension ClubListViewController {
             cell.setup(imageUrl: image.urlThumb())
         } else if myClassesList.count > 0 {
             let joinedClass = myClassesList[indexPath.row]
-            cell.setup(title: joinedClass.classes?.name ?? "VR Meet")
+            cell.setup(title: joinedClass.classes?.name ?? "")
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
-            cell.setup(imageUrl: joinedClass.classes?.photo.photo?.urlThumb())
+            cell.setup(imageUrl: joinedClass.classes?.photo?.urlThumb())
         }
 //            let classes = myClassesList[indexPath.row]
 //            cell.setup(title: classes.name)
