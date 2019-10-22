@@ -20,7 +20,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
-        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike]
+        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser]
         
         for cell in cells {
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
@@ -76,8 +76,8 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if indexPath.row == 0 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-                fillEventByDateCell(cell, indexPath)
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postUser, for: indexPath) as? PostUserCell else { return UITableViewCell() }
+                fillPostUserCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 1 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
