@@ -77,8 +77,7 @@ extension ClubDetailViewController {
         
         if (clubInfo?.clubIsChatGroup ?? 0) == 0 {
             cell.secondButton.isHidden = true
-            cell.secondButtonWidthConstraint.constant = 0
-            cell.trailingConstraintOfSecondButton.constant = -(screenWidth/2) - 100
+            cell.trailingConstraintOfSecondButton.constant = -(screenWidth - 48 - 7)
         } else {
             cell.secondButton.isHidden = false
             cell.trailingConstraintOfSecondButton.constant = 24
