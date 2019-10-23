@@ -35,7 +35,9 @@ extension FriendsListViewController {
             } else {
                 friend = secondTabList[indexPath.row] as? Friend ?? friend
             }
-            
+            cell.setup(name: friend.user?.name ?? "")
+                       if let url = URL(string: friend.user?.photo?.thumb ?? "") {
+                           cell.setup(url: url)
         } else {
             let invitee = inviteeList[indexPath.row]
             cell.setup(name: invitee.user?.name ?? "")
@@ -43,6 +45,7 @@ extension FriendsListViewController {
                 cell.setup(url: url)
             }
         }
+    }
     }
         
     func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
@@ -133,14 +136,16 @@ extension FriendsListViewController {
                 club = secondTabList[indexPath.row] as? Club
             }
             performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
-        } else  if type == .friends {
+        } else if type == .friends {
             var friend: Friend?
             if firstSegmentButton.isSelected {
                 friend = firstTabList[indexPath.row] as? Friend
+                performSegue(withIdentifier: Segues.profileInformation, sender: friend)
             } else {
                 friend = secondTabList[indexPath.row] as? Friend
+                performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
             }
-            performSegue(withIdentifier: Segues.friendProfileSegue, sender: friend)
+            
         } else  if type == .classes {
             var myclass: ClassJoined?
             if firstSegmentButton.isSelected {
@@ -411,3 +416,4 @@ extension FriendsListViewController {
         }
     }
 }
+

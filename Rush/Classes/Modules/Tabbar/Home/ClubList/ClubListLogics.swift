@@ -123,6 +123,16 @@ extension ClubListViewController {
             cell.setup(title: joinedClass.classes?.name ?? "")
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
             cell.setup(imageUrl: joinedClass.classes?.photo?.urlThumb())
+            var rosterArray = [Invitee]()
+            for rs in joinedClass.classGroup?.classGroupRosters ?? [ClassJoined]() {
+                if let user = rs.user {
+                    let inv = Invitee()
+                    inv.user = user
+                    rosterArray.append(inv)
+                }
+               
+            }
+            cell.setup(invitee: rosterArray)
         }
 //            let classes = myClassesList[indexPath.row]
 //            cell.setup(title: classes.name)

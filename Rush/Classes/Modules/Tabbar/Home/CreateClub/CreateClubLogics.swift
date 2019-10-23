@@ -230,7 +230,7 @@ extension CreateClubViewController {
 // MARK: - Other functions
 extension CreateClubViewController {
     // MARK: - Capture Image
-    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
+/*    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
         DispatchQueue.main.async {
             
             if type == .photoLibrary {
@@ -258,16 +258,18 @@ extension CreateClubViewController {
             }
             
             if UIImagePickerController.isSourceTypeAvailable(type) {
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = type
-                imagePicker.allowsEditing = false
-                imagePicker.navigationBar.isTranslucent = false
-                self.present(imagePicker, animated: true, completion: nil)
+                
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = type
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.navigationBar.isTranslucent = false
+                self.present(self.imagePicker, animated: true, completion: nil)
             }
         }
     }
+    */
     
+       
     private func showPermissionAlert(text: String) {
         Utils.alert(message: text, title: "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
             if index == 1 {
@@ -323,46 +325,29 @@ extension CreateClubViewController: SelectEventTypeDelegate {
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate methods
-extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        autoreleasepool {
-            var captureImage = info[UIImagePickerController.InfoKey.originalImage]
-                as? UIImage
-            if #available(iOS 11, *), captureImage == nil {
-                if PHPhotoLibrary.authorizationStatus() == .authorized {
-                    let manager = PHImageManager.default()
-                    let requestOptions = PHImageRequestOptions()
-                    requestOptions.isSynchronous = true
-                    if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
-                        manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: requestOptions, resultHandler: { (image, _) in
-                            if image != nil {
-                                captureImage = image
-                            }
-                        })
-                    }
-                } else {
-                    //Show Alert for error
-                    showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                }
-            }
-            IQKeyboardManager.shared.enableAutoToolbar = false
-            DispatchQueue.main.async {
-                self.clubImage = captureImage
-                self.validateAllFields()
-                self.fillImageHeader()
-                picker.dismiss(animated: true, completion: nil)
-            }
-        }
+// MARK: - ImagePickerControllerDelegate methods
+extension CreateClubViewController: ImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
+                IQKeyboardManager.shared.enableAutoToolbar = false
+        picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
+           return true
+       }
+    func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
         IQKeyboardManager.shared.enableAutoToolbar = false
-        DispatchQueue.main.async {
-            picker.dismiss(animated: true, completion: nil)
-        }
-    }
+                  
+           imageList = assets
+           picker.dismiss(animated: false, completion: nil)
+           DispatchQueue.main.async {
+            
+               self.setEventImage(imageAsset: self.imageList[0])
+               self.validateAllFields()
+               self.tableView.reloadData()
+           }
+           tableView.reloadData()
+       }
 }
 
 // MARK: - Services
@@ -377,7 +362,6 @@ extension CreateClubViewController {
         let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
-        
         
         guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
                    return }
@@ -412,10 +396,6 @@ extension CreateClubViewController {
                    print(error.localizedDescription)
                }
         
-        
-        
-        
-        
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,
@@ -447,7 +427,61 @@ extension CreateClubViewController {
     func updateClubAPI() {
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
+        
+        let ids = removePeopleIds
+        for removeId in ids {
+            let filter = peopleList.filter({ $0.profile?.userId == removeId })
+            if filter.count > 0 {
+                if let index = ids.firstIndex(of: removeId) {
+                    removePeopleIds.remove(at: index)
+                }
+            }
+        }
+        
+        if let invitees = clubInfo?.invitees {
+            for newPeopleId in newPeopleIds {
+                let filter = invitees.filter({ $0.user?.userId == newPeopleId })
+                if filter.count > 0 {
+                    if let index = ids.firstIndex(of: newPeopleId) {
+                        newPeopleIds.remove(at: index)
+                    }
+                }
+            }
+        }
+        
         let removeIds = removePeopleIds.joined(separator: ",")
+        
+        guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
+            return }
+        print(countryCodeString)
+        let contactArray = newContacts.compactMap { ($0) }
+        var contactDict = [String: Any]()
+        var newContactArray = [[String: Any]]()
+        for contact in contactArray {
+            guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+            let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+            var contactString = ""
+            if contact.contains("+") {
+                contactString = contact
+            } else {
+                contactString = "\(countryNumberCodeString)\(contact)"
+            }
+            if contactString.count >= 10 {
+                contactDict["cc"] = countryNumberCodeString
+                contactDict["phone"] = contactString
+                newContactArray.append(contactDict)
+            }
+        }
+        
+        var jsonString = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                jsonString = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
         
         var param = [Keys.clubId: clubInfo?.id ?? 0,
                      Keys.clubName: nameClub,
@@ -456,7 +490,7 @@ extension CreateClubViewController {
                      Keys.clubInvitedUserIds: newPeopleIds.joined(separator: ","),
                      Keys.removedClubInvitedUserIds: removeIds,
                      Keys.clubUniversityId: selectedUniversity?.universtiyId ?? 0,
-                     Keys.clubContact: newContacts.joined(separator: ","),
+                     Keys.clubContact: jsonString,
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0] as [String: Any]
         
         if clubHeader.userImageView.image != nil {

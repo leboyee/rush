@@ -37,7 +37,7 @@ class ExploreViewController: CustomViewController {
     var notificationTitle = ""
     var notificationButtonTitle = ""
     
-   // var dataList = [Any]()
+    // var dataList = [Any]()
     var pageNo = 1
     var isNextPageExist = true
     var classCatPageNo = 1
@@ -46,7 +46,7 @@ class ExploreViewController: CustomViewController {
     var isClubCatIsNextPageExist = true
     var eventCatPageNo = 1
     var isEventCatIsNextPageExist = true
-
+    
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [SubClass]()
@@ -65,15 +65,23 @@ class ExploreViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         
         searchType = .event
-       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        /* if isSearch {
-         searchfield.becomeFirstResponder()
-         } */
+        if isSearch {
+            if searchType == .event {
+                getEventCategoryListAPI()
+            } else if searchType == .club {
+                getClubCategoryListAPI()
+            } else if searchType == .classes {
+                getClassCategoryAPI()
+            } else if searchType == .people {
+                getPeopleListAPI()
+            }
+        }
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
         getClassListAPI()
@@ -113,11 +121,12 @@ class ExploreViewController: CustomViewController {
         explore.textColor = UIColor.white
         
         // University button setup
-         universityButton = UIButton(frame: CGRect(x: 0, y: 26, width: screenWidth - 130, height: 18))
+        universityButton = UIButton(frame: CGRect(x: 0, y: 26, width: screenWidth - 130, height: 18))
         if selUniversity.universityName != "" {
             university = selUniversity.universityName
         } else {
             university = Authorization.shared.profile?.university?.first?.universityName ?? ""
+            selUniversity = Authorization.shared.profile?.university?.first ?? selUniversity
         }
         universityButton.setTitle(university, for: .normal)
         universityButton.contentHorizontalAlignment = .left
@@ -153,6 +162,24 @@ extension ExploreViewController {
     }
     
     @objc func changeUniversity() {
+        pageNo = 1
+        isNextPageExist = true
+        classCatPageNo = 1
+        isClassCatIsNextPageExist = true
+        clubCatPageNo = 1
+        isClubCatIsNextPageExist = true
+        eventCatPageNo = 1
+        isEventCatIsNextPageExist = true
+        
+        clubList = [Club]()
+        eventList = [Event]()
+        classList = [SubClass]()
+        
+        clubInterestList = [ClubCategory]()
+        eventInterestList = [EventCategory]()
+        classCategoryList = [Class]()
+        peopleList = [User]()
+        
         performSegue(withIdentifier: Segues.universitySegue, sender: nil)
     }
     
@@ -219,8 +246,8 @@ extension ExploreViewController {
         } else if segue.identifier == Segues.eventDetailSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
-               vc.eventId = String(event.id)
-               vc.event = event
+                vc.eventId = String(event.id)
+                vc.event = event
             }
         } else if segue.identifier == Segues.otherUserProfile {
             let vc = segue.destination as? OtherUserProfileController

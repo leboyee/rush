@@ -119,14 +119,25 @@ extension ExploreViewController: UITextFieldDelegate {
             searchText = ""
             clearButton.isHidden = true
         }
-        
         if searchType == .event {
+            eventInterestList = [EventCategory]()
+            eventCatPageNo = 1
+            isEventCatIsNextPageExist = true
             getEventCategoryListAPI()
         } else if searchType == .club {
+            clubInterestList = [ClubCategory]()
+            clubCatPageNo = 1
+            isClubCatIsNextPageExist = true
             getClubCategoryListAPI()
         } else if searchType == .classes {
+            classCategoryList = [Class]()
+            classCatPageNo = 1
+            isClassCatIsNextPageExist = true
             getClassCategoryAPI()
         } else if searchType == .people {
+            peopleList = [User]()
+            pageNo = 1
+            isNextPageExist = true
             getPeopleListAPI()
         }
     }
@@ -191,6 +202,6 @@ extension ExploreViewController: UniversityViewControllerDelegate {
         } else {
             uname = Authorization.shared.profile?.university?.first?.universityName ?? ""
         }
-        self.universityButton.setTitle(uname, for: .normal)
+        universityButton.setTitle(uname, for: .normal)
     }
 }

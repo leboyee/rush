@@ -138,37 +138,40 @@ extension CreateClubViewController: EventInterestDelegate {
 // MARK: - Add Invities Delegate
 extension CreateClubViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
-        self.peopleList = invite
-        validateAllFields()
-        self.tableView.reloadData()
         
-        removePeopleIds.removeAll()
-        
-        var peoples = [Invite]()
-        if let invitees = clubInfo?.invitees {
-            for invitee in invitees {
-                let invite = Invite()
-                invite.profile = invitee.user
-                invite.isFriend = true
-                peoples.append(invite)
-            }
-            peopleList = peoples
-        }
-        
-        let filterFriend = peoples.filter({ $0.isFriend == true })
-        let filterContact = peoples.filter({ $0.isFriend == false })
-        for value in invite {
-            if value.isFriend, let data = value.profile {
-                let filter = filterFriend.filter({ $0.profile?.userId == data.userId })
-                if filter.count == 0 {
-                    newPeopleIds.append(data.userId)
-                }
-            } else if value.isFriend == false, let data = value.contact {
-                let filter = filterContact.filter({ $0.contact?.phone == data.phone })
-                if filter.count == 0 {
-                    newContacts.append(data.phone)
+        if clubInfo != nil {
+            var newPeopleList = [Invite]()
+            for tempInvite in invite {
+                
+                if tempInvite.isFriend {
+                    let friendFilter = peopleList.filter({ $0.isFriend == true })
+                    let filter = friendFilter.filter({ $0.profile?.userId == tempInvite.profile?.userId })
+                    if filter.count == 0 {
+                        newPeopleList.append(tempInvite)
+                        if let id = tempInvite.profile?.userId {
+                            newPeopleIds.append(id)
+                        }
+                    }
+                } else {
+                    let contactFilter = peopleList.filter({ $0.isFriend == false })
+                    let filter = contactFilter.filter({ $0.contact?.displayName ==  tempInvite.contact?.displayName })
+                    if filter.count == 0 {
+                        newPeopleList.append(tempInvite)
+                        if let id = tempInvite.contact?.phone {
+                            newContacts.append(id)
+                        }
+                    }
                 }
             }
+            
+            peopleList.append(contentsOf: newPeopleList)
+            validateAllFields()
+            tableView.reloadData()
+            
+        } else {
+            peopleList = invite
+            validateAllFields()
+            tableView.reloadData()
         }
     }
 }

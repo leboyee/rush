@@ -54,7 +54,7 @@ class EventCategoryListViewController: UIViewController {
 //            if (eventCategory) != nil {
 //                firstSortText = eventCategory?.name ?? "All categories"
 //            }
-            getEventList(sortBy: .myUpcoming, eventCategory: eventCategory)
+            getEventList(sortBy: .upcoming, eventCategory: eventCategory)
         case .club:
             if (clubCategory) != nil {
                 firstSortText = clubCategory?.name ?? "All categories"

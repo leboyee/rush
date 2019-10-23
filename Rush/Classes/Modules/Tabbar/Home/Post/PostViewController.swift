@@ -97,7 +97,7 @@ class PostViewController: UIViewController {
             let bottomPadding = self.view?.safeAreaInsets.bottom
             viewBottamConstraint.constant = -(bottomPadding ?? 0)
         }
-        getAllCommentListAPI()
+        getPostDetailAPI()
     }
 }
 

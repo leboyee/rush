@@ -115,11 +115,11 @@ extension ServiceManager {
     }
     
     // Post Detail API
-    func fetchPostDetail(postId: String, closer: @escaping (_ post: Post?, _ errorMessage: String?) -> Void) {
-        NetworkManager.shared.getPostDetail(postId: postId) { [weak self] (data, error, code) in
+    func fetchPostDetail(postId: String, params: [String: Any], closer: @escaping (_ post: Post?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getPostDetail(postId: postId, param: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
-                if let object = data?[Keys.event] as? [String: Any] {
+                if let object = data?[Keys.post] as? [String: Any] {
                     let post: Post? = unsafe.decodeObject(fromData: object)
                     closer(post, errorMessage)
                 } else {
