@@ -271,7 +271,7 @@ extension ExploreViewController {
         
         var params = [Keys.pageNo: pageNo] as [String: Any]
         params[Keys.search] = searchText
-        params[Keys.profileUserId] = Authorization.shared.profile?.userId
+      //  params[Keys.profileUserId] = Authorization.shared.profile?.userId
         params[Keys.universityId] = selUniversity.universtiyId
               
         ServiceManager.shared.fetchPeopleList(params: params) { [weak self] (data, _) in

@@ -191,6 +191,6 @@ extension ExploreViewController: UniversityViewControllerDelegate {
         } else {
             uname = Authorization.shared.profile?.university?.first?.universityName ?? ""
         }
-        self.universityButton.setTitle(uname, for: .normal)
+        universityButton.setTitle(uname, for: .normal)
     }
 }

@@ -309,7 +309,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
             isSecondFilter = false
             isThirdFilter = false
             collectionView.reloadData()
-            getEventList(sortBy: .myUpcoming, eventCategory: nil)
+            getEventList(sortBy: .upcoming, eventCategory: nil)
         } else if self.type == .club {
             if isFirstFilter {
                 firstFilterIndex = indexPath.row

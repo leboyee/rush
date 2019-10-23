@@ -71,9 +71,17 @@ class ExploreViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        /* if isSearch {
-         searchfield.becomeFirstResponder()
-         } */
+        if isSearch {
+            if searchType == .event {
+                getEventCategoryListAPI()
+            } else if searchType == .club {
+                getClubCategoryListAPI()
+            } else if searchType == .classes {
+                getClassCategoryAPI()
+            } else if searchType == .people {
+                getPeopleListAPI()
+            }
+        }
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
         getClassListAPI()
@@ -118,6 +126,7 @@ class ExploreViewController: CustomViewController {
             university = selUniversity.universityName
         } else {
             university = Authorization.shared.profile?.university?.first?.universityName ?? ""
+            selUniversity = Authorization.shared.profile?.university?.first ?? selUniversity
         }
         universityButton.setTitle(university, for: .normal)
         universityButton.contentHorizontalAlignment = .left
@@ -153,6 +162,24 @@ extension ExploreViewController {
     }
     
     @objc func changeUniversity() {
+         pageNo = 1
+            isNextPageExist = true
+            classCatPageNo = 1
+            isClassCatIsNextPageExist = true
+            clubCatPageNo = 1
+            isClubCatIsNextPageExist = true
+            eventCatPageNo = 1
+            isEventCatIsNextPageExist = true
+
+            clubList = [Club]()
+            eventList = [Event]()
+            classList = [SubClass]()
+           
+            clubInterestList = [ClubCategory]()
+            eventInterestList = [EventCategory]()
+            classCategoryList = [Class]()
+            peopleList = [User]()
+
         performSegue(withIdentifier: Segues.universitySegue, sender: nil)
     }
     

@@ -39,40 +39,40 @@ class FriendsListViewController: UIViewController {
     var userInfo: User?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+          setupUI()
+       /* if type == .events {
+            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+                getAttendingEventList()
+            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+                getManagedEventList()
+            }
+        } else  if type == .clubs {
+            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+                getJoinedClubListAPI()
+            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+                getManagedClubList()
+            }
+        } else  if type == .friends {
+            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+                getFriendsListAPI()
+            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+                getMutualFriendsListAPI()}
+        } else */if type == .classes {
+            getMyJoinedClasses()
+        }
         // Do any additional setup after loading the view.
-        setupUI()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        /*if type == .events {
-         if firstSegmentButton.isSelected && firstTabList.count == 0 {
-         getAttendingEventList()
-         } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
-         getManagedEventList()
-         }
-         } else  if type == .clubs {
-         if firstSegmentButton.isSelected && firstTabList.count == 0 {
-         getJoinedClubListAPI()
-         } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
-         getManagedClubList()
-         }
-         } else  if type == .friends {
-         if firstSegmentButton.isSelected && firstTabList.count == 0 {
-         getFriendsListAPI()
-         } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
-         getMutualFriendsListAPI()}
-         } else  */
-        if type == .classes {
-            getMyJoinedClasses()
-        }
+        
     }
     
     func setupUI() {
         firstSegmentButton.isSelected = true
         secondSegmentButton.isSelected = false
-                 
+        
         self.view.backgroundColor = UIColor.bgBlack
         if type == .classes {
             topConstraintOfTableView.constant = 0
@@ -88,10 +88,10 @@ class FriendsListViewController: UIViewController {
             let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
         } else {
-        
-        // Set navigation title
-       // let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
-        //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+            
+            // Set navigation title
+            // let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
+            //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
         }
         
     }
@@ -205,6 +205,11 @@ extension FriendsListViewController {
             let friend = sender as? Friend
             vc?.userInfo = friend?.user
             //        vc?.delegate = self
+        } else if segue.identifier == Segues.profileInformation {
+            if let vc = segue.destination as? ProfileInformationViewController {
+                let friend = sender as? Friend
+                vc.userInfo = friend?.user
+            }
         }
     }
 }
