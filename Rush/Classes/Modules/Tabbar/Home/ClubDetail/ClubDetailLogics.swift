@@ -398,7 +398,7 @@ extension ClubDetailViewController {
                     let oldOffset = uwself.tableView.contentOffset
                     UIView.setAnimationsEnabled(false)
                     uwself.tableView.beginUpdates()
-                    uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
+                    uwself.tableView.reloadRows(at: [IndexPath(row: 3, section: 5 + position)], with: .automatic)
                     uwself.tableView.endUpdates()
                     uwself.tableView.setContentOffset(oldOffset, animated: false)
                 }
