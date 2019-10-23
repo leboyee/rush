@@ -153,7 +153,7 @@ extension CreatePostViewController {
                         if var img = UIImage(data: data) {
                             img = Utils.fixOrientation(img: img)
                             img = img.wxCompress()
-                            let dataN = img.jpegData(compressionQuality: 1)
+                            let dataN = img.jpegData(compressionQuality: 0.8)
                             uwself.imagedataList["photo_\(index + 1)"] = dataN
                             uwself.getImagesDataList(index: index + 1)
                         }

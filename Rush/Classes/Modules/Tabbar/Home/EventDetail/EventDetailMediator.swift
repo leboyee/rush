@@ -242,7 +242,8 @@ extension EventDetailViewController: CreatePostViewControllerDelegate {
 
     func createPostSuccess(_ post: Post) {
         loadPosts()
-        performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
+        // https://www.wrike.com/open.htm?id=410213843
+        //performSegue(withIdentifier: Segues.eventPostDetail, sender: post)
     }
 }
 
