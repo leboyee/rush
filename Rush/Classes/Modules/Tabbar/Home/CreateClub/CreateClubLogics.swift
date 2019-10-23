@@ -230,7 +230,7 @@ extension CreateClubViewController {
 // MARK: - Other functions
 extension CreateClubViewController {
     // MARK: - Capture Image
-    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
+/*    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
         DispatchQueue.main.async {
             
             if type == .photoLibrary {
@@ -258,16 +258,18 @@ extension CreateClubViewController {
             }
             
             if UIImagePickerController.isSourceTypeAvailable(type) {
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = type
-                imagePicker.allowsEditing = false
-                imagePicker.navigationBar.isTranslucent = false
-                self.present(imagePicker, animated: true, completion: nil)
+                
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = type
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.navigationBar.isTranslucent = false
+                self.present(self.imagePicker, animated: true, completion: nil)
             }
         }
     }
+    */
     
+       
     private func showPermissionAlert(text: String) {
         Utils.alert(message: text, title: "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
             if index == 1 {
@@ -323,46 +325,29 @@ extension CreateClubViewController: SelectEventTypeDelegate {
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate methods
-extension CreateClubViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        autoreleasepool {
-            var captureImage = info[UIImagePickerController.InfoKey.originalImage]
-                as? UIImage
-            if #available(iOS 11, *), captureImage == nil {
-                if PHPhotoLibrary.authorizationStatus() == .authorized {
-                    let manager = PHImageManager.default()
-                    let requestOptions = PHImageRequestOptions()
-                    requestOptions.isSynchronous = true
-                    if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
-                        manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: requestOptions, resultHandler: { (image, _) in
-                            if image != nil {
-                                captureImage = image
-                            }
-                        })
-                    }
-                } else {
-                    //Show Alert for error
-                    showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                }
-            }
-            IQKeyboardManager.shared.enableAutoToolbar = false
-            DispatchQueue.main.async {
-                self.clubImage = captureImage
-                self.validateAllFields()
-                self.fillImageHeader()
-                picker.dismiss(animated: true, completion: nil)
-            }
-        }
+// MARK: - ImagePickerControllerDelegate methods
+extension CreateClubViewController: ImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
+                IQKeyboardManager.shared.enableAutoToolbar = false
+        picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
+           return true
+       }
+    func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
         IQKeyboardManager.shared.enableAutoToolbar = false
-        DispatchQueue.main.async {
-            picker.dismiss(animated: true, completion: nil)
-        }
-    }
+                  
+           imageList = assets
+           picker.dismiss(animated: false, completion: nil)
+           DispatchQueue.main.async {
+            
+               self.setEventImage(imageAsset: self.imageList[0])
+               self.validateAllFields()
+               self.tableView.reloadData()
+           }
+           tableView.reloadData()
+       }
 }
 
 // MARK: - Services
