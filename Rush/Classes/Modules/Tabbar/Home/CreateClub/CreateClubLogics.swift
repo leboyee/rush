@@ -378,7 +378,6 @@ extension CreateClubViewController {
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
         
-        
         guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
                    return }
                print(countryCodeString)
@@ -411,10 +410,6 @@ extension CreateClubViewController {
                } catch {
                    print(error.localizedDescription)
                }
-        
-        
-        
-        
         
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
