@@ -18,7 +18,6 @@ protocol CreateClubProtocol: class {
 
 class CreateClubViewController: UIViewController {
     
-    
     var imageDataTask: URLSessionDataTask?
     static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
     
