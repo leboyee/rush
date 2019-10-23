@@ -70,6 +70,9 @@ class FriendsListViewController: UIViewController {
     }
     
     func setupUI() {
+        firstSegmentButton.isSelected = true
+        secondSegmentButton.isSelected = false
+                 
         self.view.backgroundColor = UIColor.bgBlack
         if type == .classes {
             topConstraintOfTableView.constant = 0
@@ -81,7 +84,7 @@ class FriendsListViewController: UIViewController {
         setupTableView()
         if type == .classes || type == .friends || type == .clubs || type == .events {
             // Set navigation title
-            userName = userInfo?.name ?? "User"
+            userName = userInfo?.firstName ?? "User"
             let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
         } else {

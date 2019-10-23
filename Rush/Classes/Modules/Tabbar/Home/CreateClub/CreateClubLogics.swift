@@ -214,7 +214,17 @@ extension CreateClubViewController {
           
           imageDataTask?.resume()
       }
-     
+     func loadCountryJson() {
+         if let path = Bundle.main.path(forResource: "CountryPhoneCode", ofType: "json") {
+             do {
+                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                 if let jsonResult = jsonResult as? [[String: Any]] {
+                     countryCode = jsonResult
+                 }
+             } catch { }
+         }
+     }
 }
 
 // MARK: - Other functions
@@ -362,26 +372,55 @@ extension CreateClubViewController {
         
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
-        let contactList = self.peopleList.filter { ($0.isFriend == false) }
-        let contactNoArray = contactList.compactMap { ($0.contact?.phone) }
         
         let img = clubImage?.wxCompress()
         let dataN = img?.jpegData(compressionQuality: 1) ?? Data()
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
         
-        var contacts = ""
-        if let json = try? JSONSerialization.data(withJSONObject: contactNoArray, options: []) {
-            if let content = String(data: json, encoding: .utf8) {
-                contacts = content
-            }
-        }
+        
+        guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
+                   return }
+               print(countryCodeString)
+               let contactList = self.peopleList.filter { ($0.isFriend == false) }
+               let contactArray = contactList.compactMap { ($0.contact?.phone) }
+               var contactDict = [String: Any]()
+               var newContactArray = [[String: Any]]()
+               for contact in contactArray {
+                   guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+                   let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+                   var contactString = ""
+                   if contact.contains("+") {
+                       contactString = contact
+                   } else {
+                       contactString = "\(countryNumberCodeString)\(contact)"
+                   }
+                   if contactString.count >= 10 {
+                       contactDict["cc"] = countryNumberCodeString
+                       contactDict["phone"] = contactString
+                       newContactArray.append(contactDict)
+                   }
+               }
+               
+               var jsonString = ""
+               do {
+                   let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+                   if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                       jsonString = JSONString
+                   }
+               } catch {
+                   print(error.localizedDescription)
+               }
+        
+        
+        
+        
         
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
                      Keys.clubInterests: interests,
                      Keys.clubInvitedUserIds: userIdArray.joined(separator: ","),
-                     Keys.clubContact: contacts,
+                     Keys.clubContact: jsonString,
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0,
                      Keys.clubUniversityId: selectedUniversity?.universtiyId ?? 0,
                      Keys.clubPhoto: dataN] as [String: Any]

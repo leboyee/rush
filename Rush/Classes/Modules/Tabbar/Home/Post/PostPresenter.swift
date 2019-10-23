@@ -38,6 +38,8 @@ extension PostViewController {
             cell.setup(detail: "Posting in " + (subclass.name))
         } else if let club = clubInfo {
             cell.setup(detail: "Posting in " + (club.clubName ?? ""))
+        } else if let event = eventInfo {
+            cell.setup(detail: "Posting in " + (event.title))
         }
     }
     
@@ -51,7 +53,8 @@ extension PostViewController {
     // Image cell (section 2)
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         if let images = postInfo?.images {
-            cell.set(url: images.first?.url())
+            let img = images[indexPath.row]
+            cell.set(url: img.url())
         }
         cell.setup(isCleareButtonHide: true)
     }

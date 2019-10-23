@@ -118,7 +118,7 @@ public extension MessagesDataSource {
         */
         
         let loggedInUserId = Authorization.shared.profile?.userId ?? ""
-        print(message.sender.id)
+        
         return loggedInUserId == message.sender.id
     }
 

@@ -353,7 +353,7 @@ extension ExploreViewController {
     func getClassListAPI() {
         var param = [Keys.pageNo: "1"] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
-              
+        param[Keys.search] = searchText
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
@@ -367,7 +367,8 @@ extension ExploreViewController {
     func getClassCategoryAPI() {
         var param = [Keys.pageNo: classCatPageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
-              
+              param[Keys.search] = searchText
+                    
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
