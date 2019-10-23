@@ -464,6 +464,28 @@ extension CreateClubViewController {
     func updateClubAPI() {
         
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
+        
+        let ids = removePeopleIds
+        for removeId in ids {
+            let filter = peopleList.filter({ $0.profile?.userId == removeId })
+            if filter.count > 0 {
+                if let index = ids.firstIndex(of: removeId) {
+                    removePeopleIds.remove(at: index)
+                }
+            }
+        }
+        
+        if let invitees = clubInfo?.invitees {
+            for newPeopleId in newPeopleIds {
+                let filter = invitees.filter({ $0.user?.userId == newPeopleId })
+                if filter.count > 0 {
+                    if let index = ids.firstIndex(of: newPeopleId) {
+                        newPeopleIds.remove(at: index)
+                    }
+                }
+            }
+        }
+        
         let removeIds = removePeopleIds.joined(separator: ",")
         
         var param = [Keys.clubId: clubInfo?.id ?? 0,

@@ -174,6 +174,21 @@ extension PostViewController {
 
 // MARK: - Services
 extension PostViewController {
+    
+    func getPostDetailAPI() {
+        
+        let id = postInfo?.postId ?? ""
+        ServiceManager.shared.fetchPostDetail(postId: id, params: [Keys.postId: id]) { [weak self] (result, errorMsg) in
+            guard let uwself = self else { return }
+            if let post = result {
+                uwself.postInfo = post
+                uwself.getAllCommentListAPI()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+        
     func voteClubAPI(id: String, type: String) {
         ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
             guard let uwself = self else { return }
@@ -213,7 +228,7 @@ extension PostViewController {
                 unsafe.textView.text = ""
                 unsafe.textView.attributedText = nil
                 unsafe.commentList.removeAll()
-                unsafe.getAllCommentListAPI()
+                unsafe.getPostDetailAPI()
             } else {
                 Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

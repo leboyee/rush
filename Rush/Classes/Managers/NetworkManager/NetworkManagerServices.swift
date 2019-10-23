@@ -235,8 +235,8 @@ extension NetworkManager {
       }
     
     // MARK: - Post API
-    func getPostDetail(postId: String, resultHandler: @escaping ResultClosure) {
-        requestGet(path: "post/\(postId)", params: [:], resultHandler: resultHandler)
+    func getPostDetail(postId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "post/\(postId)", params: param, resultHandler: resultHandler)
     }
     // MARK: - Friend
     func getFriendList(params: [String: Any], resultHandler: @escaping ResultClosure) {
@@ -247,7 +247,7 @@ extension NetworkManager {
         requestGet(path: "people", params: params, resultHandler: resultHandler)
     }
     
-    func getFriendListWithSession(params : [String : Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
+    func getFriendListWithSession(params: [String : Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
         return getRequestGet(path: "friend", params: params, resultHandler: resultHandler)
     }
     
