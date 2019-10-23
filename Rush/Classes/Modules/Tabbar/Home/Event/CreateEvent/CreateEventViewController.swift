@@ -28,7 +28,7 @@ class CreateEventViewController: UIViewController {
     static var cache = URLCache(memoryCapacity: 50 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "unsplash")
 
     var imageList = [Any]()
-    var imagePicker = UIImagePickerController()
+//    var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()
     var nameEvent = ""
     var eventDescription = ""

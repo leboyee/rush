@@ -1134,7 +1134,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DLh-Vm-q6n">
-                                <rect key="frame" x="0.0" y="13" width="414" height="776"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="743"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                             </tableView>
@@ -2020,7 +2020,7 @@
         <segue reference="E7I-YA-fBT"/>
         <segue reference="wCm-Cn-4f5"/>
         <segue reference="WIx-LH-4TQ"/>
-        <segue reference="gSU-VJ-XvQ"/>
+        <segue reference="p5t-Td-KDq"/>
         <segue reference="Ixy-09-J7m"/>
         <segue reference="CaI-qS-W91"/>
     </inferredMetricsTieBreakers>
