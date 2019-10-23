@@ -466,6 +466,38 @@ extension CreateClubViewController {
         
         let removeIds = removePeopleIds.joined(separator: ",")
         
+        guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
+            return }
+        print(countryCodeString)
+        let contactArray = newContacts.compactMap { ($0) }
+        var contactDict = [String: Any]()
+        var newContactArray = [[String: Any]]()
+        for contact in contactArray {
+            guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+            let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+            var contactString = ""
+            if contact.contains("+") {
+                contactString = contact
+            } else {
+                contactString = "\(countryNumberCodeString)\(contact)"
+            }
+            if contactString.count >= 10 {
+                contactDict["cc"] = countryNumberCodeString
+                contactDict["phone"] = contactString
+                newContactArray.append(contactDict)
+            }
+        }
+        
+        var jsonString = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                jsonString = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         var param = [Keys.clubId: clubInfo?.id ?? 0,
                      Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
@@ -473,7 +505,7 @@ extension CreateClubViewController {
                      Keys.clubInvitedUserIds: newPeopleIds.joined(separator: ","),
                      Keys.removedClubInvitedUserIds: removeIds,
                      Keys.clubUniversityId: selectedUniversity?.universtiyId ?? 0,
-                     Keys.clubContact: newContacts.joined(separator: ","),
+                     Keys.clubContact: jsonString,
                      Keys.clubIsChatGroup: isCreateGroupChat ? 1 : 0] as [String: Any]
         
         if clubHeader.userImageView.image != nil {
