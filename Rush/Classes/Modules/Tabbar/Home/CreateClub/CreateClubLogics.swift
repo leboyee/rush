@@ -325,7 +325,7 @@ extension CreateClubViewController: SelectEventTypeDelegate {
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate methods
+// MARK: - ImagePickerControllerDelegate methods
 extension CreateClubViewController: ImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
                 IQKeyboardManager.shared.enableAutoToolbar = false
@@ -348,43 +348,6 @@ extension CreateClubViewController: ImagePickerControllerDelegate, UINavigationC
            }
            tableView.reloadData()
        }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        autoreleasepool {
-            var captureImage = info[UIImagePickerController.InfoKey.originalImage]
-                as? UIImage
-            if #available(iOS 11, *), captureImage == nil {
-                if PHPhotoLibrary.authorizationStatus() == .authorized {
-                    let manager = PHImageManager.default()
-                    let requestOptions = PHImageRequestOptions()
-                    requestOptions.isSynchronous = true
-                    if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
-                        manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: requestOptions, resultHandler: { (image, _) in
-                            if image != nil {
-                                captureImage = image
-                            }
-                        })
-                    }
-                } else {
-                    //Show Alert for error
-                    showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                }
-            }
-            IQKeyboardManager.shared.enableAutoToolbar = false
-            DispatchQueue.main.async {
-                self.clubImage = captureImage
-                self.validateAllFields()
-                self.fillImageHeader()
-                picker.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        picker.dismiss(animated: true, completion: nil)
-
-    }
 }
 
 // MARK: - Services
