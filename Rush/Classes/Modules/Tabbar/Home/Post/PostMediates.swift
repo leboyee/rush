@@ -36,6 +36,8 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section > 3 {
             return (commentList[section - 4].threadComment?.count ?? 0) + 1
+        } else if section == 2 && postInfo != nil {
+            return postInfo?.images?.count ?? 0
         }
         return 1
     }
