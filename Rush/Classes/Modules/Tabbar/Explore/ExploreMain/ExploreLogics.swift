@@ -194,15 +194,19 @@ extension ExploreViewController {
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
         }
     }
-    // Mark: - will display cell
+    // MARK: - Will display cell
     func willDisplay(_ indexPath: IndexPath) {
         if isSearch {
             if searchType == .event {
                 if isEventCatIsNextPageExist == true, indexPath.row == eventInterestList.count - 3 {
+                    eventCatPageNo += 1
+                    isEventCatIsNextPageExist = true
                     getEventCategoryListAPI()
                 }
             } else if searchType == .club {
                 if isClubCatIsNextPageExist == true, indexPath.row == clubInterestList.count - 3 {
+                    clubCatPageNo += 1
+                    isClubCatIsNextPageExist = true
                     getClubCategoryListAPI()
                 }
             } else if searchType == .classes {
@@ -213,6 +217,8 @@ extension ExploreViewController {
                 }
             } else if searchType == .people {
                 if isNextPageExist == true, indexPath.row == peopleList.count - 3 {
+                    pageNo += 1
+                    isNextPageExist = true
                     getPeopleListAPI()
                 }
             }
@@ -229,7 +235,7 @@ extension ExploreViewController {
         var params = [Keys.pageNo: eventCatPageNo] as [String: Any]
         params[Keys.search] = searchText
         params[Keys.universityId] = selUniversity.universtiyId
-                      
+        
         ServiceManager.shared.getInterestList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -243,8 +249,6 @@ extension ExploreViewController {
                     } else {
                         unsafe.eventInterestList.append(contentsOf: category)
                     }
-                    unsafe.eventCatPageNo += 1
-                    unsafe.isEventCatIsNextPageExist = true
                 } else {
                     unsafe.isEventCatIsNextPageExist = false
                     if unsafe.eventCatPageNo == 1 {
@@ -275,8 +279,6 @@ extension ExploreViewController {
                     } else {
                         unsafe.clubInterestList.append(contentsOf: category)
                     }
-                    unsafe.clubCatPageNo += 1
-                    unsafe.isClubCatIsNextPageExist = true
                 } else {
                     unsafe.isClubCatIsNextPageExist = false
                     if unsafe.clubCatPageNo == 1 {
@@ -294,17 +296,15 @@ extension ExploreViewController {
         
         var params = [Keys.pageNo: pageNo] as [String: Any]
         params[Keys.search] = searchText
-      //  params[Keys.profileUserId] = Authorization.shared.profile?.userId
+        //  params[Keys.profileUserId] = Authorization.shared.profile?.userId
         params[Keys.universityId] = selUniversity.universtiyId
-              
+        
         ServiceManager.shared.fetchPeopleList(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
-            
             if unsafe.pageNo == 1 {
                 unsafe.peopleList.removeAll()
             }
-            
             if let list = data {
                 if list.count > 0 {
                     if unsafe.pageNo == 1 {
@@ -312,8 +312,6 @@ extension ExploreViewController {
                     } else {
                         unsafe.peopleList.append(contentsOf: list)
                     }
-                    unsafe.pageNo += 1
-                    unsafe.isNextPageExist = true
                 } else {
                     unsafe.isNextPageExist = false
                     if unsafe.pageNo == 1 {
@@ -330,7 +328,7 @@ extension ExploreViewController {
                      Keys.sortBy: sortBy,
                      Keys.pageNo: 1] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
-              
+        
         if clubList.count == 0 {
             Utils.showSpinner()
         }
@@ -360,7 +358,7 @@ extension ExploreViewController {
                      Keys.toStart: endDate,
                      Keys.pageNo: 1] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
-              
+        
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -391,8 +389,8 @@ extension ExploreViewController {
     func getClassCategoryAPI() {
         var param = [Keys.pageNo: classCatPageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
-              param[Keys.search] = searchText
-                    
+        param[Keys.search] = searchText
+        
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }

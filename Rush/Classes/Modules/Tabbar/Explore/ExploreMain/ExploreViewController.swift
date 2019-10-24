@@ -185,7 +185,9 @@ extension ExploreViewController {
     
     @IBAction func clearButtonAction() {
         searchfield.text = ""
+        searchText = ""
         clearButton.isHidden = true
+        textFieldDidChanged(searchfield)
     }
     
     @IBAction func eventButtonAction(_ sender: Any) {
