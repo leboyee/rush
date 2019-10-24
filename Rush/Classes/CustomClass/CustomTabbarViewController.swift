@@ -99,8 +99,8 @@ extension CustomTabbarViewController {
     func updateLoginUserPhotoOnLastTab() {
         if let url = Authorization.shared.profile?.photo?.urlThumb() {
             if let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 2, color: UIColor.brown24)
+                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
                 if let tabbarItem = tabBar.items?.last {
                     tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                     tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
@@ -133,8 +133,8 @@ extension CustomTabbarViewController {
     func refreshTab() {
         if let url = Authorization.shared.profile?.photo?.urlThumb() {
             if let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 30, borderWidth: 2, color: UIColor.brown24)
+                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
                 
                 let customTabBarItem = UITabBarItem(title: nil, image: img, selectedImage: selectedImg)
                 fourthNavigationViewController.tabBarItem = customTabBarItem
