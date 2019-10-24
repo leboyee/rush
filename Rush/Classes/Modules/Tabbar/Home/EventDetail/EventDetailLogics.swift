@@ -327,8 +327,10 @@ extension EventDetailViewController {
     func fillOrganizerCell(_ cell: OrganizerCell) {
         guard let user = event?.creator else { return }
         cell.set(name: user.name)
-        let text =  "\(user.totalEvents ?? 0) events"
-        cell.set(detail: text)
+        let count = user.totalEvents ?? 0
+        let text = count == 1 ? "event" : "events"
+        let detail =  "\(count) \(text)"
+        cell.set(detail: detail)
         cell.set(url: user.photo?.urlThumb())
     }
     
