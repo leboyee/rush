@@ -276,7 +276,7 @@ extension OtherUserProfileController {
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-            unsafe.getClubListAPI(sortBy: "joined")
+            unsafe.getClubListAPI(sortBy: "my-joined")
         }
     }
     
@@ -372,7 +372,7 @@ extension OtherUserProfileController {
                 }
                 unsafe.imagesList = items
             }
-            unsafe.getEventList(sortBy: .upcoming)
+            unsafe.getEventList(sortBy: .myUpcoming)
         })
     }
 }

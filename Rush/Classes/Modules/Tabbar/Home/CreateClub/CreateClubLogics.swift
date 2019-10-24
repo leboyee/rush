@@ -108,18 +108,18 @@ extension CreateClubViewController {
             if text.isNotEmpty {
                 if indexPath.section == 2 {
                     /*
-                    if !unself.interestList.contains(txt) {
-                        unself.interestList.append(txt)
-                        unself.tableView.reloadData()
-                    }
-                    */
+                     if !unself.interestList.contains(txt) {
+                     unself.interestList.append(txt)
+                     unself.tableView.reloadData()
+                     }
+                     */
                 } else if indexPath.section == 3 {
                     /*
-                    if !self_.peopleList.contains(txt) {
-                        self_.peopleList.append(txt)
-                        self_.tableView.reloadData()
-                    }
-                    */
+                     if !self_.peopleList.contains(txt) {
+                     self_.peopleList.append(txt)
+                     self_.tableView.reloadData()
+                     }
+                     */
                 }
             }
             unself.validateAllFields()
@@ -184,92 +184,92 @@ extension CreateClubViewController {
         clubHeader.delegate = self
     }
     func downloadPhoto(_ photo: UnsplashPhoto) {
-          guard let url = photo.urls[.regular] else { return }
-          
-          if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
-              let image = UIImage(data: cachedResponse.data) {
-              clubImage = image
-              clubHeader.setup(image: clubImage)
-              self.tableView.reloadData()
-              self.validateAllFields()
-              return
-          }
-          
-          imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
-              guard let strongSelf = self else { return }
-              
-              strongSelf.imageDataTask = nil
-              
-              guard let data = data, let image = UIImage(data: data), error == nil else { return }
-              let imageView = UIImageView()
-              DispatchQueue.main.async {
+        guard let url = photo.urls[.regular] else { return }
+        
+        if let cachedResponse = CreateEventViewController.cache.cachedResponse(for: URLRequest(url: url)),
+            let image = UIImage(data: cachedResponse.data) {
+            clubImage = image
+            clubHeader.setup(image: clubImage)
+            self.tableView.reloadData()
+            self.validateAllFields()
+            return
+        }
+        
+        imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.imageDataTask = nil
+            
+            guard let data = data, let image = UIImage(data: data), error == nil else { return }
+            let imageView = UIImageView()
+            DispatchQueue.main.async {
                 UIView.transition(with: imageView, duration: 0.25, options: [.transitionCrossDissolve], animations: {
                     strongSelf.clubImage = image
                     strongSelf.clubHeader.setup(image: image)
                     strongSelf.tableView.reloadData()
                     strongSelf.validateAllFields()
                 }, completion: nil)
-              }
-          }
-          
-          imageDataTask?.resume()
-      }
-     func loadCountryJson() {
-         if let path = Bundle.main.path(forResource: "CountryPhoneCode", ofType: "json") {
-             do {
-                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                 if let jsonResult = jsonResult as? [[String: Any]] {
-                     countryCode = jsonResult
-                 }
-             } catch { }
-         }
-     }
+            }
+        }
+        
+        imageDataTask?.resume()
+    }
+    func loadCountryJson() {
+        if let path = Bundle.main.path(forResource: "CountryPhoneCode", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? [[String: Any]] {
+                    countryCode = jsonResult
+                }
+            } catch { }
+        }
+    }
 }
 
 // MARK: - Other functions
 extension CreateClubViewController {
     // MARK: - Capture Image
-/*    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
-        DispatchQueue.main.async {
-            
-            if type == .photoLibrary {
-                let status = PHPhotoLibrary.authorizationStatus()
-                
-                if status == .notDetermined {
-                    Utils.authorizePhoto(completion: { (statusF) in
-                        if statusF == .alreadyDenied {
-                            self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                            return
-                        }
-                    })
-                } else {
-                    guard status == .authorized else {
-                        self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-                        return
-                    }
-                }
-            } else {
-                let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-                guard status == .authorized else {
-                    self.showPermissionAlert(text: Message.cameraAuthorizedMesssage)
-                    return
-                }
-            }
-            
-            if UIImagePickerController.isSourceTypeAvailable(type) {
-                
-                self.imagePicker.delegate = self
-                self.imagePicker.sourceType = type
-                self.imagePicker.allowsEditing = false
-                self.imagePicker.navigationBar.isTranslucent = false
-                self.present(self.imagePicker, animated: true, completion: nil)
-            }
-        }
-    }
-    */
+    /*    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
+     DispatchQueue.main.async {
+     
+     if type == .photoLibrary {
+     let status = PHPhotoLibrary.authorizationStatus()
+     
+     if status == .notDetermined {
+     Utils.authorizePhoto(completion: { (statusF) in
+     if statusF == .alreadyDenied {
+     self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
+     return
+     }
+     })
+     } else {
+     guard status == .authorized else {
+     self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
+     return
+     }
+     }
+     } else {
+     let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+     guard status == .authorized else {
+     self.showPermissionAlert(text: Message.cameraAuthorizedMesssage)
+     return
+     }
+     }
+     
+     if UIImagePickerController.isSourceTypeAvailable(type) {
+     
+     self.imagePicker.delegate = self
+     self.imagePicker.sourceType = type
+     self.imagePicker.allowsEditing = false
+     self.imagePicker.navigationBar.isTranslucent = false
+     self.present(self.imagePicker, animated: true, completion: nil)
+     }
+     }
+     }
+     */
     
-       
+    
     private func showPermissionAlert(text: String) {
         Utils.alert(message: text, title: "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
             if index == 1 {
@@ -311,13 +311,13 @@ extension CreateClubViewController: UnsplashPhotoPickerDelegate {
 // MARK: - SelectEventTypeController Delegate
 extension CreateClubViewController: SelectEventTypeDelegate {
     func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-//        self.eventType = type
+        //        self.eventType = type
         validateAllFields()
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
-//         self.openCameraOrLibrary(type: .photoLibrary)
-      if type == .cameraRoll {
+        //         self.openCameraOrLibrary(type: .photoLibrary)
+        if type == .cameraRoll {
             self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: false)
         } else {
             self.openCameraOrLibrary(type: .photoLibrary, isFromUnsplash: true)
@@ -328,26 +328,26 @@ extension CreateClubViewController: SelectEventTypeDelegate {
 // MARK: - ImagePickerControllerDelegate methods
 extension CreateClubViewController: ImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
-                IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: ImagePickerController, shouldLaunchCameraWithAuthorization status: AVAuthorizationStatus) -> Bool {
-           return true
-       }
+        return true
+    }
     func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
         IQKeyboardManager.shared.enableAutoToolbar = false
-                  
-           imageList = assets
-           picker.dismiss(animated: false, completion: nil)
-           DispatchQueue.main.async {
+        
+        imageList = assets
+        picker.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.async {
             
-               self.setEventImage(imageAsset: self.imageList[0])
-               self.validateAllFields()
-               self.tableView.reloadData()
-           }
-           tableView.reloadData()
-       }
+            self.setEventImage(imageAsset: self.imageList[0])
+            self.validateAllFields()
+            self.tableView.reloadData()
+        }
+        tableView.reloadData()
+    }
 }
 
 // MARK: - Services
@@ -364,37 +364,37 @@ extension CreateClubViewController {
         let interests = interestList.compactMap({ "\($0.interestId)" }).joined(separator: ",")
         
         guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
-                   return }
-               print(countryCodeString)
-               let contactList = self.peopleList.filter { ($0.isFriend == false) }
-               let contactArray = contactList.compactMap { ($0.contact?.phone) }
-               var contactDict = [String: Any]()
-               var newContactArray = [[String: Any]]()
-               for contact in contactArray {
-                   guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
-                   let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
-                   var contactString = ""
-                   if contact.contains("+") {
-                       contactString = contact
-                   } else {
-                       contactString = "\(countryNumberCodeString)\(contact)"
-                   }
-                   if contactString.count >= 10 {
-                       contactDict["cc"] = countryNumberCodeString
-                       contactDict["phone"] = contactString
-                       newContactArray.append(contactDict)
-                   }
-               }
-               
-               var jsonString = ""
-               do {
-                   let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
-                   if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-                       jsonString = JSONString
-                   }
-               } catch {
-                   print(error.localizedDescription)
-               }
+            return }
+        print(countryCodeString)
+        let contactList = self.peopleList.filter { ($0.isFriend == false) }
+        let contactArray = contactList.compactMap { ($0.contact?.phone) }
+        var contactDict = [String: Any]()
+        var newContactArray = [[String: Any]]()
+        for contact in contactArray {
+            guard let index = countryCode.firstIndex(where: { $0["code"] as? String == countryCodeString }) else { return }
+            let countryNumberCodeString = countryCode[index]["dial_code"] as? String ?? ""
+            var contactString = ""
+            if contact.contains("+") {
+                contactString = contact
+            } else {
+                contactString = "\(countryNumberCodeString)\(contact)"
+            }
+            if contactString.count >= 10 {
+                contactDict["cc"] = countryNumberCodeString
+                contactDict["phone"] = contactString
+                newContactArray.append(contactDict)
+            }
+        }
+        
+        var jsonString = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: newContactArray)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                jsonString = JSONString
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
         
         let param = [Keys.clubName: nameClub,
                      Keys.clubDesc: clubDescription,
