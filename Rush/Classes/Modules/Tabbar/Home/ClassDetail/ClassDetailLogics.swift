@@ -68,7 +68,7 @@ extension ClassDetailViewController {
         cell.setup(detail: selectedGroup?.name ?? "FINA 40", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
         cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
-        cell.setup(topHeight: 0)
+        cell.setup(topHeight: 0 )
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {

@@ -36,18 +36,18 @@ extension FriendsListViewController {
                 friend = secondTabList[indexPath.row] as? Friend ?? friend
             }
             cell.setup(name: friend.user?.name ?? "")
-                       if let url = URL(string: friend.user?.photo?.thumb ?? "") {
-                           cell.setup(url: url)
-        } else {
-            let invitee = inviteeList[indexPath.row]
-            cell.setup(name: invitee.user?.name ?? "")
-            if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+            if let url = URL(string: friend.user?.photo?.thumb ?? "") {
                 cell.setup(url: url)
+            } else {
+                let invitee = inviteeList[indexPath.row]
+                cell.setup(name: invitee.user?.name ?? "")
+                if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                    cell.setup(url: url)
+                }
             }
         }
     }
-    }
-        
+    
     func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         //               if indexPath.row == 0 {
         //                   cell.setup(topConstraint: -16)
@@ -190,13 +190,15 @@ extension FriendsListViewController {
                      Keys.sortBy: GetEventType.attending.rawValue,
                      Keys.pageNo: firstTabPageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: GetEventType.attending.rawValue, params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchEventList(sortBy: GetEventType.attending.rawValue, params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
             
             if let list = value {
                 if list.count > 0 {
+                    let firstTitle = "\(total) Attending"
+                    unsafe.firstSegmentButton.setTitle(firstTitle, for: .normal)
                     if unsafe.firstTabPageNo == 1 {
                         unsafe.firstTabList = list
                     } else {
@@ -221,12 +223,15 @@ extension FriendsListViewController {
                      Keys.sortBy: GetEventType.managedFirst.rawValue,
                      Keys.pageNo: secondTabPageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: GetEventType.managedFirst.rawValue, params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchEventList(sortBy: GetEventType.managedFirst.rawValue, params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
             if let list = value {
+                
                 if list.count > 0 {
+                    let secondTitle = "\(total) Managed"
+                    unsafe.secondSegmentButton.setTitle(secondTitle, for: .normal)
                     if unsafe.secondTabPageNo == 1 {
                         unsafe.secondTabList = list
                     } else {
@@ -251,14 +256,17 @@ extension FriendsListViewController {
                      Keys.sortBy: "joined",
                      Keys.pageNo: firstTabPageNo,
                      Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
-   
-        ServiceManager.shared.fetchClubList(sortBy: "joined", params: param) { [weak self] (value, _) in
+        
+        ServiceManager.shared.fetchClubList(sortBy: "joined", params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
             
             if let list = value {
                 if list.count > 0 {
+                    let firstTitle = "\(total) Joined"
+                    unsafe.firstSegmentButton.setTitle(firstTitle, for: .normal)
+                    
                     if unsafe.firstTabPageNo == 1 {
                         unsafe.firstTabList = list
                     } else {
@@ -283,12 +291,16 @@ extension FriendsListViewController {
                      Keys.sortBy: "my",
                      Keys.pageNo: secondTabPageNo] as [String: Any]
         
-        ServiceManager.shared.fetchClubList(sortBy: "my", params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchClubList(sortBy: "my", params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
             if let list = value {
+                
                 if list.count > 0 {
+                    let secondTitle = "\(total) Managed"
+                    unsafe.secondSegmentButton.setTitle(secondTitle, for: .normal)
+                    
                     if unsafe.secondTabPageNo == 1 {
                         unsafe.secondTabList = list
                     } else {
@@ -314,13 +326,16 @@ extension FriendsListViewController {
                      Keys.isMutual: "0",
                      Keys.pageNo: firstTabPageNo] as [String: Any]
         
-        ServiceManager.shared.fetchFriendsList(params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchFriendsList(params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
             
             if let list = value {
+                
                 if list.count > 0 {
+                    let firstTitle = "\(total) Friends"
+                    unsafe.firstSegmentButton.setTitle(firstTitle, for: .normal)
                     if unsafe.firstTabPageNo == 1 {
                         unsafe.firstTabList = list
                     } else {
@@ -345,12 +360,15 @@ extension FriendsListViewController {
                      Keys.isMutual: "1",
                      Keys.pageNo: secondTabPageNo] as [String: Any]
         
-        ServiceManager.shared.fetchFriendsList(params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchFriendsList(params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
             if let list = value {
+                
                 if list.count > 0 {
+                    let secondTitle = "\(total) Mutual"
+                    unsafe.secondSegmentButton.setTitle(secondTitle, for: .normal)
                     if unsafe.secondTabPageNo == 1 {
                         unsafe.secondTabList = list
                     } else {
@@ -392,7 +410,7 @@ extension FriendsListViewController {
             
         }
     }
-            
+    
     func fetchInvitees(search: String, type: InviteType) {
         Utils.showSpinner()
         let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: type ==  .going ? "going" : "not_going"] as [String: Any]
@@ -416,4 +434,3 @@ extension FriendsListViewController {
         }
     }
 }
-

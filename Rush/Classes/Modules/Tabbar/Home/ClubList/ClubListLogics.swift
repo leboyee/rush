@@ -157,18 +157,18 @@ extension ClubListViewController {
                 header.setup(isDetailArrowHide: true)
             }
         } else if screenType == .classes {
-            if myClassesList.count > 0 {
+           // if myClassesList.count > 0 {
                 if section == 0 {
                     header.setup(title: Text.myClasses)
                     header.setup(isDetailArrowHide: true)
                 } else {
                     header.setup(title: classesList[section - 1].name)
                 }
-            } else {
+          /*  } else {
                 if classesList.count > 0 {
                 header.setup(title: classesList[section].name)
                 }
-            }
+            }*/
         }
         
         header.detailButtonClickEvent = { [weak self] () in
@@ -235,7 +235,7 @@ extension ClubListViewController {
                      Keys.pageNo: pageNoM] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, _) in
             guard let uwself = self else { return }
             
             if uwself.pageNoM == 1 {

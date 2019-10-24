@@ -58,7 +58,7 @@ extension ChatContactsListViewController {
         params[Keys.search] = searchText
         params[Keys.profileUserId] = Authorization.shared.profile?.userId
         
-        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, total, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             

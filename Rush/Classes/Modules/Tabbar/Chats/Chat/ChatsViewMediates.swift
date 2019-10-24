@@ -55,10 +55,11 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
         
         let channel = channels[cell.tag]
+        let name = getSingleChatName(channel: channel)
         ChatManager().leave(channel, completionHandler: { [weak self] (status) in
             guard let unowned = self else { return }
             if status {
-                let snackbar = TTGSnackbar(message: "\(channel.name) chat was deleted",
+                let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
                                            duration: .middle,
                                            actionText: "",
                                            actionBlock: { (_) in

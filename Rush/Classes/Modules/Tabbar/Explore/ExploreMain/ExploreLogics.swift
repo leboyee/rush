@@ -5,7 +5,6 @@
 //  Created by ideveloper2 on 09/05/19.
 //  Copyright © 2019 Messapps. All rights reserved.
 
-
 import UIKit
 
 extension ExploreViewController {
@@ -136,11 +135,11 @@ extension ExploreViewController {
         
         if searchType == .event {
             if eventInterestList.count > indexPath.row {
-                cell.setup(title: eventInterestList[indexPath.row].name)
+                cell.setup(title: eventInterestList[indexPath.row].interestName)
             }
         } else if searchType == .club {
             if clubInterestList.count > indexPath.row {
-                cell.setup(title: clubInterestList[indexPath.row].name)
+                cell.setup(title: clubInterestList[indexPath.row].interestName)
                 
             }
         } else if searchType == .classes {
@@ -195,6 +194,30 @@ extension ExploreViewController {
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
         }
     }
+    // Mark: - will display cell
+    func willDisplay(_ indexPath: IndexPath) {
+        if isSearch {
+            if searchType == .event {
+                if isEventCatIsNextPageExist == true, indexPath.row == eventInterestList.count - 3 {
+                    getEventCategoryListAPI()
+                }
+            } else if searchType == .club {
+                if isClubCatIsNextPageExist == true, indexPath.row == clubInterestList.count - 3 {
+                    getClubCategoryListAPI()
+                }
+            } else if searchType == .classes {
+                if isClassCatIsNextPageExist == true, indexPath.row == classCategoryList.count - 3 {
+                    classCatPageNo += 1
+                    isClassCatIsNextPageExist = true
+                    getClassCategoryAPI()
+                }
+            } else if searchType == .people {
+                if isNextPageExist == true, indexPath.row == peopleList.count - 3 {
+                    getPeopleListAPI()
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Services
@@ -207,7 +230,7 @@ extension ExploreViewController {
         params[Keys.search] = searchText
         params[Keys.universityId] = selUniversity.universtiyId
                       
-        ServiceManager.shared.fetchEventCategoryList(params: params) { [weak self] (data, _) in
+        ServiceManager.shared.getInterestList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if unsafe.eventCatPageNo == 1 {
@@ -239,7 +262,7 @@ extension ExploreViewController {
         var params = [Keys.pageNo: clubCatPageNo] as [String: Any]
         params[Keys.search] = searchText
         params[Keys.universityId] = selUniversity.universtiyId
-        ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
+        ServiceManager.shared.getInterestList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
             if unsafe.clubCatPageNo == 1 {
@@ -312,7 +335,7 @@ extension ExploreViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
@@ -338,7 +361,7 @@ extension ExploreViewController {
                      Keys.pageNo: 1] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
               
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -379,12 +402,11 @@ extension ExploreViewController {
             if let category = data {
                 if category.count > 0 {
                     if unsafe.classCatPageNo == 1 {
+                        unsafe.classCategoryList.removeAll()
                         unsafe.classCategoryList = category
                     } else {
                         unsafe.classCategoryList.append(contentsOf: category)
                     }
-                    unsafe.classCatPageNo += 1
-                    unsafe.isClassCatIsNextPageExist = true
                 } else {
                     unsafe.isClassCatIsNextPageExist = false
                     if unsafe.classCatPageNo == 1 {

@@ -148,7 +148,25 @@ extension HomeViewController {
 
 // MARK: - Services
 extension HomeViewController {
-    
+    func getHomeList() {
+
+        ServiceManager.shared.fetchHomeList(params: [:]) { [weak self] (data, error) in
+            guard let unsafe = self else { return }
+            if let home = data {
+                if home.myEvents?.count ?? 0 > 0 {
+                    unsafe.isShowJoinEvents = true
+                    unsafe.eventList = home.myEvents ?? [Event]()
+                } else {
+                    unsafe.isShowJoinEvents = false
+                    unsafe.eventList = home.interestedEvents ?? [Event]()
+                }
+                unsafe.clubList = home.interestedClubList ?? [Club]()
+                unsafe.classList = home.classList ?? [SubClass]()
+            }
+            unsafe.tableView.reloadData()
+        }
+       }
+
     func getEventList(sortBy: GetEventType) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
@@ -156,7 +174,7 @@ extension HomeViewController {
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -186,7 +204,7 @@ extension HomeViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {

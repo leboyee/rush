@@ -575,6 +575,7 @@
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
 		C05FC17022805FAE00721F3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC16F22805FAE00721F3F /* Utils.swift */; };
 		C05FC1742280620100721F3F /* AppDelegateThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */; };
+		D91F7C582361DCDA00223D6E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91F7C572361DCDA00223D6E /* Home.swift */; };
 		D98B99602344D75C00BB9B12 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B995E2344D75C00BB9B12 /* QuestionCell.swift */; };
 		D98B99612344D75C00BB9B12 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B995F2344D75C00BB9B12 /* QuestionCell.xib */; };
 		F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */; };
@@ -1174,6 +1175,7 @@
 		C05FC16F22805FAE00721F3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdParty.swift; sourceTree = "<group>"; };
 		C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.release.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.release.xcconfig"; sourceTree = "<group>"; };
+		D91F7C572361DCDA00223D6E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D98B995E2344D75C00BB9B12 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		D98B995F2344D75C00BB9B12 /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationMediates.swift; sourceTree = "<group>"; };
@@ -3167,6 +3169,7 @@
 				8AAA38442343268500423D43 /* RSVPQuestion.swift */,
 				8A1EFDE02345E1A300624EED /* NotificationItem.swift */,
 				8AE7A252234C662B001F2EC0 /* CalendarItem.swift */,
+				D91F7C572361DCDA00223D6E /* Home.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3849,6 +3852,7 @@
 				797FFDA422B7BC480055A001 /* ImagePickerController.swift in Sources */,
 				796E92A2229FE0C800F91DB1 /* TagView.swift in Sources */,
 				8A4B3294232F5A5B00AC1D17 /* LocationCell.swift in Sources */,
+				D91F7C582361DCDA00223D6E /* Home.swift in Sources */,
 				793BE67422E88207005EF72D /* LocationMessageSnapshotOptions.swift in Sources */,
 				793BE68922E88207005EF72D /* MediaMessageCell.swift in Sources */,
 				1A339B6622B3CEA9005509EA /* ChooseYearViewLogics.swift in Sources */,

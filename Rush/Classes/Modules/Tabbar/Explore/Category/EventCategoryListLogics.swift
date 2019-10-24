@@ -309,7 +309,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
             isSecondFilter = false
             isThirdFilter = false
             collectionView.reloadData()
-            getEventList(sortBy: .upcoming, eventCategory: nil)
+            getEventList(sortBy: .upcoming, eventCategoryId: nil)
         } else if self.type == .club {
             if isFirstFilter {
                 firstFilterIndex = indexPath.row
@@ -322,7 +322,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 thirdSortText = type
                 thirdFilterIndex = indexPath.row
             }
-            getClubListAPI(sortBy: "feed", clubCategory: clubCategory)
+            getClubListAPI(sortBy: "feed", clubCategoryId: clubCategory?.id)
             isFirstFilter = false
             isSecondFilter = false
             isThirdFilter = false
@@ -351,7 +351,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 // Services
 extension EventCategoryListViewController {
 
-    func getClubListAPI(sortBy: String, clubCategory: ClubCategory?) {
+    func getClubListAPI(sortBy: String, clubCategoryId: String?) {
         
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         let param = [Keys.search: searchText,
@@ -365,7 +365,7 @@ extension EventCategoryListViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
@@ -377,11 +377,11 @@ extension EventCategoryListViewController {
         }
     }
     
-    func getEventList(sortBy: GetEventType, eventCategory: EventCategory?) {
+    func getEventList(sortBy: GetEventType, eventCategoryId: String?) {
         
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
-                     Keys.eventCateId: eventCategory?.id ?? "",
+                     Keys.eventCateId: eventCategoryId ?? "",
                      Keys.pageNo: pageNo,
                      Keys.isOnlyFriendGoing: "\(isOnlyFriendGoing)",
                      Keys.interestId: "\(interest?.interestId ?? 0)"] as [String: Any]
@@ -396,7 +396,7 @@ extension EventCategoryListViewController {
             param[Keys.toTime] = endTime
         }
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {

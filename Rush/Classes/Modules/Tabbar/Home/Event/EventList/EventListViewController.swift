@@ -87,7 +87,7 @@ class EventListViewController: CustomViewController {
         customView.addSubview(searchTextFiled ?? UITextField())
             navigationItem.titleView = customView
             self.view.backgroundColor = UIColor.bgBlack
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus_white"), style: .plain, target: self, action: #selector(plusButtonAction))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus_white"), style: .plain, target: self, action: #selector(plusButtonAction))
         }
     
     func showMessage(message: String) {

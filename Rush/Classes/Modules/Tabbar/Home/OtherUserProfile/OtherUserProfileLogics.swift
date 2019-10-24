@@ -248,7 +248,7 @@ extension OtherUserProfileController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
@@ -267,7 +267,7 @@ extension OtherUserProfileController {
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -312,7 +312,7 @@ extension OtherUserProfileController {
                       Keys.search: "",
                       Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
-        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _) in
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, total, _) in
             guard let unsafe = self else { return }
             if let list = data {
                 unsafe.friendList = list

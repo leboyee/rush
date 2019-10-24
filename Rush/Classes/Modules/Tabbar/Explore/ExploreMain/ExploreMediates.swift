@@ -85,6 +85,10 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
 }
 
 // MARK: - Textfield Delegate
@@ -120,22 +124,22 @@ extension ExploreViewController: UITextFieldDelegate {
             clearButton.isHidden = true
         }
         if searchType == .event {
-            eventInterestList = [EventCategory]()
+            eventInterestList.removeAll()
             eventCatPageNo = 1
             isEventCatIsNextPageExist = true
             getEventCategoryListAPI()
         } else if searchType == .club {
-            clubInterestList = [ClubCategory]()
+            clubInterestList.removeAll()
             clubCatPageNo = 1
             isClubCatIsNextPageExist = true
             getClubCategoryListAPI()
         } else if searchType == .classes {
-            classCategoryList = [Class]()
+            classCategoryList.removeAll()
             classCatPageNo = 1
             isClassCatIsNextPageExist = true
             getClassCategoryAPI()
         } else if searchType == .people {
-            peopleList = [User]()
+            peopleList.removeAll()
             pageNo = 1
             isNextPageExist = true
             getPeopleListAPI()

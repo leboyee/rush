@@ -54,6 +54,11 @@ extension NetworkManager {
         requestPost(path: "phone/verify", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
 
+    // MARK: - Home
+    func getHomeList(params: [String: Any], resultHandler: @escaping ResultClosure) {
+           requestGet(path: "home/list", params: params, resultHandler: resultHandler)
+       }
+    
     // MARK: - Profile
     func updateProfile(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "profile", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
@@ -189,10 +194,6 @@ extension NetworkManager {
     }
     func updateEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event/\(eventId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
-    }
-
-    func getEventCategoryList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestGet(path: "interest/event/list", params: params, resultHandler: resultHandler)
     }
     
     func getCalendarList(params: [String: Any], resultHandler: @escaping ResultClosure) {
