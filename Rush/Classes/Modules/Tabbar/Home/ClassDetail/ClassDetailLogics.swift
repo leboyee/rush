@@ -12,41 +12,40 @@ import Photos
 extension ClassDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-     //   let photoHeight = (Utils.navigationHeigh*2) + 24 + 216
+     
         let least = CGFloat.leastNormalMagnitude
-        return section == 0 ? 0 : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
+        return section == 0 ? least : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
     }
     
     func heightOfFooter(_ section: Int) -> CGFloat {
         return (isShowMore && section == 2) ? 16 :  1
     }
     
-    /*
-    if indexPath.section > 5 {
-    let photos = clubPostList[indexPath.section - 6].images
-    if indexPath.row == 2 {
-    return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
-    }
-    return UITableView.automaticDimension
-    } else {
-    if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
-    return CGFloat.leastNormalMagnitude
-    } else {
-    let auto = UITableView.automaticDimension
-    return indexPath.section == 2 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : (indexPath.section == 1 && joinedClub == false) ? CGFloat.leastNormalMagnitude : auto
-    }
-    }
-    */
-    
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 && joinedClub == false {
             return CGFloat.leastNormalMagnitude
         } else if indexPath.section > 5 {
-            let photos = classesPostList[indexPath.section - 6].images
             if indexPath.row == 2 {
-                return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
+                let images = classesPostList[indexPath.section - 6].images
+                if images?.count ?? 0 > 0 {
+                    let itemsCount = images?.count ?? 0
+                    var count = itemsCount % 2 == 0 ? itemsCount : itemsCount - 1
+                    if itemsCount == 1 {
+                        count = 1
+                    } else if itemsCount >= 6 {
+                        count = 6
+                    }
+                    var height = screenWidth
+                    if count > 1 {
+                        height = (CGFloat(count) / 2.0) * (screenWidth / 2.0)
+                    }
+                    return height
+                } else {
+                    return CGFloat.leastNormalMagnitude
+                }
+            } else {
+                return UITableView.automaticDimension
             }
-            return UITableView.automaticDimension
         } else {
             return indexPath.section == 4 ? 88 : (indexPath.section == 5 && joinedClub) ? 48 : UITableView.automaticDimension
         }
@@ -68,7 +67,6 @@ extension ClassDetailViewController {
         cell.setup(detail: selectedGroup?.name ?? "FINA 40", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
         cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
-        cell.setup(topHeight: 0 )
     }
     
     func fillClubManageCell(_ cell: ClubManageCell) {
@@ -214,6 +212,28 @@ extension ClassDetailViewController {
             joinedClub = false
         }
     }
+    
+    func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
+        let post = classesPostList[indexPath.section - 6]
+        cell.set(name: post.user?.name ?? "")
+        cell.set(url: post.user?.photo?.urlThumb())
+        cell.moreEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            unsafe.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
+        }
+        
+        if post.user?.userId == Authorization.shared.profile?.userId {
+            cell.moreButton.isHidden = false
+        } else {
+            cell.moreButton.isHidden = true
+        }
+        
+        if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+            let time = Date().timeAgoDisplay(date: date)
+            cell.set(timeStr: time)
+        }
+    }
+    
     // Textview cell (section 6 row 1)
     func fillTextViewCell(_ cell: UserPostTextTableViewCell, _ indexPath: IndexPath) {
         if indexPath.section > 5 {
@@ -225,14 +245,13 @@ extension ClassDetailViewController {
     }
     
     // Image cell (section 6 row 2)
-    func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
-        if indexPath.section > 5 {
-            let post = classesPostList[indexPath.section - 6]
-            if let list = post.images {
-                cell.set(url: list.first?.url())
-            }
+    func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
+        let post = classesPostList[indexPath.section - 6]
+        cell.set(images: post.images)
+        cell.showImages = { [weak self] (index) in
+            guard let unsafe = self else { return }
+            unsafe.showPostImages(post: post, index: index)
         }
-        cell.setup(isCleareButtonHide: true)
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -249,23 +268,16 @@ extension ClassDetailViewController {
         */
     }
     func fillImageHeader() {
-          let img = subclassInfo?.photo
-          clubHeader.set(url: img?.url())
+        let img = subclassInfo?.photo
+        clubHeader.changePhotoButton.isHidden = true
+        clubHeader.addPhotoButton.isHidden = true
+        clubHeader.set(url: img?.url())
     }
-    /*func fillImageHeader(_ view: UserImagesHeaderView) {
-        let img = Image(json: subclassInfo?.photo ?? "")
-        view.setup(imageUrl: img.url())
-        view.setup(isHideHoverView: false)
-        view.setup(isHidePhotoButton: true)
-    } */
    
-    func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+    func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let post = classesPostList[indexPath.section - 6]
-        cell.set(numberOfLike: post.numberOfLikes)
-        cell.set(numberOfUnLike: post.numberOfUnLikes)
+        cell.set(numberOfLike: post.totalUpVote)
         cell.set(numberOfComment: post.numberOfComments)
-        cell.set(ishideUnlikeLabel: false)
-        
         if let myVote = post.myVote?.first {
             cell.set(vote: myVote.type)
         } else {
@@ -273,18 +285,15 @@ extension ClassDetailViewController {
         }
         
         cell.likeButtonEvent = { [weak self] () in
-            guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.postId, type: "up")
+            self?.voteClubAPI(id: post.postId, type: Vote.up)
         }
         
         cell.unlikeButtonEvent = { [weak self] () in
-            guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.postId, type: "down")
+            self?.voteClubAPI(id: post.postId, type: Vote.down)
         }
         
         cell.commentButtonEvent = { [weak self] () in
-            guard let uwself = self else { return }
-            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
+            self?.performSegue(withIdentifier: Segues.postSegue, sender: post)
         }
     }
     
@@ -388,20 +397,13 @@ extension ClassDetailViewController {
     func voteClubAPI(id: String, type: String) {
         ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
             Utils.hideSpinner()
-            guard let uwself = self else { return }
+            guard let unsafe = self else { return }
             if let post = result {
-                let index = uwself.classesPostList.firstIndex(where: { ( $0.postId == post.postId ) })
-                if let position = index, uwself.classesPostList.count > position {
-                    uwself.classesPostList[position] = post
-                    
-                    let oldOffset = uwself.tableView.contentOffset
-                    UIView.setAnimationsEnabled(false)
-                    uwself.tableView.beginUpdates()
-                    uwself.tableView.reloadRows(at: [IndexPath(row: position, section: 6)], with: .automatic)
-                    uwself.tableView.endUpdates()
-                    uwself.tableView.setContentOffset(oldOffset, animated: false)
+                let index = unsafe.classesPostList.firstIndex(where: { ( $0.postId == post.postId ) })
+                if let position = index, unsafe.classesPostList.count > position {
+                    unsafe.classesPostList[position] = post
+                    unsafe.tableView.reloadData()
                 }
-                uwself.getClassPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

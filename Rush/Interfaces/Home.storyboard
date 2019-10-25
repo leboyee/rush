@@ -1724,6 +1724,7 @@
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="WIx-LH-4TQ"/>
                         <segue destination="KY7-jJ-Aaf" kind="show" identifier="PostSegue" id="bD5-sy-JMX"/>
                         <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="JB1-Ex-Ue7"/>
+                        <segue destination="u2h-As-Ed6" kind="presentation" identifier="EventPostImagesSegue" modalPresentationStyle="fullScreen" id="S3t-uX-4Y9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6D-HR-Kbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2020,17 +2021,18 @@
         <image name="whiteMore" width="32" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="S3t-uX-4Y9"/>
         <segue reference="L5B-Xz-z9C"/>
         <segue reference="zl1-35-Qwj"/>
         <segue reference="QdI-xB-jJm"/>
-        <segue reference="LvJ-Dj-Yna"/>
+        <segue reference="Bwe-EL-S9s"/>
         <segue reference="aC8-Xe-Jrw"/>
-        <segue reference="S8E-ms-kaf"/>
+        <segue reference="bD5-sy-JMX"/>
         <segue reference="z8H-lu-6pg"/>
         <segue reference="Lcf-y5-6Em"/>
         <segue reference="E7I-YA-fBT"/>
-        <segue reference="90w-At-CBu"/>
-        <segue reference="g4h-St-bby"/>
+        <segue reference="JB1-Ex-Ue7"/>
+        <segue reference="WIx-LH-4TQ"/>
         <segue reference="gSU-VJ-XvQ"/>
         <segue reference="C9I-aA-3Rl"/>
         <segue reference="Oel-AB-j6R"/>

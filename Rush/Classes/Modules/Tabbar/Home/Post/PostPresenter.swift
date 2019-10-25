@@ -163,6 +163,26 @@ extension PostViewController {
         }
     }
     
+    func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
+        if let post = postInfo {
+            cell.set(numberOfLike: post.totalUpVote)
+            cell.set(numberOfComment: post.numberOfComments)
+            if let myVote = post.myVote?.first {
+                cell.set(vote: myVote.type)
+            } else {
+                cell.set(vote: 0)
+            }
+            
+            cell.likeButtonEvent = { [weak self] () in
+                self?.voteClubAPI(id: post.postId, type: Vote.up)
+            }
+            
+            cell.unlikeButtonEvent = { [weak self] () in
+                self?.voteClubAPI(id: post.postId, type: Vote.down)
+            }
+        }
+    }
+    
     func loadMoreCell(_ indexPath: IndexPath) {
         if commentList.count > 2 {
             if indexPath.row == (commentList.count - 2) && isNextPageExistP {
