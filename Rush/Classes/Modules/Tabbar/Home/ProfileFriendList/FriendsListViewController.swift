@@ -133,7 +133,7 @@ class FriendsListViewController: UIViewController {
             secondSegmentButton.isSelected = false
             inviteType = .going
         }
-        
+        tableView.reloadData()
         // Testind values for tester :)
         if type == .friends {
             if firstSegmentButton.isSelected {
