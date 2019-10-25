@@ -98,7 +98,7 @@ extension UIImage {
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = borderWidth
         imageView.layer.borderColor = color.cgColor
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, UIScreen.main.scale)
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
         imageView.layer.render(in: context)
         let result = UIGraphicsGetImageFromCurrentImageContext()

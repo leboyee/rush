@@ -97,7 +97,7 @@ extension CustomTabbarViewController {
         Show login user photo on last tab
     */
     func updateLoginUserPhotoOnLastTab() {
-        if let url = Authorization.shared.profile?.photo?.urlThumb() {
+        if let url = Authorization.shared.profile?.photo?.url() {
             if let imageData =  try? Data(contentsOf: url) {
                 let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
                 let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
