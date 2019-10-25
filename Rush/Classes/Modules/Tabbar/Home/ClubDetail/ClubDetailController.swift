@@ -102,7 +102,7 @@ extension ClubDetailViewController {
     }
 }
 
-//MARK: - Others
+// MARK: - Others
 extension ClubDetailViewController {
     func showPostImages(post: Post, index: Int) {
         performSegue(withIdentifier: Segues.eventPostImages, sender: (post, index))

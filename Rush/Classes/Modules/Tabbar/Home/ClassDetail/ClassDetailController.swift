@@ -45,9 +45,6 @@ class ClassDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        //        navigationController?.navigationBar.barTintColor = UIColor.clear
-        //        navigationController?.navigationBar.isTranslucent = true
         navigationController?.isNavigationBarHidden = true
         
         if classId == "0" && groupId == "0" {
@@ -67,9 +64,6 @@ class ClassDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        //        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-        //        navigationController?.navigationBar.isTranslucent = false
         navigationController?.isNavigationBarHidden = false
         
     }
@@ -82,24 +76,9 @@ class ClassDetailViewController: UIViewController {
     
     func setupUI() {
         
-        /*
-         let total = screenWidth + 15
-         heightConstraintOfImageView.constant = total
-         
-         scrollView.contentInset = UIEdgeInsets(top: (total - Utils.navigationHeigh)*0.81, left: 0, bottom: 0, right: 0)
-         */
-        
-        //        topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
-        
-        /*
-         // back button
-         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-         navigationItem.leftBarButtonItem = cancel
-         */
         
         // setup tableview
         setupTableView()
@@ -111,11 +90,15 @@ extension ClassDetailViewController {
     @IBAction func cancelButtonAction() {
         dismiss(animated: true, completion: nil)
     }
-    
-    //    @objc func shareButtonAction() {
-    //        performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
-    //    }
 }
+
+// MARK: - Others
+extension ClassDetailViewController {
+    func showPostImages(post: Post, index: Int) {
+        performSegue(withIdentifier: Segues.eventPostImages, sender: (post, index))
+    }
+}
+
 // MARK: - Actions
 extension ClassDetailViewController {
     @IBAction func backButtonAction() {
@@ -141,11 +124,10 @@ extension ClassDetailViewController {
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.sharePostSegue {
-            
             if let vc = segue.destination as? SharePostViewController {
                 if let send = sender as? SubClass {
                     vc.type = .classes
-                    vc.object = sender
+                    vc.object = send
                     vc.delegate = self
                 } else {
                     vc.type = .post
@@ -154,16 +136,24 @@ extension ClassDetailViewController {
                 }
             }
         } else if segue.identifier == Segues.createPost {
-                if let vc = segue.destination as? CreatePostViewController {
-                    vc.subclassInfo = subclassInfo
-                    vc.delegate = self
-                }
-            } else if segue.identifier == Segues.postSegue {
-                if let vc = segue.destination as? PostViewController {
-                    vc.postInfo = sender as? Post
-                    vc.subclassInfo = subclassInfo
-                    vc.delegate = self
+            if let vc = segue.destination as? CreatePostViewController {
+                vc.subclassInfo = subclassInfo
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.postSegue {
+            if let vc = segue.destination as? PostViewController {
+                vc.postInfo = sender as? Post
+                vc.subclassInfo = subclassInfo
+                vc.delegate = self
+            }
+        } else if segue.identifier == Segues.eventPostImages {
+            if let vc = segue.destination as? UserProfileGalleryViewController {
+                if let (post, index) = sender as? (Post, Int) {
+                    vc.list = post.images ?? [Image]()
+                    vc.user = post.user ?? User()
+                    vc.currentIndex = index
                 }
             }
         }
+    }
 }
