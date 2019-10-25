@@ -65,7 +65,6 @@ extension SearchEventViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         searchText = textField.text ?? ""
         getEventList(sortBy: .none)
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

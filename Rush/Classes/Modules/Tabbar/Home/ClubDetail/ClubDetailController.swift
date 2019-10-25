@@ -102,6 +102,13 @@ extension ClubDetailViewController {
     }
 }
 
+//MARK: - Others
+extension ClubDetailViewController {
+    func showPostImages(post: Post, index: Int) {
+        performSegue(withIdentifier: Segues.eventPostImages, sender: (post, index))
+    }
+}
+
 // MARK: - Navigation
 extension ClubDetailViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,6 +143,14 @@ extension ClubDetailViewController {
                 vc.postInfo = sender as? Post
                 vc.clubInfo = clubInfo
                 vc.delegate = self
+            }
+        } else if segue.identifier == Segues.eventPostImages {
+            if let vc = segue.destination as? UserProfileGalleryViewController {
+                if let (post, index) = sender as? (Post, Int) {
+                    vc.list = post.images ?? [Image]()
+                    vc.user = post.user ?? User()
+                    vc.currentIndex = index
+                }
             }
         }
     }

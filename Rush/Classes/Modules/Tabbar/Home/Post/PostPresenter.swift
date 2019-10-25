@@ -243,7 +243,7 @@ extension PostViewController {
         
         let param = ["post_id": postInfo?.postId ?? "",
                      "parent_id": parentComment?.id ?? "",
-                     "pageNo": pageNoP] as [String: Any]
+                     Keys.pageNo: pageNoP] as [String: Any]
         
         ServiceManager.shared.fetchCommentList(postId: postInfo?.postId ?? "", params: param) { [weak self] (data, _) in
             Utils.hideSpinner()
@@ -293,7 +293,7 @@ extension PostViewController {
         } else {
             let param = ["post_id": postInfo?.postId ?? "",
                          "parent_id": comment.id ?? "",
-                         "pageNo": pageNoP] as [String: Any]
+                         Keys.pageNo: pageNoP] as [String: Any]
             
             parentComment = nil
             ServiceManager.shared.fetchCommentList(postId: postInfo?.postId ?? "", params: param) { [weak self] (data, _) in
