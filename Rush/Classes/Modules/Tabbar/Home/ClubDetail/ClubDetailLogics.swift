@@ -26,11 +26,27 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            let photos = clubPostList[indexPath.section - 6].images
             if indexPath.row == 2 {
-                return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
+                let images = clubPostList[indexPath.section - 6].images
+                if images?.count ?? 0 > 0 {
+                    let itemsCount = images?.count ?? 0
+                    var count = itemsCount % 2 == 0 ? itemsCount : itemsCount - 1
+                    if itemsCount == 1 {
+                        count = 1
+                    } else if itemsCount >= 6 {
+                        count = 6
+                    }
+                    var height = screenWidth
+                    if count > 1 {
+                        height = (CGFloat(count) / 2.0) * (screenWidth / 2.0)
+                    }
+                    return height
+                } else {
+                    return CGFloat.leastNormalMagnitude
+                }
+            } else {
+                return UITableView.automaticDimension
             }
-            return UITableView.automaticDimension
         } else {
             if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 return CGFloat.leastNormalMagnitude
@@ -235,6 +251,15 @@ extension ClubDetailViewController {
             cell.set(url: list.first?.url())
         }
         cell.setup(isCleareButtonHide: true)
+    }
+    
+    func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
+        let post = clubPostList[indexPath.section - 6]
+        cell.set(images: post.images)
+        cell.showImages = { [weak self] (index) in
+            guard let unsafe = self else { return }
+            unsafe.showPostImages(post: post, index: index)
+        }
     }
     
     func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {

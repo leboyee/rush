@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgx-v7-Vh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="121"/>
+            <point key="canvasLocation" x="-503" y="-589"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="HZS-wL-uM1">
@@ -84,7 +84,7 @@
                 <viewControllerPlaceholder storyboardName="Calendar" id="P4d-Mh-kPx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChZ-Ws-lIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="185"/>
+            <point key="canvasLocation" x="-1162" y="-171"/>
         </scene>
         <!--EventDetail-->
         <scene sceneID="PCa-G5-pyl">
@@ -94,7 +94,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLh-hr-j2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="295"/>
+            <point key="canvasLocation" x="-1162" y="-130"/>
         </scene>
         <!--Event-->
         <scene sceneID="hU8-hz-A6D">
@@ -102,7 +102,7 @@
                 <viewControllerPlaceholder storyboardName="Event" id="7Gr-5Z-xHy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZ0-eM-95L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="364"/>
+            <point key="canvasLocation" x="-1162" y="-76"/>
         </scene>
         <!--Select Event Type View Controller-->
         <scene sceneID="rVd-uR-wx5">
@@ -606,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azY-28-IKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-94" y="871"/>
+            <point key="canvasLocation" x="-504" y="871"/>
         </scene>
         <!--Create Club View Controller-->
         <scene sceneID="b4r-Ci-TL8">
@@ -652,7 +652,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSN-Ai-Lxu">
-                                        <rect key="frame" x="16" y="50" width="156" height="72"/>
+                                        <rect key="frame" x="16" y="50" width="78" height="36"/>
                                         <state key="normal" image="cancel-active"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="tgq-BU-5qI" eventType="touchUpInside" id="AsF-zi-5Jt"/>
@@ -660,7 +660,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-7L-6FJ">
-                                        <rect key="frame" x="242" y="50" width="156" height="72"/>
+                                        <rect key="frame" x="320" y="50" width="78" height="36"/>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="save-dark"/>
                                         <userDefinedRuntimeAttributes>
@@ -740,7 +740,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twi-CD-cpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664" y="449"/>
+            <point key="canvasLocation" x="-1162" y="-25"/>
         </scene>
         <!--CreateEventInterestViewController-->
         <scene sceneID="c8Z-l4-TXy">
@@ -955,7 +955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8D-1c-2fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1400" y="871"/>
+            <point key="canvasLocation" x="226" y="121"/>
         </scene>
         <!--NotificationAlertViewController-->
         <scene sceneID="8c2-bt-lBa">
@@ -963,7 +963,7 @@
                 <viewControllerPlaceholder storyboardName="CustomPicker" referencedIdentifier="NotificationAlertViewController" id="ucK-SL-Bnd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cu-ih-TOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-693" y="439"/>
+            <point key="canvasLocation" x="-1162" y="36"/>
         </scene>
         <!--Profile Information View Controller-->
         <scene sceneID="yp5-ca-LOd">
@@ -1006,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5x9-fo-ljL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833" y="1653"/>
+            <point key="canvasLocation" x="-23" y="2468"/>
         </scene>
         <!--Friends List View Controller-->
         <scene sceneID="NcX-rj-wI2">
@@ -1569,6 +1569,7 @@
                         <segue destination="0uK-H1-ybm" kind="show" identifier="OtherUserProfileSegue" id="90w-At-CBu"/>
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="g4h-St-bby"/>
                         <segue destination="KY7-jJ-Aaf" kind="show" identifier="PostSegue" id="S8E-ms-kaf"/>
+                        <segue destination="u2h-As-Ed6" kind="presentation" identifier="EventPostImagesSegue" modalPresentationStyle="fullScreen" id="8a6-2F-zCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaL-DG-qyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1975,7 +1976,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pv4-MY-TMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="1665"/>
+            <point key="canvasLocation" x="2330" y="1646"/>
         </scene>
         <!--ChooseUniversityViewController-->
         <scene sceneID="dUp-Fc-KoN">
@@ -1986,6 +1987,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1y-i8-asM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044" y="842"/>
+        </scene>
+        <!--UserProfileGalleryViewController-->
+        <scene sceneID="aLu-zN-Ai5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="UserProfileGalleryViewController" id="u2h-As-Ed6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rVo-y4-Pqc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJn-2v-e8W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1256" y="-191"/>
         </scene>
     </scenes>
     <resources>
@@ -2009,19 +2020,19 @@
         <image name="whiteMore" width="32" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GeF-AR-VOr"/>
-        <segue reference="yk0-VO-M9j"/>
-        <segue reference="Z2T-Ex-vst"/>
-        <segue reference="Bwe-EL-S9s"/>
-        <segue reference="BAj-kr-2kr"/>
-        <segue reference="bD5-sy-JMX"/>
+        <segue reference="L5B-Xz-z9C"/>
+        <segue reference="zl1-35-Qwj"/>
+        <segue reference="QdI-xB-jJm"/>
+        <segue reference="LvJ-Dj-Yna"/>
+        <segue reference="aC8-Xe-Jrw"/>
+        <segue reference="S8E-ms-kaf"/>
         <segue reference="z8H-lu-6pg"/>
-        <segue reference="hn1-l9-YOL"/>
+        <segue reference="Lcf-y5-6Em"/>
         <segue reference="E7I-YA-fBT"/>
-        <segue reference="JB1-Ex-Ue7"/>
-        <segue reference="WIx-LH-4TQ"/>
-        <segue reference="p5t-Td-KDq"/>
-        <segue reference="Ixy-09-J7m"/>
-        <segue reference="CaI-qS-W91"/>
+        <segue reference="90w-At-CBu"/>
+        <segue reference="g4h-St-bby"/>
+        <segue reference="gSU-VJ-XvQ"/>
+        <segue reference="C9I-aA-3Rl"/>
+        <segue reference="Oel-AB-j6R"/>
     </inferredMetricsTieBreakers>
 </document>

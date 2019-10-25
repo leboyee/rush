@@ -20,7 +20,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
-        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser]
+        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser, Cell.postImages]
         
         for cell in cells {
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
@@ -84,9 +84,9 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 fillTextViewCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 2 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
-                fillImageCell(cell, indexPath)
-                return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell else { return UITableViewCell() }
+                    fillPostImageCell(cell, indexPath)
+                    return cell
             } else if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
                 fillLikeCell(cell, indexPath)
