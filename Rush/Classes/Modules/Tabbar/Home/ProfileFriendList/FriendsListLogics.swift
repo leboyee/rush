@@ -72,6 +72,17 @@ extension FriendsListViewController {
             cell.setup(title: joinedClass.classes?.name ?? "VR Meet")
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
             cell.setup(imageUrl: joinedClass.classes?.photo?.urlThumb())
+            var rosterArray = [Invitee]()
+            for rs in joinedClass.classGroup?.classGroupRosters ?? [ClassJoined]() {
+                if let user = rs.user {
+                    let inv = Invitee()
+                    inv.user = user
+                    rosterArray.append(inv)
+                }
+               
+            }
+            cell.setup(invitee: rosterArray)
+            
         }
     }
     
@@ -387,8 +398,10 @@ extension FriendsListViewController {
         if pageNo == 1 {
             myClassesList .removeAll()
         }
-        let param = [Keys.pageNo: pageNo, Keys.search: ""] as [String: Any]
-        
+        var param = [Keys.pageNo: pageNo, Keys.search: ""] as [String: Any]
+        if userInfo != nil {
+            param[Keys.profileUserId] = userInfo?.userId
+        }
         ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (value, _) in
             Utils.hideSpinner()
             

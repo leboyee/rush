@@ -69,10 +69,10 @@ class ClubListViewController: CustomViewController {
     func setupNavigation() {
         
         // Right item button
-        if screenType == .club {
+       /* if screenType == .club {
             let rightBarButton = UIBarButtonItem(image: UIImage(named: "plus_white"), style: .plain, target: self, action: #selector(createButtonAction))
             navigationItem.rightBarButtonItem = rightBarButton
-        }
+        } */
         
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: screenType == .club ? 0 :48, y: 0, width: screenWidth - 48, height: 44))

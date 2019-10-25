@@ -123,6 +123,10 @@ class FriendsListViewController: UIViewController {
             firstSegmentButton.isSelected = false
             secondSegmentButton.isSelected = true
             inviteType = .notGoing
+            tableView.reloadData()
+            if secondTabList.count > 0 {
+                return
+            }
         } else {
             secondSegmentButton.setTitleColor(UIColor.buttonDisableTextColor, for: .normal)
             secondSegmentButton.backgroundColor = UIColor.white
@@ -132,6 +136,10 @@ class FriendsListViewController: UIViewController {
             firstSegmentButton.isSelected = true
             secondSegmentButton.isSelected = false
             inviteType = .going
+            tableView.reloadData()
+            if firstTabList.count > 0 {
+                return
+            }
         }
         
         // Testind values for tester :)

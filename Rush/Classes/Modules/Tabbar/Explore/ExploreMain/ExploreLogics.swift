@@ -347,9 +347,9 @@ extension ExploreViewController {
     
     func getEventList(sortBy: GetEventType) {
         //to get today's events
-        let dateFormat = "yyyy:MM:dd" // Date format
-        let startDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "00:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate)
-        let endDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate)
+        let dateFormat = "yyyy-MM-dd" // Date format
+        let startDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "00:00:00", toForamte: serverDateFormate1, getFormate: serverDateFormate1)
+        let endDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate1, getFormate: serverDateFormate1)
         
         var param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                      Keys.search: searchText,

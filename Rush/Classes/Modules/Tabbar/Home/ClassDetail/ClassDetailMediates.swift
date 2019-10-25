@@ -13,7 +13,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = screenWidth
         tableView.rowHeight = UITableView.automaticDimension
         
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
@@ -21,7 +21,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
         var cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.timeSlot, Cell.eventByDate, Cell.eventType, Cell.textIcon]
-        cells.append(contentsOf: [Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike])
+        cells.append(contentsOf: [Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser, Cell.postImages, Cell.postBottom])
         
         for cell in cells {
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
@@ -78,21 +78,21 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
             }
         } else {
             if indexPath.row == 0 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-                fillEventByDateCell(cell, indexPath)
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postUser, for: indexPath) as? PostUserCell else { return UITableViewCell() }
+                fillPostUserCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 1 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostText, for: indexPath) as? UserPostTextTableViewCell else { return UITableViewCell() }
                 fillTextViewCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 2 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
-                fillImageCell(cell, indexPath)
-                return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell else { return UITableViewCell() }
+                    fillPostImageCell(cell, indexPath)
+                    return cell
             } else if indexPath.row == 3 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
-                fillLikeCell(cell, indexPath)
-                return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postBottom, for: indexPath) as? PostBottomCell else { return UITableViewCell() }
+                    fillPostBottomCell(cell, indexPath)
+                    return cell
             } else {
                 return UITableViewCell()
             }
@@ -121,19 +121,12 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if section == 0 {
-                     return UIView()
-//            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
-//            fillImageHeader(view)
-//            return view
+        if section == 2 || section == 3 || section == 1 || section == 0 {
+            return UIView()
         } else {
-            if section == 2 || section == 3 || section == 1 {
-                return UIView()
-            } else {
-                guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
-                fillTextHeader(header, section)
-                return header
-            }
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
+            fillTextHeader(header, section)
+            return header
         }
     }
     
@@ -192,7 +185,7 @@ extension ClassDetailViewController: OtherUserProfileProtocol {
         let snackbar = TTGSnackbar(message: "You unfriended \(name)",
             duration: .middle,
             actionText: "",
-            actionBlock: { (_) in        })
+            actionBlock: { (_) in })
         snackbar.show()
     }
 }
@@ -215,7 +208,7 @@ extension ClassDetailViewController: PostViewProtocol {
 // MARK: - CreatePostViewController Delegate
 extension ClassDetailViewController: CreatePostViewControllerDelegate {
     func createPostSuccess(_ post: Post) {
-        performSegue(withIdentifier: Segues.postSegue, sender: post)
+        //performSegue(withIdentifier: Segues.postSegue, sender: post)
     }
     
     func showSnackBar(text: String, buttonText: String) {

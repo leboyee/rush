@@ -14,6 +14,8 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
 let serverDateFormate = "yyyy:MM:dd HH:mm:ss"
+let serverDateFormate1 = "yyyy-MM-dd HH:mm:ss"
+
 // MARK: - Production Build
 var isProductionBuild: Bool = true
 
@@ -358,8 +360,8 @@ public struct Text {
     static let addMinor                  = "Add minor"
     static let addAnotherMajor           = "Add another major"
     static let addAnotherMinor           = "Add another minor"
-    static let addUniversity               = "Add university"
-
+    static let addUniversity             = "Add university"
+    static let rsvp                      = "RSVP"
 }
 
 public struct Message {

@@ -23,7 +23,8 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.userName, bundle: nil), forCellReuseIdentifier: Cell.userName)
         tableView.register(UINib(nibName: Cell.userPostText, bundle: nil), forCellReuseIdentifier: Cell.userPostText)
         tableView.register(UINib(nibName: Cell.userPostImage, bundle: nil), forCellReuseIdentifier: Cell.userPostImage)
-        tableView.register(UINib(nibName: Cell.postLike, bundle: nil), forCellReuseIdentifier: Cell.postLike)
+        tableView.register(UINib(nibName: Cell.postBottom, bundle: nil), forCellReuseIdentifier: Cell.postBottom)
+        
         tableView.register(UINib(nibName: Cell.postCommentCell, bundle: nil), forCellReuseIdentifier: Cell.postCommentCell)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
     }
@@ -56,8 +57,8 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             fillImageCell(cell, indexPath)
             return cell
         } else if indexPath.section == 3 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
-            fillLikeCell(cell, indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postBottom, for: indexPath) as? PostBottomCell else { return UITableViewCell() }
+            fillPostBottomCell(cell, indexPath)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postCommentCell, for: indexPath) as? PostCommentCell else { return UITableViewCell() }

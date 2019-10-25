@@ -69,6 +69,8 @@ extension CustomTabbarViewController {
         
         self.delegate = self
         setupIcons()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateChatItem(_:)), name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: nil)
     }
     
     /*
@@ -91,6 +93,16 @@ extension CustomTabbarViewController {
         let customTabBarItem = UITabBarItem(title: nil, image: getImage("profile_tab_inactive"), selectedImage: getImage("profile_tab_active"))
         fourthNavigationViewController.tabBarItem = customTabBarItem
         
+    }
+    
+    @objc func updateChatItem(_ notification: Notification) {
+        
+        if let count = notification.object as? Int, count > 0 {
+            tabBar.items?[2].badgeValue = ""
+            tabBar.items?[2].badgeColor = UIColor.brown72
+        } else {
+            tabBar.items?[2].badgeColor = UIColor.clear
+        }
     }
 
     /*
@@ -133,9 +145,9 @@ extension CustomTabbarViewController {
     func refreshTab() {
         if let url = Authorization.shared.profile?.photo?.url() {
             if let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-                
+//                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 72, borderWidth: 2, color: UIColor.brown24)
+                let img = UIImage(data: imageData)?.resizeImage1(targetSize: CGSize(width: 72, height: 72))
                 let customTabBarItem = UITabBarItem(title: nil, image: img, selectedImage: selectedImg)
                 fourthNavigationViewController.tabBarItem = customTabBarItem
                 
