@@ -22,13 +22,15 @@ extension ChatRoomViewController {
         
         let loggedInUserName = Authorization.shared.profile?.name ?? ""
         let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
-        
+        var totalUserIds = [String]()
+        totalUserIds.append(Authorization.shared.profile?.userId ?? "")
         if let friend = friendProfile {
             otherUserId = friend.user?.userId ?? "0"
             imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
             grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
             type = "single"
             data = friend.user?.userId ?? "0"
+            totalUserIds.append(otherUserId)
         } else if let club = clubInfo {
             otherUserId = club.invitees?.compactMap({ $0.user?.userId }).joined(separator: ",") ?? "0"
             loggedInUserId = club.user?.userId ?? "0"
@@ -36,6 +38,9 @@ extension ChatRoomViewController {
             grpName = club.clubName ?? ""
             type = "club"
             data = "\(club.clubId)"
+            if let value = club.invitees?.compactMap({ $0.user?.userId }) {
+                totalUserIds.append(contentsOf: value)
+            }
         } else if let event = eventInfo {
             otherUserId = event.invitees?.compactMap({ $0.user?.userId }).joined(separator: ",") ?? "0"
             loggedInUserId = event.creator?.userId ?? "0"
@@ -43,13 +48,43 @@ extension ChatRoomViewController {
             grpName = event.title
             type = "event"
             data = "\(event.id)"
+            if let value = event.invitees?.compactMap({ $0.user?.userId }) {
+                totalUserIds.append(contentsOf: value)
+            }
         }
         
-        ChatManager().createGroupChannelwithUsers(userIds: [otherUserId, loggedInUserId], groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel) in
+        ChatManager().createGroupChannelwithUsers(userIds: totalUserIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel1) in
             DispatchQueue.main
                 .async(execute: {
                     // Move on Chat detail screen
-                    handler(channel)
+                    if channel1?.members?.count == totalUserIds.count - 1 {
+                        handler(channel1)
+                    } else {
+                        var channelUserIds = [String]()
+                        if let members = channel1?.members {
+                            for member in members {
+                                if let user = member as? SBDUser {
+                                    channelUserIds.append(user.userId)
+                                }
+                            }
+                        }
+                        var filteredIds = [String]()
+                        for filterId in totalUserIds {
+                            if channelUserIds.contains(filterId) == false {
+                                filteredIds.append(filterId)
+                            }
+                        }
+                        
+                        if filteredIds.count > 0 {
+                            ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel2) in
+                                handler(channel2)
+                            }, errorHandler: { (_) in
+                                print("SOMETHING WRONG IN UPDATE USER IN NEW CHANNEL")
+                            })
+                        } else {
+                            handler(channel1)
+                        }
+                    }
                 })
         }, errorHandler: {_ in
             print("SOMETHING WRONG IN CREATE NEW CHANNEL")
