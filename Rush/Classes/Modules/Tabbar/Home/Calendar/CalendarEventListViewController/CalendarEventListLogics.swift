@@ -25,32 +25,34 @@ extension CalendarEventListViewController {
     
     func fillEventCell(_ cell: CalendarEventCell, _ indexPath: IndexPath) {
         if let group = groups?[indexPath.section] {
+            
+            cell.set(isHideTop: true)
+            cell.set(isHideBottom: false)
+            
             let event = group.events[indexPath.row]
             cell.set(eventName: event.title)
             cell.set(type: event.type)
             cell.set(url: event.photo?.urlThumb())
             
-            var startTime: Date?
-            var endTime: Date?
-            if event.type.lowercased() == "event" {
-                cell.set(start: event.start, end: event.end)
-                startTime = event.start
-                endTime = event.end
-            } else if let date = Date.parse(dateString: group.dateString, format: "yyyy-MM-dd") {
-                if let schedule = event.classSchedule?.filter({ $0.day == date.toString(format: "EEEE").lowercased() }).last {
-                    let startDateStr = group.dateString + " " + schedule.start
-                    let endDateStr = group.dateString + " " + schedule.end
-                    startTime = Date.parseUTC(dateString: startDateStr, format: "HH:mm:ss")
-                    endTime = Date.parseUTC(dateString: endDateStr, format: "HH:mm:ss")
-                    cell.set(start: startTime, end: endTime)
-                }
+            let date = Date()
+            let (startTime, endTime) = getEventTimes(event: event, dateString: group.dateString)
+            cell.set(start: startTime, end: endTime)
 
+            cell.set(isHideRedTimeline: true)
+            
+            /// check next event time as we need red line only in last event with same timing
+            /// so if next event time is also match with currrent time, than we return because we does not need to show red time here.
+            let nextIndex = indexPath.row + 1
+            if group.events.count > nextIndex {
+                let nextEvent = group.events[nextIndex]
+                let (startTimeNextEvent, endTimeNextEvent) = getEventTimes(event: nextEvent, dateString: group.dateString)
+                if let start = startTimeNextEvent, let end = endTimeNextEvent {
+                    if date.isGreaterThan(start), date.isLessThan(end) {
+                        return
+                    }
+                }
             }
             
-            cell.set(isHideRedTimeline: true)
-            cell.set(isHideTop: true)
-            cell.set(isHideBottom: false)
-            let date = Date()
             if let start = startTime, let end = endTime {
                 if date.isGreaterThan(start), date.isLessThan(end) {
                     cell.set(isHideRedTimeline: false)
@@ -73,4 +75,20 @@ extension CalendarEventListViewController {
 
 // MARK: - Other function
 extension CalendarEventListViewController {
+    private func getEventTimes(event: CalendarItem, dateString: String) -> (Date?, Date?) {
+        var startTime: Date?
+        var endTime: Date?
+        if event.type.lowercased() == "event" {
+            startTime = event.start
+            endTime = event.end
+        } else if let date = Date.parse(dateString: dateString, format: "yyyy-MM-dd") {
+            if let schedule = event.classSchedule?.filter({ $0.day == date.toString(format: "EEEE").lowercased() }).last {
+                let startDateStr = dateString + " " + schedule.start
+                let endDateStr = dateString + " " + schedule.end
+                startTime = Date.parseUTC(dateString: startDateStr, format: "HH:mm:ss")
+                endTime = Date.parseUTC(dateString: endDateStr, format: "HH:mm:ss")
+            }
+        }
+        return (startTime, endTime)
+    }
 }

@@ -186,8 +186,12 @@ extension ExploreViewController {
     @IBAction func clearButtonAction() {
         searchfield.text = ""
         searchText = ""
+        searchfield.resignFirstResponder()
+        isSearch = false
+        heightConstraintOfFilter.constant = 0
         clearButton.isHidden = true
-        textFieldDidChanged(searchfield)
+        tableView.reloadData()
+        //        textFieldDidChanged(searchfield)
     }
     
     @IBAction func eventButtonAction(_ sender: Any) {

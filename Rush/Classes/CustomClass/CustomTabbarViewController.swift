@@ -145,9 +145,9 @@ extension CustomTabbarViewController {
     func refreshTab() {
         if let url = Authorization.shared.profile?.photo?.urlThumb() {
             if let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-                
+//                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 72, borderWidth: 2, color: UIColor.brown24)
+                let img = UIImage(data: imageData)?.resizeImage1(targetSize: CGSize(width: 72, height: 72))
                 let customTabBarItem = UITabBarItem(title: nil, image: img, selectedImage: selectedImg)
                 fourthNavigationViewController.tabBarItem = customTabBarItem
                 
