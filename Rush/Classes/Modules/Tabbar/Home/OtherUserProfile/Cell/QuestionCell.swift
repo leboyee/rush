@@ -9,7 +9,10 @@
 import UIKit
 
 class QuestionCell: UITableViewCell {
-
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +24,15 @@ class QuestionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func set(question: String) {
+        questionLabel.text = question
+    }
+    
+    func set(answer: String) {
+        answerLabel.text = answer
+    }
+    
+    func set(isSeparatorHide: Bool) {
+        separatorView.isHidden = isSeparatorHide
+    }
 }

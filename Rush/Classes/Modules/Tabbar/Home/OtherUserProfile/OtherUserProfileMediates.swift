@@ -18,6 +18,7 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         
+        tableView.register(UINib(nibName: Cell.question, bundle: nil), forCellReuseIdentifier: Cell.question)
         tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
@@ -25,7 +26,7 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,13 +38,11 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell else { return UITableViewCell() }
             fillManageCell(cell, indexPath)
             return cell
-        }
-       /*   // for RSVP section
-             else if indexPath.section == 1 {
+        } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
+            fillRsvpQuestionCell(cell, indexPath)
             return cell
-        } */
-        else {
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillEventCell(cell, indexPath)
             return cell
@@ -57,8 +56,8 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footer = UIView()
-        let separator = UIView(frame: CGRect(x: section == 0 ?  0 : 24, y: 0, width: screenWidth, height: 1))
-        if section != 5 {
+        let separator = UIView(frame: CGRect(x: (section == 0 || (section == 1 && (rsvpQuestion?.count ?? 0) > 0)) ?  0 : 24, y: 0, width: screenWidth, height: 1))
+        if section != 6 {
             footer.addSubview(separator)
         }
         footer.clipsToBounds = true
@@ -102,32 +101,6 @@ extension OtherUserProfileController: NotificationAlertDelegate {
 // MARK: - Scrollview delegate
 extension OtherUserProfileController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //        if let headerView = tableView?.tableHeaderView {
-        //            let yPos: CGFloat = (scrollView.contentOffset.y + scrollView.adjustedContentInset.top)
-        //            let heigh: CGFloat = 346
-        //            if yPos >= 0 {
-        //                var rect = headerView.frame
-        //                rect.origin.y = scrollView.contentOffset.y
-        //                rect.size.height = heigh - yPos
-        //                headerView.frame = rect
-        //                tableView?.tableHeaderView = headerView
-        //            }
-        //        } else {
-        //            if tableView.contentOffset.y >= 190 {
-        //                
-        //            } else {
-        //                
-        //                let animation = CATransition()
-        //                animation.duration = 0.8
-        //                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-        //                animation.type = CATransitionType.fade
-        //                
-        //                navigationController?.navigationBar.layer.add(animation, forKey: nil)
-        //            }
-        //            
-        //            if (tableView.contentOffset.y < -40) {
-        //                tableView.contentOffset = CGPoint(x: 0, y: -40)
-        //            }
-        //        }
+        
     }
 }
