@@ -232,13 +232,15 @@ extension ExploreViewController {
                 } else if let category = sender as? Interest {
                     vc.interest = category
                     if searchType == .event {
-                          vc.type = .event
+                        vc.interestList = eventInterestList
+                        vc.type = .event
                     } else if searchType == .club {
+                        vc.interestList = clubInterestList
                         vc.type = .club
                     }
                 } else if let category = sender as? ClubCategory {
                     vc.clubCategory = category
-//                    vc.clubCategoryList = clubInterestList
+                    //                    vc.clubCategoryList = clubInterestList
                     vc.type = .club
                 } else if let category = sender as? Class {
                     vc.classCategory = category

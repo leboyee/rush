@@ -101,10 +101,19 @@ extension EventCategoryListViewController {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             //Show all categories for the screen.
             eventCategoryFilter.delegate = self
-            let cat = clubCategoryList.compactMap({ $0.name })
-            eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
-            eventCategoryFilter.delegate = self
-            eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
+            if clubCategoryList.count > 0 {
+                let cat = clubCategoryList.compactMap({ $0.name })
+                eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+                eventCategoryFilter.delegate = self
+                eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
+
+            } else if interestList.count > 0 {
+                let cat = interestList.compactMap({ $0.interestName })
+                eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
+                eventCategoryFilter.delegate = self
+                eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
+
+            }
             
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
@@ -314,8 +323,12 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
             if isFirstFilter {
                 firstFilterIndex = indexPath.row
                 firstSortText = type
-                clubCategory = clubCategoryList[indexPath.row]
-             } else if isSecondFilter {
+                if clubCategoryList.count > 0 {
+                    clubCategory = clubCategoryList[indexPath.row]
+                } else if interestList.count > 0 {
+                    interest = interestList[indexPath.row]
+                }
+            } else if isSecondFilter {
                 secondSortText = type
                 secondFilterIndex = indexPath.row
             } else if isThirdFilter {
@@ -354,13 +367,23 @@ extension EventCategoryListViewController {
     func getClubListAPI(sortBy: String, clubCategoryId: String?) {
         
         let order = secondFilterIndex == 0 ? "popular" : "newest"
-        let param = [Keys.search: searchText,
+        var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
                      Keys.intId: clubCategory?.id ?? "",
                      Keys.orderBy: order,
                      Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
        
+        if clubCategory?.id != "" {
+            param[Keys.intId] = clubCategory?.id
+        }
+        
+        if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
+            param[Keys.intId] = interest?.interestId
+        }
+        
+        
+        
         if clubList.count == 0 {
             Utils.showSpinner()
         }
@@ -381,10 +404,16 @@ extension EventCategoryListViewController {
         
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
-                     Keys.eventCateId: eventCategoryId ?? "",
                      Keys.pageNo: pageNo,
-                     Keys.isOnlyFriendGoing: "\(isOnlyFriendGoing)",
-                     Keys.interestId: "\(interest?.interestId ?? 0)"] as [String: Any]
+                     Keys.isOnlyFriendGoing: "\(isOnlyFriendGoing)"] as [String: Any]
+        
+        if eventCategoryId != "" {
+             param[Keys.intId] = eventCategoryId
+        }
+       
+        if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
+             param[Keys.intId] = interest?.interestId
+        }
         
         if eventDayFilter != .none {
             param[Keys.fromStart] = startDate
