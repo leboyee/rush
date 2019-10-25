@@ -57,9 +57,26 @@ class FriendsListViewController: UIViewController {
                 getFriendsListAPI()
             } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
                 getMutualFriendsListAPI()}
-        } else */if type == .classes {
+        } else */
+        
+        var firstTitle = ""
+        var secondTitle = ""
+        if type == .friends {
+            firstTitle = "Friends"
+            secondTitle = "Mutual"
+        } else if type == .events {
+            firstTitle = "Attending"
+            secondTitle = "Managed"
+            } else if type == .clubs {
+            firstTitle = "Joined"
+            secondTitle = "Managed"
+            } else if type == .classes {
             getMyJoinedClasses()
         }
+        
+        firstSegmentButton.setTitle(firstTitle, for: .normal)
+        secondSegmentButton.setTitle(secondTitle, for: .normal)
+        
         // Do any additional setup after loading the view.
       
     }
@@ -118,39 +135,27 @@ class FriendsListViewController: UIViewController {
         }
         
         // Testind values for tester :)
-        var firstTitle = ""
-        var secondTitle = ""
         if type == .friends {
-            firstTitle = "Friends"
-            secondTitle = "Mutual"
-            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+            if firstSegmentButton.isSelected {
                 getFriendsListAPI()
-            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+            } else if secondSegmentButton.isSelected {
                 getMutualFriendsListAPI()
             }
         } else if type == .events {
-            firstTitle = "Attending"
-            secondTitle = "Managed"
-            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+            if firstSegmentButton.isSelected {
                 getAttendingEventList()
-            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+            } else if secondSegmentButton.isSelected {
                 getManagedEventList()
             }
         } else if type == .clubs {
-            firstTitle = "Joined"
-            secondTitle = "Managed"
-            if firstSegmentButton.isSelected && firstTabList.count == 0 {
+            if firstSegmentButton.isSelected {
                 getJoinedClubListAPI()
-            } else if secondSegmentButton.isSelected && secondTabList.count == 0 {
+            } else if secondSegmentButton.isSelected {
                 getManagedClubList()
             }
         } else if type == .classes {
             getMyJoinedClasses()
         }
-        
-        firstSegmentButton.setTitle(firstTitle, for: .normal)
-        secondSegmentButton.setTitle(secondTitle, for: .normal)
-        
         let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftbarButton
     }

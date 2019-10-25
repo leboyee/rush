@@ -51,8 +51,8 @@ class ExploreViewController: CustomViewController {
     var eventList = [Event]()
     var classList = [SubClass]()
     
-    var clubInterestList = [ClubCategory]()
-    var eventInterestList = [EventCategory]()
+    var clubInterestList = [Interest]()
+    var eventInterestList = [Interest]()
     var classCategoryList = [Class]()
     var peopleList = [User]()
     var universityButton = UIButton()
@@ -175,17 +175,19 @@ extension ExploreViewController {
         eventList = [Event]()
         classList = [SubClass]()
         
-        clubInterestList = [ClubCategory]()
-        eventInterestList = [EventCategory]()
-        classCategoryList = [Class]()
-        peopleList = [User]()
+        clubInterestList.removeAll()
+        eventInterestList.removeAll()
+        classCategoryList.removeAll()
+        peopleList.removeAll()
         
         performSegue(withIdentifier: Segues.universitySegue, sender: nil)
     }
     
     @IBAction func clearButtonAction() {
         searchfield.text = ""
+        searchText = ""
         clearButton.isHidden = true
+        textFieldDidChanged(searchfield)
     }
     
     @IBAction func eventButtonAction(_ sender: Any) {
@@ -227,9 +229,16 @@ extension ExploreViewController {
                 } else if let category = sender as? EventCategory {
                     vc.eventCategory = category
                     vc.type = .event
+                } else if let category = sender as? Interest {
+                    vc.interest = category
+                    if searchType == .event {
+                          vc.type = .event
+                    } else if searchType == .club {
+                        vc.type = .club
+                    }
                 } else if let category = sender as? ClubCategory {
                     vc.clubCategory = category
-                    vc.clubCategoryList = clubInterestList
+//                    vc.clubCategoryList = clubInterestList
                     vc.type = .club
                 } else if let category = sender as? Class {
                     vc.classCategory = category

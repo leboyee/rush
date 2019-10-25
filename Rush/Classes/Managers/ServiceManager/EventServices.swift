@@ -10,11 +10,11 @@ import UIKit
 extension ServiceManager {
     
     // Event List API
-    func fetchEventList(sortBy: String, params: [String: Any], closer: @escaping (_ events: [Event]?, _ errorMessage: String?) -> Void) {
+    func fetchEventList(sortBy: String, params: [String: Any], closer: @escaping (_ events: [Event]?, _ total: Int, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventList(sortBy: sortBy, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, _, errorMessage) in
-                closer(events, errorMessage)
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, total, errorMessage) in
+                closer(events, total, errorMessage)
             })
         }
     }
@@ -68,16 +68,6 @@ extension ServiceManager {
             guard let uwself = self else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
-            })
-        }
-    }
-
-    // Event category API
-    func fetchEventCategoryList(params: [String: Any], closer: @escaping (_ eventCategory: [EventCategory]?, _ errorMessage: String?) -> Void) {
-        NetworkManager.shared.getEventCategoryList(params: params) { [weak self] (data, error, code) in
-            guard let unsafe = self else { return }
-            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, _, errorMessage) in
-                closer(eventCategory, errorMessage)
             })
         }
     }

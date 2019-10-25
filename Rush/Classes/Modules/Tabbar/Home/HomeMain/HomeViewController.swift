@@ -40,9 +40,8 @@ class HomeViewController: CustomViewController {
 
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
-        
-        getEventList(sortBy: .attending)
-        
+        getHomeList()
+//        getEventList(sortBy: .attending)
     }
     
     func setup() {

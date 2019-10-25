@@ -37,7 +37,7 @@ extension ClubNameCell {
     func setup(title: String) {
         titleLabel.text = title
     }
-    func setup(topHeight : CGFloat) {
+    func setup(topHeight: CGFloat) {
         topConstraintOfName.constant = topHeight
     }
     

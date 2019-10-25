@@ -47,6 +47,39 @@ class ServiceManager: NSObject {
             closer(false, errorMessage)
         }
     }
+    
+    /*
+     *
+     */
+    func processHomeModelResponse<T: Codable>(result: Any?, error: Error?, code: Int, closer: @escaping(_ data: T?, _ errorMessage: String?) -> Void) {
+        guard code != 200 else {
+            guard let resultDict = result as? [String: Any] else {
+                return
+            }
+            
+            guard let data = resultDict[Keys.data] as? [String: Any] else {
+                return
+            }
+            
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
+                let decodedObject = try jsonDecoder.decode(T.self, from: JSONSerialization.data(withJSONObject: data, options: []))
+                closer(decodedObject, "")
+            } catch let error {
+                print("ERROR DECODING: \(error)")
+                closer(nil, error.localizedDescription)
+            }
+            return
+        }
+        
+        errorHandler(result: result, error: error) { (errorMessage) in
+            closer(nil, errorMessage)
+        }
+    }
+    
+    
     /*
      *
      */
@@ -106,6 +139,7 @@ class ServiceManager: NSObject {
             closer(nil, errorMessage)
         }
     }
+    
     
     /*
      *

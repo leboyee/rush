@@ -182,7 +182,9 @@ extension PostViewController {
             guard let uwself = self else { return }
             if let post = result {
                 uwself.postInfo = post
+                uwself.pageNoP = 1
                 uwself.getAllCommentListAPI()
+                uwself.delegate?.updatedPost(post)
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

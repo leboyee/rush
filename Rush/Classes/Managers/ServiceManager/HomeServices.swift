@@ -10,7 +10,20 @@ import UIKit
 
 extension ServiceManager {
     
+    // MARK: - Home
+      
+    func fetchHomeList(params: [String: Any], closer: @escaping (_ params: Home?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getHomeList(params: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processHomeModelResponse(result: data, error: error, code: code, closer: {(list, errorMessage) in
+                closer(list, errorMessage)
+            })
+           
+        }
+    }
+    
     // MARK: - Club
+         
     func createClub(params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.createClub(params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
@@ -29,11 +42,11 @@ extension ServiceManager {
         }
     }
     
-    func fetchClubList(sortBy: String, params: [String: Any], closer: @escaping (_ params: [Club]?, _ errorMessage: String?) -> Void) {
+    func fetchClubList(sortBy: String, params: [String: Any], closer: @escaping (_ params: [Club]?, _ total: Int, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClubList(sortBy: sortBy, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
-            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (clubs, _, errorMessage) in
-                closer(clubs, errorMessage)
+            uwself.procesModelResponse(result: data, error: error, code: code, closer: { (clubs, total, errorMessage) in
+                closer(clubs, total, errorMessage)
             })
         }
     }
