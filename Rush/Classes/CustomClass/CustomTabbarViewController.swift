@@ -69,6 +69,8 @@ extension CustomTabbarViewController {
         
         self.delegate = self
         setupIcons()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateChatItem(_:)), name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: nil)
     }
     
     /*
@@ -91,6 +93,16 @@ extension CustomTabbarViewController {
         let customTabBarItem = UITabBarItem(title: nil, image: getImage("profile_tab_inactive"), selectedImage: getImage("profile_tab_active"))
         fourthNavigationViewController.tabBarItem = customTabBarItem
         
+    }
+    
+    @objc func updateChatItem(_ notification: Notification) {
+        
+        if let count = notification.object as? Int, count > 0 {
+            tabBar.items?[2].badgeValue = ""
+            tabBar.items?[2].badgeColor = UIColor.brown72
+        } else {
+            tabBar.items?[2].badgeColor = UIColor.clear
+        }
     }
 
     /*
