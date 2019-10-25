@@ -14,6 +14,8 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
 let serverDateFormate = "yyyy:MM:dd HH:mm:ss"
+let serverDateFormate1 = "yyyy-MM-dd HH:mm:ss"
+
 // MARK: - Production Build
 var isProductionBuild: Bool = true
 
