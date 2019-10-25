@@ -15,7 +15,7 @@ extension OtherUserProfileController {
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
             return ((Utils.navigationHeigh*2) + 24 + 216)
-        } else if (section == 1 && imagesList.count > 0) || (section == 2 && friendList.count > 0) || (section == 3 && eventList.count > 0) || (section == 4 && clubList.count > 0) || (section == 5 && classList.count > 0) {
+        } else if (section == 1 && (rsvpQuestion?.count ?? 0) > 0) || (section == 2 && imagesList.count > 0) || (section == 3 && friendList.count > 0) || (section == 4 && eventList.count > 0) || (section == 5 && clubList.count > 0) || (section == 6 && classList.count > 0) {
             return 44
         }
         return CGFloat.leastNormalMagnitude
@@ -23,9 +23,9 @@ extension OtherUserProfileController {
     
     func heightOfFooter(_ section: Int) -> CGFloat {
         
-        if section == 0 || (section == 1 && imagesList.count > 0) || (section == 2 && friendList.count > 0) {
+        if section == 0 || (section == 1 && (rsvpQuestion?.count ?? 0) > 0) || (section == 2 && imagesList.count > 0) || (section == 3 && friendList.count > 0) {
             return 1
-        } else if section == 5 {
+        } else if section == 6 {
             return 50
         } else {
             return CGFloat.leastNormalMagnitude
@@ -35,11 +35,13 @@ extension OtherUserProfileController {
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return indexPath.row == 1 ? 56 : UITableView.automaticDimension
-        } else if indexPath.section == 1 {
-            return imagesList.count > 0 ? 112 : CGFloat.leastNormalMagnitude
+        } else if indexPath.section == 1 && (rsvpQuestion?.count ?? 0) > 0 {
+            return UITableView.automaticDimension
         } else if indexPath.section == 2 {
+            return imagesList.count > 0 ? 112 : CGFloat.leastNormalMagnitude
+        } else if indexPath.section == 3 {
             return friendList.count > 0 ? 88 : CGFloat.leastNormalMagnitude
-        } else if (indexPath.section == 3 && eventList.count > 0) || (indexPath.section == 4 && clubList.count > 0) || (indexPath.section == 5 && classList.count > 0) {
+        } else if (indexPath.section == 4 && eventList.count > 0) || (indexPath.section == 5 && clubList.count > 0) || (indexPath.section == 6 && classList.count > 0) {
             return 157
         } else {
             return CGFloat.leastNormalMagnitude
@@ -47,7 +49,7 @@ extension OtherUserProfileController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        return section == 0 ? (isShowMessageButton ? 2 : 1) : 1
+        return section == 0 ? (isShowMessageButton ? 2 : 1) : section == 1 ? (rsvpQuestion?.count ?? 0) : 1
     }
     
     func fillManageCell(_ cell: ClubManageCell, _ indexPath: IndexPath) {
@@ -151,15 +153,15 @@ extension OtherUserProfileController {
     func fillEventCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         cell.setup(.none, nil, nil)
         switch indexPath.section {
-        case 1:
-            cell.setup(imagesList: imagesList)
         case 2:
-            cell.setup(friends: friendList)
+            cell.setup(imagesList: imagesList)
         case 3:
-            cell.setup(.upcoming, nil, eventList)
+            cell.setup(friends: friendList)
         case 4:
-            cell.setup(.clubs, nil, clubList)
+            cell.setup(.upcoming, nil, eventList)
         case 5:
+            cell.setup(.clubs, nil, clubList)
+        case 6:
             cell.setup(.classes, nil, classList)
         default:
             cell.setup(.none, nil, nil)
@@ -167,11 +169,11 @@ extension OtherUserProfileController {
         
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
-            if indexPath.section == 1 {
+            if indexPath.section == 2 {
                 unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
-            } else if indexPath.section == 2 {
-                unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
             } else if indexPath.section == 3 {
+                unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
+            } else if indexPath.section == 4 {
                 let event = unsafe.eventList[index]
                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
             } else if type == .clubs {
@@ -190,20 +192,26 @@ extension OtherUserProfileController {
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         
-        var text = section == 0 ? "" : section == 1 ? Text.images : section == 2 ? Text.friends : section == 3 ? Text.events : section == 4 ? Text.clubs : section == 5 ? Text.classes : ""
+        var text = section == 0 ? "" : section == 1 ? Text.rsvp : section == 2 ? Text.images : section == 3 ? Text.friends : section == 4 ? Text.events : section == 5 ? Text.clubs : section == 6 ? Text.classes : ""
         
-        text = (section == 3 && friendType != .friends) ? Text.UpcomingEvents : text
+        text = (section == 4 && friendType != .friends) ? Text.UpcomingEvents : text
         header.setup(title: text)
+        
+        if section == 0 || section == 1 {
+            header.setup(isDetailArrowHide: true)
+        } else {
+            header.setup(isDetailArrowHide: false)
+        }
         
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            if section == 2 {
+            if section == 3 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
-            } else if section == 3 {
-                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
             } else if section == 4 {
-                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubs)
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
             } else if section == 5 {
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubs)
+            } else if section == 6 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
         }
@@ -219,6 +227,28 @@ extension OtherUserProfileController {
         view.infoButtonEvent = { [weak self] () in
             guard let unself = self else { return }
             unself.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
+        }
+    }
+    
+    func fillRsvpQuestionCell(_ cell: QuestionCell, _ indexPath: IndexPath) {
+        let question = rsvpQuestion?[indexPath.row]
+        cell.set(question: question?.que ?? "")
+        
+        if (rsvpQuestion?.count ?? 0) - 1 == indexPath.row {
+            cell.set(isSeparatorHide: true)
+        } else {
+            cell.set(isSeparatorHide: false)
+        }
+        
+        if let answerList = rsvpAnswer {
+            if answerList.count > indexPath.row {
+                let answer = answerList[indexPath.row]
+                cell.set(answer: answer.ans)
+            } else {
+                cell.set(answer: "")
+            }
+        } else {
+            cell.set(answer: "")
         }
     }
 }
@@ -248,7 +278,7 @@ extension OtherUserProfileController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
@@ -312,7 +342,7 @@ extension OtherUserProfileController {
                       Keys.search: "",
                       Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
-        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, total, _) in
+        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, _, _) in
             guard let unsafe = self else { return }
             if let list = data {
                 unsafe.friendList = list

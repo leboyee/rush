@@ -360,8 +360,8 @@ public struct Text {
     static let addMinor                  = "Add minor"
     static let addAnotherMajor           = "Add another major"
     static let addAnotherMinor           = "Add another minor"
-    static let addUniversity               = "Add university"
-
+    static let addUniversity             = "Add university"
+    static let rsvp                      = "RSVP"
 }
 
 public struct Message {
