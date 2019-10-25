@@ -13,14 +13,14 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = screenWidth
         tableView.rowHeight = UITableView.automaticDimension
         
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
-        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser]
+        let cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.tag, Cell.eventByDate, Cell.eventType, Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser, Cell.postImages, Cell.postBottom]
         
         for cell in cells {
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
@@ -84,13 +84,13 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 fillTextViewCell(cell, indexPath)
                 return cell
             } else if indexPath.row == 2 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.userPostImage, for: indexPath) as? UserPostImageTableViewCell else { return UITableViewCell() }
-                fillImageCell(cell, indexPath)
-                return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell else { return UITableViewCell() }
+                    fillPostImageCell(cell, indexPath)
+                    return cell
             } else if indexPath.row == 3 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postLike, for: indexPath) as? PostLikeCell else { return UITableViewCell() }
-                fillLikeCell(cell, indexPath)
-                return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postBottom, for: indexPath) as? PostBottomCell else { return UITableViewCell() }
+                    fillPostBottomCell(cell, indexPath)
+                    return cell
             } else {
                 return UITableViewCell()
             }

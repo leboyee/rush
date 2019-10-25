@@ -35,6 +35,7 @@ class EventCategoryListViewController: UIViewController {
     var clubCategory: ClubCategory?
     var classCategory: Class?
     var interest: Interest?
+    var interestList = [Interest]()
     var firstSortText = "All categories"
     var secondSortText = "Popular first"
     var thirdSortText = "All people"
@@ -61,7 +62,11 @@ class EventCategoryListViewController: UIViewController {
             }
         case .club:
             if interest?.interestName != "" {
+                firstSortText = interest?.interestName ?? "All categories"
+                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                firstFilterIndex = value
                 getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)")
+                getClubCategoryListAPI()
             } else if clubCategory != nil {
                 firstSortText = clubCategory?.name ?? "All categories"
                 let value = clubCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0

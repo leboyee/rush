@@ -20,12 +20,20 @@ extension ChatContactsListViewController {
     }
     
     func setupNavigation() {
-        let customView = UIView(frame: CGRect(x: 24, y: 0, width: screenWidth - 72, height: 44))
-        let label = UILabel(frame: CGRect(x: 0, y: 2, width: screenWidth - 72, height: 30))
-        label.text = "Search people"
-        label.font = UIFont.displayBold(sz: 24)
-        label.textColor = UIColor.navBarTitleWhite32
-        customView.addSubview(label)
+        // Set left bar button and title
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        
+        let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+        searchTextField.font = UIFont.displayBold(sz: 24)
+        searchTextField.textColor = UIColor.white
+        searchTextField.returnKeyType = .go
+        searchTextField.autocorrectionType = .no
+        searchTextField.delegate = self
+        let font = UIFont.displayBold(sz: 24)
+        let color = UIColor.navBarTitleWhite32
+        searchTextField.attributedPlaceholder = NSAttributedString(string: "Search people", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+        searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchTextField)
         navigationItem.titleView = customView
     }
 }
@@ -85,4 +93,22 @@ extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSo
         loadMoreCell(indexPath)
     }
     
+}
+
+extension ChatContactsListViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+        searchText = textField.text ?? ""
+        pageNo = 1
+        isNextPageExist = false
+        getFriendListAPI()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

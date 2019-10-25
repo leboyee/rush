@@ -26,11 +26,27 @@ extension ClubDetailViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
         if indexPath.section > 5 {
-            let photos = clubPostList[indexPath.section - 6].images
             if indexPath.row == 2 {
-                return (photos == nil || photos?.count == 0) ? CGFloat.leastNormalMagnitude : screenWidth
+                let images = clubPostList[indexPath.section - 6].images
+                if images?.count ?? 0 > 0 {
+                    let itemsCount = images?.count ?? 0
+                    var count = itemsCount % 2 == 0 ? itemsCount : itemsCount - 1
+                    if itemsCount == 1 {
+                        count = 1
+                    } else if itemsCount >= 6 {
+                        count = 6
+                    }
+                    var height = screenWidth
+                    if count > 1 {
+                        height = (CGFloat(count) / 2.0) * (screenWidth / 2.0)
+                    }
+                    return height
+                } else {
+                    return CGFloat.leastNormalMagnitude
+                }
+            } else {
+                return UITableView.automaticDimension
             }
-            return UITableView.automaticDimension
         } else {
             if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
                 return CGFloat.leastNormalMagnitude
@@ -131,8 +147,8 @@ extension ClubDetailViewController {
                 controller.channel = filterChannel.first
             }
             unsafe.navigationController?.pushViewController(controller, animated: true)
-        }, errorHandler: { (error) in
-            print(error?.localizedDescription ?? "")
+            }, errorHandler: { (error) in
+                print(error?.localizedDescription ?? "")
         })
     }
     
@@ -217,17 +233,17 @@ extension ClubDetailViewController {
         cell.setup(isUserInterectionEnable: false)
     }
     
-  /*  // Image cell (section 6 row 2)
-    func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
-        let index = indexPath.section - (sections?.count ?? 0)
-        if let post = postList?[index] {
-            cell.set(images: post.images)
-            cell.showImages = { [weak self] (index) in
-                guard let unsafe = self else { return }
-                unsafe.showPostImages(post: post, index: index)
-            }
-        }
-    } */
+    /*  // Image cell (section 6 row 2)
+     func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
+     let index = indexPath.section - (sections?.count ?? 0)
+     if let post = postList?[index] {
+     cell.set(images: post.images)
+     cell.showImages = { [weak self] (index) in
+     guard let unsafe = self else { return }
+     unsafe.showPostImages(post: post, index: index)
+     }
+     }
+     } */
     
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
@@ -237,32 +253,35 @@ extension ClubDetailViewController {
         cell.setup(isCleareButtonHide: true)
     }
     
-    func fillLikeCell(_ cell: PostLikeCell, _ indexPath: IndexPath) {
+    func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
-        cell.set(numberOfLike: post.numberOfLikes)
-        cell.set(numberOfUnLike: post.numberOfUnLikes)
+        cell.set(images: post.images)
+        cell.showImages = { [weak self] (index) in
+            guard let unsafe = self else { return }
+            unsafe.showPostImages(post: post, index: index)
+        }
+    }
+    
+    func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
+        let post = clubPostList[indexPath.section - 6]
+        cell.set(numberOfLike: post.totalUpVote)
         cell.set(numberOfComment: post.numberOfComments)
-        cell.set(ishideUnlikeLabel: false)
-        
         if let myVote = post.myVote?.first {
             cell.set(vote: myVote.type)
         } else {
-           cell.set(vote: 0)
+            cell.set(vote: 0)
         }
         
         cell.likeButtonEvent = { [weak self] () in
-            guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.postId, type: "up")
+            self?.voteClubAPI(id: post.postId, type: Vote.up)
         }
         
         cell.unlikeButtonEvent = { [weak self] () in
-            guard let uwself = self else { return }
-            uwself.voteClubAPI(id: post.postId, type: "down")
+            self?.voteClubAPI(id: post.postId, type: Vote.down)
         }
         
         cell.commentButtonEvent = { [weak self] () in
-            guard let uwself = self else { return }
-            uwself.performSegue(withIdentifier: Segues.postSegue, sender: post)
+            self?.performSegue(withIdentifier: Segues.postSegue, sender: post)
         }
     }
     
@@ -273,11 +292,11 @@ extension ClubDetailViewController {
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
         /*
-        if section == 5 {
-            header.setup(isDetailArrowHide: false)
-            header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
-        }
-        */
+         if section == 5 {
+         header.setup(isDetailArrowHide: false)
+         header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
+         }
+         */
     }
     
     func fillImageHeader() {
@@ -317,20 +336,20 @@ extension ClubDetailViewController {
 extension ClubDetailViewController {
     
     func deletePostAPI(id: String) {
-          Utils.showSpinner()
-          ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
-               Utils.hideSpinner()
-               guard let unsafe = self else { return }
-               if status {
+        Utils.showSpinner()
+        ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
                 if let index = unsafe.clubPostList.firstIndex(where: { $0.postId == id }) {
                     unsafe.clubPostList.remove(at: index)
                     unsafe.tableView.reloadData()
-                   }
-               } else {
-                    Utils.alert(message: errorMsg.debugDescription)
-               }
-           }
-       }
+                }
+            } else {
+                Utils.alert(message: errorMsg.debugDescription)
+            }
+        }
+    }
     
     func getClubDetailAPI() {
         
@@ -400,20 +419,14 @@ extension ClubDetailViewController {
     func voteClubAPI(id: String, type: String) {
         ServiceManager.shared.votePost(postId: id, voteType: type) { [weak self] (result, errorMsg) in
             Utils.hideSpinner()
-            guard let uwself = self else { return }
+            guard let unsafe = self else { return }
+            
             if let post = result {
-                let index = uwself.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
-                if let position = index, uwself.clubPostList.count > position {
-                    uwself.clubPostList[position] = post
-                    
-                    let oldOffset = uwself.tableView.contentOffset
-                    UIView.setAnimationsEnabled(false)
-                    uwself.tableView.beginUpdates()
-                    uwself.tableView.reloadRows(at: [IndexPath(row: 3, section: 5 + position)], with: .automatic)
-                    uwself.tableView.endUpdates()
-                    uwself.tableView.setContentOffset(oldOffset, animated: false)
+                let index = unsafe.clubPostList.firstIndex(where: { ( $0.postId == post.postId ) })
+                if let position = index, unsafe.clubPostList.count > position {
+                    unsafe.clubPostList[position] = post
+                    unsafe.tableView.reloadData()
                 }
-                uwself.getClubPostListAPI()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
