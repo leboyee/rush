@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SendBirdSDK
 
 extension ClassDetailViewController {
     
@@ -83,8 +84,9 @@ extension ClassDetailViewController {
             })
         }*/
         
-        cell.secondButtonClickEvent = { () in
-            Utils.notReadyAlert()
+        cell.secondButtonClickEvent = { [weak self] () in
+        guard let unsafe = self else { return }
+            unsafe.checkIsChatExistOrNot()
         }
     }
     
@@ -311,6 +313,28 @@ extension ClassDetailViewController {
     }
     func showCreatePost() {
         performSegue(withIdentifier: Segues.createPost, sender: nil)
+    }
+    
+    func checkIsChatExistOrNot() {
+        Utils.showSpinner()
+        ChatManager().getListOfFilterGroups(name: subclassInfo?.name ?? "", type: "class", userId: "", { [weak self] (data) in
+            guard let unsafe = self else { return }
+            Utils.hideSpinner()
+            let controller = ChatRoomViewController()
+            controller.isGroupChat = true
+            controller.chatDetailType = .club
+            controller.subclassInfo = unsafe.subclassInfo
+            controller.userName = unsafe.subclassInfo?.name ?? ""
+            controller.hidesBottomBarWhenPushed = true
+            
+            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
+                let filterChannel = channels.filter({ $0.data == unsafe.subclassInfo?.id })
+                controller.channel = filterChannel.first
+            }
+            unsafe.navigationController?.pushViewController(controller, animated: true)
+            }, errorHandler: { (error) in
+                print(error?.localizedDescription ?? "")
+        })
     }
     
 }
