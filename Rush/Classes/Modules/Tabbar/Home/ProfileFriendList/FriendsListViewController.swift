@@ -67,11 +67,13 @@ class FriendsListViewController: UIViewController {
         } else if type == .events {
             firstTitle = "Attending"
             secondTitle = "Managed"
-            } else if type == .clubs {
+        } else if type == .clubs {
             firstTitle = "Joined"
             secondTitle = "Managed"
-            } else if type == .classes {
+        } else if type == .classes {
             getMyJoinedClasses()
+        } else if type == .clubJoinedUsers {
+            //API remaining
         }
         
         firstSegmentButton.setTitle(firstTitle, for: .normal)
@@ -91,7 +93,7 @@ class FriendsListViewController: UIViewController {
         secondSegmentButton.isSelected = false
         
         self.view.backgroundColor = UIColor.bgBlack
-        if type == .classes {
+        if type == .classes || type == .clubJoinedUsers || type == .classRoasters {
             topConstraintOfTableView.constant = 0
             segmentContainView.isHidden = true
         } else {

@@ -170,9 +170,11 @@ extension EventCell {
             secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[2]
             thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
-            userCountLabel.isHidden = false
-            let count = invitee?.count ?? 0
-            userCountLabel.text = "\(count)+"
+            let count = (invitee?.count ?? 0) - 3
+            if count > 0 {
+                userCountLabel.isHidden = false
+                userCountLabel.text = "\(count)+"
+            }
         }
     }
     

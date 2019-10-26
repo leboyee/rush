@@ -164,6 +164,9 @@ extension ClubDetailViewController {
                 } else {
                     unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
                 }
+            } else {
+                //View All clicked
+                //friend list view controller
             }
         }
     }
