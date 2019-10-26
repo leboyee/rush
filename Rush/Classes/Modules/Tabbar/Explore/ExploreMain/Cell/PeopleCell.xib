@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,8 +25,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMd-Ih-XZ7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High school" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="72" y="17" width="288" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High school High school High school High school High school " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                <rect key="frame" x="72" y="7" width="258" height="41"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,10 +76,10 @@
                             <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" constant="-44" id="X7Q-C9-lbu"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="leading" secondItem="ihz-0M-yys" secondAttribute="trailing" constant="16" id="apW-sL-d3m"/>
                             <constraint firstItem="ihz-0M-yys" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="24" id="fd8-iV-kvt"/>
-                            <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="15" id="hTI-GU-6lj"/>
-                            <constraint firstItem="HTb-ec-y42" firstAttribute="top" secondItem="Mr7-TO-QxM" secondAttribute="bottom" constant="16.5" id="hba-P0-Lah"/>
+                            <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="45" id="hTI-GU-6lj"/>
+                            <constraint firstItem="HTb-ec-y42" firstAttribute="top" secondItem="Mr7-TO-QxM" secondAttribute="bottom" constant="6" id="hba-P0-Lah"/>
                             <constraint firstItem="1hU-5r-PFm" firstAttribute="centerY" secondItem="rMd-Ih-XZ7" secondAttribute="centerY" id="l9w-X8-Kvn"/>
-                            <constraint firstItem="Mr7-TO-QxM" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="17" id="lsE-7R-hBn"/>
+                            <constraint firstItem="Mr7-TO-QxM" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="7" id="lsE-7R-hBn"/>
                             <constraint firstItem="HTb-ec-y42" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="25" id="mcl-dU-OqU"/>
                             <constraint firstAttribute="trailing" secondItem="8TO-CB-NWZ" secondAttribute="trailing" constant="16" id="sme-98-FpU"/>
                             <constraint firstItem="ihz-0M-yys" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="12" id="teG-0H-Fwu"/>

@@ -78,10 +78,10 @@ extension EventCell {
     }
     
     func setup(eventImageUrl: URL?) {
-        eventImageView.sd_setImage(with: eventImageUrl, completed: nil)
+        eventImageView.sd_setImage(with: eventImageUrl, placeholderImage: #imageLiteral(resourceName: ""), context: nil)
     }
     func setup(classImageUrl: URL?) {
-        classImageView.sd_setImage(with: classImageUrl, completed: nil)
+        classImageView.sd_setImage(with: classImageUrl, placeholderImage: #imageLiteral(resourceName: ""), context: nil)
     }
     
     func setup(date: Date?) {
@@ -155,20 +155,21 @@ extension EventCell {
             firstUserImageView.isHidden = true
             secondUserImageView.isHidden = true
             let clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+                thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
+           
         } else if invitee?.count == 2 {
             firstUserImageView.isHidden = true
             var clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[1]
-            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
         } else if invitee?.count ?? 0 > 2 {
             var clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[1]
-            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[2]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             userCountLabel.isHidden = false
             let count = invitee?.count ?? 0
             userCountLabel.text = "\(count)+"
