@@ -27,6 +27,7 @@ let kDeviceTokenPushDataKey     = "com.rush.devicetokenpushdata"
 let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 let kHomeTutorialKey            = "com.rush.hometutorial"
 let kOpenFromPushNotification   = "com.rush.openfrompushnotification"
+let kUnreadChatMessageCount     = "com.rush.unreadChatMessageCount"
 
 // MARK: - API's Keys
 struct Keys {

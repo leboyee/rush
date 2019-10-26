@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="349" height="87.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SzB-VL-qNX">
-                                <rect key="frame" x="16" y="36" width="8" height="8"/>
+                                <rect key="frame" x="16" y="40" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.5607843137254902" green="0.23921568627450979" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="8Qv-fm-HX8"/>
@@ -98,11 +98,11 @@
                             <constraint firstItem="erI-m4-jFg" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="HEh-m6-86D"/>
                             <constraint firstItem="VRF-Lx-TIn" firstAttribute="leading" secondItem="SzB-VL-qNX" secondAttribute="trailing" constant="16" id="I42-N9-CgV"/>
                             <constraint firstItem="VRF-Lx-TIn" firstAttribute="top" secondItem="5if-oU-dmR" secondAttribute="top" constant="20" id="MLL-SD-l16"/>
-                            <constraint firstItem="SzB-VL-qNX" firstAttribute="top" secondItem="5if-oU-dmR" secondAttribute="top" constant="36" id="Qss-gt-Ejs"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="9rE-xE-php" secondAttribute="bottom" constant="22" id="Z8I-9j-jXN"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="leading" secondItem="5if-oU-dmR" secondAttribute="leading" constant="24" id="eHt-FL-6MZ"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="top" secondItem="erI-m4-jFg" secondAttribute="bottom" constant="4" id="eQc-2o-aFa"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="VRF-Lx-TIn" secondAttribute="bottom" constant="18.5" id="fkD-DA-gKA"/>
+                            <constraint firstItem="SzB-VL-qNX" firstAttribute="centerY" secondItem="VRF-Lx-TIn" secondAttribute="centerY" id="meV-XU-q7n"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="pkG-kH-Wtk"/>
                             <constraint firstItem="SzB-VL-qNX" firstAttribute="leading" secondItem="5if-oU-dmR" secondAttribute="leading" constant="16" id="xuH-tU-NOL"/>
                             <constraint firstAttribute="trailing" secondItem="erI-m4-jFg" secondAttribute="trailing" constant="16" id="yhW-GH-jsD"/>

@@ -15,6 +15,9 @@ class CustomTabbarViewController: UITabBarController, UITabBarControllerDelegate
     
     static let shared = CustomTabbarViewController()
     
+    var isImageUpdate = false
+    var isClerChat = false
+    
     var firstNavigationController: UINavigationController!
     var secondNavigationController: UINavigationController!
     var thirdNavigationController: UINavigationController!
@@ -100,8 +103,10 @@ extension CustomTabbarViewController {
         if let count = notification.object as? Int, count > 0 {
             tabBar.items?[2].badgeValue = ""
             tabBar.items?[2].badgeColor = UIColor.brown72
+            isClerChat = false
         } else {
             tabBar.items?[2].badgeColor = UIColor.clear
+            isClerChat = true
         }
     }
     
@@ -118,7 +123,7 @@ extension CustomTabbarViewController {
                     tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                 }
             }
-        }  else {
+        } else {
             if let tabbarItem = tabBar.items?.last {
                 tabbarItem.image = getImage("profile_tab_inactive")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                 tabbarItem.selectedImage = getImage("profile_tab_active")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
@@ -149,16 +154,14 @@ extension CustomTabbarViewController {
     func refreshTab() {
         if let url = Authorization.shared.profile?.photo?.urlThumb() {
             if let imageData =  try? Data(contentsOf: url) {
-                //                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 72, borderWidth: 2, color: UIColor.brown24)
-                let img = UIImage(data: imageData)?.resizeImage1(targetSize: CGSize(width: 72, height: 72))
-                let customTabBarItem = UITabBarItem(title: nil, image: img, selectedImage: selectedImg)
-                fourthNavigationViewController.tabBarItem = customTabBarItem
-                
-                let controllers = [firstNavigationController, secondNavigationController, thirdNavigationController, fourthNavigationViewController]
-                setViewControllers(controllers as? [UIViewController], animated: true)
+                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
+                if let tabbarItem = tabBar.items?.last {
+                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                    tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                }
             }
-        }  else {
+        } else {
             if let tabbarItem = tabBar.items?.last {
                 tabbarItem.image = getImage("profile_tab_inactive")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                 tabbarItem.selectedImage = getImage("profile_tab_active")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
@@ -178,6 +181,18 @@ extension CustomTabbarViewController {
         if tabBarController.selectedIndex == 1 {
             if let navController = viewController as? UINavigationController {
                 navController.popToRootViewController(animated: false)
+            }
+        }
+        if isImageUpdate {
+            isImageUpdate = false
+            refreshTab()
+        }
+        
+        if let count = Utils.getDataFromUserDefault(kUnreadChatMessageCount) as? Int {
+            if count > 0 {
+                tabBar.items?[2].badgeColor = UIColor.brown72
+            } else {
+                tabBar.items?[2].badgeColor = UIColor.clear
             }
         }
     }
