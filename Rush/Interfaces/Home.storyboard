@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1570,6 +1570,7 @@
                         <segue destination="GDB-hs-lng" kind="show" identifier="CreatePostSegue" id="g4h-St-bby"/>
                         <segue destination="KY7-jJ-Aaf" kind="show" identifier="PostSegue" id="S8E-ms-kaf"/>
                         <segue destination="u2h-As-Ed6" kind="presentation" identifier="EventPostImagesSegue" modalPresentationStyle="fullScreen" id="8a6-2F-zCO"/>
+                        <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="Wbx-oG-UBR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaL-DG-qyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2021,18 +2022,18 @@
         <image name="whiteMore" width="32" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="S3t-uX-4Y9"/>
-        <segue reference="L5B-Xz-z9C"/>
-        <segue reference="zl1-35-Qwj"/>
-        <segue reference="QdI-xB-jJm"/>
-        <segue reference="Bwe-EL-S9s"/>
+        <segue reference="8a6-2F-zCO"/>
+        <segue reference="Bnb-0T-4fM"/>
+        <segue reference="yk0-VO-M9j"/>
+        <segue reference="Wms-RB-fEB"/>
+        <segue reference="LvJ-Dj-Yna"/>
         <segue reference="aC8-Xe-Jrw"/>
-        <segue reference="bD5-sy-JMX"/>
-        <segue reference="z8H-lu-6pg"/>
+        <segue reference="S8E-ms-kaf"/>
+        <segue reference="Wbx-oG-UBR"/>
         <segue reference="Lcf-y5-6Em"/>
         <segue reference="E7I-YA-fBT"/>
-        <segue reference="JB1-Ex-Ue7"/>
-        <segue reference="WIx-LH-4TQ"/>
+        <segue reference="90w-At-CBu"/>
+        <segue reference="g4h-St-bby"/>
         <segue reference="gSU-VJ-XvQ"/>
         <segue reference="C9I-aA-3Rl"/>
         <segue reference="Oel-AB-j6R"/>

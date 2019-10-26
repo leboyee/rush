@@ -1,5 +1,5 @@
 //
-//  FriendsListViewController.swift
+//  friendProfileSegue.swift
 //  Rush
 //
 //  Created by ideveloper on 05/06/19.

@@ -152,6 +152,12 @@ extension ClubDetailViewController {
                     vc.currentIndex = index
                 }
             }
+        } else if segue.identifier == Segues.friendList {
+            if let vc = segue.destination as? FriendsListViewController {
+                vc.hidesBottomBarWhenPushed = false
+                vc.inviteeList = clubInfo?.invitees ?? [Invitee]()
+                vc.type = sender as? UserProfileDetailType ?? .none
+            }
         }
     }
 }
