@@ -47,7 +47,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if type == .events || type == .clubs || type == .friends || type == .classes {
+        if type == .events || type == .clubs || type == .friends || type == .classes || type == .clubJoinedUsers {
           selectedCell(indexPath)
         }
 
