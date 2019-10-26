@@ -18,7 +18,9 @@ extension UniversityViewController {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
         if let url = URL(string: university.logo ?? "") {
-                   cell.setup(url: url)
+            cell.setup(url: url)
+        } else {
+            cell.setupImage(image: #imageLiteral(resourceName: "img-uni"))
         }
         cell.setup(isCheckMark: selectedIndex == indexPath.row)
     }

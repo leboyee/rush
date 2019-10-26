@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TXj-RO-j8Z">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TXj-RO-j8Z">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,6 +117,12 @@
                                 <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No people found." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sN5-7q-7LZ">
+                                <rect key="frame" x="135.5" y="394" width="143" height="20.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB2-a6-bGT" customClass="CustomButton" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="24" y="720" width="366" height="48"/>
                                 <color key="backgroundColor" red="0.56078431370000004" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,12 +147,15 @@
                             <constraint firstItem="bGc-US-R78" firstAttribute="bottom" secondItem="JB2-a6-bGT" secondAttribute="bottom" constant="6" id="Ofl-NA-TAg"/>
                             <constraint firstItem="p1g-VT-RcE" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" id="bhm-7a-10d"/>
                             <constraint firstItem="JB2-a6-bGT" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" constant="24" id="dTJ-fq-gzb"/>
+                            <constraint firstItem="sN5-7q-7LZ" firstAttribute="centerY" secondItem="lWV-RP-fAh" secondAttribute="centerY" id="fe1-cy-c2X"/>
                             <constraint firstItem="391-vC-3PL" firstAttribute="leading" secondItem="bGc-US-R78" secondAttribute="leading" id="iZb-tD-47k"/>
+                            <constraint firstItem="sN5-7q-7LZ" firstAttribute="centerX" secondItem="lWV-RP-fAh" secondAttribute="centerX" id="yNL-Bz-ddy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bGc-US-R78"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="noDataFound" destination="sN5-7q-7LZ" id="5Vs-q6-NAM"/>
                         <outlet property="tableView" destination="p1g-VT-RcE" id="k4a-zd-6HL"/>
                     </connections>
                 </viewController>

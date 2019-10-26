@@ -474,6 +474,8 @@ enum UserProfileDetailType {
     case events
     case clubs
     case classes
+    case clubJoinedUsers
+    case classRoasters
 }
 
 struct Vote {

@@ -54,6 +54,7 @@ extension ChatManager {
                 //Set unread count
                 ChatManager().getUnreadCount({ (count) in
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
+                    Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
                 })
             } else {
                 
@@ -252,6 +253,7 @@ extension ChatManager {
             completionHandler(Int(unreadCount))
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (unreadCount))
+            Utils.saveDataToUserDefault(unreadCount, kUnreadChatMessageCount)
         }
     }
     
@@ -708,6 +710,7 @@ extension ChatManager: SBDChannelDelegate {
         //Set unread count
         ChatManager().getUnreadCount { (count) in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
+            Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
         }
     }
 }

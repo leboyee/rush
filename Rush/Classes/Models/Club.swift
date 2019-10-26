@@ -9,12 +9,13 @@
 import UIKit
 
 class Club: Codable {
-
+    
     var id: Int64 = 0
     private var clubUserId: Int64 = 0
     var clubName: String?
     var clubDesc: String?
     var clubUniversityId: Int = 0
+    var clubTotalJoined: Int = 0
     var clubInterests: [Interest]?
     var clubPhoto: String?
     var clubIsChatGroup: Int = 0
@@ -37,6 +38,7 @@ class Club: Codable {
         case clubStatus = "club_status"
         case clubCreatedAt = "club_created_at"
         case clubUpdatedAt = "club_updated_at"
+        case clubTotalJoined = "club_total_joined"
         case user
         case invitees
     }
@@ -47,10 +49,10 @@ class Club: Codable {
         return String(id)
     }
     var photo: Image? {
-       if convertJsonToPhoto == nil {
-        convertJsonToPhoto = clubPhoto?.photo
-       }
-       return convertJsonToPhoto
+        if convertJsonToPhoto == nil {
+            convertJsonToPhoto = clubPhoto?.photo
+        }
+        return convertJsonToPhoto
     }
     
     init() {

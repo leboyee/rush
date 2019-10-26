@@ -153,7 +153,7 @@ extension ClubDetailViewController {
     }
     
     func fillJoinedUserCell(_ cell: EventTypeCell) {
-        cell.setup(invitees: clubInfo?.invitees, total: clubInfo?.invitees?.count ?? 0)
+        cell.setup(invitees: clubInfo?.invitees, total: clubInfo?.clubTotalJoined ?? 0)
         
         cell.userSelected = { [weak self] (id, index) in
             guard let unself = self else { return }
@@ -164,6 +164,9 @@ extension ClubDetailViewController {
                 } else {
                     unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee?.user)
                 }
+            } else {
+                //View All clicked
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubJoinedUsers)
             }
         }
     }

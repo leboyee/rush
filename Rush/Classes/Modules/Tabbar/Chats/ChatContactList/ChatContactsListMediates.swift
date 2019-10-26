@@ -21,9 +21,9 @@ extension ChatContactsListViewController {
     
     func setupNavigation() {
         // Set left bar button and title
-        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        let customView = UIView(frame: CGRect(x: 45, y: 0, width: screenWidth - 45, height: 44))
         
-        let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+        let searchTextField = UITextField(frame: CGRect(x: -5, y: -3, width: screenWidth - 45, height: 44))
         searchTextField.font = UIFont.displayBold(sz: 24)
         searchTextField.textColor = UIColor.white
         searchTextField.returnKeyType = .go
@@ -35,6 +35,9 @@ extension ChatContactsListViewController {
         searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         customView.addSubview(searchTextField)
         navigationItem.titleView = customView
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
+        
     }
 }
 

@@ -274,6 +274,7 @@ extension EditProfileViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if data != nil {
+                (unsafe.tabBarController as? CustomTabbarViewController)?.isImageUpdate = true
                 unsafe.profile = Authorization.shared.profile
                 unsafe.tableView.reloadData()
             } else {

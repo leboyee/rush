@@ -45,7 +45,20 @@ extension FriendsListViewController {
                     cell.setup(url: url)
                 }
             }
-        }
+        } else  if type == .clubJoinedUsers {
+                   var friend = Invitee()
+                     friend = inviteeList[indexPath.row] as? Invitee ?? friend
+                   cell.setup(name: friend.user?.name ?? "")
+                   if let url = URL(string: friend.user?.photo?.thumb ?? "") {
+                       cell.setup(url: url)
+                   } else {
+                       let invitee = inviteeList[indexPath.row]
+                       cell.setup(name: invitee.user?.name ?? "")
+                       if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                           cell.setup(url: url)
+                       }
+                   }
+               }
     }
     
     func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
@@ -167,7 +180,7 @@ extension FriendsListViewController {
             performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
         } else {
             let invitee = inviteeList[indexPath.row]
-            self.performSegue(withIdentifier: Segues.friendProfileSegue, sender: invitee.user)
+            self.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee.user)
         }
     }
 }
