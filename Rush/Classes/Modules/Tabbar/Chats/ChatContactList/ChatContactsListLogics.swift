@@ -101,6 +101,13 @@ extension ChatContactsListViewController {
                     }
                 }
             }
+            
+            if unsafe.tempFriendsList.count > 0 {
+                unsafe.noDataFound.isHidden = true
+            } else {
+                unsafe.noDataFound.isHidden = false
+            }
+            
             unsafe.tableView.reloadData()
         }
     }
