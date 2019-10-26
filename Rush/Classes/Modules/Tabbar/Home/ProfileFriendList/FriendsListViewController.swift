@@ -217,8 +217,11 @@ extension FriendsListViewController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.otherUserProfile {
             let vc = segue.destination as? OtherUserProfileController
-            let friend = sender as? Friend
-            vc?.userInfo = friend?.user
+            if let friend = sender as? Friend {
+                vc?.userInfo = friend.user
+            } else if let user = sender as? User {
+                vc?.userInfo = user
+            }
             //        vc?.delegate = self
         } else if segue.identifier == Segues.profileInformation {
             if let vc = segue.destination as? ProfileInformationViewController {
