@@ -319,12 +319,24 @@ extension ClassDetailViewController {
         Utils.showSpinner()
         ChatManager().getListOfFilterGroups(name: subclassInfo?.name ?? "", type: "class", userId: "", { [weak self] (data) in
             guard let unsafe = self else { return }
+            
+            var rosterArray = [Invitee]()
+            for rs in unsafe.selectedGroup?.classGroupRosters ?? [ClassJoined]() {
+                if let user = rs.user {
+                    let inv = Invitee()
+                    inv.user = user
+                    rosterArray.append(inv)
+                }
+               
+            }
+            
             Utils.hideSpinner()
             let controller = ChatRoomViewController()
             controller.isGroupChat = true
             controller.chatDetailType = .club
             controller.subclassInfo = unsafe.subclassInfo
             controller.userName = unsafe.subclassInfo?.name ?? ""
+            controller.rosterArray = rosterArray
             controller.hidesBottomBarWhenPushed = true
             
             if let channels = data as? [SBDGroupChannel], channels.count > 0 {

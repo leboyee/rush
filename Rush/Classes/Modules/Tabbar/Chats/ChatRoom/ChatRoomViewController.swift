@@ -43,6 +43,7 @@ class ChatRoomViewController: MessagesViewController {
     var clubInfo: Club?
     var eventInfo: Event?
     var subclassInfo: SubClass?
+    var rosterArray: [Invitee]?
     
     var profileUserId = ""
     

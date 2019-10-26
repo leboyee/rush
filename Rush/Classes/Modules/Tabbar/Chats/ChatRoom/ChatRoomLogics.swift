@@ -23,7 +23,7 @@ extension ChatRoomViewController {
         let loggedInUserName = Authorization.shared.profile?.name ?? ""
         let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
         var totalUserIds = [String]()
-        totalUserIds.append(Authorization.shared.profile?.userId ?? "")
+        
         if let friend = friendProfile {
             otherUserId = friend.user?.userId ?? "0"
             imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
@@ -51,7 +51,17 @@ extension ChatRoomViewController {
             if let value = event.invitees?.compactMap({ $0.user?.userId }) {
                 totalUserIds.append(contentsOf: value)
             }
+        } else if let cls = subclassInfo, let rosters = rosterArray {
+            otherUserId = rosters.compactMap({ $0.user?.userId }).joined(separator: ",")
+            imgUrl = cls.photo?.thumb ?? ""
+            grpName = cls.name
+            type = "class"
+            data = cls.id
+            let value = rosters.compactMap({ $0.user?.userId })
+            totalUserIds.append(contentsOf: value)
         }
+        
+        totalUserIds.append(loggedInUserId)
         
         ChatManager().createGroupChannelwithUsers(userIds: totalUserIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel1) in
             DispatchQueue.main
