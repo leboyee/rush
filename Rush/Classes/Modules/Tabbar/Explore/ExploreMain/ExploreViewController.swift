@@ -272,7 +272,11 @@ extension ExploreViewController {
         } else if segue.identifier == Segues.universitySegue {
             let vc = segue.destination as? UniversityViewController
             vc?.delegate = self
+        } else if segue.identifier == Segues.searchClubSegue {
+            guard let vc = segue.destination as? SearchClubViewController else { return }
+            //            vc.searchType = screenType == .club ? .searchList : .classes
+            vc.searchType = .classes
+            vc.classObject = sender as? SubClass ?? SubClass()
         }
-        
     }
 }

@@ -155,23 +155,26 @@ extension EventCell {
             firstUserImageView.isHidden = true
             secondUserImageView.isHidden = true
             let clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+                thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
+           
         } else if invitee?.count == 2 {
             firstUserImageView.isHidden = true
             var clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[1]
-            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
         } else if invitee?.count ?? 0 > 2 {
             var clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[1]
-            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
             clubInvitee = invitee?[2]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
-            userCountLabel.isHidden = false
-            let count = invitee?.count ?? 0
-            userCountLabel.text = "\(count)+"
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "profile_tab_inactive"), context: nil)
+            let count = (invitee?.count ?? 0) - 3
+            if count > 0 {
+                userCountLabel.isHidden = false
+                userCountLabel.text = "\(count)+"
+            }
         }
     }
     
