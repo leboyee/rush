@@ -29,7 +29,15 @@ extension ChatUserCell {
     }
     
     func setup(img: String?) {
-        imgView.sd_setImage(with: URL(string: img ?? ""), placeholderImage: #imageLiteral(resourceName: "mask"))
+        if let value = img, value.isNotEmpty {
+            imgView.contentMode = .scaleAspectFill
+            imgView.backgroundColor = .clear
+            imgView.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "mask"), options: [], context: nil)
+        } else {
+            imgView.contentMode = .scaleAspectFit
+            imgView.image = #imageLiteral(resourceName: "mask")
+            imgView.backgroundColor = UIColor.gray83
+        }
     }
     
     func setup(isHideOnlineView: Bool) {
