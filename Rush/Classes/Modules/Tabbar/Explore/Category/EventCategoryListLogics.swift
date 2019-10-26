@@ -183,8 +183,7 @@ extension EventCategoryListViewController {
                 performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
             } else {
                 // not joined yet, so show groups
-                let classGroup = classObject.classGroups?[indexPath.row]
-                performSegue(withIdentifier: Segues.searchClubSegue, sender: classGroup)
+                performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
             }
         }
     }

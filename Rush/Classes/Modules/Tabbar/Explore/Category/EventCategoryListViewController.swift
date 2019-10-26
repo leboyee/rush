@@ -161,8 +161,11 @@ extension EventCategoryListViewController {
         } else if segue.identifier == Segues.searchClubSegue {
             guard let vc = segue.destination as? SearchClubViewController else { return }
             //            vc.searchType = screenType == .club ? .searchList : .classes
-            vc.searchType = .classes
-            vc.classObject = sender as? SubClass ?? SubClass()
+            if let classObj = sender as? SubClass {
+                vc.searchType = .classes
+                vc.classObject = classObj
+            }
+            
         }
     }
 }
