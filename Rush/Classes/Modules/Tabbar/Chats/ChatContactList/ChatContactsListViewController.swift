@@ -10,6 +10,7 @@ import UIKit
 class ChatContactsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataFound: UILabel!
     
     var pageNo = 1
     var isNextPageExist = false
@@ -31,6 +32,10 @@ class ChatContactsListViewController: UIViewController {
         setupTableView()
         setupNavigation()
         getFriendListAPI()
+    }
+    
+    @objc func backButtonAction() {
+        navigationController?.popViewController(animated: false)
     }
     
     /*
