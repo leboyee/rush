@@ -29,7 +29,7 @@ extension ChatUserCell {
     }
     
     func setup(img: String?) {
-        imgView.sd_setImage(with: URL(string: img ?? ""), completed: nil)
+        imgView.sd_setImage(with: URL(string: img ?? ""), placeholderImage: #imageLiteral(resourceName: "mask"))
     }
     
     func setup(isHideOnlineView: Bool) {

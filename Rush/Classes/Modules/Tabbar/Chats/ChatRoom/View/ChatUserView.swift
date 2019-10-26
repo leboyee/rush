@@ -77,7 +77,9 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         if indexPath.item == 6 && isShowAll == false {
             cell.setup(isHideArrowView: false)
+            cell.onlineView.isHidden = true
         } else {
+            cell.onlineView.isHidden = false
             cell.setup(isHideArrowView: true)
         }
         
@@ -85,10 +87,11 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.setup(img: user.profileUrl)
         
         if user.connectionStatus == .online {
-            cell.setup(isHideOnlineView: false)
+            cell.onlineView.isHidden = false
         } else {
-            cell.setup(isHideOnlineView: true)
+            cell.onlineView.isHidden = true
         }
+                
         return cell
     }
     
