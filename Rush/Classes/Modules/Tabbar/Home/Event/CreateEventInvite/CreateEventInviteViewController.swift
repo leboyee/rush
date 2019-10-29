@@ -28,9 +28,13 @@ class CreateEventInviteViewController: UIViewController {
     var friendsList = [String: Any]()
     var isRushFriends: Bool = false
     var selectedInvitee = [Invite]()
-
+    var isSearch = false
+    var searchItem = [ContactsPresenterItem]()
     weak var delegate: EventInviteDelegate?
-    
+    var searchTextFiled: UITextField?
+    var isFirstTimeOnly = false
+    var task: URLSessionDataTask?
+
     override func viewDidLoad() {
         super.viewDidLoad()
             setupUI()
@@ -78,7 +82,7 @@ extension CreateEventInviteViewController {
                 self.delegate?.selectedInvities(inviteArray)
             }
         } else {
-            Utils.alert(message: "In development")
+           // Utils.alert(message: "In development")
         }
     }
 }

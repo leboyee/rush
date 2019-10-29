@@ -99,7 +99,7 @@ class EventListViewController: CustomViewController {
 // MARK: - Actions
 extension EventListViewController {
     @objc func plusButtonAction() {
-        Utils.alert(message: "In Development")
+       // Utils.alert(message: "In Development")
     }
 }
 // MARK: - Mediator / Presenter Functions

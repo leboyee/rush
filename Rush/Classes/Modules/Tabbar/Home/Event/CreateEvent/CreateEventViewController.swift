@@ -59,7 +59,9 @@ class CreateEventViewController: UIViewController {
     var interestList = [Interest]()
     var countryCode = [[String: Any]]()
     var rsvpArray = [String]()
+    var searchTextFiled: UITextField?
     var eventType: EventType = .publik
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

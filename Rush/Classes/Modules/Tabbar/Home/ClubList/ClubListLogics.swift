@@ -237,7 +237,6 @@ extension ClubListViewController {
         Utils.showSpinner()
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, _) in
             guard let uwself = self else { return }
-            
             if uwself.pageNoM == 1 {
                 uwself.myClubsList.removeAll()
             }
@@ -249,10 +248,13 @@ extension ClubListViewController {
                     uwself.myClubsList.append(contentsOf: clubs)
                 }
                 uwself.isNextPageM = true
+                Utils.hideSpinner()
             } else {
                 if uwself.pageNoM == 1 || (uwself.pageNoM > 1 && value?.count == 0) {
                     uwself.isNextPageM = false
                     uwself.getClubCategoryListAPI()
+                } else {
+                    Utils.hideSpinner()
                 }
             }
             uwself.tableView.reloadData()

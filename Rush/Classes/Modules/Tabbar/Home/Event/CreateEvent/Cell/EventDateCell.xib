@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="1" id="tlW-kd-7cg"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="club-gray-1" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-py-qJ3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="universityEventIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-py-qJ3">
                                 <rect key="frame" x="23" y="20" width="24" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -85,6 +85,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="club-gray-1" width="24" height="24"/>
+        <image name="universityEventIcon" width="24" height="24"/>
     </resources>
 </document>

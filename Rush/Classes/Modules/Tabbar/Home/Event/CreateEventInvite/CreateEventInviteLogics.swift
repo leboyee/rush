@@ -84,8 +84,8 @@ extension CreateEventInviteViewController {
         var params = [Keys.pageNo: "\(pageNo)"]
         params[Keys.search] = searchText
         params[Keys.profileUserId] = Authorization.shared.profile?.userId
-        
-        ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (data, total, _) in
+        task?.cancel()
+        task = ServiceManager.shared.fetchFriendsListWithSession(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             
@@ -128,7 +128,11 @@ extension CreateEventInviteViewController {
                 }
                 
                 unsafe.isRushFriends =  unsafe.friendListAraay.count > 0 ? true : false
-                unsafe.getContacts()
+                if unsafe.isFirstTimeOnly == false {
+                    unsafe.isFirstTimeOnly = true
+                    unsafe.getContacts()
+                }
+                
                 unsafe.tableView.reloadData()
             }
             
