@@ -97,9 +97,10 @@ extension AddMinorsViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.text?.count ?? 0 == 0 && string == " " {
+        if string == "" { return true } else if textField.text?.count ?? 0 == 0 && string == " " {
             return false
         }
-     return true
+        let maxLength = 50
+        return  textField.text?.count ?? 0 < maxLength
     }
 }

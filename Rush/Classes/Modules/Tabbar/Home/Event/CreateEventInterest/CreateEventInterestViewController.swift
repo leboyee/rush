@@ -99,7 +99,7 @@ extension CreateEventInterestViewController {
                 self.delegate?.selectedInterest(self.selectedArray)
             }
         } else {
-            Utils.alert(message: "In development")
+            //Utils.alert(message: "In development")
         }
 
     }

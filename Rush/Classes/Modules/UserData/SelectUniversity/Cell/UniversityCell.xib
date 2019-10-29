@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="68" y="4" width="287" height="54.5"/>
+                                <rect key="frame" x="68" y="4" width="274" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54.5" id="MpI-BT-JAV"/>
                                 </constraints>
@@ -67,7 +67,7 @@
                             <constraint firstAttribute="trailing" secondItem="HTb-ec-y42" secondAttribute="trailing" id="X7Q-C9-lbu"/>
                             <constraint firstItem="6nW-1u-rHA" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="24" id="Z0e-xN-Efc"/>
                             <constraint firstItem="6nW-1u-rHA" firstAttribute="centerY" secondItem="rMd-Ih-XZ7" secondAttribute="centerY" id="eqh-Hp-A7U"/>
-                            <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="20" id="hTI-GU-6lj"/>
+                            <constraint firstAttribute="trailing" secondItem="Mr7-TO-QxM" secondAttribute="trailing" constant="33" id="hTI-GU-6lj"/>
                             <constraint firstAttribute="trailing" secondItem="99M-Ca-nGV" secondAttribute="trailing" constant="15" id="i9w-9o-Si8"/>
                             <constraint firstItem="HTb-ec-y42" firstAttribute="leading" secondItem="rMd-Ih-XZ7" secondAttribute="leading" constant="25" id="mcl-dU-OqU"/>
                             <constraint firstItem="Mr7-TO-QxM" firstAttribute="top" secondItem="rMd-Ih-XZ7" secondAttribute="top" constant="4" id="oeY-RH-kTY"/>

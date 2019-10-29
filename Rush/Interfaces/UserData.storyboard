@@ -1072,7 +1072,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add minors" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gxj-B0-XZZ">
-                                        <rect key="frame" x="24" y="37" width="367" height="40"/>
+                                        <rect key="frame" x="24" y="37" width="348" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="O7d-Xx-nEw"/>
                                         </constraints>
@@ -1108,7 +1108,7 @@
                                     <constraint firstAttribute="height" constant="90" id="16g-4g-8CS"/>
                                     <constraint firstItem="t5K-NE-EHG" firstAttribute="top" secondItem="jpL-9i-IDn" secondAttribute="bottom" constant="6" id="295-Z6-3dq"/>
                                     <constraint firstItem="cGg-gC-Qjl" firstAttribute="leading" secondItem="PMr-JU-s59" secondAttribute="leading" constant="24" id="QUG-Mb-XOf"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gxj-B0-XZZ" secondAttribute="trailing" constant="23" id="RB8-IV-gzt"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gxj-B0-XZZ" secondAttribute="trailing" constant="42" id="RB8-IV-gzt"/>
                                     <constraint firstAttribute="trailing" secondItem="cGg-gC-Qjl" secondAttribute="trailing" constant="8" id="SHm-HL-kN7"/>
                                     <constraint firstItem="t5K-NE-EHG" firstAttribute="top" secondItem="Gxj-B0-XZZ" secondAttribute="bottom" constant="7" id="hwc-bc-04N"/>
                                     <constraint firstItem="Gxj-B0-XZZ" firstAttribute="leading" secondItem="PMr-JU-s59" secondAttribute="leading" constant="24" id="kCh-fV-PhO"/>
@@ -1228,7 +1228,7 @@
                     <viewLayoutGuide key="safeArea" id="GHK-QE-H4x"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="6001" y="-214"/>
+            <point key="canvasLocation" x="6000.0000000000009" y="-214.28571428571428"/>
         </scene>
         <!--Choose Classes View Controller-->
         <scene sceneID="cPR-WW-zfV">
@@ -1405,13 +1405,13 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="121"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interests" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCV-EN-tIv" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="69.5" width="367" height="33"/>
+                                        <rect key="frame" x="24" y="70" width="367" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose minimum 3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5li-tl-1sw" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="36" width="367" height="33"/>
+                                        <rect key="frame" x="24" y="36" width="367" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1426,7 +1426,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3Z-Hk-kdz">
-                                        <rect key="frame" x="0.0" y="118.5" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="119.5" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="JAG-YJ-Hey"/>
