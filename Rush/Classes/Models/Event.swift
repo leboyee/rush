@@ -49,7 +49,7 @@ class Event: Codable {
     var address: String?
     var latitude: String?
     var longitude: String?
-    var university: University?
+    var university: [University]?
     var interests: [Interest]?
     var creator: User?
     var rsvp: [RSVPQuestion]?
@@ -88,7 +88,7 @@ class Event: Codable {
         case rsvp = "event_rsvp_list"
         case eventInvite = "my_event_invite"
         case invitees = "invitees"
-        //case university = "invitees"
+        case university = "university"
     }
 }
 
