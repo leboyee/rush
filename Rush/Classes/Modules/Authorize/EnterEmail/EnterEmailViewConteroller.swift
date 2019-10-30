@@ -122,7 +122,7 @@ extension EnterEmailViewConteroller {
             errorButton.isHidden = true
             self.view.endEditing(true)
             var email = emailTextField.text ?? ""
-             email = email.replacingOccurrences(of: ".edu", with: ".com")
+            // email = email.replacingOccurrences(of: ".edu", with: ".com")
             profile.email = email
             if loginType == .restoreEmail {
                 restorePassword()
