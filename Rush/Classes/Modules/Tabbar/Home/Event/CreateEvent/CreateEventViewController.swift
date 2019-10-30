@@ -153,7 +153,7 @@ extension CreateEventViewController {
         endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
         eventId = String(event?.id ?? 1)
-       // university = event?.university
+        university = event?.university?[0]
         //self.university = event.un
 //        for invites in event?.invitee ?? [Invitee]() {
 //            let invite = Invite()

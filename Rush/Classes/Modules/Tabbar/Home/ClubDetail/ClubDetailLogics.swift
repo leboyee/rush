@@ -222,7 +222,7 @@ extension ClubDetailViewController {
     func fillSingleButtonCell(_ cell: SingleButtonCell) {
         cell.joinButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            //unself.joinedClub = true
+            unself.joinedClub = true
             //unself.tableView.reloadData()
             unself.joinClubAPI()
         }
