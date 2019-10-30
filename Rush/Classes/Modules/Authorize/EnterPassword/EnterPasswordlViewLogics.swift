@@ -73,4 +73,22 @@ extension EnterPasswordViewConteroller {
                }
            }
        }
+    
+    func restorePassword(emailToken: String, newPassword: String) {
+        let param = [
+            Keys.emailToken: emailToken,
+            Keys.newPassword: newPassword] as [String: Any]
+        
+        Utils.showSpinner()
+        ServiceManager.shared.restoreNewPassword(params: param) { [weak self] (status, errorMessage) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status == true {
+                unsafe.profileUpdateSuccess()
+            } else {
+                // unsafe.passwordNotSuccess()
+                Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

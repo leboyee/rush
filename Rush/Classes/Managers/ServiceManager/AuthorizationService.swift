@@ -64,6 +64,15 @@ extension ServiceManager {
         }
     }
     
+    func restoreNewPassword(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.restoreNewPassword(params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+    
     /*
      * Get Phone token For Verify user
      */

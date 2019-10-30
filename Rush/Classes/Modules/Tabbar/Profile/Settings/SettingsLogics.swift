@@ -36,12 +36,13 @@ extension SettingsViewController {
     func fillCell(_ cell: SettingsInfoCell, _ indexPath: IndexPath) {
         cell.set(isHideRightButton: true)
         cell.set(isHideArrow: true)
+        let profile = Authorization.shared.profile
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0:
                 cell.set(title: Text.email)
-                cell.set(detail: "km@messapps.com")
+                cell.set(detail: profile?.email ?? "")
             case 1:
                 cell.set(title: Text.password)
                 cell.set(detail: "••••••••••••")

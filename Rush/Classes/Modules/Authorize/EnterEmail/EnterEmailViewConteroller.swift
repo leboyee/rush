@@ -121,7 +121,9 @@ extension EnterEmailViewConteroller {
             emailErroLabel.isHidden = true
             errorButton.isHidden = true
             self.view.endEditing(true)
-            profile.email = emailText
+            var email = emailTextField.text ?? ""
+             email = email.replacingOccurrences(of: ".edu", with: ".com")
+            profile.email = email
             if loginType == .restoreEmail {
                 restorePassword()
             } else {
@@ -183,7 +185,17 @@ extension EnterEmailViewConteroller {
     
     func  emailSuccess() {
         if loginType == .restoreEmail {
-            self.navigationController?.popToRootViewController(animated: true)
+            guard let viewControllers = self.navigationController?.viewControllers else { return }
+            var isSuccess = false
+            for aViewController: UIViewController in viewControllers {
+                if aViewController.isKind(of: SettingsViewController.self) {
+                    isSuccess = true
+                    _ = self.navigationController?.popToViewController(aViewController, animated: true)
+                }
+            }
+            if isSuccess == false {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         } else {
             self.performSegue(withIdentifier: Segues.enterPassword, sender: self)
         }

@@ -16,7 +16,10 @@ extension EnterEmailViewConteroller {
     
     func checkUserAvailable() {
         Utils.showSpinner()
-        ServiceManager.shared.checkEmail(params: [Keys.email: emailTextField.text ?? ""]) { [weak self] (data, errorMessage) in
+        var email = emailTextField.text ?? ""
+         email = email.replacingOccurrences(of: ".edu", with: ".com")
+
+        ServiceManager.shared.checkEmail(params: [Keys.email: email]) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
@@ -43,8 +46,8 @@ extension EnterEmailViewConteroller {
     
     func restorePassword() {
            Utils.showSpinner()
-        let email = emailTextField.text ?? ""
-          //  email = email.replacingOccurrences(of: ".edu", with: ".com")
+        var email = emailTextField.text ?? ""
+         email = email.replacingOccurrences(of: ".edu", with: ".com")
            ServiceManager.shared.restorePassword(params: [Keys.email: email]) { [weak self] (status, errorMessage) in
                guard let unsafe = self else { return }
                 Utils.hideSpinner()
