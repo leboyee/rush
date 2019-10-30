@@ -116,8 +116,8 @@ extension ClubDetailViewController {
                 Utils.alert(title: "Are you sure you want to leave this club?", buttons: ["Yes", "No"], handler: { (index) in
                     if index == 0 {
                         unself.joinedClub = false
+                        unself.joinClubAPI()
                         unself.tableView.reloadData()
-                        
                         // leave club api
                     }
                 })
@@ -388,11 +388,16 @@ extension ClubDetailViewController {
         let id = clubInfo?.clubId ?? "0"
         
         Utils.showSpinner()
-        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id, Keys.action: "join"]) { [weak self] (status, errorMsg) in
+        ServiceManager.shared.joinClub(clubId: id, params: [Keys.clubId: id, Keys.action: joinedClub == true ? "join" : "left"]) { [weak self] (status, errorMsg) in
             guard let uwself = self else { return }
             if status {
-                uwself.getClubDetailAPI()
-                ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
+                if uwself.joinedClub == true {
+                    uwself.getClubDetailAPI()
+                    ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
+                } else {
+                    Utils.hideSpinner()
+                    uwself.tableView.reloadData()
+                }
             } else {
                 Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

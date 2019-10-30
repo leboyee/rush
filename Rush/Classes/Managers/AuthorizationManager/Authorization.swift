@@ -55,7 +55,7 @@ class Authorization: NSObject {
         Utils.removeDataFromUserDefault(kSavedProfile)
         Utils.removeDataFromUserDefault(kSavedSession)
         Utils.removeDataFromUserDefault(kPushTokenUpdateOnServer)
-        Utils.removeDataFromUserDefault(kHomeTutorialKey)
+        //Utils.removeDataFromUserDefault(kHomeTutorialKey)
         
         Utils.removeDataFromUserDefault(kLastLocation)
         UIApplication.shared.applicationIconBadgeNumber = 0

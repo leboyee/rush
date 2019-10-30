@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvard University" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr7-TO-QxM" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="68" y="4" width="274" height="55"/>
+                                <rect key="frame" x="68" y="4" width="274" height="54.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54.5" id="MpI-BT-JAV"/>
                                 </constraints>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="width" constant="16" id="hs2-Gd-QDf"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-uni" translatesAutoresizingMaskIntoConstraints="NO" id="6nW-1u-rHA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-University" translatesAutoresizingMaskIntoConstraints="NO" id="6nW-1u-rHA">
                                 <rect key="frame" x="24" y="15.5" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="c9A-dq-1bV"/>
@@ -95,6 +95,6 @@
     </objects>
     <resources>
         <image name="iconCheckMark" width="16" height="16"/>
-        <image name="img-uni" width="32" height="32"/>
+        <image name="placeholder-University" width="36" height="36"/>
     </resources>
 </document>

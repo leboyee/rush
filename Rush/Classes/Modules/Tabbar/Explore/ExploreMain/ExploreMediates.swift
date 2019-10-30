@@ -107,10 +107,10 @@ extension ExploreViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        isSearch = false
-        heightConstraintOfFilter.constant = 0
-        textField.text = ""
-        clearButton.isHidden = true
+       // isSearch = false
+        //heightConstraintOfFilter.constant = 0
+      //  textField.text = ""
+      //  clearButton.isHidden = true
         tableView.reloadData()
         return true
     }

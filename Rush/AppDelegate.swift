@@ -71,19 +71,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let controller = storyboardName.instantiateViewController(withIdentifier: "EnterPasswordViewConteroller") as? EnterPasswordViewConteroller else { return }
             controller.token = token
             controller.loginType = .restorePassword
-            viewController.present(controller, animated: true, completion: nil)
+            let navigationController: UINavigationController?
+            if let navController = viewController as? UINavigationController {
+                navigationController = navController
+            } else {
+                let customTabbar = viewController as? CustomTabbarViewController
+                let selectedIndex =  customTabbar?.selectedIndex
+                navigationController = customTabbar?.viewControllers?[selectedIndex ?? 0] as? UINavigationController
+            }
+            navigationController?.navigationBar.isHidden = false
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
     
     func getTopViewController() -> UIViewController? {
           var topViewController = UIApplication.shared.keyWindow?.rootViewController
-          while (topViewController?.presentedViewController != nil) {
-              topViewController = topViewController?.presentedViewController;
+          while topViewController?.presentedViewController != nil {
+              topViewController = topViewController?.presentedViewController
           }
           return topViewController
       }
 
-    
     func setupAppearance() {
         setupTopBar()
         setupBarButton()

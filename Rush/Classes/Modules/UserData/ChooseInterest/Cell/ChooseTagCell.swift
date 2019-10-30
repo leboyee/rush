@@ -44,4 +44,5 @@ extension ChooseTagCell {
     func selectedTag(tagList: [String]) {
         tagListView.selectedTag(tagList)
     }
+    
 }

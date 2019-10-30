@@ -26,6 +26,10 @@ extension NetworkManager {
         requestPost(path: "change/pwd", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     
+    func restoreNewPassword(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPost(path: "auth/resetpwd", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
+    
     func login(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "auth/login", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
@@ -163,7 +167,7 @@ extension NetworkManager {
     }
     
     func joinClub(clubId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
-        requestPost(path: "club/\(clubId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+        requestPost(path: "club/\(clubId)/\(param[Keys.action] ?? "join")", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }
     func joinClassGroup(classId: String, groupId: String, param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "class/\(classId)/group/\(groupId)/join", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)

@@ -60,7 +60,7 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
         let array =  isSearch == true ? searchItem[indexPath.section].contacts : items[indexPath.section].contacts
         let item = array[indexPath.row]
         cell.setup(title: "\(item.displayName)")
-        cell.setupImage(image: item.contactImage ?? UIImage(named: "profile_tab_inactive")!)
+        cell.setupImage(image: item.contactImage ?? UIImage(named: "iconProfilePlaceHolder")!)
         cell.setup(isHidden: false)
         cell.setup(isSelected: selectedItem.contains(item))
         return cell

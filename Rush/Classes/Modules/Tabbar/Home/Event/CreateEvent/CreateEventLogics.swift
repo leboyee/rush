@@ -241,7 +241,7 @@ extension CreateEventViewController {
             cell.setup(isHideClearButton: address.isEmpty)
             cell.setup(isEnabled: false)
         } else if indexPath.section == 4 {
-            cell.setup(iconImage: "addLocation")
+            cell.setup(iconImage: "universityEventIcon")
             cell.setup(placeholder: Text.addUniversity, text: university?.universityName ?? "")
             cell.setup(placeholder: Text.addUniversity)
             cell.setup(isHideClearButton: true)

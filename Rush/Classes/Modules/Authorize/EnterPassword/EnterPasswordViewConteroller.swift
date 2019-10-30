@@ -104,7 +104,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         symbolLabel.passwordFormateLabels()
         errorButton.setEmailErrorButton()
         self.bgImageView.setBgForLoginSignup()
-        passwordErrorLabel.text = "Incorrect password. Please double check it or restore it."
+        passwordErrorLabel.text = "Incorrect password. Double check your password by tapping \"show\" or restore password."
         restorePasswordButtonConstraint.constant = 16
         if loginType == .register {
             passwordTitleLabel.text = Text.passwordTitleRegister
@@ -123,6 +123,13 @@ class EnterPasswordViewConteroller: CustomViewController {
         } else if loginType == .newPassword {
             passwordTitleLabel.text = "Create new password"
             nextButton.setTitle(Text.continueText, for: .normal)
+            hintView.isHidden = false
+            resortPasswordButton.isHidden = true
+            passwordErrorView.isHidden = true
+            passwordTextField.placeholder = "New password"
+        } else if loginType == .restorePassword {
+            passwordTitleLabel.text = "Create new password"
+            nextButton.setTitle(Text.next, for: .normal)
             hintView.isHidden = false
             resortPasswordButton.isHidden = true
             passwordErrorView.isHidden = true
@@ -154,6 +161,8 @@ extension EnterPasswordViewConteroller {
             currentPasswordApi(password: self.passwordTextField.text ?? "")
         } else if loginType == .newPassword {
             changePasswordApi(currentPassword: self.oldPassword, newPassword: self.passwordTextField.text ?? "")
+        } else if loginType == .restorePassword {
+            restorePassword(emailToken: token, newPassword: self.passwordTextField.text ?? "")
         } else {
             self.performSegue(withIdentifier: Segues.enterPhoneNo, sender: self)
         }
@@ -223,6 +232,9 @@ extension EnterPasswordViewConteroller {
                 navigationController?.pushViewController(vc, animated: true)
             }
 
+        } else if loginType == .restorePassword {
+            Utils.alert(message: "Password has been updated. Please login now.")
+            self.navigationController?.popViewController(animated: true)
         } else {
             AppDelegate.shared?.connectSendbird()
             AppDelegate.shared?.setupStoryboard()

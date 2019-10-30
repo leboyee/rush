@@ -1,5 +1,5 @@
 //
-//  UserInterestViewController.swift
+//  AddInterestViewController.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -9,14 +9,17 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class UserInterestViewController: CustomViewController {
+class AddInterestViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var nextButton: CustomButton!
+    @IBOutlet weak var noResultView: UIView!
+
     var interestArray = [Interest]()
     var searchArray = [Interest]()
+    var selectedArray = [Interest]()
     var isSearch = false
     weak var delegate: EventInterestDelegate?
     var rightBarButton: UIBarButtonItem?
@@ -31,8 +34,7 @@ class UserInterestViewController: CustomViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
-        interestArray = Authorization.shared.profile?.interest ?? [Interest]()
-        tableView.reloadData()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,6 +59,8 @@ class UserInterestViewController: CustomViewController {
         nextButton.layer.cornerRadius = 8.0
         nextButton.clipsToBounds = true
         nextButton.isHidden = false
+        noResultView.isHidden = true
+        self.getInterestList(searchText: "")
     }
     
     // Custom navigation
@@ -85,11 +89,11 @@ class UserInterestViewController: CustomViewController {
 }
 
 // MARK: - Other Function
-extension UserInterestViewController {
+extension AddInterestViewController {
 }
 
 // MARK: - Actions
-extension UserInterestViewController {
+extension AddInterestViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
     }
@@ -98,32 +102,20 @@ extension UserInterestViewController {
         updateProfileAPI()
     }
     @objc func plusButtonAction() {
-        
-        self.performSegue(withIdentifier: Segues.addInterestViewSegue, sender: self)
+
     }
 }
 
 // MARK: - Mediator
-extension UserInterestViewController {
+extension AddInterestViewController {
     func interestButtonVisiable() {
        // nextButton.isHidden = selectedArray.count > 0 ? false : true
     }
 }
 
 // MARK: - Preseneter
-extension UserInterestViewController {
+extension AddInterestViewController {
     func profileUpdateSuccess() {
         self.navigationController?.popViewController(animated: true)
     }
-}
-
-// MARK: - Navigation
-extension UserInterestViewController {
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == Segues.addInterestViewSegue {
-            if let vc = segue.destination as? AddInterestViewController {
-                vc.selectedArray = interestArray
-            }
-        }
-     }
 }

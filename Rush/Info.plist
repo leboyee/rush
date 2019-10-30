@@ -47,7 +47,7 @@
 			<string>com.messapps.testing.rush</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>rushapp://</string>
+				<string>rushapp</string>
 			</array>
 		</dict>
 	</array>
