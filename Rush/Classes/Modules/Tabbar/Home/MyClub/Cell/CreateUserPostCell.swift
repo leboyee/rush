@@ -12,9 +12,12 @@ class CreateUserPostCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containView: UIView!
-    
+    @IBOutlet weak var iconImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        iconImageView.layer.cornerRadius = 16
+        iconImageView.clipsToBounds = true
         // Initialization code
     }
 
@@ -42,4 +45,10 @@ extension CreateUserPostCell {
     func setup(title: String) {
         titleLabel.text = title
     }
+    
+    func set(url: URL?) {
+        iconImageView.sd_setImage(with: url, placeholderImage: nil)
+    }
+
+
 }

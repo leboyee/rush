@@ -15,7 +15,8 @@ import DKCamera
 class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    var initNavBarCustomizationParams: UINavigationBarCustomizationParams?
+
     var photoImage: UIImage?
     var selectedGender: Int = 0
     var selectedRelation: Int = 0
@@ -46,6 +47,9 @@ class EditProfileViewController: UIViewController {
         tableView.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+    }
+    
     func majorMinorData() {
         let majArray = profile?.majors ?? [Major]()
         let minArray = profile?.minors ?? [Minor]()
@@ -60,8 +64,59 @@ extension EditProfileViewController {
         view.backgroundColor = UIColor.bgBlack
         setupTableView()
         setupNavigation()
-        
+        if #available(iOS 13.0, *) {
+                    let navigationBarAppearance = UINavigationBarAppearance()
+                    navigationBarAppearance.backgroundColor = UIColor.bgBlack
+                    navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.semibold(sz: 17.0)]
+                    self.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+                    self.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+                          
+                } else {
+                    // Fallback on earlier versions
+                }
     }
+    
+    func setCustomStyleForNavBar() {
+        guard let img = UIImage(named: "navBar") else { return }
+
+        let params = UINavigationBarCustomizationParams()
+        params.backgroundImage = UINavigationBar.appearance().backgroundImage(
+                for: .any, barMetrics: .default
+        )
+        params.shadowImage = UINavigationBar.appearance().shadowImage
+        params.tintColor = UINavigationBar.appearance().tintColor
+        params.barTintColor = UINavigationBar.appearance().barTintColor
+        params.titleTextAttributes = UINavigationBar.appearance().titleTextAttributes
+        initNavBarCustomizationParams = params
+        
+        UINavigationBar.appearance().setBackgroundImage(
+                img.resizableImage(
+                        withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+                        resizingMode: .stretch
+                ),
+                for: .any,
+                barMetrics: .default
+        )
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = UIColor.bgBlack
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .white
+    }
+    
+    func revertStyleForNavBar() {
+        
+        guard let params = initNavBarCustomizationParams else { return }
+        UINavigationBar.appearance().setBackgroundImage(params.backgroundImage, for: .any, barMetrics: .default)
+        UINavigationBar.appearance().shadowImage = params.shadowImage
+        UINavigationBar.appearance().tintColor = params.tintColor
+        UINavigationBar.appearance().barTintColor = params.barTintColor
+        UINavigationBar.appearance().titleTextAttributes = params.titleTextAttributes
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = params.tintColor
+
+        initNavBarCustomizationParams = nil
+    }
+
 }
 
 // MARK: - Other Functions
@@ -74,6 +129,7 @@ extension EditProfileViewController {
 
         let leftBar = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftBar
+        
     }
     
 }
@@ -127,6 +183,7 @@ extension EditProfileViewController {
         pickerController.showsCancelButton = true
         pickerController.autoCloseOnSingleSelect = true
         pickerController.assetType = .allPhotos
+       // pickerController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             if assets.count > 0 {
                 self.assignSelectedImages(photos: assets)
@@ -196,9 +253,9 @@ extension EditProfileViewController {
             }
         } else if segue.identifier == Segues.chooseYearSegue {
             if let vc = segue.destination as? ChooseYearViewController {
+                vc.isEditUserProfile = true
                 guard let index = Utils.chooseYearArray().firstIndex(where: { $0 == profile?.educationYear ?? "" }) else { return }
                 vc.selectedIndex = index
-                vc.isEditUserProfile = true
             }
         } else if segue.identifier == Segues.addMajorViewSegue {
             if let vc = segue.destination as? AddMajorsViewController {

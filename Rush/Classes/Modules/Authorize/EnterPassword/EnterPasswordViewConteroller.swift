@@ -38,7 +38,7 @@ class EnterPasswordViewConteroller: CustomViewController {
     var token = ""
     var profile = User()
     var oldPassword = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -104,7 +104,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         symbolLabel.passwordFormateLabels()
         errorButton.setEmailErrorButton()
         self.bgImageView.setBgForLoginSignup()
-        passwordErrorLabel.text = "Incorrect password. Double check your password by tapping \"show\" or restore password."
+        passwordErrorLabel.text = "Incorrect password. Double-check your password by tapping \"show\" or restore passwordIncorrect password."
         restorePasswordButtonConstraint.constant = 16
         if loginType == .register {
             passwordTitleLabel.text = Text.passwordTitleRegister
@@ -189,11 +189,15 @@ extension EnterPasswordViewConteroller {
     }
     
     @IBAction func restoreButtonAction() {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.enterEmailViewConteroller) as? EnterEmailViewConteroller {
-                       vc.loginType = .restoreEmail
-        
-                       navigationController?.pushViewController(vc, animated: true)
-                   }
+        if Authorization.shared.authorized == true {
+            let profile = Authorization.shared.profile
+            restorePassword(emailText: profile?.email ?? "")
+        } else {
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.enterEmailViewConteroller) as? EnterEmailViewConteroller {
+                      vc.loginType = .restoreEmail
+                      navigationController?.pushViewController(vc, animated: true)
+                  }
+        }
         //Utils.alert(message: "In Development.")
     }
 }

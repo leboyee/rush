@@ -12,6 +12,14 @@ import DKImagePickerController
 import DKPhotoGallery
 import DKCamera
 
+class UINavigationBarCustomizationParams {
+    var backgroundImage: UIImage?
+    var shadowImage: UIImage?
+    var tintColor: UIColor?
+    var barTintColor: UIColor?
+    var titleTextAttributes: [NSAttributedString.Key: Any]?
+}
+
 class AddProfilePictureViewController: CustomViewController {
 
     @IBOutlet weak var nextButton: CustomButton!
@@ -30,6 +38,7 @@ class AddProfilePictureViewController: CustomViewController {
     var loginType: LoginType = .register
     var isSkip: Bool = false
     var isEditProfile: Bool = false
+    var initNavBarCustomizationParams: UINavigationBarCustomizationParams?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +49,14 @@ class AddProfilePictureViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        setCustomStyleForNavBar()
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         pageControl.updateDots()
+        revertStyleForNavBar()
     }
     
     override func viewWillLayoutSubviews() {
@@ -91,11 +102,53 @@ class AddProfilePictureViewController: CustomViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        
         /*
             if(isEditProfile == true) {
                 pageControl.isHidden = true
                 self.navigationItem.rightBarButtonItem = nil
             }*/
+    }
+    
+    func setCustomStyleForNavBar() {
+        guard let img = UIImage(named: "navBar") else { return }
+
+        let params = UINavigationBarCustomizationParams()
+        params.backgroundImage = UINavigationBar.appearance().backgroundImage(
+                for: .any, barMetrics: .default
+        )
+        params.shadowImage = UINavigationBar.appearance().shadowImage
+        params.tintColor = UINavigationBar.appearance().tintColor
+        params.barTintColor = UINavigationBar.appearance().barTintColor
+        params.titleTextAttributes = UINavigationBar.appearance().titleTextAttributes
+        initNavBarCustomizationParams = params
+        
+        UINavigationBar.appearance().setBackgroundImage(
+                img.resizableImage(
+                        withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+                        resizingMode: .stretch
+                ),
+                for: .any,
+                barMetrics: .default
+        )
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = UIColor.bgBlack
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .white
+    }
+    
+    func revertStyleForNavBar() {
+        
+        guard let params = initNavBarCustomizationParams else { return }
+        UINavigationBar.appearance().setBackgroundImage(params.backgroundImage, for: .any, barMetrics: .default)
+        UINavigationBar.appearance().shadowImage = params.shadowImage
+        UINavigationBar.appearance().tintColor = params.tintColor
+        UINavigationBar.appearance().barTintColor = params.barTintColor
+        UINavigationBar.appearance().titleTextAttributes = params.titleTextAttributes
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = params.tintColor
+
+        initNavBarCustomizationParams = nil
     }
 }
 

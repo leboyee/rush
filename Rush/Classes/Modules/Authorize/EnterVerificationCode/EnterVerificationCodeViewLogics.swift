@@ -143,6 +143,7 @@ extension EnterVerificationCodeViewController {
         resendCodeButton.setTitle("", for: .normal)
         dotView.ajShowDotLoadingIndicator()
         dotAnimationView.isHidden = false
+        resendCodeButton.isUserInteractionEnabled = false
         //Utils.showSpinner()
         let verifyTye = loginType == .register ? "signup" : "login"
         let countryCodeString = profile.countryCode
@@ -160,6 +161,7 @@ extension EnterVerificationCodeViewController {
                 unsafe.resendCodeButton.setImage(#imageLiteral(resourceName: "sentTick"), for: .normal)
                 unsafe.nextButton.setNextButton(isEnable: false)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    unsafe.resendCodeButton.isUserInteractionEnabled = true
                     unsafe.resendCodeButton.setImage(nil, for: .normal)
                     unsafe.resendCodeButton.setTitle("Resend Code", for: .normal)
                     unsafe.resendCodeButton.isUserInteractionEnabled = true
