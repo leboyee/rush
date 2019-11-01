@@ -17,11 +17,7 @@ extension UniversityViewController {
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
-        if let url = URL(string: university.logo ?? "") {
-            cell.setup(url: url)
-        } else {
-            cell.setupImage(image: #imageLiteral(resourceName: "img-uni"))
-        }
+        cell.setup(url:  URL(string: university.logo ?? ""))
         cell.setup(isCheckMark: selectedIndex == indexPath.row)
     }
     

@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="105" height="127"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-event-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Gq3-DS-V9K">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-event-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Gq3-DS-V9K">
                         <rect key="frame" x="0.0" y="0.0" width="105" height="111"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
