@@ -92,8 +92,8 @@ extension EventCell {
         eventImageView.sd_setImage(with: classesSmallImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classChat-#1"))
     }
     
-    func setup(classImageUrl: URL?) {
-        classImageView.sd_setImage(with: classImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classCard"))
+    func setup(classImgUrl: URL?) {
+        classImageView.sd_setImage(with: classImgUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classCard"))
     }
     
     func setup(date: Date?) {

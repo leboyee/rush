@@ -52,8 +52,7 @@ class UserProfileGalleryViewController: UIViewController {
     // MARK: - Set Profile Data
     func fillBottomProfile() {
         userNameLable.text = user.name
-        guard let imageStr = user.photo?.thumb else { return } //"https://tineye.com/images/widgets/mona.jpg"
-        profilePicImageView.sd_setImage(with: URL(string: imageStr), completed: nil)
+        profilePicImageView.sd_setImage(with: URL(string: user.photo?.thumb ?? ""), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
     }
     
      // MARK: - Actions
@@ -77,7 +76,7 @@ class UserProfileGalleryViewController: UIViewController {
     
     func setupDateAndTimeOfPhoto(index: Int) {
          let image = list[index]
-        print(image.date)
+        
         if let date = image.date {
             if date.isSameDate(Date()) {
                 timeLable.text = date.toString(format: "hh:mm a")
