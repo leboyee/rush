@@ -87,7 +87,16 @@ extension EventTypeCell {
                     let group = value.classGroups?.filter { $0.id == groupid }.first
                     cell.setup(classCount: group?.name ?? "")
                 } else {
-                    cell.setup(classCount: "\(value.classTotalGroups) classes")
+                    var countClass = ""
+                    let count = value.classTotalGroups
+                    if count == 0 {
+                        countClass = "No classes"
+                    } else if count == 1 {
+                        countClass = "1 class"
+                    } else {
+                        countClass = "\(count) classes"
+                    }
+                    cell.setup(classCount: countClass)
                 }
             } else if let classList = list as? [ClassJoined] {
                 let joinedClass = classList[indexPath.item]

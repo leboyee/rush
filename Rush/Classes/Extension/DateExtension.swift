@@ -332,13 +332,13 @@ extension Date {
             return formatter.string(from: date)
         } else if dayAgo < date {
             let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour ?? 0
-            return "\(diff) hrs ago"
+            return "\(diff) \(diff == 1 ? "hr" : "hrs") ago"
         } else if weekAgo < date {
             let diff = Calendar.current.dateComponents([.day], from: date, to: Date()).day ?? 0
-            return "\(diff) days ago"
+            return "\(diff) \(diff == 1 ? "day" : "days") ago"
         }
         let diff = Calendar.current.dateComponents([.weekOfYear], from: date, to: Date()).weekOfYear ?? 0
-        return "\(diff) weeks ago"
+        return "\(diff) \(diff == 1 ? "week" : "weeks") ago"
     }
     
     func getWeekDates() -> (thisWeek: [Date], nextWeek: [Date]) {
