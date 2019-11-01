@@ -194,7 +194,11 @@ extension EnterEmailViewConteroller {
                 }
             }
             if isSuccess == false {
-                self.navigationController?.popToRootViewController(animated: true)
+                for aViewController: UIViewController in viewControllers {
+                    if aViewController.isKind(of: EnterEmailViewConteroller.self) {
+                        _ = self.navigationController?.popToViewController(aViewController, animated: true)
+                    }
+                }
             }
         } else {
             self.performSegue(withIdentifier: Segues.enterPassword, sender: self)

@@ -19,7 +19,7 @@ class ClubDetailViewController: UIViewController {
     @IBOutlet weak var backgroundView: RBackgoundView!
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var clubHeader: ClubHeader!
-    
+
     weak var delegate: ClubDetailProtocol?
     
     var interestList = [String]()
@@ -89,6 +89,8 @@ class ClubDetailViewController: UIViewController {
         // setup tableview
         setupTableView()
     }
+    
+
 }
 
 // MARK: - Actions

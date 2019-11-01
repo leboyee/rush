@@ -91,4 +91,19 @@ extension EnterPasswordViewConteroller {
             }
         }
     }
+    
+    func restorePassword(emailText: String) {
+             Utils.showSpinner()
+             ServiceManager.shared.restorePassword(params: [Keys.email: emailText]) { [weak self] (status, errorMessage) in
+                 guard let unsafe = self else { return }
+                  Utils.hideSpinner()
+                 if status == true {
+                    Utils.alert(message: "You will receive an email to your email address \"suresh@gmail.edu\" to restore password.")
+                 } else {
+                  Utils.hideSpinner()
+                     Utils.alert(message: errorMessage ?? "Please contact Admin")
+                 }
+                 
+             }
+         }
 }

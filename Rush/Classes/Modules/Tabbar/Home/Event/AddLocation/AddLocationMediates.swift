@@ -80,6 +80,10 @@ extension AddLocationViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+          locationEntryTextField.resignFirstResponder()
+    }
 }
 
 // MARK: - CLLocationManagerDelegate delegate

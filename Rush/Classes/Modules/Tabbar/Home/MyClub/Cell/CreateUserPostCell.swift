@@ -13,7 +13,6 @@ class CreateUserPostCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var imgView: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -48,4 +47,8 @@ extension CreateUserPostCell {
     func setup(title: String) {
         titleLabel.text = title
     }
+    
+   
+
+
 }
