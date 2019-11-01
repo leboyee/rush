@@ -61,7 +61,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k5-OT-7GQ">
                                 <rect key="frame" x="163.5" y="26" width="77.5" height="22"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="83h-El-BXM">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-tabBar" translatesAutoresizingMaskIntoConstraints="NO" id="83h-El-BXM">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="SMj-kR-fR9"/>
@@ -76,7 +76,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="noL-pe-h6i">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-tabBar" translatesAutoresizingMaskIntoConstraints="NO" id="noL-pe-h6i">
                                         <rect key="frame" x="17" y="0.0" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="YZF-u7-OK3"/>
@@ -91,7 +91,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-cd-dfT">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-tabBar" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-cd-dfT">
                                         <rect key="frame" x="34" y="0.0" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="3qH-PU-5rP"/>
@@ -13969,7 +13969,7 @@ AAx70QAMe9kADHvcAAx77gAMe/EADHv2AAAAAAAABAEAAAAAAAAAbQAAAAAAAAAAAAAAAAAMe/g
         </image>
         <image name="img-event" width="48" height="48"/>
         <image name="placeholder-classCard" width="224" height="157"/>
+        <image name="placeholder-profile-tabBar" width="20" height="20"/>
         <image name="privacy-lock" width="28" height="28"/>
-        <image name="profile_tab_inactive" width="23" height="23"/>
     </resources>
 </document>

@@ -70,7 +70,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.setup(url: Authorization.shared.profile?.photo?.urlThumb())
                 cell.setup(font: UIFont.semibold(sz: 13))
                 if let user = Authorization.shared.profile {
-                    cell.set(url: URL(string: user.photo?.thumb ?? ""))
+                    cell.setup(url: URL(string: user.photo?.thumb ?? ""))
                 }
                 return cell
             } else {
