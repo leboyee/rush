@@ -51,20 +51,25 @@ extension EventTypeCell {
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(clubImageUrl: img.url())
                 cell.joinButton.isHidden = false
+                
+                var isJoined = false
                 if let invitee = club.invitees {
                     let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
                     if filter.count > 0 {
-                        cell.setup(type: .clubsJoined)
-                        cell.setup(invitee: club.invitees)
+                        isJoined = true
                     }
                 }
                 
-               /* let clubUserId = club.clubUserId
+                let clubUserId = club.clubUId
                 let userId = Authorization.shared.profile?.userId ?? ""
                 if clubUserId == userId {
+                    isJoined = true
+                }
+                
+                if isJoined {
                     cell.setup(type: .clubsJoined)
                     cell.setup(invitee: club.invitees)
-                }*/
+                }
             } else {
                 cell.setup(eventName: "Development lifehacks")
                 cell.setup(eventDetail: "Get the latest dev skills")
