@@ -46,27 +46,23 @@ extension FriendsListViewController {
                 }
             }
         } else  if type == .clubJoinedUsers {
-                   var friend = Invitee()
-                     friend = inviteeList[indexPath.row] as? Invitee ?? friend
-                   cell.setup(name: friend.user?.name ?? "")
-                   if let url = URL(string: friend.user?.photo?.thumb ?? "") {
-                       cell.setup(url: url)
-                   } else {
-                       let invitee = inviteeList[indexPath.row]
-                       cell.setup(name: invitee.user?.name ?? "")
-                       if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                           cell.setup(url: url)
-                       }
-                   }
-               }
+            var friend = Invitee()
+            friend = inviteeList[indexPath.row]
+            cell.setup(name: friend.user?.name ?? "")
+            if let url = URL(string: friend.user?.photo?.thumb ?? "") {
+                cell.setup(url: url)
+            } else {
+                let invitee = inviteeList[indexPath.row]
+                cell.setup(name: invitee.user?.name ?? "")
+                if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                    cell.setup(url: url)
+                }
+            }
+        }
     }
     
     func fillFriendClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
-        //               if indexPath.row == 0 {
-        //                   cell.setup(topConstraint: -16)
-        //               } else {
-        //                   cell.setup(topConstraint: 0)
-        //               }
+        
         if type == .clubs {
             let club: Club?
             if firstSegmentButton.isSelected {
@@ -78,13 +74,13 @@ extension FriendsListViewController {
             cell.setup(title: club?.clubName ?? "")
             cell.setup(detail: club?.clubDesc ?? "")
             cell.setup(invitee: club?.invitees)
-            cell.setup(imageUrl: image.urlThumb())
+            cell.setup(clubImageUrl: image.urlThumb())
             
         } else if type == .classes {
             let joinedClass = myClassesList[indexPath.row]
             cell.setup(title: joinedClass.classes?.name ?? "VR Meet")
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
-            cell.setup(imageUrl: joinedClass.classes?.photo?.urlThumb())
+            cell.setup(classesImageUrl: joinedClass.classes?.photo?.urlThumb())
             var rosterArray = [Invitee]()
             for rs in joinedClass.classGroup?.classGroupRosters ?? [ClassJoined]() {
                 if let user = rs.user {
@@ -92,10 +88,9 @@ extension FriendsListViewController {
                     inv.user = user
                     rosterArray.append(inv)
                 }
-               
+                
             }
             cell.setup(invitee: rosterArray)
-            
         }
     }
     
@@ -105,7 +100,6 @@ extension FriendsListViewController {
             event = firstTabList[indexPath.row] as? Event ?? event
         } else {
             event = secondTabList[indexPath.row] as? Event ?? event
-            
         }
         cell.setup(cornerRadius: 24)
         cell.setup(isHideSeparator: false)

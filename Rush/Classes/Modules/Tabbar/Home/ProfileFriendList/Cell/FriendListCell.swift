@@ -30,6 +30,6 @@ extension FriendListCell {
     }
     
     func setup(url: URL) {
-        friendImageView.sd_setImage(with: url, completed: nil)
+        friendImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
     }
 }
