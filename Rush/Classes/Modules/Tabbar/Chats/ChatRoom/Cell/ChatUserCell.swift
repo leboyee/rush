@@ -25,18 +25,13 @@ class ChatUserCell: UICollectionViewCell {
 extension ChatUserCell {
     func setup(isHideArrowView: Bool) {
         arrowView.isHidden = isHideArrowView
-        onlineView.isHidden = !isHideArrowView
     }
     
     func setup(img: String?) {
-        if let value = img, value.isNotEmpty {
+        if let value = img {
             imgView.contentMode = .scaleAspectFill
             imgView.backgroundColor = .clear
-            imgView.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "mask"), options: [], context: nil)
-        } else {
-            imgView.contentMode = .scaleAspectFit
-            imgView.image = #imageLiteral(resourceName: "mask")
-            imgView.backgroundColor = UIColor.gray83
+            imgView.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
         }
     }
     

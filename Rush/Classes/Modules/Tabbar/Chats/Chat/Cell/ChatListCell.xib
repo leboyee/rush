@@ -41,7 +41,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VRF-Lx-TIn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-48px" translatesAutoresizingMaskIntoConstraints="NO" id="VRF-Lx-TIn">
                                 <rect key="frame" x="40" y="20" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="7V5-lz-gii"/>
@@ -143,4 +143,7 @@
             <point key="canvasLocation" x="152.89855072463769" y="93.75"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="placeholder-profile-48px" width="48" height="48"/>
+    </resources>
 </document>

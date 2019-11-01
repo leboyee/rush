@@ -78,25 +78,26 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if indexPath.item == 6 && isShowAll == false {
             cell.setup(isHideArrowView: false)
             cell.onlineView.isHidden = true
+            cell.imgView.isHidden = true
         } else {
-            cell.onlineView.isHidden = false
+            cell.imgView.isHidden = false
             cell.setup(isHideArrowView: true)
+            
+            let user = users[indexPath.item]
+            cell.setup(img: user.profileUrl)
+            
+            if user.connectionStatus == .online {
+                cell.onlineView.isHidden = false
+            } else {
+                cell.onlineView.isHidden = true
+            }
         }
-        
-        let user = users[indexPath.item]
-        cell.setup(img: user.profileUrl)
-        
-        if user.connectionStatus == .online {
-            cell.onlineView.isHidden = false
-        } else {
-            cell.onlineView.isHidden = true
-        }
-                
+            
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 6 {
+        if indexPath.item == 6 && isShowAll == false {
             isShowAll = true
             collectionView.reloadData()
         }

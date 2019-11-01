@@ -116,14 +116,10 @@ extension ChatListCell {
     }
     
     func setup(img: String?) {
-        if let value = img, value.isNotEmpty {
+        if let value = img {
             imgView.contentMode = .scaleAspectFill
             imgView.backgroundColor = .clear
-            imgView.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "mask"), options: [], context: nil)
-        } else {
-            imgView.contentMode = .scaleAspectFit
-            imgView.image = #imageLiteral(resourceName: "mask")
-            imgView.backgroundColor = UIColor.gray83
+            imgView.sd_setImage(with: URL(string: value), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
         }
     }
     
@@ -134,7 +130,7 @@ extension ChatListCell {
             timeLabel.text = " ⋅ " + Date().timeAgoDisplay(date: date)
         } else {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: channel.createdAt)!)
-            timeLabel.text = " ⋅ " + Date().timeAgoDisplay(date: date)
+            timeLabel.text = Date().timeAgoDisplay(date: date)
         }
         
         if Int(channel.unreadMessageCount) > 0 {

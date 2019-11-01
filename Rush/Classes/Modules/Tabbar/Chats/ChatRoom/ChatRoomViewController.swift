@@ -515,13 +515,13 @@ extension ChatRoomViewController {
     
     @objc func setupPlaceholderView() {
         
-        emptyMessageView = UIView(frame: self.view.bounds)
+//        emptyMessageView = UIView(frame: self.view.bounds)
         emptyUserImageView = UIImageView(frame: CGRect((screenWidth/2) - 44, (screenHeight/2) - 44, 88, 88))
         emptyUserImageView.clipsToBounds = true
         emptyUserImageView.image = #imageLiteral(resourceName: "grayChat")
         emptyUserImageView.contentMode = .scaleAspectFill
         emptyUserImageView.layer.cornerRadius = 44
-        emptyMessageView.addSubview(emptyUserImageView)
+        view.addSubview(emptyUserImageView)
         
         timeLabel = UILabel()
         timeLabel = UILabel(frame: CGRect(x: 16, y: (screenHeight/2) + 60, width: screenWidth - 32, height: 22))
@@ -533,10 +533,10 @@ extension ChatRoomViewController {
         timeLabel.adjustsFontSizeToFitWidth = true
         timeLabel.minimumScaleFactor = 0.2
         timeLabel.text = String(format: emptyMessageFriendTitle, self.userName)
-        emptyMessageView.addSubview(timeLabel)
-        view.addSubview(emptyMessageView)
+        view.addSubview(timeLabel)
+//        view.addSubview(emptyMessageView)
         
-        dismissButton = UIButton(frame: self.view.frame)
+        dismissButton = UIButton(frame: CGRect(x: 0, y: isGroupChat ? 180 : 108, width: screenWidth, height: screenHeight - (isGroupChat ? 180 : 108)))
         dismissButton?.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
         dismissButton?.setTitle("", for: .normal)
         self.view.addSubview(dismissButton!)
