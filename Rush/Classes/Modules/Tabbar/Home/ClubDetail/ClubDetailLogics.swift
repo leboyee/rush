@@ -304,7 +304,7 @@ extension ClubDetailViewController {
     
     func fillImageHeader() {
         let img = Image(json: clubInfo?.clubPhoto ?? "")
-        clubHeader.set(url: img.url())
+        clubHeader.setup(clubUrl: img.url())
     }
     
     func fillData() {

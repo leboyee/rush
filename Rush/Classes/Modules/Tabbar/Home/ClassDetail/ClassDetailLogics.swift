@@ -273,7 +273,7 @@ extension ClassDetailViewController {
         let img = subclassInfo?.photo
         clubHeader.changePhotoButton.isHidden = true
         clubHeader.addPhotoButton.isHidden = true
-        clubHeader.set(url: img?.url())
+        clubHeader.setup(classUrl: img?.url())
     }
    
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
