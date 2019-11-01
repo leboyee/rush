@@ -81,7 +81,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]
                 cell.setup(title: "\(profile.user?.name ?? "")")
-                if let imageName = profile.user?.photo  {
+                if let imageName = profile.user?.photo {
                     cell.setup(url: URL(string: imageName.thumb))
                 }
                 cell.setup(isHidden: false)

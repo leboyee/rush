@@ -47,4 +47,19 @@ extension SelectGallaryPhotoViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectCell(indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let albumPhoto = source[indexPath.section][indexPath.row]
+        let options = PHFetchOptions()
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+        
+        let fetchResult = PHAsset.fetchAssets(in: albumPhoto, options: options)
+        
+        if fetchResult.count > 0 {
+            return UITableView.automaticDimension
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
+    }
 }

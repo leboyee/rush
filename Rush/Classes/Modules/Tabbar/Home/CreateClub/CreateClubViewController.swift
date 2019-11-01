@@ -27,7 +27,7 @@ class CreateClubViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-      
+    
     //    @IBOutlet weak var containerView: UIView!
     //    @IBOutlet weak var photoSelectionView: UIView!
     //    @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
@@ -35,7 +35,7 @@ class CreateClubViewController: UIViewController {
     //    @IBOutlet weak var radiusView: UIView!
     
     var imageList = [Any]()
-//    var imagePicker = UIImagePickerController()
+    //    var imagePicker = UIImagePickerController()
     var picker = ImagePickerController()
     var selectedContactList = [Contact]()
     var nameClub = ""
@@ -121,55 +121,55 @@ class CreateClubViewController: UIViewController {
             validateAllFields()
         }
     }
- 
-      // MARK: - Capture Image
-      func openCameraOrLibrary(type: UIImagePickerController.SourceType, isFromUnsplash: Bool) {
-          DispatchQueue.main.async {
-              if type == .photoLibrary {
-                  Utils.authorizePhoto(completion: { [weak self] (status) in
-                      guard let unsafe = self else { return }
-                      if status == .alreadyAuthorized || status == .justAuthorized {
-                          if isFromUnsplash == true {
-                              let configuration = UnsplashPhotoPickerConfiguration(
-                                                    accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
-                                                    secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
-                                                    allowsMultipleSelection: false
-                                                )
-                                                let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
-                                                unsplashPhotoPicker.photoPickerDelegate = self
-                                         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "placeholder", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                                         (UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) ).defaultTextAttributes =   [NSAttributedString.Key.foregroundColor: UIColor.white]
-                              unsafe.present(unsplashPhotoPicker, animated: true, completion: nil)
-                          } else {
-                              DispatchQueue.main.async {
-                                                        unsafe.picker = ImagePickerController()
-                                                        unsafe.picker.delegate = self
-                                                        unsafe.picker.isSingleSelection = true
-                                                        unsafe.picker.navigationBar.isTranslucent = false
-                                                        var assets = [PHAsset]()
-                                                        for img in unsafe.imageList {
-                                                            if let value = img as? PHAsset { assets.append(value) }
-                                                        }
-                                                        unsafe.picker.updateSelectedAssets(with: assets)
-                                                        unsafe.present(unsafe.picker, animated: false, completion: nil)
-                                                    }
-                          }
+    
+    // MARK: - Capture Image
+    func openCameraOrLibrary(type: UIImagePickerController.SourceType, isFromUnsplash: Bool) {
+        DispatchQueue.main.async {
+            if type == .photoLibrary {
+                Utils.authorizePhoto(completion: { [weak self] (status) in
+                    guard let unsafe = self else { return }
+                    if status == .alreadyAuthorized || status == .justAuthorized {
+                        if isFromUnsplash == true {
+                            let configuration = UnsplashPhotoPickerConfiguration(
+                                accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
+                                secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
+                                allowsMultipleSelection: false
+                            )
+                            let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+                            unsplashPhotoPicker.photoPickerDelegate = self
+                            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "placeholder", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                            (UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) ).defaultTextAttributes =   [NSAttributedString.Key.foregroundColor: UIColor.white]
+                            unsafe.present(unsplashPhotoPicker, animated: true, completion: nil)
+                        } else {
+                            DispatchQueue.main.async {
+                                unsafe.picker = ImagePickerController()
+                                unsafe.picker.delegate = self
+                                unsafe.picker.isSingleSelection = true
+                                unsafe.picker.navigationBar.isTranslucent = false
+                                var assets = [PHAsset]()
+                                for img in unsafe.imageList {
+                                    if let value = img as? PHAsset { assets.append(value) }
+                                }
+                                unsafe.picker.updateSelectedAssets(with: assets)
+                                unsafe.present(unsafe.picker, animated: false, completion: nil)
+                            }
+                        }
                         
-                      } else {
-                          if status != .justDenied {
-                              Utils.photoLibraryPermissionAlert()
-                          }
-                      }
-                  })
-              } else {
-                  let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-                  guard status == .authorized else {
-                      Utils.alertCameraAccessNeeded()
-                      return
-                  }
-              }
-          }
-      }
+                    } else {
+                        if status != .justDenied {
+                            Utils.photoLibraryPermissionAlert()
+                        }
+                    }
+                })
+            } else {
+                let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+                guard status == .authorized else {
+                    Utils.alertCameraAccessNeeded()
+                    return
+                }
+            }
+        }
+    }
     
 }
 
@@ -195,18 +195,7 @@ extension CreateClubViewController {
         }
     }
     
-    /*  @IBAction func addImageButtonAction() {
-     
-     self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: nil)
-     /*  Utils.alert(message: nil, title: nil, buttons: ["Take Photo", "Photo Gallery"], cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
-     guard let unself = self else { return }
-     if index != 2 {
-     unself.openCameraOrLibrary(type: index == 0 ? .camera : .photoLibrary)
-     }
-     } */
-     }*/
-    
-   func setEventImage(imageAsset: Any) {
+    func setEventImage(imageAsset: Any) {
         if let asset = imageAsset as? PHAsset {
             let imageSize = CGSize(
                 width: screenWidth * UIScreen.main.scale,

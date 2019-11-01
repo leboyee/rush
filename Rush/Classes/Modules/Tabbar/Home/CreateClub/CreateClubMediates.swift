@@ -121,8 +121,7 @@ extension CreateClubViewController: ClubHeaderDelegate {
     }
     
     func addPhotoOfClub() {
-                self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: self)
-        //openCameraOrLibrary(type: .photoLibrary)
+        self.performSegue(withIdentifier: Segues.selectEventPhoto, sender: self)
     }
 }
 
