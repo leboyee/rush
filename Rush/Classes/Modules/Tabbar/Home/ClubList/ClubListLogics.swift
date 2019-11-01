@@ -111,18 +111,19 @@ extension ClubListViewController {
         } else {
             cell.setup(topConstraint: 0)
         }
+        
         if myClubsList.count > 0 {
             let club = myClubsList[indexPath.row]
             let image = Image(json: club.clubPhoto ?? "")
             cell.setup(title: club.clubName ?? "")
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
-            cell.setup(imageUrl: image.urlThumb())
+            cell.setup(clubImageUrl: image.urlThumb())
         } else if myClassesList.count > 0 {
             let joinedClass = myClassesList[indexPath.row]
             cell.setup(title: joinedClass.classes?.name ?? "")
             cell.setup(detail: joinedClass.classGroup?.name ?? "")
-            cell.setup(imageUrl: joinedClass.classes?.photo?.urlThumb())
+            cell.setup(classesImageUrl: joinedClass.classes?.photo?.urlThumb())
             var rosterArray = [Invitee]()
             for rs in joinedClass.classGroup?.classGroupRosters ?? [ClassJoined]() {
                 if let user = rs.user {
@@ -130,18 +131,9 @@ extension ClubListViewController {
                     inv.user = user
                     rosterArray.append(inv)
                 }
-               
             }
             cell.setup(invitee: rosterArray)
         }
-//            let classes = myClassesList[indexPath.row]
-//            cell.setup(title: classes.name)
-//            let grpId = classes.myJoinedClass?.first?.groupId
-//            let nm = classes.classGroups?.filter({ $0.id == grpId })
-//            if (nm?.count ?? 0) > 0 {
-//                cell.setup(detail: nm?.first?.name ?? "")
-//            }
-//        } 
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -235,7 +227,7 @@ extension ClubListViewController {
                      Keys.pageNo: pageNoM] as [String: Any]
         
         Utils.showSpinner()
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, _) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, _) in
             guard let uwself = self else { return }
             if uwself.pageNoM == 1 {
                 uwself.myClubsList.removeAll()
