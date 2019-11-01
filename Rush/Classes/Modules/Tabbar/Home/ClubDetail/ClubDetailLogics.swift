@@ -182,7 +182,7 @@ extension ClubDetailViewController {
             let text = count == 1 ? "event" : "events"
             cell.setup(detail: "\(count) \(text)")
         } else {
-            cell.setup(detail: "No event")
+            cell.setup(detail: "No events")
         }
         cell.setup(title: user?.name ?? "")
         cell.setup(bottomConstraintOfImage: 18.5)

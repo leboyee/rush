@@ -81,7 +81,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]
                 cell.setup(title: "\(profile.user?.name ?? "")")
-                if let imageName = profile.user?.photo  {
+                if let imageName = profile.user?.photo {
                     cell.setup(url: URL(string: imageName.thumb))
                 }
                 cell.setup(isHidden: false)
@@ -92,9 +92,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
                 let array = isSearch == true ? searchItem[indexPath.section - 2].contacts : items[indexPath.section - 2].contacts
                 let item = array[indexPath.row]
                 cell.setup(title: "\(item.displayName)")
-                if let image = UIImage(named: "iconProfilePlaceHolder") {
-                    cell.setupImage(image: image)
-                }
+                cell.setupImage(image: #imageLiteral(resourceName: "placeholder-profile-32px"))
                 cell.setup(isHidden: false)
                 cell.setup(isSelected: selectedItem.contains(item))
                 return cell

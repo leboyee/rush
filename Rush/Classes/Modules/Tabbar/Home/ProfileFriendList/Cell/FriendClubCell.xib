@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,11 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="158.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMd-Ih-XZ7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="158.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-event" translatesAutoresizingMaskIntoConstraints="NO" id="loV-Lb-Mw5">
                                 <rect key="frame" x="24" y="16" width="48" height="48"/>
@@ -52,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltz-h5-6Ei">
-                                <rect key="frame" x="24" y="157.5" width="296" height="1"/>
+                                <rect key="frame" x="24" y="158" width="296" height="1"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="6Od-b1-owT"/>
@@ -61,7 +59,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPL-wJ-NTN">
                                 <rect key="frame" x="88" y="66.5" width="75.5" height="20"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="zrq-Rx-77M">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-tabBar" translatesAutoresizingMaskIntoConstraints="NO" id="zrq-Rx-77M">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Cvj-MJ-jD0"/>
@@ -76,7 +74,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="H4F-MY-mAc">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-tabBar" translatesAutoresizingMaskIntoConstraints="NO" id="H4F-MY-mAc">
                                         <rect key="frame" x="15" y="-1" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="GTc-1Z-JJh"/>
@@ -91,7 +89,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="xNr-Ck-2eH">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-tabBar" translatesAutoresizingMaskIntoConstraints="NO" id="xNr-Ck-2eH">
                                         <rect key="frame" x="32" y="-1" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="caG-Y8-t10"/>
@@ -174,6 +172,6 @@
     </objects>
     <resources>
         <image name="img-event" width="48" height="48"/>
-        <image name="profile_tab_inactive" width="23" height="23"/>
+        <image name="placeholder-profile-tabBar" width="20" height="20"/>
     </resources>
 </document>

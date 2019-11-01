@@ -13,7 +13,7 @@ class SelectGallaryPhotoCell: UITableViewCell {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var checkmarkButton: UIButton!
+    @IBOutlet weak var checkmarkImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,47 +67,10 @@ extension SelectGallaryPhotoCell {
         }
         
         userName.text = album.localizedTitle ?? "Others"
-        
-        /*
-        let options = PHFetchOptions()
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-        
-        let fetchResult = PHAsset.fetchAssets(in: album, options: options)
-        let imageSize = CGSize(
-            width: frame.height * UIScreen.main.scale,
-            height: frame.height * UIScreen.main.scale
-        )
-        
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.resizeMode = .exact
-        requestOptions.isNetworkAccessAllowed = true
-        
-        userName.text = album.localizedTitle ?? "Others"
-        
-        
-        fetchResult.enumerateObjects({ asset, index, stop in
-            if index > 2 {
-                stop.initialize(to: true)
-                return
-            }
-            
-            PHCachingImageManager.default().requestImage(
-                for: asset,
-                targetSize: imageSize,
-                contentMode: .aspectFill,
-                options: requestOptions
-            ) { [weak self] image, _ in
-                if let image = image {
-                    self?.userImageView.image = image
-                }
-            }
-        })
-        */
     }
     
     func setup(isCheckMark: Bool) {
-        checkmarkButton.isSelected = isCheckMark
+        checkmarkImage.isHidden = !isCheckMark
     }
 }
 

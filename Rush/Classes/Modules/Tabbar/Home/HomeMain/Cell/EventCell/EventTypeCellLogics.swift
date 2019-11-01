@@ -81,18 +81,27 @@ extension EventTypeCell {
             } else if let classList = list as? [SubClass] {
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
-                cell.setup(classImageUrl: value.photo?.url())
+                cell.setup(classImgUrl: value.photo?.url())
                 if value.myJoinedClass?.count ?? 0 > 0 {
                     let groupid = value.myJoinedClass?[0].groupId
                     let group = value.classGroups?.filter { $0.id == groupid }.first
                     cell.setup(classCount: group?.name ?? "")
                 } else {
-                    cell.setup(classCount: "\(value.classTotalGroups) classes")
+                    var countClass = ""
+                    let count = value.classTotalGroups
+                    if count == 0 {
+                        countClass = "No classes"
+                    } else if count == 1 {
+                        countClass = "1 class"
+                    } else {
+                        countClass = "\(count) classes"
+                    }
+                    cell.setup(classCount: countClass)
                 }
             } else if let classList = list as? [ClassJoined] {
                 let joinedClass = classList[indexPath.item]
                 cell.setup(className: joinedClass.classes?.name ?? "")
-                cell.setup(classImageUrl: joinedClass.classes?.photo?.url())
+                cell.setup(classImgUrl: joinedClass.classes?.photo?.url())
                 cell.setup(classCount: joinedClass.classGroup?.name ?? "")
             }
         }

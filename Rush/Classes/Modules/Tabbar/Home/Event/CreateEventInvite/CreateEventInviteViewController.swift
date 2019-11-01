@@ -53,7 +53,6 @@ class CreateEventInviteViewController: UIViewController {
         inviteButton.layer.cornerRadius = 8.0
         inviteButton.clipsToBounds = true
     }
-    
 }
 
 // MARK: - Actions

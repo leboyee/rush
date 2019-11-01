@@ -183,6 +183,7 @@ extension CreateClubViewController {
         }
         clubHeader.delegate = self
     }
+    
     func downloadPhoto(_ photo: UnsplashPhoto) {
         guard let url = photo.urls[.regular] else { return }
         
@@ -211,9 +212,9 @@ extension CreateClubViewController {
                 }, completion: nil)
             }
         }
-        
         imageDataTask?.resume()
     }
+    
     func loadCountryJson() {
         if let path = Bundle.main.path(forResource: "CountryPhoneCode", ofType: "json") {
             do {
@@ -230,45 +231,6 @@ extension CreateClubViewController {
 // MARK: - Other functions
 extension CreateClubViewController {
     // MARK: - Capture Image
-    /*    func openCameraOrLibrary(type: UIImagePickerController.SourceType) {
-     DispatchQueue.main.async {
-     
-     if type == .photoLibrary {
-     let status = PHPhotoLibrary.authorizationStatus()
-     
-     if status == .notDetermined {
-     Utils.authorizePhoto(completion: { (statusF) in
-     if statusF == .alreadyDenied {
-     self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-     return
-     }
-     })
-     } else {
-     guard status == .authorized else {
-     self.showPermissionAlert(text: Message.phPhotoLibraryAuthorizedMesssage)
-     return
-     }
-     }
-     } else {
-     let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-     guard status == .authorized else {
-     self.showPermissionAlert(text: Message.cameraAuthorizedMesssage)
-     return
-     }
-     }
-     
-     if UIImagePickerController.isSourceTypeAvailable(type) {
-     
-     self.imagePicker.delegate = self
-     self.imagePicker.sourceType = type
-     self.imagePicker.allowsEditing = false
-     self.imagePicker.navigationBar.isTranslucent = false
-     self.present(self.imagePicker, animated: true, completion: nil)
-     }
-     }
-     }
-     */
-    
     
     private func showPermissionAlert(text: String) {
         Utils.alert(message: text, title: "Permission Requires", buttons: ["Cancel", "Settings"], handler: { (index) in
