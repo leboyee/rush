@@ -77,20 +77,20 @@ extension FriendClubCell {
             firstUserImageView.isHidden = true
             secondUserImageView.isHidden = true
             let clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
         } else if invitee?.count == 2 {
             firstUserImageView.isHidden = true
             var clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
             clubInvitee = invitee?[1]
-            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
         } else if invitee?.count ?? 0 > 2 {
             var clubInvitee = invitee?[0]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
             clubInvitee = invitee?[1]
-            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
             clubInvitee = invitee?[2]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), completed: nil)
+            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
             let count = invitee?.count ?? 0
             if count > 3 {
                 userCountLabel.isHidden = false

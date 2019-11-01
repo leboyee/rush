@@ -36,6 +36,6 @@ extension UserNameTableViewCell {
     }
     
     func setup(url: URL?) {
-        postImageView.sd_setImage(with: url, completed: nil)
+        postImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
     }
 }

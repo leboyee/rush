@@ -31,8 +31,6 @@ class PostCommentCell: UITableViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(gesture:)))
         self.detailLabel.addGestureRecognizer(tap)
         self.detailLabel.isUserInteractionEnabled = true
-        
-        imgView.layer.borderColor = UIColor.black.cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -69,15 +67,8 @@ extension PostCommentCell {
     }
     
     func setup(image: URL?) {
-        if image != nil {
-            imgView.contentMode = .scaleAspectFill
-            imgView.layer.borderWidth = 0
-            imgView.sd_setImage(with: image, placeholderImage: #imageLiteral(resourceName: "placeHolderIcon"), options: [], context: nil)
-        } else {
-            imgView.image = #imageLiteral(resourceName: "placeHolderIcon")
-            imgView.contentMode = .scaleToFill
-            imgView.layer.borderWidth = 1
-        }
+        imgView.contentMode = .scaleAspectFill
+        imgView.sd_setImage(with: image, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
     }
     
     func setup(commentText: String) {
