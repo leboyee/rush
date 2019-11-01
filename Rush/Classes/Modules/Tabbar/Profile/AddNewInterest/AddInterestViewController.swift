@@ -79,10 +79,7 @@ class AddInterestViewController: CustomViewController {
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
             customView.addSubview(searchTextField)
             navigationItem.titleView = customView
-        
-        self.rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "plus_white"), style: .plain, target: self, action: #selector(plusButtonAction))
-        self.navigationItem.rightBarButtonItem = self.rightBarButton
-        
+                
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
     }

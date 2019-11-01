@@ -24,6 +24,7 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var handlerImageView: UIImageView!
     @IBOutlet weak var topSearchTextLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerView: UIView!
 
     var completerResults: [MKLocalSearchCompletion] = []
     var mapItemToPresent: MKMapItem?
@@ -51,6 +52,28 @@ class AddLocationViewController: UIViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
+    override func viewWillLayoutSubviews() {
+        var frame = headerView.frame
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                frame.size.height = 0
+                headerView.frame = frame
+                headerView.isHidden = true
+            case .authorizedAlways, .authorizedWhenInUse:
+                frame.size.height = 66
+                headerView.frame = frame
+                headerView.isHidden = false
+            default: break
+                
+            }
+        } else {
+            frame.size.height = 0
+            headerView.frame = frame
+            headerView.isHidden = true
+        }        
     }
 
     override func viewWillDisappear(_ animated: Bool) {

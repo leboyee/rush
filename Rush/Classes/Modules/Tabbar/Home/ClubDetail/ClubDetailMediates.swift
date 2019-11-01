@@ -69,9 +69,6 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
                 cell.setup(url: Authorization.shared.profile?.photo?.urlThumb())
                 cell.setup(font: UIFont.semibold(sz: 13))
-                if let user = Authorization.shared.profile {
-                    cell.set(url: URL(string: user.photo?.thumb ?? ""))
-                }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell else { return UITableViewCell() }

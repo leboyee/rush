@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km@messapps.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcA-Uw-eva" customClass="CustomBlackLabel" customModule="Rush" customModuleProvider="target">
-                        <rect key="frame" x="24" y="32" width="327" height="20.5"/>
+                        <rect key="frame" x="24" y="32" width="313" height="21"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                     <constraint firstItem="YXZ-gM-KQP" firstAttribute="leading" secondItem="go4-bJ-yx7" secondAttribute="leading" constant="24" id="Kt7-2e-0hY"/>
                     <constraint firstItem="Z5w-4U-vfR" firstAttribute="leading" secondItem="go4-bJ-yx7" secondAttribute="leading" constant="24" id="NUN-C0-VKU"/>
                     <constraint firstAttribute="bottom" secondItem="YXZ-gM-KQP" secondAttribute="bottom" id="PmH-Gz-QWg"/>
-                    <constraint firstItem="QcA-Uw-eva" firstAttribute="trailing" secondItem="wOG-dc-JUe" secondAttribute="trailing" id="TWP-f8-jAR"/>
+                    <constraint firstItem="QcA-Uw-eva" firstAttribute="trailing" secondItem="wOG-dc-JUe" secondAttribute="trailing" constant="-14" id="TWP-f8-jAR"/>
                     <constraint firstAttribute="trailing" secondItem="WF7-Ia-g1m" secondAttribute="trailing" constant="24" id="ae2-qc-bt1"/>
                     <constraint firstAttribute="trailing" secondItem="wOG-dc-JUe" secondAttribute="trailing" constant="24" id="fXG-T6-8ie"/>
                     <constraint firstAttribute="trailing" secondItem="YXZ-gM-KQP" secondAttribute="trailing" id="imH-Bc-3UZ"/>
