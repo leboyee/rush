@@ -24,9 +24,9 @@ extension UniversityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-         willDisplay(indexPath)
-     }
-     
+        willDisplay(indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellCount(section)
     }
@@ -39,5 +39,19 @@ extension UniversityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellSelected(indexPath)
+    }
+}
+
+extension UniversityViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+        searchText = textField.text ?? ""
+        pageNo = 1
+        isNextPageExist = false
+        getUniversity()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

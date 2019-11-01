@@ -17,7 +17,7 @@ extension UniversityViewController {
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
-        cell.setup(universityUrl:  URL(string: university.logo ?? ""))
+        cell.setup(universityUrl: URL(string: university.logo ?? ""))
         cell.setup(isCheckMark: selectedIndex == indexPath.row)
     }
     
@@ -28,38 +28,37 @@ extension UniversityViewController {
     }
     
     func willDisplay(_ indexPath: IndexPath) {
-          if isNextPageExist == true, indexPath.row == universityArray.count - 3 {
-           getUniversity(searchText: "")
-          }
-      }
+        if isNextPageExist == true, indexPath.row == universityArray.count - 3 {
+            getUniversity()
+        }
+    }
 }
 
 // MARK: - Services
 extension UniversityViewController {
-    func getUniversity(searchText: String) {
-           //Utils.showSpinner()
-           ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
-               guard let unsafe = self else { return }
-               if unsafe.pageNo == 1 {
-                   unsafe.universityArray.removeAll()
-               }
-                   
-               if value?.count ?? 0 > 0 {
-                   if unsafe.pageNo == 1 {
-                       unsafe.universityArray = value ?? [University]()
-                   } else {
-                       unsafe.universityArray.append(contentsOf: value ?? [University]())
-                   }
-                   unsafe.pageNo += 1
-                   unsafe.isNextPageExist = true
-               } else {
-                   unsafe.isNextPageExist = false
-                   if unsafe.pageNo == 1 {
-                       unsafe.universityArray.removeAll()
-                   }
-               }
-               unsafe.tableView.reloadData()
-           }
-       }
-       
+    func getUniversity() {
+        //Utils.showSpinner()
+        ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
+            guard let unsafe = self else { return }
+            if unsafe.pageNo == 1 {
+                unsafe.universityArray.removeAll()
+            }
+            
+            if value?.count ?? 0 > 0 {
+                if unsafe.pageNo == 1 {
+                    unsafe.universityArray = value ?? [University]()
+                } else {
+                    unsafe.universityArray.append(contentsOf: value ?? [University]())
+                }
+                unsafe.pageNo += 1
+                unsafe.isNextPageExist = true
+            } else {
+                unsafe.isNextPageExist = false
+                if unsafe.pageNo == 1 {
+                    unsafe.universityArray.removeAll()
+                }
+            }
+            unsafe.tableView.reloadData()
+        }
+    }
 }

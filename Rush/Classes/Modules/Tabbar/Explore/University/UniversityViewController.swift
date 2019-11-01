@@ -21,13 +21,15 @@ class UniversityViewController: UIViewController {
     var pageNo: Int = 1
     var isNextPageExist: Bool = false
     weak var delegate: UniversityViewControllerDelegate?
+    var searchText = ""
+    var searchTextFiled: UITextField?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         setupUI()
-        getUniversity(searchText: "")
+        getUniversity()
     }
     
     func setupUI() {
@@ -37,9 +39,23 @@ class UniversityViewController: UIViewController {
         setupTableView()
         
         // Set navigation title
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: "University/school", textColor: UIColor.navBarTitleWhite32)
+//        navigationItem.titleView = Utils.getNavigationBarTitle(title: "University/school", textColor: UIColor.navBarTitleWhite32)
         
-        //navigationController?.navigationBar.isTranslucent = false
+        // Set left bar button and title
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        searchTextFiled = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+        searchTextFiled?.font = UIFont.displayBold(sz: 24)
+        searchTextFiled?.textColor = UIColor.white
+        searchTextFiled?.returnKeyType = .go
+        searchTextFiled?.autocorrectionType = .no
+        searchTextFiled?.delegate = self
+        let font = UIFont.displayBold(sz: 24)
+        let color = UIColor.navBarTitleWhite32
+        searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "University/school", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+        searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchTextFiled ?? UITextField())
+        navigationItem.titleView = customView
+        
     }
     
     @objc func backButtonAction() {

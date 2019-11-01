@@ -129,8 +129,8 @@ extension CreatePostViewController {
     }
     
     @IBAction func cancelButtonAction() {
-       close()
-       DispatchQueue.main.async {
+        close()
+        DispatchQueue.main.async {
             self.delegate?.showSnackBar(text: "You didn't finish your post.", buttonText: "Finish it")
         }
     }
