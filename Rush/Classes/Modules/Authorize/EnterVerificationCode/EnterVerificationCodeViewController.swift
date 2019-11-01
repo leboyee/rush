@@ -130,6 +130,7 @@ extension EnterVerificationCodeViewController {
         codeErrorCancelButton.isHidden = true
         codeLabel.text = ""
         digitTextField.text = ""
+        
         resendCodeApiCalled()
         //view.endEditing(true)
     }

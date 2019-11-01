@@ -119,7 +119,14 @@ extension CreateEventViewController {
     }
     
     @IBAction func deleteEventButtonAction() {
-        deleteEventAPI(id: String(event?.id ?? 0))
+        Utils.alert(message: "Are you sure you want to delete this event?", title: nil, buttons: ["Yes"], cancel: "No", type: .actionSheet) { [weak self] (index) in
+                  guard let uwself = self else { return }
+                  if index == 0 {
+                    uwself.deleteEventAPI(id: String(uwself.event?.id ?? 0))
+                  }
+                  
+              }
+        
     }
     
     @IBAction func addImageButtonAction() {
