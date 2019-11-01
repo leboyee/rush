@@ -41,7 +41,11 @@ extension PeopleCell {
     }
     
     func setup(url: URL?) {
-        profileImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-University"))
+        profileImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
+    }
+    
+    func setup(universityUrl: URL?) {
+        profileImage.sd_setImage(with: universityUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-University"))
     }
     
     func setup(checkMark: Bool) {

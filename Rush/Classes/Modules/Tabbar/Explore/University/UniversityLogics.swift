@@ -17,7 +17,7 @@ extension UniversityViewController {
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
-        cell.setup(url:  URL(string: university.logo ?? ""))
+        cell.setup(universityUrl:  URL(string: university.logo ?? ""))
         cell.setup(isCheckMark: selectedIndex == indexPath.row)
     }
     

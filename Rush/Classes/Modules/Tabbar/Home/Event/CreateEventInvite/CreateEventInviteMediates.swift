@@ -92,9 +92,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
                 let array = isSearch == true ? searchItem[indexPath.section - 2].contacts : items[indexPath.section - 2].contacts
                 let item = array[indexPath.row]
                 cell.setup(title: "\(item.displayName)")
-                if let image = UIImage(named: "iconProfilePlaceHolder") {
-                    cell.setupImage(image: image)
-                }
+                cell.setupImage(image: #imageLiteral(resourceName: "placeholder-profile-32px"))
                 cell.setup(isHidden: false)
                 cell.setup(isSelected: selectedItem.contains(item))
                 return cell
