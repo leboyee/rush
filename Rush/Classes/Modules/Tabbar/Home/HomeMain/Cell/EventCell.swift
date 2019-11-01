@@ -105,8 +105,6 @@ extension EventCell {
         dateLabel.isHidden = false
         dateLabel.text = date.toString(format: "MMM").uppercased()
         dateNumericLabel.text = date.toString(format: "dd")
-        //        dayLabel.text = date.toString(format: "EEEE")
-        
     }
     
     func setup(start: Date?, end: Date?) {
@@ -167,7 +165,7 @@ extension EventCell {
             firstUserImageView.isHidden = true
             secondUserImageView.isHidden = true
             let clubInvitee = invitee?[0]
-                thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"), context: nil)
+                thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
            
         } else if invitee?.count == 2 {
             firstUserImageView.isHidden = true

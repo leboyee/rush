@@ -125,8 +125,8 @@ extension CustomTabbarViewController {
             }
         } else {
             if let tabbarItem = tabBar.items?.last {
-                tabbarItem.image = getImage("profile_tab_inactive")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                tabbarItem.selectedImage = getImage("profile_tab_active")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.image = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.selectedImage = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
             }
         }
     }
@@ -163,8 +163,8 @@ extension CustomTabbarViewController {
             }
         } else {
             if let tabbarItem = tabBar.items?.last {
-                tabbarItem.image = getImage("profile_tab_inactive")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                tabbarItem.selectedImage = getImage("profile_tab_active")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.image = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.selectedImage = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
             }
         }
     }

@@ -231,7 +231,7 @@
                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXN-Up-cpP">
                         <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-event-bg" translatesAutoresizingMaskIntoConstraints="NO" id="AvI-z2-JuO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-classCard" translatesAutoresizingMaskIntoConstraints="NO" id="AvI-z2-JuO">
                                 <rect key="frame" x="0.0" y="0.0" width="257" height="161"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:aAp-K2-EIZ:image" translatesAutoresizingMaskIntoConstraints="NO" id="aAp-K2-EIZ">
@@ -13968,8 +13968,8 @@ AAx70QAMe9kADHvcAAx77gAMe/EADHv2AAAAAAAABAEAAAAAAAAAbQAAAAAAAAAAAAAAAAAMe/g
 </mutableData>
         </image>
         <image name="img-event" width="48" height="48"/>
+        <image name="placeholder-classCard" width="224" height="157"/>
         <image name="privacy-lock" width="28" height="28"/>
         <image name="profile_tab_inactive" width="23" height="23"/>
-        <image name="test-event-bg" width="224" height="157"/>
     </resources>
 </document>
