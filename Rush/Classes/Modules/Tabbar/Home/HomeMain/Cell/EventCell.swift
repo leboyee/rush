@@ -77,11 +77,23 @@ extension EventCell {
         timeLabel.text = eventDetail
     }
     
+    // use this for event small icon
     func setup(eventImageUrl: URL?) {
-        eventImageView.sd_setImage(with: eventImageUrl, completed: nil)
+        eventImageView.sd_setImage(with: eventImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-event48px"))
     }
+    
+    // use this for club small icon
+    func setup(clubImageUrl: URL?) {
+        eventImageView.sd_setImage(with: clubImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-club48px"))
+    }
+    
+    // use this for classes small icon
+    func setup(classesSmallImageUrl: URL?) {
+        eventImageView.sd_setImage(with: classesSmallImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classChat-#1"))
+    }
+    
     func setup(classImageUrl: URL?) {
-        classImageView.sd_setImage(with: classImageUrl, completed: nil)
+        classImageView.sd_setImage(with: classImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classCard"))
     }
     
     func setup(date: Date?) {

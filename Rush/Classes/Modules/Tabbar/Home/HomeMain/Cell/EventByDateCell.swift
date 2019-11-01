@@ -54,8 +54,19 @@ extension EventByDateCell {
         detailLabel.text = detail
     }
     
+    // use this for event
     func setup(eventImageUrl: URL?) {
-        imgView.sd_setImage(with: eventImageUrl, completed: nil)
+        imgView.sd_setImage(with: eventImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-event48px"))
+    }
+    
+    // use this for club
+    func setup(clubImageUrl: URL?) {
+        imgView.sd_setImage(with: clubImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-club48px"))
+    }
+    
+    // use this for classes
+    func setup(classesImageUrl: URL?) {
+        imgView.sd_setImage(with: classesImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classChat-#1"))
     }
     
     func setup(date: Date?) {

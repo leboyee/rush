@@ -49,7 +49,7 @@ extension EventTypeCell {
                 cell.setup(eventName: club.clubName ?? "")
                 cell.setup(eventDetail: club.clubDesc ?? "")
                 let img = Image(json: club.clubPhoto ?? "")
-                cell.setup(eventImageUrl: img.url())
+                cell.setup(clubImageUrl: img.url())
                 cell.joinButton.isHidden = false
                 if let invitee = club.invitees {
                     let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
@@ -73,7 +73,6 @@ extension EventTypeCell {
             if let classList = list as? [Class] {
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
-                //                cell.setup(classCount: "\(value.classList?.count ?? 0) classes")
             } else if let classList = list as? [SubClass] {
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
