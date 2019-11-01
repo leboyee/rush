@@ -30,14 +30,14 @@ extension UserCell {
     }
     
     func setup(url: URL?) {
-        imageView.sd_setImage(with: url, placeholderImage: nil)
+        imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
     }
     
     func setup(image: String) {
         if image == Text.viewAll {
             imageView.image = nil
         } else {
-            imageView.sd_setImage(with: URL(string: image), completed: nil)
+            imageView.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
         }
     }
     

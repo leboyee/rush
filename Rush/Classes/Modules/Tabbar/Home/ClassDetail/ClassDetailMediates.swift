@@ -70,6 +70,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
                 cell.setup(font: UIFont.semibold(sz: 13))
                 cell.setup(titleColor: UIColor.lightGrayColor)
+                cell.setup(url: Authorization.shared.profile?.photo?.urlThumb())
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.singleButtonCell, for: indexPath) as? SingleButtonCell else { return UITableViewCell() }

@@ -67,6 +67,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 5 {
             if joinedClub {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.createUserPost, for: indexPath) as? CreateUserPostCell else { return UITableViewCell() }
+                cell.setup(url: Authorization.shared.profile?.photo?.urlThumb())
                 cell.setup(font: UIFont.semibold(sz: 13))
                 return cell
             } else {

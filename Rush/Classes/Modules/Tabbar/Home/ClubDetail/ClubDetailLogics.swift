@@ -236,18 +236,6 @@ extension ClubDetailViewController {
         cell.setup(isUserInterectionEnable: false)
     }
     
-    /*  // Image cell (section 6 row 2)
-     func fillPostImageCell(_ cell: PostImagesCell, _ indexPath: IndexPath) {
-     let index = indexPath.section - (sections?.count ?? 0)
-     if let post = postList?[index] {
-     cell.set(images: post.images)
-     cell.showImages = { [weak self] (index) in
-     guard let unsafe = self else { return }
-     unsafe.showPostImages(post: post, index: index)
-     }
-     }
-     } */
-    
     func fillImageCell(_ cell: UserPostImageTableViewCell, _ indexPath: IndexPath) {
         let post = clubPostList[indexPath.section - 6]
         if let list = post.images {
