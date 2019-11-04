@@ -64,5 +64,11 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cellWillDisplay?(indexPath.row)
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if cellType == .profileImage {
+           return 2.0
+        }
+        return 8.0
+    }
 }
