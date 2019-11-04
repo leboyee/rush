@@ -15,14 +15,13 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         
-        let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
-        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
-        
         tableView.register(UINib(nibName: Cell.question, bundle: nil), forCellReuseIdentifier: Cell.question)
         tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.reloadData()
+        
+        fillImageHeader()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,9 +70,7 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.userImagesHeader) as? UserImagesHeaderView else { return UIView() }
-            fillImageHeader(view)
-            return view
+            return UIView()
         } else {
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
             fillTextHeader(header, section)
@@ -98,9 +95,52 @@ extension OtherUserProfileController: NotificationAlertDelegate {
     }
 }
 
-// MARK: - Scrollview delegate
-extension OtherUserProfileController: UIScrollViewDelegate {
+// MARK: - Header delegates
+extension OtherUserProfileController: UIScrollViewDelegate, ClubHeaderDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
+        let smallHeaderHeight = headerSmallWithDateHeight
+        let smallHeight = smallHeaderHeight + topMergin
+        let h = heightConstraintOfHeader.constant - scrollView.contentOffset.y
+        let height = min(max(h, smallHeight), screenHeight)
+        self.heightConstraintOfHeader.constant = height
+        if !smallHeight.isEqual(to: height) {
+            tableView.contentOffset = CGPoint(x: 0, y: 0)
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    private func animateHeader() {
+        self.heightConstraintOfHeader.constant = headerFullHeight
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func fillImageHeader() {
+        header.delegate = self
+        header.setup(profileUrl: userInfo?.photo?.urlLarge())
+        header.set(name: userInfo?.name ?? "")
+        if let university = userInfo?.university?.first {
+            header.set(university: university.universityName)
+        }
+    }
+    
+    func addPhotoOfClub() { }
+    
+    func infoOfClub() {
+        performSegue(withIdentifier: Segues.profileInformation, sender: nil)
     }
 }

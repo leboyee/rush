@@ -150,7 +150,7 @@ extension HomeViewController {
 extension HomeViewController {
     func getHomeList() {
 
-        ServiceManager.shared.fetchHomeList(params: [:]) { [weak self] (data, error) in
+        ServiceManager.shared.fetchHomeList(params: [:]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let home = data {
                 if home.myEvents?.count ?? 0 > 0 {

@@ -35,6 +35,7 @@ class ClubManageCell: UITableViewCell {
     
     var firstButtonClickEvent: (() -> Void)?
     var secondButtonClickEvent: (() -> Void)?
+    var messageButtonClickEvent: (() -> Void)?
     @IBOutlet weak var topConstraintOfButton: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfMessageButton: NSLayoutConstraint!
     let topPadding: CGFloat = 16.0
@@ -175,6 +176,6 @@ extension ClubManageCell {
     }
     
     @IBAction func messageButtonAction() {
-        firstButtonClickEvent?()
+        messageButtonClickEvent?()
     }
 }

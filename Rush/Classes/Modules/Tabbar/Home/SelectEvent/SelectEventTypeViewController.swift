@@ -78,7 +78,7 @@ extension SelectEventTypeViewController {
             eventView.isHidden = true
             photoSelectionView.isHidden = true
         } else if type == .event {
-            heightConstraintOfContainerView.constant = 426
+            heightConstraintOfContainerView.constant = 350
             eventView.isHidden = false
             eventCategoryView.isHidden = true
             photoSelectionView.isHidden = true
@@ -155,13 +155,13 @@ extension SelectEventTypeViewController {
             
             gestureRecognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.containerView)
             bottomConstraintOfContainerView.constant -= translation.y
-            UIView.animate(withDuration: 0.8, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
         } else if gestureRecognizer.state == UIGestureRecognizer.State.ended {
             if type == .event {
                 if bottomConstraintOfContainerView.constant < -200 {
-                    UIView.animate(withDuration: 0.8, animations: {
+                    UIView.animate(withDuration: 0.3, animations: {
                         self.dismiss(animated: false, completion: nil)
                     })
                 } else {
@@ -172,7 +172,7 @@ extension SelectEventTypeViewController {
                 }
             } else {
                 if bottomConstraintOfContainerView.constant < -100 {
-                    UIView.animate(withDuration: 0.8, animations: {
+                    UIView.animate(withDuration: 0.3, animations: {
                         self.dismiss(animated: false, completion: nil)
                     })
                 } else {
