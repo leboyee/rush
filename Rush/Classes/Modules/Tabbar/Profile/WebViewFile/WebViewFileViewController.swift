@@ -49,8 +49,29 @@ extension WebViewFileViewController {
         webview.loadRequest(URLRequest(url: url))
         
         /// Title
-        let customTitleView = Utils.getNavigationBarTitle(title: text, textColor: UIColor.white)
-        navigationItem.titleView = customTitleView
+        let backbutton = UIButton()
+        backbutton.setImage(UIImage(named: "back-arrow"), for: .normal)
+        backbutton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        label.text = text
+        label.font = UIFont.displayBold(sz: 24)
+        label.textColor = UIColor.white
+        
+        let stackview = UIStackView.init(arrangedSubviews: [backbutton, label])
+        stackview.axis = .horizontal
+        stackview.alignment = .center
+        stackview.spacing = 8
+        let titleBarItem = UIBarButtonItem(customView: stackview)
+        
+        navigationItem.leftBarButtonItem = titleBarItem
+        navigationItem.hidesBackButton = true
     }
-    
+}
+
+// MARK: - Actions
+extension WebViewFileViewController {
+    @objc func backButtonAction() {
+        navigationController?.popViewController(animated: false)
+    }
 }

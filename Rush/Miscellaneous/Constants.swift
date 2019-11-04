@@ -383,6 +383,7 @@ public struct Message {
     static let instagramMessage =
     "Your photos will be automatically uploaded to Rush. It might take a few minutes."
     static let deleteChat = "Are you sure you want to delete this chat?"
+    static let eventRejected = "Event invitation has been rejected successfully."
 }
 
 public struct Icons {
