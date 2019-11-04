@@ -483,7 +483,6 @@ extension ImagePickerController: SelectGallaryPhotoViewControllerDelegate {
         selectedAlbum = album
         title = album?.localizedTitle ?? "Other"
         galleryViewController = PhotoGalleryViewController(album: album, configuration: configuration)
-        dismiss(animated: false, completion: nil)
         UIView.animate(withDuration: SlideUpPresentation.animationDuration) {
             self.albumButton.isSelected = false
         }

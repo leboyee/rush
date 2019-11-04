@@ -27,6 +27,13 @@ extension SelectGallaryPhotoViewController {
         let albumPhoto = source[indexPath.section][indexPath.row]
         selectedTitle = albumPhoto.localizedTitle ?? "Others"
         selectedAlbum = source[indexPath.section][indexPath.row]
+        selectedIndex = indexPath.section
         tableView.reloadData()
+        
+        if selectedAlbum == nil {
+            selectedAlbum = source[0][0]
+        }
+        
+        self.delegate?.dismissView?(selectedAlbum)
     }
 }
