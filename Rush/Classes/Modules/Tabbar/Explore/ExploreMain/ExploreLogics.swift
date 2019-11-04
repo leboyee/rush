@@ -172,6 +172,11 @@ extension ExploreViewController {
             guard let unself = self else { return }
             
             let type = section == 1 ? ScreenType.event : section == 2 ? ScreenType.club : section == 3 ? .classes : .none
+            if section == 1 {
+                unself.isToday = true
+            } else {
+                unself.isToday = false
+            }
             unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
             
         }
@@ -197,6 +202,7 @@ extension ExploreViewController {
             }
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
+            isToday = false
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
         }
     }

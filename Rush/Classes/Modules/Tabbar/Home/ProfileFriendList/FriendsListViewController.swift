@@ -78,8 +78,16 @@ class FriendsListViewController: UIViewController {
         
         firstSegmentButton.setTitle(firstTitle, for: .normal)
         secondSegmentButton.setTitle(secondTitle, for: .normal)
-        
-        // Do any additional setup after loading the view.
+       
+        // only to get unselected tab count
+             
+        if type == .events {
+            getManagedEventList()
+        } else if type == .clubs {
+            getManagedClubList()
+        } else if type == .friends {
+            getMutualFriendsListAPI()
+        }
       
     }
     
