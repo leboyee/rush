@@ -37,6 +37,7 @@ class OtherUserProfileController: UIViewController {
     var rsvpQuestion: [RSVPQuestion]?
     var rsvpAnswer: [RSVPAnswer]?
     var friendList = [Friend]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,14 +128,14 @@ extension OtherUserProfileController {
             vc.clubInfo = sender as? Club
         } else if segue.identifier == Segues.classDetailSegue {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
-          let classjoined = sender as? ClassJoined
+            let classjoined = sender as? ClassJoined
             vc.selectedGroup = classjoined?.classGroup
             vc.subclassInfo = classjoined?.classes
         } else if segue.identifier == Segues.otherProfileEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
-               vc.eventId = String(event.id)
-               vc.event = event
+                vc.eventId = String(event.id)
+                vc.event = event
             }
         } else if segue.identifier == Segues.userProfileGallerySegue {
             if let vc = segue.destination as? UserProfileGalleryViewController {

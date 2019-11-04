@@ -145,8 +145,8 @@ extension OtherUserProfileController {
                 controller.channel = channels.first
             }
             unsafe.navigationController?.pushViewController(controller, animated: true)
-        }, errorHandler: { (error) in
-            print(error?.localizedDescription ?? "")
+            }, errorHandler: { (error) in
+                print(error?.localizedDescription ?? "")
         })
     }
     
@@ -297,7 +297,7 @@ extension OtherUserProfileController {
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -310,7 +310,7 @@ extension OtherUserProfileController {
         }
     }
     
-     func getMyJoinedClasses(search: String) {
+    func getMyJoinedClasses(search: String) {
         //pagination not done
         let param = [Keys.pageNo: pageNoClass, Keys.search: "", Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
@@ -331,11 +331,11 @@ extension OtherUserProfileController {
                     unsafe.isNextPageClass = false
                 }
             }
-               unsafe.tableView.reloadData()
-           }
-           
-       }
-
+            unsafe.tableView.reloadData()
+        }
+        
+    }
+    
     func getFriendListAPI() {
         
         let params = [Keys.pageNo: 1,
