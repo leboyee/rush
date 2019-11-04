@@ -107,10 +107,10 @@ extension ExploreViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-       // isSearch = false
+        // isSearch = false
         //heightConstraintOfFilter.constant = 0
-      //  textField.text = ""
-      //  clearButton.isHidden = true
+        //  textField.text = ""
+        //  clearButton.isHidden = true
         tableView.reloadData()
         return true
     }
@@ -202,7 +202,7 @@ extension ExploreViewController: UniversityViewControllerDelegate {
         selUniversity = university
         var uname = ""
         if selUniversity.universityName != "" {
-             uname = selUniversity.universityName
+            uname = selUniversity.universityName
         } else {
             uname = Authorization.shared.profile?.university?.first?.universityName ?? ""
         }

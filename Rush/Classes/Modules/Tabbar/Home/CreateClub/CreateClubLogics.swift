@@ -68,7 +68,11 @@ extension CreateClubViewController {
                 cell.setup(placeholder: "", text: interestList[indexPath.row].interestName)
             }
             cell.textView.isUserInteractionEnabled = false
-            cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
+            if indexPath.row == 0 {
+                cell.setup(iconImage: "interest-gray")
+            } else {
+                cell.imgView.image = nil
+            }
         } else if indexPath.section == 3 {
             if indexPath.row == peopleList.count {
                 cell.setup(placeholder: "", text: "")
@@ -79,7 +83,11 @@ extension CreateClubViewController {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: (invite.isFriend == true ? invite.profile?.name : invite.contact?.displayName) ?? "")
             }
-            cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
+            if indexPath.row == 0 {
+                cell.setup(iconImage: "friend-gray")
+            } else {
+                cell.imgView.image = nil
+            }
             cell.textView.isUserInteractionEnabled = false
         } else if indexPath.section == 4 {
             cell.setup(iconImage: "addLocation")

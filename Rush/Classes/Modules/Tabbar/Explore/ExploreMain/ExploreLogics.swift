@@ -75,7 +75,7 @@ extension ExploreViewController {
                     // not joined yet, so show groups
                     //let classGroup = classObject.classGroups?[indexPath.row]
                     // not joined yet, so show groups
-                   unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
+                    unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
                 }
             }
         }

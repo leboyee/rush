@@ -24,6 +24,7 @@ class Club: Codable {
     var clubUpdatedAt: String?
     var user: User?
     var invitees: [Invitee]?
+    var university: [University]?
     private var convertJsonToPhoto: Image?
     
     private enum CodingKeys: String, CodingKey {
@@ -41,6 +42,7 @@ class Club: Codable {
         case clubTotalJoined = "club_total_joined"
         case user
         case invitees
+        case university
     }
     var clubUId: String {
         return String(clubUserId)

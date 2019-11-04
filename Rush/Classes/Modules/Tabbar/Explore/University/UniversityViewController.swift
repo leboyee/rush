@@ -23,7 +23,8 @@ class UniversityViewController: UIViewController {
     weak var delegate: UniversityViewControllerDelegate?
     var searchText = ""
     var searchTextFiled: UITextField?
-
+    var selectedUniversity: University?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,9 +38,6 @@ class UniversityViewController: UIViewController {
         
         // Setup tableview
         setupTableView()
-        
-        // Set navigation title
-//        navigationItem.titleView = Utils.getNavigationBarTitle(title: "University/school", textColor: UIColor.navBarTitleWhite32)
         
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
@@ -55,7 +53,6 @@ class UniversityViewController: UIViewController {
         searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         customView.addSubview(searchTextFiled ?? UITextField())
         navigationItem.titleView = customView
-        
     }
     
     @objc func backButtonAction() {
@@ -75,28 +72,28 @@ extension UniversityViewController {
      }
      */
     
-  /*  func routeToParent(segue: UIStoryboardSegue?)
+    /*  func routeToParent(segue: UIStoryboardSegue?)
      {
-       // Get the destination view controller and data store
-       let destinationVC = self.presentingViewController as! ExploreViewController
-        var destinationDS = destinationVC.select
-    
-       // Pass data to the destination data store
-       passDataToParent(source: dataStore!, destination: &destinationDS)
-    
-       // Navigate to the destination view controller
-       navigateToParent(source: self, destination: destinationVC)
+     // Get the destination view controller and data store
+     let destinationVC = self.presentingViewController as! ExploreViewController
+     var destinationDS = destinationVC.select
+     
+     // Pass data to the destination data store
+     passDataToParent(source: dataStore!, destination: &destinationDS)
+     
+     // Navigate to the destination view controller
+     navigateToParent(source: self, destination: destinationVC)
      }
-    
+     
      func passDataToParent(source: ChildDataStore, destination: inout ParentDataStore)
      {
-       // Pass data backward
-       destination.name = source.name
+     // Pass data backward
+     destination.name = source.name
      }
-    
+     
      func navigateToParent(source: ChildViewController, destination: ParentViewController)
      {
-       // Navigate backward (dismissing)
-       source.dismiss(animated: true, completion: nil)
+     // Navigate backward (dismissing)
+     source.dismiss(animated: true, completion: nil)
      } */
 }

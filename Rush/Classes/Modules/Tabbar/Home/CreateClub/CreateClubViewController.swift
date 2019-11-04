@@ -118,6 +118,10 @@ class CreateClubViewController: UIViewController {
                 interestList = interests
             }
             
+            if let university = club.university?.first {
+                selectedUniversity = university
+            }
+            
             validateAllFields()
         }
     }
