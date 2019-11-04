@@ -42,7 +42,7 @@ extension EventDetailViewController {
         if event.creator?.userId == Authorization.shared.profile?.userId {
             type = .my
         } else if let eventInvite = event.eventInvite?.last {
-            type = eventInvite.status == 1 ? .joined : .invited
+            type = eventInvite.status == 1 ? .joined : eventInvite.status == 2 ? .rejected : .invited
         } else {
             type = .other
         }
@@ -84,6 +84,14 @@ extension EventDetailViewController {
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .invitee, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags")
+            ]
+        } else if type == .rejected {
+            sections = [
+                EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
                 EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),

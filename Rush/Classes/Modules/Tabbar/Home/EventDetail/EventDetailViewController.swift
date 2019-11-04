@@ -14,6 +14,7 @@ enum EventDetailType {
     case joined
     case invited
     case other
+    case rejected
 }
 
 enum EventSectionType {
