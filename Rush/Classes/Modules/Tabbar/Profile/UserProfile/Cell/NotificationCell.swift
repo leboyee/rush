@@ -48,7 +48,7 @@ extension NotificationCell {
         var key = ""
         var value = ""
         var photo: Image?
-
+        
         if let club = object as? Club {
             key = "{club_name}"
             value = startSeparator + (club.clubName ?? "") + endSeparator
@@ -98,8 +98,8 @@ extension NotificationCell {
         detailText = detailText.replacingOccurrences(of: key, with: value)
         
         label.attributedText = getFormattedString(string: detailText)
-        userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: nil)
-        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: nil)
+        userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px.pdf"))
+        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-event48px.pdf"))
     }
    
 }

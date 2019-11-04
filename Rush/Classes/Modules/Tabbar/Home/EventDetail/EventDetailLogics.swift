@@ -557,11 +557,12 @@ extension EventDetailViewController {
     private func rejectEvent(eventId: String) {
         Utils.showSpinner()
         ServiceManager.shared.rejectEventInvitation(eventId: eventId) { [weak self] (status, errorMessage) in
+            Utils.hideSpinner()
             if status {
                 self?.loadAllData()
+                self?.showMessage(message: Message.eventRejected)
             } else if let message = errorMessage {
                 self?.showMessage(message: message)
-                Utils.hideSpinner()
             }
         }
     }
