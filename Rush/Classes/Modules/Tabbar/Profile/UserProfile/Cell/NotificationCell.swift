@@ -64,17 +64,17 @@ extension NotificationCell {
             value = startSeparator + classObject.name + endSeparator
             photo = classObject.photo
             placeholderMain = "placeholder-classChat-#1"
-        } else if let friend = object as? Friend {
+        } else if let user = object as? User {
             key = "{friend_user_name}"
-            value = startSeparator + (friend.user?.name ?? "") + endSeparator
-            photo = friend.user?.photo
+            value = startSeparator + user.name + endSeparator
+            photo = user.photo
             placeholderMain = "placeholder-profile-48px"
         }
         
         let detailText = text.replacingOccurrences(of: key, with: value)
         label.attributedText = getFormattedString(string: detailText)
         userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderMain))
-        eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: nil)
+        eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px.pdf"))
     }
     
     func set(user: User?, object: Any?, text: String) {
