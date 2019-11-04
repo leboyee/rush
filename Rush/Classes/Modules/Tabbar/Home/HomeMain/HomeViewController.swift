@@ -13,7 +13,7 @@ class HomeViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var isShowTutorial = true
+    var isShowTutorial = false
     var isShowJoinEvents = false
     
     var date = Date()
@@ -50,7 +50,7 @@ class HomeViewController: CustomViewController {
     func setupUI() {
         
         if Utils.getDataFromUserDefault(kHomeTutorialKey) != nil {
-            isShowTutorial = false
+            isShowTutorial = true
         }
         
         setupTableView()
