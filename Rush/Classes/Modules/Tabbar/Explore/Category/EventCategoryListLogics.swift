@@ -381,8 +381,6 @@ extension EventCategoryListViewController {
             param[Keys.intId] = interest?.interestId
         }
         
-        
-        
         if clubList.count == 0 {
             Utils.showSpinner()
         }
