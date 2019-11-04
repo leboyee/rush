@@ -374,7 +374,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7db-7J-A9C">
-                                                        <rect key="frame" x="0.0" y="45" width="414" height="113"/>
+                                                        <rect key="frame" x="0.0" y="45" width="414" height="95"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="public-green" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-xf-qCy">
                                                                 <rect key="frame" x="24" y="16" width="24" height="24"/>
@@ -389,21 +389,21 @@
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer, the attendees, and the event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePn-b0-IWc">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone can see the flyer, the attendees, and the event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePn-b0-IWc">
                                                                 <rect key="frame" x="64" y="42" width="326" height="31.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX7-s4-nGf">
-                                                                <rect key="frame" x="64" y="112" width="350" height="1"/>
+                                                                <rect key="frame" x="64" y="94" width="350" height="1"/>
                                                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="0ze-3L-oIo"/>
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDn-H5-aFu">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                                                 <connections>
                                                                     <action selector="publicButtonAction" destination="qj4-LD-huY" eventType="touchUpInside" id="Uhw-d5-k6q"/>
                                                                 </connections>
@@ -416,7 +416,7 @@
                                                             <constraint firstItem="LX7-s4-nGf" firstAttribute="leading" secondItem="ePn-b0-IWc" secondAttribute="leading" id="GUv-tC-MYi"/>
                                                             <constraint firstItem="Zal-xf-qCy" firstAttribute="top" secondItem="7db-7J-A9C" secondAttribute="top" constant="16" id="H5Z-SR-Z0C"/>
                                                             <constraint firstAttribute="trailing" secondItem="tDn-H5-aFu" secondAttribute="trailing" id="Owg-be-j40"/>
-                                                            <constraint firstAttribute="height" constant="113" id="Si2-Vr-Dye"/>
+                                                            <constraint firstAttribute="height" constant="95" id="Si2-Vr-Dye"/>
                                                             <constraint firstItem="tDn-H5-aFu" firstAttribute="top" secondItem="7db-7J-A9C" secondAttribute="top" id="UCq-En-wZS"/>
                                                             <constraint firstItem="Zal-xf-qCy" firstAttribute="leading" secondItem="7db-7J-A9C" secondAttribute="leading" constant="24" id="X7O-IM-i9t"/>
                                                             <constraint firstItem="Qi5-af-bIB" firstAttribute="leading" secondItem="Zal-xf-qCy" secondAttribute="trailing" constant="16" id="ZYK-Qv-i6g"/>
@@ -429,7 +429,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jny-vs-Q5d">
-                                                        <rect key="frame" x="0.0" y="158" width="414" height="113"/>
+                                                        <rect key="frame" x="0.0" y="140" width="414" height="95"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock-red" translatesAutoresizingMaskIntoConstraints="NO" id="881-WO-xn2">
                                                                 <rect key="frame" x="24" y="16" width="24" height="24"/>
@@ -444,21 +444,21 @@
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone within your college or university can see the flyer. Non-invited users must submit request to see event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9l-KB-LUp">
-                                                                <rect key="frame" x="64" y="44" width="326" height="47"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anyone  can see the flyer. Non-invited users must submit request to see event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9l-KB-LUp">
+                                                                <rect key="frame" x="64" y="44" width="326" height="31.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEO-yY-KDk">
-                                                                <rect key="frame" x="64" y="112" width="350" height="1"/>
+                                                                <rect key="frame" x="64" y="94" width="350" height="1"/>
                                                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="b93-Bi-yVf"/>
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbD-QZ-X0n">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                                                 <connections>
                                                                     <action selector="closedButtonAction" destination="qj4-LD-huY" eventType="touchUpInside" id="LII-yW-0gP"/>
                                                                 </connections>
@@ -472,7 +472,7 @@
                                                             <constraint firstItem="gEO-yY-KDk" firstAttribute="leading" secondItem="i9l-KB-LUp" secondAttribute="leading" id="IXx-FK-ZqS"/>
                                                             <constraint firstItem="xbD-QZ-X0n" firstAttribute="top" secondItem="Jny-vs-Q5d" secondAttribute="top" id="J2H-hP-ZHD"/>
                                                             <constraint firstItem="i9l-KB-LUp" firstAttribute="top" secondItem="881-WO-xn2" secondAttribute="bottom" constant="4" id="Mc8-ph-z8w"/>
-                                                            <constraint firstAttribute="height" constant="113" id="Scz-nH-exK"/>
+                                                            <constraint firstAttribute="height" constant="95" id="Scz-nH-exK"/>
                                                             <constraint firstAttribute="trailing" secondItem="gEO-yY-KDk" secondAttribute="trailing" id="YgG-ZX-VAb"/>
                                                             <constraint firstItem="xbD-QZ-X0n" firstAttribute="leading" secondItem="Jny-vs-Q5d" secondAttribute="leading" id="ZDj-lS-wdm"/>
                                                             <constraint firstAttribute="bottom" secondItem="gEO-yY-KDk" secondAttribute="bottom" id="cMo-FR-P40"/>
@@ -484,7 +484,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zre-lp-1uH">
-                                                        <rect key="frame" x="0.0" y="271" width="414" height="113"/>
+                                                        <rect key="frame" x="0.0" y="235" width="414" height="95"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invite-blue" translatesAutoresizingMaskIntoConstraints="NO" id="NO0-mA-ysE">
                                                                 <rect key="frame" x="24" y="16" width="24" height="24"/>
@@ -499,14 +499,14 @@
                                                                 <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only members can see the flyer, who's is invited, and the event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1j-O0-2SJ">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only members can see the flyer, who’s is invited, and the event information." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1j-O0-2SJ">
                                                                 <rect key="frame" x="64" y="42" width="326" height="31.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                 <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TI-EP-r7z">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                                                 <connections>
                                                                     <action selector="inviteButtonAction" destination="qj4-LD-huY" eventType="touchUpInside" id="kkv-al-oiq"/>
                                                                 </connections>
@@ -517,7 +517,7 @@
                                                             <constraint firstItem="NO0-mA-ysE" firstAttribute="leading" secondItem="zre-lp-1uH" secondAttribute="leading" constant="24" id="7uz-An-zfC"/>
                                                             <constraint firstAttribute="trailing" secondItem="7TI-EP-r7z" secondAttribute="trailing" id="AFf-lS-W9U"/>
                                                             <constraint firstItem="7TI-EP-r7z" firstAttribute="top" secondItem="zre-lp-1uH" secondAttribute="top" id="G35-zL-U52"/>
-                                                            <constraint firstAttribute="height" constant="113" id="Hj4-gp-voR"/>
+                                                            <constraint firstAttribute="height" constant="95" id="Hj4-gp-voR"/>
                                                             <constraint firstItem="cYE-Sy-Xgo" firstAttribute="centerY" secondItem="NO0-mA-ysE" secondAttribute="centerY" id="KAU-gB-vFa"/>
                                                             <constraint firstItem="q1j-O0-2SJ" firstAttribute="top" secondItem="cYE-Sy-Xgo" secondAttribute="bottom" constant="4" id="Maj-Wv-RZv"/>
                                                             <constraint firstAttribute="trailing" secondItem="q1j-O0-2SJ" secondAttribute="trailing" constant="24" id="ZI9-by-leh"/>
