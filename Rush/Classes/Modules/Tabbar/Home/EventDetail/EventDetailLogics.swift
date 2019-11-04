@@ -30,7 +30,11 @@ extension EventDetailViewController {
     }
     
     func deleteEvent(event: Event) {
-        deleteEventAPI(id: String(event.id))
+        Utils.alert(message: Message.deleteEvent, title: Text.deleteEvent, buttons: ["Yes", "No"], type: .alert) { (index) in
+            if index == 0 {
+                self.deleteEventAPI(id: String(event.id))
+            }
+        }
     }
     
     func deletePost(post: Post) {

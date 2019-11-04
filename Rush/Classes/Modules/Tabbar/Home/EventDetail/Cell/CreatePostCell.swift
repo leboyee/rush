@@ -25,6 +25,6 @@ class CreatePostCell: UITableViewCell {
 
 extension CreatePostCell {
     func set(url: URL?) {
-        profileImageView.sd_setImage(with: url, placeholderImage: nil)
+        profileImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
     }
 }

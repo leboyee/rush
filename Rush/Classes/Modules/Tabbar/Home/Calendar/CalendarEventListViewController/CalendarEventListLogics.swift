@@ -25,10 +25,7 @@ extension CalendarEventListViewController {
     
     func fillEventCell(_ cell: CalendarEventCell, _ indexPath: IndexPath) {
         if let group = groups?[indexPath.section] {
-            
-            cell.set(isHideTop: true)
-            cell.set(isHideBottom: false)
-            
+                        
             let event = group.events[indexPath.row]
             cell.set(eventName: event.title)
             cell.set(type: event.type)
@@ -39,7 +36,8 @@ extension CalendarEventListViewController {
             cell.set(start: startTime, end: endTime)
 
             cell.set(isHideRedTimeline: true)
-            
+            cell.set(isHideBottom: false)
+
             /// check next event time as we need red line only in last event with same timing
             /// so if next event time is also match with currrent time, than we return because we does not need to show red time here.
             let nextIndex = indexPath.row + 1
@@ -56,6 +54,7 @@ extension CalendarEventListViewController {
             if let start = startTime, let end = endTime {
                 if date.isGreaterThan(start), date.isLessThan(end) {
                     cell.set(isHideRedTimeline: false)
+                    cell.set(isHideBottom: true)
                 }
             }
         }
