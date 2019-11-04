@@ -48,28 +48,32 @@ extension NotificationCell {
         var key = ""
         var value = ""
         var photo: Image?
-        
+        var placeholderMain = ""
         if let club = object as? Club {
             key = "{club_name}"
             value = startSeparator + (club.clubName ?? "") + endSeparator
             photo = club.photo
+            placeholderMain = "placeholder-club48px"
         } else if let event = object as? Event {
             key = "{event_name}"
             value = startSeparator + event.title + endSeparator
             photo = event.photo
+            placeholderMain = "placeholder-event48px"
         } else if let classObject = object as? SubClass {
             key = "{class_name}"
             value = startSeparator + classObject.name + endSeparator
             photo = classObject.photo
+            placeholderMain = "placeholder-classChat-#1"
         } else if let friend = object as? Friend {
             key = "{friend_user_name}"
             value = startSeparator + (friend.user?.name ?? "") + endSeparator
             photo = friend.user?.photo
+            placeholderMain = "placeholder-profile-48px"
         }
         
         let detailText = text.replacingOccurrences(of: key, with: value)
         label.attributedText = getFormattedString(string: detailText)
-        userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: nil)
+        userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderMain))
         eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: nil)
     }
     
@@ -80,18 +84,22 @@ extension NotificationCell {
         var key = ""
         var value = ""
         var photo: Image?
+        var placeholderSmall = ""
         if let club = object as? Club {
             key = "{club_name}"
             value = startSeparator + (club.clubName ?? "") + endSeparator
             photo = club.photo
+            placeholderSmall = "placeholder-club48px"
         } else if let event = object as? Event {
             key = "{event_name}"
             value = startSeparator + event.title + endSeparator
             photo = event.photo
+            placeholderSmall = "placeholder-event48px"
         } else if let classObject = object as? SubClass {
             key = "{class_name}"
             value = startSeparator + classObject.name + endSeparator
             photo = classObject.photo
+            placeholderSmall = "placeholder-classChat-#1"
         }
         
         var detailText = text.replacingOccurrences(of: userName, with: name)
@@ -99,7 +107,7 @@ extension NotificationCell {
         
         label.attributedText = getFormattedString(string: detailText)
         userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px.pdf"))
-        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-event48px.pdf"))
+        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderSmall))
     }
    
 }
