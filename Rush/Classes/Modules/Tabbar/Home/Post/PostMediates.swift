@@ -137,6 +137,17 @@ extension PostViewController: GrowingTextViewDelegate {
 
 // MARK: - SharePostViewControllerDelegate
 extension PostViewController: SharePostViewControllerDelegate {
+    func shareObject(_ object: Any?) {
+        if let post = object as? Post {
+            var data = [Any]()
+            if let urls = post.images?.compactMap({ $0.urlMedium() }) {
+                data.append(contentsOf: urls)
+            }
+            data.append("Club: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
+            Utils.openActionSheet(controller: self, shareData: data)
+        }
+    }
+    
     func delete(type: SharePostType, object: Any?) {
         deletePostAPI()
     }

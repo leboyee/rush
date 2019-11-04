@@ -551,7 +551,17 @@ extension Utils {
         return UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue
     }
 }
-// MARK: - Filter Function
+// MARK: - Share Function
 extension Utils {
     
+    class func openActionSheet(controller: UIViewController, shareData: [Any]) {
+        let activityViewController = UIActivityViewController(activityItems: shareData, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = controller.view // so that iPads won't crash
+
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook]
+
+        // present the view controller
+        controller.present(activityViewController, animated: true, completion: nil)
+    }
 }

@@ -18,6 +18,7 @@ enum SharePostType {
 
 protocol SharePostViewControllerDelegate: class {
     func delete(type: SharePostType, object: Any?)
+    func shareObject(_ object: Any?)
 }
 
 class SharePostViewController: UIViewController {
@@ -78,8 +79,8 @@ class SharePostViewController: UIViewController {
             if event.creator?.userId != Authorization.shared.profile?.userId {
                 hideDeleteOption()
             }
-        } else if object != nil, let classes = object as? SubClass {
-               hideDeleteOption()
+        } else if object != nil, (object as? SubClass) != nil {
+            hideDeleteOption()
         }
     }
     
@@ -87,13 +88,15 @@ class SharePostViewController: UIViewController {
         heightConstraintOfContainerView.constant -= heightConstraintOfDeletePost.constant
         heightConstraintOfDeletePost.constant = 0
     }
-
 }
 
 // MARK: - Actions
 extension SharePostViewController {
     @IBAction func shareButtonAction() {
         dismissView()
+        DispatchQueue.main.async {
+            self.delegate?.shareObject(self.object)
+        }
     }
     
     @IBAction func deletePostButtonAction() {
@@ -112,7 +115,7 @@ extension SharePostViewController {
 extension SharePostViewController {
     
     /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    */
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     }
+     */
 }
