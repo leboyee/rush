@@ -17,7 +17,6 @@ class CalendarEventCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var leadingSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet weak var timeRedLineImageView: UIImageView!
-    @IBOutlet weak var separatorTop: UIView!
     @IBOutlet weak var separatorBottom: UIView!
 
     let normal: CGFloat = 24.0
@@ -65,10 +64,6 @@ extension CalendarEventCell {
     func set(isNormal: Bool) {
         leadingSeparatorConstraint.constant = isNormal ? normal : extra
         layoutIfNeeded()
-    }
-    
-    func set(isHideTop: Bool) {
-        separatorTop.isHidden = isHideTop
     }
     
     func set(isHideBottom: Bool) {
