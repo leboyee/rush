@@ -17,7 +17,7 @@ extension AddInterestViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.chooseTagCell, bundle: nil), forCellReuseIdentifier: Cell.chooseTagCell)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
-
+        
         let headerNib =   UINib(nibName: ReusableView.inviteHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.inviteHeader)
         tableView.reloadData()
@@ -25,7 +25,7 @@ extension AddInterestViewController: UITableViewDelegate, UITableViewDataSource 
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1    }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellCount(section)
     }
@@ -40,7 +40,7 @@ extension AddInterestViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,7 +68,7 @@ extension AddInterestViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
-
+    
 }
 
 extension AddInterestViewController: UITextFieldDelegate {

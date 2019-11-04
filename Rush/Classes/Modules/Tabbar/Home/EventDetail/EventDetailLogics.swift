@@ -30,7 +30,11 @@ extension EventDetailViewController {
     }
     
     func deleteEvent(event: Event) {
-        deleteEventAPI(id: String(event.id))
+        Utils.alert(message: Message.deleteEvent, title: Text.deleteEvent, buttons: ["Yes", "No"], type: .alert) { (index) in
+            if index == 0 {
+                self.deleteEventAPI(id: String(event.id))
+            }
+        }
     }
     
     func deletePost(post: Post) {
@@ -42,7 +46,11 @@ extension EventDetailViewController {
         if event.creator?.userId == Authorization.shared.profile?.userId {
             type = .my
         } else if let eventInvite = event.eventInvite?.last {
-            type = eventInvite.status == 1 ? .joined : .invited
+            if eventInvite.status == 2, event.eventType != .inviteOnly {
+                type = .other
+            } else {
+                type = eventInvite.status == 1 ? .joined : eventInvite.status == 2 ? .rejected : .invited
+            }
         } else {
             type = .other
         }
@@ -84,6 +92,14 @@ extension EventDetailViewController {
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .manage, title: nil),
+                EventSection(type: .location, title: "Location"),
+                EventSection(type: .invitee, title: "Joined"),
+                EventSection(type: .organizer, title: "Organizer"),
+                EventSection(type: .tags, title: "Interest tags")
+            ]
+        } else if type == .rejected {
+            sections = [
+                EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
                 EventSection(type: .invitee, title: "Joined"),
                 EventSection(type: .organizer, title: "Organizer"),
@@ -557,11 +573,12 @@ extension EventDetailViewController {
     private func rejectEvent(eventId: String) {
         Utils.showSpinner()
         ServiceManager.shared.rejectEventInvitation(eventId: eventId) { [weak self] (status, errorMessage) in
+            Utils.hideSpinner()
             if status {
                 self?.loadAllData()
+                self?.showMessage(message: Message.eventRejected)
             } else if let message = errorMessage {
                 self?.showMessage(message: message)
-                Utils.hideSpinner()
             }
         }
     }

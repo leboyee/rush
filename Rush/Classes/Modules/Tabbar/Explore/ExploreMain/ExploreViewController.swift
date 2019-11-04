@@ -47,6 +47,8 @@ class ExploreViewController: CustomViewController {
     var eventCatPageNo = 1
     var isEventCatIsNextPageExist = true
     
+    var isToday = false
+    
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [SubClass]()
@@ -230,6 +232,9 @@ extension ExploreViewController {
             if let vc = segue.destination as? EventCategoryListViewController {
                 if let type = sender as? ScreenType {
                     vc.type = type
+                    if isToday {
+                        vc.isToday = isToday
+                    }
                 } else if let category = sender as? EventCategory {
                     vc.eventCategory = category
                     vc.type = .event
@@ -272,9 +277,9 @@ extension ExploreViewController {
         } else if segue.identifier == Segues.universitySegue {
             let vc = segue.destination as? UniversityViewController
             vc?.delegate = self
+            vc?.selectedUniversity = selUniversity
         } else if segue.identifier == Segues.searchClubSegue {
             guard let vc = segue.destination as? SearchClubViewController else { return }
-            //            vc.searchType = screenType == .club ? .searchList : .classes
             vc.searchType = .classes
             vc.classObject = sender as? SubClass ?? SubClass()
         }

@@ -13,7 +13,7 @@ class HomeViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var isShowTutorial = true
+    var isShowTutorial = false
     var isShowJoinEvents = false
     
     var date = Date()
@@ -32,12 +32,12 @@ class HomeViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         setup()
+        setup()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
-
+        
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         getHomeList()
@@ -50,7 +50,7 @@ class HomeViewController: CustomViewController {
     func setupUI() {
         
         if Utils.getDataFromUserDefault(kHomeTutorialKey) != nil {
-            isShowTutorial = false
+            isShowTutorial = true
         }
         
         setupTableView()
@@ -64,30 +64,11 @@ class HomeViewController: CustomViewController {
         // Right item button
         let rightBar = UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
         navigationItem.rightBarButtonItem = rightBar
-            
-        /*
-        // create the button
-        let createImage  = UIImage(named: "active-create")!.withRenderingMode(.alwaysOriginal)
-        let createButton = UIButton(frame: CGRect(x: 0, y: 0, width: 78, height: 36))
-        createButton.setBackgroundImage(createImage, for: .normal)
-        createButton.addTarget(self, action: #selector(createButtonAction), for:.touchUpInside)
         
-        // here where the magic happens, you can shift it where you like
-        createButton.transform = CGAffineTransform(translationX: -5, y: 5)
-        
-        // add the button to a container, otherwise the transform will be ignored
-        let createButtonContainer = UIView(frame: createButton.frame)
-        createButtonContainer.addSubview(createButton)
-        let createButtonItem = UIBarButtonItem(customView: createButtonContainer)
-        
-        // add button shift to the side
-        navigationItem.rightBarButtonItem = createButtonItem
-        */
- 
         // Set navigation title (date)
         let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
         let dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
-        let text = date.toString(format: "MMMM dd")
+        let text = Date().toString(format: "MMMM dd")
         dateButton.setTitle(text, for: .normal)
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
@@ -123,7 +104,7 @@ extension HomeViewController {
 
 // MARK: - Mediator / Presenter Functions
 extension HomeViewController {
-
+    
     func showEvent(event: Event?) {
         performSegue(withIdentifier: Segues.homeEventDetail, sender: event)
     }
@@ -157,14 +138,14 @@ extension HomeViewController {
         } else if segue.identifier == Segues.createEvent {
             guard let vc = segue.destination as? CreateEventViewController else { return }
             if let evenType = sender as? EventType {
-               vc.eventType = evenType
+                vc.eventType = evenType
             }
             vc.hidesBottomBarWhenPushed = true
         } else if segue.identifier == Segues.homeEventDetail {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
-               vc.eventId = String(event.id)
-               vc.event = event
+                vc.eventId = String(event.id)
+                vc.event = event
             }
         } else if segue.identifier == Segues.eventListSeuge {
             if let vc = segue.destination as? EventListViewController {
@@ -181,6 +162,5 @@ extension HomeViewController {
             vc.searchType = .classes
             vc.classObject = sender as? SubClass ?? SubClass()
         }
-        
     }
 }

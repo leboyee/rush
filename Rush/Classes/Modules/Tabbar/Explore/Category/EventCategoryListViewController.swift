@@ -45,6 +45,8 @@ class EventCategoryListViewController: UIViewController {
     var endDate = ""
     var startTime = ""
     var endTime = ""
+    var isToday = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,9 +58,17 @@ class EventCategoryListViewController: UIViewController {
 //                firstSortText = eventCategory?.name ?? "All categories"
 //            }
             if interest?.interestName != "" {
-                getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
+                if isToday {
+                    firstSortText = "Today"
+                    firstFilterIndex = EventCategoryDayFilter.today.rawValue
+                    filterType(eventType: .today)
+                    selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
+                } else {
+                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
+                }
+                
             } else {
-                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
+                  getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
             }
         case .club:
             if interest?.interestName != "" {

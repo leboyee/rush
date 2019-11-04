@@ -18,13 +18,24 @@ extension UniversityViewController {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
         cell.setup(universityUrl: URL(string: university.logo ?? ""))
-        cell.setup(isCheckMark: selectedIndex == indexPath.row)
+        
+        if selectedIndex == -1 && selectedUniversity != nil {
+            if university.universtiyId == selectedUniversity?.universtiyId {
+                cell.setup(isCheckMark: true)
+            }
+        } else {
+            cell.setup(isCheckMark: selectedIndex == indexPath.row)
+        }
     }
     
     func cellSelected(_ indexPath: IndexPath) {
         selectedIndex = indexPath.row
         self.delegate?.setSelectedUniversity(university: universityArray[selectedIndex])
         tableView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func willDisplay(_ indexPath: IndexPath) {

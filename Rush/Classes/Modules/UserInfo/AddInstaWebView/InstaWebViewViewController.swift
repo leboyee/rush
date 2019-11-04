@@ -75,6 +75,7 @@ extension InstaWebViewViewController {
         DispatchQueue.main.asyncAfter(deadline: when) {
             alert.dismiss(animated: true, completion: nil)
             AppDelegate.shared?.setupStoryboard()
+            Utils.saveDataToUserDefault("ShowHomeTutorial", kHomeTutorialKey)
         }
     }
 

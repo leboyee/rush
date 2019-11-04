@@ -365,6 +365,7 @@ public struct Text {
     static let addAnotherMinor           = "Add another minor"
     static let addUniversity             = "Add university"
     static let rsvp                      = "RSVP"
+
 }
 
 public struct Message {
@@ -383,6 +384,9 @@ public struct Message {
     static let instagramMessage =
     "Your photos will be automatically uploaded to Rush. It might take a few minutes."
     static let deleteChat = "Are you sure you want to delete this chat?"
+    static let eventRejected = "Event invitation has been rejected successfully."
+    static let deleteEvent = "Are you sure you want to delete this event?"
+
 }
 
 public struct Icons {

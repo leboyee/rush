@@ -97,6 +97,15 @@ extension ClubHeader {
         changePhotoButton.isHidden = true
     }
     
+    func setup(profileUrl: URL?) {
+        userImageView.sd_setImage(with: profileUrl, completed: nil)
+        hoverView.isHidden = false
+        usernameView.isHidden = false
+        addPhotoButton.isHidden = true
+        changePhotoButton.isHidden = true
+        
+    }
+    
     func setup(isHideHoverView: Bool) {
         hoverView.isHidden = isHideHoverView
     }

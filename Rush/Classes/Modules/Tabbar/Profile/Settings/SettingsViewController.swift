@@ -22,6 +22,8 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.isHidden = false
         loadSettings()
     }
     
@@ -33,10 +35,25 @@ extension SettingsViewController {
     private func setup() {
         view.backgroundColor = UIColor.bgBlack
         tabBarController?.tabBar.isHidden = true
+
+        let backbutton = UIButton()
+        backbutton.setImage(UIImage(named: "back-arrow"), for: .normal)
+        backbutton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         
-        let customTitleView = Utils.getNavigationBarTitle(title: Text.settings, textColor: UIColor.white)
-        navigationItem.titleView = customTitleView
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        label.text = Text.settings
+        label.font = UIFont.displayBold(sz: 24)
+        label.textColor = UIColor.white
         
+        let stackview = UIStackView.init(arrangedSubviews: [backbutton, label])
+        stackview.axis = .horizontal
+        stackview.alignment = .center
+        stackview.spacing = 8
+        let titleBarItem = UIBarButtonItem(customView: stackview)
+        
+        navigationItem.leftBarButtonItem = titleBarItem
+        navigationItem.hidesBackButton = true
+
         let button = UIButton()
         button.setTitle(Text.logout, for: .normal)
         button.titleLabel?.font = UIFont.semibold(sz: 13.0)
@@ -49,6 +66,10 @@ extension SettingsViewController {
 
 // MARK: - Actions
 extension SettingsViewController {
+    
+    @objc func backButtonAction() {
+        navigationController?.popViewController(animated: false)
+    }
     
     @objc func logoutAction() {
         performSegue(withIdentifier: Segues.logoutPopup, sender: nil)

@@ -94,7 +94,7 @@ extension FriendClubCell {
             let count = invitee?.count ?? 0
             if count > 3 {
                 userCountLabel.isHidden = false
-                userCountLabel.text = "\(count)+"
+                userCountLabel.text = "\(count - 3)+"
             }
         }
     }

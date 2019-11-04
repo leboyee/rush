@@ -145,8 +145,26 @@ extension EventCategoryListViewController {
             let myclass = classList[indexPath.row]
 //            let image = Image(json: myclass.clubPhoto ?? "")
             cell.setup(title: myclass.name )
-//            cell.setup(detail: club.clubDesc ?? "")
-//            cell.setup(invitee: club.invitees)
+            if myclass.myJoinedClass?.count ?? 0 > 0 {
+                let jClass = myclass.myJoinedClass?.first
+                let cGroup = myclass.classGroups?.filter({ $0.id == jClass?.groupId }).first
+                cell.setup(detail: cGroup?.name ?? "")
+                
+            } else {
+                cell.setup(detail: myclass.location)
+            }
+            
+             var rosterArray = [Invitee]()
+             /*      for rs in selectedGroup?.classGroupRosters ?? [ClassJoined]() {
+                       if let user = rs.user {
+                           let inv = Invitee()
+                           inv.user = user
+                           rosterArray.append(inv)
+                       }
+                      
+                   }
+  */
+            cell.setup(invitee: rosterArray)
             cell.setup(imageUrl: myclass.photo?.url())
             } else {
             cell.setup(detail: "SOMM 24-A")
@@ -380,8 +398,6 @@ extension EventCategoryListViewController {
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
             param[Keys.intId] = interest?.interestId
         }
-        
-        
         
         if clubList.count == 0 {
             Utils.showSpinner()

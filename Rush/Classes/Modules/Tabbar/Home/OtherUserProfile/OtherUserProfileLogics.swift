@@ -14,7 +14,7 @@ extension OtherUserProfileController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
-            return ((Utils.navigationHeigh*2) + 24 + 216)
+            return 16
         } else if (section == 1 && (rsvpQuestion?.count ?? 0) > 0) || (section == 2 && imagesList.count > 0) || (section == 3 && friendList.count > 0) || (section == 4 && eventList.count > 0) || (section == 5 && clubList.count > 0) || (section == 6 && classList.count > 0) {
             return 44
         }
@@ -124,6 +124,11 @@ extension OtherUserProfileController {
                 unself.checkIsChatExistOrNot()
             }
         }
+        
+        cell.messageButtonClickEvent = { [weak self] () in
+            guard let unself = self else { return }
+            unself.checkIsChatExistOrNot()
+        }
     }
     
     func checkIsChatExistOrNot() {
@@ -145,8 +150,8 @@ extension OtherUserProfileController {
                 controller.channel = channels.first
             }
             unsafe.navigationController?.pushViewController(controller, animated: true)
-        }, errorHandler: { (error) in
-            print(error?.localizedDescription ?? "")
+            }, errorHandler: { (error) in
+                print(error?.localizedDescription ?? "")
         })
     }
     
@@ -186,10 +191,6 @@ extension OtherUserProfileController {
         }
     }
     
-    func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
-        
-    }
-    
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         
         var text = section == 0 ? "" : section == 1 ? Text.rsvp : section == 2 ? Text.images : section == 3 ? Text.friends : section == 4 ? Text.events : section == 5 ? Text.clubs : section == 6 ? Text.classes : ""
@@ -214,19 +215,6 @@ extension OtherUserProfileController {
             } else if section == 6 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
-        }
-    }
-    
-    func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(userInfo: userInfo)
-        view.universtityLabel.isHidden = false
-        
-        view.addPhotoButtonEvent = { () in
-        }
-        
-        view.infoButtonEvent = { [weak self] () in
-            guard let unself = self else { return }
-            unself.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
         }
     }
     
@@ -297,7 +285,7 @@ extension OtherUserProfileController {
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -310,7 +298,7 @@ extension OtherUserProfileController {
         }
     }
     
-     func getMyJoinedClasses(search: String) {
+    func getMyJoinedClasses(search: String) {
         //pagination not done
         let param = [Keys.pageNo: pageNoClass, Keys.search: "", Keys.profileUserId: userInfo?.userId ?? "0"] as [String: Any]
         
@@ -331,11 +319,11 @@ extension OtherUserProfileController {
                     unsafe.isNextPageClass = false
                 }
             }
-               unsafe.tableView.reloadData()
-           }
-           
-       }
-
+            unsafe.tableView.reloadData()
+        }
+        
+    }
+    
     func getFriendListAPI() {
         
         let params = [Keys.pageNo: 1,

@@ -75,7 +75,7 @@ extension ExploreViewController {
                     // not joined yet, so show groups
                     //let classGroup = classObject.classGroups?[indexPath.row]
                     // not joined yet, so show groups
-                   unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
+                    unsafe.performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
                 }
             }
         }
@@ -172,6 +172,11 @@ extension ExploreViewController {
             guard let unself = self else { return }
             
             let type = section == 1 ? ScreenType.event : section == 2 ? ScreenType.club : section == 3 ? .classes : .none
+            if section == 1 {
+                unself.isToday = true
+            } else {
+                unself.isToday = false
+            }
             unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
             
         }
@@ -189,9 +194,15 @@ extension ExploreViewController {
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
         } else if isSearch && searchType == .people {
             let category = peopleList[indexPath.row]
-            performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+            
+            if category.userId == Authorization.shared.profile?.userId {
+                self.tabBarController?.selectedIndex = 3
+            } else {
+                performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+            }
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
+            isToday = false
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
         }
     }

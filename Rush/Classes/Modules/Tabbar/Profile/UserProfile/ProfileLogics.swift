@@ -43,7 +43,7 @@ extension ProfileViewController {
     private func handleTapOnLabel(notification: NotificationItem, text: String) {
         switch notification.ntType {
         case .acceptFriendRequest, .friendRequest:
-            if let friend = notification.friend?.last, (friend.user?.name ?? "") == text, let user = friend.user {
+            if let user = notification.generatedBy, user.name == text {
                 showFriend(user: user)
             }
         case .eventInvite, .updateEvent:
@@ -141,7 +141,7 @@ extension ProfileViewController {
         if let notification = profileDetail.notifications?[indexPath.row] {
             switch notification.ntType {
             case .acceptFriendRequest, .friendRequest:
-                cell.set(object: notification.friend?.last, text: notification.ntText)
+                cell.set(object: notification.generatedBy, text: notification.ntText)
             case .eventInvite:
                 cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
             case .clubInvite:
@@ -174,9 +174,7 @@ extension ProfileViewController {
             
             cell.userImageTapEvent = { [weak self] () in
                 guard let unsafe = self else { return }
-                if let friend = notification.friend?.last, let name = friend.user?.name {
-                    unsafe.handleTapOnLabel(notification: notification, text: name)
-                } else if let user = notification.generatedBy {
+                if let user = notification.generatedBy {
                     unsafe.handleTapOnLabel(notification: notification, text: user.name)
                 }
             }

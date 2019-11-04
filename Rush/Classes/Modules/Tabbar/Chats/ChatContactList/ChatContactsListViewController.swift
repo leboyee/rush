@@ -10,7 +10,7 @@ import UIKit
 class ChatContactsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noDataFound: UILabel!
+    @IBOutlet weak var noDataFound: UIView!
     
     var pageNo = 1
     var isNextPageExist = false
