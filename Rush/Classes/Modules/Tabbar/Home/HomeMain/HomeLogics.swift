@@ -64,7 +64,7 @@ extension HomeViewController {
                 cell.setup(bgImage: "popup-green-right")
                 cell.setup(buttonTitle: "Nice!")
             } else {
-                Utils.saveDataToUserDefault("AlreadyShown", kHomeTutorialKey)
+                Utils.removeDataFromUserDefault(kHomeTutorialKey)
                 unself.isShowTutorial = false
                 unself.tableView.reloadData()
             }
@@ -174,7 +174,7 @@ extension HomeViewController {
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, _) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -204,7 +204,7 @@ extension HomeViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, _) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, _) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
