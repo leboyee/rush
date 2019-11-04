@@ -89,8 +89,6 @@ class ClubDetailViewController: UIViewController {
         // setup tableview
         setupTableView()
     }
-    
-
 }
 
 // MARK: - Actions

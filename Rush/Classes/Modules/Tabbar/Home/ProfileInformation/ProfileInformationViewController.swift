@@ -29,6 +29,8 @@ class ProfileInformationViewController: UIViewController {
         // Setup tableview
         setupTableView()
         
+        navigationController?.navigationBar.isTranslucent = false
+        
         // Setup navigation title
         navigationItem.titleView = Utils.getNavigationBarTitle(title: userInfo?.name ?? "", textColor: UIColor.white)
         

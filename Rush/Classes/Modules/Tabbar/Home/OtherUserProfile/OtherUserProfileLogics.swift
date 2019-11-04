@@ -14,7 +14,7 @@ extension OtherUserProfileController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
-            return ((Utils.navigationHeigh*2) + 24 + 216)
+            return 16
         } else if (section == 1 && (rsvpQuestion?.count ?? 0) > 0) || (section == 2 && imagesList.count > 0) || (section == 3 && friendList.count > 0) || (section == 4 && eventList.count > 0) || (section == 5 && clubList.count > 0) || (section == 6 && classList.count > 0) {
             return 44
         }
@@ -186,10 +186,6 @@ extension OtherUserProfileController {
         }
     }
     
-    func fillImagesCell(_ cell: ProfileImageCell, _ indexPath: IndexPath) {
-        
-    }
-    
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         
         var text = section == 0 ? "" : section == 1 ? Text.rsvp : section == 2 ? Text.images : section == 3 ? Text.friends : section == 4 ? Text.events : section == 5 ? Text.clubs : section == 6 ? Text.classes : ""
@@ -214,19 +210,6 @@ extension OtherUserProfileController {
             } else if section == 6 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
-        }
-    }
-    
-    func fillImageHeader(_ view: UserImagesHeaderView) {
-        view.setup(userInfo: userInfo)
-        view.universtityLabel.isHidden = false
-        
-        view.addPhotoButtonEvent = { () in
-        }
-        
-        view.infoButtonEvent = { [weak self] () in
-            guard let unself = self else { return }
-            unself.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
         }
     }
     

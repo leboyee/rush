@@ -16,10 +16,14 @@ protocol OtherUserProfileProtocol: class {
 class OtherUserProfileController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var heightConstraintOfImageView: NSLayoutConstraint!
-    @IBOutlet weak var topConstraintOfLabel: NSLayoutConstraint!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
+    @IBOutlet weak var header: ClubHeader!
+    @IBOutlet weak var backgroundView: RBackgoundView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
+    
+    let headerFullHeight: CGFloat = 344
+    let headerSmallWithDateHeight: CGFloat = 170
     
     var isShowMessageButton = false
     var friendType: ManageButtonType = .addFriend
@@ -48,19 +52,13 @@ class OtherUserProfileController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        tabBarController?.tabBar.isTranslucent = false
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = true
         getProfileAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
-        navigationController?.navigationBar.barTintColor = UIColor.bgBlack
-        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.isNavigationBarHidden = false
     }
     
     //MARk: - Other function
@@ -69,17 +67,6 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
-        
-        topConstraintOfTableView.constant = -Utils.navigationHeigh
-        
-        // share button
-        let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
-        navigationItem.rightBarButtonItem = share
-        
-        // back button
-        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
-        navigationItem.leftBarButtonItem = cancel
-        
         setupTableView()
     }
     
@@ -90,11 +77,11 @@ class OtherUserProfileController: UIViewController {
 
 // MARK: - Actions
 extension OtherUserProfileController {
-    @IBAction func cancelButtonAction() {
+    @IBAction func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func shareButtonAction() {
+    @IBAction func shareButtonAction() {
         performSegue(withIdentifier: Segues.sharePostSegue, sender: nil)
     }
 }
