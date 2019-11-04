@@ -19,7 +19,8 @@ class UserProfileGalleryViewController: UIViewController {
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var userNameLable: UILabel!
     @IBOutlet weak var timeLable: UILabel!
-    
+    @IBOutlet weak var profileImageButton: UIButton!
+
     var selectedIndex: Int? = -1
     var currentIndex: Int = 1
     let layout = UICollectionViewFlowLayout()
@@ -69,6 +70,13 @@ class UserProfileGalleryViewController: UIViewController {
         openShareSheet()
       }
     
+    @IBAction func profileButtonAction(_ sender: Any) {
+        self.dismiss(animated: true) {
+            var dict = [String: Any]()
+            dict["user"] = self.user
+            NotificationCenter.default.post(name: Notification.Name.userProfile, object: nil, userInfo: dict)
+        }
+    }
     // MARK: - Setup Title
     func setTitle(titleStr: String) {
         titleLable.text = titleStr
@@ -81,7 +89,7 @@ class UserProfileGalleryViewController: UIViewController {
             if date.isSameDate(Date()) {
                 timeLable.text = date.toString(format: "hh:mm a")
             } else {
-                timeLable.text = date.toString()
+                timeLable.text = date.toString(format: "MM-dd-yyyy")
             }
         }
     }

@@ -67,6 +67,10 @@ class ClubDetailViewController: UIViewController {
         }
     }
     
+    deinit {
+              NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
+          }
+    
     //MARk: - Other function
     func setup() {
         setupUI()
@@ -86,6 +90,9 @@ class ClubDetailViewController: UIViewController {
             }
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)
+
+        
         // setup tableview
         setupTableView()
     }
@@ -102,6 +109,12 @@ extension ClubDetailViewController {
     @IBAction func shareButtonAction() {
         performSegue(withIdentifier: Segues.sharePostSegue, sender: SharePostType.club)
     }
+    
+    @objc func userProfile(notification: NSNotification) {
+           if let user = notification.userInfo?["user"] as? User {
+               self.performSegue(withIdentifier: Segues.otherUserProfile, sender: user)
+           }
+       }
 }
 
 // MARK: - Others

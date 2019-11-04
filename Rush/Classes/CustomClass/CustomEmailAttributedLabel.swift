@@ -21,7 +21,7 @@ class CustomEmailAttributedLabel: UILabel {
     
     func setupCustomUI() {
         let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.regular(sz: 13)]
-        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.brown24, .font: UIFont.regular(sz: 13)]
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.brown24, .font: UIFont.regular(sz: 13), .link: "https://www.google.com"]
         
         let partOne = NSMutableAttributedString(string: "By entering your email, you accept our", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: " terms and conditions", attributes: yourOtherAttributes)

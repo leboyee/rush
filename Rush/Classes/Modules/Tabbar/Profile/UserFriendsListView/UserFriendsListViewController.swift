@@ -103,6 +103,11 @@ extension UserFriendsListViewController {
                 vc.userInfo = sender as? User
                 vc.delegate = self
             }
+        } else if segue.identifier == Segues.inviteContactListSegue {
+            if let vc = segue.destination as? ContactsListViewController {
+                vc.isFromUserProfile = true
+            }
         }
+
      }
 }

@@ -57,7 +57,7 @@ class EventDetailViewController: UIViewController {
     var postList: [Post]?
     var inviteeList: [Invitee]?
     var totalInvitee: Int = 0
-
+    
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
@@ -91,6 +91,10 @@ class EventDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
     }
+    
+    deinit {
+           NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
+       }
 }
 
 // MARK: - Setup and Privacy
@@ -107,7 +111,7 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
         /// Set Header Delegate
         header.delegate = self
         updateHeaderInfo()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)
         setupTableView()
         loadAllData()
         tableView.isHidden = true
@@ -124,6 +128,12 @@ extension EventDetailViewController {
    
     @IBAction func shareButtoAction() {
         performSegue(withIdentifier: Segues.eventDetailShare, sender: event)
+    }
+    
+    @objc func userProfile(notification: NSNotification) {
+        if let user = notification.userInfo?["user"] as? User {
+            showUserProfile(user: user)
+        }
     }
     
 }

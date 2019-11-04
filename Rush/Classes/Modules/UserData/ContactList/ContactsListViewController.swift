@@ -27,7 +27,7 @@ class ContactsListViewController: UIViewController {
     var searchItem = [ContactsPresenterItem]()
     weak var delegate: ContactsListProtocol?
     var countryCode: [[String: Any]] = []
-
+    var isFromUserProfile: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
             setupUI()

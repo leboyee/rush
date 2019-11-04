@@ -40,13 +40,24 @@ extension AddMinorsViewController {
                 }
             }
             
-            for customMinor in unsafe.selectedArray {
-                if !unsafe.minorArray.contains(where: { $0["name"] as? String == customMinor }) {
-                    var newCustomMinor = [String: Any]()
-                     newCustomMinor["name"] = customMinor
-                    unsafe.minorArray.append(newCustomMinor)
+            if unsafe.isSearch == true {
+                let filterArray = unsafe.selectedArray.filter { $0.contains(searchText) }
+                for customMinor in filterArray {
+                    if !unsafe.minorArray.contains(where: { $0["name"] as? String == customMinor }) {
+                        var newCustomMinor = [String: Any]()
+                        newCustomMinor["name"] = customMinor
+                        unsafe.minorArray.append(newCustomMinor)
+                    }
                 }
-            }
+            } else {
+                for customMinor in unsafe.selectedArray {
+                               if !unsafe.minorArray.contains(where: { $0["name"] as? String == customMinor }) {
+                                   var newCustomMinor = [String: Any]()
+                                    newCustomMinor["name"] = customMinor
+                                   unsafe.minorArray.append(newCustomMinor)
+                               }
+                           }
+            }           
             unsafe.tableView.reloadData()
         }
     }

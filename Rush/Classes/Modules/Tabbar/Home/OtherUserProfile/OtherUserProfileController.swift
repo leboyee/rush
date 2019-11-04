@@ -78,7 +78,7 @@ class OtherUserProfileController: UIViewController {
         // back button
         let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
         navigationItem.leftBarButtonItem = cancel
-        
+
         setupTableView()
     }
     

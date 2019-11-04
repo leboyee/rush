@@ -43,7 +43,7 @@ class ProfileTileViewController: UIViewController {
 //        addImageButton.setTitleColor(.white, for: .normal)
         addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addImageButton)
-
+        fetchImagesList()
         // Setup tableview
         setupCollectionView()
     }

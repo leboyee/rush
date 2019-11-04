@@ -1326,6 +1326,23 @@
                                     <constraint firstAttribute="height" constant="60" id="jIm-bN-cF8"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaB-4t-PSE">
+                                <rect key="frame" x="0.0" y="191" width="414" height="705"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shf-hq-mMz" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="16" width="374" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Shf-hq-mMz" firstAttribute="top" secondItem="IaB-4t-PSE" secondAttribute="top" constant="16" id="H9c-bg-arG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Shf-hq-mMz" secondAttribute="trailing" constant="20" id="jCu-9l-RsV"/>
+                                    <constraint firstItem="Shf-hq-mMz" firstAttribute="leading" secondItem="IaB-4t-PSE" secondAttribute="leading" constant="20" id="xjh-ap-rBj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1333,14 +1350,18 @@
                             <constraint firstItem="O6D-9j-sxY" firstAttribute="trailing" secondItem="WLE-ZQ-3Rh" secondAttribute="trailing" id="8ow-ag-rXd"/>
                             <constraint firstItem="pp7-yy-x1G" firstAttribute="trailing" secondItem="WLE-ZQ-3Rh" secondAttribute="trailing" id="E1T-lm-nYs"/>
                             <constraint firstAttribute="bottom" secondItem="LN1-nW-ZLV" secondAttribute="bottom" constant="-22" id="EC6-Ot-DVH"/>
+                            <constraint firstItem="IaB-4t-PSE" firstAttribute="trailing" secondItem="WLE-ZQ-3Rh" secondAttribute="trailing" id="FQ5-3R-1aI"/>
                             <constraint firstItem="LN1-nW-ZLV" firstAttribute="top" secondItem="WLE-ZQ-3Rh" secondAttribute="top" constant="13" id="JgA-v5-5CV"/>
                             <constraint firstAttribute="bottom" secondItem="T5H-tX-f2j" secondAttribute="bottom" constant="25" id="RnO-vK-oup"/>
                             <constraint firstItem="pp7-yy-x1G" firstAttribute="leading" secondItem="WLE-ZQ-3Rh" secondAttribute="leading" id="TBG-au-LAh"/>
                             <constraint firstItem="pp7-yy-x1G" firstAttribute="top" secondItem="WLE-ZQ-3Rh" secondAttribute="top" constant="13" id="Vfz-xu-N1B"/>
+                            <constraint firstAttribute="bottom" secondItem="IaB-4t-PSE" secondAttribute="bottom" id="WL8-AJ-R7z"/>
+                            <constraint firstItem="IaB-4t-PSE" firstAttribute="leading" secondItem="WLE-ZQ-3Rh" secondAttribute="leading" id="XtL-Np-CmL"/>
                             <constraint firstAttribute="bottom" secondItem="O6D-9j-sxY" secondAttribute="bottom" id="Zvu-R3-zlx"/>
                             <constraint firstItem="O6D-9j-sxY" firstAttribute="leading" secondItem="WLE-ZQ-3Rh" secondAttribute="leading" id="bUt-Rc-mpd"/>
                             <constraint firstItem="LN1-nW-ZLV" firstAttribute="leading" secondItem="WLE-ZQ-3Rh" secondAttribute="leading" id="gOt-2Y-bjr"/>
                             <constraint firstItem="T5H-tX-f2j" firstAttribute="leading" secondItem="WLE-ZQ-3Rh" secondAttribute="leading" id="gSD-BD-jp0"/>
+                            <constraint firstItem="IaB-4t-PSE" firstAttribute="top" secondItem="pp7-yy-x1G" secondAttribute="bottom" id="kUp-pF-uup"/>
                             <constraint firstItem="LN1-nW-ZLV" firstAttribute="trailing" secondItem="WLE-ZQ-3Rh" secondAttribute="trailing" id="uou-wU-5TL"/>
                             <constraint firstItem="O6D-9j-sxY" firstAttribute="top" secondItem="pp7-yy-x1G" secondAttribute="bottom" id="wEk-fK-SO8"/>
                         </constraints>
@@ -1352,6 +1373,8 @@
                         <outlet property="bgImageView" destination="LN1-nW-ZLV" id="PKN-wp-fkP"/>
                         <outlet property="bottomView" destination="T5H-tX-f2j" id="0mY-lr-Vl7"/>
                         <outlet property="nextButton" destination="JEN-Vu-jfp" id="34Y-CN-WFh"/>
+                        <outlet property="noResultLabel" destination="Shf-hq-mMz" id="SGW-zJ-EYa"/>
+                        <outlet property="noResultView" destination="IaB-4t-PSE" id="1AM-lV-mAs"/>
                         <outlet property="pageControl" destination="aHu-81-v5u" id="JvO-7R-qg5"/>
                         <outlet property="pageControllerLeadingConstraint" destination="dCw-wy-8yz" id="hE2-Ok-n29"/>
                         <outlet property="pageControllerView" destination="pvS-MQ-J3h" id="cfj-Rr-lSa"/>
@@ -1382,7 +1405,7 @@
                     <viewLayoutGuide key="safeArea" id="Sho-WF-hk3"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="6701" y="-214"/>
+            <point key="canvasLocation" x="6700.0000000000009" y="-214.28571428571428"/>
         </scene>
         <!--Choose Interest View Controller-->
         <scene sceneID="2xt-bz-9qn">

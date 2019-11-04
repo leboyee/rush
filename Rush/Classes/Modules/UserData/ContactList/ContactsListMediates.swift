@@ -30,7 +30,7 @@ extension ContactsListViewController {
             searchTextFiled?.delegate = self
             let font = UIFont.displayBold(sz: 24)
             let color = UIColor.navBarTitleWhite32
-            searchTextFiled?.attributedPlaceholder = NSAttributedString(string: "Search friends", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+        searchTextFiled?.attributedPlaceholder = NSAttributedString(string: isFromUserProfile == true ? "Find in contacts" : "Search friends", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
             searchTextFiled?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         customView.addSubview(searchTextFiled ?? UITextField())
             navigationItem.titleView = customView

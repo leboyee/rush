@@ -1138,7 +1138,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="809.5" width="414" height="52.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-cp-dBF">
@@ -1148,10 +1148,10 @@
                                             <constraint firstAttribute="height" constant="1" id="lgu-4k-bNO"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
                                         <rect key="frame" x="16" y="8" width="342" height="36.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="310" height="36.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -1167,7 +1167,7 @@
                                             <constraint firstItem="oh8-FT-Rgh" firstAttribute="top" secondItem="Gar-6h-cWt" secondAttribute="top" id="ufI-IH-qnS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
                                         <rect key="frame" x="374" y="14.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="2OE-ZK-g2l"/>
@@ -1835,19 +1835,29 @@
                                 <color key="textColor" red="0.9492824674" green="0.94899171589999998" blue="0.96136647460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qc9-7g-rd1">
+                                <rect key="frame" x="12" y="801" width="392" height="52"/>
+                                <connections>
+                                    <action selector="profileButtonAction:" destination="MIq-9i-pDq" eventType="touchUpInside" id="9gO-hr-9BA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2239781022" green="0.22343283890000001" blue="0.2400914431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="KTO-bu-aff" firstAttribute="bottom" secondItem="qc9-7g-rd1" secondAttribute="bottom" constant="9" id="1K6-1d-Cor"/>
                             <constraint firstItem="VtW-6V-QAm" firstAttribute="leading" secondItem="KTO-bu-aff" secondAttribute="leading" id="2H3-4z-cqa"/>
+                            <constraint firstItem="qc9-7g-rd1" firstAttribute="top" secondItem="VtW-6V-QAm" secondAttribute="bottom" constant="15" id="5CW-Zz-2eX"/>
                             <constraint firstItem="27L-aR-dbX" firstAttribute="leading" secondItem="KTO-bu-aff" secondAttribute="leading" id="9rn-yG-Dyn"/>
                             <constraint firstAttribute="trailing" secondItem="QLR-qM-GMS" secondAttribute="trailing" id="FwV-nG-3F8"/>
                             <constraint firstItem="VtW-6V-QAm" firstAttribute="trailing" secondItem="KTO-bu-aff" secondAttribute="trailing" id="GAI-ip-Qrx"/>
                             <constraint firstItem="27L-aR-dbX" firstAttribute="top" secondItem="VtW-6V-QAm" secondAttribute="bottom" id="J6x-Lx-V7Z"/>
                             <constraint firstItem="QLR-qM-GMS" firstAttribute="leading" secondItem="N6Y-cq-o0N" secondAttribute="leading" id="OuY-5F-Vqv"/>
                             <constraint firstItem="VtW-6V-QAm" firstAttribute="leading" secondItem="KTO-bu-aff" secondAttribute="leading" id="TQ7-1z-6AG"/>
+                            <constraint firstItem="KTO-bu-aff" firstAttribute="trailing" secondItem="qc9-7g-rd1" secondAttribute="trailing" constant="10" id="UFJ-fm-j4b"/>
                             <constraint firstItem="PtV-kh-xhf" firstAttribute="centerX" secondItem="QLR-qM-GMS" secondAttribute="centerX" id="bih-MJ-lRx"/>
                             <constraint firstAttribute="bottom" secondItem="27L-aR-dbX" secondAttribute="bottom" id="br5-tY-BBL"/>
                             <constraint firstItem="KTO-bu-aff" firstAttribute="trailing" secondItem="VtW-6V-QAm" secondAttribute="trailing" id="cu9-MB-Cat"/>
+                            <constraint firstItem="qc9-7g-rd1" firstAttribute="leading" secondItem="KTO-bu-aff" secondAttribute="leading" constant="12" id="kB2-Ee-54Z"/>
                             <constraint firstItem="KTO-bu-aff" firstAttribute="trailing" secondItem="27L-aR-dbX" secondAttribute="trailing" id="m1H-NY-eSR"/>
                             <constraint firstItem="PtV-kh-xhf" firstAttribute="centerY" secondItem="QLR-qM-GMS" secondAttribute="centerY" id="q9y-b8-NZT"/>
                             <constraint firstItem="QLR-qM-GMS" firstAttribute="top" secondItem="N6Y-cq-o0N" secondAttribute="top" constant="35" id="qiZ-v0-nAr"/>
@@ -1861,6 +1871,7 @@
                         <outlet property="backButton" destination="uRB-ES-BFQ" id="w0E-W4-f1n"/>
                         <outlet property="bottomView" destination="27L-aR-dbX" id="aSN-Ix-YPk"/>
                         <outlet property="collectionView" destination="VtW-6V-QAm" id="TQG-LV-9pL"/>
+                        <outlet property="profileImageButton" destination="qc9-7g-rd1" id="2bl-GF-0Ut"/>
                         <outlet property="profilePicImageView" destination="aIJ-rl-cNo" id="uvW-5i-3DM"/>
                         <outlet property="timeLable" destination="dJP-9j-zSa" id="zIp-xc-moj"/>
                         <outlet property="titleLable" destination="PtV-kh-xhf" id="sh7-ul-cUW"/>

@@ -68,6 +68,10 @@ class ClassDetailViewController: UIViewController {
         
     }
     
+    deinit {
+              NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
+          }
+    
     // MARK: - Other function
     func setup() {
         
@@ -79,7 +83,8 @@ class ClassDetailViewController: UIViewController {
         // share button
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)
+
         // setup tableview
         setupTableView()
     }
@@ -108,6 +113,12 @@ extension ClassDetailViewController {
     @IBAction func shareButtonAction() {
         performSegue(withIdentifier: Segues.sharePostSegue, sender: subclassInfo)
         //        performSegue(withIdentifier: Segues.sharePostSegue, sender: SharePostType.club)
+    }
+    
+    @objc func userProfile(notification: NSNotification) {
+        if let user = notification.userInfo?["user"] as? User {
+            self.performSegue(withIdentifier: Segues.otherUserProfile, sender: user)
+        }
     }
 }
 // MARK: - Navigation

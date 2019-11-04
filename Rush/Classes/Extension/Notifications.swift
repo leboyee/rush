@@ -15,4 +15,6 @@ extension Notification.Name {
     static let badNetwork = Notification.Name("kBadNetworkConnectivity")
     static let resetPassword = Notification.Name("kResetPasswordReceivedNotification")
     static let underMaintenance = Notification.Name("kUnderMaintenance")
+    static let userProfile = Notification.Name("kUserProfile")
+
 }

@@ -24,6 +24,7 @@ class AddMinorsViewController: CustomViewController {
     @IBOutlet weak var minorButtonConstraint: NSLayoutConstraint!
     var isEditUserProfile: Bool = false
     var selectedArray = [String]()
+    var isSearch = false
     var minorArray = [[String: Any]]()
     var selectedIndex = -1
     
@@ -131,12 +132,14 @@ extension AddMinorsViewController {
     
     @IBAction func addCustomMinoreButtonAction() {
         if searchTextField.text?.isEmpty == false {
+            isSearch = false
             var dict = [String: Any]()
                  dict["name"] = searchTextField.text
                  selectedArray.append(searchTextField.text ?? "")
                  searchTextField.text = ""
                  getMinorList(searchText: "")
                  self.minorCustomButton.isHidden = true
+                deleteButton.isHidden = true
                  self.view.endEditing(true)
                 self.moveToNext()
                  self.tableView.reloadData()

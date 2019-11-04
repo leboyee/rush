@@ -66,11 +66,16 @@ extension ChooseClassesViewController {
 extension ChooseClassesViewController {
     
     func getClassListAPI(search: String) {
-        let param = [Keys.pageNo: pageNo, Keys.search: search] as [String: Any]
-        
+        let profile = Authorization.shared.profile
+        let university =  profile?.university?.first
+        let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.universityId: "\(university?.universtiyId ?? 0)"] as [String: Any]
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
+                unsafe.noResultView.isHidden = unsafe.classesArray.count > 0 ? true : false
+                let profile = Authorization.shared.profile
+                let university = profile?.university?.first
+                unsafe.noResultLabel.text = "No classes available" // \(university?.universityName ?? "")"
                 unsafe.classesArray = classes
                 unsafe.tableView.reloadData()
             } else {

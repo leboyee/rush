@@ -25,10 +25,15 @@ class EnterEmailViewConteroller: CustomViewController {
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginNumberButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var termTextView: UITextView!
 
     var loginType: LoginType = .register
     var profile = User()
     var isEmailError: Bool = false
+    var rectTerm: CGRect?
+    let termsAndConditionsURL = "https://www.apple.com"
+    let privacyURL            = "https://www.google.com"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -91,7 +96,7 @@ class EnterEmailViewConteroller: CustomViewController {
         } else if loginType == .restoreEmail {
             loginWithPhoneNumberButton.isHidden = true
             loginLineLable.isHidden = true
-            emailTitleLable.text = "Enter email to recieve restore link"
+            emailTitleLable.text = "Enter email to receive restore link"
             nextButton.setTitle("Receive restore link", for: .normal)
         } else {
             termLabel.isHidden = true
@@ -102,9 +107,27 @@ class EnterEmailViewConteroller: CustomViewController {
             loginNumberButtonConstraint.constant = 16
             emailTitleLable.text = Text.emailTitleLogin
             nextButton.setNextButton(isEnable: false)
-
         }
+        
+        setTermAndCondition()
+    
     }
+    
+    func setTermAndCondition() {
+      
+        termTextView.delegate = self
+        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.regular(sz: 13)]
+        
+        let attributedString = NSMutableAttributedString(string: "By entering your email, you accept our terms and conditions and data policy", attributes: yourAttributes)
+        let termRange = (attributedString.string as NSString).range(of: "terms and conditions")
+        attributedString.addAttribute(NSAttributedString.Key.link, value: termsAndConditionsURL, range: termRange)
+        let dataRange = (attributedString.string as NSString).range(of: "data policy")
+        attributedString.addAttribute(NSAttributedString.Key.link, value: privacyURL, range: dataRange)
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.brown24, .font: UIFont.regular(sz: 13)]
+        termTextView.linkTextAttributes = yourOtherAttributes
+        termTextView.attributedText = attributedString
+    }
+
 }
 
 // MARK: - Actions
