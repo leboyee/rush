@@ -124,6 +124,11 @@ extension OtherUserProfileController {
                 unself.checkIsChatExistOrNot()
             }
         }
+        
+        cell.messageButtonClickEvent = { [weak self] () in
+            guard let unself = self else { return }
+            unself.checkIsChatExistOrNot()
+        }
     }
     
     func checkIsChatExistOrNot() {
