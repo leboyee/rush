@@ -42,7 +42,11 @@ extension EventDetailViewController {
         if event.creator?.userId == Authorization.shared.profile?.userId {
             type = .my
         } else if let eventInvite = event.eventInvite?.last {
-            type = eventInvite.status == 1 ? .joined : eventInvite.status == 2 ? .rejected : .invited
+            if eventInvite.status == 2, event.eventType != .inviteOnly {
+                type = .other
+            } else {
+                type = eventInvite.status == 1 ? .joined : eventInvite.status == 2 ? .rejected : .invited
+            }
         } else {
             type = .other
         }
