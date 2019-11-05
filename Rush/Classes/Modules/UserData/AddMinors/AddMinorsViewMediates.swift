@@ -92,7 +92,8 @@ extension AddMinorsViewController: UITextFieldDelegate {
     @objc func textDidChanged(_ textField: UITextField) {
         deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
         let searchText = textField.text ?? ""
-        self.minorCustomButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+        isSearch = searchText.count > 0 ? true : false
+        self.minorCustomButton.isHidden = searchText.count > 0 ? false : true
         getMinorList(searchText: searchText)
     }
     

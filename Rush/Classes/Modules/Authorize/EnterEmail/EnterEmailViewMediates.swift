@@ -112,4 +112,26 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             }
         }
     }
+    
 }
+
+// MARK: - UITextViewDelegate
+extension EnterEmailViewConteroller: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let vc =  storyboard.instantiateViewController(withIdentifier: "WebViewFileViewController") as? WebViewFileViewController else { return false }
+
+        if URL.absoluteString == termsAndConditionsURL {
+            vc.type = .term
+            print("term and condition")
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if URL.absoluteString == privacyURL {
+           vc.type = .policy
+            print("Data Policy")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        return false
+    }
+
+}
+

@@ -20,6 +20,8 @@ class ChooseClassesViewController: CustomViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var noResultView: UIView!
+    @IBOutlet weak var noResultLabel: UILabel!
     @IBOutlet weak var nextButton: CustomButton!
     //@IBOutlet weak var deleteButton: UIButton!
 
@@ -64,6 +66,7 @@ class ChooseClassesViewController: CustomViewController {
         setCustomNavigationBarView()
         self.nextButton.setNextButton(isEnable: true)
         bottomView.isHidden = true
+        noResultView.isHidden = true
     }
     
     // Custom navigation Title View

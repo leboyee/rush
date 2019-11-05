@@ -244,6 +244,7 @@ extension CreateEventViewController {
         } else if segue.identifier == Segues.addLocation {
             if let vc = segue.destination as? AddLocationViewController {
                 vc.delegate = self
+                vc.isRegister = true
             }
         } else if segue.identifier == Segues.addUniversitySegue {
             if let vc = segue.destination as? ChooseUniversityViewController {

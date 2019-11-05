@@ -26,13 +26,15 @@ extension ProfileTileViewController {
     func fillCell(_ cell: ProfileTileCell, _ indexPath: IndexPath) {
         let urlStr: String = imageArray[indexPath.row].thumb
         guard let url: URL = URL(string: urlStr) else { return }
-        
-        //Utils.showSpinner()
-        SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, _, _, _) in
-            cell.imageView.image = image
-            self.selectedImage = image
-           // Utils.hideSpinner()
+        cell.imageView.sd_setImage(with: url) { (_, _, _, _) in
+            
         }
+        //Utils.showSpinner()
+//        SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, _, _, _) in
+//            cell.imageView.image = image
+//            self.selectedImage = image
+//           // Utils.hideSpinner()
+//        }
 
     }
     

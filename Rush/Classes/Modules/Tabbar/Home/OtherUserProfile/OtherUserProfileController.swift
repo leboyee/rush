@@ -67,6 +67,15 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
+        topConstraintOfTableView.constant = -Utils.navigationHeigh        
+        // share button
+        let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
+        navigationItem.rightBarButtonItem = share
+        
+        // back button
+        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(cancelButtonAction))
+        navigationItem.leftBarButtonItem = cancel
+
         setupTableView()
     }
     

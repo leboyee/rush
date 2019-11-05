@@ -103,7 +103,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdo-rS-fYF">
                                 <rect key="frame" x="0.0" y="756" width="414" height="110"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRm-C8-0Xj" customClass="CustomEmailAttributedLabel" customModule="Rush" customModuleProvider="target">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRm-C8-0Xj" customClass="CustomEmailAttributedLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="21" y="75" width="372" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -141,6 +141,60 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-eP-nrf">
+                                        <rect key="frame" x="21" y="68" width="372" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="By entering your email, you accept our terms and conditions and  data policy.">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="13" name="SFProText-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yr-8j-xb7" customClass="CustomLabel" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -171,9 +225,13 @@
                                     <constraint firstAttribute="trailing" secondItem="SMr-zS-6jK" secondAttribute="trailing" constant="24" id="5Cm-FK-7KM"/>
                                     <constraint firstAttribute="height" constant="110" id="7Qq-Wr-kjP"/>
                                     <constraint firstAttribute="trailing" secondItem="aRm-C8-0Xj" secondAttribute="trailing" constant="21" id="IdI-9M-uUG"/>
+                                    <constraint firstAttribute="trailing" secondItem="ecC-eP-nrf" secondAttribute="trailing" constant="21" id="JDo-pC-Dc4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ecC-eP-nrf" secondAttribute="bottom" constant="-14" id="L1P-Np-ujb"/>
+                                    <constraint firstItem="ecC-eP-nrf" firstAttribute="top" secondItem="6yr-8j-xb7" secondAttribute="bottom" constant="3" id="LVV-VG-hxr"/>
                                     <constraint firstItem="aRm-C8-0Xj" firstAttribute="top" secondItem="6yr-8j-xb7" secondAttribute="bottom" constant="10" id="bCh-Td-wNI"/>
                                     <constraint firstItem="6yr-8j-xb7" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" id="fpg-6X-KUV"/>
                                     <constraint firstItem="aRm-C8-0Xj" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" constant="21" id="hWY-a0-fVz"/>
+                                    <constraint firstItem="ecC-eP-nrf" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" constant="21" id="mbk-uf-Ho4"/>
                                     <constraint firstAttribute="bottom" secondItem="SMr-zS-6jK" secondAttribute="bottom" constant="58" id="opf-dZ-BaT"/>
                                     <constraint firstItem="SMr-zS-6jK" firstAttribute="leading" secondItem="zdo-rS-fYF" secondAttribute="leading" constant="24" id="svF-yg-H89"/>
                                     <constraint firstAttribute="bottom" secondItem="aRm-C8-0Xj" secondAttribute="bottom" constant="1" id="xiX-Ez-5rm"/>
@@ -263,6 +321,7 @@
                         <outlet property="nextButton" destination="SMr-zS-6jK" id="NwZ-h9-6dc"/>
                         <outlet property="nextButtonBottomConstraint" destination="opf-dZ-BaT" id="m3z-ty-uVK"/>
                         <outlet property="termLabel" destination="aRm-C8-0Xj" id="T9v-fh-WW4"/>
+                        <outlet property="termTextView" destination="ecC-eP-nrf" id="W04-O2-ngh"/>
                         <segue destination="QHJ-za-7QQ" kind="show" identifier="EnterPasswordSegue" id="cXv-Ki-c6j"/>
                         <segue destination="DWt-eV-rW3" kind="show" identifier="LoginPhoneNoSegue" id="omQ-De-aFE"/>
                     </connections>

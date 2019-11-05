@@ -155,7 +155,11 @@ extension AddLocationViewController {
         self.view.endEditing(true)
         let velocity = gesture.velocity(in: self.view)
         if velocity.y > 0 {
-            self.dismiss(animated: true, completion: nil)
+            if isRegister == true {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     
     }
