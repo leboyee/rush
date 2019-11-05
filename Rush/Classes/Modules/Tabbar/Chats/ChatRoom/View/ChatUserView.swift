@@ -14,6 +14,7 @@ class ChatUserView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
+    var showAllUserClickEvent: (() -> Void)?
     
     var isShowAll = false
     var users = [SBDUser]()
@@ -98,8 +99,7 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == 6 && isShowAll == false {
-            isShowAll = true
-            collectionView.reloadData()
+            showAllUserClickEvent?()
         }
     }
     
