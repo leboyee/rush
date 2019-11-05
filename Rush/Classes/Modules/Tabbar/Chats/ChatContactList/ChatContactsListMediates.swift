@@ -31,8 +31,11 @@ extension ChatContactsListViewController {
         searchTextField.delegate = self
         let font = UIFont.displayBold(sz: 24)
         let color = UIColor.navBarTitleWhite32
-        searchTextField.attributedPlaceholder = NSAttributedString(string: "Search people", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+        searchTextField.attributedPlaceholder = NSAttributedString(string: isFromChat ? "\(titleName)'s invitees" : "Search people", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
         searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        if isFromChat {
+            searchTextField.isUserInteractionEnabled = false
+        }
         customView.addSubview(searchTextField)
         navigationItem.titleView = customView
         
@@ -93,7 +96,9 @@ extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        loadMoreCell(indexPath)
+        if isFromChat == false {
+            loadMoreCell(indexPath)
+        }
     }
     
 }
@@ -101,9 +106,14 @@ extension ChatContactsListViewController: UITableViewDelegate, UITableViewDataSo
 extension ChatContactsListViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         searchText = textField.text ?? ""
-        pageNo = 1
-        isNextPageExist = false
-        getFriendListAPI()
+        
+        if isFromChat {
+            
+        } else {
+            pageNo = 1
+            isNextPageExist = false
+            getFriendListAPI()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

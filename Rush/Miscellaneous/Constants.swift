@@ -128,6 +128,7 @@ struct ViewControllerId {
     static let enterEmailViewConteroller         = "EnterEmailViewConteroller"
     static let clubDetailViewController          = "ClubDetailViewController"
     static let eventDetailViewController         = "EventDetailViewController"
+    static let chatContactsList                  = "ChatContactsListViewController"
 }
 
 /* Create the struct for Section wise */
@@ -238,8 +239,8 @@ struct StoryBoard {
     static let home                      =     "Home"
     static let rsvp                      =     "RSVP"
     static let eventDetail               =     "EventDetail"
-    static let authorize               =     "Authorize"
-
+    static let authorize                 =     "Authorize"
+    static let chat                      =     "Chats"
 }
 
 public struct Text {
