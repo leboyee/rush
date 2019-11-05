@@ -116,7 +116,12 @@ extension FriendsListViewController {
             pageNo += 1
             getMyJoinedClasses()
         } else if isNextPageExist == true, indexPath.row == inviteeList.count - 3 {
-            fetchInvitees(search: searchTextFiled?.text ?? "")
+            if type == .clubJoinedUsers {
+                pageNo += 1
+                fetchClubInviteeAPI()
+            } else {
+                fetchInvitees(search: searchTextFiled?.text ?? "")
+            }
         } else if firstTabNextPageExist == true, indexPath.row == firstTabList.count - 3 {
             firstTabPageNo += 1
             if type == .events {
@@ -451,6 +456,34 @@ extension FriendsListViewController {
             unsafe.firstSegmentButton.setTitle("\(unsafe.goingInviteeList.count) going", for: .normal)
             unsafe.secondSegmentButton.setTitle("\(unsafe.notGoingInviteeList.count) not going", for: .normal)
             
+            unsafe.tableView.reloadData()
+        }
+    }
+    
+    func fetchClubInviteeAPI() {
+        
+        if pageNo == 1 {
+            inviteeList.removeAll()
+        }
+        
+        let param = [Keys.search: searchText,
+                     Keys.clubId: clubId ?? "0",
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchClubInviteeList(clubId: clubId ?? "0", params: param) { [weak self] (value, _, _) in
+            guard let unsafe = self else { return }
+            if let list = value {
+                if list.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.inviteeList = list
+                    } else {
+                        unsafe.inviteeList.append(contentsOf: list)
+                    }
+                    unsafe.isNextPageExist = true
+                } else {
+                    unsafe.isNextPageExist = false
+                }
+            }
             unsafe.tableView.reloadData()
         }
     }

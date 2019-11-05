@@ -168,6 +168,7 @@ extension ClubDetailViewController {
             if let vc = segue.destination as? FriendsListViewController {
                 vc.hidesBottomBarWhenPushed = false
                 vc.inviteeList = clubInfo?.invitees ?? [Invitee]()
+                vc.clubId = clubInfo?.clubId ?? "0"
                 vc.type = sender as? UserProfileDetailType ?? .none
             }
         }

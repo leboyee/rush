@@ -64,7 +64,9 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension FriendsListViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
-
+        searchText = textField.text ?? ""
+        pageNo = 1
+        fetchClubInviteeAPI()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
