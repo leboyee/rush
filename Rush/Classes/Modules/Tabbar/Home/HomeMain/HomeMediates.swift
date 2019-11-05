@@ -35,23 +35,30 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            if isShowTutorial {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
-                fillTutorialCell(cell)
-                return cell
-            } else {
-                return UITableViewCell()
-            }
+        if isShowEmptyPlaceholder(indexPath.section) {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.noEventCell, for: indexPath) as? NoEventsCell else { return UITableViewCell() }
+            fillPlaceholderCell(cell, indexPath.section)
+            return cell
         } else {
-            if isShowJoinEvents && indexPath.section == 1 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-                fillEventByDateCell(cell, indexPath)
-                return cell
+            
+            if indexPath.section == 0 {
+                if isShowTutorial {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
+                    fillTutorialCell(cell)
+                    return cell
+                } else {
+                    return UITableViewCell()
+                }
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-                fillEventTypeCell(cell, indexPath)
-                return cell
+                if isShowJoinEvents && indexPath.section == 1 {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+                    fillEventByDateCell(cell, indexPath)
+                    return cell
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+                    fillEventTypeCell(cell, indexPath)
+                    return cell
+                }
             }
         }
     }
