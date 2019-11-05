@@ -77,6 +77,11 @@ extension FriendsListViewController {
             cell.setup(invitee: club?.invitees)
             cell.setup(clubImageUrl: image.urlThumb())
             
+            if let count = club?.clubTotalJoined, count > 3 {
+                cell.setup(inviteeCount: count - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         } else if type == .classes {
             let joinedClass = myClassesList[indexPath.row]
             cell.setup(title: joinedClass.classes?.name ?? "VR Meet")
@@ -89,9 +94,13 @@ extension FriendsListViewController {
                     inv.user = user
                     rosterArray.append(inv)
                 }
-                
             }
             cell.setup(invitee: rosterArray)
+            if let count = joinedClass.classGroup?.totalRosters, count > 3 {
+                cell.setup(inviteeCount: count - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         }
     }
     

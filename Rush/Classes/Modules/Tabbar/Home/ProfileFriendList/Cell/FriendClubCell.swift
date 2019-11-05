@@ -102,4 +102,13 @@ extension FriendClubCell {
             }
         }
     }
+    
+    func setup(inviteeCount: Int) {
+        if inviteeCount > 0 {
+            userCountLabel.isHidden = false
+            userCountLabel.text = "\(inviteeCount)+"
+        } else {
+            userCountLabel.isHidden = true
+        }
+    }
 }

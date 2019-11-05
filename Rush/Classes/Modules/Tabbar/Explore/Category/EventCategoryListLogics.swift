@@ -142,6 +142,11 @@ extension EventCategoryListViewController {
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
             cell.setup(clubImageUrl: club.photo?.urlThumb())
+            if club.clubTotalJoined > 3 {
+                cell.setup(inviteeCount: club.clubTotalJoined - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         } else if type == .classes {
             let myclass = classList[indexPath.row]
             cell.setup(classesImageUrl: myclass.photo?.urlThumb())

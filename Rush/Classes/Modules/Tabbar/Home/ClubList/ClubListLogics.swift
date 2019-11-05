@@ -119,6 +119,11 @@ extension ClubListViewController {
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
             cell.setup(clubImageUrl: image.urlThumb())
+            if club.clubTotalJoined > 3 {
+                cell.setup(inviteeCount: club.clubTotalJoined - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         } else if myClassesList.count > 0 {
             let joinedClass = myClassesList[indexPath.row]
             cell.setup(title: joinedClass.classes?.name ?? "")
@@ -133,6 +138,13 @@ extension ClubListViewController {
                 }
             }
             cell.setup(invitee: rosterArray)
+            
+            if let count = joinedClass.classGroup?.totalRosters, count > 3 {
+                cell.setup(inviteeCount: count - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
+            
         }
     }
     
