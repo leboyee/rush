@@ -21,7 +21,7 @@ import UIKit
     /**
      Cancel image load on the image view
      - parameter imageView: Image view that is loading the image
-    */
+     */
     @objc optional func cancelLoad(on imageView: UIImageView)
 }
 
@@ -29,14 +29,14 @@ import UIKit
 @objcMembers
 open class ImageSource: NSObject, InputSource {
     var image: UIImage!
-    var imageUrl :URL!
-
+    var imageUrl: URL!
+    
     /// Initializes a new Image Source with UIImage
     /// - parameter image: Image to be loaded
     public init(image: UIImage) {
         self.image = image
     }
-
+    
     /// Initializes a new Image Source with an image name from the main bundle
     /// - parameter imageString: name of the file in the application's main bundle
     public init?(imageString: String) {
@@ -55,10 +55,10 @@ open class ImageSource: NSObject, InputSource {
             return nil
         }
     }
-
+    
     public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         if image == nil {
-            imageView.sd_setImage(with: imageUrl) { (image, error, cachetype, url) in
+            imageView.sd_setImage(with: imageUrl) { (image, _, _, _) in
                 callback(image)
             }
         } else {
@@ -67,7 +67,4 @@ open class ImageSource: NSObject, InputSource {
         }
         
     }
-    
-    
-    
 }

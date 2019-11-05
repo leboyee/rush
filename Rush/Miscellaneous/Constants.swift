@@ -228,7 +228,6 @@ struct Segues {
     static let eventInterest                      = "EventInterestSegue"
     static let addUniversitySegue                 = "AddUniversitySegue"
     static let addInterestViewSegue                 = "AddInterestViewSegue"
-
     
 }
 

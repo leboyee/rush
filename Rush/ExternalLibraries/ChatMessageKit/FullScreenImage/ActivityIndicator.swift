@@ -11,10 +11,10 @@ import UIKit
 public protocol ActivityIndicatorView {
     /// View of the activity indicator
     var view: UIView { get }
-
+    
     /// Show activity indicator
     func show()
-
+    
     /// Hide activity indicator
     func hide()
 }
@@ -29,11 +29,11 @@ extension UIActivityIndicatorView: ActivityIndicatorView {
     public var view: UIView {
         return self
     }
-
+    
     public func show() {
         startAnimating()
     }
-
+    
     public func hide() {
         stopAnimating()
     }
@@ -47,7 +47,7 @@ open class DefaultActivityIndicator: ActivityIndicatorFactory {
     
     /// activity indicator color
     open var color: UIColor?
-
+    
     /// Create a new ActivityIndicator for UIActivityIndicatorView
     ///
     /// - style: activity indicator style
@@ -56,7 +56,7 @@ open class DefaultActivityIndicator: ActivityIndicatorFactory {
         self.style = style
         self.color = color
     }
-
+    
     /// create ActivityIndicatorView instance
     open func create() -> ActivityIndicatorView {
         #if swift(>=4.2)
@@ -66,7 +66,7 @@ open class DefaultActivityIndicator: ActivityIndicatorFactory {
         #endif
         activityIndicator.color = color
         activityIndicator.hidesWhenStopped = true
-
+        
         return activityIndicator
     }
 }

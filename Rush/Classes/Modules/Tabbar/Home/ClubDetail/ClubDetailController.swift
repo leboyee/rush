@@ -91,7 +91,6 @@ class ClubDetailViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)
-
         
         // setup tableview
         setupTableView()

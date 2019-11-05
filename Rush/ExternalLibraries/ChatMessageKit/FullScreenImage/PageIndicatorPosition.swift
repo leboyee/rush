@@ -12,17 +12,17 @@ public struct PageIndicatorPosition {
     public enum Horizontal {
         case left(padding: CGFloat), center, right(padding: CGFloat)
     }
-
+    
     public enum Vertical {
         case top, bottom, under, customTop(padding: CGFloat), customBottom(padding: CGFloat), customUnder(padding: CGFloat)
     }
-
+    
     /// Horizontal position of the page indicator
     var horizontal: Horizontal
-
+    
     /// Vertical position of the page indicator
     var vertical: Vertical
-
+    
     /// Creates a new PageIndicatorPosition struct
     ///
     /// - Parameters:
@@ -32,7 +32,7 @@ public struct PageIndicatorPosition {
         self.horizontal = horizontal
         self.vertical = vertical
     }
-
+    
     /// Computes the additional padding needed for the page indicator under the ImageSlideshow
     ///
     /// - Parameter indicatorSize: size of the page indicator
@@ -47,7 +47,7 @@ public struct PageIndicatorPosition {
             return 0
         }
     }
-
+    
     /// Computes the page indicator frame
     ///
     /// - Parameters:
@@ -58,7 +58,7 @@ public struct PageIndicatorPosition {
     func indicatorFrame(for parentFrame: CGRect, indicatorSize: CGSize, edgeInsets: UIEdgeInsets) -> CGRect {
         var xSize: CGFloat = 0
         var ySize: CGFloat = 0
-
+        
         switch horizontal {
         case .center:
             xSize = parentFrame.size.width / 2 - indicatorSize.width / 2
@@ -67,7 +67,7 @@ public struct PageIndicatorPosition {
         case .right(let padding):
             xSize = parentFrame.size.width - indicatorSize.width - padding - edgeInsets.right
         }
-
+        
         switch vertical {
         case .bottom, .under, .customUnder:
             ySize = parentFrame.size.height - indicatorSize.height - edgeInsets.bottom
@@ -78,7 +78,7 @@ public struct PageIndicatorPosition {
         case .customTop(let padding):
             ySize = padding + edgeInsets.top
         }
-
+        
         return CGRect(x: xSize, y: ySize, width: indicatorSize.width, height: indicatorSize.height)
     }
 }
