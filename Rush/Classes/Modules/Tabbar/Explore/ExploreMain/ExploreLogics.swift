@@ -18,7 +18,7 @@ extension ExploreViewController {
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 || (indexPath.section == 1 && eventList.count == 0) || (indexPath.section == 2 && clubList.count == 0) || (indexPath.section == 3 && classList.count == 0) {
             return UITableView.automaticDimension
         } else {
             return 157
@@ -27,7 +27,6 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            
             if searchType == .event {
                 return eventInterestList.count
             } else if searchType == .club {
@@ -37,7 +36,6 @@ extension ExploreViewController {
             } else if searchType == .people {
                 return peopleList.count
             }
-            
         } else {
             if section == 0 {
                 return 3
@@ -46,6 +44,23 @@ extension ExploreViewController {
             }
         }
         return 0
+    }
+    
+    func isShowEmptyPlaceholder(_ section: Int) -> Bool {
+        if (section == 1 && eventList.count == 0) || (section == 2 && clubList.count == 0) || (section == 3 && classList.count == 0) {
+            return true
+        }
+        return false
+    }
+    
+    func fillPlaceholderCell(_ cell: NoEventsCell, _ section: Int) {
+        if section == 1 {
+            cell.setEvents()
+        } else if section == 2 {
+            cell.setClub()
+        } else if section == 3 {
+            cell.setClasses()
+        }
     }
     
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
@@ -57,6 +72,7 @@ extension ExploreViewController {
         } else if indexPath.section == 3 {
             cell.setup(.classes, nil, classList)
         }
+        
         // MARK: - CollectionItem Selected
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
@@ -348,7 +364,7 @@ extension ExploreViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
@@ -373,7 +389,7 @@ extension ExploreViewController {
                      Keys.pageNo: 1] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {

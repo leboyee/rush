@@ -18,6 +18,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.tutorialPopUp, bundle: nil), forCellReuseIdentifier: Cell.tutorialPopUp)
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
+        tableView.register(UINib(nibName: Cell.noEventCell, bundle: nil), forCellReuseIdentifier: Cell.noEventCell)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.eventByDate, bundle: nil), forCellReuseIdentifier: Cell.eventByDate)
         
@@ -34,31 +35,38 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            if isShowTutorial {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
+        if isShowEmptyPlaceholder(indexPath.section) {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.noEventCell, for: indexPath) as? NoEventsCell else { return UITableViewCell() }
+            fillPlaceholderCell(cell, indexPath.section)
+            return cell
+        } else {
+            
+            if indexPath.section == 0 {
+                if isShowTutorial {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
                     fillTutorialCell(cell)
                     return cell
+                } else {
+                    return UITableViewCell()
+                }
             } else {
-                return UITableViewCell()
-            }
-        } else {
-            if isShowJoinEvents && indexPath.section == 1 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-                fillEventByDateCell(cell, indexPath)
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-                fillEventTypeCell(cell, indexPath)
-                return cell
+                if isShowJoinEvents && indexPath.section == 1 {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+                    fillEventByDateCell(cell, indexPath)
+                    return cell
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+                    fillEventTypeCell(cell, indexPath)
+                    return cell
+                }
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         if isShowJoinEvents && indexPath.section == 1 {
+        if isShowJoinEvents && indexPath.section == 1 {
             let event = eventList[indexPath.row]
-             showEvent(event: event)
+            showEvent(event: event)
         }
     }
     
@@ -81,7 +89,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
@@ -91,7 +99,7 @@ extension HomeViewController: SelectEventTypeDelegate {
         /*
          screenType: club, event
          type: public, closed, invite only
-        */
+         */
         
         if screenType == .club { // Open club detail
             performSegue(withIdentifier: Segues.createClub, sender: nil)
@@ -99,7 +107,7 @@ extension HomeViewController: SelectEventTypeDelegate {
             performSegue(withIdentifier: Segues.createEvent, sender: type)
         }
     }
-
+    
     func addPhotoEvent(_ type: PhotoFrom) {
         
     }
@@ -112,10 +120,10 @@ extension HomeViewController: CreatePostViewControllerDelegate {
     
     func showSnackBar(text: String, buttonText: String) {
         /*
-        notificationTitle = text
-        notificationButtonTitle = buttonText
-        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
-        */
+         notificationTitle = text
+         notificationButtonTitle = buttonText
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
         let snackbar = TTGSnackbar(message: text,
                                    duration: .middle,
                                    actionText: buttonText,

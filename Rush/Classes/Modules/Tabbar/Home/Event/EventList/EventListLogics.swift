@@ -177,7 +177,7 @@ extension EventListViewController {
                          Keys.sortBy: sortBy.rawValue,
                          Keys.pageNo: myEventPageNo] as [String: Any]
             
-            ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
+            ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
                 Utils.hideSpinner()
                 guard let unsafe = self else { return }
                 if let events = value {

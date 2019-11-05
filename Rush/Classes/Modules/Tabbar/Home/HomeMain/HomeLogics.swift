@@ -13,13 +13,13 @@ extension HomeViewController {
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
             return CGFloat.leastNormalMagnitude
-        } else if section == 1 {
+        } /*else if section == 1 {
             return eventList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         } else if section == 2 {
             return clubList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
         } else if section == 3 {
             return  classList.count > 0 ? 50 : CGFloat.leastNormalMagnitude
-        }
+        }*/
         return 50
     }
     
@@ -33,14 +33,21 @@ extension HomeViewController {
         } else if indexPath.section == 1 && isShowJoinEvents {
             return UITableView.automaticDimension
         } else if indexPath.section == 1 {
-            return eventList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
+            return eventList.count > 0 ? 157 : UITableView.automaticDimension
         } else if indexPath.section == 2 {
-            return clubList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
+            return clubList.count > 0 ? 157 : UITableView.automaticDimension
         } else if indexPath.section == 3 {
-            return classList.count > 0 ? 157 : CGFloat.leastNormalMagnitude
+            return classList.count > 0 ? 157 : UITableView.automaticDimension
         } else {
             return 157
         }
+    }
+    
+    func isShowEmptyPlaceholder(_ section: Int) -> Bool {
+        if (section == 1 && eventList.count == 0) || (section == 2 && clubList.count == 0) || (section == 3 && classList.count == 0) {
+            return true
+        }
+        return false
     }
     
     func cellCount(_ section: Int) -> Int {
@@ -71,6 +78,20 @@ extension HomeViewController {
         }
     }
     
+    func fillPlaceholderCell(_ cell: NoEventsCell, _ section: Int) {
+        if section == 1 {
+            if isShowJoinEvents == false && eventList.count == 0 {
+                cell.setUpcomingEvents()
+            } else {
+                cell.setEvents()
+            }
+        } else if section == 2 {
+            cell.setClub()
+        } else if section == 3 {
+            cell.setClasses()
+        }
+    }
+    
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         
         // (type, images, data)
@@ -83,7 +104,7 @@ extension HomeViewController {
         }
         
         // MARK: - CollectionItem Selected
-
+        
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
@@ -122,7 +143,11 @@ extension HomeViewController {
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         if section == 1 {
-            header.setup(title: Text.UpcomingEvents)
+            if isShowJoinEvents == false && eventList.count == 0 {
+                header.setup(title: Text.UpcomingEvents)
+            } else {
+                header.setup(title: Text.events)
+            }
         } else if section == 2 {
             header.setup(title: Text.clubs)
         } else if section == 3 {
@@ -149,7 +174,6 @@ extension HomeViewController {
 // MARK: - Services
 extension HomeViewController {
     func getHomeList() {
-
         ServiceManager.shared.fetchHomeList(params: [:]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let home = data {
@@ -165,8 +189,8 @@ extension HomeViewController {
             }
             unsafe.tableView.reloadData()
         }
-       }
-
+    }
+    
     func getEventList(sortBy: GetEventType) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
@@ -190,7 +214,7 @@ extension HomeViewController {
                 }
             }
             unsafe.getClubListAPI(sortBy: "feed")
-           
+            
         }
     }
     
@@ -214,20 +238,20 @@ extension HomeViewController {
             unsafe.getClassListAPI()
         }
     }
-        
-  /*  func getClassCategoryAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
-
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
-            guard let unsafe = self else { return }
-            if let classes = data {
-                unsafe.classList = classes
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
-            }
-        }
-    }*/
+    
+    /*  func getClassCategoryAPI() {
+     let param = [Keys.pageNo: pageNo] as [String: Any]
+     
+     ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+     guard let unsafe = self else { return }
+     if let classes = data {
+     unsafe.classList = classes
+     unsafe.tableView.reloadData()
+     } else {
+     Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+     }
+     }
+     }*/
     func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         

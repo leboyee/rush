@@ -32,11 +32,14 @@ class FriendsListViewController: UIViewController {
     var eventId: Int64 = 0
     var userName = "Jessica"
     var pageNo = 1
+    var searchText = ""
     var isNextPageExist = false
     var isAttendace: Bool = false
     var inviteType: InviteType = .going
     var searchTextFiled: UITextField?
     var userInfo: User?
+    var clubId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
           setupUI()
@@ -74,6 +77,7 @@ class FriendsListViewController: UIViewController {
             getMyJoinedClasses()
         } else if type == .clubJoinedUsers {
             //API remaining
+            fetchClubInviteeAPI()
         }
         
         firstSegmentButton.setTitle(firstTitle, for: .normal)
@@ -114,11 +118,23 @@ class FriendsListViewController: UIViewController {
             userName = userInfo?.firstName ?? "User"
             let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
-        } else {
+        } else if type == .clubJoinedUsers {
             
-            // Set navigation title
-            // let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
-            //navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
+           // Set left bar button and title
+           let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+           
+           let searchTextField = UITextField(frame: CGRect(x: 0, y: -6, width: screenWidth - 48, height: 44))
+           searchTextField.font = UIFont.displayBold(sz: 24)
+           searchTextField.textColor = UIColor.white
+           searchTextField.returnKeyType = .go
+           searchTextField.autocorrectionType = .no
+           searchTextField.delegate = self
+           let font = UIFont.displayBold(sz: 24)
+           let color = UIColor.navBarTitleWhite32
+           searchTextField.attributedPlaceholder = NSAttributedString(string: "Search invitees", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+           searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+           customView.addSubview(searchTextField)
+           navigationItem.titleView = customView
         }
         
     }

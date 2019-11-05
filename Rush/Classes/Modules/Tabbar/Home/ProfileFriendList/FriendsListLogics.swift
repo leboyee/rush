@@ -77,6 +77,11 @@ extension FriendsListViewController {
             cell.setup(invitee: club?.invitees)
             cell.setup(clubImageUrl: image.urlThumb())
             
+            if let count = club?.clubTotalJoined, count > 3 {
+                cell.setup(inviteeCount: count - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         } else if type == .classes {
             let joinedClass = myClassesList[indexPath.row]
             cell.setup(title: joinedClass.classes?.name ?? "VR Meet")
@@ -89,9 +94,13 @@ extension FriendsListViewController {
                     inv.user = user
                     rosterArray.append(inv)
                 }
-                
             }
             cell.setup(invitee: rosterArray)
+            if let count = joinedClass.classGroup?.totalRosters, count > 3 {
+                cell.setup(inviteeCount: count - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         }
     }
     
@@ -116,7 +125,12 @@ extension FriendsListViewController {
             pageNo += 1
             getMyJoinedClasses()
         } else if isNextPageExist == true, indexPath.row == inviteeList.count - 3 {
-            fetchInvitees(search: searchTextFiled?.text ?? "")
+            if type == .clubJoinedUsers {
+                pageNo += 1
+                fetchClubInviteeAPI()
+            } else {
+                fetchInvitees(search: searchTextFiled?.text ?? "")
+            }
         } else if firstTabNextPageExist == true, indexPath.row == firstTabList.count - 3 {
             firstTabPageNo += 1
             if type == .events {
@@ -451,6 +465,34 @@ extension FriendsListViewController {
             unsafe.firstSegmentButton.setTitle("\(unsafe.goingInviteeList.count) going", for: .normal)
             unsafe.secondSegmentButton.setTitle("\(unsafe.notGoingInviteeList.count) not going", for: .normal)
             
+            unsafe.tableView.reloadData()
+        }
+    }
+    
+    func fetchClubInviteeAPI() {
+        
+        if pageNo == 1 {
+            inviteeList.removeAll()
+        }
+        
+        let param = [Keys.search: searchText,
+                     Keys.clubId: clubId ?? "0",
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchClubInviteeList(clubId: clubId ?? "0", params: param) { [weak self] (value, _, _) in
+            guard let unsafe = self else { return }
+            if let list = value {
+                if list.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.inviteeList = list
+                    } else {
+                        unsafe.inviteeList.append(contentsOf: list)
+                    }
+                    unsafe.isNextPageExist = true
+                } else {
+                    unsafe.isNextPageExist = false
+                }
+            }
             unsafe.tableView.reloadData()
         }
     }

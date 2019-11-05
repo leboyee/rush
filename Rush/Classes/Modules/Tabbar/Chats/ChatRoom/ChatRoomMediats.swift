@@ -396,24 +396,24 @@ extension ChatRoomViewController: MessageCellDelegate {
     }
     
     func didTapImage(mediaItem: MediaItem) {
-        /*
-         let fullScreenController = FullScreenSlideshowViewController()
-         
-         var inputs = [InputSource]()
-         var inputSource: InputSource {
-         if mediaItem.image == nil {
-         return ImageSource(url: mediaItem.url!.absoluteString)!
-         } else {
-         return ImageSource(image: mediaItem.image!)
-         }
-         }
-         inputs.append(inputSource)
-         
-         fullScreenController.inputs = inputs
-         fullScreenController.initialPage = 0
-         
-         self_.present(fullScreenController, animated: true, completion: nil)
-         */
+        
+        let fullScreenController = FullScreenSlideshowViewController()
+        
+        var inputs = [InputSource]()
+        var inputSource: InputSource {
+            if mediaItem.image == nil {
+                return ImageSource(url: mediaItem.url!.absoluteString)!
+            } else {
+                return ImageSource(image: mediaItem.image!)
+            }
+        }
+        inputs.append(inputSource)
+        
+        fullScreenController.inputs = inputs
+        fullScreenController.initialPage = 0
+        
+        present(fullScreenController, animated: true, completion: nil)
+        
     }
     
     func didTapCellTopLabel(in cell: MessageCollectionViewCell) {

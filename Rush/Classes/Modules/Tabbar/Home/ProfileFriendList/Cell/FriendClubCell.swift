@@ -62,7 +62,7 @@ extension FriendClubCell {
     
     // use this for classes
     func setup(classesImageUrl: URL?) {
-        mainImageView.sd_setImage(with: classesImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classChat-#1"))
+        mainImageView.sd_setImage(with: classesImageUrl, placeholderImage: UIImage(named: "placeholder-classes48px"))
     }
     
     func setup(invitee: [Invitee]?) {
@@ -100,6 +100,15 @@ extension FriendClubCell {
                 userCountLabel.isHidden = false
                 userCountLabel.text = "\(count - 3)+"
             }
+        }
+    }
+    
+    func setup(inviteeCount: Int) {
+        if inviteeCount > 0 {
+            userCountLabel.isHidden = false
+            userCountLabel.text = "\(inviteeCount)+"
+        } else {
+            userCountLabel.isHidden = true
         }
     }
 }
