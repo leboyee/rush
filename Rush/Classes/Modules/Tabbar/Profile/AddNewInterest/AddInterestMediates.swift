@@ -75,6 +75,7 @@ extension AddInterestViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         let search = textField.text ?? ""
         isSearch =  textField.text?.count ?? 0 > 0 ? true : false
+        rightBarButton?.image = isSearch == true ? #imageLiteral(resourceName: "crossGrayInterest") : nil
         getInterestList(searchText: search)
         self.tableView.reloadData()
     }
