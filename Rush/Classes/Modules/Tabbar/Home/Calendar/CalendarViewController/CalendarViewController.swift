@@ -29,7 +29,7 @@ class CalendarViewController: CustomViewController {
     @IBOutlet weak var calenderViewHeight: NSLayoutConstraint!
     
     var dateButton: UIButton!
-    var isCalendarOpen = false
+    var isCalendarOpen = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ extension CalendarViewController {
         view.backgroundColor = UIColor.bgBlack
         
         let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: titleWidth, height: titleHeight))
-        let text = selectedDate.toString(format: "MMMM dd") + " ▾"
+        let text = selectedDate.toString(format: "MMMM dd") + " ▴"
         
         dateButton = UIButton(frame: CGRect(x: 0, y: 2, width: titleWidth, height: 30.0))
         dateButton.setTitle(text, for: .normal)
@@ -111,8 +111,13 @@ extension CalendarViewController {
             text = text?.replacingOccurrences(of: "▾", with: "▴")
             listTopConstraint.constant = topListPadding + calenderViewHeight.constant
         }
-        isCalendarOpen = !isCalendarOpen
-        dateButton.setTitle(text, for: .normal)
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { _ in
+            self.isCalendarOpen = !self.isCalendarOpen
+            self.dateButton.setTitle(text, for: .normal)
+        })
     }
    
 }
