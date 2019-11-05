@@ -18,6 +18,7 @@ class FriendClubCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var topConstraintOfContentView: NSLayoutConstraint!
     @IBOutlet weak var userView: UIView!
+    @IBOutlet weak var heightConstraintOfUserView: NSLayoutConstraint!
     @IBOutlet weak var mainImageView: UIImageView!
     
     override func awakeFromNib() {
@@ -66,12 +67,15 @@ extension FriendClubCell {
     
     func setup(invitee: [Invitee]?) {
         
+        userView.isHidden = false
         userCountLabel.isHidden = true
         firstUserImageView.isHidden = false
         secondUserImageView.isHidden = false
         thirdUserImageView.isHidden = false
+        heightConstraintOfUserView.constant = 20
         
         if invitee?.count == 0 {
+            heightConstraintOfUserView.constant = 0
             userView.isHidden = true
         } else if invitee?.count == 1 {
             firstUserImageView.isHidden = true
