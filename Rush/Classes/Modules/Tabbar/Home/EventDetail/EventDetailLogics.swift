@@ -354,7 +354,7 @@ extension EventDetailViewController {
         let index = indexPath.section - (sections?.count ?? 0)
         if let post = postList?[index] {
             cell.set(name: post.user?.name ?? "")
-            cell.set(time: post.createDate)
+            cell.set(time: post.createdAt)
             cell.set(url: post.user?.photo?.urlThumb())
             cell.moreEvent = { [weak self] () in
                 guard let unsafe = self else { return }

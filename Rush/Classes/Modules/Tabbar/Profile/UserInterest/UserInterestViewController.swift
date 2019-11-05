@@ -13,13 +13,13 @@ class UserInterestViewController: CustomViewController {
 
     @IBOutlet weak var bgImageView: CustomBackgoundImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var nextButton: CustomButton!
     var interestArray = [Interest]()
     var searchArray = [Interest]()
     var isSearch = false
     weak var delegate: EventInterestDelegate?
     var rightBarButton: UIBarButtonItem?
+    var searchTextField: UITextField?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,17 +63,17 @@ class UserInterestViewController: CustomViewController {
     func setCustomNavigationBarView() {
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         
-            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
-            searchTextField.font = UIFont.displayBold(sz: 24)
-            searchTextField.textColor = UIColor.white
-            searchTextField.returnKeyType = .go
-            searchTextField.autocorrectionType = .no
-            searchTextField.delegate = self
+            searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            searchTextField?.font = UIFont.displayBold(sz: 24)
+            searchTextField?.textColor = UIColor.white
+            searchTextField?.returnKeyType = .go
+            searchTextField?.autocorrectionType = .no
+            searchTextField?.delegate = self
             let font = UIFont.displayBold(sz: 24)
             let color = UIColor.navBarTitleWhite32
-            searchTextField.attributedPlaceholder = NSAttributedString(string: "Search interests", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
-            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-            customView.addSubview(searchTextField)
+            searchTextField?.attributedPlaceholder = NSAttributedString(string: "Search interests", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextField?.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchTextField ?? UIView())
             navigationItem.titleView = customView
         
         self.rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "plus_white"), style: .plain, target: self, action: #selector(plusButtonAction))
@@ -98,8 +98,14 @@ extension UserInterestViewController {
         updateProfileAPI()
     }
     @objc func plusButtonAction() {
-        
-        self.performSegue(withIdentifier: Segues.addInterestViewSegue, sender: self)
+        if isSearch == true {
+            searchTextField?.text = ""
+            self.tableView.reloadData()
+            isSearch = false
+            rightBarButton?.image = #imageLiteral(resourceName: "plus_white")
+        } else {
+            self.performSegue(withIdentifier: Segues.addInterestViewSegue, sender: self)
+        }
     }
 }
 
