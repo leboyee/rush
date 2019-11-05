@@ -18,6 +18,7 @@ class FriendClubCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var topConstraintOfContentView: NSLayoutConstraint!
     @IBOutlet weak var userView: UIView!
+    @IBOutlet weak var heightConstraintOfUserView: NSLayoutConstraint!
     @IBOutlet weak var mainImageView: UIImageView!
     
     override func awakeFromNib() {
@@ -61,17 +62,20 @@ extension FriendClubCell {
     
     // use this for classes
     func setup(classesImageUrl: URL?) {
-        mainImageView.sd_setImage(with: classesImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classChat-#1"))
+        mainImageView.sd_setImage(with: classesImageUrl, placeholderImage: UIImage(named: "placeholder-classes48px"))
     }
     
     func setup(invitee: [Invitee]?) {
         
+        userView.isHidden = false
         userCountLabel.isHidden = true
         firstUserImageView.isHidden = false
         secondUserImageView.isHidden = false
         thirdUserImageView.isHidden = false
+        heightConstraintOfUserView.constant = 20
         
         if invitee?.count == 0 {
+            heightConstraintOfUserView.constant = 0
             userView.isHidden = true
         } else if invitee?.count == 1 {
             firstUserImageView.isHidden = true
@@ -96,6 +100,15 @@ extension FriendClubCell {
                 userCountLabel.isHidden = false
                 userCountLabel.text = "\(count - 3)+"
             }
+        }
+    }
+    
+    func setup(inviteeCount: Int) {
+        if inviteeCount > 0 {
+            userCountLabel.isHidden = false
+            userCountLabel.text = "\(inviteeCount)+"
+        } else {
+            userCountLabel.isHidden = true
         }
     }
 }

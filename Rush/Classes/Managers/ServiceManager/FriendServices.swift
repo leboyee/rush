@@ -17,7 +17,7 @@ extension ServiceManager {
      pageNo: 1 or more
      search: friend name which we want to search
      */
-    func fetchFriendsList(params: [String: Any], closer: @escaping (_ params: [Friend]?,  _ total: Int, _ errorMessage: String?) -> Void) {
+    func fetchFriendsList(params: [String: Any], closer: @escaping (_ params: [Friend]?, _ total: Int, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getFriendListWithSession(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, total, errorMessage) in

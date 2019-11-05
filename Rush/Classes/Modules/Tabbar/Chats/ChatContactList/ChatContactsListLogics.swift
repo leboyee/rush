@@ -24,7 +24,11 @@ extension ChatContactsListViewController {
         let users = friendsList[alpha.lowercased()] as? [Friend]
         let friend = users?[indexPath.row]
         cell.setup(title: friend?.user?.name ?? "")
-        cell.setup(url: friend?.user?.photo?.url())
+        if isFromChat {
+            cell.setup(url: URL(string: friend?.user?.gender ?? ""))
+        } else {
+            cell.setup(url: friend?.user?.photo?.url())
+        }
     }
     
     func cellSelected(_ indexPath: IndexPath) {

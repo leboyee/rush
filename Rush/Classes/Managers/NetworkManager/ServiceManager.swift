@@ -60,8 +60,7 @@ class ServiceManager: NSObject {
             guard let data = resultDict[Keys.data] as? [String: Any] else {
                 return
             }
-            
-            
+                        
             do {
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
@@ -78,7 +77,6 @@ class ServiceManager: NSObject {
             closer(nil, errorMessage)
         }
     }
-    
     
     /*
      *
@@ -139,7 +137,6 @@ class ServiceManager: NSObject {
             closer(nil, errorMessage)
         }
     }
-    
     
     /*
      *

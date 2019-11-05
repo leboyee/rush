@@ -34,8 +34,7 @@ extension EventDateCell {
     func setup(dateButtonText: String) {
         dateButton.setTitle(dateButtonText, for: .normal)
     }
-    
-    
+        
     @IBAction func dateButtonAction() {
         dateButtonClickEvent?()
     }

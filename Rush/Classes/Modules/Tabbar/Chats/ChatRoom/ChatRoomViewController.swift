@@ -412,6 +412,45 @@ extension ChatRoomViewController {
             
             if let members = channel?.members as? [SBDUser] {
                 userChatView.reloadData(users: members)
+                userChatView.showAllUserClickEvent = { () in
+                    
+                    var users = [String: Any]()
+                    
+                    for member in members {
+                        if let first = member.nickname?.first {
+                            if let value = users[first.description.lowercased()]  as? [Friend] {
+                                let filter = value.filter { $0.user?.userId == member.userId }
+                                if filter.count == 0 {
+                                    var tempUser = [Friend]()
+                                    tempUser.append(contentsOf: value)
+                                    
+                                    let friend = Friend()
+                                    let user = User()
+                                    user.firstName = member.nickname ?? ""
+                                    friend.user = user
+                                    
+                                    tempUser.append(friend)
+                                    users[first.description.lowercased()] = tempUser
+                                }
+                            } else {
+                                let friend = Friend()
+                                let user = User()
+                                user.firstName = member.nickname ?? ""
+                                user.gender = member.profileUrl
+                                friend.user = user
+                                users[first.description.lowercased()] = [friend]
+                            }
+                        }
+                    }
+                    
+                    let storyboard = UIStoryboard(name: StoryBoard.chat, bundle: nil)
+                    if let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.chatContactsList) as? ChatContactsListViewController {
+                        vc.friendsList = users
+                        vc.isFromChat = true
+                        vc.titleName = self.userName
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             }
         }
     

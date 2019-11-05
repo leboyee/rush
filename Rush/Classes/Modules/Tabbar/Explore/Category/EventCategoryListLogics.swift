@@ -141,10 +141,15 @@ extension EventCategoryListViewController {
             cell.setup(title: club.clubName ?? "")
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
-            cell.setup(imageUrl: club.photo?.urlThumb())
+            cell.setup(clubImageUrl: club.photo?.urlThumb())
+            if club.clubTotalJoined > 3 {
+                cell.setup(inviteeCount: club.clubTotalJoined - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         } else if type == .classes {
             let myclass = classList[indexPath.row]
-            cell.setup(imageUrl: myclass.photo?.urlThumb())
+            cell.setup(classesImageUrl: myclass.photo?.urlThumb())
             cell.setup(title: myclass.name)
             if myclass.myJoinedClass?.count ?? 0 > 0 {
                 let jClass = myclass.myJoinedClass?.first
@@ -166,7 +171,6 @@ extension EventCategoryListViewController {
              }
              */
             cell.setup(invitee: rosterArray)
-            cell.setup(imageUrl: myclass.photo?.url())
         } else {
             cell.setup(detail: "SOMM 24-A")
         }

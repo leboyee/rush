@@ -101,6 +101,7 @@ struct Cell {
     static let eventTypeModelCell = "EventTypeModelCell"
     static let galleryCell = "GalleryCell"
     static let profileTileCell = "ProfileTileCell"
+    static let noEventCell  = "NoEventsCell"
 }
 
 struct ReusableView {
@@ -127,6 +128,7 @@ struct ViewControllerId {
     static let enterEmailViewConteroller         = "EnterEmailViewConteroller"
     static let clubDetailViewController          = "ClubDetailViewController"
     static let eventDetailViewController         = "EventDetailViewController"
+    static let chatContactsList                  = "ChatContactsListViewController"
 }
 
 /* Create the struct for Section wise */
@@ -227,7 +229,6 @@ struct Segues {
     static let eventInterest                      = "EventInterestSegue"
     static let addUniversitySegue                 = "AddUniversitySegue"
     static let addInterestViewSegue                 = "AddInterestViewSegue"
-
     
 }
 
@@ -238,8 +239,8 @@ struct StoryBoard {
     static let home                      =     "Home"
     static let rsvp                      =     "RSVP"
     static let eventDetail               =     "EventDetail"
-    static let authorize               =     "Authorize"
-
+    static let authorize                 =     "Authorize"
+    static let chat                      =     "Chats"
 }
 
 public struct Text {

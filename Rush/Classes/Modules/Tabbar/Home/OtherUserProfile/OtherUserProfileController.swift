@@ -67,14 +67,6 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
-        // share button
-        let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
-        navigationItem.rightBarButtonItem = share
-        
-        // back button
-        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        navigationItem.leftBarButtonItem = cancel
-
         setupTableView()
     }
     

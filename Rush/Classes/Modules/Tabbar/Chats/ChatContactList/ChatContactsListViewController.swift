@@ -17,6 +17,8 @@ class ChatContactsListViewController: UIViewController {
     var searchText = ""
     var friendsList = [String: Any]()
     var tempFriendsList = [Friend]()
+    var isFromChat = false
+    var titleName = ""
     
     let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
@@ -31,7 +33,11 @@ class ChatContactsListViewController: UIViewController {
         self.view.backgroundColor = UIColor.bgBlack
         setupTableView()
         setupNavigation()
-        getFriendListAPI()
+        if isFromChat {
+            // Coming from group chat screen
+        } else {
+            getFriendListAPI()
+        }
     }
     
     @objc func backButtonAction() {

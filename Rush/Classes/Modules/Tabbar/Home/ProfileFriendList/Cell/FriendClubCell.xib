@@ -159,6 +159,7 @@
             <connections>
                 <outlet property="detailLabel" destination="b6o-2C-wmW" id="lxC-aR-OTb"/>
                 <outlet property="firstUserImageView" destination="xNr-Ck-2eH" id="cW9-Yf-0hJ"/>
+                <outlet property="heightConstraintOfUserView" destination="13U-zF-8eg" id="Jgi-HX-SRB"/>
                 <outlet property="mainImageView" destination="loV-Lb-Mw5" id="To2-YJ-TkO"/>
                 <outlet property="secondUserImageView" destination="H4F-MY-mAc" id="bY1-gS-wCw"/>
                 <outlet property="thirdUserImageView" destination="zrq-Rx-77M" id="7cs-wW-kaf"/>

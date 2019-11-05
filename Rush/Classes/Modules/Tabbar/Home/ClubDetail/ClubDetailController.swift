@@ -91,7 +91,6 @@ class ClubDetailViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)
-
         
         // setup tableview
         setupTableView()
@@ -169,6 +168,7 @@ extension ClubDetailViewController {
             if let vc = segue.destination as? FriendsListViewController {
                 vc.hidesBottomBarWhenPushed = false
                 vc.inviteeList = clubInfo?.invitees ?? [Invitee]()
+                vc.clubId = clubInfo?.clubId ?? "0"
                 vc.type = sender as? UserProfileDetailType ?? .none
             }
         }

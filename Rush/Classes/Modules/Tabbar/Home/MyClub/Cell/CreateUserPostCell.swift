@@ -47,8 +47,4 @@ extension CreateUserPostCell {
     func setup(title: String) {
         titleLabel.text = title
     }
-    
-   
-
-
 }

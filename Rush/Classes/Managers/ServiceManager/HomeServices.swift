@@ -78,6 +78,15 @@ extension ServiceManager {
         }
     }
     
+    func fetchClubInviteeList(clubId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ count: Int, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getClubInviteeList(clubId: clubId, params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, total, errorMessage) in
+                closer(invitees, total, errorMessage)
+            })
+        }
+    }
+    
     func joinClassGroup(classId: String, groupId: String, params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.joinClassGroup(classId: classId, groupId: groupId, param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }

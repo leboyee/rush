@@ -69,6 +69,11 @@ extension EventTypeCell {
                 if isJoined {
                     cell.setup(type: .clubsJoined)
                     cell.setup(invitee: club.invitees)
+                    if club.clubTotalJoined > 3 {
+                        cell.setup(inviteeCount: club.clubTotalJoined - 3)
+                    } else {
+                        cell.setup(inviteeCount: 0)
+                    }
                 }
             } else {
                 cell.setup(eventName: "Development lifehacks")
