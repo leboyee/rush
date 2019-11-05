@@ -62,7 +62,7 @@ extension FriendClubCell {
     
     // use this for classes
     func setup(classesImageUrl: URL?) {
-        mainImageView.sd_setImage(with: classesImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-classChat-#1"))
+        mainImageView.sd_setImage(with: classesImageUrl, placeholderImage: UIImage(named: "placeholder-classes48px"))
     }
     
     func setup(invitee: [Invitee]?) {
