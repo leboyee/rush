@@ -87,6 +87,7 @@ class SubClass: Codable {
     
     var classGroups: [ClassGroup]?
     var myJoinedClass: [ClassJoined]?
+    var rosters: [ClassJoined]?
     
     init() { }
     
@@ -99,6 +100,7 @@ class SubClass: Codable {
         case classTotalGroups = "class_total_groups"
         case classGroups = "class_groups"
         case myJoinedClass = "my_joined_classes"
+        case rosters
     }
     var id: String {
         return String(classId)

@@ -46,6 +46,8 @@ class EventCategoryListViewController: UIViewController {
     var startTime = ""
     var endTime = ""
     var isToday = false
+          
+    var selUniversity = University()
     
     override func viewDidLoad() {
         super.viewDidLoad()

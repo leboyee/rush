@@ -157,6 +157,7 @@ struct Keys {
 
     static let postId = "post_id"
     static let parentId = "parent_id"
+    static let categoryId = "category_id"
 
     static let eventContact = "event_invited_contacts"
     static let contactListInvite = "contact_list"

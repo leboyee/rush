@@ -230,6 +230,7 @@ extension ExploreViewController {
         
         if segue.identifier == Segues.eventCategorySegue {
             if let vc = segue.destination as? EventCategoryListViewController {
+                   vc.selUniversity = selUniversity
                 if let type = sender as? ScreenType {
                     vc.type = type
                     if isToday {
