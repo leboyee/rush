@@ -17,6 +17,7 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
+        tableView.register(UINib(nibName: Cell.noEventCell, bundle: nil), forCellReuseIdentifier: Cell.noEventCell)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.exploreCell, bundle: nil), forCellReuseIdentifier: Cell.exploreCell)
         tableView.register(UINib(nibName: Cell.searchClubCell, bundle: nil), forCellReuseIdentifier: Cell.searchClubCell)
@@ -53,9 +54,15 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
                 fillExploreCell(cell, indexPath)
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-                fillEventTypeCell(cell, indexPath)
-                return cell
+                if isShowEmptyPlaceholder(indexPath.section) {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.noEventCell, for: indexPath) as? NoEventsCell else { return UITableViewCell() }
+                    fillPlaceholderCell(cell, indexPath.section)
+                    return cell
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+                    fillEventTypeCell(cell, indexPath)
+                    return cell
+                }
             }
         }
     }
