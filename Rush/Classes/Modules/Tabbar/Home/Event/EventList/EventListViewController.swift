@@ -25,6 +25,7 @@ class EventListViewController: CustomViewController {
     var searchTextFiled: UITextField?
     var eventCategory = [Interest]()
     var eventFilterType: GetEventType = .myUpcoming
+    var isFirstTime = false
     override func viewDidLoad() {
         super.viewDidLoad()
         

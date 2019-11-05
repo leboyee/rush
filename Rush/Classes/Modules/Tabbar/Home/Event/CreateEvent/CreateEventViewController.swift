@@ -100,6 +100,7 @@ class CreateEventViewController: UIViewController {
 
         if isEditEvent == true {
             setupEventEdit()
+            self.tableView.reloadData()
         }
     }
 }
@@ -173,6 +174,7 @@ extension CreateEventViewController {
         }
         guard let url = event?.photo?.main else { return }
         clubHeader.setup(url: URL(string: url))
+        isCreateGroupChat = event?.isChatGroup ?? true
     }
     
 }

@@ -31,7 +31,7 @@ extension ChooseLevelViewController {
         
         var param = [Keys.uEduLevel: Utils.chooseLevelArray()[selectedIndex]] as [String: Any]
         if isEditUserProfile == true {
-            if self.selectedIndex <= 2 {
+            if self.selectedIndex > 2 {
                 param[Keys.uEduYear] = ""
             }
         }

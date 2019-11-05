@@ -24,12 +24,17 @@ extension EventGoingFriendsViewController {
             cell.setup(name: invitee.user?.name ?? "")
             if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
                 cell.setup(url: url)
+            } else {
+                cell.imageView?.image = UIImage(named: "iconProfilePlaceHolder")
             }
         } else {
             let invitee = notGoingInviteeList[indexPath.row]
             cell.setup(name: invitee.user?.name ?? "")
             if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
                 cell.setup(url: url)
+            } else {
+                cell.imageView?.image = UIImage(named: "iconProfilePlaceHolder")
+
             }
         }
     }

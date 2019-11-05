@@ -93,7 +93,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
                 let item = array[indexPath.row]
                 cell.setup(title: "\(item.displayName)")
                 cell.setupImage(image: #imageLiteral(resourceName: "placeholder-profile-32px"))
-                cell.setup(isHidden: false)                
+                cell.setup(isHidden: false)
                 cell.setup(isSelected: selectedItem.contains(where: { $0.displayName == item.displayName }))
                 return cell
             }
