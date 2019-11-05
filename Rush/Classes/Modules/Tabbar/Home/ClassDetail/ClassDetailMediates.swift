@@ -175,8 +175,8 @@ extension ClassDetailViewController {
 // MARK: - SharePostViewControllerDelegate
 extension ClassDetailViewController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
+        var data = [Any]()
         if let post = object as? Post {
-            var data = [Any]()
             data.append("Class: \(classInfo?.name ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
@@ -184,8 +184,13 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
             if let classImage = clubHeader.userImageView.image {
                 data.append(classImage)
             }
-            Utils.openActionSheet(controller: self, shareData: data)
+        } else if let cls = object as? SubClass {
+            data.append("Class: \(cls.name)\nClass description: \(selectedGroup?.name ?? "")")
+            if let clubImage = clubHeader.userImageView.image {
+                data.append(clubImage)
+            }
         }
+        Utils.openActionSheet(controller: self, shareData: data)
     }
     
     func delete(type: SharePostType, object: Any?) {

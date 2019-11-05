@@ -25,7 +25,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkZ-sG-JRw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="vCj-dg-ZNn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile-32px" translatesAutoresizingMaskIntoConstraints="NO" id="vCj-dg-ZNn">
                                 <rect key="frame" x="24" y="8" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="FNM-9M-1Lc"/>
@@ -73,6 +73,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profile_tab_inactive" width="23" height="23"/>
+        <image name="placeholder-profile-32px" width="32" height="32"/>
     </resources>
 </document>
