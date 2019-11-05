@@ -401,6 +401,8 @@
 		7982F66422C3B0F500BC8B36 /* CustomBlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7982F66322C3B0F500BC8B36 /* CustomBlackButton.swift */; };
 		7983D22C228982B500DE054E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22B228982B500DE054E /* Image.swift */; };
 		7983D22E228982DC00DE054E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983D22D228982DC00DE054E /* Keys.swift */; };
+		798AE54C2371559800CD3638 /* NoEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798AE54A2371559800CD3638 /* NoEventsCell.xib */; };
+		798AE54D2371559800CD3638 /* NoEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798AE54B2371559800CD3638 /* NoEventsCell.swift */; };
 		7991909F22C9D5A00044602E /* ClubDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991909C22C9D5A00044602E /* ClubDetailController.swift */; };
 		799190A022C9D5A00044602E /* ClubDetailLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991909D22C9D5A00044602E /* ClubDetailLogics.swift */; };
 		799190A122C9D5A00044602E /* ClubDetailMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991909E22C9D5A00044602E /* ClubDetailMediates.swift */; };
@@ -997,6 +999,8 @@
 		7982F66322C3B0F500BC8B36 /* CustomBlackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBlackButton.swift; sourceTree = "<group>"; };
 		7983D22B228982B500DE054E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7983D22D228982DC00DE054E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		798AE54A2371559800CD3638 /* NoEventsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoEventsCell.xib; sourceTree = "<group>"; };
+		798AE54B2371559800CD3638 /* NoEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsCell.swift; sourceTree = "<group>"; };
 		7991909C22C9D5A00044602E /* ClubDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailController.swift; sourceTree = "<group>"; };
 		7991909D22C9D5A00044602E /* ClubDetailLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailLogics.swift; sourceTree = "<group>"; };
 		7991909E22C9D5A00044602E /* ClubDetailMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailMediates.swift; sourceTree = "<group>"; };
@@ -2108,6 +2112,8 @@
 				7903D0A0228E8CE5004E33B9 /* EventCell.xib */,
 				7903D0A1228E8CE5004E33B9 /* TutorialPopUpCell.swift */,
 				7903D0A2228E8CE5004E33B9 /* TutorialPopUpCell.xib */,
+				798AE54B2371559800CD3638 /* NoEventsCell.swift */,
+				798AE54A2371559800CD3638 /* NoEventsCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3421,6 +3427,7 @@
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
 				8A4B3287232F5A5B00AC1D17 /* PostUserCell.xib in Resources */,
+				798AE54C2371559800CD3638 /* NoEventsCell.xib in Resources */,
 				8A04B15D22FC6C3A0055C65F /* SwitchCell.xib in Resources */,
 				8A4B328E232F5A5B00AC1D17 /* PostImageCell.xib in Resources */,
 				1A339B5222B3AE1E005509EA /* ListCell.xib in Resources */,
@@ -3715,6 +3722,7 @@
 				1A024CFE23476F8600EE7FB4 /* EventCateogryFilterMediates.swift in Sources */,
 				793BE67722E88207005EF72D /* MessageKitError.swift in Sources */,
 				1A5DA6B0235241FF0090D8E2 /* UserProfileGalleryLogics.swift in Sources */,
+				798AE54D2371559800CD3638 /* NoEventsCell.swift in Sources */,
 				797FFDAF22B7BC480055A001 /* PhotoGalleryHintLabel.swift in Sources */,
 				7903D0AF228E8CE5004E33B9 /* EventCell.swift in Sources */,
 				1A370B1E2356E4E00086652B /* AppDelegatePush.swift in Sources */,

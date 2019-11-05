@@ -101,6 +101,7 @@ struct Cell {
     static let eventTypeModelCell = "EventTypeModelCell"
     static let galleryCell = "GalleryCell"
     static let profileTileCell = "ProfileTileCell"
+    static let noEventCell  = "NoEventsCell"
 }
 
 struct ReusableView {
