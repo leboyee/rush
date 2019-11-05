@@ -214,17 +214,22 @@ extension ClubDetailViewController: CreatePostViewControllerDelegate {
 // MARK: - SharePostViewControllerDelegate
 extension ClubDetailViewController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
+        var data = [Any]()
         if let post = object as? Post {
-            var data = [Any]()
             data.append("Club: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
             }
-            if let classImage = clubHeader.userImageView.image {
-                data.append(classImage)
+            if let clubImage = clubHeader.userImageView.image {
+                data.append(clubImage)
             }
-            Utils.openActionSheet(controller: self, shareData: data)
+        } else if let club = object as? Club {
+            data.append("Club: \(clubInfo?.clubName ?? "")\nClub description: \(club.clubDesc ?? "")")
+            if let clubImage = clubHeader.userImageView.image {
+                data.append(clubImage)
+            }
         }
+        Utils.openActionSheet(controller: self, shareData: data)
     }
     
     func delete(type: SharePostType, object: Any?) {

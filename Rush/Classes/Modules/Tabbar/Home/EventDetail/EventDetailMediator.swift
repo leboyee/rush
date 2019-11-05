@@ -193,8 +193,8 @@ extension EventDetailViewController {
 
 extension EventDetailViewController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
+        var data = [Any]()
         if let post = object as? Post {
-            var data = [Any]()
             data.append("Event: \(event?.title ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
@@ -202,8 +202,13 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
             if let eventImage = header.headerImage.image {
                 data.append(eventImage)
             }
-            Utils.openActionSheet(controller: self, shareData: data)
+        } else if let evnt = object as? Event {
+            data.append("Event: \(evnt.title)\nEvent description: \(evnt.desc)")
+            if let eventImage = header.headerImage.image {
+                data.append(eventImage)
+            }
         }
+        Utils.openActionSheet(controller: self, shareData: data)
     }
     
     func delete(type: SharePostType, object: Any?) {
