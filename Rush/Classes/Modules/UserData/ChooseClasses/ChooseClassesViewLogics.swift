@@ -72,11 +72,12 @@ extension ChooseClassesViewController {
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.noResultView.isHidden = unsafe.classesArray.count > 0 ? true : false
                 let profile = Authorization.shared.profile
                 let university = profile?.university?.first
                 unsafe.noResultLabel.text = "No classes available" // \(university?.universityName ?? "")"
                 unsafe.classesArray = classes
+                unsafe.noResultView.isHidden = unsafe.classesArray.count > 0 ? true : false
+
                 unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
