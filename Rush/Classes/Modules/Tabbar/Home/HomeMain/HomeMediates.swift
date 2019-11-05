@@ -38,8 +38,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             if isShowTutorial {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
-                    fillTutorialCell(cell)
-                    return cell
+                fillTutorialCell(cell)
+                return cell
             } else {
                 return UITableViewCell()
             }
@@ -57,9 +57,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         if isShowJoinEvents && indexPath.section == 1 {
+        if isShowJoinEvents && indexPath.section == 1 {
             let event = eventList[indexPath.row]
-             showEvent(event: event)
+            showEvent(event: event)
         }
     }
     
@@ -82,7 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return cellHeight(indexPath)
+        return cellHeight(indexPath)
     }
 }
 
@@ -92,7 +92,7 @@ extension HomeViewController: SelectEventTypeDelegate {
         /*
          screenType: club, event
          type: public, closed, invite only
-        */
+         */
         
         if screenType == .club { // Open club detail
             performSegue(withIdentifier: Segues.createClub, sender: nil)
@@ -100,7 +100,7 @@ extension HomeViewController: SelectEventTypeDelegate {
             performSegue(withIdentifier: Segues.createEvent, sender: type)
         }
     }
-
+    
     func addPhotoEvent(_ type: PhotoFrom) {
         
     }
@@ -113,10 +113,10 @@ extension HomeViewController: CreatePostViewControllerDelegate {
     
     func showSnackBar(text: String, buttonText: String) {
         /*
-        notificationTitle = text
-        notificationButtonTitle = buttonText
-        performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
-        */
+         notificationTitle = text
+         notificationButtonTitle = buttonText
+         performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
+         */
         let snackbar = TTGSnackbar(message: text,
                                    duration: .middle,
                                    actionText: buttonText,

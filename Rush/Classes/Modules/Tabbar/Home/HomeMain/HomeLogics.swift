@@ -83,7 +83,7 @@ extension HomeViewController {
         }
         
         // MARK: - CollectionItem Selected
-
+        
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
@@ -149,7 +149,7 @@ extension HomeViewController {
 // MARK: - Services
 extension HomeViewController {
     func getHomeList() {
-
+        
         ServiceManager.shared.fetchHomeList(params: [:]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let home = data {
@@ -165,8 +165,8 @@ extension HomeViewController {
             }
             unsafe.tableView.reloadData()
         }
-       }
-
+    }
+    
     func getEventList(sortBy: GetEventType) {
         
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
@@ -190,7 +190,7 @@ extension HomeViewController {
                 }
             }
             unsafe.getClubListAPI(sortBy: "feed")
-           
+            
         }
     }
     
@@ -214,20 +214,20 @@ extension HomeViewController {
             unsafe.getClassListAPI()
         }
     }
-        
-  /*  func getClassCategoryAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
-
-        ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
-            guard let unsafe = self else { return }
-            if let classes = data {
-                unsafe.classList = classes
-                unsafe.tableView.reloadData()
-            } else {
-                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
-            }
-        }
-    }*/
+    
+    /*  func getClassCategoryAPI() {
+     let param = [Keys.pageNo: pageNo] as [String: Any]
+     
+     ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, errorMsg) in
+     guard let unsafe = self else { return }
+     if let classes = data {
+     unsafe.classList = classes
+     unsafe.tableView.reloadData()
+     } else {
+     Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+     }
+     }
+     }*/
     func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         
