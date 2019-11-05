@@ -152,19 +152,19 @@ extension EventCategoryListViewController {
                 cell.setup(detail: cGroup?.name ?? "")
                 
             } else {
-                cell.setup(detail: myclass.location)
+                cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
             }
             
             let rosterArray = [Invitee]()
-            /*      for rs in selectedGroup?.classGroupRosters ?? [ClassJoined]() {
-             if let user = rs.user {
-             let inv = Invitee()
-             inv.user = user
-             rosterArray.append(inv)
-             }
-             
-             }
-             */
+        /*    for rs in myClass.classGroupRosters ?? [ClassJoined]() {
+                if let user = rs.user {
+                    let inv = Invitee()
+                    inv.user = user
+                    rosterArray.append(inv)
+                }
+                
+            } */
+            
             cell.setup(invitee: rosterArray)
             cell.setup(imageUrl: myclass.photo?.url())
         } else {
@@ -216,7 +216,7 @@ extension EventCategoryListViewController {
         let nextMon = arrWeekDates.nextWeek.first!.toDate(format: dateFormat)
         _ = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 2].toDate(format: dateFormat)
         let nextSun = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 1].toDate(format: dateFormat)
-       
+        
         eventDayFilter = eventType
         switch eventType {
         case .none:
@@ -373,6 +373,7 @@ extension EventCategoryListViewController {
                      Keys.orderBy: order,
                      Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
+        param[Keys.universityId] = selUniversity.universtiyId
         
         if clubCategory?.id != "" {
             param[Keys.intId] = clubCategory?.id
@@ -422,7 +423,7 @@ extension EventCategoryListViewController {
             param[Keys.fromTime] = startTime
             param[Keys.toTime] = endTime
         }
-        
+        param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -436,8 +437,8 @@ extension EventCategoryListViewController {
     }
     
     func getClassListAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
-        
+        var param = [Keys.pageNo: pageNo] as [String: Any]
+        param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {

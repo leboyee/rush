@@ -200,11 +200,11 @@ extension ClubDetailViewController {
             unsafe.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
         }
         
-        if post.user?.userId == Authorization.shared.profile?.userId {
+      /*  if post.user?.userId == Authorization.shared.profile?.userId {
             cell.moreButton.isHidden = false
         } else {
             cell.moreButton.isHidden = true
-        }
+        } */
         
         if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
             let time = Date().timeAgoDisplay(date: date)

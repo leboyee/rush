@@ -46,9 +46,17 @@ extension ExploreCell {
     func setup(isHideSeparator: Bool) {
         separatorView.isHidden = isHideSeparator
     }
-    func setup(img1Url: String, img2Url: String, img3Url: String) {
-        imgView?.sd_setImage(with: img1Url.photo?.url(), completed: nil)
-        imgView2?.sd_setImage(with: img2Url.photo?.url(), completed: nil)
-        imgView3?.sd_setImage(with: img3Url.photo?.url(), completed: nil)
+    func setup(img1Url: String, img2Url: String, img3Url: String, type: String) {
+        var image: UIImage?
+        if type == "Event" {
+            image = UIImage(named: "placeholder-event48px")
+        } else if type == "Club" {
+            image = UIImage(named: "placeholder-club48px")
+        } else if type == "Class" {
+            image = UIImage(named: "placeholder-classCard")
+        }
+        imgView?.sd_setImage(with: img1Url.photo?.url(), placeholderImage: image)
+        imgView2?.sd_setImage(with: img2Url.photo?.url(), placeholderImage: image)
+        imgView3?.sd_setImage(with: img3Url.photo?.url(), placeholderImage: image)
     }
 }

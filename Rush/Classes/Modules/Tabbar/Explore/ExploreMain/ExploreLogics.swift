@@ -93,10 +93,11 @@ extension ExploreViewController {
         var img1: String = ""
         var img2: String = ""
         var img3: String = ""
-        
+        var type: String = ""
         switch indexPath.row {
             
         case 0:
+            type = "Event"
             if eventList.count > 0 {
                 img1 = eventList[0].photoJson /// Need to update that with photo
             }
@@ -107,7 +108,8 @@ extension ExploreViewController {
                 img3 = eventList[2].photoJson  /// Need to update that with photo
             }
         case 1:
-            if clubList.count > 0 {
+            type = "Club"
+         if clubList.count > 0 {
                 img1 = clubList[0].clubPhoto ?? ""
             }
             if clubList.count > 1 {
@@ -117,7 +119,8 @@ extension ExploreViewController {
                 img3 = clubList[2].clubPhoto ?? ""
             }
         case 2:
-            if classList.count > 0 {
+            type = "Class"
+           if classList.count > 0 {
                 img1 = classList[0].photoJson
             }
             if classList.count > 1 {
@@ -129,7 +132,7 @@ extension ExploreViewController {
         default:
             break
         }
-        cell.setup(img1Url: img1, img2Url: img2, img3Url: img3)
+        cell.setup(img1Url: img1, img2Url: img2, img3Url: img3, type: type)
     }
     
     func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
@@ -362,9 +365,8 @@ extension ExploreViewController {
         let dateFormat = "yyyy-MM-dd" // Date format
         let startDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "00:00:00", toForamte: serverDateFormate1, getFormate: serverDateFormate1)
         let endDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate1, getFormate: serverDateFormate1)
-        
-        var param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                     Keys.search: searchText,
+//        Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+        var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.fromStart: startDate,
                      Keys.toStart: endDate,

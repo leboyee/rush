@@ -158,6 +158,11 @@ extension ClubManageCell {
         }
     }
     
+    func setup(enableMessageButton: Bool, button:UIButton) {
+        button.isUserInteractionEnabled = enableMessageButton
+        button.isEnabled = enableMessageButton
+    }
+    
     func setup(topConstraint: CGFloat) {
         topConstraintOfButton.constant = topConstraint
     }

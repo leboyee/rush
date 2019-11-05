@@ -56,24 +56,41 @@ extension OtherUserProfileController {
         let status = userInfo?.friendTypeStatus ?? .none
         
         if indexPath.row == 0 {
-            
             cell.setup(secondButtonType: .message)
             cell.setup(topConstraint: 0)
             isShowMessageButton = false
+            
             if status == .none {
                 
             } else if status == .friends {
                 cell.setup(firstButtonType: .friends)
+                if userInfo?.isMessageAllow == 0 {
+                    cell.setup(enableMessageButton: false, button: cell.secondButton)
+                }
+                
             } else if status == .requested {
                 cell.setup(firstButtonType: .requested)
+                if userInfo?.isMessageAllow == 0 {
+                    cell.setup(enableMessageButton: false, button: cell.secondButton)
+                }
             } else if status == .accept {
                 cell.setup(firstButtonType: .accept)
                 cell.setup(secondButtonType: .reject)
                 isShowMessageButton = true
+                if userInfo?.isMessageAllow == 0 {
+                    cell.setup(enableMessageButton: false, button: cell.messageButton)
+                }
             } else if status == .addFriend {
                 cell.setup(firstButtonType: .addFriend)
+                if userInfo?.isMessageAllow == 0 {
+                    cell.setup(enableMessageButton: false, button: cell.secondButton)
+                }
             }
+            
         } else {
+            if userInfo?.isMessageAllow == 0 {
+                cell.setup(enableMessageButton: false, button: cell.secondButton)
+            }
             cell.setup(secondButtonType: .message)
             cell.setup(isOnlyShowMessage: true)
         }
@@ -177,7 +194,8 @@ extension OtherUserProfileController {
             if indexPath.section == 2 {
                 unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
             } else if indexPath.section == 3 {
-                unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: nil)
+                let friend = unsafe.friendList[index]
+                unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: friend)
             } else if indexPath.section == 4 {
                 let event = unsafe.eventList[index]
                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
