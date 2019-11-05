@@ -64,8 +64,8 @@ extension ClassDetailViewController {
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
         
-        cell.setup(title: subclassInfo?.name ?? "Development lifehacks")
-        cell.setup(detail: selectedGroup?.name ?? "FINA 40", numberOfLines: 0)
+        cell.setup(title: subclassInfo?.name ?? "")
+        cell.setup(detail: selectedGroup?.name ?? "", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
         cell.setup(detailTextColor: UIColor.buttonDisableTextColor)
     }

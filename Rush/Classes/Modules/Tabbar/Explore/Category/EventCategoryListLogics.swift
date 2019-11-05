@@ -16,7 +16,7 @@ enum EventCategoryDayFilter: Int {
     case thisWeek = 3
     case thisWeekend = 4
     case nextWeek = 5
-
+    
 }
 
 enum EventCategoryTimeFilter: Int {
@@ -25,6 +25,7 @@ enum EventCategoryTimeFilter: Int {
     case day = 2
     case evening = 3
 }
+
 extension EventCategoryListViewController {
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
@@ -39,12 +40,11 @@ extension EventCategoryListViewController {
         } else if type == .classes {
             return classList.count
         } else {
-             return 50
+            return 50
         }
     }
     
     func fillCategoryCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
-        
     }
     
     func fillSortingCell(_ cell: SortingCell, _ indexPath: IndexPath) {
@@ -79,17 +79,19 @@ extension EventCategoryListViewController {
             isThirdFilter = !isThirdFilter
         }
         isFirstFilter = false
-                         isSecondFilter = false
-                         isThirdFilter = false
-                   if indexPath.item == 0 {
-                             isFirstFilter = true
-                         } else if indexPath.item == 1 {
-                             isSecondFilter = true
-                         } else if indexPath.item == 2 {
-                             isThirdFilter = true
-                         }
+        isSecondFilter = false
+        isThirdFilter = false
+        
+        if indexPath.item == 0 {
+            isFirstFilter = true
+        } else if indexPath.item == 1 {
+            isSecondFilter = true
+        } else if indexPath.item == 2 {
+            isThirdFilter = true
+        }
+        
         if type == .event {
-                 
+            
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
             eventCategoryFilter.delegate = self
@@ -106,13 +108,13 @@ extension EventCategoryListViewController {
                 eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
                 eventCategoryFilter.delegate = self
                 eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
-
+                
             } else if interestList.count > 0 {
                 let cat = interestList.compactMap({ $0.interestName })
                 eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
                 eventCategoryFilter.delegate = self
                 eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
-
+                
             }
             
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
@@ -125,7 +127,7 @@ extension EventCategoryListViewController {
             let cat = classCategoryList.compactMap({ $0.name })
             eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
             eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
-                    
+            
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
             collectionView.reloadData()
@@ -136,15 +138,14 @@ extension EventCategoryListViewController {
     func fillClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         if type == .club {
             let club = clubList[indexPath.row]
-            let image = Image(json: club.clubPhoto ?? "")
             cell.setup(title: club.clubName ?? "")
             cell.setup(detail: club.clubDesc ?? "")
             cell.setup(invitee: club.invitees)
-            cell.setup(imageUrl: image.urlThumb())
+            cell.setup(imageUrl: club.photo?.urlThumb())
         } else if type == .classes {
             let myclass = classList[indexPath.row]
-//            let image = Image(json: myclass.clubPhoto ?? "")
-            cell.setup(title: myclass.name )
+            cell.setup(imageUrl: myclass.photo?.urlThumb())
+            cell.setup(title: myclass.name)
             if myclass.myJoinedClass?.count ?? 0 > 0 {
                 let jClass = myclass.myJoinedClass?.first
                 let cGroup = myclass.classGroups?.filter({ $0.id == jClass?.groupId }).first
@@ -154,19 +155,19 @@ extension EventCategoryListViewController {
                 cell.setup(detail: myclass.location)
             }
             
-             var rosterArray = [Invitee]()
-             /*      for rs in selectedGroup?.classGroupRosters ?? [ClassJoined]() {
-                       if let user = rs.user {
-                           let inv = Invitee()
-                           inv.user = user
-                           rosterArray.append(inv)
-                       }
-                      
-                   }
-  */
+            let rosterArray = [Invitee]()
+            /*      for rs in selectedGroup?.classGroupRosters ?? [ClassJoined]() {
+             if let user = rs.user {
+             let inv = Invitee()
+             inv.user = user
+             rosterArray.append(inv)
+             }
+             
+             }
+             */
             cell.setup(invitee: rosterArray)
             cell.setup(imageUrl: myclass.photo?.url())
-            } else {
+        } else {
             cell.setup(detail: "SOMM 24-A")
         }
     }
@@ -178,14 +179,14 @@ extension EventCategoryListViewController {
         cell.setup(start: event.start, end: event.end)
         cell.setup(eventImageUrl: event.photo?.urlThumb())
         
-      /*  cell.cellSelected = { [weak self] (type, id, index) in
-            guard let unsafe = self else { return }
-            if unsafe.type == .event
-            {
-                let event = unsafe.eventList[index]
-                unsafe.performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
-            }
-        }*/
+        /*  cell.cellSelected = { [weak self] (type, id, index) in
+         guard let unsafe = self else { return }
+         if unsafe.type == .event
+         {
+         let event = unsafe.eventList[index]
+         unsafe.performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+         }
+         }*/
     }
     func cellSelected(_ indexPath: IndexPath) {
         if type == .event {
@@ -207,21 +208,15 @@ extension EventCategoryListViewController {
     }
     
     func filterType(eventType: EventCategoryDayFilter) {
-              let arrWeekDates = Date().getWeekDates() // Get dates of Current and Next week.
-              let dateFormat = "yyyy:MM:dd" // Date format
-              let thisMon = arrWeekDates.thisWeek.first!.toDate(format: dateFormat)
-              let thisSat = arrWeekDates.thisWeek[arrWeekDates.thisWeek.count - 2].toDate(format: dateFormat)
-              let thisSun = arrWeekDates.thisWeek[arrWeekDates.thisWeek.count - 1].toDate(format: dateFormat)
-              let nextMon = arrWeekDates.nextWeek.first!.toDate(format: dateFormat)
-              let nextSat = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 2].toDate(format: dateFormat)
-              let nextSun = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 1].toDate(format: dateFormat)
-
-              //print("Today: \(Date().toDate(format: dateFormat))") // Sep 26
-              //print("Tomorrow: \(Date().tomorrow.toDate(format: dateFormat))") // Sep 27
-             // print("This Week: \(thisMon) - \(thisSun)") // Sep 24 - Sep 30
-             // print("This Weekend: \(thisSat) - \(thisSun)") // Sep 29 - Sep 30
-             // print("Next Week: \(nextMon) - \(nextSun)") // Oct 01 - Oct 07
-              print("Next Weekend: \(nextSat) - \(nextSun)") // Oct 06 - Oct 07
+        let arrWeekDates = Date().getWeekDates() // Get dates of Current and Next week.
+        let dateFormat = "yyyy:MM:dd" // Date format
+        let thisMon = arrWeekDates.thisWeek.first!.toDate(format: dateFormat)
+        let thisSat = arrWeekDates.thisWeek[arrWeekDates.thisWeek.count - 2].toDate(format: dateFormat)
+        let thisSun = arrWeekDates.thisWeek[arrWeekDates.thisWeek.count - 1].toDate(format: dateFormat)
+        let nextMon = arrWeekDates.nextWeek.first!.toDate(format: dateFormat)
+        _ = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 2].toDate(format: dateFormat)
+        let nextSun = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 1].toDate(format: dateFormat)
+       
         eventDayFilter = eventType
         switch eventType {
         case .none:
@@ -254,15 +249,10 @@ extension EventCategoryListViewController {
             }
         case .nextWeek:
             do {
-                
                 startDate = Date().localToUTC(date: nextMon + " " + "00:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate)
                 endDate = Date().localToUTC(date: nextSun + " " + "23:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate)
             }
         }
-        
-        print("Start Date: ", startDate)
-        print("End Date: ", endDate)
-        
     }
     
     func filterType(eventType: EventCategoryTimeFilter) {
@@ -280,7 +270,7 @@ extension EventCategoryListViewController {
                 startTime = String(startArray.last ?? "")
                 
                 let endArray = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "11:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate).split(separator: " ")
-                    endTime = String(endArray.last ?? "")
+                endTime = String(endArray.last ?? "")
             }
         case .day:
             do {
@@ -290,10 +280,8 @@ extension EventCategoryListViewController {
                 let endArray = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "17:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate).split(separator: " ")
                 endTime = String(endArray.last ?? "")
             }
-            
         case .evening:
             do {
-                
                 let startArray = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "18:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate).split(separator: " ")
                 startTime = String(startArray.last ?? "")
                 
@@ -301,12 +289,7 @@ extension EventCategoryListViewController {
                 endTime = String(endArray.last ?? "")
             }
         }
-        
-        print("Start Time: ", startTime)
-        print("End Time: ", endTime)
-        
     }
-
 }
 
 // MARK: - EventCategoryFilterDelegate
@@ -325,7 +308,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 guard let index = Utils.anyTimeFilter().firstIndex(where: { $0 == type }) else { return }
                 secondFilterIndex = index
                 filterType(eventType: EventCategoryTimeFilter(rawValue: index) ?? .allTime)
-
+                
             } else if isThirdFilter {
                 thirdSortText = type
                 self.isOnlyFriendGoing = type == "Everyone" ? 0 : 1
@@ -362,7 +345,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 firstFilterIndex = indexPath.row
                 firstSortText = type
                 classCategory = classCategoryList[indexPath.row]
-             } else if isSecondFilter {
+            } else if isSecondFilter {
                 secondSortText = type
                 secondFilterIndex = indexPath.row
             } else if isThirdFilter {
@@ -380,7 +363,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 
 // Services
 extension EventCategoryListViewController {
-
+    
     func getClubListAPI(sortBy: String, clubCategoryId: String?) {
         
         let order = secondFilterIndex == 0 ? "popular" : "newest"
@@ -390,7 +373,7 @@ extension EventCategoryListViewController {
                      Keys.orderBy: order,
                      Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
-       
+        
         if clubCategory?.id != "" {
             param[Keys.intId] = clubCategory?.id
         }
@@ -403,7 +386,7 @@ extension EventCategoryListViewController {
             Utils.showSpinner()
         }
         
-        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
@@ -423,11 +406,11 @@ extension EventCategoryListViewController {
                      Keys.isOnlyFriendGoing: "\(isOnlyFriendGoing)"] as [String: Any]
         
         if eventCategoryId != "" {
-             param[Keys.intId] = eventCategoryId
+            param[Keys.intId] = eventCategoryId
         }
-       
+        
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
-             param[Keys.intId] = interest?.interestId
+            param[Keys.intId] = interest?.interestId
         }
         
         if eventDayFilter != .none {
@@ -440,7 +423,7 @@ extension EventCategoryListViewController {
             param[Keys.toTime] = endTime
         }
         
-        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, total, errorMsg) in
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
@@ -451,6 +434,7 @@ extension EventCategoryListViewController {
             }
         }
     }
+    
     func getClassListAPI() {
         let param = [Keys.pageNo: pageNo] as [String: Any]
         
@@ -492,9 +476,8 @@ extension EventCategoryListViewController {
             guard let unsafe = self else { return }
             if let category = data {
                 unsafe.clubCategoryList = category
-                  unsafe.tableView.reloadData()
+                unsafe.tableView.reloadData()
             }
         }
     }
-    
 }
