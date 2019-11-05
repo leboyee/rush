@@ -157,19 +157,27 @@ extension EventCategoryListViewController {
                 cell.setup(detail: cGroup?.name ?? "")
                 
             } else {
-                cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
+                var countClass = ""
+                let count = myclass.classGroups?.count
+                if count == 0 {
+                    countClass = "No classes"
+                } else if count == 1 {
+                    countClass = "1 class"
+                } else {
+                    countClass = "\(count ?? 0) classes"
+                }
+                cell.setup(detail: countClass)
+               // cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
             }
             
-            let rosterArray = [Invitee]()
-        /*    for rs in myClass.classGroupRosters ?? [ClassJoined]() {
+            var rosterArray = [Invitee]()
+            for rs in myclass.rosters ?? [ClassJoined]() {
                 if let user = rs.user {
                     let inv = Invitee()
                     inv.user = user
                     rosterArray.append(inv)
                 }
-                
-            } */
-            
+            }
             cell.setup(invitee: rosterArray)
         } else {
             cell.setup(detail: "SOMM 24-A")
@@ -441,7 +449,13 @@ extension EventCategoryListViewController {
     }
     
     func getClassListAPI() {
-        var param = [Keys.pageNo: pageNo] as [String: Any]
+       let order = secondFilterIndex == 0 ? "popular" : "newest"
+               var param = [Keys.search: searchText,
+                            Keys.sortBy: "explore",
+                            Keys.categoryId: classCategory?.id ?? "",
+                            Keys.orderBy: order,
+                            Keys.isOnlyFriendJoined: thirdFilterIndex,
+                            Keys.pageNo: pageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
