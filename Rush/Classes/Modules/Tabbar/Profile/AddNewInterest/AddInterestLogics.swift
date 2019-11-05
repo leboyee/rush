@@ -65,6 +65,7 @@ extension AddInterestViewController {
     
     func getInterestList(searchText: String) {
         //Utils.showSpinner()
+        interestArray.removeAll()
         ServiceManager.shared.getInterestList(params: [Keys.search: searchText]) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if let list = data {

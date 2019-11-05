@@ -83,14 +83,15 @@ class CreateClubViewController: UIViewController {
     }
     
     func setupUI() {
-        // set all data for manage(edit) club
-        setupData()
-        
+
         // Setup tableview
         setupTableView()
         
         // validate default fields
         validateAllFields()
+        
+        // set all data for manage(edit) club
+        setupData()
         
         // Setup header
         fillImageHeader()
@@ -122,7 +123,9 @@ class CreateClubViewController: UIViewController {
                 selectedUniversity = university
             }
             
-            validateAllFields()
+            // saveBtnDisActive
+            saveButton.isEnabled = false
+            saveButton.setImage(#imageLiteral(resourceName: "save-dark"), for: .normal)
         }
     }
     

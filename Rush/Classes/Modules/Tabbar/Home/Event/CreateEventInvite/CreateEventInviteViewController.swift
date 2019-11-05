@@ -70,6 +70,7 @@ extension CreateEventInviteViewController {
                     let invite = Invite()
                     invite.isFriend = true
                     invite.profile = profile.user
+                    invite.friend = profile
                     inviteArray.append(invite)
                 }
                 for contact in self.selectedItem {

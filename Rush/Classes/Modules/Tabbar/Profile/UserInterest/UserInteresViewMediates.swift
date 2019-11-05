@@ -70,8 +70,10 @@ extension UserInterestViewController: UITextFieldDelegate {
             let filtered = interestArray.filter({ $0.interestName.contains(searchText) })
             searchArray = filtered
             isSearch = true
+            rightBarButton?.image = #imageLiteral(resourceName: "crossGrayInterest")
         } else {
             isSearch = false
+            rightBarButton?.image = #imageLiteral(resourceName: "plus_white")
         }
         self.tableView.reloadData()
       

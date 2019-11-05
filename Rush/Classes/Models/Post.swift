@@ -32,8 +32,7 @@ class Post: Codable {
     var numberOfUnLikes: Int = 0
     var numberOfComments: Int = 0
     var user: User?
-    var createDate: Date?
-    var createdAt: String?
+    var createdAt: Date?
     var myVote: [PostVote]?
     var type: String = ""
     
@@ -61,7 +60,6 @@ class Post: Codable {
         case numberOfUnLikes = "down_votes"
         case numberOfComments = "total_comments"
         case user
-        case createDate
         case createdAt = "created_at"
         case myVote = "my_post_vote"
         case type = "data_type"

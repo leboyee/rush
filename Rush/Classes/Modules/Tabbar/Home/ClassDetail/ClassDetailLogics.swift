@@ -185,7 +185,7 @@ extension ClassDetailViewController {
                 guard self != nil else { return }
                 self?.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
             }
-            if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+            if let date = post.createdAt {
                 let time = Date().timeAgoDisplay(date: date)
                 cell.setup(detail: time)
             }
@@ -230,7 +230,7 @@ extension ClassDetailViewController {
             cell.moreButton.isHidden = true
         }
         
-        if let date = Date.parse(dateString: post.createdAt ?? "", format: "yyyy-MM-dd HH:mm:ss") {
+        if let date = post.createdAt {
             let time = Date().timeAgoDisplay(date: date)
             cell.set(timeStr: time)
         }
