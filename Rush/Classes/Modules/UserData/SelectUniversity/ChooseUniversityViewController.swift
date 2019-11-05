@@ -91,7 +91,7 @@ class ChooseUniversityViewController: CustomViewController {
         skipButton.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
         
 //            if(isEditProfile == true) {
 //                pageControl.isHidden = true
