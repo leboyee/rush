@@ -137,6 +137,10 @@ extension TextViewCell {
               textView.text = "Invite Only Event"
           }
       }
+    
+    func setup(maxLenthSize: Int) {
+             maxLength = maxLenthSize
+       }
 }
 
 extension TextViewCell: UITextViewDelegate {
@@ -175,4 +179,5 @@ extension TextViewCell: UITextViewDelegate {
         textDidChanged?(textView.text)
         updateTableView?(textView)
     }
+    
 }

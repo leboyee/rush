@@ -66,6 +66,7 @@ extension CreateEventViewController {
         cell.switchValueChanged = { [weak self] (isOn) in
             guard let unsafe = self else { return }
             unsafe.isCreateGroupChat = isOn
+            unsafe.validateAllFields()
         }
     }
     
@@ -160,6 +161,7 @@ extension CreateEventViewController {
     func fillTextViewFirstSection(_ cell: TextViewCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
+        cell.setup(maxLenthSize: 40)
         if isEditEvent == false {
             cell.setup(iconImage: "nameEvent")
             cell.setup(placeholder: Text.nameEvent, text: nameEvent)
@@ -210,6 +212,24 @@ extension CreateEventViewController {
             //guard let unsafe = self else { return }
         }
         
+        cell.updateTableView = {
+                  [weak self] (textView) in
+                  guard let unsafe = self else { return }
+                  let startHeight = textView.frame.size.height
+                  var calcHeight = textView.sizeThatFits(textView.frame.size).height
+                  if calcHeight == startHeight && textView.text.isEmpty {
+                      calcHeight += 1
+                  }
+                  if startHeight != calcHeight {
+                      // Disable animations
+                      UIView.setAnimationsEnabled(false)
+                      unsafe.tableView.beginUpdates()
+                      unsafe.tableView.endUpdates()
+                      // Enable animations
+                      UIView.setAnimationsEnabled(true)
+                  }
+              }
+        
     }
     
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
@@ -251,13 +271,16 @@ extension CreateEventViewController {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.addInterest : Text.addAnotherInterest)
                 cell.setup(keyboardReturnKeyType: .done)
+                cell.setup(isHideCleareButton: true)
                 cell.setup(isEnabled: false)
+                
             } else {
                 let interest = self.interestList[indexPath.row]
-                cell.setup(isHideCleareButton: false)
                 cell.setup(isEnabled: false)
-                // S*
+                cell.setup(placeholder: "")
                 cell.setup(placeholder: "", text: interest.interestName)
+                cell.setup(textViewColor: UIColor.bgBlack)
+
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 9 {

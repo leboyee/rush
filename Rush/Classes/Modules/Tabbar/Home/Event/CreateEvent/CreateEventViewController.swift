@@ -100,6 +100,7 @@ class CreateEventViewController: UIViewController {
 
         if isEditEvent == true {
             setupEventEdit()
+            self.tableView.reloadData()
         }
     }
 }
@@ -173,6 +174,7 @@ extension CreateEventViewController {
         }
         guard let url = event?.photo?.main else { return }
         clubHeader.setup(url: URL(string: url))
+        isCreateGroupChat = event?.isChatGroup ?? true
     }
     
 }
@@ -253,6 +255,19 @@ extension CreateEventViewController {
             }
         } else if segue.identifier == Segues.createEventInviteSegue {
             if let vc = segue.destination as? CreateEventInviteViewController {
+                var friendsArray = [Friend]()
+                var contactArray = [Contact]()
+                for invite in self.peopleList {
+                    if invite.isFriend == true {
+                        guard let friend = invite.friend else { return }
+                        friendsArray.append(friend)
+                    } else {
+                        guard let contact = invite.contact else { return }
+                        contactArray.append(contact)
+                    }
+                }
+                vc.selectedFriendListArray = friendsArray
+                vc.selectedItem = contactArray
                 vc.delegate = self
             }
         } else if segue.identifier == Segues.createEventInterestSegue {

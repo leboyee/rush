@@ -35,6 +35,7 @@ class UserFriendsListViewController: UIViewController {
        override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     func setupUI() {

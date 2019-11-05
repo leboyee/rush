@@ -108,7 +108,11 @@ extension OtherUserProfileController {
             }
         } else if segue.identifier == Segues.profileInformation {
             if let vc = segue.destination as? ProfileInformationViewController {
-                vc.userInfo = userInfo
+                if let friend = sender as? Friend{
+                    vc.userInfo = friend.user
+                } else {
+                    vc.userInfo = userInfo
+                }
             }
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }

@@ -204,6 +204,7 @@ extension EditProfileViewController {
                 performSegue(withIdentifier: Segues.chooseLevelSegue, sender: nil)
             case 2:
                 if profile?.educationLevel == "Alumni" || profile?.educationLevel == "Professor" {
+                } else {
                     performSegue(withIdentifier: Segues.chooseYearSegue, sender: nil)
                 }
             default:

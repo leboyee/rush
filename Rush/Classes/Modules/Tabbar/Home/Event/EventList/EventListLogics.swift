@@ -196,10 +196,13 @@ extension EventListViewController {
                         unsafe.isNextPageMyEvent = true
                     }
                     unsafe.isMyEvents = unsafe.eventList.count > 0 ? true : false
-                    print(unsafe.eventList)
                     unsafe.tableView.reloadData()
-                    unsafe.pageNo = 1
-                    unsafe.getEventList()
+                    if unsafe.isFirstTime == false {
+                        unsafe.isFirstTime = true
+                        unsafe.pageNo = 1
+                        unsafe.getEventList()
+                    }
+                
 
                 } else {
                     unsafe.pageNo = 1

@@ -157,19 +157,27 @@ extension EventCategoryListViewController {
                 cell.setup(detail: cGroup?.name ?? "")
                 
             } else {
-                cell.setup(detail: myclass.location)
+                var countClass = ""
+                let count = myclass.classGroups?.count
+                if count == 0 {
+                    countClass = "No classes"
+                } else if count == 1 {
+                    countClass = "1 class"
+                } else {
+                    countClass = "\(count ?? 0) classes"
+                }
+                cell.setup(detail: countClass)
+               // cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
             }
             
-            let rosterArray = [Invitee]()
-            /*      for rs in selectedGroup?.classGroupRosters ?? [ClassJoined]() {
-             if let user = rs.user {
-             let inv = Invitee()
-             inv.user = user
-             rosterArray.append(inv)
-             }
-             
-             }
-             */
+            var rosterArray = [Invitee]()
+            for rs in myclass.rosters ?? [ClassJoined]() {
+                if let user = rs.user {
+                    let inv = Invitee()
+                    inv.user = user
+                    rosterArray.append(inv)
+                }
+            }
             cell.setup(invitee: rosterArray)
         } else {
             cell.setup(detail: "SOMM 24-A")
@@ -220,7 +228,7 @@ extension EventCategoryListViewController {
         let nextMon = arrWeekDates.nextWeek.first!.toDate(format: dateFormat)
         _ = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 2].toDate(format: dateFormat)
         let nextSun = arrWeekDates.nextWeek[arrWeekDates.nextWeek.count - 1].toDate(format: dateFormat)
-       
+        
         eventDayFilter = eventType
         switch eventType {
         case .none:
@@ -377,6 +385,7 @@ extension EventCategoryListViewController {
                      Keys.orderBy: order,
                      Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
+        param[Keys.universityId] = selUniversity.universtiyId
         
         if clubCategory?.id != "" {
             param[Keys.intId] = clubCategory?.id
@@ -426,7 +435,7 @@ extension EventCategoryListViewController {
             param[Keys.fromTime] = startTime
             param[Keys.toTime] = endTime
         }
-        
+        param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -440,8 +449,14 @@ extension EventCategoryListViewController {
     }
     
     func getClassListAPI() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
-        
+       let order = secondFilterIndex == 0 ? "popular" : "newest"
+               var param = [Keys.search: searchText,
+                            Keys.sortBy: "explore",
+                            Keys.categoryId: classCategory?.id ?? "",
+                            Keys.orderBy: order,
+                            Keys.isOnlyFriendJoined: thirdFilterIndex,
+                            Keys.pageNo: pageNo] as [String: Any]
+        param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {

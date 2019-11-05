@@ -94,7 +94,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
                 cell.setup(title: "\(item.displayName)")
                 cell.setupImage(image: #imageLiteral(resourceName: "placeholder-profile-32px"))
                 cell.setup(isHidden: false)
-                cell.setup(isSelected: selectedItem.contains(item))
+                cell.setup(isSelected: selectedItem.contains(where: { $0.displayName == item.displayName }))
                 return cell
             }
         } else {
@@ -107,7 +107,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
                     cell.setupImage(image: image)
                 }
                 cell.setup(isHidden: false)
-                cell.setup(isSelected: selectedItem.contains(item))
+                cell.setup(isSelected: selectedItem.contains(where: { $0.displayName == item.displayName }))
                 return cell
             } else {
                 return UITableViewCell()

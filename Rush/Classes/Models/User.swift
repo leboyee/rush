@@ -44,6 +44,7 @@ class User: Codable {
     var updatedAt: String?
     var lastLoginTime: String?
     var status: Int = 0
+    var isMessageAllow: Int?
     var instaUserName: String?
     var instaToken: String?
     var totalEvents: Int?
@@ -120,7 +121,8 @@ class User: Codable {
         case photoJson = "u_photo"
         case friend = "friend_data"
         case university = "university"
-        //        case name
+        case isMessageAllow
+    //        case name
         //var classes: [Classes]? u_edu_classes,u_university
 
         case totalEvents = "total_events"
