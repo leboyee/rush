@@ -43,7 +43,7 @@ extension PostUserCell {
     }
     
     func set(time: Date?) {
-        timeLabel.text = time?.toString(format: "MMM dd") ?? "Now"
+        timeLabel.text = time?.toString(format: "MMM dd") ?? ""
     }
     
     func set(url: URL?) {
