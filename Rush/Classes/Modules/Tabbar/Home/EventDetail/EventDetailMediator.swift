@@ -195,6 +195,12 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
         var data = [Any]()
         if let post = object as? Post {
+            var userName = "my"
+            if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
+                userName = post.user?.firstName ?? "this"
+            }
+            data.append("Check out \(userName) post on Rush app:\n")
+            
             data.append("Event: \(event?.title ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
@@ -229,15 +235,15 @@ extension EventDetailViewController: OtherUserProfileProtocol {
 extension EventDetailViewController: PostViewProtocol {
     func deletePostSuccess(_ post: Post?) {
         /*
-        /// Comment that part for now, will open again after discussion
-        let snackbar = TTGSnackbar(message: "Your post is deleted.",
-                                   duration: .middle,
-                                   actionText: "Undo",
-                                   actionBlock: { (_) in
-                                   Utils.notReadyAlert()
-        })
-        snackbar.show()
-        */
+         /// Comment that part for now, will open again after discussion
+         let snackbar = TTGSnackbar(message: "Your post is deleted.",
+         duration: .middle,
+         actionText: "Undo",
+         actionBlock: { (_) in
+         Utils.notReadyAlert()
+         })
+         snackbar.show()
+         */
         /// Find index of post, remove and reload list
         if let post = post, let index = postList?.firstIndex(where: { $0.postId == post.postId }) {
             postList?.remove(at: index)
@@ -252,13 +258,13 @@ extension EventDetailViewController: PostViewProtocol {
             reloadTable()
         }
     }
-
+    
 }
 
 // MARK: - CreatePostViewController delegate
 extension EventDetailViewController: CreatePostViewControllerDelegate {
     func showSnackBar(text: String, buttonText: String) { }
-
+    
     func createPostSuccess(_ post: Post) {
         loadPosts()
         // https://www.wrike.com/open.htm?id=410213843

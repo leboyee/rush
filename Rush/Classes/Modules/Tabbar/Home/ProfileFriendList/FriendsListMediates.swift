@@ -31,7 +31,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if type == .friends || type == .clubJoinedUsers {
+        if type == .friends || type == .clubJoinedUsers || type == .classRoasters {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendList, for: indexPath) as? FriendListCell else { return UITableViewCell() }
             fillCell(cell, indexPath)
             return cell
@@ -47,7 +47,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if type == .events || type == .clubs || type == .friends || type == .classes || type == .clubJoinedUsers {
+        if type == .events || type == .clubs || type == .friends || type == .classes || type == .clubJoinedUsers || type == .classRoasters {
           selectedCell(indexPath)
         }
 

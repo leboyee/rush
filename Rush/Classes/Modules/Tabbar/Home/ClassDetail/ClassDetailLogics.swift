@@ -150,20 +150,23 @@ extension ClassDetailViewController {
                 inv.user = user
                 rosterArray.append(inv)
             }
-           
         }
-        cell.setup(invitees: rosterArray, total: rosterArray.count)
+        cell.setup(invitees: rosterArray, total: selectedGroup?.totalRosters ?? 0)
         cell.userSelected = { [weak self] (id, index) in
                  guard let unself = self else { return }
-                 if index != 0 {
-                     let invitee = rosterArray[index - 1] // -1 of ViewAll Cell item
-                    if invitee.user?.userId == Authorization.shared.profile?.userId {
-                         self?.tabBarController?.selectedIndex = 3
-                     } else {
-                        unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee.user)
-                     }
-                 }
-             }
+            if index != 0 {
+                let invitee = rosterArray[index - 1] // -1 of ViewAll Cell item
+                if invitee.user?.userId == Authorization.shared.profile?.userId {
+                    self?.tabBarController?.selectedIndex = 3
+                } else {
+                    unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee.user)
+                }
+            } else {
+                //View All clicked
+                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classRoasters)
+            }
+            
+        }
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {

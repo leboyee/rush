@@ -43,9 +43,12 @@ class EventCateogryFilterViewController: CustomViewController {
             delegate?.selectedIndex("\(selectedIndex)", IndexPath(row: selectedIndex, section: 0))
             dismiss(animated: true, completion: nil)
         } else {
-            let name = dataArray[selectedIndex]
-            delegate?.selectedIndex(name, IndexPath(row: selectedIndex, section: 0))
-            dismiss(animated: true, completion: nil)
+            if dataArray.count > selectedIndex {
+                let name = dataArray[selectedIndex]
+                           delegate?.selectedIndex(name, IndexPath(row: selectedIndex, section: 0))
+                           dismiss(animated: true, completion: nil)
+            }
+           
         }
     }
     

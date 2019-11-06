@@ -50,6 +50,7 @@ extension CreateClubViewController {
     func fillTextViewCell(_ cell: TextViewCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
+        cell.setup(maxLenthSize: 40)
         if indexPath.section == 0 {
             cell.setup(iconImage: "club-gray-1")
             cell.setup(placeholder: Text.nameClub, text: nameClub)

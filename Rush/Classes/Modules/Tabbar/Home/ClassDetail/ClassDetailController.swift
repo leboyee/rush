@@ -165,6 +165,14 @@ extension ClassDetailViewController {
                     vc.currentIndex = index
                 }
             }
+        } else if segue.identifier == Segues.friendList {
+            if let vc = segue.destination as? FriendsListViewController {
+                vc.hidesBottomBarWhenPushed = false
+//                vc.inviteeList = subclassInfo?.ros ?? [Invitee]()
+                vc.classId = selectedGroup?.classId ?? "0"
+                 vc.groupId = selectedGroup?.id ?? "0"
+                 vc.type = sender as? UserProfileDetailType ?? .none
+            }
         }
     }
 }

@@ -86,12 +86,12 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else if indexPath.row == 2 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell else { return UITableViewCell() }
-                    fillPostImageCell(cell, indexPath)
-                    return cell
+                fillPostImageCell(cell, indexPath)
+                return cell
             } else if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postBottom, for: indexPath) as? PostBottomCell else { return UITableViewCell() }
-                    fillPostBottomCell(cell, indexPath)
-                    return cell
+                fillPostBottomCell(cell, indexPath)
+                return cell
             } else {
                 return UITableViewCell()
             }
@@ -216,6 +216,12 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
         var data = [Any]()
         if let post = object as? Post {
+            var userName = "my"
+            if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
+                userName = post.user?.firstName ?? "this"
+            }
+            data.append("Check out \(userName) post on Rush app:\n")
+            
             data.append("Club: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
