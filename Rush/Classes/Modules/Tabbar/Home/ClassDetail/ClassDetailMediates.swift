@@ -88,12 +88,12 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 return cell
             } else if indexPath.row == 2 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postImages, for: indexPath) as? PostImagesCell else { return UITableViewCell() }
-                    fillPostImageCell(cell, indexPath)
-                    return cell
+                fillPostImageCell(cell, indexPath)
+                return cell
             } else if indexPath.row == 3 {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postBottom, for: indexPath) as? PostBottomCell else { return UITableViewCell() }
-                    fillPostBottomCell(cell, indexPath)
-                    return cell
+                fillPostBottomCell(cell, indexPath)
+                return cell
             } else {
                 return UITableViewCell()
             }
@@ -139,29 +139,29 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return cellHeight(indexPath)
     }
     // MARK: - Scroll Delegates
-       func scrollViewDidScroll(_ scrollView: UIScrollView) {
-           let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
-           let smallHeaderHeight = headerSmallWithoutDateHeight
-           let smallHeight = smallHeaderHeight + topMergin
-           let h = heightConstraintOfHeader.constant - scrollView.contentOffset.y
-           let height = min(max(h, smallHeight), screenHeight)
-           self.heightConstraintOfHeader.constant = height
-           if !smallHeight.isEqual(to: height) {
-               tableView.contentOffset = CGPoint(x: 0, y: 0)
-           }
-       }
-       
-       func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-           if self.heightConstraintOfHeader.constant > headerFullHeight {
-               animateHeader()
-           }
-       }
-       
-       func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-           if self.heightConstraintOfHeader.constant > headerFullHeight {
-               animateHeader()
-           }
-       }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
+        let smallHeaderHeight = headerSmallWithoutDateHeight
+        let smallHeight = smallHeaderHeight + topMergin
+        let h = heightConstraintOfHeader.constant - scrollView.contentOffset.y
+        let height = min(max(h, smallHeight), screenHeight)
+        self.heightConstraintOfHeader.constant = height
+        if !smallHeight.isEqual(to: height) {
+            tableView.contentOffset = CGPoint(x: 0, y: 0)
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.heightConstraintOfHeader.constant > headerFullHeight {
+            animateHeader()
+        }
+    }
 }
 extension ClassDetailViewController {
     private func animateHeader() {
@@ -177,6 +177,12 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
         var data = [Any]()
         if let post = object as? Post {
+            var userName = "my"
+            if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
+                userName = post.user?.firstName ?? "this"
+            }
+            data.append("Check out \(userName) post on Rush app:\n")
+            
             data.append("Class: \(classInfo?.name ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
@@ -194,7 +200,7 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
     }
     
     func delete(type: SharePostType, object: Any?) {
-         if type == .post, let post = object as? Post {
+        if type == .post, let post = object as? Post {
             deletePostAPI(id: post.postId)
         }
     }

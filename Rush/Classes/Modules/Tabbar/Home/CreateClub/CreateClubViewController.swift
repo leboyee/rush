@@ -247,8 +247,7 @@ extension CreateClubViewController {
         } else if segue.identifier == Segues.createEventInterestSegue {
             if let vc = segue.destination as? CreateEventInterestViewController {
                 vc.delegate = self
-                // *C
-                //vc.selectedArray = interestList
+                vc.selectedArray = interestList
             }
         } else if segue.identifier == Segues.createEventInviteSegue {
             if let vc = segue.destination as? CreateEventInviteViewController {

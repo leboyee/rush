@@ -143,6 +143,11 @@ extension PostViewController: SharePostViewControllerDelegate {
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
             }
+            var userName = "my"
+            if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
+                userName = post.user?.firstName ?? "this"
+            }
+            data.append("Check out \(userName) post on Rush app:\n")
             data.append("Club: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
             Utils.openActionSheet(controller: self, shareData: data)
         }

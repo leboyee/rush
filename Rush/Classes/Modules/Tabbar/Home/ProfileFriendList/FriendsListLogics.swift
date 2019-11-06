@@ -527,9 +527,25 @@ extension FriendsListViewController {
             if let list = value {
                 if list.count > 0 {
                     if unsafe.pageNo == 1 {
-                        unsafe.rostersList = list
+                        var rosterArray = [Invitee]()
+                        for rs in list {
+                            if let user = rs.user {
+                                let inv = Invitee()
+                                inv.user = user
+                                rosterArray.append(inv)
+                            }
+                        }
+                        unsafe.inviteeList = rosterArray
                     } else {
-                        unsafe.rostersList.append(contentsOf: list)
+                       var rosterArray = [Invitee]()
+                        for rs in list {
+                            if let user = rs.user {
+                                let inv = Invitee()
+                                inv.user = user
+                                rosterArray.append(inv)
+                            }
+                        }
+                        unsafe.inviteeList = rosterArray
                     }
                     unsafe.isNextPageExist = true
                 } else {
