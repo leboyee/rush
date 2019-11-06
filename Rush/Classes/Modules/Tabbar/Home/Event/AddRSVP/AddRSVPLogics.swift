@@ -46,8 +46,14 @@ extension AddRSVPViewController {
         cell.clearButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if indexPath.row == 0 {
-                cell.dataTextView.text = ""
-                cell.dataTextView.resignFirstResponder()
+                if unself.rsvpArray.count > 1 {
+                    unself.rsvpArray.remove(at: indexPath.row)
+                    unself.tableView.reloadData()
+                } else {
+                    cell.dataTextView.text = ""
+                    cell.dataTextView.resignFirstResponder()
+                }
+             
             } else {
                 unself.rsvpArray.remove(at: indexPath.row)
                 unself.tableView.reloadData()

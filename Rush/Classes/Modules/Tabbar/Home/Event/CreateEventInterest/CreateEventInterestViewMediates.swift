@@ -25,7 +25,7 @@ extension CreateEventInterestViewController: UITableViewDelegate, UITableViewDat
     
     func numberOfSections(in tableView: UITableView) -> Int {
         let interest = Authorization.shared.profile?.interest
-        return interest?.count ?? 0 > 0 ? 2 : 1
+        return interest?.count ?? 0 > 0 ? interestArray.count > 0 ? 2 : 1 : 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
