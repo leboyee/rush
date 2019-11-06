@@ -189,8 +189,6 @@ extension CreateEventViewController {
                     eventCategoryFilter.selectedIndex = self.event?.eventType == .publik ? 0 : self.event?.eventType == .closed ? 1 : 2
                     eventCategoryFilter.headerTitle = "Choose event type:"
                     let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
-            eventCategoryFilter.navigationController?.navigationBar.barTintColor = .red
-            eventCategoryFilter.navigationController?.navigationBar.backgroundColor = .red
                     self.presentPanModal(rowViewController)
         } else if indexPath.section == 0 || indexPath.section == 1 {
             
