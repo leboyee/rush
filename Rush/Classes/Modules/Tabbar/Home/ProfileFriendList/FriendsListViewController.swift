@@ -19,6 +19,7 @@ class FriendsListViewController: UIViewController {
     @IBOutlet weak var segmentContainView: UIView!
     var exploreType: ExploreSearchType = .none
     var inviteeList = [Invitee]()
+    var rostersList = [ClassJoined]()
     var myClassesList = [ClassJoined]()
     var firstTabList = [Any]()
     var firstTabPageNo = 1
@@ -39,6 +40,8 @@ class FriendsListViewController: UIViewController {
     var searchTextFiled: UITextField?
     var userInfo: User?
     var clubId: String?
+    var classId: String = ""
+    var groupId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +79,9 @@ class FriendsListViewController: UIViewController {
         } else if type == .classes {
             getMyJoinedClasses()
         } else if type == .clubJoinedUsers {
-            //API remaining
             fetchClubInviteeAPI()
+        } else if type == .classRoasters {
+            fetchClassRostersAPI()
         }
         
         firstSegmentButton.setTitle(firstTitle, for: .normal)
@@ -118,7 +122,7 @@ class FriendsListViewController: UIViewController {
             userName = userInfo?.firstName ?? "User"
             let titleName = type == .friends ? "\(userName)'s friends" : type == .events ? "\(userName)'s events" : type == .clubs ? "\(userName)'s clubs" : type == .classes ? "\(userName)'s classes" : ""
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.navBarTitleWhite32)
-        } else if type == .clubJoinedUsers {
+        } else if type == .clubJoinedUsers || type == .classRoasters {
             
            // Set left bar button and title
            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
@@ -131,7 +135,13 @@ class FriendsListViewController: UIViewController {
            searchTextField.delegate = self
            let font = UIFont.displayBold(sz: 24)
            let color = UIColor.navBarTitleWhite32
-           searchTextField.attributedPlaceholder = NSAttributedString(string: "Search invitees", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            var text = "Search"
+            if type == .clubJoinedUsers {
+                text = "Search invitees"
+            } else if type == .classRoasters {
+                text = "Search rosters"
+            }
+           searchTextField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
            customView.addSubview(searchTextField)
            navigationItem.titleView = customView

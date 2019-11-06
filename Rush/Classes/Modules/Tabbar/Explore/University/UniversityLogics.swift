@@ -56,8 +56,7 @@ extension UniversityViewController {
         
         ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
             guard let unsafe = self else { return }
-            
-            
+    
             if value?.count ?? 0 > 0 {
                 if unsafe.pageNo == 1 {
                     unsafe.universityArray = value ?? [University]()

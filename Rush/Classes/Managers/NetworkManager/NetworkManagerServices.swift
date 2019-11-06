@@ -212,6 +212,10 @@ extension NetworkManager {
         requestGet(path: "club/\(clubId)/invitees", params: params, resultHandler: resultHandler)
     }
     
+    func getClassGroupRostersList(classId: String, groupId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestGet(path: "class/\(classId)/group/\(groupId)/rosters", params: params, resultHandler: resultHandler)
+    }
+   
     func getInviteeListWithSession(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
         return getRequestGet(path: "event/\(eventId)/invitees", params: params, resultHandler: resultHandler)
        }

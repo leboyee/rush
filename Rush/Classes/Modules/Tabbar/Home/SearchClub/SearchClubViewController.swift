@@ -42,7 +42,7 @@ class SearchClubViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.backgroundColor = UIColor.bgBlack
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         navigationController?.navigationBar.isTranslucent = false
