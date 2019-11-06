@@ -278,6 +278,7 @@ extension CreateEventViewController {
                 let interest = self.interestList[indexPath.row]
                 cell.setup(isEnabled: false)
                 cell.setup(placeholder: "")
+                cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: interest.interestName)
                 cell.setup(textViewColor: UIColor.bgBlack)
 
@@ -596,7 +597,7 @@ extension CreateEventViewController: EventCategoryFilterDelegate {
 // MARK: - Add Invities Delegate
 extension CreateEventViewController: EventInviteDelegate {
     func selectedInvities(_ invite: [Invite]) {
-        self.peopleList.append(contentsOf: invite)
+        self.peopleList = invite
         self.tableView.reloadData()
         self.validateAllFields()
 

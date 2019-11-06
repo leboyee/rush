@@ -117,6 +117,8 @@ struct Keys {
     static let currentPassword     = "current_password"
     static let newPassword         = "new_password"
     static let emailToken     = "email_token"
+    static let userStep     = "u_ui_step"
+
 
     static let uEduLevel           = "u_edu_level"
     static let uEduYear           = "u_edu_year"

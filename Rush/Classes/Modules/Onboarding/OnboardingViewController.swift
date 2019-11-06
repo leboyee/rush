@@ -42,6 +42,7 @@ class OnboardingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -50,6 +51,27 @@ class OnboardingViewController: UIViewController {
 
     func setUpUI() {
         setupMediator()
+        moveToStepView()
+    }
+    
+    func moveToStepView() {
+        let step = Authorization.shared.profile?.step
+        if Authorization.shared.authorized == true {
+            switch step {
+            case 0:
+                guard let userNameViewController = UIStoryboard(name: "UserData", bundle: nil).instantiateViewController(withIdentifier: "EnterUserNameViewController") as? EnterUserNameViewController else { return }
+                self.navigationController?.pushViewController(userNameViewController, animated: false)
+            case 1:
+                guard let universityViewController = UIStoryboard(name: "UserData", bundle: nil).instantiateViewController(withIdentifier: "ChooseUniversityViewController") as? ChooseUniversityViewController else { return }
+                universityViewController.addUniversityType = .register
+                self.navigationController?.pushViewController(universityViewController, animated: false)
+            case 2:
+                guard let interestViewController = UIStoryboard(name: "UserData", bundle: nil).instantiateViewController(withIdentifier: "ChooseInterestViewController") as? ChooseInterestViewController else { return }
+                self.navigationController?.pushViewController(interestViewController, animated: false)
+            default:
+                break
+            }
+        }
     }
 
 }

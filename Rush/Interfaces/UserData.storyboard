@@ -25,7 +25,7 @@
         <!--Enter User Name View Controller-->
         <scene sceneID="ZwO-Ut-q0G">
             <objects>
-                <viewController id="RoR-PN-E3j" customClass="EnterUserNameViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterUserNameViewController" id="RoR-PN-E3j" customClass="EnterUserNameViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tY6-O3-RNJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
