@@ -269,6 +269,7 @@ extension OtherUserProfileController {
             unsafe.userInfo = user
             unsafe.isShowMessageButton = unsafe.userInfo?.friendTypeStatus == .accept ? true : false
             unsafe.tableView.reloadData()
+            unsafe.fillImageHeader()
             unsafe.getFriendListAPI()
         }
     }

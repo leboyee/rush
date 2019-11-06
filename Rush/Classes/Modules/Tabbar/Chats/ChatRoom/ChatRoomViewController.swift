@@ -601,6 +601,8 @@ extension ChatRoomViewController {
             }
             self.navigationController?.pushViewController(controller, animated: true)
         } else if eventInfo != nil || channel?.customType == "event" {
+            self.navigationController?.popViewController(animated: true)
+            return
             let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
             guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
             controller.eventId = channel?.data ?? "0"

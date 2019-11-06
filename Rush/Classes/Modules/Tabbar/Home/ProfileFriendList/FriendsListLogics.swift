@@ -59,6 +59,19 @@ extension FriendsListViewController {
                     cell.setup(url: url)
                 }
             }
+        } else  if type == .classRoasters {
+            var friend = Invitee()
+            friend = inviteeList[indexPath.row]
+            cell.setup(name: friend.user?.name ?? "")
+            if let url = URL(string: friend.user?.photo?.thumb ?? "") {
+                cell.setup(url: url)
+            } else {
+                let invitee = inviteeList[indexPath.row]
+                cell.setup(name: invitee.user?.name ?? "")
+                if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                    cell.setup(url: url)
+                }
+            }
         }
     }
     
@@ -128,6 +141,9 @@ extension FriendsListViewController {
             if type == .clubJoinedUsers {
                 pageNo += 1
                 fetchClubInviteeAPI()
+            } else if type == .classRoasters {
+                pageNo += 1
+                fetchClassRostersAPI()
             } else {
                 fetchInvitees(search: searchTextFiled?.text ?? "")
             }
@@ -487,6 +503,49 @@ extension FriendsListViewController {
                         unsafe.inviteeList = list
                     } else {
                         unsafe.inviteeList.append(contentsOf: list)
+                    }
+                    unsafe.isNextPageExist = true
+                } else {
+                    unsafe.isNextPageExist = false
+                }
+            }
+            unsafe.tableView.reloadData()
+        }
+    }
+    
+    func fetchClassRostersAPI() {
+        
+        if pageNo == 1 {
+            inviteeList.removeAll()
+        }
+        
+        let param = [Keys.search: searchText,
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        ServiceManager.shared.fetchClassGroupRostersList(classId: classId, groupId: groupId, params: param) { [weak self] (value, _, _) in
+            guard let unsafe = self else { return }
+            if let list = value {
+                if list.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        var rosterArray = [Invitee]()
+                        for rs in list {
+                            if let user = rs.user {
+                                let inv = Invitee()
+                                inv.user = user
+                                rosterArray.append(inv)
+                            }
+                        }
+                        unsafe.inviteeList = rosterArray
+                    } else {
+                       var rosterArray = [Invitee]()
+                        for rs in list {
+                            if let user = rs.user {
+                                let inv = Invitee()
+                                inv.user = user
+                                rosterArray.append(inv)
+                            }
+                        }
+                        unsafe.inviteeList = rosterArray
                     }
                     unsafe.isNextPageExist = true
                 } else {
