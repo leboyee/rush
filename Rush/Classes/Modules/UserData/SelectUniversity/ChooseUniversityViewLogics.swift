@@ -68,7 +68,10 @@ extension ChooseUniversityViewController {
     
     func updateProfileAPI() {
         let university = universityArray[selectedIndex]
-        let param = [Keys.uUniversity: "\(university.universtiyId)"]  as [String: Any]
+        var param = [Keys.uUniversity: "\(university.universtiyId)"]  as [String: Any]
+        if addUniversityType == .register {
+            param[Keys.userStep] = 2
+        }
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()

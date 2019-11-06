@@ -23,6 +23,9 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
         searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
 
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
     }
     
     // MARK: - Keyboard functions

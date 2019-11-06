@@ -137,17 +137,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupStoryboard() {
-        if Authorization.shared.authorized == true {
-              let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
-              let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
-              self.window?.rootViewController = tabbarVC
-             self.window?.makeKeyAndVisible()
-          } else {
-              let tabbarStoryboard = UIStoryboard(name: "Main", bundle: nil)
-              let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
-              self.window?.rootViewController = tabbarVC
-             self.window?.makeKeyAndVisible()
-          }
+        let step = Authorization.shared.profile?.step
+        if Authorization.shared.authorized == true && step == 3 {
+            let tabbarStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
+            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+            self.window?.rootViewController = tabbarVC
+            self.window?.makeKeyAndVisible()
+        } else {
+            let tabbarStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabbarVC = tabbarStoryboard.instantiateInitialViewController()
+            self.window?.rootViewController = tabbarVC
+            self.window?.makeKeyAndVisible()
+        }
         
         //ThemeManager.shared.loadTheme()
 

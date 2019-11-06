@@ -71,8 +71,10 @@ extension ChooseInterestViewController {
         
         let interestIdArray = selectedArray.map({ String($0.interestId) })
         let selectedIdArray = interestIdArray.joined(separator: ",")
-        let param = [Keys.userInterests: selectedIdArray
+        var param = [Keys.userInterests: selectedIdArray
             ]  as [String: Any]
+        param[Keys.userStep] = 3
+
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
