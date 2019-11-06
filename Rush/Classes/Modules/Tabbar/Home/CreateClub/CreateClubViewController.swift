@@ -254,8 +254,7 @@ extension CreateClubViewController {
             if let vc = segue.destination as? CreateEventInviteViewController {
                 vc.delegate = self
                 vc.selectedInvitee = peopleList
-            
-                var friendsArray = [Friend]()
+            var friendsArray = [Friend]()
                               var contactArray = [Contact]()
                               for invite in self.peopleList {
                                   if invite.isFriend == true {

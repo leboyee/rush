@@ -133,9 +133,7 @@ extension OtherUserProfileController: UIScrollViewDelegate, ClubHeaderDelegate {
         header.delegate = self
         header.setup(profileUrl: userInfo?.photo?.urlLarge())
         header.set(name: userInfo?.name ?? "")
-        if let university = userInfo?.university?.first {
-            header.set(university: university.universityName)
-        }
+        header.set(university: userInfo?.university?.first?.universityName ?? "")
     }
     
     func addPhotoOfClub() { }

@@ -40,6 +40,7 @@ extension UniversityViewController {
     
     func willDisplay(_ indexPath: IndexPath) {
         if isNextPageExist == true, indexPath.row == universityArray.count - 3 {
+            pageNo += 1
             getUniversity()
         }
     }
@@ -49,11 +50,13 @@ extension UniversityViewController {
 extension UniversityViewController {
     func getUniversity() {
         //Utils.showSpinner()
+        if pageNo == 1 {
+            universityArray.removeAll()
+        }
+        
         ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
             guard let unsafe = self else { return }
-            if unsafe.pageNo == 1 {
-                unsafe.universityArray.removeAll()
-            }
+            
             
             if value?.count ?? 0 > 0 {
                 if unsafe.pageNo == 1 {
@@ -61,14 +64,11 @@ extension UniversityViewController {
                 } else {
                     unsafe.universityArray.append(contentsOf: value ?? [University]())
                 }
-                unsafe.pageNo += 1
                 unsafe.isNextPageExist = true
             } else {
                 unsafe.isNextPageExist = false
-                if unsafe.pageNo == 1 {
-                    unsafe.universityArray.removeAll()
-                }
             }
+            
             unsafe.tableView.reloadData()
         }
     }
