@@ -54,10 +54,10 @@ PODS:
   - FBSDKShareKit/Share (5.8.0):
     - FBSDKCoreKit (~> 5.0)
   - FLAnimatedImage (1.0.12)
-  - GoogleMaps/Base (3.5.0)
-  - GooglePlaces (3.5.0):
-    - GoogleMaps/Base (= 3.5.0)
-  - IQKeyboardManagerSwift (6.5.1)
+  - GoogleMaps/Base (3.6.0)
+  - GooglePlaces (3.6.0):
+    - GoogleMaps/Base (= 3.6.0)
+  - IQKeyboardManagerSwift (6.5.2)
   - MGSwipeTableCell (1.6.11)
   - PanModal (1.2.4)
   - ReachabilitySwift (5.0.0)
@@ -67,9 +67,9 @@ PODS:
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
-  - SendBirdSDK (3.0.156)
+  - SendBirdSDK (3.0.157)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.35.0)
+  - SwiftLint (0.36.0)
   - UnsplashPhotoPicker (1.1.0)
 
 DEPENDENCIES:
@@ -121,17 +121,17 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
   FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
-  GooglePlaces: be6f19fe8aa6ff0b5bcccfa1b8805cc977ea1450
-  IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
+  GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
+  GooglePlaces: 1b9d29cf3e164903d873600f511f42acdfe85294
+  IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
   MGSwipeTableCell: b804e4e450dee439c42250be90bd50458bf67fce
   PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
-  SendBirdSDK: b4e71ac4926dd58ff0d0c6c41de60e033db3f3fa
+  SendBirdSDK: d86a3aa150211842760e98a40bc2eb3bd2363e09
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+  SwiftLint: fc9859e4e1752340664851f667bb1898b9c90114
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
 PODFILE CHECKSUM: 4995f60c8b913ddb247110bfa02d815efad0db15

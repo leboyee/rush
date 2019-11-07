@@ -102,6 +102,7 @@ struct Cell {
     static let galleryCell = "GalleryCell"
     static let profileTileCell = "ProfileTileCell"
     static let noEventCell  = "NoEventsCell"
+    static let noEventLabel = "NoEventLabelCell"
 }
 
 struct ReusableView {
@@ -387,6 +388,10 @@ public struct Message {
     static let deleteChat = "Are you sure you want to delete this chat?"
     static let eventRejected = "Event invitation has been rejected successfully."
     static let deleteEvent = "Are you sure you want to delete this event?"
+    static let noImageAdded = "No images were added"
+    static let noFriendAdded = "You have no friends in the app"
+    static let noInterestAdded = "No interests are selected"
+    static let noNotification = "You have no notifications"
 
 }
 

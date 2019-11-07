@@ -20,6 +20,8 @@ extension ProfileViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(cellName: Cell.notification)
         tableView.register(cellName: Cell.eventType)
+        tableView.register(cellName: Cell.noEventLabel)
+
         tableView.register(reusableViewName: ReusableView.textHeader)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         tableView.reloadData()
@@ -47,7 +49,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 3 {
+        if isRequiresEmptyCell(indexPath.section) {
+           if let cell = tableView.dequeueReusableCell(
+                withIdentifier: Cell.noEventLabel,
+                for: indexPath) as? NoEventsCell {
+                fillEmptyCell(cell, indexPath)
+                return cell
+            }
+        } else if indexPath.section == 3 {
             if let cell = tableView.dequeueReusableCell(
                 withIdentifier: Cell.notification,
                 for: indexPath) as? NotificationCell {

@@ -47,4 +47,8 @@ extension NoEventsCell {
         imgView.image = #imageLiteral(resourceName: "placeholder-noEvents")
         txtLabel.text = "There are no upcoming events"
     }
+    
+    func set(title: String) {
+        txtLabel.text = title
+    }
 }

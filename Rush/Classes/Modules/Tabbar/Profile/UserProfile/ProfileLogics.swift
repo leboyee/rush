@@ -89,25 +89,27 @@ extension ProfileViewController {
         return 4
     }
     
-    func sectionHeight(_ section: Int) -> CGFloat {
-        
+    func isRequiresEmptyCell(_ section: Int) -> Bool {
         if section == 0, profileDetail.images?.isEmpty ?? true {
-            return CGFloat.leastNormalMagnitude
+            return true
         } else if section == 1, profileDetail.friends?.isEmpty ?? true {
-            return CGFloat.leastNormalMagnitude
+            return true
         } else if section == 2, profileDetail.interests?.isEmpty ?? true {
-            return CGFloat.leastNormalMagnitude
+            return true
         } else if section == 3, profileDetail.notifications?.isEmpty ?? true {
-            return CGFloat.leastNormalMagnitude
+            return true
         }
-        
+        return false
+    }
+    
+    func sectionHeight(_ section: Int) -> CGFloat {
         return 47.0
     }
     
     func cellHeight(_ indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == 0, (profileDetail.images?.count ?? 0) > 0 {
             return 112.0
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 1, (profileDetail.friends?.count ?? 0) > 0 {
             return 88.0
         } else {
            return UITableView.automaticDimension
@@ -115,26 +117,25 @@ extension ProfileViewController {
     }
     
     func cellCount(_ section: Int) -> Int {
-        var count = 0
-        switch section {
-        case 0:
-            if let images = profileDetail.images, !images.isEmpty {
-               count = 1
-            }
-        case 1:
-            if let friends = profileDetail.friends, !friends.isEmpty {
-               count = 1
-            }
-        case 2:
-            if let interests = profileDetail.interests, !interests.isEmpty {
-               count = 1
-            }
-        case 3:
-            count = profileDetail.notifications?.count ?? 0
-        default:
-            count = 0
+        var count = 1
+        if section == 3, profileDetail.notifications?.count ?? 0 > 0 {
+            count = profileDetail.notifications?.count ?? 1
         }
         return count
+    }
+    
+    func fillEmptyCell(_ cell: NoEventsCell, _ indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            cell.set(title: Message.noImageAdded)
+        case 1:
+            cell.set(title: Message.noFriendAdded)
+        case 2:
+            cell.set(title: Message.noInterestAdded)
+        case 3:
+            cell.set(title: Message.noNotification)
+        default: break
+        }
     }
     
     func fillNotificationCell(_ cell: NotificationCell, _ indexPath: IndexPath) {
