@@ -56,6 +56,7 @@ class ClubManageCell: UITableViewCell {
 extension ClubManageCell {
     
     func setup(firstButtonType: ManageButtonType) {
+        firstButton.isHidden = false
         messageView.isHidden = true
         if firstButtonType == .manage {
             firstButton.setImage(#imageLiteral(resourceName: "club-manage"), for: .normal)
@@ -92,6 +93,7 @@ extension ClubManageCell {
     }
     
     func setup(secondButtonType: ManageButtonType) {
+        secondButton.isHidden = false
         messageView.isHidden = true
         if secondButtonType == .groupChat {
             secondButton.setImage(#imageLiteral(resourceName: "club-grpchat"), for: .normal)
@@ -158,7 +160,7 @@ extension ClubManageCell {
         }
     }
     
-    func setup(enableMessageButton: Bool, button:UIButton) {
+    func setup(enableMessageButton: Bool, button: UIButton) {
         button.isUserInteractionEnabled = enableMessageButton
         button.isEnabled = enableMessageButton
     }

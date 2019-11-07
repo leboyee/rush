@@ -107,6 +107,21 @@ extension EventDetailViewController {
             ]
         }
     }
+    
+    private func manageCellFirstButton() {
+        if type == .invited {
+            /// Call Accept  API
+            guard let event = event else { return }
+            if event.rsvp?.count ?? 0 == 0 {
+                joinEvent(eventId: String(event.id), action: EventAction.accept)
+            } else {
+                showRSVP(action: EventAction.accept)
+            }
+        } else if type == .my {
+            /// Show Edit event api
+            performSegue(withIdentifier: Segues.editEventSegue, sender: self)
+        }
+    }
 }
 
 // MARK: - Handlers
@@ -282,18 +297,8 @@ extension EventDetailViewController {
         
         cell.firstButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
-            if unsafe.type == .invited {
-                /// Call Accept  API
-                guard let event = unsafe.event else { return }
-                if event.rsvp?.count ?? 0 == 0 {
-                    unsafe.joinEvent(eventId: String(event.id), action: EventAction.accept)
-                } else {
-                    unsafe.showRSVP(action: EventAction.accept)
-                }
-            } else if unsafe.type == .my {
-                /// Show Edit event api
-                unsafe.performSegue(withIdentifier: Segues.editEventSegue, sender: self)
-            }
+            unsafe.manageCellFirstButton()
+            
         }
         
         cell.secondButtonClickEvent = { [weak self] () in
@@ -307,6 +312,10 @@ extension EventDetailViewController {
             }
         }
         
+        cell.messageButtonClickEvent = { [weak self] () in
+            guard let unsafe = self else { return }
+            unsafe.manageCellFirstButton()
+        }
     }
     
     func fillLocationCell(_ cell: LocationCell) {
