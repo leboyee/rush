@@ -191,6 +191,7 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
                 data.append(classImage)
             }
         } else if let cls = object as? SubClass {
+            data.append("Check out \(cls.name) on rush app")
             data.append("Class: \(cls.name)\nClass description: \(selectedGroup?.name ?? "")")
             if let clubImage = clubHeader.userImageView.image {
                 data.append(clubImage)

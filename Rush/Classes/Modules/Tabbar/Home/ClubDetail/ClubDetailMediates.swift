@@ -230,6 +230,7 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
                 data.append(clubImage)
             }
         } else if let club = object as? Club {
+            data.append("Check out \(clubInfo?.clubName ?? "") on rush app")
             data.append("Club: \(clubInfo?.clubName ?? "")\nClub description: \(club.clubDesc ?? "")")
             if let clubImage = clubHeader.userImageView.image {
                 data.append(clubImage)

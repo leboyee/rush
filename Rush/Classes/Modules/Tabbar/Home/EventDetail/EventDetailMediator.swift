@@ -209,6 +209,7 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
                 data.append(eventImage)
             }
         } else if let evnt = object as? Event {
+            data.append("Check out \(evnt.title) on rush app")
             data.append("Event: \(evnt.title)\nEvent description: \(evnt.desc)")
             if let eventImage = header.headerImage.image {
                 data.append(eventImage)
