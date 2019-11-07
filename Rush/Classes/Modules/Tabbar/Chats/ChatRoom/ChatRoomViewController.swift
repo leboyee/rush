@@ -531,6 +531,7 @@ extension ChatRoomViewController {
         dateLabel.textColor = UIColor.white
         
         // View calender button setup
+        let detailButton = UIButton(frame: CGRect(x: 0, y: 5, width: screenWidth, height: 40))
         let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
         if clubInfo != nil || channel?.customType == "club" {
             viewCalender.setTitle("View club details", for: .normal)
@@ -542,9 +543,12 @@ extension ChatRoomViewController {
         viewCalender.contentHorizontalAlignment = .left
         viewCalender.setTitleColor(UIColor.gray47, for: .normal)
         viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
-        viewCalender.addTarget(self, action: #selector(openUserProfileScreen), for: .touchUpInside)
+        
+        detailButton.addTarget(self, action: #selector(openUserProfileScreen), for: .touchUpInside)
+        
         titleView.addSubview(dateLabel)
         titleView.addSubview(viewCalender)
+        titleView.addSubview(detailButton)
         
         navigationItem.titleView = titleView
         
