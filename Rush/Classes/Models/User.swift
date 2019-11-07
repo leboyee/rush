@@ -49,7 +49,7 @@ class User: Codable {
     var instaToken: String?
     var totalEvents: Int?
     var step: Int = 0
-    private var photoJson: String?
+    var photoJson: String?
     private var convertJsonToPhoto: Image?
     var friend: [Friend]?
     

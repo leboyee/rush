@@ -395,25 +395,30 @@ extension ChatRoomViewController: MessageCellDelegate {
         print("Message tapped")
     }
     
-    func didTapImage(mediaItem: MediaItem) {
-        
-        let fullScreenController = FullScreenSlideshowViewController()
-        
-        var inputs = [InputSource]()
-        var inputSource: InputSource {
-            if mediaItem.image == nil {
-                return ImageSource(url: mediaItem.url!.absoluteString)!
-            } else {
-                return ImageSource(image: mediaItem.image!)
+    func didTapImage(mediaItem: MediaItem, sender: Sender, date: Date?) {
+                
+        let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: ViewControllerId.userProfileGallery) as? UserProfileGalleryViewController {
+            let image = Image()
+            image.main = mediaItem.url?.absoluteString ?? ""
+            image.date = date
+            vc.list = [image]
+            vc.currentIndex = 0
+            
+            let user = User()
+            user.firstName = sender.displayName
+            user.id = Int64(sender.id) ?? 0
+                        
+            let dic = ["thumb": ["url": sender.avatarUrl]]
+            do {
+                if let jsonData = try? JSONSerialization.data(withJSONObject: dic) {
+                    let decoded = String(data: jsonData, encoding: .utf8)
+                    user.photoJson = decoded
+                }
             }
+            vc.user = user
+            self.present(vc, animated: true, completion: nil)
         }
-        inputs.append(inputSource)
-        
-        fullScreenController.inputs = inputs
-        fullScreenController.initialPage = 0
-        
-        present(fullScreenController, animated: true, completion: nil)
-        
     }
     
     func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
