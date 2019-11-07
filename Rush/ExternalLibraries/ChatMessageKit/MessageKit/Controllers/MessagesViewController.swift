@@ -299,10 +299,9 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         }
         
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-        
         switch message.kind {
         case .photo (let item):
-            messagesCollectionView.messageCellDelegate?.didTapImage(mediaItem: item)
+            messagesCollectionView.messageCellDelegate?.didTapImage(mediaItem: item, sender: message.sender, date: message.sentDate)
         case .text:
             break
         case .attributedText:

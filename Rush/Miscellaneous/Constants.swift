@@ -129,6 +129,7 @@ struct ViewControllerId {
     static let clubDetailViewController          = "ClubDetailViewController"
     static let eventDetailViewController         = "EventDetailViewController"
     static let chatContactsList                  = "ChatContactsListViewController"
+    static let userProfileGallery                = "UserProfileGalleryViewController"
 }
 
 /* Create the struct for Section wise */

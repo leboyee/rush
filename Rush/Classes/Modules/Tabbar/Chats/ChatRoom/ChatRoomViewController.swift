@@ -48,7 +48,7 @@ class ChatRoomViewController: MessagesViewController {
     var profileUserId = ""
     
     open var previousMessageQuery: SBDPreviousMessageListQuery?
-
+    
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
     var emptyMessageFriendTitle = "This is a beginning of your chat history"
@@ -376,12 +376,12 @@ extension ChatRoomViewController {
                 $0.image = UIImage(named: named)?.withRenderingMode(.alwaysTemplate)
                 $0.setSize(CGSize(width: 25, height: 25), animated: false)
                 $0.tintColor = UIColor.gray83
-            }.onSelected {
-                $0.tintColor = UIColor.gray83
-            }.onDeselected {
-                $0.tintColor = UIColor.gray83
-            }.onTouchUpInside { _ in
-                print("Item Tapped")
+        }.onSelected {
+            $0.tintColor = UIColor.gray83
+        }.onDeselected {
+            $0.tintColor = UIColor.gray83
+        }.onTouchUpInside { _ in
+            print("Item Tapped")
         }
     }
 }
@@ -453,7 +453,7 @@ extension ChatRoomViewController {
                 }
             }
         }
-    
+        
         //fetch name and photo
         updateChannelNameAndImagesOnNav()
         
@@ -485,13 +485,13 @@ extension ChatRoomViewController {
         userNameNavLabel.text = self.userName
         
         /*
-        if (self.channel?.members?.count ?? 0) <= 2 {
-            showSingleOrGroupPhotos(photoURL: imageName)
-        } else {
-            //group photo
-            showSingleOrGroupPhotos(photoURL: nil)
-        }
-        */
+         if (self.channel?.members?.count ?? 0) <= 2 {
+         showSingleOrGroupPhotos(photoURL: imageName)
+         } else {
+         //group photo
+         showSingleOrGroupPhotos(photoURL: nil)
+         }
+         */
         
         if (channel?.members?.count ?? 0) == 1 {
             Utils.saveDataToUserDefault(self.userName, UserDefaultKey.showAlertOfChatRemoved)
@@ -554,7 +554,7 @@ extension ChatRoomViewController {
     
     @objc func setupPlaceholderView() {
         
-//        emptyMessageView = UIView(frame: self.view.bounds)
+        //        emptyMessageView = UIView(frame: self.view.bounds)
         emptyUserImageView = UIImageView(frame: CGRect((screenWidth/2) - 44, (screenHeight/2) - 44, 88, 88))
         emptyUserImageView.clipsToBounds = true
         emptyUserImageView.image = #imageLiteral(resourceName: "grayChat")
@@ -573,7 +573,7 @@ extension ChatRoomViewController {
         timeLabel.minimumScaleFactor = 0.2
         timeLabel.text = String(format: emptyMessageFriendTitle, self.userName)
         view.addSubview(timeLabel)
-//        view.addSubview(emptyMessageView)
+        //        view.addSubview(emptyMessageView)
         
         dismissButton = UIButton(frame: CGRect(x: 0, y: isGroupChat ? 180 : 108, width: screenWidth, height: screenHeight - (isGroupChat ? 180 : 108)))
         dismissButton?.addTarget(self, action: #selector(dismissKeyboard), for: .touchUpInside)
@@ -601,12 +601,14 @@ extension ChatRoomViewController {
             }
             self.navigationController?.pushViewController(controller, animated: true)
         } else if eventInfo != nil || channel?.customType == "event" {
-            self.navigationController?.popViewController(animated: true)
-            return
-            let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
-            guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
-            controller.eventId = channel?.data ?? "0"
-            self.navigationController?.pushViewController(controller, animated: true)
+            if eventInfo != nil {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
+                guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
+                controller.eventId = channel?.data ?? "0"
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         } else {
             let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
             guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.otherUserProfileController) as? OtherUserProfileController else { return }

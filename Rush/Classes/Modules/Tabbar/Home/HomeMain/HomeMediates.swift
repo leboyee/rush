@@ -21,8 +21,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.noEventCell, bundle: nil), forCellReuseIdentifier: Cell.noEventCell)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.eventByDate, bundle: nil), forCellReuseIdentifier: Cell.eventByDate)
-        
-        tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
