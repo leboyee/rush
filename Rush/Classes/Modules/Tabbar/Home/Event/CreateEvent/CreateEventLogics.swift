@@ -293,6 +293,7 @@ extension CreateEventViewController {
                 let invite = peopleList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: (invite.isFriend == true ? invite.profile?.name : invite.contact?.displayName) ?? "")
+                cell.setup(textViewColor: UIColor.bgBlack)
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
         }
@@ -600,7 +601,6 @@ extension CreateEventViewController: EventInviteDelegate {
         self.peopleList = invite
         self.tableView.reloadData()
         self.validateAllFields()
-
     }
 }
 
