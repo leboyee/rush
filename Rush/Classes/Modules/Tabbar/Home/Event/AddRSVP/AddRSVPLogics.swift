@@ -50,10 +50,10 @@ extension AddRSVPViewController {
                     unself.rsvpArray.remove(at: indexPath.row)
                     unself.tableView.reloadData()
                 } else {
+                    unself.rsvpArray.remove(at: indexPath.row)
                     cell.dataTextView.text = ""
                     cell.dataTextView.resignFirstResponder()
                 }
-             
             } else {
                 unself.rsvpArray.remove(at: indexPath.row)
                 unself.tableView.reloadData()
