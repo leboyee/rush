@@ -82,6 +82,13 @@ extension EditProfileViewController {
                 cell.set(title: Text.year)
                 cell.set(detail: profile?.educationYear ?? "")
                 cell.set(isDetails: profile?.educationYear?.isNotEmpty ?? false)
+                if profile?.educationLevel == "Alumni" || profile?.educationLevel == "Professor" {
+                    cell.set(titleTextColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1))
+                    cell.arrowImageView.isHidden = true
+                } else {
+                    cell.set(titleTextColor: #colorLiteral(red: 0.1516208947, green: 0.1519686282, blue: 0.1622385383, alpha: 1))
+                    cell.arrowImageView.isHidden = false
+                }
             }
             
         }

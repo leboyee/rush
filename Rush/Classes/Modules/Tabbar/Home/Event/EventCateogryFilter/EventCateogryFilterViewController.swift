@@ -65,7 +65,6 @@ class EventCateogryFilterViewController: UIViewController {
     }
     
     @IBAction func handleTapGesture(gesture: UITapGestureRecognizer) {
-       
         panModalWillDismiss()
     }
     
