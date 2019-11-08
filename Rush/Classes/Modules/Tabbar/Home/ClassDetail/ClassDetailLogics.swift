@@ -13,7 +13,7 @@ import SendBirdSDK
 extension ClassDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-     
+        
         let least = CGFloat.leastNormalMagnitude
         return section == 0 ? least : (section == 1 || (section == 5 && joinedClub == false) || section == 3 || (section == 2 && isShowMore == false)) ? least : section > 5 ? 16 : (section == 2 && isShowMore) ? 16 : 44
     }
@@ -63,7 +63,6 @@ extension ClassDetailViewController {
     
     // Section 0
     func fillClubNameCell(_ cell: ClubNameCell) {
-        
         cell.setup(title: subclassInfo?.name ?? "")
         cell.setup(detail: selectedGroup?.name ?? "", numberOfLines: 0)
         cell.setup(isHideReadmoreButton: true)
@@ -74,18 +73,18 @@ extension ClassDetailViewController {
         cell.setup(firstButtonType: .joined)
         cell.setup(secondButtonType: .groupChatClub)
         
-/*      cell.firstButtonClickEvent = { [weak self] () in
-            guard let unself = self else { return }
-            Utils.alert(title: "Are you sure you want to leave this class?", buttons: ["Yes", "No"], handler: { (index) in
-                if index == 0 {
-                    unself.joinedClub = false
-                    unself.tableView.reloadData()
-                }
-            })
-        }*/
+        /*      cell.firstButtonClickEvent = { [weak self] () in
+         guard let unself = self else { return }
+         Utils.alert(title: "Are you sure you want to leave this class?", buttons: ["Yes", "No"], handler: { (index) in
+         if index == 0 {
+         unself.joinedClub = false
+         unself.tableView.reloadData()
+         }
+         })
+         }*/
         
         cell.secondButtonClickEvent = { [weak self] () in
-        guard let unsafe = self else { return }
+            guard let unsafe = self else { return }
             unsafe.checkIsChatExistOrNot()
         }
     }
@@ -101,19 +100,19 @@ extension ClassDetailViewController {
             if selectedGroup?.classGroupSchedule?.count ?? 0 > 0 {
                 let classSchedule = selectedGroup?.classGroupSchedule
                 let dateFormatter = DateFormatter()
-                       dateFormatter.dateFormat = "HH:mm:ss"
+                dateFormatter.dateFormat = "HH:mm:ss"
                 let sdate = dateFormatter.date(from: classSchedule?[0].startTime ?? "12:12:12")
-                       dateFormatter.dateFormat = "h:mm a"
-                       let startTime = dateFormatter.string(from: sdate!.toLocalTime())
-                       dateFormatter.dateFormat = "HH:mm:ss"
+                dateFormatter.dateFormat = "h:mm a"
+                let startTime = dateFormatter.string(from: sdate!.toLocalTime())
+                dateFormatter.dateFormat = "HH:mm:ss"
                 let edate = dateFormatter.date(from: classSchedule?[0].endTime ?? "12:12:12")
-                       dateFormatter.dateFormat = "h:mm a"
-                       let endTime = dateFormatter.string(from: edate!.toLocalTime())
-                      let day = classSchedule?[0].day.capitalized ?? ""
+                dateFormatter.dateFormat = "h:mm a"
+                let endTime = dateFormatter.string(from: edate!.toLocalTime())
+                let day = classSchedule?[0].day.capitalized ?? ""
                 let title = startTime + " - " + endTime
                 cell.setup(placeholder: "", title: day + " " + title)
             }
-             cell.setup(isSetDropDown: true)
+            cell.setup(isSetDropDown: true)
             cell.setup(isHideCleareButton: false)
             
             cell.clearButtonClickEvent = { [weak self] () in
@@ -128,7 +127,7 @@ extension ClassDetailViewController {
     func fillTimeSlotCell(_ cell: TimeSlotCell, _ indexPath: IndexPath) {
         let classSchedule = selectedGroup?.classGroupSchedule
         cell.setup(day: classSchedule?[indexPath.row].day.capitalized ?? "")
-       
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let sdate = dateFormatter.date(from: classSchedule?[indexPath.row].startTime ?? "12:12:12")
@@ -153,7 +152,7 @@ extension ClassDetailViewController {
         }
         cell.setup(invitees: rosterArray, total: selectedGroup?.totalRosters ?? 0)
         cell.userSelected = { [weak self] (id, index) in
-                 guard let unself = self else { return }
+            guard let unself = self else { return }
             if index != 0 {
                 let invitee = rosterArray[index - 1] // -1 of ViewAll Cell item
                 if invitee.user?.userId == Authorization.shared.profile?.userId {
@@ -266,11 +265,11 @@ extension ClassDetailViewController {
         header.setup(title: title)
         header.setup(isDetailArrowHide: true)
         /*
-        if section == 5 {
-            header.setup(isDetailArrowHide: false)
-            header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
-        }
-        */
+         if section == 5 {
+         header.setup(isDetailArrowHide: false)
+         header.setup(detailArrowImage: #imageLiteral(resourceName: "brown_down"))
+         }
+         */
     }
     func fillImageHeader() {
         let img = subclassInfo?.photo
@@ -278,7 +277,7 @@ extension ClassDetailViewController {
         clubHeader.addPhotoButton.isHidden = true
         clubHeader.setup(classUrl: img?.url())
     }
-   
+    
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         let post = classesPostList[indexPath.section - 6]
         cell.set(numberOfLike: post.totalUpVote)
@@ -307,7 +306,7 @@ extension ClassDetailViewController {
             isShowMore = !isShowMore
             tableView.reloadData()
         } else if indexPath.section == 3 {
-           // Utils.notReadyAlert()
+            // Utils.notReadyAlert()
         } else if indexPath.section == 5 {
             if joinedClub {
                 showCreatePost()
@@ -330,7 +329,7 @@ extension ClassDetailViewController {
                     inv.user = user
                     rosterArray.append(inv)
                 }
-               
+                
             }
             
             Utils.hideSpinner()
@@ -356,21 +355,21 @@ extension ClassDetailViewController {
 
 extension ClassDetailViewController {
     func deletePostAPI(id: String) {
-             Utils.showSpinner()
-             ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
-                  Utils.hideSpinner()
-                  guard let unsafe = self else { return }
-                  if status {
-                   if let index = unsafe.classesPostList.firstIndex(where: { $0.postId == id }) {
-                       unsafe.classesPostList.remove(at: index)
-                       unsafe.tableView.reloadData()
-                      }
-                  } else {
-                       Utils.alert(message: errorMsg.debugDescription)
-                  }
-              }
-          }
-      
+        Utils.showSpinner()
+        ServiceManager.shared.deletePost(postId: id, params: [:]) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                if let index = unsafe.classesPostList.firstIndex(where: { $0.postId == id }) {
+                    unsafe.classesPostList.remove(at: index)
+                    unsafe.tableView.reloadData()
+                }
+            } else {
+                Utils.alert(message: errorMsg.debugDescription)
+            }
+        }
+    }
+    
     func joinClassAPI() {
         Utils.showSpinner()
         ServiceManager.shared.joinClassGroup(classId: selectedGroup?.classId ?? "0", groupId: selectedGroup?.id ?? "0", params: [:]) { [weak self] (status, errorMsg) in
@@ -448,5 +447,4 @@ extension ClassDetailViewController {
             }
         }
     }
-    
 }

@@ -45,7 +45,7 @@ extension SearchClubViewController {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else if searchType == .classes {
-            let classGroup = classObject.classGroups?[indexPath.row]
+            let classGroup = dataList[indexPath.row] as? ClassGroup
             self.performSegue(withIdentifier: Segues.classDetailSegue, sender: classGroup)
         }
     }
@@ -93,7 +93,6 @@ extension SearchClubViewController {
             Utils.showSpinner()
         }
         let classId = classObject.id
-//        classId = "5d8df9751140e8a99272b8a4"
         let param = [Keys.pageNo: pageNo, Keys.classId: classId, Keys.search: ""] as [String: Any]
         
         ServiceManager.shared.fetchClassGroupList(classId: classId, params: param) { [weak self] (data, errorMsg) in

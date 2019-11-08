@@ -69,8 +69,8 @@ class ClassDetailViewController: UIViewController {
     }
     
     deinit {
-              NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
-          }
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
+    }
     
     // MARK: - Other function
     func setup() {
@@ -84,7 +84,7 @@ class ClassDetailViewController: UIViewController {
         let share = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = share
         NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)
-
+        
         // setup tableview
         setupTableView()
     }
@@ -168,10 +168,10 @@ extension ClassDetailViewController {
         } else if segue.identifier == Segues.friendList {
             if let vc = segue.destination as? FriendsListViewController {
                 vc.hidesBottomBarWhenPushed = false
-//                vc.inviteeList = subclassInfo?.ros ?? [Invitee]()
+                //                vc.inviteeList = subclassInfo?.ros ?? [Invitee]()
                 vc.classId = selectedGroup?.classId ?? "0"
-                 vc.groupId = selectedGroup?.id ?? "0"
-                 vc.type = sender as? UserProfileDetailType ?? .none
+                vc.groupId = selectedGroup?.id ?? "0"
+                vc.type = sender as? UserProfileDetailType ?? .none
             }
         }
     }
