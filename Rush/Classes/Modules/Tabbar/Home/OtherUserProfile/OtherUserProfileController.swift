@@ -108,7 +108,7 @@ extension OtherUserProfileController {
             }
         } else if segue.identifier == Segues.profileInformation {
             if let vc = segue.destination as? ProfileInformationViewController {
-                if let friend = sender as? Friend{
+                if let friend = sender as? Friend {
                     vc.userInfo = friend.user
                 } else {
                     vc.userInfo = userInfo
@@ -134,6 +134,10 @@ extension OtherUserProfileController {
                 vc.list = imagesList
                 vc.user = userInfo ?? User()
                 vc.currentIndex = 0
+            }
+        } else if segue.identifier == Segues.otherUserProfile {
+            if let vc = segue.destination as? OtherUserProfileController {
+                vc.userInfo = sender as? User
             }
         }
     }

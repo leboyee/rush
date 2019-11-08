@@ -51,6 +51,7 @@ extension EventTypeCell {
                 let img = Image(json: club.clubPhoto ?? "")
                 cell.setup(clubImageUrl: img.url())
                 cell.joinButton.isHidden = false
+                cell.userView.isHidden = true
                 
                 var isJoined = false
                 if let invitee = club.invitees {
@@ -75,9 +76,6 @@ extension EventTypeCell {
                         cell.setup(inviteeCount: 0)
                     }
                 }
-            } else {
-                cell.setup(eventName: "Development lifehacks")
-                cell.setup(eventDetail: "Get the latest dev skills")
             }
         } else if type == .classes {
             if let classList = list as? [Class] {
