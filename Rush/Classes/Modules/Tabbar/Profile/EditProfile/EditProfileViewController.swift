@@ -48,6 +48,7 @@ class EditProfileViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+   
     }
     
     func majorMinorData() {
@@ -130,6 +131,8 @@ extension EditProfileViewController {
         let leftBar = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftBar
         
+
+        
     }
     
 }
@@ -183,10 +186,31 @@ extension EditProfileViewController {
         pickerController.showsCancelButton = true
         pickerController.autoCloseOnSingleSelect = true
         pickerController.assetType = .allPhotos
+        if #available(iOS 13.0, *) {
+            let standard = UINavigationBarAppearance()
+            standard.configureWithOpaqueBackground()
+                 standard.backgroundColor = .gray
+                 standard.titleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().standardAppearance = standard
+
+        } else {
+            // Fallback on earlier versions
+        }
+     
        // pickerController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             if assets.count > 0 {
                 self.assignSelectedImages(photos: assets)
+            }
+            if #available(iOS 13.0, *) {
+                let standard = UINavigationBarAppearance()
+                standard.configureWithOpaqueBackground()
+                standard.backgroundColor = .bgBlack
+                standard.titleTextAttributes = [.foregroundColor: UIColor.white]
+                UINavigationBar.appearance().standardAppearance = standard
+                
+            } else {
+                // Fallback on earlier versions
             }
         }
         self.present(pickerController, animated: true, completion: nil)
