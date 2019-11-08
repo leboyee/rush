@@ -108,7 +108,7 @@ extension ChatListCell {
                 if let user = member as? SBDUser {
                     let loggedInUserId = Authorization.shared.profile?.userId ?? ""
                     if loggedInUserId != user.userId {
-                        imgView.sd_setImage(with: URL(string: user.profileUrl ?? ""), placeholderImage: #imageLiteral(resourceName: "img-event"), options: [], context: nil)
+                        imgView.sd_setImage(with: URL(string: user.profileUrl ?? ""), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
                     }
                 }
             }

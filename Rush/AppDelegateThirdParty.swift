@@ -98,21 +98,21 @@ extension AppDelegate: SBDChannelDelegate {
             selectedNavigationController?.dismiss(animated: false, completion: nil)
             
             /*
-            if viewcontroller.selectedIndex == 0 {
-                if let vc = selectedNavigationController?.viewControllers.first as? MatchViewController {
-                    let isPush = (selectedNavigationController?.viewControllers.count ?? 0) == 1 ? false : true
-                    if isPush {
-                        selectedNavigationController?.popToRootViewController (animated: false)
-                    } else {
-                        vc.presenter.chatManager()
-                    }
-                }
-                
-            } else {
-                selectedNavigationController?.popToRootViewController (animated: false)
-                viewcontroller.matchButtonAction()
-            }
-            */
+             if viewcontroller.selectedIndex == 0 {
+             if let vc = selectedNavigationController?.viewControllers.first as? MatchViewController {
+             let isPush = (selectedNavigationController?.viewControllers.count ?? 0) == 1 ? false : true
+             if isPush {
+             selectedNavigationController?.popToRootViewController (animated: false)
+             } else {
+             vc.presenter.chatManager()
+             }
+             }
+             
+             } else {
+             selectedNavigationController?.popToRootViewController (animated: false)
+             viewcontroller.matchButtonAction()
+             }
+             */
         }
         
         /*
@@ -144,5 +144,5 @@ extension AppDelegate: SBDChannelDelegate {
             Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
         }
     }
-
+    
 }
