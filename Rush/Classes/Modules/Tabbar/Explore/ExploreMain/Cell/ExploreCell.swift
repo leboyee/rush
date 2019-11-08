@@ -53,7 +53,7 @@ extension ExploreCell {
         } else if type == "Club" {
             image = UIImage(named: "placeholder-club48px")
         } else if type == "Class" {
-            image = UIImage(named: "placeholder-classCard")
+            image = UIImage(named: "placeholder-classes48px")
         }
         imgView?.sd_setImage(with: img1Url.photo?.url(), placeholderImage: image)
         imgView2?.sd_setImage(with: img2Url.photo?.url(), placeholderImage: image)

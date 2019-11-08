@@ -177,7 +177,7 @@ extension ClubDetailViewController: OtherUserProfileProtocol {
             duration: .middle,
             actionText: "Undo",
             actionBlock: { (_) in
-                Utils.notReadyAlert()
+                
         })
         snackbar.show()
     }

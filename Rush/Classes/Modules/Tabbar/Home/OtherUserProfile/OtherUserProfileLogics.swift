@@ -195,7 +195,7 @@ extension OtherUserProfileController {
                 unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
             } else if indexPath.section == 3 {
                 let friend = unsafe.friendList[index]
-                unsafe.performSegue(withIdentifier: Segues.profileInformation, sender: friend)
+                unsafe.performSegue(withIdentifier: Segues.otherUserProfile, sender: friend.user)
             } else if indexPath.section == 4 {
                 let event = unsafe.eventList[index]
                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
