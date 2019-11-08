@@ -207,7 +207,7 @@ extension ClubDetailViewController {
         } */
         
         if let date = post.createdAt {
-            let time = Date().timeAgoDisplay(date: date)
+            let time = date.timeAgoDisplay()
             cell.set(timeStr: time)
         }
     }
