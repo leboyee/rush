@@ -189,7 +189,7 @@ extension ClassDetailViewController {
                 self?.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
             }
             if let date = post.createdAt {
-                let time = Date().timeAgoDisplay(date: date)
+                let time = date.timeAgoDisplay()
                 cell.setup(detail: time)
             }
         }
@@ -234,7 +234,7 @@ extension ClassDetailViewController {
         }
         
         if let date = post.createdAt {
-            let time = Date().timeAgoDisplay(date: date)
+            let time = date.timeAgoDisplay()
             cell.set(timeStr: time)
         }
     }

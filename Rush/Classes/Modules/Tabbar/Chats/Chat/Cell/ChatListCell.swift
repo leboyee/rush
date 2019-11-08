@@ -127,10 +127,10 @@ extension ChatListCell {
         // Set last time
         if let message = channel.lastMessage {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: message.createdAt/1000)!)
-            timeLabel.text = " ⋅ " + Date().timeAgoDisplay(date: date)
+            timeLabel.text = " ⋅ " + date.timeAgoDisplay()
         } else {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: channel.createdAt)!)
-            timeLabel.text = Date().timeAgoDisplay(date: date)
+            timeLabel.text = date.timeAgoDisplay()
         }
         
         if Int(channel.unreadMessageCount) > 0 {

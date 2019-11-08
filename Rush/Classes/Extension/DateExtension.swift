@@ -266,6 +266,7 @@ extension Date {
     public func toString(format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter.string(from: self as Date)
     }
     
@@ -315,29 +316,25 @@ extension Date {
         return timeFormatter.date(from: dateString)!
     }
     
-    func timeAgoDisplay(date: Date) -> String {
+    func timeAgoDisplay() -> String {
         let calendar = Calendar.current
         let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
         let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
         let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date())!
         let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
         
-        if minuteAgo < date {
+        if minuteAgo < self {
             return "Now"
-        } else if hourAgo < date {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "h a"
-            formatter.amSymbol = "am"
-            formatter.pmSymbol = "pm"
-            return formatter.string(from: date)
-        } else if dayAgo < date {
-            let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour ?? 0
+        } else if hourAgo < self {
+            return toString(format: "hh:mm a")
+        } else if dayAgo < self {
+            let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
             return "\(diff) \(diff == 1 ? "hr" : "hrs") ago"
-        } else if weekAgo < date {
-            let diff = Calendar.current.dateComponents([.day], from: date, to: Date()).day ?? 0
+        } else if weekAgo < self {
+            let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
             return "\(diff) \(diff == 1 ? "day" : "days") ago"
         }
-        let diff = Calendar.current.dateComponents([.weekOfYear], from: date, to: Date()).weekOfYear ?? 0
+        let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
         return "\(diff) \(diff == 1 ? "week" : "weeks") ago"
     }
     

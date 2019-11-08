@@ -79,7 +79,7 @@ extension PostViewController {
         
         let local = Date().UTCToLocal(date: comment.createDate ?? "")
         if let date = Date.parse(dateString: local) {
-            let time = Date().timeAgoDisplay(date: date)
+            let time = date.timeAgoDisplay()
             cell.setup(date: time)
         }
         
@@ -119,7 +119,7 @@ extension PostViewController {
         
         let local = Date().UTCToLocal(date: comment?.createDate ?? "")
         if let date = Date.parse(dateString: local) {
-            let time = Date().timeAgoDisplay(date: date)
+            let time = date.timeAgoDisplay()
             cell.setup(date: time)
         }
         

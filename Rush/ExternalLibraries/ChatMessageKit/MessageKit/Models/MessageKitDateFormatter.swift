@@ -49,14 +49,16 @@ open class MessageKitDateFormatter {
     }
 
     open func configureDateFormatter(for date: Date) {
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.amSymbol = "am"
+        formatter.pmSymbol = "pm"
+        
         switch true {
-        case Calendar.current.isDateInToday(date) || Calendar.current.isDateInYesterday(date):
-            formatter.doesRelativeDateFormatting = true
-            formatter.dateStyle = .short
-            formatter.timeStyle = .short
+        case Calendar.current.isDateInToday(date):
+            formatter.dateFormat = "'Today' '|' h a"
+        case Calendar.current.isDateInYesterday(date):
+            formatter.dateFormat = "'Yesterday' '|' h a"
         case Calendar.current.isDate(date, equalTo: Date(), toGranularity: .weekOfYear):
-            formatter.amSymbol = "am"
-            formatter.pmSymbol = "pm"
             formatter.dateFormat = "dd MMM '|' h a"
         case Calendar.current.isDate(date, equalTo: Date(), toGranularity: .year):
             formatter.dateFormat = "dd MMM '|' h a"/*"E, d MMM, h:mm a"*/
