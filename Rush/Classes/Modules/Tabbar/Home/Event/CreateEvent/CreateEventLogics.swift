@@ -61,6 +61,7 @@ extension CreateEventViewController {
         
         cell.setup(placeholder: "", title: Text.createGroupChat)
         cell.setup(isShowSwitch: true)
+        cell.chatSwitch.isOn = isCreateGroupChat
         cell.setup(iconImage: "")
         
         cell.switchValueChanged = { [weak self] (isOn) in
@@ -281,7 +282,6 @@ extension CreateEventViewController {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: interest.interestName)
                 cell.setup(textViewColor: UIColor.bgBlack)
-
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 9 {
@@ -289,10 +289,15 @@ extension CreateEventViewController {
                 cell.setup(placeholder: "", text: "")
                 cell.setup(placeholder: indexPath.row == 0 ? Text.invitePeople : Text.inviteOtherPeople)
                 cell.setup(isEnabled: false)
+                cell.setupButtonImage(image: UIImage(named: "delete-white") ?? UIImage())
+
             } else {
                 let invite = peopleList[indexPath.row]
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: (invite.isFriend == true ? invite.profile?.name : invite.contact?.displayName) ?? "")
+                cell.setup(textViewColor: UIColor.bgBlack)
+                cell.setupButtonImage(image: UIImage(named: "delete-white") ?? UIImage())
+
             }
             cell.setup(iconImage: indexPath.row == 0 ? "friend-gray" : "")
         }
@@ -600,7 +605,6 @@ extension CreateEventViewController: EventInviteDelegate {
         self.peopleList = invite
         self.tableView.reloadData()
         self.validateAllFields()
-
     }
 }
 

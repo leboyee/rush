@@ -14,7 +14,7 @@ protocol EventCategoryFilterDelegate: class {
     func selectedIndex(_ type: String, _ selectedIndex: IndexPath)
 }
 
-class EventCateogryFilterViewController: CustomViewController {
+class EventCateogryFilterViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     weak var delegate: EventCategoryFilterDelegate?
@@ -65,7 +65,6 @@ class EventCateogryFilterViewController: CustomViewController {
     }
     
     @IBAction func handleTapGesture(gesture: UITapGestureRecognizer) {
-       
         panModalWillDismiss()
     }
     

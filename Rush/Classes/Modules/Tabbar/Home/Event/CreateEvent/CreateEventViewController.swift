@@ -156,17 +156,20 @@ extension CreateEventViewController {
         startDate = event?.start ?? Date()
         endDate = event?.end ?? Date()
         startTime = "01:00 PM"
-         endTime = "02:00 PM"
+        endTime = "02:00 PM"
         startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
         endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
         eventId = String(event?.id ?? 1)
         university = event?.university?[0]
+        
         //self.university = event.un
-//        for invites in event?.invitee ?? [Invitee]() {
-//            let invite = Invite()
-//            invite.profile = invites.user
-//        }
+        for invites in event?.invitees ?? [Invitee]() {
+            let invite = Invite()
+            invite.profile = invites.user
+            invite.isFriend = true
+            self.peopleList.append(invite)
+        }
         interestList = event?.interests ?? [Interest]()
         for rsvpQuestion in event?.rsvp ?? [RSVPQuestion]() {
             guard let question = rsvpQuestion.que else { return }
@@ -259,11 +262,14 @@ extension CreateEventViewController {
                 var contactArray = [Contact]()
                 for invite in self.peopleList {
                     if invite.isFriend == true {
-                        guard let friend = invite.friend else { return }
-                        friendsArray.append(friend)
+                        if let friend = invite.friend {
+                            friendsArray.append(friend)
+                        }
                     } else {
-                        guard let contact = invite.contact else { return }
-                        contactArray.append(contact)
+                        if let contact = invite.contact {
+                            contactArray.append(contact)
+                        }
+                        
                     }
                 }
                 vc.selectedFriendListArray = friendsArray

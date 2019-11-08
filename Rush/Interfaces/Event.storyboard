@@ -550,7 +550,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, there are no events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-s8-HCd">
-                                                <rect key="frame" x="124.5" y="104" width="165" height="16"/>
+                                                <rect key="frame" x="132.5" y="104" width="149" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="8V9-M7-5sm"/>
                                                 </constraints>
