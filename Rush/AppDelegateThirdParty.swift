@@ -44,9 +44,18 @@ extension AppDelegate: SBDChannelDelegate {
         updateUserChatProfilePicture()
     }
     
+    func disConnectSendbird() {
+        ChatManager().disconnectFromChatServer()
+    }
+    
     func updateUserChatProfilePicture() {
         if let profile = Authorization.shared.profile {
-            ChatManager().connectToChatServer(userId: profile.userId, username: profile.name, profileImageUrl: profile.photo?.thumb ?? "")
+            
+            var name = profile.name
+            if name.count > 80 {
+                name = String(name.dropLast(name.count - 80))
+            }
+            ChatManager().connectToChatServer(userId: profile.userId, username: name, profileImageUrl: profile.photo?.thumb ?? "")
         }
     }
     
