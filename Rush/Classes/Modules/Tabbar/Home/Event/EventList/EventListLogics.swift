@@ -202,8 +202,6 @@ extension EventListViewController {
                         unsafe.pageNo = 1
                         unsafe.getEventList()
                     }
-                
-
                 } else {
                     unsafe.pageNo = 1
                     unsafe.getEventList()

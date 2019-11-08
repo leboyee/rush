@@ -179,6 +179,11 @@ extension EventCategoryListViewController {
                 }
             }
             cell.setup(invitee: rosterArray)
+            if myclass.classTotalRosters > 3 {
+                cell.setup(inviteeCount: Int(myclass.classTotalRosters - 3))
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
         } else {
             cell.setup(detail: "SOMM 24-A")
         }

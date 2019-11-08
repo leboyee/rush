@@ -182,8 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func cameraPermissionCheck() {
-        Utils.authorizeVideo(completion: { [weak self] (status) in
-            guard let _ = self else { return }
+        Utils.authorizeVideo(completion: { (status) in
             if status == .alreadyAuthorized || status == .justAuthorized {
                     //unsafe.openCameraOrLibrary()
             } else {

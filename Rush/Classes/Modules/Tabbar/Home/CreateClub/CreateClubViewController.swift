@@ -257,10 +257,10 @@ extension CreateClubViewController {
                               var contactArray = [Contact]()
                               for invite in self.peopleList {
                                   if invite.isFriend == true {
-                                      guard let friend = invite.friend else {return}
+                                      guard let friend = invite.friend else { return }
                                       friendsArray.append(friend)
                                   } else {
-                                      guard let contact = invite.contact else {return}
+                                      guard let contact = invite.contact else { return }
                                       contactArray.append(contact)
                                   }
                               }

@@ -76,6 +76,7 @@ class SubClass: Codable {
     var name: String = ""
     private var classCatId: Int64 = 0
     var classTotalGroups: Int64 = 0
+    var classTotalRosters: Int64 = 0
     var photoJson: String = ""
     private var convertJsonToPhoto: Image?
     var photo: Image? {
@@ -100,6 +101,7 @@ class SubClass: Codable {
         case classTotalGroups = "class_total_groups"
         case classGroups = "class_groups"
         case myJoinedClass = "my_joined_classes"
+        case classTotalRosters = "class_total_rosters"
         case rosters
     }
     var id: String {
