@@ -125,14 +125,15 @@ extension CreatePostViewController {
             
             if let value = data?[Keys.post] as? [String: Any] {
                 do {
-                    let dataClub = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
-                    let decoder = JSONDecoder()
-                    let value = try decoder.decode(Post.self, from: dataClub)
+                    let jsonDecoder = JSONDecoder()
+                    jsonDecoder.dateDecodingStrategy = .formatted(.serverDate)
+                    let post = try jsonDecoder.decode(Post.self, from: JSONSerialization.data(withJSONObject: value, options: []))
                     DispatchQueue.main.async {
-                        uwself.delegate?.createPostSuccess(value)
+                        uwself.delegate?.createPostSuccess(post)
                     }
                     uwself.close()
-                } catch {
+                } catch let error {
+                    print("ERROR DECODING: \(error)")
                     
                 }
             } else {

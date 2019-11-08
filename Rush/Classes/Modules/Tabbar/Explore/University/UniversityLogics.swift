@@ -19,18 +19,19 @@ extension UniversityViewController {
         cell.setup(title: university.universityName)
         cell.setup(universityUrl: URL(string: university.logo ?? ""))
         
-        if selectedIndex == -1 && selectedUniversity != nil {
+        if selectedUniversity != nil {
             if university.universtiyId == selectedUniversity?.universtiyId {
                 cell.setup(isCheckMark: true)
+            } else {
+                cell.setup(isCheckMark: false)
             }
-        } else {
-            cell.setup(isCheckMark: selectedIndex == indexPath.row)
         }
     }
     
     func cellSelected(_ indexPath: IndexPath) {
-        selectedIndex = indexPath.row
-        self.delegate?.setSelectedUniversity(university: universityArray[selectedIndex])
+        let selUniversity = universityArray[indexPath.row]
+        selectedUniversity = selUniversity
+        self.delegate?.setSelectedUniversity(university: selUniversity)
         tableView.reloadData()
         
         DispatchQueue.main.async {
@@ -56,7 +57,7 @@ extension UniversityViewController {
         
         ServiceManager.shared.getUniversityList(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
             guard let unsafe = self else { return }
-    
+            
             if value?.count ?? 0 > 0 {
                 if unsafe.pageNo == 1 {
                     unsafe.universityArray = value ?? [University]()

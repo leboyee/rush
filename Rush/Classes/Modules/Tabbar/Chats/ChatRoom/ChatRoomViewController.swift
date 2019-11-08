@@ -507,7 +507,7 @@ extension ChatRoomViewController {
     }
     
     func setupNavigation() {
-        let titleView = UIView(frame: CGRect(0, -7, screenWidth - 100, 48))
+        let titleView = UIView(frame: CGRect(0, -7, screenWidth, 48))
         
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
         if friendProfile != nil {
@@ -531,7 +531,8 @@ extension ChatRoomViewController {
         dateLabel.textColor = UIColor.white
         
         // View calender button setup
-        let detailButton = UIButton(frame: CGRect(x: 0, y: 5, width: screenWidth, height: 40))
+        let detailButton = UIButton(frame: CGRect(x: 0, y: -7, width: screenWidth, height: 48))
+//        detailButton.backgroundColor = UIColor.yellow
         let viewCalender = UIButton(frame: CGRect(x: 0, y: 27, width: screenWidth - 130, height: 18))
         if clubInfo != nil || channel?.customType == "club" {
             viewCalender.setTitle("View club details", for: .normal)
