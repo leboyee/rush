@@ -27,6 +27,7 @@ extension AddProfilePictureViewController {
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if data != nil {
+                AppDelegate.shared?.updateUserChatProfilePicture()
                 unsafe.profileUpdateSuccess()
             } else {
                 Utils.alert(message: errorMessage ?? Message.tryAgainErrorMessage)

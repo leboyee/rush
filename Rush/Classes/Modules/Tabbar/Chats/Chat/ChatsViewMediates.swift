@@ -33,13 +33,6 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as? ChatListCell else { return UITableViewCell() }
         cell.delegate = self
         cell.tag = indexPath.row
-        /*
-         https://www.wrike.com/open.htm?id=410229719
-         */
-        cell.rightButtons = [MGSwipeButton(title: "", icon: #imageLiteral(resourceName: "chat-delete"), backgroundColor: nil)]
-//        cell.rightSwipeSettings.transition = .border
-//        cell.rightExpansion.buttonIndex = 0
-//        cell.rightExpansion.fillOnTrigger = true
         fillCell(cell, indexPath)
         return cell
     }
@@ -52,25 +45,35 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
         return UIView()
     }
     
-    func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
-        
-        let channel = channels[cell.tag]
-        let name = getSingleChatName(channel: channel)
-        ChatManager().leave(channel, completionHandler: { [weak self] (status) in
-            guard let unowned = self else { return }
-            if status {
-                let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
-                                           duration: .middle,
-                                           actionText: "",
-                                           actionBlock: { (_) in
-                                            // Utils.notReadyAlert()
-                })
-                snackbar.show()
-                unowned.getListOfGroups()
-            } else {
-                Utils.alert(message: Message.tryAgainErrorMessage)
-            }
-        })
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+            let action =  UIContextualAction(style: .normal, title: "Files", handler: { [weak self] (_, _, completionHandler) in
+                guard let uwself = self else { return }
+                
+                let channel = uwself.channels[indexPath.row]
+                let name = uwself.getSingleChatName(channel: channel)
+                ChatManager().leave(channel, completionHandler: { [weak uwself] (status) in
+                    guard let unowned = uwself else { return }
+                    if status {
+                        let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
+                                                   duration: .middle,
+                                                   actionText: "",
+                                                   actionBlock: { (_) in })
+                        snackbar.show()
+                        unowned.getListOfGroups()
+                    } else {
+                        Utils.alert(message: Message.tryAgainErrorMessage)
+                    }
+                })
+                completionHandler(true)
+            })
+        action.image = UIImage(named: "chat-delete")
+        action.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
+        let confrigation = UISwipeActionsConfiguration(actions: [action])
+        return confrigation
     }
 }

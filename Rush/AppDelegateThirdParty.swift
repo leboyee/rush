@@ -41,6 +41,10 @@ extension AppDelegate: SBDChannelDelegate {
         SBDMain.add(self as SBDChannelDelegate, identifier: "AppDelegate")
         
         //Connect with Chat Server
+        updateUserChatProfilePicture()
+    }
+    
+    func updateUserChatProfilePicture() {
         if let profile = Authorization.shared.profile {
             ChatManager().connectToChatServer(userId: profile.userId, username: profile.name, profileImageUrl: profile.photo?.thumb ?? "")
         }
