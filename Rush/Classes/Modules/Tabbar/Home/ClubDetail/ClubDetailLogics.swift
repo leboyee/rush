@@ -383,8 +383,11 @@ extension ClubDetailViewController {
                     uwself.getClubDetailAPI()
                     ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
                 } else {
-                    Utils.hideSpinner()
-                    uwself.tableView.reloadData()
+                     uwself.getClubDetailAPI()
+                    ChatManager.exitFromGroup(<#T##self: ChatManager##ChatManager#>)
+                    
+//                    Utils.hideSpinner()
+//                    uwself.tableView.reloadData()
                 }
             } else {
                 Utils.hideSpinner()
