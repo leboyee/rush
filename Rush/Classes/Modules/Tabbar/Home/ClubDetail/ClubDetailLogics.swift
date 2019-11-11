@@ -384,7 +384,6 @@ extension ClubDetailViewController {
                     ChatManager().addNewMember(type: "club", data: id, userId: Authorization.shared.profile?.userId ?? "")
                 } else {
                      uwself.getClubDetailAPI()
-                    ChatManager.exitFromGroup(<#T##self: ChatManager##ChatManager#>)
                     
 //                    Utils.hideSpinner()
 //                    uwself.tableView.reloadData()
