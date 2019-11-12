@@ -9,7 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 
-extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate {
+extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         tableView.layer.cornerRadius = 24
@@ -47,33 +47,51 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    }  
+}
 
-            let action =  UIContextualAction(style: .normal, title: "Files", handler: { [weak self] (_, _, completionHandler) in
-                guard let uwself = self else { return }
-                
-                let channel = uwself.channels[indexPath.row]
-                let name = uwself.getSingleChatName(channel: channel)
-                ChatManager().leave(channel, completionHandler: { [weak uwself] (status) in
-                    guard let unowned = uwself else { return }
-                    if status {
-                        let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
-                                                   duration: .middle,
-                                                   actionText: "",
-                                                   actionBlock: { (_) in })
-                        snackbar.show()
-                        unowned.getListOfGroups()
-                    } else {
-                        Utils.alert(message: Message.tryAgainErrorMessage)
+extension ChatsViewController: MGSwipeTableCellDelegate {
+    func swipeTableCell(_ cell: MGSwipeTableCell, canSwipe direction: MGSwipeDirection) -> Bool {
+           return true
+    }
+       
+    func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
+        
+        swipeSettings.transition = MGSwipeTransition.border
+        swipeSettings.threshold = 0.4
+        expansionSettings.buttonIndex = 0
+        if direction == MGSwipeDirection.rightToLeft {
+            expansionSettings.fillOnTrigger = true
+            expansionSettings.threshold = 3
+            //let color = UIColor.clear//UIColor.init(red:0.0, green:122/255.0, blue:1.0, alpha:1.0)
+            
+            return [
+                MGSwipeButton(title: "", icon: UIImage(named: "chat-delete"), backgroundColor: UIColor.clear, callback: { (cell) -> Bool in
+                    
+                    if let path = self.tableView.indexPath(for: cell) {
+                        let channel = self.channels[path.row]
+                        let name = self.getSingleChatName(channel: channel)
+                        cell.hideSwipe(animated: true)
+                        ChatManager().leave(channel, completionHandler: { [weak self] (status) in
+                            guard let unowned = self else { return }
+                            if status {
+                                let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
+                                                           duration: .middle,
+                                                           actionText: "",
+                                                           actionBlock: { (_) in })
+                                snackbar.show()
+                                unowned.getListOfGroups()
+                            } else {
+                                Utils.alert(message: Message.tryAgainErrorMessage)
+                            }
+                        })
                     }
+                    
+                    return true
                 })
-                completionHandler(true)
-            })
-        action.image = UIImage(named: "chat-delete")
-        action.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
-        let confrigation = UISwipeActionsConfiguration(actions: [action])
-        return confrigation
+            ]
+        }
+        
+        return []
     }
 }

@@ -21,6 +21,7 @@ class ChatListCell: MGSwipeTableCell {
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var onlineView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
+    var currentChannel: SBDGroupChannel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -124,6 +125,7 @@ extension ChatListCell {
     }
     
     func setup(channel: SBDGroupChannel) {
+        currentChannel = channel
         // Set last time
         if let message = channel.lastMessage {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: message.createdAt/1000)!)
