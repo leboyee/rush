@@ -75,7 +75,6 @@ class ProfileTileViewController: UIViewController {
                     var parameters = Parameters()
                     parameters.allowedSelections = .limit(to: 50)
                     unsafe.picker = ImagePickerController(configuration: parameters)
-                    unsafe.picker = ImagePickerController()
                     unsafe.picker.delegate = self
                     unsafe.picker.navigationBar.isTranslucent = false
                     var assets = [PHAsset]()
