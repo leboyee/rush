@@ -9,7 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 
-extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate {
+extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         tableView.layer.cornerRadius = 24
@@ -33,13 +33,6 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.chatListCell, for: indexPath) as? ChatListCell else { return UITableViewCell() }
         cell.delegate = self
         cell.tag = indexPath.row
-        /*
-         https://www.wrike.com/open.htm?id=410229719
-         */
-        cell.rightButtons = [MGSwipeButton(title: "", icon: #imageLiteral(resourceName: "chat-delete"), backgroundColor: nil)]
-//        cell.rightSwipeSettings.transition = .border
-//        cell.rightExpansion.buttonIndex = 0
-//        cell.rightExpansion.fillOnTrigger = true
         fillCell(cell, indexPath)
         return cell
     }
@@ -52,25 +45,53 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource, MGSwi
         return UIView()
     }
     
-    func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
-        
-        let channel = channels[cell.tag]
-        let name = getSingleChatName(channel: channel)
-        ChatManager().leave(channel, completionHandler: { [weak self] (status) in
-            guard let unowned = self else { return }
-            if status {
-                let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
-                                           duration: .middle,
-                                           actionText: "",
-                                           actionBlock: { (_) in
-                                            // Utils.notReadyAlert()
-                })
-                snackbar.show()
-                unowned.getListOfGroups()
-            } else {
-                Utils.alert(message: Message.tryAgainErrorMessage)
-            }
-        })
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }  
+}
+
+extension ChatsViewController: MGSwipeTableCellDelegate {
+    func swipeTableCell(_ cell: MGSwipeTableCell, canSwipe direction: MGSwipeDirection) -> Bool {
+           return true
+    }
+       
+    func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
+        
+        swipeSettings.transition = MGSwipeTransition.border
+        swipeSettings.threshold = 0.4
+        expansionSettings.buttonIndex = 0
+        if direction == MGSwipeDirection.rightToLeft {
+            expansionSettings.fillOnTrigger = true
+            expansionSettings.threshold = 3
+            //let color = UIColor.clear//UIColor.init(red:0.0, green:122/255.0, blue:1.0, alpha:1.0)
+            
+            return [
+                MGSwipeButton(title: "", icon: UIImage(named: "chat-delete"), backgroundColor: UIColor.clear, callback: { (cell) -> Bool in
+                    
+                    if let path = self.tableView.indexPath(for: cell) {
+                        let channel = self.channels[path.row]
+                        let name = self.getSingleChatName(channel: channel)
+                        cell.hideSwipe(animated: true)
+                        ChatManager().leave(channel, completionHandler: { [weak self] (status) in
+                            guard let unowned = self else { return }
+                            if status {
+                                let snackbar = TTGSnackbar(message: "\(name) chat was deleted",
+                                                           duration: .middle,
+                                                           actionText: "",
+                                                           actionBlock: { (_) in })
+                                snackbar.show()
+                                unowned.getListOfGroups()
+                            } else {
+                                Utils.alert(message: Message.tryAgainErrorMessage)
+                            }
+                        })
+                    }
+                    
+                    return true
+                })
+            ]
+        }
+        
+        return []
     }
 }

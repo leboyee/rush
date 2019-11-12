@@ -361,11 +361,17 @@ extension ChatRoomViewController: MessagesDataSource {
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        /*
-         let name = message.sender.displayName
-         return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
-         */
-        return nil
+        
+        if chatType == .single {
+            return nil
+        } else {
+            if Authorization.shared.profile?.name == message.sender.displayName {
+                return nil
+            } else {
+                let name = "\t\(message.sender.displayName)"
+                return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)])
+            }
+        }
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -417,6 +423,7 @@ extension ChatRoomViewController: MessageCellDelegate {
                 }
             }
             vc.user = user
+            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
     }

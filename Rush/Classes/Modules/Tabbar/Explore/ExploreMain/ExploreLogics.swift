@@ -212,12 +212,13 @@ extension ExploreViewController {
             let category = classCategoryList[indexPath.row]
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
         } else if isSearch && searchType == .people {
-            let category = peopleList[indexPath.row]
-            
-            if category.userId == Authorization.shared.profile?.userId {
-                self.tabBarController?.selectedIndex = 3
-            } else {
-                performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+            if peopleList.count > indexPath.row {
+                let category = peopleList[indexPath.row]
+                if category.userId == Authorization.shared.profile?.userId {
+                    self.tabBarController?.selectedIndex = 3
+                } else {
+                    performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+                }
             }
         } else if indexPath.section == 0 && isSearch == false {
             let type = indexPath.row == 0 ? ScreenType.event : indexPath.row == 1 ? ScreenType.club : indexPath.row == 2 ? .classes : .none
@@ -266,6 +267,7 @@ extension ExploreViewController {
         var params = [Keys.pageNo: eventCatPageNo] as [String: Any]
         params[Keys.search] = searchText
         params[Keys.universityId] = selUniversity.universtiyId
+        params[Keys.pageNo] = eventCatPageNo
         
         ServiceManager.shared.getInterestList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
@@ -297,6 +299,8 @@ extension ExploreViewController {
         var params = [Keys.pageNo: clubCatPageNo] as [String: Any]
         params[Keys.search] = searchText
         params[Keys.universityId] = selUniversity.universtiyId
+        params[Keys.pageNo] = clubCatPageNo
+        
         ServiceManager.shared.getInterestList(params: params) { [weak self] (data, _) in
             //Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -420,6 +424,7 @@ extension ExploreViewController {
         var param = [Keys.pageNo: classCatPageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         param[Keys.search] = searchText
+        param[Keys.pageNo] = classCatPageNo
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             //Utils.hideSpinner()

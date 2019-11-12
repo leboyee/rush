@@ -87,6 +87,13 @@
                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwS-Yu-uvz">
+                                <rect key="frame" x="349" y="10" width="1" height="67.5"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="Iur-dl-cuZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -98,9 +105,12 @@
                             <constraint firstItem="erI-m4-jFg" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="HEh-m6-86D"/>
                             <constraint firstItem="VRF-Lx-TIn" firstAttribute="leading" secondItem="SzB-VL-qNX" secondAttribute="trailing" constant="16" id="I42-N9-CgV"/>
                             <constraint firstItem="VRF-Lx-TIn" firstAttribute="top" secondItem="5if-oU-dmR" secondAttribute="top" constant="20" id="MLL-SD-l16"/>
+                            <constraint firstItem="xwS-Yu-uvz" firstAttribute="top" secondItem="5if-oU-dmR" secondAttribute="top" constant="10" id="SFd-EH-hne"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="9rE-xE-php" secondAttribute="bottom" constant="22" id="Z8I-9j-jXN"/>
+                            <constraint firstAttribute="bottom" secondItem="xwS-Yu-uvz" secondAttribute="bottom" constant="10" id="bnd-8i-5kS"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="leading" secondItem="5if-oU-dmR" secondAttribute="leading" constant="24" id="eHt-FL-6MZ"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="top" secondItem="erI-m4-jFg" secondAttribute="bottom" constant="4" id="eQc-2o-aFa"/>
+                            <constraint firstAttribute="trailing" secondItem="xwS-Yu-uvz" secondAttribute="trailing" constant="-1" id="ewW-eq-I94"/>
                             <constraint firstItem="bge-rT-0MG" firstAttribute="top" secondItem="VRF-Lx-TIn" secondAttribute="bottom" constant="18.5" id="fkD-DA-gKA"/>
                             <constraint firstItem="SzB-VL-qNX" firstAttribute="centerY" secondItem="VRF-Lx-TIn" secondAttribute="centerY" id="meV-XU-q7n"/>
                             <constraint firstItem="9rE-xE-php" firstAttribute="leading" secondItem="VRF-Lx-TIn" secondAttribute="trailing" constant="16" id="pkG-kH-Wtk"/>

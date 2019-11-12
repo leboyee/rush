@@ -21,6 +21,7 @@ class ChatListCell: MGSwipeTableCell {
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var onlineView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
+    var currentChannel: SBDGroupChannel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -108,7 +109,7 @@ extension ChatListCell {
                 if let user = member as? SBDUser {
                     let loggedInUserId = Authorization.shared.profile?.userId ?? ""
                     if loggedInUserId != user.userId {
-                        imgView.sd_setImage(with: URL(string: user.profileUrl ?? ""), placeholderImage: #imageLiteral(resourceName: "img-event"), options: [], context: nil)
+                        imgView.sd_setImage(with: URL(string: user.profileUrl ?? ""), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
                     }
                 }
             }
@@ -124,6 +125,7 @@ extension ChatListCell {
     }
     
     func setup(channel: SBDGroupChannel) {
+        currentChannel = channel
         // Set last time
         if let message = channel.lastMessage {
             let date = Date(timeIntervalSince1970: TimeInterval(exactly: message.createdAt/1000)!)

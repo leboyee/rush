@@ -41,8 +41,21 @@ extension AppDelegate: SBDChannelDelegate {
         SBDMain.add(self as SBDChannelDelegate, identifier: "AppDelegate")
         
         //Connect with Chat Server
+        updateUserChatProfilePicture()
+    }
+    
+    func disConnectSendbird() {
+        ChatManager().disconnectFromChatServer()
+    }
+    
+    func updateUserChatProfilePicture() {
         if let profile = Authorization.shared.profile {
-            ChatManager().connectToChatServer(userId: profile.userId, username: profile.name, profileImageUrl: profile.photo?.thumb ?? "")
+            
+            var name = profile.name
+            if name.count > 80 {
+                name = String(name.dropLast(name.count - 80))
+            }
+            ChatManager().connectToChatServer(userId: profile.userId, username: name, profileImageUrl: profile.photo?.thumb ?? "")
         }
     }
     
@@ -94,21 +107,21 @@ extension AppDelegate: SBDChannelDelegate {
             selectedNavigationController?.dismiss(animated: false, completion: nil)
             
             /*
-            if viewcontroller.selectedIndex == 0 {
-                if let vc = selectedNavigationController?.viewControllers.first as? MatchViewController {
-                    let isPush = (selectedNavigationController?.viewControllers.count ?? 0) == 1 ? false : true
-                    if isPush {
-                        selectedNavigationController?.popToRootViewController (animated: false)
-                    } else {
-                        vc.presenter.chatManager()
-                    }
-                }
-                
-            } else {
-                selectedNavigationController?.popToRootViewController (animated: false)
-                viewcontroller.matchButtonAction()
-            }
-            */
+             if viewcontroller.selectedIndex == 0 {
+             if let vc = selectedNavigationController?.viewControllers.first as? MatchViewController {
+             let isPush = (selectedNavigationController?.viewControllers.count ?? 0) == 1 ? false : true
+             if isPush {
+             selectedNavigationController?.popToRootViewController (animated: false)
+             } else {
+             vc.presenter.chatManager()
+             }
+             }
+             
+             } else {
+             selectedNavigationController?.popToRootViewController (animated: false)
+             viewcontroller.matchButtonAction()
+             }
+             */
         }
         
         /*
@@ -140,5 +153,5 @@ extension AppDelegate: SBDChannelDelegate {
             Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
         }
     }
-
+    
 }

@@ -34,7 +34,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let oldPushToken = Utils.getDataFromUserDefault(kPushToken) as? String ?? ""
         updateToken(deviceTokenString: deviceTokenString, oldPushToken: oldPushToken)
         Utils.saveDataToUserDefault(deviceToken, kDeviceTokenPushDataKey)
-
+        
         registerPushTokenWithSendBird()
     }
     
@@ -45,7 +45,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
         
         if let userData = notification.request.content.userInfo as? [String: Any] {
-           handlePushInActiveState(userInfo: userData)
+            handlePushInActiveState(userInfo: userData)
         }
         completionHandler([.alert, .sound, . badge])
     }
@@ -92,10 +92,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func handlePushInActiveState(userInfo: [String: Any]) {
         if Authorization.shared.authorized {
             if let aps = userInfo["aps"] as? [String: Any], let type = aps["type"] as? String {
-               print(type)
-//               if let tabbar = window?.rootViewController as? UITabBarController {
-//
-//               }
+                print(type)
+                //               if let tabbar = window?.rootViewController as? UITabBarController {
+                //
+                //               }
             }
         }
     }
@@ -122,19 +122,19 @@ extension AppDelegate {
     
     func updateBadgeCount(count: Int) {
         if Authorization.shared.authorized {
-          /*  ServiceManager.shared.updateBadgeCount(params: [Keys.alert_badge: "\(count)"]) { (status, errorMessage) in
-                UIApplication.shared.applicationIconBadgeNumber = count
-            }*/
+            /*  ServiceManager.shared.updateBadgeCount(params: [Keys.alert_badge: "\(count)"]) { (status, errorMessage) in
+             UIApplication.shared.applicationIconBadgeNumber = count
+             }*/
         }
     }
     
     func getBadgeCount() {
         if Authorization.shared.authorized {
-           /* ServiceManager.shared.getBadgeCount() { (data, errorMessage) in
-                if let count = data?[Keys.alert_badge] as? Int {
-                    UIApplication.shared.applicationIconBadgeNumber = count
-                }
-            }*/
+            /* ServiceManager.shared.getBadgeCount() { (data, errorMessage) in
+             if let count = data?[Keys.alert_badge] as? Int {
+             UIApplication.shared.applicationIconBadgeNumber = count
+             }
+             }*/
         }
     }
 }

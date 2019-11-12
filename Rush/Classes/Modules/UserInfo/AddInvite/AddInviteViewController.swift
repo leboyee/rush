@@ -102,6 +102,7 @@ extension AddInviteViewController {
     
     @IBAction func finisheRegistrationButtonAction() {
         AppDelegate.shared?.setupStoryboard()
+        AppDelegate.shared?.connectSendbird()
     }
 }
 

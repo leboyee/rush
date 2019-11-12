@@ -76,6 +76,7 @@ extension AddInstragamPhotoViewController {
     
      @objc func gotProfileButtonAction() {
         AppDelegate.shared?.setupStoryboard()
+        AppDelegate.shared?.connectSendbird()
         Utils.saveDataToUserDefault("ShowHomeTutorial", kHomeTutorialKey)
     }
 

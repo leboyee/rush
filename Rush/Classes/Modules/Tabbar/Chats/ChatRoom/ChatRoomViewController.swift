@@ -147,6 +147,9 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     @objc func loadMoreMessages() {
+        self.loadMessagesWithInitial(initial: false)
+        self.refreshControl.endRefreshing()
+        /*
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
             SampleData.shared.getMessages(count: 20, isGroupChat: self.isGroupChat) { messages in
                 DispatchQueue.main.async {
@@ -155,7 +158,8 @@ class ChatRoomViewController: MessagesViewController {
                     self.refreshControl.endRefreshing()
                 }
             }
-        }
+        }*/
+        
     }
     //===========================================================================
     
@@ -479,8 +483,12 @@ extension ChatRoomViewController {
         
         // Show navigation image
         let imageName = updateChatUserImage()
-        userNavImageView.sd_setImage(with: URL(string: imageName), completed: nil)
         
+        userNavImageView.sd_setImage(with: URL(string: imageName)) { (_, error, _, _) in
+            if error != nil {
+                self.userNavImageView.image = UIImage(named: "placeholder-profile-48px")
+            }
+        }
         // Show name
         userNameNavLabel.text = self.userName
         
@@ -511,14 +519,19 @@ extension ChatRoomViewController {
         
         userNavImageView = UIImageView(frame: CGRect(x: screenWidth - 115, y: 5, width: 36, height: 36))
         if friendProfile != nil {
-            userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+            userNavImageView.sd_setImage(with: friendProfile?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeHolderIcon"))
         } else if clubInfo != nil {
-            userNavImageView.sd_setImage(with: clubInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+            userNavImageView.sd_setImage(with: clubInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-club48px"))
         } else if eventInfo != nil {
-            userNavImageView.sd_setImage(with: eventInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "bound-add-img"))
+            userNavImageView.sd_setImage(with: eventInfo?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-event48px"))
         } else if userNavImage != nil {
             userNavImageView.image = userNavImage
+            
+            if userNavImage == nil {
+                userNavImageView.image = UIImage(named: "placeholder-profile-48px")
+            }
         }
+        
         
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18

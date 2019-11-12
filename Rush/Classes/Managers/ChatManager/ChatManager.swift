@@ -49,7 +49,7 @@ extension ChatManager {
                 }
                 
                 //Update user information
-                self.updateUsername(username, profileImage: profileImageUrl)
+                self.updateUsername(username, profileImageUrl: profileImageUrl)
                 
                 //Set unread count
                 ChatManager().getUnreadCount({ (count) in
@@ -697,9 +697,12 @@ extension ChatManager {
      */
     
     // MARK: - Update Info
-    func updateUsername(_ username: String?, profileImage profileImageUrl: String?) {
+    func updateUsername(_ username: String?, profileImageUrl: String?) {
         // update the user name
-        SBDMain.updateCurrentUserInfo(withNickname: username, profileUrl: profileImageUrl, completionHandler: { (_) in
+        SBDMain.updateCurrentUserInfo(withNickname: username, profileUrl: profileImageUrl, completionHandler: { (error) in
+            if error != nil {
+                print(error?.localizedDescription ?? "Error in update user info")
+            }
         })
     }
 }
