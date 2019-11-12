@@ -423,6 +423,7 @@ extension ChatRoomViewController: MessageCellDelegate {
                 }
             }
             vc.user = user
+            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
     }
