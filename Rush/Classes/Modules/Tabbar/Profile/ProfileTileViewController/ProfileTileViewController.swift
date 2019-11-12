@@ -14,6 +14,8 @@ class ProfileTileViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBOutlet weak var titleLable: UILabel!
+    @IBOutlet weak var noResultView: UIView!
+
     var imageList = [Any]()
     var picker = ImagePickerController()
     let layout = UICollectionViewFlowLayout()
@@ -43,6 +45,7 @@ class ProfileTileViewController: UIViewController {
 //        addImageButton.setTitleColor(.white, for: .normal)
         addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addImageButton)
+        noResultView.isHidden = true
         fetchImagesList()
         // Setup tableview
         setupCollectionView()
@@ -69,6 +72,9 @@ class ProfileTileViewController: UIViewController {
             guard let unsafe = self else { return }
             if status == .alreadyAuthorized || status == .justAuthorized {
                 DispatchQueue.main.async {
+                    var parameters = Parameters()
+                    parameters.allowedSelections = .limit(to: 50)
+                    unsafe.picker = ImagePickerController(configuration: parameters)
                     unsafe.picker = ImagePickerController()
                     unsafe.picker.delegate = self
                     unsafe.picker.navigationBar.isTranslucent = false

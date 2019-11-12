@@ -174,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //unsafe.cameraPermissionCheck()
             } else {
                 if status != .justDenied {
-                    Utils.photoLibraryPermissionAlert()
+                    //Utils.photoLibraryPermissionAlert()
                 }
             }
             unsafe.cameraPermissionCheck()
@@ -187,7 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //unsafe.openCameraOrLibrary()
             } else {
                 if status != .justDenied {
-                    Utils.alertCameraAccessNeeded()
+                    //Utils.alertCameraAccessNeeded()
                 }
             }
 //unsafe.locationPermission()

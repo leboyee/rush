@@ -185,7 +185,9 @@ extension CreateEventViewController {
 extension CreateEventViewController {
     func selectedCell(_ indexPath: IndexPath) {
         if indexPath.section == 0 && self.isEditEvent == true {
-                    guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
+            //self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.navigationController?.navigationBar.isHidden = true
+            guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
                     eventCategoryFilter.dataArray = Utils.eventTypeArray()
                     eventCategoryFilter.delegate = self
                     eventCategoryFilter.isEventTypeModel = true
@@ -269,7 +271,6 @@ extension CreateEventViewController {
                         if let contact = invite.contact {
                             contactArray.append(contact)
                         }
-                        
                     }
                 }
                 vc.selectedFriendListArray = friendsArray

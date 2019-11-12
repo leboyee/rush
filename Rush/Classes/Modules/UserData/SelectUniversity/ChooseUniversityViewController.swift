@@ -40,12 +40,14 @@ class ChooseUniversityViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        selectedIndex = -1
         navigationController?.navigationBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: true)
         if addUniversityType == .editProfile || addUniversityType == .createEvent {
             pageControl.isHidden = true
             self.navigationItem.rightBarButtonItem = nil
         }
+        self.tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -133,6 +135,7 @@ extension ChooseUniversityViewController {
     @IBAction func deleteButtonAction() {
         searchTextField.text = ""
         deleteButton.isHidden = true
+        pageNo = 1
         getUniversity(searchText: "")
     }
 

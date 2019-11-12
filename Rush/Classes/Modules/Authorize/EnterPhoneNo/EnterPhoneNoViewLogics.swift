@@ -12,11 +12,11 @@ extension EnterPhoneNoViewController {
     
     func setPlaceHolder() {
 
-        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.clear, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 26)]
+        let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.clear, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 25)]
         
-        let blackArrtibutes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 26)]
+        let blackArrtibutes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 25)]
 
-        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 26)]
+        let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray84, .font: UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 25)]
         
         let partOne = NSMutableAttributedString(string: "\(self.countryCode)-(", attributes: yourAttributes)
         let partTwo = NSMutableAttributedString(string: "541", attributes: yourOtherAttributes)
@@ -27,7 +27,7 @@ extension EnterPhoneNoViewController {
         partOne.append(partThree)
         partOne.append(partFour)
         placeHolderTextField.attributedPlaceholder = partOne
-        phoneNoTextField.font = UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 26)
+        phoneNoTextField.font = UIFont.displayBold(sz: UIDevice.current.screenType.rawValue == UIDevice.ScreenType.iPhones5.rawValue ? 18 : 25)
     }
     
     func setContryCodeWith() {

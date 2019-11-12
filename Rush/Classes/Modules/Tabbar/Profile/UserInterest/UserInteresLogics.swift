@@ -55,6 +55,7 @@ extension UserInterestViewController: TagListViewDelegate {
             guard let index = interestArray.firstIndex(where: { $0.interestName == title }) else { return }
             interestArray.remove(at: index)
         }
+        interestButtonVisiable()
     }
     
 }

@@ -320,7 +320,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter passsword" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="7cE-dE-KdU" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="7cE-dE-KdU" customClass="CustomTextField" customModule="Rush" customModuleProvider="target">
                                         <rect key="frame" x="24" y="40" width="330" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="D0N-tK-SAZ"/>
@@ -1067,6 +1067,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GVq-92-Uyi"/>
-        <segue reference="omQ-De-aFE"/>
+        <segue reference="Xon-BR-uWp"/>
     </inferredMetricsTieBreakers>
 </document>

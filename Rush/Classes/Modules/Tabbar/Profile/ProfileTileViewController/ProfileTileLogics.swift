@@ -118,6 +118,7 @@ extension ProfileTileViewController {
                         unsafe.collectionView.reloadData()
                     }
                 }
+                self?.noResultView.isHidden = self?.imageArray.count ?? 0 > 0 ? true : false
                 self?.downloadGroup.leave()
             })
         }

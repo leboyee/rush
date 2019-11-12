@@ -33,6 +33,8 @@ class UserInterestViewController: CustomViewController {
         navigationController?.isNavigationBarHidden = false
         interestArray = Authorization.shared.profile?.interest ?? [Interest]()
         tableView.reloadData()
+        interestButtonVisiable()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -112,7 +114,7 @@ extension UserInterestViewController {
 // MARK: - Mediator
 extension UserInterestViewController {
     func interestButtonVisiable() {
-       // nextButton.isHidden = selectedArray.count > 0 ? false : true
+        nextButton.isHidden = interestArray.count > 2 ? false : true
     }
 }
 
