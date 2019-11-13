@@ -34,7 +34,7 @@ extension CalendarViewController {
         if var start = Date.parse(dateString: startDate, format: "yyyy-MM-dd"), let end = Date.parse(dateString: endDate, format: "yyyy-MM-dd") {
             while end.isGreaterThan(start) {
                 let day = start.toString(format: "EEEE").lowercased()
-                let list = classes?.filter({ ($0.classSchedule?.contains(where: { $0.day == day }) ?? false) })
+                let list = classes?.filter({ ($0.classSchedule?.contains(where: { $0.day.lowercased().trimmingCharacters(in: CharacterSet.whitespaces) == day }) ?? false) })
                 let dateString = start.toString(format: "yyyy-MM-dd")
                 for item in list ?? [] {
                     guard var group = groups.first(where: { $0.dateString == dateString }) else {

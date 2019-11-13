@@ -87,7 +87,7 @@ extension EventHeader {
     }
     
     func set(url: URL?) {
-        headerImage.sd_setImage(with: url, placeholderImage: nil)
+        headerImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-eventMain-1242.pdf"))
     }
 }
 
