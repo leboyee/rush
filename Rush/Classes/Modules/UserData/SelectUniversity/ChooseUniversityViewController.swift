@@ -23,7 +23,7 @@ class ChooseUniversityViewController: CustomViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var noResultView: UIView!
-
+    var selectedUniversity: University?
     var universityArray = [University]()
     var selectedIndex = -1
     var addUniversityType: AddUniversityType = .register
@@ -40,7 +40,6 @@ class ChooseUniversityViewController: CustomViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        selectedIndex = -1
         navigationController?.navigationBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: true)
         if addUniversityType == .editProfile || addUniversityType == .createEvent {

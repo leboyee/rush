@@ -185,7 +185,6 @@ extension CreateEventViewController {
 extension CreateEventViewController {
     func selectedCell(_ indexPath: IndexPath) {
         if indexPath.section == 0 && self.isEditEvent == true {
-            //self.navigationController?.setNavigationBarHidden(false, animated: true)
             self.navigationController?.navigationBar.isHidden = true
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
                     eventCategoryFilter.dataArray = Utils.eventTypeArray()

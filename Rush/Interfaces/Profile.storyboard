@@ -447,38 +447,63 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ea-PZ-1hw">
-                                <rect key="frame" x="0.0" y="13" width="414" height="773"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzr-ND-eVR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You do not have any images yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usW-xX-7tK">
-                                        <rect key="frame" x="73" y="24" width="268" height="20.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCk-pX-rkr">
+                                        <rect key="frame" x="0.0" y="288.5" width="414" height="189"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPhotoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aQm-1J-Mpp">
+                                                <rect key="frame" x="155" y="1" width="104" height="104"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="104" id="0G5-zp-FyE"/>
+                                                    <constraint firstAttribute="height" constant="104" id="jse-2j-lG2"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHM-iv-EZX">
+                                                <rect key="frame" x="49" y="105" width="316" height="69"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="69" id="eME-8O-VsQ"/>
+                                                    <constraint firstAttribute="width" constant="316" id="iVu-gC-FTt"/>
+                                                </constraints>
+                                                <string key="text">You don’t have images on your device
+</string>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="268" id="zF4-Ai-GGI"/>
+                                            <constraint firstItem="NHM-iv-EZX" firstAttribute="top" secondItem="aQm-1J-Mpp" secondAttribute="bottom" id="0Yu-BX-w2R"/>
+                                            <constraint firstAttribute="height" constant="189" id="KAe-NL-bSG"/>
+                                            <constraint firstItem="aQm-1J-Mpp" firstAttribute="top" secondItem="aCk-pX-rkr" secondAttribute="top" constant="1" id="Zij-Pr-Nke"/>
+                                            <constraint firstItem="NHM-iv-EZX" firstAttribute="centerX" secondItem="aCk-pX-rkr" secondAttribute="centerX" id="fYS-C5-buh"/>
+                                            <constraint firstItem="aQm-1J-Mpp" firstAttribute="centerX" secondItem="aCk-pX-rkr" secondAttribute="centerX" id="k4v-jk-C5n"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
-                                        <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="usW-xX-7tK" firstAttribute="top" secondItem="0Ea-PZ-1hw" secondAttribute="top" constant="24" id="eax-Lc-jpk"/>
-                                    <constraint firstItem="usW-xX-7tK" firstAttribute="centerX" secondItem="0Ea-PZ-1hw" secondAttribute="centerX" id="j6E-83-rYX"/>
+                                    <constraint firstItem="aCk-pX-rkr" firstAttribute="leading" secondItem="bzr-ND-eVR" secondAttribute="leading" id="Xbr-vE-OSF"/>
+                                    <constraint firstItem="aCk-pX-rkr" firstAttribute="centerY" secondItem="bzr-ND-eVR" secondAttribute="centerY" constant="-10" id="c8K-8S-GXP"/>
+                                    <constraint firstAttribute="trailing" secondItem="aCk-pX-rkr" secondAttribute="trailing" id="ftp-lG-E1u"/>
+                                    <constraint firstItem="aCk-pX-rkr" firstAttribute="centerX" secondItem="bzr-ND-eVR" secondAttribute="centerX" id="o2k-vM-Do1"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="94F-xP-Em7" firstAttribute="trailing" secondItem="IG7-QJ-gaI" secondAttribute="trailing" id="0Cg-gq-GyD"/>
+                            <constraint firstItem="bzr-ND-eVR" firstAttribute="trailing" secondItem="IG7-QJ-gaI" secondAttribute="trailing" id="AB3-kP-M5d"/>
                             <constraint firstItem="94F-xP-Em7" firstAttribute="top" secondItem="IG7-QJ-gaI" secondAttribute="top" constant="13" id="BW7-vy-GbE"/>
                             <constraint firstAttribute="bottom" secondItem="94F-xP-Em7" secondAttribute="bottom" id="DTf-f4-Y9W"/>
-                            <constraint firstItem="0Ea-PZ-1hw" firstAttribute="bottom" secondItem="IG7-QJ-gaI" secondAttribute="bottom" id="HSe-T4-D9K"/>
+                            <constraint firstItem="bzr-ND-eVR" firstAttribute="bottom" secondItem="IG7-QJ-gaI" secondAttribute="bottom" id="IXg-dQ-mZY"/>
                             <constraint firstItem="94F-xP-Em7" firstAttribute="leading" secondItem="IG7-QJ-gaI" secondAttribute="leading" id="JdT-ne-POT"/>
-                            <constraint firstItem="0Ea-PZ-1hw" firstAttribute="top" secondItem="IG7-QJ-gaI" secondAttribute="top" constant="13" id="dxl-WZ-4zP"/>
-                            <constraint firstItem="0Ea-PZ-1hw" firstAttribute="leading" secondItem="IG7-QJ-gaI" secondAttribute="leading" id="eYV-la-P8J"/>
-                            <constraint firstItem="0Ea-PZ-1hw" firstAttribute="trailing" secondItem="IG7-QJ-gaI" secondAttribute="trailing" id="kDp-ow-kRw"/>
+                            <constraint firstItem="bzr-ND-eVR" firstAttribute="leading" secondItem="IG7-QJ-gaI" secondAttribute="leading" id="f5x-3W-zNL"/>
                             <constraint firstItem="fqD-Op-HLM" firstAttribute="top" secondItem="IG7-QJ-gaI" secondAttribute="top" constant="13" id="kzn-4k-QBA"/>
                             <constraint firstItem="fqD-Op-HLM" firstAttribute="trailing" secondItem="IG7-QJ-gaI" secondAttribute="trailing" id="lMb-M3-vIJ"/>
+                            <constraint firstItem="bzr-ND-eVR" firstAttribute="top" secondItem="IG7-QJ-gaI" secondAttribute="top" id="prX-3N-4hT"/>
                             <constraint firstAttribute="bottom" secondItem="fqD-Op-HLM" secondAttribute="bottom" id="uWi-P8-RcW"/>
                             <constraint firstItem="fqD-Op-HLM" firstAttribute="leading" secondItem="IG7-QJ-gaI" secondAttribute="leading" id="zR1-eW-SQB"/>
                         </constraints>
@@ -488,7 +513,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="fqD-Op-HLM" id="ieg-0R-P3k"/>
-                        <outlet property="noResultView" destination="0Ea-PZ-1hw" id="dih-QE-9gD"/>
+                        <outlet property="noResultView" destination="bzr-ND-eVR" id="wYb-oZ-z6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7A-Uf-aab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1067,6 +1092,7 @@ event updates.</string>
         <image name="back-arrow" width="24" height="24"/>
         <image name="instagram64px" width="64" height="64"/>
         <image name="noFriendsListIcon" width="88" height="88"/>
+        <image name="noPhotoIcon" width="104" height="104"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CnQ-2G-2dH"/>

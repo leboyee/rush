@@ -39,6 +39,7 @@ extension ChooseUniversityViewController {
     
     func getUniversity(searchText: String) {
         //Utils.showSpinner()
+        
         task?.cancel()
         task = ServiceManager.shared.getUniversityListWithSession(params: ["search": searchText, Keys.pageNo: "\(pageNo)"]) { [weak self] (value, _) in
             guard let unsafe = self else { return }
@@ -61,6 +62,11 @@ extension ChooseUniversityViewController {
                 }
             }
             
+            if let index = unsafe.universityArray.firstIndex(where: { $0.universtiyId == unsafe.selectedUniversity?.universtiyId }) {
+                unsafe.selectedIndex = index
+            } else {
+                unsafe.selectedIndex = -1
+            }
             unsafe.noResultView.isHidden = unsafe.universityArray.count > 0 ? true : false
             unsafe.tableView.reloadData()
         }
@@ -69,6 +75,7 @@ extension ChooseUniversityViewController {
     func updateProfileAPI() {
         let university = universityArray[selectedIndex]
         var param = [Keys.uUniversity: "\(university.universtiyId)"]  as [String: Any]
+
         if addUniversityType == .register {
             param[Keys.userStep] = 2
         }

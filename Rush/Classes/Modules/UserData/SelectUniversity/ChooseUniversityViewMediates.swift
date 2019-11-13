@@ -43,6 +43,7 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
+        selectedUniversity = universityArray[indexPath.row]
         self.tableView.reloadData()
         self.moveToNext()
     }

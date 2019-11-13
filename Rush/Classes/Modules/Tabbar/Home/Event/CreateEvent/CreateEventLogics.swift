@@ -274,6 +274,7 @@ extension CreateEventViewController {
                 cell.setup(keyboardReturnKeyType: .done)
                 cell.setup(isHideCleareButton: true)
                 cell.setup(isEnabled: false)
+                cell.setupButtonImage(image: UIImage(named: "delete-white") ?? UIImage())
                 
             } else {
                 let interest = self.interestList[indexPath.row]
@@ -282,6 +283,8 @@ extension CreateEventViewController {
                 cell.setup(isHideCleareButton: false)
                 cell.setup(placeholder: "", text: interest.interestName)
                 cell.setup(textViewColor: UIColor.bgBlack)
+                cell.setupButtonImage(image: UIImage(named: "delete-white") ?? UIImage())
+
             }
             cell.setup(iconImage: indexPath.row == 0 ? "interest-gray" : "")
         } else if indexPath.section == 9 {

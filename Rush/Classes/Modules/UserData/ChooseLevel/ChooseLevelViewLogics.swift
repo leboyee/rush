@@ -34,6 +34,8 @@ extension ChooseLevelViewController {
             if self.selectedIndex > 2 {
                 param[Keys.uEduYear] = ""
             }
+        } else {
+            param[Keys.userStep] = 1
         }
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in

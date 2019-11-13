@@ -16,8 +16,7 @@ extension EnterUserNameViewController {
     
     func updateProfileAPI() {
         let param = [Keys.firstName: firstNameTextField.text ?? "",
-                     Keys.lastName: lastNameTextField.text ?? "",
-                     Keys.userStep: 1] as [String: Any]
+                     Keys.lastName: lastNameTextField.text ?? ""] as [String: Any]
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in
             Utils.hideSpinner()
