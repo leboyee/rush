@@ -532,7 +532,6 @@ extension ChatRoomViewController {
             }
         }
         
-        
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18
         userNavImageView.contentMode = .scaleAspectFill

@@ -37,16 +37,34 @@ extension ChatsViewController {
         
         let channel = channels[indexPath.row]
         
-        let controller = ChatRoomViewController()
-        controller.hidesBottomBarWhenPushed = true
-        controller.isGroupChat = channel.customType == "single" ? false : true
-        controller.userName = cell.titleLabel.text ?? ""
-        controller.userNavImage = cell.imgView.image
-        controller.channel = channel
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
+        if self.isOpenToShare {
+                sendMessage(text: "SHARED EVENT", channel: channel)
+        } else {
+            let controller = ChatRoomViewController()
+            controller.hidesBottomBarWhenPushed = true
+            controller.isGroupChat = channel.customType == "single" ? false : true
+            controller.userName = cell.titleLabel.text ?? ""
+            controller.userNavImage = cell.imgView.image
+            controller.channel = channel
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
+    func sendMessage(text: String, channel: SBDGroupChannel) {
+        ChatManager().sendTextMessage(text, channel: channel, completionHandler: { (message) in
+            if message != nil {
+                self.delegate?.sharedResult(flg: true)
+            } else {
+                self.delegate?.sharedResult(flg: false)
+            }
+            self.dismiss(animated: true, completion: nil)
+        }, errorHandler: { (_) in
+            self.delegate?.sharedResult(flg: false)
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+        
     func getSingleChatName(channel: SBDGroupChannel) -> String {
         let name = channel.name
         
