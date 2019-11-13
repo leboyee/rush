@@ -36,7 +36,10 @@ extension FriendsListViewController {
                 friend = secondTabList[indexPath.row] as? Friend ?? friend
             }
             cell.setup(name: friend.user?.name ?? "")
-            if let url = URL(string: friend.user?.photo?.thumb ?? "") {
+            let str = friend.user?.photo?.thumb ?? ""
+            let url = URL(string: str)
+            cell.setup(url: url)
+          /*  if let url = URL(string: friend.user?.photo?.thumb ?? "") {
                 cell.setup(url: url)
             } else {
                 guard inviteeList.count > indexPath.row else { return }
@@ -45,7 +48,7 @@ extension FriendsListViewController {
                 if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
                     cell.setup(url: url)
                 }
-            }
+            }*/
         } else  if type == .clubJoinedUsers {
             var friend = Invitee()
             friend = inviteeList[indexPath.row]

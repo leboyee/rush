@@ -29,7 +29,7 @@ extension FriendListCell {
         friendNameLabel.text = name
     }
     
-    func setup(url: URL) {
+    func setup(url: URL?) {
         friendImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
     }
 }
