@@ -73,7 +73,7 @@ class ExploreViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if isSearch {
+        if isSearch && searchText == ""{
             if searchType == .event {
                 getEventCategoryListAPI()
             } else if searchType == .club {
@@ -204,27 +204,44 @@ extension ExploreViewController {
     
     @IBAction func eventButtonAction(_ sender: Any) {
         if let btn = sender as? UIButton {
-            
             //dataList.removeAll()
-            
-            if btn.tag == 0 { // Event
-                searchType = .event
-                getEventCategoryListAPI()
-            } else if btn.tag == 1 { // Club
-                searchType = .club
-                getClubCategoryListAPI()
-            } else if btn.tag == 2 { // Classes
-                searchType = .classes
-                getClassCategoryAPI()
-            } else if btn.tag == 3 { // People
-                searchType = .people
-                getPeopleListAPI()
+            if searchText != "" {
+                if btn.tag == 0 { // Event
+                    searchType = .event
+                    getEventList(sortBy: .upcoming)
+                } else if btn.tag == 1 { // Club
+                    searchType = .club
+                    getClubListAPI(sortBy: "feed")
+                } else if btn.tag == 2 { // Classes
+                    searchType = .classes
+                    getClassListAPI()
+                } else if btn.tag == 3 { // People
+                    searchType = .people
+                    getPeopleListAPI()
+                } else {
+                    searchType = .none
+                }
+                updateFilterViewUI(selected: btn.tag)
+                
             } else {
-                searchType = .none
+                if btn.tag == 0 { // Event
+                    searchType = .event
+                    getEventCategoryListAPI()
+                } else if btn.tag == 1 { // Club
+                    searchType = .club
+                    getClubCategoryListAPI()
+                } else if btn.tag == 2 { // Classes
+                    searchType = .classes
+                    getClassCategoryAPI()
+                } else if btn.tag == 3 { // People
+                    searchType = .people
+                    getPeopleListAPI()
+                } else {
+                    searchType = .none
+                }
+                updateFilterViewUI(selected: btn.tag)
             }
-            updateFilterViewUI(selected: btn.tag)
         }
-        
         tableView.reloadData()
     }
 }
@@ -236,7 +253,7 @@ extension ExploreViewController {
         
         if segue.identifier == Segues.eventCategorySegue {
             if let vc = segue.destination as? EventCategoryListViewController {
-                   vc.selUniversity = selUniversity
+                vc.selUniversity = selUniversity
                 if let type = sender as? ScreenType {
                     vc.type = type
                     if isToday {

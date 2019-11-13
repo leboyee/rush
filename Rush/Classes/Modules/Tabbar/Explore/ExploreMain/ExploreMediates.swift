@@ -122,7 +122,7 @@ extension ExploreViewController: UITextFieldDelegate {
         heightConstraintOfFilter.constant = 67
         // C*
         if textField.text?.count == 0 {
-            //when serach screen loads
+            //when search screen loads
             getEventCategoryListAPI()
         }
     }
@@ -195,27 +195,29 @@ extension ExploreViewController: SelectEventTypeDelegate {
     }
     
     func addPhotoEvent(_ type: PhotoFrom) {
-        //search with category
-         if searchType == .event {
-            eventInterestList.removeAll()
-            eventCatPageNo = 1
-            isEventCatIsNextPageExist = true
-            getEventCategoryListAPI()
-        } else if searchType == .club {
-            clubInterestList.removeAll()
-            clubCatPageNo = 1
-            isClubCatIsNextPageExist = true
-            getClubCategoryListAPI()
-        } else if searchType == .classes {
-            classCategoryList.removeAll()
-            classCatPageNo = 1
-            isClassCatIsNextPageExist = true
-            getClassCategoryAPI()
-        } else if searchType == .people {
-            peopleList.removeAll()
-            pageNo = 1
-            isNextPageExist = true
-            getPeopleListAPI()
+        if searchText == "" {
+            //search with category
+            if searchType == .event {
+                eventInterestList.removeAll()
+                eventCatPageNo = 1
+                isEventCatIsNextPageExist = true
+                getEventCategoryListAPI()
+            } else if searchType == .club {
+                clubInterestList.removeAll()
+                clubCatPageNo = 1
+                isClubCatIsNextPageExist = true
+                getClubCategoryListAPI()
+            } else if searchType == .classes {
+                classCategoryList.removeAll()
+                classCatPageNo = 1
+                isClassCatIsNextPageExist = true
+                getClassCategoryAPI()
+            } else if searchType == .people {
+                peopleList.removeAll()
+                pageNo = 1
+                isNextPageExist = true
+                getPeopleListAPI()
+            }
         }
     }
 }
