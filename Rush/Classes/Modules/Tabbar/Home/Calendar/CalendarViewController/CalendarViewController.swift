@@ -100,9 +100,7 @@ extension CalendarViewController {
 extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
-        
-        guard isScheduledAnything else { return }
-        
+        //guard isScheduledAnything else { return }
         var text = dateButton.title(for: .normal)
         if isCalendarOpen {
             text = text?.replacingOccurrences(of: "▴", with: "▾")
