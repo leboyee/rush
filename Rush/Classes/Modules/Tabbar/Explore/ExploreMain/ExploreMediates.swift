@@ -22,7 +22,9 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.exploreCell, bundle: nil), forCellReuseIdentifier: Cell.exploreCell)
         tableView.register(UINib(nibName: Cell.searchClubCell, bundle: nil), forCellReuseIdentifier: Cell.searchClubCell)
         tableView.register(UINib(nibName: Cell.peopleCell, bundle: nil), forCellReuseIdentifier: Cell.peopleCell)
-        
+        tableView.register(UINib(nibName: Cell.eventByDate, bundle: nil), forCellReuseIdentifier: Cell.eventByDate)
+        tableView.register(UINib(nibName: Cell.friendClub, bundle: nil), forCellReuseIdentifier: Cell.friendClub)
+              
         tableView.reloadData()
     }
     
@@ -38,9 +40,23 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         
         if isSearch {
             if searchType != .people {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as? SearchClubCell else { return UITableViewCell() }
-                fillEventCell(cell, indexPath)
-                return cell
+                if searchText == "" {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.searchClubCell, for: indexPath) as? SearchClubCell else { return UITableViewCell() }
+                    fillEventCategoryCell(cell, indexPath)
+                    return cell
+                } else {
+                     if searchType == .event {
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+                        fillEventCell(cell, indexPath)
+                        return cell
+                    } else if searchType == .club || searchType == .classes {
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
+                        fillClubCell(cell, indexPath)
+                        return cell
+                     } else {
+                        return UITableViewCell()
+                    }
+                }
             } else if searchType == .people {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.peopleCell, for: indexPath) as? PeopleCell else { return UITableViewCell() }
                 fillPeopleCell(cell, indexPath)
@@ -105,7 +121,10 @@ extension ExploreViewController: UITextFieldDelegate {
         isSearch = true
         heightConstraintOfFilter.constant = 67
         // C*
-        getEventCategoryListAPI()
+        if textField.text?.count == 0 {
+            //when serach screen loads
+            getEventCategoryListAPI()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -130,7 +149,54 @@ extension ExploreViewController: UITextFieldDelegate {
             searchText = ""
             clearButton.isHidden = true
         }
-        if searchType == .event {
+        if searchText != "" {
+            if searchType == .event {
+                getEventList(sortBy: .upcoming)
+            } else if searchType == .club {
+                getClubListAPI(sortBy: "feed")
+            } else if searchType == .classes {
+                getClassListAPI()
+            } else if searchType == .people {
+                peopleList.removeAll()
+                pageNo = 1
+                isNextPageExist = true
+                getPeopleListAPI()
+            }
+        } else {
+            if searchType == .event {
+                eventInterestList.removeAll()
+                eventCatPageNo = 1
+                isEventCatIsNextPageExist = true
+                getEventCategoryListAPI()
+            } else if searchType == .club {
+                clubInterestList.removeAll()
+                clubCatPageNo = 1
+                isClubCatIsNextPageExist = true
+                getClubCategoryListAPI()
+            } else if searchType == .classes {
+                classCategoryList.removeAll()
+                classCatPageNo = 1
+                isClassCatIsNextPageExist = true
+                getClassCategoryAPI()
+            } else if searchType == .people {
+                peopleList.removeAll()
+                pageNo = 1
+                isNextPageExist = true
+                getPeopleListAPI()
+            }
+        }
+    }
+}
+
+// MARK: - SelectEventTypeController Delegate
+extension ExploreViewController: SelectEventTypeDelegate {
+    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
+        performSegue(withIdentifier: Segues.createClub, sender: nil)
+    }
+    
+    func addPhotoEvent(_ type: PhotoFrom) {
+        //search with category
+         if searchType == .event {
             eventInterestList.removeAll()
             eventCatPageNo = 1
             isEventCatIsNextPageExist = true
@@ -151,17 +217,6 @@ extension ExploreViewController: UITextFieldDelegate {
             isNextPageExist = true
             getPeopleListAPI()
         }
-    }
-}
-
-// MARK: - SelectEventTypeController Delegate
-extension ExploreViewController: SelectEventTypeDelegate {
-    func createEventClub(_ type: EventType, _ screenType: ScreenType) {
-        performSegue(withIdentifier: Segues.createClub, sender: nil)
-    }
-    
-    func addPhotoEvent(_ type: PhotoFrom) {
-        
     }
 }
 

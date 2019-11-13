@@ -27,14 +27,26 @@ extension ExploreViewController {
     
     func cellCount(_ section: Int) -> Int {
         if isSearch {
-            if searchType == .event {
-                return eventInterestList.count
-            } else if searchType == .club {
-                return clubInterestList.count
-            } else if searchType == .classes {
-                return classCategoryList.count
-            } else if searchType == .people {
-                return peopleList.count
+            if searchText != "" {
+                if searchType == .event {
+                    return eventList.count
+                } else if searchType == .club {
+                    return clubList.count
+                } else if searchType == .classes {
+                    return classList.count
+                } else if searchType == .people {
+                    return peopleList.count
+                }
+            } else {
+                if searchType == .event {
+                    return eventInterestList.count
+                } else if searchType == .club {
+                    return clubInterestList.count
+                } else if searchType == .classes {
+                    return classCategoryList.count
+                } else if searchType == .people {
+                    return peopleList.count
+                }
             }
         } else {
             if section == 0 {
@@ -125,7 +137,7 @@ extension ExploreViewController {
             }
         case 1:
             type = "Club"
-         if clubList.count > 0 {
+            if clubList.count > 0 {
                 img1 = clubList[0].clubPhoto ?? ""
             }
             if clubList.count > 1 {
@@ -136,7 +148,7 @@ extension ExploreViewController {
             }
         case 2:
             type = "Class"
-           if classList.count > 0 {
+            if classList.count > 0 {
                 img1 = classList[0].photoJson
             }
             if classList.count > 1 {
@@ -151,7 +163,77 @@ extension ExploreViewController {
         cell.setup(img1Url: img1, img2Url: img2, img3Url: img3, type: type)
     }
     
-    func fillEventCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
+    func fillClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
+        if searchType == .club {
+            let club = clubList[indexPath.row]
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "")
+            cell.setup(invitee: club.invitees)
+            cell.setup(clubImageUrl: club.photo?.urlThumb())
+            if club.clubTotalJoined > 3 {
+                cell.setup(inviteeCount: club.clubTotalJoined - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
+        } else if searchType == .classes {
+            let myclass = classList[indexPath.row]
+            cell.setup(classesImageUrl: myclass.photo?.urlThumb())
+            cell.setup(title: myclass.name)
+            if myclass.myJoinedClass?.count ?? 0 > 0 {
+                let jClass = myclass.myJoinedClass?.first
+                let cGroup = myclass.classGroups?.filter({ $0.id == jClass?.groupId }).first
+                cell.setup(detail: cGroup?.name ?? "")
+                
+            } else {
+                var countClass = ""
+                let count = myclass.classGroups?.count
+                if count == 0 {
+                    countClass = "No classes"
+                } else if count == 1 {
+                    countClass = "1 class"
+                } else {
+                    countClass = "\(count ?? 0) classes"
+                }
+                cell.setup(detail: countClass)
+                // cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
+            }
+            
+            var rosterArray = [Invitee]()
+            for rs in myclass.rosters ?? [ClassJoined]() {
+                if let user = rs.user {
+                    let inv = Invitee()
+                    inv.user = user
+                    rosterArray.append(inv)
+                }
+            }
+            cell.setup(invitee: rosterArray)
+            if myclass.classTotalRosters > 3 {
+                cell.setup(inviteeCount: Int(myclass.classTotalRosters - 3))
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
+        } else {
+            cell.setup(detail: "SOMM 24-A")
+        }
+    }
+    
+    func fillEventCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
+        let event = eventList[indexPath.row]
+        cell.setup(title: event.title)
+        cell.setup(date: event.start)
+        cell.setup(start: event.start, end: event.end)
+        cell.setup(eventImageUrl: event.photo?.urlThumb())
+        
+        /*  cell.cellSelected = { [weak self] (type, id, index) in
+         guard let unsafe = self else { return }
+         if unsafe.type == .event
+         {
+         let event = unsafe.eventList[index]
+         unsafe.performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+         }
+         }*/
+    }
+    func fillEventCategoryCell(_ cell: SearchClubCell, _ indexPath: IndexPath) {
         
         if searchType == .event {
             if eventInterestList.count > indexPath.row {
@@ -202,22 +284,52 @@ extension ExploreViewController {
     }
     // MARK: - Category selected
     func cellSelected(_ indexPath: IndexPath) {
-        if isSearch && searchType == .event {
-            let category = eventInterestList[indexPath.row]
-            performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
-        } else if isSearch && searchType == .club {
-            let category = clubInterestList[indexPath.row]
-            performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
-        } else if isSearch && searchType == .classes {
-            let category = classCategoryList[indexPath.row]
-            performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
-        } else if isSearch && searchType == .people {
-            if peopleList.count > indexPath.row {
-                let category = peopleList[indexPath.row]
-                if category.userId == Authorization.shared.profile?.userId {
-                    self.tabBarController?.selectedIndex = 3
-                } else {
-                    performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+        if isSearch {
+            if searchText != "" {
+                if searchType == .event {
+                    let event = eventList[indexPath.row]
+                    performSegue(withIdentifier: Segues.eventDetailSegue, sender: event)
+                } else if searchType == .club {
+                    let club = clubList[indexPath.row]
+                    performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+                } else if searchType == .classes {
+                    let classObject = classList[indexPath.row]
+                    if classObject.myJoinedClass?.count ?? 0 > 0 {
+                        //already joined - so dont show groups
+                        performSegue(withIdentifier: Segues.classDetailSegue, sender: classObject)
+                    } else {
+                        // not joined yet, so show groups
+                        performSegue(withIdentifier: Segues.searchClubSegue, sender: classObject)
+                    }
+                } else if searchType == .people {
+                    if peopleList.count > indexPath.row {
+                        let category = peopleList[indexPath.row]
+                        if category.userId == Authorization.shared.profile?.userId {
+                            self.tabBarController?.selectedIndex = 3
+                        } else {
+                            performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+                        }
+                    }
+                }
+            } else {
+                if searchType == .event {
+                    let category = eventInterestList[indexPath.row]
+                    performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+                } else if searchType == .club {
+                    let category = clubInterestList[indexPath.row]
+                    performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+                } else if searchType == .classes {
+                    let category = classCategoryList[indexPath.row]
+                    performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+                } else if searchType == .people {
+                    if peopleList.count > indexPath.row {
+                        let category = peopleList[indexPath.row]
+                        if category.userId == Authorization.shared.profile?.userId {
+                            self.tabBarController?.selectedIndex = 3
+                        } else {
+                            performSegue(withIdentifier: Segues.otherUserProfile, sender: category)
+                        }
+                    }
                 }
             }
         } else if indexPath.section == 0 && isSearch == false {
@@ -226,9 +338,10 @@ extension ExploreViewController {
             performSegue(withIdentifier: Segues.eventCategorySegue, sender: type)
         }
     }
+    
     // MARK: - Will display cell
     func willDisplay(_ indexPath: IndexPath) {
-        if isSearch {
+        if isSearch && searchText == "" {
             if searchType == .event {
                 if isEventCatIsNextPageExist == true, indexPath.row == eventInterestList.count - 3 {
                     eventCatPageNo += 1
@@ -385,14 +498,15 @@ extension ExploreViewController {
         let dateFormat = "yyyy-MM-dd" // Date format
         let startDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "00:00:00", toForamte: serverDateFormate1, getFormate: serverDateFormate1)
         let endDate = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate1, getFormate: serverDateFormate1)
-//        Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+        //        Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
-                     Keys.fromStart: startDate,
-                     Keys.toStart: endDate,
                      Keys.pageNo: 1] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
-        
+        if !isSearch {
+            param[Keys.fromStart] = startDate
+            param[Keys.toStart] = endDate
+        }
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }

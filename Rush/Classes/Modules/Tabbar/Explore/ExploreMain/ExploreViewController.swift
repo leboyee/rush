@@ -192,6 +192,12 @@ extension ExploreViewController {
         isSearch = false
         heightConstraintOfFilter.constant = 0
         clearButton.isHidden = true
+        eventList.removeAll()
+        clubList.removeAll()
+        classList.removeAll()
+        getClubListAPI(sortBy: "feed")
+        getEventList(sortBy: .upcoming)
+        getClassListAPI()
         tableView.reloadData()
         //        textFieldDidChanged(searchfield)
     }
