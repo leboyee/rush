@@ -224,7 +224,9 @@ extension OtherUserProfileController {
         
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            if section == 3 {
+            if section == 2 {
+                unself.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
+            } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
             } else if section == 4 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)

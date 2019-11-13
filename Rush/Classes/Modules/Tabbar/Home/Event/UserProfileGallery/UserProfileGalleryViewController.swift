@@ -83,13 +83,15 @@ class UserProfileGalleryViewController: UIViewController {
     }
     
     func setupDateAndTimeOfPhoto(index: Int) {
-         let image = list[index]
-        
-        if let date = image.date {
-            if date.isSameDate(Date()) {
-                timeLable.text = date.toString(format: "hh:mm a")
-            } else {
-                timeLable.text = date.toString(format: "MM-dd-yyyy")
+        if index < list.count {
+            let image = list[index]
+            
+            if let date = image.date {
+                if date.isSameDate(Date()) {
+                    timeLable.text = date.toString(format: "hh:mm a")
+                } else {
+                    timeLable.text = date.toString(format: "MM-dd-yyyy")
+                }
             }
         }
     }
