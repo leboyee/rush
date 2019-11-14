@@ -26,6 +26,7 @@ class EventListViewController: CustomViewController {
     var eventCategory = [Interest]()
     var eventFilterType: GetEventType = .myUpcoming
     var isFirstTime = false
+    var isApiCalling = false
     override func viewDidLoad() {
         super.viewDidLoad()
         

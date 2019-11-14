@@ -155,10 +155,10 @@ extension CreateEventViewController {
         //eventImage = event?.photo?.main
         startDate = event?.start ?? Date()
         endDate = event?.end ?? Date()
-        startTime = "01:00 PM"
-        endTime = "02:00 PM"
-        startTimeDate =  Date.parse(dateString: "01:00 PM", format: "hh:mm a") ?? Date()
-        endTimeDate =  Date.parse(dateString: "02:00 PM", format: "hh:mm a") ?? Date()
+        startTime = event?.start?.toString(format: "hh:mm a") ?? "01:00 PM"
+        endTime = event?.end?.toString(format: "hh:mm a") ?? "02:00 PM"
+        startTimeDate =  Date.parse(dateString: startTime, format: "hh:mm a") ?? Date()
+        endTimeDate =  Date.parse(dateString: endTime, format: "hh:mm a") ?? Date()
         isCreateGroupChat = event?.isChatGroup ?? true
         eventId = String(event?.id ?? 1)
         university = event?.university?[0]

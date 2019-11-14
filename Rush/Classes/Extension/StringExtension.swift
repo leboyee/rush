@@ -236,7 +236,7 @@ extension String {
                     }
                     return images
                 } else {
-                    print("Error in json : " + self)
+                    //print("Error in json : " + self)
                 }
             } catch let error as NSError {
                 print(error)
@@ -251,7 +251,7 @@ extension String {
                 if let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
                     return Image(data: object)
                 } else {
-                    print("Error in json : " + self)
+                  // print("Error in json : " + self)
                 }
             } catch let error as NSError {
                 print(error)

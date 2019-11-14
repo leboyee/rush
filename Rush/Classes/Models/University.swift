@@ -52,7 +52,7 @@ class University: Codable {
                         mainUrl = url
                     }
                 } else {
-                    print("Error in json : " + jsonString)
+                    //print("Error in json : " + jsonString)
                 }
             } catch let error as NSError {
                 print(error)

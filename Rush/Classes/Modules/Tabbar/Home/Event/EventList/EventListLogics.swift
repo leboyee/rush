@@ -100,7 +100,7 @@ extension EventListViewController {
             if isNextPageEvent == true, totalSection == indexPath.section, indexPath.row == 0 {
                 getEventList()
             }
-            if isNextPageMyEvent == true && indexPath.row == eventList.count - 1 {
+            if isNextPageMyEvent == true && indexPath.section == 0 && indexPath.row == eventList.count - 1 {
                 getMyEventList(sortBy: eventFilterType)
             }
             
@@ -125,7 +125,9 @@ extension EventListViewController: EventCategoryFilterDelegate {
     func selectedIndex(_ type: String, _ selectedIndex: IndexPath) {
         Utils.saveDataToUserDefault(type, UserDefaultKey.myUpcomingFilter)
         eventFilterType = type == "All Upcoming" ? .myUpcoming : .managedFirst
+        eventList.removeAll()
         myEventPageNo = 1
+        isNextPageMyEvent = false
         getMyEventList(sortBy: eventFilterType)
     }
     
@@ -171,15 +173,19 @@ extension EventListViewController {
     }
     
     func getMyEventList(sortBy: GetEventType) {
-            
+        if isApiCalling == true {
+            return
+        }
             let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                          Keys.search: searchText,
                          Keys.sortBy: sortBy.rawValue,
                          Keys.pageNo: myEventPageNo] as [String: Any]
-            
+            print("param ",param)
+            isApiCalling = true
             ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
                 Utils.hideSpinner()
                 guard let unsafe = self else { return }
+                unsafe.isApiCalling = false
                 if let events = value {
                     if value?.count == 0 {
                         unsafe.isNextPageMyEvent = false
