@@ -52,7 +52,7 @@ public enum MessageKind {
     case emoji(String)
     
     /// An event message.
-    case event(MediaItem)
+    case event(EventItem)
 
     /// A custom message.
     /// - Note: Using this case requires that you implement the following methods and handle this case:

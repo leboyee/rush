@@ -1,19 +1,19 @@
 PODS:
-  - DKCamera (1.6.4)
-  - DKImagePickerController/Camera (4.2.0):
+  - DKCamera (1.6.6)
+  - DKImagePickerController/Camera (4.2.1):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/Core (4.2.0):
+  - DKImagePickerController/Core (4.2.1):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.2.0)
-  - DKImagePickerController/InlineCamera (4.2.0):
+  - DKImagePickerController/ImageDataManager (4.2.1)
+  - DKImagePickerController/InlineCamera (4.2.1):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/PhotoGallery (4.2.0):
+  - DKImagePickerController/PhotoGallery (4.2.1):
     - DKImagePickerController/Core
     - DKPhotoGallery
-  - DKImagePickerController/Resource (4.2.0)
+  - DKImagePickerController/Resource (4.2.1)
   - DKPhotoGallery (0.0.14):
     - DKPhotoGallery/Core (= 0.0.14)
     - DKPhotoGallery/Model (= 0.0.14)
@@ -43,15 +43,15 @@ PODS:
     - FacebookCore (~> 0.9.0)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKShareKit (~> 5.0)
-  - FBSDKCoreKit (5.8.0):
-    - FBSDKCoreKit/Basics (= 5.8.0)
-    - FBSDKCoreKit/Core (= 5.8.0)
-  - FBSDKCoreKit/Basics (5.8.0)
-  - FBSDKCoreKit/Core (5.8.0):
+  - FBSDKCoreKit (5.10.0):
+    - FBSDKCoreKit/Basics (= 5.10.0)
+    - FBSDKCoreKit/Core (= 5.10.0)
+  - FBSDKCoreKit/Basics (5.10.0)
+  - FBSDKCoreKit/Core (5.10.0):
     - FBSDKCoreKit/Basics
-  - FBSDKShareKit (5.8.0):
-    - FBSDKShareKit/Share (= 5.8.0)
-  - FBSDKShareKit/Share (5.8.0):
+  - FBSDKShareKit (5.10.0):
+    - FBSDKShareKit/Share (= 5.10.0)
+  - FBSDKShareKit/Share (5.10.0):
     - FBSDKCoreKit (~> 5.0)
   - FLAnimatedImage (1.0.12)
   - GoogleMaps/Base (3.6.0)
@@ -59,7 +59,7 @@ PODS:
     - GoogleMaps/Base (= 3.6.0)
   - IQKeyboardManagerSwift (6.5.2)
   - MGSwipeTableCell (1.6.11)
-  - PanModal (1.2.4)
+  - PanModal (1.2.5)
   - ReachabilitySwift (5.0.0)
   - SDWebImage (5.2.1):
     - SDWebImage/Core (= 5.2.1)
@@ -67,9 +67,9 @@ PODS:
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
-  - SendBirdSDK (3.0.157)
+  - SendBirdSDK (3.0.159)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.36.0)
+  - SwiftLint (0.37.0)
   - UnsplashPhotoPicker (1.1.0)
 
 DEPENDENCIES:
@@ -113,27 +113,27 @@ SPEC REPOS:
     - UnsplashPhotoPicker
 
 SPEC CHECKSUMS:
-  DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
-  DKImagePickerController: d5bfc4c8696a5d00f9ce24d42d223503546ed6c3
+  DKCamera: d6fad4db4b25c00eefe6904e9c86a926034d0c62
+  DKImagePickerController: faddfe5b1240ed5fa05b6001169e60ed9b5b2df7
   DKPhotoGallery: 0290d32343574f06eaa4c26f8f2f8a1035e916be
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
-  FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
-  FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
+  FBSDKCoreKit: f9bae468a078f20c05c73450825ccd54cfafbbb7
+  FBSDKShareKit: 09c3b7166802a3629970fa00d45d59cf6942df37
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   GoogleMaps: 82f8fe307193bb4de6ef6bf9e88f1d624b718f9d
   GooglePlaces: 1b9d29cf3e164903d873600f511f42acdfe85294
   IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
   MGSwipeTableCell: b804e4e450dee439c42250be90bd50458bf67fce
-  PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
+  PanModal: 7c5af3ad4fe22b91508040965bebffb89fb607ae
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
-  SendBirdSDK: d86a3aa150211842760e98a40bc2eb3bd2363e09
+  SendBirdSDK: b2f8197b2762f9bf88eb78f6194e8693700df105
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: fc9859e4e1752340664851f667bb1898b9c90114
+  SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
 PODFILE CHECKSUM: 4995f60c8b913ddb247110bfa02d815efad0db15
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
