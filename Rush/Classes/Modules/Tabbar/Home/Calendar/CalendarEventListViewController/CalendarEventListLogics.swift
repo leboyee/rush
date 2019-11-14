@@ -29,7 +29,8 @@ extension CalendarEventListViewController {
             let event = group.events[indexPath.row]
             cell.set(eventName: event.title)
             cell.set(type: event.type)
-            cell.set(url: event.photo?.urlThumb())
+            let placeholder = event.type.lowercased() == Text.event ? #imageLiteral(resourceName: "placeholder-event48px.pdf") : #imageLiteral(resourceName: "placeholder-classes48px.pdf")
+            cell.set(url: event.photo?.urlThumb(), placeholder: placeholder)
             
             let date = Date()
             let (startTime, endTime) = getEventTimes(event: event, dateString: group.dateString)

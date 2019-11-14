@@ -45,8 +45,8 @@ extension CalendarEventCell {
         typeLabel.text = type
     }
     
-    func set(url: URL?) {
-        eventImageView.sd_setImage(with: url, placeholderImage: nil)
+    func set(url: URL?, placeholder: UIImage) {
+        eventImageView.sd_setImage(with: url, placeholderImage: placeholder)
     }
     
     func set(start: Date?, end: Date?) {
