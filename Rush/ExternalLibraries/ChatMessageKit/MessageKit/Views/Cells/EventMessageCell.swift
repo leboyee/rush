@@ -27,6 +27,14 @@ import UIKit
 /// A subclass of `MessageContentCell` used to display video and audio messages.
 open class EventMessageCell: MessageContentCell {
 
+    var eventId: String?
+    var eventTitle: String?
+    var eventDesc: String?
+    var eventDate: String?
+    var eventMonth: String?
+    var eventDay: String?
+    var eventTime: String?
+    
     /// The image view display the media content.
     open var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -80,35 +88,36 @@ open class EventMessageCell: MessageContentCell {
         messageContainerView.layer.cornerRadius = 24
         
         let date = UILabel(frame: CGRect(x: 115, y: 8, width: 16, height: 16))
-        date.text = "31"
+        date.text = eventDate ?? "31"
         date.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(date)
         
         let month = UILabel(frame: CGRect(x: 135, y: 8, width: 200, height: 16))
-        month.text = "JAN"
+        month.text = eventMonth ?? "JAN"
         month.textColor = UIColor.buttonDisableTextColor
         month.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(month)
         
-        let day = UILabel(frame: CGRect(x: 115, y: 23, width: 61, height: 16))
-        day.text = "Thursday"
+        let day = UILabel(frame: CGRect(x: 115, y: 25, width: 61, height: 16))
+        day.text = eventDay ?? "Sunday"
         day.font = UIFont.semibold(sz: 13)
+        day.sizeToFit()
         messageContainerView.addSubview(day)
         
-        let time = UILabel(frame: CGRect(x: 180, y: 24, width: 200, height: 16))
-        time.text = "10-12 pm"
+        let time = UILabel(frame: CGRect(x: day.frame.maxX + 5, y: 25, width: 200, height: 16))
+        time.text = eventTime ?? "10-12 pm"
         time.textColor = UIColor.buttonDisableTextColor
         time.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(time)
         
         let title = UILabel(frame: CGRect(x: 115, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
-        title.text = "VR games"
+        title.text = eventTitle ?? "VR games"
         title.font = UIFont.displayBold(sz: 23)
         messageContainerView.addSubview(title)
         
         let detail = UILabel(frame: CGRect(x: 115, y: 89, width: screenWidth - 71 - 100 - 15, height: 54))
         detail.numberOfLines = 3
-        detail.text = "Get the latest VR Experience with Samsung Gear. You can travel through the worlds as detail of UI thr samsung"
+        detail.text = eventDesc ?? "Get the latest VR Experience with Samsung Gear. You can travel through the worlds as detail of UI thr samsung"
         detail.font = UIFont.regular(sz: 13)
         messageContainerView.addSubview(detail)
     }
@@ -116,8 +125,7 @@ open class EventMessageCell: MessageContentCell {
     open override func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
         
         super.configure(with: message, at: indexPath, and: messagesCollectionView)
-
-        guard let displayDelegate = messagesCollectionView.messagesDisplayDelegate else {
+       guard let displayDelegate = messagesCollectionView.messagesDisplayDelegate else {
             fatalError(MessageKitError.nilMessagesDisplayDelegate)
         }
 
@@ -130,8 +138,15 @@ open class EventMessageCell: MessageContentCell {
             }
         case .video(let mediaItem):
             imageView.image = mediaItem.image ?? mediaItem.placeholderImage
-        case .event(let mediaItem):
-            imageView.image = mediaItem.image ?? mediaItem.placeholderImage
+        case .event(let eventItem):
+            imageView.sd_setImage(with: eventItem.eventImageURL, placeholderImage: eventItem.placeholderImage)
+            eventTitle = eventItem.eventTitle
+            eventDesc = eventItem.desc
+            eventDay = eventItem.eventDay
+            eventDate = eventItem.eventDate
+            eventMonth = eventItem.eventMonth
+            eventTime = eventItem.eventTime
+            setupSubviews()
         default:
             break
         }

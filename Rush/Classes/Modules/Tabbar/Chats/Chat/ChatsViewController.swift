@@ -10,6 +10,10 @@ import UIKit
 import SendBirdSDK
 import IQKeyboardManagerSwift
 
+protocol ChatsViewControllerDelegate: class {
+    func sharedResult(flg: Bool)
+}
+
 class ChatsViewController: CustomViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,9 +21,14 @@ class ChatsViewController: CustomViewController {
     
     var searchText = ""
     var isSearch = false
-    
     var filterList: [SBDGroupChannel] = []
     var searchField: UITextField!
+    
+    // Sharing events
+    var isOpenToShare = false
+    var sharedEvent: Event?
+    weak var delegate: ChatsViewControllerDelegate?
+
     var channels: [SBDGroupChannel] = [] {
         didSet {
             tableView.reloadData()
@@ -62,7 +71,11 @@ class ChatsViewController: CustomViewController {
     
     func setupNavigation() {
         navigationController?.navigationBar.isTranslucent = false
-        setupChatListNavigation()
+        if isOpenToShare {
+            setupSearchChatNavigation()
+        } else {
+            setupChatListNavigation()
+        }
     }
     
     func setupChatListNavigation() {
@@ -126,7 +139,11 @@ extension ChatsViewController {
     }
     
     @objc func backButtonAction() {
-        setupChatListNavigation()
+        if self.isOpenToShare {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            setupChatListNavigation()
+        }
     }
     
     @objc func clearButtonAction() {

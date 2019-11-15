@@ -45,5 +45,5 @@ public protocol MediaItem {
     var title: String? { get }
     
     var detail: String? { get }
-
+    
 }
