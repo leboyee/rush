@@ -112,6 +112,7 @@ class ChatRoomViewController: MessagesViewController {
         }
         
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        print("messageKind -- \(message.kind)")
         if case .custom = message.kind {
             let cell = messagesCollectionView.dequeueReusableCell(CustomCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
@@ -147,9 +148,9 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     @objc func loadMoreMessages() {
-        self.loadMessagesWithInitial(initial: false)
-        self.refreshControl.endRefreshing()
-        /*
+//        self.loadMessagesWithInitial(initial: false)
+//        self.refreshControl.endRefreshing()
+        //cg
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
             SampleData.shared.getMessages(count: 20, isGroupChat: self.isGroupChat) { messages in
                 DispatchQueue.main.async {
@@ -158,7 +159,7 @@ class ChatRoomViewController: MessagesViewController {
                     self.refreshControl.endRefreshing()
                 }
             }
-        }*/
+        }
         
     }
     //===========================================================================
@@ -531,7 +532,6 @@ extension ChatRoomViewController {
                 userNavImageView.image = UIImage(named: "placeholder-profile-48px")
             }
         }
-        
         
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18

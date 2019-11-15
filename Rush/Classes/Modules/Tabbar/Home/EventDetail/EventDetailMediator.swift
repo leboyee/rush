@@ -208,14 +208,26 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
             if let eventImage = header.headerImage.image {
                 data.append(eventImage)
             }
+            Utils.openActionSheet(controller: self, shareData: data)
         } else if let evnt = object as? Event {
+            /*
             data.append("Check out \(evnt.title) on rush app")
             data.append("Event: \(evnt.title)\nEvent description: \(evnt.desc)")
             if let eventImage = header.headerImage.image {
                 data.append(eventImage)
-            }
+            }*/
+            
+            let storyboardName = UIStoryboard(name: StoryBoard.chat, bundle: nil)
+            guard let controller = storyboardName.instantiateViewController(withIdentifier: "ChatsViewController") as? ChatsViewController else { return }
+            controller.sharedEvent = evnt
+            controller.isOpenToShare = true
+            controller.delegate = self
+            let navigationController = UINavigationController.init(rootViewController: controller)
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true, completion: nil)
+            
         }
-        Utils.openActionSheet(controller: self, shareData: data)
+       
     }
     
     func delete(type: SharePostType, object: Any?) {
@@ -223,6 +235,17 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
             deleteEvent(event: event)
         } else if type == .post, let post = object as? Post {
             deletePost(post: post)
+        }
+    }
+}
+
+// MARK: - ChatsViewControllerDelegate
+extension EventDetailViewController: ChatsViewControllerDelegate {
+    func sharedResult(flg: Bool) {
+        if flg {
+            Utils.alert(message: "\(event?.title ?? "") event shared!")
+        } else {
+            Utils.alert(message: "Something wrong on event sharing.")
         }
     }
 }

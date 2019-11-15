@@ -98,6 +98,8 @@ public protocol MessageCellDelegate: MessageLabelDelegate {
     /// `indexPath(for: cell)` method. Then using the returned `IndexPath` with the `MessagesDataSource`
     /// method `messageForItem(at:indexPath:messagesCollectionView)`.
     func didTapImage(mediaItem: MediaItem, sender: Sender, date: Date?)
+    
+    func didTapEvent(eventId: String)
 }
 
 public extension MessageCellDelegate {

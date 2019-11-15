@@ -37,16 +37,50 @@ extension ChatsViewController {
         
         let channel = channels[indexPath.row]
         
-        let controller = ChatRoomViewController()
-        controller.hidesBottomBarWhenPushed = true
-        controller.isGroupChat = channel.customType == "single" ? false : true
-        controller.userName = cell.titleLabel.text ?? ""
-        controller.userNavImage = cell.imgView.image
-        controller.channel = channel
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
+        if self.isOpenToShare {
+            if let event = sharedEvent {
+                //type: 1 == event
+                //type: 2 == club
+                //type: 3 == class
+                
+                let month = event.start?.toString(format: "MMM").uppercased() ?? ""
+                let datelable = event.start?.toString(format: "dd") ?? ""
+                let day = event.start?.toString(format: "EEEE") ?? ""
+                var time = event.start?.toString(format: "hh:mma") ?? ""
+                if let endDate = event.end {
+                    time +=  "-" +  endDate.toString(format: "hh:mma")
+                }
+                
+                let jsonString = "{\"JSON_CHAT\":{\"type\":1,\"eventId\":\"\(event.id)\",\"eventTitle\":\"\(event.title)\",\"eventImage\":\"\(event.photo?.main ?? "")\",\"desc\":\"\(event.desc)\",\"date\":\"\(datelable)\",\"month\":\"\(month)\",\"day\":\"\(day)\",\"time\":\"\(time)\"}}"
+                
+                sendMessage(text: jsonString, channel: channel)
+            }
+        } else {
+            let controller = ChatRoomViewController()
+            controller.hidesBottomBarWhenPushed = true
+            controller.isGroupChat = channel.customType == "single" ? false : true
+            controller.userName = cell.titleLabel.text ?? ""
+            controller.userNavImage = cell.imgView.image
+            controller.channel = channel
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
+    func sendMessage(text: String, channel: SBDGroupChannel) {
+        ChatManager().sendTextMessage(text, channel: channel, completionHandler: { (message) in
+            if message != nil {
+                self.delegate?.sharedResult(flg: true)
+            } else {
+                self.delegate?.sharedResult(flg: false)
+            }
+            self.dismiss(animated: true, completion: nil)
+        }, errorHandler: { (_) in
+            self.delegate?.sharedResult(flg: false)
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+        
     func getSingleChatName(channel: SBDGroupChannel) -> String {
         let name = channel.name
         
