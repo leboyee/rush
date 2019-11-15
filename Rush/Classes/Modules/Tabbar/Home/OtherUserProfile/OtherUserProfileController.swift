@@ -133,7 +133,12 @@ extension OtherUserProfileController {
                 vc.hidesBottomBarWhenPushed = true
                 vc.list = imagesList
                 vc.user = userInfo ?? User()
-                vc.currentIndex = 0
+                if let index = sender as? Int {
+                        vc.currentIndex = index
+                            vc.selectedIndex = index
+                        } else {
+                    vc.currentIndex = 0
+                }
             }
         } else if segue.identifier == Segues.otherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {

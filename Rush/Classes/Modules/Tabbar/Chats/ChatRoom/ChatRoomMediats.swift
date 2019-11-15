@@ -368,7 +368,7 @@ extension ChatRoomViewController: MessagesDataSource {
             if Authorization.shared.profile?.name == message.sender.displayName {
                 return nil
             } else {
-                let name = "\t\(message.sender.displayName)\n"
+                let name = "\t\(message.sender.displayName)"
                 return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)])
             }
         }

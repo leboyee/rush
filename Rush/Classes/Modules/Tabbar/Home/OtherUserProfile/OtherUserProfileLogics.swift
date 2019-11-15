@@ -192,7 +192,7 @@ extension OtherUserProfileController {
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if indexPath.section == 2 {
-                unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
+                unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: Int(index))
             } else if indexPath.section == 3 {
                 let friend = unsafe.friendList[index]
                 unsafe.performSegue(withIdentifier: Segues.otherUserProfile, sender: friend.user)
