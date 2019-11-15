@@ -263,16 +263,17 @@ extension ExploreViewController {
                     vc.eventCategory = category
                     vc.type = .event
                 } else if let category = sender as? Interest {
-                    vc.interest = category
                     if searchType == .event {
                         vc.interestList = eventInterestList
                         vc.type = .event
+                        vc.interest = category
                     } else if searchType == .club {
                         vc.interestList = clubInterestList
                         vc.type = .club
+                        vc.interest = category
                     }
                 } else if let category = sender as? ClubCategory {
-                    vc.clubCategory = category
+                    // vc.interest = category
                     //                    vc.clubCategoryList = clubInterestList
                     vc.type = .club
                 } else if let category = sender as? Class {

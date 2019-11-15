@@ -69,7 +69,7 @@ extension ServiceManager {
         }
     }
     // Event category API
-    func fetchClubCategoryList(params: [String: Any], closer: @escaping (_ clubCategory: [ClubCategory]?, _ errorMessage: String?) -> Void) {
+    func fetchClubCategoryList(params: [String: Any], closer: @escaping (_ clubCategory: [Interest]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getClubCategoryList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (clubCategory, _, errorMessage) in

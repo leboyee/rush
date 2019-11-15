@@ -51,7 +51,7 @@ class ChatRoomViewController: MessagesViewController {
     
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
-    var emptyMessageFriendTitle = "This is a beginning of your chat history"
+    var emptyMessageFriendTitle = " This is the beginning of your chat history"
     var userName = ""
     let refreshControl = UIRefreshControl()
     
@@ -148,9 +148,9 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     @objc func loadMoreMessages() {
-//        self.loadMessagesWithInitial(initial: false)
-//        self.refreshControl.endRefreshing()
-        //cg
+        self.loadMessagesWithInitial(initial: false)
+        self.refreshControl.endRefreshing()
+        /*
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
             SampleData.shared.getMessages(count: 20, isGroupChat: self.isGroupChat) { messages in
                 DispatchQueue.main.async {
@@ -160,7 +160,7 @@ class ChatRoomViewController: MessagesViewController {
                 }
             }
         }
-        
+        */
     }
     //===========================================================================
     

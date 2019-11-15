@@ -209,8 +209,8 @@ class ClassGroupSchedule: Codable {
         case classId = "class_id"
         case groupId = "group_id"
         case day = "day"
-        case startTime = "gmt_start_time"
-        case endTime = "gmt_end_time"
+        case startTime = "start_time"
+        case endTime = "end_time"
         case timezone = "timezone"
     }
 }

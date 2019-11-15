@@ -124,10 +124,12 @@ extension CustomTabbarViewController {
                 }
             }
         } else {
-            if let tabbarItem = tabBar.items?.last {
-                tabbarItem.image = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                tabbarItem.selectedImage = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-            }
+          let img = getImage("placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+          let selectedImg = getImage("placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
+          if let tabbarItem = tabBar.items?.last {
+              tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+              tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+          }
         }
     }
     

@@ -38,7 +38,7 @@ class ClubListViewController: CustomViewController {
     var myClubsList = [Club]()
     var myClassesList = [ClassJoined]()
     
-    var clubInterestList = [ClubCategory]()
+    var clubInterestList = [Interest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

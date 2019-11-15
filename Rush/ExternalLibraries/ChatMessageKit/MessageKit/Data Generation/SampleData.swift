@@ -193,8 +193,7 @@ final internal class SampleData {
     func getMessages(count: Int, isGroupChat: Bool, completion: ([MockMessage]) -> Void) {
         var messages: [MockMessage] = []
         completion(messages)
-        //cg
-//        return;
+        return;
         
         // Disable Custom Messages
         UserDefaults.standard.set(false, forKey: "Custom Messages")
