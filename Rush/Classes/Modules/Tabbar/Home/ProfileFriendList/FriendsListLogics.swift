@@ -192,7 +192,7 @@ extension FriendsListViewController {
             var friend: Friend?
             if firstSegmentButton.isSelected {
                 friend = firstTabList[indexPath.row] as? Friend
-                performSegue(withIdentifier: Segues.profileInformation, sender: friend)
+                performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
             } else {
                 friend = secondTabList[indexPath.row] as? Friend
                 performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)

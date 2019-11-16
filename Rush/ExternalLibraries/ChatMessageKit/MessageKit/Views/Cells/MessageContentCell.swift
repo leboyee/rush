@@ -142,10 +142,10 @@ open class MessageContentCell: MessageCollectionViewCell {
         } else {
             if (self as? EventMessageCell) != nil {
                 messageContainerView.backgroundColor = UIColor.clear
-                messageContainerView.backgroundColor = UIColor.red //cg
+//                messageContainerView.backgroundColor = UIColor.red //cg
             } else {
                 messageContainerView.backgroundColor = UIColor.lightGray93
-                messageContainerView.backgroundColor = UIColor.green //cg
+//                messageContainerView.backgroundColor = UIColor.green //cg
                 
             }
         }
@@ -168,7 +168,7 @@ open class MessageContentCell: MessageCollectionViewCell {
             cellTopLabel.attributedText = topCellLabelText
             
             leftLine.backgroundColor = UIColor.buttonDisableBgColor
-            cellTopLabel.backgroundColor = UIColor.brown //cg
+//            cellTopLabel.backgroundColor = UIColor.brown //cg
             cellTopLabel.addSubview(leftLine)
             
             rightLine.backgroundColor = UIColor.buttonDisableBgColor
@@ -255,7 +255,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         default:
             break
         }
-        avatarView.backgroundColor = UIColor.blue //cg
+//        avatarView.backgroundColor = UIColor.blue //cg
         avatarView.frame = CGRect(origin: origin, size: attributes.avatarSize)
     }
 
@@ -279,7 +279,7 @@ open class MessageContentCell: MessageCollectionViewCell {
                 let messageHeight = attributes.messageContainerSize.height + attributes.messageContainerPadding.vertical
                 origin.y = (attributes.size.height / 2) - (messageHeight / 2)
             } else {
-                origin.y = attributes.cellTopLabelSize.height + attributes.messageTopLabelSize.height + attributes.messageContainerPadding.top
+                origin.y = attributes.cellTopLabelSize.height + attributes.messageTopLabelSize.height + attributes.messageContainerPadding.top + 10
             }
         }
 
@@ -310,7 +310,7 @@ open class MessageContentCell: MessageCollectionViewCell {
 
         let y = messageContainerView.frame.minY - attributes.messageContainerPadding.top - attributes.messageTopLabelSize.height
         let origin = CGPoint(x: 0, y: y)
-        messageTopLabel.backgroundColor = UIColor.pink67 //cg
+//        messageTopLabel.backgroundColor = UIColor.pink67 //cg
         messageTopLabel.frame = CGRect(origin: origin, size: attributes.messageTopLabelSize)
     }
 
