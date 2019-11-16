@@ -142,8 +142,11 @@ open class MessageContentCell: MessageCollectionViewCell {
         } else {
             if (self as? EventMessageCell) != nil {
                 messageContainerView.backgroundColor = UIColor.clear
+                messageContainerView.backgroundColor = UIColor.red //cg
             } else {
                 messageContainerView.backgroundColor = UIColor.lightGray93
+                messageContainerView.backgroundColor = UIColor.green //cg
+                
             }
         }
        
@@ -165,6 +168,7 @@ open class MessageContentCell: MessageCollectionViewCell {
             cellTopLabel.attributedText = topCellLabelText
             
             leftLine.backgroundColor = UIColor.buttonDisableBgColor
+            cellTopLabel.backgroundColor = UIColor.brown //cg
             cellTopLabel.addSubview(leftLine)
             
             rightLine.backgroundColor = UIColor.buttonDisableBgColor
@@ -186,8 +190,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         cellTopLabel.attributedText = topCellLabelText
         messageTopLabel.attributedText = topMessageLabelText
         messageBottomLabel.attributedText = bottomText
-    }
-
+    } 
     /// Handle tap gesture on contentView and its subviews.
     open func handleTapGesture(_ gesture: UIGestureRecognizer) {
         let touchLocation = gesture.location(in: self)
@@ -252,7 +255,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         default:
             break
         }
-
+        avatarView.backgroundColor = UIColor.blue //cg
         avatarView.frame = CGRect(origin: origin, size: attributes.avatarSize)
     }
 
@@ -307,7 +310,7 @@ open class MessageContentCell: MessageCollectionViewCell {
 
         let y = messageContainerView.frame.minY - attributes.messageContainerPadding.top - attributes.messageTopLabelSize.height
         let origin = CGPoint(x: 0, y: y)
-        
+        messageTopLabel.backgroundColor = UIColor.pink67 //cg
         messageTopLabel.frame = CGRect(origin: origin, size: attributes.messageTopLabelSize)
     }
 

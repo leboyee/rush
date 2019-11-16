@@ -89,6 +89,11 @@ class ChatRoomViewController: MessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         MockSocket.shared.disconnect()
+        //Set unread count
+        ChatManager().getUnreadCount({ (count) in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
+            Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
+        })
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
@@ -112,8 +117,7 @@ class ChatRoomViewController: MessagesViewController {
         }
         
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-        print("messageKind -- \(message.kind)")
-        if case .custom = message.kind {
+         if case .custom = message.kind {
             let cell = messagesCollectionView.dequeueReusableCell(CustomCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
