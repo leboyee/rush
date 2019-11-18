@@ -86,10 +86,12 @@ extension PostImagesCell: UICollectionViewDataSource {
             /// 2. index item is less than total items
             if indexPath.row < totol - 1 || totol == list?.count ?? 0 {
                 cell.countLabel.isHidden = true
+                cell.set(isHideOverlay: true)
             } else {
                 cell.countLabel.isHidden = false
                 let count = (list?.count ?? 0) - indexPath.row
                 cell.countLabel.text = "+\(count)"
+                cell.set(isHideOverlay: false)
             }
             return cell
         }

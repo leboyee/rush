@@ -12,6 +12,7 @@ class PostImageCell: UICollectionViewCell {
 
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var overlayImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +23,9 @@ class PostImageCell: UICollectionViewCell {
 extension PostImageCell {
     func set(url: URL?) {
         postImageView.sd_setImage(with: url, placeholderImage: nil)
+    }
+    
+    func set(isHideOverlay: Bool) {
+        overlayImageView.isHidden = isHideOverlay
     }
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,30 +27,41 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D5-yv-qrk">
-                        <rect key="frame" x="32.5" y="30.5" width="42" height="30"/>
+                        <rect key="frame" x="32.5" y="31" width="42" height="29"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.0" alpha="0.29043794014084506" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <size key="shadowOffset" width="1" height="1"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="overlayPostImageCount" translatesAutoresizingMaskIntoConstraints="NO" id="0Mv-qC-cRo">
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="91"/>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="0Mv-qC-cRo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AOe-H1-pFs"/>
                 <constraint firstItem="UYF-q9-O2r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ApD-bf-J1e"/>
+                <constraint firstAttribute="bottom" secondItem="0Mv-qC-cRo" secondAttribute="bottom" id="D7b-XS-7qC"/>
                 <constraint firstItem="4D5-yv-qrk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="M5W-j4-le4"/>
                 <constraint firstAttribute="trailing" secondItem="UYF-q9-O2r" secondAttribute="trailing" id="ZMo-D5-OTT"/>
+                <constraint firstItem="0Mv-qC-cRo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="clf-sv-Dx8"/>
                 <constraint firstItem="UYF-q9-O2r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="iVk-0g-Pdo"/>
                 <constraint firstAttribute="bottom" secondItem="UYF-q9-O2r" secondAttribute="bottom" id="kga-xF-mrI"/>
+                <constraint firstAttribute="trailing" secondItem="0Mv-qC-cRo" secondAttribute="trailing" id="msk-ua-gku"/>
                 <constraint firstItem="4D5-yv-qrk" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="u5f-CI-6X6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="107" height="91"/>
             <connections>
                 <outlet property="countLabel" destination="4D5-yv-qrk" id="ble-Sb-Lrr"/>
+                <outlet property="overlayImageView" destination="0Mv-qC-cRo" id="6uS-jd-KsO"/>
                 <outlet property="postImageView" destination="UYF-q9-O2r" id="tfN-0H-iQd"/>
             </connections>
             <point key="canvasLocation" x="123.91304347826087" y="49.21875"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="overlayPostImageCount" width="187" height="187"/>
+    </resources>
 </document>
