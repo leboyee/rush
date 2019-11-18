@@ -31,7 +31,7 @@ extension ProfileInformationViewController {
             if indexPath.row == 0 {
                 if let date = userInfo?.birthDate {
                     if let birthDate = Date.parse(dateString: date, format: "yyyy-MM-dd") {
-                        let birth = birthDate.toString(format: "dd.MM.yyyy")
+                        let birth = birthDate.toString(format: "MM.dd.yyyy")
                         cell.setup(text: birth, placeholder: Text.dateOfBirth)
                     } else {
                         cell.setup(text: "-", placeholder: Text.dateOfBirth)
