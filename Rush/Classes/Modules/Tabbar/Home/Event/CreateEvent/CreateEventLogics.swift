@@ -1,5 +1,5 @@
 //
-//  CreateEventLogics.swift
+//  AddLocationLogics.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -90,7 +90,8 @@ extension CreateEventViewController {
     func fillAddCalendarCell(_ cell: AddEventCalendarCell, _ indexPath: IndexPath) {
         if indexPath.section == 5 {
             cell.calendarView.delegate = self
-            cell.calendarView.minimumSelectedDate = Date()
+            let currentDateString = Date().toString(format: "MM-dd-yyyy")
+            cell.calendarView.minimumSelectedDate = Date.parse(dateString: currentDateString, format: "MM-dd-yyyy")
         }
     }
     

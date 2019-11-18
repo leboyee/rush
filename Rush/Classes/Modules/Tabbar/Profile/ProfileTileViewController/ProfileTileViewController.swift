@@ -73,7 +73,7 @@ class ProfileTileViewController: UIViewController {
             if status == .alreadyAuthorized || status == .justAuthorized {
                 DispatchQueue.main.async {
                     var parameters = Parameters()
-                    parameters.allowedSelections = .limit(to: 50)
+                    parameters.allowedSelections = .limit(to: 5)
                     unsafe.picker = ImagePickerController(configuration: parameters)
                     unsafe.picker.delegate = self
                     unsafe.picker.navigationBar.isTranslucent = false

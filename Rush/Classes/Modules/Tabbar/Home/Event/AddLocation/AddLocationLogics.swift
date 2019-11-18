@@ -1,5 +1,5 @@
 //
-//  CreateEventLogics.swift
+//  AddLocationLogics.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -35,16 +35,9 @@ extension AddLocationViewController {
 extension AddLocationViewController {
     
     func search(_ searchResult: MKLocalSearchCompletion) {
-//        self.view.makeToast("Started fetching information...")
         let request = MKLocalSearch.Request(completion: searchResult)
-        if #available(iOS 13.0, *) {
-            //request.region
-        } else {
-            // Fallback on earlier versions
-        }
         let search = MKLocalSearch(request: request)
         search.start { result, error in
-//            self.view.hideAllToasts()
             if let result = result, let mapItem = result.mapItems.first {
                 self.mapItemToPresent = mapItem
                 // pass this "self.mapItemToPresent" to previous screen
@@ -57,7 +50,6 @@ extension AddLocationViewController {
                 }
 
             } else if let error = error {
-//                self.view.makeToast("Failed to fetch address information: \(error.localizedDescription)")
                 print("Failed to fetch address information: \(error.localizedDescription)")
             }
         }
@@ -127,17 +119,6 @@ extension AddLocationViewController {
                     print(place.subThoroughfare as Any)
                     var addressString: String = ""
                     _ = place.subLocality ?? ""
-                    /*
-                    if subLocality.isEmpty == false {
-                        addressString  += subLocality
-                        addressString += ", "
-                    }
-
-                    let thoroughfare = place.thoroughfare ?? ""
-                    if thoroughfare.isEmpty == false {
-                        addressString  += thoroughfare
-                        addressString += ", "
-                    } */
                 
                     let locality = place.locality ?? ""
                      if locality.isEmpty == false {
@@ -165,37 +146,6 @@ extension AddLocationViewController {
         
     }
 }
-/*
-   func cellCount(_ section: Int) -> Int {
-         let array = self.completerResults.map({ $0.subtitle })
-         print("count",array.count)
-         return array.count
-     }
-     
-     func fillLocationCell(_ cell: AddEventLocationCell, _ indexPath: IndexPath) {
-         let array = self.completerResults.map({ $0.subtitle })
-         print("count\n",array)
-         cell.setup(titleText: array[indexPath.row])
- //        cell.setup(titleText: self.completerResults[indexPath.row].subtitle)
-     }
- 
- self.searchResults = completer.results.filter { result in
-           if !result.title.contains(",") {
-               return false
-           }
-
-           if result.title.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
-               return false
-           }
-
-           if result.subtitle.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
-               return false
-           }
-
-           return true
-       }
-
- */
 
 extension AddLocationViewController {
 

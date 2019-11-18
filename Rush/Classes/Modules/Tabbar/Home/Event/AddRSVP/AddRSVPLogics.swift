@@ -1,5 +1,5 @@
 //
-//  CreateEventLogics.swift
+//  AddLocationLogics.swift
 //  Rush
 //
 //  Created by Suresh Jagnani on 22/05/19.
@@ -24,6 +24,7 @@ extension AddRSVPViewController {
         cell.setup(titleText: "RSVP #\(indexPath.row + 1)")
         cell.setup(dataTextViewText: rsvpArray[indexPath.row])
         cell.setup(isEmpty: rsvpArray[indexPath.row].isEmpty)
+        cell.setup(maxLengthSize: 300)
         cell.textDidChanged = {  [weak self] (text) in
             guard let unself = self else { return }
             unself.rsvpArray[indexPath.row] = text
@@ -37,9 +38,7 @@ extension AddRSVPViewController {
             if txt.last == "\n" {
                 txt = String(txt.dropLast())
             }
-            if text.isNotEmpty {
-               
-            }
+           
             unself.validateAllFields()
         }
         
@@ -53,6 +52,8 @@ extension AddRSVPViewController {
                     unself.rsvpArray.remove(at: indexPath.row)
                     cell.dataTextView.text = ""
                     cell.dataTextView.resignFirstResponder()
+                    unself.rsvpArray.append("")
+                    unself.tableView.reloadData()
                 }
             } else {
                 unself.rsvpArray.remove(at: indexPath.row)
@@ -76,6 +77,15 @@ extension AddRSVPViewController {
                 // Enable animations
                 UIView.setAnimationsEnabled(true)
             }
+        }
+        
+        cell.reloadTableView = { [weak self] (textView) in
+        guard let unsafe = self else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                unsafe.rsvpArray[indexPath.row] = textView.text
+                unsafe.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
+
+            })
         }
     }
     
