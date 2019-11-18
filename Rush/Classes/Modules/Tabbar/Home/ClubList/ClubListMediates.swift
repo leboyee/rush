@@ -149,7 +149,6 @@ extension ClubListViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        Utils.notReadyAlert()
         textField.resignFirstResponder()
         return true
     }
