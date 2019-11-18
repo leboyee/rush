@@ -99,12 +99,11 @@ extension HomeViewController {
             cell.setup(.upcoming, nil, eventList)
         } else if indexPath.section == 2 {
             cell.setup(.clubs, nil, clubList)
-        } else {
+        } else if indexPath.section == 3 {
             cell.setup(.classes, nil, classList)
         }
         
         // MARK: - CollectionItem Selected
-        
         cell.cellSelected = { [weak self] (type, id, index) in
             guard let unsafe = self else { return }
             if type == .upcoming {
