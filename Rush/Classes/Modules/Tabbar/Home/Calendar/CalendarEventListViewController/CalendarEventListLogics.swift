@@ -82,11 +82,11 @@ extension CalendarEventListViewController {
             startTime = event.start
             endTime = event.end
         } else if let date = Date.parse(dateString: dateString, format: "yyyy-MM-dd") {
-            if let schedule = event.classSchedule?.filter({ $0.day == date.toString(format: "EEEE").lowercased() }).last {
+            if let schedule = event.classSchedule?.filter({ $0.day.lowercased().trimmingCharacters(in: CharacterSet.whitespaces) == date.toString(format: "EEEE").lowercased() }).last {
                 let startDateStr = dateString + " " + schedule.start
                 let endDateStr = dateString + " " + schedule.end
-                startTime = Date.parseUTC(dateString: startDateStr, format: "HH:mm:ss")
-                endTime = Date.parseUTC(dateString: endDateStr, format: "HH:mm:ss")
+                startTime = Date.parseUTC(dateString: startDateStr, format: "yyyy-MM-dd HH:mm:ss")
+                endTime = Date.parseUTC(dateString: endDateStr, format: "yyyy-MM-dd HH:mm:ss")
             }
         }
         return (startTime, endTime)
