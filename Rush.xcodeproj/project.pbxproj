@@ -595,6 +595,7 @@
 		D91F7C582361DCDA00223D6E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91F7C572361DCDA00223D6E /* Home.swift */; };
 		D98B99602344D75C00BB9B12 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B995E2344D75C00BB9B12 /* QuestionCell.swift */; };
 		D98B99612344D75C00BB9B12 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B995F2344D75C00BB9B12 /* QuestionCell.xib */; };
+		D98F51E8237D3FFA00A0CF2D /* EventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F51E7237D3FFA00A0CF2D /* EventItem.swift */; };
 		F9C89F6B232D2DD900DC9C85 /* AddLocationMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */; };
 		F9C89F6C232D2DD900DC9C85 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */; };
 		F9C89F6D232D2DD900DC9C85 /* AddLocationLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */; };
@@ -1212,6 +1213,7 @@
 		D91F7C572361DCDA00223D6E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D98B995E2344D75C00BB9B12 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		D98B995F2344D75C00BB9B12 /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
+		D98F51E7237D3FFA00A0CF2D /* EventItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItem.swift; sourceTree = "<group>"; };
 		F9C89F68232D2DD800DC9C85 /* AddLocationMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationMediates.swift; sourceTree = "<group>"; };
 		F9C89F69232D2DD800DC9C85 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationLogics.swift; sourceTree = "<group>"; };
@@ -2434,6 +2436,7 @@
 			children = (
 				793BE63622E88207005EF72D /* LocationItem.swift */,
 				793BE63722E88207005EF72D /* MediaItem.swift */,
+				D98F51E7237D3FFA00A0CF2D /* EventItem.swift */,
 				793BE63822E88207005EF72D /* MessageCellDelegate.swift */,
 				793BE63922E88207005EF72D /* MessageLabelDelegate.swift */,
 				793BE63A22E88207005EF72D /* MessagesDataSource.swift */,
@@ -3948,6 +3951,7 @@
 				797FFDA922B7BC480055A001 /* PhotoAlbumsTableView.swift in Sources */,
 				8A4B328A232F5A5B00AC1D17 /* PostLikeCell.swift in Sources */,
 				79DF74242292C68E0012DCB7 /* CreateClubMediates.swift in Sources */,
+				D98F51E8237D3FFA00A0CF2D /* EventItem.swift in Sources */,
 				8A04B19C230409110055C65F /* ParallaxHeader.swift in Sources */,
 				796A6F2922CDEEAD00916D79 /* ClassDetailLogics.swift in Sources */,
 				7903D0B5228E8CE5004E33B9 /* HomeLogics.swift in Sources */,
@@ -4233,7 +4237,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4317,7 +4321,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4331,7 +4335,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4415,7 +4419,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4485,7 +4489,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4569,7 +4573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

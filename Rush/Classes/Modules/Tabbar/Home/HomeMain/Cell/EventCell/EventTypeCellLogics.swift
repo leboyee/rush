@@ -36,6 +36,7 @@ extension EventTypeCell {
                     } else {
                         if eventInvite.status == 1 {//joined
                             cell.setup(invitee: event.invitees)
+                            cell.setup(inviteeCount: event.eventTotalJoined ?? 0)
                             cell.setup(isHideInvitee: false)
                         } else {
                             cell.setup(isHideInvitee: true)
@@ -47,6 +48,7 @@ extension EventTypeCell {
                 
                 if "\(event.userId)" ==  Authorization.shared.profile?.userId {
                     cell.setup(invitee: event.invitees)
+                     cell.setup(inviteeCount: event.eventTotalJoined ?? 0)
                     cell.setup(isHideInvitee: false)
                 }
                 

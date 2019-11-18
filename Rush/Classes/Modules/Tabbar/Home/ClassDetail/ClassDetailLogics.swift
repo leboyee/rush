@@ -103,13 +103,13 @@ extension ClassDetailViewController {
                 dateFormatter.dateFormat = "HH:mm:ss"
                 let sdate = dateFormatter.date(from: classSchedule?[0].startTime ?? "12:12:12")
                 dateFormatter.dateFormat = "h:mm a"
-                let startTime = dateFormatter.string(from: sdate!.toLocalTime())
+                let startTime = dateFormatter.string(from: sdate!)
                 dateFormatter.dateFormat = "HH:mm:ss"
                 let edate = dateFormatter.date(from: classSchedule?[0].endTime ?? "12:12:12")
                 dateFormatter.dateFormat = "h:mm a"
-                let endTime = dateFormatter.string(from: edate!.toLocalTime())
+                let endTime = dateFormatter.string(from: edate!)
                 let day = classSchedule?[0].day.capitalized ?? ""
-                let title = startTime + " - " + endTime
+                let title = startTime + "-" + endTime
                 cell.setup(placeholder: "", title: day + " " + title)
             }
             cell.setup(isSetDropDown: true)
@@ -130,13 +130,13 @@ extension ClassDetailViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
-        let sdate = dateFormatter.date(from: classSchedule?[indexPath.row].startTime ?? "12:12:12")
+        let sdate = dateFormatter.date(from: classSchedule?[indexPath.row].startTime ?? "12:12:12")!
         dateFormatter.dateFormat = "h:mm a"
-        let startTime = dateFormatter.string(from: sdate!.toLocalTime())
+        let startTime = dateFormatter.string(from: sdate)
         dateFormatter.dateFormat = "HH:mm:ss"
         let edate = dateFormatter.date(from: classSchedule?[indexPath.row].endTime ?? "12:12:12")
         dateFormatter.dateFormat = "h:mm a"
-        let endTime = dateFormatter.string(from: edate!.toLocalTime())
+        let endTime = dateFormatter.string(from: edate!)
         cell.setup(start: startTime, end: endTime)
         cell.setup(isHideDropDown: indexPath.row == 0 ? false : true)
     }

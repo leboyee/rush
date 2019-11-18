@@ -75,7 +75,11 @@ extension ChatListCell {
         if lastMessage != nil {
             // text message
             if let message = lastMessage as? SBDUserMessage {
-                messageText = message.message ?? messageText
+                if message.message?.contains("JSON_CHAT\":{\"type\":1") ?? false {
+                      messageText = "Event"
+                } else {
+                      messageText = message.message ?? messageText
+                }
             } else if (lastMessage as? SBDFileMessage) != nil {
                 messageText = "Image"
             } else if let message = lastMessage as? SBDAdminMessage {

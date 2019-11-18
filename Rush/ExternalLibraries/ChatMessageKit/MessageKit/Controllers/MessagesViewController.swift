@@ -247,10 +247,14 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         
         switch message.kind {
-        case .text, .attributedText, .emoji:
-            let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
-            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
-            return cell
+        case .text(let text):
+                let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
+                cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+                return cell
+        case .attributedText, .emoji:
+                let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
+                cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+                return cell
         case .photo, .video:
             let cell = messagesCollectionView.dequeueReusableCell(MediaMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
@@ -314,8 +318,11 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
             break
         case .video:
             break
-        case .event:
-            break
+        case .event (let eventItem):
+            if (eventItem.eventId) != nil {
+                messagesCollectionView.messageCellDelegate?.didTapEvent(eventId: eventItem.eventId ?? "")
+            }
+              
         }
     }
     

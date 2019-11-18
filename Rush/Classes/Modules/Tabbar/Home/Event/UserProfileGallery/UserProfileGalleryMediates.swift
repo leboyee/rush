@@ -21,7 +21,7 @@ extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollecti
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.reloadData()
-    }
+        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0

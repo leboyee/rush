@@ -368,7 +368,7 @@ extension ChatRoomViewController: MessagesDataSource {
             if Authorization.shared.profile?.name == message.sender.displayName {
                 return nil
             } else {
-                let name = "\t\(message.sender.displayName)\n"
+                let name = "\t\(message.sender.displayName)"
                 return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)])
             }
         }
@@ -399,6 +399,7 @@ extension ChatRoomViewController: MessageCellDelegate {
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
         print("Message tapped")
+        
     }
     
     func didTapImage(mediaItem: MediaItem, sender: Sender, date: Date?) {
@@ -426,6 +427,14 @@ extension ChatRoomViewController: MessageCellDelegate {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
+    }
+    
+    func didTapEvent(eventId: String) {
+        
+        let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
+        controller.eventId = eventId
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func didTapCellTopLabel(in cell: MessageCollectionViewCell) {

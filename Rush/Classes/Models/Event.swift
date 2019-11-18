@@ -55,6 +55,7 @@ class Event: Codable {
     var rsvp: [RSVPQuestion]?
     var eventInvite: [EventInvite]?
     var invitees: [Invitee]?
+    var eventTotalJoined: Int?
     var photoJson: String = ""
     private var convertJsonToPhoto: Image?
     var photo: Image? {
@@ -89,7 +90,8 @@ class Event: Codable {
         case eventInvite = "my_event_invite"
         case invitees = "invitees"
         case university = "university"
-    }
+        case eventTotalJoined = "event_total_joined"
+               }
 }
 
 class EventCategory: Codable {

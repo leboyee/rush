@@ -51,7 +51,7 @@ class ChatRoomViewController: MessagesViewController {
     
     var emptyMessageView = UIView()
     var emptyUserImageView = UIImageView()
-    var emptyMessageFriendTitle = "This is a beginning of your chat history"
+    var emptyMessageFriendTitle = " This is the beginning of your chat history"
     var userName = ""
     let refreshControl = UIRefreshControl()
     
@@ -89,6 +89,11 @@ class ChatRoomViewController: MessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         MockSocket.shared.disconnect()
+        //Set unread count
+        ChatManager().getUnreadCount({ (count) in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
+            Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
+        })
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
@@ -112,7 +117,7 @@ class ChatRoomViewController: MessagesViewController {
         }
         
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-        if case .custom = message.kind {
+         if case .custom = message.kind {
             let cell = messagesCollectionView.dequeueReusableCell(CustomCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
@@ -158,8 +163,8 @@ class ChatRoomViewController: MessagesViewController {
                     self.refreshControl.endRefreshing()
                 }
             }
-        }*/
-        
+        }
+        */
     }
     //===========================================================================
     
@@ -531,7 +536,6 @@ extension ChatRoomViewController {
                 userNavImageView.image = UIImage(named: "placeholder-profile-48px")
             }
         }
-        
         
         userNavImageView.clipsToBounds = true
         userNavImageView.layer.cornerRadius = 18

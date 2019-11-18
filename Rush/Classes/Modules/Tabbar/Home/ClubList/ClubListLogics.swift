@@ -156,7 +156,7 @@ extension ClubListViewController {
                 header.setup(title: Text.myClubs)
                 header.setup(isDetailArrowHide: true)
             } else {
-                let value = clubInterestList[section - 1].name
+                let value = clubInterestList[section - 1].interestName
                 header.setup(title: value)
                 header.setup(isDetailArrowHide: true)
             }

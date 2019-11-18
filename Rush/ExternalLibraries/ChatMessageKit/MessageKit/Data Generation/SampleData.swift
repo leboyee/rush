@@ -184,27 +184,25 @@ final internal class SampleData {
         case .customC:
             return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date)
         case .eventC:
-            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
-            let image = messageImages[randomNumberImage]
-            return MockMessage(title: "31 JAN", detail: "Thursday", image: image, sender: system, messageId: uniqueID, date: date)
+//            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
+//            let image = messageImages[randomNumberImage]
+            return MockMessage(title: "31 JAN", detail: "Thursday", imageUrl: URL(string: "")!, sender: system, messageId: uniqueID, date: date, eventId: "1", eventDay: "Mon", eventDate: "32", eventMonth: "JAN", eventTime: "12")
         }
     }
     
     func getMessages(count: Int, isGroupChat: Bool, completion: ([MockMessage]) -> Void) {
         var messages: [MockMessage] = []
         completion(messages)
-        
         return;
-        
         
         // Disable Custom Messages
         UserDefaults.standard.set(false, forKey: "Custom Messages")
         for index in 0..<count {
             var message = randomMessage(allowedSenders: senders)
             if index == 19 && isGroupChat {
-                let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
-                let image = messageImages[randomNumberImage]
-               message = MockMessage(title: "", detail: "", image: image, sender: senders.last!, messageId: NSUUID().uuidString, date: dateAddingRandomTime())
+//                let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
+//                let image = messageImages[randomNumberImage]
+                message = MockMessage(title: "", detail: "", imageUrl: URL(string: "")!, sender: senders.last!, messageId: NSUUID().uuidString, date: dateAddingRandomTime(), eventId: "1", eventDay: "Mon", eventDate: "32", eventMonth: "JAN", eventTime: "12")
             }
             messages.append(message)
         }

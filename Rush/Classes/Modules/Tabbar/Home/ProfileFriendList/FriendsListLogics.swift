@@ -192,7 +192,7 @@ extension FriendsListViewController {
             var friend: Friend?
             if firstSegmentButton.isSelected {
                 friend = firstTabList[indexPath.row] as? Friend
-                performSegue(withIdentifier: Segues.profileInformation, sender: friend)
+                performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
             } else {
                 friend = secondTabList[indexPath.row] as? Friend
                 performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
@@ -272,7 +272,7 @@ extension FriendsListViewController {
         
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
-                     Keys.sortBy: GetEventType.managedFirst.rawValue,
+                     Keys.sortBy: GetEventType.my.rawValue,
                      Keys.pageNo: secondTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: GetEventType.managedFirst.rawValue, params: param) { [weak self] (value, total, _) in

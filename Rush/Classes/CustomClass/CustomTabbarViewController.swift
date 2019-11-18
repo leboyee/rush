@@ -102,11 +102,26 @@ extension CustomTabbarViewController {
         
         if let count = notification.object as? Int, count > 0 {
             tabBar.items?[2].badgeValue = ""
-            tabBar.items?[2].badgeColor = UIColor.brown72
+            tabBar.items?[2].badgeColor = UIColor.clear
             isClerChat = false
+            let img = getImage("chat_tab_noti_inactive")
+            let selimg = getImage("chat_tab_noti_active")
+            
+            if let tabbarItem = tabBar.items?[2] {
+                tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.selectedImage = selimg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+            }
         } else {
             tabBar.items?[2].badgeColor = UIColor.clear
             isClerChat = true
+            
+            let img = getImage("chat_tab_inactive")
+            let selimg = getImage("chat_tab_active")
+            
+            if let tabbarItem = tabBar.items?[2] {
+                tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.selectedImage = selimg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+            }
         }
     }
     
@@ -124,9 +139,11 @@ extension CustomTabbarViewController {
                 }
             }
         } else {
+            let img = getImage("placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+            let selectedImg = getImage("placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
             if let tabbarItem = tabBar.items?.last {
-                tabbarItem.image = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                tabbarItem.selectedImage = getImage("placeholder-profile-tabBar")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
             }
         }
     }
@@ -187,12 +204,29 @@ extension CustomTabbarViewController {
             isImageUpdate = false
             refreshTab()
         }
-        
+        //  ChatManager().getUnreadCount(ChatManager)
         if let count = Utils.getDataFromUserDefault(kUnreadChatMessageCount) as? Int {
             if count > 0 {
-                tabBar.items?[2].badgeColor = UIColor.brown72
+                tabBar.items?[2].badgeValue = ""
+                tabBar.items?[2].badgeColor = UIColor.clear
+                isClerChat = false
+                let img = getImage("chat_tab_noti_inactive")
+                let selimg = getImage("chat_tab_noti_active")
+                if let tabbarItem = tabBar.items?[2] {
+                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                    tabbarItem.selectedImage = selimg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                }
             } else {
                 tabBar.items?[2].badgeColor = UIColor.clear
+                isClerChat = true
+                
+                let img = getImage("chat_tab_inactive")
+                let selimg = getImage("chat_tab_active")
+                
+                if let tabbarItem = tabBar.items?[2] {
+                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                    tabbarItem.selectedImage = selimg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                }
             }
         }
     }

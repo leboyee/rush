@@ -104,7 +104,7 @@ extension EventCategoryListViewController {
             //Show all categories for the screen.
             eventCategoryFilter.delegate = self
             if clubCategoryList.count > 0 {
-                let cat = clubCategoryList.compactMap({ $0.name })
+                let cat = clubCategoryList.compactMap({ $0.interestName })
                 eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
                 eventCategoryFilter.delegate = self
                 eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
@@ -341,7 +341,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 firstFilterIndex = indexPath.row
                 firstSortText = type
                 if clubCategoryList.count > 0 {
-                    clubCategory = clubCategoryList[indexPath.row]
+                    interest = clubCategoryList[indexPath.row]
                 } else if interestList.count > 0 {
                     interest = interestList[indexPath.row]
                 }
@@ -352,7 +352,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 thirdSortText = type
                 thirdFilterIndex = indexPath.row
             }
-            getClubListAPI(sortBy: "feed", clubCategoryId: clubCategory?.id)
+            getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
             isFirstFilter = false
             isSecondFilter = false
             isThirdFilter = false
@@ -386,20 +386,18 @@ extension EventCategoryListViewController {
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
-                     Keys.intId: clubCategory?.id ?? "",
+                     Keys.intId: interest?.interestId ?? "",
                      Keys.orderBy: order,
                      Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         
-        if clubCategory?.id != "" {
-            param[Keys.intId] = clubCategory?.id
-        }
-        
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
             param[Keys.intId] = interest?.interestId
         }
-        
+//        if clubCategory?.id != "" {
+//            param[Keys.intId] = clubCategory?.id
+//        }
         if clubList.count == 0 {
             Utils.showSpinner()
         }

@@ -47,7 +47,8 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }  
+    }
+    
 }
 
 extension ChatsViewController: MGSwipeTableCellDelegate {
