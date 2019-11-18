@@ -131,3 +131,26 @@ extension ClubListViewController: ClubDetailProtocol {
         snackbar.show()
     }
 }
+
+// MARK: - SeachField delegate
+extension ClubListViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+        searchText = textField.text ?? ""
+        pageNoM = 1
+        pageNoO = 1
+        isNextPageO = false
+        isNextPageM = false
+        getMyJoinedClasses(search: searchText)
+        getClassCategoryAPI()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        Utils.notReadyAlert()
+        textField.resignFirstResponder()
+        return true
+    }
+}

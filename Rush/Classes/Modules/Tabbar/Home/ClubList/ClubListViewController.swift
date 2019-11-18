@@ -54,6 +54,7 @@ class ClubListViewController: CustomViewController {
             getMyClubListAPI(sortBy: "my")
         } else {
             getMyJoinedClasses(search: "")
+            getClassCategoryAPI()
         }
     }
     
@@ -76,18 +77,34 @@ class ClubListViewController: CustomViewController {
         
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: screenType == .club ? 0 :48, y: 0, width: screenWidth - 48, height: 44))
-        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
         
-        let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 2, width: screenWidth - 48, height: 30))
-        label.text = screenType == .club ? Text.searchClubs : Text.searchClasses
-        label.font = UIFont.displayBold(sz: 24)
-        label.textColor = UIColor.navBarTitleWhite32
-        customView.addSubview(label)
-        customView.addSubview(searchButton)
-        
-        searchButton.addTarget(self, action: #selector(openSearchClubScreenButtonAction), for: .touchUpInside)
-        
-        navigationItem.titleView = customView
+        if screenType == .classes {
+            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            searchTextField.font = UIFont.displayBold(sz: 24)
+            searchTextField.textColor = UIColor.white
+            searchTextField.returnKeyType = .go
+            searchTextField.autocorrectionType = .no
+            searchTextField.delegate = self
+            let font = UIFont.displayBold(sz: 24)
+            let color = UIColor.navBarTitleWhite32
+            searchTextField.attributedPlaceholder = NSAttributedString(string: Text.searchClasses, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+            customView.addSubview(searchTextField)
+            navigationItem.titleView = customView
+        } else {
+            let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
+            
+            let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 2, width: screenWidth - 48, height: 30))
+            label.text = screenType == .club ? Text.searchClubs : Text.searchClasses
+            label.font = UIFont.displayBold(sz: 24)
+            label.textColor = UIColor.navBarTitleWhite32
+            customView.addSubview(label)
+            customView.addSubview(searchButton)
+            
+            searchButton.addTarget(self, action: #selector(openSearchClubScreenButtonAction), for: .touchUpInside)
+            
+            navigationItem.titleView = customView
+        }
     }
     
     func openCreateClubViewController() {
