@@ -130,9 +130,6 @@ extension EditProfileViewController {
 
         let leftBar = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
         navigationItem.leftBarButtonItem = leftBar
-        
-
-        
     }
     
 }

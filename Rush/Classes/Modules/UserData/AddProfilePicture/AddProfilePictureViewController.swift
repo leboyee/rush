@@ -11,6 +11,8 @@ import IQKeyboardManagerSwift
 import DKImagePickerController
 import DKPhotoGallery
 import DKCamera
+import SDWebImage
+
 
 class UINavigationBarCustomizationParams {
     var backgroundImage: UIImage?
@@ -39,7 +41,7 @@ class AddProfilePictureViewController: CustomViewController {
     var isSkip: Bool = false
     var isEditProfile: Bool = false
     var initNavBarCustomizationParams: UINavigationBarCustomizationParams?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,7 +52,39 @@ class AddProfilePictureViewController: CustomViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         setCustomStyleForNavBar()
-        
+        isSkip = false
+        let urlString = Authorization.shared.profile?.photo?.main
+        if urlString != nil || urlString != "" {
+            SDWebImageManager.shared.imageLoader.requestImage(with: URL(string: urlString ?? ""), options: .continueInBackground, context: nil, progress: nil) { (image, _, _, _) in
+                if image != nil {
+                    self.userPhotoImageView.image = image?.squareImage()
+                    self.userImageViewWidthConstraint.constant = 200
+                    self.userImageViewHeightConstraint.constant = 200
+                    self.userPhotoImageView.layoutIfNeeded()
+                    self.view.layoutIfNeeded()
+                    self.userPhotoImageView.layer.cornerRadius = 100
+                    self.userPhotoImageView.clipsToBounds = true
+                    self.bottomLabel.text = Text.changeImage
+                    self.nextButton.setNextButton(isEnable: true)
+                }                // Utils.hideSpinner()
+            }
+        }
+        /*
+        guard let urlString = Authorization.shared.profile?.photo?.main else { return }
+        userPhotoImageView.sd_setImage(with: URL(string: urlString)) { (image, _, _, _) in
+            if image != nil {
+                self.userPhotoImageView.image = image?.squareImage()
+                self.userImageViewWidthConstraint.constant = 200
+                self.userImageViewHeightConstraint.constant = 200
+                self.userPhotoImageView.layoutIfNeeded()
+                self.view.layoutIfNeeded()
+                self.userPhotoImageView.layer.cornerRadius = 100
+                self.userPhotoImageView.clipsToBounds = true
+                self.bottomLabel.text = Text.changeImage
+                self.nextButton.setNextButton(isEnable: true)
+            }
+        }*/
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -233,10 +267,12 @@ extension AddProfilePictureViewController {
     @IBAction func skipButtonAction() {
         if self.bottomLabel.text == Text.changeImage {
             isSkip = true
+            updateProfileAPI()
         } else {
             isSkip = false
+             self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
         }
-        self.performSegue(withIdentifier: Segues.chooseLevelSegue, sender: self)
+       
     }
 
     @IBAction func addImageViewButtonAction() {

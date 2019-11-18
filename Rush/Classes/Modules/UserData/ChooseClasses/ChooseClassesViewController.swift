@@ -30,6 +30,7 @@ class ChooseClassesViewController: CustomViewController {
     var classesArray = [SubClass]()
     var subClassArray = [ClassGroup]()
     var pageNo = 1
+    var isNextPageExist: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()

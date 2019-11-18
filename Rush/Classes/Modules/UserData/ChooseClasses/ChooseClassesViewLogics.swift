@@ -47,6 +47,13 @@ extension ChooseClassesViewController {
         header.arrowImageView.isHighlighted = section == selectedIndex ? true : false
     }
     
+    func willDisplay(_ section: Int) {
+        
+        if isNextPageExist == true, section == classesArray.count - 1 {
+            getClassListAPI(search: searchTextField.text ?? "")
+        }
+    }
+    
     @objc func headerSelectionAction(_ sender: UIButton) {
         if selectedIndex == sender.tag {
             selectedIndex = -1
@@ -71,14 +78,34 @@ extension ChooseClassesViewController {
         let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.universityId: "\(university?.universtiyId ?? 0)"] as [String: Any]
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
+            
+            if unsafe.pageNo == 1 {
+                unsafe.classesArray.removeAll()
+            }
             if let classes = data {
-                let profile = Authorization.shared.profile
-                let university = profile?.university?.first
-                unsafe.noResultLabel.text = "No classes available" // \(university?.universityName ?? "")"
-                unsafe.classesArray = classes
+                if classes.count > 0 {
+                    let profile = Authorization.shared.profile
+                                  let university = profile?.university?.first
+                                  unsafe.noResultLabel.text = "No classes available" // \(university?.universityName ?? "")"
+                                  if unsafe.pageNo == 1 {
+                                      unsafe.classesArray = classes
+                                  } else {
+                                      unsafe.classesArray.append(contentsOf: classes)
+                                  }
+                                  unsafe.pageNo += 1
+                                  unsafe.isNextPageExist = true
+                                                  
+                } else {
+                    unsafe.isNextPageExist = false
+                    if unsafe.pageNo == 1 {
+                        unsafe.classesArray.removeAll()
+                    }
+                }
                 unsafe.noResultView.isHidden = unsafe.classesArray.count > 0 ? true : false
-
+                
                 unsafe.tableView.reloadData()
+
+              
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
