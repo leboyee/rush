@@ -29,16 +29,21 @@ extension ProfileInformationViewController {
     func fillCell(_ cell: ProfileInformationCell, _ indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                cell.setup(text: "", placeholder: Text.dateOfBirth)
                 if let date = userInfo?.birthDate {
                     if let birthDate = Date.parse(dateString: date, format: "yyyy-MM-dd") {
-                        let birth = birthDate.toString(format: "dd.MM.yyyy")
+                        let birth = birthDate.toString(format: "MM.dd.yyyy")
                         cell.setup(text: birth, placeholder: Text.dateOfBirth)
-                    } else {
-                        cell.setup(text: "-", placeholder: Text.dateOfBirth)
                     }
                 }
             } else if indexPath.row == 1 {
-                cell.setup(text: userInfo?.relationship ?? "", placeholder: Text.relationship)
+                if let value = userInfo?.relationship {
+                    cell.setup(text: value, placeholder: Text.relationship)
+                } else {
+                    cell.setup(text: "", placeholder: Text.relationship)
+                }
+            } else {
+                
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0, let university = userInfo?.university?.last {

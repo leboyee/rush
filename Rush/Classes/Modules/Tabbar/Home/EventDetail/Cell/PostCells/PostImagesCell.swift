@@ -71,20 +71,27 @@ extension PostImagesCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.postImage, for: indexPath) as? PostImageCell {
+            let totol = collectionView.numberOfItems(inSection: indexPath.section)
+
             if let image = list?[indexPath.row] {
-                cell.set(url: image.urlThumb())
+                if totol == 1 {
+                   cell.set(url: image.url()) /// Show main or original image
+                } else {
+                    cell.set(url: image.urlLarge()) /// Show large image to save memory
+                }
             }
             
-            let totol = collectionView.numberOfItems(inSection: indexPath.section)
             /// count label hide if any one condition true
             /// 1. total items and cell count are same (also true for total = 1)
             /// 2. index item is less than total items
             if indexPath.row < totol - 1 || totol == list?.count ?? 0 {
                 cell.countLabel.isHidden = true
+                cell.set(isHideOverlay: true)
             } else {
                 cell.countLabel.isHidden = false
                 let count = (list?.count ?? 0) - indexPath.row
                 cell.countLabel.text = "+\(count)"
+                cell.set(isHideOverlay: false)
             }
             return cell
         }
