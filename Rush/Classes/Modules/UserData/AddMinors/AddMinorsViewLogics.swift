@@ -50,7 +50,9 @@ extension AddMinorsViewController {
                     }
                 }
             } else {
+               
                 for customMinor in unsafe.selectedArray {
+                     print("customMinor", customMinor)
                                if !unsafe.minorArray.contains(where: { $0["name"] as? String == customMinor }) {
                                    var newCustomMinor = [String: Any]()
                                     newCustomMinor["name"] = customMinor

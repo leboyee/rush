@@ -150,6 +150,7 @@ extension AddMinorsViewController {
     
     @IBAction func deleteButtonAction() {
         searchTextField.text = ""
+        isSearch = false
         deleteButton.isHidden = true
         self.minorCustomButton.isHidden = true
         getMinorList(searchText: "")

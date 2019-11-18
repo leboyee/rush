@@ -87,6 +87,10 @@ extension ChooseClassesViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+           willDisplay(section)
+       }
 }
 
 extension ChooseClassesViewController: UITextFieldDelegate {
