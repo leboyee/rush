@@ -22,8 +22,11 @@ extension SearchClubViewController {
         if searchType == .searchList, let data = dataList[indexPath.row] as? ClubCategory {
             cell.setup(title: data.name)
         } else {
-            let data = dataList[indexPath.row] as? ClassGroup
-            cell.setup(title: data?.name ?? "")
+            if let data = dataList[indexPath.row] as? ClassGroup {
+                cell.setup(title: data.name)
+            } else if let data = dataList[indexPath.row] as? Interest {
+                cell.setup(title: data.interestName)
+            }
         }
         cell.setup(isHideTopSeparator: indexPath.row == 0 ? false : true)
     }
@@ -41,7 +44,14 @@ extension SearchClubViewController {
         if searchType == .searchList {
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerId.searchClubViewController) as? SearchClubViewController {
                 vc.searchType = .searchCategory
-                vc.searchText = (dataList[indexPath.row] as? ClubCategory)?.name ?? ""
+                if let data = dataList[indexPath.row] as? ClubCategory {
+                    vc.searchText = data.name
+                } else if let data = dataList[indexPath.row] as? Interest {
+                    vc.searchText = data.interestName
+                    if let clubs = data.clubArray {
+                        vc.dataList = clubs
+                    }
+                }
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else if searchType == .classes {
