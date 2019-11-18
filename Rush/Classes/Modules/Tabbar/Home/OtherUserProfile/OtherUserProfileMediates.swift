@@ -18,6 +18,8 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
         tableView.register(UINib(nibName: Cell.question, bundle: nil), forCellReuseIdentifier: Cell.question)
         tableView.register(UINib(nibName: Cell.clubManage, bundle: nil), forCellReuseIdentifier: Cell.clubManage)
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
+        tableView.register(UINib(nibName: Cell.noEventCell, bundle: nil), forCellReuseIdentifier: Cell.noEventCell)
+        tableView.register(cellName: Cell.noEventLabel)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.reloadData()
         
@@ -33,18 +35,32 @@ extension OtherUserProfileController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell else { return UITableViewCell() }
-            fillManageCell(cell, indexPath)
-            return cell
-        } else if indexPath.section == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
-            fillRsvpQuestionCell(cell, indexPath)
-            return cell
+        if isShowEmptyPlaceholder(indexPath.section) {
+            if indexPath.section == 2 || indexPath.section == 3 {
+                guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Cell.noEventLabel,
+                for: indexPath) as? NoEventsCell else { return UITableViewCell() }
+                fillPlaceholderCell(cell, indexPath.section)
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.noEventCell, for: indexPath) as? NoEventsCell else { return UITableViewCell() }
+                fillPlaceholderCell(cell, indexPath.section)
+                return cell
+            }
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-            fillEventCell(cell, indexPath)
-            return cell
+            if indexPath.section == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.clubManage, for: indexPath) as? ClubManageCell else { return UITableViewCell() }
+                fillManageCell(cell, indexPath)
+                return cell
+            } else if indexPath.section == 1 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.question, for: indexPath) as? QuestionCell else { return UITableViewCell() }
+                fillRsvpQuestionCell(cell, indexPath)
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
+                fillEventCell(cell, indexPath)
+                return cell
+            }
         }
     }
     

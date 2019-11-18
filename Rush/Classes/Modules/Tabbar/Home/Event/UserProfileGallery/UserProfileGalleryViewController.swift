@@ -27,6 +27,8 @@ class UserProfileGalleryViewController: UIViewController {
     var selectedImage: UIImage? = UIImage(contentsOfFile: "")
     var list = [Image]()
     var user = User()
+    
+    var isFromChat = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,11 @@ class UserProfileGalleryViewController: UIViewController {
         // Setup tableview
         setupCollectionView()
         fillBottomProfile()
-        setTitle(titleStr: "\(currentIndex + 1) of \(list.count)")
+        if isFromChat {
+            setTitle(titleStr: "")
+        } else {
+            setTitle(titleStr: "\(currentIndex + 1) of \(list.count)")
+        }
         setupDateAndTimeOfPhoto(index: currentIndex)
     }
     

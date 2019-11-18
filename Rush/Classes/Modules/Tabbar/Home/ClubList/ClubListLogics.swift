@@ -73,7 +73,7 @@ extension ClubListViewController {
                 if indexPath.section == 0 {
                     cell.setup(.classes, nil, myClassesList)
                 } else { */
-            cell.setup(.classes, nil, classesList[indexPath.row].classList)
+            cell.setup(.classes, nil, classesList[indexPath.section - 1].classList)
               /*  }
             } else {
                     cell.setup(.classes, nil, classesList)
@@ -309,7 +309,6 @@ extension ClubListViewController {
             } else {
                 if unsafe.pageNoM == 1 || (unsafe.pageNoM > 1 && data?.count == 0) {
                     unsafe.isNextPageM = false
-                    unsafe.getClassCategoryAPI()
                 }
             }
             unsafe.tableView.reloadData()
@@ -318,7 +317,7 @@ extension ClubListViewController {
     }
     
     func getClassCategoryAPI() {
-        let param = [Keys.pageNo: pageNoO] as [String: Any]
+        let param = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             guard let uwself = self else { return }
