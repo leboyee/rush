@@ -15,7 +15,7 @@ extension OtherUserProfileController {
     func heightOfHeader(_ section: Int) -> CGFloat {
         if section == 0 {
             return 16
-        } else if (section == 1 && (rsvpQuestion?.count ?? 0) > 0) || (section == 2 && imagesList.count > 0) || (section == 3 && friendList.count > 0) || (section == 4 && eventList.count > 0) || (section == 5 && clubList.count > 0) || (section == 6 && classList.count > 0) {
+        } else if (section == 1 && (rsvpQuestion?.count ?? 0) > 0) || (section == 2) || (section == 3) || (section == 4) || (section == 5) || (section == 6) {
             return 44
         }
         return CGFloat.leastNormalMagnitude
@@ -38,13 +38,38 @@ extension OtherUserProfileController {
         } else if indexPath.section == 1 && (rsvpQuestion?.count ?? 0) > 0 {
             return UITableView.automaticDimension
         } else if indexPath.section == 2 {
-            return imagesList.count > 0 ? 112 : CGFloat.leastNormalMagnitude
+            return imagesList.count > 0 ? 112 : UITableView.automaticDimension
         } else if indexPath.section == 3 {
-            return friendList.count > 0 ? 88 : CGFloat.leastNormalMagnitude
+            return friendList.count > 0 ? 88 : UITableView.automaticDimension
         } else if (indexPath.section == 4 && eventList.count > 0) || (indexPath.section == 5 && clubList.count > 0) || (indexPath.section == 6 && classList.count > 0) {
             return 157
+        } else if (indexPath.section == 4 && eventList.count == 0) || (indexPath.section == 5 && clubList.count == 0) || (indexPath.section == 6 && classList.count == 0) {
+            return UITableView.automaticDimension
         } else {
             return CGFloat.leastNormalMagnitude
+        }
+    }
+    
+    func isShowEmptyPlaceholder(_ section: Int) -> Bool {
+        if (section == 2 && imagesList.count == 0) || (section == 3 && friendList.count == 0) || (section == 4 && eventList.count == 0) || (section == 5 && clubList.count == 0) || (section == 6 && classList.count == 0) {
+            return true
+        }
+        return false
+    }
+    
+    func fillPlaceholderCell(_ cell: NoEventsCell, _ section: Int) {
+        switch section {
+        case 2:
+            cell.set(title: Message.noImageAdded)
+        case 3:
+            cell.set(title: Message.noFriendAdded)
+        case 4:
+            cell.setEvents()
+        case 5:
+            cell.setClub()
+        case 6:
+            cell.setClasses()
+        default: break
         }
     }
     
