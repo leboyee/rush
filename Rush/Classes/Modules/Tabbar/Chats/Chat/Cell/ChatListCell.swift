@@ -75,7 +75,7 @@ extension ChatListCell {
         if lastMessage != nil {
             // text message
             if let message = lastMessage as? SBDUserMessage {
-                if message.message?.contains("JSON_CHAT\":{\"type\":1") ?? false {
+                if message.message?.contains("shared with you") ?? false {
                       messageText = "Event"
                 } else {
                       messageText = message.message ?? messageText

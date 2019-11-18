@@ -247,7 +247,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         
         switch message.kind {
-        case .text(let text):
+        case .text(let _):
                 let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
                 cell.configure(with: message, at: indexPath, and: messagesCollectionView)
                 return cell

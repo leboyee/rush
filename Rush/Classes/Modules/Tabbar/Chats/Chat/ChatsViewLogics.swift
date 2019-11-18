@@ -53,7 +53,7 @@ extension ChatsViewController {
                 
                 let jsonString = "{\"JSON_CHAT\":{\"type\":1,\"eventId\":\"\(event.id)\",\"eventTitle\":\"\(event.title)\",\"eventImage\":\"\(event.photo?.main ?? "")\",\"desc\":\"\(event.desc)\",\"date\":\"\(datelable)\",\"month\":\"\(month)\",\"day\":\"\(day)\",\"time\":\"\(time)\"}}"
                 
-                sendMessage(text: jsonString, channel: channel)
+                sendEvent(text: "\(event.title) shared with you.", data: jsonString, channel: channel)
             }
         } else {
             let controller = ChatRoomViewController()
@@ -69,6 +69,20 @@ extension ChatsViewController {
     
     func sendMessage(text: String, channel: SBDGroupChannel) {
         ChatManager().sendTextMessage(text, channel: channel, completionHandler: { (message) in
+            if message != nil {
+                self.delegate?.sharedResult(flg: true)
+            } else {
+                self.delegate?.sharedResult(flg: false)
+            }
+            self.dismiss(animated: true, completion: nil)
+        }, errorHandler: { (_) in
+            self.delegate?.sharedResult(flg: false)
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+    
+    func sendEvent(text: String, data: String, channel: SBDGroupChannel) {
+        ChatManager().sendEventMessage(text, data: data, channel: channel, completionHandler: { (message) in
             if message != nil {
                 self.delegate?.sharedResult(flg: true)
             } else {
