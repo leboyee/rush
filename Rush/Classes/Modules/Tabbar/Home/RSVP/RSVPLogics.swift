@@ -73,7 +73,6 @@ extension RSVPViewController {
         cell.setup(placeholder: question.que ?? "")
         let answer = answers.first(where: { $0.index == question.index })
         cell.setup(answer: answer?.ans ?? "")
-        
         cell.textDidChanged = { [weak self] (text) in
             self?.addRSVPAnswer(text: text, index: question.index)
             self?.updateTable(textView: cell.textView)
@@ -83,6 +82,7 @@ extension RSVPViewController {
             self?.addRSVPAnswer(text: text, index: question.index)
             self?.updateTable(textView: cell.textView)
         }
+       
         }
     }
 }

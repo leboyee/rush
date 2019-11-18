@@ -21,7 +21,9 @@ class RSVPCell: UITableViewCell {
     var textDidEndEditing: ((_ text: String) -> Void)?
     var textDidBeginEditing: (() -> Void)?
     var updateTableView:((_ textView: UITextView) -> Void)?
-    var maxLength = 100
+    var reloadTableView:((_ textView: UITextView) -> Void)?
+
+    var maxLength = 300
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +64,10 @@ extension RSVPCell {
         clearButton.isHidden = isHideClearButton
     }
     
+    func setup(maxLengthSize: Int) {
+           maxLength = maxLengthSize
+    }
+    
     @IBAction func clearButtonAction() {
         clearButtonClickEvent?()
     }
@@ -88,6 +94,7 @@ extension RSVPCell: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "" { return true }
         
         if text == "\n" && textView.returnKeyType == .go {
             textView.resignFirstResponder()
@@ -95,8 +102,15 @@ extension RSVPCell: UITextViewDelegate {
         }
         
         let currentString: NSString = textView.text! as NSString
-        let newString: NSString =
+        var newString: NSString =
             currentString.replacingCharacters(in: range, with: text) as NSString
+        if text.count >= maxLength {
+            newString = String(text.prefix(maxLength)) as NSString
+            textView.text = newString as String
+            updateTableView?(textView)
+            reloadTableView?(textView)
+            return false
+        }
         return newString.length <= maxLength
     }
     

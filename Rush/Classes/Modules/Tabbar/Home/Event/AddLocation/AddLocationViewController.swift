@@ -40,7 +40,6 @@ class AddLocationViewController: UIViewController {
     // MARK: - View-Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setup()
     }
     
@@ -145,7 +144,6 @@ extension AddLocationViewController {
         } else {
             self.dismiss(animated: true, completion: nil)
         }
-      //  print("selected map item is : \(String(describing: self.mapItemToPresent))")
     }
 }
 
