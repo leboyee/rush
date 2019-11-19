@@ -26,7 +26,16 @@ extension ChatsViewController {
         cell.setup(channel: channel)
         
         if channel.customType == "single" {
-            cell.setup(chatImage: channel.members)
+            if channel.members?.count == 1 {
+                if let url = channel.coverUrl, url.isNotEmpty {
+                    let images = url.components(separatedBy: ",")
+                    for image in images where image != Authorization.shared.profile?.photo?.thumb {
+                        cell.setup(img: image)
+                    }
+                }
+            } else {
+                cell.setup(chatImage: channel.members)
+            }
         } else {
             cell.setup(img: channel.coverUrl)
         }
@@ -108,6 +117,8 @@ extension ChatsViewController {
                         }
                     }
                 }
+            } else if members.count == 1 {
+                return Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(Utils.removeLoginUserNameFromChannel(channelName: name))
             }
         }
         return name
