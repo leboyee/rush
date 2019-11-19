@@ -69,7 +69,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
                                 //Check current tab is 2 and navigation controller has first view is NotificationListViewController, so we need to update list
                                 if viewcontroller.selectedIndex == 2, let vc = selectedNavigationController?.viewControllers.first as? ChatsViewController {
-                                    vc.getListOfGroups()
+                                    vc.getListOfGroups(isFromPush: true, url: url)
                                 } else {
                                     selectedNavigationController?.dismiss(animated: false, completion: nil)
                                     selectedNavigationController?.popToRootViewController(animated: false)

@@ -65,15 +65,19 @@ extension ChatsViewController {
                 sendEvent(text: "shared \(event.title) with you.", data: jsonString, channel: channel)
             }
         } else {
-            let controller = ChatRoomViewController()
-            controller.hidesBottomBarWhenPushed = true
-            controller.isGroupChat = channel.customType == "single" ? false : true
-            controller.userName = cell.titleLabel.text ?? ""
-            controller.userNavImage = cell.imgView.image
-            controller.channel = channel
-            controller.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(controller, animated: true)
+            openChatDetail(channel: channel, name: cell.titleLabel.text ?? "", imgName: cell.imgView.image)
         }
+    }
+    
+    func openChatDetail(channel: SBDGroupChannel, name: String, imgName: UIImage?) {
+        let controller = ChatRoomViewController()
+        controller.hidesBottomBarWhenPushed = true
+        controller.isGroupChat = channel.customType == "single" ? false : true
+        controller.userName = name
+        controller.userNavImage = imgName
+        controller.channel = channel
+        controller.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func sendMessage(text: String, channel: SBDGroupChannel) {
@@ -158,7 +162,7 @@ extension ChatsViewController: UITextFieldDelegate {
 // MARK: - Services
 extension ChatsViewController {
     
-    @objc func getListOfGroups() {
+    @objc func getListOfGroups(isFromPush: Bool, url: String) {
         
         ChatManager().getListOfAllChatGroups({ [weak self] (list) in
             guard let unself = self else { return }
@@ -173,6 +177,14 @@ extension ChatsViewController {
                 unself.blankView.isHidden = true
             } else {
                 unself.blankView.isHidden = false
+            }
+            
+            if isFromPush && url.isNotEmpty {
+                for chnl in unself.channels {
+                    if chnl.channelUrl == url {
+                        unself.openChatDetail(channel: chnl, name: "", imgName: nil)
+                    }
+                }
             }
             }, errorHandler: { error in
                 Utils.hideSpinner()
