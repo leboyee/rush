@@ -391,6 +391,7 @@ public struct Message {
     static let deleteEvent = "Are you sure you want to delete this event?"
     static let noImageAdded = "No images were added"
     static let noFriendAdded = "You have no friends in the app"
+    static let noFriendFound = "No friends were added"
     static let noInterestAdded = "No interests are selected"
     static let noNotification = "You have no notifications"
 

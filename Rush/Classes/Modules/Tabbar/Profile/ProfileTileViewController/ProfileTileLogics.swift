@@ -91,7 +91,7 @@ extension ProfileTileViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let userId = Authorization.shared.profile?.userId else { return }
-            let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.imagePageNo)"]
+            let params = [Keys.profileUserId: self.isFromOtherUserProfile ? self.otherUserId : userId, Keys.pageNo: "\(self.imagePageNo)"]
             ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
                 guard let unsafe = self else { return }
                 if let list = data?[Keys.images] as? [[String: Any]] {

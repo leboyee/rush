@@ -62,7 +62,7 @@ extension OtherUserProfileController {
         case 2:
             cell.set(title: Message.noImageAdded)
         case 3:
-            cell.set(title: Message.noFriendAdded)
+            cell.set(title: Message.noFriendFound)
         case 4:
             cell.setEvents()
         case 5:
@@ -220,7 +220,15 @@ extension OtherUserProfileController {
                 unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: Int(index))
             } else if indexPath.section == 3 {
                 let friend = unsafe.friendList[index]
-                unsafe.performSegue(withIdentifier: Segues.otherUserProfile, sender: friend.user)
+                if friend.user?.userId == Authorization.shared.profile?.userId {
+                    if unsafe.tabBarController?.selectedIndex == 3 {
+                        unsafe.navigationController?.popToRootViewController(animated: true)
+                    } else {
+                        unsafe.tabBarController?.selectedIndex = 3
+                    }
+                } else {
+                    unsafe.performSegue(withIdentifier: Segues.otherUserProfile, sender: friend.user)
+                }
             } else if indexPath.section == 4 {
                 let event = unsafe.eventList[index]
                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)
@@ -250,7 +258,7 @@ extension OtherUserProfileController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if section == 2 {
-                unself.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
+                unself.performSegue(withIdentifier: Segues.profileImageViewSegue, sender: nil)
             } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
             } else if section == 4 {

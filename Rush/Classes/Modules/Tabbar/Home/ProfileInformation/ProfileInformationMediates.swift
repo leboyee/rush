@@ -17,6 +17,8 @@ extension ProfileInformationViewController: UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: Cell.profileInformation, bundle: nil), forCellReuseIdentifier: Cell.profileInformation)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.reloadData()

@@ -26,7 +26,16 @@ extension ChatsViewController {
         cell.setup(channel: channel)
         
         if channel.customType == "single" {
-            cell.setup(chatImage: channel.members)
+            if channel.members?.count == 1 {
+                if let url = channel.coverUrl, url.isNotEmpty {
+                    let images = url.components(separatedBy: ",")
+                    for image in images where image != Authorization.shared.profile?.photo?.thumb {
+                        cell.setup(img: image)
+                    }
+                }
+            } else {
+                cell.setup(chatImage: channel.members)
+            }
         } else {
             cell.setup(img: channel.coverUrl)
         }
@@ -56,15 +65,19 @@ extension ChatsViewController {
                 sendEvent(text: "shared \(event.title) with you.", data: jsonString, channel: channel)
             }
         } else {
-            let controller = ChatRoomViewController()
-            controller.hidesBottomBarWhenPushed = true
-            controller.isGroupChat = channel.customType == "single" ? false : true
-            controller.userName = cell.titleLabel.text ?? ""
-            controller.userNavImage = cell.imgView.image
-            controller.channel = channel
-            controller.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(controller, animated: true)
+            openChatDetail(channel: channel, name: cell.titleLabel.text ?? "", imgName: cell.imgView.image)
         }
+    }
+    
+    func openChatDetail(channel: SBDGroupChannel, name: String, imgName: UIImage?) {
+        let controller = ChatRoomViewController()
+        controller.hidesBottomBarWhenPushed = true
+        controller.isGroupChat = channel.customType == "single" ? false : true
+        controller.userName = name
+        controller.userNavImage = imgName
+        controller.channel = channel
+        controller.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func sendMessage(text: String, channel: SBDGroupChannel) {
@@ -108,6 +121,8 @@ extension ChatsViewController {
                         }
                     }
                 }
+            } else if members.count == 1 {
+                return Utils.onlyDisplayFirstNameOrLastNameFirstCharacter(Utils.removeLoginUserNameFromChannel(channelName: name))
             }
         }
         return name
@@ -147,7 +162,7 @@ extension ChatsViewController: UITextFieldDelegate {
 // MARK: - Services
 extension ChatsViewController {
     
-    @objc func getListOfGroups() {
+    @objc func getListOfGroups(isFromPush: Bool, url: String) {
         
         ChatManager().getListOfAllChatGroups({ [weak self] (list) in
             guard let unself = self else { return }
@@ -162,6 +177,14 @@ extension ChatsViewController {
                 unself.blankView.isHidden = true
             } else {
                 unself.blankView.isHidden = false
+            }
+            
+            if isFromPush && url.isNotEmpty {
+                for chnl in unself.channels {
+                    if chnl.channelUrl == url {
+                        unself.openChatDetail(channel: chnl, name: "", imgName: nil)
+                    }
+                }
             }
             }, errorHandler: { error in
                 Utils.hideSpinner()

@@ -26,6 +26,8 @@ class ProfileTileViewController: UIViewController {
     let downloadGroup = DispatchGroup()
     var imagePageNo: Int = 1
     var imageNextPageExist = false
+    var isFromOtherUserProfile = false
+    var otherUserId = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +41,15 @@ class ProfileTileViewController: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
-        let addImageButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 78, height: 36))
-        addImageButton.setBackgroundImage(UIImage(named: "addImagesProfile"), for: .normal)
-//        addImageButton.setTitle("Add", for: .normal)
-//        addImageButton.setTitleColor(.white, for: .normal)
-        addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addImageButton)
+        
+        if isFromOtherUserProfile == false {
+            let addImageButton = UIButton(frame: CGRect.init(x: 0, y: 0, width: 78, height: 36))
+            addImageButton.setBackgroundImage(UIImage(named: "addImagesProfile"), for: .normal)
+            //        addImageButton.setTitle("Add", for: .normal)
+            //        addImageButton.setTitleColor(.white, for: .normal)
+            addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addImageButton)
+        }
         noResultView.isHidden = true
         fetchImagesList()
         // Setup tableview
