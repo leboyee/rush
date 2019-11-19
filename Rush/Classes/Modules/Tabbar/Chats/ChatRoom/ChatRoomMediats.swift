@@ -105,15 +105,16 @@ extension ChatRoomViewController: MessagesLayoutDelegate {
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if isFromCurrentSender(message: message) {
             if isTimeLabelVisible(at: indexPath) {
-                return 15
+                return 18
             } else {
                 return !isPreviousMessageSameSender(at: indexPath) ? (isGroupChat ? 20 : 0) : 0
             }
         } else {
             if isTimeLabelVisible(at: indexPath) {
-                return 30
+                return 40
             } else {
-                return !isPreviousMessageSameSender(at: indexPath) ? ((isGroupChat ? 20 : 0) + outgoingAvatarOverlap) : 0
+                let height = !isPreviousMessageSameSender(at: indexPath) ? ((isGroupChat ? 23 : 0) + outgoingAvatarOverlap) : 0
+                return height
             }
         }
     }
@@ -369,7 +370,7 @@ extension ChatRoomViewController: MessagesDataSource {
                 return nil
             } else {
                 let name = "\t\(message.sender.displayName)"
-                return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)])
+                return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.semibold(sz: 13)])
             }
         }
     }
