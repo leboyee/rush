@@ -26,6 +26,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="107" height="91"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="overlayPostImageCount" translatesAutoresizingMaskIntoConstraints="NO" id="0Mv-qC-cRo">
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="91"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D5-yv-qrk">
                         <rect key="frame" x="32.5" y="31" width="42" height="29"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="24"/>
@@ -34,9 +37,6 @@
                         <color key="shadowColor" white="0.0" alpha="0.29043794014084506" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <size key="shadowOffset" width="1" height="1"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="overlayPostImageCount" translatesAutoresizingMaskIntoConstraints="NO" id="0Mv-qC-cRo">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="91"/>
-                    </imageView>
                 </subviews>
             </view>
             <constraints>
