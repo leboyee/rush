@@ -35,6 +35,9 @@ extension ProfileInformationCell {
         if placeholder.isEmpty {
             heightConstraintOfPlaceholder.constant = 0
             bottomConstraintofDetailLabel.constant = 16
+        } else {
+            heightConstraintOfPlaceholder.constant = 16
+            bottomConstraintofDetailLabel.constant = 11
         }
     }
 }

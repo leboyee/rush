@@ -27,9 +27,10 @@ extension ProfileInformationViewController {
     }
     
     func fillCell(_ cell: ProfileInformationCell, _ indexPath: IndexPath) {
+        
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                cell.setup(text: "", placeholder: Text.dateOfBirth)
+                cell.setup(text: "-", placeholder: Text.dateOfBirth)
                 if let date = userInfo?.birthDate {
                     if let birthDate = Date.parse(dateString: date, format: "yyyy-MM-dd") {
                         let birth = birthDate.toString(format: "MM.dd.yyyy")
@@ -37,13 +38,13 @@ extension ProfileInformationViewController {
                     }
                 }
             } else if indexPath.row == 1 {
-                if let value = userInfo?.relationship {
+                if let value = userInfo?.relationship, value.isNotEmpty {
                     cell.setup(text: value, placeholder: Text.relationship)
                 } else {
-                    cell.setup(text: "", placeholder: Text.relationship)
+                    cell.setup(text: "-", placeholder: Text.relationship)
                 }
             } else {
-                
+                cell.setup(text: "", placeholder: "")
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0, let university = userInfo?.university?.last {
