@@ -138,11 +138,11 @@ internal struct MockMessage: MessageType {
         if message.isKind(of: SBDUserMessage.self) {
             let userMessage = message as? SBDUserMessage
             let sender = Sender.init(id: (userMessage?.sender?.userId)!, displayName: (userMessage?.sender?.nickname)!, avatarUrl: userMessage?.sender?.profileUrl ?? "")
-            if userMessage?.message?.contains("JSON_CHAT\":{\"type\":1") ?? false {
+            if userMessage?.message?.contains("with you.") ?? false {
                 //event message
-                self.init(text: userMessage?.message ?? "", sender: sender, messageId: "\(message.messageId)", date: myNSDate)
+                self.init(text: userMessage?.data ?? "", sender: sender, messageId: "\(message.messageId)", date: myNSDate)
                 
-                let jsonText = userMessage?.message
+                let jsonText = userMessage?.data
                 if let data = jsonText?.data(using: String.Encoding.utf8) {
                     do {
                         if let dictonary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
@@ -169,7 +169,6 @@ internal struct MockMessage: MessageType {
                         print(error)
                     }
                 }
-                
             } else {
                 //text message
                 self.init(text: userMessage?.message ?? "", sender: sender, messageId: "\(message.messageId)", date: myNSDate)
