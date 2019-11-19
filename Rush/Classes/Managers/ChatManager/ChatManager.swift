@@ -532,6 +532,26 @@ extension ChatManager {
         })
     }
     
+    func sendEventMessage(_ message: String?,
+                          data: String,
+                         channel: SBDGroupChannel?,
+                         completionHandler: ((_ channel: SBDUserMessage?) -> Void)? = nil,
+                         errorHandler: ((_ error: Error?) -> Void)? = nil) {
+        
+        let params = SBDUserMessageParams(message: message ?? "")
+        params?.data = data
+        
+        if let value = params {
+            channel?.sendUserMessage(with: value, completionHandler: { userMessage, error in
+                if error == nil {
+                    completionHandler?(userMessage)
+                } else {
+                    errorHandler?(error)
+                }
+            })
+        }
+    }
+    
     func sendImageFileMessage(_ channel: SBDGroupChannel?,
                               _ imageName: String,
                               completionHandler: ((_ fileMessage: SBDFileMessage?) -> Void)? = nil,

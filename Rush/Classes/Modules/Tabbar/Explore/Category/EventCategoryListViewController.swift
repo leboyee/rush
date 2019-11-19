@@ -137,8 +137,25 @@ class EventCategoryListViewController: UIViewController {
             secondSortText = "Any time"
             thirdSortText = "All people"
         }
-        navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white)
-
+        
+        if type == .classes {
+            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+            
+            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            searchTextField.font = UIFont.displayBold(sz: 24)
+            searchTextField.textColor = UIColor.white
+            searchTextField.returnKeyType = .go
+            searchTextField.autocorrectionType = .no
+            searchTextField.delegate = self
+            let font = UIFont.displayBold(sz: 24)
+            let color = UIColor.navBarTitleWhite32
+            searchTextField.attributedPlaceholder = NSAttributedString(string: Text.searchClasses, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+            customView.addSubview(searchTextField)
+            navigationItem.titleView = customView
+        } else {
+            navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white)
+        }
     }
     
     @objc func backButtonAction() {

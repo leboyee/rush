@@ -167,7 +167,7 @@ extension EventCategoryListViewController {
                     countClass = "\(count ?? 0) classes"
                 }
                 cell.setup(detail: countClass)
-               // cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
+                // cell.setup(detail: "\(myclass.classGroups?.count ?? 0) Classes")
             }
             
             var rosterArray = [Invitee]()
@@ -395,9 +395,9 @@ extension EventCategoryListViewController {
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
             param[Keys.intId] = interest?.interestId
         }
-//        if clubCategory?.id != "" {
-//            param[Keys.intId] = clubCategory?.id
-//        }
+        //        if clubCategory?.id != "" {
+        //            param[Keys.intId] = clubCategory?.id
+        //        }
         if clubList.count == 0 {
             Utils.showSpinner()
         }
@@ -452,13 +452,13 @@ extension EventCategoryListViewController {
     }
     
     func getClassListAPI() {
-       let order = secondFilterIndex == 0 ? "popular" : "newest"
-               var param = [Keys.search: searchText,
-                            Keys.sortBy: "explore",
-                            Keys.categoryId: classCategory?.id ?? "",
-                            Keys.orderBy: order,
-                            Keys.isOnlyFriendJoined: thirdFilterIndex,
-                            Keys.pageNo: pageNo] as [String: Any]
+        let order = secondFilterIndex == 0 ? "popular" : "newest"
+        var param = [Keys.search: searchText,
+                     Keys.sortBy: "explore",
+                     Keys.categoryId: classCategory?.id ?? "",
+                     Keys.orderBy: order,
+                     Keys.isOnlyFriendJoined: thirdFilterIndex,
+                     Keys.pageNo: pageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }

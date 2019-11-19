@@ -87,3 +87,22 @@ extension EventCategoryListViewController: UICollectionViewDelegate, UICollectio
         return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 8)
     }
 }
+
+// MARK: - SeachField delegate
+extension EventCategoryListViewController: UITextFieldDelegate {
+    @objc func textDidChange(_ textField: UITextField) {
+        searchText = textField.text ?? ""
+        pageNo = 1
+        getClassListAPI()
+        getClassCategoryAPI()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
