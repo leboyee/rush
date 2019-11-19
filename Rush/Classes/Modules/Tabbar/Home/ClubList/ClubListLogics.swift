@@ -238,7 +238,6 @@ extension ClubListViewController {
                      Keys.sortBy: sortBy,
                      Keys.pageNo: pageNoM] as [String: Any]
         
-        Utils.showSpinner()
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, _) in
             guard let uwself = self else { return }
             if uwself.pageNoM == 1 {
@@ -256,10 +255,8 @@ extension ClubListViewController {
             } else {
                 if uwself.pageNoM == 1 || (uwself.pageNoM > 1 && value?.count == 0) {
                     uwself.isNextPageM = false
-                    uwself.getClubCategoryListAPI()
-                } else {
-                    Utils.hideSpinner()
                 }
+                Utils.hideSpinner()
             }
             uwself.tableView.reloadData()
         }
