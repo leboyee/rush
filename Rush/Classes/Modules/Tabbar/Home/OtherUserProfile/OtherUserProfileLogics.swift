@@ -62,7 +62,7 @@ extension OtherUserProfileController {
         case 2:
             cell.set(title: Message.noImageAdded)
         case 3:
-            cell.set(title: Message.noFriendAdded)
+            cell.set(title: Message.noFriendFound)
         case 4:
             cell.setEvents()
         case 5:
@@ -250,7 +250,7 @@ extension OtherUserProfileController {
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if section == 2 {
-                unself.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: nil)
+                unself.performSegue(withIdentifier: Segues.profileImageViewSegue, sender: nil)
             } else if section == 3 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
             } else if section == 4 {

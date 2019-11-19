@@ -144,6 +144,11 @@ extension OtherUserProfileController {
             if let vc = segue.destination as? OtherUserProfileController {
                 vc.userInfo = sender as? User
             }
+        } else if segue.identifier == Segues.profileImageViewSegue {
+            let vc = segue.destination as? ProfileTileViewController
+            vc?.imageArray = imagesList
+            vc?.isFromOtherUserProfile = true
+            vc?.otherUserId = userInfo?.userId ?? "0"
         }
     }
 }
