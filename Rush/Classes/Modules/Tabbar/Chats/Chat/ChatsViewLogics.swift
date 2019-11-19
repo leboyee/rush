@@ -53,7 +53,7 @@ extension ChatsViewController {
                 
                 let jsonString = "{\"JSON_CHAT\":{\"type\":1,\"eventId\":\"\(event.id)\",\"eventTitle\":\"\(event.title)\",\"eventImage\":\"\(event.photo?.main ?? "")\",\"desc\":\"\(event.desc)\",\"date\":\"\(datelable)\",\"month\":\"\(month)\",\"day\":\"\(day)\",\"time\":\"\(time)\"}}"
                 
-                sendEvent(text: "\(event.title) shared with you.", data: jsonString, channel: channel)
+                sendEvent(text: "shared \(event.title) with you.", data: jsonString, channel: channel)
             }
         } else {
             let controller = ChatRoomViewController()
