@@ -134,9 +134,9 @@ extension OtherUserProfileController {
                 vc.list = imagesList
                 vc.user = userInfo ?? User()
                 if let index = sender as? Int {
-                        vc.currentIndex = index
-                            vc.selectedIndex = index
-                        } else {
+                    vc.currentIndex = index
+                    vc.selectedIndex = index
+                } else {
                     vc.currentIndex = 0
                 }
             }
