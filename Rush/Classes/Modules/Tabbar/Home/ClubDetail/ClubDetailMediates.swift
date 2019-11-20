@@ -222,7 +222,7 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
             }
             data.append("Check out \(userName) post on Rush app:\n")
             
-            data.append("Club: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
+            data.append("\nClub: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
             }
@@ -230,8 +230,8 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
                 data.append(clubImage)
             }
         } else if let club = object as? Club {
-            data.append("Check out \(clubInfo?.clubName ?? "") on rush app")
-            data.append("Club: \(clubInfo?.clubName ?? "")\nClub description: \(club.clubDesc ?? "")")
+            data.append("Check out \(clubInfo?.clubName ?? "") club on Rush app")
+            //data.append("Club: \(clubInfo?.clubName ?? "")\nClub description: \(club.clubDesc ?? "")")
             if let clubImage = clubHeader.userImageView.image {
                 data.append(clubImage)
             }

@@ -148,7 +148,7 @@ extension PostViewController: SharePostViewControllerDelegate {
                 userName = post.user?.firstName ?? "this"
             }
             data.append("Check out \(userName) post on Rush app:\n")
-            data.append("Club: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
+            data.append("\nClub: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
             Utils.openActionSheet(controller: self, shareData: data)
         }
     }

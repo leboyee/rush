@@ -105,6 +105,7 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.sharePostSegue {
             if let vc = segue.destination as? SharePostViewController {
                 vc.type = .profile
+                vc.delegate = self
             }
         } else if segue.identifier == Segues.profileInformation {
             if let vc = segue.destination as? ProfileInformationViewController {
