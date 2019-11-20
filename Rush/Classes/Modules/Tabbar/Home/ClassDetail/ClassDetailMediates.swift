@@ -110,7 +110,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         if (section == 2 && isShowMore == false) || section == 3 {
             return footer
         }
-        let separator = UIView(frame: CGRect(x: (section == 2 && isShowMore == false) ?  24 : 0, y: (isShowMore && section == 2) ? 15 : 0, width: screenWidth, height: 1))
+        let separator = UIView(frame: CGRect(x: (section == 2 && isShowMore == false) ?  24 : 0, y: (isShowMore && section == 2) ? 15 : 0, width: screenWidth, height: (section == 1 && joinedClub == false) ? 0 : 1))
         footer.addSubview(separator)
         separator.backgroundColor = UIColor.separatorColor
         return footer
