@@ -124,7 +124,7 @@ extension CreateEventViewController {
     }
     
     func fillDateAndTimeEvent(_ cell: DateAndTimeCell, _ indexPath: IndexPath) {
-            if indexPath.section == 6  {
+            if indexPath.section == 6 {
                 cell.setup(timeButtonText: startTime.isEmpty == true ? "01:00 PM" : startTime)
                 cell.setup(dateButtonText: "Start")
                 cell.separatorView.isHidden = false
@@ -503,11 +503,18 @@ extension CreateEventViewController: CalendarViewDelegate {
     }
     
     func selectedDate(date: Date) {
-        
         let newDate = Date().convertDateToDate(date: date)
         if isStartDate == true {
             self.startDate = newDate
             self.endDate = newDate
+        }
+        
+        if self.startDate.isSameDate(Date()) && self.startTimeDate < Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900) {
+            self.startTimeDate = Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 900)
+            self.endTimeDate = Date().setCurrentTimeWithAddingTimeInterval(additionalSeconds: 4500)
+            self.startTime = self.startTimeDate.toString(format: "hh:mm a")
+            self.endTime = self.endTimeDate.toString(format: "hh:mm a")
+
         }
         resetDateFileds()
         self.tableView.reloadData()

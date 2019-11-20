@@ -115,7 +115,7 @@ extension AddInterestViewController {
 // MARK: - Mediator
 extension AddInterestViewController {
     func interestButtonVisiable() {
-       // nextButton.isHidden = selectedArray.count > 0 ? false : true
+        nextButton.isHidden = selectedArray.count > 2 ? false : true
     }
 }
 

@@ -51,6 +51,7 @@ extension AddInterestViewController: TagListViewDelegate {
             guard let index = selectedArray.firstIndex(where: { $0.interestName == title }) else { return }
             selectedArray.remove(at: index)
         }
+        interestButtonVisiable()
         self.tableView.reloadData()
     }
     
