@@ -36,7 +36,9 @@ class UserProfileGalleryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        if selectedIndex != -1 {
+            scrollToItemIndex(layout, selectedIndex ?? 1)
+        }
     }
     
     func setupUI() {
@@ -54,6 +56,7 @@ class UserProfileGalleryViewController: UIViewController {
             setTitle(titleStr: "\(currentIndex + 1) of \(list.count)")
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
+
     }
     
     // MARK: - Set Profile Data

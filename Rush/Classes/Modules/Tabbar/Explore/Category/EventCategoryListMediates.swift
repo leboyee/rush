@@ -53,6 +53,21 @@ extension EventCategoryListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight(indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if type == .event && isNextPage && indexPath.row == eventList.count - 2 {
+            pageNo += 1
+            loadAPIforPaging()
+        } else if type == .club && isNextPage && indexPath.row == clubList.count - 2 {
+            pageNo += 1
+            loadAPIforPaging()
+        } else if type == .classes && isNextPage && indexPath.row == classList.count - 2 {
+            pageNo += 1
+            loadAPIforPaging()
+        }
+        
+    }
 }
 
 // MARK: - Collectionview delegate methods
@@ -92,13 +107,9 @@ extension EventCategoryListViewController: UICollectionViewDelegate, UICollectio
 extension EventCategoryListViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         searchText = textField.text ?? ""
+        isNextPage = false
         pageNo = 1
-        getClassListAPI()
-        getClassCategoryAPI()
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        loadAPIforPaging()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

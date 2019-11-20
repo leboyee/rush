@@ -39,7 +39,7 @@ extension UserProfileGalleryViewController {
     
     func scrollToItemIndex(_ flowLayout: UICollectionViewFlowLayout, _ index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
-        flowLayout.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.right, animated: true)
     }
     
     // MARK: - Action Sheet

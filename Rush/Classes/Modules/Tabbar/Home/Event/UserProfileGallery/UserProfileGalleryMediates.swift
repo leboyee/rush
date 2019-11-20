@@ -10,7 +10,7 @@ import UIKit
 
 extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-     func setupCollectionView() {
+    func setupCollectionView() {
         collectionView.delegate=self
         collectionView.dataSource=self
         
@@ -21,7 +21,7 @@ extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollecti
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.reloadData()
-        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
@@ -40,10 +40,6 @@ extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollecti
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.galleryCell, for: indexPath) as? GalleryCell else { return UICollectionViewCell() }
         
         fillCell(cell, indexPath)
-        if selectedIndex != -1 {
-            scrollToItemIndex(layout, selectedIndex ?? 1)
-        }
-        
         cell.layoutIfNeeded()
         return cell
     }
@@ -54,7 +50,6 @@ extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollecti
         let titleString = ("\((currentIndex+1)) of \(cellCount())")
         setTitle(titleStr: titleString)
         setupDateAndTimeOfPhoto(index: currentIndex)
-        print(currentIndex)
     }
     
 }
