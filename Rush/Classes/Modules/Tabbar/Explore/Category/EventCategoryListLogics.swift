@@ -317,6 +317,9 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
     
     func selectedIndex(_ type: String, _ indexPath: IndexPath) {
         
+        pageNo = 1
+        isNextPage = false
+        
         if self.type == .event {
             if isFirstFilter {
                 guard let index = Utils.upcomingFiler().firstIndex(where: { $0 == type }) else { return }

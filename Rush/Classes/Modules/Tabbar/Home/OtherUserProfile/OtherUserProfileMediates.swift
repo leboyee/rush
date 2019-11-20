@@ -158,3 +158,20 @@ extension OtherUserProfileController: UIScrollViewDelegate, ClubHeaderDelegate {
         performSegue(withIdentifier: Segues.profileInformation, sender: nil)
     }
 }
+
+// MARK: - SharePostViewControllerDelegate
+extension OtherUserProfileController: SharePostViewControllerDelegate {
+    func delete(type: SharePostType, object: Any?) {
+        
+    }
+    
+    func shareObject(_ object: Any?) {
+        var data = [Any]()
+        
+        data.append("Find out \(userInfo?.name ?? "") on Rush app")
+        if let clubImage = header.userImageView.image {
+            data.append(clubImage)
+        }
+        Utils.openActionSheet(controller: self, shareData: data)
+    }
+}

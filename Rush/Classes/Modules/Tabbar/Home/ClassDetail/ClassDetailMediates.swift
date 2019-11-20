@@ -189,7 +189,7 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
             }
             data.append("Check out \(userName) post on Rush app:\n")
             
-            data.append("Class: \(classInfo?.name ?? "")\nPost description: \(post.text ?? "")")
+            data.append("\nClass: \(classInfo?.name ?? "")\nPost description: \(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 data.append(contentsOf: urls)
             }
@@ -197,8 +197,8 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
                 data.append(classImage)
             }
         } else if let cls = object as? SubClass {
-            data.append("Check out \(cls.name) on rush app")
-            data.append("Class: \(cls.name)\nClass description: \(selectedGroup?.name ?? "")")
+            data.append("Check out \(cls.name) class on Rush app")
+            //data.append("\n\(selectedGroup?.name ?? "")")
             if let clubImage = clubHeader.userImageView.image {
                 data.append(clubImage)
             }
