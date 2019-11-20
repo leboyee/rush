@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qed-en-kd7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -652,7 +652,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSN-Ai-Lxu">
-                                        <rect key="frame" x="16" y="50" width="78" height="36"/>
+                                        <rect key="frame" x="16" y="50" width="156" height="72"/>
                                         <state key="normal" image="cancel-active"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="tgq-BU-5qI" eventType="touchUpInside" id="AsF-zi-5Jt"/>
@@ -660,7 +660,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-7L-6FJ">
-                                        <rect key="frame" x="320" y="50" width="78" height="36"/>
+                                        <rect key="frame" x="242" y="50" width="156" height="72"/>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="save-dark"/>
                                         <userDefinedRuntimeAttributes>
@@ -1000,7 +1000,7 @@
                         <segue destination="ucK-SL-Bnd" kind="presentation" identifier="NotificationAlertSegue" modalPresentationStyle="overFullScreen" id="E7I-YA-fBT"/>
                         <segue destination="XdX-g6-gj5" kind="show" identifier="ProfileInformationSegue" id="Lcf-y5-6Em"/>
                         <segue destination="N8P-N3-1qI" kind="show" identifier="FriendListSegue" id="z8H-lu-6pg"/>
-                        <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" modalPresentationStyle="overFullScreen" id="0IY-Pg-ID3"/>
+                        <segue destination="CRj-h0-QVs" kind="presentation" identifier="sharePostSegue" animates="NO" modalPresentationStyle="overFullScreen" id="0IY-Pg-ID3"/>
                         <segue destination="KEM-eO-SVs" kind="show" identifier="OtherProfileEventDetail" id="Oel-AB-j6R"/>
                         <segue destination="mi6-YI-bln" kind="show" identifier="ClubDetailSegue" id="gSU-VJ-XvQ"/>
                         <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="L5B-Xz-z9C"/>
@@ -2279,13 +2279,13 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8a6-2F-zCO"/>
-        <segue reference="rRs-cY-38f"/>
+        <segue reference="L5B-Xz-z9C"/>
         <segue reference="yk0-VO-M9j"/>
         <segue reference="ker-Z7-xhz"/>
-        <segue reference="LvJ-Dj-Yna"/>
+        <segue reference="0IY-Pg-ID3"/>
         <segue reference="eQK-QP-NNj"/>
         <segue reference="S8E-ms-kaf"/>
-        <segue reference="Wbx-oG-UBR"/>
+        <segue reference="z8H-lu-6pg"/>
         <segue reference="Lcf-y5-6Em"/>
         <segue reference="E7I-YA-fBT"/>
         <segue reference="90w-At-CBu"/>
