@@ -21,7 +21,7 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         
         var cells = [Cell.clubName, Cell.clubManage, Cell.createUserPost, Cell.timeSlot, Cell.eventByDate, Cell.eventType, Cell.textIcon]
-        cells.append(contentsOf: [Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser, Cell.postImages, Cell.postBottom])
+        cells.append(contentsOf: [Cell.singleButtonCell, Cell.userPostText, Cell.userPostImage, Cell.postLike, Cell.postUser, Cell.postImages, Cell.postBottom, Cell.textView])
         
         for cell in cells {
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
@@ -57,9 +57,15 @@ extension ClassDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 fillTimeSlotCell(cell, indexPath)
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell else { return UITableViewCell() }
-                fillTimeCell(cell, indexPath)
-                return cell
+                if indexPath.section == 3 {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textView, for: indexPath) as? TextViewCell else { return UITableViewCell() }
+                    fillTextViewCell(cell)
+                    return cell
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.textIcon, for: indexPath) as? TextIconCell else { return UITableViewCell() }
+                    fillTimeCell(cell, indexPath)
+                    return cell
+                }
             }
         } else if indexPath.section == 4 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }

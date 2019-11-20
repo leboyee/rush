@@ -89,6 +89,13 @@ extension ClassDetailViewController {
         }
     }
     
+    func fillTextViewCell(_ cell: TextViewCell) {
+        cell.setup(iconImage: "location-gray")
+        cell.setup(placeholder: "", text: subclassInfo?.location ?? "")
+        cell.setup(isUserInterfaceEnable: false)
+        cell.setup(isHideCleareButton: true)
+    }
+    
     func fillTimeCell(_ cell: TextIconCell, _ indexPath: IndexPath) {
         cell.resetAllField()
         cell.setup(isUserInterfaceEnable: false)
