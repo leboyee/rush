@@ -18,6 +18,7 @@ class EventCategoryListViewController: UIViewController {
     var isFirstFilter = false
     var isSecondFilter = false
     var isThirdFilter = false
+    var isNextPage = false
     
     var type: ScreenType = .none
     var firstFilterIndex = 0
@@ -157,6 +158,52 @@ class EventCategoryListViewController: UIViewController {
             break
         }
     }
+    
+    func loadAPIforPaging() {
+        switch type {
+        case .event:
+            if interest?.interestName != "" {
+                if isToday {
+                    firstSortText = "Today"
+                    firstFilterIndex = EventCategoryDayFilter.today.rawValue
+                    filterType(eventType: .today)
+                    selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
+                } else {
+                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
+                }
+                
+            } else {
+                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
+            }
+        case .club:
+            if interest?.interestName != "" {
+                firstSortText = interest?.interestName ?? "All categories"
+                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)")
+               } else if interest != nil {
+                firstSortText = interest?.interestName ?? "All categories"
+                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+            } else {
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+             }
+        case .classes:
+            if classCategory != nil {
+                firstSortText = classCategory?.name ?? "All categories"
+                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClassListAPI()
+            } else {
+                getClassListAPI()
+            }
+        default:
+            break
+        }
+    }
+    
+    
 }
 
 // MARK: - Actions
