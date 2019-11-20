@@ -77,10 +77,10 @@ class SearchClubViewController: CustomViewController {
     func setupNavigation() {
         
         // Set left bar button and title
-        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
         
         if searchType == .searchList {
-            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+            let searchTextField = UITextField(frame: CGRect(x: -10, y: -3, width: screenWidth - 48, height: 44))
             searchTextField.font = UIFont.displayBold(sz: 24)
             searchTextField.textColor = UIColor.white
             searchTextField.returnKeyType = .go

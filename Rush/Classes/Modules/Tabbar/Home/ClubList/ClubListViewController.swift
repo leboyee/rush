@@ -100,7 +100,7 @@ class ClubListViewController: CustomViewController {
         } else {
             let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
             
-            let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 2, width: screenWidth - 48, height: 30))
+            let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 5, width: screenWidth - 48, height: 30))
             label.text = screenType == .club ? Text.searchClubs : Text.searchClasses
             label.font = UIFont.displayBold(sz: 24)
             label.textColor = UIColor.navBarTitleWhite32
