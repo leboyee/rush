@@ -30,6 +30,7 @@ class SearchClubViewController: CustomViewController {
     var pageNo = 1
     
     var dataList = [Any]()
+    var selectedCategory: Any?
     
     var classObject = SubClass()
     
@@ -55,7 +56,11 @@ class SearchClubViewController: CustomViewController {
         setupUI()
         
         if searchType == .searchList {
-            getClubCategoryListAPI(isShowSpinner: true)
+            if selectedCategory != nil {
+                
+            } else {
+                getClubCategoryListAPI(isShowSpinner: true)
+            }
         } else if searchType == .classes {
             let titleText = " " + classObject.name + " classes"
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: UIColor.navBarTitleWhite32)

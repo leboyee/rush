@@ -32,7 +32,18 @@ extension SearchClubViewController {
     }
     
     func fillMyClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
-        cell.setup(detail: "We have you to code better")
+        if let club = dataList[indexPath.row] as? Club {
+            let image = Image(json: club.clubPhoto ?? "")
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "")
+            cell.setup(invitee: club.invitees)
+            cell.setup(clubImageUrl: image.urlThumb())
+            if club.clubTotalJoined > 3 {
+                cell.setup(inviteeCount: club.clubTotalJoined - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
+        }
     }
 
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -47,6 +58,7 @@ extension SearchClubViewController {
                 if let data = dataList[indexPath.row] as? ClubCategory {
                     vc.searchText = data.name
                 } else if let data = dataList[indexPath.row] as? Interest {
+                    vc.selectedCategory = data
                     vc.searchText = data.interestName
                     if let clubs = data.clubArray {
                         vc.dataList = clubs
