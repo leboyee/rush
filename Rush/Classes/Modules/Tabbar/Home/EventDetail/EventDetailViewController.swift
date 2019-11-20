@@ -75,6 +75,11 @@ class EventDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if (view.frame.size.height + view.frame.origin.y) == screenHeight {
+            let adjustForTabbarInsets = UIEdgeInsets(top: 0, left: 0, bottom: self.tabBarController!.tabBar.frame.height, right: 0)
+            tableView.contentInset = adjustForTabbarInsets
+            tableView.scrollIndicatorInsets = adjustForTabbarInsets
+        }
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = false
     }

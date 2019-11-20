@@ -382,11 +382,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 extension EventCategoryListViewController {
     
     func getClubListAPI(sortBy: String, clubCategoryId: String?) {
-        
-        if pageNo == 1 {
-            clubList.removeAll()
-        }
-        
+                
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -402,6 +398,10 @@ extension EventCategoryListViewController {
         
         if clubList.count == 0 {
             Utils.showSpinner()
+        }
+        
+        if pageNo == 1 {
+            clubList.removeAll()
         }
         
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, errorMsg) in
@@ -427,11 +427,7 @@ extension EventCategoryListViewController {
     }
     
     func getEventList(sortBy: GetEventType, eventCategoryId: String?) {
-        
-        if pageNo == 1 {
-            eventList.removeAll()
-        }
-        
+                
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo,
@@ -455,6 +451,15 @@ extension EventCategoryListViewController {
             param[Keys.toTime] = endTime
         }
         param[Keys.universityId] = selUniversity.universtiyId
+        
+        if eventList.count == 0 {
+            Utils.showSpinner()
+        }
+        
+        if pageNo == 1 {
+            eventList.removeAll()
+        }
+        
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
@@ -478,6 +483,10 @@ extension EventCategoryListViewController {
     }
     
     func getClassListAPI() {
+        
+        if classList.count == 0 {
+            Utils.showSpinner()
+        }
         
         if pageNo == 1 {
             classList.removeAll()
