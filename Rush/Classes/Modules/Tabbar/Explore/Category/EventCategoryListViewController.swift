@@ -122,26 +122,26 @@ class EventCategoryListViewController: UIViewController {
                     filterType(eventType: .today)
                     selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
                 } else {
-                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
+                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: true)
                 }
                 
             } else {
-                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
+                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id, isShowSpinner: true)
             }
         case .club:
             if interest?.interestName != "" {
                 firstSortText = interest?.interestName ?? "All categories"
                 let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
                 firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)")
+                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: true)
                 getClubCategoryListAPI()
             } else if interest != nil {
                 firstSortText = interest?.interestName ?? "All categories"
                 let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
                 firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: true)
             } else {
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: true)
                 getClubCategoryListAPI()
             }
         case .classes:
@@ -149,9 +149,9 @@ class EventCategoryListViewController: UIViewController {
                 firstSortText = classCategory?.name ?? "All categories"
                 let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
                 firstFilterIndex = value
-                getClassListAPI()
+                getClassListAPI(isShowSpinner: true)
             } else {
-                getClassListAPI()
+                getClassListAPI(isShowSpinner: true)
                 getClassCategoryAPI()
             }
         default:
@@ -169,41 +169,39 @@ class EventCategoryListViewController: UIViewController {
                     filterType(eventType: .today)
                     selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
                 } else {
-                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
+                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: false)
                 }
                 
             } else {
-                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
+                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id, isShowSpinner: false)
             }
         case .club:
             if interest?.interestName != "" {
                 firstSortText = interest?.interestName ?? "All categories"
                 let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
                 firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)")
+                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: false)
                } else if interest != nil {
                 firstSortText = interest?.interestName ?? "All categories"
                 let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
                 firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
             } else {
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
              }
         case .classes:
             if classCategory != nil {
                 firstSortText = classCategory?.name ?? "All categories"
                 let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
                 firstFilterIndex = value
-                getClassListAPI()
+                getClassListAPI(isShowSpinner: false)
             } else {
-                getClassListAPI()
+                getClassListAPI(isShowSpinner: false)
             }
         default:
             break
         }
     }
-    
-    
 }
 
 // MARK: - Actions

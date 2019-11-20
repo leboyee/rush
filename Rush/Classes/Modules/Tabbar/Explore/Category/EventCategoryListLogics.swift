@@ -137,6 +137,7 @@ extension EventCategoryListViewController {
     
     func fillClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
         if type == .club {
+            guard clubList.count > indexPath.row else { return }
             let club = clubList[indexPath.row]
             cell.setup(title: club.clubName ?? "")
             cell.setup(detail: club.clubDesc ?? "")
@@ -148,6 +149,7 @@ extension EventCategoryListViewController {
                 cell.setup(inviteeCount: 0)
             }
         } else if type == .classes {
+            guard classList.count > indexPath.row else { return }
             let myclass = classList[indexPath.row]
             cell.setup(classesImageUrl: myclass.photo?.urlThumb())
             cell.setup(title: myclass.name)
@@ -190,6 +192,7 @@ extension EventCategoryListViewController {
     }
     
     func fillEventCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
+        guard eventList.count > indexPath.row else { return }
         let event = eventList[indexPath.row]
         cell.setup(title: event.title)
         cell.setup(date: event.start)
@@ -335,7 +338,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
             isSecondFilter = false
             isThirdFilter = false
             collectionView.reloadData()
-            getEventList(sortBy: .upcoming, eventCategoryId: nil)
+            getEventList(sortBy: .upcoming, eventCategoryId: nil, isShowSpinner: false)
         } else if self.type == .club {
             if isFirstFilter {
                 firstFilterIndex = indexPath.row
@@ -352,7 +355,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 thirdSortText = type
                 thirdFilterIndex = indexPath.row
             }
-            getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+            getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
             isFirstFilter = false
             isSecondFilter = false
             isThirdFilter = false
@@ -369,7 +372,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 thirdSortText = type
                 thirdFilterIndex = indexPath.row
             }
-            getClassListAPI()
+            getClassListAPI(isShowSpinner: false)
             isFirstFilter = false
             isSecondFilter = false
             isThirdFilter = false
@@ -381,7 +384,11 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 // Services
 extension EventCategoryListViewController {
     
-    func getClubListAPI(sortBy: String, clubCategoryId: String?) {
+    func getClubListAPI(sortBy: String, clubCategoryId: String?, isShowSpinner: Bool) {
+        
+        if isShowSpinner {
+            Utils.showSpinner()
+        }
                 
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
@@ -394,10 +401,6 @@ extension EventCategoryListViewController {
         
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
             param[Keys.intId] = interest?.interestId
-        }
-        
-        if clubList.count == 0 {
-            Utils.showSpinner()
         }
         
         if pageNo == 1 {
@@ -426,7 +429,11 @@ extension EventCategoryListViewController {
         }
     }
     
-    func getEventList(sortBy: GetEventType, eventCategoryId: String?) {
+    func getEventList(sortBy: GetEventType, eventCategoryId: String?, isShowSpinner: Bool) {
+        
+        if isShowSpinner {
+            Utils.showSpinner()
+        }
                 
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
@@ -451,10 +458,6 @@ extension EventCategoryListViewController {
             param[Keys.toTime] = endTime
         }
         param[Keys.universityId] = selUniversity.universtiyId
-        
-        if eventList.count == 0 {
-            Utils.showSpinner()
-        }
         
         if pageNo == 1 {
             eventList.removeAll()
@@ -482,9 +485,9 @@ extension EventCategoryListViewController {
         }
     }
     
-    func getClassListAPI() {
+    func getClassListAPI(isShowSpinner: Bool) {
         
-        if classList.count == 0 {
+        if isShowSpinner {
             Utils.showSpinner()
         }
         
@@ -501,6 +504,7 @@ extension EventCategoryListViewController {
                      Keys.pageNo: pageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
+            Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let classes = data {
                 if classes.count > 0 {
