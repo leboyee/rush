@@ -35,7 +35,7 @@ class AddInterestViewController: CustomViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
-        
+        interestButtonVisiable()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,6 +62,7 @@ class AddInterestViewController: CustomViewController {
         nextButton.isHidden = false
         noResultView.isHidden = true
         self.getInterestList(searchText: "")
+        
     }
     
     // Custom navigation

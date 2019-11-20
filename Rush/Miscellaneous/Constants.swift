@@ -230,8 +230,8 @@ struct Segues {
     static let eventInvitedPeople                 = "EventInvitedPeopleSegue"
     static let eventInterest                      = "EventInterestSegue"
     static let addUniversitySegue                 = "AddUniversitySegue"
-    static let addInterestViewSegue                 = "AddInterestViewSegue"
-    
+    static let addInterestViewSegue               = "AddInterestViewSegue"
+    static let photoModelViewSegue                = "PhotoModelViewSegue"
 }
 
 struct StoryBoard {

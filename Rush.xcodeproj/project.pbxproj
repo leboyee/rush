@@ -52,6 +52,7 @@
 		1A142EC8229EC1A0002C1AFE /* CustomPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A142EC4229EC1A0002C1AFE /* CustomPickerMediator.swift */; };
 		1A142ECB229EC895002C1AFE /* CountryPhoneCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A142ECA229EC895002C1AFE /* CountryPhoneCode.json */; };
 		1A142ECD229EE3B8002C1AFE /* RushCountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A142ECC229EE3B8002C1AFE /* RushCountryCode.json */; };
+		1A1E48CD238531F600A8F031 /* PhotoModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E48CC238531F600A8F031 /* PhotoModelViewController.swift */; };
 		1A262F57231D1BF70068A695 /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A262F56231D1BF70068A695 /* Interest.swift */; };
 		1A2809E122C5F43B00B4E764 /* ChooseClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2809DE22C5F43B00B4E764 /* ChooseClassesViewController.swift */; };
 		1A2809E222C5F43B00B4E764 /* ChooseClassesViewMediates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2809DF22C5F43B00B4E764 /* ChooseClassesViewMediates.swift */; };
@@ -650,6 +651,7 @@
 		1A142EC4229EC1A0002C1AFE /* CustomPickerMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerMediator.swift; sourceTree = "<group>"; };
 		1A142ECA229EC895002C1AFE /* CountryPhoneCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryPhoneCode.json; sourceTree = "<group>"; };
 		1A142ECC229EE3B8002C1AFE /* RushCountryCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RushCountryCode.json; sourceTree = "<group>"; };
+		1A1E48CC238531F600A8F031 /* PhotoModelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModelViewController.swift; sourceTree = "<group>"; };
 		1A262F56231D1BF70068A695 /* Interest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
 		1A2809DE22C5F43B00B4E764 /* ChooseClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseClassesViewController.swift; sourceTree = "<group>"; };
 		1A2809DF22C5F43B00B4E764 /* ChooseClassesViewMediates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseClassesViewMediates.swift; sourceTree = "<group>"; };
@@ -1329,6 +1331,7 @@
 		0918E771228436820098AF35 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1A1E48CB238531F600A8F031 /* PhotoPanModel */,
 				1ACA9EF52369A318009E3AE0 /* AddNewInterest */,
 				1A8906162354A77D00976610 /* UserInterest */,
 				1A8A5A8C23543B19007487C5 /* ProfileTileViewController */,
@@ -1504,6 +1507,14 @@
 				1A142ECA229EC895002C1AFE /* CountryPhoneCode.json */,
 			);
 			path = CountryCode;
+			sourceTree = "<group>";
+		};
+		1A1E48CB238531F600A8F031 /* PhotoPanModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A1E48CC238531F600A8F031 /* PhotoModelViewController.swift */,
+			);
+			path = PhotoPanModel;
 			sourceTree = "<group>";
 		};
 		1A2809DD22C5F43B00B4E764 /* ChooseClasses */ = {
@@ -4043,6 +4054,7 @@
 				793BE66022E88207005EF72D /* CGRect+Extensions.swift in Sources */,
 				1AAE9662233A568D00868449 /* CreateEventInterestViewController.swift in Sources */,
 				7938D06122D75D74002D1537 /* UniversityLogics.swift in Sources */,
+				1A1E48CD238531F600A8F031 /* PhotoModelViewController.swift in Sources */,
 				8A04B13C22FADFBD0055C65F /* CalendarEventListLogics.swift in Sources */,
 				797FFDB322B7BC480055A001 /* PhotoGalleryViewController.swift in Sources */,
 				1A3C6D11235B3ED100F8339B /* EventGoingFriendsMediates.swift in Sources */,

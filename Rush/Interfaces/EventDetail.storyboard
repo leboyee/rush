@@ -205,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6p-ez-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="-666"/>
+            <point key="canvasLocation" x="1493" y="-684"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="lW4-bI-MSi">
@@ -430,7 +430,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back-arrow" width="24" height="28"/>
+        <image name="back-arrow" width="24" height="24"/>
         <image name="bg-button-main" width="327" height="48"/>
         <image name="bg-button-main-brown" width="327" height="48"/>
         <image name="ic_joinedevent" width="64" height="64"/>
