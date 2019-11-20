@@ -22,7 +22,7 @@ class CreateEventInterestViewController: CustomViewController {
     var interestArray = [Interest]()
     var selectedArray = [Interest]()
     weak var delegate: EventInterestDelegate?
-
+    var isSearch = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

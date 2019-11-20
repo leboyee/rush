@@ -25,7 +25,7 @@ extension CreateEventInterestViewController: UITableViewDelegate, UITableViewDat
     
     func numberOfSections(in tableView: UITableView) -> Int {
         let interest = Authorization.shared.profile?.interest
-        return interest?.count ?? 0 > 0 ? interestArray.count > 0 ? 2 : 1 : 1
+        return isSearch == true ? 1 : interest?.count ?? 0 > 0 ? interestArray.count > 0 ? 2 : 1 : 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,7 +51,8 @@ extension CreateEventInterestViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.inviteHeader) as? InviteHeader else { return UIView() }
-        view.headerTextLabel.text = Authorization.shared.profile?.interest?.count ?? 0 > 0 ? section == 0 ? "My interests" : "All interests" : "All interests"
+        view.headerTextLabel.text = isSearch == true ? "Explore interests:" :  Authorization.shared.profile?.interest?.count ?? 0 > 0 ? section == 0 ? "My interests" : "All interests" : "All interests"
+        view.headerTextLabel.textColor = isSearch == true ? UIColor.brown24 : UIColor.bgBlack
         return view
     }
     
@@ -67,8 +68,9 @@ extension CreateEventInterestViewController: UITableViewDelegate, UITableViewDat
 
 extension CreateEventInterestViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
+        self.isSearch = searchText.count > 0 ? true : false
         getInterestList(search: textField.text ?? "")
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

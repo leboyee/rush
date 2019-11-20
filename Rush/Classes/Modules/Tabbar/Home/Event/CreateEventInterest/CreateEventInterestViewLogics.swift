@@ -19,7 +19,11 @@ extension CreateEventInterestViewController {
     }
     
     func fillTagCell(_ cell: ChooseTagCell, indexPath: IndexPath) {
-        if Authorization.shared.profile?.interest?.count ?? 0 > 0 && indexPath.section == 0 {
+        if isSearch == true {
+            let interestNameArray = interestArray.map({ $0.interestName })
+            cell.setupInterest(tagList: interestNameArray)
+            cell.tagListView.delegate = self
+        } else if Authorization.shared.profile?.interest?.count ?? 0 > 0 && indexPath.section == 0 {
             let interestProfileArray = Authorization.shared.profile?.interest ?? [Interest]()
             let tagarray = interestProfileArray.map({ $0.interestName })
             cell.setupInterest(tagList: tagarray)
@@ -85,18 +89,19 @@ extension CreateEventInterestViewController {
             if let interest = data {
                 unsafe.interestArray = interest
             let myInterestArray = Authorization.shared.profile?.interest
-            
-            if myInterestArray?.count ?? 0 > 0 {
-                if unsafe.interestArray.count > 0 {
-                    for interest in unsafe.interestArray {
-                        if myInterestArray?.contains(where: { $0.interestName == interest.interestName }) ?? false {
-                            guard let index = unsafe.interestArray.firstIndex(where: { $0.interestName == interest.interestName }) else { return }
-                            unsafe.interestArray.remove(at: index)
+                if unsafe.isSearch == false {
+                    if myInterestArray?.count ?? 0 > 0 {
+                        if unsafe.interestArray.count > 0 {
+                            for interest in unsafe.interestArray {
+                                if myInterestArray?.contains(where: { $0.interestName == interest.interestName }) ?? false {
+                                    guard let index = unsafe.interestArray.firstIndex(where: { $0.interestName == interest.interestName }) else { return }
+                                    unsafe.interestArray.remove(at: index)
+                                }
+                            }
                         }
                     }
                 }
-            }
-            unsafe.tableView.reloadData()
+                unsafe.tableView.reloadData()
             }
         }
     }

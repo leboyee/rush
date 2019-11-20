@@ -106,3 +106,13 @@ class UserProfileGalleryViewController: UIViewController {
     }
     
 }
+
+// MARK: - Navigation
+extension UserProfileGalleryViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.photoModelViewSegue {
+            guard let vc = segue.destination as? PhotoModelViewController else { return }
+            vc.delegate = self
+        }
+    }
+}
