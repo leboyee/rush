@@ -84,7 +84,7 @@ class ExploreViewController: CustomViewController {
                 getPeopleListAPI()
             }
         }
-        getClubListAPI(sortBy: "feed")
+        getClubListAPI(sortBy: "might-like")
         getEventList(sortBy: .upcoming)
         getClassListAPI()
     }
