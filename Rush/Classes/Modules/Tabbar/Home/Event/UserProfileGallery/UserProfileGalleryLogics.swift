@@ -39,12 +39,16 @@ extension UserProfileGalleryViewController {
     
     func scrollToItemIndex(_ flowLayout: UICollectionViewFlowLayout, _ index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
-        self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.right, animated: true)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.right, animated: true)
+        }
+        
     }
     
     // MARK: - Action Sheet
     func openShareSheet() {
-        
+        self.performSegue(withIdentifier: Segues.photoModelViewSegue, sender: self)
+        return
         let buttons = ["Share", "Save"]
         Utils.alert(message: nil, title: nil, buttons: buttons, cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
             guard let uwself = self else { return }
@@ -89,4 +93,23 @@ extension UserProfileGalleryViewController {
                present(ac, animated: true)
            }
        }
+}
+
+extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
+    func delete(type: String, object: Any?) {
+        
+    }
+    
+    func savePhoto(_ object: Any?) {
+        if let image = self.selectedImage {
+                          UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                      } else {
+                          let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
+                          ac.addAction(UIAlertAction(title: "OK", style: .default))
+                          self.present(ac, animated: true)
+                          return
+                      }
+    }
+    
+    
 }
