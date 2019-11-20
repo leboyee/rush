@@ -69,6 +69,10 @@ extension SearchClubViewController {
         } else if searchType == .classes {
             let classGroup = dataList[indexPath.row] as? ClassGroup
             self.performSegue(withIdentifier: Segues.classDetailSegue, sender: classGroup)
+        } else if selectedCategory != nil {
+            if let club = dataList[indexPath.row] as? Club {
+                performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            }
         }
     }
 }
@@ -103,10 +107,10 @@ extension SearchClubViewController {
             guard let unsafe = self else { return }
             if let category = data {
                 unsafe.dataList = category
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-            unsafe.tableView.reloadData()
         }
     }
     
@@ -129,4 +133,43 @@ extension SearchClubViewController {
         }
     }
     
+    func getClubListAPI() {
+        
+        if pageNo == 1 {
+            dataList.removeAll()
+        }
+        
+        var param = [Keys.search: "",
+                     Keys.sortBy: "feed",
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        if let interest = selectedCategory as? Interest {
+            param[Keys.intId] = interest.interestId
+        }
+        
+        if pageNo == 1 {
+            Utils.showSpinner()
+        }
+        
+        ServiceManager.shared.fetchClubList(sortBy: "feed", params: param) { [weak self] (value, _, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let clubs = value {
+                if clubs.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.dataList = clubs
+                    } else {
+                        unsafe.dataList.append(contentsOf: clubs)
+                    }
+                    unsafe.isNextPage = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.isNextPage = false
+                }
+            } else {
+                unsafe.isNextPage = false
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

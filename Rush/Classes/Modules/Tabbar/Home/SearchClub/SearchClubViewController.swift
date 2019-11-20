@@ -28,6 +28,7 @@ class SearchClubViewController: CustomViewController {
     var searchType: SearchClubType = .none
     var searchText = ""
     var pageNo = 1
+    var isNextPage = false
     
     var dataList = [Any]()
     var selectedCategory: Any?
@@ -56,15 +57,13 @@ class SearchClubViewController: CustomViewController {
         setupUI()
         
         if searchType == .searchList {
-            if selectedCategory != nil {
-                
-            } else {
-                getClubCategoryListAPI(isShowSpinner: true)
-            }
+            getClubCategoryListAPI(isShowSpinner: true)
         } else if searchType == .classes {
             let titleText = " " + classObject.name + " classes"
             navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: UIColor.navBarTitleWhite32)
             getClassGroupListAPI(isShowSpinner: true)
+        } else if selectedCategory != nil {
+            getClubListAPI()
         }
     }
     
@@ -80,7 +79,7 @@ class SearchClubViewController: CustomViewController {
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
         
         if searchType == .searchList {
-            let searchTextField = UITextField(frame: CGRect(x: -10, y: -3, width: screenWidth - 48, height: 44))
+            let searchTextField = UITextField(frame: CGRect(x: -10, y: -1, width: screenWidth - 48, height: 44))
             searchTextField.font = UIFont.displayBold(sz: 24)
             searchTextField.textColor = UIColor.white
             searchTextField.returnKeyType = .go
@@ -116,6 +115,10 @@ extension SearchClubViewController {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
             vc.subclassInfo = classObject
             vc.selectedGroup = sender as? ClassGroup
+        } else if segue.identifier == Segues.clubDetailSegue {
+            guard let vc = segue.destination as? ClubDetailViewController else { return }
+            vc.clubInfo = sender as? Club
+            vc.delegate = self
         }
     }
 }
