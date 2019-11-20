@@ -89,33 +89,42 @@ extension OtherUserProfileController {
                 
             } else if status == .friends {
                 cell.setup(firstButtonType: .friends)
+                /*
                 if userInfo?.isMessageAllow == 0 {
                     cell.setup(enableMessageButton: false, button: cell.secondButton)
                 }
-                
+                */
             } else if status == .requested {
                 cell.setup(firstButtonType: .requested)
+                /*
                 if userInfo?.isMessageAllow == 0 {
                     cell.setup(enableMessageButton: false, button: cell.secondButton)
                 }
+                */
             } else if status == .accept {
                 cell.setup(firstButtonType: .accept)
                 cell.setup(secondButtonType: .reject)
                 isShowMessageButton = true
+                
                 if userInfo?.isMessageAllow == 0 {
                     cell.setup(enableMessageButton: false, button: cell.messageButton)
                 }
+                
             } else if status == .addFriend {
                 cell.setup(firstButtonType: .addFriend)
+                /*
                 if userInfo?.isMessageAllow == 0 {
                     cell.setup(enableMessageButton: false, button: cell.secondButton)
                 }
+                */
             }
             
         } else {
+            /*
             if userInfo?.isMessageAllow == 0 {
                 cell.setup(enableMessageButton: false, button: cell.secondButton)
             }
+            */
             cell.setup(secondButtonType: .message)
             cell.setup(isOnlyShowMessage: true)
         }
@@ -163,13 +172,33 @@ extension OtherUserProfileController {
                     }
                 })
             } else {
-                unself.checkIsChatExistOrNot()
+                if unself.userInfo?.isMessageAllow == 0 {
+                    let snackbar = TTGSnackbar(message: "\(unself.userInfo?.name ?? "") has private privacy setting. You can't message.",
+                        duration: .middle,
+                        actionText: "",
+                        actionBlock: { (_) in
+                            
+                    })
+                    snackbar.show()
+                } else {
+                    unself.checkIsChatExistOrNot()
+                }
             }
         }
         
         cell.messageButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.checkIsChatExistOrNot()
+            if unself.userInfo?.isMessageAllow == 0 {
+                let snackbar = TTGSnackbar(message: "\(unself.userInfo?.name ?? "") has private privacy setting. You can't message.",
+                    duration: .middle,
+                    actionText: "",
+                    actionBlock: { (_) in
+                        
+                })
+                snackbar.show()
+            } else {
+                unself.checkIsChatExistOrNot()
+            }
         }
     }
     

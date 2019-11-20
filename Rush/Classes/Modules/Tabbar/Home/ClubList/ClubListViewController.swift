@@ -50,6 +50,11 @@ class ClubListViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        pageNoM = 1
+        pageNoO = 1
+        isNextPageM = false
+        isNextPageO = false
+        
         if screenType == .club {
             getMyClubListAPI(sortBy: "my")
             getClubCategoryListAPI()
@@ -79,7 +84,7 @@ class ClubListViewController: CustomViewController {
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: screenType == .club ? 0 :48, y: 0, width: screenWidth - 48, height: 44))
         
-        if screenType == .classes || screenType == .club {
+        if screenType == .classes {
             let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
             searchTextField.font = UIFont.displayBold(sz: 24)
             searchTextField.textColor = UIColor.white
@@ -95,7 +100,7 @@ class ClubListViewController: CustomViewController {
         } else {
             let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 48, height: 44))
             
-            let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 2, width: screenWidth - 48, height: 30))
+            let label = UILabel(frame: CGRect(x: screenType == .club ? -10 : 0, y: 5, width: screenWidth - 48, height: 30))
             label.text = screenType == .club ? Text.searchClubs : Text.searchClasses
             label.font = UIFont.displayBold(sz: 24)
             label.textColor = UIColor.navBarTitleWhite32

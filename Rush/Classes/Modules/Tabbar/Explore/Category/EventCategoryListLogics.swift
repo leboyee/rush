@@ -382,7 +382,7 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
 extension EventCategoryListViewController {
     
     func getClubListAPI(sortBy: String, clubCategoryId: String?) {
-        
+                
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -395,27 +395,39 @@ extension EventCategoryListViewController {
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
             param[Keys.intId] = interest?.interestId
         }
-        //        if clubCategory?.id != "" {
-        //            param[Keys.intId] = clubCategory?.id
-        //        }
+        
         if clubList.count == 0 {
             Utils.showSpinner()
+        }
+        
+        if pageNo == 1 {
+            clubList.removeAll()
         }
         
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let clubs = value {
-                unsafe.clubList = clubs
-                unsafe.tableView.reloadData()
+                if clubs.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.clubList = clubs
+                    } else {
+                        unsafe.clubList.append(contentsOf: clubs)
+                    }
+                    unsafe.isNextPage = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.isNextPage = false
+                }
             } else {
+                unsafe.isNextPage = false
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
     
     func getEventList(sortBy: GetEventType, eventCategoryId: String?) {
-        
+                
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo,
@@ -439,19 +451,47 @@ extension EventCategoryListViewController {
             param[Keys.toTime] = endTime
         }
         param[Keys.universityId] = selUniversity.universtiyId
+        
+        if eventList.count == 0 {
+            Utils.showSpinner()
+        }
+        
+        if pageNo == 1 {
+            eventList.removeAll()
+        }
+        
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let events = value {
-                unsafe.eventList = events
-                unsafe.tableView.reloadData()
+                if events.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.eventList = events
+                    } else {
+                        unsafe.eventList.append(contentsOf: events)
+                    }
+                    unsafe.isNextPage = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.isNextPage = false
+                }
             } else {
+                unsafe.isNextPage = false
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
     
     func getClassListAPI() {
+        
+        if classList.count == 0 {
+            Utils.showSpinner()
+        }
+        
+        if pageNo == 1 {
+            classList.removeAll()
+        }
+        
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
                      Keys.sortBy: "explore",
@@ -463,8 +503,17 @@ extension EventCategoryListViewController {
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
-                unsafe.classList = classes
-                unsafe.tableView.reloadData()
+                if classes.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.classList = classes
+                    } else {
+                        unsafe.classList.append(contentsOf: classes)
+                    }
+                    unsafe.isNextPage = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.isNextPage = false
+                }
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }

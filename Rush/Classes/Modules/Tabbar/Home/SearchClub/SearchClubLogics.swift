@@ -32,7 +32,18 @@ extension SearchClubViewController {
     }
     
     func fillMyClubCell(_ cell: FriendClubCell, _ indexPath: IndexPath) {
-        cell.setup(detail: "We have you to code better")
+        if let club = dataList[indexPath.row] as? Club {
+            let image = Image(json: club.clubPhoto ?? "")
+            cell.setup(title: club.clubName ?? "")
+            cell.setup(detail: club.clubDesc ?? "")
+            cell.setup(invitee: club.invitees)
+            cell.setup(clubImageUrl: image.urlThumb())
+            if club.clubTotalJoined > 3 {
+                cell.setup(inviteeCount: club.clubTotalJoined - 3)
+            } else {
+                cell.setup(inviteeCount: 0)
+            }
+        }
     }
 
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
@@ -47,6 +58,7 @@ extension SearchClubViewController {
                 if let data = dataList[indexPath.row] as? ClubCategory {
                     vc.searchText = data.name
                 } else if let data = dataList[indexPath.row] as? Interest {
+                    vc.selectedCategory = data
                     vc.searchText = data.interestName
                     if let clubs = data.clubArray {
                         vc.dataList = clubs
@@ -57,6 +69,10 @@ extension SearchClubViewController {
         } else if searchType == .classes {
             let classGroup = dataList[indexPath.row] as? ClassGroup
             self.performSegue(withIdentifier: Segues.classDetailSegue, sender: classGroup)
+        } else if selectedCategory != nil {
+            if let club = dataList[indexPath.row] as? Club {
+                performSegue(withIdentifier: Segues.clubDetailSegue, sender: club)
+            }
         }
     }
 }
@@ -91,10 +107,10 @@ extension SearchClubViewController {
             guard let unsafe = self else { return }
             if let category = data {
                 unsafe.dataList = category
+                unsafe.tableView.reloadData()
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
-            unsafe.tableView.reloadData()
         }
     }
     
@@ -117,4 +133,43 @@ extension SearchClubViewController {
         }
     }
     
+    func getClubListAPI() {
+        
+        if pageNo == 1 {
+            dataList.removeAll()
+        }
+        
+        var param = [Keys.search: "",
+                     Keys.sortBy: "feed",
+                     Keys.pageNo: pageNo] as [String: Any]
+        
+        if let interest = selectedCategory as? Interest {
+            param[Keys.intId] = interest.interestId
+        }
+        
+        if pageNo == 1 {
+            Utils.showSpinner()
+        }
+        
+        ServiceManager.shared.fetchClubList(sortBy: "feed", params: param) { [weak self] (value, _, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if let clubs = value {
+                if clubs.count > 0 {
+                    if unsafe.pageNo == 1 {
+                        unsafe.dataList = clubs
+                    } else {
+                        unsafe.dataList.append(contentsOf: clubs)
+                    }
+                    unsafe.isNextPage = true
+                    unsafe.tableView.reloadData()
+                } else {
+                    unsafe.isNextPage = false
+                }
+            } else {
+                unsafe.isNextPage = false
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
 }

@@ -1671,6 +1671,7 @@
                     <connections>
                         <outlet property="tableView" destination="dxR-jp-mgw" id="YWv-Xw-nhT"/>
                         <segue destination="5cK-WW-kO9" kind="show" identifier="ClassDetailSegue" id="rRs-cY-38f"/>
+                        <segue destination="tgq-BU-5qI" kind="show" identifier="ClubDetailSegue" id="ker-Z7-xhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8v-Vt-G3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2277,18 +2278,18 @@
         <image name="whiteMore" width="32" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="S3t-uX-4Y9"/>
-        <segue reference="L5B-Xz-z9C"/>
+        <segue reference="8a6-2F-zCO"/>
+        <segue reference="rRs-cY-38f"/>
         <segue reference="yk0-VO-M9j"/>
-        <segue reference="Wms-RB-fEB"/>
-        <segue reference="0IY-Pg-ID3"/>
-        <segue reference="aC8-Xe-Jrw"/>
-        <segue reference="bD5-sy-JMX"/>
-        <segue reference="z8H-lu-6pg"/>
+        <segue reference="ker-Z7-xhz"/>
+        <segue reference="LvJ-Dj-Yna"/>
+        <segue reference="eQK-QP-NNj"/>
+        <segue reference="S8E-ms-kaf"/>
+        <segue reference="Wbx-oG-UBR"/>
         <segue reference="Lcf-y5-6Em"/>
         <segue reference="E7I-YA-fBT"/>
-        <segue reference="JB1-Ex-Ue7"/>
-        <segue reference="WIx-LH-4TQ"/>
+        <segue reference="90w-At-CBu"/>
+        <segue reference="g4h-St-bby"/>
         <segue reference="gSU-VJ-XvQ"/>
         <segue reference="C9I-aA-3Rl"/>
         <segue reference="Oel-AB-j6R"/>

@@ -71,4 +71,24 @@ extension SearchClubViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return cellHeight(indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if selectedCategory != nil {
+            if dataList.count - 2 == indexPath.row && isNextPage {
+                pageNo += 1
+                getClubListAPI()
+            }
+        }
+    }
+}
+
+// MARK: - ClubDetailProtocol delegate
+extension SearchClubViewController: ClubDetailProtocol {
+    func deleteClubSuccess(_ club: Club?) {
+        let snackbar = TTGSnackbar(message: "\(club?.clubName ?? "") is deleted.",
+                                   duration: .middle,
+                                   actionText: "",
+                                   actionBlock: { (_) in })
+        snackbar.show()
+    }
 }
