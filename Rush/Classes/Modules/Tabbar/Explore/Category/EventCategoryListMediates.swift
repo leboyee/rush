@@ -93,8 +93,7 @@ extension EventCategoryListViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         searchText = textField.text ?? ""
         pageNo = 1
-        getClassListAPI()
-        getClassCategoryAPI()
+        loadAPI()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

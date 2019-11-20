@@ -54,54 +54,7 @@ class EventCategoryListViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setupUI()
-        switch type {
-        case .event:
-//            if (eventCategory) != nil {
-//                firstSortText = eventCategory?.name ?? "All categories"
-//            }
-            if interest?.interestName != "" {
-                if isToday {
-                    firstSortText = "Today"
-                    firstFilterIndex = EventCategoryDayFilter.today.rawValue
-                    filterType(eventType: .today)
-                    selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
-                } else {
-                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
-                }
-                
-            } else {
-                  getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
-            }
-        case .club:
-            if interest?.interestName != "" {
-                firstSortText = interest?.interestName ?? "All categories"
-                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)")
-                getClubCategoryListAPI()
-            } else if interest != nil {
-                firstSortText = interest?.interestName ?? "All categories"
-                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
-            } else {
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
-                getClubCategoryListAPI()
-            }
-        case .classes:
-            if classCategory != nil {
-                firstSortText = classCategory?.name ?? "All categories"
-                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClassListAPI()
-            } else {
-                getClassListAPI()
-                getClassCategoryAPI()
-            }
-        default:
-            break
-        }
-        
+        loadAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,28 +91,71 @@ class EventCategoryListViewController: UIViewController {
             thirdSortText = "All people"
         }
         
-        if type == .classes {
-            let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
-            
-            let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
-            searchTextField.font = UIFont.displayBold(sz: 24)
-            searchTextField.textColor = UIColor.white
-            searchTextField.returnKeyType = .go
-            searchTextField.autocorrectionType = .no
-            searchTextField.delegate = self
-            let font = UIFont.displayBold(sz: 24)
-            let color = UIColor.navBarTitleWhite32
-            searchTextField.attributedPlaceholder = NSAttributedString(string: Text.searchClasses, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
-            searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-            customView.addSubview(searchTextField)
-            navigationItem.titleView = customView
-        } else {
-            navigationItem.titleView = Utils.getNavigationBarTitle(title: titleText, textColor: eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white)
-        }
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
+        
+        let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+        searchTextField.font = UIFont.displayBold(sz: 24)
+        searchTextField.textColor = UIColor.white
+        searchTextField.returnKeyType = .go
+        searchTextField.autocorrectionType = .no
+        searchTextField.delegate = self
+        let font = UIFont.displayBold(sz: 24)
+        let color = eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white
+        searchTextField.attributedPlaceholder = NSAttributedString(string: titleText, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+        searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.addSubview(searchTextField)
+        navigationItem.titleView = customView
     }
     
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
+    }
+    
+    func loadAPI() {
+        switch type {
+        case .event:
+            if interest?.interestName != "" {
+                if isToday {
+                    firstSortText = "Today"
+                    firstFilterIndex = EventCategoryDayFilter.today.rawValue
+                    filterType(eventType: .today)
+                    selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
+                } else {
+                    getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)")
+                }
+                
+            } else {
+                getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id)
+            }
+        case .club:
+            if interest?.interestName != "" {
+                firstSortText = interest?.interestName ?? "All categories"
+                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)")
+                getClubCategoryListAPI()
+            } else if interest != nil {
+                firstSortText = interest?.interestName ?? "All categories"
+                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+            } else {
+                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0))
+                getClubCategoryListAPI()
+            }
+        case .classes:
+            if classCategory != nil {
+                firstSortText = classCategory?.name ?? "All categories"
+                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
+                firstFilterIndex = value
+                getClassListAPI()
+            } else {
+                getClassListAPI()
+                getClassCategoryAPI()
+            }
+        default:
+            break
+        }
     }
 }
 
