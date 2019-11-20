@@ -140,8 +140,13 @@ extension ClubListViewController: UITextFieldDelegate {
         pageNoO = 1
         isNextPageO = false
         isNextPageM = false
-        getMyJoinedClasses(search: searchText)
-        getClassCategoryAPI()
+        if screenType == .club {
+            getMyClubListAPI(sortBy: "my")
+            getClubCategoryListAPI()
+        } else {
+            getMyJoinedClasses(search: searchText)
+            getClassCategoryAPI()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

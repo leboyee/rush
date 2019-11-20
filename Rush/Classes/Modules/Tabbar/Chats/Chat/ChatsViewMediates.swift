@@ -81,7 +81,7 @@ extension ChatsViewController: MGSwipeTableCellDelegate {
                                                            actionText: "",
                                                            actionBlock: { (_) in })
                                 snackbar.show()
-                                unowned.getListOfGroups()
+                                unowned.getListOfGroups(isFromPush: false, url: "")
                             } else {
                                 Utils.alert(message: Message.tryAgainErrorMessage)
                             }

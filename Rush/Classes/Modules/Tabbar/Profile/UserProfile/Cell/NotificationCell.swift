@@ -17,6 +17,7 @@ class NotificationCell: UITableViewCell {
     let startSeparator = "⌠"
     let endSeparator = "⌡"
     var ranges = [NSRange]()
+    let borderWidth: CGFloat = 3.0
     
     var labelTapEvent:((_ text: String, _ range: NSRange) -> Void)?
     var userImageTapEvent:(() -> Void)?
@@ -25,7 +26,7 @@ class NotificationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        eventImageView.layer.borderWidth = 3.0
+        eventImageView.layer.borderWidth = borderWidth
         eventImageView.layer.borderColor = UIColor.gray96.cgColor
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(gesture:)))
@@ -74,7 +75,8 @@ extension NotificationCell {
         let detailText = text.replacingOccurrences(of: key, with: value)
         label.attributedText = getFormattedString(string: detailText)
         userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderMain))
-        eventImageView.sd_setImage(with: Authorization.shared.profile?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px.pdf"))
+        eventImageView.image = nil
+        eventImageView.layer.borderWidth = 0.0
     }
     
     func set(user: User?, object: Any?, text: String) {
@@ -108,6 +110,7 @@ extension NotificationCell {
         label.attributedText = getFormattedString(string: detailText)
         userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px.pdf"))
         eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderSmall))
+        eventImageView.layer.borderWidth = borderWidth
     }
    
 }

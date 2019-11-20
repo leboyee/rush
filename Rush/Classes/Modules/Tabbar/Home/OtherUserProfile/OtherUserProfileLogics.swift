@@ -220,7 +220,15 @@ extension OtherUserProfileController {
                 unsafe.performSegue(withIdentifier: Segues.userProfileGallerySegue, sender: Int(index))
             } else if indexPath.section == 3 {
                 let friend = unsafe.friendList[index]
-                unsafe.performSegue(withIdentifier: Segues.otherUserProfile, sender: friend.user)
+                if friend.user?.userId == Authorization.shared.profile?.userId {
+                    if unsafe.tabBarController?.selectedIndex == 3 {
+                        unsafe.navigationController?.popToRootViewController(animated: true)
+                    } else {
+                        unsafe.tabBarController?.selectedIndex = 3
+                    }
+                } else {
+                    unsafe.performSegue(withIdentifier: Segues.otherUserProfile, sender: friend.user)
+                }
             } else if indexPath.section == 4 {
                 let event = unsafe.eventList[index]
                 unsafe.performSegue(withIdentifier: Segues.otherProfileEventDetail, sender: event)

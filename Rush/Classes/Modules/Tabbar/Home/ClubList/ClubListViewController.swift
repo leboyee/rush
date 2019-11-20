@@ -52,6 +52,7 @@ class ClubListViewController: CustomViewController {
         
         if screenType == .club {
             getMyClubListAPI(sortBy: "my")
+            getClubCategoryListAPI()
         } else {
             getMyJoinedClasses(search: "")
             getClassCategoryAPI()
@@ -78,7 +79,7 @@ class ClubListViewController: CustomViewController {
         // Set left bar button and title
         let customView = UIView(frame: CGRect(x: screenType == .club ? 0 :48, y: 0, width: screenWidth - 48, height: 44))
         
-        if screenType == .classes {
+        if screenType == .classes || screenType == .club {
             let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
             searchTextField.font = UIFont.displayBold(sz: 24)
             searchTextField.textColor = UIColor.white
@@ -87,7 +88,7 @@ class ClubListViewController: CustomViewController {
             searchTextField.delegate = self
             let font = UIFont.displayBold(sz: 24)
             let color = UIColor.navBarTitleWhite32
-            searchTextField.attributedPlaceholder = NSAttributedString(string: Text.searchClasses, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
+            searchTextField.attributedPlaceholder = NSAttributedString(string: screenType == .club ? Text.searchClubs : Text.searchClasses, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
             searchTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
             customView.addSubview(searchTextField)
             navigationItem.titleView = customView
