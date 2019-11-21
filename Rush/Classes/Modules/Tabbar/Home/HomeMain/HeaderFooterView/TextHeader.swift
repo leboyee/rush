@@ -48,4 +48,9 @@ extension TextHeader {
     func setup(textColor: UIColor) {
         titleLabel.textColor = textColor
     }
+    
+    func setup(isEnabled: Bool) {
+        detailButton.isEnabled = isEnabled
+        titleLabel.alpha = isEnabled ? 1 : 0.5
+    }
 }
