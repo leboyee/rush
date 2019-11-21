@@ -95,6 +95,7 @@ extension EventCategoryListViewController {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             eventCategoryFilter.dataArray = indexPath.item == 0 ? Utils.upcomingFiler() : indexPath.item == 1 ? Utils.anyTimeFilter() : Utils.friendsFilter()
             eventCategoryFilter.delegate = self
+            eventCategoryFilter.isFromExplore = true
             eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
             let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
             presentPanModal(rowViewController)
@@ -103,6 +104,7 @@ extension EventCategoryListViewController {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             //Show all categories for the screen.
             eventCategoryFilter.delegate = self
+            eventCategoryFilter.isFromExplore = true
             if clubCategoryList.count > 0 {
                 let cat = clubCategoryList.compactMap({ $0.interestName })
                 eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
@@ -124,6 +126,7 @@ extension EventCategoryListViewController {
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
             //Show all categories for the screen.
             eventCategoryFilter.delegate = self
+            eventCategoryFilter.isFromExplore = true
             let cat = classCategoryList.compactMap({ $0.name })
             eventCategoryFilter.dataArray = indexPath.item == 0 ? cat : indexPath.item == 1 ? Utils.popularFilter() : Utils.peopleFilter()
             eventCategoryFilter.selectedIndex = indexPath.item == 0 ? firstFilterIndex : indexPath.item == 1 ? secondFilterIndex : thirdFilterIndex
@@ -389,10 +392,12 @@ extension EventCategoryListViewController {
     
     func getClubListAPI(sortBy: String, clubCategoryId: String?, isShowSpinner: Bool) {
         
+        hasCalledAPI = 1
+        
         if isShowSpinner {
             Utils.showSpinner()
         }
-                
+        
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -416,28 +421,35 @@ extension EventCategoryListViewController {
             if let clubs = value {
                 if clubs.count > 0 {
                     if unsafe.pageNo == 1 {
+                        unsafe.clubList.removeAll()
                         unsafe.clubList = clubs
                     } else {
                         unsafe.clubList.append(contentsOf: clubs)
                     }
                     unsafe.isNextPage = true
-                    unsafe.tableView.reloadData()
                 } else {
+                    if unsafe.pageNo == 1 {
+                        unsafe.clubList.removeAll()
+                    }
                     unsafe.isNextPage = false
                 }
+                unsafe.tableView.reloadData()
             } else {
                 unsafe.isNextPage = false
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.hasCalledAPI = 0
         }
     }
     
     func getEventList(sortBy: GetEventType, eventCategoryId: String?, isShowSpinner: Bool) {
         
+        hasCalledAPI = 1
+        
         if isShowSpinner {
             Utils.showSpinner()
         }
-                
+        
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo,
@@ -472,23 +484,30 @@ extension EventCategoryListViewController {
             if let events = value {
                 if events.count > 0 {
                     if unsafe.pageNo == 1 {
+                        unsafe.eventList.removeAll()
                         unsafe.eventList = events
                     } else {
                         unsafe.eventList.append(contentsOf: events)
                     }
                     unsafe.isNextPage = true
-                    unsafe.tableView.reloadData()
                 } else {
+                    if unsafe.pageNo == 1 {
+                        unsafe.eventList.removeAll()
+                    }
                     unsafe.isNextPage = false
                 }
+                unsafe.tableView.reloadData()
             } else {
                 unsafe.isNextPage = false
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.hasCalledAPI = 0
         }
     }
     
     func getClassListAPI(isShowSpinner: Bool) {
+        
+        hasCalledAPI = 1
         
         if isShowSpinner {
             Utils.showSpinner()
@@ -512,18 +531,24 @@ extension EventCategoryListViewController {
             if let classes = data {
                 if classes.count > 0 {
                     if unsafe.pageNo == 1 {
+                        unsafe.classList.removeAll()
                         unsafe.classList = classes
                     } else {
                         unsafe.classList.append(contentsOf: classes)
                     }
                     unsafe.isNextPage = true
-                    unsafe.tableView.reloadData()
                 } else {
+                    if unsafe.pageNo == 1 {
+                        unsafe.classList.removeAll()
+                    }
                     unsafe.isNextPage = false
                 }
+                unsafe.tableView.reloadData()
             } else {
+                unsafe.isNextPage = false
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.hasCalledAPI = 0
         }
     }
     

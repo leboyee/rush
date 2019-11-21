@@ -9,7 +9,16 @@
 import UIKit
 struct EventGroup {
     var dateString: String
-    var events: [CalendarItem]
+    var events: [CalendarItem] {
+        didSet {
+            events = events.sorted(by: {
+                if let d1 = $0.start, let d2 = $1.start {
+                   return d1.compare(d2) == .orderedAscending
+                }
+                return false
+            })
+        }
+    }
 }
 
 class CalendarViewController: CustomViewController {

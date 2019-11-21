@@ -32,7 +32,7 @@ extension EventCategoryListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if type == .none {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
-             return cell
+            return cell
         } else if type == .event {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
             fillEventCell(cell, indexPath)
@@ -109,7 +109,15 @@ extension EventCategoryListViewController: UITextFieldDelegate {
         searchText = textField.text ?? ""
         isNextPage = false
         pageNo = 1
-        loadAPIforPaging()
+        eventList.removeAll()
+        clubList.removeAll()
+        classList.removeAll()
+        if hasCalledAPI == 0 {
+            hasCalledAPI = 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.loadAPIforPaging()
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

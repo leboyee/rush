@@ -70,15 +70,15 @@ extension ClubListViewController {
             cell.setup(.clubs, nil, clubInterestList[indexPath.section - 1].clubArray)
         } else {
             /*if myClassesList.count > 0 {
-                if indexPath.section == 0 {
-                    cell.setup(.classes, nil, myClassesList)
-                } else { */
+             if indexPath.section == 0 {
+             cell.setup(.classes, nil, myClassesList)
+             } else { */
             cell.setup(.classes, nil, classesList[indexPath.section - 1].classList)
-              /*  }
-            } else {
-                    cell.setup(.classes, nil, classesList)
-            }*/
-       }
+            /*  }
+             } else {
+             cell.setup(.classes, nil, classesList)
+             }*/
+        }
         
         cell.cellSelected = {
             [weak self] (type, section, index) in
@@ -156,23 +156,25 @@ extension ClubListViewController {
                 header.setup(title: Text.myClubs)
                 header.setup(isDetailArrowHide: true)
             } else {
+                guard clubInterestList.count > section - 1 else { return }
                 let value = clubInterestList[section - 1].interestName
                 header.setup(title: value)
                 header.setup(isDetailArrowHide: true)
             }
         } else if screenType == .classes {
-           // if myClassesList.count > 0 {
-                if section == 0 {
-                    header.setup(title: Text.myClasses)
-                    header.setup(isDetailArrowHide: true)
-                } else {
-                    header.setup(title: classesList[section - 1].name)
-                }
-          /*  } else {
-                if classesList.count > 0 {
-                header.setup(title: classesList[section].name)
-                }
-            }*/
+            // if myClassesList.count > 0 {
+            if section == 0 {
+                header.setup(title: Text.myClasses)
+                header.setup(isDetailArrowHide: true)
+            } else {
+                guard classesList.count > section - 1 else { return }
+                header.setup(title: classesList[section - 1].name)
+            }
+            /*  } else {
+             if classesList.count > 0 {
+             header.setup(title: classesList[section].name)
+             }
+             }*/
         }
         
         header.detailButtonClickEvent = { [weak self] () in
@@ -233,6 +235,10 @@ extension ClubListViewController {
 extension ClubListViewController {
     func getMyClubListAPI(sortBy: String) {
         
+        if pageNoM == 1 {
+            myClubsList.removeAll()
+        }
+        
         let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -243,7 +249,7 @@ extension ClubListViewController {
             if uwself.pageNoM == 1 {
                 uwself.myClubsList.removeAll()
             }
-                        
+            
             if let clubs = value, clubs.count > 0 {
                 if uwself.pageNoM == 1 {
                     uwself.myClubsList = clubs
@@ -263,32 +269,41 @@ extension ClubListViewController {
     }
     
     func getClubCategoryListAPI() {
-          
-          let params = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
-          ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
-              Utils.hideSpinner()
-              guard let uwself = self else { return }
-              if uwself.pageNoO == 1 {
-                  uwself.clubInterestList.removeAll()
-              }
-                          
-              if let clubs = data, clubs.count > 0 {
-                  if uwself.pageNoO == 1 {
-                      uwself.clubInterestList = clubs
-                  } else {
-                      uwself.clubInterestList.append(contentsOf: clubs)
-                  }
-                  uwself.isNextPageO = true
-              } else {
-                  if uwself.pageNoO == 1 || (uwself.pageNoO > 1 && data?.count == 0) {
-                      uwself.isNextPageO = false
-                  }
-              }
-              uwself.tableView.reloadData()
-          }
-      }
+        
+        if pageNoO == 1 {
+            clubInterestList.removeAll()
+        }
+        
+        let params = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
+        ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
+            Utils.hideSpinner()
+            guard let uwself = self else { return }
+            if uwself.pageNoO == 1 {
+                uwself.clubInterestList.removeAll()
+            }
+            
+            if let clubs = data, clubs.count > 0 {
+                if uwself.pageNoO == 1 {
+                    uwself.clubInterestList = clubs
+                } else {
+                    uwself.clubInterestList.append(contentsOf: clubs)
+                }
+                uwself.isNextPageO = true
+            } else {
+                if uwself.pageNoO == 1 || (uwself.pageNoO > 1 && data?.count == 0) {
+                    uwself.isNextPageO = false
+                }
+            }
+            uwself.tableView.reloadData()
+        }
+    }
     
     func getMyJoinedClasses(search: String) {
+        
+        if pageNoM == 1 {
+            myClassesList.removeAll()
+        }
+        
         let param = [Keys.pageNo: pageNoM, Keys.search: search] as [String: Any]
         
         ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, _) in
@@ -310,11 +325,15 @@ extension ClubListViewController {
             }
             unsafe.tableView.reloadData()
         }
-        
     }
     
     func getClassCategoryAPI() {
+        
         let param = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
+        
+        if pageNoO == 1 {
+            classesList.removeAll()
+        }
         
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             guard let uwself = self else { return }

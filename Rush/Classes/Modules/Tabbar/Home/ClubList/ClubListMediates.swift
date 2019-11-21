@@ -16,6 +16,8 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
         tableView.register(UINib(nibName: Cell.eventType, bundle: nil), forCellReuseIdentifier: Cell.eventType)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.friendClub, bundle: nil), forCellReuseIdentifier: Cell.friendClub)
@@ -27,7 +29,7 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
         if screenType == .club {
             return clubInterestList.count + 1
         } else {
-             return classesList.count + 1
+            return classesList.count + 1
         }
     }
     
@@ -38,15 +40,15 @@ extension ClubListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if screenType == .club && indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
-                fillMyClubCell(cell, indexPath)
-                return cell
+            fillMyClubCell(cell, indexPath)
+            return cell
         } else if screenType == .classes && indexPath.section == 0 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
-                fillMyClubCell(cell, indexPath)
-                return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.friendClub, for: indexPath) as? FriendClubCell else { return UITableViewCell() }
+            fillMyClubCell(cell, indexPath)
+            return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
-                fillEventTypeCell(cell, indexPath)
+            fillEventTypeCell(cell, indexPath)
             return cell
         }
     }
@@ -125,9 +127,9 @@ extension ClubListViewController: NotificationAlertDelegate {
 extension ClubListViewController: ClubDetailProtocol {
     func deleteClubSuccess(_ club: Club?) {
         let snackbar = TTGSnackbar(message: "\(club?.clubName ?? "") is deleted.",
-                                   duration: .middle,
-                                   actionText: "",
-                                   actionBlock: { (_) in })
+            duration: .middle,
+            actionText: "",
+            actionBlock: { (_) in })
         snackbar.show()
     }
 }
@@ -140,13 +142,9 @@ extension ClubListViewController: UITextFieldDelegate {
         pageNoO = 1
         isNextPageO = false
         isNextPageM = false
-        if screenType == .club {
-            getMyClubListAPI(sortBy: "my")
-            getClubCategoryListAPI()
-        } else {
-            getMyJoinedClasses(search: searchText)
-            getClassCategoryAPI()
-        }
+        
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(callAPI), object: nil)
+        self.perform(#selector(callAPI), with: nil, afterDelay: 0.5)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -156,5 +154,15 @@ extension ClubListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc func callAPI() {
+        if screenType == .club {
+            getMyClubListAPI(sortBy: "my")
+            getClubCategoryListAPI()
+        } else {
+            getMyJoinedClasses(search: searchText)
+            getClassCategoryAPI()
+        }
     }
 }

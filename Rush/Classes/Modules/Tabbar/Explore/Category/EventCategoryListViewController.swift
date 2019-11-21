@@ -33,7 +33,7 @@ class EventCategoryListViewController: UIViewController {
     var classCategoryList = [Class]()
     var clubCategoryList = [Interest]()
     var eventCategory: EventCategory?
-//    var clubCategory: Interest?
+    //    var clubCategory: Interest?
     var classCategory: Class?
     var interest: Interest?
     var interestList = [Interest]()
@@ -47,8 +47,9 @@ class EventCategoryListViewController: UIViewController {
     var startTime = ""
     var endTime = ""
     var isToday = false
-          
+    
     var selUniversity = University()
+    var hasCalledAPI = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +65,7 @@ class EventCategoryListViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.bgBlack
         navigationController?.navigationBar.isTranslucent = false
     }
-        
+    
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
         // Setup tableview
@@ -78,9 +79,9 @@ class EventCategoryListViewController: UIViewController {
         var titleText = ""
         if interest == nil {//open non category list screen
             /*var header = "Search classes"
-            if (eventCategory) != nil {
-                            header = eventCategory?.name ?? "Search events"
-                        } */
+             if (eventCategory) != nil {
+             header = eventCategory?.name ?? "Search events"
+             } */
             titleText = type == .event ? "Search events" : type == .club ? "Search clubs" : type == .classes ? "Search classes" : ""
         } else {
             titleText = interest?.interestName ?? ""
@@ -122,35 +123,39 @@ class EventCategoryListViewController: UIViewController {
                     filterType(eventType: .today)
                     selectedIndex("Today", IndexPath.init(row: EventCategoryDayFilter.today.rawValue, section: 0))
                 } else {
+                    firstFilterIndex = -1
                     getEventList(sortBy: .upcoming, eventCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: true)
                 }
                 
             } else {
+                firstFilterIndex = -1
                 getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id, isShowSpinner: true)
             }
         case .club:
             if interest?.interestName != "" {
                 firstSortText = interest?.interestName ?? "All categories"
-                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? -1
                 firstFilterIndex = value
                 getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: true)
                 getClubCategoryListAPI()
             } else if interest != nil {
                 firstSortText = interest?.interestName ?? "All categories"
-                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? -1
                 firstFilterIndex = value
                 getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: true)
             } else {
+                firstFilterIndex = -1
                 getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: true)
                 getClubCategoryListAPI()
             }
         case .classes:
             if classCategory != nil {
                 firstSortText = classCategory?.name ?? "All categories"
-                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
+                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? -1
                 firstFilterIndex = value
                 getClassListAPI(isShowSpinner: true)
             } else {
+                firstFilterIndex = -1
                 getClassListAPI(isShowSpinner: true)
                 getClassCategoryAPI()
             }
@@ -176,28 +181,9 @@ class EventCategoryListViewController: UIViewController {
                 getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id, isShowSpinner: false)
             }
         case .club:
-            if interest?.interestName != "" {
-                firstSortText = interest?.interestName ?? "All categories"
-                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: false)
-               } else if interest != nil {
-                firstSortText = interest?.interestName ?? "All categories"
-                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
-            } else {
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
-             }
+            getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
         case .classes:
-            if classCategory != nil {
-                firstSortText = classCategory?.name ?? "All categories"
-                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClassListAPI(isShowSpinner: false)
-            } else {
-                getClassListAPI(isShowSpinner: false)
-            }
+            getClassListAPI(isShowSpinner: false)
         default:
             break
         }
@@ -217,8 +203,8 @@ extension EventCategoryListViewController {
         if segue.identifier == Segues.eventDetailSegue {
             guard let vc = segue.destination as? EventDetailViewController else { return }
             if let event = sender as? Event {
-               vc.eventId = String(event.id)
-               vc.event = event
+                vc.eventId = String(event.id)
+                vc.event = event
             }
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
