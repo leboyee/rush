@@ -397,7 +397,7 @@ extension EventCategoryListViewController {
         if isShowSpinner {
             Utils.showSpinner()
         }
-                
+        
         let order = secondFilterIndex == 0 ? "popular" : "newest"
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -449,7 +449,7 @@ extension EventCategoryListViewController {
         if isShowSpinner {
             Utils.showSpinner()
         }
-                
+        
         var param = [Keys.search: searchText,
                      Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo,
