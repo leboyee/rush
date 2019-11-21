@@ -49,6 +49,7 @@ class EventCategoryListViewController: UIViewController {
     var isToday = false
           
     var selUniversity = University()
+    var hasCalledAPI = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +132,7 @@ class EventCategoryListViewController: UIViewController {
         case .club:
             if interest?.interestName != "" {
                 firstSortText = interest?.interestName ?? "All categories"
-                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
+                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? -1
                 firstFilterIndex = value
                 getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: true)
                 getClubCategoryListAPI()
@@ -147,7 +148,7 @@ class EventCategoryListViewController: UIViewController {
         case .classes:
             if classCategory != nil {
                 firstSortText = classCategory?.name ?? "All categories"
-                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
+                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? -1
                 firstFilterIndex = value
                 getClassListAPI(isShowSpinner: true)
             } else {
@@ -176,28 +177,9 @@ class EventCategoryListViewController: UIViewController {
                 getEventList(sortBy: .upcoming, eventCategoryId: eventCategory?.id, isShowSpinner: false)
             }
         case .club:
-            if interest?.interestName != "" {
-                firstSortText = interest?.interestName ?? "All categories"
-                let value = interestList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: "\(interest?.interestId ?? 0)", isShowSpinner: false)
-               } else if interest != nil {
-                firstSortText = interest?.interestName ?? "All categories"
-                let value = clubCategoryList.firstIndex(where: { $0.interestName == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
-            } else {
-                getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
-             }
+            getClubListAPI(sortBy: "feed", clubCategoryId: String(interest?.interestId ?? 0), isShowSpinner: false)
         case .classes:
-            if classCategory != nil {
-                firstSortText = classCategory?.name ?? "All categories"
-                let value = classCategoryList.firstIndex(where: { $0.name == firstSortText }) ?? 0
-                firstFilterIndex = value
-                getClassListAPI(isShowSpinner: false)
-            } else {
-                getClassListAPI(isShowSpinner: false)
-            }
+            getClassListAPI(isShowSpinner: false)
         default:
             break
         }

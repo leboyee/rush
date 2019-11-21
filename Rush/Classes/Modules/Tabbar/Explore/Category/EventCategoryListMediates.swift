@@ -109,7 +109,15 @@ extension EventCategoryListViewController: UITextFieldDelegate {
         searchText = textField.text ?? ""
         isNextPage = false
         pageNo = 1
-        loadAPIforPaging()
+        eventList.removeAll()
+        clubList.removeAll()
+        classList.removeAll()
+        if hasCalledAPI == 0 {
+            hasCalledAPI = 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.loadAPIforPaging()
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

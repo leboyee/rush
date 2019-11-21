@@ -26,6 +26,7 @@ class EventCateogryFilterViewController: UIViewController {
     var headerTitle: String = "Sort by:"
     var isEventTypeModel = false
     var isEventType: EventType = .publik
+    var isFromExplore = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +40,17 @@ class EventCateogryFilterViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if isEventTypeModel == true {
-            delegate?.selectedIndex("\(selectedIndex)", IndexPath(row: selectedIndex, section: 0))
-            dismiss(animated: true, completion: nil)
-        } else {
-            if dataArray.count > selectedIndex {
-                let name = dataArray[selectedIndex]
-                           delegate?.selectedIndex(name, IndexPath(row: selectedIndex, section: 0))
-                           dismiss(animated: true, completion: nil)
+        if isFromExplore == false {
+            if isEventTypeModel == true {
+                delegate?.selectedIndex("\(selectedIndex)", IndexPath(row: selectedIndex, section: 0))
+                dismiss(animated: true, completion: nil)
+            } else {
+                if dataArray.count > selectedIndex {
+                    let name = dataArray[selectedIndex]
+                    delegate?.selectedIndex(name, IndexPath(row: selectedIndex, section: 0))
+                    dismiss(animated: true, completion: nil)
+                }
             }
-           
         }
     }
     
