@@ -275,7 +275,7 @@ extension FriendsListViewController {
                      Keys.sortBy: GetEventType.my.rawValue,
                      Keys.pageNo: secondTabPageNo] as [String: Any]
         
-        ServiceManager.shared.fetchEventList(sortBy: GetEventType.managedFirst.rawValue, params: param) { [weak self] (value, total, _) in
+        ServiceManager.shared.fetchEventList(sortBy: GetEventType.my.rawValue, params: param) { [weak self] (value, total, _) in
             Utils.hideSpinner()
             
             guard let unsafe = self else { return }
