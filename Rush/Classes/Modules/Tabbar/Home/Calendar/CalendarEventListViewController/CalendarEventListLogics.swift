@@ -76,6 +76,10 @@ extension CalendarEventListViewController {
 // MARK: - Other function
 extension CalendarEventListViewController {
     private func getEventTimes(event: CalendarItem, dateString: String) -> (Date?, Date?) {
+        return (event.start, event.end)
+        
+        /*
+        /// Move all that logic when setup class and event in groups.
         var startTime: Date?
         var endTime: Date?
         if event.type.lowercased() == "event" {
@@ -90,5 +94,6 @@ extension CalendarEventListViewController {
             }
         }
         return (startTime, endTime)
+        */
     }
 }

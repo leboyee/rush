@@ -56,10 +56,10 @@ extension CalendarEventListViewController {
             tableView.isHidden = true
             return
         }
-        
         emptyTodayView.isHidden = true
         emptyView.isHidden = true
         tableView.isHidden = false
+        
         self.groups = groups
         tableView.reloadData()
     }
