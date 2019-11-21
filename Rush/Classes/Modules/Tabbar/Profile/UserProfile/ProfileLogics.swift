@@ -233,15 +233,9 @@ extension ProfileViewController {
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         header.setup(isDetailArrowHide: false)
-        header.setup(isEnabled: true)
-
         switch section {
         case 0:
             header.setup(title: Text.images)
-            /// disbale due to task  https://www.wrike.com/open.htm?id=425691965
-            if profileDetail.images?.isEmpty ?? true {
-                header.setup(isEnabled: false)
-            }
         case 1:
             header.setup(title: Text.friends)
         case 2:
@@ -254,8 +248,7 @@ extension ProfileViewController {
         }
         
         header.detailButtonClickEvent = { [weak self] () in
-            guard let unsafe = self else { return }
-            if section == 0, let images = unsafe.profileDetail.images, images.count > 0 {
+            if section == 0 {
                 self?.showAllImages(with: 0)
             } else if section == 1 {
                 self?.showAllFriends()
