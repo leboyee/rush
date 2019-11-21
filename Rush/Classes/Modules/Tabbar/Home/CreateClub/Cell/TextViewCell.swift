@@ -170,8 +170,15 @@ extension TextViewCell: UITextViewDelegate {
         }
         
         let currentString: NSString = textView.text! as NSString
-        let newString: NSString =
+        var newString: NSString =
             currentString.replacingCharacters(in: range, with: text) as NSString
+        if text.count >= maxLength {
+                  newString = String(text.prefix(maxLength)) as NSString
+                  textView.text = newString as String
+                  updateTableView?(textView)
+                //  reloadTableView?(textView)
+                  return false
+              }
         return newString.length <= maxLength
     }
     

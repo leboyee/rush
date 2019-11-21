@@ -164,6 +164,7 @@ extension CreateEventViewController {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
         cell.setup(maxLenthSize: 40)
+        
         if isEditEvent == false {
             cell.setup(iconImage: "nameEvent")
             cell.setup(placeholder: Text.nameEvent, text: nameEvent)
@@ -241,6 +242,7 @@ extension CreateEventViewController {
             cell.setup(placeholder: Text.addDesc, text: eventDescription)
             cell.setup(isEnabled: isEditEvent == true ? false : true)
             cell.setup(textViewColor: isEditEvent == true ? UIColor.lightGrayColor : UIColor.bgBlack)
+            cell.setup(maxLenthSize: 1500)
         } else if indexPath.section == 2 {
             if indexPath.row == rsvpArray.count {
                 cell.setup(placeholder: "", text: "")
