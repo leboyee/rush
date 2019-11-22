@@ -43,5 +43,9 @@ target 'Rush' do
   #Google Places - Not use now
   pod 'GooglePlaces'
 
-
+  # Pods for PodTest
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.13.4'
+  pod 'Firebase/Analytics'
+  
 end

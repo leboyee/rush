@@ -10,6 +10,8 @@ import UIKit
 import IQKeyboardManagerSwift
 import SendBirdSDK
 import GooglePlaces
+import Firebase
+import Fabric
 
 extension AppDelegate {
     func addThirdPartySDK() {
@@ -18,6 +20,12 @@ extension AppDelegate {
         setupIQKeyboardManager()
         setupGoogle()
         connectSendbird()
+        
+        /// Firebase
+        FirebaseApp.configure()
+        
+        /// Fabric
+        Fabric.sharedSDK().debug = true
     }
     
     func setupIQKeyboardManager() {
