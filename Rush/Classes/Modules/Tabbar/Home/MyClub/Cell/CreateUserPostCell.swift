@@ -16,7 +16,7 @@ class CreateUserPostCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        containView.backgroundColor = isDarkModeOn ? UIColor.clear : UIColor.buttonDisableBgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

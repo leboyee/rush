@@ -27,6 +27,10 @@ class TextIconCell: UITableViewCell {
         // Initialization code
         textField.delegate = self
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        if isDarkModeOn {
+            textField.textColor = .white
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

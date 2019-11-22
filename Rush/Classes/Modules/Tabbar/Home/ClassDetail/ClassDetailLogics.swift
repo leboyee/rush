@@ -94,6 +94,9 @@ extension ClassDetailViewController {
         cell.setup(placeholder: "", text: subclassInfo?.location ?? "")
         cell.textView.isUserInteractionEnabled = false
         cell.setup(isHideCleareButton: true)
+        if isDarkModeOn {
+            cell.setup(textViewColor: UIColor.white)
+        }
     }
     
     func fillTimeCell(_ cell: TextIconCell, _ indexPath: IndexPath) {
