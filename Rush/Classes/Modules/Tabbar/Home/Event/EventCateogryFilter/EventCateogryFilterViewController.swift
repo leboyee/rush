@@ -36,6 +36,7 @@ class EventCateogryFilterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         panModalSetNeedsLayoutUpdate()
     }
     

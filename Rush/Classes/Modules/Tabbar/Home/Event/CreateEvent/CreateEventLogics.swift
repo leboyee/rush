@@ -242,6 +242,11 @@ extension CreateEventViewController {
             cell.setup(placeholder: Text.addDesc, text: eventDescription)
             cell.setup(isEnabled: isEditEvent == true ? false : true)
             cell.setup(textViewColor: isEditEvent == true ? UIColor.lightGrayColor : UIColor.bgBlack)
+            if isEditEvent == true {
+                if eventDescription != nil || eventDescription != "" {
+                    cell.leftTextViewConstraint.constant = -5
+                }
+            }
             cell.setup(maxLenthSize: 1500)
         } else if indexPath.section == 2 {
             if indexPath.row == rsvpArray.count {

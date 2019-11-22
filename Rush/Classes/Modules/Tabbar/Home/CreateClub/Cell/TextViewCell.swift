@@ -16,6 +16,7 @@ class TextViewCell: UITableViewCell {
     @IBOutlet weak var topPlaceHolderConstraint: NSLayoutConstraint!
     @IBOutlet weak var topTextViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var topConstraintOfBgView: NSLayoutConstraint!
+    @IBOutlet weak var leftTextViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var bottomLine: UIView!
 

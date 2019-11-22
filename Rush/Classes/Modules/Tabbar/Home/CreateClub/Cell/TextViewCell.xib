@@ -29,7 +29,7 @@
                                 <rect key="frame" x="64" y="0.0" width="295" height="126"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" text="sdsdsd" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eWu-xE-bjC">
-                                        <rect key="frame" x="0.0" y="13.5" width="270" height="90"/>
+                                        <rect key="frame" x="-5" y="13.5" width="275" height="90"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" red="0.14901960784313725" green="0.039215686274509803" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
@@ -47,7 +47,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="eWu-xE-bjC" firstAttribute="leading" secondItem="dLe-8m-vIg" secondAttribute="leading" id="2FZ-Sa-mDK"/>
+                                    <constraint firstItem="eWu-xE-bjC" firstAttribute="leading" secondItem="dLe-8m-vIg" secondAttribute="leading" constant="-5" id="2FZ-Sa-mDK"/>
                                     <constraint firstItem="eWu-xE-bjC" firstAttribute="top" secondItem="dLe-8m-vIg" secondAttribute="top" constant="13.5" id="9xG-f0-5vK"/>
                                     <constraint firstAttribute="trailing" secondItem="eWu-xE-bjC" secondAttribute="trailing" constant="25" id="EIm-Uh-n8T"/>
                                     <constraint firstAttribute="bottom" secondItem="eWu-xE-bjC" secondAttribute="bottom" constant="22.5" id="G99-S3-iwq"/>
@@ -115,6 +115,7 @@
                 <outlet property="bottomLine" destination="6Mg-1n-2fx" id="M6h-y8-Sbx"/>
                 <outlet property="clearButton" destination="THl-4v-qqV" id="7Rc-Ed-WPQ"/>
                 <outlet property="imgView" destination="QqX-gN-1rb" id="9yS-aQ-BIx"/>
+                <outlet property="leftTextViewConstraint" destination="2FZ-Sa-mDK" id="BG6-Lh-bIa"/>
                 <outlet property="placeHolderLabel" destination="KFG-xQ-0bf" id="Z2r-yN-W9O"/>
                 <outlet property="textView" destination="eWu-xE-bjC" id="JqW-Fn-upW"/>
                 <outlet property="topConstraintOfBgView" destination="wTh-Qv-Lqj" id="hL7-8s-ORX"/>

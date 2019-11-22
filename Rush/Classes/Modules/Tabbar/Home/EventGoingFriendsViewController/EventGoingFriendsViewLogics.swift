@@ -25,7 +25,7 @@ extension EventGoingFriendsViewController {
             if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
                 cell.setup(url: url)
             } else {
-                cell.imageView?.image = UIImage(named: "iconProfilePlaceHolder")
+                cell.friendImageView.image = UIImage(named: "iconProfilePlaceHolder")
             }
         } else {
             let invitee = notGoingInviteeList[indexPath.row]
@@ -33,8 +33,7 @@ extension EventGoingFriendsViewController {
             if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
                 cell.setup(url: url)
             } else {
-                cell.imageView?.image = UIImage(named: "iconProfilePlaceHolder")
-
+                cell.friendImageView.image = UIImage(named: "iconProfilePlaceHolder")
             }
         }
     }

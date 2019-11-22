@@ -95,6 +95,7 @@
 		1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */; };
 		1A44C363234265EF00A93A18 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44C361234265EF00A93A18 /* EventTimeCell.swift */; };
 		1A44C364234265EF00A93A18 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A44C362234265EF00A93A18 /* EventTimeCell.xib */; };
+		1A4950AE2387BB0500585D05 /* EditEventModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4950AD2387BB0500585D05 /* EditEventModelViewController.swift */; };
 		1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */; };
 		1A572B88234B96A6003E2824 /* EventTypeModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */; };
 		1A5DA6AC235241FF0090D8E2 /* UserProfileGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */; };
@@ -695,6 +696,7 @@
 		1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnBoardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		1A44C361234265EF00A93A18 /* EventTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
 		1A44C362234265EF00A93A18 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
+		1A4950AD2387BB0500585D05 /* EditEventModelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventModelViewController.swift; sourceTree = "<group>"; };
 		1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeModelCell.xib; sourceTree = "<group>"; };
 		1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeModelCell.swift; sourceTree = "<group>"; };
 		1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryViewController.swift; sourceTree = "<group>"; };
@@ -1408,6 +1410,7 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				1A4950AC2387BB0500585D05 /* EditEventModel */,
 				1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */,
 				1A024CF423476F8600EE7FB4 /* EventCateogryFilter */,
 				1A6B1EAD23453421004A359C /* SearchEvent */,
@@ -1655,6 +1658,14 @@
 				1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */,
 			);
 			path = CellView;
+			sourceTree = "<group>";
+		};
+		1A4950AC2387BB0500585D05 /* EditEventModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A4950AD2387BB0500585D05 /* EditEventModelViewController.swift */,
+			);
+			path = EditEventModel;
 			sourceTree = "<group>";
 		};
 		1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */ = {
@@ -3748,6 +3759,7 @@
 				1A6B1EAA234517C2004A359C /* EventListMediates.swift in Sources */,
 				8A0345AF2322A6EA0065CF3C /* User.swift in Sources */,
 				1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */,
+				1A4950AE2387BB0500585D05 /* EditEventModelViewController.swift in Sources */,
 				1A6B1EAB234517C2004A359C /* EventListLogics.swift in Sources */,
 				793BE66122E88207005EF72D /* NSAttributedString+Extensions.swift in Sources */,
 				1A44C363234265EF00A93A18 /* EventTimeCell.swift in Sources */,
@@ -4249,7 +4261,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4333,7 +4345,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4347,7 +4359,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4431,7 +4443,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4501,7 +4513,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4585,7 +4597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

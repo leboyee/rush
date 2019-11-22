@@ -135,7 +135,8 @@ extension AddMinorsViewController {
             isSearch = false
             var dict = [String: Any]()
                  dict["name"] = searchTextField.text
-                 selectedArray.append(searchTextField.text ?? "")
+            selectedArray.insert(searchTextField.text ?? "", at: 0)
+                 //selectedArray.append(searchTextField.text ?? "")
                  searchTextField.text = ""
                  getMinorList(searchText: "")
                  self.minorCustomButton.isHidden = true
@@ -143,7 +144,6 @@ extension AddMinorsViewController {
                  self.view.endEditing(true)
                 self.moveToNext()
                  self.tableView.reloadData()
-            
         }
      
     }

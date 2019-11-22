@@ -18,6 +18,8 @@ extension AddMinorsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.addMajorsCell, bundle: nil), forCellReuseIdentifier: Cell.addMajorsCell)
         tableView.reloadData()
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+
         
         searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(self.textDidChanged(_:)), for: .editingChanged)
