@@ -187,7 +187,7 @@ open class MessageContentCell: MessageCollectionViewCell {
         cellTopLabel.attributedText = topCellLabelText
         messageTopLabel.attributedText = topMessageLabelText
         messageBottomLabel.attributedText = bottomText
-    } 
+    }
     /// Handle tap gesture on contentView and its subviews.
     open func handleTapGesture(_ gesture: UIGestureRecognizer) {
         let touchLocation = gesture.location(in: self)

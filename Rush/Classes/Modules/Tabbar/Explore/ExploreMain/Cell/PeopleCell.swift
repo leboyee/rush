@@ -65,8 +65,12 @@ extension PeopleCell {
     }
     
     func setup(isCheckMark: Bool) {
-        tickImageView.image = isCheckMark ? #imageLiteral(resourceName: "iconCheckMark") : nil
+        tickImageView.image = isCheckMark ? (isDarkModeOn ? #imageLiteral(resourceName: "sentTick") : #imageLiteral(resourceName: "iconCheckMark")) : nil
         tickImageView.isHidden = !isCheckMark
+    }
+    
+    func setup(titleColor: UIColor) {
+        titleLabel.textColor = titleColor
     }
     
 }

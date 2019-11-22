@@ -180,10 +180,8 @@ extension ChatsViewController {
             }
             
             if isFromPush && url.isNotEmpty {
-                for chnl in unself.channels {
-                    if chnl.channelUrl == url {
-                        unself.openChatDetail(channel: chnl, name: "", imgName: nil)
-                    }
+                for chnl in unself.channels where chnl.channelUrl == url {
+                    unself.openChatDetail(channel: chnl, name: "", imgName: nil)
                 }
             }
             }, errorHandler: { error in

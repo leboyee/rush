@@ -23,6 +23,11 @@ extension ChatContactsListViewController {
         let alpha = alphabet[indexPath.section]
         let users = friendsList[alpha.lowercased()] as? [Friend]
         let friend = users?[indexPath.row]
+        
+        if isDarkModeOn {
+            cell.setup(titleColor: .white)
+        }
+        
         cell.setup(title: friend?.user?.name ?? "")
         if isFromChat {
             cell.setup(url: URL(string: friend?.user?.gender ?? ""))

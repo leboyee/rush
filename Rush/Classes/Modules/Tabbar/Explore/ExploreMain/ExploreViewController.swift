@@ -103,6 +103,11 @@ class ExploreViewController: CustomViewController {
         searchfield.delegate = self
         searchfield.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
         
+        if isDarkModeOn {
+            searchfield.textColor = .white
+            searchfield.attributedPlaceholder = NSAttributedString(string: "Find events, clubs, classes and people", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGrayColor, NSAttributedString.Key.font: UIFont.semibold(sz: 13)])
+        }
+        
         heightConstraintOfFilter.constant = 0
         
         setupTableView()
@@ -272,7 +277,7 @@ extension ExploreViewController {
                         vc.type = .club
                         vc.interest = category
                     }
-                } else if let category = sender as? ClubCategory {
+                } else if (sender as? ClubCategory) != nil {
                     // vc.interest = category
                     //                    vc.clubCategoryList = clubInterestList
                     vc.type = .club
