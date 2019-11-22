@@ -99,6 +99,11 @@ class AddLocationViewController: UIViewController {
             self.topLayoutConstraint.constant = 0
             self.topSearchTextLayoutConstraint.constant = 0
             self.handlerImageView.isHidden = true
+        } else {
+            self.topLayoutConstraint.constant = 0
+            self.topSearchTextLayoutConstraint.constant = 0
+            self.handlerImageView.isHidden = true
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
         }
         self.locationEntryTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
@@ -142,7 +147,8 @@ extension AddLocationViewController {
         if isRegister == true {
             self.navigationController?.popViewController(animated: true)
         } else {
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+            //self.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -156,7 +162,8 @@ extension AddLocationViewController {
             if isRegister == true {
                 self.navigationController?.popViewController(animated: true)
             } else {
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+                //self.dismiss(animated: true, completion: nil)
             }
         }
     
