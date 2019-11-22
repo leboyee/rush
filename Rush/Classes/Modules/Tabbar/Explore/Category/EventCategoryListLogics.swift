@@ -308,7 +308,7 @@ extension EventCategoryListViewController {
                 let startArray = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "18:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate).split(separator: " ")
                 startTime = String(startArray.last ?? "")
                 
-                let endArray = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "23:59:59", toForamte: serverDateFormate, getFormate: serverDateFormate).split(separator: " ")
+                let endArray = Date().localToUTC(date: Date().toDate(format: dateFormat) + " " + "06:00:00", toForamte: serverDateFormate, getFormate: serverDateFormate).split(separator: " ")
                 endTime = String(endArray.last ?? "")
             }
         }

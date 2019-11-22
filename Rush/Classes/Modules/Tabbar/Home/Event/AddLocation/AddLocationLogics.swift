@@ -46,7 +46,8 @@ extension AddLocationViewController {
                 if self.isRegister == true {
                     self.navigationController?.popViewController(animated: true)
                 } else {
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                    //self.dismiss(animated: true, completion: nil)
                 }
 
             } else if let error = error {
