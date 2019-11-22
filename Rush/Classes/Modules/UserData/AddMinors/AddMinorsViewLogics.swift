@@ -46,7 +46,8 @@ extension AddMinorsViewController {
                     if !unsafe.minorArray.contains(where: { $0["name"] as? String == customMinor }) {
                         var newCustomMinor = [String: Any]()
                         newCustomMinor["name"] = customMinor
-                        unsafe.minorArray.append(newCustomMinor)
+                        unsafe.minorArray.insert(newCustomMinor, at: 0)
+                        //unsafe.minorArray.append(newCustomMinor)
                     }
                 }
             } else {
@@ -56,7 +57,8 @@ extension AddMinorsViewController {
                                if !unsafe.minorArray.contains(where: { $0["name"] as? String == customMinor }) {
                                    var newCustomMinor = [String: Any]()
                                     newCustomMinor["name"] = customMinor
-                                   unsafe.minorArray.append(newCustomMinor)
+                                    unsafe.minorArray.insert(newCustomMinor, at: 0)
+                                   //unsafe.minorArray.append(newCustomMinor)
                                }
                            }
             }           
