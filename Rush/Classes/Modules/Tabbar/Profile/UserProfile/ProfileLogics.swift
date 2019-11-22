@@ -140,29 +140,34 @@ extension ProfileViewController {
     
     func fillNotificationCell(_ cell: NotificationCell, _ indexPath: IndexPath) {
         if let notification = profileDetail.notifications?[indexPath.row] {
+            cell.set(isHideSmallImage: false)
             switch notification.ntType {
             case .acceptFriendRequest, .friendRequest:
                 cell.set(object: notification.generatedBy, text: notification.ntText)
+                cell.set(isHideSmallImage: true)
             case .eventInvite:
-                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText, type: notification.ntType)
             case .clubInvite:
-                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText, type: notification.ntType)
             case .upVoted, .downVoted, .newComment:
                 if let post = notification.post?.last {
                     if post.type.lowercased() == Text.event.lowercased() {
-                        cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+                        cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText, type: notification.ntType)
                     } else if post.type.lowercased() == Text.club.lowercased() {
-                        cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+                        cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText, type: notification.ntType)
                     } else {
-                        cell.set(user: notification.generatedBy, object: notification.classObject?.last, text: notification.ntText)
+                        cell.set(user: notification.generatedBy, object: notification.classObject?.last, text: notification.ntText, type: notification.ntType)
                     }
                 }
             case .updateEvent:
-                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.event?.last, text: notification.ntText, type: notification.ntType)
+                cell.set(isHideSmallImage: true)
             case .updateClass:
                 cell.set(object: notification.classObject?.last, text: notification.ntText)
+                cell.set(isHideSmallImage: true)
             case .updateClub:
-                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText)
+                cell.set(user: notification.generatedBy, object: notification.club?.last, text: notification.ntText, type: notification.ntType)
+                cell.set(isHideSmallImage: true)
             default:
                 cell.label.text = ""
             }

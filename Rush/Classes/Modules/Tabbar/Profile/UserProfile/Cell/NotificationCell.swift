@@ -75,11 +75,10 @@ extension NotificationCell {
         let detailText = text.replacingOccurrences(of: key, with: value)
         label.attributedText = getFormattedString(string: detailText)
         userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderMain))
-        eventImageView.image = nil
-        eventImageView.layer.borderWidth = 0.0
+       
     }
     
-    func set(user: User?, object: Any?, text: String) {
+    func set(user: User?, object: Any?, text: String, type: NotificationType) {
         let userName = "{user_name}"
         let name = startSeparator + (user?.name ?? "") + endSeparator
         
@@ -108,9 +107,18 @@ extension NotificationCell {
         detailText = detailText.replacingOccurrences(of: key, with: value)
         
         label.attributedText = getFormattedString(string: detailText)
-        userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px.pdf"))
-        eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderSmall))
-        eventImageView.layer.borderWidth = borderWidth
+        if type == .updateEvent || type == .updateClub || type == .updateClass {
+            eventImageView.image = nil
+            userImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderSmall))
+        } else {
+            userImageView.sd_setImage(with: user?.photo?.urlThumb(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px.pdf"))
+            eventImageView.sd_setImage(with: photo?.urlThumb(), placeholderImage: UIImage(named: placeholderSmall))
+        }
+       
+    }
+    
+    func set(isHideSmallImage: Bool) {
+        eventImageView.isHidden = isHideSmallImage
     }
    
 }
