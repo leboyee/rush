@@ -19,6 +19,10 @@ class UINavigationBarCustomizationParams {
     var shadowImage: UIImage?
     var tintColor: UIColor?
     var barTintColor: UIColor?
+    var backgroundColor: UIColor?
+    var backImage: UIImage?
+    var buttonTitleColor: UIColor?
+
     var titleTextAttributes: [NSAttributedString.Key: Any]?
 }
 

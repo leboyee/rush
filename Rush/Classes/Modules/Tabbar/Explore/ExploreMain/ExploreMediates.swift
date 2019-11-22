@@ -237,7 +237,7 @@ extension ExploreViewController: CreatePostViewControllerDelegate {
                                    duration: .middle,
                                    actionText: buttonText,
                                    actionBlock: { (_) in
-                                    Utils.notReadyAlert()
+                                    
         })
         snackbar.show()
     }

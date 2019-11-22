@@ -250,12 +250,14 @@ extension ClassDetailViewController: CreatePostViewControllerDelegate {
          notificationButtonTitle = buttonText
          performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
          */
+        /*
         let snackbar = TTGSnackbar(message: text,
                                    duration: .middle,
                                    actionText: buttonText,
                                    actionBlock: { (_) in
-                                    Utils.notReadyAlert()
+                                    
         })
         snackbar.show()
+        */
     }
 }

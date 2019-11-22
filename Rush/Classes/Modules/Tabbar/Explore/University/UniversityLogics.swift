@@ -18,6 +18,9 @@ extension UniversityViewController {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
         cell.setup(universityUrl: URL(string: university.logo ?? ""))
+        if isDarkModeOn {
+            cell.setup(titleColor: .white)
+        }
         
         if selectedUniversity != nil {
             if university.universtiyId == selectedUniversity?.universtiyId {

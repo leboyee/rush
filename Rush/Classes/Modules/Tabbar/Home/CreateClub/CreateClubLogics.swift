@@ -40,6 +40,7 @@ extension CreateClubViewController {
         cell.setup(placeholder: "", title: Text.createGroupChat)
         cell.setup(isShowSwitch: true)
         cell.setup(iconImage: "")
+        cell.setup(titleColor: isDarkModeOn ? UIColor.white : UIColor.gray114)
         
         cell.switchValueChanged = { [weak self] (isOn) in
             guard let unsafe = self else { return }
@@ -51,6 +52,7 @@ extension CreateClubViewController {
         cell.resetAllField()
         cell.setup(keyboardReturnKeyType: .done)
         cell.setup(maxLenthSize: 40)
+        cell.setup(textViewColor: isDarkModeOn ? UIColor.white : UIColor.gray114)
         if indexPath.section == 0 {
             cell.setup(iconImage: "club-gray-1")
             cell.setup(placeholder: Text.nameClub, text: nameClub)

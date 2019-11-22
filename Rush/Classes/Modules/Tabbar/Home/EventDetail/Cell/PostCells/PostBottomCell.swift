@@ -14,7 +14,8 @@ class PostBottomCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var upButton: UIButton!
     @IBOutlet weak var downButton: UIButton!
-
+    @IBOutlet weak var commentButton: UIButton!
+    
     var likeButtonEvent: (() -> Void)?
     var unlikeButtonEvent: (() -> Void)?
     var commentButtonEvent: (() -> Void)?

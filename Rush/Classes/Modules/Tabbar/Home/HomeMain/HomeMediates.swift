@@ -126,7 +126,7 @@ extension HomeViewController: CreatePostViewControllerDelegate {
                                    duration: .middle,
                                    actionText: buttonText,
                                    actionBlock: { (_) in
-                                    Utils.notReadyAlert()
+                                    
         })
         snackbar.show()
     }

@@ -95,6 +95,7 @@
 		1A3F55ED2285C42600D42154 /* OnBoardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */; };
 		1A44C363234265EF00A93A18 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A44C361234265EF00A93A18 /* EventTimeCell.swift */; };
 		1A44C364234265EF00A93A18 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A44C362234265EF00A93A18 /* EventTimeCell.xib */; };
+		1A4950AE2387BB0500585D05 /* EditEventModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4950AD2387BB0500585D05 /* EditEventModelViewController.swift */; };
 		1A572B87234B96A6003E2824 /* EventTypeModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */; };
 		1A572B88234B96A6003E2824 /* EventTypeModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */; };
 		1A5DA6AC235241FF0090D8E2 /* UserProfileGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */; };
@@ -577,6 +578,7 @@
 		8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */; };
 		8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */; };
 		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
+		8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */; };
 		8A9E449E2373E9820096C973 /* NoEventLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */; };
 		8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */; };
 		8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */; };
@@ -695,6 +697,7 @@
 		1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnBoardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		1A44C361234265EF00A93A18 /* EventTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
 		1A44C362234265EF00A93A18 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
+		1A4950AD2387BB0500585D05 /* EditEventModelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventModelViewController.swift; sourceTree = "<group>"; };
 		1A572B85234B96A6003E2824 /* EventTypeModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTypeModelCell.xib; sourceTree = "<group>"; };
 		1A572B86234B96A6003E2824 /* EventTypeModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeModelCell.swift; sourceTree = "<group>"; };
 		1A5DA6A6235241FE0090D8E2 /* UserProfileGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileGalleryViewController.swift; sourceTree = "<group>"; };
@@ -1192,6 +1195,7 @@
 		8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBottomCell.xib; sourceTree = "<group>"; };
 		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
+		8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoEventLabelCell.xib; sourceTree = "<group>"; };
 		8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
 		8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
@@ -1408,6 +1412,7 @@
 		1A0D01F623228A08004F6279 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				1A4950AC2387BB0500585D05 /* EditEventModel */,
 				1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */,
 				1A024CF423476F8600EE7FB4 /* EventCateogryFilter */,
 				1A6B1EAD23453421004A359C /* SearchEvent */,
@@ -1655,6 +1660,14 @@
 				1A3F55EB2285C42600D42154 /* OnBoardingCollectionViewCell.xib */,
 			);
 			path = CellView;
+			sourceTree = "<group>";
+		};
+		1A4950AC2387BB0500585D05 /* EditEventModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A4950AD2387BB0500585D05 /* EditEventModelViewController.swift */,
+			);
+			path = EditEventModel;
 			sourceTree = "<group>";
 		};
 		1A5DA6A5235241FE0090D8E2 /* UserProfileGallery */ = {
@@ -3213,6 +3226,7 @@
 				C05FC16322805F9D00721F3F /* Resources */,
 				796E929A229FE0B600F91DB1 /* ExternalLibraries */,
 				C05FC15822805F3E00721F3F /* Info.plist */,
+				8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */,
 			);
 			path = Rush;
 			sourceTree = "<group>";
@@ -3365,6 +3379,7 @@
 				C05FC14622805F3D00721F3F /* Frameworks */,
 				C05FC14722805F3D00721F3F /* Resources */,
 				8A02C1E12313DE4500258227 /* ShellScript */,
+				8A62DADB2387FCEF00DADEB3 /* ShellScript */,
 				0056988C3865C149B147B353 /* [CP] Embed Pods Frameworks */,
 				4F804CB086C9C2A96F7F7E94 /* [CP] Copy Pods Resources */,
 			);
@@ -3461,6 +3476,7 @@
 				7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */,
 				7994A3C322D778600057527C /* ChatListCell.xib in Resources */,
 				796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */,
+				8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */,
 				1A0EDEF7234892C800502959 /* EditProfileMinorCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
@@ -3612,6 +3628,23 @@
 			shellPath = /bin/sh;
 			shellScript = "if which ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		8A62DADB2387FCEF00DADEB3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3748,6 +3781,7 @@
 				1A6B1EAA234517C2004A359C /* EventListMediates.swift in Sources */,
 				8A0345AF2322A6EA0065CF3C /* User.swift in Sources */,
 				1A7402C722CCA0BD0089CDAE /* ChooseInterestViewController.swift in Sources */,
+				1A4950AE2387BB0500585D05 /* EditEventModelViewController.swift in Sources */,
 				1A6B1EAB234517C2004A359C /* EventListLogics.swift in Sources */,
 				793BE66122E88207005EF72D /* NSAttributedString+Extensions.swift in Sources */,
 				1A44C363234265EF00A93A18 /* EventTimeCell.swift in Sources */,

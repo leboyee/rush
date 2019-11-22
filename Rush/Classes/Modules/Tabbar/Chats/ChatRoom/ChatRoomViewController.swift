@@ -555,6 +555,8 @@ extension ChatRoomViewController {
             viewCalender.setTitle("View club details", for: .normal)
         } else  if eventInfo != nil || channel?.customType == "event" {
             viewCalender.setTitle("View event details", for: .normal)
+        } else if subclassInfo != nil || channel?.customType == "class" {
+            viewCalender.setTitle("View class details", for: .normal)
         } else {
             viewCalender.setTitle("View profile", for: .normal)
         }
@@ -629,6 +631,15 @@ extension ChatRoomViewController {
                 let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
                 guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
                 controller.eventId = channel?.data ?? "0"
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        } else if subclassInfo != nil || channel?.customType == "class" {
+            if subclassInfo != nil {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
+                guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.classDetail) as? ClassDetailViewController else { return }
+                controller.classId = channel?.data ?? "0"
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         } else {

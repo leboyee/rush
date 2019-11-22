@@ -66,7 +66,12 @@ extension FriendsListViewController: UITextFieldDelegate {
     @objc func textDidChange(_ textField: UITextField) {
         searchText = textField.text ?? ""
         pageNo = 1
-        fetchClubInviteeAPI()
+        isNextPageExist = false
+        if type == .clubJoinedUsers {
+            fetchClubInviteeAPI()
+        } else if type == .classRoasters {
+            fetchClassRostersAPI()
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

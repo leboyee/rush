@@ -66,7 +66,8 @@ extension EventDetailViewController {
             ]
             /// Need to call post list here
             loadPosts()
-        } else if type == .other {
+        } else if type == .other, event.eventType == .publik {
+            /// Join button will show only if event is public otherwise user will see information without join button
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
@@ -97,7 +98,8 @@ extension EventDetailViewController {
                 EventSection(type: .organizer, title: "Organizer"),
                 EventSection(type: .tags, title: "Interest tags")
             ]
-        } else if type == .rejected {
+        } else if type == .rejected || type == .other, event.eventType != .publik {
+            /// Info show if user reject the invitation or type is other with closed or invited only event. 
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),

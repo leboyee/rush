@@ -148,7 +148,11 @@ extension PostViewController {
             }
         } else if segue.identifier == Segues.otherUserProfile {
             if let vc = segue.destination as? OtherUserProfileController {
-                vc.clubImage = #imageLiteral(resourceName: "bound-add-img")
+                if let id = sender as? Int64 {
+                    let user = User()
+                    user.id = id
+                    vc.userInfo = user
+                }
                 vc.delegate = self
             }
         }
