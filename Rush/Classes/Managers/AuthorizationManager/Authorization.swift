@@ -49,6 +49,9 @@ class Authorization: NSObject {
     }
     
     func signOut() {
+        
+        AppDelegate.shared?.unregisterPushTokenWithSendBird()
+        
         session = nil
         profile = nil
         
@@ -56,10 +59,8 @@ class Authorization: NSObject {
         Utils.removeDataFromUserDefault(kSavedSession)
         Utils.removeDataFromUserDefault(kPushTokenUpdateOnServer)
         Utils.removeDataFromUserDefault(kHomeTutorialKey)
-        
         Utils.removeDataFromUserDefault(kLastLocation)
         UIApplication.shared.applicationIconBadgeNumber = 0
-        
     }
     
     func setDummyDataForLogin() {
