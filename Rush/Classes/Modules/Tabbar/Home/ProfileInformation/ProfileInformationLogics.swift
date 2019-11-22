@@ -65,7 +65,7 @@ extension ProfileInformationViewController {
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
         let text = section == 0 ? Text.personal : section == 1 ? Text.education : section == 2 ? Text.majors : section == 3 ? Text.minors : ""
-        header.setup(textColor: (section == 2 || section == 3) ? UIColor.bgBlack : UIColor.brown24)
+        header.setup(textColor: (section == 2 || section == 3) ? (isDarkModeOn ? .white : UIColor.bgBlack) : UIColor.brown24)
         header.setup(title: text)
         header.setup(isDetailArrowHide: true)
     }

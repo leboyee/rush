@@ -27,7 +27,7 @@ import Foundation
 /// An object that groups the metadata of a messages sender.
 public struct Sender {
 
-    /// MARK: - Properties
+    // MARK: - Properties
 
     /// The unique String identifier for the sender.
     ///

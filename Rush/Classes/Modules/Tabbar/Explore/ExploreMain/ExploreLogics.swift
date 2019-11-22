@@ -256,6 +256,9 @@ extension ExploreViewController {
         let people = peopleList[indexPath.row]
         cell.setup(title: people.name)
         cell.setup(url: people.photo?.urlThumb())
+        if isDarkModeOn {
+            cell.setup(titleColor: .white)
+        }
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
