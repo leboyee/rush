@@ -41,6 +41,7 @@ class CreateEventInviteViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
         DispatchQueue.main.async {
             self.getFriendListAPI()
         }
