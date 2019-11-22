@@ -61,7 +61,8 @@ class CreateEventViewController: UIViewController {
     var rsvpArray = [String]()
     var searchTextFiled: UITextField?
     var eventType: EventType = .publik
-    
+    var initNavBarCustomizationParams: UINavigationBarCustomizationParams?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,7 +78,6 @@ class CreateEventViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
 
     }
 
@@ -180,12 +180,62 @@ extension CreateEventViewController {
         isCreateGroupChat = event?.isChatGroup ?? true
     }
     
+    func setCustomStyleForNavBar() {
+        guard let img = UIImage(named: "navBar") else { return }
+
+        let params = UINavigationBarCustomizationParams()
+        params.backgroundImage = UINavigationBar.appearance().backgroundImage(
+                for: .any, barMetrics: .default
+        )
+        params.shadowImage = UINavigationBar.appearance().shadowImage
+        params.tintColor = UINavigationBar.appearance().tintColor
+        params.barTintColor = UINavigationBar.appearance().barTintColor
+        params.backgroundColor = UINavigationBar.appearance().backgroundColor
+        params.titleTextAttributes = UINavigationBar.appearance().titleTextAttributes
+        params.backImage = #imageLiteral(resourceName: "back-arrow")
+        initNavBarCustomizationParams = params
+
+        
+        UINavigationBar.appearance().setBackgroundImage(
+                img.resizableImage(
+                        withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+                        resizingMode: .stretch
+                ),
+                for: .any,
+                barMetrics: .default
+        )
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = UIColor.clear
+        UINavigationBar.appearance().tintColor = .clear
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .clear
+        UINavigationBar.appearance().backIndicatorImage = UIImage()
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage()
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+
+    }
+    
+    func revertStyleForNavBar() {
+        
+        guard let params = initNavBarCustomizationParams else { return }
+        UINavigationBar.appearance().setBackgroundImage(params.backgroundImage, for: .any, barMetrics: .default)
+        UINavigationBar.appearance().shadowImage = params.shadowImage
+        UINavigationBar.appearance().tintColor = params.tintColor
+        UINavigationBar.appearance().barTintColor = params.barTintColor
+        UINavigationBar.appearance().titleTextAttributes = params.titleTextAttributes
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = params.tintColor
+        UINavigationBar.appearance().backIndicatorImage = params.backImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = params.backImage
+        UINavigationBar.appearance().backgroundColor = params.backgroundColor
+        initNavBarCustomizationParams = nil
+    }
+    
 }
 // MARK: - Mediator
 extension CreateEventViewController {
     func selectedCell(_ indexPath: IndexPath) {
         if indexPath.section == 0 && self.isEditEvent == true {
-            self.navigationController?.navigationBar.isHidden = true
             guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
                     eventCategoryFilter.dataArray = Utils.eventTypeArray()
                     eventCategoryFilter.delegate = self
@@ -232,6 +282,7 @@ extension CreateEventViewController {
         })
         navigationController?.popViewController(animated: true)
     }
+    
 }
 
 // MARK: - Navigation
@@ -250,7 +301,7 @@ extension CreateEventViewController {
         } else if segue.identifier == Segues.addLocation {
             if let vc = segue.destination as? AddLocationViewController {
                 vc.delegate = self
-                vc.isRegister = true
+                vc.isRegister = false
             }
         } else if segue.identifier == Segues.addUniversitySegue {
             if let vc = segue.destination as? ChooseUniversityViewController {
