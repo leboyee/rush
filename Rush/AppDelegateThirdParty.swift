@@ -87,7 +87,11 @@ extension AppDelegate: SBDChannelDelegate {
                         }
                     }
                 }
+            } else {
+                unregisterPushTokenWithSendBird()
             }
+        } else {
+            unregisterPushTokenWithSendBird()
         }
     }
     
@@ -104,6 +108,12 @@ extension AppDelegate: SBDChannelDelegate {
                 })
             }
         }
+        
+        SBDMain.unregisterAllPushToken(completionHandler: { (_, error) in
+            if error != nil { // Error.
+                print(error?.localizedDescription ?? "")
+            }
+        })
     }
     
     // MARK: - Chat SDK

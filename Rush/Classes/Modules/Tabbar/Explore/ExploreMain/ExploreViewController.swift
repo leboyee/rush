@@ -67,7 +67,6 @@ class ExploreViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         
         searchType = .event
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,11 +86,6 @@ class ExploreViewController: CustomViewController {
         getClubListAPI(sortBy: "might-like")
         getEventList(sortBy: .upcoming)
         getClassListAPI()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func setup() {
@@ -203,8 +197,9 @@ extension ExploreViewController {
         getClubListAPI(sortBy: "feed")
         getEventList(sortBy: .upcoming)
         getClassListAPI()
+        searchType = .event
+        updateFilterViewUI(selected:0)
         tableView.reloadData()
-        //        textFieldDidChanged(searchfield)
     }
     
     @IBAction func eventButtonAction(_ sender: Any) {

@@ -120,6 +120,7 @@ extension ExploreViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         isSearch = true
         heightConstraintOfFilter.constant = 67
+        
         // C*
         if textField.text?.count == 0 {
             //when search screen loads
