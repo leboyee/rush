@@ -577,6 +577,7 @@
 		8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */; };
 		8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */; };
 		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
+		8A62DAD82387FA6700DADEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A62DAD72387FA6700DADEB3 /* GoogleService-Info.plist */; };
 		8A9E449E2373E9820096C973 /* NoEventLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */; };
 		8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */; };
 		8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */; };
@@ -1192,6 +1193,7 @@
 		8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBottomCell.xib; sourceTree = "<group>"; };
 		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
+		8A62DAD72387FA6700DADEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoEventLabelCell.xib; sourceTree = "<group>"; };
 		8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
 		8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
@@ -3213,6 +3215,7 @@
 				C05FC16322805F9D00721F3F /* Resources */,
 				796E929A229FE0B600F91DB1 /* ExternalLibraries */,
 				C05FC15822805F3E00721F3F /* Info.plist */,
+				8A62DAD72387FA6700DADEB3 /* GoogleService-Info.plist */,
 			);
 			path = Rush;
 			sourceTree = "<group>";
@@ -3456,6 +3459,7 @@
 				1A44C364234265EF00A93A18 /* EventTimeCell.xib in Resources */,
 				79173F3C229E6FA10003FD9B /* ClubNameCell.xib in Resources */,
 				8A04B13E22FAE1180055C65F /* Calendar.storyboard in Resources */,
+				8A62DAD82387FA6700DADEB3 /* GoogleService-Info.plist in Resources */,
 				1A0EDEF8234892C800502959 /* EditProfileImageCell.xib in Resources */,
 				0918E77F228444850098AF35 /* Home.storyboard in Resources */,
 				7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */,
