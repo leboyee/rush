@@ -41,8 +41,10 @@ extension CalendarViewController {
                     if let schedule = item.classSchedule?.filter({ $0.day.lowercased().trimmingCharacters(in: CharacterSet.whitespaces) == start.toString(format: "EEEE").lowercased() }).last {
                         let startDateStr = dateString + " " + schedule.start
                         let endDateStr = dateString + " " + schedule.end
-                        item.start = Date.parseUTC(dateString: startDateStr, format: "yyyy-MM-dd HH:mm:ss")
-                        item.end = Date.parseUTC(dateString: endDateStr, format: "yyyy-MM-dd HH:mm:ss")
+                        //item.start = Date.parseUTC(dateString: startDateStr, format: "yyyy-MM-dd HH:mm:ss")
+                        //item.end = Date.parseUTC(dateString: endDateStr, format: "yyyy-MM-dd HH:mm:ss")
+                        item.start = Date.parse(dateString: startDateStr, format: "yyyy-MM-dd HH:mm:ss")
+                        item.end = Date.parse(dateString: endDateStr, format: "yyyy-MM-dd HH:mm:ss")
                     }
                                   
                     guard var group = groups.first(where: { $0.dateString == dateString }) else {
