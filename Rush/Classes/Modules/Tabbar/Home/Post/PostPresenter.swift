@@ -108,9 +108,10 @@ extension PostViewController {
         var desc = comment?.desc ?? ""
         desc = desc.replacingOccurrences(of: "[@|{}]", with: "", options: .regularExpression, range: nil)
         let mensionId = "\(comment?.mentionedUser?.first?.id ?? 0)"
+        let mentionedUsername = comment?.mentionedUser?.first?.name ?? ""
         if desc.contains(mensionId) {
             desc = desc.replacingOccurrences(of: mensionId, with: "")
-            cell.setup(name: comment?.mentionedUser?.first?.name ?? "", attributedText: desc)
+            cell.setup(name: mentionedUsername, attributedText: desc)
         } else {
             cell.setup(commentText: comment?.desc ?? "")
         }
@@ -121,6 +122,17 @@ extension PostViewController {
         if let date = Date.parse(dateString: local) {
             let time = date.timeAgoDisplay()
             cell.setup(date: time)
+        }
+        
+        cell.userNameClickEvent = { [weak self] (name) in
+            guard let unself = self else { return }
+            if mentionedUsername == name {
+                if comment?.mentionedUser?.first?.id == Authorization.shared.profile?.id {
+                    unself.tabBarController?.selectedIndex = 3
+                } else {
+                    unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment?.mentionedUser?.first?.id)
+                }
+            }
         }
         
         cell.userProfileClickEvent = { [weak self] () in
@@ -145,6 +157,7 @@ extension PostViewController {
             cell.set(numberOfUnLike: post.numberOfUnLikes)
             cell.set(numberOfComment: post.numberOfComments)
             cell.set(ishideUnlikeLabel: false)
+            cell.commentButton.isUserInteractionEnabled = false
             if let myVote = post.myVote?.first {
                 cell.set(vote: myVote.type)
             } else {
@@ -165,6 +178,7 @@ extension PostViewController {
     
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
         if let post = postInfo {
+            cell.commentButton.isUserInteractionEnabled = false
             cell.set(numberOfLike: post.totalUpVote)
             cell.set(numberOfComment: post.numberOfComments)
             if let myVote = post.myVote?.first {

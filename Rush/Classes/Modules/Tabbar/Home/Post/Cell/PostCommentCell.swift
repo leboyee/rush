@@ -89,7 +89,7 @@ extension PostCommentCell {
     
     @IBAction func tapLabel(gesture: UITapGestureRecognizer) {
         
-        let range = detailLabel.text?.range(of: "Peter Rally")
+        let range = detailLabel.text?.range(of: username)
         if range != nil {
             let nsrange = detailLabel.text?.nsRange(from: range!)
             if gesture.didTapAttributedTextInLabel(label: detailLabel, targetRange: nsrange!) {

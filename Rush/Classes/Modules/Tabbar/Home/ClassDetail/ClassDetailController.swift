@@ -87,6 +87,9 @@ class ClassDetailViewController: UIViewController {
         
         // setup tableview
         setupTableView()
+        
+        clubHeader.changePhotoButton.isHidden = true
+        clubHeader.addPhotoButton.isHidden = true
     }
 }
 

@@ -92,7 +92,7 @@ extension ClassDetailViewController {
     func fillTextViewCell(_ cell: TextViewCell) {
         cell.setup(iconImage: "location-gray")
         cell.setup(placeholder: "", text: subclassInfo?.location ?? "")
-        cell.setup(isUserInterfaceEnable: false)
+        cell.textView.isUserInteractionEnabled = false
         cell.setup(isHideCleareButton: true)
     }
     
@@ -283,6 +283,7 @@ extension ClassDetailViewController {
         clubHeader.changePhotoButton.isHidden = true
         clubHeader.addPhotoButton.isHidden = true
         clubHeader.setup(classUrl: img?.url())
+        clubHeader.hoverView.isHidden = false
     }
     
     func fillPostBottomCell(_ cell: PostBottomCell, _ indexPath: IndexPath) {
@@ -342,7 +343,8 @@ extension ClassDetailViewController {
             Utils.hideSpinner()
             let controller = ChatRoomViewController()
             controller.isGroupChat = true
-            controller.chatDetailType = .club
+            controller.chatDetailType = .classes
+            controller.userNavImage = unsafe.clubHeader.userImageView.image
             controller.subclassInfo = unsafe.subclassInfo
             controller.userName = unsafe.subclassInfo?.name ?? ""
             controller.rosterArray = rosterArray

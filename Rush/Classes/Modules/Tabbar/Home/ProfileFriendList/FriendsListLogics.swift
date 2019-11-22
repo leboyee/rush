@@ -39,16 +39,16 @@ extension FriendsListViewController {
             let str = friend.user?.photo?.thumb ?? ""
             let url = URL(string: str)
             cell.setup(url: url)
-          /*  if let url = URL(string: friend.user?.photo?.thumb ?? "") {
-                cell.setup(url: url)
-            } else {
-                guard inviteeList.count > indexPath.row else { return }
-                let invitee = inviteeList[indexPath.row]
-                cell.setup(name: invitee.user?.name ?? "")
-                if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                    cell.setup(url: url)
-                }
-            }*/
+            /*  if let url = URL(string: friend.user?.photo?.thumb ?? "") {
+             cell.setup(url: url)
+             } else {
+             guard inviteeList.count > indexPath.row else { return }
+             let invitee = inviteeList[indexPath.row]
+             cell.setup(name: invitee.user?.name ?? "")
+             if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+             cell.setup(url: url)
+             }
+             }*/
         } else  if type == .clubJoinedUsers {
             var friend = Invitee()
             friend = inviteeList[indexPath.row]
@@ -192,10 +192,28 @@ extension FriendsListViewController {
             var friend: Friend?
             if firstSegmentButton.isSelected {
                 friend = firstTabList[indexPath.row] as? Friend
-                performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
+                
+                if friend?.user?.userId == Authorization.shared.profile?.userId {
+                    if tabBarController?.selectedIndex == 3 {
+                        navigationController?.popToRootViewController(animated: false)
+                    } else {
+                        tabBarController?.selectedIndex = 3
+                    }
+                } else {
+                    performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
+                }
             } else {
+                
                 friend = secondTabList[indexPath.row] as? Friend
-                performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
+                if friend?.user?.userId == Authorization.shared.profile?.userId {
+                    if tabBarController?.selectedIndex == 3 {
+                        navigationController?.popToRootViewController(animated: false)
+                    } else {
+                        tabBarController?.selectedIndex = 3
+                    }
+                } else {
+                    performSegue(withIdentifier: Segues.otherUserProfile, sender: friend)
+                }
             }
             
         } else  if type == .classes {
@@ -208,7 +226,16 @@ extension FriendsListViewController {
             performSegue(withIdentifier: Segues.classDetailSegue, sender: myclass)
         } else {
             let invitee = inviteeList[indexPath.row]
-            self.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee.user)
+            
+            if invitee.user?.userId == Authorization.shared.profile?.userId {
+                if tabBarController?.selectedIndex == 3 {
+                    navigationController?.popToRootViewController(animated: false)
+                } else {
+                    tabBarController?.selectedIndex = 3
+                }
+            } else {
+                self.performSegue(withIdentifier: Segues.otherUserProfile, sender: invitee.user)
+            }
         }
     }
 }
@@ -386,7 +413,8 @@ extension FriendsListViewController {
             if let list = value {
                 
                 if list.count > 0 {
-                    let firstTitle = "\(total) Friends"
+                    let value = total == 1 ? "Friend" : "Friends"
+                    let firstTitle = "\(total) \(value)"
                     unsafe.firstSegmentButton.setTitle(firstTitle, for: .normal)
                     if unsafe.firstTabPageNo == 1 {
                         unsafe.firstTabList = list
@@ -540,7 +568,7 @@ extension FriendsListViewController {
                         }
                         unsafe.inviteeList = rosterArray
                     } else {
-                       var rosterArray = [Invitee]()
+                        var rosterArray = [Invitee]()
                         for rs in list {
                             if let user = rs.user {
                                 let inv = Invitee()
