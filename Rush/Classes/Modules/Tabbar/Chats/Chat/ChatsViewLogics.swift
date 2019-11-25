@@ -135,7 +135,11 @@ extension ChatsViewController: UITextFieldDelegate {
         if text.isEmpty {
             channels = filterList
             // Right item button
-            navigationItem.rightBarButtonItem = nil
+            if isOpenToShare {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
         } else {
             let filter = filterList.filter { ( $0.name.lowercased().contains(text) ) }
             channels = filter
@@ -145,7 +149,9 @@ extension ChatsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        navigationItem.rightBarButtonItem = nil
+        if isOpenToShare == false {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

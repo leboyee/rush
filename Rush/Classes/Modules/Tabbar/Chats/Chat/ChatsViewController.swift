@@ -105,22 +105,25 @@ class ChatsViewController: CustomViewController {
     func setupSearchChatNavigation() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
+                
+        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 96, height: 44))
         
-        let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
-        
-        searchField = UITextField(frame: CGRect(x: 0, y: 6, width: screenWidth - 55, height: 28))
+        searchField = UITextField(frame: CGRect(x: 0, y: 6, width: customView.frame.size.width - 20, height: 28))
         searchField.font = UIFont.displayBold(sz: 24)
         searchField.textColor = UIColor.white
         searchField.returnKeyType = .search
         searchField.autocorrectionType = .no
         searchField.delegate = self
-        searchField.becomeFirstResponder()
         let font = UIFont.displayBold(sz: 24)
         let color = UIColor.navBarTitleWhite32
         searchField.attributedPlaceholder = NSAttributedString(string: "Search in chats", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
         searchField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        customView.clipsToBounds = true
         customView.addSubview(searchField)
         navigationItem.titleView = customView
+        
+        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
+        navigationItem.rightBarButtonItem = rightBarButton
     }
 }
 
@@ -149,6 +152,7 @@ extension ChatsViewController {
     @objc func clearButtonAction() {
         searchField.text = ""
         channels = filterList
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "pencil-edit-button"), style: .plain, target: self, action: #selector(exitButtonAction))
     }
 }
 
@@ -162,6 +166,10 @@ extension ChatsViewController {
         } else if segue.identifier == Segues.chatContactListSegue {
             guard let vc = segue.destination as? ChatContactsListViewController else { return }
             vc.hidesBottomBarWhenPushed = true
+            // Sharing events
+            vc.isOpenToShare = isOpenToShare
+            vc.sharedEvent = sharedEvent
+            vc.delegate = self
         }
     }
 }

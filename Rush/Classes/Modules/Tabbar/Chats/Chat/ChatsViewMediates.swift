@@ -96,3 +96,11 @@ extension ChatsViewController: MGSwipeTableCellDelegate {
         return []
     }
 }
+
+// MARK: - ChatContactsListViewControllerDelegate
+extension ChatsViewController: ChatContactsListViewControllerDelegate {
+    func sharedResult(flg: Bool) {
+        self.delegate?.sharedResult(flg: true)
+        self.dismiss(animated: true, completion: nil)
+    }
+}

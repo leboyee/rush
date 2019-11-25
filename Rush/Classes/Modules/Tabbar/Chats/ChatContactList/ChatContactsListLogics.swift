@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SendBirdSDK
 
 extension ChatContactsListViewController {
     
@@ -37,22 +38,128 @@ extension ChatContactsListViewController {
     }
     
     func cellSelected(_ indexPath: IndexPath) {
+        
         let alpha = alphabet[indexPath.section]
         let users = friendsList[alpha.lowercased()] as? [Friend]
-        let friend = users?[indexPath.row]
+        guard let friend = users?[indexPath.row] else { return }
         
-        let controller = ChatRoomViewController()
-        controller.friendProfile = friend
-        controller.userName = friend?.user?.name ?? ""
-        controller.isGroupChat = false
-        controller.chatDetailType = .single
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
+        if isOpenToShare {
+            checkIsChatExistOrNot(friend)
+        } else {
+            let controller = ChatRoomViewController()
+            controller.friendProfile = friend
+            controller.userName = friend.user?.name ?? ""
+            controller.isGroupChat = false
+            controller.chatDetailType = .single
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     func loadMoreCell(_ indexPath: IndexPath) {
         if indexPath.row == (friendsList.count - 2) && isNextPageExist {
             getFriendListAPI()
+        }
+    }
+    
+    func checkIsChatExistOrNot(_ friend: Friend) {
+        Utils.showSpinner()
+        ChatManager().getListOfFilterGroups(name: "", type: "single", userId: friend.user?.userId ?? "", { [weak self] (data) in
+            guard let unsafe = self else { return }
+            
+            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
+                unsafe.shareEvent(channels.first)
+            } else {
+                Utils.hideSpinner()
+                unsafe.createChatAndSharedEvent(friend)
+            }
+            }, errorHandler: { (error) in
+                Utils.hideSpinner()
+                print(error?.localizedDescription ?? "")
+        })
+    }
+    
+    func createChatAndSharedEvent(_ friend: Friend) {
+        let loggedInUserId = Authorization.shared.profile?.userId ?? ""
+        let loggedInUserName = Authorization.shared.profile?.name ?? ""
+        let loggedInUserImg = Authorization.shared.profile?.photo?.thumb ?? ""
+        var totalUserIds = [String]()
+        
+        let otherUserId = friend.user?.userId ?? "0"
+        let imgUrl = (friend.user?.photo?.thumb ?? "") + "," + loggedInUserImg
+        let grpName = (friend.user?.name ?? "") + ", " + loggedInUserName
+        let type = "single"
+        let data = friend.user?.userId ?? "0"
+        totalUserIds.append(otherUserId)
+        totalUserIds.append(loggedInUserId)
+        
+        ChatManager().createGroupChannelwithUsers(userIds: totalUserIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel1) in
+            Utils.hideSpinner()
+            DispatchQueue.main.async(execute: {
+                    // Move on Chat detail screen
+                    if channel1?.members?.count == totalUserIds.count - 1 {
+                        // channel created
+                        self.shareEvent(channel1)
+                    } else {
+                        var channelUserIds = [String]()
+                        if let members = channel1?.members {
+                            for member in members {
+                                if let user = member as? SBDUser {
+                                    channelUserIds.append(user.userId)
+                                }
+                            }
+                        }
+                        var filteredIds = [String]()
+                        for filterId in totalUserIds {
+                            if channelUserIds.contains(filterId) == false {
+                                filteredIds.append(filterId)
+                            }
+                        }
+                        
+                        if filteredIds.count > 0 {
+                            ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel2) in
+                                // channel created
+                                self.shareEvent(channel2)
+                            }, errorHandler: { (_) in
+                                print("SOMETHING WRONG IN UPDATE USER IN NEW CHANNEL")
+                            })
+                        } else {
+                            // channel created
+                            self.shareEvent(channel1)
+                        }
+                    }
+                })
+        }, errorHandler: {_ in
+            print("SOMETHING WRONG IN CREATE NEW CHANNEL")
+        })
+    }
+    
+    func shareEvent(_ channel: SBDGroupChannel?) {
+        
+        if let event = sharedEvent {
+            let month = event.start?.toString(format: "MMM").uppercased() ?? ""
+            let datelable = event.start?.toString(format: "dd") ?? ""
+            let day = event.start?.toString(format: "EEEE") ?? ""
+            var time = event.start?.toString(format: "hh:mma") ?? ""
+            if let endDate = event.end {
+                time +=  "-" +  endDate.toString(format: "hh:mma")
+            }
+            
+            let jsonString = "{\"JSON_CHAT\":{\"type\":1,\"eventId\":\"\(event.id)\",\"eventTitle\":\"\(event.title)\",\"eventImage\":\"\(event.photo?.main ?? "")\",\"desc\":\"\(event.desc)\",\"date\":\"\(datelable)\",\"month\":\"\(month)\",\"day\":\"\(day)\",\"time\":\"\(time)\"}}"
+            
+            let textE = "shared \(event.title) with you."
+            
+            ChatManager().sendEventMessage(textE, data: jsonString, channel: channel, completionHandler: { (message) in
+                if message != nil {
+                    self.delegate?.sharedResult(flg: true)
+                } else {
+                    self.delegate?.sharedResult(flg: false)
+                }
+                self.navigationController?.popViewController(animated: false)
+            }, errorHandler: { (_) in
+                self.delegate?.sharedResult(flg: false)
+                self.navigationController?.popViewController(animated: false)
+            })
         }
     }
 }

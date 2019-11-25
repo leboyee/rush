@@ -7,6 +7,10 @@
 //
 import UIKit
 
+protocol ChatContactsListViewControllerDelegate: class {
+    func sharedResult(flg: Bool)
+}
+
 class ChatContactsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +23,12 @@ class ChatContactsListViewController: UIViewController {
     var tempFriendsList = [Friend]()
     var isFromChat = false
     var titleName = ""
+    
+    // Sharing events
+    var isOpenToShare = false
+    var sharedEvent: Event?
+    
+    weak var delegate: ChatContactsListViewControllerDelegate?
     
     let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
