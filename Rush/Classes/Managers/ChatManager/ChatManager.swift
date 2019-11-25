@@ -533,10 +533,7 @@ extension ChatManager {
     }
     
     func sendEventMessage(_ message: String?,
-                          data: String,
-                         channel: SBDGroupChannel?,
-                         completionHandler: ((_ channel: SBDUserMessage?) -> Void)? = nil,
-                         errorHandler: ((_ error: Error?) -> Void)? = nil) {
+                          data: String, channel: SBDGroupChannel?, completionHandler: ((_ channel: SBDUserMessage?) -> Void)? = nil, errorHandler: ((_ error: Error?) -> Void)? = nil) {
         
         let params = SBDUserMessageParams(message: message ?? "")
         params?.data = data

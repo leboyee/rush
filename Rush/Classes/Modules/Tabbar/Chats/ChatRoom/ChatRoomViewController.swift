@@ -651,6 +651,10 @@ extension ChatRoomViewController {
                 let user = User()
                 user.id = Int64(profileUserId) ?? 0
                 controller.userInfo = user
+            } else if let id = channel?.data {
+                let user = User()
+                user.id = Int64(id) ?? 0
+                controller.userInfo = user
             }
             self.navigationController?.pushViewController(controller, animated: true)
         }

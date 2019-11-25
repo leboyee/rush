@@ -652,7 +652,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSN-Ai-Lxu">
-                                        <rect key="frame" x="16" y="50" width="78" height="36"/>
+                                        <rect key="frame" x="16" y="50" width="156" height="72"/>
                                         <state key="normal" image="cancel-active"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="tgq-BU-5qI" eventType="touchUpInside" id="AsF-zi-5Jt"/>
@@ -660,7 +660,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-7L-6FJ">
-                                        <rect key="frame" x="320" y="50" width="78" height="36"/>
+                                        <rect key="frame" x="242" y="50" width="156" height="72"/>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="save-dark"/>
                                         <userDefinedRuntimeAttributes>
@@ -1194,7 +1194,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="809.5" width="414" height="52.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-cp-dBF">
@@ -1204,10 +1204,10 @@
                                             <constraint firstAttribute="height" constant="1" id="lgu-4k-bNO"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
                                         <rect key="frame" x="16" y="8" width="342" height="36.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="310" height="36.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -1223,7 +1223,7 @@
                                             <constraint firstItem="oh8-FT-Rgh" firstAttribute="top" secondItem="Gar-6h-cWt" secondAttribute="top" id="ufI-IH-qnS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
                                         <rect key="frame" x="374" y="14.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="2OE-ZK-g2l"/>
@@ -1934,7 +1934,7 @@
                         <outlet property="timeLable" destination="dJP-9j-zSa" id="zIp-xc-moj"/>
                         <outlet property="titleLable" destination="PtV-kh-xhf" id="sh7-ul-cUW"/>
                         <outlet property="userNameLable" destination="Sq5-Tx-eBf" id="hfi-bY-HtL"/>
-                        <segue destination="w6e-6V-rzq" kind="presentation" identifier="PhotoModelViewSegue" modalPresentationStyle="overFullScreen" id="xgp-lk-8hD"/>
+                        <segue destination="w6e-6V-rzq" kind="presentation" identifier="PhotoModelViewSegue" animates="NO" modalPresentationStyle="overFullScreen" id="xgp-lk-8hD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My9-AN-E3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
