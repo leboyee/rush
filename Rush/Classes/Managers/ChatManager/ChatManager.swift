@@ -313,6 +313,8 @@ extension ChatManager {
         sbdGroupChannelParams.customType = type
         if type != "single" {
             sbdGroupChannelParams.isPublic = true
+        } else {
+            sbdGroupChannelParams.operatorUserIds = userIds as? [String] ?? []
         }
                 
         SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
@@ -625,13 +627,30 @@ extension ChatManager {
     func leave(_ channel: SBDGroupChannel?, completionHandler: ((_ status: Bool) -> Void)? = nil) {
         // Left that channel
         DispatchQueue.main.async(execute: {
-            channel?.leave(completionHandler: { error in
-                if error == nil {
-                    completionHandler?(true)
-                } else {
-                    completionHandler?(false)
-                }
-            })
+            
+            if channel?.customType == "single" {
+                channel?.delete(completionHandler: { error in
+                    if error == nil {
+                        completionHandler?(true)
+                    } else {
+                        channel?.leave(completionHandler: { error in
+                            if error == nil {
+                                completionHandler?(true)
+                            } else {
+                                completionHandler?(false)
+                            }
+                        })
+                    }
+                })
+            } else {
+                channel?.leave(completionHandler: { error in
+                    if error == nil {
+                        completionHandler?(true)
+                    } else {
+                        completionHandler?(false)
+                    }
+                })
+            }
         })
     }
     
