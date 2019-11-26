@@ -266,7 +266,7 @@ extension FriendsListViewController {
         
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
-                     Keys.sortBy: GetEventType.attending.rawValue,
+//                     Keys.sortBy: GetEventType.attending.rawValue,
                      Keys.pageNo: firstTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: GetEventType.attending.rawValue, params: param) { [weak self] (value, total, _) in
@@ -299,7 +299,7 @@ extension FriendsListViewController {
         
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
-                     Keys.sortBy: GetEventType.my.rawValue,
+                   //  Keys.sortBy: GetEventType.my.rawValue,
                      Keys.pageNo: secondTabPageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: GetEventType.my.rawValue, params: param) { [weak self] (value, total, _) in

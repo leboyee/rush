@@ -135,7 +135,7 @@ PODS:
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
-  - SendBirdSDK (3.0.159)
+  - SendBirdSDK (3.0.160)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.37.0)
   - UnsplashPhotoPicker (1.1.0)
@@ -226,7 +226,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
-  SendBirdSDK: b2f8197b2762f9bf88eb78f6194e8693700df105
+  SendBirdSDK: 55b5a930da0338c50f0fd069a99d9b7b1b9579f2
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
