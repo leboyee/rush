@@ -54,7 +54,15 @@ extension ChatsViewController {
                 
                 let month = event.start?.toString(format: "MMM").uppercased() ?? ""
                 let datelable = event.start?.toString(format: "dd") ?? ""
-                let day = event.start?.toString(format: "EEEE") ?? ""
+                
+                var day = ""
+                
+                if screenWidth == 320 {
+                    day = event.start?.toString(format: "E") ?? ""
+                } else {
+                    day = event.start?.toString(format: "EEEE") ?? ""
+                }
+                
                 var time = event.start?.toString(format: "hh:mma") ?? ""
                 if let endDate = event.end {
                     time +=  "-" +  endDate.toString(format: "hh:mma")

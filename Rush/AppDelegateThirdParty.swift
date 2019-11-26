@@ -50,6 +50,8 @@ extension AppDelegate: SBDChannelDelegate {
         
         //Connect with Chat Server
         updateUserChatProfilePicture()
+        
+        registerPushTokenWithSendBird()
     }
     
     func disConnectSendbird() {

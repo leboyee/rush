@@ -87,27 +87,29 @@ open class EventMessageCell: MessageContentCell {
         
         messageContainerView.layer.cornerRadius = 24
         
-        let date = UILabel(frame: CGRect(x: 115, y: 8, width: 16, height: 16))
+        let date = UILabel(frame: CGRect(x: 115, y: 8, width: 16, height: 20))
         date.text = eventDate ?? "31"
         date.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(date)
         
-        let month = UILabel(frame: CGRect(x: 135, y: 8, width: 200, height: 16))
+        let month = UILabel(frame: CGRect(x: 140, y: 10, width: 200, height: 16))
         month.text = eventMonth ?? "JAN"
         month.textColor = UIColor.buttonDisableTextColor
         month.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(month)
         
-        let day = UILabel(frame: CGRect(x: 115, y: 25, width: 61, height: 16))
+        let dayWidth = (eventDay?.count ?? 0) < 5 ? 22 : 61
+        
+        let day = UILabel(frame: CGRect(x: 115, y: 25, width: dayWidth, height: 16))
         day.text = eventDay ?? "Sunday"
         day.font = UIFont.semibold(sz: 13)
         day.sizeToFit()
         messageContainerView.addSubview(day)
-        
-        let time = UILabel(frame: CGRect(x: day.frame.maxX + 5, y: 25, width: 200, height: 16))
+                
+        let time = UILabel(frame: CGRect(x: day.frame.maxX + 5, y: (eventDay?.count ?? 0) < 5 ? 27 : 25, width: 200, height: 16))
         time.text = eventTime ?? "10-12 pm"
         time.textColor = UIColor.buttonDisableTextColor
-        time.font = UIFont.semibold(sz: 13)
+        time.font = UIFont.semibold(sz: (eventDay?.count ?? 0) < 5 ? 10 : 13)
         messageContainerView.addSubview(time)
         
         let title = UILabel(frame: CGRect(x: 115, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
