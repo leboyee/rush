@@ -454,8 +454,20 @@ extension EventDetailViewController {
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
             guard let id = self.eventId, id.isNotEmpty else { return }
-            ServiceManager.shared.fetchEventDetail(eventId: id) { [weak self] (event, _) in
+            ServiceManager.shared.fetchEventDetail(eventId: id) { [weak self] (event, errorMessage) in
                   guard let unsafe = self else { return }
+                if event == nil {
+                    let snackbar = TTGSnackbar(message: "This event has been cancelled.",
+                    duration: .middle,
+                    actionText: "",
+                    actionBlock: { (_) in
+                    })
+                    snackbar.show()
+                    unsafe.navigationController?.popViewController(animated: true)
+                                       Utils.hideSpinner()
+                                       return
+                                      
+                }
                   unsafe.event = event
                   unsafe.loadEventSection()
                   unsafe.updateHeaderInfo()
