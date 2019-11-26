@@ -178,9 +178,8 @@ extension EventListViewController {
         }
             let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
                          Keys.search: searchText,
-                         Keys.sortBy: sortBy.rawValue,
+                        // Keys.sortBy: sortBy.rawValue,
                          Keys.pageNo: myEventPageNo] as [String: Any]
-            print("param ",param)
             isApiCalling = true
             ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
                 Utils.hideSpinner()

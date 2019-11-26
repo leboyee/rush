@@ -367,7 +367,7 @@ extension OtherUserProfileController {
         
         let param = [Keys.profileUserId: userInfo?.userId ?? "0",
                      Keys.search: searchText,
-                     Keys.sortBy: sortBy.rawValue,
+//                     Keys.sortBy: sortBy.rawValue,
                      Keys.pageNo: pageNo] as [String: Any]
         
         ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
@@ -475,7 +475,7 @@ extension OtherUserProfileController {
                 }
                 unsafe.imagesList = items
             }
-            unsafe.getEventList(sortBy: .my)
+            unsafe.getEventList(sortBy: .myUpcoming)
         })
     }
 }
