@@ -351,6 +351,10 @@ extension EventCategoryListViewController: EventCategoryFilterDelegate {
                 firstSortText = type
                 if clubCategoryList.count > 0 {
                     interest = clubCategoryList[indexPath.row]
+                    
+                    if (searchTextField.attributedPlaceholder?.string ?? "") != "Search clubs" {
+                        updateTitle(text: interest?.interestName ?? "")
+                    }
                 } else if interestList.count > 0 {
                     interest = interestList[indexPath.row]
                 }

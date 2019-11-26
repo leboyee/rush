@@ -47,6 +47,7 @@ class EventCategoryListViewController: UIViewController {
     var startTime = ""
     var endTime = ""
     var isToday = false
+    var searchTextField = UITextField()
     
     var selUniversity = University()
     var hasCalledAPI = 0
@@ -95,12 +96,13 @@ class EventCategoryListViewController: UIViewController {
         
         let customView = UIView(frame: CGRect(x: 48, y: 0, width: screenWidth - 48, height: 44))
         
-        let searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
+        searchTextField = UITextField(frame: CGRect(x: 0, y: -3, width: screenWidth - 48, height: 44))
         searchTextField.font = UIFont.displayBold(sz: 24)
         searchTextField.textColor = UIColor.white
         searchTextField.returnKeyType = .go
         searchTextField.autocorrectionType = .no
         searchTextField.delegate = self
+        
         let font = UIFont.displayBold(sz: 24)
         let color = eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white
         searchTextField.attributedPlaceholder = NSAttributedString(string: titleText, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
@@ -111,6 +113,12 @@ class EventCategoryListViewController: UIViewController {
     
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: false)
+    }
+    
+    func updateTitle(text: String) {
+        let font = UIFont.displayBold(sz: 24)
+        let color = eventCategory == nil ? UIColor.navBarTitleWhite32 : UIColor.white
+        searchTextField.attributedPlaceholder = NSAttributedString(string: interest?.interestName ?? "", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color])
     }
     
     func loadAPI() {

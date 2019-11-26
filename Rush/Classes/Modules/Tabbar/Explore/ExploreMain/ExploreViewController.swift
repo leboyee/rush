@@ -198,7 +198,7 @@ extension ExploreViewController {
         getEventList(sortBy: .upcoming)
         getClassListAPI()
         searchType = .event
-        updateFilterViewUI(selected:0)
+        updateFilterViewUI(selected: 0)
         tableView.reloadData()
     }
     
