@@ -41,7 +41,6 @@ extension PostViewController {
         } else if let event = eventInfo {
             cell.setup(detail: "Posting in " + (event.title))
         }
-        cell.setup(isHideDetail: true)
     }
     
     // Textview cell (section 1)
