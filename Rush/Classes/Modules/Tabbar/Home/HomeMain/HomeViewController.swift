@@ -17,6 +17,7 @@ class HomeViewController: CustomViewController {
     var isShowTutorial = false
     var isShowJoinEvents = false
     var isShowSkeleton = true
+    var isLoadNavigation = false
     
     var date = Date()
     var notificationTitle = ""
@@ -73,14 +74,14 @@ class HomeViewController: CustomViewController {
         
         setupTableView()
         setupNavigation(isSkeleton: true)
+        isLoadNavigation = true
         definesPresentationContext = true
     }
     
     func setupNavigation(isSkeleton: Bool) {
         self.view.backgroundColor = UIColor.bgBlack
                 
-        if isSkeleton {
-        // Set navigation title (date)
+        if isSkeleton && isLoadNavigation == false {
             navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 24, height: 59))
             dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: 128, height: 24))
             viewCalender = UIButton(frame: CGRect(x: 0, y: 26, width: 104, height: 18))
@@ -99,7 +100,7 @@ class HomeViewController: CustomViewController {
         dateButton?.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton?.contentHorizontalAlignment = .left
         dateButton?.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
-        if isSkeleton {
+        if isSkeleton && isLoadNavigation == false {
             dateButton?.isSkeletonable = true
             dateButton?.showAnimatedGradientSkeleton()
         }
@@ -113,7 +114,7 @@ class HomeViewController: CustomViewController {
         viewCalender?.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         viewCalender?.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
         
-        if isSkeleton {
+        if isSkeleton && isLoadNavigation == false {
             viewCalender?.isSkeletonable = true
             viewCalender?.showAnimatedGradientSkeleton()
         }
@@ -128,7 +129,9 @@ class HomeViewController: CustomViewController {
     func updateSkeletonView(isShowSkeleton: Bool) {
         if isShowSkeleton {
             tableView.isSkeletonable = true
-            navigationItem.rightBarButtonItem = nil
+            if isLoadNavigation == false {
+                navigationItem.rightBarButtonItem = nil
+            }
             view.layoutSkeletonIfNeeded()
             view.showAnimatedGradientSkeleton()
         } else {

@@ -35,6 +35,10 @@ extension UserNameTableViewCell {
         postUserDescripation.text = detail
     }
     
+    func setup(isHideDetail: Bool) {
+        postUserDescripation.isHidden = isHideDetail
+    }
+    
     func setup(url: URL?) {
         postImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
     }
