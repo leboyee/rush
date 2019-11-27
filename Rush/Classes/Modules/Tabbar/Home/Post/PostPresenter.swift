@@ -32,8 +32,11 @@ extension PostViewController {
                 cell.setup(title: post.user?.name ?? "")
                 cell.setup(url: post.user?.photo?.url())
             }
+            let time = post.createdAt?.timeAgoDisplay() ?? ""
+            cell.setup(detail: time)
         }
 
+        /*
         if let subclass = subclassInfo { // Subclass
             cell.setup(detail: "Posting in " + (subclass.name))
         } else if let club = clubInfo {
@@ -41,6 +44,7 @@ extension PostViewController {
         } else if let event = eventInfo {
             cell.setup(detail: "Posting in " + (event.title))
         }
+        */
     }
     
     // Textview cell (section 1)
