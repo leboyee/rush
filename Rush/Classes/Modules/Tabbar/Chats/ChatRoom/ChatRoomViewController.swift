@@ -436,6 +436,7 @@ extension ChatRoomViewController {
                                     let friend = Friend()
                                     let user = User()
                                     user.firstName = member.nickname ?? ""
+                                    user.id = Int64(member.userId) ?? 0
                                     user.photoJson = "{\"main\":{\"url\":\"\(member.profileUrl ?? "")\"},\"thumb\":{\"url\":\"\(member.profileUrl ?? "")\"}}"
                                     friend.user = user
                                     
@@ -446,6 +447,7 @@ extension ChatRoomViewController {
                                 let friend = Friend()
                                 let user = User()
                                 user.firstName = member.nickname ?? ""
+                                user.id = Int64(member.userId) ?? 0
                                 user.gender = member.profileUrl
                                 user.photoJson = "{\"main\":{\"url\":\"\(member.profileUrl ?? "")\"},\"thumb\":{\"url\":\"\(member.profileUrl ?? "")\"}}"
                                 friend.user = user

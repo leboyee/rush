@@ -51,7 +51,9 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isTranslucent = false
         
         // Show placeholder view
-        updateSkeletonView(isShowSkeleton: true)
+        if clubList.count == 0 && eventList.count == 0 && classList.count == 0 {
+            updateSkeletonView(isShowSkeleton: true)
+        }
         
         getHomeList()
     }
