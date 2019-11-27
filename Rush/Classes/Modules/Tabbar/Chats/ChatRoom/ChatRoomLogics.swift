@@ -319,7 +319,12 @@ extension ChatRoomViewController {
             } else {
                 emptyUserImageView.sd_setImage(with: URL(string: imgName), completed: nil)
             }
-            userNameNavLabel.text = self.userName
+            
+            var nm = self.userName
+            nm = nm.replacingOccurrences(of: ", ", with: "")
+            nm = nm.replacingOccurrences(of: ",", with: "")
+            userNameNavLabel.text = nm
+            
             showSingleOrGroupPhotos(photoURL: updateChatUserImage())
         }
     }

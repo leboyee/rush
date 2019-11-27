@@ -58,6 +58,7 @@ class EventDetailViewController: UIViewController {
     var postList: [Post]?
     var inviteeList: [Invitee]?
     var totalInvitee: Int = 0
+    var isFromChatDetail = false
     
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182

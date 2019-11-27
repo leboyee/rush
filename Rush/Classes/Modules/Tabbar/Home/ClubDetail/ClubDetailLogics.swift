@@ -126,7 +126,11 @@ extension ClubDetailViewController {
         
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
-            unsafe.checkIsChatExistOrNot()
+            if unsafe.isFromChatDetail {
+                unsafe.navigationController?.popViewController(animated: true)
+            } else {
+                unsafe.checkIsChatExistOrNot()
+            }
         }
     }
     
