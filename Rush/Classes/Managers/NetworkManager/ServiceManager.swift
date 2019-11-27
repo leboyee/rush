@@ -175,6 +175,11 @@ class ServiceManager: NSObject {
      */
     func errorHandler(result: Any?, error: Error?, closer: @escaping (_ errorMessage: String?) -> Void) {
        
+        /// Below condition to avoid messages for Access denied case
+        if (error as NSError?)?.code == 401 {
+            return
+        }
+        
         var errorMessage = "Indefinite error"
         defer {
             closer(errorMessage)
