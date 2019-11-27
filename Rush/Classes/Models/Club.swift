@@ -73,12 +73,13 @@ class ClubCategory: Codable {
         case name = "name"
         case clubArray = "club"
     }
+    
     var id: String {
         get {
             return String(idP)
         }
         set(idx) {
-            id = idx
+            self.id = idx
         }
     }
 }

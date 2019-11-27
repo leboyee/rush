@@ -136,11 +136,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ProfileViewController {
     private func animateHeader() {
+        customPullSpinner.startAnimating()
+        loadAllData()
         self.headerHeightConstraint.constant = headerFullHeight
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
-        
     }
 }
 

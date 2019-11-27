@@ -144,7 +144,7 @@ extension EnterEmailViewConteroller {
             emailErroLabel.isHidden = true
             errorButton.isHidden = true
             self.view.endEditing(true)
-            var email = emailTextField.text ?? ""
+            let email = emailTextField.text ?? ""
             // email = email.replacingOccurrences(of: ".edu", with: ".com")
             profile.email = email
             if loginType == .restoreEmail {

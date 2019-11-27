@@ -194,7 +194,6 @@ extension CreateEventViewController {
         params.titleTextAttributes = UINavigationBar.appearance().titleTextAttributes
         params.backImage = #imageLiteral(resourceName: "back-arrow")
         initNavBarCustomizationParams = params
-
         
         UINavigationBar.appearance().setBackgroundImage(
                 img.resizableImage(

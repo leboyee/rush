@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jT0-nn-O1x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jT0-nn-O1x">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,6 +58,10 @@
                                     <action selector="backButtonAction" destination="jT0-nn-O1x" eventType="touchUpInside" id="lHa-48-Cun"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="eDi-62-vHL">
+                                <rect key="frame" x="188.5" y="64" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -66,8 +70,10 @@
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="top" secondItem="BgX-Be-3HI" secondAttribute="top" id="Lgc-DV-gAh"/>
                             <constraint firstItem="kFX-4p-a17" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="SqE-iP-m0a"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="T5Z-WW-UiJ"/>
+                            <constraint firstItem="eDi-62-vHL" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="20" id="YXk-lF-Me5"/>
                             <constraint firstItem="KKO-jb-Bmc" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" id="adj-fA-m9T"/>
                             <constraint firstItem="s3p-gb-PRf" firstAttribute="top" secondItem="LP0-4Y-hab" secondAttribute="top" constant="6" id="hcQ-I4-yA6"/>
+                            <constraint firstItem="eDi-62-vHL" firstAttribute="centerX" secondItem="BgX-Be-3HI" secondAttribute="centerX" id="nYa-W6-SwR"/>
                             <constraint firstItem="s3p-gb-PRf" firstAttribute="leading" secondItem="LP0-4Y-hab" secondAttribute="leading" constant="8" id="xDL-Po-7wA"/>
                             <constraint firstItem="kFX-4p-a17" firstAttribute="trailing" secondItem="LP0-4Y-hab" secondAttribute="trailing" id="yLM-vc-f9b"/>
                         </constraints>
@@ -75,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="s3p-gb-PRf" id="QUA-5r-mv6"/>
+                        <outlet property="customPullSpinner" destination="eDi-62-vHL" id="EbZ-OF-kuE"/>
                         <outlet property="header" destination="KKO-jb-Bmc" id="9gr-3g-uKd"/>
                         <outlet property="headerHeightConstraint" destination="yDQ-wg-Qf0" id="2yO-hN-wp9"/>
                         <outlet property="tableView" destination="sLR-sx-qn9" id="OPq-rx-JRP"/>
@@ -1095,6 +1102,6 @@ event updates.</string>
         <image name="noPhotoIcon" width="104" height="104"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CnQ-2G-2dH"/>
+        <segue reference="3dt-pp-mnp"/>
     </inferredMetricsTieBreakers>
 </document>

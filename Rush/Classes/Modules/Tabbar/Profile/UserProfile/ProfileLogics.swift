@@ -340,7 +340,7 @@ extension ProfileViewController {
             self.downloadGroup.enter()
             guard let userId = self.profileDetail.profile?.userId else { return }
             let params = [Keys.profileUserId: userId, Keys.pageNo: "\(self.friendPageNo)"]
-            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (friends, total, _) in
+            ServiceManager.shared.fetchFriendsList(params: params) { [weak self] (friends, _, _) in
                 guard let unsafe = self else { return }
                 if let list = friends {
                     if list.isEmpty {
@@ -390,6 +390,7 @@ extension ProfileViewController {
                 }
                 self?.downloadGroup.leave()
                 self?.tableView.reloadData()
+                self?.customPullSpinner.stopAnimating()
             }
         }
     }

@@ -226,7 +226,6 @@ extension ServiceManager {
              }
          }
 
-
     func fetchPeopleList(params: [String: Any], closer: @escaping (_ params: [User]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getPeopleList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
@@ -291,7 +290,6 @@ extension ServiceManager {
            }
        }
     
-    
       func inviteContactList(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
           NetworkManager.shared.inviteContact(params: params) { [weak self] (data, error, code) in
               guard let uwself = self else { return }
@@ -300,7 +298,6 @@ extension ServiceManager {
               })
           }
       }
-      
     
     /*
     // MARK: - Profile

@@ -102,14 +102,12 @@ extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
     
     func savePhoto(_ object: Any?) {
         if let image = self.selectedImage {
-                          UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
-                      } else {
-                          let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
-                          ac.addAction(UIAlertAction(title: "OK", style: .default))
-                          self.present(ac, animated: true)
-                          return
-                      }
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        } else {
+            let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+            return
+        }
     }
-    
-    
 }

@@ -23,7 +23,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var header: ParallaxHeader!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-
+    @IBOutlet weak var customPullSpinner: UIActivityIndicatorView!
+    
     var profileDetail = ProfileDetail()
     var headerFullHeight: CGFloat = 344
     let headerSmallHeight: CGFloat = 170

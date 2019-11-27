@@ -45,8 +45,8 @@ extension EnterEmailViewConteroller {
     }
     
     func restorePassword() {
-           Utils.showSpinner()
-        var email = emailTextField.text ?? ""
+        Utils.showSpinner()
+        let email = emailTextField.text ?? ""
         // email = email.replacingOccurrences(of: ".edu", with: ".com")
            ServiceManager.shared.restorePassword(params: [Keys.email: email]) { [weak self] (status, errorMessage) in
                guard let unsafe = self else { return }
