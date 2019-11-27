@@ -133,6 +133,7 @@ extension OtherUserProfileController {
             if let vc = segue.destination as? UserProfileGalleryViewController {
                 vc.hidesBottomBarWhenPushed = true
                 vc.list = imagesList
+                vc.isFromOtherUserProfile = true
                 vc.user = userInfo ?? User()
                 if let index = sender as? Int {
                     vc.currentIndex = index

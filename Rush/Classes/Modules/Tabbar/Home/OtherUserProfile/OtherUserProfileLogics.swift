@@ -475,7 +475,7 @@ extension OtherUserProfileController {
                 }
                 unsafe.imagesList = items
             }
-            unsafe.getEventList(sortBy: .myUpcoming)
+            unsafe.getEventList(sortBy: .managedFirst)
         })
     }
 }

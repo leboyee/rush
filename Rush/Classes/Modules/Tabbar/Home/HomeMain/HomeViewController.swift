@@ -17,6 +17,7 @@ class HomeViewController: CustomViewController {
     var isShowTutorial = false
     var isShowJoinEvents = false
     var isShowSkeleton = true
+    var isLoadNavigation = false
     
     var date = Date()
     var notificationTitle = ""
@@ -50,7 +51,9 @@ class HomeViewController: CustomViewController {
         tabBarController?.tabBar.isTranslucent = false
         
         // Show placeholder view
-        updateSkeletonView(isShowSkeleton: true)
+        if clubList.count == 0 && eventList.count == 0 && classList.count == 0 {
+            updateSkeletonView(isShowSkeleton: true)
+        }
         
         getHomeList()
     }
@@ -73,39 +76,42 @@ class HomeViewController: CustomViewController {
         
         setupTableView()
         setupNavigation(isSkeleton: true)
+        isLoadNavigation = true
         definesPresentationContext = true
     }
     
     func setupNavigation(isSkeleton: Bool) {
         self.view.backgroundColor = UIColor.bgBlack
-                
-        if isSkeleton {
-        // Set navigation title (date)
+        
+        if isSkeleton && isLoadNavigation == false {
             navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 24, height: 59))
             dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: 128, height: 24))
             viewCalender = UIButton(frame: CGRect(x: 0, y: 26, width: 104, height: 18))
+            viewCalender?.setTitle("", for: .normal)
+            dateButton?.setTitle("", for: .normal)
         } else {
             navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
             
             dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
             viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
+            viewCalender?.setTitle("View calendar", for: .normal)
+            let text = Date().toString(format: "MMMM dd")
+            dateButton?.setTitle(text, for: .normal)
         }
         
-        let text = Date().toString(format: "MMMM dd")
-        dateButton?.setTitle(text, for: .normal)
         dateButton?.layer.cornerRadius = isSkeleton ? 8 : 0
         dateButton?.clipsToBounds = true
         dateButton?.setTitleColor(UIColor.white, for: .normal)
         dateButton?.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton?.contentHorizontalAlignment = .left
         dateButton?.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
-        if isSkeleton {
+        if isSkeleton && isLoadNavigation == false {
             dateButton?.isSkeletonable = true
-            dateButton?.showAnimatedGradientSkeleton()
+            let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+            dateButton?.showAnimatedSkeleton(usingColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.08), animation: animation, transition: .none)
         }
         
         // View calender button setup
-        viewCalender?.setTitle("View calendar", for: .normal)
         viewCalender?.contentHorizontalAlignment = .left
         viewCalender?.layer.cornerRadius = isSkeleton ? 8 : 0
         viewCalender?.clipsToBounds = true
@@ -113,9 +119,10 @@ class HomeViewController: CustomViewController {
         viewCalender?.titleLabel?.font = UIFont.displaySemibold(sz: 13)
         viewCalender?.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
         
-        if isSkeleton {
+        if isSkeleton && isLoadNavigation == false {
             viewCalender?.isSkeletonable = true
-            viewCalender?.showAnimatedGradientSkeleton()
+            let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+            viewCalender?.showAnimatedSkeleton(usingColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.08), animation: animation, transition: .none)
         }
         
         if let vw = navigationView {
@@ -128,7 +135,9 @@ class HomeViewController: CustomViewController {
     func updateSkeletonView(isShowSkeleton: Bool) {
         if isShowSkeleton {
             tableView.isSkeletonable = true
-            navigationItem.rightBarButtonItem = nil
+            if isLoadNavigation == false {
+                navigationItem.rightBarButtonItem = nil
+            }
             view.layoutSkeletonIfNeeded()
             view.showAnimatedGradientSkeleton()
         } else {

@@ -34,14 +34,13 @@ extension PostViewController {
             }
         }
 
-        cell.setup(detail: "")
-/*        if let subclass = subclassInfo { // Subclass
+        if let subclass = subclassInfo { // Subclass
             cell.setup(detail: "Posting in " + (subclass.name))
         } else if let club = clubInfo {
             cell.setup(detail: "Posting in " + (club.clubName ?? ""))
         } else if let event = eventInfo {
             cell.setup(detail: "Posting in " + (event.title))
-        }*/
+        }
     }
     
     // Textview cell (section 1)

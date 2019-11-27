@@ -21,6 +21,7 @@ class ClassDetailViewController: UIViewController {
     
     var isShowMore = false
     var joinedClub = false
+    var isFromChatDetail = false
     
     var classInfo: Class?
     var subclassInfo: SubClass?

@@ -193,9 +193,9 @@ extension HomeViewController {
                 }
                 unsafe.clubList = home.interestedClubList ?? [Club]()
                 unsafe.classList = home.classList ?? [SubClass]()
+                unsafe.updateSkeletonView(isShowSkeleton: false)
+                unsafe.tableView.reloadData()
             }
-            unsafe.updateSkeletonView(isShowSkeleton: false)
-            unsafe.tableView.reloadData()
         }
     }
     

@@ -35,6 +35,7 @@ class ClubDetailViewController: UIViewController {
     var isMyClub = false
     var isFromCreateClub = false
     var isCallAPI = true
+    var isFromChatDetail = false
     
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182

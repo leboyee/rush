@@ -29,6 +29,7 @@ class UserProfileGalleryViewController: UIViewController {
     var user = User()
     
     var isFromChat = false
+    var isFromOtherUserProfile = false
 
     override func viewDidLoad() {
         super.viewDidLoad()

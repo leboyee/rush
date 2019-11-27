@@ -436,6 +436,8 @@ extension ChatRoomViewController {
                                     let friend = Friend()
                                     let user = User()
                                     user.firstName = member.nickname ?? ""
+                                    user.id = Int64(member.userId) ?? 0
+                                    user.photoJson = "{\"main\":{\"url\":\"\(member.profileUrl ?? "")\"},\"thumb\":{\"url\":\"\(member.profileUrl ?? "")\"}}"
                                     friend.user = user
                                     
                                     tempUser.append(friend)
@@ -445,7 +447,9 @@ extension ChatRoomViewController {
                                 let friend = Friend()
                                 let user = User()
                                 user.firstName = member.nickname ?? ""
+                                user.id = Int64(member.userId) ?? 0
                                 user.gender = member.profileUrl
+                                user.photoJson = "{\"main\":{\"url\":\"\(member.profileUrl ?? "")\"},\"thumb\":{\"url\":\"\(member.profileUrl ?? "")\"}}"
                                 friend.user = user
                                 users[first.description.lowercased()] = [friend]
                             }
@@ -495,7 +499,10 @@ extension ChatRoomViewController {
             }
         }
         // Show name
-        userNameNavLabel.text = self.userName
+        var nm = self.userName
+        nm = nm.replacingOccurrences(of: ", ", with: "")
+        nm = nm.replacingOccurrences(of: ",", with: "")
+        userNameNavLabel.text = nm
         
         /*
          if (self.channel?.members?.count ?? 0) <= 2 {
@@ -622,6 +629,7 @@ extension ChatRoomViewController {
                 let club = Club()
                 club.id = Int64(channel?.data ?? "0") ?? 0
                 controller.clubInfo = club
+                controller.isFromChatDetail = true
             }
             self.navigationController?.pushViewController(controller, animated: true)
         } else if eventInfo != nil || channel?.customType == "event" {
@@ -631,6 +639,7 @@ extension ChatRoomViewController {
                 let storyboard = UIStoryboard(name: StoryBoard.eventDetail, bundle: nil)
                 guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.eventDetailViewController) as? EventDetailViewController else { return }
                 controller.eventId = channel?.data ?? "0"
+                controller.isFromChatDetail = true
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         } else if subclassInfo != nil || channel?.customType == "class" {
@@ -640,6 +649,7 @@ extension ChatRoomViewController {
                 let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
                 guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.classDetail) as? ClassDetailViewController else { return }
                 controller.classId = channel?.data ?? "0"
+                controller.isFromChatDetail = true
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         } else {

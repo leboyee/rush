@@ -306,7 +306,11 @@ extension EventDetailViewController {
         cell.secondButtonClickEvent = { [weak self] () in
             guard let unsafe = self else { return }
             if unsafe.type == .joined || unsafe.type == .my {
-                unsafe.openGroupChat()
+                if unsafe.isFromChatDetail {
+                    unsafe.navigationController?.popViewController(animated: true)
+                } else {
+                    unsafe.openGroupChat()
+                }
             } else if unsafe.type == .invited {
                 // Call Reject API
                 guard let event = unsafe.event else { return }
