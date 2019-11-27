@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TextHeader: UITableViewHeaderFooterView {
 
@@ -47,5 +48,19 @@ extension TextHeader {
     
     func setup(textColor: UIColor) {
         titleLabel.textColor = textColor
+    }
+    
+    func setup(isShowSkeleton: Bool) {
+        if isShowSkeleton {
+            titleLabel.layer.cornerRadius = 8
+            titleLabel.clipsToBounds = true
+            titleLabel.isSkeletonable = true
+            titleLabel.showAnimatedGradientSkeleton()
+        } else {
+            titleLabel.layer.cornerRadius = 0
+            titleLabel.isSkeletonable = false
+            titleLabel.clipsToBounds = true
+            titleLabel.hideSkeleton()
+        }
     }
 }

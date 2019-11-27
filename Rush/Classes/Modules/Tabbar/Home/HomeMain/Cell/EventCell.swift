@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class EventCell: UICollectionViewCell {
 
@@ -210,6 +211,16 @@ extension EventCell {
            privacyImageView.image = #imageLiteral(resourceName: "privacy-lock")
         } else if eventType == .inviteOnly {
             privacyImageView.image = #imageLiteral(resourceName: "invite-blue")
+        }
+    }
+    
+    func setup(isSkeletonShow: Bool) {
+        if isSkeletonShow {
+            eventView.showAnimatedGradientSkeleton()
+            categoryView.showAnimatedGradientSkeleton()
+        } else {
+            eventView.hideSkeleton()
+            categoryView.hideSkeleton()
         }
     }
 }

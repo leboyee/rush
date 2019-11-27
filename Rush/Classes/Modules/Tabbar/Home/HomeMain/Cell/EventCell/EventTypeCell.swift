@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 enum CellType {
     case none
@@ -33,6 +34,7 @@ class EventTypeCell: UITableViewCell {
     var list: [Any]?
     var total: Int = 0
     let padding: CGFloat = 16.0
+    var isSkeletonShow = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +46,8 @@ class EventTypeCell: UITableViewCell {
         collectionView.register(UINib(nibName: Cell.user, bundle: nil), forCellWithReuseIdentifier: Cell.user)
         collectionView.register(UINib(nibName: Cell.profileImage, bundle: nil), forCellWithReuseIdentifier: Cell.profileImage)
         collectionView.register(UINib(nibName: Cell.text, bundle: nil), forCellWithReuseIdentifier: Cell.text)
+        
+        collectionView.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -86,5 +90,19 @@ class EventTypeCell: UITableViewCell {
     
     func setup(isSeparatorHide: Bool) {
         separator.isHidden = isSeparatorHide
+    }
+    
+    func setup(isShowSkeleton: Bool) {
+        if isShowSkeleton {
+            cellType = .event
+            isSkeletonShow = true
+            collectionView.isSkeletonable = true
+            collectionView.showAnimatedGradientSkeleton()
+        } else {
+            isSkeletonShow = false
+            collectionView.isSkeletonable = false
+            collectionView.hideSkeleton()
+        }
+        reload()
     }
 }

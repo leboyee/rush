@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import SkeletonView
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+public protocol SkeletonTableViewDataSource: UITableViewDataSource {
+    func numSections(in collectionSkeletonView: UITableView) -> Int
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier
+}
+
+extension HomeViewController: UITableViewDelegate, SkeletonTableViewDataSource {
     
     func setupTableView() {
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+                
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.tutorialPopUp, bundle: nil), forCellReuseIdentifier: Cell.tutorialPopUp)
@@ -21,6 +28,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(UINib(nibName: Cell.noEventCell, bundle: nil), forCellReuseIdentifier: Cell.noEventCell)
         tableView.register(UINib(nibName: ReusableView.textHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: ReusableView.textHeader)
         tableView.register(UINib(nibName: Cell.eventByDate, bundle: nil), forCellReuseIdentifier: Cell.eventByDate)
+        tableView.reloadData()
+    }
+    
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 4
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return Cell.eventType
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,7 +58,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             fillPlaceholderCell(cell, indexPath.section)
             return cell
         } else {
-            
             if indexPath.section == 0 {
                 if isShowTutorial {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tutorialPopUp, for: indexPath) as? TutorialPopUpCell else { return UITableViewCell() }
@@ -55,6 +74,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
                     fillEventTypeCell(cell, indexPath)
+                    cell.setup(isShowSkeleton: isShowSkeleton)
                     return cell
                 }
             }
@@ -75,6 +95,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
         fillTextHeader(header, section)
+        header.setup(isShowSkeleton: isShowSkeleton)
         return header
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SkeletonView
 
 class HomeViewController: CustomViewController {
     
@@ -15,6 +16,7 @@ class HomeViewController: CustomViewController {
     
     var isShowTutorial = false
     var isShowJoinEvents = false
+    var isShowSkeleton = true
     
     var date = Date()
     var notificationTitle = ""
@@ -25,6 +27,11 @@ class HomeViewController: CustomViewController {
     var clubList = [Club]()
     var eventList = [Event]()
     var classList = [SubClass]()
+    
+    var rightBarCreateButton: UIBarButtonItem?
+    var dateButton: UIButton?
+    var viewCalender: UIButton?
+    var navigationView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +44,19 @@ class HomeViewController: CustomViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         navigationController?.navigationBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.isTranslucent = false
         
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
+        
+        // Show placeholder view
+        updateSkeletonView(isShowSkeleton: true)
+        
         getHomeList()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        view.layoutSkeletonIfNeeded()
     }
     
     func setup() {
@@ -53,38 +69,86 @@ class HomeViewController: CustomViewController {
             isShowTutorial = true
         }
         
+        rightBarCreateButton = UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
+        
         setupTableView()
-        setupNavigation()
+        setupNavigation(isSkeleton: true)
         definesPresentationContext = true
     }
     
-    func setupNavigation() {
+    func setupNavigation(isSkeleton: Bool) {
         self.view.backgroundColor = UIColor.bgBlack
-        
-        // Right item button
-        let rightBar = UIBarButtonItem(image: #imageLiteral(resourceName: "active-create"), style: .plain, target: self, action: #selector(createButtonAction))
-        navigationItem.rightBarButtonItem = rightBar
-        
+                
+        if isSkeleton {
         // Set navigation title (date)
-        let navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
-        let dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
+            navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 24, height: 59))
+            dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: 128, height: 24))
+            viewCalender = UIButton(frame: CGRect(x: 0, y: 26, width: 104, height: 18))
+        } else {
+            navigationView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 59))
+            
+            dateButton = UIButton(frame: CGRect(x: 0, y: 0, width: screenWidth - 130, height: 30))
+            viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
+        }
+        
         let text = Date().toString(format: "MMMM dd")
-        dateButton.setTitle(text, for: .normal)
-        dateButton.setTitleColor(UIColor.white, for: .normal)
-        dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
-        dateButton.contentHorizontalAlignment = .left
-        dateButton.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
+        dateButton?.setTitle(text, for: .normal)
+        dateButton?.layer.cornerRadius = isSkeleton ? 8 : 0
+        dateButton?.clipsToBounds = true
+        dateButton?.setTitleColor(UIColor.white, for: .normal)
+        dateButton?.titleLabel?.font = UIFont.displayBold(sz: 24)
+        dateButton?.contentHorizontalAlignment = .left
+        dateButton?.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
+        if isSkeleton {
+            dateButton?.isSkeletonable = true
+            dateButton?.showAnimatedGradientSkeleton()
+        }
         
         // View calender button setup
-        let viewCalender = UIButton(frame: CGRect(x: 0, y: 30, width: 100, height: 18))
-        viewCalender.setTitle("View calendar", for: .normal)
-        viewCalender.contentHorizontalAlignment = .left
-        viewCalender.setTitleColor(UIColor.gray47, for: .normal)
-        viewCalender.titleLabel?.font = UIFont.displaySemibold(sz: 13)
-        viewCalender.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
-        navigationView.addSubview(dateButton)
-        navigationView.addSubview(viewCalender)
-        navigationItem.titleView = navigationView
+        viewCalender?.setTitle("View calendar", for: .normal)
+        viewCalender?.contentHorizontalAlignment = .left
+        viewCalender?.layer.cornerRadius = isSkeleton ? 8 : 0
+        viewCalender?.clipsToBounds = true
+        viewCalender?.setTitleColor(UIColor.gray47, for: .normal)
+        viewCalender?.titleLabel?.font = UIFont.displaySemibold(sz: 13)
+        viewCalender?.addTarget(self, action: #selector(viewCalenderBtnAction), for: .touchUpInside)
+        
+        if isSkeleton {
+            viewCalender?.isSkeletonable = true
+            viewCalender?.showAnimatedGradientSkeleton()
+        }
+        
+        if let vw = navigationView {
+            if let btn = dateButton { vw.addSubview(btn) }
+            if let btn = viewCalender { vw.addSubview(btn) }
+            navigationItem.titleView = navigationView
+        }
+    }
+    
+    func updateSkeletonView(isShowSkeleton: Bool) {
+        if isShowSkeleton {
+            tableView.isSkeletonable = true
+            navigationItem.rightBarButtonItem = nil
+            view.layoutSkeletonIfNeeded()
+            view.showAnimatedGradientSkeleton()
+        } else {
+            self.isShowSkeleton = false
+            view.hideSkeleton()
+            tableView.isSkeletonable = false
+            dateButton?.hideSkeleton()
+            viewCalender?.hideSkeleton()
+            
+            dateButton?.removeFromSuperview()
+            viewCalender?.removeFromSuperview()
+            
+            dateButton?.layer.cornerRadius = 0
+            viewCalender?.layer.cornerRadius = 0
+            
+            setupNavigation(isSkeleton: false)
+            
+            navigationItem.rightBarButtonItem = rightBarCreateButton
+            tableView.reloadData()
+        }
     }
 }
 

@@ -7,9 +7,28 @@
 //
 
 import UIKit
+import SkeletonView
 
-extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+public protocol SkeletonCollectionViewDataSource: UICollectionViewDataSource {
+    func numSections(in collectionSkeletonView: UICollectionView) -> Int
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier
+}
 
+extension EventTypeCell: SkeletonCollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return Cell.event
+    }
+    
+    func numSections(in collectionSkeletonView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
     // MARK: - Presenter Functions
     func reload() {
         collectionView?.reloadData()
@@ -28,6 +47,7 @@ extension EventTypeCell: UICollectionViewDataSource, UICollectionViewDelegate, U
         } else if cellType == .event {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.event, for: indexPath) as? EventCell else { return UICollectionViewCell() }
             fillEventCell(cell, indexPath)
+            cell.setup(isSkeletonShow: isSkeletonShow)
             return cell
         } else if cellType == .invitees || cellType == .friends {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.user, for: indexPath) as? UserCell else { return UICollectionViewCell() }

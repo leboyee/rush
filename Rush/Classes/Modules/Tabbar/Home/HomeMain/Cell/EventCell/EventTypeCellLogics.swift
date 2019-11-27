@@ -11,7 +11,9 @@ import UIKit
 extension EventTypeCell {
     
     func cellCount(_ section: Int) -> Int {
-        if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs)  || type == .clubsJoined || cellType == .event {
+        if isSkeletonShow {
+            return 3
+        } else if cellType == .profileImage || cellType == .interests || cellType == .friends || cellType == .invitees || (cellType == .event && type == .clubs)  || type == .clubsJoined || cellType == .event {
             return cellType == .invitees ? (list?.count ?? 0) + 1 : (list?.count ?? 0)
         } else if type == .upcoming || type == .classes {
             return list?.count ?? 0
@@ -24,6 +26,7 @@ extension EventTypeCell {
         
         if type == .upcoming {
             if let eventList = list as? [Event] {
+                guard eventList.count > indexPath.item else { return }
                 let event = eventList[indexPath.item]
                 cell.setup(eventName: event.title)
                 cell.setup(eventType: event.eventType)
@@ -79,6 +82,7 @@ extension EventTypeCell {
             }
         } else if type == .clubs || type == .clubsJoined {
             if let clubList = list as? [Club] {
+                guard clubList.count > indexPath.item else { return }
                 let club = clubList[indexPath.item]
                 cell.setup(eventName: club.clubName ?? "")
                 cell.setup(eventDetail: club.clubDesc ?? "")
@@ -113,6 +117,7 @@ extension EventTypeCell {
             }
         } else if type == .classes {
             if let classList = list as? [Class] {
+                guard classList.count > indexPath.item else { return }
                 let value = classList[indexPath.item]
                 cell.setup(className: value.name)
             } else if let classList = list as? [SubClass] {

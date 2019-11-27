@@ -136,6 +136,7 @@ PODS:
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
   - SendBirdSDK (3.0.160)
+  - SkeletonView (1.8.2)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.37.0)
   - UnsplashPhotoPicker (1.1.0)
@@ -156,6 +157,7 @@ DEPENDENCIES:
   - ReachabilitySwift
   - SDWebImage (= 5.2.1)
   - SendBirdSDK
+  - SkeletonView
   - SVProgressHUD
   - SwiftLint
   - UnsplashPhotoPicker (~> 1.0)
@@ -192,6 +194,7 @@ SPEC REPOS:
     - SDWebImage
     - SDWebImageFLPlugin
     - SendBirdSDK
+    - SkeletonView
     - SVProgressHUD
     - SwiftLint
     - UnsplashPhotoPicker
@@ -227,10 +230,11 @@ SPEC CHECKSUMS:
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
   SendBirdSDK: 55b5a930da0338c50f0fd069a99d9b7b1b9579f2
+  SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: a839289f3a0a52dc058ef0983f0049a6b839bb6e
+PODFILE CHECKSUM: ed8c5f6f0747174ed6a86e150f6f47ece91c4ad7
 
 COCOAPODS: 1.8.4

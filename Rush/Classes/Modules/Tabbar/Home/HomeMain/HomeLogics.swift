@@ -33,19 +33,21 @@ extension HomeViewController {
         } else if indexPath.section == 1 && isShowJoinEvents {
             return UITableView.automaticDimension
         } else if indexPath.section == 1 {
-            return eventList.count > 0 ? 157 : UITableView.automaticDimension
+            return (eventList.count > 0 || isShowSkeleton) ? 157 : UITableView.automaticDimension
         } else if indexPath.section == 2 {
-            return clubList.count > 0 ? 157 : UITableView.automaticDimension
+            return (clubList.count > 0 || isShowSkeleton) ? 157 : UITableView.automaticDimension
         } else if indexPath.section == 3 {
-            return classList.count > 0 ? 157 : UITableView.automaticDimension
+            return (classList.count > 0 || isShowSkeleton) ? 157 : UITableView.automaticDimension
         } else {
             return 157
         }
     }
     
     func isShowEmptyPlaceholder(_ section: Int) -> Bool {
-        if (section == 1 && eventList.count == 0) || (section == 2 && clubList.count == 0) || (section == 3 && classList.count == 0) {
-            return true
+        if isShowSkeleton == false {
+            if (section == 1 && eventList.count == 0) || (section == 2 && clubList.count == 0) || (section == 3 && classList.count == 0) {
+                return true
+            }
         }
         return false
     }
@@ -153,6 +155,12 @@ extension HomeViewController {
             header.setup(title: Text.classes)
         }
         
+        if isShowSkeleton {
+            header.setup(isDetailArrowHide: true)
+        } else {
+            header.setup(isDetailArrowHide: false)
+        }
+        
         // MARK: - HeaderArrow Selected
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
@@ -186,6 +194,7 @@ extension HomeViewController {
                 unsafe.clubList = home.interestedClubList ?? [Club]()
                 unsafe.classList = home.classList ?? [SubClass]()
             }
+            unsafe.updateSkeletonView(isShowSkeleton: false)
             unsafe.tableView.reloadData()
         }
     }

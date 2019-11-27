@@ -48,4 +48,6 @@ target 'Rush' do
   pod 'Crashlytics', '~> 3.13.4'
   pod 'Firebase/Analytics'
   
+  pod "SkeletonView"
+  
 end
