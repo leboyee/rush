@@ -183,9 +183,12 @@ extension ClubListViewController {
             
             if unself.screenType == .club {
                 
-            } else {
-                // self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
-            }
+            } else if unself.screenType == .classes {
+                guard unself.classesList.count > section - 1 else { return }
+                let category = unself.classesList[section - 1]
+                unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+                        
+           }
         }
     }
     
