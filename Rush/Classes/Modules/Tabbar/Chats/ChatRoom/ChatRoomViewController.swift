@@ -472,6 +472,9 @@ extension ChatRoomViewController {
         
         //Load data
         loadPrevisouMessages()
+        
+        // Read all message from this channel
+        readAllMessages()
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
