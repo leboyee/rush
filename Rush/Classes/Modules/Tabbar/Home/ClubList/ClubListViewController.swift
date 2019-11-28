@@ -55,7 +55,7 @@ class ClubListViewController: CustomViewController {
         isNextPageO = false
         
         if screenType == .club {
-            getMyClubListAPI(sortBy: "my")
+            getMyClubListAPI(sortBy: "my-joined")
             getClubCategoryListAPI()
         } else {
             getMyJoinedClasses(search: "")
