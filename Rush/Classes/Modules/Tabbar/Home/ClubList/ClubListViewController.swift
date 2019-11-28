@@ -179,11 +179,13 @@ extension ClubListViewController {
                         vc.classCategory = category
                         vc.classCategoryList = classesList
                         vc.type = .classes
+                        vc.isFromHomeScreen = isFromHomeScreen
                     } else if let category = sender as? Interest {
                        if screenType == .club {
                             vc.interestList = clubInterestList
                             vc.type = .club
                             vc.interest = category
+                            vc.isFromHomeScreen = isFromHomeScreen
                         } /*else if screenType == .event {
                             vc.interestList = eventInterestList
                             vc.type = .event

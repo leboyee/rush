@@ -411,6 +411,10 @@ extension EventCategoryListViewController {
                      Keys.pageNo: pageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
         
+        if isFromHomeScreen {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
+        
         if (interest?.interestId) != nil && (interest?.interestId) !=  0 {
             param[Keys.intId] = interest?.interestId
         }
@@ -529,6 +533,11 @@ extension EventCategoryListViewController {
                      Keys.isOnlyFriendJoined: thirdFilterIndex,
                      Keys.pageNo: pageNo] as [String: Any]
         param[Keys.universityId] = selUniversity.universtiyId
+        
+        if isFromHomeScreen {
+             param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
+        
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
