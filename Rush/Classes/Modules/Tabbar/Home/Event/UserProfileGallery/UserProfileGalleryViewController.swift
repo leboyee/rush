@@ -114,6 +114,7 @@ extension UserProfileGalleryViewController {
         if segue.identifier == Segues.photoModelViewSegue {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
+            vc.isFromOtherUserProfile = isFromOtherUserProfile
         }
     }
 }

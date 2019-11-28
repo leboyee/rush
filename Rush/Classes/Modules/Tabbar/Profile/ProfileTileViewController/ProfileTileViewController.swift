@@ -50,6 +50,9 @@ class ProfileTileViewController: UIViewController {
             addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addImageButton)
         }
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
+
         noResultView.isHidden = true
         fetchImagesList()
         // Setup tableview

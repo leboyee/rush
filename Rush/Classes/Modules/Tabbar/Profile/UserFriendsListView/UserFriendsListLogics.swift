@@ -49,6 +49,7 @@ extension UserFriendsListViewController {
         task = ServiceManager.shared.fetchFriendsListWithSession(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
+         
             
             if unsafe.pageNo == 1 {
                 unsafe.friendsList.removeAll()
@@ -69,7 +70,12 @@ extension UserFriendsListViewController {
                         unsafe.friendsList.removeAll()
                     }
                 }
-                
+                if unsafe.isFirstTime == false {
+                    unsafe.isFirstTime = true
+                    unsafe.searchTextFiled?.isUserInteractionEnabled = unsafe.friendsList.count > 0 ? true : false
+                } else {
+                    unsafe.searchTextFiled?.isUserInteractionEnabled = true
+                }
                 unsafe.noSearchResultView.isHidden = unsafe.friendsList.count == 0 ? false : true
                 unsafe.tableView.reloadData()
             }

@@ -11,6 +11,7 @@ import UIKit
 protocol PhotoModelViewControllerDelegate: class {
     func delete(type: String, object: Any?)
     func savePhoto(_ object: Any?)
+
 }
 
 class PhotoModelViewController: UIViewController {
@@ -22,9 +23,9 @@ class PhotoModelViewController: UIViewController {
     @IBOutlet weak var saveLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
     @IBOutlet weak var heightConstraintOfDeletePost: NSLayoutConstraint!
-    
+
     weak var delegate: PhotoModelViewControllerDelegate?
-    
+    var isFromOtherUserProfile: Bool = false
     var object: Any?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,19 +34,25 @@ class PhotoModelViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
+    }
+    
+    func setupUI() {
         DispatchQueue.main.async {
-            self.bottomConstraintOfContainerView.constant = 0
+            if self.isFromOtherUserProfile == true {
+                self.bottomConstraintOfContainerView.constant = -75
+            } else {
+                self.bottomConstraintOfContainerView.constant = 0
+            }
             UIView.animate(withDuration: 0.3) {
                 self.containerView.layoutIfNeeded()
                 self.view.layoutIfNeeded()
             }
         }
-    }
-    
-    func setupUI() {
+
         radiusView.layer.cornerRadius = 24
         radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        deleteLabel.text = "Delete"
+        deleteLabel.text =  "Delete"
     }
     
 }

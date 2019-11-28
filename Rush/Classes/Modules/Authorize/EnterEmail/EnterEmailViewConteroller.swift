@@ -33,7 +33,7 @@ class EnterEmailViewConteroller: CustomViewController {
     var rectTerm: CGRect?
     let termsAndConditionsURL = "https://www.apple.com"
     let privacyURL            = "https://www.google.com"
-    
+    var maxLenth = 254
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -98,6 +98,9 @@ class EnterEmailViewConteroller: CustomViewController {
             loginLineLable.isHidden = true
             emailTitleLable.text = "Enter email to receive restore link"
             nextButton.setTitle("Receive restore link", for: .normal)
+            termLabel.isHidden = true
+            bottomLineLabel.isHidden = true
+            nextButtonBottomConstraint.constant = 0
         } else {
             termLabel.isHidden = true
             bottomLineLabel.isHidden = true

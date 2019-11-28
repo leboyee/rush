@@ -24,7 +24,7 @@ class UserFriendsListViewController: UIViewController {
     var isSearch: Bool = false
     var searchText: String = ""
     var task: URLSessionDataTask?
-
+    var isFirstTime = false
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -99,7 +99,7 @@ extension ContactsListViewController: UITableViewDelegate, UITableViewDataSource
             inviteButtonVisiable()
         
     }
-    
+        
 }
 
 extension ContactsListViewController: UITextFieldDelegate {
