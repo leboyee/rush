@@ -176,7 +176,7 @@ class EventCategoryListViewController: UIViewController {
     func loadAPIforPaging() {
         switch type {
         case .event:
-            if interest?.interestName != "" {
+            if interest != nil, interest?.interestName != "" {
                 if isToday {
                     firstSortText = "Today"
                     firstFilterIndex = EventCategoryDayFilter.today.rawValue
