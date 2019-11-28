@@ -154,6 +154,7 @@ extension EventTypeCell {
     }
    
     func fillUserCell(_ cell: UserCell, _ indexPath: IndexPath) {
+        cell.imageView.image = nil
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
             cell.setup(image: Text.viewAll)
