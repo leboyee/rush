@@ -39,6 +39,7 @@ class CalendarViewController: CustomViewController {
     
     var dateButton: UIButton!
     var isCalendarOpen = true
+    var isFirstTimeOnly = true /// which is used for handle firts time close open calendar
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,14 +103,9 @@ extension CalendarViewController {
         fetchEvents(startDate: start, endDate: end)
     }
     
-}
-
-// MARK: - Actions
-extension CalendarViewController {
-    
-    @objc func viewCalenderButtonAction() {
+    private func toggleCalendar(isOpen: Bool) {
         var text = dateButton.title(for: .normal)
-        if isCalendarOpen {
+        if isOpen == false {
             text = text?.replacingOccurrences(of: "▴", with: "▾")
             listTopConstraint.constant = topListPadding
         } else {
@@ -120,9 +116,22 @@ extension CalendarViewController {
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
-            self.isCalendarOpen = !self.isCalendarOpen
+            self.isCalendarOpen = isOpen
             self.dateButton.setTitle(text, for: .normal)
         })
+    }
+}
+
+// MARK: - Actions
+extension CalendarViewController {
+    
+    @objc func viewCalenderButtonAction() {
+        //guard isScheduledAnything else { return }
+        if isCalendarOpen {
+            toggleCalendar(isOpen: false)
+        } else {
+            toggleCalendar(isOpen: true)
+        }
     }
    
 }
@@ -152,5 +161,11 @@ extension CalendarViewController {
         let subGroup = groups.filter({ $0.dateString == selectedDate.toString(format: "yyyy-MM-dd") })
         child?.loadEvents(groups: subGroup, isSchedule: isScheduledAnything)
         calenderView.isHidden = false
+        if isScheduledAnything == false, isFirstTimeOnly {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                self.toggleCalendar(isOpen: false)
+            })
+            isFirstTimeOnly = false
+        }
     }
 }
