@@ -110,7 +110,7 @@ extension ClubListViewController: CreatePostViewControllerDelegate {
                                    duration: .middle,
                                    actionText: buttonText,
                                    actionBlock: { (_) in
-                                    Utils.notReadyAlert()
+//                                    Utils.notReadyAlert()
         })
         snackbar.show()
     }

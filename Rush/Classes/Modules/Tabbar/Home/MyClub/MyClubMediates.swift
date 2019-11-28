@@ -106,7 +106,7 @@ extension MyClubViewController: OtherUserProfileProtocol {
             duration: .middle,
             actionText: "",
             actionBlock: { (_) in
-                Utils.notReadyAlert()
+//                Utils.notReadyAlert()
         })
         snackbar.show()
     }
