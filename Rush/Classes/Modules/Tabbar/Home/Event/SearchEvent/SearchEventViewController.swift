@@ -72,11 +72,11 @@ class SearchEventViewController: CustomViewController {
 // MARK: - Actions
 extension SearchEventViewController {
     @objc func createButtonAction() {
-        Utils.notReadyAlert()
+//        Utils.notReadyAlert()
     }
     
     @objc func openSearchClubScreenButtonAction() {
-        Utils.notReadyAlert()
+//        Utils.notReadyAlert()
     }
 }
 

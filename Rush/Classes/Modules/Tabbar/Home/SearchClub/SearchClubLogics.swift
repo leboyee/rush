@@ -88,7 +88,8 @@ extension SearchClubViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        Utils.notReadyAlert()
+        searchText = textField.text ?? ""
+        getClubCategoryListAPI(isShowSpinner: false)
         textField.resignFirstResponder()
         return true
     }
