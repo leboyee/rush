@@ -19,6 +19,7 @@ class Utils: NSObject {
 extension Utils {
     
     class func notReadyAlert() {
+        return;
         let alert = UIAlertController(
             title: "In development!",
             message: "This component isn't ready",

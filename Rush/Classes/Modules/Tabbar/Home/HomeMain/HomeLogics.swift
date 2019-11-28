@@ -143,6 +143,12 @@ extension HomeViewController {
     }
     
     func fillTextHeader(_ header: TextHeader, _ section: Int) {
+        if isShowSkeleton {
+            header.setup(isDetailArrowHide: true)
+        } else {
+            header.setup(isDetailArrowHide: false)
+        }
+        
         if section == 1 {
             if isShowJoinEvents == false && eventList.count == 0 {
                 header.setup(title: Text.UpcomingEvents)
@@ -153,12 +159,6 @@ extension HomeViewController {
             header.setup(title: Text.clubs)
         } else if section == 3 {
             header.setup(title: Text.classes)
-        }
-        
-        if isShowSkeleton {
-            header.setup(isDetailArrowHide: true)
-        } else {
-            header.setup(isDetailArrowHide: false)
         }
         
         // MARK: - HeaderArrow Selected

@@ -90,6 +90,12 @@ extension EventListViewController {
                     let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
                 unself.presentPanModal(rowViewController)
             }
+            else
+            {
+                guard unself.eventCategory.count > section - 1 else { return }
+                               let category = unself.eventCategory[section - 1]
+                               unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+            }
         }
     }
     

@@ -138,6 +138,15 @@ extension EventListViewController {
         } else if segue.identifier == Segues.eventWithoutRSVPJoinedPopup {
             //let vc = segue.destination as? EventJoinedPopupViewController
             //vc?.event = event
+        } else if segue.identifier == Segues.eventCategorySegue {
+                  if let vc = segue.destination as? EventCategoryListViewController {
+                 //     vc.selUniversity = selUniversity
+                   if let category = sender as? Interest {
+                           vc.interestList = eventCategory
+                            vc.type = .event
+                            vc.interest = category
+                    }
+            }
         }
     }
 }

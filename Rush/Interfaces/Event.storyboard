@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0js-ko-496">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0js-ko-496">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -603,6 +603,7 @@
                         <segue destination="me4-NK-rKo" kind="show" identifier="EventListToEventDetailsSegue" id="bB1-At-etE"/>
                         <segue destination="Pco-E7-qRd" kind="show" identifier="RSVPJoinEventSegue" id="NTH-gZ-V0L"/>
                         <segue destination="fon-Rj-ePp" kind="show" identifier="EventWithoutRSVPJoinedPopupSegue" id="Eem-ho-TYA"/>
+                        <segue destination="UJx-KM-bJ8" kind="show" identifier="EventCategorySegue" id="0d3-6a-Tlq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2M-YE-mnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -633,7 +634,7 @@
                                 <rect key="frame" x="0.0" y="13" width="414" height="795"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results were found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3F-5f-4kV">
-                                        <rect key="frame" x="137" y="24" width="140" height="16"/>
+                                        <rect key="frame" x="143.5" y="24" width="127.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="Uoa-um-4kl"/>
                                         </constraints>
@@ -936,4 +937,7 @@
         <image name="save-dark" width="78" height="36"/>
         <image name="share_gray" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0d3-6a-Tlq"/>
+    </inferredMetricsTieBreakers>
 </document>
