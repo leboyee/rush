@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6L-8a-WyD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6L-8a-WyD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,6 +73,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="805"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caE-62-K2K">
+                                <rect key="frame" x="0.0" y="245" width="414" height="315"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Qz8-Lj-tg6">
+                                        <rect key="frame" x="165" y="93.5" width="84" height="88"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have anything scheduled for today" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-gR-3UB">
+                                        <rect key="frame" x="24" y="197.5" width="366" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Qz8-Lj-tg6" firstAttribute="centerX" secondItem="caE-62-K2K" secondAttribute="centerX" id="0SM-G6-Ddk"/>
+                                    <constraint firstItem="Qz8-Lj-tg6" firstAttribute="centerY" secondItem="caE-62-K2K" secondAttribute="centerY" constant="-20" id="1uB-o8-B7H"/>
+                                    <constraint firstAttribute="height" constant="315" id="VLc-zh-DpZ"/>
+                                    <constraint firstItem="LOk-gR-3UB" firstAttribute="top" secondItem="Qz8-Lj-tg6" secondAttribute="bottom" constant="16" id="Wtz-IQ-Wzv"/>
+                                    <constraint firstAttribute="trailing" secondItem="LOk-gR-3UB" secondAttribute="trailing" constant="24" id="XAd-Jf-VIU"/>
+                                    <constraint firstItem="LOk-gR-3UB" firstAttribute="leading" secondItem="caE-62-K2K" secondAttribute="leading" constant="24" id="hgs-pr-tY4"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0H-Sa-sRg">
                                 <rect key="frame" x="0.0" y="245" width="414" height="315"/>
                                 <subviews>
@@ -127,29 +150,6 @@ like!</string>
                                     <constraint firstAttribute="trailing" secondItem="Myr-NA-Dfi" secondAttribute="trailing" constant="24" id="oIb-xe-xVg"/>
                                     <constraint firstItem="Q8b-rg-ty9" firstAttribute="centerX" secondItem="K0H-Sa-sRg" secondAttribute="centerX" id="st6-K7-Rt0"/>
                                     <constraint firstItem="Myr-NA-Dfi" firstAttribute="top" secondItem="ydw-l1-d5M" secondAttribute="bottom" constant="24.5" id="tdt-Bd-vkS"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caE-62-K2K">
-                                <rect key="frame" x="0.0" y="245" width="414" height="315"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Qz8-Lj-tg6">
-                                        <rect key="frame" x="165" y="113.5" width="84" height="88"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have anything scheduled for today" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-gR-3UB">
-                                        <rect key="frame" x="24" y="217.5" width="366" height="16"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
-                                        <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="Qz8-Lj-tg6" firstAttribute="centerX" secondItem="caE-62-K2K" secondAttribute="centerX" id="0SM-G6-Ddk"/>
-                                    <constraint firstItem="Qz8-Lj-tg6" firstAttribute="centerY" secondItem="caE-62-K2K" secondAttribute="centerY" id="1uB-o8-B7H"/>
-                                    <constraint firstAttribute="height" constant="315" id="VLc-zh-DpZ"/>
-                                    <constraint firstItem="LOk-gR-3UB" firstAttribute="top" secondItem="Qz8-Lj-tg6" secondAttribute="bottom" constant="16" id="Wtz-IQ-Wzv"/>
-                                    <constraint firstAttribute="trailing" secondItem="LOk-gR-3UB" secondAttribute="trailing" constant="24" id="XAd-Jf-VIU"/>
-                                    <constraint firstItem="LOk-gR-3UB" firstAttribute="leading" secondItem="caE-62-K2K" secondAttribute="leading" constant="24" id="hgs-pr-tY4"/>
                                 </constraints>
                             </view>
                         </subviews>
