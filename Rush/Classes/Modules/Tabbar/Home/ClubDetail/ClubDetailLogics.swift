@@ -175,24 +175,20 @@ extension ClubDetailViewController {
         }
     }
     
-    func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
-        cell.setup(isRemoveDateView: true)
-        cell.setup(cornerRadius: 24)
-        cell.setup(isHideSeparator: true)
-        cell.clipsToBounds = true
+    func fillEventByDateCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
         
         let user = clubInfo?.user
         if let count = clubInfo?.user?.totalEvents, count > 0 {
             let text = count == 1 ? "event" : "events"
-            cell.setup(detail: "\(count) \(text)")
+            cell.set(timeStr: "\(count) \(text)")
         } else {
-            cell.setup(detail: "No events")
+            cell.set(timeStr: "No events")
         }
-        cell.setup(title: user?.name ?? "")
-        cell.setup(bottomConstraintOfImage: 18.5)
-        cell.setup(bottomConstraintOfDate: 22)
-        cell.setup(dotButtonConstraint: -24)
-        cell.setup(eventImageUrl: clubInfo?.user?.photo?.url())
+        
+        cell.set(url: clubInfo?.user?.photo?.url())
+        
+        cell.set(name: user?.name ?? "")
+        cell.moreButton.isHidden = true
     }
     
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {

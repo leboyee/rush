@@ -57,7 +57,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
             fillJoinedUserCell(cell)
             return cell
         } else if indexPath.section == 3 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventByDate, for: indexPath) as? EventByDateCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.postUser, for: indexPath) as? PostUserCell else { return UITableViewCell() }
             fillEventByDateCell(cell, indexPath)
             return cell
         } else if indexPath.section == 4 {
