@@ -113,12 +113,14 @@ extension CreateEventViewController {
                 cell.datePicker.date = date
                 unsafe.startTime = date.toString(format: "hh:mm a")
                 unsafe.tableView.reloadData()
+                unsafe.validateAllFields()
                 
             } else {
                 unsafe.endTimeDate = date
                 cell.datePicker.date = date
                 unsafe.endTime = date.toString(format: "hh:mm a")
                 unsafe.tableView.reloadData()
+                unsafe.validateAllFields()
             }
         }
     }
@@ -134,10 +136,12 @@ extension CreateEventViewController {
                                        unsafe.resetDateFileds()
                                        unsafe.isStartTime = true
                                        unsafe.tableView.reloadData()
+                                    unsafe.validateAllFields()
                                    } else {
                                        unsafe.resetDateFileds()
                                        unsafe.isStartTime = false
                                        unsafe.tableView.reloadData()
+                                    unsafe.validateAllFields()
                                    }
                                }
 
@@ -151,10 +155,12 @@ extension CreateEventViewController {
                         unsafe.resetDateFileds()
                         unsafe.isEndTime = true
                         unsafe.tableView.reloadData()
+                        unsafe.validateAllFields()
                     } else {
                         unsafe.resetDateFileds()
                         unsafe.isEndTime = false
                         unsafe.tableView.reloadData()
+                        unsafe.validateAllFields()
                     }
                 }
             }

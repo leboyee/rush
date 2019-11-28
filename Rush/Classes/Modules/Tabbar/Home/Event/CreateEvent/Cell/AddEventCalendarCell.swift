@@ -15,6 +15,7 @@ class AddEventCalendarCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        //layoutIfNeeded()
         calendarView.minDateOfCalendar = Date().startOfMonth()
         calendarView.dateColor = UIColor.bgBlack
         calendarView.dateSelectedColor = UIColor.white

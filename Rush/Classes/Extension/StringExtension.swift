@@ -55,6 +55,21 @@ extension String {
         return false
     }
     
+    var isValidPasswordString: Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\\d$@$!%*#?&]{6,}$].*", options: .caseInsensitive)
+            if regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) == nil {
+                return true
+            }
+
+        } catch {
+            debugPrint(error.localizedDescription)
+            return false
+        }
+        return false
+    }
+
+    
     var isCapitalLater: Bool {
         let capitalLetterRegEx  = ".*[A-Z]+.*"
         let texttest = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegEx)

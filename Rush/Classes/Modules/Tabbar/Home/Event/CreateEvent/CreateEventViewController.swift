@@ -179,57 +179,6 @@ extension CreateEventViewController {
         clubHeader.setup(url: URL(string: url))
         isCreateGroupChat = event?.isChatGroup ?? true
     }
-    
-    func setCustomStyleForNavBar() {
-        guard let img = UIImage(named: "navBar") else { return }
-
-        let params = UINavigationBarCustomizationParams()
-        params.backgroundImage = UINavigationBar.appearance().backgroundImage(
-                for: .any, barMetrics: .default
-        )
-        params.shadowImage = UINavigationBar.appearance().shadowImage
-        params.tintColor = UINavigationBar.appearance().tintColor
-        params.barTintColor = UINavigationBar.appearance().barTintColor
-        params.backgroundColor = UINavigationBar.appearance().backgroundColor
-        params.titleTextAttributes = UINavigationBar.appearance().titleTextAttributes
-        params.backImage = #imageLiteral(resourceName: "back-arrow")
-        initNavBarCustomizationParams = params
-        
-        UINavigationBar.appearance().setBackgroundImage(
-                img.resizableImage(
-                        withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
-                        resizingMode: .stretch
-                ),
-                for: .any,
-                barMetrics: .default
-        )
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().barTintColor = UIColor.clear
-        UINavigationBar.appearance().tintColor = .clear
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear]
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .clear
-        UINavigationBar.appearance().backIndicatorImage = UIImage()
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage()
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
-
-    }
-    
-    func revertStyleForNavBar() {
-        
-        guard let params = initNavBarCustomizationParams else { return }
-        UINavigationBar.appearance().setBackgroundImage(params.backgroundImage, for: .any, barMetrics: .default)
-        UINavigationBar.appearance().shadowImage = params.shadowImage
-        UINavigationBar.appearance().tintColor = params.tintColor
-        UINavigationBar.appearance().barTintColor = params.barTintColor
-        UINavigationBar.appearance().titleTextAttributes = params.titleTextAttributes
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = params.tintColor
-        UINavigationBar.appearance().backIndicatorImage = params.backImage
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = params.backImage
-        UINavigationBar.appearance().backgroundColor = params.backgroundColor
-        initNavBarCustomizationParams = nil
-    }
-    
 }
 // MARK: - Mediator
 extension CreateEventViewController {

@@ -48,7 +48,8 @@ class EventCategoryListViewController: UIViewController {
     var endTime = ""
     var isToday = false
     var searchTextField = UITextField()
-    
+    var isFromHomeScreen = false
+
     var selUniversity = University()
     var hasCalledAPI = 0
     

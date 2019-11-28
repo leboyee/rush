@@ -245,10 +245,13 @@ extension ClubListViewController {
             myClubsList.removeAll()
         }
         
-        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
+        var param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy,
                      Keys.pageNo: pageNoM] as [String: Any]
+        if isFromHomeScreen {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
         
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, _) in
             guard let uwself = self else { return }
@@ -335,7 +338,11 @@ extension ClubListViewController {
     
     func getClassCategoryAPI() {
         
-        let param = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
+        var param = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
+        
+        if isFromHomeScreen {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
         
         if pageNoO == 1 {
             classesList.removeAll()

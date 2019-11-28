@@ -173,7 +173,7 @@ extension OtherUserProfileController {
                 })
             } else {
                 if unself.userInfo?.isMessageAllow == 0 {
-                    let snackbar = TTGSnackbar(message: "\(unself.userInfo?.name ?? "") has private privacy setting. You can't message.",
+                    let snackbar = TTGSnackbar(message: "\(unself.userInfo?.name ?? "") has restricted receiving messages.",
                         duration: .middle,
                         actionText: "",
                         actionBlock: { (_) in
@@ -189,7 +189,7 @@ extension OtherUserProfileController {
         cell.messageButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
             if unself.userInfo?.isMessageAllow == 0 {
-                let snackbar = TTGSnackbar(message: "\(unself.userInfo?.name ?? "") has private privacy setting. You can't message.",
+                let snackbar = TTGSnackbar(message: "\(unself.userInfo?.name ?? "") has restricted receiving messages.",
                     duration: .middle,
                     actionText: "",
                     actionBlock: { (_) in

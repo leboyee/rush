@@ -59,12 +59,15 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         if string == "" { } else if string.isValidEmailAddressString == false { return false }
+        
+        
         if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) || (string == "" && range.location >= ((textField.text?.count ?? 0) - 4)) {
             return false
         }
         let currentString: NSString = textField.text! as NSString
-        let newString =
+        var newString =
             currentString.replacingCharacters(in: range, with: string) as String
         var newEmail = newString
         let edu = ".edu.edu"
@@ -74,6 +77,12 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4) {
                 textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
             }
+            return false
+        }
+        
+        if string.count >= maxLenth {
+            newString = (String(string.prefix(maxLenth)) as NSString) as String
+            textField.text = newString as String
             return false
         }
 

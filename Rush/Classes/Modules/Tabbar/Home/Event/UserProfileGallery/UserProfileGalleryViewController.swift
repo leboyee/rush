@@ -58,6 +58,11 @@ class UserProfileGalleryViewController: UIViewController {
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
+        if user.userId == Authorization.shared.profile?.userId {
+            isFromOtherUserProfile = false
+        } else {
+            isFromOtherUserProfile = true
+        }
     }
     
     // MARK: - Set Profile Data
@@ -114,6 +119,7 @@ extension UserProfileGalleryViewController {
         if segue.identifier == Segues.photoModelViewSegue {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
+            vc.isFromOtherUserProfile = isFromOtherUserProfile
         }
     }
 }
