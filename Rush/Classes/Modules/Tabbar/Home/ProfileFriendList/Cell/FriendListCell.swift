@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FriendListCell: UITableViewCell {
 
@@ -30,6 +31,10 @@ extension FriendListCell {
     }
     
     func setup(url: URL?) {
-        friendImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
+        if let downloadURL = SDImageCache.shared.imageFromCache(forKey: url?.absoluteString) {
+            friendImageView.image = downloadURL
+        } else {
+            friendImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
+        }
     }
 }
