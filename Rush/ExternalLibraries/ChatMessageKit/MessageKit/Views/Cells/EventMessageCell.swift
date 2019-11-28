@@ -69,7 +69,7 @@ open class EventMessageCell: MessageContentCell {
 
         let top = imageView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 8)
         let bottom = NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 138)
-        let leading = imageView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 8)
+        let leading = imageView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 5)
         let trailing = NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 80)
 
         NSLayoutConstraint.activate([top, bottom, trailing, leading])
@@ -87,7 +87,7 @@ open class EventMessageCell: MessageContentCell {
         
         messageContainerView.layer.cornerRadius = 24
         
-        let date = UILabel(frame: CGRect(x: 115, y: 8, width: 16, height: 20))
+        let date = UILabel(frame: CGRect(x: 112, y: 8, width: 18, height: 20))
         date.text = eventDate ?? "31"
         date.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(date)
@@ -100,7 +100,7 @@ open class EventMessageCell: MessageContentCell {
         
         let dayWidth = (eventDay?.count ?? 0) < 5 ? 22 : 61
         
-        let day = UILabel(frame: CGRect(x: 115, y: 25, width: dayWidth, height: 16))
+        let day = UILabel(frame: CGRect(x: 112, y: 25, width: dayWidth, height: 16))
         day.text = eventDay ?? "Sunday"
         day.font = UIFont.semibold(sz: 13)
         day.sizeToFit()
@@ -112,12 +112,12 @@ open class EventMessageCell: MessageContentCell {
         time.font = UIFont.semibold(sz: (eventDay?.count ?? 0) < 5 ? 10 : 13)
         messageContainerView.addSubview(time)
         
-        let title = UILabel(frame: CGRect(x: 115, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
+        let title = UILabel(frame: CGRect(x: 112, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
         title.text = eventTitle ?? "VR games"
         title.font = UIFont.displayBold(sz: 23)
         messageContainerView.addSubview(title)
         
-        let detail = UILabel(frame: CGRect(x: 115, y: 89, width: screenWidth - 71 - 100 - 15, height: 54))
+        let detail = UILabel(frame: CGRect(x: 112, y: 89, width: screenWidth - 71 - 100 - 15, height: 54))
         detail.numberOfLines = 3
         detail.text = eventDesc ?? "Get the latest VR Experience with Samsung Gear. You can travel through the worlds as detail of UI thr samsung"
         detail.font = UIFont.regular(sz: 13)
