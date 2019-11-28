@@ -15,14 +15,13 @@ class AddEventCalendarCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        layoutIfNeeded()
         calendarView.minDateOfCalendar = Date().startOfMonth()
         calendarView.dateColor = UIColor.bgBlack
         calendarView.dateSelectedColor = UIColor.white
         calendarView.minimumSelectedDate = Date().minus(days: 1)
         calendarView.selectedDate = Date()
         calendarView.reloadMonth()
-
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
