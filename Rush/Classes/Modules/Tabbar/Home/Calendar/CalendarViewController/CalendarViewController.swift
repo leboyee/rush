@@ -42,8 +42,6 @@ class CalendarViewController: CustomViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setup()
     }
     
@@ -80,6 +78,7 @@ extension CalendarViewController {
             }
         }
         
+        calenderView.isHidden = true
         loadEvents(date: Date())
     }
     
@@ -109,7 +108,6 @@ extension CalendarViewController {
 extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
-        //guard isScheduledAnything else { return }
         var text = dateButton.title(for: .normal)
         if isCalendarOpen {
             text = text?.replacingOccurrences(of: "▴", with: "▾")
@@ -153,5 +151,6 @@ extension CalendarViewController {
     func loadChildList() {
         let subGroup = groups.filter({ $0.dateString == selectedDate.toString(format: "yyyy-MM-dd") })
         child?.loadEvents(groups: subGroup, isSchedule: isScheduledAnything)
+        calenderView.isHidden = false
     }
 }

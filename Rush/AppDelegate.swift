@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupPush()
         //Add Observer For Force logout
         NotificationCenter.default.addObserver(self, selector: #selector(forceLogout), name: Notification.Name.badAccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showBadAccessAlert), name: Notification.Name.badAccessAlert, object: nil)
         return true
     }
     
@@ -134,6 +135,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Authorization.shared.signOut()
             self.setupStoryboard()
         }
+    }
+    
+    @objc func showBadAccessAlert() {
+        Utils.alert(message: "Restricted access")
     }
     
     func setupStoryboard() {

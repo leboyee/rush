@@ -231,6 +231,7 @@ class NetworkManager: NSObject {
             
             guard resultStatusCode != 401 else {
                 NotificationCenter.default.post(name: Notification.Name.badAccess, object: nil)
+                NotificationCenter.default.post(name: Notification.Name.badAccessAlert, object: nil)
                 let response = unsafe.makeResponseFromServer(data: data, httpResponse: httpResponse, methodName: requestType.rawValue)
                 resultSuccess = response
                 resultError = unsafe.makeError(code: resultStatusCode, description: "Restricted access")

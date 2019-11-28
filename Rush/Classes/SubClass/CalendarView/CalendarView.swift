@@ -248,6 +248,8 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
             }
             //print(currentIndex)
         }
+        let indexPath = IndexPath(row: page, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
     }
 
 }
