@@ -94,8 +94,8 @@ extension HomeViewController: UITableViewDelegate, SkeletonTableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableView.textHeader) as? TextHeader else { return UIView() }
-        fillTextHeader(header, section)
         header.setup(isShowSkeleton: isShowSkeleton)
+        fillTextHeader(header, section)
         return header
     }
     

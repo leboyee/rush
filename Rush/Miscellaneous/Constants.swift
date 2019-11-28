@@ -395,6 +395,8 @@ public struct Message {
     static let noFriendFound = "No friends were added"
     static let noInterestAdded = "No interests are selected"
     static let noNotification = "You have no notifications"
+    static let noInternetConnection = "No Internet Connection"
+    static let networkError = "Please check your connection and try again"
 
 }
 
