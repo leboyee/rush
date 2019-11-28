@@ -187,17 +187,18 @@ extension ClassDetailViewController: SharePostViewControllerDelegate {
             if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
                 userName = post.user?.firstName ?? "this"
             }
-            data.append("Check out \(userName) post on Rush app:\n")
+            data.append("Check out \(userName) post in Rush app:\n")
             
-            data.append("\nClass: \(classInfo?.name ?? "")\nPost description: \(post.text ?? "")")
+            data.append("\(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
-                data.append(contentsOf: urls)
-            }
-            if let classImage = clubHeader.userImageView.image {
-                data.append(classImage)
+                for url in urls {
+                    do {
+                        data.append(UIImage(data: try Data(contentsOf: url)) as Any)
+                    } catch {}
+                }
             }
         } else if let cls = object as? SubClass {
-            data.append("Check out \(cls.name) class on Rush app")
+            data.append("Check out \(cls.name) class in Rush app")
             //data.append("\n\(selectedGroup?.name ?? "")")
             if let clubImage = clubHeader.userImageView.image {
                 data.append(clubImage)
