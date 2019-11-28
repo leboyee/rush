@@ -203,7 +203,11 @@ extension EventDetailViewController {
     }
     
     func showInviteeUserProfile(invitee: Invitee) {
-        performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: invitee)
+        if invitee.user?.userId == Authorization.shared.profile?.userId {
+            tabBarController?.selectedIndex = 3
+        } else {
+            performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: invitee)
+        }
     }
     
     func showInvitedPeopleList() {
