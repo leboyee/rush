@@ -28,7 +28,7 @@ extension EventListViewController {
     func cellCount(_ section: Int) -> Int {
         return self.isMyEvents == true && section == 0 ? eventList.count : 1
     }
-        
+    
     func fillEventTypeCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {
         let interest = eventCategory[isMyEvents == true ?  indexPath.section - 1 : indexPath.section]
         cell.setup(.upcoming, nil, interest.eventList)
@@ -46,9 +46,9 @@ extension EventListViewController {
             } else {
                 unsafe.showRSVP(event: event ?? Event())
             }
-
+            
         }
-
+        
     }
     
     func fillEventByDateCell(_ cell: EventByDateCell, _ indexPath: IndexPath) {
@@ -83,11 +83,11 @@ extension EventListViewController {
             guard let unself = self else { return }
             if unself.isMyEvents == true && section == 0 {
                 guard let eventCategoryFilter = UIStoryboard(name: "Event", bundle: nil).instantiateViewController(withIdentifier: "EventCateogryFilterViewController") as? EventCateogryFilterViewController & PanModalPresentable else { return }
-                    eventCategoryFilter.dataArray = Utils.myUpcomingFileter()
-                    eventCategoryFilter.delegate = self
+                eventCategoryFilter.dataArray = Utils.myUpcomingFileter()
+                eventCategoryFilter.delegate = self
                 eventCategoryFilter.selectedIndex = unself.eventFilterType == .myUpcoming ? 0 : 1
                 eventCategoryFilter.headerTitle = "Sort events by:"
-                    let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
+                let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
                 unself.presentPanModal(rowViewController)
             } else {
                 var selectedSection = -1
@@ -96,9 +96,9 @@ extension EventListViewController {
                 } else {
                     selectedSection = section
                 }
-               guard unself.eventCategory.count > selectedSection else { return }
-                               let category = unself.eventCategory[selectedSection]
-                               unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+                guard unself.eventCategory.count > selectedSection else { return }
+                let category = unself.eventCategory[selectedSection]
+                unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
             }
         }
     }
@@ -142,40 +142,44 @@ extension EventListViewController: EventCategoryFilterDelegate {
     }
     
     /*func selectedIndex(_ name: String) {
-        Utils.saveDataToUserDefault(name, UserDefaultKey.myUpcomingFilter)
-        eventFilterType = name == "All Upcoming" ? .myUpcoming : .managedFirst
-        myEventPageNo = 1
-        getMyEventList(sortBy: eventFilterType)
-    }*/
+     Utils.saveDataToUserDefault(name, UserDefaultKey.myUpcomingFilter)
+     eventFilterType = name == "All Upcoming" ? .myUpcoming : .managedFirst
+     myEventPageNo = 1
+     getMyEventList(sortBy: eventFilterType)
+     }*/
 }
 
 // MARK: - Services
 extension EventListViewController {
     func getEventList() {
-        let param = [Keys.pageNo: pageNo] as [String: Any]
+        var param = [Keys.pageNo: pageNo] as [String: Any]
+        
+        if isFromHomeScreen {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
         
         ServiceManager.shared.fetchEventCategoryWithEventList(params: param) { [weak self] (value, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if let category = value {
                 if value?.count == 0 {
-                        unsafe.isNextPageEvent = false
-                        if unsafe.pageNo == 1 {
-                            unsafe.eventCategory.removeAll()
-                        }
-                    } else {
-                        if unsafe.pageNo == 1 {
-                            unsafe.eventCategory = category
-                        } else {
-                            unsafe.eventCategory.append(contentsOf: category)
-                        }
-                        unsafe.pageNo += 1
-                        unsafe.isNextPageEvent = true
+                    unsafe.isNextPageEvent = false
+                    if unsafe.pageNo == 1 {
+                        unsafe.eventCategory.removeAll()
                     }
-                    unsafe.tableView.reloadData()
                 } else {
-                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+                    if unsafe.pageNo == 1 {
+                        unsafe.eventCategory = category
+                    } else {
+                        unsafe.eventCategory.append(contentsOf: category)
+                    }
+                    unsafe.pageNo += 1
+                    unsafe.isNextPageEvent = true
                 }
+                unsafe.tableView.reloadData()
+            } else {
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
             unsafe.tableView.reloadData()
             unsafe.showNoEventScreen()
             
@@ -186,45 +190,46 @@ extension EventListViewController {
         if isApiCalling == true {
             return
         }
-            let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
-                         Keys.search: searchText,
-                        // Keys.sortBy: sortBy.rawValue,
-                         Keys.pageNo: myEventPageNo] as [String: Any]
-            isApiCalling = true
-            ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
-                Utils.hideSpinner()
-                guard let unsafe = self else { return }
-                unsafe.isApiCalling = false
-                if let events = value {
-                    if value?.count == 0 {
-                        unsafe.isNextPageMyEvent = false
-                        if unsafe.myEventPageNo == 1 {
-                            unsafe.eventList.removeAll()
-                        }
-                    } else {
-                        if unsafe.myEventPageNo == 1 {
-                            unsafe.eventList = events
-                        } else {
-                            unsafe.eventList.append(contentsOf: events)
-                        }
-                        unsafe.myEventPageNo += 1
-                        unsafe.isNextPageMyEvent = true
-                    }
-                    unsafe.isMyEvents = unsafe.eventList.count > 0 ? true : false
-                    unsafe.tableView.reloadData()
-                    if unsafe.isFirstTime == false {
-                        unsafe.isFirstTime = true
-                        unsafe.pageNo = 1
-                        unsafe.getEventList()
+        let param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "",
+                     Keys.search: searchText,
+                     // Keys.sortBy: sortBy.rawValue,
+            Keys.pageNo: myEventPageNo] as [String: Any]
+        
+        isApiCalling = true
+        ServiceManager.shared.fetchEventList(sortBy: sortBy.rawValue, params: param) { [weak self] (value, _, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            unsafe.isApiCalling = false
+            if let events = value {
+                if value?.count == 0 {
+                    unsafe.isNextPageMyEvent = false
+                    if unsafe.myEventPageNo == 1 {
+                        unsafe.eventList.removeAll()
                     }
                 } else {
+                    if unsafe.myEventPageNo == 1 {
+                        unsafe.eventList = events
+                    } else {
+                        unsafe.eventList.append(contentsOf: events)
+                    }
+                    unsafe.myEventPageNo += 1
+                    unsafe.isNextPageMyEvent = true
+                }
+                unsafe.isMyEvents = unsafe.eventList.count > 0 ? true : false
+                unsafe.tableView.reloadData()
+                if unsafe.isFirstTime == false {
+                    unsafe.isFirstTime = true
                     unsafe.pageNo = 1
                     unsafe.getEventList()
-                    Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
                 }
-                unsafe.showNoEventScreen()
+            } else {
+                unsafe.pageNo = 1
+                unsafe.getEventList()
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
+            unsafe.showNoEventScreen()
         }
+    }
     
     func joinEvent(eventId: String, action: String) {
         Utils.showSpinner()
@@ -232,12 +237,12 @@ extension EventListViewController {
             Utils.hideSpinner()
             if data != nil {
                 /*
-                /// Comment due to task https://www.wrike.com/open.htm?id=411254195
+                 /// Comment due to task https://www.wrike.com/open.htm?id=411254195
                  if let object = data {
-                let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
-                if isFirstTime == 1 {
-                   self?.showJoinAlert()
-                } */
+                 let isFirstTime = object[Keys.isFirstJoin] as? Int ?? 0
+                 if isFirstTime == 1 {
+                 self?.showJoinAlert()
+                 } */
                 DispatchQueue.main.async {
                     //self?.loadAllData()
                 }

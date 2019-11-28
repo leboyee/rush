@@ -204,6 +204,7 @@ extension HomeViewController {
         } else if segue.identifier == Segues.clubListSegue {
             guard let vc = segue.destination as? ClubListViewController else { return }
             vc.hidesBottomBarWhenPushed = false
+            vc.isFromHomeScreen = true
             vc.screenType = sender as? ClubListType ?? .none
         } else if segue.identifier == Segues.clubDetailSegue {
             guard let vc = segue.destination as? ClubDetailViewController else { return }
@@ -222,6 +223,7 @@ extension HomeViewController {
             }
         } else if segue.identifier == Segues.eventListSeuge {
             if let vc = segue.destination as? EventListViewController {
+                vc.isFromHomeScreen = true
                 vc.eventList = (sender as? [Event] ?? [Event]())
             }
         } else if segue.identifier == Segues.classDetailSegue {

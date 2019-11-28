@@ -38,6 +38,7 @@ class ClubListViewController: CustomViewController {
     var myClubsList = [Club]()
     var myClassesList = [ClassJoined]()
     var clubInterestList = [Interest]()
+    var isFromHomeScreen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
