@@ -36,6 +36,8 @@ extension EventTypeCell {
                 if let eventInvite = event.eventInvite?.last {
                     if eventInvite.status == 2, event.eventType != .inviteOnly {
                         //DONT show join button and also dont show invitee list in this case - confirmed with Kamal
+                        cell.setup(isHideBoth: true)
+                        
                     } else {
                         if eventInvite.status == 1 {//joined
                             cell.setup(invitee: event.invitees)

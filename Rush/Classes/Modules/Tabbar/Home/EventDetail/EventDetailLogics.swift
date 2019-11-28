@@ -461,6 +461,22 @@ extension EventDetailViewController {
             ServiceManager.shared.fetchEventDetail(eventId: id) { [weak self] (event, errorMessage) in
                 guard let unsafe = self else { return }
                 if event == nil, errorMessage != nil {
+                    let alert = UIAlertController(
+                        title: "",
+                        message: errorMessage ?? Message.tryAgainErrorMessage,
+                        preferredStyle: UIAlertController.Style.alert
+                    )
+                    let action = UIAlertAction(title: "Ok",
+                                               style: .cancel,
+                                               handler: { (_) -> Void in
+                                                unsafe.navigationController?.popViewController(animated: true)
+                    })
+                    action.setValue(UIColor.black, forKey: "titleTextColor")
+                    alert.addAction(action)
+                    
+                    
+                    alert.show()
+                    /*
                     let snackbar = TTGSnackbar(message: errorMessage ?? Message.tryAgainErrorMessage,
                     duration: .middle,
                     actionText: "",
@@ -470,7 +486,7 @@ extension EventDetailViewController {
                     unsafe.navigationController?.popViewController(animated: true)
                                        Utils.hideSpinner()
                                        return
-                                      
+                                  */
                 }
                 unsafe.event = event
                 unsafe.loadEventSection()
