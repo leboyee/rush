@@ -21,6 +21,9 @@ extension AppDelegate {
         setupGoogle()
         connectSendbird()
         
+        //Check Reachability
+        connectReachability()
+        
         /// Firebase
         FirebaseApp.configure()
         
@@ -39,6 +42,21 @@ extension AppDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyCKPwD4WcX53pZRlh5RquAOWIPVZuTP9Fc")
     }
     
+    // MARK: - Reachability
+    func connectReachability() {
+        reachability?.whenReachable = { reachability in
+            isNetworkAvailable = true
+        }
+        reachability?.whenUnreachable = { _ in
+            isNetworkAvailable = false
+        }
+        
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
 }
 
 // MARK: - SendBird Chat SDK

@@ -180,6 +180,12 @@ class ServiceManager: NSObject {
             return
         }
         
+        /// Below condition to avoid messages for Network connect and show alert from single place
+        if (error as NSError?)?.code == NSURLErrorNotConnectedToInternet || (error as NSError?)?.code == NSURLErrorNetworkConnectionLost || (error as NSError?)?.code == NSURLErrorUnsupportedURL || (error as NSError?)?.code == NSURLErrorCannotConnectToHost {
+            NotificationCenter.default.post(name: NSNotification.Name.badNetwork, object: nil)
+            return
+        }
+        
         var errorMessage = "Indefinite error"
         defer {
             closer(errorMessage)
