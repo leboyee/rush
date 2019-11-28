@@ -58,6 +58,11 @@ class UserProfileGalleryViewController: UIViewController {
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
+        if user.userId == Authorization.shared.profile?.userId {
+            isFromOtherUserProfile = false
+        } else {
+            isFromOtherUserProfile = true
+        }
     }
     
     // MARK: - Set Profile Data
