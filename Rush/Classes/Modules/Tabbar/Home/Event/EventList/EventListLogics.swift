@@ -89,6 +89,16 @@ extension EventListViewController {
                 eventCategoryFilter.headerTitle = "Sort events by:"
                     let rowViewController: PanModalPresentable.LayoutType = eventCategoryFilter
                 unself.presentPanModal(rowViewController)
+            } else {
+                var selectedSection = -1
+                if unself.isMyEvents == true {
+                    selectedSection = section - 1
+                } else {
+                    selectedSection = section
+                }
+               guard unself.eventCategory.count > selectedSection else { return }
+                               let category = unself.eventCategory[selectedSection]
+                               unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
             }
         }
     }

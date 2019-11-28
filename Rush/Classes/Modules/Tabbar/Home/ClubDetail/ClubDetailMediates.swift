@@ -220,17 +220,19 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
             if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
                 userName = post.user?.firstName ?? "this"
             }
-            data.append("Check out \(userName) post on Rush app:\n")
+            data.append("Check out \(userName) post in Rush app:\n")
             
-            data.append("\nClub: \(clubInfo?.clubName ?? "")\nPost description: \(post.text ?? "")")
-            if let urls = post.images?.compactMap({ $0.urlMedium() }) {
-                data.append(contentsOf: urls)
+            data.append("\(post.text ?? "")")
+           if let urls = post.images?.compactMap({ $0.urlMedium() }) {
+                for url in urls {
+                    do {
+                        data.append(UIImage(data: try Data(contentsOf: url)) as Any)
+                    } catch {}
+                }
             }
-            if let clubImage = clubHeader.userImageView.image {
-                data.append(clubImage)
-            }
+            
         } else if (object as? Club) != nil {
-            data.append("Check out \(clubInfo?.clubName ?? "") club on Rush app")
+            data.append("Check out \(clubInfo?.clubName ?? "") club in Rush app")
             //data.append("Club: \(clubInfo?.clubName ?? "")\nClub description: \(club.clubDesc ?? "")")
             if let clubImage = clubHeader.userImageView.image {
                 data.append(clubImage)

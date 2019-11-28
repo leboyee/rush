@@ -9,6 +9,7 @@
 import UIKit
 import SendBirdSDK
 import MapKit
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isTokenRegistrationPending = true
     var channel: SBDGroupChannel?
-    
+    var isNetworkAlert: Bool = false
+    let reachability = try? Reachability()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupAppearance()
@@ -27,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupPush()
         //Add Observer For Force logout
         NotificationCenter.default.addObserver(self, selector: #selector(forceLogout), name: Notification.Name.badAccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showBadAccessAlert), name: Notification.Name.badAccessAlert, object: nil)
+        
+        // Rechability
+        NotificationCenter.default.addObserver(self, selector: #selector(networkAlert(_:)), name: NSNotification.Name.badNetwork, object: nil)
         return true
     }
     
@@ -133,6 +140,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.main.async {
             Authorization.shared.signOut()
             self.setupStoryboard()
+        }
+    }
+    
+    @objc func showBadAccessAlert() {
+        Utils.alert(message: "Restricted access")
+    }
+    
+    @objc func networkAlert(_ notification: Notification) {
+
+        if !isNetworkAlert {
+            isNetworkAlert = true
+            DispatchQueue.main.async {
+                Utils.hideSpinner()
+                Utils.alert(message: Message.networkError, title: Message.noInternetConnection, buttons: ["OK"], type: .alert) { (_) in
+                    self.isNetworkAlert = false
+                }
+            }
         }
     }
     

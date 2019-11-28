@@ -73,7 +73,9 @@ extension ClubListViewController {
              if indexPath.section == 0 {
              cell.setup(.classes, nil, myClassesList)
              } else { */
+            if classesList[indexPath.section - 1].classList?.count ?? 0 > indexPath.section - 1 {
             cell.setup(.classes, nil, classesList[indexPath.section - 1].classList)
+            }
             /*  }
              } else {
              cell.setup(.classes, nil, classesList)
@@ -159,7 +161,7 @@ extension ClubListViewController {
                 guard clubInterestList.count > section - 1 else { return }
                 let value = clubInterestList[section - 1].interestName
                 header.setup(title: value)
-                header.setup(isDetailArrowHide: true)
+//                header.setup(isDetailArrowHide: true)
             }
         } else if screenType == .classes {
             // if myClassesList.count > 0 {
@@ -182,10 +184,14 @@ extension ClubListViewController {
             // Open other user profile UI for test
             
             if unself.screenType == .club {
-                
-            } else {
-                // self_.performSegue(withIdentifier: Segues.openPostScreen , sender: nil)
-            }
+                guard unself.clubInterestList.count > section - 1 else { return }
+                               let category = unself.clubInterestList[section - 1]
+                               unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+            } else if unself.screenType == .classes {
+                guard unself.classesList.count > section - 1 else { return }
+                let category = unself.classesList[section - 1]
+                unself.performSegue(withIdentifier: Segues.eventCategorySegue, sender: category)
+           }
         }
     }
     

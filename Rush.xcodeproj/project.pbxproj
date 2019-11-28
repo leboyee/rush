@@ -579,6 +579,7 @@
 		8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */; };
 		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
 		8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */; };
+		8A9D777E238F9E2F00B55D6F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */; };
 		8A9E449E2373E9820096C973 /* NoEventLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */; };
 		8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */; };
 		8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */; };
@@ -1196,6 +1197,7 @@
 		8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBottomCell.xib; sourceTree = "<group>"; };
 		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
 		8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoEventLabelCell.xib; sourceTree = "<group>"; };
 		8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
 		8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
@@ -1232,6 +1234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9D777E238F9E2F00B55D6F /* CoreTelephony.framework in Frameworks */,
 				3FEA62B40BDB7892F71FC3A2 /* Pods_Rush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3338,6 +3341,7 @@
 		E0D07A7EEDAE4D845F7A28B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */,
 				8A4B329F2332129900AC1D17 /* DKCamera.framework */,
 				8A4B32A12332129900AC1D17 /* DKImagePickerController.framework */,
 				8A4B32A32332129900AC1D17 /* DKPhotoGallery.framework */,
@@ -4283,7 +4287,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4367,7 +4371,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4381,7 +4385,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4465,7 +4469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4535,7 +4539,7 @@
 				APIKEY = rush789;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
@@ -4619,7 +4623,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Development";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

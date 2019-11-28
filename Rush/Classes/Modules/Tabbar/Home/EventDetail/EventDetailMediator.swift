@@ -199,23 +199,18 @@ extension EventDetailViewController: SharePostViewControllerDelegate {
             if post.userId != Int(Authorization.shared.profile?.userId ?? "-1") {
                 userName = post.user?.firstName ?? "this"
             }
-            data.append("Check out \(userName) post on Rush app:\n")
-            
-            data.append("Event: \(event?.title ?? "")\nPost description: \(post.text ?? "")")
+            data.append("Check out \(userName) post in Rush app:\n")
+            data.append("\(post.text ?? "")")
             if let urls = post.images?.compactMap({ $0.urlMedium() }) {
-                data.append(contentsOf: urls)
+                for url in urls {
+                    do {
+                        data.append(UIImage(data: try Data(contentsOf: url)) as Any)
+                    } catch {}
+                }
             }
-            if let eventImage = header.headerImage.image {
-                data.append(eventImage)
-            }
+            
             Utils.openActionSheet(controller: self, shareData: data)
         } else if let evnt = object as? Event {
-            /*
-            data.append("Check out \(evnt.title) on rush app")
-            data.append("Event: \(evnt.title)\nEvent description: \(evnt.desc)")
-            if let eventImage = header.headerImage.image {
-                data.append(eventImage)
-            }*/
             
             let storyboardName = UIStoryboard(name: StoryBoard.chat, bundle: nil)
             guard let controller = storyboardName.instantiateViewController(withIdentifier: "ChatsViewController") as? ChatsViewController else { return }

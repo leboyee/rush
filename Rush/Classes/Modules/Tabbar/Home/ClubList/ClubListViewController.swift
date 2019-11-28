@@ -68,6 +68,7 @@ class ClubListViewController: CustomViewController {
     }
     
     func setupUI() {
+        tableView.keyboardDismissMode = .onDrag
         setupTableView()
         setupNavigation()
     }
@@ -120,7 +121,7 @@ class ClubListViewController: CustomViewController {
 // MARK: - Actions
 extension ClubListViewController {
     @objc func createButtonAction() {
-        Utils.notReadyAlert()
+//        Utils.notReadyAlert()
     }
     
     @objc func openSearchClubScreenButtonAction() {
@@ -170,6 +171,45 @@ extension ClubListViewController {
                 vc.subclassInfo = sn
             }
             vc.joinedClub = true
+        } else if segue.identifier == Segues.eventCategorySegue {
+                  if let vc = segue.destination as? EventCategoryListViewController {
+                 //     vc.selUniversity = selUniversity
+                    if let category = sender as? Class {
+                        vc.classCategory = category
+                        vc.classCategoryList = classesList
+                        vc.type = .classes
+                    } else if let category = sender as? Interest {
+                       if screenType == .club {
+                            vc.interestList = clubInterestList
+                            vc.type = .club
+                            vc.interest = category
+                        } /*else if screenType == .event {
+                            vc.interestList = eventInterestList
+                            vc.type = .event
+                            vc.interest = category
+                        } else if screenType == .club {
+                            vc.interestList = clubInterestList
+                            vc.type = .club
+                            vc.interest = category
+                        }*/
+                    } /*else if let type = sender as? ScreenType {
+                        vc.type = type
+                        if isToday {
+                            vc.isToday = isToday
+                        }
+                    } else if let category = sender as? EventCategory {
+                        vc.eventCategory = category
+                        vc.type = .event
+                    }  else if (sender as? ClubCategory) != nil {
+                        // vc.interest = category
+                        //                    vc.clubCategoryList = clubInterestList
+                        vc.type = .club
+                    } else if let category = sender as? Class {
+                        vc.classCategory = category
+                        vc.classCategoryList = classesList
+                        vc.type = .classes
+                    }*/
+            }
         }
     }
 }
