@@ -106,7 +106,9 @@ extension PostViewController {
     // Comment child cell
     func fillChildCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
         
-        let comment = commentList[indexPath.section - 4].threadComment?[indexPath.row - 1]
+        var threadComments = commentList[indexPath.section - 4].threadComment
+        threadComments = threadComments?.reversed()
+        let comment = threadComments?[indexPath.row - 1]
         cell.setup(username: comment?.user?.name ?? "")
         
         var desc = comment?.desc ?? ""
@@ -340,6 +342,7 @@ extension PostViewController {
                 guard let unsafe = self else { return }
                 if let value = data, value.count > 0 {
                     unsafe.commentList[index].threadComment = value
+                    unsafe.commentList[index].threadComment = unsafe.commentList[index].threadComment?.reversed()
                 }
                 unsafe.finishCommentCount += 1
                 complition(true)
