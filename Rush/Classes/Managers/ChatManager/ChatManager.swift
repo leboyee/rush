@@ -115,8 +115,8 @@ extension ChatManager {
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
             completionHandler(channels)
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            errorHandler(error)
         })
     }
     
@@ -170,8 +170,8 @@ extension ChatManager {
         loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
             completionHandler(channels)
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            errorHandler(error)
         })
     }
     
@@ -204,6 +204,12 @@ extension ChatManager {
     }
     
     func getListOfFilterGroups(name: String, type: String, userId: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
+        guard isNetworkAvailable else {
+            AppDelegate.shared?.networkAlert()
+            return
+        }
+        
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
@@ -236,8 +242,8 @@ extension ChatManager {
             } else {
                 completionHandler(channels)
             }
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            errorHandler(error)
         })
     }
 }
@@ -303,6 +309,7 @@ extension ChatManager {
         data: String?,
         type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
         
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
@@ -397,6 +404,38 @@ extension ChatManager {
             errorHandler(error)
         })
     }
+    
+    func getChannelByTypeData(_ type: String?, _ data: String?, completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
+        if type == nil || (type?.count ?? 0) == 0 {
+            //if errorHandler
+            errorHandler(NSError(domain: "com.messapps.rush", code: -11111, userInfo: [
+                NSLocalizedDescriptionKey: "type id is nil or blank"
+                ]))
+            return
+        }
+        
+        //Get all channels
+        getListOfAllChatGroups({ list in
+            
+            //Filter for member Id
+            let predicateUserId = NSPredicate(format: "customType = '\(type ?? "")' AND data = '\(data ?? "")'")
+            let userchannel = (list as NSArray?)?.filtered(using: predicateUserId)
+            
+            if let ch = userchannel?.first as? SBDGroupChannel {
+                if (userchannel?.count ?? 0) > 0 {
+                    completionHandler(ch)
+                } else {
+                    completionHandler(nil)
+                }
+            } else {
+                completionHandler(nil)
+            }
+            
+        }, errorHandler: { error in
+            errorHandler(error)
+        })
+    }
 
 }
 
@@ -411,6 +450,11 @@ extension ChatManager {
         data: String?,
         type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
+        guard isNetworkAvailable else {
+            AppDelegate.shared?.networkAlert()
+            return
+        }
         
         if let ids = userIds {
             channel?.inviteUserIds(ids, completionHandler: { (error) in
@@ -466,6 +510,11 @@ extension ChatManager {
     }
     
     func addNewMember(type: String, data: String, userId: String) {
+        
+        guard isNetworkAvailable else {
+            AppDelegate.shared?.networkAlert()
+            return
+        }
         
         getListOfAllPublicChatGroups(type: type, data: data, { (value) in
             if let list = value as? [SBDGroupChannel], list.count > 0 {

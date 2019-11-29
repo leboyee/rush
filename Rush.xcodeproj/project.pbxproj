@@ -581,6 +581,7 @@
 		8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */; };
 		8A9D777E238F9E2F00B55D6F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */; };
 		8A9D7781239120E500B55D6F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D7780239120E500B55D6F /* BaseTableViewController.swift */; };
+		8A9D77842391420900B55D6F /* PrivacyPolicy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A9D77832391420900B55D6F /* PrivacyPolicy.pdf */; };
 		8A9E449E2373E9820096C973 /* NoEventLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */; };
 		8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */; };
 		8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */; };
@@ -1200,6 +1201,7 @@
 		8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8A9D7780239120E500B55D6F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		8A9D77832391420900B55D6F /* PrivacyPolicy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PrivacyPolicy.pdf; sourceTree = "<group>"; };
 		8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoEventLabelCell.xib; sourceTree = "<group>"; };
 		8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
 		8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
@@ -3206,6 +3208,14 @@
 			path = BaseTableViewController;
 			sourceTree = "<group>";
 		};
+		8A9D7782239141F900B55D6F /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				8A9D77832391420900B55D6F /* PrivacyPolicy.pdf */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -3309,6 +3319,7 @@
 		C05FC16322805F9D00721F3F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A9D7782239141F900B55D6F /* Files */,
 				8A04B14622FB0C410055C65F /* TempFiles */,
 				1A142EC9229EC895002C1AFE /* CountryCode */,
 				794183A2228960C7009AB12C /* Fonts */,
@@ -3472,6 +3483,7 @@
 				1A8A5A9723543B19007487C5 /* ProfileTileCell.xib in Resources */,
 				79EF134322D34FD500E260D9 /* PeopleCell.xib in Resources */,
 				79BE868822A946C20056529E /* FriendListCell.xib in Resources */,
+				8A9D77842391420900B55D6F /* PrivacyPolicy.pdf in Resources */,
 				1A142EC6229EC1A0002C1AFE /* CustomPicker.storyboard in Resources */,
 				0918E77D22843D420098AF35 /* Tabbar.storyboard in Resources */,
 				7912571222A16DA100BDE3EC /* ProfileImageCell.xib in Resources */,

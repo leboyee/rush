@@ -126,6 +126,20 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     func setup() {
+        if isShowTempData {
+            loadFirstMessages()
+        }
+        configureMessageCollectionView()
+        configureMessageInputBar()
+        
+        updateChannelNameAndImagesOnNav()
+        setupPlaceholderView()
+        setupNavigation()
+        
+        messagesCollectionView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+              
+        
         setupUI()
     }
     
@@ -398,21 +412,19 @@ extension ChatRoomViewController {
 // MARK: - Other functions
 extension ChatRoomViewController {
     func setupUI() {
-        
-        if isShowTempData {
-            loadFirstMessages()
-        }
-        configureMessageCollectionView()
-        configureMessageInputBar()
-        
-        updateChannelNameAndImagesOnNav()
-        setupPlaceholderView()
-        setupNavigation()
-        
-        messagesCollectionView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
-        
+      
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
+        
+        if self.channel == nil {
+            createNewChatGroup { (channel) in
+                if let chnl = channel {
+                    self.channel = chnl
+                    DispatchQueue.main.async {
+                        self.setupUI()
+                    }
+                }
+            }
+        }
         
         if channel?.customType == "single" {
             chatType = .single

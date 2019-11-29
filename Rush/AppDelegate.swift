@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(showBadAccessAlert), name: Notification.Name.badAccessAlert, object: nil)
         
         // Rechability
-        NotificationCenter.default.addObserver(self, selector: #selector(networkAlert(_:)), name: NSNotification.Name.badNetwork, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkAlert), name: NSNotification.Name.badNetwork, object: nil)
         return true
     }
     
@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Utils.alert(message: "Restricted access")
     }
     
-    @objc func networkAlert(_ notification: Notification) {
+    @objc func networkAlert() {
 
         if !isNetworkAlert {
             isNetworkAlert = true
