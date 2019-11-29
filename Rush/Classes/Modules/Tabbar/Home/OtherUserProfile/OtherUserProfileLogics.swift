@@ -204,7 +204,10 @@ extension OtherUserProfileController {
     
     func checkIsChatExistOrNot() {
         Utils.showSpinner()
-        ChatManager().getListOfFilterGroups(name: "", type: "single", userId: userInfo?.userId ?? "", { [weak self] (data) in
+        ChatManager().getListOfFilterGroups(name: "",
+                                            type: "single",
+                                            userId: userInfo?.userId ?? "", { [weak self] (data) in
+                                                
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             let controller = ChatRoomViewController()
@@ -222,8 +225,9 @@ extension OtherUserProfileController {
             }
             unsafe.navigationController?.pushViewController(controller, animated: true)
             }, errorHandler: { (error) in
+                Utils.hideSpinner()
                 print(error?.localizedDescription ?? "")
-        })
+            })
     }
     
     func fillEventCell(_ cell: EventTypeCell, _ indexPath: IndexPath) {

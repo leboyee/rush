@@ -154,6 +154,10 @@ extension EventCell {
         userView.isHidden = isHideInvitee
     }
     
+    func setup(isHideJoin: Bool) {
+        joinButton.isHidden = isHideJoin
+    }
+    
     func setup(isHideBoth: Bool) {
         joinButton.isHidden = isHideBoth
         userView.isHidden = isHideBoth

@@ -652,7 +652,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSN-Ai-Lxu">
-                                        <rect key="frame" x="16" y="50" width="156" height="72"/>
+                                        <rect key="frame" x="16" y="50" width="78" height="36"/>
                                         <state key="normal" image="cancel-active"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="tgq-BU-5qI" eventType="touchUpInside" id="AsF-zi-5Jt"/>
@@ -660,7 +660,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-7L-6FJ">
-                                        <rect key="frame" x="242" y="50" width="156" height="72"/>
+                                        <rect key="frame" x="320" y="50" width="78" height="36"/>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="save-dark"/>
                                         <userDefinedRuntimeAttributes>
@@ -922,7 +922,7 @@
             <objects>
                 <viewController storyboardIdentifier="OtherUserProfileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0uK-H1-ybm" customClass="OtherUserProfileController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kvd-Gl-yn3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqH-Ij-vLV" customClass="ClubHeader" customModule="Rush" customModuleProvider="target">
@@ -933,10 +933,10 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PgG-kZ-Ecm" customClass="RBackgoundView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="309" width="414" height="587"/>
+                                <rect key="frame" x="0.0" y="309" width="414" height="499"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="MJ4-Lz-Rbf">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="499"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -949,7 +949,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcW-B5-KBg">
-                                <rect key="frame" x="8" y="46" width="40" height="40"/>
+                                <rect key="frame" x="8" y="2" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="bKk-IV-eFG"/>
                                     <constraint firstAttribute="height" constant="40" id="jge-JJ-3uM"/>
@@ -961,7 +961,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkG-nU-PMA">
-                                <rect key="frame" x="366" y="50" width="40" height="40"/>
+                                <rect key="frame" x="366" y="6" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Gs4-a9-NHv"/>
                                     <constraint firstAttribute="width" constant="40" id="Neo-Jc-fPJ"/>
@@ -1026,11 +1026,11 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileInformationViewController" id="XdX-g6-gj5" customClass="ProfileInformationViewController" customModule="Rush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AML-YS-Ys4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hg0-Ao-VTI" customClass="CustomBackgoundImageView" customModule="Rush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -1038,7 +1038,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="stu-hZ-HAc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -1127,6 +1127,13 @@
                                         <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DNc-8t-Szp">
+                                        <rect key="frame" x="0.0" y="347" width="414" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1134,6 +1141,7 @@
                                     <constraint firstItem="mGf-Fn-OZe" firstAttribute="top" secondItem="vdy-yw-FIA" secondAttribute="top" constant="16" id="Cqh-zt-H0g"/>
                                     <constraint firstItem="mGf-Fn-OZe" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" constant="16" id="Epj-PN-hGf"/>
                                     <constraint firstItem="hOi-Yl-Xqs" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" id="Xak-I9-pZ7"/>
+                                    <constraint firstItem="DNc-8t-Szp" firstAttribute="centerX" secondItem="hOi-Yl-Xqs" secondAttribute="centerX" id="chE-0r-2CR"/>
                                     <constraint firstAttribute="trailing" secondItem="mGf-Fn-OZe" secondAttribute="trailing" constant="16" id="ohN-R8-0of"/>
                                     <constraint firstItem="hOi-Yl-Xqs" firstAttribute="top" secondItem="vdy-yw-FIA" secondAttribute="top" constant="56" id="pO8-eb-BTD"/>
                                     <constraint firstAttribute="bottom" secondItem="hOi-Yl-Xqs" secondAttribute="bottom" id="t5m-hP-1FV"/>
@@ -1170,7 +1178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaI-BF-S47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-22" y="1665"/>
+            <point key="canvasLocation" x="-23.188405797101453" y="1664.7321428571429"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="92V-QB-hpK">
@@ -2290,19 +2298,19 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8a6-2F-zCO"/>
-        <segue reference="Ogb-eY-SFI"/>
+        <segue reference="GeF-AR-VOr"/>
         <segue reference="zl1-35-Qwj"/>
-        <segue reference="QdI-xB-jJm"/>
+        <segue reference="Z2T-Ex-vst"/>
         <segue reference="0IY-Pg-ID3"/>
         <segue reference="eQK-QP-NNj"/>
         <segue reference="S8E-ms-kaf"/>
         <segue reference="2qn-kC-bGH"/>
-        <segue reference="Lcf-y5-6Em"/>
+        <segue reference="hn1-l9-YOL"/>
         <segue reference="bqe-q0-s4j"/>
-        <segue reference="90w-At-CBu"/>
+        <segue reference="wCm-Cn-4f5"/>
         <segue reference="rad-wA-dQ6"/>
         <segue reference="gSU-VJ-XvQ"/>
         <segue reference="C9I-aA-3Rl"/>
-        <segue reference="h98-X0-moE"/>
+        <segue reference="CaI-qS-W91"/>
     </inferredMetricsTieBreakers>
 </document>

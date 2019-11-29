@@ -28,7 +28,6 @@ class ProfileViewController: UIViewController {
     var profileDetail = ProfileDetail()
     var headerFullHeight: CGFloat = 344
     let headerSmallHeight: CGFloat = 170
-    var isOtherUserProfile: Bool = false
     
     var imagePageNo: Int = 1
     var imageNextPageExist = false
@@ -52,7 +51,6 @@ class ProfileViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
 //        navigationController?.isNavigationBarHidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-
         title = ""
         
         /// Load All data of screen
@@ -67,12 +65,6 @@ class ProfileViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-       // self.navigationController?.setNavigationBarHidden(false, animated: false)
-        //navigationController?.isNavigationBarHidden = false
     }
 }
 
@@ -102,18 +94,9 @@ extension ProfileViewController {
 extension ProfileViewController {
     
     func setupView() {
-        if isOtherUserProfile {
-            backButton.isHidden = false
-            settingsButton.isHidden = true
-            header.enableEdit(isEnabled: false)
-            header.cameraButton.isHidden = true
-            //headerFullHeight = headerSmallHeight +
-            //                   (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)
-        } else {
-            backButton.isHidden = true
-            profileDetail.profile = Authorization.shared.profile
-            header.cameraButton.isHidden = false
-        }
+        backButton.isHidden = true
+        profileDetail.profile = Authorization.shared.profile
+        header.cameraButton.isHidden = false
     }
     
     func setupHeaderData() {

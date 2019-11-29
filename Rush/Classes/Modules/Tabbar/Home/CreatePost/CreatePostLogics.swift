@@ -93,6 +93,7 @@ extension CreatePostViewController {
             guard let unself = self else { return }
             unself.imageList.remove(at: indexPath.row)
             unself.tableView.reloadData()
+            unself.createButtonValidation()
         }
     }
 }

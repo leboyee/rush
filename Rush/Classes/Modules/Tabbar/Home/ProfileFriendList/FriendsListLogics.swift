@@ -64,17 +64,19 @@ extension FriendsListViewController {
             }
         } else  if type == .classRoasters {
             var friend = Invitee()
-            friend = inviteeList[indexPath.row]
-            cell.setup(name: friend.user?.name ?? "")
-            if let url = URL(string: friend.user?.photo?.thumb ?? "") {
-                cell.setup(url: url)
-            } else {
-                let invitee = inviteeList[indexPath.row]
-                cell.setup(name: invitee.user?.name ?? "")
-                if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+            if inviteeList.count > indexPath.row {
+                friend = inviteeList[indexPath.row]
+                cell.setup(name: friend.user?.name ?? "")
+                if let url = URL(string: friend.user?.photo?.thumb ?? "") {
                     cell.setup(url: url)
                 } else {
-                    cell.setupDummyImage()
+                    let invitee = inviteeList[indexPath.row]
+                    cell.setup(name: invitee.user?.name ?? "")
+                    if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
+                        cell.setup(url: url)
+                    } else {
+                        cell.setupDummyImage()
+                    }
                 }
             }
         }
