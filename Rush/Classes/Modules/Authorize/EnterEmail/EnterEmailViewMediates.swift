@@ -62,7 +62,6 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         
         if string == "" { } else if string.isValidEmailAddressString == false { return false }
         
-        
         if (textField.text?.count ?? 0) > 0 && range.location > ((textField.text?.count ?? 0) - 4) || (string == "" && range.location >= ((textField.text?.count ?? 0) - 4)) {
             return false
         }
@@ -127,6 +126,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
 // MARK: - UITextViewDelegate
 extension EnterEmailViewConteroller: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         guard let vc =  storyboard.instantiateViewController(withIdentifier: "WebViewFileViewController") as? WebViewFileViewController else { return false }
 
