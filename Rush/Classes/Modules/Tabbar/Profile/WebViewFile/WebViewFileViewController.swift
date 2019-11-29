@@ -25,6 +25,7 @@ class WebViewFileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
@@ -36,6 +37,9 @@ extension WebViewFileViewController {
         
         /// Set background color
         view.backgroundColor = UIColor.bgBlack
+        //webview.layer.cornerRadius = topViewRadius
+        //webview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        //webview.clipsToBounds = true
         
         /// Load requires file
         var text = ""
@@ -43,7 +47,7 @@ extension WebViewFileViewController {
         switch type {
         case .policy:
             text = Text.dataPolicy
-            path = Bundle.main.path(forResource: "terms", ofType: "html") ?? ""
+            path = Bundle.main.path(forResource: "PrivacyPolicy", ofType: "pdf") ?? ""
         case .term:
             text = Text.termsConditions
             path = Bundle.main.path(forResource: "terms", ofType: "html") ?? ""
