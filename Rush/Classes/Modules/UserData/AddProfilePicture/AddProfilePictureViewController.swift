@@ -13,7 +13,6 @@ import DKPhotoGallery
 import DKCamera
 import SDWebImage
 
-
 class UINavigationBarCustomizationParams {
     var backgroundImage: UIImage?
     var shadowImage: UIImage?
@@ -55,7 +54,6 @@ class AddProfilePictureViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        setCustomStyleForNavBar()
         isSkip = false
         let urlString = Authorization.shared.profile?.photo?.main
         if urlString != nil || urlString != "" {
@@ -220,6 +218,7 @@ extension AddProfilePictureViewController {
     }
 
     func openCameraOrLibrary() {
+        setCustomStyleForNavBar()
 
         let pickerController = DKImagePickerController()
         DKImageExtensionController.registerExtension(extensionClass: CustomCameraExtension.self, for: .camera)
