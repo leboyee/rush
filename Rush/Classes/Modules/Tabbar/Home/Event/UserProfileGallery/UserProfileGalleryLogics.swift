@@ -97,7 +97,7 @@ extension UserProfileGalleryViewController {
 
 extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
     func delete(type: String, object: Any?) {
-        
+        //deletePhoto(id: "")
     }
     
     func savePhoto(_ object: Any?) {
@@ -110,4 +110,22 @@ extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
             return
         }
     }
+}
+
+
+extension UserProfileGalleryViewController {
+     func deletePhoto(id: String) {
+       Utils.showSpinner()
+       ServiceManager.shared.deletePhoto(photoId: id) { [weak self] (status, errorMsg) in
+            Utils.hideSpinner()
+            guard let unsafe = self else { return }
+            if status {
+                unsafe.dismiss(animated: true, completion: nil)
+            } else if let message = errorMsg {
+                Utils.alert(message: message)
+                
+        }
+        }
+    }
+    
 }

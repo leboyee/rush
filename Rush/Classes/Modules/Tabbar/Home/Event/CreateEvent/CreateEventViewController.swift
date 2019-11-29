@@ -178,6 +178,7 @@ extension CreateEventViewController {
         guard let url = event?.photo?.main else { return }
         clubHeader.setup(url: URL(string: url))
         isCreateGroupChat = event?.isChatGroup ?? true
+        saveButton.isEnabled = false
     }
 }
 // MARK: - Mediator

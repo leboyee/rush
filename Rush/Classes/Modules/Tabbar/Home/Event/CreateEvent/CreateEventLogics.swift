@@ -196,12 +196,7 @@ extension CreateEventViewController {
         }
         cell.textDidChanged = {  [weak self] (text) in
             guard let unsafe = self else { return }
-            
-            if indexPath.section == 0 && unsafe.isEditEvent == false {
-                unsafe.nameEvent = text
-            } else {
-                unsafe.nameEvent = text
-            }
+            unsafe.nameEvent = text
             unsafe.validateAllFields()
         }
         
@@ -212,7 +207,7 @@ extension CreateEventViewController {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
-                
+                unsafe.nameEvent = text
             }
             unsafe.validateAllFields()
         }
@@ -321,10 +316,7 @@ extension CreateEventViewController {
         
         cell.textDidChanged = {  [weak self] (text) in
             guard let unsafe = self else { return }
-            
-            if indexPath.section == 0 {
-                unsafe.nameEvent = text
-            } else if indexPath.section == 1 {
+            if indexPath.section == 1 {
                 unsafe.eventDescription = text
             }
             unsafe.validateAllFields()
@@ -337,7 +329,9 @@ extension CreateEventViewController {
                 txt = String(txt.dropLast())
             }
             if text.isNotEmpty {
-                
+                if indexPath.section == 1 {
+                    unsafe.eventDescription = text
+                }
             }
             unsafe.validateAllFields()
         }
@@ -529,6 +523,7 @@ extension CreateEventViewController: CalendarViewDelegate {
             self.endTime = self.endTimeDate.toString(format: "hh:mm a")
 
         }
+        validateAllFields()
         resetDateFileds()
         self.tableView.reloadData()
     }

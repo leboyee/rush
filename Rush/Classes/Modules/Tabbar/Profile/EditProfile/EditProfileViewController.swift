@@ -195,6 +195,19 @@ extension EditProfileViewController {
         }
      
        // pickerController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        pickerController.didCancel = {
+            if #available(iOS 13.0, *) {
+                           let standard = UINavigationBarAppearance()
+                           standard.configureWithOpaqueBackground()
+                           standard.backgroundColor = .bgBlack
+                           standard.titleTextAttributes = [.foregroundColor: UIColor.white]
+                           UINavigationBar.appearance().standardAppearance = standard
+                           
+                       } else {
+                           // Fallback on earlier versions
+                       }
+        }
+        
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             if assets.count > 0 {
                 self.assignSelectedImages(photos: assets)

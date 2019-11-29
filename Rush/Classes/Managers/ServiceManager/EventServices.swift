@@ -128,4 +128,14 @@ extension ServiceManager {
             })
         }
     }
+    
+    func deletePhoto(photoId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.deletePhoto(photoId: photoId) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
+
 }

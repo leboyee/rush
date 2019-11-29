@@ -13,7 +13,7 @@ extension CreateEventInviteViewController {
     func setupTableView() {
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        tableView.keyboardDismissMode = .onDrag
         tableView.delegate = self
         tableView.dataSource = self
         

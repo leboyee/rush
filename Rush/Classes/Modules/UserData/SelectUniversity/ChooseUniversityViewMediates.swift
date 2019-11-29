@@ -13,7 +13,7 @@ extension ChooseUniversityViewController: UITableViewDelegate, UITableViewDataSo
     func setupMediator() {
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        tableView.keyboardDismissMode = .onDrag
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.universityCell, bundle: nil), forCellReuseIdentifier: Cell.universityCell)
