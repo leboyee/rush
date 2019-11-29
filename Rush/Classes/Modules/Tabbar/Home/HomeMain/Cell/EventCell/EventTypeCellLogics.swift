@@ -63,7 +63,7 @@ extension EventTypeCell {
                     } else {
                         cell.setup(inviteeCount: 0)
                     }
-                    cell.setup(isHideInvitee: false)
+                    cell.setup(isHideJoin: true)
                 }
                 
                 /*

@@ -115,8 +115,8 @@ extension ChatManager {
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
             completionHandler(channels)
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            errorHandler(error)
         })
     }
     
@@ -170,8 +170,8 @@ extension ChatManager {
         loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
             completionHandler(channels)
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            errorHandler(error)
         })
     }
     
@@ -204,6 +204,12 @@ extension ChatManager {
     }
     
     func getListOfFilterGroups(name: String, type: String, userId: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
+        guard isNetworkAvailable else {
+            AppDelegate.shared?.networkAlert()
+            return
+        }
+        
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
@@ -236,8 +242,8 @@ extension ChatManager {
             } else {
                 completionHandler(channels)
             }
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            errorHandler(error)
         })
     }
 }
@@ -412,6 +418,11 @@ extension ChatManager {
         type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
+        guard isNetworkAvailable else {
+            AppDelegate.shared?.networkAlert()
+            return
+        }
+        
         if let ids = userIds {
             channel?.inviteUserIds(ids, completionHandler: { (error) in
                 if error == nil {
@@ -466,6 +477,11 @@ extension ChatManager {
     }
     
     func addNewMember(type: String, data: String, userId: String) {
+        
+        guard isNetworkAvailable else {
+            AppDelegate.shared?.networkAlert()
+            return
+        }
         
         getListOfAllPublicChatGroups(type: type, data: data, { (value) in
             if let list = value as? [SBDGroupChannel], list.count > 0 {
