@@ -44,6 +44,9 @@ class CalendarView: UIView {
         commonInit()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }
 
 extension CalendarView {
@@ -106,7 +109,7 @@ extension CalendarView {
         let indexPath = IndexPath(row: self.currentIndex, section: 0)
         collectionView.layoutIfNeeded()
         collectionView.scrollToItem(at: indexPath, at: .left, animated: animation)
-        collectionView.reloadData()
+        reloadMonth()
     }
     
     func setMonthViewHeight( height: CGFloat) {
@@ -184,7 +187,6 @@ extension CalendarView: UICollectionViewDataSource {
             let date = minDateOfCalendar.plus(months: UInt(indexPath.row))
             cell.reloadMonthCalendar(date: date, selectedDate: selectedDate)
             cell.delegate = self
-           
             return cell
         }
         return UICollectionViewCell()
@@ -244,9 +246,8 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
                 self.delegate?.changeMonth(date: date)
             }
             DispatchQueue.main.async {
-                collectionView.reloadData()
+                self.reloadMonth()
             }
-            //print(currentIndex)
         }
         let indexPath = IndexPath(row: page, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .left, animated: false)

@@ -50,7 +50,12 @@ class CalendarViewController: CustomViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.calenderView.reloadMonth()
+        self.calenderView.isHidden = false
+    }
 }
 
 // MARK: - Setup
@@ -67,6 +72,8 @@ extension CalendarViewController {
         dateButton.setTitleColor(UIColor.white, for: .normal)
         dateButton.titleLabel?.font = UIFont.displayBold(sz: 24)
         dateButton.contentHorizontalAlignment = .left
+        dateButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        dateButton.titleLabel?.minimumScaleFactor = 0.8
         dateButton.addTarget(self, action: #selector(viewCalenderButtonAction), for: .touchUpInside)
         customTitleView.addSubview(dateButton)
         navigationItem.titleView = customTitleView
@@ -80,7 +87,8 @@ extension CalendarViewController {
         }
         
         calenderView.isHidden = true
-        loadEvents(date: Date())
+        calenderView.setSelectedDate(date: selectedDate)
+        loadEvents(date: selectedDate)
     }
     
     private func setTitleDate(date: Date) {
@@ -160,12 +168,17 @@ extension CalendarViewController {
     func loadChildList() {
         let subGroup = groups.filter({ $0.dateString == selectedDate.toString(format: "yyyy-MM-dd") })
         child?.loadEvents(groups: subGroup, isSchedule: isScheduledAnything)
-        calenderView.isHidden = false
+    }
+    
+    func updateView() {
         if isScheduledAnything == false, isFirstTimeOnly {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 self.toggleCalendar(isOpen: false)
             })
             isFirstTimeOnly = false
         }
+        
+        /// load month calendar
+        self.calenderView.reloadMonth()
     }
 }

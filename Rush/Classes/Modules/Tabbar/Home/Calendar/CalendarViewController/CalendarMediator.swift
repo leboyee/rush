@@ -46,5 +46,4 @@ extension CalendarViewController: CalendarViewDelegate {
     func selectedDate(date: Date) {
         dateChanged(date: date)
     }
-    
 }

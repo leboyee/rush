@@ -50,6 +50,23 @@ class CalendarItem: Decodable {
         return String(id)
     }
     
+    init() { }
+    
+    func copy(with zone: NSZone? = nil) -> CalendarItem {
+        let copy = CalendarItem()
+        copy.id = id
+        copy.groupId = groupId
+        copy.type = type
+        copy.title = title
+        copy.groupName = groupName
+        copy.photoJson = photoJson
+        copy.convertJsonToPhoto = convertJsonToPhoto
+        copy.start = start
+        copy.end = end
+        copy.classSchedule = classSchedule
+        return copy
+    }
+    
     private enum CodingKeys: String, CodingKey {
        case id = "data_id"
        case groupId = "data_group_id"

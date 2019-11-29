@@ -36,8 +36,8 @@ extension CalendarViewController {
                 let day = start.toString(format: "EEEE").lowercased()
                 let list = classes?.filter({ ($0.classSchedule?.contains(where: { $0.day.lowercased().trimmingCharacters(in: CharacterSet.whitespaces) == day }) ?? false) })
                 let dateString = start.toString(format: "yyyy-MM-dd")
-                for item in list ?? [] {
-                    
+                for listItem in list ?? [] {
+                    let item = listItem.copy()
                     if let schedule = item.classSchedule?.filter({ $0.day.lowercased().trimmingCharacters(in: CharacterSet.whitespaces) == start.toString(format: "EEEE").lowercased() }).last {
                         let startDateStr = dateString + " " + schedule.start
                         let endDateStr = dateString + " " + schedule.end
@@ -52,6 +52,7 @@ extension CalendarViewController {
                         groups.append(group)
                         continue
                     }
+                    
                     group.events.append(item)
                     if let index = groups.firstIndex(where: { $0.dateString == dateString }) {
                         groups[index] = group
@@ -77,8 +78,7 @@ extension CalendarViewController {
             self?.isScheduledAnything = isScheduledAnything
             /// load list of events in child view controller
             self?.loadChildList()
-            /// load month calendar
-            self?.calenderView.reloadMonth()
+            self?.updateView()
         }
     }
 }
