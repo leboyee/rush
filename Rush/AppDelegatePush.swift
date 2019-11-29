@@ -74,6 +74,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                     selectedNavigationController?.dismiss(animated: false, completion: nil)
                                     selectedNavigationController?.popToRootViewController(animated: false)
                                     viewcontroller.selectedIndex = 2
+                                    let newSelectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
+                                    let vc = newSelectedNavigationController?.viewControllers.first as? ChatsViewController
+                                    vc?.getListOfGroups(isFromPush: true, url: url)
                                 }
                             }
                             

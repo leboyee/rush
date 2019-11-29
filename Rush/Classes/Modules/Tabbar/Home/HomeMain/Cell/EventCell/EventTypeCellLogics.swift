@@ -94,8 +94,8 @@ extension EventTypeCell {
                 cell.userView.isHidden = true
                 
                 var isJoined = false
-                if let invitee = club.invitees {
-                    let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
+                if let invitee = club.myClubInvite {
+                    let filter = invitee.filter({ $0.userId == Authorization.shared.profile?.userId })
                     if filter.count > 0 {
                         isJoined = true
                     }

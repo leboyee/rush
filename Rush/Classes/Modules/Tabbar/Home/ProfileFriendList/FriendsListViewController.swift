@@ -42,6 +42,7 @@ class FriendsListViewController: UIViewController {
     var clubId: String?
     var classId: String = ""
     var groupId: String = ""
+    @IBOutlet weak var noDataLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
