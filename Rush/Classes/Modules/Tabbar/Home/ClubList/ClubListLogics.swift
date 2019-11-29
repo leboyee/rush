@@ -309,12 +309,7 @@ extension ClubListViewController {
     
     func getMyJoinedClasses(search: String) {
         
-        if pageNoM == 1 {
-            myClassesList.removeAll()
-        }
-        
         let param = [Keys.pageNo: pageNoM, Keys.search: search] as [String: Any]
-        
         ServiceManager.shared.fetchMyJoinedClassList(params: param) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             if unsafe.pageNoM == 1 {
@@ -328,8 +323,9 @@ extension ClubListViewController {
                 }
                 unsafe.isNextPageM = true
             } else {
-                if unsafe.pageNoM == 1 || (unsafe.pageNoM > 1 && data?.count == 0) {
-                    unsafe.isNextPageM = false
+                unsafe.isNextPageM = false
+                if unsafe.pageNoM == 1 {
+                    unsafe.myClassesList.removeAll()
                 }
             }
             unsafe.tableView.reloadData()
@@ -344,16 +340,8 @@ extension ClubListViewController {
             param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
         }
         
-        if pageNoO == 1 {
-            classesList.removeAll()
-        }
-        
         ServiceManager.shared.fetchCategoryClassList(params: param) { [weak self] (data, _) in
             guard let uwself = self else { return }
-            
-            if uwself.pageNoO == 1 {
-                uwself.classesList.removeAll()
-            }
             
             if let classes = data, classes.count > 0 {
                 if uwself.pageNoO == 1 {
@@ -363,8 +351,9 @@ extension ClubListViewController {
                 }
                 uwself.isNextPageO = true
             } else {
-                if uwself.pageNoO == 1 || (uwself.pageNoO > 1 && data?.count == 0) {
-                    uwself.isNextPageO = false
+                uwself.isNextPageO = false
+                if uwself.pageNoO == 1 {
+                    uwself.classesList.removeAll()
                 }
             }
             uwself.tableView.reloadData()
