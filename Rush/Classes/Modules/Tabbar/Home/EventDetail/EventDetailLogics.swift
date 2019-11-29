@@ -474,7 +474,6 @@ extension EventDetailViewController {
                     action.setValue(UIColor.black, forKey: "titleTextColor")
                     alert.addAction(action)
                     
-                    
                     alert.show()
                     /*
                     let snackbar = TTGSnackbar(message: errorMessage ?? Message.tryAgainErrorMessage,

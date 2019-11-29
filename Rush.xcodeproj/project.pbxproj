@@ -580,6 +580,7 @@
 		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
 		8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */; };
 		8A9D777E238F9E2F00B55D6F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */; };
+		8A9D7781239120E500B55D6F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D7780239120E500B55D6F /* BaseTableViewController.swift */; };
 		8A9E449E2373E9820096C973 /* NoEventLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */; };
 		8AAA37FB233B505900423D43 /* CreateEventInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */; };
 		8AAA37FC233B505900423D43 /* CreateEventInviteLogics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */; };
@@ -1198,6 +1199,7 @@
 		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
 		8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8A9D7780239120E500B55D6F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8A9E449D2373E9820096C973 /* NoEventLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoEventLabelCell.xib; sourceTree = "<group>"; };
 		8AAA37F8233B505800423D43 /* CreateEventInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteViewController.swift; sourceTree = "<group>"; };
 		8AAA37F9233B505900423D43 /* CreateEventInviteLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventInviteLogics.swift; sourceTree = "<group>"; };
@@ -3196,6 +3198,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8A9D777F2391208400B55D6F /* BaseTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A9D7780239120E500B55D6F /* BaseTableViewController.swift */,
+			);
+			path = BaseTableViewController;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -3275,6 +3285,7 @@
 		C05FC16022805F9C00721F3F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8A9D777F2391208400B55D6F /* BaseTableViewController */,
 				1AEAC49B22D31BE3008FBB54 /* UserInfo */,
 				1ACEAC0F22AC040A00B734D3 /* UserData */,
 				1A142EBC229EC1A0002C1AFE /* CustomPickers */,
@@ -3712,6 +3723,7 @@
 				797FFDBB22B7BC480055A001 /* VideoPropertyView.swift in Sources */,
 				8A4B325F232B9A0B00AC1D17 /* RSVPMediator.swift in Sources */,
 				793BE65922E88207005EF72D /* SeparatorLine.swift in Sources */,
+				8A9D7781239120E500B55D6F /* BaseTableViewController.swift in Sources */,
 				8A04B1A52304126A0055C65F /* NotificationCell.swift in Sources */,
 				7938D06322D75D74002D1537 /* UniversityViewController.swift in Sources */,
 				1A95C3642323FDB70066798D /* DateAndTimeCell.swift in Sources */,

@@ -13,9 +13,8 @@ protocol ClubDetailProtocol: class {
     func deleteClubSuccess(_ club: Club?)
 }
 
-class ClubDetailViewController: UIViewController {
+class ClubDetailViewController: BaseTableViewController {
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundView: RBackgoundView!
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var clubHeader: ClubHeader!
