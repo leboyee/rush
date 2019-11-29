@@ -84,7 +84,7 @@ class ClubDetailViewController: BaseTableViewController {
         if userId == clubOwnerId {
             joinedClub = true
         } else {
-            let filter = clubInfo?.invitees?.filter({ $0.user?.userId == userId })
+            let filter = clubInfo?.myClubInvite?.filter({ $0.userId == userId })
             if filter?.count ?? 0 > 0 {
                 joinedClub = true
             }
