@@ -73,8 +73,8 @@ extension ClubListViewController {
              if indexPath.section == 0 {
              cell.setup(.classes, nil, myClassesList)
              } else { */
-            if classesList[indexPath.section - 1].classList?.count ?? 0 > indexPath.section - 1 {
-            cell.setup(.classes, nil, classesList[indexPath.section - 1].classList)
+            if classesList.count > indexPath.section - 1 {
+                cell.setup(.classes, nil, classesList[indexPath.section - 1].classList)
             }
             /*  }
              } else {
