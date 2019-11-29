@@ -81,6 +81,7 @@ extension UserFriendsListViewController {
         if isSearch == true {
             isSearch = false
             rightBarButton?.image = #imageLiteral(resourceName: "plus_white")
+            searchText = ""
             searchTextFiled?.text = ""
             pageNo = 1
             getFriendListAPI()

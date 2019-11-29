@@ -196,6 +196,7 @@ extension NetworkManager {
     func createEvent(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
+    
     func updateEvent(eventId: String, params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestUploadImage(path: "event/\(eventId)", params: params, contentType: ContentType.formData, resultHandler: resultHandler)
     }
@@ -242,6 +243,11 @@ extension NetworkManager {
     func deleteEvent(eventId: String, resultHandler: @escaping ResultClosure) {
         requestDelete(path: "event/\(eventId)", params: [:], resultHandler: resultHandler)
     }
+    
+    func deletePhoto(photoId: String, resultHandler: @escaping ResultClosure) {
+        requestDelete(path: "profile/photo/\(photoId)", params: [:], resultHandler: resultHandler)
+    }
+
     
     func inviteContact(params: [String: Any], resultHandler: @escaping ResultClosure) {
           requestPost(path: "contacts/invite", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)

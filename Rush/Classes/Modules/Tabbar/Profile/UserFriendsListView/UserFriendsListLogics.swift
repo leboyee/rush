@@ -49,7 +49,6 @@ extension UserFriendsListViewController {
         task = ServiceManager.shared.fetchFriendsListWithSession(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
-         
             
             if unsafe.pageNo == 1 {
                 unsafe.friendsList.removeAll()

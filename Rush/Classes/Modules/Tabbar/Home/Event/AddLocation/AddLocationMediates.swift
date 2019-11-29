@@ -15,7 +15,7 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.dataSource = self
         tableView.estimatedRowHeight = 56
         tableView.rowHeight = UITableView.automaticDimension
-                
+        tableView.keyboardDismissMode = .onDrag
         tableView.register(UINib(nibName: Cell.addEventLocationCell, bundle: nil), forCellReuseIdentifier: Cell.addEventLocationCell)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 325, right: 0)
         tableView.reloadData()
