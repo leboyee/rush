@@ -120,12 +120,14 @@ extension CalendarViewController {
             text = text?.replacingOccurrences(of: "▾", with: "▴")
             listTopConstraint.constant = topListPadding + calenderViewHeight.constant
         }
+        self.isCalendarOpen = isOpen
+        self.dateButton.setTitle(text, for: .normal)
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
-            self.isCalendarOpen = isOpen
-            self.dateButton.setTitle(text, for: .normal)
+            //self.isCalendarOpen = isOpen
+            //self.dateButton.setTitle(text, for: .normal)
         })
     }
 }
@@ -172,12 +174,9 @@ extension CalendarViewController {
     
     func updateView() {
         if isScheduledAnything == false, isFirstTimeOnly {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                self.toggleCalendar(isOpen: false)
-            })
+            toggleCalendar(isOpen: false)
             isFirstTimeOnly = false
         }
-        
         /// load month calendar
         self.calenderView.reloadMonth()
     }
