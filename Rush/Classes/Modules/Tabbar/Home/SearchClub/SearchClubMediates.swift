@@ -13,7 +13,8 @@ extension SearchClubViewController: UITableViewDelegate, UITableViewDataSource {
     func setupTableView() {
         tableView.layer.cornerRadius = 24
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        tableView.keyboardDismissMode = .onDrag
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Cell.searchClubCell, bundle: nil), forCellReuseIdentifier: Cell.searchClubCell)

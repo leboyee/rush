@@ -298,7 +298,9 @@ extension PostViewController {
                 } else {
                     unsafe.commentList.append(contentsOf: value)
                 }
-                
+                //sort the comments
+                unsafe.commentList = unsafe.commentList.reversed()
+                    
                 unsafe.getAllChildComment()
                 
                 unsafe.pageNoP += 1

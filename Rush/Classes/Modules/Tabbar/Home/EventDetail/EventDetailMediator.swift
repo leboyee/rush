@@ -13,7 +13,7 @@ extension EventDetailViewController {
     func setupTableView() {
         tableView.layer.cornerRadius = topViewRadius
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        tableView.keyboardDismissMode = .onDrag
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 414.0

@@ -69,7 +69,6 @@ class ClubListViewController: CustomViewController {
     }
     
     func setupUI() {
-        tableView.keyboardDismissMode = .onDrag
         setupTableView()
         setupNavigation()
     }
