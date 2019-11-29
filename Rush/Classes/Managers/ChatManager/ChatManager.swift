@@ -310,6 +310,7 @@ extension ChatManager {
         type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
+        
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
         sbdGroupChannelParams.isDistinct = type == "single" ? ((userIds?.count == 2) ? true: false) : false
@@ -399,6 +400,38 @@ extension ChatManager {
                     completionHandler(nil)
                 }
             }
+        }, errorHandler: { error in
+            errorHandler(error)
+        })
+    }
+    
+    func getChannelByTypeData(_ type: String?, _ data: String?, completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
+        if type == nil || (type?.count ?? 0) == 0 {
+            //if errorHandler
+            errorHandler(NSError(domain: "com.messapps.rush", code: -11111, userInfo: [
+                NSLocalizedDescriptionKey: "type id is nil or blank"
+                ]))
+            return
+        }
+        
+        //Get all channels
+        getListOfAllChatGroups({ list in
+            
+            //Filter for member Id
+            let predicateUserId = NSPredicate(format: "customType = '\(type ?? "")' AND data = '\(data ?? "")'")
+            let userchannel = (list as NSArray?)?.filtered(using: predicateUserId)
+            
+            if let ch = userchannel?.first as? SBDGroupChannel {
+                if (userchannel?.count ?? 0) > 0 {
+                    completionHandler(ch)
+                } else {
+                    completionHandler(nil)
+                }
+            } else {
+                completionHandler(nil)
+            }
+            
         }, errorHandler: { error in
             errorHandler(error)
         })

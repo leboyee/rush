@@ -239,29 +239,6 @@ extension ChatRoomViewController: MessageInputBarDelegate {
     
     // MARK: Send Text Message
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
-        /*
-         if isShowTempData {
-         // Here we can parse for which substrings were autocompleted
-         //let _ = messageInputBar.inputTextView.attributedText!
-         //let _ = NSRange(location: 0, length: attributedText.length)
-         
-         let components = inputBar.inputTextView.components
-         messageInputBar.inputTextView.text = String()
-         messageInputBar.invalidatePlugins()
-         
-         // Send button activity animation
-         DispatchQueue.global(qos: .default).async {
-         // fake send request task
-         sleep(1)
-         DispatchQueue.main.async { [weak self] in
-         self?.messageInputBar.inputTextView.placeholder = "Aa"
-         self?.insertMessages(components)
-         self?.messagesCollectionView.scrollToBottom(animated: true)
-         }
-         }
-         }
-         */
-        
         for component in inputBar.inputTextView.components {
             if let str = component as? String {
                 if self.channel == nil {

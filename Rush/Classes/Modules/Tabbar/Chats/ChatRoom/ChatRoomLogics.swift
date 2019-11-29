@@ -63,12 +63,37 @@ extension ChatRoomViewController {
         
         totalUserIds.append(loggedInUserId)
         
+        ChatManager().getChannelByTypeData(type, data, completionHandler: { (channel) in
+            if channel != nil {
+                handler(channel)
+            } else {
+                //create new channel
+                self.createNewGroupChannelwithUsers(totalUserIds: totalUserIds, grpName: grpName, imgUrl: imgUrl, data: data, type: type, completionHandler: handler) { (_) in
+                    print("SOMETHING WRONG IN CREATE NEW CHANNEL")
+                }
+            }
+        }) { (_) in
+            //create new channel
+            self.createNewGroupChannelwithUsers(totalUserIds: totalUserIds, grpName: grpName, imgUrl: imgUrl, data: data, type: type, completionHandler: handler) { (_) in
+                print("SOMETHING WRONG IN CREATE NEW CHANNEL")
+            }
+        }
+    }
+    
+    func createNewGroupChannelwithUsers(
+           totalUserIds: [Any],
+           grpName: String?,
+           imgUrl: String?,
+           data: String?,
+           type: String?,
+           completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+           
         ChatManager().createGroupChannelwithUsers(userIds: totalUserIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel1) in
             DispatchQueue.main
                 .async(execute: {
                     // Move on Chat detail screen
                     if channel1?.members?.count == totalUserIds.count - 1 {
-                        handler(channel1)
+                        completionHandler(channel1)
                     } else {
                         var channelUserIds = [String]()
                         if let members = channel1?.members {
@@ -80,26 +105,25 @@ extension ChatRoomViewController {
                         }
                         var filteredIds = [String]()
                         for filterId in totalUserIds {
-                            if channelUserIds.contains(filterId) == false {
-                                filteredIds.append(filterId)
+                            if channelUserIds.contains(filterId as? String ?? "") == false {
+                                filteredIds.append(filterId as? String ?? "")
                             }
                         }
                         
                         if filteredIds.count > 0 {
                             ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel2) in
-                                handler(channel2)
+                                completionHandler(channel2)
                             }, errorHandler: { (_) in
                                 print("SOMETHING WRONG IN UPDATE USER IN NEW CHANNEL")
                             })
                         } else {
-                            handler(channel1)
+                            completionHandler(channel1)
                         }
                     }
                 })
         }, errorHandler: {_ in
             print("SOMETHING WRONG IN CREATE NEW CHANNEL")
         })
-        
     }
     
     func insertMessage(_ message: MockMessage) {
@@ -158,6 +182,7 @@ extension ChatRoomViewController {
         messageList.removeAll()
         hasPrev = true
         previousMessageQuery = channel?.createPreviousMessageListQuery()
+      
         loadMessagesWithInitial(initial: true)
     }
     
