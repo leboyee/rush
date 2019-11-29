@@ -136,12 +136,10 @@ extension ProfileViewController {
     
     func showAllInterests() {
         performSegue(withIdentifier: Segues.userInterestSegue, sender: self)
-        //Utils.notReadyAlert()
     }
     
     func showAllImages(with index: Int) {
         performSegue(withIdentifier: Segues.profileImageViewSegue, sender: self)
-//        Utils.notReadyAlert()
     }
     
     func showFriend(user: User) {

@@ -65,9 +65,7 @@ class ProfileTileViewController: UIViewController {
     }
     
     @IBAction func addImageButtonAction(_ sender: Any) {
-        //Utils.notReadyAlert()
         photoLibraryPermissionCheck()
-        
      }
  
     // MARK: - Setup Title

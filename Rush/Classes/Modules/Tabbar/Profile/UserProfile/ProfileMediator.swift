@@ -154,16 +154,6 @@ extension ProfileViewController: ParallaxHeaderDelegate {
 // MARK: - OtherUserProfile delegate
 extension ProfileViewController: OtherUserProfileProtocol {
     func unfriendUser(_ name: String) {
-        /*
-        /// Comment that part for now, will open again after discussion
-        let snackbar = TTGSnackbar(message: "You unfriended \(name)",
-            duration: .middle,
-            actionText: "Undo",
-            actionBlock: { (_) in
-                Utils.notReadyAlert()
-        })
-        snackbar.show()
-        */
         loadFriends()
     }
 }
