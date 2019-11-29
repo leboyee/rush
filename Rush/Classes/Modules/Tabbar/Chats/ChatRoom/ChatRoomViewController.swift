@@ -414,6 +414,18 @@ extension ChatRoomViewController {
         
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
         
+        if self.channel == nil {
+            createNewChatGroup { (channel) in
+                if let chnl = channel {
+                    self.channel = chnl
+                    DispatchQueue.main.async {
+                        self.setupUI()
+                        self.chatTableReload(initial: true)
+                    }
+                }
+            }
+        }
+        
         if channel?.customType == "single" {
             chatType = .single
         } else {

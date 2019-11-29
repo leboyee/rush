@@ -413,7 +413,7 @@ extension ChatManager {
         getListOfAllChatGroups({ list in
             
             //Filter for member Id
-            let predicateUserId = NSPredicate(format: "ANY type = '\(type ?? "")' && data = '\(data ?? "")'")
+            let predicateUserId = NSPredicate(format: "customType = '\(type ?? "")' AND data = '\(data ?? "")'")
             let userchannel = (list as NSArray?)?.filtered(using: predicateUserId)
             
             if let ch = userchannel?.first as? SBDGroupChannel {
@@ -422,7 +422,10 @@ extension ChatManager {
                 } else {
                     completionHandler(nil)
                 }
+            } else {
+                completionHandler(nil)
             }
+            
         }, errorHandler: { error in
             errorHandler(error)
         })
