@@ -182,12 +182,7 @@ extension ChatRoomViewController {
         messageList.removeAll()
         hasPrev = true
         previousMessageQuery = channel?.createPreviousMessageListQuery()
-        if messageList.count == 0 {
-            emptyPlaceholderView(isHide: false)
-        } else {
-            emptyPlaceholderView(isHide: true)
-        }
-        
+      
         loadMessagesWithInitial(initial: true)
     }
     

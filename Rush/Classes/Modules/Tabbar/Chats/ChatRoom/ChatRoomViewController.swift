@@ -126,6 +126,20 @@ class ChatRoomViewController: MessagesViewController {
     }
     
     func setup() {
+        if isShowTempData {
+            loadFirstMessages()
+        }
+        configureMessageCollectionView()
+        configureMessageInputBar()
+        
+        updateChannelNameAndImagesOnNav()
+        setupPlaceholderView()
+        setupNavigation()
+        
+        messagesCollectionView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
+              
+        
         setupUI()
     }
     
@@ -398,20 +412,7 @@ extension ChatRoomViewController {
 // MARK: - Other functions
 extension ChatRoomViewController {
     func setupUI() {
-        
-        if isShowTempData {
-            loadFirstMessages()
-        }
-        configureMessageCollectionView()
-        configureMessageInputBar()
-        
-        updateChannelNameAndImagesOnNav()
-        setupPlaceholderView()
-        setupNavigation()
-        
-        messagesCollectionView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
-        
+      
         SBDMain.add(self as SBDChannelDelegate, identifier: "ChatRoomViewController")
         
         if self.channel == nil {
@@ -420,7 +421,6 @@ extension ChatRoomViewController {
                     self.channel = chnl
                     DispatchQueue.main.async {
                         self.setupUI()
-                        self.chatTableReload(initial: true)
                     }
                 }
             }
