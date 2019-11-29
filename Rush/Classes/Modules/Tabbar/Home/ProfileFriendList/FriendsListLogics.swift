@@ -73,6 +73,8 @@ extension FriendsListViewController {
                 cell.setup(name: invitee.user?.name ?? "")
                 if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
                     cell.setup(url: url)
+                } else {
+                    cell.setupDummyImage()
                 }
             }
         }

@@ -15,7 +15,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.layer.cornerRadius = 24
         tableView.layer.borderWidth = CGFloat.leastNormalMagnitude
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+        tableView.keyboardDismissMode = .onDrag
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 500
