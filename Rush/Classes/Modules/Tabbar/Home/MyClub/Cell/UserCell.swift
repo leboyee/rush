@@ -35,7 +35,7 @@ extension UserCell {
     
     func setup(image: String) {
         if image == Text.viewAll {
-            imageView.image = nil
+            imageView.image = #imageLiteral(resourceName: "circleBg.pdf")
         } else {
             imageView.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
         }
