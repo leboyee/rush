@@ -49,7 +49,10 @@ extension ProfileTileViewController: UICollectionViewDelegate, UICollectionViewD
 //        vc.user = Authrosiz
 //        vc.currentIndex = index
 //        vc.isFromOtherUserProfile = false
-//        self.navigationController?.pushViewController(universityViewController, animated: false)    }
+//        self.navigationController?.pushViewController(universityViewController, animated: false)
+        
+    }
+        
 }
 
 extension ProfileTileViewController: UICollectionViewDelegateFlowLayout {
