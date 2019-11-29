@@ -105,6 +105,8 @@ extension ProfileTileViewController {
                         for item in list {
                             if let json = item["img_data"] as? String {
                                 let image = Image(json: json)
+                                image.id = "\(item["user_img_id"] ?? "")"
+                                image.isInstaImage = (item["insta_data"] as? String) == "" ? false : true
                                 items.append(image)
                             }
                         }

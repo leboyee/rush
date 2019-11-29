@@ -42,7 +42,12 @@ extension ProfileTileViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         willDisplay(indexPath)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: Segues.userProfileFullImageViewSegue, sender: indexPath)
 
+    }
+        
 }
 
 extension ProfileTileViewController: UICollectionViewDelegateFlowLayout {

@@ -395,7 +395,7 @@ extension ChatRoomViewController: MessageCellDelegate {
             image.date = date
             vc.list = [image]
             vc.currentIndex = 0
-            
+            vc.isFromOtherUserProfile = true
             let user = User()
             user.firstName = sender.displayName
             user.id = Int64(sender.id) ?? 0

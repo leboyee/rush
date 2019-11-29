@@ -50,8 +50,22 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.isValidPasswordString == false { return false }
-        return true
+        if string == "" { return true } else if string.isValidPasswordString == false { return false }
+        
+        let maxLength = 20
+        let currentString: NSString = textField.text as NSString? ?? ""
+        var newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        if string.count >= maxLength {
+            newString = String(string.prefix(maxLength)) as NSString
+            textField.text = newString as String
+            passwordShowHideLabel.isHidden = textField.text?.count == 0 ? true : false
+            textField.resignFirstResponder()
+            nextButton.setNextButton(isEnable: textField.text?.count == 0 ? false : true)
+            return false
+        }
+
+        return  textField.text?.count ?? 0 < maxLength
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

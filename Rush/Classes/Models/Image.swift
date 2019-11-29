@@ -16,6 +16,7 @@ class Image: Codable {
     var medium: String = ""
     var large: String = ""
     var date: Date?
+    var isInstaImage: Bool = false
 
     init() {
     }
@@ -34,6 +35,7 @@ class Image: Codable {
         case thumb
         case medium
         case large
+        case isInstaImage
     }
     
     // TODO: - Development Function
