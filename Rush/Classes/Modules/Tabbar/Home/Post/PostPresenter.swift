@@ -89,7 +89,7 @@ extension PostViewController {
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.user?.id)
         }
         
         cell.replyClickEvent = { [weak self] () in
@@ -141,7 +141,7 @@ extension PostViewController {
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
+            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment?.user?.id)
         }
         
         cell.replyClickEvent = { [weak self] () in
