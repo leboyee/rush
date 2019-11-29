@@ -247,7 +247,6 @@ extension NetworkManager {
     func deletePhoto(photoId: String, resultHandler: @escaping ResultClosure) {
         requestDelete(path: "profile/photo/\(photoId)", params: [:], resultHandler: resultHandler)
     }
-
     
     func inviteContact(params: [String: Any], resultHandler: @escaping ResultClosure) {
           requestPost(path: "contacts/invite", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)

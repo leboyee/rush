@@ -97,7 +97,8 @@ extension UserProfileGalleryViewController {
 
 extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
     func delete(type: String, object: Any?) {
-        deletePhoto(id: "")
+        let image = list[currentIndex]
+        deletePhoto(id: image.id)
     }
     
     func savePhoto(_ object: Any?) {
@@ -111,7 +112,6 @@ extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
         }
     }
 }
-
 
 extension UserProfileGalleryViewController {
      func deletePhoto(id: String) {

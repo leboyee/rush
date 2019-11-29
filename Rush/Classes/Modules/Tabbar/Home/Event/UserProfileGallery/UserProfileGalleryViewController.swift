@@ -37,9 +37,9 @@ class UserProfileGalleryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if selectedIndex != -1 {
-            scrollToItemIndex(layout, selectedIndex ?? 1)
-        }
+        //if selectedIndex != -1 {
+        scrollToItemIndex(layout, currentIndex )
+       // }
     }
     
     func setupUI() {
@@ -119,7 +119,8 @@ extension UserProfileGalleryViewController {
         if segue.identifier == Segues.photoModelViewSegue {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
-            vc.isFromOtherUserProfile = isFromOtherUserProfile
+            let image = list[currentIndex - 1]
+            vc.isFromOtherUserProfile = image.isInstaImage == true ? false : isFromOtherUserProfile
         }
     }
 }

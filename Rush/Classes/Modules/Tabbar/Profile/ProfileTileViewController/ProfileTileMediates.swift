@@ -44,13 +44,8 @@ extension ProfileTileViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "UserProfileGalleryViewController") as? UserProfileGalleryViewController else { return }
-//        vc.list = self.imageArray
-//        vc.user = Authrosiz
-//        vc.currentIndex = index
-//        vc.isFromOtherUserProfile = false
-//        self.navigationController?.pushViewController(universityViewController, animated: false)
-        
+        self.performSegue(withIdentifier: Segues.userProfileFullImageViewSegue, sender: indexPath)
+
     }
         
 }

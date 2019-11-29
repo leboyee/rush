@@ -134,7 +134,6 @@ extension OtherUserProfileController {
                 vc.hidesBottomBarWhenPushed = true
                 vc.list = imagesList
                 vc.isFromOtherUserProfile = true
-                vc.isFromOtherUserProfile = true
                 vc.user = userInfo ?? User()
                 if let index = sender as? Int {
                     vc.currentIndex = index
@@ -150,6 +149,7 @@ extension OtherUserProfileController {
         } else if segue.identifier == Segues.profileImageViewSegue {
             let vc = segue.destination as? ProfileTileViewController
             vc?.imageArray = imagesList
+            vc?.user = userInfo ?? User()
             vc?.isFromOtherUserProfile = true
             vc?.otherUserId = userInfo?.userId ?? "0"
         }
