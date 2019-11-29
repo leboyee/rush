@@ -26,7 +26,13 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellCount(section)
+        let row = cellCount(section)
+        if row == 0 {
+            noDataLabel.isHidden = false
+        } else {
+            noDataLabel.isHidden = true
+        }
+        return row
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

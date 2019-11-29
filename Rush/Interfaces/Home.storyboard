@@ -1127,10 +1127,10 @@
                                         <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DNc-8t-Szp">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DNc-8t-Szp">
                                         <rect key="frame" x="0.0" y="347" width="414" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1165,6 +1165,7 @@
                     <connections>
                         <outlet property="containView" destination="vdy-yw-FIA" id="zsc-jm-oAu"/>
                         <outlet property="firstSegmentButton" destination="kuC-it-jon" id="zqI-kB-fC3"/>
+                        <outlet property="noDataLabel" destination="DNc-8t-Szp" id="HLC-qg-efm"/>
                         <outlet property="secondSegmentButton" destination="qrd-d6-58I" id="waV-xu-YYN"/>
                         <outlet property="segmentContainView" destination="mGf-Fn-OZe" id="FHe-xr-2W4"/>
                         <outlet property="tableView" destination="hOi-Yl-Xqs" id="wMX-jI-uFK"/>
@@ -2301,8 +2302,8 @@
         <segue reference="GeF-AR-VOr"/>
         <segue reference="zl1-35-Qwj"/>
         <segue reference="Z2T-Ex-vst"/>
-        <segue reference="0IY-Pg-ID3"/>
-        <segue reference="eQK-QP-NNj"/>
+        <segue reference="yEd-FR-LAH"/>
+        <segue reference="BAj-kr-2kr"/>
         <segue reference="S8E-ms-kaf"/>
         <segue reference="2qn-kC-bGH"/>
         <segue reference="hn1-l9-YOL"/>

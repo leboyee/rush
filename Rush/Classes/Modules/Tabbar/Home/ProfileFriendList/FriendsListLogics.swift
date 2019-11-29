@@ -251,6 +251,7 @@ extension FriendsListViewController {
         if pageNo == 1 {
             inviteeList.removeAll()
         }
+        noDataLabel.text = "No Invitees Available"
         let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: inviteType ==  .going ? "going" : "not_going"] as [String: Any]
         ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
             guard let unsafe = self else { return }
@@ -267,7 +268,7 @@ extension FriendsListViewController {
         if firstTabPageNo == 1 {
             firstTabList .removeAll()
         }
-        
+        noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any event."
         let param = [Keys.profileUserId: userInfo?.userId ?? "",
                      Keys.search: "",
 //                     Keys.sortBy: GetEventType.attending.rawValue,
@@ -297,6 +298,7 @@ extension FriendsListViewController {
     }
     
     func getManagedEventList() {
+        noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any event."
         if secondTabPageNo == 1 {
             secondTabList .removeAll()
         }
@@ -331,6 +333,8 @@ extension FriendsListViewController {
     
     func getJoinedClubListAPI() {
         
+        noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any Club."
+              
         if firstTabPageNo == 1 {
             firstTabList .removeAll()
         }
@@ -365,6 +369,8 @@ extension FriendsListViewController {
     }
     
     func getManagedClubList() {
+        noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any Club."
+              
         if secondTabPageNo == 1 {
             secondTabList .removeAll()
         }
@@ -399,7 +405,8 @@ extension FriendsListViewController {
     }
     
     func getFriendsListAPI() {
-        
+        noDataLabel.text = "\(userInfo?.name ?? "User") has no Friends."
+              
         if firstTabPageNo == 1 {
             firstTabList .removeAll()
         }
@@ -435,6 +442,8 @@ extension FriendsListViewController {
     }
     
     func getMutualFriendsListAPI() {
+        noDataLabel.text = "You have no common friends with \(userInfo?.name ?? "User")."
+              
         if secondTabPageNo == 1 {
             secondTabList .removeAll()
         }
@@ -468,6 +477,8 @@ extension FriendsListViewController {
     }
     
     func getMyJoinedClasses() {
+        noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any Classes."
+              
         if pageNo == 1 {
             myClassesList .removeAll()
         }
@@ -498,6 +509,7 @@ extension FriendsListViewController {
     }
     
     func fetchInvitees(search: String, type: InviteType) {
+        noDataLabel.text = "No invitees Found"
         Utils.showSpinner()
         let param = [Keys.pageNo: pageNo, Keys.search: search, Keys.inviteType: type ==  .going ? "going" : "not_going"] as [String: Any]
         ServiceManager.shared.fetchInviteeList(eventId: "\(self.eventId)", params: param) { [weak self] (invitees, _, _) in
@@ -521,7 +533,7 @@ extension FriendsListViewController {
     }
     
     func fetchClubInviteeAPI() {
-        
+        noDataLabel.text = "None have joined this club yet."
         if pageNo == 1 {
             inviteeList.removeAll()
         }
@@ -549,7 +561,8 @@ extension FriendsListViewController {
     }
     
     func fetchClassRostersAPI() {
-        
+        noDataLabel.text = "Class has no Roasters."
+              
         if pageNo == 1 {
             inviteeList.removeAll()
         }
