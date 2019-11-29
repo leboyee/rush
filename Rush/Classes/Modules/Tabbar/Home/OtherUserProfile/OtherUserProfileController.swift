@@ -134,6 +134,7 @@ extension OtherUserProfileController {
                 vc.hidesBottomBarWhenPushed = true
                 vc.list = imagesList
                 vc.isFromOtherUserProfile = true
+                vc.isFromOtherUserProfile = true
                 vc.user = userInfo ?? User()
                 if let index = sender as? Int {
                     vc.currentIndex = index

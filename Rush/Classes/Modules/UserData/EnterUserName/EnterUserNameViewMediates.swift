@@ -65,8 +65,16 @@ extension EnterUserNameViewController: UITextFieldDelegate {
         if textField.text?.count == 0 && string == " "{
             return false
         }
+        let currentString: NSString = textField.text as NSString? ?? ""
+        var newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        if string.count >= maxLength {
+            newString = String(string.prefix(maxLength)) as NSString
+            textField.text = newString as String
+            nextButton.setNextButton(isEnable: textField.text?.count == 0 ? false : true)
+            return false
+        }
         return  textField.text?.count ?? 0 < maxLength
-
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

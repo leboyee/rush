@@ -104,6 +104,7 @@ class EnterPasswordViewConteroller: CustomViewController {
         symbolLabel.passwordFormateLabels()
         errorButton.setEmailErrorButton()
         self.bgImageView.setBgForLoginSignup()
+        passwordTextField.delegate = self
         passwordErrorLabel.text = "Incorrect password. Please double-check or restore it."
         restorePasswordButtonConstraint.constant = 16
         if loginType == .register {

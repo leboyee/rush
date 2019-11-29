@@ -30,14 +30,13 @@ class UserProfileGalleryViewController: UIViewController {
     
     var isFromChat = false
     var isFromOtherUserProfile = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.isFromOtherUserProfile = user.userId == Authorization.shared.profile?.userId ? false : true
         if selectedIndex != -1 {
             scrollToItemIndex(layout, selectedIndex ?? 1)
         }
