@@ -283,10 +283,7 @@ extension ProfileViewController {
             let time = DispatchTime.now() + (2 * 60)
             _ = self.downloadGroup.wait(timeout: time)
             self.downloadGroup.enter()
-            guard let userId = self.profileDetail.profile?.userId else { return }
-            guard userId.isNotEmpty else { return }
-            let params = self.isOtherUserProfile ? [Keys.profileUserId: userId] : [:]
-            ServiceManager.shared.getProfile(params: params) { [weak self] (user, _) in
+            ServiceManager.shared.getProfile(params: [:]) { [weak self] (user, _) in
                 self?.profileDetail.profile = user
                 self?.profileDetail.interests = user?.interest
                 self?.setupHeaderData()
