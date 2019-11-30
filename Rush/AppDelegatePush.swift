@@ -82,10 +82,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                             
                         }
                     }
-                } else if let aps = userInfo["aps"] as? [String: Any], let type = aps["type"] as? String {
-                    print(type)
+                } else /*if let aps = userInfo["aps"] as? [String: Any], let type = aps["type"] as? String*/ {
+                    //print(type)
                     if let viewcontroller = window?.rootViewController as? UITabBarController {
-                        viewcontroller.selectedIndex = 3
+                        let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
+                            selectedNavigationController?.dismiss(animated: false, completion: nil)
+                            selectedNavigationController?.popToRootViewController(animated: false)
+                            viewcontroller.selectedIndex = 3
                     }
                 }
             }
