@@ -28,7 +28,8 @@ class ProfileTileViewController: UIViewController {
     var imageNextPageExist = false
     var isFromOtherUserProfile = false
     var otherUserId = "0"
-    
+    var user = User()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -37,6 +38,9 @@ class ProfileTileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        imagePageNo = 1
+        fetchImagesList()
+
     }
     
     func setupUI() {
@@ -54,7 +58,6 @@ class ProfileTileViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(backButtonAction))
 
         noResultView.isHidden = true
-        fetchImagesList()
         // Setup tableview
         setupCollectionView()
     }
@@ -119,4 +122,20 @@ extension ProfileTileViewController: ImagePickerControllerDelegate {
         picker.dismiss(animated: false, completion: nil)
     }
 
+}
+
+// MARK: - Navigation
+extension ProfileTileViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.userProfileFullImageViewSegue {
+            if let vc = segue.destination as? UserProfileGalleryViewController {
+                let indexPath = sender as? IndexPath
+                vc.list = self.imageArray
+                vc.user = user
+                vc.currentIndex = indexPath?.row ?? 0
+                vc.isFromOtherUserProfile = false
+
+            }
+        }
+    }
 }

@@ -84,7 +84,7 @@ class ClubDetailViewController: BaseTableViewController {
         if userId == clubOwnerId {
             joinedClub = true
         } else {
-            let filter = clubInfo?.invitees?.filter({ $0.user?.userId == userId })
+            let filter = clubInfo?.myClubInvite?.filter({ $0.userId == userId })
             if filter?.count ?? 0 > 0 {
                 joinedClub = true
             }
@@ -162,6 +162,9 @@ extension ClubDetailViewController {
                     vc.list = post.images ?? [Image]()
                     vc.user = post.user ?? User()
                     vc.currentIndex = index
+                    if post.user?.userId != Authorization.shared.profile?.userId {
+                        vc.isFromOtherUserProfile = true
+                    }
                 }
             }
         } else if segue.identifier == Segues.friendList {

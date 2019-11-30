@@ -22,6 +22,7 @@ class Club: Codable {
     var clubStatus: Int = 0
     var clubCreatedAt: String?
     var clubUpdatedAt: String?
+    var myClubInvite: [MyClubInvitee]?
     var user: User?
     var invitees: [Invitee]?
     var university: [University]?
@@ -40,6 +41,7 @@ class Club: Codable {
         case clubCreatedAt = "club_created_at"
         case clubUpdatedAt = "club_updated_at"
         case clubTotalJoined = "club_total_joined"
+        case myClubInvite = "my_club_invite"
         case user
         case invitees
         case university
@@ -81,5 +83,25 @@ class ClubCategory: Codable {
         set(idx) {
             self.id = idx
         }
+    }
+}
+
+class MyClubInvitee: Codable {
+
+    var id: Int64 = 0
+    var clubInviteId: Int64 = 0
+
+    var userId: String {
+        return String(id)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        //case inviteeId = "invite_id"
+        case id = "user_id"
+        case clubInviteId = "club_invite_id"
+    }
+    
+    init() {
+        // default empty init
     }
 }

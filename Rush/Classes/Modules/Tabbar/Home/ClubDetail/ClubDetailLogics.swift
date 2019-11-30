@@ -189,6 +189,8 @@ extension ClubDetailViewController {
         
         cell.set(name: user?.name ?? "")
         cell.moreButton.isHidden = true
+        cell.clipsToBounds = true
+        cell.contentView.clipsToBounds = true
     }
     
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {
@@ -296,8 +298,8 @@ extension ClubDetailViewController {
     }
     
     func fillData() {
-        if let invitee = clubInfo?.invitees {
-            let filter = invitee.filter({ $0.user?.userId == Authorization.shared.profile?.userId })
+        if let invitee = clubInfo?.myClubInvite {
+            let filter = invitee.filter({ $0.userId == Authorization.shared.profile?.userId })
             if filter.count > 0 {
                 joinedClub = true
             }

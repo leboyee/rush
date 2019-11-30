@@ -57,7 +57,7 @@ extension String {
     
     var isValidPasswordString: Bool {
         do {
-            let regex = try NSRegularExpression(pattern: ".*[^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\\d$@$!%*#?&]{6,}$].*", options: .caseInsensitive)
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9 .@_%+-,)(?=@$!%*#?&{}].*", options: .caseInsensitive)
             if regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) == nil {
                 return true
             }

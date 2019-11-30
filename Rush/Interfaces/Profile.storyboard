@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jT0-nn-O1x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jT0-nn-O1x">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -519,6 +519,7 @@
                     <connections>
                         <outlet property="collectionView" destination="fqD-Op-HLM" id="ieg-0R-P3k"/>
                         <outlet property="noResultView" destination="bzr-ND-eVR" id="wYb-oZ-z6s"/>
+                        <segue destination="1FK-V4-VXI" kind="presentation" identifier="UserProfileFullImageViewSegue" modalPresentationStyle="fullScreen" id="s2p-l5-UUQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7A-Uf-aab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -618,6 +619,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9V-Na-vRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-600" y="716.51785714285711"/>
+        </scene>
+        <!--UserProfileGalleryViewController-->
+        <scene sceneID="6xp-NQ-5ud">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="UserProfileGalleryViewController" id="1FK-V4-VXI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Naa-DR-MH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="701"/>
         </scene>
         <!--Logout View Controller-->
         <scene sceneID="DNL-Gm-or3">

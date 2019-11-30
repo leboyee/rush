@@ -76,6 +76,8 @@ class EnterUserNameViewController: CustomViewController {
         // Set Custom part of Class
         nextButton.setNextButton(isEnable: false)
         self.bgImageView.setBgForLoginSignup()
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
         userNameTitleLabel.text = Text.userNameTitleRegister
         nextButton.setTitle(Text.next, for: .normal)
         setCustomNavigationBarView()

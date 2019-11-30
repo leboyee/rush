@@ -243,10 +243,6 @@ extension ClubListViewController {
 extension ClubListViewController {
     func getMyClubListAPI(sortBy: String) {
         
-        if pageNoM == 1 {
-            myClubsList.removeAll()
-        }
-        
         var param = [Keys.profileUserId: Authorization.shared.profile?.userId ?? "0",
                      Keys.search: searchText,
                      Keys.sortBy: sortBy,
@@ -257,9 +253,6 @@ extension ClubListViewController {
         
         ServiceManager.shared.fetchClubList(sortBy: sortBy, params: param) { [weak self] (value, _, _) in
             guard let uwself = self else { return }
-            if uwself.pageNoM == 1 {
-                uwself.myClubsList.removeAll()
-            }
             
             if let clubs = value, clubs.count > 0 {
                 if uwself.pageNoM == 1 {
@@ -268,31 +261,23 @@ extension ClubListViewController {
                     uwself.myClubsList.append(contentsOf: clubs)
                 }
                 uwself.isNextPageM = true
-                Utils.hideSpinner()
             } else {
-                if uwself.pageNoM == 1 || (uwself.pageNoM > 1 && value?.count == 0) {
-                    uwself.isNextPageM = false
+                uwself.isNextPageM = false
+                if uwself.pageNoM == 1 {
+                    uwself.myClubsList.removeAll()
                 }
-                Utils.hideSpinner()
             }
+            Utils.hideSpinner()
             uwself.tableView.reloadData()
         }
     }
     
     func getClubCategoryListAPI() {
         
-        if pageNoO == 1 {
-            clubInterestList.removeAll()
-        }
-        
         let params = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
         ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
-            if uwself.pageNoO == 1 {
-                uwself.clubInterestList.removeAll()
-            }
-            
             if let clubs = data, clubs.count > 0 {
                 if uwself.pageNoO == 1 {
                     uwself.clubInterestList = clubs
@@ -301,8 +286,9 @@ extension ClubListViewController {
                 }
                 uwself.isNextPageO = true
             } else {
-                if uwself.pageNoO == 1 || (uwself.pageNoO > 1 && data?.count == 0) {
-                    uwself.isNextPageO = false
+                uwself.isNextPageO = false
+                if uwself.pageNoO == 1 {
+                    uwself.clubInterestList.removeAll()
                 }
             }
             uwself.tableView.reloadData()

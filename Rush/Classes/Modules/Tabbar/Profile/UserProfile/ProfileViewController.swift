@@ -178,6 +178,8 @@ extension ProfileViewController {
         } else if segue.identifier == Segues.profileImageViewSegue {
             let vc = segue.destination as? ProfileTileViewController
             vc?.imageArray = profileDetail.images ?? [Image]()
+            vc?.user = profileDetail.profile ?? User()
+
         } else if segue.identifier == Segues.notificationClassDetail {
             guard let vc = segue.destination as? ClassDetailViewController else { return }
             if let (classId, groupId) = sender as? (Int64, Int64) {

@@ -43,8 +43,6 @@ class EventGoingFriendsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchInvitees(search: "", type: .going)
-        fetchInvitees(search: "", type: .notGoing)
     }
     
     func setupUI() {
