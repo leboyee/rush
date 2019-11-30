@@ -234,7 +234,6 @@ struct Segues {
     static let addInterestViewSegue               = "AddInterestViewSegue"
     static let photoModelViewSegue                = "PhotoModelViewSegue"
     static let userProfileFullImageViewSegue                = "UserProfileFullImageViewSegue"
-
     
 }
 
