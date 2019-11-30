@@ -474,15 +474,37 @@ extension CreateClubViewController {
         
         Utils.showSpinner()
         ServiceManager.shared.updateClub(clubId: clubInfo?.clubId ?? "0", params: param) { [weak self] (data, errorMsg) in
-            Utils.hideSpinner()
             guard let unsafe = self else { return }
             
             if data != nil {
-                unsafe.delegate?.updateClubSuccess()
-                unsafe.dismiss(animated: false, completion: nil)
+                unsafe.updateChatClubName(channelName: unsafe.nameClub) { () in
+                    Utils.hideSpinner()
+                    unsafe.delegate?.updateClubSuccess()
+                    unsafe.dismiss(animated: false, completion: nil)
+                }
             } else {
+                Utils.hideSpinner()
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
+    }
+    
+    func updateChatClubName(channelName: String, handler: @escaping() -> Void) {
+        ChatManager().getChannelByTypeData("club", clubInfo?.clubId ?? "0", completionHandler: { (channel) in
+            if let chnl = channel {
+                ChatManager().updateChannelName(channel: chnl, name: channelName, completionHandler: { (updatedChnl) in
+                    print("Channel name updated \(updatedChnl?.name ?? "")")
+                    handler()
+                }, errorHandler: { (error) in
+                    handler()
+                    print(error?.localizedDescription ?? "NO CHANNEL UPDATED.")
+                })
+            } else {
+                handler()
+            }
+        }, errorHandler: { (error) in
+            handler()
+            print(error?.localizedDescription ?? "NO CHANNEL FOUND.")
+        })
     }
 }

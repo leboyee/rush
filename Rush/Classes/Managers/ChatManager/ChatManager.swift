@@ -310,7 +310,6 @@ extension ChatManager {
         type: String?,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
-        
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
         sbdGroupChannelParams.isDistinct = type == "single" ? ((userIds?.count == 2) ? true: false) : false
@@ -503,6 +502,26 @@ extension ChatManager {
                 }
             })
         }
+    }
+    
+    func updateChannelName(channel: SBDGroupChannel?, name: String, completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        let params = SBDGroupChannelParams()
+        params.name = name
+        
+        channel?.update(with: params, completionHandler: { (channel, error) in
+            if error != nil {
+                if let domain = error?.domain {
+                    Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                }
+                if let err = error {
+                    errorHandler(err)
+                }
+            } else {
+                if let value = channel {
+                    completionHandler(value)
+                }
+            }
+        })
     }
     
     func isMemberExistInChannel(channel: SBDGroupChannel?, userid: String) -> Bool {
