@@ -109,9 +109,7 @@ extension PostViewController {
         if let threadComments = commentList[indexPath.section - 4].threadComment {
             let data = Array(threadComments.reversed())
             let comment = data[indexPath.row - 1]
-            
-            print("row - \(indexPath.row - 1),,,,desc - \(comment.desc ?? "")")
-            
+                    
             cell.setup(username: comment.user?.name ?? "")
             
             var desc = comment.desc ?? ""
