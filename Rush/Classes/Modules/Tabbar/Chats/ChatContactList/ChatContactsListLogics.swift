@@ -30,10 +30,11 @@ extension ChatContactsListViewController {
         }
         
         cell.setup(title: friend?.user?.name ?? "")
-        if isFromChat {
-            cell.setup(url: URL(string: friend?.user?.gender ?? ""))
-        } else {
-            cell.setup(url: friend?.user?.photo?.url())
+        
+        if let url = friend?.user?.photo?.url() {
+            cell.setup(url: url)
+        } else if let url = friend?.user?.photo?.urlThumb() {
+            cell.setup(url: url)
         }
     }
     

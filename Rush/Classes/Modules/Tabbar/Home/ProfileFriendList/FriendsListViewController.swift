@@ -206,7 +206,11 @@ class FriendsListViewController: UIViewController {
     }
     
     @objc func backButtonAction() {
-        navigationController?.popViewController(animated: true)
+        if type == .classRoasters {
+            navigationController?.popViewController(animated: false)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
