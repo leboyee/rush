@@ -100,24 +100,40 @@ open class EventMessageCell: MessageContentCell {
         
         let dayWidth = (eventDay?.count ?? 0) < 5 ? 22 : 61
         
-        let day = UILabel(frame: CGRect(x: 112, y: 25, width: dayWidth, height: 16))
-        day.text = eventDay ?? "Sunday"
-        day.font = UIFont.semibold(sz: 13)
+        let day = UILabel(frame: CGRect(x: 112, y: 25, width: screenWidth - 71 - 100 - 15, height: 16))
+        let attStr = NSMutableAttributedString.init(string: (eventDay ?? "") + " ")
+
+        attStr.addAttribute(.font,
+                            value: UIFont.semibold(sz: 13) ,
+                      range: NSRange.init(location: 0, length: eventDay?.count ?? 0))
+        let attStr2 = NSMutableAttributedString.init(string: eventTime ?? "")
+        attStr2.addAttribute(.font,
+                             value: UIFont.semibold(sz: 13) ,
+                       range: NSRange.init(location: 0, length: eventTime?.count ?? 0))
+        attStr2.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.buttonDisableTextColor, range: NSRange.init(location: 0, length: eventTime?.count ?? 0))
+        let combination = NSMutableAttributedString()
+        combination.append(attStr)
+        combination.append(attStr2)
+        day.attributedText = combination
+        
+//        day.text = (eventDay ?? "") + " " + (eventTime ?? "")//?.substring(with: NSMakeRange(0, 3))?.capitalized ?? "SUN"
+        day.numberOfLines = 0
+//        day.font = UIFont.semibold(sz: 13)
         day.sizeToFit()
         messageContainerView.addSubview(day)
                 
-        let time = UILabel(frame: CGRect(x: day.frame.maxX + 5, y: (eventDay?.count ?? 0) < 5 ? 27 : 25, width: 200, height: 16))
+       /* let time = UILabel(frame: CGRect(x: day.frame.maxX + 5, y: (eventDay?.count ?? 0) < 5 ? 27 : 25, width: 200, height: 16))
         time.text = eventTime ?? "10-12 pm"
         time.textColor = UIColor.buttonDisableTextColor
         time.font = UIFont.semibold(sz: (eventDay?.count ?? 0) < 5 ? 10 : 13)
-        messageContainerView.addSubview(time)
+        messageContainerView.addSubview(time) */
         
-        let title = UILabel(frame: CGRect(x: 112, y: 53, width: screenWidth - 71 - 100 - 15, height: 28))
+        let title = UILabel(frame: CGRect(x: 112, y: day.frame.maxY + 8, width: screenWidth - 71 - 100 - 15, height: 28))
         title.text = eventTitle ?? "VR games"
         title.font = UIFont.displayBold(sz: 23)
         messageContainerView.addSubview(title)
         
-        let detail = UILabel(frame: CGRect(x: 112, y: 89, width: screenWidth - 71 - 100 - 15, height: 54))
+        let detail = UILabel(frame: CGRect(x: 112, y: title.frame.maxY + 8, width: screenWidth - 71 - 100 - 15, height: 54))
         detail.numberOfLines = 3
         detail.text = eventDesc ?? "Get the latest VR Experience with Samsung Gear. You can travel through the worlds as detail of UI thr samsung"
         detail.font = UIFont.regular(sz: 13)
