@@ -652,7 +652,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSN-Ai-Lxu">
-                                        <rect key="frame" x="16" y="50" width="78" height="36"/>
+                                        <rect key="frame" x="16" y="50" width="156" height="72"/>
                                         <state key="normal" image="cancel-active"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="tgq-BU-5qI" eventType="touchUpInside" id="AsF-zi-5Jt"/>
@@ -660,7 +660,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-7L-6FJ">
-                                        <rect key="frame" x="320" y="50" width="78" height="36"/>
+                                        <rect key="frame" x="242" y="50" width="156" height="72"/>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="save-dark"/>
                                         <userDefinedRuntimeAttributes>
@@ -1127,10 +1127,12 @@
                                         <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DNc-8t-Szp">
-                                        <rect key="frame" x="0.0" y="347" width="414" height="114"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Available" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ph8-o6-j5d">
+                                        <rect key="frame" x="25" y="228" width="364" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="zf9-N3-Obk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1140,10 +1142,12 @@
                                     <constraint firstAttribute="trailing" secondItem="hOi-Yl-Xqs" secondAttribute="trailing" id="AkS-JW-rVf"/>
                                     <constraint firstItem="mGf-Fn-OZe" firstAttribute="top" secondItem="vdy-yw-FIA" secondAttribute="top" constant="16" id="Cqh-zt-H0g"/>
                                     <constraint firstItem="mGf-Fn-OZe" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" constant="16" id="Epj-PN-hGf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ph8-o6-j5d" secondAttribute="trailing" constant="25" id="PAo-Fj-LCy"/>
                                     <constraint firstItem="hOi-Yl-Xqs" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" id="Xak-I9-pZ7"/>
-                                    <constraint firstItem="DNc-8t-Szp" firstAttribute="centerX" secondItem="hOi-Yl-Xqs" secondAttribute="centerX" id="chE-0r-2CR"/>
                                     <constraint firstAttribute="trailing" secondItem="mGf-Fn-OZe" secondAttribute="trailing" constant="16" id="ohN-R8-0of"/>
                                     <constraint firstItem="hOi-Yl-Xqs" firstAttribute="top" secondItem="vdy-yw-FIA" secondAttribute="top" constant="56" id="pO8-eb-BTD"/>
+                                    <constraint firstItem="Ph8-o6-j5d" firstAttribute="top" secondItem="mGf-Fn-OZe" secondAttribute="bottom" constant="180" id="q2L-9z-gEo"/>
+                                    <constraint firstItem="Ph8-o6-j5d" firstAttribute="leading" secondItem="vdy-yw-FIA" secondAttribute="leading" constant="25" id="qWa-6x-LZ2"/>
                                     <constraint firstAttribute="bottom" secondItem="hOi-Yl-Xqs" secondAttribute="bottom" id="t5m-hP-1FV"/>
                                 </constraints>
                             </view>
@@ -1165,7 +1169,7 @@
                     <connections>
                         <outlet property="containView" destination="vdy-yw-FIA" id="zsc-jm-oAu"/>
                         <outlet property="firstSegmentButton" destination="kuC-it-jon" id="zqI-kB-fC3"/>
-                        <outlet property="noDataLabel" destination="DNc-8t-Szp" id="HLC-qg-efm"/>
+                        <outlet property="noDataLabel" destination="Ph8-o6-j5d" id="rNP-Dp-NfY"/>
                         <outlet property="secondSegmentButton" destination="qrd-d6-58I" id="waV-xu-YYN"/>
                         <outlet property="segmentContainView" destination="mGf-Fn-OZe" id="FHe-xr-2W4"/>
                         <outlet property="tableView" destination="hOi-Yl-Xqs" id="wMX-jI-uFK"/>

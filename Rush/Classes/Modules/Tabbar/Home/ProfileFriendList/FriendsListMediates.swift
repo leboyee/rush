@@ -28,6 +28,33 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let row = cellCount(section)
         if row == 0 {
+            if type == .friends {
+                if firstSegmentButton.isSelected {
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has no friends."
+                } else {
+                    noDataLabel.text = "You have no mutual friends with \(userInfo?.name ?? "User")."
+                }
+            } else  if type == .clubs {
+                if firstSegmentButton.isSelected {
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any Club."
+                } else {
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any Club."
+                }
+            } else  if type == .events {
+                if firstSegmentButton.isSelected {
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any event."
+                            } else {
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any event."
+                }
+            } else  if type == .classRoasters {
+                if firstSegmentButton.isSelected {
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has no friends."
+                } else {
+                    noDataLabel.text = "You have no mutual friends with \(userInfo?.name ?? "User")."
+                }
+            } else {
+                
+            }
             noDataLabel.isHidden = false
         } else {
             noDataLabel.isHidden = true
@@ -54,9 +81,9 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if type == .events || type == .clubs || type == .friends || type == .classes || type == .clubJoinedUsers || type == .classRoasters {
-          selectedCell(indexPath)
+            selectedCell(indexPath)
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,11 +108,11 @@ extension FriendsListViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-    
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
