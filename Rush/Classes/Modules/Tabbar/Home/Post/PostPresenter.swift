@@ -105,55 +105,59 @@ extension PostViewController {
     
     // Comment child cell
     func fillChildCommentCell(_ cell: PostCommentCell, _ indexPath: IndexPath) {
-        
-        var threadComments = commentList[indexPath.section - 4].threadComment
-        threadComments = threadComments?.reversed()
-        let comment = threadComments?[indexPath.row - 1]
-        cell.setup(username: comment?.user?.name ?? "")
-        
-        var desc = comment?.desc ?? ""
-        desc = desc.replacingOccurrences(of: "[@|{}]", with: "", options: .regularExpression, range: nil)
-        let mensionId = "\(comment?.mentionedUser?.first?.id ?? 0)"
-        let mentionedUsername = comment?.mentionedUser?.first?.name ?? ""
-        if desc.contains(mensionId) {
-            desc = desc.replacingOccurrences(of: mensionId, with: "")
-            cell.setup(name: mentionedUsername, attributedText: desc)
-        } else {
-            cell.setup(commentText: comment?.desc ?? "")
-        }
-        cell.setup(isReplayCell: true)
-        cell.setup(image: comment?.user?.photo?.url())
-        
-        let local = Date().UTCToLocal(date: comment?.createDate ?? "")
-        if let date = Date.parse(dateString: local) {
-            let time = date.timeAgoDisplay()
-            cell.setup(date: time)
-        }
-        
-        cell.userNameClickEvent = { [weak self] (name) in
-            guard let unself = self else { return }
-            if mentionedUsername == name {
-                if comment?.mentionedUser?.first?.id == Authorization.shared.profile?.id {
-                    unself.tabBarController?.selectedIndex = 3
-                } else {
-                    unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment?.mentionedUser?.first?.id)
+                
+        if let threadComments = commentList[indexPath.section - 4].threadComment {
+            let data = Array(threadComments.reversed())
+            let comment = data[indexPath.row - 1]
+            
+            print("row - \(indexPath.row - 1),,,,desc - \(comment.desc ?? "")")
+            
+            cell.setup(username: comment.user?.name ?? "")
+            
+            var desc = comment.desc ?? ""
+            desc = desc.replacingOccurrences(of: "[@|{}]", with: "", options: .regularExpression, range: nil)
+            let mensionId = "\(comment.mentionedUser?.first?.id ?? 0)"
+            let mentionedUsername = comment.mentionedUser?.first?.name ?? ""
+            if desc.contains(mensionId) {
+                desc = desc.replacingOccurrences(of: mensionId, with: "")
+                cell.setup(name: mentionedUsername, attributedText: desc)
+            } else {
+                cell.setup(commentText: comment.desc ?? "")
+            }
+            cell.setup(isReplayCell: true)
+            cell.setup(image: comment.user?.photo?.url())
+            
+            let local = Date().UTCToLocal(date: comment.createDate ?? "")
+            if let date = Date.parse(dateString: local) {
+                let time = date.timeAgoDisplay()
+                cell.setup(date: time)
+            }
+            
+            cell.userNameClickEvent = { [weak self] (name) in
+                guard let unself = self else { return }
+                if mentionedUsername == name {
+                    if comment.mentionedUser?.first?.id == Authorization.shared.profile?.id {
+                        unself.tabBarController?.selectedIndex = 3
+                    } else {
+                        unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.mentionedUser?.first?.id)
+                    }
                 }
             }
-        }
-        
-        cell.userProfileClickEvent = { [weak self] () in
-            guard let unself = self else { return }
-            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment?.user?.id)
-        }
-        
-        cell.replyClickEvent = { [weak self] () in
-            guard let unself = self else { return }
-            unself.parentComment = comment
-            if let name = comment?.user?.name {
-                unself.textView.placeHolder = ""
-                unself.textView.attributedText  = Utils.setAttributedText(name, ", ", 17, 17)
+            
+            cell.userProfileClickEvent = { [weak self] () in
+                guard let unself = self else { return }
+                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.user?.id)
             }
-            unself.textView.becomeFirstResponder()
+            
+            cell.replyClickEvent = { [weak self] () in
+                guard let unself = self else { return }
+                unself.parentComment = comment
+                if let name = comment.user?.name {
+                    unself.textView.placeHolder = ""
+                    unself.textView.attributedText  = Utils.setAttributedText(name, ", ", 17, 17)
+                }
+                unself.textView.becomeFirstResponder()
+            }
         }
     }
     
@@ -342,7 +346,6 @@ extension PostViewController {
                 guard let unsafe = self else { return }
                 if let value = data, value.count > 0 {
                     unsafe.commentList[index].threadComment = value
-                    unsafe.commentList[index].threadComment = unsafe.commentList[index].threadComment?.reversed()
                 }
                 unsafe.finishCommentCount += 1
                 complition(true)
