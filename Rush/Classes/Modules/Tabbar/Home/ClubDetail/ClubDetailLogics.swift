@@ -189,6 +189,8 @@ extension ClubDetailViewController {
         
         cell.set(name: user?.name ?? "")
         cell.moreButton.isHidden = true
+        cell.clipsToBounds = true
+        cell.contentView.clipsToBounds = true
     }
     
     func fillPostUserCell(_ cell: PostUserCell, _ indexPath: IndexPath) {

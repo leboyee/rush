@@ -281,4 +281,12 @@ extension NetworkManager {
     func getNotificationList(params: [String: Any], resultHandler: @escaping ResultClosure) {
         requestGet(path: "notification/histories", params: params, resultHandler: resultHandler)
     }
+    
+    func unreadNotificationCount(resultHandler: @escaping ResultClosure) {
+        requestGet(path: "notification/badge-count", params: [:], resultHandler: resultHandler)
+    }
+    
+    func updateUnreadNotificationCount(params: [String: Any], resultHandler: @escaping ResultClosure) {
+        requestPut(path: "notification/badge-count", params: params, contentType: ContentType.applicationJson, resultHandler: resultHandler)
+    }
 }

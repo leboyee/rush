@@ -815,11 +815,15 @@ extension CreateEventViewController {
         
         Utils.showSpinner()
         ServiceManager.shared.updateEvent(eventId: eventId, params: param) { [weak self] (status, errMessage) in
-            Utils.hideSpinner()
+            
             guard let unsafe = self else { return }
             if status {
-                unsafe.updatedEventSuccesssully()
+                unsafe.updateChatEventName(channelName: unsafe.nameEvent, eventId: eventId) {
+                    Utils.hideSpinner()
+                    unsafe.updatedEventSuccesssully()
+                }
             } else {
+                Utils.hideSpinner()
                 Utils.alert(message: errMessage ?? Message.tryAgainErrorMessage)
             }
         }
@@ -836,5 +840,24 @@ extension CreateEventViewController {
                 Utils.alert(message: message)
             }
         }
+    }
+    
+    func updateChatEventName(channelName: String, eventId: String, handler: @escaping() -> Void) {
+        ChatManager().getChannelByTypeData("event", eventId, completionHandler: { (channel) in
+            if let chnl = channel {
+                ChatManager().updateChannelName(channel: chnl, name: channelName, completionHandler: { (updatedChnl) in
+                    print("Channel name updated \(updatedChnl?.name ?? "")")
+                    handler()
+                }, errorHandler: { (error) in
+                    handler()
+                    print(error?.localizedDescription ?? "NO CHANNEL UPDATED.")
+                })
+            } else {
+                handler()
+            }
+        }, errorHandler: { (error) in
+            handler()
+            print(error?.localizedDescription ?? "NO CHANNEL FOUND.")
+        })
     }
 }

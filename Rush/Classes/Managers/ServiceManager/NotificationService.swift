@@ -23,4 +23,30 @@ extension ServiceManager {
             })
         }
     }
+    
+    /*
+     *
+     */
+    // MARK: - Get Badge Count
+    func getBadgeCount(closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.unreadNotificationCount { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
+    
+    /*
+     *
+     */
+    // MARK: - Update Badge Count
+    func updateBadgeCount(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.updateUnreadNotificationCount(params: params) { [weak self] (data, error, code) in
+            guard let unsafe = self else { return }
+            unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
+                closer(status, errorMessage)
+            })
+        }
+    }
 }

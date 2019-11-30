@@ -121,7 +121,11 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController {
     
     @IBAction func takePhotoButtonAction(_ sender: Any) {
-        showCameraPermissionPopup()
+        if imageList.count >= 10 {
+            Utils.alert(message: "Maximum 10 photos are allowed.")
+        } else {
+            showCameraPermissionPopup()
+        }
     }
     
     @IBAction func addPhotoButtonAction(_ sender: Any) {
@@ -149,11 +153,19 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: ImagePickerController, didFinishPickingImageAssets assets: [PHAsset]) {
-        imageList = assets
-        picker.dismiss(animated: false, completion: nil)
-        self.picker = ImagePickerController()
-        createButtonValidation()
-        tableView.reloadData()
+        
+        let filter = imageList.filter({ $0 as? UIImage != nil })
+        
+        if (filter.count > 0 && assets.count == 10) || (assets.count + filter.count > 10) {
+            picker.dismiss(animated: false, completion: nil)
+            Utils.alert(message: "Maximum 10 photos are allowed.")
+        } else {
+            imageList = assets
+            picker.dismiss(animated: false, completion: nil)
+            self.picker = ImagePickerController()
+            createButtonValidation()
+            tableView.reloadData()
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: ImagePickerController) {
@@ -180,7 +192,7 @@ extension CreatePostViewController: ImagePickerControllerDelegate {
             if type == .photoLibrary {
                 
                 var parameters = Parameters()
-                parameters.allowedSelections = .limit(to: 50)
+                parameters.allowedSelections = .limit(to: 10)
                 self.picker = ImagePickerController(configuration: parameters)
                 
                 self.picker.delegate = self

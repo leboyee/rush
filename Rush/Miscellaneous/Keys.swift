@@ -119,7 +119,6 @@ struct Keys {
     static let emailToken     = "email_token"
     static let userStep     = "u_ui_step"
 
-
     static let uEduLevel           = "u_edu_level"
     static let uEduYear           = "u_edu_year"
     static let uEduMajors           = "u_edu_majors"
@@ -176,4 +175,5 @@ struct Keys {
     static let isScheduledAnything = "isScheduledAnything"
     static let date             = "date"
 
+    static let alertBadge      = "alert_badge"
 }
