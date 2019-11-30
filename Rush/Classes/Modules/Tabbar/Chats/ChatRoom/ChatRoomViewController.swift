@@ -139,7 +139,6 @@ class ChatRoomViewController: MessagesViewController {
         messagesCollectionView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
               
-        
         setupUI()
     }
     

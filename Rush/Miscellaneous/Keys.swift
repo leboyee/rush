@@ -175,4 +175,5 @@ struct Keys {
     static let isScheduledAnything = "isScheduledAnything"
     static let date             = "date"
 
+    static let alertBadge      = "alert_badge"
 }
