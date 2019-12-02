@@ -98,7 +98,7 @@ open class EventMessageCell: MessageContentCell {
         month.font = UIFont.semibold(sz: 13)
         messageContainerView.addSubview(month)
         
-        let dayWidth = (eventDay?.count ?? 0) < 5 ? 22 : 61
+        //let dayWidth = (eventDay?.count ?? 0) < 5 ? 22 : 61
         
         let day = UILabel(frame: CGRect(x: 112, y: 25, width: screenWidth - 71 - 100 - 15, height: 16))
         let attStr = NSMutableAttributedString.init(string: (eventDay ?? "") + " ")

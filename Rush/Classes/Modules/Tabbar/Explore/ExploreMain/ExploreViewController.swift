@@ -159,7 +159,6 @@ class ExploreViewController: CustomViewController {
 // MARK: - Actions
 extension ExploreViewController {
     @objc func changeLocationButtonAction() {
-//        Utils.notReadyAlert()
     }
     
     @objc func changeUniversity() {

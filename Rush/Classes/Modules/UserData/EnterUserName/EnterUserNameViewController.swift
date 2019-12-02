@@ -46,7 +46,6 @@ class EnterUserNameViewController: CustomViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        NotificationCenter.default.removeObserver(self)
 
     }
     

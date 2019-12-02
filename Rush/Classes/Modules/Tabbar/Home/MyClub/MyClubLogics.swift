@@ -51,7 +51,6 @@ extension MyClubViewController {
             if index != 0 { // User profile
                 unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: nil)
             } else { // Open user list
-//                Utils.notReadyAlert()
             }
         }
     }

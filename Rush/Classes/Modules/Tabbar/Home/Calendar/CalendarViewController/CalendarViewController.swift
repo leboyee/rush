@@ -136,7 +136,7 @@ extension CalendarViewController {
 extension CalendarViewController {
     
     @objc func viewCalenderButtonAction() {
-        //guard isScheduledAnything else { return }
+        guard isScheduledAnything else { return }
         if isCalendarOpen {
             toggleCalendar(isOpen: false)
         } else {

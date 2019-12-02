@@ -249,7 +249,6 @@ extension EventDetailViewController {
 
 // MARK: - Navigations
 extension EventDetailViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.rsvpJoinEvent {
             if let vc = segue.destination as? RSVPViewController {
