@@ -35,6 +35,15 @@ extension ServiceManager {
            }
        }
     
+    func fetchFilterFriendsListWithSession(params: [String: Any], closer: @escaping (_ params: [Friend]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
+            NetworkManager.shared.getFilterFriendListWithSession(params: params) { [weak self] (data, error, code) in
+                guard let unsafe = self else { return }
+                unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, _, errorMessage) in
+                    closer(friends, errorMessage)
+                })
+            }
+        }
+    
     // Send Friend request
     func sendFriendRequest(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.sendFriendRequest(param: params) { [weak self] (data, error, code) in

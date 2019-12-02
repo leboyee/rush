@@ -37,6 +37,8 @@ struct Keys {
     static let session               = "session"
     static let userId                = "user_id"
     static let profileUserId         = "profile_user_id"
+    static let friendsOnly         = "friends_only"
+
 
     static let photo                 = "photo"
     static let main                  = "main"
