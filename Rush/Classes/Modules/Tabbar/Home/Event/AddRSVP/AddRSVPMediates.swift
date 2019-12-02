@@ -15,6 +15,7 @@ extension AddRSVPViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        tableView.keyboardDismissMode = .onDrag
 
         tableView.register(UINib(nibName: Cell.rsvpCell, bundle: nil), forCellReuseIdentifier: Cell.rsvpCell)
         

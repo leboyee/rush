@@ -63,6 +63,7 @@ class AddMajorsViewController: CustomViewController {
         // Set Custom part of Class
         self.bgImageView.setBgForLoginSignup()
         setCustomNavigationBarView()
+        searchTextField.delegate = self
         self.nextButton.setNextButton(isEnable: true)
         bottomView.isHidden = true
         deleteButton.isHidden = true

@@ -107,6 +107,20 @@ extension AddMinorsViewController: UITextFieldDelegate {
             return false
         }
         let maxLength = 50
+        let currentString: NSString = textField.text as NSString? ?? ""
+        var newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        if string.count >= maxLength {
+            newString = String(string.prefix(maxLength)) as NSString
+            textField.text = newString as String
+            let searchText = textField.text ?? ""
+            isSearch = searchText.count > 0 ? true : false
+            self.minorCustomButton.isHidden = searchText.count > 0 ? false : true
+            deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+            getMinorList(searchText: searchText)
+
+            return false
+        }
         return  textField.text?.count ?? 0 < maxLength
     }
 }

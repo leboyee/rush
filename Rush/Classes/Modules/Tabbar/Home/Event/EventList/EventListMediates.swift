@@ -100,4 +100,5 @@ extension EventListViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
 }

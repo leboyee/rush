@@ -124,4 +124,19 @@ extension EventCategoryListViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" { return true }
+        let maxLength = 50
+        let currentString: NSString = textField.text as NSString? ?? ""
+        var newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        if string.count >= maxLength {
+            newString = String(string.prefix(maxLength)) as NSString
+            textField.text = newString as String
+            return false
+        }
+        return  textField.text?.count ?? 0 < maxLength
+    }
+
 }

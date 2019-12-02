@@ -14,7 +14,8 @@ extension CreateEventViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.dataSource = self
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
-        
+        tableView.keyboardDismissMode = .onDrag
+
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         

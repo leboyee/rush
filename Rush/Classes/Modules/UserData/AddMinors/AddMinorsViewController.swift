@@ -78,6 +78,7 @@ class AddMinorsViewController: CustomViewController {
         minorCustomButton.isHidden = true
         minorCustomButton.layer.cornerRadius = 8.0
         minorCustomButton.clipsToBounds = true
+        searchTextField.delegate = self
     }
     
     // Custom navigation Title View
