@@ -29,13 +29,13 @@ extension UserCell {
         titleLabel.text = text
     }
     
-    func setup(url: URL?) {
-        imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
+    func setup(url: URL?, placeholder: UIImage = #imageLiteral(resourceName: "placeholder-profile-48px")) {
+        imageView.sd_setImage(with: url, placeholderImage: placeholder)
     }
     
     func setup(image: String) {
         if image == Text.viewAll {
-            imageView.image = #imageLiteral(resourceName: "circleBg.pdf")
+            imageView.image = nil
         } else {
             imageView.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-48px"))
         }
