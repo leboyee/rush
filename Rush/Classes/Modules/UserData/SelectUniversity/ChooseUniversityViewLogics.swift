@@ -77,7 +77,7 @@ extension ChooseUniversityViewController {
         var param = [Keys.uUniversity: "\(university.universtiyId)"]  as [String: Any]
 
         if addUniversityType == .register {
-            param[Keys.userStep] = 2
+            param[Keys.userStep] = 0
         }
         Utils.showSpinner()
         ServiceManager.shared.updateProfile(params: param) { [weak self] (data, errorMessage) in

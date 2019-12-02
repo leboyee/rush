@@ -79,4 +79,24 @@ extension AddMajorsViewController: UITextFieldDelegate {
         let searchText = textField.text ?? ""
         getMajorList(searchText: searchText)
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" { return true } else if textField.text?.count ?? 0 == 0 && string == " " {
+            return false
+        }
+        let maxLength = 50
+        let currentString: NSString = textField.text as NSString? ?? ""
+        var newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        if string.count >= maxLength {
+            newString = String(string.prefix(maxLength)) as NSString
+            textField.text = newString as String
+            deleteButton.isHidden = textField.text?.count ?? 0 > 0 ? false : true
+            let searchText = textField.text ?? ""
+            getMajorList(searchText: searchText)
+            return false
+        }
+        return  textField.text?.count ?? 0 < maxLength
+    }
+
 }
