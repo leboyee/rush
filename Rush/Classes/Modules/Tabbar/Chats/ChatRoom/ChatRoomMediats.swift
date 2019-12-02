@@ -126,7 +126,7 @@ extension ChatRoomViewController: MessagesLayoutDelegate {
             return 20
         default:
             return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0
-        }        
+        }
     }
 }
 

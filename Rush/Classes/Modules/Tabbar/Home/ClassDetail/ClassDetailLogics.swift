@@ -320,7 +320,7 @@ extension ClassDetailViewController {
             isShowMore = !isShowMore
             tableView.reloadData()
         } else if indexPath.section == 3 {
-            // Utils.notReadyAlert()
+
         } else if indexPath.section == 5 {
             if joinedClub {
                 showCreatePost()

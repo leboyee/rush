@@ -72,7 +72,7 @@ class AddLocationViewController: UIViewController {
             frame.size.height = 0
             headerView.frame = frame
             headerView.isHidden = true
-        }        
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -130,7 +130,6 @@ class ChatsViewController: CustomViewController {
 // MARK: - Actions
 extension ChatsViewController {
     @objc func createButtonAction() {
-//        Utils.notReadyAlert()
     }
     
     @objc func exitButtonAction() {

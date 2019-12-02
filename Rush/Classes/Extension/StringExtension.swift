@@ -68,7 +68,6 @@ extension String {
         }
         return false
     }
-
     
     var isCapitalLater: Bool {
         let capitalLetterRegEx  = ".*[A-Z]+.*"

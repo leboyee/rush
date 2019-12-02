@@ -72,12 +72,12 @@ extension ChatRoomViewController {
                     print("SOMETHING WRONG IN CREATE NEW CHANNEL")
                 }
             }
-        }) { (_) in
+        }, errorHandler: { (_) in
             //create new channel
             self.createNewGroupChannelwithUsers(totalUserIds: totalUserIds, grpName: grpName, imgUrl: imgUrl, data: data, type: type, completionHandler: handler) { (_) in
                 print("SOMETHING WRONG IN CREATE NEW CHANNEL")
             }
-        }
+        })
     }
     
     func createNewGroupChannelwithUsers(

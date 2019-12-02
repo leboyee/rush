@@ -102,8 +102,8 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar_empty_image" translatesAutoresizingMaskIntoConstraints="NO" id="Q8b-rg-ty9">
                                         <rect key="frame" x="142" y="0.0" width="130" height="96"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing planned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwa-hZ-bUb">
-                                        <rect key="frame" x="154" y="120.5" width="106" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your calendar is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwa-hZ-bUb">
+                                        <rect key="frame" x="134" y="120.5" width="146" height="16"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
                                         <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

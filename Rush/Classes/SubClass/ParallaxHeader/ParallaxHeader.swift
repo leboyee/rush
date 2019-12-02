@@ -88,7 +88,6 @@ extension ParallaxHeader {
     }
     
     @IBAction func cameraButtonAction() {
-        //Utils.notReadyAlert()
     }
     
 }
