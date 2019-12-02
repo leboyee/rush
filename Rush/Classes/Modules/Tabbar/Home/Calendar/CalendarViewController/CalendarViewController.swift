@@ -53,7 +53,7 @@ class CalendarViewController: CustomViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.calenderView.reloadMonth()
+        calenderView.setSelectedDate(date: selectedDate)
         self.calenderView.isHidden = false
     }
 }
