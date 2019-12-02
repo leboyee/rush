@@ -269,6 +269,10 @@ extension NetworkManager {
         return getRequestGet(path: "friend", params: params, resultHandler: resultHandler)
     }
     
+    func getFilterFriendListWithSession(params: [String: Any], resultHandler: @escaping ResultClosure) -> URLSessionDataTask? {
+          return getRequestGet(path: "restricted/people", params: params, resultHandler: resultHandler)
+      }
+    
     func sendFriendRequest(param: [String: Any], resultHandler: @escaping ResultClosure) {
         requestPost(path: "friend", params: param, contentType: ContentType.applicationJson, resultHandler: resultHandler)
     }

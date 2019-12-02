@@ -83,9 +83,9 @@ extension CreateEventInviteViewController {
         
         var params = [Keys.pageNo: "\(pageNo)"]
         params[Keys.search] = searchText
-        params[Keys.profileUserId] = Authorization.shared.profile?.userId
+        params[Keys.friendsOnly] = "1"
         task?.cancel()
-        task = ServiceManager.shared.fetchFriendsListWithSession(params: params) { [weak self] (data, _) in
+        task = ServiceManager.shared.fetchFilterFriendsListWithSession(params: params) { [weak self] (data, _) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             

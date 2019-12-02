@@ -119,7 +119,7 @@ extension UserProfileGalleryViewController {
         if segue.identifier == Segues.photoModelViewSegue {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
-            let image = list[currentIndex - 1]
+            let image = list[currentIndex]
             vc.isFromOtherUserProfile = image.isInstaImage == true ? false : isFromOtherUserProfile
         }
     }

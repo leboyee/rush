@@ -159,14 +159,14 @@ extension EventTypeCell {
         cell.imageView.image = nil
         if indexPath.item == 0 {
             cell.setup(text: Text.viewAll)
-            cell.setup(image: Text.viewAll)
             cell.setup(count: total)
             cell.setup(isShowCount: true)
+            cell.setup(url: nil, placeholder: #imageLiteral(resourceName: "circleBg.pdf"))
         } else {
             if let invitee = list?[indexPath.item - 1] as? Invitee {
                 cell.setup(text: (invitee.user?.firstName ?? ""))
                 cell.setup(isShowCount: false)
-                cell.setup(url: invitee.user?.photo?.urlThumb())
+                cell.setup(url: invitee.user?.photo?.urlThumb(), placeholder: #imageLiteral(resourceName: "placeholder-profile-48px"))
             }
         }
     }
