@@ -95,14 +95,14 @@ extension CreateEventInviteViewController {
             
             if let list = data {
                 if list.count > 0 {
-                    var users = [Friend]()
+                    var users = [User]()
                     for object in list {
                         users.append(object)
-                        if let first = object.user?.firstName?.first {
-                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [Friend] {
-                                let filter = value.filter { $0.user?.userId == object.user?.userId }
+                        if let first = object.firstName?.first {
+                            if let value = unsafe.friendsList[first.description.lowercased()]  as? [User] {
+                                let filter = value.filter { $0.userId == object.userId }
                                 if filter.count == 0 {
-                                    var tempUser = [Friend]()
+                                    var tempUser = [User]()
                                     tempUser.append(contentsOf: value)
                                     tempUser.append(object)
                                     unsafe.friendsList[first.description.lowercased()] = tempUser

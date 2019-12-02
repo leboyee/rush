@@ -259,11 +259,11 @@ extension CreateEventViewController {
             }
         } else if segue.identifier == Segues.createEventInviteSegue {
             if let vc = segue.destination as? CreateEventInviteViewController {
-                var friendsArray = [Friend]()
+                var friendsArray = [User]()
                 var contactArray = [Contact]()
                 for invite in self.peopleList {
                     if invite.isFriend == true {
-                        if let friend = invite.friend {
+                        if let friend = invite.profile {
                             friendsArray.append(friend)
                         }
                     } else {

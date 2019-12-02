@@ -15,7 +15,7 @@ extension CreateClubViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
-        
+        tableView.keyboardDismissMode = .onDrag
         let headerNib =   UINib(nibName: ReusableView.userImagesHeader, bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: ReusableView.userImagesHeader)
         tableView.register(UINib(nibName: Cell.textIcon, bundle: nil), forCellReuseIdentifier: Cell.textIcon)

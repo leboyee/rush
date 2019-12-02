@@ -60,8 +60,10 @@ class UserProfileGalleryViewController: UIViewController {
 
         if user.userId == Authorization.shared.profile?.userId {
             isFromOtherUserProfile = false
+            bottomView.isHidden = true
         } else {
             isFromOtherUserProfile = true
+            bottomView.isHidden = false
         }
     }
     

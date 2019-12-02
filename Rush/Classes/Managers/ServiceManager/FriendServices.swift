@@ -35,7 +35,7 @@ extension ServiceManager {
            }
        }
     
-    func fetchFilterFriendsListWithSession(params: [String: Any], closer: @escaping (_ params: [Friend]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
+    func fetchFilterFriendsListWithSession(params: [String: Any], closer: @escaping (_ params: [User]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
             NetworkManager.shared.getFilterFriendListWithSession(params: params) { [weak self] (data, error, code) in
                 guard let unsafe = self else { return }
                 unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, _, errorMessage) in
