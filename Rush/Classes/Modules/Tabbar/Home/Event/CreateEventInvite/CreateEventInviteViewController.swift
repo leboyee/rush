@@ -20,8 +20,8 @@ class CreateEventInviteViewController: UIViewController {
     var items = [ContactsPresenterItem]()
     var itemsDictionary = [String: [Contact]]()
     var selectedItem = [Contact]()
-    var friendListAraay = [Friend]()
-    var selectedFriendListArray = [Friend]()
+    var friendListAraay = [User]()
+    var selectedFriendListArray = [User]()
     var pageNo = 1
     var isNextPageExist = false
     var searchText = ""
@@ -70,8 +70,8 @@ extension CreateEventInviteViewController {
                 for profile in self.selectedFriendListArray {
                     let invite = Invite()
                     invite.isFriend = true
-                    invite.profile = profile.user
-                    invite.friend = profile
+                    invite.profile = profile
+                  //  invite.friend = profile
                     inviteArray.append(invite)
                 }
                 for contact in self.selectedItem {
