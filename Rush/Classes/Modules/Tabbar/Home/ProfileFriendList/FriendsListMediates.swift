@@ -32,25 +32,25 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
                 if firstSegmentButton.isSelected {
                     noDataLabel.text = "\(userInfo?.name ?? "User") has no friends."
                 } else {
-                    noDataLabel.text = "You have no mutual friends with \(userInfo?.name ?? "User")."
+                    noDataLabel.text = "You do not have any mutual friends yet."
                 }
             } else  if type == .clubs {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any Club."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any clubs yet."
                 } else {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any Club."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has not managing any clubs yet."
                 }
             } else  if type == .events {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any event."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any events yet."
                             } else {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any event."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any events yet."
                 }
             } else  if type == .classRoasters {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") has no friends."
+                    noDataLabel.text = "Class do not have any rosters yet."
                 } else {
-                    noDataLabel.text = "You have no mutual friends with \(userInfo?.name ?? "User")."
+                    noDataLabel.text = "You do not have any mutual friends yet."
                 }
             } else {
                 

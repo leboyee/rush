@@ -301,7 +301,8 @@ extension ChatRoomViewController {
         
         // MARK: - AddImage button
         cameraButton.onTouchUpInside { (_) in
-            if self.channel?.members?.count == 1 {
+            
+            if self.channel?.customType == "single" && self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
                 return
             }
@@ -316,7 +317,7 @@ extension ChatRoomViewController {
         
         // MARK: - AddGallryImage button
         galleryButton.onTouchUpInside { (_) in
-            if self.channel?.members?.count == 1 {
+            if self.channel?.customType == "single" && self.channel?.members?.count == 1 {
                 Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
                 return
             }
@@ -352,7 +353,7 @@ extension ChatRoomViewController {
     
     @objc func editBarButtonAction() {
         
-        if self.channel?.members?.count == 1 {
+        if self.channel?.customType == "single" && self.channel?.members?.count == 1 {
             Utils.alert(message: "You can not send message because \(self.userName) removed this chat room.")
             return
         }
@@ -527,7 +528,7 @@ extension ChatRoomViewController {
          }
          */
         
-        if (channel?.members?.count ?? 0) == 1 {
+        if (channel?.members?.count ?? 0) == 1 && channel?.customType == "single"  {
             Utils.saveDataToUserDefault(self.userName, UserDefaultKey.showAlertOfChatRemoved)
         }
     }

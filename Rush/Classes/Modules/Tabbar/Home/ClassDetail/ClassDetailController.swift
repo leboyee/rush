@@ -167,15 +167,12 @@ extension ClassDetailViewController {
                     vc.list = post.images ?? [Image]()
                     vc.user = post.user ?? User()
                     vc.currentIndex = index
-                    if post.user?.userId != Authorization.shared.profile?.userId {
-                        vc.isFromOtherUserProfile = true
-                    }
+                    vc.isFromOtherUserProfile = true
                 }
             }
         } else if segue.identifier == Segues.friendList {
             if let vc = segue.destination as? FriendsListViewController {
                 vc.hidesBottomBarWhenPushed = false
-                //                vc.inviteeList = subclassInfo?.ros ?? [Invitee]()
                 vc.classId = selectedGroup?.classId ?? "0"
                 vc.groupId = selectedGroup?.id ?? "0"
                 vc.type = sender as? UserProfileDetailType ?? .none

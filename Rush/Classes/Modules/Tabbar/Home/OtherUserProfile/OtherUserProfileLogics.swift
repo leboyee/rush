@@ -290,17 +290,15 @@ extension OtherUserProfileController {
         
         header.detailButtonClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            if section == 2 {
-                if unself.imagesList.count > 0 {
+            if section == 2 && unself.imagesList.count > 0 {
                     unself.performSegue(withIdentifier: Segues.profileImageViewSegue, sender: nil)
-                }
-            } else if section == 3 {
-                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
-            } else if section == 4 {
-                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
-            } else if section == 5 {
+            } else if section == 3 && unself.friendList.count > 0 {
+                    unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.friends)
+            } else if section == 4 && unself.eventList.count > 0 {
+                    unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.events)
+            } else if section == 5 && unself.clubList.count > 0 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.clubs)
-            } else if section == 6 {
+            } else if section == 6 && unself.classList.count > 0 {
                 unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classes)
             }
         }
