@@ -33,6 +33,7 @@ extension UserTagCell {
         tagListView.removeAllTags()
         tagListView.addTags(tagList)
         tagListView.textFont = UIFont.semibold(sz: 13)
+        self.layoutIfNeeded()
     }
     
     func setupInterest(tagList: [String]) {

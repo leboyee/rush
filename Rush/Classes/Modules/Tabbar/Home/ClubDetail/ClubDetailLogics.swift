@@ -217,7 +217,9 @@ extension ClubDetailViewController {
     func fillTagCell(_ cell: TagCell) {
         if let tags = clubInfo?.clubInterests {
             let tag = tags.compactMap({ $0.interestName })
-            cell.setup(tagList: tag)
+            DispatchQueue.main.async {
+                cell.setup(tagList: tag)
+            }
         }
     }
     

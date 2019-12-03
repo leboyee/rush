@@ -62,11 +62,9 @@ class UserProfileGalleryViewController: UIViewController {
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
-        if user.userId == Authorization.shared.profile?.userId {
-            isFromOtherUserProfile = false
+        if isFromOtherUserProfile {
             bottomView.isHidden = true
         } else {
-            isFromOtherUserProfile = true
             bottomView.isHidden = false
         }
     }

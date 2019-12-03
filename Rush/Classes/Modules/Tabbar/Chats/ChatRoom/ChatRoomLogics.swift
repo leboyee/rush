@@ -256,7 +256,6 @@ extension ChatRoomViewController {
         ChatManager().readMessagesOfChannel(channel: channel) { (status) in
             if status, count > 0 {
                 UIApplication.shared.applicationIconBadgeNumber -= count
-                AppDelegate.shared?.updateBadgeCount(count: UIApplication.shared.applicationIconBadgeNumber)
             }
         }
     }

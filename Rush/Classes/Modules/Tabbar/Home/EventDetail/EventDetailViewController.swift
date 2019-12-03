@@ -313,9 +313,7 @@ extension EventDetailViewController {
                     vc.list = post.images ?? [Image]()
                     vc.user = post.user ?? User()
                     vc.currentIndex = index
-                    if post.user?.userId != Authorization.shared.profile?.userId {
-                        vc.isFromOtherUserProfile = true
-                    }
+                    vc.isFromOtherUserProfile = true
                 }
               }
         } else if segue.identifier == Segues.eventInterest {

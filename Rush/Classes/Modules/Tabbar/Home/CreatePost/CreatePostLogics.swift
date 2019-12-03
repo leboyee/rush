@@ -63,7 +63,11 @@ extension CreatePostViewController {
                     unself.bigFontCount = textView.text.count
                     cell.setup(font: UIFont.regular(sz: 17))
                 } else {
-                    cell.setup(font: UIFont.displayBold(sz: 28))
+                    if numLines == 1 && calcHeight > 100 {
+                        cell.setup(font: UIFont.regular(sz: 17))
+                    } else {
+                        cell.setup(font: UIFont.displayBold(sz: 28))
+                    }
                 }
             }
             

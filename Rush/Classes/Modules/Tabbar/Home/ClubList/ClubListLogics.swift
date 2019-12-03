@@ -274,8 +274,13 @@ extension ClubListViewController {
     
     func getClubCategoryListAPI() {
         
-        let params = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
-        ServiceManager.shared.fetchClubCategoryList(params: params) { [weak self] (data, _) in
+        var param = [Keys.pageNo: pageNoO, Keys.search: searchText] as [String: Any]
+        
+        if isFromHomeScreen {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
+        
+        ServiceManager.shared.fetchClubCategoryList(params: param) { [weak self] (data, _) in
             Utils.hideSpinner()
             guard let uwself = self else { return }
             if let clubs = data, clubs.count > 0 {

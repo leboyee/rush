@@ -20,7 +20,9 @@ class PhotoModelViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintOfContainerView: NSLayoutConstraint!
     @IBOutlet weak var radiusView: UIView!
+    @IBOutlet weak var saveImageView: UIImageView!
     @IBOutlet weak var saveLabel: UILabel!
+    @IBOutlet weak var deleteImageView: UIImageView!
     @IBOutlet weak var deleteLabel: UILabel!
     @IBOutlet weak var heightConstraintOfDeletePost: NSLayoutConstraint!
 
@@ -38,21 +40,23 @@ class PhotoModelViewController: UIViewController {
     }
     
     func setupUI() {
-        
-        if self.isFromOtherUserProfile == true {
-            self.bottomConstraintOfContainerView.constant = -75
-        } else {
-            self.bottomConstraintOfContainerView.constant = 0
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.containerView.layoutIfNeeded()
-            self.view.layoutIfNeeded()
-        }
         DispatchQueue.main.async {
-            self.radiusView.layer.cornerRadius = 24
-            self.radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            if self.isFromOtherUserProfile == true {
+                self.deleteLabel.text = "Share"
+                self.saveImageView.image = #imageLiteral(resourceName: "save_gray")
+                self.deleteImageView.image = #imageLiteral(resourceName: "share_gray")
+            } else {
+                self.deleteLabel.text =  "Delete"
+                self.bottomConstraintOfContainerView.constant = 0
+            }
+            UIView.animate(withDuration: 0.3) {
+                self.containerView.layoutIfNeeded()
+                self.view.layoutIfNeeded()
+            }
         }
-        deleteLabel.text =  "Delete"
+
+        radiusView.layer.cornerRadius = 24
+        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
 }
@@ -69,7 +73,7 @@ extension PhotoModelViewController {
     @IBAction func deleteButtonAction() {
         dismissView()
         DispatchQueue.main.async {
-            self.delegate?.delete(type: "", object: self.object)
+            self.delegate?.delete(type: "share", object: self.object)
         }
     }
     
