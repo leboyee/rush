@@ -168,7 +168,7 @@ extension OtherUserProfileController: SharePostViewControllerDelegate {
     func shareObject(_ object: Any?) {
         var data = [Any]()
         
-        data.append("Check out \(userInfo?.name ?? "") on Rush app")
+        data.append("Check out \(userInfo?.name ?? "") in Rush app")
         if let clubImage = header.userImageView.image {
             data.append(clubImage)
         }

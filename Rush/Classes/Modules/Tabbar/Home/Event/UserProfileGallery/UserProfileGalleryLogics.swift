@@ -39,8 +39,13 @@ extension UserProfileGalleryViewController {
         }
     }
     
+    func willDisplay(_ indexPath: IndexPath) {
+        if self.imageNextPageExist == true, self.list.count - 1 == indexPath.row {
+            self.fetchImagesList()
+        }
+    }
+
     // MARK: - Scroll To Item
-    
     func scrollToItemIndex(_ flowLayout: UICollectionViewFlowLayout, _ index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         DispatchQueue.main.async {
@@ -106,14 +111,23 @@ extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
     }
     
     func savePhoto(_ object: Any?) {
-        if let image = self.selectedImage {
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
-        } else {
-            let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-            return
-        }
+       Utils.authorizePhoto(completion: { [weak self] (status) in
+                      guard let unsafe = self else { return }
+                      if status == .alreadyAuthorized || status == .justAuthorized {
+                               if let image = unsafe.selectedImage {
+                                        UIImageWriteToSavedPhotosAlbum(image, self, #selector(unsafe.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                                    } else {
+                                        let ac = UIAlertController(title: "Save error", message: "Failed to load image", preferredStyle: .alert)
+                                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                                        unsafe.present(ac, animated: true)
+                                        return
+                                    }
+                      } else {
+                          if status != .justDenied {
+                              Utils.photoLibraryPermissionAlert()
+                          }
+                      }
+                  })
     }
 }
 
@@ -132,4 +146,45 @@ extension UserProfileGalleryViewController {
         }
     }
     
+    func fetchImagesList() {
+          downloadQueue.async {
+              let time = DispatchTime.now() + (2 * 60)
+              _ = self.downloadGroup.wait(timeout: time)
+              self.downloadGroup.enter()
+            let params = [Keys.profileUserId: self.userId, Keys.pageNo: "\(self.imagePageNo)"]
+              ServiceManager.shared.getImageList(params: params, closer: { [weak self] (data, _) in
+                  guard let unsafe = self else { return }
+                  if let list = data?[Keys.images] as? [[String: Any]] {
+                      if list.isEmpty {
+                          unsafe.imageNextPageExist = false
+                          if unsafe.imagePageNo == 1 {
+                              unsafe.list.removeAll()
+                              unsafe.collectionView.reloadData()
+                          }
+                      } else {
+                          var items = [Image]()
+                          for item in list {
+                              if let json = item["img_data"] as? String {
+                                  let image = Image(json: json)
+                                  image.id = "\(item["user_img_id"] ?? "")"
+                                  image.isInstaImage = (item["insta_data"] as? String) == "" ? false : true
+                                  items.append(image)
+                              }
+                          }
+                          if unsafe.imagePageNo == 1 {
+                              unsafe.list = items
+                          } else {
+                              unsafe.list.append(contentsOf: items)
+                          }
+                          unsafe.imagePageNo += 1
+                          unsafe.imageNextPageExist = true
+                          unsafe.collectionView.reloadData()
+                      }
+                  } else {
+                      unsafe.collectionView.reloadData()
+                  }
+                  self?.downloadGroup.leave()
+              })
+          }
+      }
 }

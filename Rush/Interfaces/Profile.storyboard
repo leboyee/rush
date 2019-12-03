@@ -560,11 +560,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lT3-j6-ABn">
-                                                <rect key="frame" x="49" y="105" width="316" height="69"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="316" id="d5j-Xc-7k0"/>
-                                                    <constraint firstAttribute="height" constant="69" id="el4-nB-IE7"/>
-                                                </constraints>
+                                                <rect key="frame" x="24" y="103" width="366" height="61"/>
                                                 <string key="text">You don’t have friends in the app. Invite them from your contact list.
 </string>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
@@ -574,11 +570,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="lT3-j6-ABn" firstAttribute="top" secondItem="RPi-ei-KKN" secondAttribute="bottom" constant="16" id="9I8-dW-CJ1"/>
+                                            <constraint firstItem="lT3-j6-ABn" firstAttribute="leading" secondItem="sLP-q8-mTf" secondAttribute="leading" constant="24" id="0SA-Or-sKu"/>
                                             <constraint firstItem="RPi-ei-KKN" firstAttribute="top" secondItem="sLP-q8-mTf" secondAttribute="top" constant="1" id="UWM-le-6PV"/>
                                             <constraint firstItem="RPi-ei-KKN" firstAttribute="centerX" secondItem="sLP-q8-mTf" secondAttribute="centerX" id="eeh-OA-t3K"/>
+                                            <constraint firstAttribute="trailing" secondItem="lT3-j6-ABn" secondAttribute="trailing" constant="24" id="grk-24-SIx"/>
+                                            <constraint firstItem="lT3-j6-ABn" firstAttribute="centerX" secondItem="sLP-q8-mTf" secondAttribute="centerX" id="gt6-Nu-Pgj"/>
                                             <constraint firstAttribute="height" constant="189" id="o4K-aU-58e"/>
-                                            <constraint firstItem="lT3-j6-ABn" firstAttribute="centerX" secondItem="sLP-q8-mTf" secondAttribute="centerX" id="yCl-vS-Oha"/>
+                                            <constraint firstItem="lT3-j6-ABn" firstAttribute="top" secondItem="RPi-ei-KKN" secondAttribute="bottom" constant="14" id="uFg-sN-lfk"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -610,6 +608,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gcE-U8-nlv"/>
                     <connections>
+                        <outlet property="noSearchResultText" destination="lT3-j6-ABn" id="1NZ-lj-y4c"/>
                         <outlet property="noSearchResultView" destination="YcR-uP-PsI" id="wGJ-ql-ws7"/>
                         <outlet property="tableView" destination="s0q-8L-7Py" id="8vj-Tq-UMP"/>
                         <segue destination="cv2-jF-KOY" kind="show" identifier="InviteContactListSegue" id="YcM-XV-1Id"/>
@@ -1109,6 +1108,6 @@ event updates.</string>
         <image name="noPhotoIcon" width="104" height="104"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3dt-pp-mnp"/>
+        <segue reference="CnQ-2G-2dH"/>
     </inferredMetricsTieBreakers>
 </document>

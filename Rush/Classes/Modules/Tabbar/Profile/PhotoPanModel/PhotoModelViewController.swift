@@ -38,20 +38,20 @@ class PhotoModelViewController: UIViewController {
     }
     
     func setupUI() {
-        DispatchQueue.main.async {
-            if self.isFromOtherUserProfile == true {
-                self.bottomConstraintOfContainerView.constant = -75
-            } else {
-                self.bottomConstraintOfContainerView.constant = 0
-            }
-            UIView.animate(withDuration: 0.3) {
-                self.containerView.layoutIfNeeded()
-                self.view.layoutIfNeeded()
-            }
+        
+        if self.isFromOtherUserProfile == true {
+            self.bottomConstraintOfContainerView.constant = -75
+        } else {
+            self.bottomConstraintOfContainerView.constant = 0
         }
-
-        radiusView.layer.cornerRadius = 24
-        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        UIView.animate(withDuration: 0.3) {
+            self.containerView.layoutIfNeeded()
+            self.view.layoutIfNeeded()
+        }
+        DispatchQueue.main.async {
+            self.radiusView.layer.cornerRadius = 24
+            self.radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        }
         deleteLabel.text =  "Delete"
     }
     

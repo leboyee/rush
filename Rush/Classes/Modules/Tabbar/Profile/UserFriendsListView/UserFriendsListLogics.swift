@@ -76,6 +76,7 @@ extension UserFriendsListViewController {
                     unsafe.searchTextFiled?.isUserInteractionEnabled = true
                 }
                 unsafe.noSearchResultView.isHidden = unsafe.friendsList.count == 0 ? false : true
+                unsafe.noSearchResultText.text = unsafe.isSearch == true ? "No matches found" : "You don’t have friends in the app. Invite them from your contact list."
                 unsafe.tableView.reloadData()
             }
         }

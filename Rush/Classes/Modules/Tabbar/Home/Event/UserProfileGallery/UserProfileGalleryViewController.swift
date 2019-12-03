@@ -27,10 +27,14 @@ class UserProfileGalleryViewController: UIViewController {
     var selectedImage: UIImage? = UIImage(contentsOfFile: "")
     var list = [Image]()
     var user = User()
-    
+    let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
+    let downloadGroup = DispatchGroup()
+    var imagePageNo: Int = 1
+    var imageNextPageExist = false
     var isFromChat = false
     var isFromOtherUserProfile = false
-    
+    var userId: String = ""
+    var totalCount: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -54,7 +58,7 @@ class UserProfileGalleryViewController: UIViewController {
         if isFromChat {
             setTitle(titleStr: "")
         } else {
-            setTitle(titleStr: "\(currentIndex + 1) of \(list.count)")
+            setTitle(titleStr: "\(currentIndex + 1) of \(totalCount)")
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
@@ -122,7 +126,7 @@ extension UserProfileGalleryViewController {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
             let image = list[currentIndex]
-            vc.isFromOtherUserProfile = image.isInstaImage == true ? false : isFromOtherUserProfile
+            vc.isFromOtherUserProfile = image.isInstaImage == true ? true : isFromOtherUserProfile
         }
     }
 }

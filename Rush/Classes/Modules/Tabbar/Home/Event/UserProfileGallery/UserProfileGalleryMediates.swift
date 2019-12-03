@@ -44,10 +44,14 @@ extension UserProfileGalleryViewController: UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        willDisplay(indexPath)
+    }
+    
     // MARK: - Scrollview Delegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         currentIndex = Int(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
-        let titleString = ("\((currentIndex+1)) of \(cellCount())")
+        let titleString = ("\((currentIndex+1)) of \(totalCount)")
         setTitle(titleStr: titleString)
         setupDateAndTimeOfPhoto(index: currentIndex)
     }
