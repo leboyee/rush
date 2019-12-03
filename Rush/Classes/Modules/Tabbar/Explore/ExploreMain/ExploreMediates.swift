@@ -118,6 +118,7 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
 extension ExploreViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        clearButton.isHidden = false
         isSearch = true
         heightConstraintOfFilter.constant = 67
         
@@ -143,12 +144,13 @@ extension ExploreViewController: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField) {
+        clearButton.isHidden = false
         if (textField.text ?? "").count > 0 {
             searchText = textField.text ?? ""
-            clearButton.isHidden = false
+            //clearButton.isHidden = false
         } else {
             searchText = ""
-            clearButton.isHidden = true
+            //clearButton.isHidden = true
         }
         if searchText != "" {
             if searchType == .event {
