@@ -99,6 +99,8 @@ extension ProfileTileViewController {
                         unsafe.imageNextPageExist = false
                         if unsafe.imagePageNo == 1 {
                             unsafe.imageArray.removeAll()
+                            unsafe.totalCount = 0
+                            unsafe.collectionView.reloadData()
                         }
                     } else {
                         var items = [Image]()
@@ -110,6 +112,7 @@ extension ProfileTileViewController {
                                 items.append(image)
                             }
                         }
+                        unsafe.totalCount = data?["count"] as? Int ?? 0
                         if unsafe.imagePageNo == 1 {
                             unsafe.imageArray = items
                         } else {
@@ -119,6 +122,8 @@ extension ProfileTileViewController {
                         unsafe.imageNextPageExist = true
                         unsafe.collectionView.reloadData()
                     }
+                } else {
+                    unsafe.collectionView.reloadData()
                 }
                 self?.noResultView.isHidden = self?.imageArray.count ?? 0 > 0 ? true : false
                 self?.downloadGroup.leave()

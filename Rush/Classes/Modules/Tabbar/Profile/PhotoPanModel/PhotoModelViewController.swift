@@ -40,7 +40,6 @@ class PhotoModelViewController: UIViewController {
     }
     
     func setupUI() {
-        
         DispatchQueue.main.async {
             if self.isFromOtherUserProfile == true {
                 self.deleteLabel.text = "Share"

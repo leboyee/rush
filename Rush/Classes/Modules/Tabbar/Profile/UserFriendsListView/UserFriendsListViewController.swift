@@ -15,6 +15,8 @@ class UserFriendsListViewController: UIViewController {
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var topConstraintOfTableView: NSLayoutConstraint!
     @IBOutlet weak var noSearchResultView: UIView!
+    @IBOutlet weak var noSearchResultText: UILabel!
+
     var searchTextFiled: UITextField?
     var rightBarButton: UIBarButtonItem?
     var friendsList = [Friend]()
