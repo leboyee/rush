@@ -467,7 +467,7 @@ extension FriendsListViewController {
     }
     
     func getMyJoinedClasses() {
-        noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any Classes."
+        noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any classes yet."
         if pageNo == 1 {
             myClassesList .removeAll()
         }
@@ -522,7 +522,7 @@ extension FriendsListViewController {
     }
     
     func fetchClubInviteeAPI() {
-        noDataLabel.text = "None have joined this club yet."
+        noDataLabel.text = "No one has joined this club yet."
         if pageNo == 1 {
             inviteeList.removeAll()
         }
