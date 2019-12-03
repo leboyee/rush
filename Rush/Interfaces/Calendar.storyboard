@@ -76,8 +76,11 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caE-62-K2K">
                                 <rect key="frame" x="0.0" y="245" width="414" height="315"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Qz8-Lj-tg6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gray_calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Qz8-Lj-tg6">
                                         <rect key="frame" x="165" y="93.5" width="84" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="aPX-eA-X6v"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have anything scheduled for today" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-gR-3UB">
                                         <rect key="frame" x="24" y="197.5" width="366" height="16"/>
@@ -170,6 +173,7 @@ like!</string>
                         <viewLayoutGuide key="safeArea" id="05b-RP-UQ0"/>
                     </view>
                     <connections>
+                        <outlet property="emptyCalendarIconHeight" destination="aPX-eA-X6v" id="f4u-42-f2n"/>
                         <outlet property="emptyTodayView" destination="caE-62-K2K" id="lGs-mC-Hdk"/>
                         <outlet property="emptyView" destination="K0H-Sa-sRg" id="KeZ-Q5-Hle"/>
                         <outlet property="tableView" destination="9yw-V8-Tef" id="qGH-8L-ee9"/>

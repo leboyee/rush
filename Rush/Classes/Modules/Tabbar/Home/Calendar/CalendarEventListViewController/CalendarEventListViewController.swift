@@ -13,13 +13,23 @@ class CalendarEventListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyTodayView: UIView!
+    @IBOutlet weak var emptyCalendarIconHeight: NSLayoutConstraint!
 
     let radius: CGFloat = 32.0
+    let calendarIconHeightForSmallDevice: CGFloat = 48.0
     var groups: [EventGroup]?
      
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UIDevice.current.screenType == .iPhones5 {
+            emptyCalendarIconHeight.constant = calendarIconHeightForSmallDevice
+            view.layoutIfNeeded()
+        }
     }
 }
 
