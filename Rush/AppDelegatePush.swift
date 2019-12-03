@@ -89,10 +89,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                             selectedNavigationController?.dismiss(animated: false, completion: nil)
                             selectedNavigationController?.popToRootViewController(animated: false)
                             viewcontroller.selectedIndex = 3
-                        
-                        if UIApplication.shared.applicationIconBadgeNumber > 0 {
-                            updateBadgeCount(count: UIApplication.shared.applicationIconBadgeNumber - 1)
-                        }
                     }
                 }
             }
@@ -130,6 +126,7 @@ extension AppDelegate {
         }
     }
     
+    /*
     func updateBadgeCount(count: Int) {
         if Authorization.shared.authorized {
             ServiceManager.shared.updateBadgeCount(params: [Keys.alertBadge: "\(count)"]) { (_, _) in
@@ -147,4 +144,5 @@ extension AppDelegate {
             }
         }
     }
+    */
 }
