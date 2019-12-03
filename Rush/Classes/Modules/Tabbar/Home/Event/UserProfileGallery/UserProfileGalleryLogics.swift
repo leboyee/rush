@@ -11,7 +11,7 @@ import SDWebImage
 
 // MARK: - Handlers
 extension UserProfileGalleryViewController {
-  
+    
     func cellHeight() -> CGSize {
         let size = CGSize(width: screenWidth, height: (collectionView.frame.size.height))
         return size
@@ -76,9 +76,9 @@ extension UserProfileGalleryViewController {
             }
             
         }
-    
-    }
         
+    }
+    
     func dismissShareSheet() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -86,23 +86,38 @@ extension UserProfileGalleryViewController {
     // MARK: - Image Error Handling
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-           if let error = error {
-               // we got back an error!
-               let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-               ac.addAction(UIAlertAction(title: "OK", style: .default))
-               present(ac, animated: true)
-           } else {
-               let ac = UIAlertController(title: "Saved!", message: "Image has been saved to your photos.", preferredStyle: .alert)
-               ac.addAction(UIAlertAction(title: "OK", style: .default))
-               present(ac, animated: true)
-           }
-       }
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
 }
 
 extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
     func delete(type: String, object: Any?) {
-        let image = list[currentIndex]
-        deletePhoto(id: image.id)
+        var data = [Any]()
+        if type == "share" && isFromOtherUserProfile {
+            if isFromOtherUserProfile && selectedImage != nil, let img = selectedImage {
+                data.append(img)
+            } else if list.count > currentIndex {
+                if let url = URL(string: list[currentIndex].main) {
+                    do {
+                        data.append(UIImage(data: try Data(contentsOf: url)) as Any)
+                    } catch {}
+                }
+            }
+            
+            Utils.openActionSheet(controller: self, shareData: data)
+        } else {
+            let image = list[currentIndex]
+            deletePhoto(id: image.id)
+        }
     }
     
     func savePhoto(_ object: Any?) {
@@ -118,9 +133,9 @@ extension UserProfileGalleryViewController: PhotoModelViewControllerDelegate {
 }
 
 extension UserProfileGalleryViewController {
-     func deletePhoto(id: String) {
-       Utils.showSpinner()
-       ServiceManager.shared.deletePhoto(photoId: id) { [weak self] (status, errorMsg) in
+    func deletePhoto(id: String) {
+        Utils.showSpinner()
+        ServiceManager.shared.deletePhoto(photoId: id) { [weak self] (status, errorMsg) in
             Utils.hideSpinner()
             guard let unsafe = self else { return }
             if status {
@@ -128,8 +143,7 @@ extension UserProfileGalleryViewController {
             } else if let message = errorMsg {
                 Utils.alert(message: message)
                 
-        }
+            }
         }
     }
-    
 }

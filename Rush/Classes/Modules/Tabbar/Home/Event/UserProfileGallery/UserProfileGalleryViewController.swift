@@ -58,11 +58,9 @@ class UserProfileGalleryViewController: UIViewController {
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
-        if user.userId == Authorization.shared.profile?.userId {
-            isFromOtherUserProfile = false
+        if isFromOtherUserProfile {
             bottomView.isHidden = true
         } else {
-            isFromOtherUserProfile = true
             bottomView.isHidden = false
         }
     }
@@ -122,7 +120,11 @@ extension UserProfileGalleryViewController {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
             let image = list[currentIndex]
-            vc.isFromOtherUserProfile = image.isInstaImage == true ? false : isFromOtherUserProfile
+            if image.isInstaImage {
+                vc.isFromOtherUserProfile = false
+            } else {
+                vc.isFromOtherUserProfile = isFromOtherUserProfile
+            }
         }
     }
 }
