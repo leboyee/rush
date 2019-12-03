@@ -24,15 +24,19 @@ extension UserProfileGalleryViewController {
     func fillCell(_ cell: GalleryCell, _ indexPath: IndexPath) {
         let image = list[indexPath.row]
         let urlStr: String = image.main
-        guard let url: URL = URL(string: urlStr) else { return }
         
-       // Utils.showSpinner()
-        SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, _, _, _) in
-            cell.imageView.image = image
-            self.selectedImage = image
-            //Utils.hideSpinner()
+        if isFromChat && selectedImage != nil {
+            cell.imageView.image = selectedImage
+        } else {
+            guard let url: URL = URL(string: urlStr) else { return }
+            
+            // Utils.showSpinner()
+            SDWebImageManager.shared.imageLoader.requestImage(with: url, options: .continueInBackground, context: nil, progress: nil) { (image, _, _, _) in
+                cell.imageView.image = image
+                self.selectedImage = image
+                //Utils.hideSpinner()
+            }
         }
-
     }
     
     // MARK: - Scroll To Item

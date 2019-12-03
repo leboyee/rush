@@ -408,6 +408,7 @@ extension ChatRoomViewController: MessageCellDelegate {
                 }
             }
             vc.user = user
+            vc.selectedImage = mediaItem.image
             vc.modalPresentationStyle = .fullScreen
             vc.isFromChat = true
             self.present(vc, animated: true, completion: nil)
