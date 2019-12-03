@@ -53,6 +53,13 @@ class UserProfileGalleryViewController: UIViewController {
 //        navigationItem.titleView = Utils.getNavigationBarTitle(title: titleName, textColor: UIColor.white)
 
         // Setup tableview
+        if Authorization.shared.profile?.userId == userId {
+            bottomView.isHidden = true
+        } else {
+            totalCount = list.count
+            bottomView.isHidden = false
+        }
+
         setupCollectionView()
         fillBottomProfile()
         if isFromChat {
@@ -62,11 +69,7 @@ class UserProfileGalleryViewController: UIViewController {
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
-        if isFromOtherUserProfile {
-            bottomView.isHidden = true
-        } else {
-            bottomView.isHidden = false
-        }
+        
     }
     
     // MARK: - Set Profile Data
@@ -124,7 +127,12 @@ extension UserProfileGalleryViewController {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
             let image = list[currentIndex]
-            vc.isFromOtherUserProfile = image.isInstaImage == true ? true : isFromOtherUserProfile
+//            vc.isFromOtherUserProfile = image.isInstaImage == true ? true : isFromOtherUserProfile
+            if image.isInstaImage {
+                vc.isFromOtherUserProfile = false
+            } else {
+                vc.isFromOtherUserProfile = isFromOtherUserProfile
+            }
         }
     }
 }
