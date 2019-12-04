@@ -38,7 +38,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
                 if firstSegmentButton.isSelected {
                     noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any clubs yet."
                 } else {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") has not managing any clubs yet."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") does not have any managed clubs yet."
                 }
             } else  if type == .events {
                 if firstSegmentButton.isSelected {
@@ -48,7 +48,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             } else  if type == .classRoasters {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "Class do not have any rosters yet."
+                    noDataLabel.text = "There are no rosters in this class."
                 } else {
                     noDataLabel.text = "You do not have any mutual friends yet."
                 }

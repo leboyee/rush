@@ -134,6 +134,14 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cellHeight(indexPath)
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 4 {
+            return screenHeight
+        } else {
+            return screenWidth
+        }
+    }
+    
     // MARK: - Scroll Delegates
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let topMergin = (AppDelegate.shared?.window?.safeAreaInsets.top ?? 0)

@@ -176,7 +176,9 @@ extension ClassDetailViewController {
                 }
             } else {
                 //View All clicked
-                unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classRoasters)
+                if rosterArray.count > 0 {
+                    unself.performSegue(withIdentifier: Segues.friendList, sender: UserProfileDetailType.classRoasters)
+                }
             }
             
         }

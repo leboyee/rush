@@ -57,6 +57,8 @@ class ClubDetailViewController: BaseTableViewController {
         } else {
             isCallAPI = true
         }
+        
+        tableView.layoutSubviews()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
