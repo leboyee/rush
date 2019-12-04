@@ -417,6 +417,9 @@ extension ClassDetailViewController {
                     }
                     uwself.fillImageHeader()
                     uwself.getClassPostListAPI()
+                    if uwself.joinedClub {
+                        uwself.getClassRostersIdsAPI(classId: classId, groupId: groupId)
+                    }
                     uwself.tableView.reloadData()
                 } catch {
                     
@@ -459,6 +462,20 @@ extension ClassDetailViewController {
                 }
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    /*
+     Call this for get all members ids of joind this class and create/update class chat channel
+     */
+    
+    func getClassRostersIdsAPI(classId: String, groupId: String) {
+        ServiceManager.shared.fetchMemberIds(dataType: "class", dataId: classId, params: [:]) { (data, _) in
+            if data != nil {
+                if let ids = data?[Keys.list] as? [Int] {
+                    ChatManager().addMoreMembersInChannel(type: "class", data: classId, userIds: ids)
+                }
             }
         }
     }
