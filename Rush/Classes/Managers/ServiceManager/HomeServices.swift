@@ -121,4 +121,13 @@ extension ServiceManager {
             })
         }
     }
+    
+    func fetchMemberIds(dataType: String, dataId: String, params: [String: Any], closer: @escaping (_ params: [String: Any]?, _ errorMessage: String?) -> Void) {
+        NetworkManager.shared.getMemberIds(dataType: dataType, dataId: dataId, param: params) { [weak self] (data, error, code) in
+            guard let uwself = self else { return }
+            uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
+                closer(data, errorMessage)
+            })
+        }
+    }
 }

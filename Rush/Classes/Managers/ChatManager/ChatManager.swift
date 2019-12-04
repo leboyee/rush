@@ -579,6 +579,37 @@ extension ChatManager {
             print(error?.localizedDescription ?? "")
         })
     }
+    
+    func addMoreMembersInChannel(type: String, data: String, userIds: [Int]) {
+        
+        guard isNetworkAvailable else { AppDelegate.shared?.networkAlert()
+            return }
+        
+        getListOfAllPublicChatGroups(type: type, data: data, { (value) in
+            if let list = value as? [SBDGroupChannel], list.count > 0 {
+                
+                let channels = list.filter({ $0.customType == type })
+                if channels.count > 0 {
+                    let filteredChannels = channels.filter({ $0.data == data })
+                    
+                    if filteredChannels.count > 0, let channel = filteredChannels.first {
+                        
+                        let ids = userIds.compactMap({ "\($0)" })
+                        
+                        if ids.count > (channel.members?.count ?? 0) {
+                            self.updateChannel(channel: channel, userIds: ids, groupName: channel.name, coverImageUrl: channel.coverUrl, data: channel.data, type: channel.customType, completionHandler: { (_) in
+                                print("************ User added successfully  *************")
+                            }, errorHandler: { (error) in
+                                print(error?.localizedDescription ?? "")
+                            })
+                        }
+                    }
+                }
+            }
+        }, errorHandler: { (error) in
+            print(error?.localizedDescription ?? "")
+        })
+    }
 }
 
 // MARK: - Send message to channel

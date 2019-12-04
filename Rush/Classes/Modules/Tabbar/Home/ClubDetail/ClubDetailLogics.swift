@@ -366,7 +366,12 @@ extension ClubDetailViewController {
                 }
                 uwself.fillImageHeader()
                 uwself.fillData()
-                uwself.getClubPostListAPI()
+                if uwself.joinedClub {
+                    uwself.getClubPostListAPI()
+                } else {
+                    Utils.hideSpinner()
+                }
+                uwself.getClubMemberIdsAPI(id: id)
                 uwself.tableView.reloadData()
             } else {
                 Utils.hideSpinner()
@@ -449,6 +454,21 @@ extension ClubDetailViewController {
                 }
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
+            }
+        }
+    }
+    
+    /*
+    Call this for get all members ids of joind this club and create/update event chat channel
+    */
+    
+    func getClubMemberIdsAPI(id: String) {
+        
+        ServiceManager.shared.fetchMemberIds(dataType: "club", dataId: id, params: [:]) { (data, _) in
+            if data != nil {
+                if let ids = data?[Keys.list] as? [Int] {
+                    ChatManager().addMoreMembersInChannel(type: "club", data: id, userIds: ids)
+                }
             }
         }
     }
