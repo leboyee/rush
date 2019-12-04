@@ -148,6 +148,10 @@ extension SearchClubViewController {
             param[Keys.intId] = interest.interestId
         }
         
+        if tabBarController?.selectedIndex == 0 {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
+        
         if pageNo == 1 {
             Utils.showSpinner()
         }

@@ -528,7 +528,7 @@ extension ChatRoomViewController {
          }
          */
         
-        if (channel?.members?.count ?? 0) == 1 && channel?.customType == "single"  {
+        if (channel?.members?.count ?? 0) == 1 && channel?.customType == "single" {
             Utils.saveDataToUserDefault(self.userName, UserDefaultKey.showAlertOfChatRemoved)
         }
     }

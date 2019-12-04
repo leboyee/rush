@@ -480,7 +480,12 @@ extension EventCategoryListViewController {
             param[Keys.fromTime] = startTime
             param[Keys.toTime] = endTime
         }
-        param[Keys.universityId] = selUniversity.universtiyId
+        
+        if selUniversity.universtiyId > 0 {
+            param[Keys.universityId] = selUniversity.universtiyId
+        } else if tabBarController?.selectedIndex == 0 {
+            param[Keys.universityId] = Authorization.shared.profile?.university?.first?.universtiyId ?? 0
+        }
         
         if pageNo == 1 {
             eventList.removeAll()
