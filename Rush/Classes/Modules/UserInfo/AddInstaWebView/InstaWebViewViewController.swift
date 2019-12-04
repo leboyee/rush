@@ -76,7 +76,6 @@ extension InstaWebViewViewController {
             alert.dismiss(animated: true, completion: nil)
             AppDelegate.shared?.setupStoryboard()
             AppDelegate.shared?.connectSendbird()
-            Utils.saveDataToUserDefault("ShowHomeTutorial", kHomeTutorialKey)
         }
     }
 

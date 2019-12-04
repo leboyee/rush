@@ -241,6 +241,7 @@ extension EnterPasswordViewConteroller {
             Utils.alert(message: "Password has been updated. Please login now.")
             self.navigationController?.popViewController(animated: true)
         } else {
+            
             AppDelegate.shared?.connectSendbird()
             AppDelegate.shared?.setupStoryboard()
         }
