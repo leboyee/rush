@@ -99,7 +99,7 @@ extension ChatManager {
      Get list of all chat groups of logged in user
      */
     
-    func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+    func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: SBDError?) -> Void) {
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
@@ -127,7 +127,7 @@ extension ChatManager {
     func loadListOfChannels(query: SBDGroupChannelListQuery?,
                             channels: [AnyHashable]?,
                             completionHandler: @escaping ([Any]?) -> Void,
-                            errorHandler: @escaping (Error?) -> Void) {
+                            errorHandler: @escaping (SBDError?) -> Void) {
         var channelsList = channels
         query?.loadNextPage(completionHandler: { (channels, error) in
             
@@ -572,6 +572,37 @@ extension ChatManager {
                             print(error?.localizedDescription ?? "")
                         })
                         */
+                    }
+                }
+            }
+        }, errorHandler: { (error) in
+            print(error?.localizedDescription ?? "")
+        })
+    }
+    
+    func addMoreMembersInChannel(type: String, data: String, userIds: [Int]) {
+        
+        guard isNetworkAvailable else { AppDelegate.shared?.networkAlert()
+            return }
+        
+        getListOfAllPublicChatGroups(type: type, data: data, { (value) in
+            if let list = value as? [SBDGroupChannel], list.count > 0 {
+                
+                let channels = list.filter({ $0.customType == type })
+                if channels.count > 0 {
+                    let filteredChannels = channels.filter({ $0.data == data })
+                    
+                    if filteredChannels.count > 0, let channel = filteredChannels.first {
+                        
+                        let ids = userIds.compactMap({ "\($0)" })
+                        
+                        if ids.count > (channel.members?.count ?? 0) {
+                            self.updateChannel(channel: channel, userIds: ids, groupName: channel.name, coverImageUrl: channel.coverUrl, data: channel.data, type: channel.customType, completionHandler: { (_) in
+                                print("************ User added successfully  *************")
+                            }, errorHandler: { (error) in
+                                print(error?.localizedDescription ?? "")
+                            })
+                        }
                     }
                 }
             }

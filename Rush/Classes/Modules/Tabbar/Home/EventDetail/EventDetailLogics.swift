@@ -490,6 +490,7 @@ extension EventDetailViewController {
                 unsafe.event = event
                 unsafe.loadEventSection()
                 unsafe.updateHeaderInfo()
+                unsafe.getEventMemberIdsAPI(event: event)
                 unsafe.downloadGroup.leave()
               }
         }
@@ -621,6 +622,23 @@ extension EventDetailViewController {
                 self?.showMessage(message: Message.eventRejected)
             } else if let message = errorMessage {
                 self?.showMessage(message: message)
+            }
+        }
+    }
+    
+    /*
+     Call this for get all members ids of joind this event and create/update event chat channel
+     */
+    
+    func getEventMemberIdsAPI(event: Event?) {
+        if event?.rsvp?.count ?? 0 > 0 {
+            let id = "\(event?.id ?? 0)"
+            ServiceManager.shared.fetchMemberIds(dataType: "event", dataId: id, params: [:]) { (data, _) in
+                if data != nil {
+                    if let ids = data?[Keys.list] as? [Int] {
+                        ChatManager().addMoreMembersInChannel(type: "event", data: id, userIds: ids)
+                    }
+                }
             }
         }
     }
