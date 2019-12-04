@@ -73,7 +73,7 @@ extension HomeViewController {
                 cell.setup(bgImage: "popup-green-right")
                 cell.setup(buttonTitle: "Nice!")
             } else {
-                Utils.removeDataFromUserDefault(kHomeTutorialKey)
+                Utils.saveDataToUserDefault("ShowTutorial", kHomeTutorialKey)
                 unself.isShowTutorial = false
                 unself.tableView.reloadData()
             }

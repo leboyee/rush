@@ -34,7 +34,7 @@ extension ProfileViewController {
         fetchFriendList()
     }
     
-    func loadNotifications() {
+    @objc func loadNotifications() {
         notificationPageNo = 1
         notificationNextPageExist = false
         fetchNotificationList()

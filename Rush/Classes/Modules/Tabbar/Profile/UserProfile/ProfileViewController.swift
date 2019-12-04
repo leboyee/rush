@@ -66,6 +66,10 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 // MARK: - Setup
@@ -79,6 +83,8 @@ extension ProfileViewController {
         /// setup HeaderData
         setupHeaderData()
         setupView()
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(loadNotifications), name: Notification.Name(rawValue: kRefreshNotification), object: nil)
     }
 }
 

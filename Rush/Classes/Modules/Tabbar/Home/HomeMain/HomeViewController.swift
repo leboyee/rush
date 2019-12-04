@@ -68,7 +68,7 @@ class HomeViewController: CustomViewController {
     
     func setupUI() {
         
-        if Utils.getDataFromUserDefault(kHomeTutorialKey) != nil {
+        if Utils.getDataFromUserDefault(kHomeTutorialKey) == nil {
             isShowTutorial = true
         }
         

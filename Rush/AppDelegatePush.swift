@@ -40,6 +40,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Push Fail:" + error.localizedDescription)
+        
+        // un register sendbird chat
+        // update dummy token to server
+        updateToken(deviceTokenString: "123456789", oldPushToken: "")
+        unregisterPushTokenWithSendBird()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
@@ -86,9 +91,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     //print(type)
                     if let viewcontroller = window?.rootViewController as? UITabBarController {
                         let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
-                            selectedNavigationController?.dismiss(animated: false, completion: nil)
-                            selectedNavigationController?.popToRootViewController(animated: false)
+                        selectedNavigationController?.dismiss(animated: false, completion: nil)
+                        selectedNavigationController?.popToRootViewController(animated: false)
+                        if viewcontroller.selectedIndex == 3 {
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: kRefreshNotification), object: nil)
+                        } else {
                             viewcontroller.selectedIndex = 3
+                        }
                     }
                 }
             }
@@ -137,14 +146,14 @@ extension AppDelegate {
     }
     
     /*
-    func getBadgeCount() {
-        if Authorization.shared.authorized {
-            ServiceManager.shared.getBadgeCount { (data, _) in
-                if let count = data?[Keys.alertBadge] as? Int {
-                    UIApplication.shared.applicationIconBadgeNumber = count
-                }
-            }
-        }
-    }
-    */
+     func getBadgeCount() {
+     if Authorization.shared.authorized {
+     ServiceManager.shared.getBadgeCount { (data, _) in
+     if let count = data?[Keys.alertBadge] as? Int {
+     UIApplication.shared.applicationIconBadgeNumber = count
+     }
+     }
+     }
+     }
+     */
 }

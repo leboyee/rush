@@ -550,7 +550,7 @@ extension FriendsListViewController {
     }
     
     func fetchClassRostersAPI() {
-        noDataLabel.text = "Class do not have any rosters yet."
+        noDataLabel.text = "There are no rosters in this class."
               
         if pageNo == 1 {
             inviteeList.removeAll()

@@ -29,6 +29,9 @@ let kHomeTutorialKey            = "com.rush.hometutorial"
 let kOpenFromPushNotification   = "com.rush.openfrompushnotification"
 let kUnreadChatMessageCount     = "com.rush.unreadChatMessageCount"
 
+// MARK: - Notification keys
+let kRefreshNotification        = "RefreshNotification"
+
 // MARK: - API's Keys
 struct Keys {
 
@@ -38,7 +41,6 @@ struct Keys {
     static let userId                = "user_id"
     static let profileUserId         = "profile_user_id"
     static let friendsOnly         = "friends_only"
-
 
     static let photo                 = "photo"
     static let main                  = "main"
