@@ -100,11 +100,8 @@ extension FriendsListViewController: UITextFieldDelegate {
         searchText = textField.text ?? ""
         pageNo = 1
         isNextPageExist = false
-        if type == .clubJoinedUsers {
-            fetchClubInviteeAPI()
-        } else if type == .classRoasters {
-            fetchClassRostersAPI()
-        }
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(callAPI), object: nil)
+        self.perform(#selector(callAPI), with: nil, afterDelay: 0.5)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -118,6 +115,14 @@ extension FriendsListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc func callAPI() {
+        if type == .clubJoinedUsers {
+            fetchClubInviteeAPI()
+        } else if type == .classRoasters {
+            fetchClassRostersAPI()
+        }
     }
 }
 // MARK: - OtherUserProfile delegate
