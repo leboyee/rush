@@ -112,9 +112,9 @@ extension ProfileTileViewController {
                                 items.append(image)
                             }
                         }
-                        unsafe.totalCount = data?["count"] as? Int ?? 0
                         if unsafe.imagePageNo == 1 {
                             unsafe.imageArray = items
+                            unsafe.totalCount = data?["count"] as? Int ?? 0
                         } else {
                             unsafe.imageArray.append(contentsOf: items)
                         }
