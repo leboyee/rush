@@ -93,8 +93,11 @@ extension UserFriendsListViewController {
     }
 
     @objc func backButtonAction() {
-        self.view.endEditing(true)
-          navigationController?.popViewController(animated: true)
+        searchTextFiled?.resignFirstResponder()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
+
       }
 
 }
