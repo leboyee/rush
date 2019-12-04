@@ -200,7 +200,12 @@ extension ChatsViewController {
             }
             }, errorHandler: { error in
                 Utils.hideSpinner()
-                Utils.alert(message: error.debugDescription)
+                
+                var errMsg = error?.localizedDescription ?? Message.tryAgainErrorMessage
+                if let code = error?.code {
+                    errMsg += "(\(code))"
+                }
+                Utils.alert(message: errMsg)
         })
     }
 }

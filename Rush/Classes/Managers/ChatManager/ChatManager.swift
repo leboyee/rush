@@ -99,7 +99,7 @@ extension ChatManager {
      Get list of all chat groups of logged in user
      */
     
-    func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+    func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: SBDError?) -> Void) {
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
@@ -127,7 +127,7 @@ extension ChatManager {
     func loadListOfChannels(query: SBDGroupChannelListQuery?,
                             channels: [AnyHashable]?,
                             completionHandler: @escaping ([Any]?) -> Void,
-                            errorHandler: @escaping (Error?) -> Void) {
+                            errorHandler: @escaping (SBDError?) -> Void) {
         var channelsList = channels
         query?.loadNextPage(completionHandler: { (channels, error) in
             
