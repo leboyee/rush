@@ -126,15 +126,17 @@ extension AppDelegate {
         }
     }
     
-    /*
     func updateBadgeCount(count: Int) {
         if Authorization.shared.authorized {
             ServiceManager.shared.updateBadgeCount(params: [Keys.alertBadge: "\(count)"]) { (_, _) in
-                UIApplication.shared.applicationIconBadgeNumber = count
+                ChatManager().getUnreadCount { (unreadChatCount) in
+                    UIApplication.shared.applicationIconBadgeNumber = unreadChatCount
+                }
             }
         }
     }
     
+    /*
     func getBadgeCount() {
         if Authorization.shared.authorized {
             ServiceManager.shared.getBadgeCount { (data, _) in

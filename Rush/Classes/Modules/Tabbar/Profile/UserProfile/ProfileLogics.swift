@@ -388,6 +388,7 @@ extension ProfileViewController {
                 self?.downloadGroup.leave()
                 self?.tableView.reloadData()
                 self?.customPullSpinner.stopAnimating()
+                AppDelegate.shared?.updateBadgeCount(count: 0)
             }
         }
     }
