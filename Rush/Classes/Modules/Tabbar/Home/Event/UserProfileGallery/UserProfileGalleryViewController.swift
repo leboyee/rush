@@ -55,9 +55,11 @@ class UserProfileGalleryViewController: UIViewController {
         // Setup tableview
         if Authorization.shared.profile?.userId == userId {
             bottomView.isHidden = true
+            profileImageButton.isHidden = true
         } else {
             totalCount = list.count
             bottomView.isHidden = false
+            profileImageButton.isHidden = false
         }
 
         setupCollectionView()
@@ -69,7 +71,6 @@ class UserProfileGalleryViewController: UIViewController {
         }
         setupDateAndTimeOfPhoto(index: currentIndex)
 
-        
     }
     
     // MARK: - Set Profile Data

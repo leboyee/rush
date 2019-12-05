@@ -231,7 +231,7 @@ extension ClubDetailViewController: SharePostViewControllerDelegate {
             data.append("Check out \(userName) post in Rush app:\n")
             
             data.append("\(post.text ?? "")")
-           if let urls = post.images?.compactMap({ $0.urlMedium() }) {
+            if let urls = post.images?.compactMap({ $0.urlMedium() }) {
                 for url in urls {
                     do {
                         data.append(UIImage(data: try Data(contentsOf: url)) as Any)

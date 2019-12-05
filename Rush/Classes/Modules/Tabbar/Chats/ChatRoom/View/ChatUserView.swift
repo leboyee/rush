@@ -14,9 +14,9 @@ class ChatUserView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var widthConstraintOfButton: NSLayoutConstraint!
     var showAllUserClickEvent: (() -> Void)?
     
-    var isShowAll = false
     var users = [SBDUser]()
     
     override func awakeFromNib() {
@@ -46,6 +46,9 @@ class ChatUserView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        let w = (screenWidth/7) - ((screenWidth/7) - 32 - 24)
+        widthConstraintOfButton.constant = w
+                
         noDataLabel.isHidden = users.count > 0
         
         self.contentView.backgroundColor = isDarkModeOn ? UIColor.bgBlack17 : UIColor.bgWhite96
@@ -60,47 +63,38 @@ class ChatUserView: UIView {
         noDataLabel.isHidden = users.count > 0
         collectionView.reloadData()
     }
+    @IBAction func viewAllButtonAction(_ sender: Any) {
+        showAllUserClickEvent?()
+    }
 }
 
 // MARK: - CollectionView delegate methods
 extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if users.count > 6 {
-            return isShowAll ? users.count : 7
-        } else {
-            return users.count
-        }
+        return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.chatUserCell, for: indexPath) as? ChatUserCell else { return UICollectionViewCell() }
         
-        if indexPath.item == 6 && isShowAll == false {
-            cell.setup(isHideArrowView: false)
-            cell.onlineView.isHidden = true
-            cell.imgView.isHidden = true
+        cell.imgView.isHidden = false
+        cell.setup(isHideArrowView: true)
+        
+        let user = users[indexPath.item]
+        cell.setup(img: user.profileUrl)
+        
+        if user.connectionStatus == .online {
+            cell.onlineView.isHidden = false
         } else {
-            cell.imgView.isHidden = false
-            cell.setup(isHideArrowView: true)
-            
-            let user = users[indexPath.item]
-            cell.setup(img: user.profileUrl)
-            
-            if user.connectionStatus == .online {
-                cell.onlineView.isHidden = false
-            } else {
-                cell.onlineView.isHidden = true
-            }
+            cell.onlineView.isHidden = true
         }
-            
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 6 && isShowAll == false {
-            showAllUserClickEvent?()
-        }
+        //showAllUserClickEvent?()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -108,11 +102,13 @@ extension ChatUserView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+        let w = screenWidth
+        return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: ((w - ((w/7) - ((w/7) - 32 - 24))) - (32 * 6)) / 5 - 6)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return ((screenWidth) - (32 * 7)) / 6 - 7
+        let w = screenWidth
+        return ((w - ((w/7) - ((w/7) - 32 - 24))) - (32 * 6)) / 5 - 6
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

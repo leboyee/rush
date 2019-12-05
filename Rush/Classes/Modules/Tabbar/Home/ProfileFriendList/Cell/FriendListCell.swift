@@ -30,14 +30,9 @@ extension FriendListCell {
         friendNameLabel.text = name
     }
     
-    func setupDummyImage() {
-        friendImageView.image = #imageLiteral(resourceName: "placeholder-profile-32px")
-    }
-    
     func setup(url: URL?) {
-        if url == nil {
-            friendImageView.image = #imageLiteral(resourceName: "placeholder-profile-32px")
-        } else {
+        friendImageView.image = #imageLiteral(resourceName: "placeholder-profile-32px")
+        if url != nil {
             friendImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-profile-32px"))
         }
     }

@@ -35,6 +35,8 @@ extension ChatContactsListViewController {
             cell.setup(url: url)
         } else if let url = friend?.user?.photo?.urlThumb() {
             cell.setup(url: url)
+        } else {
+            cell.setup(url: nil)
         }
     }
     
@@ -44,16 +46,20 @@ extension ChatContactsListViewController {
         let users = friendsList[alpha.lowercased()] as? [Friend]
         guard let friend = users?[indexPath.row] else { return }
         
-        if isOpenToShare {
-            checkIsChatExistOrNot(friend)
+        if friend.user?.userId == Authorization.shared.profile?.userId {
+            tabBarController?.selectedIndex = 3
         } else {
-            let controller = ChatRoomViewController()
-            controller.friendProfile = friend
-            controller.userName = friend.user?.name ?? ""
-            controller.isGroupChat = false
-            controller.chatDetailType = .single
-            controller.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(controller, animated: true)
+            if isOpenToShare {
+                checkIsChatExistOrNot(friend)
+            } else {
+                let controller = ChatRoomViewController()
+                controller.friendProfile = friend
+                controller.userName = friend.user?.name ?? ""
+                controller.isGroupChat = false
+                controller.chatDetailType = .single
+                controller.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
     

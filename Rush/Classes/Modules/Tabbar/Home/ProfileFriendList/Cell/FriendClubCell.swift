@@ -57,7 +57,11 @@ extension FriendClubCell {
     
     // use this for club
     func setup(clubImageUrl: URL?) {
-        mainImageView.sd_setImage(with: clubImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-club48px"))
+        if clubImageUrl != nil {
+            mainImageView.sd_setImage(with: clubImageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder-club48px"))
+        } else {
+            mainImageView.image = #imageLiteral(resourceName: "placeholder-club48px")
+        }
     }
     
     // use this for classes

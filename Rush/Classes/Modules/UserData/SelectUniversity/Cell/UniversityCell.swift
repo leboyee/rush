@@ -41,7 +41,7 @@ extension UniversityCell {
     }
     
     func setup(url: URL) {
-        universityImageView.sd_setImage(with: url, completed: nil)
+        universityImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-University.pdf"))
     }
     
 }

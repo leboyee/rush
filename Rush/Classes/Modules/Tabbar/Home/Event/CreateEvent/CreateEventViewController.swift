@@ -62,7 +62,7 @@ class CreateEventViewController: UIViewController {
     var searchTextFiled: UITextField?
     var eventType: EventType = .publik
     var initNavBarCustomizationParams: UINavigationBarCustomizationParams?
-
+    var oldInvite = [Invitee]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -164,12 +164,7 @@ extension CreateEventViewController {
         university = event?.university?[0]
         
         //self.university = event.un
-        for invites in event?.invitees ?? [Invitee]() {
-            let invite = Invite()
-            invite.profile = invites.user
-            invite.isFriend = true
-            self.peopleList.append(invite)
-        }
+     
         interestList = event?.interests ?? [Interest]()
         for rsvpQuestion in event?.rsvp ?? [RSVPQuestion]() {
             guard let question = rsvpQuestion.que else { return }
@@ -179,6 +174,7 @@ extension CreateEventViewController {
         clubHeader.setup(url: URL(string: url))
         isCreateGroupChat = event?.isChatGroup ?? true
         saveButton.isEnabled = false
+        fetchInvitees()
     }
 }
 // MARK: - Mediator

@@ -60,8 +60,8 @@ extension NetworkManager {
 
     // MARK: - Home
     func getHomeList(params: [String: Any], resultHandler: @escaping ResultClosure) {
-           requestGet(path: "home/list", params: params, resultHandler: resultHandler)
-       }
+        requestGet(path: "home/list", params: params, resultHandler: resultHandler)
+    }
     
     // MARK: - Profile
     func updateProfile(params: [String: Any], resultHandler: @escaping ResultClosure) {
