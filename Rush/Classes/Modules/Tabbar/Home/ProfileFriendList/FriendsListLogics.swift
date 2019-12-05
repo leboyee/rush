@@ -58,9 +58,7 @@ extension FriendsListViewController {
             } else {
                 let invitee = inviteeList[indexPath.row]
                 cell.setup(name: invitee.user?.name ?? "")
-                if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                    cell.setup(url: url)
-                }
+                cell.setup(url: URL(string: invitee.user?.photo?.thumb ?? ""))
             }
         } else  if type == .classRoasters {
             var friend = Invitee()
@@ -72,11 +70,7 @@ extension FriendsListViewController {
                 } else {
                     let invitee = inviteeList[indexPath.row]
                     cell.setup(name: invitee.user?.name ?? "")
-                    if let url = URL(string: invitee.user?.photo?.thumb ?? "") {
-                        cell.setup(url: url)
-                    } else {
-                        cell.setupDummyImage()
-                    }
+                    cell.setup(url: URL(string: invitee.user?.photo?.thumb ?? ""))
                 }
             }
         }
