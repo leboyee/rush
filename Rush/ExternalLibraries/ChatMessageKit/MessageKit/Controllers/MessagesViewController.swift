@@ -210,6 +210,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIGestureRecogni
                 let trailing = userChatView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
                 NSLayoutConstraint.activate([top, bottom, trailing, leading])
             }
+            userChatView.widthConstraintOfButton.constant = (screenWidth/7) - ((screenWidth/7) - 32 - 24)
         } else {
             messagesCollectionView.layer.cornerRadius = 24
             messagesCollectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

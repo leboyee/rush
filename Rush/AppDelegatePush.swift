@@ -93,11 +93,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                         let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
                         selectedNavigationController?.dismiss(animated: false, completion: nil)
                         selectedNavigationController?.popToRootViewController(animated: false)
-                        if viewcontroller.selectedIndex == 3 {
-                            NotificationCenter.default.post(name: Notification.Name(rawValue: kRefreshNotification), object: nil)
-                        } else {
-                            viewcontroller.selectedIndex = 3
-                        }
                     }
                 }
             }
