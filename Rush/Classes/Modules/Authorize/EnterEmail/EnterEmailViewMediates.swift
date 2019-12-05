@@ -94,9 +94,7 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
             }
             return false
         }
-
         return true
-        
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
