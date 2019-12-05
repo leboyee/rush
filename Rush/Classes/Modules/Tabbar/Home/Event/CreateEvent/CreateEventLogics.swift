@@ -738,6 +738,7 @@ extension CreateEventViewController {
         guard let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String else {
             return }
         print(countryCodeString)
+        
         let contactList = self.peopleList.filter { ($0.isFriend == false) }
         let contactArray = contactList.compactMap { ($0.contact?.phone) }
         var contactDict = [String: Any]()
@@ -773,8 +774,24 @@ extension CreateEventViewController {
         let img = eventImage?.jpegData(compressionQuality: 0.8) ?? Data()
         let interestsNameArry = interestList.map({ String($0.interestId) })
         let interests = interestsNameArry.joined(separator: ",")
+        
         let friendArray = self.peopleList.filter { ($0.isFriend == true) }
         let userIdArray = friendArray.compactMap { ($0.profile?.userId) }
+        let oldUserIdArray = self.oldInvite.compactMap { ("\($0.user?.id ?? 0)") }
+        var removeIdArray = [String]()
+        var newIdArray = [String]()
+
+        for invitee in self.oldInvite {
+            if  !(userIdArray.contains("\(invitee.user?.id ?? 0)")) {
+                removeIdArray.append("\(invitee.user?.id ?? 0)")
+            }
+        }
+        
+        for userId in userIdArray {
+            if !(oldUserIdArray.contains(userId)) {
+                newIdArray.append(userId)
+            }
+        }
         
         var array = rsvpArray
         if array.last?.isEmpty == true {
@@ -796,7 +813,7 @@ extension CreateEventViewController {
             print(error.localizedDescription)
         }
         
-        let param = [Keys.eventId: eventId,
+        var param = [Keys.eventId: eventId,
                      Keys.createEventType: eventTypeString,
                      Keys.eventName: self.nameEvent,
                      Keys.eventDesc: self.eventDescription,
@@ -808,10 +825,16 @@ extension CreateEventViewController {
             Keys.eventEndDate: endUtcDate, //"2019-10-12 08:30:00", //endUtcDate,
             Keys.eventInterests: interests,
             Keys.eventIsChatGroup: isCreateGroupChat ? 1 : 0,
-            Keys.eventInvitedUserIds: userIdArray.joined(separator: ","),
             Keys.eventPhoto: img,
             Keys.eventUniversityId: university?.universtiyId ?? 0,
             Keys.eventContact: jsonString] as [String: Any]
+        
+        if newIdArray.count > 0 {
+            param[Keys.eventInvitedUserIds] = newIdArray.joined(separator: ",")
+        }
+        if removeIdArray.count > 0 {
+            param[Keys.removedInvitedUserIds] = removeIdArray.joined(separator: ",")
+        }
         
         Utils.showSpinner()
         ServiceManager.shared.updateEvent(eventId: eventId, params: param) { [weak self] (status, errMessage) in
@@ -828,6 +851,25 @@ extension CreateEventViewController {
             }
         }
     }
+    
+    func fetchInvitees() {
+        Utils.showSpinner()
+            let param = [Keys.pageNo: 1]
+        ServiceManager.shared.fetchInviteeList(eventId: "\(self.event?.id ?? 0)", params: param) { [weak self] (invitees, total, _) in
+                guard let unsafe = self else { return }
+                Utils.hideSpinner()
+                unsafe.event?.invitees = invitees
+                for invites in unsafe.event?.invitees ?? [Invitee]() {
+                     let invite = Invite()
+                     invite.profile = invites.user
+                     invite.isFriend = true
+                     unsafe.peopleList.append(invite)
+                 }
+                unsafe.oldInvite = invitees ?? [Invitee]()
+                unsafe.tableView.reloadData()
+            }
+        }
+
     
     func deleteEventAPI(id: String) {
        Utils.showSpinner()

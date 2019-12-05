@@ -82,6 +82,16 @@ extension EnterEmailViewConteroller: UITextFieldDelegate {
         if string.count >= maxLenth {
             newString = (String(string.prefix(maxLenth)) as NSString) as String
             textField.text = newString as String
+            if textField.text?.count ?? 0 > 0 && eduLabel.isHidden == false {
+                eduLabel.text = " .edu"
+                eduLabel.isHidden = true
+                textField.text = "\(textField.text ?? "").edu"
+                if let newPosition = textField.position(from: textField.endOfDocument, in: UITextLayoutDirection.left, offset: 4) {
+                    textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                }
+                nextButton.setNextButton(isEnable: true)
+                self.view.layoutIfNeeded()
+            }
             return false
         }
 
