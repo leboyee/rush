@@ -252,13 +252,13 @@ extension ClassDetailViewController: CreatePostViewControllerDelegate {
          performSegue(withIdentifier: Segues.notificationAlert, sender: nil)
          */
         /*
-        let snackbar = TTGSnackbar(message: text,
-                                   duration: .middle,
-                                   actionText: buttonText,
-                                   actionBlock: { (_) in
-                                    
-        })
-        snackbar.show()
-        */
+         let snackbar = TTGSnackbar(message: text,
+         duration: .middle,
+         actionText: buttonText,
+         actionBlock: { (_) in
+         
+         })
+         snackbar.show()
+         */
     }
 }

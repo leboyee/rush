@@ -237,15 +237,10 @@ extension ClassDetailViewController {
         let post = classesPostList[indexPath.section - 6]
         cell.set(name: post.user?.name ?? "")
         cell.set(url: post.user?.photo?.urlThumb())
+        cell.moreButton.isHidden = false
         cell.moreEvent = { [weak self] () in
             guard let unsafe = self else { return }
             unsafe.performSegue(withIdentifier: Segues.sharePostSegue, sender: post)
-        }
-        
-        if post.user?.userId == Authorization.shared.profile?.userId {
-            cell.moreButton.isHidden = false
-        } else {
-            cell.moreButton.isHidden = true
         }
         
         if let date = post.createdAt {
@@ -322,7 +317,7 @@ extension ClassDetailViewController {
             isShowMore = !isShowMore
             tableView.reloadData()
         } else if indexPath.section == 3 {
-
+            
         } else if indexPath.section == 5 {
             if joinedClub {
                 showCreatePost()

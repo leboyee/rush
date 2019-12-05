@@ -18,7 +18,7 @@ class ClubDetailViewController: BaseTableViewController {
     @IBOutlet weak var backgroundView: RBackgoundView!
     @IBOutlet weak var heightConstraintOfHeader: NSLayoutConstraint!
     @IBOutlet weak var clubHeader: ClubHeader!
-
+    
     weak var delegate: ClubDetailProtocol?
     
     var interestList = [String]()
@@ -70,8 +70,8 @@ class ClubDetailViewController: BaseTableViewController {
     }
     
     deinit {
-              NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
-          }
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.userProfile, object: nil)
+    }
     
     //MARk: - Other function
     func setup() {
@@ -110,10 +110,10 @@ extension ClubDetailViewController {
     }
     
     @objc func userProfile(notification: NSNotification) {
-           if let user = notification.userInfo?["user"] as? User {
-               self.performSegue(withIdentifier: Segues.otherUserProfile, sender: user)
-           }
-       }
+        if let user = notification.userInfo?["user"] as? User {
+            self.performSegue(withIdentifier: Segues.otherUserProfile, sender: user)
+        }
+    }
 }
 
 // MARK: - Others
