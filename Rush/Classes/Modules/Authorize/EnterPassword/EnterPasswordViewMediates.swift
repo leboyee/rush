@@ -62,6 +62,7 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
             passwordShowHideLabel.isHidden = textField.text?.count == 0 ? true : false
             textField.resignFirstResponder()
             nextButton.setNextButton(isEnable: textField.text?.count == 0 ? false : true)
+            textFieldUpdate(textField: textField)
             return false
         }
 
@@ -71,17 +72,21 @@ extension EnterPasswordViewConteroller: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         passwordShowHideLabel.isHidden = textField.text?.count == 0 ? true : false
+        textFieldUpdate(textField: textField)
+    }
+    
+    func textFieldUpdate(textField: UITextField) {
         if self.loginType == .register || self.loginType == .newPassword || self.loginType == .restorePassword {
-            capitalLetterDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : textField.text?.isCapitalLater == true ? .correct : .wrong)
-            numberDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : textField.text?.isNumberLater == true ? .correct : .wrong)
-            symbolDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : (textField.text?.count ?? 0) >= 8 ? .correct : .wrong)
-            if (textField.text?.count ?? 0) >= 8  && textField.text?.isNumberLater == true && textField.text?.isCapitalLater == true {
-                nextButton.setNextButton(isEnable: true)
-            } else {
-                nextButton.setNextButton(isEnable: false)
-            }
-        } else {
-            nextButton.setNextButton(isEnable: textField.text?.count == 0 ? false : true)
-        }
+                  capitalLetterDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : textField.text?.isCapitalLater == true ? .correct : .wrong)
+                  numberDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : textField.text?.isNumberLater == true ? .correct : .wrong)
+                  symbolDotView.setPasswordDotColorView(index: textField.text?.count == 0 ? .none : (textField.text?.count ?? 0) >= 8 ? .correct : .wrong)
+                  if (textField.text?.count ?? 0) >= 8  && textField.text?.isNumberLater == true && textField.text?.isCapitalLater == true {
+                      nextButton.setNextButton(isEnable: true)
+                  } else {
+                      nextButton.setNextButton(isEnable: false)
+                  }
+              } else {
+                  nextButton.setNextButton(isEnable: textField.text?.count == 0 ? false : true)
+              }
     }
 }
