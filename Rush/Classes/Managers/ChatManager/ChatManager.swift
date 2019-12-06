@@ -448,6 +448,7 @@ extension ChatManager {
         coverImageUrl: String?,
         data: String?,
         type: String?,
+        isShowAlert: Bool,
         completionHandler: @escaping (_ channel: SBDGroupChannel?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
         
         guard isNetworkAvailable else {
@@ -481,7 +482,9 @@ extension ChatManager {
                     channel?.update(with: params, completionHandler: { (channel, error) in
                         if error != nil {
                             if let domain = error?.domain {
-                                Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                                if isShowAlert {
+                                    Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                                }
                             }
                             if let err = error {
                                 errorHandler(err)
@@ -494,7 +497,9 @@ extension ChatManager {
                     })
                 } else {
                     if let domain = error?.domain {
-                        Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                        if isShowAlert {
+                            Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                        }
                     }
                     if let err = error {
                         errorHandler(err)
@@ -597,7 +602,7 @@ extension ChatManager {
                         let ids = userIds.compactMap({ "\($0)" })
                         
                         if ids.count > (channel.members?.count ?? 0) {
-                            self.updateChannel(channel: channel, userIds: ids, groupName: channel.name, coverImageUrl: channel.coverUrl, data: channel.data, type: channel.customType, completionHandler: { (_) in
+                            self.updateChannel(channel: channel, userIds: ids, groupName: channel.name, coverImageUrl: channel.coverUrl, data: channel.data, type: channel.customType, isShowAlert: false, completionHandler: { (_) in
                                 print("************ User added successfully  *************")
                             }, errorHandler: { (error) in
                                 print(error?.localizedDescription ?? "")
@@ -808,7 +813,7 @@ extension ChatManager {
                                groupName: groupNameString,
                                coverImageUrl: coverUrl,
                                data: "Group",
-                               type: "",
+                               type: "", isShowAlert: true,
                                completionHandler: { (_) in
                                 self.leave(channel) { (status) in
                                     if status {

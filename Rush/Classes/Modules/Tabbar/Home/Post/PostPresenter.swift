@@ -89,7 +89,12 @@ extension PostViewController {
         
         cell.userProfileClickEvent = { [weak self] () in
             guard let unself = self else { return }
-            unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.user?.id)
+            
+            if comment.user?.userId == Authorization.shared.profile?.userId {
+                unself.tabBarController?.selectedIndex = 3
+            } else {
+                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.user?.id)
+            }
         }
         
         cell.replyClickEvent = { [weak self] () in
@@ -144,7 +149,11 @@ extension PostViewController {
             
             cell.userProfileClickEvent = { [weak self] () in
                 guard let unself = self else { return }
-                unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.user?.id)
+                if comment.user?.userId == Authorization.shared.profile?.userId {
+                    unself.tabBarController?.selectedIndex = 3
+                } else {
+                    unself.performSegue(withIdentifier: Segues.otherUserProfile, sender: comment.user?.id)
+                }
             }
             
             cell.replyClickEvent = { [weak self] () in
@@ -179,7 +188,6 @@ extension PostViewController {
             cell.unlikeButtonEvent = { [weak self] () in
                 guard let uwself = self else { return }
                 uwself.voteClubAPI(id: post.postId, type: "down")
-                
             }
         }
     }

@@ -397,7 +397,7 @@ open class MessageInputBar: UIView {
         
         leftStackViewLayoutSet = NSLayoutConstraintSet(
             top: leftStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            bottom: leftStackView.bottomAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant: 0),
+            bottom: leftStackView.bottomAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant: -5),
             left: leftStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0),
             width: leftStackView.widthAnchor.constraint(equalToConstant: leftStackViewWidthConstant)
         )

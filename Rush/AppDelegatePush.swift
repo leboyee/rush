@@ -93,6 +93,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                         let selectedNavigationController = viewcontroller.selectedViewController as? UINavigationController
                         selectedNavigationController?.dismiss(animated: false, completion: nil)
                         selectedNavigationController?.popToRootViewController(animated: false)
+                        viewcontroller.selectedIndex = 3
                     }
                 }
             }

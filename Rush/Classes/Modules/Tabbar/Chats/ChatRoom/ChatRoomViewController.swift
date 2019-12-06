@@ -273,7 +273,7 @@ extension ChatRoomViewController {
         messageInputBar.delegate = self
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.height = 1
-        messageInputBar.padding = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 16)
+        messageInputBar.padding = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         messageInputBar.inputTextView.tintColor = UIColor.brown24
         messageInputBar.inputTextView.backgroundColor =  UIColor.white
         messageInputBar.inputTextView.placeholderTextColor = UIColor.buttonDisableTextColor
@@ -291,13 +291,14 @@ extension ChatRoomViewController {
     
     private func configureInputBarItems() {
         // Camera button
-        messageInputBar.setLeftStackViewWidthConstant(to: 100, animated: false)
-        messageInputBar.setRightStackViewWidthConstant(to: 57, animated: false)
+        messageInputBar.setLeftStackViewWidthConstant(to: 70, animated: false)
+        messageInputBar.setRightStackViewWidthConstant(to: 40, animated: false)
         
         let cameraButton = makeButton(named: "camera")
         cameraButton.isEnabled = true
+        cameraButton.title = ""
         cameraButton.isHighlighted = true
-        cameraButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: -10, bottom: 6, right: 10)
+        cameraButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0)
         
         // MARK: - AddImage button
         cameraButton.onTouchUpInside { (_) in
@@ -313,7 +314,7 @@ extension ChatRoomViewController {
         let galleryButton = makeButton(named: "gallery")
         galleryButton.isEnabled = true
         galleryButton.isHighlighted = true
-        galleryButton.contentEdgeInsets = UIEdgeInsets(top: -6, left: 0, bottom: 6, right: 0)
+        galleryButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 3, right: 0)
         
         // MARK: - AddGallryImage button
         galleryButton.onTouchUpInside { (_) in
@@ -330,14 +331,15 @@ extension ChatRoomViewController {
         
         // Send button
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor.clear
-        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: -50)
+        messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 0)
         messageInputBar.sendButton.setSize(CGSize(width: 28, height: 35), animated: false)
         messageInputBar.sendButton.image = UIImage(named: "send-Gray")
         messageInputBar.sendButton.title = nil
         messageInputBar.sendButton.isEnabled = true
+        messageInputBar.sendButton.clipsToBounds = true
         messageInputBar.sendButton.backgroundColor = UIColor.clear
         messageInputBar.isTranslucent = false
-        messageInputBar.textViewPadding.right = -30
+        messageInputBar.textViewPadding.right = -5
         messageInputBar.maxTextViewHeight = 44
         messageInputBar.separatorLine.height = 1
         messageInputBar.textViewPadding.bottom = 8
