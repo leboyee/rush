@@ -193,7 +193,11 @@ extension EventDetailViewController {
     }
     
     func showUserProfile(user: User) {
-        performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
+        if user.userId == Authorization.shared.profile?.userId {
+            tabBarController?.selectedIndex = 3
+        } else {
+            performSegue(withIdentifier: Segues.eventOtherUserProfile, sender: user)
+        }
     }
     
     func showInviteeUserProfile(invitee: Invitee) {
