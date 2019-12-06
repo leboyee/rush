@@ -136,7 +136,7 @@ extension ProfileTileViewController {
                 vc.currentIndex = indexPath?.row ?? 0
                 guard let userId = Authorization.shared.profile?.userId else { return }
                 vc.userId = self.isFromOtherUserProfile ? self.otherUserId : userId
-                vc.isFromOtherUserProfile = false
+                vc.isFromOtherUserProfile = isFromOtherUserProfile
                 vc.imagePageNo = self.imagePageNo
                 vc.imageNextPageExist = self.imageNextPageExist
                 vc.totalCount = totalCount
