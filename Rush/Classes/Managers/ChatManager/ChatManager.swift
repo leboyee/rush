@@ -44,7 +44,7 @@ extension ChatManager {
                 
                 //register token if it is pending
                 if AppDelegate.shared?.isTokenRegistrationPending == true {
-                    AppDelegate.shared?.unregisterPushTokenWithSendBird()
+                    AppDelegate.shared?.unregisterPushTokenWithSendBird(completion: nil)
                     AppDelegate.shared?.registerPushTokenWithSendBird()
                 }
                 
@@ -85,7 +85,7 @@ extension ChatManager {
     
     func disconnectFromChatServer() {
         //first unregister token
-        AppDelegate.shared?.unregisterPushTokenWithSendBird()
+        AppDelegate.shared?.unregisterPushTokenWithSendBird(completion: nil)
         
         //dissconnect from server
         SBDMain.disconnect(completionHandler: {

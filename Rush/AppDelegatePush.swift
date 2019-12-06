@@ -41,10 +41,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Push Fail:" + error.localizedDescription)
         
-        // un register sendbird chat
-        // update dummy token to server
-        updateToken(deviceTokenString: "123456789", oldPushToken: "")
-        unregisterPushTokenWithSendBird()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
