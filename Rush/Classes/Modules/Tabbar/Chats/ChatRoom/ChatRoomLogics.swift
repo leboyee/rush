@@ -111,7 +111,7 @@ extension ChatRoomViewController {
                         }
                         
                         if filteredIds.count > 0 {
-                            ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel2) in
+                            ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, isShowAlert: true, completionHandler: { (channel2) in
                                 completionHandler(channel2)
                             }, errorHandler: { (_) in
                                 print("SOMETHING WRONG IN UPDATE USER IN NEW CHANNEL")
@@ -304,7 +304,7 @@ extension ChatRoomViewController {
                 userIds: userIds,
                 groupName: groupNameString,
                 coverImageUrl: coverUrl,
-                data: self.channel?.data, type: self.channel?.customType,
+                data: self.channel?.data, type: self.channel?.customType, isShowAlert: true,
                 completionHandler: { [weak self] (channel) in
                     guard let unself = self else { return }
                     unself.channel = channel

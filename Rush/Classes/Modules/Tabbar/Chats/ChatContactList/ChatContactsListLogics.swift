@@ -124,7 +124,7 @@ extension ChatContactsListViewController {
                         }
                         
                         if filteredIds.count > 0 {
-                            ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, completionHandler: { (channel2) in
+                            ChatManager().updateChannel(channel: channel1, userIds: filteredIds, groupName: grpName, coverImageUrl: imgUrl, data: data, type: type, isShowAlert: true, completionHandler: { (channel2) in
                                 // channel created
                                 self.shareEvent(channel2)
                             }, errorHandler: { (_) in
