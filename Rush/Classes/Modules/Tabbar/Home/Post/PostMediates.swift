@@ -112,9 +112,9 @@ extension PostViewController: GrowingTextViewDelegate {
         }
         
         if textView.text.count > 0 {
-            sendButton.setBackgroundImage(#imageLiteral(resourceName: "send_active"), for: .normal)
+            sendButton.setImage(#imageLiteral(resourceName: "send_active"), for: .normal)
         } else {
-            sendButton.setBackgroundImage(#imageLiteral(resourceName: "send"), for: .normal)
+            sendButton.setImage(#imageLiteral(resourceName: "send"), for: .normal)
         }
     }
     
