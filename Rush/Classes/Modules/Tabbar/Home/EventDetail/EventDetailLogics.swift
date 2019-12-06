@@ -436,6 +436,11 @@ extension EventDetailViewController {
                 guard let user = event?.creator else { return }
                 showUserProfile(user: user)
             }
+        } else if indexPath.row == 0 {
+            let index = indexPath.section - (sections?.count ?? 0)
+            if let post = postList?[index], let user = post.user {
+                showUserProfile(user: user)
+            }
         }
     }
     
