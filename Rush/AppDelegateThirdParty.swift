@@ -88,37 +88,34 @@ extension AppDelegate: SBDChannelDelegate {
     }
     
     func registerPushTokenWithSendBird() {
-        unregisterPushTokenWithSendBird()
-        
-        if Authorization.shared.authorized && Authorization.shared.profile?.isNotifyOn == 1 {
-            if (Utils.getDataFromUserDefault(kDeviceTokenPushDataKey)) != nil {
-                if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
-                    
-                    SBDMain.registerDevicePushToken(data, unique: true) { [weak self] (status, error) in
-                        guard let unself = self else { return }
-                        if error == nil {
-                            if Int(status.rawValue) == 1 {
-                                unself.isTokenRegistrationPending = true
+        unregisterPushTokenWithSendBird { (_) in
+            if Authorization.shared.authorized && Authorization.shared.profile?.isNotifyOn == 1 {
+                if (Utils.getDataFromUserDefault(kDeviceTokenPushDataKey)) != nil {
+                    if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
+                        
+                        SBDMain.registerDevicePushToken(data, unique: true) { [weak self] (status, error) in
+                            guard let unself = self else { return }
+                            if error == nil {
+                                if Int(status.rawValue) == 1 {
+                                    unself.isTokenRegistrationPending = true
+                                } else {
+                                    // Registration succeeded.
+                                    unself.isTokenRegistrationPending = false
+                                }
                             } else {
-                                // Registration succeeded.
-                                unself.isTokenRegistrationPending = false
+                                // Registration failed.
+                                unself.isTokenRegistrationPending = true
                             }
-                        } else {
-                            // Registration failed.
-                            unself.isTokenRegistrationPending = true
                         }
                     }
                 }
-            } else {
-                unregisterPushTokenWithSendBird()
             }
-        } else {
-            unregisterPushTokenWithSendBird()
         }
+        
     }
     
-    func unregisterPushTokenWithSendBird() {
-        
+    func unregisterPushTokenWithSendBird(completion: ((Bool) -> Void)?) {
+        /*
         if Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) != nil {
             if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
                 SBDMain.unregisterPushToken(data, completionHandler: { _, error in
@@ -129,12 +126,14 @@ extension AppDelegate: SBDChannelDelegate {
                     }
                 })
             }
-        }
+        }*/
         
         SBDMain.unregisterAllPushToken(completionHandler: { (_, error) in
             if error != nil { // Error.
                 print(error?.localizedDescription ?? "")
             }
+            completion?(true)
+            
         })
     }
     

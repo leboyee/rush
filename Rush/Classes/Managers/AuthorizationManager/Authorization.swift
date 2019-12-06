@@ -50,7 +50,7 @@ class Authorization: NSObject {
     
     func signOut() {
         
-        AppDelegate.shared?.unregisterPushTokenWithSendBird()
+        AppDelegate.shared?.unregisterPushTokenWithSendBird(completion: nil)
         
         session = nil
         profile = nil
