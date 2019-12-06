@@ -1205,7 +1205,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Fz-ojJ" customClass="CustomView" customModule="Rush" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="809.5" width="414" height="52.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-cp-dBF">
@@ -1215,10 +1215,10 @@
                                             <constraint firstAttribute="height" constant="1" id="lgu-4k-bNO"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-6h-cWt">
                                         <rect key="frame" x="16" y="8" width="342" height="36.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-FT-Rgh" customClass="GrowingTextView" customModule="Rush" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="310" height="36.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
@@ -1234,13 +1234,13 @@
                                             <constraint firstItem="oh8-FT-Rgh" firstAttribute="top" secondItem="Gar-6h-cWt" secondAttribute="top" id="ufI-IH-qnS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
-                                        <rect key="frame" x="374" y="14.5" width="24" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-GQ-Oev">
+                                        <rect key="frame" x="366" y="6.5" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="2OE-ZK-g2l"/>
-                                            <constraint firstAttribute="height" constant="24" id="7O1-AN-wkq"/>
+                                            <constraint firstAttribute="width" constant="40" id="2OE-ZK-g2l"/>
+                                            <constraint firstAttribute="height" constant="40" id="7O1-AN-wkq"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="send"/>
+                                        <state key="normal" image="send"/>
                                         <connections>
                                             <action selector="sendButtonAction" destination="KY7-jJ-Aaf" eventType="touchUpInside" id="Hwb-XB-uGL"/>
                                         </connections>
@@ -1250,7 +1250,7 @@
                                 <constraints>
                                     <constraint firstItem="Gar-6h-cWt" firstAttribute="top" secondItem="gHo-cp-dBF" secondAttribute="bottom" constant="7" id="SqT-ZU-NCr"/>
                                     <constraint firstItem="gHo-cp-dBF" firstAttribute="top" secondItem="bRg-Fz-ojJ" secondAttribute="top" id="V4h-yR-htg"/>
-                                    <constraint firstAttribute="trailing" secondItem="pRr-GQ-Oev" secondAttribute="trailing" constant="16" id="aXQ-9r-ALZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="pRr-GQ-Oev" secondAttribute="trailing" constant="8" id="aXQ-9r-ALZ"/>
                                     <constraint firstItem="Gar-6h-cWt" firstAttribute="leading" secondItem="bRg-Fz-ojJ" secondAttribute="leading" constant="16" id="d7w-qE-oOR"/>
                                     <constraint firstItem="gHo-cp-dBF" firstAttribute="leading" secondItem="bRg-Fz-ojJ" secondAttribute="leading" id="ldi-1I-lWg"/>
                                     <constraint firstAttribute="trailing" secondItem="gHo-cp-dBF" secondAttribute="trailing" id="q8v-J6-qrM"/>
@@ -2306,8 +2306,8 @@
         <segue reference="GeF-AR-VOr"/>
         <segue reference="zl1-35-Qwj"/>
         <segue reference="Z2T-Ex-vst"/>
-        <segue reference="LvJ-Dj-Yna"/>
-        <segue reference="eQK-QP-NNj"/>
+        <segue reference="yEd-FR-LAH"/>
+        <segue reference="BAj-kr-2kr"/>
         <segue reference="bD5-sy-JMX"/>
         <segue reference="2qn-kC-bGH"/>
         <segue reference="hn1-l9-YOL"/>

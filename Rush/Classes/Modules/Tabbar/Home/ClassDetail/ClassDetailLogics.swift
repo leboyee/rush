@@ -322,6 +322,15 @@ extension ClassDetailViewController {
             if joinedClub {
                 showCreatePost()
             }
+        } else if indexPath.section > 5 {
+            if indexPath.row == 0 {
+                let post = classesPostList[indexPath.section - 6]
+                if post.user?.userId == Authorization.shared.profile?.userId {
+                    self.tabBarController?.selectedIndex = 3
+                } else {
+                    performSegue(withIdentifier: Segues.otherUserProfile, sender: post.user)
+                }
+            }
         }
     }
     func showCreatePost() {

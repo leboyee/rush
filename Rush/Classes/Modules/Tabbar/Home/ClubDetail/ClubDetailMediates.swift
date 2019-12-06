@@ -61,7 +61,7 @@ extension ClubDetailViewController: UITableViewDelegate, UITableViewDataSource {
             fillEventByDateCell(cell, indexPath)
             return cell
         } else if indexPath.section == 4 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tag, for: indexPath) as? TagCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.eventType, for: indexPath) as? EventTypeCell else { return UITableViewCell() }
             fillTagCell(cell)
             return cell
         } else if indexPath.section == 5 {
