@@ -56,12 +56,13 @@
                                 <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rft-VF-HcK">
-                                <rect key="frame" x="252" y="17.5" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rft-VF-HcK">
+                                <rect key="frame" x="247" y="12.5" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Z5j-Xq-Phx"/>
+                                    <constraint firstAttribute="height" constant="30" id="Z5j-Xq-Phx"/>
+                                    <constraint firstAttribute="width" constant="30" id="q1T-XR-mIN"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="comment_inactive"/>
+                                <state key="normal" image="comment_inactive"/>
                                 <connections>
                                     <action selector="commentButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5ke-Gd-j3S"/>
                                 </connections>
@@ -87,7 +88,7 @@
                             <constraint firstItem="BqM-9B-62n" firstAttribute="leading" secondItem="Dk2-TI-rBB" secondAttribute="trailing" constant="8" id="ukZ-ff-9T2"/>
                             <constraint firstItem="Dk2-TI-rBB" firstAttribute="leading" secondItem="qAn-Tb-G1H" secondAttribute="trailing" constant="8" id="wyr-4B-yD4"/>
                             <constraint firstItem="Dk2-TI-rBB" firstAttribute="centerY" secondItem="qAn-Tb-G1H" secondAttribute="centerY" id="yE3-Yk-NcQ"/>
-                            <constraint firstItem="p0S-I4-6ZV" firstAttribute="leading" secondItem="rft-VF-HcK" secondAttribute="trailing" constant="8" id="zwR-r9-kDs"/>
+                            <constraint firstItem="p0S-I4-6ZV" firstAttribute="leading" secondItem="rft-VF-HcK" secondAttribute="trailing" constant="3" id="zwR-r9-kDs"/>
                         </constraints>
                     </view>
                 </subviews>
