@@ -178,7 +178,7 @@ extension ChatsViewController {
     
     @objc func getListOfGroups(isFromPush: Bool, url: String) {
         
-        ChatManager().getListOfAllChatGroups({ [weak self] (list) in
+        ChatManager().getListOfAllChatGroups(isGetEmptyChat: false, { [weak self] (list) in
             guard let unself = self else { return }
             if let list = list as? [SBDGroupChannel] {
                 unself.channels = list

@@ -71,7 +71,7 @@ extension ChatManager {
                                 }
                             })
                         } else {
-                            Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                            //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
                         }
                     }
                 }
@@ -99,11 +99,11 @@ extension ChatManager {
      Get list of all chat groups of logged in user
      */
     
-    func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: SBDError?) -> Void) {
+    func getListOfAllChatGroups(isGetEmptyChat: Bool, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: SBDError?) -> Void) {
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
-        query?.includeEmptyChannel = true
+        query?.includeEmptyChannel = isGetEmptyChat
         
         query?.order = SBDGroupChannelListOrder.latestLastMessage
         
@@ -204,12 +204,12 @@ extension ChatManager {
     }
     
     func getListOfFilterGroups(name: String, type: String, userId: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
-        
+                
         guard isNetworkAvailable else {
             AppDelegate.shared?.networkAlert()
             return
         }
-        
+                
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
@@ -229,6 +229,42 @@ extension ChatManager {
         loadListOfChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
             
+            if type == "single" {
+                
+                //Filter for member Id
+                let predicateUserId = NSPredicate(format: "ANY members.userId = '\(userId)'")
+                let userchannel = (channels as NSArray?)?.filtered(using: predicateUserId)
+                
+                //Filter for loggedIn user Id
+                let predicateId = NSPredicate(format: "ANY members.userId = '\(Authorization.shared.profile?.userId ?? "0")'")
+                let channels = (userchannel as NSArray?)?.filtered(using: predicateId)
+                completionHandler(channels)
+            } else {
+                completionHandler(channels)
+            }
+        }, errorHandler: { (error) in
+            errorHandler(error)
+        })
+    }
+    
+    func getAllGroupChannelList(name: String, type: String, userId: String, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: Error?) -> Void) {
+        
+        let query: SBDPublicGroupChannelListQuery? = SBDGroupChannel.createPublicGroupChannelListQuery()
+        
+        // Include empty group channels.
+        query?.includeEmptyChannel = true
+                
+        query?.limit = 100
+        
+        query?.customTypesFilter = [type]
+        
+        query?.channelNameContainsFilter = name
+                
+        let list = [AnyHashable]()
+        
+        loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
+            //We can not use direct because new created group come at bottom of list.
+            //We can not use direct because new created group come at bottom of list.
             if type == "single" {
                 
                 //Filter for member Id
@@ -312,13 +348,14 @@ extension ChatManager {
         
         let sbdGroupChannelParams = SBDGroupChannelParams()
         sbdGroupChannelParams.name = groupName
-        sbdGroupChannelParams.isDistinct = type == "single" ? ((userIds?.count == 2) ? true: false) : false
+        sbdGroupChannelParams.isDistinct = type == "single" ? true : false
         sbdGroupChannelParams.addUserIds(userIds as? [String] ?? [])
         sbdGroupChannelParams.coverUrl = coverImageUrl
         sbdGroupChannelParams.data = data
         sbdGroupChannelParams.customType = type
         if type != "single" {
             sbdGroupChannelParams.isPublic = true
+            sbdGroupChannelParams.operatorUserIds = userIds as? [String] ?? []
         } else {
             sbdGroupChannelParams.operatorUserIds = userIds as? [String] ?? []
         }
@@ -326,7 +363,7 @@ extension ChatManager {
         SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
             if error != nil {
                 if let domain = error?.domain {
-                    Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                    //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
                 }
                 if let err = error {
                     errorHandler(err)
@@ -382,7 +419,7 @@ extension ChatManager {
         }
         
         //Get all channels
-        getListOfAllChatGroups({ list in
+        getListOfAllChatGroups(isGetEmptyChat: true, { list in
             
             //Filter for 'Group' or not
             let predicate = NSPredicate(format: "data <> 'Group'")
@@ -415,7 +452,7 @@ extension ChatManager {
         }
         
         //Get all channels
-        getListOfAllChatGroups({ list in
+        getListOfAllChatGroups(isGetEmptyChat: true, { list in
             
             //Filter for member Id
             let predicateUserId = NSPredicate(format: "customType = '\(type ?? "")' AND data = '\(data ?? "")'")
@@ -479,11 +516,13 @@ extension ChatManager {
                     
                     params.isDistinct = false
                     
+                    params.operatorUserIds = userIds ?? []
+                    
                     channel?.update(with: params, completionHandler: { (channel, error) in
                         if error != nil {
                             if let domain = error?.domain {
                                 if isShowAlert {
-                                    Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                                    //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
                                 }
                             }
                             if let err = error {
@@ -498,7 +537,7 @@ extension ChatManager {
                 } else {
                     if let domain = error?.domain {
                         if isShowAlert {
-                            Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                            //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
                         }
                     }
                     if let err = error {
@@ -516,7 +555,7 @@ extension ChatManager {
         channel?.update(with: params, completionHandler: { (channel, error) in
             if error != nil {
                 if let domain = error?.domain {
-                    Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
+                    //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
                 }
                 if let err = error {
                     errorHandler(err)

@@ -115,7 +115,7 @@ extension AppDelegate: SBDChannelDelegate {
     }
     
     func unregisterPushTokenWithSendBird(completion: ((Bool) -> Void)?) {
-        /*
+        
         if Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) != nil {
             if let data = Utils.getDataFromUserDefault(kDeviceTokenPushDataKey) as? Data {
                 SBDMain.unregisterPushToken(data, completionHandler: { _, error in
@@ -126,7 +126,7 @@ extension AppDelegate: SBDChannelDelegate {
                     }
                 })
             }
-        }*/
+        }
         
         SBDMain.unregisterAllPushToken(completionHandler: { (_, error) in
             if error != nil { // Error.

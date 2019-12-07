@@ -56,7 +56,7 @@ extension ChatRoomViewController {
             imgUrl = cls.photo?.thumb ?? ""
             grpName = cls.name
             type = "class"
-            data = cls.id
+            data = "\(cls.id),\(cls.classGroups?.first?.id ?? "0")"
             let value = rosters.compactMap({ $0.user?.userId })
             totalUserIds.append(contentsOf: value)
         }

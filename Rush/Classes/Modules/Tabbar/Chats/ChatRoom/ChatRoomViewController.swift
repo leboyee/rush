@@ -665,7 +665,9 @@ extension ChatRoomViewController {
             } else {
                 let storyboard = UIStoryboard(name: StoryBoard.home, bundle: nil)
                 guard let controller = storyboard.instantiateViewController(withIdentifier: ViewControllerId.classDetail) as? ClassDetailViewController else { return }
-                controller.classId = channel?.data ?? "0"
+                let ids = channel?.data?.components(separatedBy: ",")
+                controller.classId = ids?.first ?? "0"
+                controller.groupId = ids?.last ?? "0"
                 controller.isFromChatDetail = true
                 self.navigationController?.pushViewController(controller, animated: true)
             }
