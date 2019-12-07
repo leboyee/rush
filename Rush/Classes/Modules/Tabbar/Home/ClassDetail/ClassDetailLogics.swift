@@ -339,7 +339,10 @@ extension ClassDetailViewController {
     
     func checkIsChatExistOrNot() {
         Utils.showSpinner()
-        ChatManager().getListOfFilterGroups(name: subclassInfo?.name ?? "", type: "class", userId: "", { [weak self] (data) in
+        
+        let id = "\(classId),\(groupId)"
+        
+        ChatManager().getListOfAllPublicChatGroups(type: "class", data: id, { [weak self] (data) in
             guard let unsafe = self else { return }
             
             var rosterArray = [Invitee]()
@@ -349,7 +352,6 @@ extension ClassDetailViewController {
                     inv.user = user
                     rosterArray.append(inv)
                 }
-                
             }
             
             Utils.hideSpinner()
@@ -366,6 +368,17 @@ extension ClassDetailViewController {
                 let ids = "\(unsafe.subclassInfo?.id ?? "0"),\(unsafe.subclassInfo?.classGroups?.first?.id ?? "0")"
                 let filterChannel = channels.filter({ $0.data == ids })
                 controller.channel = filterChannel.first
+                
+                if filterChannel.first?.hasMember(Authorization.shared.profile?.userId ?? "") ?? false {
+                    
+                } else {
+                    filterChannel.first?.join(completionHandler: { (error) in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "")
+                        }
+                    })
+                }
+                
                 unsafe.navigationController?.pushViewController(controller, animated: true)
             } else {
                 unsafe.navigationController?.pushViewController(controller, animated: true)
@@ -374,7 +387,6 @@ extension ClassDetailViewController {
                 print(error?.localizedDescription ?? "")
         })
     }
-    
 }
 
 extension ClassDetailViewController {

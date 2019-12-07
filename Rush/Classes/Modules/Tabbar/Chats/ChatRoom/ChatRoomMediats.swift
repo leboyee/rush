@@ -273,8 +273,8 @@ extension ChatRoomViewController: MessageInputBarDelegate {
             let message = MockMessage(text: text, sender: sender, messageId: "\(message?.messageId ?? 0)", date: Date())
             self.insertMessage(message)
             self.chatTableReload(initial: true)
-        }, errorHandler: { (_) in
-            
+        }, errorHandler: { (error) in
+            print(error?.localizedDescription ?? "")
         })
     }
     

@@ -136,7 +136,8 @@ extension ClubDetailViewController {
     
     func checkIsChatExistOrNot() {
         Utils.showSpinner()
-        ChatManager().getListOfFilterGroups(name: clubInfo?.clubName ?? "", type: "club", userId: "", { [weak self] (data) in
+        
+        ChatManager().getListOfAllPublicChatGroups(type: "club", data: "\(clubInfo?.id ?? 0)",{ [weak self] (data) in
             guard let unsafe = self else { return }
             Utils.hideSpinner()
             let controller = ChatRoomViewController()
@@ -149,6 +150,15 @@ extension ClubDetailViewController {
             if let channels = data as? [SBDGroupChannel], channels.count > 0 {
                 let filterChannel = channels.filter({ $0.data == unsafe.clubInfo?.clubId })
                 controller.channel = filterChannel.first
+                if filterChannel.first?.hasMember(Authorization.shared.profile?.userId ?? "") ?? false {
+                    
+                } else {
+                    filterChannel.first?.join(completionHandler: { (error) in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "")
+                        }
+                    })
+                }
             }
             unsafe.navigationController?.pushViewController(controller, animated: true)
             }, errorHandler: { (error) in
