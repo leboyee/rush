@@ -363,10 +363,13 @@ extension ClassDetailViewController {
             controller.hidesBottomBarWhenPushed = true
             
             if let channels = data as? [SBDGroupChannel], channels.count > 0 {
-                let filterChannel = channels.filter({ $0.data == unsafe.subclassInfo?.id })
+                let ids = "\(unsafe.subclassInfo?.id ?? "0"),\(unsafe.subclassInfo?.classGroups?.first?.id ?? "0")"
+                let filterChannel = channels.filter({ $0.data == ids })
                 controller.channel = filterChannel.first
+                unsafe.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                unsafe.navigationController?.pushViewController(controller, animated: true)
             }
-            unsafe.navigationController?.pushViewController(controller, animated: true)
             }, errorHandler: { (error) in
                 print(error?.localizedDescription ?? "")
         })
