@@ -43,12 +43,16 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
             } else  if type == .events {
                 if firstSegmentButton.isSelected {
                     noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any events yet."
-                            } else {
+                } else {
                     noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any events yet."
                 }
             } else  if type == .classRoasters {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "There are no rosters in this class."
+                    if inviteeList.count == 0 && searchText.isNotEmpty {
+                        noDataLabel.text = "No result found."
+                    } else {
+                        noDataLabel.text = "There are no rosters in this class."
+                    }
                 } else {
                     noDataLabel.text = "You do not have any mutual friends yet."
                 }

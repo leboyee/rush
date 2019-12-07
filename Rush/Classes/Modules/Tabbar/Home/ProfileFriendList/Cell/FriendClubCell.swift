@@ -98,12 +98,7 @@ extension FriendClubCell {
             clubInvitee = invitee?[1]
             secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
             clubInvitee = invitee?[2]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
-            let count = invitee?.count ?? 0
-            if count > 3 {
-                userCountLabel.isHidden = false
-                userCountLabel.text = "\(count - 3)+"
-            }
+            firstUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
         }
     }
     

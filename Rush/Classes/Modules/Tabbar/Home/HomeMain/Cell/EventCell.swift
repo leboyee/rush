@@ -192,7 +192,7 @@ extension EventCell {
             clubInvitee = invitee?[1]
             secondUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
             clubInvitee = invitee?[2]
-            thirdUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
+            firstUserImageView.sd_setImage(with: clubInvitee?.user?.photo?.url(), placeholderImage: #imageLiteral(resourceName: "placeholder-profile-tabBar"))
         }
     }
     
