@@ -99,11 +99,11 @@ extension ChatManager {
      Get list of all chat groups of logged in user
      */
     
-    func getListOfAllChatGroups(_ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: SBDError?) -> Void) {
+    func getListOfAllChatGroups(isGetEmptyChat: Bool, _ completionHandler: @escaping (_ list: [Any]?) -> Void, errorHandler: @escaping (_ error: SBDError?) -> Void) {
         let query: SBDGroupChannelListQuery? = SBDGroupChannel.createMyGroupChannelListQuery()
         
         // Include empty group channels.
-        query?.includeEmptyChannel = true
+        query?.includeEmptyChannel = isGetEmptyChat
         
         query?.order = SBDGroupChannelListOrder.latestLastMessage
         
@@ -382,7 +382,7 @@ extension ChatManager {
         }
         
         //Get all channels
-        getListOfAllChatGroups({ list in
+        getListOfAllChatGroups(isGetEmptyChat: true, { list in
             
             //Filter for 'Group' or not
             let predicate = NSPredicate(format: "data <> 'Group'")
@@ -415,7 +415,7 @@ extension ChatManager {
         }
         
         //Get all channels
-        getListOfAllChatGroups({ list in
+        getListOfAllChatGroups(isGetEmptyChat: true, { list in
             
             //Filter for member Id
             let predicateUserId = NSPredicate(format: "customType = '\(type ?? "")' AND data = '\(data ?? "")'")

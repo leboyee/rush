@@ -516,7 +516,7 @@ extension FriendsListViewController {
     }
     
     func fetchClubInviteeAPI() {
-        noDataLabel.text = "No one has joined this club yet."
+        noDataLabel.text = ""
         if pageNo == 1 {
             inviteeList.removeAll()
         }
@@ -549,7 +549,7 @@ extension FriendsListViewController {
     }
     
     func fetchClassRostersAPI() {
-        noDataLabel.text = "There are no rosters in this class."
+        noDataLabel.text = ""
               
         if pageNo == 1 {
             inviteeList.removeAll()
