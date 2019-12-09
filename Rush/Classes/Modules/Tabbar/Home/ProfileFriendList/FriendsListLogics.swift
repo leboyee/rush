@@ -461,7 +461,7 @@ extension FriendsListViewController {
     }
     
     func getMyJoinedClasses() {
-        noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any classes yet."
+        noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any classes yet"
         if pageNo == 1 {
             myClassesList .removeAll()
         }
@@ -537,9 +537,9 @@ extension FriendsListViewController {
                     unsafe.isNextPageExist = true
                 } else {
                     if unsafe.inviteeList.count == 0 && unsafe.searchText.isNotEmpty {
-                        unsafe.noDataLabel.text = "No result found."
+                        unsafe.noDataLabel.text = "No result found"
                     } else {
-                        unsafe.noDataLabel.text = "No one has joined this club yet."
+                        unsafe.noDataLabel.text = "No one has joined this club yet"
                     }
                     unsafe.isNextPageExist = false
                 }
@@ -586,9 +586,9 @@ extension FriendsListViewController {
                     unsafe.isNextPageExist = true
                 } else {
                     if unsafe.inviteeList.count == 0 && unsafe.searchText.isNotEmpty {
-                        unsafe.noDataLabel.text = "No result found."
+                        unsafe.noDataLabel.text = "No result found"
                     } else {
-                        unsafe.noDataLabel.text = "There are no rosters in this class."
+                        unsafe.noDataLabel.text = "There are no rosters in this class"
                     }
                     unsafe.isNextPageExist = false
                 }
