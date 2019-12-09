@@ -52,7 +52,12 @@ extension EventTypeCell {
                         }
                     }
                 } else {//show join button
-                   cell.setup(isHideInvitee: true)
+                    
+                    if event.eventType == .closed {
+                        cell.setup(isHideBoth: true)
+                    } else {
+                        cell.setup(isHideInvitee: true)
+                    }
                 }
                 
                 if "\(event.userId)" ==  Authorization.shared.profile?.userId {
