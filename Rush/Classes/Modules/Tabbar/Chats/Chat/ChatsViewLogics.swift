@@ -208,4 +208,20 @@ extension ChatsViewController {
                 Utils.alert(message: errMsg)
         })
     }
+    
+    @objc func refreshListOfGroups() {
+        
+        ChatManager().getListOfAllChatGroups(isGetEmptyChat: false, { [weak self] (list) in
+            guard let unself = self else { return }
+            if let list = list as? [SBDGroupChannel] {
+                unself.channels = list
+                unself.filterList = list
+            }
+            unself.tableView.reloadData()
+            Utils.hideSpinner()
+            }, errorHandler: { error in
+                Utils.hideSpinner()
+        })
+    }
+    
 }

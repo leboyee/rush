@@ -189,6 +189,7 @@ extension AppDelegate: SBDChannelDelegate {
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
         ChatManager().getUnreadCount { (count) in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUpdateUnreadcount), object: (count))
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: kRefreshChatList), object: nil)
             Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
         }
     }
