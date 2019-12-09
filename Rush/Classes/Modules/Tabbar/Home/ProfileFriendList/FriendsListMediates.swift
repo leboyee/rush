@@ -30,31 +30,31 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         if row == 0 {
             if type == .friends {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") has no friends."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has no friends"
                 } else {
-                    noDataLabel.text = "You do not have any mutual friends yet."
+                    noDataLabel.text = "You do not have any mutual friends yet"
                 }
             } else  if type == .clubs {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any clubs yet."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") has not joined any clubs yet"
                 } else {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") does not have any managed clubs yet."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") does not have any managed clubs yet"
                 }
             } else  if type == .events {
                 if firstSegmentButton.isSelected {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any events yet."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not attending any events yet"
                 } else {
-                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any events yet."
+                    noDataLabel.text = "\(userInfo?.name ?? "User") is not managing any events yet"
                 }
             } else  if type == .classRoasters {
                 if firstSegmentButton.isSelected {
                     if inviteeList.count == 0 && searchText.isNotEmpty {
-                        noDataLabel.text = "No result found."
+                        noDataLabel.text = "No result found"
                     } else {
-                        noDataLabel.text = "There are no rosters in this class."
+                        noDataLabel.text = "There are no rosters in this class"
                     }
                 } else {
-                    noDataLabel.text = "You do not have any mutual friends yet."
+                    noDataLabel.text = "You do not have any mutual friends yet"
                 }
             } else {
                 
