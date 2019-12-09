@@ -21,9 +21,8 @@ extension ChooseUniversityViewController {
     func fillChooseUniversityCell(_ cell: UniversityCell, _ indexPath: IndexPath) {
         let university = universityArray[indexPath.row]
         cell.setup(title: university.universityName)
-        if let url = URL(string: university.logo ?? "") {
-                   cell.setup(url: url)
-        }
+        let url = URL(string: university.logo ?? "")
+        cell.universityImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-University.pdf"))
         cell.setup(checkMark: selectedIndex == indexPath.row ? true : false)
     }
     
