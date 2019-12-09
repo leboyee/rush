@@ -28,6 +28,7 @@ let kUpdateUnreadcount          = "com.rush.updateunreadcount"
 let kHomeTutorialKey            = "com.rush.hometutorial"
 let kOpenFromPushNotification   = "com.rush.openfrompushnotification"
 let kUnreadChatMessageCount     = "com.rush.unreadChatMessageCount"
+let kRefreshChatList            = "com.rush.chatlist"
 
 // MARK: - Notification keys
 let kRefreshNotification        = "RefreshNotification"

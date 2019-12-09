@@ -67,6 +67,8 @@ class ChatsViewController: CustomViewController {
         
         setupTableView()
         setupNavigation()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshListOfGroups), name: NSNotification.Name(kRefreshChatList), object: nil)
     }
     
     func setupNavigation() {
