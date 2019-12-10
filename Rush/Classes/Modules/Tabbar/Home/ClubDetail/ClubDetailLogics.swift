@@ -139,7 +139,7 @@ extension ClubDetailViewController {
         
         ChatManager().getListOfAllPublicChatGroups(type: "club", data: "\(clubInfo?.id ?? 0)", { [weak self] (data) in
             guard let unsafe = self else { return }
-            Utils.hideSpinner()
+            
             let controller = ChatRoomViewController()
             controller.isGroupChat = true
             controller.chatDetailType = .club
@@ -147,20 +147,11 @@ extension ClubDetailViewController {
             controller.userName = unsafe.clubInfo?.clubName ?? ""
             controller.hidesBottomBarWhenPushed = true
             
-            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
-                let filterChannel = channels.filter({ $0.data == unsafe.clubInfo?.clubId })
-                controller.channel = filterChannel.first
-                if filterChannel.first?.hasMember(Authorization.shared.profile?.userId ?? "") ?? false {
-                    
-                } else {
-                    filterChannel.first?.join(completionHandler: { (error) in
-                        if error != nil {
-                            print(error?.localizedDescription ?? "")
-                        }
-                    })
-                }
+            ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: "\(unsafe.clubInfo?.id ?? 0)", type: "club") { (channel) in
+                Utils.hideSpinner()
+                controller.channel = channel
+                unsafe.navigationController?.pushViewController(controller, animated: true)
             }
-            unsafe.navigationController?.pushViewController(controller, animated: true)
             }, errorHandler: { (error) in
                 print(error?.localizedDescription ?? "")
         })

@@ -165,7 +165,7 @@ extension ChatManager {
         query?.publicMembershipFilter = .all
         
         query?.customTypesFilter = [type]
-        
+                
         let list = [AnyHashable]()
         loadListOfAllPublicGroupChannels(query: query, channels: list, completionHandler: { (channels) in
             //We can not use direct because new created group come at bottom of list.
@@ -653,6 +653,32 @@ extension ChatManager {
         }, errorHandler: { (error) in
             print(error?.localizedDescription ?? "")
         })
+    }
+    
+    func joinPublicChannelAndGetMyChannelFromPublic(channelList: [Any]?, data: String?, type: String, handler: @escaping(_ channel: SBDGroupChannel?) -> Void) {
+        if let channels = channelList as? [SBDGroupChannel], channels.count > 0 {
+            let filterChannel = channels.filter({ $0.data == data })
+            if filterChannel.count > 0 {
+                if filterChannel.first?.hasMember(Authorization.shared.profile?.userId ?? "") ?? false {
+                    handler(filterChannel.first)
+                } else {
+                    filterChannel.first?.join(completionHandler: { (error) in
+                        if error != nil {
+                            handler(filterChannel.first)
+                            print(error?.localizedDescription ?? "")
+                        } else {
+                            self.getChannelByTypeData(type, data, completionHandler: { (myChannel) in
+                                handler(myChannel)
+                            }, errorHandler: { (myError) in
+                                handler(filterChannel.first)
+                            })
+                        }
+                    })
+                }
+            } else {
+                handler(nil)
+            }
+        }
     }
 }
 

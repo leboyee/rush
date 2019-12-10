@@ -63,9 +63,9 @@ extension ChatRoomViewController {
         
         totalUserIds.append(loggedInUserId)
         
-        ChatManager().getChannelByTypeData(type, data, completionHandler: { (channel) in
-            if channel != nil {
-                handler(channel)
+        ChatManager().getListOfAllPublicChatGroups(type: type, data: data, { (result) in
+            if (result?.count ?? 0) > 0, let chnl = result?.first as? SBDGroupChannel {
+                handler(chnl)
             } else {
                 //create new channel
                 self.createNewGroupChannelwithUsers(totalUserIds: totalUserIds, grpName: grpName, imgUrl: imgUrl, data: data, type: type, completionHandler: handler) { (_) in

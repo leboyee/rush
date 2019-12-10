@@ -49,7 +49,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
             } else  if type == .classRoasters {
                 if firstSegmentButton.isSelected {
                     if inviteeList.count == 0 && searchText.isNotEmpty {
-                        noDataLabel.text = "No result found"
+                        noDataLabel.text = "No results found"
                     } else {
                         noDataLabel.text = "There are no rosters in this class"
                     }

@@ -354,7 +354,6 @@ extension ClassDetailViewController {
                 }
             }
             
-            Utils.hideSpinner()
             let controller = ChatRoomViewController()
             controller.isGroupChat = true
             controller.chatDetailType = .classes
@@ -364,23 +363,9 @@ extension ClassDetailViewController {
             controller.rosterArray = rosterArray
             controller.hidesBottomBarWhenPushed = true
             
-            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
-                let ids = "\(unsafe.subclassInfo?.id ?? "0"),\(unsafe.subclassInfo?.classGroups?.first?.id ?? "0")"
-                let filterChannel = channels.filter({ $0.data == ids })
-                controller.channel = filterChannel.first
-                
-                if filterChannel.first?.hasMember(Authorization.shared.profile?.userId ?? "") ?? false {
-                    
-                } else {
-                    filterChannel.first?.join(completionHandler: { (error) in
-                        if error != nil {
-                            print(error?.localizedDescription ?? "")
-                        }
-                    })
-                }
-                
-                unsafe.navigationController?.pushViewController(controller, animated: true)
-            } else {
+            ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: id, type: "class") { (channel) in
+                Utils.hideSpinner()
+                controller.channel = channel
                 unsafe.navigationController?.pushViewController(controller, animated: true)
             }
             }, errorHandler: { (error) in
