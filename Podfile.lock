@@ -46,11 +46,11 @@ PODS:
     - FacebookCore (~> 0.9.0)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKShareKit (~> 5.0)
-  - FBSDKCoreKit (5.11.1):
-    - FBSDKCoreKit/Basics (= 5.11.1)
-    - FBSDKCoreKit/Core (= 5.11.1)
-  - FBSDKCoreKit/Basics (5.11.1)
-  - FBSDKCoreKit/Core (5.11.1):
+  - FBSDKCoreKit (5.12.0):
+    - FBSDKCoreKit/Basics (= 5.12.0)
+    - FBSDKCoreKit/Core (= 5.12.0)
+  - FBSDKCoreKit/Basics (5.12.0)
+  - FBSDKCoreKit/Core (5.12.0):
     - FBSDKCoreKit/Basics
   - FBSDKShareKit (5.11.1):
     - FBSDKShareKit/Share (= 5.11.1)
@@ -135,10 +135,10 @@ PODS:
   - SDWebImageFLPlugin (0.3.0):
     - FLAnimatedImage (>= 1.0.11)
     - SDWebImage/Core (~> 5.0)
-  - SendBirdSDK (3.0.160)
+  - SendBirdSDK (3.0.161)
   - SkeletonView (1.8.2)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.37.0)
+  - SwiftLint (0.38.0)
   - UnsplashPhotoPicker (1.1.0)
 
 DEPENDENCIES:
@@ -207,7 +207,7 @@ SPEC CHECKSUMS:
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
-  FBSDKCoreKit: 5aada61a229054694810f3cee231f986004b3c49
+  FBSDKCoreKit: fa3ac4dc9b1afc9ae70b3de4dd704d1b6aeeed0d
   FBSDKShareKit: 2b4435ecb134e2af8a636524e43b7813e3d60a0b
   Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
   FirebaseAnalytics: 45f36d9c429fc91d206283900ab75390cd05ee8a
@@ -229,12 +229,12 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 336f6958a13d5e8347a317cd68a9f6ee9aaaaf03
   SDWebImageFLPlugin: cf3f4ae49f249dd785129346fd61bbc8433a88cf
-  SendBirdSDK: 55b5a930da0338c50f0fd069a99d9b7b1b9579f2
+  SendBirdSDK: fae108b5757e21250d7cd32f4ff023075d7c06ae
   SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
+  SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
 PODFILE CHECKSUM: ed8c5f6f0747174ed6a86e150f6f47ece91c4ad7
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4

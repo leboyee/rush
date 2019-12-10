@@ -180,19 +180,12 @@ extension EventDetailViewController {
     }
     
     func openGroupChat() {
-        let controller = ChatRoomViewController()
-        controller.userName = event?.title ?? ""
-        controller.isGroupChat = true
-        controller.eventInfo = event
-        controller.chatDetailType = .event
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
         
         Utils.showSpinner()
         
         ChatManager().getListOfAllPublicChatGroups(type: "event", data: "\(event?.id ?? 0)", { [weak self] (data) in
             guard let unsafe = self else { return }
-            Utils.hideSpinner()
+            
             let controller = ChatRoomViewController()
             controller.isGroupChat = true
             controller.eventInfo = unsafe.event
@@ -200,20 +193,11 @@ extension EventDetailViewController {
             controller.userName = unsafe.event?.title ?? ""
             controller.hidesBottomBarWhenPushed = true
             
-            if let channels = data as? [SBDGroupChannel], channels.count > 0 {
-                let filterChannel = channels.filter({ $0.data == "\(unsafe.event?.id ?? 0)" })
-                controller.channel = filterChannel.first
-                if filterChannel.first?.hasMember(Authorization.shared.profile?.userId ?? "") ?? false {
-                    
-                } else {
-                    filterChannel.first?.join(completionHandler: { (error) in
-                        if error != nil {
-                            print(error?.localizedDescription ?? "")
-                        }
-                    })
-                }
+            ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: "\(unsafe.event?.id ?? 0)", type: "event") { (channel) in
+                Utils.hideSpinner()
+                controller.channel = channel
+                unsafe.navigationController?.pushViewController(controller, animated: true)
             }
-            unsafe.navigationController?.pushViewController(controller, animated: true)
             }, errorHandler: { (error) in
                 print(error?.localizedDescription ?? "")
         })
