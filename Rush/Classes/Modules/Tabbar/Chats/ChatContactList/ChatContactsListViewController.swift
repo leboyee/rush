@@ -39,8 +39,15 @@ class ChatContactsListViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.tableView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
+    }
+    
     func setupUI() {
         self.view.backgroundColor = UIColor.bgBlack
+        
         setupTableView()
         setupNavigation()
         if isFromChat {

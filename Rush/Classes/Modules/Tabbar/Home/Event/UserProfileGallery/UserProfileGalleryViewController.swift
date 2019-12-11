@@ -128,11 +128,11 @@ extension UserProfileGalleryViewController {
             guard let vc = segue.destination as? PhotoModelViewController else { return }
             vc.delegate = self
             let image = list[currentIndex]
-//            vc.isFromOtherUserProfile = image.isInstaImage == true ? true : isFromOtherUserProfile
-            if image.isInstaImage {
+            
+            if isFromOtherUserProfile {
+                vc.isFromOtherUserProfile = true
+            } else if image.isInstaImage {
                 vc.isFromOtherUserProfile = false
-            } else {
-                vc.isFromOtherUserProfile = isFromOtherUserProfile
             }
         }
     }

@@ -67,6 +67,7 @@ class OtherUserProfileController: UIViewController {
     }
     
     func setupUI() {
+        
         setupTableView()
     }
     

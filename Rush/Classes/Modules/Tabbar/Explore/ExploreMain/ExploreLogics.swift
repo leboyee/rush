@@ -253,6 +253,7 @@ extension ExploreViewController {
     }
     
     func fillPeopleCell(_ cell: PeopleCell, _ indexPath: IndexPath) {
+        guard peopleList.count > indexPath.row else { return }
         let people = peopleList[indexPath.row]
         cell.setup(title: people.name)
         cell.setup(url: people.photo?.urlThumb())
