@@ -82,7 +82,7 @@ class EventGoingFriendsViewController: UIViewController {
             firstSegmentButton.isSelected = false
             secondSegmentButton.isSelected = true
             inviteType = .notGoing
-            fetchInvitees(search: "", type: .notGoing)
+            fetchInvitees(search: searchTextFiled?.text ?? "", type: .notGoing)
         } else {
             secondSegmentButton.setTitleColor(UIColor.buttonDisableTextColor, for: .normal)
             secondSegmentButton.backgroundColor = UIColor.white
@@ -91,7 +91,7 @@ class EventGoingFriendsViewController: UIViewController {
             firstSegmentButton.isSelected = true
             secondSegmentButton.isSelected = false
             inviteType = .going
-            fetchInvitees(search: "", type: .going)
+            fetchInvitees(search: searchTextFiled?.text ?? "", type: .going)
         }
         
         let leftbarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .done, target: self, action: #selector(backButtonAction))
