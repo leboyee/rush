@@ -13,7 +13,7 @@ import SendBirdSDK
 extension ClubDetailViewController {
     
     func heightOfHeader(_ section: Int) -> CGFloat {
-        if section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+        if (section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId) || (section == 4 && clubInfo?.clubInterests?.count == 0) {
             return CGFloat.leastNormalMagnitude
         } else {
             return section == 0 ? CGFloat.leastNormalMagnitude : (section == 1 || (section == 5 && joinedClub == false)) ? CGFloat.leastNormalMagnitude : section > 5 ? 16 : 44
@@ -48,7 +48,15 @@ extension ClubDetailViewController {
                 return UITableView.automaticDimension
             }
         } else {
-            if indexPath.section == 3 && clubInfo?.clubUId == Authorization.shared.profile?.userId {
+            if indexPath.section == 3 {
+                if clubInfo?.user == nil {
+                    return 80
+                } else if clubInfo?.clubUId == Authorization.shared.profile?.userId {
+                    return CGFloat.leastNormalMagnitude
+                } else {
+                    return UITableView.automaticDimension
+                }
+            } else if indexPath.section == 4 && clubInfo?.clubInterests?.count == 0 {
                 return CGFloat.leastNormalMagnitude
             } else {
                 let auto = UITableView.automaticDimension
@@ -213,6 +221,8 @@ extension ClubDetailViewController {
     func fillTagCell(_ cell: EventTypeCell) {
         if let tags = clubInfo?.clubInterests {
             cell.setup(interests: tags)
+        } else {
+            cell.setup(interests: [])
         }
     }
     
@@ -334,7 +344,7 @@ extension ClubDetailViewController {
                     unsafe.tableView.reloadData()
                 }
             } else {
-                Utils.alert(message: errorMsg.debugDescription)
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
@@ -368,7 +378,7 @@ extension ClubDetailViewController {
                 uwself.tableView.reloadData()
             } else {
                 Utils.hideSpinner()
-                Utils.alert(message: errorMsg.debugDescription)
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }

@@ -386,7 +386,7 @@ extension ClassDetailViewController {
                     unsafe.tableView.reloadData()
                 }
             } else {
-                Utils.alert(message: errorMsg.debugDescription)
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
