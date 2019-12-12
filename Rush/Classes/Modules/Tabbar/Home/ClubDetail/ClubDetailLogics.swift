@@ -334,7 +334,7 @@ extension ClubDetailViewController {
                     unsafe.tableView.reloadData()
                 }
             } else {
-                Utils.alert(message: errorMsg.debugDescription)
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
@@ -368,7 +368,7 @@ extension ClubDetailViewController {
                 uwself.tableView.reloadData()
             } else {
                 Utils.hideSpinner()
-                Utils.alert(message: errorMsg.debugDescription)
+                Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)
             }
         }
     }
