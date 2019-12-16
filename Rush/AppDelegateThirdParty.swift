@@ -63,7 +63,7 @@ extension AppDelegate {
 extension AppDelegate: SBDChannelDelegate {
     
     func connectSendbird() {
-        SBDMain.initWithApplicationId("586E0DEA-1868-4E61-9320-38CC32310696")
+        SBDMain.initWithApplicationId(sendbirdSandbox)
         SBDMain.add(self as SBDChannelDelegate, identifier: "AppDelegate")
         
         //Connect with Chat Server
