@@ -578,7 +578,6 @@
 		8A4B329E2331041700AC1D17 /* JoinRSVPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B329C2331041700AC1D17 /* JoinRSVPCell.xib */; };
 		8A4B32A92332426F00AC1D17 /* PostBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */; };
 		8A4B32AA2332426F00AC1D17 /* PostBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */; };
-		8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */; };
 		8A9D777E238F9E2F00B55D6F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */; };
 		8A9D7781239120E500B55D6F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D7780239120E500B55D6F /* BaseTableViewController.swift */; };
 		8A9D77842391420900B55D6F /* PrivacyPolicy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A9D77832391420900B55D6F /* PrivacyPolicy.pdf */; };
@@ -593,6 +592,7 @@
 		8AE7A253234C662B001F2EC0 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A252234C662B001F2EC0 /* CalendarItem.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
+		C01CB28123A7C3A0002EF242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01CB28023A7C39F002EF242 /* GoogleService-Info.plist */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
@@ -1198,7 +1198,6 @@
 		8A4B32A52332129900AC1D17 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4B32A72332426E00AC1D17 /* PostBottomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBottomCell.xib; sourceTree = "<group>"; };
 		8A4B32A82332426F00AC1D17 /* PostBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBottomCell.swift; sourceTree = "<group>"; };
-		8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A9D777D238F9E2F00B55D6F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8A9D7780239120E500B55D6F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8A9D77832391420900B55D6F /* PrivacyPolicy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PrivacyPolicy.pdf; sourceTree = "<group>"; };
@@ -1213,6 +1212,7 @@
 		8AE7A252234C662B001F2EC0 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		C01CB28023A7C39F002EF242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C05FC15822805F3E00721F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -3249,7 +3249,7 @@
 				C05FC16322805F9D00721F3F /* Resources */,
 				796E929A229FE0B600F91DB1 /* ExternalLibraries */,
 				C05FC15822805F3E00721F3F /* Info.plist */,
-				8A62DADC2388023C00DADEB3 /* GoogleService-Info.plist */,
+				C01CB28023A7C39F002EF242 /* GoogleService-Info.plist */,
 			);
 			path = Rush;
 			sourceTree = "<group>";
@@ -3503,7 +3503,6 @@
 				7999362F22FAEDAC001AEEEB /* ChatUserView.xib in Resources */,
 				7994A3C322D778600057527C /* ChatListCell.xib in Resources */,
 				796E9299229FDCD600F91DB1 /* TagCell.xib in Resources */,
-				8A62DADD2388023C00DADEB3 /* GoogleService-Info.plist in Resources */,
 				1A0EDEF7234892C800502959 /* EditProfileMinorCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
@@ -3545,6 +3544,7 @@
 				1AEAC4B622D346AA008FBB54 /* UserInfoCell.xib in Resources */,
 				7903D0B0228E8CE5004E33B9 /* EventCell.xib in Resources */,
 				F9C89F71232D38F700DC9C85 /* AddEventLocationCell.xib in Resources */,
+				C01CB28123A7C3A0002EF242 /* GoogleService-Info.plist in Resources */,
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
 				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
 				1AEAC49922D3194A008FBB54 /* UserInfo.storyboard in Resources */,
@@ -4394,7 +4394,7 @@
 					"-framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
+				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
@@ -4493,7 +4493,7 @@
 					"-framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
+				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
@@ -4648,7 +4648,7 @@
 					"-framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
+				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.rush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
 				SERVER_ADDRESS = "https://api.rushapp.io/api/";
