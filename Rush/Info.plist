@@ -27,7 +27,7 @@
 			<string>instragram</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>instagram://</string>
+				<string>instagram</string>
 			</array>
 		</dict>
 		<dict>
@@ -44,7 +44,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.messapps.testing.rush</string>
+			<string>com.messapps.rush</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>rushapp</string>
