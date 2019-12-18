@@ -180,7 +180,13 @@ extension ProfileViewController {
             
             cell.userImageTapEvent = { [weak self] () in
                 guard let unsafe = self else { return }
-                if let user = notification.generatedBy {
+                if notification.ntType == .updateEvent, let event = notification.event?.last {
+                    unsafe.showEvent(event: event)
+                } else if notification.ntType == .updateClub, let club = notification.club?.last {
+                    unsafe.showClub(club: club)
+                } else if notification.ntType == .updateClass, let classObject = notification.classObject?.last {
+                    unsafe.showClass(classId: classObject.classId, groupId: notification.classGroupId)
+                } else if let user = notification.generatedBy {
                     unsafe.handleTapOnLabel(notification: notification, text: user.name)
                 }
             }

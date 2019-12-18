@@ -15,6 +15,8 @@ let instagramAuthUrl = "https://api.instagram.com/oauth/authorize/"
 
 let serverDateFormate = "yyyy:MM:dd HH:mm:ss"
 let serverDateFormate1 = "yyyy-MM-dd HH:mm:ss"
+let sendbirdProduction = "586E0DEA-1868-4E61-9320-38CC32310696"
+let sendbirdSandbox = "317AF6DB-B602-4260-8869-BE538265E598"
 
 // MARK: - Production Build
 var isProductionBuild: Bool = true

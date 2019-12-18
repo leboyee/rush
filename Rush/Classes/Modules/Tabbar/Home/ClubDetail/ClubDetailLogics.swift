@@ -143,8 +143,8 @@ extension ClubDetailViewController {
     }
     
     func checkIsChatExistOrNot() {
-        Utils.showSpinner()
         
+        Utils.showSpinner()
         ChatManager().getListOfAllPublicChatGroups(type: "club", data: "\(clubInfo?.id ?? 0)", { [weak self] (data) in
             guard let unsafe = self else { return }
             
@@ -155,12 +155,18 @@ extension ClubDetailViewController {
             controller.userName = unsafe.clubInfo?.clubName ?? ""
             controller.hidesBottomBarWhenPushed = true
             
-            ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: "\(unsafe.clubInfo?.id ?? 0)", type: "club") { (channel) in
+            if data?.count ?? 0 > 0 {
+                ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: "\(unsafe.clubInfo?.id ?? 0)", type: "club") { (channel) in
+                    Utils.hideSpinner()
+                    controller.channel = channel
+                    unsafe.navigationController?.pushViewController(controller, animated: true)
+                }
+            } else {
                 Utils.hideSpinner()
-                controller.channel = channel
                 unsafe.navigationController?.pushViewController(controller, animated: true)
             }
             }, errorHandler: { (error) in
+                Utils.hideSpinner()
                 print(error?.localizedDescription ?? "")
         })
     }
