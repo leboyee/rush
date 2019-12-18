@@ -528,6 +528,7 @@ extension ExploreViewController {
         param[Keys.universityId] = selUniversity.universtiyId
         param[Keys.search] = searchText
         param[Keys.orderBy] = "popular"
+        param[Keys.sortBy] = "explore"
         ServiceManager.shared.fetchClassList(params: param) { [weak self] (data, errorMsg) in
             guard let unsafe = self else { return }
             if let classes = data {
