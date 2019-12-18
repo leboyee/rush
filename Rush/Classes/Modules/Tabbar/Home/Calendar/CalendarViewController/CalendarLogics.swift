@@ -32,7 +32,7 @@ extension CalendarViewController {
         guard classes?.count ?? 0 > 0 else { return }
         /// Load Classes
         if var start = Date.parse(dateString: startDate, format: "yyyy-MM-dd"), let end = Date.parse(dateString: endDate, format: "yyyy-MM-dd") {
-            while end.isGreaterThan(start) {
+            while start <= end {
                 let day = start.toString(format: "EEEE").lowercased()
                 let list = classes?.filter({ ($0.classSchedule?.contains(where: { $0.day.lowercased().trimmingCharacters(in: CharacterSet.whitespaces) == day }) ?? false) })
                 let dateString = start.toString(format: "yyyy-MM-dd")
