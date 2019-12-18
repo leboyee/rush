@@ -29,6 +29,7 @@ class SharePostViewController: UIViewController {
     @IBOutlet weak var radiusView: UIView!
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
+    @IBOutlet weak var bottomImageView: UIImageView!
     @IBOutlet weak var heightConstraintOfDeletePost: NSLayoutConstraint!
     
     weak var delegate: SharePostViewControllerDelegate?
@@ -62,7 +63,9 @@ class SharePostViewController: UIViewController {
         } else if type == .club {
             deleteLabel.text = Text.deleteClub
         } else if type == .profile {
-            deleteLabel.text = Text.report
+            deleteLabel.text = ""//Text.report
+            bottomImageView.image = nil
+            hideDeleteOption()
         } else {
             deleteLabel.text = Text.deletePost
         }

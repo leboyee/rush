@@ -670,6 +670,7 @@ extension ChatManager {
                             self.getChannelByTypeData(type, data, completionHandler: { (myChannel) in
                                 handler(myChannel)
                             }, errorHandler: { (myError) in
+                                print(myError?.localizedDescription ?? "")
                                 handler(filterChannel.first)
                             })
                         }
@@ -678,6 +679,8 @@ extension ChatManager {
             } else {
                 handler(nil)
             }
+        } else {
+            handler(nil)
         }
     }
 }

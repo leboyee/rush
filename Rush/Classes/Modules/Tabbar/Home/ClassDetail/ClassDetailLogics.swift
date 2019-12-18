@@ -363,12 +363,18 @@ extension ClassDetailViewController {
             controller.rosterArray = rosterArray
             controller.hidesBottomBarWhenPushed = true
             
-            ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: id, type: "class") { (channel) in
+            if data?.count ?? 0 > 0 {
+                ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: id, type: "class") { (channel) in
+                    Utils.hideSpinner()
+                    controller.channel = channel
+                    unsafe.navigationController?.pushViewController(controller, animated: true)
+                }
+            } else {
                 Utils.hideSpinner()
-                controller.channel = channel
                 unsafe.navigationController?.pushViewController(controller, animated: true)
             }
             }, errorHandler: { (error) in
+                Utils.hideSpinner()
                 print(error?.localizedDescription ?? "")
         })
     }

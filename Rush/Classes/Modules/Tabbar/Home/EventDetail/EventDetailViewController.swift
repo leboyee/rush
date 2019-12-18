@@ -45,10 +45,10 @@ struct EventSection {
 }
 
 class EventDetailViewController: BaseTableViewController {
-
+    
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var header: EventHeader!
-
+    
     var type: EventDetailType = .my
     var sections: [EventSection]?
     var eventId: String?
@@ -63,7 +63,7 @@ class EventDetailViewController: BaseTableViewController {
     let headerFullHeight: CGFloat = 367
     let headerSmallWithDateHeight: CGFloat = 182
     let headerSmallWithoutDateHeight: CGFloat = 114
-
+    
     var postPageNo = 1
     var isPostNextPageExist = false
     let downloadQueue = DispatchQueue(label: "com.messapps.profileImages")
@@ -123,11 +123,11 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
 
 // MARK: - Actions
 extension EventDetailViewController {
-
+    
     @IBAction func backButtoAction() {
         navigationController?.popViewController(animated: true)
     }
-   
+    
     @IBAction func shareButtoAction() {
         performSegue(withIdentifier: Segues.eventDetailShare, sender: event)
     }
@@ -193,12 +193,18 @@ extension EventDetailViewController {
             controller.userName = unsafe.event?.title ?? ""
             controller.hidesBottomBarWhenPushed = true
             
-            ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: "\(unsafe.event?.id ?? 0)", type: "event") { (channel) in
+            if data?.count ?? 0 > 0 {
+                ChatManager().joinPublicChannelAndGetMyChannelFromPublic(channelList: data, data: "\(unsafe.event?.id ?? 0)", type: "event") { (channel) in
+                    Utils.hideSpinner()
+                    controller.channel = channel
+                    unsafe.navigationController?.pushViewController(controller, animated: true)
+                }
+            } else {
                 Utils.hideSpinner()
-                controller.channel = channel
                 unsafe.navigationController?.pushViewController(controller, animated: true)
             }
             }, errorHandler: { (error) in
+                Utils.hideSpinner()
                 print(error?.localizedDescription ?? "")
         })
     }
@@ -273,7 +279,7 @@ extension EventDetailViewController {
             if let vc = segue.destination as? RSVPViewController {
                 vc.event = event
                 if let action = sender as? String {
-                  vc.action = action
+                    vc.action = action
                 }
             }
         } else if segue.identifier == Segues.createEventPost {
@@ -304,7 +310,7 @@ extension EventDetailViewController {
             if let vc = segue.destination as? OtherUserProfileController {
                 vc.delegate = self
                 if let user = sender as? User {
-                   vc.userInfo = user
+                    vc.userInfo = user
                 } else if let invitee = sender as? Invitee {
                     vc.userInfo = invitee.user
                     if type == .my {
@@ -327,14 +333,14 @@ extension EventDetailViewController {
                 vc.eventId = event?.id ?? 0
             }
         } else if segue.identifier == Segues.eventPostImages {
-              if let vc = segue.destination as? UserProfileGalleryViewController {
+            if let vc = segue.destination as? UserProfileGalleryViewController {
                 if let (post, index) = sender as? (Post, Int) {
                     vc.list = post.images ?? [Image]()
                     vc.user = post.user ?? User()
                     vc.currentIndex = index
                     vc.isFromOtherUserProfile = true
                 }
-              }
+            }
         } else if segue.identifier == Segues.eventInterest {
             if let vc = segue.destination as? EventCategoryListViewController {
                 vc.interest = sender as? Interest
