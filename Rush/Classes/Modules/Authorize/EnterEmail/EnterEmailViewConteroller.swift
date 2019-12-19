@@ -123,9 +123,9 @@ class EnterEmailViewConteroller: CustomViewController {
         termTextView.delegate = self
         let yourAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.regular(sz: 13)]
         
-        let attributedString = NSMutableAttributedString(string: "By entering your email, you accept our terms and conditions and data policy", attributes: yourAttributes)
-        let termRange = (attributedString.string as NSString).range(of: "terms and conditions")
-        attributedString.addAttribute(NSAttributedString.Key.link, value: termsAndConditionsURL, range: termRange)
+        let attributedString = NSMutableAttributedString(string: "By entering your email, you accept our  data policy", attributes: yourAttributes)
+        //let termRange = (attributedString.string as NSString).range(of: "terms and conditions")
+        //attributedString.addAttribute(NSAttributedString.Key.link, value: termsAndConditionsURL, range: termRange)
         let dataRange = (attributedString.string as NSString).range(of: "data policy")
         attributedString.addAttribute(NSAttributedString.Key.link, value: privacyURL, range: dataRange)
         let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.brown24, .font: UIFont.regular(sz: 13)]

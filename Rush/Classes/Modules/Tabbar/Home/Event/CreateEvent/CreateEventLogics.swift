@@ -870,7 +870,6 @@ extension CreateEventViewController {
             }
         }
 
-    
     func deleteEventAPI(id: String) {
        Utils.showSpinner()
        ServiceManager.shared.deleteEvent(eventId: id) { [weak self] (status, errorMsg) in
