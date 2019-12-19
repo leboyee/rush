@@ -313,8 +313,8 @@ extension CreateEventViewController: ImagePickerControllerDelegate {
                     if status == .alreadyAuthorized || status == .justAuthorized {
                         if isFromUnsplash == true {
                             let configuration = UnsplashPhotoPickerConfiguration(
-                                                  accessKey: "f7e7cafb83c5739502f5d7e3be980bb1271ed748464773180a32a7391d6414a2",
-                                                  secretKey: "cd923567347c3e433dc7173686c1e5a01dfc8de44b4cff4f2519e494fa9c7b35",
+                                                  accessKey: "60a586d02f3e1be8892cd593f0b1a0c5a8e56319580a2f7c8a2005db3f06b1d6",
+                                                  secretKey: "9ff510cf0d09d76b22beb6e791094c60c006620bef28e9e0737f7118a2f38dea",
                                                   allowsMultipleSelection: false
                                               )
                                               let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
