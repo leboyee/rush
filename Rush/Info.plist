@@ -24,16 +24,6 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>instragram</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>instagram://</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
 			<string>facebook</string>
 			<key>CFBundleURLSchemes</key>
 			<array>

@@ -193,5 +193,4 @@ extension AppDelegate: SBDChannelDelegate {
             Utils.saveDataToUserDefault(count, kUnreadChatMessageCount)
         }
     }
-    
 }
