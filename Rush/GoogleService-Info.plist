@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>624193887326-c8d9ir4bhf15t0vpnj3gp157u3t65hck.apps.googleusercontent.com</string>
+	<string>624193887326-24kjgeelfa170v2m8d2rdlmi6bdfu3v2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.624193887326-c8d9ir4bhf15t0vpnj3gp157u3t65hck</string>
+	<string>com.googleusercontent.apps.624193887326-24kjgeelfa170v2m8d2rdlmi6bdfu3v2</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBa9T2HvCONOPsh73oB3AvCu0UDKOH8REM</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.messapps.testing.Rush</string>
+	<string>com.messapps.rush</string>
 	<key>PROJECT_ID</key>
 	<string>rush-251716</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:624193887326:ios:b645898165b496a6c1e8cf</string>
+	<string>1:624193887326:ios:1f4185c5e22c53aec1e8cf</string>
 	<key>DATABASE_URL</key>
 	<string>https://rush-251716.firebaseio.com</string>
 </dict>

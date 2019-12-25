@@ -205,7 +205,7 @@ class NetworkManager: NSObject {
             #if targetEnvironment(simulator)
             if data != nil {
                 let jsonString = String(data: data!, encoding: String.Encoding.utf8)
-                print(jsonString!)
+                //print(jsonString!)
             }
             #endif
             

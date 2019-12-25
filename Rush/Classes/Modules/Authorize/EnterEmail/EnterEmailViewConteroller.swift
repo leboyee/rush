@@ -126,6 +126,7 @@ class EnterEmailViewConteroller: CustomViewController {
         let attributedString = NSMutableAttributedString(string: "By entering your email, you accept our  data policy", attributes: yourAttributes)
         //let termRange = (attributedString.string as NSString).range(of: "terms and conditions")
         //attributedString.addAttribute(NSAttributedString.Key.link, value: termsAndConditionsURL, range: termRange)
+
         let dataRange = (attributedString.string as NSString).range(of: "data policy")
         attributedString.addAttribute(NSAttributedString.Key.link, value: privacyURL, range: dataRange)
         let yourOtherAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.brown24, .font: UIFont.regular(sz: 13)]
@@ -191,7 +192,6 @@ extension EnterEmailViewConteroller {
 extension EnterEmailViewConteroller {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == Segues.enterPassword {
             if let vc = segue.destination as? EnterPasswordViewConteroller {
                 vc.loginType = loginType
@@ -205,12 +205,10 @@ extension EnterEmailViewConteroller {
             }
         }
     }
-    
 }
 
 // MARK: Presenter
 extension EnterEmailViewConteroller {
-    
     func  emailSuccess() {
         if loginType == .restoreEmail {
             guard let viewControllers = self.navigationController?.viewControllers else { return }
