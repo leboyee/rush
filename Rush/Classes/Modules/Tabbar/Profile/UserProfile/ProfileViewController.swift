@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         title = ""
         
-        /// Load All data of screen
+        // Load All data of screen
         loadAllData()
         tableView.reloadData()
     }
@@ -80,7 +80,7 @@ extension ProfileViewController {
         setupTableView()
         setupHeader()
        
-        /// setup HeaderData
+        // setup HeaderData
         setupHeaderData()
         setupView()
                 

@@ -12,7 +12,7 @@ extension CalendarViewController {
 
     private func restuctureEventInGroup(events: [CalendarItem]?) {
         
-        /// Load Events
+        // Load Events
         events?.forEach { (event) in
             let dateString = event.start?.toString(format: "yyyy-MM-dd")
             guard var group = groups.first(where: { $0.dateString == dateString }) else {
@@ -30,7 +30,7 @@ extension CalendarViewController {
     private func restuctureClassesInGroup(classes: [CalendarItem]?, startDate: String, endDate: String) {
         
         guard classes?.count ?? 0 > 0 else { return }
-        /// Load Classes
+        // Load Classes
         if var start = Date.parse(dateString: startDate, format: "yyyy-MM-dd"), let end = Date.parse(dateString: endDate, format: "yyyy-MM-dd") {
             while start <= end {
                 let day = start.toString(format: "EEEE").lowercased()
@@ -76,7 +76,7 @@ extension CalendarViewController {
             self?.restuctureEventInGroup(events: events)
             self?.restuctureClassesInGroup(classes: classes, startDate: startDate, endDate: endDate)
             self?.isScheduledAnything = isScheduledAnything
-            /// load list of events in child view controller
+            // load list of events in child view controller
             self?.loadChildList()
             self?.updateView()
         }

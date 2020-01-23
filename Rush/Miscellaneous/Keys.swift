@@ -154,7 +154,6 @@ struct Keys {
     static let eventInvitedUserIds = "event_invited_user_ids"
     static let removedInvitedUserIds = "removed_invited_user_ids"
 
-    
     static let eventPhoto = "event_photo"
     static let eventUniversityId = "event_university_id"
     static let eventId = "event_id"

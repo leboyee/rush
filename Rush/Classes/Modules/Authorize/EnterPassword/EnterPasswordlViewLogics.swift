@@ -94,8 +94,7 @@ extension EnterPasswordViewConteroller {
     
     func restorePassword(emailText: String) {
              Utils.showSpinner()
-             ServiceManager.shared.restorePassword(params: [Keys.email: emailText]) { [weak self] (status, errorMessage) in
-                 guard let _ = self else { return }
+             ServiceManager.shared.restorePassword(params: [Keys.email: emailText]) { (status, errorMessage) in
                   Utils.hideSpinner()
                  if status == true {
                     Utils.alert(message: "You will receive an email to your email address \(emailText) to restore password.")

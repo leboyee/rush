@@ -24,7 +24,7 @@ extension SettingsViewController {
         case 0, 2:
             count = 2
         case 1:
-            count = 1 /// Made it 1 because we does not need dark mode in that app so in next version, we will make it 2.
+            count = 1 // Made it 1 because we does not need dark mode in that app so in next version, we will make it 2.
         case 3:
             count = 1
         default:
@@ -128,7 +128,7 @@ extension SettingsViewController {
             if let token = Authorization.shared.profile?.instaToken, token.isNotEmpty {
                 unsefe.showInstagramDisconnect()
             } else {
-                /// connect with instagram
+                // connect with instagram
                 unsefe.showInstagramConnect()
             }
         }
@@ -184,13 +184,13 @@ extension SettingsViewController {
             guard let unself = self else { return }
             if data != nil {
                 unself.user = Authorization.shared.profile
-                /// Update Application Theme
+                // Update Application Theme
                 ThemeManager.shared.loadTheme()
             } else if let message = errorMessage {
                 unself.showMessage(message: message)
             }
             
-            /// Reload Cells
+            // Reload Cells
             unself.tableView.reloadData()
         }
     }

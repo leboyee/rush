@@ -64,10 +64,10 @@ extension EventDetailViewController {
                 EventSection(type: .tags, title: "Interest tags"),
                 EventSection(type: .createPost, title: "Posts")
             ]
-            /// Need to call post list here
+            // Need to call post list here
             loadPosts()
         } else if type == .other, event.eventType == .publik {
-            /// Join button will show only if event is public otherwise user will see information without join button
+            // Join button will show only if event is public otherwise user will see information without join button
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
@@ -87,7 +87,7 @@ extension EventDetailViewController {
                 EventSection(type: .createPost, title: "Posts")
             ]
             
-            /// Need to call post list here
+            // Need to call post list here
                 loadPosts()
         } else if type == .invited {
             sections = [
@@ -99,7 +99,7 @@ extension EventDetailViewController {
                 EventSection(type: .tags, title: "Interest tags")
             ]
         } else if type == .rejected || type == .other, event.eventType != .publik {
-            /// Info show if user reject the invitation or type is other with closed or invited only event. 
+            // Info show if user reject the invitation or type is other with closed or invited only event.
             sections = [
                 EventSection(type: .about, title: nil),
                 EventSection(type: .location, title: "Location"),
@@ -112,7 +112,7 @@ extension EventDetailViewController {
     
     private func manageCellFirstButton() {
         if type == .invited {
-            /// Call Accept  API
+            // Call Accept  API
             guard let event = event else { return }
             if event.rsvp?.count ?? 0 == 0 {
                 joinEvent(eventId: String(event.id), action: EventAction.accept)
@@ -120,7 +120,7 @@ extension EventDetailViewController {
                 showRSVP(action: EventAction.accept)
             }
         } else if type == .my {
-            /// Show Edit event api
+            // Show Edit event api
             performSegue(withIdentifier: Segues.editEventSegue, sender: self)
         }
     }
@@ -286,7 +286,7 @@ extension EventDetailViewController {
             cell.setup(firstButtonType: .accept)
             cell.setup(secondButtonType: .reject)
         } else if type == .joined {
-            /// Disable interaction with going button
+            // Disable interaction with going button
             if event?.isChatGroup == true {
                cell.setup(firstButtonType: .going)
                cell.setup(secondButtonType: .groupChatClub)
@@ -429,7 +429,7 @@ extension EventDetailViewController {
     
     func selectedRow(_ indexPath: IndexPath) {
         if indexPath.section < sections?.count ?? 0, let eventSection = sections?[indexPath.section] {
-            /// check section type is create post or not, if yes, move to create post screen
+            // check section type is create post or not, if yes, move to create post screen
             if eventSection.type == .createPost {
                 showCreatePost()
             } else if eventSection.type == .organizer {
@@ -446,7 +446,7 @@ extension EventDetailViewController {
     
     func willDisplay(_ indexPath: IndexPath) {
         let totalSection = tableView.numberOfSections
-        /// Post list should be exist and here each section will define one post.
+        // Post list should be exist and here each section will define one post.
         guard totalSection > (sections?.count ?? 0) else { return }
         if isPostNextPageExist, totalSection - 1 == indexPath.section, indexPath.row == 0 {
            fetchPosts()

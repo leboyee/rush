@@ -198,7 +198,7 @@ extension ChatsViewController {
                     unself.openChatDetail(channel: chnl, name: "", imgName: nil)
                 }
             }
-            }, errorHandler: { error in
+            }, errorHandler: { _ in
                 Utils.hideSpinner()
                 /*
                 var errMsg = error?.localizedDescription ?? Message.tryAgainErrorMessage
@@ -220,7 +220,7 @@ extension ChatsViewController {
             }
             unself.tableView.reloadData()
             Utils.hideSpinner()
-            }, errorHandler: { error in
+            }, errorHandler: { _ in
                 Utils.hideSpinner()
         })
     }

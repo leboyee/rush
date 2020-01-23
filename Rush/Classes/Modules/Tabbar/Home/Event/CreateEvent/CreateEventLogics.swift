@@ -855,7 +855,7 @@ extension CreateEventViewController {
     func fetchInvitees() {
         Utils.showSpinner()
             let param = [Keys.pageNo: 1]
-        ServiceManager.shared.fetchInviteeList(eventId: "\(self.event?.id ?? 0)", params: param) { [weak self] (invitees, total, _) in
+        ServiceManager.shared.fetchInviteeList(eventId: "\(self.event?.id ?? 0)", params: param) { [weak self] (invitees, _, _) in
                 guard let unsafe = self else { return }
                 Utils.hideSpinner()
                 unsafe.event?.invitees = invitees

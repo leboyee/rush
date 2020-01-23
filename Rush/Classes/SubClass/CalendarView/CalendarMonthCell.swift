@@ -106,8 +106,8 @@ class CalendarMonthCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     func getMonthDateList(date: Date) {
         self.dateList.removeAll()
         var weekday = date.weekday
-        /// Default Sunday is 1 and Saturday is 7 and Calendar week start from Sunday
-        /// But if Week start from Monday, we need to move 1 day before. So Monday is 1 and Sunday = 7
+        // Default Sunday is 1 and Saturday is 7 and Calendar week start from Sunday
+        // But if Week start from Monday, we need to move 1 day before. So Monday is 1 and Sunday = 7
         if isWeekStartFromMonday {
            weekday -= 1
            if weekday == 0 {

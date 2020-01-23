@@ -127,13 +127,13 @@ extension ExploreViewController {
         case 0:
             type = "Event"
             if eventList.count > 0 {
-                img1 = eventList[0].photoJson /// Need to update that with photo
+                img1 = eventList[0].photoJson // Need to update that with photo
             }
             if eventList.count > 1 {
-                img2 = eventList[1].photoJson  /// Need to update that with photo
+                img2 = eventList[1].photoJson  // Need to update that with photo
             }
             if eventList.count > 2 {
-                img3 = eventList[2].photoJson  /// Need to update that with photo
+                img3 = eventList[2].photoJson  // Need to update that with photo
             }
         case 1:
             type = "Club"

@@ -42,7 +42,7 @@ extension PrivacySettingsViewController {
             guard let unsafe = self else { return }
             if data != nil {
                 unsafe.user = Authorization.shared.profile
-                /// Reload Cells
+                // Reload Cells
                 unsafe.tableView.reloadData()
             } else if let message = errorMessage {
                 unsafe.showMessage(message: message)

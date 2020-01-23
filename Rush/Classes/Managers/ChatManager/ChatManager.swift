@@ -62,7 +62,7 @@ extension ChatManager {
                     self.connectToChatServer(userId: userId, username: username, profileImageUrl: profileImageUrl)
                     self.firstTry = false
                 } else {//if second time fail then show message
-                    if let domain = error?.domain {
+                    if error?.domain != nil {
                         if Int(error?.code ?? 0) == 800120 {
                             let msg = "We are not able to connect to chat server."
                             Utils.alert(message: msg, title: "", buttons: ["Connect again"], cancel: "Cancel", destructive: nil, type: .alert, handler: { (index) in
@@ -70,8 +70,6 @@ extension ChatManager {
                                     self.connectToChatServer(userId: userId, username: username, profileImageUrl: profileImageUrl)
                                 }
                             })
-                        } else {
-                            //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
                         }
                     }
                 }
@@ -362,9 +360,6 @@ extension ChatManager {
                 
         SBDGroupChannel.createChannel(with: sbdGroupChannelParams) { (channel, error) in
             if error != nil {
-                if let domain = error?.domain {
-                    //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-                }
                 if let err = error {
                     errorHandler(err)
                 }
@@ -520,11 +515,6 @@ extension ChatManager {
                     
                     channel?.update(with: params, completionHandler: { (channel, error) in
                         if error != nil {
-                            if let domain = error?.domain {
-                                if isShowAlert {
-                                    //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-                                }
-                            }
                             if let err = error {
                                 errorHandler(err)
                             }
@@ -535,11 +525,6 @@ extension ChatManager {
                         }
                     })
                 } else {
-                    if let domain = error?.domain {
-                        if isShowAlert {
-                            //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-                        }
-                    }
                     if let err = error {
                         errorHandler(err)
                     }
@@ -554,9 +539,6 @@ extension ChatManager {
         
         channel?.update(with: params, completionHandler: { (channel, error) in
             if error != nil {
-                if let domain = error?.domain {
-                    //Utils.alert(message: "\(Int(error?.code ?? 0)): \(domain)")
-                }
                 if let err = error {
                     errorHandler(err)
                 }

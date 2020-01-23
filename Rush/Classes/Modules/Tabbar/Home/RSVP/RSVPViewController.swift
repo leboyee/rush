@@ -110,11 +110,11 @@ extension RSVPViewController {
     
     func joinSuccessfully(isFirstTime: Bool) {
         /*
-        /// Comment due to task https://www.wrike.com/open.htm?id=411254195
+        // Comment due to task https://www.wrike.com/open.htm?id=411254195
         if isFirstTime {
            performSegue(withIdentifier: Segues.eventJoinedPopup, sender: nil)
         } */
-        /// Reload event details
+        // Reload event details
         if let navigationController = navigationController {
             navigationController.viewControllers.forEach({ (vc) in
             if vc.isKind(of: EventDetailViewController.self) {

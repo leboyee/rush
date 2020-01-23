@@ -94,7 +94,7 @@ extension ContactsListViewController {
     func contactInviteApi() {
         if let countryCodeString = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
             print(countryCodeString)
-            let contactArray: [String] = self.selectedItem.map{ $0.phone }
+            let contactArray: [String] = self.selectedItem.map { $0.phone }
             var contactDict = [String: Any]()
             var newContactArray = [[String: Any]]()
             for contact in contactArray {
