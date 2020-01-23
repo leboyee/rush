@@ -20,6 +20,7 @@ extension ServiceManager {
     func fetchFriendsList(params: [String: Any], closer: @escaping (_ params: [Friend]?, _ total: Int, _ errorMessage: String?) -> Void) {
         _ = NetworkManager.shared.getFriendListWithSession(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, total, errorMessage) in
                 closer(friends, total, errorMessage)
             })
@@ -29,6 +30,7 @@ extension ServiceManager {
     func fetchFriendsListWithSession(params: [String: Any], closer: @escaping (_ params: [Friend]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
            NetworkManager.shared.getFriendListWithSession(params: params) { [weak self] (data, error, code) in
                guard let unsafe = self else { return }
+               guard code != NetworkManager.localNetworkStatusCode else { return }
                unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, _, errorMessage) in
                    closer(friends, errorMessage)
                })
@@ -38,6 +40,7 @@ extension ServiceManager {
     func fetchFilterFriendsListWithSession(params: [String: Any], closer: @escaping (_ params: [User]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
             NetworkManager.shared.getFilterFriendListWithSession(params: params) { [weak self] (data, error, code) in
                 guard let unsafe = self else { return }
+                guard code != NetworkManager.localNetworkStatusCode else { return }
                 unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, _, errorMessage) in
                     closer(friends, errorMessage)
                 })
@@ -48,6 +51,7 @@ extension ServiceManager {
     func sendFriendRequest(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.sendFriendRequest(param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -58,6 +62,7 @@ extension ServiceManager {
     func moderateFriendRequest(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.friendRequestStatus(param: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })

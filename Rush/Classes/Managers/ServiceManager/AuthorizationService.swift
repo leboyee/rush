@@ -18,6 +18,7 @@ extension ServiceManager {
     func login(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.login(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -30,6 +31,7 @@ extension ServiceManager {
     func checkEmail(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.checkEmail(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -38,7 +40,8 @@ extension ServiceManager {
     
     func restorePassword(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
           NetworkManager.shared.restorePassword(params: params) { [weak self] (data, error, code) in
-              guard let unsafe = self else { return }
+            guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -49,6 +52,7 @@ extension ServiceManager {
     func verifyCurrentPassword(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
            NetworkManager.shared.verifyPassword(params: params) { [weak self] (data, error, code) in
                guard let unsafe = self else { return }
+               guard code != NetworkManager.localNetworkStatusCode else { return }
                unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                    closer(status, errorMessage)
                })
@@ -58,6 +62,7 @@ extension ServiceManager {
     func changePassword(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.changePassword(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -67,6 +72,7 @@ extension ServiceManager {
     func restoreNewPassword(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.restoreNewPassword(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -79,6 +85,7 @@ extension ServiceManager {
     func authPhone(params: [String: Any], closer: @escaping(_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.authPhone(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -91,6 +98,7 @@ extension ServiceManager {
     func singup(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.signup(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -100,6 +108,7 @@ extension ServiceManager {
     func logout(closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.logout { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -109,6 +118,7 @@ extension ServiceManager {
     func phonetkn(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.phonetkn(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processLoginResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -121,6 +131,7 @@ extension ServiceManager {
     func resendSMS(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.resendSMS(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -134,6 +145,7 @@ extension ServiceManager {
     func updatePushToken(closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.updatePushToken(params: [:]) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -145,6 +157,7 @@ extension ServiceManager {
         if Authorization.shared.authorized {
             NetworkManager.shared.getProfile(params: params) { [weak self] (data, error, code) in
                 guard let unsafe = self else { return }
+                guard code != NetworkManager.localNetworkStatusCode else { return }
                 unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                     //Only if self profile is called and at that time param count is always zero
                     if let object = data?[Keys.user] as? [String: Any] {
@@ -166,6 +179,7 @@ extension ServiceManager {
     func updateProfile(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.updateProfile(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 if let user = data?["user"] as? [String: Any] {
                     Authorization.shared.updateUserData(data: user)
@@ -178,6 +192,7 @@ extension ServiceManager {
     func uploadUserProfileImage(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.uploadUserProfileImage(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 if let user = data?["user"] as? [String: Any] {
                     Authorization.shared.updateUserData(data: user)
@@ -190,6 +205,7 @@ extension ServiceManager {
     func instagramConnect(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.instagramConnect(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -199,6 +215,7 @@ extension ServiceManager {
     func instagramDisconnect(closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.instagramDisconnect { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -208,7 +225,8 @@ extension ServiceManager {
     
     func getUniversityList(params: [String: Any], closer: @escaping (_ university: [University]?, _ errorMessage: String?) -> Void) {
            NetworkManager.shared.getUniversity(params: params) { [weak self] (data, error, code) in
-               guard let unsafe = self else { return }
+            guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (university, _, errorMessage) in
                 closer(university, errorMessage)
             })
@@ -218,7 +236,8 @@ extension ServiceManager {
     
     func getUniversityListWithSession(params: [String: Any], closer: @escaping (_ university: [University]?, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
              NetworkManager.shared.getUniversityWithSession(params: params) { [weak self] (data, error, code) in
-                 guard let unsafe = self else { return }
+              guard let unsafe = self else { return }
+              guard code != NetworkManager.localNetworkStatusCode else { return }
               unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (university, _, errorMessage) in
                   closer(university, errorMessage)
               })
@@ -229,6 +248,7 @@ extension ServiceManager {
     func fetchPeopleList(params: [String: Any], closer: @escaping (_ params: [User]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getPeopleList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (friends, _, errorMessage) in
                 closer(friends, errorMessage)
             })
@@ -238,6 +258,7 @@ extension ServiceManager {
     func getMajorList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getMajorList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -247,6 +268,7 @@ extension ServiceManager {
     func getMinorList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getMinorList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -256,6 +278,7 @@ extension ServiceManager {
     func getInterestList(params: [String: Any], closer: @escaping (_ interest: [Interest]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getInterestList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (interest, _, errorMessage) in
                                closer(interest, errorMessage)
                           
@@ -266,6 +289,7 @@ extension ServiceManager {
     func getImageList(params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getImageList(params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -275,6 +299,7 @@ extension ServiceManager {
     func getClassCategory(params: [String: Any], closer: @escaping (_ data: [Class]?, _ errorMessage: String?) -> Void) {
           NetworkManager.shared.getClassCategory(params: params) { [weak self] (data, error, code) in
               guard let unsafe = self else { return }
+              guard code != NetworkManager.localNetworkStatusCode else { return }
               unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (data, _, errorMessage) in
                   closer(data, errorMessage)
               })
@@ -284,6 +309,7 @@ extension ServiceManager {
     func getSubClass(classId: String, params: [String: Any], closer: @escaping (_ data: [SubClass]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getSubClass(classId: classId, params: params) { [weak self] (data, error, code) in
                guard let unsafe = self else { return }
+               guard code != NetworkManager.localNetworkStatusCode else { return }
                unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (data, _, errorMessage) in
                    closer(data, errorMessage)
                })
@@ -293,6 +319,7 @@ extension ServiceManager {
       func inviteContactList(params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
           NetworkManager.shared.inviteContact(params: params) { [weak self] (data, error, code) in
               guard let uwself = self else { return }
+              guard code != NetworkManager.localNetworkStatusCode else { return }
               uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                   closer(status, errorMessage)
               })

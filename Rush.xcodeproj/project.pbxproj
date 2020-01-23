@@ -1955,8 +1955,8 @@
 		1AB0C15B22C120D8000D016E /* ServiceManager */ = {
 			isa = PBXGroup;
 			children = (
-				1AB0C15C22C120D8000D016E /* AuthorizationService.swift */,
 				1AB0C15F22C1247F000D016E /* ServiceManager.swift */,
+				1AB0C15C22C120D8000D016E /* AuthorizationService.swift */,
 				7905CDBD230D63120011C83B /* ChatServices.swift */,
 				79FA26F4230EC5AF0007F0ED /* HomeServices.swift */,
 				8AE9711F2327B4D800CB52D4 /* EventServices.swift */,

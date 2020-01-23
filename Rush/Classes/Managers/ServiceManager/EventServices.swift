@@ -13,6 +13,7 @@ extension ServiceManager {
     func fetchEventList(sortBy: String, params: [String: Any], closer: @escaping (_ events: [Event]?, _ total: Int, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventList(sortBy: sortBy, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (events, total, errorMessage) in
                 closer(events, total, errorMessage)
             })
@@ -23,6 +24,7 @@ extension ServiceManager {
     func fetchEventDetail(eventId: String, closer: @escaping (_ event: Event?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getEventDetail(eventId: eventId) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 if let object = data?[Keys.event] as? [String: Any] {
                     let event: Event? = unsafe.decodeObject(fromData: object)
@@ -38,6 +40,7 @@ extension ServiceManager {
     func fetchInviteeList(eventId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ count: Int, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.getInviteeList(eventId: eventId, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, total, errorMessage) in
                 closer(invitees, total, errorMessage)
             })
@@ -47,6 +50,7 @@ extension ServiceManager {
     func fetchInviteeListWithSession(eventId: String, params: [String: Any], closer: @escaping (_ list: [Invitee]?, _ count: Int, _ errorMessage: String?) -> Void) -> URLSessionDataTask? {
         NetworkManager.shared.getInviteeListWithSession(eventId: eventId, params: params) { [weak self] (data, error, code) in
             guard let unsafe = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (invitees, total, errorMessage) in
                 closer(invitees, total, errorMessage)
             })
@@ -57,6 +61,7 @@ extension ServiceManager {
     func joinEvent(eventId: String, action: String, params: [String: Any], closer: @escaping (_ data: [String: Any]?, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.joinEvent(eventId: eventId, action: action, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processDataResponse(result: data, error: error, code: code, closer: { (data, errorMessage) in
                 closer(data, errorMessage)
             })
@@ -66,6 +71,7 @@ extension ServiceManager {
     func rejectEventInvitation(eventId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.joinEvent(eventId: eventId, action: EventAction.reject, params: [:]) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -75,6 +81,7 @@ extension ServiceManager {
     func fetchEventCategoryWithEventList(params: [String: Any], closer: @escaping (_ eventCategory: [Interest]?, _ errorMessage: String?) -> Void) {
              NetworkManager.shared.getEventCategoryWithEventList(params: params) { [weak self] (data, error, code) in
                  guard let unsafe = self else { return }
+                 guard code != NetworkManager.localNetworkStatusCode else { return }
                  unsafe.procesModelResponse(result: data, error: error, code: code, closer: { (eventCategory, _, errorMessage) in
                      closer(eventCategory, errorMessage)
                  })
@@ -85,6 +92,7 @@ extension ServiceManager {
     func deleteEvent(eventId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.deleteEvent(eventId: eventId) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -123,6 +131,7 @@ extension ServiceManager {
     func updateEvent(eventId: String, params: [String: Any], closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.updateEvent(eventId: eventId, params: params) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
@@ -132,6 +141,7 @@ extension ServiceManager {
     func deletePhoto(photoId: String, closer: @escaping (_ status: Bool, _ errorMessage: String?) -> Void) {
         NetworkManager.shared.deletePhoto(photoId: photoId) { [weak self] (data, error, code) in
             guard let uwself = self else { return }
+            guard code != NetworkManager.localNetworkStatusCode else { return }
             uwself.processNoDataResponse(result: data, error: error, code: code, closer: { (status, errorMessage) in
                 closer(status, errorMessage)
             })
