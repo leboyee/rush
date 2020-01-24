@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 let globalAppBgColor = UIColor.white
 let tabbarItemTintColor = UIColor(red: 0.56, green: 0.24, blue: 0.33, alpha: 1)
@@ -129,29 +130,22 @@ extension CustomTabbarViewController {
      Show login user photo on last tab
      */
     func updateLoginUserPhotoOnLastTab() {
-        if isNetworkAvailable {
-            if let url = Authorization.shared.profile?.photo?.url(), let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-                if let tabbarItem = tabBar.items?.last {
-                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                    tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        userPlaceholderTab()
+        if let url = Authorization.shared.profile?.photo?.url() {
+            SDWebImageDownloader.shared.downloadImage(with: url, completed: { (img, _, error, _) in
+                if error != nil {
+                    self.userPlaceholderTab()
+                } else {
+                    let img =  img?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                    let selectedImg = img?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
+                    if let tabbarItem = self.tabBar.items?.last {
+                        tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                        tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                    }
                 }
-            } else {
-                let img = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let imgSelected = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-                if let tabbarItem = tabBar.items?.last {
-                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                    tabbarItem.selectedImage = imgSelected?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                }
-            }
+            })
         } else {
-            let img = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-            let imgSelected = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-            if let tabbarItem = tabBar.items?.last {
-                tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                tabbarItem.selectedImage = imgSelected?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-            }
+            userPlaceholderTab()
         }
     }
     
@@ -176,29 +170,31 @@ extension CustomTabbarViewController {
     }
     
     func refreshTab() {
-        if isNetworkAvailable {
-            if let url = Authorization.shared.profile?.photo?.url(), let imageData =  try? Data(contentsOf: url) {
-                let img =  UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let selectedImg = UIImage(data: imageData)?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-                if let tabbarItem = tabBar.items?.last {
-                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                    tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        userPlaceholderTab()
+        if let url = Authorization.shared.profile?.photo?.url() {
+            SDWebImageDownloader.shared.downloadImage(with: url, completed: { (img, _, error, _) in
+                if error != nil {
+                    self.userPlaceholderTab()
+                } else {
+                    let img =  img?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+                    let selectedImg = img?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
+                    if let tabbarItem = self.tabBar.items?.last {
+                        tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                        tabbarItem.selectedImage = selectedImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+                    }
                 }
-            } else {
-                let img = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-                let imgSelected = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-                if let tabbarItem = tabBar.items?.last {
-                    tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                    tabbarItem.selectedImage = imgSelected?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                }
-            }
+            })
         } else {
-            let img = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
-            let imgSelected = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
-            if let tabbarItem = tabBar.items?.last {
-                tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-                tabbarItem.selectedImage = imgSelected?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-            }
+            userPlaceholderTab()
+        }
+    }
+    
+    func userPlaceholderTab() {
+        let img = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 0, color: .clear)
+        let imgSelected = UIImage(named: "placeholder-profile-tabBar")?.roundedImageWithBorder(width: 24, borderWidth: 2, color: UIColor.brown24)
+        if let tabbarItem = self.tabBar.items?.last {
+            tabbarItem.image = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+            tabbarItem.selectedImage = imgSelected?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         }
     }
     
