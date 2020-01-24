@@ -35,8 +35,8 @@ extension EventDetailViewController {
     }
     
     func setupHeader() {
-        /// setup header
-        //header.delegate = self
+        // setup header
+        // header.delegate = self
     }
     
 }
@@ -253,7 +253,7 @@ extension EventDetailViewController: OtherUserProfileProtocol {
 // MARK: - PostVIewController delegate
 extension EventDetailViewController: PostViewProtocol {
     func deletePostSuccess(_ post: Post?) {
-        /// Find index of post, remove and reload list
+        // Find index of post, remove and reload list
         if let post = post, let index = postList?.firstIndex(where: { $0.postId == post.postId }) {
             postList?.remove(at: index)
             reloadTable()
@@ -261,7 +261,7 @@ extension EventDetailViewController: PostViewProtocol {
     }
     
     func updatedPost(_ post: Post) {
-        /// Find index of post and replace with updated post
+        // Find index of post and replace with updated post
         if let index = postList?.firstIndex(where: { $0.postId == post.postId }) {
             postList?[index] = post
             reloadTable()

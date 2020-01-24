@@ -16,7 +16,7 @@ extension EnterEmailViewConteroller {
     
     func checkUserAvailable() {
         Utils.showSpinner()
-        var email = emailTextField.text ?? ""
+        let email = emailTextField.text ?? ""
          //email = email.replacingOccurrences(of: ".edu", with: ".com")
 
         ServiceManager.shared.checkEmail(params: [Keys.email: email]) { [weak self] (data, errorMessage) in

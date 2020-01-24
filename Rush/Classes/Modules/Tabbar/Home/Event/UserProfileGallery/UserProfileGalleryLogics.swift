@@ -58,6 +58,7 @@ extension UserProfileGalleryViewController {
     func openShareSheet() {
         self.performSegue(withIdentifier: Segues.photoModelViewSegue, sender: self)
         return
+        /*
         let buttons = ["Share", "Save"]
         Utils.alert(message: nil, title: nil, buttons: buttons, cancel: "Cancel", type: .actionSheet) { [weak self] (index) in
             guard let uwself = self else { return }
@@ -80,7 +81,7 @@ extension UserProfileGalleryViewController {
                 
             }
             
-        }
+        }*/
         
     }
     

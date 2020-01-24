@@ -75,15 +75,15 @@ extension PostImagesCell: UICollectionViewDataSource {
 
             if let image = list?[indexPath.row] {
                 if totol == 1 {
-                   cell.set(url: image.url()) /// Show main or original image
+                   cell.set(url: image.url()) // Show main or original image
                 } else {
-                    cell.set(url: image.urlLarge()) /// Show large image to save memory
+                    cell.set(url: image.urlLarge()) // Show large image to save memory
                 }
             }
             
-            /// count label hide if any one condition true
-            /// 1. total items and cell count are same (also true for total = 1)
-            /// 2. index item is less than total items
+            // count label hide if any one condition true
+            // 1. total items and cell count are same (also true for total = 1)
+            // 2. index item is less than total items
             if indexPath.row < totol - 1 || totol == list?.count ?? 0 {
                 cell.countLabel.isHidden = true
                 cell.set(isHideOverlay: true)

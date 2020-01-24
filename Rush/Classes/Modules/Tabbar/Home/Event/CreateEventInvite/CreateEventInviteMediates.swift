@@ -80,7 +80,7 @@ extension CreateEventInviteViewController: UITableViewDelegate, UITableViewDataS
         if isRushFriends == true {
             if indexPath.section == 0 || indexPath.section == 1 {
                 let profile = friendListAraay[indexPath.row]
-                cell.setup(title: "\(profile.name ?? "")")
+                cell.setup(title: "\(profile.name)")
                 if let imageName = profile.photo {
                     cell.setup(url: URL(string: imageName.thumb))
                 }

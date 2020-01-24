@@ -30,7 +30,8 @@ typealias ResultClosure = (_ success: Any?,
 class NetworkManager: NSObject {
     
     static let shared = NetworkManager()
-    
+    static let localNetworkStatusCode = -10001
+
     let errorDomain = "com.messapps.testing.Rush"
     static var userAgent: String!
     var xAPIKey: String {
@@ -193,6 +194,7 @@ class NetworkManager: NSObject {
         
         if !isNetworkAvailable {
             NotificationCenter.default.post(name: NSNotification.Name.badNetwork, object: nil)
+            resultHandler(nil, nil, NetworkManager.localNetworkStatusCode)
             return nil
         }
         

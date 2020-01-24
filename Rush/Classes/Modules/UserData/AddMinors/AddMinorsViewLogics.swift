@@ -61,7 +61,7 @@ extension AddMinorsViewController {
                                    //unsafe.minorArray.append(newCustomMinor)
                                }
                            }
-            }           
+            }
             unsafe.tableView.reloadData()
         }
     }

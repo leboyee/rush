@@ -24,10 +24,10 @@ extension AppDelegate {
         //Check Reachability
         connectReachability()
         
-        /// Firebase
+        // Firebase
         FirebaseApp.configure()
         
-        /// Fabric
+        // Fabric
         Fabric.sharedSDK().debug = true
     }
     

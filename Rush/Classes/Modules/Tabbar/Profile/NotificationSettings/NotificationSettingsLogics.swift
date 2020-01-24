@@ -76,7 +76,7 @@ extension NotificationSettingsViewController {
             guard let unsefe = self else { return }
             if data != nil {
                 unsefe.user = Authorization.shared.profile
-                /// Reload Cells
+                // Reload Cells
                 unsefe.tableView.reloadData()
             } else if let message = errorMessage {
                 unsefe.showMessage(message: message)

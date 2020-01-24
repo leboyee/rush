@@ -102,9 +102,7 @@ extension ChooseClassesViewController {
                     }
                 }
                 unsafe.noResultView.isHidden = unsafe.classesArray.count > 0 ? true : false
-                
                 unsafe.tableView.reloadData()
-
               
             } else {
                 Utils.alert(message: errorMsg ?? Message.tryAgainErrorMessage)

@@ -110,7 +110,7 @@ extension EventDetailViewController: UIGestureRecognizerDelegate {
             gesture.delegate = self
         }
         
-        /// Set Header Delegate
+        // Set Header Delegate
         header.delegate = self
         updateHeaderInfo()
         NotificationCenter.default.addObserver(self, selector: #selector(userProfile), name: Notification.Name.userProfile, object: nil)

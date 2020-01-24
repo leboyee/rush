@@ -42,7 +42,7 @@ extension UITapGestureRecognizer {
         if NSLocationInRange(indexOfCharacter, targetRange) {
             return true
         } else {
-            /// increasse tap area
+            // increasse tap area
             // +2 for increase tap area at start
             let range = NSRange(location: targetRange.location, length: targetRange.length + 2)
             if NSLocationInRange(indexOfCharacter, range) {

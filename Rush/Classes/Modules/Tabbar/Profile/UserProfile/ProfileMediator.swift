@@ -28,7 +28,7 @@ extension ProfileViewController {
     }
     
     func setupHeader() {
-        /// setup header
+        // setup header
         header.delegate = self
     }
     
