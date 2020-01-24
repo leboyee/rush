@@ -592,7 +592,9 @@
 		8AE7A253234C662B001F2EC0 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A252234C662B001F2EC0 /* CalendarItem.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
-		C01CB28123A7C3A0002EF242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01CB28023A7C39F002EF242 /* GoogleService-Info.plist */; };
+		C026A1FF23DAD52F007FD5B9 /* DevEnterprise.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C026A1FE23DAD52A007FD5B9 /* DevEnterprise.xcconfig */; };
+		C026A20123DAD543007FD5B9 /* ProdEnterprise.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C026A20023DAD543007FD5B9 /* ProdEnterprise.xcconfig */; };
+		C026A20323DAD554007FD5B9 /* ProdAppStore.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C026A20223DAD551007FD5B9 /* ProdAppStore.xcconfig */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
@@ -831,6 +833,7 @@
 		1AEB56A822E842730041EAA7 /* AddInviteViewLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInviteViewLogics.swift; sourceTree = "<group>"; };
 		1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.debug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.debug.xcconfig"; sourceTree = "<group>"; };
 		23F48DBFB93108D0EAB38E6A /* Pods_Rush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4602F6C6A422B36F79AF4E79 /* Pods-Rush.prodenterpriserelease.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.prodenterpriserelease.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.prodenterpriserelease.xcconfig"; sourceTree = "<group>"; };
 		7903D098228E8CE5004E33B9 /* EventByDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventByDateCell.swift; sourceTree = "<group>"; };
 		7903D099228E8CE5004E33B9 /* EventByDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventByDateCell.xib; sourceTree = "<group>"; };
 		7903D09B228E8CE5004E33B9 /* EventTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypeCell.swift; sourceTree = "<group>"; };
@@ -1212,7 +1215,12 @@
 		8AE7A252234C662B001F2EC0 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		8AE9711F2327B4D800CB52D4 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
 		8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
-		C01CB28023A7C39F002EF242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F2A9403B0B061C672374BF4 /* Pods-Rush.deventerprisedebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.deventerprisedebug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.deventerprisedebug.xcconfig"; sourceTree = "<group>"; };
+		A01887AE146D21A9A2AB3E1E /* Pods-Rush.prodenterprisedebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.prodenterprisedebug.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.prodenterprisedebug.xcconfig"; sourceTree = "<group>"; };
+		B47075F77B3C6DD4A5CB083A /* Pods-Rush.deventerpriserelease.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.deventerpriserelease.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.deventerpriserelease.xcconfig"; sourceTree = "<group>"; };
+		C026A1FE23DAD52A007FD5B9 /* DevEnterprise.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevEnterprise.xcconfig; sourceTree = "<group>"; };
+		C026A20023DAD543007FD5B9 /* ProdEnterprise.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ProdEnterprise.xcconfig; sourceTree = "<group>"; };
+		C026A20223DAD551007FD5B9 /* ProdAppStore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ProdAppStore.xcconfig; sourceTree = "<group>"; };
 		C05FC14922805F3D00721F3F /* Rush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05FC14C22805F3D00721F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C05FC15822805F3E00721F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1231,6 +1239,7 @@
 		F9C89F6A232D2DD900DC9C85 /* AddLocationLogics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationLogics.swift; sourceTree = "<group>"; };
 		F9C89F6F232D38F700DC9C85 /* AddEventLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventLocationCell.xib; sourceTree = "<group>"; };
 		F9C89F70232D38F700DC9C85 /* AddEventLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventLocationCell.swift; sourceTree = "<group>"; };
+		FDE8FEDA1504EDF1088BFB56 /* Pods-Rush.prodappstorerelease.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rush.prodappstorerelease.xcconfig"; path = "Target Support Files/Pods-Rush/Pods-Rush.prodappstorerelease.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2143,6 +2152,11 @@
 				1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */,
 				C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */,
 				1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */,
+				9F2A9403B0B061C672374BF4 /* Pods-Rush.deventerprisedebug.xcconfig */,
+				A01887AE146D21A9A2AB3E1E /* Pods-Rush.prodenterprisedebug.xcconfig */,
+				B47075F77B3C6DD4A5CB083A /* Pods-Rush.deventerpriserelease.xcconfig */,
+				4602F6C6A422B36F79AF4E79 /* Pods-Rush.prodenterpriserelease.xcconfig */,
+				FDE8FEDA1504EDF1088BFB56 /* Pods-Rush.prodappstorerelease.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -3216,6 +3230,16 @@
 			path = Files;
 			sourceTree = "<group>";
 		};
+		C026A1FD23DAD514007FD5B9 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C026A1FE23DAD52A007FD5B9 /* DevEnterprise.xcconfig */,
+				C026A20023DAD543007FD5B9 /* ProdEnterprise.xcconfig */,
+				C026A20223DAD551007FD5B9 /* ProdAppStore.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		C05FC14022805F3D00721F3F = {
 			isa = PBXGroup;
 			children = (
@@ -3239,6 +3263,7 @@
 		C05FC14B22805F3D00721F3F /* Rush */ = {
 			isa = PBXGroup;
 			children = (
+				C026A1FD23DAD514007FD5B9 /* Config */,
 				1A370B1F2356EEC80086652B /* Rush.entitlements */,
 				C05FC14C22805F3D00721F3F /* AppDelegate.swift */,
 				C05FC1732280620100721F3F /* AppDelegateThirdParty.swift */,
@@ -3249,7 +3274,6 @@
 				C05FC16322805F9D00721F3F /* Resources */,
 				796E929A229FE0B600F91DB1 /* ExternalLibraries */,
 				C05FC15822805F3E00721F3F /* Info.plist */,
-				C01CB28023A7C39F002EF242 /* GoogleService-Info.plist */,
 			);
 			path = Rush;
 			sourceTree = "<group>";
@@ -3400,6 +3424,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C05FC15B22805F3E00721F3F /* Build configuration list for PBXNativeTarget "Rush" */;
 			buildPhases = (
+				C069921B23DAD7710096908A /* ShellScript */,
 				34C9EFAD8E918C0F58D7E9F6 /* [CP] Check Pods Manifest.lock */,
 				C05FC14522805F3D00721F3F /* Sources */,
 				C05FC14622805F3D00721F3F /* Frameworks */,
@@ -3506,6 +3531,7 @@
 				1A0EDEF7234892C800502959 /* EditProfileMinorCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
+				C026A20123DAD543007FD5B9 /* ProdEnterprise.xcconfig in Resources */,
 				1A7402CC22CD029F0089CDAE /* ChooseTagCell.xib in Resources */,
 				1A142ECB229EC895002C1AFE /* CountryPhoneCode.json in Resources */,
 				8A04B19E230409220055C65F /* ParallaxHeader.xib in Resources */,
@@ -3524,7 +3550,9 @@
 				1A8906202354A91100976610 /* UserTagCell.xib in Resources */,
 				8A4B3291232F5A5B00AC1D17 /* EventAboutCell.xib in Resources */,
 				7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */,
+				C026A1FF23DAD52F007FD5B9 /* DevEnterprise.xcconfig in Resources */,
 				8A4B328B232F5A5B00AC1D17 /* PostLikeCell.xib in Resources */,
+				C026A20323DAD554007FD5B9 /* ProdAppStore.xcconfig in Resources */,
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
 				8A4B3287232F5A5B00AC1D17 /* PostUserCell.xib in Resources */,
@@ -3544,7 +3572,6 @@
 				1AEAC4B622D346AA008FBB54 /* UserInfoCell.xib in Resources */,
 				7903D0B0228E8CE5004E33B9 /* EventCell.xib in Resources */,
 				F9C89F71232D38F700DC9C85 /* AddEventLocationCell.xib in Resources */,
-				C01CB28123A7C3A0002EF242 /* GoogleService-Info.plist in Resources */,
 				79DF742E2292D2C90012DCB7 /* TextIconCell.xib in Resources */,
 				091557BA22B127320080C9AE /* UserPostTextTableViewCell.xib in Resources */,
 				1AEAC49922D3194A008FBB54 /* UserInfo.storyboard in Resources */,
@@ -3671,6 +3698,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		C069921B23DAD7710096908A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${BUILD_TYPE}\" == \"enterprise\" ]; then\ncp -r \"${PROJECT_DIR}/Rush/Config/GoogleService-Info-enterprise.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n\necho \"enterprise GoogleService plist copied\"\n\nelif [ \"${BUILD_TYPE}\" == \"app-store\" ]; then\n\ncp -r \"${PROJECT_DIR}/Rush/Config/GoogleService-Info-app-store.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n\necho \"app-store GoogleService plist copied\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4186,8 +4230,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C05FC15922805F3E00721F3F /* Debug */ = {
+		C026A20423DAD640007FD5B9 /* ProdEnterpriseDebug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C026A20023DAD543007FD5B9 /* ProdEnterprise.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4246,10 +4291,109 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = ProdEnterpriseDebug;
 		};
-		C05FC15A22805F3E00721F3F /* Release */ = {
+		C026A20523DAD640007FD5B9 /* ProdEnterpriseDebug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A01887AE146D21A9A2AB3E1E /* Pods-Rush.prodenterprisedebug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
+				DEVELOPMENT_TEAM = 22K8FCRMWT;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = Rush/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = ProdEnterpriseDebug;
+		};
+		C026A20623DAD644007FD5B9 /* ProdEnterpriseRelease */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C026A20023DAD543007FD5B9 /* ProdEnterprise.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4302,18 +4446,18 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = ProdEnterpriseRelease;
 		};
-		C05FC15C22805F3E00721F3F /* Debug */ = {
+		C026A20723DAD644007FD5B9 /* ProdEnterpriseRelease */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B1C503A6DFE7F80DBDDE6CE /* Pods-Rush.debug.xcconfig */;
+			baseConfigurationReference = 4602F6C6A422B36F79AF4E79 /* Pods-Rush.prodenterpriserelease.xcconfig */;
 			buildSettings = {
-				APIKEY = rushsandbox1412;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Rush/Info.plist;
@@ -4322,7 +4466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4394,116 +4538,80 @@
 					"-framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
-				SERVER_ADDRESS = "https://sandbox.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = ProdEnterpriseRelease;
 		};
-		C05FC15D22805F3E00721F3F /* Release */ = {
+		C05FC15922805F3E00721F3F /* DevEnterpriseDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C65AA8DF0B6182AEB38730A6 /* Pods-Rush.release.xcconfig */;
+			baseConfigurationReference = C026A1FE23DAD52A007FD5B9 /* DevEnterprise.xcconfig */;
 			buildSettings = {
-				APIKEY = rushsandbox1412;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 22K8FCRMWT;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = Rush/Info.plist;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-l\"c++\"",
-					"-l\"icucore\"",
-					"-l\"z\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"AVKit\"",
-					"-framework",
-					"\"AssetsLibrary\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreData\"",
-					"-framework",
-					"\"CoreFoundation\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreLocation\"",
-					"-framework",
-					"\"CoreMotion\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"DKCamera\"",
-					"-framework",
-					"\"DKImagePickerController\"",
-					"-framework",
-					"\"DKPhotoGallery\"",
-					"-framework",
-					"\"FLAnimatedImage\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"GoogleMapsBase\"",
-					"-framework",
-					"\"GooglePlaces\"",
-					"-framework",
-					"\"IQKeyboardManagerSwift\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"MGSwipeTableCell\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Photos\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Reachability\"",
-					"-framework",
-					"\"SDWebImage\"",
-					"-framework",
-					"\"SDWebImageFLPlugin\"",
-					"-framework",
-					"\"SVProgressHUD\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SendBirdSDK\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"WebKit\"",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
-				SERVER_ADDRESS = "https://sandbox.rushapp.io/api/";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Release;
+			name = DevEnterpriseDebug;
 		};
-		C05FC1752280637100721F3F /* ReleaseBeta */ = {
+		C05FC15A22805F3E00721F3F /* DevEnterpriseRelease */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C026A1FE23DAD52A007FD5B9 /* DevEnterprise.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4556,18 +4664,18 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = ReleaseBeta;
+			name = DevEnterpriseRelease;
 		};
-		C05FC1762280637100721F3F /* ReleaseBeta */ = {
+		C05FC15C22805F3E00721F3F /* DevEnterpriseDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1842893754882CFC8D6C4F15 /* Pods-Rush.releasebeta.xcconfig */;
+			baseConfigurationReference = 9F2A9403B0B061C672374BF4 /* Pods-Rush.deventerprisedebug.xcconfig */;
 			buildSettings = {
-				APIKEY = rushsandbox1412;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
 				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 22K8FCRMWT;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Rush/Info.plist;
@@ -4576,7 +4684,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4648,14 +4756,266 @@
 					"-framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.messapps.testing.Rush;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
-				SERVER_ADDRESS = "https://sandbox.rushapp.io/api/";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = ReleaseBeta;
+			name = DevEnterpriseDebug;
+		};
+		C05FC15D22805F3E00721F3F /* DevEnterpriseRelease */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B47075F77B3C6DD4A5CB083A /* Pods-Rush.deventerpriserelease.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
+				DEVELOPMENT_TEAM = 22K8FCRMWT;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = Rush/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = DevEnterpriseRelease;
+		};
+		C05FC1752280637100721F3F /* ProdAppStoreRelease */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C026A20223DAD551007FD5B9 /* ProdAppStore.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = ProdAppStoreRelease;
+		};
+		C05FC1762280637100721F3F /* ProdAppStoreRelease */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDE8FEDA1504EDF1088BFB56 /* Pods-Rush.prodappstorerelease.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				CODE_SIGN_ENTITLEMENTS = Rush/Rush.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = $BITRISE_BUILD_NUMBER;
+				DEVELOPMENT_TEAM = 22K8FCRMWT;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = Rush/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AVKit\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"DKCamera\"",
+					"-framework",
+					"\"DKImagePickerController\"",
+					"-framework",
+					"\"DKPhotoGallery\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MGSwipeTableCell\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SDWebImageFLPlugin\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SendBirdSDK\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Rush Inhouse";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = ProdAppStoreRelease;
 		};
 /* End XCBuildConfiguration section */
 
@@ -4663,22 +5023,26 @@
 		C05FC14422805F3D00721F3F /* Build configuration list for PBXProject "Rush" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C05FC15922805F3E00721F3F /* Debug */,
-				C05FC15A22805F3E00721F3F /* Release */,
-				C05FC1752280637100721F3F /* ReleaseBeta */,
+				C05FC15922805F3E00721F3F /* DevEnterpriseDebug */,
+				C026A20423DAD640007FD5B9 /* ProdEnterpriseDebug */,
+				C05FC15A22805F3E00721F3F /* DevEnterpriseRelease */,
+				C026A20623DAD644007FD5B9 /* ProdEnterpriseRelease */,
+				C05FC1752280637100721F3F /* ProdAppStoreRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = ReleaseBeta;
+			defaultConfigurationName = DevEnterpriseDebug;
 		};
 		C05FC15B22805F3E00721F3F /* Build configuration list for PBXNativeTarget "Rush" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C05FC15C22805F3E00721F3F /* Debug */,
-				C05FC15D22805F3E00721F3F /* Release */,
-				C05FC1762280637100721F3F /* ReleaseBeta */,
+				C05FC15C22805F3E00721F3F /* DevEnterpriseDebug */,
+				C026A20523DAD640007FD5B9 /* ProdEnterpriseDebug */,
+				C05FC15D22805F3E00721F3F /* DevEnterpriseRelease */,
+				C026A20723DAD644007FD5B9 /* ProdEnterpriseRelease */,
+				C05FC1762280637100721F3F /* ProdAppStoreRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = ReleaseBeta;
+			defaultConfigurationName = DevEnterpriseDebug;
 		};
 /* End XCConfigurationList section */
 	};

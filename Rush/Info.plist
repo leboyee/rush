@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>APIKey</key>
-	<string>$(APIKEY)</string>
+	<string>$(REST_API_KEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -34,7 +34,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.messapps.rush</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>rushapp</string>
@@ -83,7 +83,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow Rush to access Camera Roll to upload photos for your posts and events.</string>
 	<key>ServerAddress</key>
-	<string>$(SERVER_ADDRESS)</string>
+	<string>$(REST_API_BASE_PATH)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Text-Bold.otf</string>

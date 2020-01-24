@@ -18,9 +18,6 @@ let serverDateFormate1 = "yyyy-MM-dd HH:mm:ss"
 let sendbirdProduction = "294065CB-F283-48C4-9113-DFED95725D37"
 let sendbirdSandbox = "317AF6DB-B602-4260-8869-BE538265E598"
 
-// MARK: - Production Build
-var isProductionBuild: Bool = true
-
 // MARK: - App color mode
 var isDarkModeOn: Bool = false
 

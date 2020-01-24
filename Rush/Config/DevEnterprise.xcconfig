@@ -1,0 +1,19 @@
+//
+//  DevEnterprise.xcconfig
+//  Rush
+//
+//  Created by iChirag on 24/01/20.
+//  Copyright © 2020 Messapps. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+BUNDLE_IDENTIFIER=com.messapps.testing.Rush
+BUILD_VERSION=1.0
+BUILD_NUMBER=$BITRISE_BUILD_NUMBER
+BUILD_TYPE=enterprise
+
+REST_API_BASE_PATH=https:/$()/sandbox.rushapp.io/api/
+REST_API_KEY=rushsandbox1412
