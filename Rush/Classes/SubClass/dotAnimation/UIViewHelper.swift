@@ -2,8 +2,8 @@
 //  UIViewHelper.swift
 //  A_J_Dot_Loading_Indicator
 //
-//  Created by Alex Jiang on 14/3/18.
-//  Copyright © 2018 Alex Jiang. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit

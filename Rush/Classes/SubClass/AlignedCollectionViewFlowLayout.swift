@@ -1,9 +1,9 @@
 //
 //  AlignedCollectionViewFlowLayout.swift
 //
-//  Created by Mischa Hildebrand on 12/04/2017.
-//  Copyright © 2017 Mischa Hildebrand.
-//
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
+
 //  Licensed under the terms of the MIT license:
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy

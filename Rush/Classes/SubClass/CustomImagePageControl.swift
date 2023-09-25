@@ -2,8 +2,8 @@
 //  CustomImagePageControl.swift
 //  ReportCutter
 //
-//  Created by Suresh Jagnani on 26/03/19.
-//  Copyright © 2019 Suresh Jagnani. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit

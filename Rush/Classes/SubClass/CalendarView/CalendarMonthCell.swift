@@ -2,8 +2,8 @@
 //  CalendarMonthCell.swift
 //  digicrony_ios
 //
-//  Created by kamal on 23/07/19.
-//  Copyright © 2019 Messapps. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit

@@ -2,8 +2,8 @@
 //  ImageViewExtension.swift
 //  eventX_ios
 //
-//  Created by Kamal Mittal on 19/04/18.
-//  Copyright © 2018 -. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import Foundation

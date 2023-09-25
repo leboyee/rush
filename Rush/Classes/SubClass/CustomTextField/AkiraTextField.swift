@@ -2,8 +2,8 @@
 //  AkiraTextField.swift
 //  TextFieldEffects
 //
-//  Created by Mihaela Miches on 5/31/15.
-//  Copyright (c) 2015 Raul Riera. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit

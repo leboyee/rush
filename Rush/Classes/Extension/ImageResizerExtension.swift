@@ -2,8 +2,8 @@
 //  ImageResizer.swift
 //  HalsaLife
 //
-//  Created by iChirag on 27/03/18.
-//  Copyright © 2018 Messapps. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import Foundation

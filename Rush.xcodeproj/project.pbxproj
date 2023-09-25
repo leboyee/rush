@@ -592,9 +592,6 @@
 		8AE7A253234C662B001F2EC0 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A252234C662B001F2EC0 /* CalendarItem.swift */; };
 		8AE971202327B4D800CB52D4 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9711F2327B4D800CB52D4 /* EventServices.swift */; };
 		8AE9713B232A315100CB52D4 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9713A232A315100CB52D4 /* DynamicHeightCollectionView.swift */; };
-		C026A1FF23DAD52F007FD5B9 /* DevEnterprise.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C026A1FE23DAD52A007FD5B9 /* DevEnterprise.xcconfig */; };
-		C026A20123DAD543007FD5B9 /* ProdEnterprise.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C026A20023DAD543007FD5B9 /* ProdEnterprise.xcconfig */; };
-		C026A20323DAD554007FD5B9 /* ProdAppStore.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C026A20223DAD551007FD5B9 /* ProdAppStore.xcconfig */; };
 		C05FC14D22805F3D00721F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FC14C22805F3D00721F3F /* AppDelegate.swift */; };
 		C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16522805F9D00721F3F /* Assets.xcassets */; };
 		C05FC16D22805F9D00721F3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05FC16722805F9D00721F3F /* LaunchScreen.storyboard */; };
@@ -3453,7 +3450,7 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Messapps;
 				TargetAttributes = {
 					C05FC14822805F3D00721F3F = {
@@ -3531,7 +3528,6 @@
 				1A0EDEF7234892C800502959 /* EditProfileMinorCell.xib in Resources */,
 				1AC635F922AA766100021E03 /* UserData.storyboard in Resources */,
 				C05FC16C22805F9D00721F3F /* Assets.xcassets in Resources */,
-				C026A20123DAD543007FD5B9 /* ProdEnterprise.xcconfig in Resources */,
 				1A7402CC22CD029F0089CDAE /* ChooseTagCell.xib in Resources */,
 				1A142ECB229EC895002C1AFE /* CountryPhoneCode.json in Resources */,
 				8A04B19E230409220055C65F /* ParallaxHeader.xib in Resources */,
@@ -3550,9 +3546,7 @@
 				1A8906202354A91100976610 /* UserTagCell.xib in Resources */,
 				8A4B3291232F5A5B00AC1D17 /* EventAboutCell.xib in Resources */,
 				7929DA5C22C2630D00700B42 /* PostCommentCell.xib in Resources */,
-				C026A1FF23DAD52F007FD5B9 /* DevEnterprise.xcconfig in Resources */,
 				8A4B328B232F5A5B00AC1D17 /* PostLikeCell.xib in Resources */,
-				C026A20323DAD554007FD5B9 /* ProdAppStore.xcconfig in Resources */,
 				796A6F2D22CE169A00916D79 /* TimeSlotCell.xib in Resources */,
 				8A04B1922301796A0055C65F /* CalendarDayCell.xib in Resources */,
 				8A4B3287232F5A5B00AC1D17 /* PostUserCell.xib in Resources */,

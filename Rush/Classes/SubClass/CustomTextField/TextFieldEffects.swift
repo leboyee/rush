@@ -2,8 +2,8 @@
 //  TextFieldEffects.swift
 //  TextFieldEffects
 //
-//  Created by Raúl Riera on 24/01/2015.
-//  Copyright (c) 2015 Raul Riera. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit

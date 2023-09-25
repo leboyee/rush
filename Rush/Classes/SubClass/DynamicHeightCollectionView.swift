@@ -2,8 +2,8 @@
 //  DynamicHeightCollectionView.swift
 //  DynamicHeightCollectionView
 //
-//  Created by Kamal Mittal on 03/07/18.
-//  Copyright © 2018 -. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit

@@ -2,8 +2,8 @@
 //  CustomCamera.swift
 //  DKImagePickerControllerDemo
 //
-//  Created by ZhangAo on 03/01/2017.
-//  Copyright © 2017 ZhangAo. All rights reserved.
+//  Created by Nick Boyer on 24/01/20.
+//  Copyright © 2020 Nick Boyer. All rights reserved.
 //
 
 import UIKit
